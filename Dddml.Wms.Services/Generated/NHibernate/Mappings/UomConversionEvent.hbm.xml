@@ -12,16 +12,19 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
-    <property name="ConversionFactor" ><column name="ConversionFactor" sql-type="DOUBLE" /></property>
-    <property name="CustomMethodId" ><column name="CustomMethodId" sql-type="VARCHAR(20)" /></property>
-    <property name="DecimalScale" ><column name="DecimalScale" sql-type="DECIMAL(20,0)" /></property>
-    <property name="RoundingMode" ><column name="RoundingMode" sql-type="VARCHAR(20)" /></property>
-    <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+
+        <subclass name="UomConversionStateEventBase" abstract="true">
+
+    <property name="ConversionFactor" ><column name="ConversionFactor" sql-type="DOUBLE" /></property>
+    <property name="CustomMethodId" ><column name="CustomMethodId" sql-type="VARCHAR(20)" /></property>
+    <property name="DecimalScale" ><column name="DecimalScale" sql-type="DECIMAL(20,0)" /></property>
+    <property name="RoundingMode" ><column name="RoundingMode" sql-type="VARCHAR(20)" /></property>
+    <property name="Active" ></property>
     <subclass name="UomConversionStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -45,6 +48,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

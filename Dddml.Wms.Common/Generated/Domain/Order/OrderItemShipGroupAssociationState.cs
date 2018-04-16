@@ -283,13 +283,13 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemShipGroupAssociation|");
 
             var stateEntityIdOrderId = (this as IGlobalIdentity<OrderItemShipGroupAssociationId>).GlobalId.OrderId;
-            var eventEntityIdOrderId = stateEvent.OrderItemShipGroupAssociationEventId.OrderId;
+            var eventEntityIdOrderId = e.OrderItemShipGroupAssociationEventId.OrderId;
             if (stateEntityIdOrderId != eventEntityIdOrderId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderId {0} in state but entity id OrderId {1} in event", stateEntityIdOrderId, eventEntityIdOrderId);
@@ -297,7 +297,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append(stateEntityIdOrderId).Append(",");
 
             var stateEntityIdOrderShipGroupShipGroupSeqId = (this as IGlobalIdentity<OrderItemShipGroupAssociationId>).GlobalId.OrderShipGroupShipGroupSeqId;
-            var eventEntityIdOrderShipGroupShipGroupSeqId = stateEvent.OrderItemShipGroupAssociationEventId.OrderShipGroupShipGroupSeqId;
+            var eventEntityIdOrderShipGroupShipGroupSeqId = e.OrderItemShipGroupAssociationEventId.OrderShipGroupShipGroupSeqId;
             if (stateEntityIdOrderShipGroupShipGroupSeqId != eventEntityIdOrderShipGroupShipGroupSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderShipGroupShipGroupSeqId {0} in state but entity id OrderShipGroupShipGroupSeqId {1} in event", stateEntityIdOrderShipGroupShipGroupSeqId, eventEntityIdOrderShipGroupShipGroupSeqId);
@@ -305,7 +305,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append(stateEntityIdOrderShipGroupShipGroupSeqId).Append(",");
 
             var stateEntityIdOrderItemSeqId = (this as IGlobalIdentity<OrderItemShipGroupAssociationId>).GlobalId.OrderItemSeqId;
-            var eventEntityIdOrderItemSeqId = stateEvent.OrderItemShipGroupAssociationEventId.OrderItemSeqId;
+            var eventEntityIdOrderItemSeqId = e.OrderItemShipGroupAssociationEventId.OrderItemSeqId;
             if (stateEntityIdOrderItemSeqId != eventEntityIdOrderItemSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderItemSeqId {0} in state but entity id OrderItemSeqId {1} in event", stateEntityIdOrderItemSeqId, eventEntityIdOrderItemSeqId);
@@ -316,15 +316,18 @@ namespace Dddml.Wms.Domain.Order
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (OrderItemShipGroupAssociationState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IOrderItemShipGroupAssociationStateEvent ? (IOrderItemShipGroupAssociationStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (OrderItemShipGroupAssociationState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

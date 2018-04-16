@@ -16,6 +16,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="OrderItemShipGrpInvReservationStateEventBase" abstract="true">
+
     <property name="ReserveOrderEnumId" ><column name="ReserveOrderEnumId" sql-type="VARCHAR(20)" /></property>
     <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="QuantityNotAvailable" ><column name="QuantityNotAvailable" sql-type="DECIMAL(18,6)" /></property>
@@ -27,11 +35,6 @@
     <property name="SequenceId" ><column name="SequenceId" sql-type="DECIMAL(20,0)" /></property>
     <property name="OldPickStartDate" ><column name="OldPickStartDate" sql-type="DATETIME" /></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="OrderItemShipGrpInvReservationStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -67,6 +70,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

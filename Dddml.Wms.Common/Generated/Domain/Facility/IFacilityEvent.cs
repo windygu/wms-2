@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Facility
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IFacilityStateEvent : IFacilityEvent
+    {
 		string FacilityTypeId { get; set; }
 
 		string ParentFacilityId { get; set; }
@@ -53,15 +57,15 @@ namespace Dddml.Wms.Domain.Facility
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IFacilityStateCreated : IFacilityEvent//, IFacilityStateProperties
+    }
+   
+	public interface IFacilityStateCreated : IFacilityStateEvent
 	{
 	
 	}
 
 
-	public interface IFacilityStateMergePatched : IFacilityEvent//, IFacilityStateProperties
+	public interface IFacilityStateMergePatched : IFacilityStateEvent
 	{
 		bool IsPropertyFacilityTypeIdRemoved { get; set; }
 
@@ -102,7 +106,7 @@ namespace Dddml.Wms.Domain.Facility
 
 	}
 
-	public interface IFacilityStateDeleted : IFacilityEvent
+	public interface IFacilityStateDeleted : IFacilityStateEvent
 	{
 	}
 

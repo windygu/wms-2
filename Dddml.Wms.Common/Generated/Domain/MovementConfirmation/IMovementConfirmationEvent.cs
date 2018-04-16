@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IMovementConfirmationStateEvent : IMovementConfirmationEvent
+    {
 		string DocumentStatusId { get; set; }
 
 		string MovementDocumentNumber { get; set; }
@@ -35,9 +39,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IMovementConfirmationStateCreated : IMovementConfirmationEvent//, IMovementConfirmationStateProperties
+    }
+   
+	public interface IMovementConfirmationStateCreated : IMovementConfirmationStateEvent
 	{
 		IEnumerable<IMovementConfirmationLineStateCreated> MovementConfirmationLineEvents { get; }
 		
@@ -49,7 +53,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	}
 
 
-	public interface IMovementConfirmationStateMergePatched : IMovementConfirmationEvent//, IMovementConfirmationStateProperties
+	public interface IMovementConfirmationStateMergePatched : IMovementConfirmationStateEvent
 	{
 		bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
@@ -82,7 +86,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 	}
 
-	public interface IMovementConfirmationStateDeleted : IMovementConfirmationEvent
+	public interface IMovementConfirmationStateDeleted : IMovementConfirmationStateEvent
 	{
 		IEnumerable<IMovementConfirmationLineStateRemoved> MovementConfirmationLineEvents { get; }
 		

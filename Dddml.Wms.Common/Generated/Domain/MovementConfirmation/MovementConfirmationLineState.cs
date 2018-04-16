@@ -351,13 +351,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             }
 		}
 
-        protected void ThrowOnWrongEvent(IMovementConfirmationLineEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementConfirmationLineEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementConfirmationLine|");
 
             var stateEntityIdMovementConfirmationDocumentNumber = (this as IGlobalIdentity<MovementConfirmationLineId>).GlobalId.MovementConfirmationDocumentNumber;
-            var eventEntityIdMovementConfirmationDocumentNumber = stateEvent.MovementConfirmationLineEventId.MovementConfirmationDocumentNumber;
+            var eventEntityIdMovementConfirmationDocumentNumber = e.MovementConfirmationLineEventId.MovementConfirmationDocumentNumber;
             if (stateEntityIdMovementConfirmationDocumentNumber != eventEntityIdMovementConfirmationDocumentNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id MovementConfirmationDocumentNumber {0} in state but entity id MovementConfirmationDocumentNumber {1} in event", stateEntityIdMovementConfirmationDocumentNumber, eventEntityIdMovementConfirmationDocumentNumber);
@@ -365,7 +365,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             id.Append(stateEntityIdMovementConfirmationDocumentNumber).Append(",");
 
             var stateEntityIdLineNumber = (this as IGlobalIdentity<MovementConfirmationLineId>).GlobalId.LineNumber;
-            var eventEntityIdLineNumber = stateEvent.MovementConfirmationLineEventId.LineNumber;
+            var eventEntityIdLineNumber = e.MovementConfirmationLineEventId.LineNumber;
             if (stateEntityIdLineNumber != eventEntityIdLineNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
@@ -376,15 +376,18 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (MovementConfirmationLineState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IMovementConfirmationLineStateEvent ? (IMovementConfirmationLineStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (MovementConfirmationLineState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

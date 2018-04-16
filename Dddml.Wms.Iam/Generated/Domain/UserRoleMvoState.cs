@@ -478,13 +478,13 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserRoleMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserRoleMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserRoleMvo|");
 
             var stateEntityId = this.UserRoleId; // Aggregate Id
-            var eventEntityId = stateEvent.UserRoleMvoEventId.UserRoleId;
+            var eventEntityId = e.UserRoleMvoEventId.UserRoleId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -494,7 +494,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
             id.Append("]");
 
             var stateVersion = this.UserVersion;
-            var eventVersion = stateEvent.UserRoleMvoEventId.UserVersion;
+            var eventVersion = e.UserRoleMvoEventId.UserVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

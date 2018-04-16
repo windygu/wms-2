@@ -1024,13 +1024,13 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemShipGroupAssociationMvo|");
 
             var stateEntityId = this.OrderItemShipGroupAssociationId; // Aggregate Id
-            var eventEntityId = stateEvent.OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationId;
+            var eventEntityId = e.OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -1040,7 +1040,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
             id.Append("]");
 
             var stateVersion = this.OrderVersion;
-            var eventVersion = stateEvent.OrderItemShipGroupAssociationMvoEventId.OrderVersion;
+            var eventVersion = e.OrderItemShipGroupAssociationMvoEventId.OrderVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

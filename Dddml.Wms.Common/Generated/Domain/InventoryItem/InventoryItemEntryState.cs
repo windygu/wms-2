@@ -215,13 +215,13 @@ namespace Dddml.Wms.Domain.InventoryItem
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryItemEntryEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryItemEntryEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryItemEntry|");
 
             var stateEntityIdInventoryItemId = (this as IGlobalIdentity<InventoryItemEntryId>).GlobalId.InventoryItemId;
-            var eventEntityIdInventoryItemId = stateEvent.InventoryItemEntryEventId.InventoryItemId;
+            var eventEntityIdInventoryItemId = e.InventoryItemEntryEventId.InventoryItemId;
             if (stateEntityIdInventoryItemId != eventEntityIdInventoryItemId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id InventoryItemId {0} in state but entity id InventoryItemId {1} in event", stateEntityIdInventoryItemId, eventEntityIdInventoryItemId);
@@ -229,7 +229,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             id.Append(stateEntityIdInventoryItemId).Append(",");
 
             var stateEntityIdEntrySeqId = (this as IGlobalIdentity<InventoryItemEntryId>).GlobalId.EntrySeqId;
-            var eventEntityIdEntrySeqId = stateEvent.InventoryItemEntryEventId.EntrySeqId;
+            var eventEntityIdEntrySeqId = e.InventoryItemEntryEventId.EntrySeqId;
             if (stateEntityIdEntrySeqId != eventEntityIdEntrySeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id EntrySeqId {0} in state but entity id EntrySeqId {1} in event", stateEntityIdEntrySeqId, eventEntityIdEntrySeqId);
@@ -240,15 +240,18 @@ namespace Dddml.Wms.Domain.InventoryItem
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (InventoryItemEntryState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IInventoryItemEntryStateEvent ? (IInventoryItemEntryStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (InventoryItemEntryState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

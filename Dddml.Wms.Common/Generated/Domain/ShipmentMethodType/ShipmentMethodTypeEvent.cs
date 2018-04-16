@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
             set { ShipmentMethodTypeEventId.ShipmentMethodTypeId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual long? SequenceNum { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +90,26 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
 
 	}
 
-	public class ShipmentMethodTypeStateCreated : ShipmentMethodTypeEventBase, IShipmentMethodTypeStateCreated
+    public abstract class ShipmentMethodTypeStateEventBase : ShipmentMethodTypeEventBase, IShipmentMethodTypeStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual long? SequenceNum { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ShipmentMethodTypeStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentMethodTypeStateEventBase(ShipmentMethodTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentMethodTypeStateCreated : ShipmentMethodTypeStateEventBase, IShipmentMethodTypeStateCreated
 	{
 		public ShipmentMethodTypeStateCreated () : this(new ShipmentMethodTypeEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
 	}
 
 
-	public class ShipmentMethodTypeStateMergePatched : ShipmentMethodTypeEventBase, IShipmentMethodTypeStateMergePatched
+	public class ShipmentMethodTypeStateMergePatched : ShipmentMethodTypeStateEventBase, IShipmentMethodTypeStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -141,7 +154,7 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
 	}
 
 
-	public class ShipmentMethodTypeStateDeleted : ShipmentMethodTypeEventBase, IShipmentMethodTypeStateDeleted
+	public class ShipmentMethodTypeStateDeleted : ShipmentMethodTypeStateEventBase, IShipmentMethodTypeStateDeleted
 	{
 		public ShipmentMethodTypeStateDeleted ()
 		{

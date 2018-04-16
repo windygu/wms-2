@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.Role
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IRoleStateEvent : IRoleEvent
+    {
 		string Name { get; set; }
 
 		string Description { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IRoleStateCreated : IRoleEvent//, IRoleStateProperties
+    }
+   
+	public interface IRoleStateCreated : IRoleStateEvent
 	{
 	
 	}
 
 
-	public interface IRoleStateMergePatched : IRoleEvent//, IRoleStateProperties
+	public interface IRoleStateMergePatched : IRoleStateEvent
 	{
 		bool IsPropertyNameRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.Role
 
 	}
 
-	public interface IRoleStateDeleted : IRoleEvent
+	public interface IRoleStateDeleted : IRoleStateEvent
 	{
 	}
 

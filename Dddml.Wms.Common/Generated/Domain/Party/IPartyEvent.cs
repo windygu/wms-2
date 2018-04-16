@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Party
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPartyStateEvent : IPartyEvent
+    {
 		string PartyTypeId { get; set; }
 
 		string PrimaryRoleTypeId { get; set; }
@@ -31,15 +35,15 @@ namespace Dddml.Wms.Domain.Party
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IPartyStateCreated : IPartyEvent//, IPartyStateProperties
+    }
+   
+	public interface IPartyStateCreated : IPartyStateEvent
 	{
 	
 	}
 
 
-	public interface IPartyStateMergePatched : IPartyEvent//, IPartyStateProperties
+	public interface IPartyStateMergePatched : IPartyStateEvent
 	{
 		bool IsPropertyPartyTypeIdRemoved { get; set; }
 
@@ -58,7 +62,7 @@ namespace Dddml.Wms.Domain.Party
 
 	}
 
-	public interface IPartyStateDeleted : IPartyEvent
+	public interface IPartyStateDeleted : IPartyStateEvent
 	{
 	}
 

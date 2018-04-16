@@ -23,26 +23,6 @@ namespace Dddml.Wms.Domain.ShipmentPackage
             set { ShipmentPackageEventId.ShipmentPackageId = value; }
         }
 
-		public virtual string ShipmentBoxTypeId { get; set; }
-
-		public virtual DateTime? DateCreated { get; set; }
-
-		public virtual decimal? BoxLength { get; set; }
-
-		public virtual decimal? BoxHeight { get; set; }
-
-		public virtual decimal? BoxWidth { get; set; }
-
-		public virtual string DimensionUomId { get; set; }
-
-		public virtual decimal? Weight { get; set; }
-
-		public virtual string WeightUomId { get; set; }
-
-		public virtual decimal? InsuredValue { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -137,7 +117,40 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
 	}
 
-	public class ShipmentPackageStateCreated : ShipmentPackageEventBase, IShipmentPackageStateCreated, ISaveable
+    public abstract class ShipmentPackageStateEventBase : ShipmentPackageEventBase, IShipmentPackageStateEvent
+    {
+
+		public virtual string ShipmentBoxTypeId { get; set; }
+
+		public virtual DateTime? DateCreated { get; set; }
+
+		public virtual decimal? BoxLength { get; set; }
+
+		public virtual decimal? BoxHeight { get; set; }
+
+		public virtual decimal? BoxWidth { get; set; }
+
+		public virtual string DimensionUomId { get; set; }
+
+		public virtual decimal? Weight { get; set; }
+
+		public virtual string WeightUomId { get; set; }
+
+		public virtual decimal? InsuredValue { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ShipmentPackageStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentPackageStateEventBase(ShipmentPackageEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentPackageStateCreated : ShipmentPackageStateEventBase, IShipmentPackageStateCreated, ISaveable
 	{
 		public ShipmentPackageStateCreated () : this(new ShipmentPackageEventId())
 		{
@@ -212,7 +225,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 	}
 
 
-	public class ShipmentPackageStateMergePatched : ShipmentPackageEventBase, IShipmentPackageStateMergePatched, ISaveable
+	public class ShipmentPackageStateMergePatched : ShipmentPackageStateEventBase, IShipmentPackageStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyShipmentBoxTypeIdRemoved { get; set; }
 
@@ -320,7 +333,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 	}
 
 
-	public class ShipmentPackageStateDeleted : ShipmentPackageEventBase, IShipmentPackageStateDeleted, ISaveable
+	public class ShipmentPackageStateDeleted : ShipmentPackageStateEventBase, IShipmentPackageStateDeleted, ISaveable
 	{
 		public ShipmentPackageStateDeleted ()
 		{

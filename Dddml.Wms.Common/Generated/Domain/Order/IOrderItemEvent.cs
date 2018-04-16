@@ -18,6 +18,13 @@ namespace Dddml.Wms.Domain.Order
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string OrderId { get; set; }
+
+	}
+
+    public interface IOrderItemStateEvent : IOrderItemEvent
+    {
 		long Version { get; set; }
 
 		string ProductId { get; set; }
@@ -92,18 +99,15 @@ namespace Dddml.Wms.Domain.Order
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string OrderId { get; set; }
-
-	}
-
-	public interface IOrderItemStateCreated : IOrderItemEvent//, IOrderItemStateProperties
+    }
+   
+	public interface IOrderItemStateCreated : IOrderItemStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderItemStateMergePatched : IOrderItemEvent//, IOrderItemStateProperties
+	public interface IOrderItemStateMergePatched : IOrderItemStateEvent
 	{
 		bool IsPropertyProductIdRemoved { get; set; }
 

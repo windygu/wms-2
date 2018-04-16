@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IMovementLineMvoStateEvent : IMovementLineMvoEvent
+    {
 		decimal? MovementQuantity { get; set; }
 
 		string ProductId { get; set; }
@@ -88,15 +92,15 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		bool? MovementDeleted { get; set; }
 
-	}
-
-	public interface IMovementLineMvoStateCreated : IMovementLineMvoEvent//, IMovementLineMvoStateProperties
+    }
+   
+	public interface IMovementLineMvoStateCreated : IMovementLineMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IMovementLineMvoStateMergePatched : IMovementLineMvoEvent//, IMovementLineMvoStateProperties
+	public interface IMovementLineMvoStateMergePatched : IMovementLineMvoStateEvent
 	{
 		bool IsPropertyMovementQuantityRemoved { get; set; }
 
@@ -171,7 +175,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 	}
 
-	public interface IMovementLineMvoStateDeleted : IMovementLineMvoEvent
+	public interface IMovementLineMvoStateDeleted : IMovementLineMvoStateEvent
 	{
 	}
 

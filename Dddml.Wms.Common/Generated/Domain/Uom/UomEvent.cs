@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.Uom
             set { UomEventId.UomId = value; }
         }
 
-		public virtual string UomTypeId { get; set; }
-
-		public virtual string Abbreviation { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +90,28 @@ namespace Dddml.Wms.Domain.Uom
 
 	}
 
-	public class UomStateCreated : UomEventBase, IUomStateCreated
+    public abstract class UomStateEventBase : UomEventBase, IUomStateEvent
+    {
+
+		public virtual string UomTypeId { get; set; }
+
+		public virtual string Abbreviation { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected UomStateEventBase() : base()
+        {
+        }
+
+        protected UomStateEventBase(UomEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UomStateCreated : UomStateEventBase, IUomStateCreated
 	{
 		public UomStateCreated () : this(new UomEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.Uom
 	}
 
 
-	public class UomStateMergePatched : UomEventBase, IUomStateMergePatched
+	public class UomStateMergePatched : UomStateEventBase, IUomStateMergePatched
 	{
 		public virtual bool IsPropertyUomTypeIdRemoved { get; set; }
 
@@ -145,7 +158,7 @@ namespace Dddml.Wms.Domain.Uom
 	}
 
 
-	public class UomStateDeleted : UomEventBase, IUomStateDeleted
+	public class UomStateDeleted : UomStateEventBase, IUomStateDeleted
 	{
 		public UomStateDeleted ()
 		{

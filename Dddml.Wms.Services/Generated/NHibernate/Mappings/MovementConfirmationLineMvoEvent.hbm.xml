@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="MovementConfirmationLineMvoStateEventBase" abstract="true">
+
     <property name="MovementLineNumber" ></property>
     <property name="TargetQuantity" ></property>
     <property name="ConfirmedQuantity" ></property>
@@ -35,11 +43,6 @@
     <property name="MovementConfirmationUpdatedAt" ><column name="MovementConfirmationUpdatedAt" sql-type="DATETIME" /></property>
     <property name="MovementConfirmationActive" ></property>
     <property name="MovementConfirmationDeleted" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="MovementConfirmationLineMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -99,6 +102,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

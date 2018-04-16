@@ -13,16 +13,19 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
-    <property name="OnHandQuantity" ></property>
-    <property name="InTransitQuantity" ></property>
-    <property name="ReservedQuantity" ></property>
-    <property name="OccupiedQuantity" ></property>
-    <property name="VirtualQuantity" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+
+        <subclass name="InventoryItemStateEventBase" abstract="true">
+
+    <property name="OnHandQuantity" ></property>
+    <property name="InTransitQuantity" ></property>
+    <property name="ReservedQuantity" ></property>
+    <property name="OccupiedQuantity" ></property>
+    <property name="VirtualQuantity" ></property>
     <subclass name="InventoryItemStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -41,6 +44,7 @@
         <property name="IsPropertyVirtualQuantityRemoved" column="IsPropertyVirtualQuantityRemoved"/>
     </subclass>
 
+        </subclass>
 
   </class>
   

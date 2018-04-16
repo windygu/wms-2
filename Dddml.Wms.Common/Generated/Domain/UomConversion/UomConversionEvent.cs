@@ -23,16 +23,6 @@ namespace Dddml.Wms.Domain.UomConversion
             set { UomConversionEventId.UomConversionId = value; }
         }
 
-		public virtual double? ConversionFactor { get; set; }
-
-		public virtual string CustomMethodId { get; set; }
-
-		public virtual long? DecimalScale { get; set; }
-
-		public virtual string RoundingMode { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -100,7 +90,30 @@ namespace Dddml.Wms.Domain.UomConversion
 
 	}
 
-	public class UomConversionStateCreated : UomConversionEventBase, IUomConversionStateCreated
+    public abstract class UomConversionStateEventBase : UomConversionEventBase, IUomConversionStateEvent
+    {
+
+		public virtual double? ConversionFactor { get; set; }
+
+		public virtual string CustomMethodId { get; set; }
+
+		public virtual long? DecimalScale { get; set; }
+
+		public virtual string RoundingMode { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected UomConversionStateEventBase() : base()
+        {
+        }
+
+        protected UomConversionStateEventBase(UomConversionEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UomConversionStateCreated : UomConversionStateEventBase, IUomConversionStateCreated
 	{
 		public UomConversionStateCreated () : this(new UomConversionEventId())
 		{
@@ -119,7 +132,7 @@ namespace Dddml.Wms.Domain.UomConversion
 	}
 
 
-	public class UomConversionStateMergePatched : UomConversionEventBase, IUomConversionStateMergePatched
+	public class UomConversionStateMergePatched : UomConversionStateEventBase, IUomConversionStateMergePatched
 	{
 		public virtual bool IsPropertyConversionFactorRemoved { get; set; }
 
@@ -149,7 +162,7 @@ namespace Dddml.Wms.Domain.UomConversion
 	}
 
 
-	public class UomConversionStateDeleted : UomConversionEventBase, IUomConversionStateDeleted
+	public class UomConversionStateDeleted : UomConversionStateEventBase, IUomConversionStateDeleted
 	{
 		public UomConversionStateDeleted ()
 		{

@@ -17,19 +17,23 @@ namespace Dddml.Wms.Domain.MovementType
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IMovementTypeStateEvent : IMovementTypeEvent
+    {
 		string Description { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IMovementTypeStateCreated : IMovementTypeEvent//, IMovementTypeStateProperties
+    }
+   
+	public interface IMovementTypeStateCreated : IMovementTypeStateEvent
 	{
 	
 	}
 
 
-	public interface IMovementTypeStateMergePatched : IMovementTypeEvent//, IMovementTypeStateProperties
+	public interface IMovementTypeStateMergePatched : IMovementTypeStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -38,7 +42,7 @@ namespace Dddml.Wms.Domain.MovementType
 
 	}
 
-	public interface IMovementTypeStateDeleted : IMovementTypeEvent
+	public interface IMovementTypeStateDeleted : IMovementTypeStateEvent
 	{
 	}
 

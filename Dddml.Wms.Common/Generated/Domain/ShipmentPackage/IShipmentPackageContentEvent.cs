@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//ShipmentPackageId ShipmentPackageId { get; set; }
+
+	}
+
+    public interface IShipmentPackageContentStateEvent : IShipmentPackageContentEvent
+    {
 		long Version { get; set; }
 
 		decimal? Quantity { get; set; }
@@ -27,18 +34,15 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//ShipmentPackageId ShipmentPackageId { get; set; }
-
-	}
-
-	public interface IShipmentPackageContentStateCreated : IShipmentPackageContentEvent//, IShipmentPackageContentStateProperties
+    }
+   
+	public interface IShipmentPackageContentStateCreated : IShipmentPackageContentStateEvent
 	{
 	
 	}
 
 
-	public interface IShipmentPackageContentStateMergePatched : IShipmentPackageContentEvent//, IShipmentPackageContentStateProperties
+	public interface IShipmentPackageContentStateMergePatched : IShipmentPackageContentStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 
@@ -51,7 +55,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
 	}
 
-	public interface IShipmentPackageContentStateRemoved : IShipmentPackageContentEvent
+	public interface IShipmentPackageContentStateRemoved : IShipmentPackageContentStateEvent
 	{
 	}
 

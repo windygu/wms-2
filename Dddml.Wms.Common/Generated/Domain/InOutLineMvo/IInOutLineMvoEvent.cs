@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IInOutLineMvoStateEvent : IInOutLineMvoEvent
+    {
 		string LocatorId { get; set; }
 
 		string ProductId { get; set; }
@@ -114,15 +118,15 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? InOutActive { get; set; }
 
-	}
-
-	public interface IInOutLineMvoStateCreated : IInOutLineMvoEvent//, IInOutLineMvoStateProperties
+    }
+   
+	public interface IInOutLineMvoStateCreated : IInOutLineMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IInOutLineMvoStateMergePatched : IInOutLineMvoEvent//, IInOutLineMvoStateProperties
+	public interface IInOutLineMvoStateMergePatched : IInOutLineMvoStateEvent
 	{
 		bool IsPropertyLocatorIdRemoved { get; set; }
 
@@ -223,7 +227,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 	}
 
-	public interface IInOutLineMvoStateDeleted : IInOutLineMvoEvent
+	public interface IInOutLineMvoStateDeleted : IInOutLineMvoStateEvent
 	{
 	}
 

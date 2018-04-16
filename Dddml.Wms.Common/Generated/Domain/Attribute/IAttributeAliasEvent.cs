@@ -17,24 +17,28 @@ namespace Dddml.Wms.Domain.Attribute
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string AttributeId { get; set; }
+
+	}
+
+    public interface IAttributeAliasStateEvent : IAttributeAliasEvent
+    {
 		long Version { get; set; }
 
 		string Name { get; set; }
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string AttributeId { get; set; }
-
-	}
-
-	public interface IAttributeAliasStateCreated : IAttributeAliasEvent//, IAttributeAliasStateProperties
+    }
+   
+	public interface IAttributeAliasStateCreated : IAttributeAliasStateEvent
 	{
 	
 	}
 
 
-	public interface IAttributeAliasStateMergePatched : IAttributeAliasEvent//, IAttributeAliasStateProperties
+	public interface IAttributeAliasStateMergePatched : IAttributeAliasStateEvent
 	{
 		bool IsPropertyNameRemoved { get; set; }
 
@@ -43,7 +47,7 @@ namespace Dddml.Wms.Domain.Attribute
 
 	}
 
-	public interface IAttributeAliasStateRemoved : IAttributeAliasEvent
+	public interface IAttributeAliasStateRemoved : IAttributeAliasStateEvent
 	{
 	}
 

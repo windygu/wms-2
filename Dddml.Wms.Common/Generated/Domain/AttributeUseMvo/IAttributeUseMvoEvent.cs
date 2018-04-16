@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IAttributeUseMvoStateEvent : IAttributeUseMvoEvent
+    {
 		int? SequenceNumber { get; set; }
 
 		long? Version { get; set; }
@@ -48,15 +52,15 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		bool? AttributeSetDeleted { get; set; }
 
-	}
-
-	public interface IAttributeUseMvoStateCreated : IAttributeUseMvoEvent//, IAttributeUseMvoStateProperties
+    }
+   
+	public interface IAttributeUseMvoStateCreated : IAttributeUseMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IAttributeUseMvoStateMergePatched : IAttributeUseMvoEvent//, IAttributeUseMvoStateProperties
+	public interface IAttributeUseMvoStateMergePatched : IAttributeUseMvoStateEvent
 	{
 		bool IsPropertySequenceNumberRemoved { get; set; }
 
@@ -91,7 +95,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 	}
 
-	public interface IAttributeUseMvoStateDeleted : IAttributeUseMvoEvent
+	public interface IAttributeUseMvoStateDeleted : IAttributeUseMvoStateEvent
 	{
 	}
 

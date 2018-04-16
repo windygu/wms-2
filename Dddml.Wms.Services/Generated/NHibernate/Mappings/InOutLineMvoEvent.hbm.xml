@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="InOutLineMvoStateEventBase" abstract="true">
+
     <property name="LocatorId" ></property>
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
     <property name="AttributeSetInstanceId" ></property>
@@ -60,11 +68,6 @@
     <property name="InOutUpdatedBy" ></property>
     <property name="InOutUpdatedAt" ><column name="InOutUpdatedAt" sql-type="DATETIME" /></property>
     <property name="InOutActive" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="InOutLineMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -174,6 +177,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

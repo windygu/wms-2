@@ -24,46 +24,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set { AttributeValueMvoEventId.AttributeValueId = value; }
         }
 
-		public virtual string AttributeValueName { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string ReferenceId { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string AttributeAttributeName { get; set; }
-
-		public virtual string AttributeOrganizationId { get; set; }
-
-		public virtual string AttributeDescription { get; set; }
-
-		public virtual bool? AttributeIsMandatory { get; set; }
-
-		public virtual string AttributeAttributeValueType { get; set; }
-
-		public virtual int? AttributeAttributeValueLength { get; set; }
-
-		public virtual bool? AttributeIsList { get; set; }
-
-		public virtual string AttributeFieldName { get; set; }
-
-		public virtual string AttributeReferenceId { get; set; }
-
-		public virtual string AttributeCreatedBy { get; set; }
-
-		public virtual DateTime? AttributeCreatedAt { get; set; }
-
-		public virtual string AttributeUpdatedBy { get; set; }
-
-		public virtual DateTime? AttributeUpdatedAt { get; set; }
-
-		public virtual bool? AttributeActive { get; set; }
-
-		public virtual bool? AttributeDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -131,7 +91,60 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 	}
 
-	public class AttributeValueMvoStateCreated : AttributeValueMvoEventBase, IAttributeValueMvoStateCreated
+    public abstract class AttributeValueMvoStateEventBase : AttributeValueMvoEventBase, IAttributeValueMvoStateEvent
+    {
+
+		public virtual string AttributeValueName { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string ReferenceId { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string AttributeAttributeName { get; set; }
+
+		public virtual string AttributeOrganizationId { get; set; }
+
+		public virtual string AttributeDescription { get; set; }
+
+		public virtual bool? AttributeIsMandatory { get; set; }
+
+		public virtual string AttributeAttributeValueType { get; set; }
+
+		public virtual int? AttributeAttributeValueLength { get; set; }
+
+		public virtual bool? AttributeIsList { get; set; }
+
+		public virtual string AttributeFieldName { get; set; }
+
+		public virtual string AttributeReferenceId { get; set; }
+
+		public virtual string AttributeCreatedBy { get; set; }
+
+		public virtual DateTime? AttributeCreatedAt { get; set; }
+
+		public virtual string AttributeUpdatedBy { get; set; }
+
+		public virtual DateTime? AttributeUpdatedAt { get; set; }
+
+		public virtual bool? AttributeActive { get; set; }
+
+		public virtual bool? AttributeDeleted { get; set; }
+
+        protected AttributeValueMvoStateEventBase() : base()
+        {
+        }
+
+        protected AttributeValueMvoStateEventBase(AttributeValueMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AttributeValueMvoStateCreated : AttributeValueMvoStateEventBase, IAttributeValueMvoStateCreated
 	{
 		public AttributeValueMvoStateCreated () : this(new AttributeValueMvoEventId())
 		{
@@ -150,7 +163,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 	}
 
 
-	public class AttributeValueMvoStateMergePatched : AttributeValueMvoEventBase, IAttributeValueMvoStateMergePatched
+	public class AttributeValueMvoStateMergePatched : AttributeValueMvoStateEventBase, IAttributeValueMvoStateMergePatched
 	{
 		public virtual bool IsPropertyAttributeValueNameRemoved { get; set; }
 
@@ -210,7 +223,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 	}
 
 
-	public class AttributeValueMvoStateDeleted : AttributeValueMvoEventBase, IAttributeValueMvoStateDeleted
+	public class AttributeValueMvoStateDeleted : AttributeValueMvoStateEventBase, IAttributeValueMvoStateDeleted
 	{
 		public AttributeValueMvoStateDeleted ()
 		{

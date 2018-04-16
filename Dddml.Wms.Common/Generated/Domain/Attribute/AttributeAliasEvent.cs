@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.Attribute
             set { AttributeAliasEventId.Code = value; }
         }
 
-		public virtual string Name { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +92,24 @@ namespace Dddml.Wms.Domain.Attribute
 
 	}
 
-	public class AttributeAliasStateCreated : AttributeAliasEventBase, IAttributeAliasStateCreated
+    public abstract class AttributeAliasStateEventBase : AttributeAliasEventBase, IAttributeAliasStateEvent
+    {
+
+		public virtual string Name { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected AttributeAliasStateEventBase() : base()
+        {
+        }
+
+        protected AttributeAliasStateEventBase(AttributeAliasEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AttributeAliasStateCreated : AttributeAliasStateEventBase, IAttributeAliasStateCreated
 	{
 		public AttributeAliasStateCreated () : this(new AttributeAliasEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.Attribute
 	}
 
 
-	public class AttributeAliasStateMergePatched : AttributeAliasEventBase, IAttributeAliasStateMergePatched
+	public class AttributeAliasStateMergePatched : AttributeAliasStateEventBase, IAttributeAliasStateMergePatched
 	{
 		public virtual bool IsPropertyNameRemoved { get; set; }
 
@@ -139,7 +152,7 @@ namespace Dddml.Wms.Domain.Attribute
 	}
 
 
-	public class AttributeAliasStateRemoved : AttributeAliasEventBase, IAttributeAliasStateRemoved
+	public class AttributeAliasStateRemoved : AttributeAliasStateEventBase, IAttributeAliasStateRemoved
 	{
 		public AttributeAliasStateRemoved ()
 		{

@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.Audience
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IAudienceStateEvent : IAudienceEvent
+    {
 		string Name { get; set; }
 
 		string Base64Secret { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IAudienceStateCreated : IAudienceEvent//, IAudienceStateProperties
+    }
+   
+	public interface IAudienceStateCreated : IAudienceStateEvent
 	{
 	
 	}
 
 
-	public interface IAudienceStateMergePatched : IAudienceEvent//, IAudienceStateProperties
+	public interface IAudienceStateMergePatched : IAudienceStateEvent
 	{
 		bool IsPropertyNameRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.Audience
 
 	}
 
-	public interface IAudienceStateDeleted : IAudienceEvent
+	public interface IAudienceStateDeleted : IAudienceStateEvent
 	{
 	}
 

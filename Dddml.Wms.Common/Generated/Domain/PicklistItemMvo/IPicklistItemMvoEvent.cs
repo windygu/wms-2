@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPicklistItemMvoStateEvent : IPicklistItemMvoEvent
+    {
 		string ItemStatusId { get; set; }
 
 		decimal? Quantity { get; set; }
@@ -46,15 +50,15 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 
 		bool? PicklistBinDeleted { get; set; }
 
-	}
-
-	public interface IPicklistItemMvoStateCreated : IPicklistItemMvoEvent//, IPicklistItemMvoStateProperties
+    }
+   
+	public interface IPicklistItemMvoStateCreated : IPicklistItemMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IPicklistItemMvoStateMergePatched : IPicklistItemMvoEvent//, IPicklistItemMvoStateProperties
+	public interface IPicklistItemMvoStateMergePatched : IPicklistItemMvoStateEvent
 	{
 		bool IsPropertyItemStatusIdRemoved { get; set; }
 
@@ -87,7 +91,7 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 
 	}
 
-	public interface IPicklistItemMvoStateDeleted : IPicklistItemMvoEvent
+	public interface IPicklistItemMvoStateDeleted : IPicklistItemMvoStateEvent
 	{
 	}
 

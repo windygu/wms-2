@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="MovementConfirmationStateEventBase" abstract="true">
+
     <property name="DocumentStatusId" ></property>
     <property name="MovementDocumentNumber" ></property>
     <property name="IsApproved" ></property>
@@ -20,11 +28,6 @@
     <property name="DocumentTypeId" ></property>
     <property name="Description" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="MovementConfirmationStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -56,6 +59,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

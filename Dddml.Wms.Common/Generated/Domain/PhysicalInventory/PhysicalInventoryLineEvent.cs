@@ -24,18 +24,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set { PhysicalInventoryLineEventId.InventoryItemId = value; }
         }
 
-		public virtual decimal? BookQuantity { get; set; }
-
-		public virtual decimal? CountedQuantity { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string LineNumber { get; set; }
-
-		public virtual long? ReversalLineNumber { get; set; }
-
-		public virtual string Description { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -105,7 +93,32 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	}
 
-	public class PhysicalInventoryLineStateCreated : PhysicalInventoryLineEventBase, IPhysicalInventoryLineStateCreated
+    public abstract class PhysicalInventoryLineStateEventBase : PhysicalInventoryLineEventBase, IPhysicalInventoryLineStateEvent
+    {
+
+		public virtual decimal? BookQuantity { get; set; }
+
+		public virtual decimal? CountedQuantity { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string LineNumber { get; set; }
+
+		public virtual long? ReversalLineNumber { get; set; }
+
+		public virtual string Description { get; set; }
+
+        protected PhysicalInventoryLineStateEventBase() : base()
+        {
+        }
+
+        protected PhysicalInventoryLineStateEventBase(PhysicalInventoryLineEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PhysicalInventoryLineStateCreated : PhysicalInventoryLineStateEventBase, IPhysicalInventoryLineStateCreated
 	{
 		public PhysicalInventoryLineStateCreated () : this(new PhysicalInventoryLineEventId())
 		{
@@ -124,7 +137,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	}
 
 
-	public class PhysicalInventoryLineStateMergePatched : PhysicalInventoryLineEventBase, IPhysicalInventoryLineStateMergePatched
+	public class PhysicalInventoryLineStateMergePatched : PhysicalInventoryLineStateEventBase, IPhysicalInventoryLineStateMergePatched
 	{
 		public virtual bool IsPropertyBookQuantityRemoved { get; set; }
 
@@ -156,7 +169,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	}
 
 
-	public class PhysicalInventoryLineStateRemoved : PhysicalInventoryLineEventBase, IPhysicalInventoryLineStateRemoved
+	public class PhysicalInventoryLineStateRemoved : PhysicalInventoryLineStateEventBase, IPhysicalInventoryLineStateRemoved
 	{
 		public PhysicalInventoryLineStateRemoved ()
 		{

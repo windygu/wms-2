@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             set { AttributeUseEventId.AttributeId = value; }
         }
 
-		public virtual int? SequenceNumber { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +92,24 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 	}
 
-	public class AttributeUseStateCreated : AttributeUseEventBase, IAttributeUseStateCreated
+    public abstract class AttributeUseStateEventBase : AttributeUseEventBase, IAttributeUseStateEvent
+    {
+
+		public virtual int? SequenceNumber { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected AttributeUseStateEventBase() : base()
+        {
+        }
+
+        protected AttributeUseStateEventBase(AttributeUseEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AttributeUseStateCreated : AttributeUseStateEventBase, IAttributeUseStateCreated
 	{
 		public AttributeUseStateCreated () : this(new AttributeUseEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	}
 
 
-	public class AttributeUseStateMergePatched : AttributeUseEventBase, IAttributeUseStateMergePatched
+	public class AttributeUseStateMergePatched : AttributeUseStateEventBase, IAttributeUseStateMergePatched
 	{
 		public virtual bool IsPropertySequenceNumberRemoved { get; set; }
 
@@ -139,7 +152,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	}
 
 
-	public class AttributeUseStateRemoved : AttributeUseEventBase, IAttributeUseStateRemoved
+	public class AttributeUseStateRemoved : AttributeUseStateEventBase, IAttributeUseStateRemoved
 	{
 		public AttributeUseStateRemoved ()
 		{

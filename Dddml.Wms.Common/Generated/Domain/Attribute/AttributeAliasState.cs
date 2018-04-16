@@ -259,13 +259,13 @@ namespace Dddml.Wms.Domain.Attribute
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeAliasEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeAliasEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeAlias|");
 
             var stateEntityIdAttributeId = (this as IGlobalIdentity<AttributeAliasId>).GlobalId.AttributeId;
-            var eventEntityIdAttributeId = stateEvent.AttributeAliasEventId.AttributeId;
+            var eventEntityIdAttributeId = e.AttributeAliasEventId.AttributeId;
             if (stateEntityIdAttributeId != eventEntityIdAttributeId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id AttributeId {0} in state but entity id AttributeId {1} in event", stateEntityIdAttributeId, eventEntityIdAttributeId);
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Attribute
             id.Append(stateEntityIdAttributeId).Append(",");
 
             var stateEntityIdCode = (this as IGlobalIdentity<AttributeAliasId>).GlobalId.Code;
-            var eventEntityIdCode = stateEvent.AttributeAliasEventId.Code;
+            var eventEntityIdCode = e.AttributeAliasEventId.Code;
             if (stateEntityIdCode != eventEntityIdCode)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id Code {0} in state but entity id Code {1} in event", stateEntityIdCode, eventEntityIdCode);
@@ -284,15 +284,18 @@ namespace Dddml.Wms.Domain.Attribute
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (AttributeAliasState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IAttributeAliasStateEvent ? (IAttributeAliasStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (AttributeAliasState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

@@ -245,13 +245,13 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserRoleEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserRoleEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserRole|");
 
             var stateEntityIdUserId = (this as IGlobalIdentity<UserRoleId>).GlobalId.UserId;
-            var eventEntityIdUserId = stateEvent.UserRoleEventId.UserId;
+            var eventEntityIdUserId = e.UserRoleEventId.UserId;
             if (stateEntityIdUserId != eventEntityIdUserId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.User
             id.Append(stateEntityIdUserId).Append(",");
 
             var stateEntityIdRoleId = (this as IGlobalIdentity<UserRoleId>).GlobalId.RoleId;
-            var eventEntityIdRoleId = stateEvent.UserRoleEventId.RoleId;
+            var eventEntityIdRoleId = e.UserRoleEventId.RoleId;
             if (stateEntityIdRoleId != eventEntityIdRoleId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id RoleId {0} in state but entity id RoleId {1} in event", stateEntityIdRoleId, eventEntityIdRoleId);
@@ -270,15 +270,18 @@ namespace Dddml.Wms.Domain.User
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (UserRoleState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IUserRoleStateEvent ? (IUserRoleStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (UserRoleState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

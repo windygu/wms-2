@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.User
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string UserId { get; set; }
+
+	}
+
+    public interface IUserClaimStateEvent : IUserClaimEvent
+    {
 		long Version { get; set; }
 
 		string ClaimType { get; set; }
@@ -25,18 +32,15 @@ namespace Dddml.Wms.Domain.User
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string UserId { get; set; }
-
-	}
-
-	public interface IUserClaimStateCreated : IUserClaimEvent//, IUserClaimStateProperties
+    }
+   
+	public interface IUserClaimStateCreated : IUserClaimStateEvent
 	{
 	
 	}
 
 
-	public interface IUserClaimStateMergePatched : IUserClaimEvent//, IUserClaimStateProperties
+	public interface IUserClaimStateMergePatched : IUserClaimStateEvent
 	{
 		bool IsPropertyClaimTypeRemoved { get; set; }
 
@@ -47,7 +51,7 @@ namespace Dddml.Wms.Domain.User
 
 	}
 
-	public interface IUserClaimStateRemoved : IUserClaimEvent
+	public interface IUserClaimStateRemoved : IUserClaimStateEvent
 	{
 	}
 

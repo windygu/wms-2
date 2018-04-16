@@ -23,58 +23,6 @@ namespace Dddml.Wms.Domain.Shipment
             set { ShipmentEventId.ShipmentId = value; }
         }
 
-		public virtual string ShipmentTypeId { get; set; }
-
-		public virtual string StatusId { get; set; }
-
-		public virtual string PrimaryOrderId { get; set; }
-
-		public virtual string PrimaryReturnId { get; set; }
-
-		public virtual long? PrimaryShipGroupSeqId { get; set; }
-
-		public virtual string PicklistBinId { get; set; }
-
-		public virtual DateTime? EstimatedReadyDate { get; set; }
-
-		public virtual DateTime? EstimatedShipDate { get; set; }
-
-		public virtual string EstimatedShipWorkEffId { get; set; }
-
-		public virtual DateTime? EstimatedArrivalDate { get; set; }
-
-		public virtual string EstimatedArrivalWorkEffId { get; set; }
-
-		public virtual DateTime? LatestCancelDate { get; set; }
-
-		public virtual decimal? EstimatedShipCost { get; set; }
-
-		public virtual string CurrencyUomId { get; set; }
-
-		public virtual string HandlingInstructions { get; set; }
-
-		public virtual string OriginFacilityId { get; set; }
-
-		public virtual string DestinationFacilityId { get; set; }
-
-		public virtual string OriginContactMechId { get; set; }
-
-		public virtual string OriginTelecomNumberId { get; set; }
-
-		public virtual string DestinationContactMechId { get; set; }
-
-		public virtual string DestinationTelecomNumberId { get; set; }
-
-		public virtual string PartyIdTo { get; set; }
-
-		public virtual string PartyIdFrom { get; set; }
-
-		public virtual decimal? AdditionalShippingCharge { get; set; }
-
-		public virtual string AddtlShippingChargeDesc { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -223,7 +171,72 @@ namespace Dddml.Wms.Domain.Shipment
 
 	}
 
-	public class ShipmentStateCreated : ShipmentEventBase, IShipmentStateCreated, ISaveable
+    public abstract class ShipmentStateEventBase : ShipmentEventBase, IShipmentStateEvent
+    {
+
+		public virtual string ShipmentTypeId { get; set; }
+
+		public virtual string StatusId { get; set; }
+
+		public virtual string PrimaryOrderId { get; set; }
+
+		public virtual string PrimaryReturnId { get; set; }
+
+		public virtual long? PrimaryShipGroupSeqId { get; set; }
+
+		public virtual string PicklistBinId { get; set; }
+
+		public virtual DateTime? EstimatedReadyDate { get; set; }
+
+		public virtual DateTime? EstimatedShipDate { get; set; }
+
+		public virtual string EstimatedShipWorkEffId { get; set; }
+
+		public virtual DateTime? EstimatedArrivalDate { get; set; }
+
+		public virtual string EstimatedArrivalWorkEffId { get; set; }
+
+		public virtual DateTime? LatestCancelDate { get; set; }
+
+		public virtual decimal? EstimatedShipCost { get; set; }
+
+		public virtual string CurrencyUomId { get; set; }
+
+		public virtual string HandlingInstructions { get; set; }
+
+		public virtual string OriginFacilityId { get; set; }
+
+		public virtual string DestinationFacilityId { get; set; }
+
+		public virtual string OriginContactMechId { get; set; }
+
+		public virtual string OriginTelecomNumberId { get; set; }
+
+		public virtual string DestinationContactMechId { get; set; }
+
+		public virtual string DestinationTelecomNumberId { get; set; }
+
+		public virtual string PartyIdTo { get; set; }
+
+		public virtual string PartyIdFrom { get; set; }
+
+		public virtual decimal? AdditionalShippingCharge { get; set; }
+
+		public virtual string AddtlShippingChargeDesc { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ShipmentStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentStateEventBase(ShipmentEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentStateCreated : ShipmentStateEventBase, IShipmentStateCreated, ISaveable
 	{
 		public ShipmentStateCreated () : this(new ShipmentEventId())
 		{
@@ -404,7 +417,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ShipmentStateMergePatched : ShipmentEventBase, IShipmentStateMergePatched, ISaveable
+	public class ShipmentStateMergePatched : ShipmentStateEventBase, IShipmentStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyShipmentTypeIdRemoved { get; set; }
 

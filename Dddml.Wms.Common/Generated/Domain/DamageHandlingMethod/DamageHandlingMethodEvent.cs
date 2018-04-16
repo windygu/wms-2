@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
             set { DamageHandlingMethodEventId.DamageHandlingMethodId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual string SequenceId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +90,26 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
 	}
 
-	public class DamageHandlingMethodStateCreated : DamageHandlingMethodEventBase, IDamageHandlingMethodStateCreated
+    public abstract class DamageHandlingMethodStateEventBase : DamageHandlingMethodEventBase, IDamageHandlingMethodStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual string SequenceId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected DamageHandlingMethodStateEventBase() : base()
+        {
+        }
+
+        protected DamageHandlingMethodStateEventBase(DamageHandlingMethodEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class DamageHandlingMethodStateCreated : DamageHandlingMethodStateEventBase, IDamageHandlingMethodStateCreated
 	{
 		public DamageHandlingMethodStateCreated () : this(new DamageHandlingMethodEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 	}
 
 
-	public class DamageHandlingMethodStateMergePatched : DamageHandlingMethodEventBase, IDamageHandlingMethodStateMergePatched
+	public class DamageHandlingMethodStateMergePatched : DamageHandlingMethodStateEventBase, IDamageHandlingMethodStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -141,7 +154,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 	}
 
 
-	public class DamageHandlingMethodStateDeleted : DamageHandlingMethodEventBase, IDamageHandlingMethodStateDeleted
+	public class DamageHandlingMethodStateDeleted : DamageHandlingMethodStateEventBase, IDamageHandlingMethodStateDeleted
 	{
 		public DamageHandlingMethodStateDeleted ()
 		{

@@ -39,18 +39,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { InventoryItemEntryEventId.EntrySeqId = value; }
         }
 
-        public virtual decimal? OnHandQuantity { get { return _state.OnHandQuantity; } set { _state.OnHandQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
-
-        public virtual decimal? InTransitQuantity { get { return _state.InTransitQuantity; } set { _state.InTransitQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
-
-        public virtual decimal? ReservedQuantity { get { return _state.ReservedQuantity; } set { _state.ReservedQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
-
-        public virtual decimal? OccupiedQuantity { get { return _state.OccupiedQuantity; } set { _state.OccupiedQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
-
-        public virtual decimal? VirtualQuantity { get { return _state.VirtualQuantity; } set { _state.VirtualQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
-
-        public virtual InventoryItemSourceInfo Source { get { return _state.Source; } set { _state.Source = value; } }
-
 		public virtual string CreatedBy { get { return _state.CreatedBy; } set { _state.CreatedBy = value; } }
 
 		public virtual DateTime CreatedAt { get { return _state.CreatedAt; } set { _state.CreatedAt = value; } }
@@ -126,7 +114,36 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	}
 
-	public class InventoryItemEntryStateCreated : InventoryItemEntryEventBase, IInventoryItemEntryStateCreated
+    public abstract class InventoryItemEntryStateEventBase : InventoryItemEntryEventBase, IInventoryItemEntryStateEvent
+    {
+
+        public virtual decimal? OnHandQuantity { get { return InventoryItemEntryState.OnHandQuantity; } set { InventoryItemEntryState.OnHandQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
+        public virtual decimal? InTransitQuantity { get { return InventoryItemEntryState.InTransitQuantity; } set { InventoryItemEntryState.InTransitQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
+        public virtual decimal? ReservedQuantity { get { return InventoryItemEntryState.ReservedQuantity; } set { InventoryItemEntryState.ReservedQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
+        public virtual decimal? OccupiedQuantity { get { return InventoryItemEntryState.OccupiedQuantity; } set { InventoryItemEntryState.OccupiedQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
+        public virtual decimal? VirtualQuantity { get { return InventoryItemEntryState.VirtualQuantity; } set { InventoryItemEntryState.VirtualQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
+        public virtual InventoryItemSourceInfo Source { get { return InventoryItemEntryState.Source; } set { InventoryItemEntryState.Source = value; } }
+
+        protected InventoryItemEntryStateEventBase() : base()
+        {
+        }
+
+        protected InventoryItemEntryStateEventBase(InventoryItemEntryEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+        protected InventoryItemEntryStateEventBase(InventoryItemEntryState state) : base(state)
+        {
+        }
+
+    }
+
+	public class InventoryItemEntryStateCreated : InventoryItemEntryStateEventBase, IInventoryItemEntryStateCreated
 	{
 		public InventoryItemEntryStateCreated () : this(new InventoryItemEntryEventId())
 		{

@@ -18,6 +18,13 @@ namespace Dddml.Wms.Domain.Order
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string OrderId { get; set; }
+
+	}
+
+    public interface IOrderShipGroupStateEvent : IOrderShipGroupEvent
+    {
 		long Version { get; set; }
 
 		string ShipmentMethodTypeId { get; set; }
@@ -58,12 +65,9 @@ namespace Dddml.Wms.Domain.Order
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string OrderId { get; set; }
-
-	}
-
-	public interface IOrderShipGroupStateCreated : IOrderShipGroupEvent//, IOrderShipGroupStateProperties
+    }
+   
+	public interface IOrderShipGroupStateCreated : IOrderShipGroupStateEvent
 	{
 		IEnumerable<IOrderItemShipGroupAssociationStateCreated> OrderItemShipGroupAssociationEvents { get; }
 		
@@ -75,7 +79,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public interface IOrderShipGroupStateMergePatched : IOrderShipGroupEvent//, IOrderShipGroupStateProperties
+	public interface IOrderShipGroupStateMergePatched : IOrderShipGroupStateEvent
 	{
 		bool IsPropertyShipmentMethodTypeIdRemoved { get; set; }
 
@@ -128,7 +132,7 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public interface IOrderShipGroupStateRemoved : IOrderShipGroupEvent
+	public interface IOrderShipGroupStateRemoved : IOrderShipGroupStateEvent
 	{
 		IEnumerable<IOrderItemShipGroupAssociationStateRemoved> OrderItemShipGroupAssociationEvents { get; }
 		

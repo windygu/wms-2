@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface ISupplierProductStateEvent : ISupplierProductEvent
+    {
 		DateTime? AvailableThruDate { get; set; }
 
 		string SupplierPrefOrderId { get; set; }
@@ -45,15 +49,15 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface ISupplierProductStateCreated : ISupplierProductEvent//, ISupplierProductStateProperties
+    }
+   
+	public interface ISupplierProductStateCreated : ISupplierProductStateEvent
 	{
 	
 	}
 
 
-	public interface ISupplierProductStateMergePatched : ISupplierProductEvent//, ISupplierProductStateProperties
+	public interface ISupplierProductStateMergePatched : ISupplierProductStateEvent
 	{
 		bool IsPropertyAvailableThruDateRemoved { get; set; }
 

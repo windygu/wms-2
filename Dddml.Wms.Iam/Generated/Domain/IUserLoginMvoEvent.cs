@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUserLoginMvoStateEvent : IUserLoginMvoEvent
+    {
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
@@ -56,15 +60,15 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 		bool? UserDeleted { get; set; }
 
-	}
-
-	public interface IUserLoginMvoStateCreated : IUserLoginMvoEvent//, IUserLoginMvoStateProperties
+    }
+   
+	public interface IUserLoginMvoStateCreated : IUserLoginMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IUserLoginMvoStateMergePatched : IUserLoginMvoEvent//, IUserLoginMvoStateProperties
+	public interface IUserLoginMvoStateMergePatched : IUserLoginMvoStateEvent
 	{
 		bool IsPropertyVersionRemoved { get; set; }
 
@@ -107,7 +111,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 	}
 
-	public interface IUserLoginMvoStateDeleted : IUserLoginMvoEvent
+	public interface IUserLoginMvoStateDeleted : IUserLoginMvoStateEvent
 	{
 	}
 

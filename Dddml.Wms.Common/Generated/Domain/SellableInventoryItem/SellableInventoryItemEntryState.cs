@@ -209,13 +209,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ISellableInventoryItemEntryEvent stateEvent)
+        protected void ThrowOnWrongEvent(ISellableInventoryItemEntryEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("SellableInventoryItemEntry|");
 
             var stateEntityIdSellableInventoryItemId = (this as IGlobalIdentity<SellableInventoryItemEntryId>).GlobalId.SellableInventoryItemId;
-            var eventEntityIdSellableInventoryItemId = stateEvent.SellableInventoryItemEntryEventId.SellableInventoryItemId;
+            var eventEntityIdSellableInventoryItemId = e.SellableInventoryItemEntryEventId.SellableInventoryItemId;
             if (stateEntityIdSellableInventoryItemId != eventEntityIdSellableInventoryItemId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id SellableInventoryItemId {0} in state but entity id SellableInventoryItemId {1} in event", stateEntityIdSellableInventoryItemId, eventEntityIdSellableInventoryItemId);
@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             id.Append(stateEntityIdSellableInventoryItemId).Append(",");
 
             var stateEntityIdEntrySeqId = (this as IGlobalIdentity<SellableInventoryItemEntryId>).GlobalId.EntrySeqId;
-            var eventEntityIdEntrySeqId = stateEvent.SellableInventoryItemEntryEventId.EntrySeqId;
+            var eventEntityIdEntrySeqId = e.SellableInventoryItemEntryEventId.EntrySeqId;
             if (stateEntityIdEntrySeqId != eventEntityIdEntrySeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id EntrySeqId {0} in state but entity id EntrySeqId {1} in event", stateEntityIdEntrySeqId, eventEntityIdEntrySeqId);
@@ -234,15 +234,18 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (SellableInventoryItemEntryState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is ISellableInventoryItemEntryStateEvent ? (ISellableInventoryItemEntryStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (SellableInventoryItemEntryState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

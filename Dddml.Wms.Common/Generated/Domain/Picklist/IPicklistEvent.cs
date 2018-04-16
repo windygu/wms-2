@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.Picklist
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPicklistStateEvent : IPicklistEvent
+    {
 		string Description { get; set; }
 
 		string FacilityId { get; set; }
@@ -32,9 +36,9 @@ namespace Dddml.Wms.Domain.Picklist
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IPicklistStateCreated : IPicklistEvent//, IPicklistStateProperties
+    }
+   
+	public interface IPicklistStateCreated : IPicklistStateEvent
 	{
 		IEnumerable<IPicklistRoleStateCreated> PicklistRoleEvents { get; }
 		
@@ -46,7 +50,7 @@ namespace Dddml.Wms.Domain.Picklist
 	}
 
 
-	public interface IPicklistStateMergePatched : IPicklistEvent//, IPicklistStateProperties
+	public interface IPicklistStateMergePatched : IPicklistStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -75,7 +79,7 @@ namespace Dddml.Wms.Domain.Picklist
 
 	}
 
-	public interface IPicklistStateDeleted : IPicklistEvent
+	public interface IPicklistStateDeleted : IPicklistStateEvent
 	{
 		IEnumerable<IPicklistRoleStateRemoved> PicklistRoleEvents { get; }
 		

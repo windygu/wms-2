@@ -23,48 +23,6 @@ namespace Dddml.Wms.Domain.Movement
             set { MovementEventId.DocumentNumber = value; }
         }
 
-		public virtual string DocumentStatusId { get; set; }
-
-		public virtual DateTime? MovementDate { get; set; }
-
-		public virtual bool? Posted { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string Processing { get; set; }
-
-		public virtual DateTime? DateReceived { get; set; }
-
-		public virtual string DocumentTypeId { get; set; }
-
-		public virtual bool? IsInTransit { get; set; }
-
-		public virtual bool? IsApproved { get; set; }
-
-		public virtual decimal? ApprovalAmount { get; set; }
-
-		public virtual string ShipperId { get; set; }
-
-		public virtual string SalesRepresentativeId { get; set; }
-
-		public virtual string BusinessPartnerId { get; set; }
-
-		public virtual decimal? ChargeAmount { get; set; }
-
-		public virtual string CreateFrom { get; set; }
-
-		public virtual decimal? FreightAmount { get; set; }
-
-		public virtual string ReversalDocumentNumber { get; set; }
-
-		public virtual string WarehouseIdFrom { get; set; }
-
-		public virtual string WarehouseIdTo { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -159,7 +117,62 @@ namespace Dddml.Wms.Domain.Movement
 
 	}
 
-	public class MovementStateCreated : MovementEventBase, IMovementStateCreated, ISaveable
+    public abstract class MovementStateEventBase : MovementEventBase, IMovementStateEvent
+    {
+
+		public virtual string DocumentStatusId { get; set; }
+
+		public virtual DateTime? MovementDate { get; set; }
+
+		public virtual bool? Posted { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string Processing { get; set; }
+
+		public virtual DateTime? DateReceived { get; set; }
+
+		public virtual string DocumentTypeId { get; set; }
+
+		public virtual bool? IsInTransit { get; set; }
+
+		public virtual bool? IsApproved { get; set; }
+
+		public virtual decimal? ApprovalAmount { get; set; }
+
+		public virtual string ShipperId { get; set; }
+
+		public virtual string SalesRepresentativeId { get; set; }
+
+		public virtual string BusinessPartnerId { get; set; }
+
+		public virtual decimal? ChargeAmount { get; set; }
+
+		public virtual string CreateFrom { get; set; }
+
+		public virtual decimal? FreightAmount { get; set; }
+
+		public virtual string ReversalDocumentNumber { get; set; }
+
+		public virtual string WarehouseIdFrom { get; set; }
+
+		public virtual string WarehouseIdTo { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected MovementStateEventBase() : base()
+        {
+        }
+
+        protected MovementStateEventBase(MovementEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class MovementStateCreated : MovementStateEventBase, IMovementStateCreated, ISaveable
 	{
 		public MovementStateCreated () : this(new MovementEventId())
 		{
@@ -234,7 +247,7 @@ namespace Dddml.Wms.Domain.Movement
 	}
 
 
-	public class MovementStateMergePatched : MovementEventBase, IMovementStateMergePatched, ISaveable
+	public class MovementStateMergePatched : MovementStateEventBase, IMovementStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
@@ -364,7 +377,7 @@ namespace Dddml.Wms.Domain.Movement
 	}
 
 
-	public class MovementStateDeleted : MovementEventBase, IMovementStateDeleted, ISaveable
+	public class MovementStateDeleted : MovementStateEventBase, IMovementStateDeleted, ISaveable
 	{
 		public MovementStateDeleted ()
 		{

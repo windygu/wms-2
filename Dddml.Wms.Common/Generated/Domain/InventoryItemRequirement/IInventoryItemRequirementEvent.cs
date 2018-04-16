@@ -19,11 +19,15 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         bool ReadOnly { get; set; }
 
-		decimal? Quantity { get; set; }
-
 	}
 
-	public interface IInventoryItemRequirementStateCreated : IInventoryItemRequirementEvent//, IInventoryItemRequirementStateProperties
+    public interface IInventoryItemRequirementStateEvent : IInventoryItemRequirementEvent
+    {
+		decimal? Quantity { get; set; }
+
+    }
+   
+	public interface IInventoryItemRequirementStateCreated : IInventoryItemRequirementStateEvent
 	{
 		IEnumerable<IInventoryItemRequirementEntryStateCreated> InventoryItemRequirementEntryEvents { get; }
 		
@@ -35,7 +39,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 	}
 
 
-	public interface IInventoryItemRequirementStateMergePatched : IInventoryItemRequirementEvent//, IInventoryItemRequirementStateProperties
+	public interface IInventoryItemRequirementStateMergePatched : IInventoryItemRequirementStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 

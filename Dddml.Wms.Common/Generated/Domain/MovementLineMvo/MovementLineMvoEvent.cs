@@ -24,6 +24,76 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             set { MovementLineMvoEventId.MovementLineId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		MovementLineMvoEventId IGlobalIdentity<MovementLineMvoEventId>.GlobalId {
+			get
+			{
+				return this.MovementLineMvoEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IMovementLineMvoEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected MovementLineMvoEventBase()
+        {
+        }
+
+        protected MovementLineMvoEventBase(MovementLineMvoEventId stateEventId)
+        {
+            this.MovementLineMvoEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class MovementLineMvoStateEventBase : MovementLineMvoEventBase, IMovementLineMvoStateEvent
+    {
+
 		public virtual decimal? MovementQuantity { get; set; }
 
 		public virtual string ProductId { get; set; }
@@ -94,74 +164,17 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual bool? MovementDeleted { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		MovementLineMvoEventId IGlobalIdentity<MovementLineMvoEventId>.GlobalId {
-			get
-			{
-				return this.MovementLineMvoEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IMovementLineMvoEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected MovementLineMvoEventBase()
+        protected MovementLineMvoStateEventBase() : base()
         {
         }
 
-        protected MovementLineMvoEventBase(MovementLineMvoEventId stateEventId)
+        protected MovementLineMvoStateEventBase(MovementLineMvoEventId stateEventId) : base(stateEventId)
         {
-            this.MovementLineMvoEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class MovementLineMvoStateCreated : MovementLineMvoEventBase, IMovementLineMvoStateCreated
+	public class MovementLineMvoStateCreated : MovementLineMvoStateEventBase, IMovementLineMvoStateCreated
 	{
 		public MovementLineMvoStateCreated () : this(new MovementLineMvoEventId())
 		{
@@ -180,7 +193,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 	}
 
 
-	public class MovementLineMvoStateMergePatched : MovementLineMvoEventBase, IMovementLineMvoStateMergePatched
+	public class MovementLineMvoStateMergePatched : MovementLineMvoStateEventBase, IMovementLineMvoStateMergePatched
 	{
 		public virtual bool IsPropertyMovementQuantityRemoved { get; set; }
 
@@ -270,7 +283,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 	}
 
 
-	public class MovementLineMvoStateDeleted : MovementLineMvoEventBase, IMovementLineMvoStateDeleted
+	public class MovementLineMvoStateDeleted : MovementLineMvoStateEventBase, IMovementLineMvoStateDeleted
 	{
 		public MovementLineMvoStateDeleted ()
 		{

@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Uom
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUomStateEvent : IUomEvent
+    {
 		string UomTypeId { get; set; }
 
 		string Abbreviation { get; set; }
@@ -25,15 +29,15 @@ namespace Dddml.Wms.Domain.Uom
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IUomStateCreated : IUomEvent//, IUomStateProperties
+    }
+   
+	public interface IUomStateCreated : IUomStateEvent
 	{
 	
 	}
 
 
-	public interface IUomStateMergePatched : IUomEvent//, IUomStateProperties
+	public interface IUomStateMergePatched : IUomStateEvent
 	{
 		bool IsPropertyUomTypeIdRemoved { get; set; }
 
@@ -46,7 +50,7 @@ namespace Dddml.Wms.Domain.Uom
 
 	}
 
-	public interface IUomStateDeleted : IUomEvent
+	public interface IUomStateDeleted : IUomStateEvent
 	{
 	}
 

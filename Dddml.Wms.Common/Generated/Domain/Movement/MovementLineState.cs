@@ -343,13 +343,13 @@ namespace Dddml.Wms.Domain.Movement
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementLineEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementLineEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementLine|");
 
             var stateEntityIdMovementDocumentNumber = (this as IGlobalIdentity<MovementLineId>).GlobalId.MovementDocumentNumber;
-            var eventEntityIdMovementDocumentNumber = stateEvent.MovementLineEventId.MovementDocumentNumber;
+            var eventEntityIdMovementDocumentNumber = e.MovementLineEventId.MovementDocumentNumber;
             if (stateEntityIdMovementDocumentNumber != eventEntityIdMovementDocumentNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id MovementDocumentNumber {0} in state but entity id MovementDocumentNumber {1} in event", stateEntityIdMovementDocumentNumber, eventEntityIdMovementDocumentNumber);
@@ -357,7 +357,7 @@ namespace Dddml.Wms.Domain.Movement
             id.Append(stateEntityIdMovementDocumentNumber).Append(",");
 
             var stateEntityIdLineNumber = (this as IGlobalIdentity<MovementLineId>).GlobalId.LineNumber;
-            var eventEntityIdLineNumber = stateEvent.MovementLineEventId.LineNumber;
+            var eventEntityIdLineNumber = e.MovementLineEventId.LineNumber;
             if (stateEntityIdLineNumber != eventEntityIdLineNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
@@ -368,15 +368,18 @@ namespace Dddml.Wms.Domain.Movement
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (MovementLineState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IMovementLineStateEvent ? (IMovementLineStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (MovementLineState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

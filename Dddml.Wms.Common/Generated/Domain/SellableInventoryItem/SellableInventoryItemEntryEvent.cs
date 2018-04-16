@@ -41,10 +41,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { SellableInventoryItemEntryEventId.EntrySeqId = value; }
         }
 
-        public virtual decimal? SellableQuantity { get { return _state.SellableQuantity; } set { _state.SellableQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
-
-        public virtual InventoryPRTriggeredId SourceEventId { get { return _state.SourceEventId; } set { _state.SourceEventId = value; } }
-
 		public virtual string CreatedBy { get { return _state.CreatedBy; } set { _state.CreatedBy = value; } }
 
 		public virtual DateTime CreatedAt { get { return _state.CreatedAt; } set { _state.CreatedAt = value; } }
@@ -120,7 +116,28 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 	}
 
-	public class SellableInventoryItemEntryStateCreated : SellableInventoryItemEntryEventBase, ISellableInventoryItemEntryStateCreated
+    public abstract class SellableInventoryItemEntryStateEventBase : SellableInventoryItemEntryEventBase, ISellableInventoryItemEntryStateEvent
+    {
+
+        public virtual decimal? SellableQuantity { get { return SellableInventoryItemEntryState.SellableQuantity; } set { SellableInventoryItemEntryState.SellableQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
+        public virtual InventoryPRTriggeredId SourceEventId { get { return SellableInventoryItemEntryState.SourceEventId; } set { SellableInventoryItemEntryState.SourceEventId = value; } }
+
+        protected SellableInventoryItemEntryStateEventBase() : base()
+        {
+        }
+
+        protected SellableInventoryItemEntryStateEventBase(SellableInventoryItemEntryEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+        protected SellableInventoryItemEntryStateEventBase(SellableInventoryItemEntryState state) : base(state)
+        {
+        }
+
+    }
+
+	public class SellableInventoryItemEntryStateCreated : SellableInventoryItemEntryStateEventBase, ISellableInventoryItemEntryStateCreated
 	{
 		public SellableInventoryItemEntryStateCreated () : this(new SellableInventoryItemEntryEventId())
 		{

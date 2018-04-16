@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPhysicalInventoryStateEvent : IPhysicalInventoryEvent
+    {
 		string DocumentStatusId { get; set; }
 
 		string WarehouseId { get; set; }
@@ -48,9 +52,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IPhysicalInventoryStateCreated : IPhysicalInventoryEvent//, IPhysicalInventoryStateProperties
+    }
+   
+	public interface IPhysicalInventoryStateCreated : IPhysicalInventoryStateEvent
 	{
 		IEnumerable<IPhysicalInventoryLineStateCreated> PhysicalInventoryLineEvents { get; }
 		
@@ -62,7 +66,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	}
 
 
-	public interface IPhysicalInventoryStateMergePatched : IPhysicalInventoryEvent//, IPhysicalInventoryStateProperties
+	public interface IPhysicalInventoryStateMergePatched : IPhysicalInventoryStateEvent
 	{
 		bool IsPropertyDocumentStatusIdRemoved { get; set; }
 

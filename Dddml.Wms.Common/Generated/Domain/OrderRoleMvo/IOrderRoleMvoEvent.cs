@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IOrderRoleMvoStateEvent : IOrderRoleMvoEvent
+    {
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
@@ -80,15 +84,15 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 
 		bool? OrderActive { get; set; }
 
-	}
-
-	public interface IOrderRoleMvoStateCreated : IOrderRoleMvoEvent//, IOrderRoleMvoStateProperties
+    }
+   
+	public interface IOrderRoleMvoStateCreated : IOrderRoleMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderRoleMvoStateMergePatched : IOrderRoleMvoEvent//, IOrderRoleMvoStateProperties
+	public interface IOrderRoleMvoStateMergePatched : IOrderRoleMvoStateEvent
 	{
 		bool IsPropertyVersionRemoved { get; set; }
 
@@ -155,7 +159,7 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 
 	}
 
-	public interface IOrderRoleMvoStateDeleted : IOrderRoleMvoEvent
+	public interface IOrderRoleMvoStateDeleted : IOrderRoleMvoStateEvent
 	{
 	}
 

@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IProductCategoryStateEvent : IProductCategoryEvent
+    {
 		string ProductCategoryTypeId { get; set; }
 
 		string PrimaryParentCategoryId { get; set; }
@@ -35,15 +39,15 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IProductCategoryStateCreated : IProductCategoryEvent//, IProductCategoryStateProperties
+    }
+   
+	public interface IProductCategoryStateCreated : IProductCategoryStateEvent
 	{
 	
 	}
 
 
-	public interface IProductCategoryStateMergePatched : IProductCategoryEvent//, IProductCategoryStateProperties
+	public interface IProductCategoryStateMergePatched : IProductCategoryStateEvent
 	{
 		bool IsPropertyProductCategoryTypeIdRemoved { get; set; }
 
@@ -66,7 +70,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 	}
 
-	public interface IProductCategoryStateDeleted : IProductCategoryEvent
+	public interface IProductCategoryStateDeleted : IProductCategoryStateEvent
 	{
 	}
 

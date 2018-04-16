@@ -408,13 +408,13 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistRoleMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistRoleMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistRoleMvo|");
 
             var stateEntityId = this.PicklistRoleId; // Aggregate Id
-            var eventEntityId = stateEvent.PicklistRoleMvoEventId.PicklistRoleId;
+            var eventEntityId = e.PicklistRoleMvoEventId.PicklistRoleId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -424,7 +424,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             id.Append("]");
 
             var stateVersion = this.PicklistVersion;
-            var eventVersion = stateEvent.PicklistRoleMvoEventId.PicklistVersion;
+            var eventVersion = e.PicklistRoleMvoEventId.PicklistVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

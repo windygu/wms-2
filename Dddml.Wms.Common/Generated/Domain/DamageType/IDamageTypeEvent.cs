@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.DamageType
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IDamageTypeStateEvent : IDamageTypeEvent
+    {
 		string Description { get; set; }
 
 		string SequenceId { get; set; }
@@ -25,15 +29,15 @@ namespace Dddml.Wms.Domain.DamageType
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IDamageTypeStateCreated : IDamageTypeEvent//, IDamageTypeStateProperties
+    }
+   
+	public interface IDamageTypeStateCreated : IDamageTypeStateEvent
 	{
 	
 	}
 
 
-	public interface IDamageTypeStateMergePatched : IDamageTypeEvent//, IDamageTypeStateProperties
+	public interface IDamageTypeStateMergePatched : IDamageTypeStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -46,7 +50,7 @@ namespace Dddml.Wms.Domain.DamageType
 
 	}
 
-	public interface IDamageTypeStateDeleted : IDamageTypeEvent
+	public interface IDamageTypeStateDeleted : IDamageTypeStateEvent
 	{
 	}
 

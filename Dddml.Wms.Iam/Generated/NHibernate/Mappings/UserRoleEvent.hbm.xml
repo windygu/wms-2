@@ -12,12 +12,15 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
-    <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+
+        <subclass name="UserRoleStateEventBase" abstract="true">
+
+    <property name="Active" ></property>
     <property name="Version" column="Version" not-null="true" />
 
     <subclass name="UserRoleStateCreated" discriminator-value="Created">
@@ -35,6 +38,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

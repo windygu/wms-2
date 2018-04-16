@@ -18,29 +18,33 @@ namespace Dddml.Wms.Domain.Picklist
 
         bool ReadOnly { get; set; }
 
-		long Version { get; set; }
-
-		bool? Active { get; set; }
-
 		// Outer Id:
 		//string PicklistId { get; set; }
 
 	}
 
-	public interface IPicklistRoleStateCreated : IPicklistRoleEvent//, IPicklistRoleStateProperties
+    public interface IPicklistRoleStateEvent : IPicklistRoleEvent
+    {
+		long Version { get; set; }
+
+		bool? Active { get; set; }
+
+    }
+   
+	public interface IPicklistRoleStateCreated : IPicklistRoleStateEvent
 	{
 	
 	}
 
 
-	public interface IPicklistRoleStateMergePatched : IPicklistRoleEvent//, IPicklistRoleStateProperties
+	public interface IPicklistRoleStateMergePatched : IPicklistRoleStateEvent
 	{
 		bool IsPropertyActiveRemoved { get; set; }
 
 
 	}
 
-	public interface IPicklistRoleStateRemoved : IPicklistRoleEvent
+	public interface IPicklistRoleStateRemoved : IPicklistRoleStateEvent
 	{
 	}
 

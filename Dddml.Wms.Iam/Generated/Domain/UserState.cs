@@ -581,13 +581,13 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("User|");
 
             var stateEntityId = this.UserId; // Aggregate Id
-            var eventEntityId = stateEvent.UserEventId.UserId;
+            var eventEntityId = e.UserEventId.UserId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -597,7 +597,7 @@ namespace Dddml.Wms.Domain.User
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.UserEventId.Version;
+            var eventVersion = e.UserEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

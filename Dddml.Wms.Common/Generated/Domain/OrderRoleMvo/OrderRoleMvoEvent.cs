@@ -24,68 +24,6 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
             set { OrderRoleMvoEventId.OrderRoleId = value; }
         }
 
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string OrderOrderTypeId { get; set; }
-
-		public virtual string OrderOrderName { get; set; }
-
-		public virtual string OrderExternalId { get; set; }
-
-		public virtual string OrderSalesChannelEnumId { get; set; }
-
-		public virtual DateTime? OrderOrderDate { get; set; }
-
-		public virtual string OrderPriority { get; set; }
-
-		public virtual DateTime? OrderEntryDate { get; set; }
-
-		public virtual DateTime? OrderPickSheetPrintedDate { get; set; }
-
-		public virtual string OrderStatusId { get; set; }
-
-		public virtual string OrderCurrencyUom { get; set; }
-
-		public virtual string OrderSyncStatusId { get; set; }
-
-		public virtual string OrderBillingAccountId { get; set; }
-
-		public virtual string OrderOriginFacilityId { get; set; }
-
-		public virtual string OrderWebSiteId { get; set; }
-
-		public virtual string OrderProductStoreId { get; set; }
-
-		public virtual string OrderTerminalId { get; set; }
-
-		public virtual string OrderTransactionId { get; set; }
-
-		public virtual string OrderAutoOrderShoppingListId { get; set; }
-
-		public virtual string OrderNeedsInventoryIssuance { get; set; }
-
-		public virtual string OrderIsRushOrder { get; set; }
-
-		public virtual string OrderInternalCode { get; set; }
-
-		public virtual decimal? OrderRemainingSubTotal { get; set; }
-
-		public virtual decimal? OrderGrandTotal { get; set; }
-
-		public virtual string OrderInvoicePerShipment { get; set; }
-
-		public virtual string OrderCreatedBy { get; set; }
-
-		public virtual DateTime? OrderCreatedAt { get; set; }
-
-		public virtual string OrderUpdatedBy { get; set; }
-
-		public virtual DateTime? OrderUpdatedAt { get; set; }
-
-		public virtual bool? OrderActive { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -153,7 +91,82 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 
 	}
 
-	public class OrderRoleMvoStateCreated : OrderRoleMvoEventBase, IOrderRoleMvoStateCreated
+    public abstract class OrderRoleMvoStateEventBase : OrderRoleMvoEventBase, IOrderRoleMvoStateEvent
+    {
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string OrderOrderTypeId { get; set; }
+
+		public virtual string OrderOrderName { get; set; }
+
+		public virtual string OrderExternalId { get; set; }
+
+		public virtual string OrderSalesChannelEnumId { get; set; }
+
+		public virtual DateTime? OrderOrderDate { get; set; }
+
+		public virtual string OrderPriority { get; set; }
+
+		public virtual DateTime? OrderEntryDate { get; set; }
+
+		public virtual DateTime? OrderPickSheetPrintedDate { get; set; }
+
+		public virtual string OrderStatusId { get; set; }
+
+		public virtual string OrderCurrencyUom { get; set; }
+
+		public virtual string OrderSyncStatusId { get; set; }
+
+		public virtual string OrderBillingAccountId { get; set; }
+
+		public virtual string OrderOriginFacilityId { get; set; }
+
+		public virtual string OrderWebSiteId { get; set; }
+
+		public virtual string OrderProductStoreId { get; set; }
+
+		public virtual string OrderTerminalId { get; set; }
+
+		public virtual string OrderTransactionId { get; set; }
+
+		public virtual string OrderAutoOrderShoppingListId { get; set; }
+
+		public virtual string OrderNeedsInventoryIssuance { get; set; }
+
+		public virtual string OrderIsRushOrder { get; set; }
+
+		public virtual string OrderInternalCode { get; set; }
+
+		public virtual decimal? OrderRemainingSubTotal { get; set; }
+
+		public virtual decimal? OrderGrandTotal { get; set; }
+
+		public virtual string OrderInvoicePerShipment { get; set; }
+
+		public virtual string OrderCreatedBy { get; set; }
+
+		public virtual DateTime? OrderCreatedAt { get; set; }
+
+		public virtual string OrderUpdatedBy { get; set; }
+
+		public virtual DateTime? OrderUpdatedAt { get; set; }
+
+		public virtual bool? OrderActive { get; set; }
+
+        protected OrderRoleMvoStateEventBase() : base()
+        {
+        }
+
+        protected OrderRoleMvoStateEventBase(OrderRoleMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrderRoleMvoStateCreated : OrderRoleMvoStateEventBase, IOrderRoleMvoStateCreated
 	{
 		public OrderRoleMvoStateCreated () : this(new OrderRoleMvoEventId())
 		{
@@ -172,7 +185,7 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 	}
 
 
-	public class OrderRoleMvoStateMergePatched : OrderRoleMvoEventBase, IOrderRoleMvoStateMergePatched
+	public class OrderRoleMvoStateMergePatched : OrderRoleMvoStateEventBase, IOrderRoleMvoStateMergePatched
 	{
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 
@@ -254,7 +267,7 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 	}
 
 
-	public class OrderRoleMvoStateDeleted : OrderRoleMvoEventBase, IOrderRoleMvoStateDeleted
+	public class OrderRoleMvoStateDeleted : OrderRoleMvoStateEventBase, IOrderRoleMvoStateDeleted
 	{
 		public OrderRoleMvoStateDeleted ()
 		{

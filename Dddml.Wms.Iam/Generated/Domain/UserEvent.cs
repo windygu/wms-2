@@ -23,30 +23,6 @@ namespace Dddml.Wms.Domain.User
             set { UserEventId.UserId = value; }
         }
 
-		public virtual string UserName { get; set; }
-
-		public virtual int? AccessFailedCount { get; set; }
-
-		public virtual string Email { get; set; }
-
-		public virtual bool? EmailConfirmed { get; set; }
-
-		public virtual bool? LockoutEnabled { get; set; }
-
-		public virtual DateTime? LockoutEndDateUtc { get; set; }
-
-		public virtual string PasswordHash { get; set; }
-
-		public virtual string PhoneNumber { get; set; }
-
-		public virtual bool? PhoneNumberConfirmed { get; set; }
-
-		public virtual bool? TwoFactorEnabled { get; set; }
-
-		public virtual string SecurityStamp { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -222,7 +198,44 @@ namespace Dddml.Wms.Domain.User
 
 	}
 
-	public class UserStateCreated : UserEventBase, IUserStateCreated, ISaveable
+    public abstract class UserStateEventBase : UserEventBase, IUserStateEvent
+    {
+
+		public virtual string UserName { get; set; }
+
+		public virtual int? AccessFailedCount { get; set; }
+
+		public virtual string Email { get; set; }
+
+		public virtual bool? EmailConfirmed { get; set; }
+
+		public virtual bool? LockoutEnabled { get; set; }
+
+		public virtual DateTime? LockoutEndDateUtc { get; set; }
+
+		public virtual string PasswordHash { get; set; }
+
+		public virtual string PhoneNumber { get; set; }
+
+		public virtual bool? PhoneNumberConfirmed { get; set; }
+
+		public virtual bool? TwoFactorEnabled { get; set; }
+
+		public virtual string SecurityStamp { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected UserStateEventBase() : base()
+        {
+        }
+
+        protected UserStateEventBase(UserEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UserStateCreated : UserStateEventBase, IUserStateCreated, ISaveable
 	{
 		public UserStateCreated () : this(new UserEventId())
 		{
@@ -456,7 +469,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserStateMergePatched : UserEventBase, IUserStateMergePatched, ISaveable
+	public class UserStateMergePatched : UserStateEventBase, IUserStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyUserNameRemoved { get; set; }
 
@@ -763,7 +776,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserStateDeleted : UserEventBase, IUserStateDeleted, ISaveable
+	public class UserStateDeleted : UserStateEventBase, IUserStateDeleted, ISaveable
 	{
 		public UserStateDeleted ()
 		{

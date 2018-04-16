@@ -41,10 +41,6 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             set { InventoryItemRequirementEntryEventId.EntrySeqId = value; }
         }
 
-        public virtual decimal? Quantity { get { return _state.Quantity; } set { _state.Quantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
-
-        public virtual InventoryPRTriggeredId SourceEventId { get { return _state.SourceEventId; } set { _state.SourceEventId = value; } }
-
 		public virtual string CreatedBy { get { return _state.CreatedBy; } set { _state.CreatedBy = value; } }
 
 		public virtual DateTime CreatedAt { get { return _state.CreatedAt; } set { _state.CreatedAt = value; } }
@@ -120,7 +116,28 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 	}
 
-	public class InventoryItemRequirementEntryStateCreated : InventoryItemRequirementEntryEventBase, IInventoryItemRequirementEntryStateCreated
+    public abstract class InventoryItemRequirementEntryStateEventBase : InventoryItemRequirementEntryEventBase, IInventoryItemRequirementEntryStateEvent
+    {
+
+        public virtual decimal? Quantity { get { return InventoryItemRequirementEntryState.Quantity; } set { InventoryItemRequirementEntryState.Quantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
+
+        public virtual InventoryPRTriggeredId SourceEventId { get { return InventoryItemRequirementEntryState.SourceEventId; } set { InventoryItemRequirementEntryState.SourceEventId = value; } }
+
+        protected InventoryItemRequirementEntryStateEventBase() : base()
+        {
+        }
+
+        protected InventoryItemRequirementEntryStateEventBase(InventoryItemRequirementEntryEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+        protected InventoryItemRequirementEntryStateEventBase(InventoryItemRequirementEntryState state) : base(state)
+        {
+        }
+
+    }
+
+	public class InventoryItemRequirementEntryStateCreated : InventoryItemRequirementEntryStateEventBase, IInventoryItemRequirementEntryStateCreated
 	{
 		public InventoryItemRequirementEntryStateCreated () : this(new InventoryItemRequirementEntryEventId())
 		{

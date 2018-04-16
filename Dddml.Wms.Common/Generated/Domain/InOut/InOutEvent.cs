@@ -23,68 +23,6 @@ namespace Dddml.Wms.Domain.InOut
             set { InOutEventId.DocumentNumber = value; }
         }
 
-		public virtual string DocumentStatusId { get; set; }
-
-		public virtual bool? Posted { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string Processing { get; set; }
-
-		public virtual string DocumentTypeId { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string OrderId { get; set; }
-
-		public virtual DateTime? DateOrdered { get; set; }
-
-		public virtual bool? IsPrinted { get; set; }
-
-		public virtual string MovementTypeId { get; set; }
-
-		public virtual DateTime? MovementDate { get; set; }
-
-		public virtual string BusinessPartnerId { get; set; }
-
-		public virtual string WarehouseId { get; set; }
-
-		public virtual string POReference { get; set; }
-
-		public virtual decimal? FreightAmount { get; set; }
-
-		public virtual string ShipperId { get; set; }
-
-		public virtual decimal? ChargeAmount { get; set; }
-
-		public virtual DateTime? DatePrinted { get; set; }
-
-		public virtual string CreatedFrom { get; set; }
-
-		public virtual string SalesRepresentativeId { get; set; }
-
-		public virtual int? NumberOfPackages { get; set; }
-
-		public virtual DateTime? PickDate { get; set; }
-
-		public virtual DateTime? ShipDate { get; set; }
-
-		public virtual string TrackingNumber { get; set; }
-
-		public virtual DateTime? DateReceived { get; set; }
-
-		public virtual bool? IsInTransit { get; set; }
-
-		public virtual bool? IsApproved { get; set; }
-
-		public virtual bool? IsInDispute { get; set; }
-
-		public virtual string RmaDocumentNumber { get; set; }
-
-		public virtual string ReversalDocumentNumber { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -179,7 +117,82 @@ namespace Dddml.Wms.Domain.InOut
 
 	}
 
-	public class InOutStateCreated : InOutEventBase, IInOutStateCreated, ISaveable
+    public abstract class InOutStateEventBase : InOutEventBase, IInOutStateEvent
+    {
+
+		public virtual string DocumentStatusId { get; set; }
+
+		public virtual bool? Posted { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string Processing { get; set; }
+
+		public virtual string DocumentTypeId { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string OrderId { get; set; }
+
+		public virtual DateTime? DateOrdered { get; set; }
+
+		public virtual bool? IsPrinted { get; set; }
+
+		public virtual string MovementTypeId { get; set; }
+
+		public virtual DateTime? MovementDate { get; set; }
+
+		public virtual string BusinessPartnerId { get; set; }
+
+		public virtual string WarehouseId { get; set; }
+
+		public virtual string POReference { get; set; }
+
+		public virtual decimal? FreightAmount { get; set; }
+
+		public virtual string ShipperId { get; set; }
+
+		public virtual decimal? ChargeAmount { get; set; }
+
+		public virtual DateTime? DatePrinted { get; set; }
+
+		public virtual string CreatedFrom { get; set; }
+
+		public virtual string SalesRepresentativeId { get; set; }
+
+		public virtual int? NumberOfPackages { get; set; }
+
+		public virtual DateTime? PickDate { get; set; }
+
+		public virtual DateTime? ShipDate { get; set; }
+
+		public virtual string TrackingNumber { get; set; }
+
+		public virtual DateTime? DateReceived { get; set; }
+
+		public virtual bool? IsInTransit { get; set; }
+
+		public virtual bool? IsApproved { get; set; }
+
+		public virtual bool? IsInDispute { get; set; }
+
+		public virtual string RmaDocumentNumber { get; set; }
+
+		public virtual string ReversalDocumentNumber { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected InOutStateEventBase() : base()
+        {
+        }
+
+        protected InOutStateEventBase(InOutEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InOutStateCreated : InOutStateEventBase, IInOutStateCreated, ISaveable
 	{
 		public InOutStateCreated () : this(new InOutEventId())
 		{
@@ -254,7 +267,7 @@ namespace Dddml.Wms.Domain.InOut
 	}
 
 
-	public class InOutStateMergePatched : InOutEventBase, IInOutStateMergePatched, ISaveable
+	public class InOutStateMergePatched : InOutStateEventBase, IInOutStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyDocumentStatusIdRemoved { get; set; }
 

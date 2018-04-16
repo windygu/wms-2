@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IShipmentPackageContentMvoStateEvent : IShipmentPackageContentMvoEvent
+    {
 		decimal? Quantity { get; set; }
 
 		string SubProductId { get; set; }
@@ -58,15 +62,15 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
 		bool? ShipmentPackageDeleted { get; set; }
 
-	}
-
-	public interface IShipmentPackageContentMvoStateCreated : IShipmentPackageContentMvoEvent//, IShipmentPackageContentMvoStateProperties
+    }
+   
+	public interface IShipmentPackageContentMvoStateCreated : IShipmentPackageContentMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IShipmentPackageContentMvoStateMergePatched : IShipmentPackageContentMvoEvent//, IShipmentPackageContentMvoStateProperties
+	public interface IShipmentPackageContentMvoStateMergePatched : IShipmentPackageContentMvoStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 
@@ -111,7 +115,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
 	}
 
-	public interface IShipmentPackageContentMvoStateDeleted : IShipmentPackageContentMvoEvent
+	public interface IShipmentPackageContentMvoStateDeleted : IShipmentPackageContentMvoStateEvent
 	{
 	}
 

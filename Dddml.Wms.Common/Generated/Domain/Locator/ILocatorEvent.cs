@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Locator
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface ILocatorStateEvent : ILocatorEvent
+    {
 		string WarehouseId { get; set; }
 
 		string ParentLocatorId { get; set; }
@@ -39,15 +43,15 @@ namespace Dddml.Wms.Domain.Locator
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface ILocatorStateCreated : ILocatorEvent//, ILocatorStateProperties
+    }
+   
+	public interface ILocatorStateCreated : ILocatorStateEvent
 	{
 	
 	}
 
 
-	public interface ILocatorStateMergePatched : ILocatorEvent//, ILocatorStateProperties
+	public interface ILocatorStateMergePatched : ILocatorStateEvent
 	{
 		bool IsPropertyWarehouseIdRemoved { get; set; }
 
@@ -74,7 +78,7 @@ namespace Dddml.Wms.Domain.Locator
 
 	}
 
-	public interface ILocatorStateDeleted : ILocatorEvent
+	public interface ILocatorStateDeleted : ILocatorStateEvent
 	{
 	}
 

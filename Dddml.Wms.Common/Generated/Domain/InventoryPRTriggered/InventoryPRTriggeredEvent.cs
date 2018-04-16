@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             set { InventoryPRTriggeredEventId.InventoryPRTriggeredId = value; }
         }
 
-		public virtual bool? IsProcessed { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -93,7 +91,22 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 	}
 
-	public class InventoryPRTriggeredStateCreated : InventoryPRTriggeredEventBase, IInventoryPRTriggeredStateCreated
+    public abstract class InventoryPRTriggeredStateEventBase : InventoryPRTriggeredEventBase, IInventoryPRTriggeredStateEvent
+    {
+
+		public virtual bool? IsProcessed { get; set; }
+
+        protected InventoryPRTriggeredStateEventBase() : base()
+        {
+        }
+
+        protected InventoryPRTriggeredStateEventBase(InventoryPRTriggeredEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InventoryPRTriggeredStateCreated : InventoryPRTriggeredStateEventBase, IInventoryPRTriggeredStateCreated
 	{
 		public InventoryPRTriggeredStateCreated () : this(new InventoryPRTriggeredEventId())
 		{
@@ -112,7 +125,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 	}
 
 
-	public class InventoryPRTriggeredStateMergePatched : InventoryPRTriggeredEventBase, IInventoryPRTriggeredStateMergePatched
+	public class InventoryPRTriggeredStateMergePatched : InventoryPRTriggeredStateEventBase, IInventoryPRTriggeredStateMergePatched
 	{
 		public virtual bool IsPropertyIsProcessedRemoved { get; set; }
 

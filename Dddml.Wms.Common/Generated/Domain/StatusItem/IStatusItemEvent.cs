@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.StatusItem
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IStatusItemStateEvent : IStatusItemEvent
+    {
 		string StatusTypeId { get; set; }
 
 		string StatusCode { get; set; }
@@ -27,15 +31,15 @@ namespace Dddml.Wms.Domain.StatusItem
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IStatusItemStateCreated : IStatusItemEvent//, IStatusItemStateProperties
+    }
+   
+	public interface IStatusItemStateCreated : IStatusItemStateEvent
 	{
 	
 	}
 
 
-	public interface IStatusItemStateMergePatched : IStatusItemEvent//, IStatusItemStateProperties
+	public interface IStatusItemStateMergePatched : IStatusItemStateEvent
 	{
 		bool IsPropertyStatusTypeIdRemoved { get; set; }
 

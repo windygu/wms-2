@@ -12,13 +12,16 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
-    <property name="Name" ><column name="Name" unique-key="UniqueAttributeAliasName" /></property>
-    <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+
+        <subclass name="AttributeAliasStateEventBase" abstract="true">
+
+    <property name="Name" ><column name="Name" unique-key="UniqueAttributeAliasName" /></property>
+    <property name="Active" ></property>
     <property name="Version" column="Version" not-null="true" />
 
     <subclass name="AttributeAliasStateCreated" discriminator-value="Created">
@@ -38,6 +41,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

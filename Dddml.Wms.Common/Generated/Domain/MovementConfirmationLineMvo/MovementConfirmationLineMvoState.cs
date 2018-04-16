@@ -534,13 +534,13 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementConfirmationLineMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementConfirmationLineMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementConfirmationLineMvo|");
 
             var stateEntityId = this.MovementConfirmationLineId; // Aggregate Id
-            var eventEntityId = stateEvent.MovementConfirmationLineMvoEventId.MovementConfirmationLineId;
+            var eventEntityId = e.MovementConfirmationLineMvoEventId.MovementConfirmationLineId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -550,7 +550,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             id.Append("]");
 
             var stateVersion = this.MovementConfirmationVersion;
-            var eventVersion = stateEvent.MovementConfirmationLineMvoEventId.MovementConfirmationVersion;
+            var eventVersion = e.MovementConfirmationLineMvoEventId.MovementConfirmationVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

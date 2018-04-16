@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             set { OrganizationStructureTypeEventId.Id = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -94,7 +90,24 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 	}
 
-	public class OrganizationStructureTypeStateCreated : OrganizationStructureTypeEventBase, IOrganizationStructureTypeStateCreated
+    public abstract class OrganizationStructureTypeStateEventBase : OrganizationStructureTypeEventBase, IOrganizationStructureTypeStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected OrganizationStructureTypeStateEventBase() : base()
+        {
+        }
+
+        protected OrganizationStructureTypeStateEventBase(OrganizationStructureTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrganizationStructureTypeStateCreated : OrganizationStructureTypeStateEventBase, IOrganizationStructureTypeStateCreated
 	{
 		public OrganizationStructureTypeStateCreated () : this(new OrganizationStructureTypeEventId())
 		{
@@ -113,7 +126,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 	}
 
 
-	public class OrganizationStructureTypeStateMergePatched : OrganizationStructureTypeEventBase, IOrganizationStructureTypeStateMergePatched
+	public class OrganizationStructureTypeStateMergePatched : OrganizationStructureTypeStateEventBase, IOrganizationStructureTypeStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -137,7 +150,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 	}
 
 
-	public class OrganizationStructureTypeStateDeleted : OrganizationStructureTypeEventBase, IOrganizationStructureTypeStateDeleted
+	public class OrganizationStructureTypeStateDeleted : OrganizationStructureTypeStateEventBase, IOrganizationStructureTypeStateDeleted
 	{
 		public OrganizationStructureTypeStateDeleted ()
 		{

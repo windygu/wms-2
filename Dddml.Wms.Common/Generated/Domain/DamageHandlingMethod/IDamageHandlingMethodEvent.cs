@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IDamageHandlingMethodStateEvent : IDamageHandlingMethodEvent
+    {
 		string Description { get; set; }
 
 		string SequenceId { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IDamageHandlingMethodStateCreated : IDamageHandlingMethodEvent//, IDamageHandlingMethodStateProperties
+    }
+   
+	public interface IDamageHandlingMethodStateCreated : IDamageHandlingMethodStateEvent
 	{
 	
 	}
 
 
-	public interface IDamageHandlingMethodStateMergePatched : IDamageHandlingMethodEvent//, IDamageHandlingMethodStateProperties
+	public interface IDamageHandlingMethodStateMergePatched : IDamageHandlingMethodStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
 	}
 
-	public interface IDamageHandlingMethodStateDeleted : IDamageHandlingMethodEvent
+	public interface IDamageHandlingMethodStateDeleted : IDamageHandlingMethodStateEvent
 	{
 	}
 

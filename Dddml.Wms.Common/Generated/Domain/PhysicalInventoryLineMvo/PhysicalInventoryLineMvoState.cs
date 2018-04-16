@@ -567,13 +567,13 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPhysicalInventoryLineMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPhysicalInventoryLineMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PhysicalInventoryLineMvo|");
 
             var stateEntityId = this.PhysicalInventoryLineId; // Aggregate Id
-            var eventEntityId = stateEvent.PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId;
+            var eventEntityId = e.PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -583,7 +583,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             id.Append("]");
 
             var stateVersion = this.PhysicalInventoryVersion;
-            var eventVersion = stateEvent.PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion;
+            var eventVersion = e.PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

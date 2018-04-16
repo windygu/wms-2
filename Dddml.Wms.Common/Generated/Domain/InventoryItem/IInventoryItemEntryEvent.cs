@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//InventoryItemId InventoryItemId { get; set; }
+
+	}
+
+    public interface IInventoryItemEntryStateEvent : IInventoryItemEntryEvent
+    {
 		long Version { get; set; }
 
 		decimal? OnHandQuantity { get; set; }
@@ -31,12 +38,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		InventoryItemSourceInfo Source { get; set; }
 
-		// Outer Id:
-		//InventoryItemId InventoryItemId { get; set; }
-
-	}
-
-	public interface IInventoryItemEntryStateCreated : IInventoryItemEntryEvent//, IInventoryItemEntryStateProperties
+    }
+   
+	public interface IInventoryItemEntryStateCreated : IInventoryItemEntryStateEvent
 	{
 	
 	}

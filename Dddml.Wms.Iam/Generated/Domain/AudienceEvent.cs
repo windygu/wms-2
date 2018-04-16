@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.Audience
             set { AudienceEventId.ClientId = value; }
         }
 
-		public virtual string Name { get; set; }
-
-		public virtual string Base64Secret { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +90,26 @@ namespace Dddml.Wms.Domain.Audience
 
 	}
 
-	public class AudienceStateCreated : AudienceEventBase, IAudienceStateCreated
+    public abstract class AudienceStateEventBase : AudienceEventBase, IAudienceStateEvent
+    {
+
+		public virtual string Name { get; set; }
+
+		public virtual string Base64Secret { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected AudienceStateEventBase() : base()
+        {
+        }
+
+        protected AudienceStateEventBase(AudienceEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AudienceStateCreated : AudienceStateEventBase, IAudienceStateCreated
 	{
 		public AudienceStateCreated () : this(new AudienceEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.Audience
 	}
 
 
-	public class AudienceStateMergePatched : AudienceEventBase, IAudienceStateMergePatched
+	public class AudienceStateMergePatched : AudienceStateEventBase, IAudienceStateMergePatched
 	{
 		public virtual bool IsPropertyNameRemoved { get; set; }
 
@@ -141,7 +154,7 @@ namespace Dddml.Wms.Domain.Audience
 	}
 
 
-	public class AudienceStateDeleted : AudienceEventBase, IAudienceStateDeleted
+	public class AudienceStateDeleted : AudienceStateEventBase, IAudienceStateDeleted
 	{
 		public AudienceStateDeleted ()
 		{

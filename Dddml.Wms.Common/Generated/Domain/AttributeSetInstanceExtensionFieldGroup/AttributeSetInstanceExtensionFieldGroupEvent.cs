@@ -23,18 +23,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             set { AttributeSetInstanceExtensionFieldGroupEventId.Id = value; }
         }
 
-		public virtual string FieldType { get; set; }
-
-		public virtual int? FieldLength { get; set; }
-
-		public virtual int? FieldCount { get; set; }
-
-		public virtual string NameFormat { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -102,7 +90,32 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 	}
 
-	public class AttributeSetInstanceExtensionFieldGroupStateCreated : AttributeSetInstanceExtensionFieldGroupEventBase, IAttributeSetInstanceExtensionFieldGroupStateCreated
+    public abstract class AttributeSetInstanceExtensionFieldGroupStateEventBase : AttributeSetInstanceExtensionFieldGroupEventBase, IAttributeSetInstanceExtensionFieldGroupStateEvent
+    {
+
+		public virtual string FieldType { get; set; }
+
+		public virtual int? FieldLength { get; set; }
+
+		public virtual int? FieldCount { get; set; }
+
+		public virtual string NameFormat { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected AttributeSetInstanceExtensionFieldGroupStateEventBase() : base()
+        {
+        }
+
+        protected AttributeSetInstanceExtensionFieldGroupStateEventBase(AttributeSetInstanceExtensionFieldGroupEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AttributeSetInstanceExtensionFieldGroupStateCreated : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateCreated
 	{
 		public AttributeSetInstanceExtensionFieldGroupStateCreated () : this(new AttributeSetInstanceExtensionFieldGroupEventId())
 		{
@@ -121,7 +134,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	}
 
 
-	public class AttributeSetInstanceExtensionFieldGroupStateMergePatched : AttributeSetInstanceExtensionFieldGroupEventBase, IAttributeSetInstanceExtensionFieldGroupStateMergePatched
+	public class AttributeSetInstanceExtensionFieldGroupStateMergePatched : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateMergePatched
 	{
 		public virtual bool IsPropertyFieldTypeRemoved { get; set; }
 
@@ -153,7 +166,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	}
 
 
-	public class AttributeSetInstanceExtensionFieldGroupStateDeleted : AttributeSetInstanceExtensionFieldGroupEventBase, IAttributeSetInstanceExtensionFieldGroupStateDeleted
+	public class AttributeSetInstanceExtensionFieldGroupStateDeleted : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateDeleted
 	{
 		public AttributeSetInstanceExtensionFieldGroupStateDeleted ()
 		{

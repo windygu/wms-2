@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.Pickwave
             set { PickwaveEventId.PickwaveId = value; }
         }
 
-		public virtual string StatusId { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +90,26 @@ namespace Dddml.Wms.Domain.Pickwave
 
 	}
 
-	public class PickwaveStateCreated : PickwaveEventBase, IPickwaveStateCreated
+    public abstract class PickwaveStateEventBase : PickwaveEventBase, IPickwaveStateEvent
+    {
+
+		public virtual string StatusId { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected PickwaveStateEventBase() : base()
+        {
+        }
+
+        protected PickwaveStateEventBase(PickwaveEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PickwaveStateCreated : PickwaveStateEventBase, IPickwaveStateCreated
 	{
 		public PickwaveStateCreated () : this(new PickwaveEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.Pickwave
 	}
 
 
-	public class PickwaveStateMergePatched : PickwaveEventBase, IPickwaveStateMergePatched
+	public class PickwaveStateMergePatched : PickwaveStateEventBase, IPickwaveStateMergePatched
 	{
 		public virtual bool IsPropertyStatusIdRemoved { get; set; }
 
@@ -141,7 +154,7 @@ namespace Dddml.Wms.Domain.Pickwave
 	}
 
 
-	public class PickwaveStateDeleted : PickwaveEventBase, IPickwaveStateDeleted
+	public class PickwaveStateDeleted : PickwaveStateEventBase, IPickwaveStateDeleted
 	{
 		public PickwaveStateDeleted ()
 		{

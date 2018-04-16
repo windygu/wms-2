@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.RolePermission
             set { RolePermissionEventId.Id = value; }
         }
 
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -92,7 +90,22 @@ namespace Dddml.Wms.Domain.RolePermission
 
 	}
 
-	public class RolePermissionStateCreated : RolePermissionEventBase, IRolePermissionStateCreated
+    public abstract class RolePermissionStateEventBase : RolePermissionEventBase, IRolePermissionStateEvent
+    {
+
+		public virtual bool? Active { get; set; }
+
+        protected RolePermissionStateEventBase() : base()
+        {
+        }
+
+        protected RolePermissionStateEventBase(RolePermissionEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class RolePermissionStateCreated : RolePermissionStateEventBase, IRolePermissionStateCreated
 	{
 		public RolePermissionStateCreated () : this(new RolePermissionEventId())
 		{
@@ -111,7 +124,7 @@ namespace Dddml.Wms.Domain.RolePermission
 	}
 
 
-	public class RolePermissionStateMergePatched : RolePermissionEventBase, IRolePermissionStateMergePatched
+	public class RolePermissionStateMergePatched : RolePermissionStateEventBase, IRolePermissionStateMergePatched
 	{
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -133,7 +146,7 @@ namespace Dddml.Wms.Domain.RolePermission
 	}
 
 
-	public class RolePermissionStateDeleted : RolePermissionEventBase, IRolePermissionStateDeleted
+	public class RolePermissionStateDeleted : RolePermissionStateEventBase, IRolePermissionStateDeleted
 	{
 		public RolePermissionStateDeleted ()
 		{

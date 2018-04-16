@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="OrderStateEventBase" abstract="true">
+
     <property name="OrderTypeId" ><column name="OrderTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="OrderName" ><column name="OrderName" sql-type="VARCHAR(100)" /></property>
     <property name="ExternalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
@@ -36,11 +44,6 @@
     <property name="GrandTotal" ><column name="GrandTotal" sql-type="DECIMAL(18,2)" /></property>
     <property name="InvoicePerShipment" ><column name="InvoicePerShipment" sql-type="CHAR(1)" /></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="OrderStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -99,6 +102,7 @@
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
+        </subclass>
 
   </class>
   

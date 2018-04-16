@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string MovementConfirmationDocumentNumber { get; set; }
+
+	}
+
+    public interface IMovementConfirmationLineStateEvent : IMovementConfirmationLineEvent
+    {
 		long Version { get; set; }
 
 		string MovementLineNumber { get; set; }
@@ -35,18 +42,15 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string MovementConfirmationDocumentNumber { get; set; }
-
-	}
-
-	public interface IMovementConfirmationLineStateCreated : IMovementConfirmationLineEvent//, IMovementConfirmationLineStateProperties
+    }
+   
+	public interface IMovementConfirmationLineStateCreated : IMovementConfirmationLineStateEvent
 	{
 	
 	}
 
 
-	public interface IMovementConfirmationLineStateMergePatched : IMovementConfirmationLineEvent//, IMovementConfirmationLineStateProperties
+	public interface IMovementConfirmationLineStateMergePatched : IMovementConfirmationLineStateEvent
 	{
 		bool IsPropertyMovementLineNumberRemoved { get; set; }
 
@@ -67,7 +71,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 	}
 
-	public interface IMovementConfirmationLineStateRemoved : IMovementConfirmationLineEvent
+	public interface IMovementConfirmationLineStateRemoved : IMovementConfirmationLineStateEvent
 	{
 	}
 

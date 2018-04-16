@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IAttributeValueMvoStateEvent : IAttributeValueMvoEvent
+    {
 		string AttributeValueName { get; set; }
 
 		string Description { get; set; }
@@ -58,15 +62,15 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		bool? AttributeDeleted { get; set; }
 
-	}
-
-	public interface IAttributeValueMvoStateCreated : IAttributeValueMvoEvent//, IAttributeValueMvoStateProperties
+    }
+   
+	public interface IAttributeValueMvoStateCreated : IAttributeValueMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IAttributeValueMvoStateMergePatched : IAttributeValueMvoEvent//, IAttributeValueMvoStateProperties
+	public interface IAttributeValueMvoStateMergePatched : IAttributeValueMvoStateEvent
 	{
 		bool IsPropertyAttributeValueNameRemoved { get; set; }
 
@@ -111,7 +115,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 	}
 
-	public interface IAttributeValueMvoStateDeleted : IAttributeValueMvoEvent
+	public interface IAttributeValueMvoStateDeleted : IAttributeValueMvoStateEvent
 	{
 	}
 

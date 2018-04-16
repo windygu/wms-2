@@ -246,13 +246,13 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderRoleEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderRoleEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderRole|");
 
             var stateEntityIdOrderId = (this as IGlobalIdentity<OrderRoleId>).GlobalId.OrderId;
-            var eventEntityIdOrderId = stateEvent.OrderRoleEventId.OrderId;
+            var eventEntityIdOrderId = e.OrderRoleEventId.OrderId;
             if (stateEntityIdOrderId != eventEntityIdOrderId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderId {0} in state but entity id OrderId {1} in event", stateEntityIdOrderId, eventEntityIdOrderId);
@@ -260,7 +260,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append(stateEntityIdOrderId).Append(",");
 
             var stateEntityIdPartyRoleId = (this as IGlobalIdentity<OrderRoleId>).GlobalId.PartyRoleId;
-            var eventEntityIdPartyRoleId = stateEvent.OrderRoleEventId.PartyRoleId;
+            var eventEntityIdPartyRoleId = e.OrderRoleEventId.PartyRoleId;
             if (stateEntityIdPartyRoleId != eventEntityIdPartyRoleId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PartyRoleId {0} in state but entity id PartyRoleId {1} in event", stateEntityIdPartyRoleId, eventEntityIdPartyRoleId);
@@ -271,15 +271,18 @@ namespace Dddml.Wms.Domain.Order
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (OrderRoleState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IOrderRoleStateEvent ? (IOrderRoleStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (OrderRoleState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

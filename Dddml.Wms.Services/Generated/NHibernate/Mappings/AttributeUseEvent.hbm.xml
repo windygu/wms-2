@@ -12,13 +12,16 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
-    <property name="SequenceNumber" ></property>
-    <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+
+        <subclass name="AttributeUseStateEventBase" abstract="true">
+
+    <property name="SequenceNumber" ></property>
+    <property name="Active" ></property>
     <property name="Version" column="Version" not-null="true" />
 
     <subclass name="AttributeUseStateCreated" discriminator-value="Created">
@@ -38,6 +41,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

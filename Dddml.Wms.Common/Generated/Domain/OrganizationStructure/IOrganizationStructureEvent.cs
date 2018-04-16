@@ -17,24 +17,28 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         bool ReadOnly { get; set; }
 
-		bool? Active { get; set; }
-
 	}
 
-	public interface IOrganizationStructureStateCreated : IOrganizationStructureEvent//, IOrganizationStructureStateProperties
+    public interface IOrganizationStructureStateEvent : IOrganizationStructureEvent
+    {
+		bool? Active { get; set; }
+
+    }
+   
+	public interface IOrganizationStructureStateCreated : IOrganizationStructureStateEvent
 	{
 	
 	}
 
 
-	public interface IOrganizationStructureStateMergePatched : IOrganizationStructureEvent//, IOrganizationStructureStateProperties
+	public interface IOrganizationStructureStateMergePatched : IOrganizationStructureStateEvent
 	{
 		bool IsPropertyActiveRemoved { get; set; }
 
 
 	}
 
-	public interface IOrganizationStructureStateDeleted : IOrganizationStructureEvent
+	public interface IOrganizationStructureStateDeleted : IOrganizationStructureStateEvent
 	{
 	}
 

@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.DocumentType
             set { DocumentTypeEventId.DocumentTypeId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual string ParentDocumentTypeId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +90,26 @@ namespace Dddml.Wms.Domain.DocumentType
 
 	}
 
-	public class DocumentTypeStateCreated : DocumentTypeEventBase, IDocumentTypeStateCreated
+    public abstract class DocumentTypeStateEventBase : DocumentTypeEventBase, IDocumentTypeStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual string ParentDocumentTypeId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected DocumentTypeStateEventBase() : base()
+        {
+        }
+
+        protected DocumentTypeStateEventBase(DocumentTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class DocumentTypeStateCreated : DocumentTypeStateEventBase, IDocumentTypeStateCreated
 	{
 		public DocumentTypeStateCreated () : this(new DocumentTypeEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.DocumentType
 	}
 
 
-	public class DocumentTypeStateMergePatched : DocumentTypeEventBase, IDocumentTypeStateMergePatched
+	public class DocumentTypeStateMergePatched : DocumentTypeStateEventBase, IDocumentTypeStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -141,7 +154,7 @@ namespace Dddml.Wms.Domain.DocumentType
 	}
 
 
-	public class DocumentTypeStateDeleted : DocumentTypeEventBase, IDocumentTypeStateDeleted
+	public class DocumentTypeStateDeleted : DocumentTypeStateEventBase, IDocumentTypeStateDeleted
 	{
 		public DocumentTypeStateDeleted ()
 		{

@@ -296,13 +296,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryPostingRuleEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryPostingRuleEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryPostingRule|");
 
             var stateEntityId = this.InventoryPostingRuleId; // Aggregate Id
-            var eventEntityId = stateEvent.InventoryPostingRuleEventId.InventoryPostingRuleId;
+            var eventEntityId = e.InventoryPostingRuleEventId.InventoryPostingRuleId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -312,7 +312,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.InventoryPostingRuleEventId.Version;
+            var eventVersion = e.InventoryPostingRuleEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

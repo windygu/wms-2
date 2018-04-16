@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.PartyRole
             set { PartyRoleEventId.PartyRoleId = value; }
         }
 
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -92,7 +90,22 @@ namespace Dddml.Wms.Domain.PartyRole
 
 	}
 
-	public class PartyRoleStateCreated : PartyRoleEventBase, IPartyRoleStateCreated
+    public abstract class PartyRoleStateEventBase : PartyRoleEventBase, IPartyRoleStateEvent
+    {
+
+		public virtual bool? Active { get; set; }
+
+        protected PartyRoleStateEventBase() : base()
+        {
+        }
+
+        protected PartyRoleStateEventBase(PartyRoleEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PartyRoleStateCreated : PartyRoleStateEventBase, IPartyRoleStateCreated
 	{
 		public PartyRoleStateCreated () : this(new PartyRoleEventId())
 		{
@@ -111,7 +124,7 @@ namespace Dddml.Wms.Domain.PartyRole
 	}
 
 
-	public class PartyRoleStateMergePatched : PartyRoleEventBase, IPartyRoleStateMergePatched
+	public class PartyRoleStateMergePatched : PartyRoleStateEventBase, IPartyRoleStateMergePatched
 	{
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -133,7 +146,7 @@ namespace Dddml.Wms.Domain.PartyRole
 	}
 
 
-	public class PartyRoleStateDeleted : PartyRoleEventBase, IPartyRoleStateDeleted
+	public class PartyRoleStateDeleted : PartyRoleStateEventBase, IPartyRoleStateDeleted
 	{
 		public PartyRoleStateDeleted ()
 		{

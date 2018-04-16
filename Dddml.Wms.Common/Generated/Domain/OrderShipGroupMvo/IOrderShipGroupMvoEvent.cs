@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IOrderShipGroupMvoStateEvent : IOrderShipGroupMvoEvent
+    {
 		string ShipmentMethodTypeId { get; set; }
 
 		string SupplierPartyId { get; set; }
@@ -116,15 +120,15 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 
 		bool? OrderActive { get; set; }
 
-	}
-
-	public interface IOrderShipGroupMvoStateCreated : IOrderShipGroupMvoEvent//, IOrderShipGroupMvoStateProperties
+    }
+   
+	public interface IOrderShipGroupMvoStateCreated : IOrderShipGroupMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderShipGroupMvoStateMergePatched : IOrderShipGroupMvoEvent//, IOrderShipGroupMvoStateProperties
+	public interface IOrderShipGroupMvoStateMergePatched : IOrderShipGroupMvoStateEvent
 	{
 		bool IsPropertyShipmentMethodTypeIdRemoved { get; set; }
 
@@ -227,7 +231,7 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 
 	}
 
-	public interface IOrderShipGroupMvoStateDeleted : IOrderShipGroupMvoEvent
+	public interface IOrderShipGroupMvoStateDeleted : IOrderShipGroupMvoStateEvent
 	{
 	}
 

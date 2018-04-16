@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IShipmentReceiptMvoStateEvent : IShipmentReceiptMvoEvent
+    {
 		string ProductId { get; set; }
 
 		string AttributeSetInstanceId { get; set; }
@@ -118,15 +122,15 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		bool? ShipmentActive { get; set; }
 
-	}
-
-	public interface IShipmentReceiptMvoStateCreated : IShipmentReceiptMvoEvent//, IShipmentReceiptMvoStateProperties
+    }
+   
+	public interface IShipmentReceiptMvoStateCreated : IShipmentReceiptMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IShipmentReceiptMvoStateMergePatched : IShipmentReceiptMvoEvent//, IShipmentReceiptMvoStateProperties
+	public interface IShipmentReceiptMvoStateMergePatched : IShipmentReceiptMvoStateEvent
 	{
 		bool IsPropertyProductIdRemoved { get; set; }
 

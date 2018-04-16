@@ -478,13 +478,13 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserPermissionMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserPermissionMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserPermissionMvo|");
 
             var stateEntityId = this.UserPermissionId; // Aggregate Id
-            var eventEntityId = stateEvent.UserPermissionMvoEventId.UserPermissionId;
+            var eventEntityId = e.UserPermissionMvoEventId.UserPermissionId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -494,7 +494,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
             id.Append("]");
 
             var stateVersion = this.UserVersion;
-            var eventVersion = stateEvent.UserPermissionMvoEventId.UserVersion;
+            var eventVersion = e.UserPermissionMvoEventId.UserVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

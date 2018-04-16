@@ -18,14 +18,6 @@ namespace Dddml.Wms.Domain.Order
 
         bool ReadOnly { get; set; }
 
-		long Version { get; set; }
-
-		decimal? Quantity { get; set; }
-
-		decimal? CancelQuantity { get; set; }
-
-		bool? Active { get; set; }
-
 		// Outer Id:
 		//string OrderId { get; set; }
 
@@ -34,13 +26,25 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public interface IOrderItemShipGroupAssociationStateCreated : IOrderItemShipGroupAssociationEvent//, IOrderItemShipGroupAssociationStateProperties
+    public interface IOrderItemShipGroupAssociationStateEvent : IOrderItemShipGroupAssociationEvent
+    {
+		long Version { get; set; }
+
+		decimal? Quantity { get; set; }
+
+		decimal? CancelQuantity { get; set; }
+
+		bool? Active { get; set; }
+
+    }
+   
+	public interface IOrderItemShipGroupAssociationStateCreated : IOrderItemShipGroupAssociationStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderItemShipGroupAssociationStateMergePatched : IOrderItemShipGroupAssociationEvent//, IOrderItemShipGroupAssociationStateProperties
+	public interface IOrderItemShipGroupAssociationStateMergePatched : IOrderItemShipGroupAssociationStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 
@@ -51,7 +55,7 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public interface IOrderItemShipGroupAssociationStateRemoved : IOrderItemShipGroupAssociationEvent
+	public interface IOrderItemShipGroupAssociationStateRemoved : IOrderItemShipGroupAssociationStateEvent
 	{
 	}
 

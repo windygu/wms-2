@@ -328,13 +328,13 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeSetInstanceEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeSetInstanceEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeSetInstance|");
 
             var stateEntityId = this.AttributeSetInstanceId; // Aggregate Id
-            var eventEntityId = stateEvent.AttributeSetInstanceEventId.AttributeSetInstanceId;
+            var eventEntityId = e.AttributeSetInstanceEventId.AttributeSetInstanceId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -344,7 +344,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.AttributeSetInstanceEventId.Version;
+            var eventVersion = e.AttributeSetInstanceEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

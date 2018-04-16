@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.UomType
             set { UomTypeEventId.UomTypeId = value; }
         }
 
-		public virtual string ParentTypeId { get; set; }
-
-		public virtual string HasTable { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +90,28 @@ namespace Dddml.Wms.Domain.UomType
 
 	}
 
-	public class UomTypeStateCreated : UomTypeEventBase, IUomTypeStateCreated
+    public abstract class UomTypeStateEventBase : UomTypeEventBase, IUomTypeStateEvent
+    {
+
+		public virtual string ParentTypeId { get; set; }
+
+		public virtual string HasTable { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected UomTypeStateEventBase() : base()
+        {
+        }
+
+        protected UomTypeStateEventBase(UomTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UomTypeStateCreated : UomTypeStateEventBase, IUomTypeStateCreated
 	{
 		public UomTypeStateCreated () : this(new UomTypeEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.UomType
 	}
 
 
-	public class UomTypeStateMergePatched : UomTypeEventBase, IUomTypeStateMergePatched
+	public class UomTypeStateMergePatched : UomTypeStateEventBase, IUomTypeStateMergePatched
 	{
 		public virtual bool IsPropertyParentTypeIdRemoved { get; set; }
 
@@ -145,7 +158,7 @@ namespace Dddml.Wms.Domain.UomType
 	}
 
 
-	public class UomTypeStateDeleted : UomTypeEventBase, IUomTypeStateDeleted
+	public class UomTypeStateDeleted : UomTypeStateEventBase, IUomTypeStateDeleted
 	{
 		public UomTypeStateDeleted ()
 		{

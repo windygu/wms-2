@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Warehouse
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IWarehouseStateEvent : IWarehouseEvent
+    {
 		string WarehouseName { get; set; }
 
 		string Description { get; set; }
@@ -25,15 +29,15 @@ namespace Dddml.Wms.Domain.Warehouse
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IWarehouseStateCreated : IWarehouseEvent//, IWarehouseStateProperties
+    }
+   
+	public interface IWarehouseStateCreated : IWarehouseStateEvent
 	{
 	
 	}
 
 
-	public interface IWarehouseStateMergePatched : IWarehouseEvent//, IWarehouseStateProperties
+	public interface IWarehouseStateMergePatched : IWarehouseStateEvent
 	{
 		bool IsPropertyWarehouseNameRemoved { get; set; }
 
@@ -46,7 +50,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
 	}
 
-	public interface IWarehouseStateDeleted : IWarehouseEvent
+	public interface IWarehouseStateDeleted : IWarehouseStateEvent
 	{
 	}
 

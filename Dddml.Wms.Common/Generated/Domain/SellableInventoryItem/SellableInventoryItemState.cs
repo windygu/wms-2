@@ -236,13 +236,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ISellableInventoryItemEvent stateEvent)
+        protected void ThrowOnWrongEvent(ISellableInventoryItemEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("SellableInventoryItem|");
 
             var stateEntityId = this.SellableInventoryItemId; // Aggregate Id
-            var eventEntityId = stateEvent.SellableInventoryItemEventId.SellableInventoryItemId;
+            var eventEntityId = e.SellableInventoryItemEventId.SellableInventoryItemId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -252,7 +252,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.SellableInventoryItemEventId.Version;
+            var eventVersion = e.SellableInventoryItemEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IOrderItemMvoStateEvent : IOrderItemMvoEvent
+    {
 		string ProductId { get; set; }
 
 		string ExternalProductId { get; set; }
@@ -150,15 +154,15 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		bool? OrderActive { get; set; }
 
-	}
-
-	public interface IOrderItemMvoStateCreated : IOrderItemMvoEvent//, IOrderItemMvoStateProperties
+    }
+   
+	public interface IOrderItemMvoStateCreated : IOrderItemMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderItemMvoStateMergePatched : IOrderItemMvoEvent//, IOrderItemMvoStateProperties
+	public interface IOrderItemMvoStateMergePatched : IOrderItemMvoStateEvent
 	{
 		bool IsPropertyProductIdRemoved { get; set; }
 

@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.Order
             set { OrderRoleEventId.PartyRoleId = value; }
         }
 
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -95,7 +93,22 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public class OrderRoleStateCreated : OrderRoleEventBase, IOrderRoleStateCreated
+    public abstract class OrderRoleStateEventBase : OrderRoleEventBase, IOrderRoleStateEvent
+    {
+
+		public virtual bool? Active { get; set; }
+
+        protected OrderRoleStateEventBase() : base()
+        {
+        }
+
+        protected OrderRoleStateEventBase(OrderRoleEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrderRoleStateCreated : OrderRoleStateEventBase, IOrderRoleStateCreated
 	{
 		public OrderRoleStateCreated () : this(new OrderRoleEventId())
 		{
@@ -114,7 +127,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderRoleStateMergePatched : OrderRoleEventBase, IOrderRoleStateMergePatched
+	public class OrderRoleStateMergePatched : OrderRoleStateEventBase, IOrderRoleStateMergePatched
 	{
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -136,7 +149,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderRoleStateRemoved : OrderRoleEventBase, IOrderRoleStateRemoved
+	public class OrderRoleStateRemoved : OrderRoleStateEventBase, IOrderRoleStateRemoved
 	{
 		public OrderRoleStateRemoved ()
 		{

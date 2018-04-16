@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUserClaimMvoStateEvent : IUserClaimMvoEvent
+    {
 		string ClaimType { get; set; }
 
 		string ClaimValue { get; set; }
@@ -60,15 +64,15 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 		bool? UserDeleted { get; set; }
 
-	}
-
-	public interface IUserClaimMvoStateCreated : IUserClaimMvoEvent//, IUserClaimMvoStateProperties
+    }
+   
+	public interface IUserClaimMvoStateCreated : IUserClaimMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IUserClaimMvoStateMergePatched : IUserClaimMvoEvent//, IUserClaimMvoStateProperties
+	public interface IUserClaimMvoStateMergePatched : IUserClaimMvoStateEvent
 	{
 		bool IsPropertyClaimTypeRemoved { get; set; }
 
@@ -115,7 +119,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 	}
 
-	public interface IUserClaimMvoStateDeleted : IUserClaimMvoEvent
+	public interface IUserClaimMvoStateDeleted : IUserClaimMvoStateEvent
 	{
 	}
 

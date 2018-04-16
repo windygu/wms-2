@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="LocatorStateEventBase" abstract="true">
+
     <property name="WarehouseId" ></property>
     <property name="ParentLocatorId" ></property>
     <property name="LocatorType" ></property>
@@ -22,11 +30,6 @@
     <property name="Description" ></property>
     <property name="LocatorTypeId" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="LocatorStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -62,6 +65,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

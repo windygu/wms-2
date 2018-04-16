@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.Pickwave
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPickwaveStateEvent : IPickwaveEvent
+    {
 		string StatusId { get; set; }
 
 		string Description { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IPickwaveStateCreated : IPickwaveEvent//, IPickwaveStateProperties
+    }
+   
+	public interface IPickwaveStateCreated : IPickwaveStateEvent
 	{
 	
 	}
 
 
-	public interface IPickwaveStateMergePatched : IPickwaveEvent//, IPickwaveStateProperties
+	public interface IPickwaveStateMergePatched : IPickwaveStateEvent
 	{
 		bool IsPropertyStatusIdRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.Pickwave
 
 	}
 
-	public interface IPickwaveStateDeleted : IPickwaveEvent
+	public interface IPickwaveStateDeleted : IPickwaveStateEvent
 	{
 	}
 

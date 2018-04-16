@@ -19,6 +19,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface ISellableInventoryItemEntryMvoStateEvent : ISellableInventoryItemEntryMvoEvent
+    {
 		decimal? SellableQuantity { get; set; }
 
 		InventoryPRTriggeredId SourceEventId { get; set; }
@@ -35,15 +39,15 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 		DateTime? SellableInventoryItemUpdatedAt { get; set; }
 
-	}
-
-	public interface ISellableInventoryItemEntryMvoStateCreated : ISellableInventoryItemEntryMvoEvent//, ISellableInventoryItemEntryMvoStateProperties
+    }
+   
+	public interface ISellableInventoryItemEntryMvoStateCreated : ISellableInventoryItemEntryMvoStateEvent
 	{
 	
 	}
 
 
-	public interface ISellableInventoryItemEntryMvoStateMergePatched : ISellableInventoryItemEntryMvoEvent//, ISellableInventoryItemEntryMvoStateProperties
+	public interface ISellableInventoryItemEntryMvoStateMergePatched : ISellableInventoryItemEntryMvoStateEvent
 	{
 		bool IsPropertySellableQuantityRemoved { get; set; }
 

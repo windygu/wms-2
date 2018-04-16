@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="InventoryPostingRuleStateEventBase" abstract="true">
+
     <component name="TriggerInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
         <property name="ProductId" ><column name="TriggerProductId" length="60" sql-type="VARCHAR(60)" /></property>
         <property name="LocatorId" ><column name="TriggerLocatorId" length="50" /></property>
@@ -25,11 +33,6 @@
     <property name="OutputAccountName" ></property>
     <property name="IsOutputNegated" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="InventoryPostingRuleStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -55,6 +58,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

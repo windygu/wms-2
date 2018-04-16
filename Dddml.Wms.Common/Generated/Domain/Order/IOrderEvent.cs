@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.Order
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IOrderStateEvent : IOrderEvent
+    {
 		string OrderTypeId { get; set; }
 
 		string OrderName { get; set; }
@@ -68,9 +72,9 @@ namespace Dddml.Wms.Domain.Order
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IOrderStateCreated : IOrderEvent//, IOrderStateProperties
+    }
+   
+	public interface IOrderStateCreated : IOrderStateEvent
 	{
 		IEnumerable<IOrderRoleStateCreated> OrderRoleEvents { get; }
 		
@@ -94,7 +98,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public interface IOrderStateMergePatched : IOrderEvent//, IOrderStateProperties
+	public interface IOrderStateMergePatched : IOrderStateEvent
 	{
 		bool IsPropertyOrderTypeIdRemoved { get; set; }
 

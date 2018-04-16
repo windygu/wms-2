@@ -11,15 +11,18 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
-    <property name="Name" ></property>
-    <property name="ParentPermissionId" ></property>
-    <property name="Description" ></property>
-    <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+
+        <subclass name="PermissionStateEventBase" abstract="true">
+
+    <property name="Name" ></property>
+    <property name="ParentPermissionId" ></property>
+    <property name="Description" ></property>
+    <property name="Active" ></property>
     <subclass name="PermissionStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -41,6 +44,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

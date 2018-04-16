@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.Attribute
             set { AttributeValueEventId.Value = value; }
         }
 
-		public virtual string AttributeValueName { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string ReferenceId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -100,7 +92,28 @@ namespace Dddml.Wms.Domain.Attribute
 
 	}
 
-	public class AttributeValueStateCreated : AttributeValueEventBase, IAttributeValueStateCreated
+    public abstract class AttributeValueStateEventBase : AttributeValueEventBase, IAttributeValueStateEvent
+    {
+
+		public virtual string AttributeValueName { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string ReferenceId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected AttributeValueStateEventBase() : base()
+        {
+        }
+
+        protected AttributeValueStateEventBase(AttributeValueEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AttributeValueStateCreated : AttributeValueStateEventBase, IAttributeValueStateCreated
 	{
 		public AttributeValueStateCreated () : this(new AttributeValueEventId())
 		{
@@ -119,7 +132,7 @@ namespace Dddml.Wms.Domain.Attribute
 	}
 
 
-	public class AttributeValueStateMergePatched : AttributeValueEventBase, IAttributeValueStateMergePatched
+	public class AttributeValueStateMergePatched : AttributeValueStateEventBase, IAttributeValueStateMergePatched
 	{
 		public virtual bool IsPropertyAttributeValueNameRemoved { get; set; }
 
@@ -147,7 +160,7 @@ namespace Dddml.Wms.Domain.Attribute
 	}
 
 
-	public class AttributeValueStateRemoved : AttributeValueEventBase, IAttributeValueStateRemoved
+	public class AttributeValueStateRemoved : AttributeValueStateEventBase, IAttributeValueStateRemoved
 	{
 		public AttributeValueStateRemoved ()
 		{

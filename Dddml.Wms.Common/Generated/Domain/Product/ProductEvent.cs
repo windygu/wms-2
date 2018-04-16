@@ -23,6 +23,76 @@ namespace Dddml.Wms.Domain.Product
             set { ProductEventId.ProductId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		ProductEventId IGlobalIdentity<ProductEventId>.GlobalId {
+			get
+			{
+				return this.ProductEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IProductEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected ProductEventBase()
+        {
+        }
+
+        protected ProductEventBase(ProductEventId stateEventId)
+        {
+            this.ProductEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class ProductStateEventBase : ProductEventBase, IProductStateEvent
+    {
+
 		public virtual string ProductTypeId { get; set; }
 
 		public virtual string PrimaryProductCategoryId { get; set; }
@@ -145,74 +215,17 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		ProductEventId IGlobalIdentity<ProductEventId>.GlobalId {
-			get
-			{
-				return this.ProductEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IProductEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected ProductEventBase()
+        protected ProductStateEventBase() : base()
         {
         }
 
-        protected ProductEventBase(ProductEventId stateEventId)
+        protected ProductStateEventBase(ProductEventId stateEventId) : base(stateEventId)
         {
-            this.ProductEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class ProductStateCreated : ProductEventBase, IProductStateCreated
+	public class ProductStateCreated : ProductStateEventBase, IProductStateCreated
 	{
 		public ProductStateCreated () : this(new ProductEventId())
 		{
@@ -231,7 +244,7 @@ namespace Dddml.Wms.Domain.Product
 	}
 
 
-	public class ProductStateMergePatched : ProductEventBase, IProductStateMergePatched
+	public class ProductStateMergePatched : ProductStateEventBase, IProductStateMergePatched
 	{
 		public virtual bool IsPropertyProductTypeIdRemoved { get; set; }
 

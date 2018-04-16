@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.ContactMech
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IContactMechStateEvent : IContactMechEvent
+    {
 		string ContactMechTypeId { get; set; }
 
 		string InfoString { get; set; }
@@ -57,15 +61,15 @@ namespace Dddml.Wms.Domain.ContactMech
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IContactMechStateCreated : IContactMechEvent//, IContactMechStateProperties
+    }
+   
+	public interface IContactMechStateCreated : IContactMechStateEvent
 	{
 	
 	}
 
 
-	public interface IContactMechStateMergePatched : IContactMechEvent//, IContactMechStateProperties
+	public interface IContactMechStateMergePatched : IContactMechStateEvent
 	{
 		bool IsPropertyContactMechTypeIdRemoved { get; set; }
 
@@ -110,7 +114,7 @@ namespace Dddml.Wms.Domain.ContactMech
 
 	}
 
-	public interface IContactMechStateDeleted : IContactMechEvent
+	public interface IContactMechStateDeleted : IContactMechStateEvent
 	{
 	}
 

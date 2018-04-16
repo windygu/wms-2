@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="PartyStateEventBase" abstract="true">
+
     <property name="PartyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="PrimaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="OrganizationName" ></property>
@@ -18,11 +26,6 @@
     <property name="Type" ></property>
     <property name="IsSummary" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="PartyStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -50,6 +53,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

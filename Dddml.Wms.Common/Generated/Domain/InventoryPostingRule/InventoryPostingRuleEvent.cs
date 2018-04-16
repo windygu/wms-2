@@ -24,18 +24,6 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set { InventoryPostingRuleEventId.InventoryPostingRuleId = value; }
         }
 
-		public virtual InventoryItemId TriggerInventoryItemId { get; set; }
-
-		public virtual InventoryItemId OutputInventoryItemId { get; set; }
-
-		public virtual string TriggerAccountName { get; set; }
-
-		public virtual string OutputAccountName { get; set; }
-
-		public virtual bool? IsOutputNegated { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -103,7 +91,32 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 	}
 
-	public class InventoryPostingRuleStateCreated : InventoryPostingRuleEventBase, IInventoryPostingRuleStateCreated
+    public abstract class InventoryPostingRuleStateEventBase : InventoryPostingRuleEventBase, IInventoryPostingRuleStateEvent
+    {
+
+		public virtual InventoryItemId TriggerInventoryItemId { get; set; }
+
+		public virtual InventoryItemId OutputInventoryItemId { get; set; }
+
+		public virtual string TriggerAccountName { get; set; }
+
+		public virtual string OutputAccountName { get; set; }
+
+		public virtual bool? IsOutputNegated { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected InventoryPostingRuleStateEventBase() : base()
+        {
+        }
+
+        protected InventoryPostingRuleStateEventBase(InventoryPostingRuleEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InventoryPostingRuleStateCreated : InventoryPostingRuleStateEventBase, IInventoryPostingRuleStateCreated
 	{
 		public InventoryPostingRuleStateCreated () : this(new InventoryPostingRuleEventId())
 		{
@@ -122,7 +135,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	}
 
 
-	public class InventoryPostingRuleStateMergePatched : InventoryPostingRuleEventBase, IInventoryPostingRuleStateMergePatched
+	public class InventoryPostingRuleStateMergePatched : InventoryPostingRuleStateEventBase, IInventoryPostingRuleStateMergePatched
 	{
 		public virtual bool IsPropertyTriggerInventoryItemIdRemoved { get; set; }
 
@@ -154,7 +167,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	}
 
 
-	public class InventoryPostingRuleStateDeleted : InventoryPostingRuleEventBase, IInventoryPostingRuleStateDeleted
+	public class InventoryPostingRuleStateDeleted : InventoryPostingRuleStateEventBase, IInventoryPostingRuleStateDeleted
 	{
 		public InventoryPostingRuleStateDeleted ()
 		{

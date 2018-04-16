@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPicklistRoleMvoStateEvent : IPicklistRoleMvoEvent
+    {
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
@@ -46,15 +50,15 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		bool? PicklistDeleted { get; set; }
 
-	}
-
-	public interface IPicklistRoleMvoStateCreated : IPicklistRoleMvoEvent//, IPicklistRoleMvoStateProperties
+    }
+   
+	public interface IPicklistRoleMvoStateCreated : IPicklistRoleMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IPicklistRoleMvoStateMergePatched : IPicklistRoleMvoEvent//, IPicklistRoleMvoStateProperties
+	public interface IPicklistRoleMvoStateMergePatched : IPicklistRoleMvoStateEvent
 	{
 		bool IsPropertyVersionRemoved { get; set; }
 
@@ -87,7 +91,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 	}
 
-	public interface IPicklistRoleMvoStateDeleted : IPicklistRoleMvoEvent
+	public interface IPicklistRoleMvoStateDeleted : IPicklistRoleMvoStateEvent
 	{
 	}
 

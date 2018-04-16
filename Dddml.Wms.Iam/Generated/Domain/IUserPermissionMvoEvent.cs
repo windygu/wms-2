@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUserPermissionMvoStateEvent : IUserPermissionMvoEvent
+    {
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
@@ -56,15 +60,15 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 		bool? UserDeleted { get; set; }
 
-	}
-
-	public interface IUserPermissionMvoStateCreated : IUserPermissionMvoEvent//, IUserPermissionMvoStateProperties
+    }
+   
+	public interface IUserPermissionMvoStateCreated : IUserPermissionMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IUserPermissionMvoStateMergePatched : IUserPermissionMvoEvent//, IUserPermissionMvoStateProperties
+	public interface IUserPermissionMvoStateMergePatched : IUserPermissionMvoStateEvent
 	{
 		bool IsPropertyVersionRemoved { get; set; }
 
@@ -107,7 +111,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 	}
 
-	public interface IUserPermissionMvoStateDeleted : IUserPermissionMvoEvent
+	public interface IUserPermissionMvoStateDeleted : IUserPermissionMvoStateEvent
 	{
 	}
 

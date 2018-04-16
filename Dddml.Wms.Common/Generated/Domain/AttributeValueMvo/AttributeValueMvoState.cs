@@ -492,13 +492,13 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeValueMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeValueMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeValueMvo|");
 
             var stateEntityId = this.AttributeValueId; // Aggregate Id
-            var eventEntityId = stateEvent.AttributeValueMvoEventId.AttributeValueId;
+            var eventEntityId = e.AttributeValueMvoEventId.AttributeValueId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -508,7 +508,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             id.Append("]");
 
             var stateVersion = this.AttributeVersion;
-            var eventVersion = stateEvent.AttributeValueMvoEventId.AttributeVersion;
+            var eventVersion = e.AttributeValueMvoEventId.AttributeVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

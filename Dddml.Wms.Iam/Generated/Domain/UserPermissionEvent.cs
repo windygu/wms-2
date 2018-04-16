@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.User
             set { UserPermissionEventId.PermissionId = value; }
         }
 
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -94,7 +92,22 @@ namespace Dddml.Wms.Domain.User
 
 	}
 
-	public class UserPermissionStateCreated : UserPermissionEventBase, IUserPermissionStateCreated
+    public abstract class UserPermissionStateEventBase : UserPermissionEventBase, IUserPermissionStateEvent
+    {
+
+		public virtual bool? Active { get; set; }
+
+        protected UserPermissionStateEventBase() : base()
+        {
+        }
+
+        protected UserPermissionStateEventBase(UserPermissionEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UserPermissionStateCreated : UserPermissionStateEventBase, IUserPermissionStateCreated
 	{
 		public UserPermissionStateCreated () : this(new UserPermissionEventId())
 		{
@@ -113,7 +126,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserPermissionStateMergePatched : UserPermissionEventBase, IUserPermissionStateMergePatched
+	public class UserPermissionStateMergePatched : UserPermissionStateEventBase, IUserPermissionStateMergePatched
 	{
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -135,7 +148,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserPermissionStateRemoved : UserPermissionEventBase, IUserPermissionStateRemoved
+	public class UserPermissionStateRemoved : UserPermissionStateEventBase, IUserPermissionStateRemoved
 	{
 		public UserPermissionStateRemoved ()
 		{

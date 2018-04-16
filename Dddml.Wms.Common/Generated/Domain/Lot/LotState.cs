@@ -253,13 +253,13 @@ namespace Dddml.Wms.Domain.Lot
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ILotEvent stateEvent)
+        protected void ThrowOnWrongEvent(ILotEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Lot|");
 
             var stateEntityId = this.LotId; // Aggregate Id
-            var eventEntityId = stateEvent.LotEventId.LotId;
+            var eventEntityId = e.LotEventId.LotId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.Lot
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.LotEventId.Version;
+            var eventVersion = e.LotEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

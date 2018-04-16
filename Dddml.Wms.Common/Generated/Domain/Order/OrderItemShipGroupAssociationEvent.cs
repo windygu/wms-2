@@ -24,12 +24,6 @@ namespace Dddml.Wms.Domain.Order
             set { OrderItemShipGroupAssociationEventId.OrderItemSeqId = value; }
         }
 
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual decimal? CancelQuantity { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -99,7 +93,26 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public class OrderItemShipGroupAssociationStateCreated : OrderItemShipGroupAssociationEventBase, IOrderItemShipGroupAssociationStateCreated
+    public abstract class OrderItemShipGroupAssociationStateEventBase : OrderItemShipGroupAssociationEventBase, IOrderItemShipGroupAssociationStateEvent
+    {
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual decimal? CancelQuantity { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected OrderItemShipGroupAssociationStateEventBase() : base()
+        {
+        }
+
+        protected OrderItemShipGroupAssociationStateEventBase(OrderItemShipGroupAssociationEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrderItemShipGroupAssociationStateCreated : OrderItemShipGroupAssociationStateEventBase, IOrderItemShipGroupAssociationStateCreated
 	{
 		public OrderItemShipGroupAssociationStateCreated () : this(new OrderItemShipGroupAssociationEventId())
 		{
@@ -118,7 +131,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderItemShipGroupAssociationStateMergePatched : OrderItemShipGroupAssociationEventBase, IOrderItemShipGroupAssociationStateMergePatched
+	public class OrderItemShipGroupAssociationStateMergePatched : OrderItemShipGroupAssociationStateEventBase, IOrderItemShipGroupAssociationStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
@@ -144,7 +157,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderItemShipGroupAssociationStateRemoved : OrderItemShipGroupAssociationEventBase, IOrderItemShipGroupAssociationStateRemoved
+	public class OrderItemShipGroupAssociationStateRemoved : OrderItemShipGroupAssociationStateEventBase, IOrderItemShipGroupAssociationStateRemoved
 	{
 		public OrderItemShipGroupAssociationStateRemoved ()
 		{

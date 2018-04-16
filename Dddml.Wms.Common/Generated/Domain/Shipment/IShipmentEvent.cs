@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Shipment
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IShipmentStateEvent : IShipmentEvent
+    {
 		string ShipmentTypeId { get; set; }
 
 		string StatusId { get; set; }
@@ -69,9 +73,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IShipmentStateCreated : IShipmentEvent//, IShipmentStateProperties
+    }
+   
+	public interface IShipmentStateCreated : IShipmentStateEvent
 	{
 		IEnumerable<IShipmentItemStateCreated> ShipmentItemEvents { get; }
 		
@@ -95,7 +99,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public interface IShipmentStateMergePatched : IShipmentEvent//, IShipmentStateProperties
+	public interface IShipmentStateMergePatched : IShipmentStateEvent
 	{
 		bool IsPropertyShipmentTypeIdRemoved { get; set; }
 

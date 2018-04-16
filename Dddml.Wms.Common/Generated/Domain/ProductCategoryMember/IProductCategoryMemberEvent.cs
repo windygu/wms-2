@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IProductCategoryMemberStateEvent : IProductCategoryMemberEvent
+    {
 		DateTime? ThruDate { get; set; }
 
 		string Comments { get; set; }
@@ -27,15 +31,15 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IProductCategoryMemberStateCreated : IProductCategoryMemberEvent//, IProductCategoryMemberStateProperties
+    }
+   
+	public interface IProductCategoryMemberStateCreated : IProductCategoryMemberStateEvent
 	{
 	
 	}
 
 
-	public interface IProductCategoryMemberStateMergePatched : IProductCategoryMemberEvent//, IProductCategoryMemberStateProperties
+	public interface IProductCategoryMemberStateMergePatched : IProductCategoryMemberStateEvent
 	{
 		bool IsPropertyThruDateRemoved { get; set; }
 

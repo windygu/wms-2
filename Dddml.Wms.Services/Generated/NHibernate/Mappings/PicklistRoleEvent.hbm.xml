@@ -13,12 +13,15 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
-    <property name="Active" ></property>
 
     <property name="CreatedByUserLogin" column="CreatedByUserLogin"/>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+
+        <subclass name="PicklistRoleStateEventBase" abstract="true">
+
+    <property name="Active" ></property>
     <property name="Version" column="Version" not-null="true" />
 
     <subclass name="PicklistRoleStateCreated" discriminator-value="Created">
@@ -36,6 +39,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

@@ -556,13 +556,13 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderShipGroupEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderShipGroupEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderShipGroup|");
 
             var stateEntityIdOrderId = (this as IGlobalIdentity<OrderShipGroupId>).GlobalId.OrderId;
-            var eventEntityIdOrderId = stateEvent.OrderShipGroupEventId.OrderId;
+            var eventEntityIdOrderId = e.OrderShipGroupEventId.OrderId;
             if (stateEntityIdOrderId != eventEntityIdOrderId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderId {0} in state but entity id OrderId {1} in event", stateEntityIdOrderId, eventEntityIdOrderId);
@@ -570,7 +570,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append(stateEntityIdOrderId).Append(",");
 
             var stateEntityIdShipGroupSeqId = (this as IGlobalIdentity<OrderShipGroupId>).GlobalId.ShipGroupSeqId;
-            var eventEntityIdShipGroupSeqId = stateEvent.OrderShipGroupEventId.ShipGroupSeqId;
+            var eventEntityIdShipGroupSeqId = e.OrderShipGroupEventId.ShipGroupSeqId;
             if (stateEntityIdShipGroupSeqId != eventEntityIdShipGroupSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ShipGroupSeqId {0} in state but entity id ShipGroupSeqId {1} in event", stateEntityIdShipGroupSeqId, eventEntityIdShipGroupSeqId);
@@ -581,15 +581,18 @@ namespace Dddml.Wms.Domain.Order
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (OrderShipGroupState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IOrderShipGroupStateEvent ? (IOrderShipGroupStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (OrderShipGroupState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

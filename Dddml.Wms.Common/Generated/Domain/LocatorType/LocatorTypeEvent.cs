@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.LocatorType
             set { LocatorTypeEventId.LocatorTypeId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -94,7 +90,24 @@ namespace Dddml.Wms.Domain.LocatorType
 
 	}
 
-	public class LocatorTypeStateCreated : LocatorTypeEventBase, ILocatorTypeStateCreated
+    public abstract class LocatorTypeStateEventBase : LocatorTypeEventBase, ILocatorTypeStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected LocatorTypeStateEventBase() : base()
+        {
+        }
+
+        protected LocatorTypeStateEventBase(LocatorTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class LocatorTypeStateCreated : LocatorTypeStateEventBase, ILocatorTypeStateCreated
 	{
 		public LocatorTypeStateCreated () : this(new LocatorTypeEventId())
 		{
@@ -113,7 +126,7 @@ namespace Dddml.Wms.Domain.LocatorType
 	}
 
 
-	public class LocatorTypeStateMergePatched : LocatorTypeEventBase, ILocatorTypeStateMergePatched
+	public class LocatorTypeStateMergePatched : LocatorTypeStateEventBase, ILocatorTypeStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -137,7 +150,7 @@ namespace Dddml.Wms.Domain.LocatorType
 	}
 
 
-	public class LocatorTypeStateDeleted : LocatorTypeEventBase, ILocatorTypeStateDeleted
+	public class LocatorTypeStateDeleted : LocatorTypeStateEventBase, ILocatorTypeStateDeleted
 	{
 		public LocatorTypeStateDeleted ()
 		{

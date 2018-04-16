@@ -24,34 +24,6 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
             set { PicklistItemMvoEventId.PicklistBinPicklistItemId = value; }
         }
 
-		public virtual string ItemStatusId { get; set; }
-
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string PicklistBinPicklistId { get; set; }
-
-		public virtual long? PicklistBinBinLocationNumber { get; set; }
-
-		public virtual string PicklistBinPrimaryOrderId { get; set; }
-
-		public virtual long? PicklistBinPrimaryShipGroupSeqId { get; set; }
-
-		public virtual string PicklistBinCreatedBy { get; set; }
-
-		public virtual DateTime? PicklistBinCreatedAt { get; set; }
-
-		public virtual string PicklistBinUpdatedBy { get; set; }
-
-		public virtual DateTime? PicklistBinUpdatedAt { get; set; }
-
-		public virtual bool? PicklistBinActive { get; set; }
-
-		public virtual bool? PicklistBinDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -119,7 +91,48 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 
 	}
 
-	public class PicklistItemMvoStateCreated : PicklistItemMvoEventBase, IPicklistItemMvoStateCreated
+    public abstract class PicklistItemMvoStateEventBase : PicklistItemMvoEventBase, IPicklistItemMvoStateEvent
+    {
+
+		public virtual string ItemStatusId { get; set; }
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string PicklistBinPicklistId { get; set; }
+
+		public virtual long? PicklistBinBinLocationNumber { get; set; }
+
+		public virtual string PicklistBinPrimaryOrderId { get; set; }
+
+		public virtual long? PicklistBinPrimaryShipGroupSeqId { get; set; }
+
+		public virtual string PicklistBinCreatedBy { get; set; }
+
+		public virtual DateTime? PicklistBinCreatedAt { get; set; }
+
+		public virtual string PicklistBinUpdatedBy { get; set; }
+
+		public virtual DateTime? PicklistBinUpdatedAt { get; set; }
+
+		public virtual bool? PicklistBinActive { get; set; }
+
+		public virtual bool? PicklistBinDeleted { get; set; }
+
+        protected PicklistItemMvoStateEventBase() : base()
+        {
+        }
+
+        protected PicklistItemMvoStateEventBase(PicklistItemMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PicklistItemMvoStateCreated : PicklistItemMvoStateEventBase, IPicklistItemMvoStateCreated
 	{
 		public PicklistItemMvoStateCreated () : this(new PicklistItemMvoEventId())
 		{
@@ -138,7 +151,7 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 	}
 
 
-	public class PicklistItemMvoStateMergePatched : PicklistItemMvoEventBase, IPicklistItemMvoStateMergePatched
+	public class PicklistItemMvoStateMergePatched : PicklistItemMvoStateEventBase, IPicklistItemMvoStateMergePatched
 	{
 		public virtual bool IsPropertyItemStatusIdRemoved { get; set; }
 
@@ -186,7 +199,7 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 	}
 
 
-	public class PicklistItemMvoStateDeleted : PicklistItemMvoEventBase, IPicklistItemMvoStateDeleted
+	public class PicklistItemMvoStateDeleted : PicklistItemMvoStateEventBase, IPicklistItemMvoStateDeleted
 	{
 		public PicklistItemMvoStateDeleted ()
 		{

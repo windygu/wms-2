@@ -267,13 +267,13 @@ namespace Dddml.Wms.Domain.Permission
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPermissionEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPermissionEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Permission|");
 
             var stateEntityId = this.PermissionId; // Aggregate Id
-            var eventEntityId = stateEvent.PermissionEventId.PermissionId;
+            var eventEntityId = e.PermissionEventId.PermissionId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -283,7 +283,7 @@ namespace Dddml.Wms.Domain.Permission
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.PermissionEventId.Version;
+            var eventVersion = e.PermissionEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

@@ -23,28 +23,6 @@ namespace Dddml.Wms.Domain.Locator
             set { LocatorEventId.LocatorId = value; }
         }
 
-		public virtual string WarehouseId { get; set; }
-
-		public virtual string ParentLocatorId { get; set; }
-
-		public virtual string LocatorType { get; set; }
-
-		public virtual string PriorityNumber { get; set; }
-
-		public virtual bool? IsDefault { get; set; }
-
-		public virtual string X { get; set; }
-
-		public virtual string Y { get; set; }
-
-		public virtual string Z { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string LocatorTypeId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -112,7 +90,42 @@ namespace Dddml.Wms.Domain.Locator
 
 	}
 
-	public class LocatorStateCreated : LocatorEventBase, ILocatorStateCreated
+    public abstract class LocatorStateEventBase : LocatorEventBase, ILocatorStateEvent
+    {
+
+		public virtual string WarehouseId { get; set; }
+
+		public virtual string ParentLocatorId { get; set; }
+
+		public virtual string LocatorType { get; set; }
+
+		public virtual string PriorityNumber { get; set; }
+
+		public virtual bool? IsDefault { get; set; }
+
+		public virtual string X { get; set; }
+
+		public virtual string Y { get; set; }
+
+		public virtual string Z { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string LocatorTypeId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected LocatorStateEventBase() : base()
+        {
+        }
+
+        protected LocatorStateEventBase(LocatorEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class LocatorStateCreated : LocatorStateEventBase, ILocatorStateCreated
 	{
 		public LocatorStateCreated () : this(new LocatorEventId())
 		{
@@ -131,7 +144,7 @@ namespace Dddml.Wms.Domain.Locator
 	}
 
 
-	public class LocatorStateMergePatched : LocatorEventBase, ILocatorStateMergePatched
+	public class LocatorStateMergePatched : LocatorStateEventBase, ILocatorStateMergePatched
 	{
 		public virtual bool IsPropertyWarehouseIdRemoved { get; set; }
 
@@ -173,7 +186,7 @@ namespace Dddml.Wms.Domain.Locator
 	}
 
 
-	public class LocatorStateDeleted : LocatorEventBase, ILocatorStateDeleted
+	public class LocatorStateDeleted : LocatorStateEventBase, ILocatorStateDeleted
 	{
 		public LocatorStateDeleted ()
 		{

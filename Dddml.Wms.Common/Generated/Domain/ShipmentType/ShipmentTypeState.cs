@@ -244,13 +244,13 @@ namespace Dddml.Wms.Domain.ShipmentType
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentTypeEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentTypeEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentType|");
 
             var stateEntityId = this.ShipmentTypeId; // Aggregate Id
-            var eventEntityId = stateEvent.ShipmentTypeEventId.ShipmentTypeId;
+            var eventEntityId = e.ShipmentTypeEventId.ShipmentTypeId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -260,7 +260,7 @@ namespace Dddml.Wms.Domain.ShipmentType
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.ShipmentTypeEventId.Version;
+            var eventVersion = e.ShipmentTypeEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

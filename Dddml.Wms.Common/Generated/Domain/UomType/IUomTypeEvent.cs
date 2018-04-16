@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.UomType
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUomTypeStateEvent : IUomTypeEvent
+    {
 		string ParentTypeId { get; set; }
 
 		string HasTable { get; set; }
@@ -25,15 +29,15 @@ namespace Dddml.Wms.Domain.UomType
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IUomTypeStateCreated : IUomTypeEvent//, IUomTypeStateProperties
+    }
+   
+	public interface IUomTypeStateCreated : IUomTypeStateEvent
 	{
 	
 	}
 
 
-	public interface IUomTypeStateMergePatched : IUomTypeEvent//, IUomTypeStateProperties
+	public interface IUomTypeStateMergePatched : IUomTypeStateEvent
 	{
 		bool IsPropertyParentTypeIdRemoved { get; set; }
 
@@ -46,7 +50,7 @@ namespace Dddml.Wms.Domain.UomType
 
 	}
 
-	public interface IUomTypeStateDeleted : IUomTypeEvent
+	public interface IUomTypeStateDeleted : IUomTypeStateEvent
 	{
 	}
 

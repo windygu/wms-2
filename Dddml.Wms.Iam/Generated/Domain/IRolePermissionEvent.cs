@@ -17,24 +17,28 @@ namespace Dddml.Wms.Domain.RolePermission
 
         bool ReadOnly { get; set; }
 
-		bool? Active { get; set; }
-
 	}
 
-	public interface IRolePermissionStateCreated : IRolePermissionEvent//, IRolePermissionStateProperties
+    public interface IRolePermissionStateEvent : IRolePermissionEvent
+    {
+		bool? Active { get; set; }
+
+    }
+   
+	public interface IRolePermissionStateCreated : IRolePermissionStateEvent
 	{
 	
 	}
 
 
-	public interface IRolePermissionStateMergePatched : IRolePermissionEvent//, IRolePermissionStateProperties
+	public interface IRolePermissionStateMergePatched : IRolePermissionStateEvent
 	{
 		bool IsPropertyActiveRemoved { get; set; }
 
 
 	}
 
-	public interface IRolePermissionStateDeleted : IRolePermissionEvent
+	public interface IRolePermissionStateDeleted : IRolePermissionStateEvent
 	{
 	}
 

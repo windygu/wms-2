@@ -23,22 +23,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set { MovementConfirmationLineEventId.LineNumber = value; }
         }
 
-		public virtual string MovementLineNumber { get; set; }
-
-		public virtual decimal? TargetQuantity { get; set; }
-
-		public virtual decimal? ConfirmedQuantity { get; set; }
-
-		public virtual decimal? DifferenceQuantity { get; set; }
-
-		public virtual decimal? ScrappedQuantity { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -108,7 +92,36 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 	}
 
-	public class MovementConfirmationLineStateCreated : MovementConfirmationLineEventBase, IMovementConfirmationLineStateCreated
+    public abstract class MovementConfirmationLineStateEventBase : MovementConfirmationLineEventBase, IMovementConfirmationLineStateEvent
+    {
+
+		public virtual string MovementLineNumber { get; set; }
+
+		public virtual decimal? TargetQuantity { get; set; }
+
+		public virtual decimal? ConfirmedQuantity { get; set; }
+
+		public virtual decimal? DifferenceQuantity { get; set; }
+
+		public virtual decimal? ScrappedQuantity { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected MovementConfirmationLineStateEventBase() : base()
+        {
+        }
+
+        protected MovementConfirmationLineStateEventBase(MovementConfirmationLineEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class MovementConfirmationLineStateCreated : MovementConfirmationLineStateEventBase, IMovementConfirmationLineStateCreated
 	{
 		public MovementConfirmationLineStateCreated () : this(new MovementConfirmationLineEventId())
 		{
@@ -127,7 +140,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	}
 
 
-	public class MovementConfirmationLineStateMergePatched : MovementConfirmationLineEventBase, IMovementConfirmationLineStateMergePatched
+	public class MovementConfirmationLineStateMergePatched : MovementConfirmationLineStateEventBase, IMovementConfirmationLineStateMergePatched
 	{
 		public virtual bool IsPropertyMovementLineNumberRemoved { get; set; }
 
@@ -163,7 +176,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	}
 
 
-	public class MovementConfirmationLineStateRemoved : MovementConfirmationLineEventBase, IMovementConfirmationLineStateRemoved
+	public class MovementConfirmationLineStateRemoved : MovementConfirmationLineStateEventBase, IMovementConfirmationLineStateRemoved
 	{
 		public MovementConfirmationLineStateRemoved ()
 		{

@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="OrderItemMvoStateEventBase" abstract="true">
+
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
     <property name="ExternalProductId" ><column name="ExternalProductId" sql-type="VARCHAR(60)" /></property>
     <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
@@ -78,11 +86,6 @@
     <property name="OrderUpdatedBy" ></property>
     <property name="OrderUpdatedAt" ><column name="OrderUpdatedAt" sql-type="DATETIME" /></property>
     <property name="OrderActive" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="OrderItemMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -223,6 +226,7 @@
         <property name="IsPropertyOrderActiveRemoved" column="IsPropertyOrderActiveRemoved"/>
     </subclass>
 
+        </subclass>
 
   </class>
   

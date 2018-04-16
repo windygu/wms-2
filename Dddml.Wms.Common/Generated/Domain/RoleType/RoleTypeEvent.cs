@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.RoleType
             set { RoleTypeEventId.RoleTypeId = value; }
         }
 
-		public virtual string ParentTypeId { get; set; }
-
-		public virtual string HasTable { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +90,28 @@ namespace Dddml.Wms.Domain.RoleType
 
 	}
 
-	public class RoleTypeStateCreated : RoleTypeEventBase, IRoleTypeStateCreated
+    public abstract class RoleTypeStateEventBase : RoleTypeEventBase, IRoleTypeStateEvent
+    {
+
+		public virtual string ParentTypeId { get; set; }
+
+		public virtual string HasTable { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected RoleTypeStateEventBase() : base()
+        {
+        }
+
+        protected RoleTypeStateEventBase(RoleTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class RoleTypeStateCreated : RoleTypeStateEventBase, IRoleTypeStateCreated
 	{
 		public RoleTypeStateCreated () : this(new RoleTypeEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.RoleType
 	}
 
 
-	public class RoleTypeStateMergePatched : RoleTypeEventBase, IRoleTypeStateMergePatched
+	public class RoleTypeStateMergePatched : RoleTypeStateEventBase, IRoleTypeStateMergePatched
 	{
 		public virtual bool IsPropertyParentTypeIdRemoved { get; set; }
 
@@ -145,7 +158,7 @@ namespace Dddml.Wms.Domain.RoleType
 	}
 
 
-	public class RoleTypeStateDeleted : RoleTypeEventBase, IRoleTypeStateDeleted
+	public class RoleTypeStateDeleted : RoleTypeStateEventBase, IRoleTypeStateDeleted
 	{
 		public RoleTypeStateDeleted ()
 		{

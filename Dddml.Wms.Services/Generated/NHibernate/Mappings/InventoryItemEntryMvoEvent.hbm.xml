@@ -14,6 +14,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="InventoryItemEntryMvoStateEventBase" abstract="true">
+
     <property name="OnHandQuantity" ></property>
     <property name="InTransitQuantity" ></property>
     <property name="ReservedQuantity" ></property>
@@ -35,11 +43,6 @@
     <property name="InventoryItemCreatedAt" ><column name="InventoryItemCreatedAt" sql-type="DATETIME" /></property>
     <property name="InventoryItemUpdatedBy" ></property>
     <property name="InventoryItemUpdatedAt" ><column name="InventoryItemUpdatedAt" sql-type="DATETIME" /></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="InventoryItemEntryMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -80,6 +83,7 @@
         <property name="IsPropertyInventoryItemUpdatedAtRemoved" column="IsPropertyInventoryItemUpdatedAtRemoved"/>
     </subclass>
 
+        </subclass>
 
   </class>
   

@@ -23,16 +23,6 @@ namespace Dddml.Wms.Domain.PicklistBin
             set { PicklistBinEventId.PicklistBinId = value; }
         }
 
-		public virtual string PicklistId { get; set; }
-
-		public virtual long? BinLocationNumber { get; set; }
-
-		public virtual string PrimaryOrderId { get; set; }
-
-		public virtual long? PrimaryShipGroupSeqId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -127,7 +117,30 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 	}
 
-	public class PicklistBinStateCreated : PicklistBinEventBase, IPicklistBinStateCreated, ISaveable
+    public abstract class PicklistBinStateEventBase : PicklistBinEventBase, IPicklistBinStateEvent
+    {
+
+		public virtual string PicklistId { get; set; }
+
+		public virtual long? BinLocationNumber { get; set; }
+
+		public virtual string PrimaryOrderId { get; set; }
+
+		public virtual long? PrimaryShipGroupSeqId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected PicklistBinStateEventBase() : base()
+        {
+        }
+
+        protected PicklistBinStateEventBase(PicklistBinEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PicklistBinStateCreated : PicklistBinStateEventBase, IPicklistBinStateCreated, ISaveable
 	{
 		public PicklistBinStateCreated () : this(new PicklistBinEventId())
 		{
@@ -202,7 +215,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 	}
 
 
-	public class PicklistBinStateMergePatched : PicklistBinEventBase, IPicklistBinStateMergePatched, ISaveable
+	public class PicklistBinStateMergePatched : PicklistBinStateEventBase, IPicklistBinStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyPicklistIdRemoved { get; set; }
 
@@ -300,7 +313,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 	}
 
 
-	public class PicklistBinStateDeleted : PicklistBinEventBase, IPicklistBinStateDeleted, ISaveable
+	public class PicklistBinStateDeleted : PicklistBinStateEventBase, IPicklistBinStateDeleted, ISaveable
 	{
 		public PicklistBinStateDeleted ()
 		{

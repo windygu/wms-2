@@ -23,16 +23,6 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             set { ProductCategoryMemberEventId.ProductCategoryMemberId = value; }
         }
 
-		public virtual DateTime? ThruDate { get; set; }
-
-		public virtual string Comments { get; set; }
-
-		public virtual long? SequenceNum { get; set; }
-
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -100,7 +90,30 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 	}
 
-	public class ProductCategoryMemberStateCreated : ProductCategoryMemberEventBase, IProductCategoryMemberStateCreated
+    public abstract class ProductCategoryMemberStateEventBase : ProductCategoryMemberEventBase, IProductCategoryMemberStateEvent
+    {
+
+		public virtual DateTime? ThruDate { get; set; }
+
+		public virtual string Comments { get; set; }
+
+		public virtual long? SequenceNum { get; set; }
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ProductCategoryMemberStateEventBase() : base()
+        {
+        }
+
+        protected ProductCategoryMemberStateEventBase(ProductCategoryMemberEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ProductCategoryMemberStateCreated : ProductCategoryMemberStateEventBase, IProductCategoryMemberStateCreated
 	{
 		public ProductCategoryMemberStateCreated () : this(new ProductCategoryMemberEventId())
 		{
@@ -119,7 +132,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 	}
 
 
-	public class ProductCategoryMemberStateMergePatched : ProductCategoryMemberEventBase, IProductCategoryMemberStateMergePatched
+	public class ProductCategoryMemberStateMergePatched : ProductCategoryMemberStateEventBase, IProductCategoryMemberStateMergePatched
 	{
 		public virtual bool IsPropertyThruDateRemoved { get; set; }
 

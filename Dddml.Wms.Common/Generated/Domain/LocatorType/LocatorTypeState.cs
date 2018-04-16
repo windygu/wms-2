@@ -239,13 +239,13 @@ namespace Dddml.Wms.Domain.LocatorType
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ILocatorTypeEvent stateEvent)
+        protected void ThrowOnWrongEvent(ILocatorTypeEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("LocatorType|");
 
             var stateEntityId = this.LocatorTypeId; // Aggregate Id
-            var eventEntityId = stateEvent.LocatorTypeEventId.LocatorTypeId;
+            var eventEntityId = e.LocatorTypeEventId.LocatorTypeId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.LocatorType
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.LocatorTypeEventId.Version;
+            var eventVersion = e.LocatorTypeEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

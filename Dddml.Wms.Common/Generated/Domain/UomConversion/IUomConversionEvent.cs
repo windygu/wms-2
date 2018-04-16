@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.UomConversion
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUomConversionStateEvent : IUomConversionEvent
+    {
 		double? ConversionFactor { get; set; }
 
 		string CustomMethodId { get; set; }
@@ -27,15 +31,15 @@ namespace Dddml.Wms.Domain.UomConversion
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IUomConversionStateCreated : IUomConversionEvent//, IUomConversionStateProperties
+    }
+   
+	public interface IUomConversionStateCreated : IUomConversionStateEvent
 	{
 	
 	}
 
 
-	public interface IUomConversionStateMergePatched : IUomConversionEvent//, IUomConversionStateProperties
+	public interface IUomConversionStateMergePatched : IUomConversionStateEvent
 	{
 		bool IsPropertyConversionFactorRemoved { get; set; }
 
@@ -50,7 +54,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
 	}
 
-	public interface IUomConversionStateDeleted : IUomConversionEvent
+	public interface IUomConversionStateDeleted : IUomConversionStateEvent
 	{
 	}
 

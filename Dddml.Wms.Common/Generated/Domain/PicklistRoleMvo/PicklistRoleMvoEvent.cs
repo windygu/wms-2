@@ -24,34 +24,6 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set { PicklistRoleMvoEventId.PicklistRoleId = value; }
         }
 
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string PicklistDescription { get; set; }
-
-		public virtual string PicklistFacilityId { get; set; }
-
-		public virtual string PicklistShipmentMethodTypeId { get; set; }
-
-		public virtual string PicklistStatusId { get; set; }
-
-		public virtual DateTime? PicklistPicklistDate { get; set; }
-
-		public virtual long? PicklistPickwaveId { get; set; }
-
-		public virtual string PicklistCreatedBy { get; set; }
-
-		public virtual DateTime? PicklistCreatedAt { get; set; }
-
-		public virtual string PicklistUpdatedBy { get; set; }
-
-		public virtual DateTime? PicklistUpdatedAt { get; set; }
-
-		public virtual bool? PicklistActive { get; set; }
-
-		public virtual bool? PicklistDeleted { get; set; }
-
 		public virtual string CreatedByUserLogin { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -119,7 +91,48 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 	}
 
-	public class PicklistRoleMvoStateCreated : PicklistRoleMvoEventBase, IPicklistRoleMvoStateCreated
+    public abstract class PicklistRoleMvoStateEventBase : PicklistRoleMvoEventBase, IPicklistRoleMvoStateEvent
+    {
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string PicklistDescription { get; set; }
+
+		public virtual string PicklistFacilityId { get; set; }
+
+		public virtual string PicklistShipmentMethodTypeId { get; set; }
+
+		public virtual string PicklistStatusId { get; set; }
+
+		public virtual DateTime? PicklistPicklistDate { get; set; }
+
+		public virtual long? PicklistPickwaveId { get; set; }
+
+		public virtual string PicklistCreatedBy { get; set; }
+
+		public virtual DateTime? PicklistCreatedAt { get; set; }
+
+		public virtual string PicklistUpdatedBy { get; set; }
+
+		public virtual DateTime? PicklistUpdatedAt { get; set; }
+
+		public virtual bool? PicklistActive { get; set; }
+
+		public virtual bool? PicklistDeleted { get; set; }
+
+        protected PicklistRoleMvoStateEventBase() : base()
+        {
+        }
+
+        protected PicklistRoleMvoStateEventBase(PicklistRoleMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PicklistRoleMvoStateCreated : PicklistRoleMvoStateEventBase, IPicklistRoleMvoStateCreated
 	{
 		public PicklistRoleMvoStateCreated () : this(new PicklistRoleMvoEventId())
 		{
@@ -138,7 +151,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 	}
 
 
-	public class PicklistRoleMvoStateMergePatched : PicklistRoleMvoEventBase, IPicklistRoleMvoStateMergePatched
+	public class PicklistRoleMvoStateMergePatched : PicklistRoleMvoStateEventBase, IPicklistRoleMvoStateMergePatched
 	{
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 
@@ -186,7 +199,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 	}
 
 
-	public class PicklistRoleMvoStateDeleted : PicklistRoleMvoEventBase, IPicklistRoleMvoStateDeleted
+	public class PicklistRoleMvoStateDeleted : PicklistRoleMvoStateEventBase, IPicklistRoleMvoStateDeleted
 	{
 		public PicklistRoleMvoStateDeleted ()
 		{

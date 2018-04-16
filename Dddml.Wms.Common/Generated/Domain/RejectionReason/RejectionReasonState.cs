@@ -239,13 +239,13 @@ namespace Dddml.Wms.Domain.RejectionReason
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IRejectionReasonEvent stateEvent)
+        protected void ThrowOnWrongEvent(IRejectionReasonEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("RejectionReason|");
 
             var stateEntityId = this.RejectionReasonId; // Aggregate Id
-            var eventEntityId = stateEvent.RejectionReasonEventId.RejectionReasonId;
+            var eventEntityId = e.RejectionReasonEventId.RejectionReasonId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.RejectionReason
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.RejectionReasonEventId.Version;
+            var eventVersion = e.RejectionReasonEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

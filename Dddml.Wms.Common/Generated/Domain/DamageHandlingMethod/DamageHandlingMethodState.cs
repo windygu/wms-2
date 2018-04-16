@@ -255,13 +255,13 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IDamageHandlingMethodEvent stateEvent)
+        protected void ThrowOnWrongEvent(IDamageHandlingMethodEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("DamageHandlingMethod|");
 
             var stateEntityId = this.DamageHandlingMethodId; // Aggregate Id
-            var eventEntityId = stateEvent.DamageHandlingMethodEventId.DamageHandlingMethodId;
+            var eventEntityId = e.DamageHandlingMethodEventId.DamageHandlingMethodId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -271,7 +271,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.DamageHandlingMethodEventId.Version;
+            var eventVersion = e.DamageHandlingMethodEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

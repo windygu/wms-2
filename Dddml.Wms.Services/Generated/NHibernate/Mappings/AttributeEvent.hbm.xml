@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="AttributeStateEventBase" abstract="true">
+
     <property name="AttributeName" ></property>
     <property name="OrganizationId" ></property>
     <property name="Description" ></property>
@@ -21,11 +29,6 @@
     <property name="FieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
     <property name="ReferenceId" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="AttributeStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -59,6 +62,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

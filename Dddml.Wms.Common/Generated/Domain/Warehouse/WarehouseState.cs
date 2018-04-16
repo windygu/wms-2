@@ -267,13 +267,13 @@ namespace Dddml.Wms.Domain.Warehouse
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IWarehouseEvent stateEvent)
+        protected void ThrowOnWrongEvent(IWarehouseEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Warehouse|");
 
             var stateEntityId = this.WarehouseId; // Aggregate Id
-            var eventEntityId = stateEvent.WarehouseEventId.WarehouseId;
+            var eventEntityId = e.WarehouseEventId.WarehouseId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -283,7 +283,7 @@ namespace Dddml.Wms.Domain.Warehouse
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.WarehouseEventId.Version;
+            var eventVersion = e.WarehouseEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

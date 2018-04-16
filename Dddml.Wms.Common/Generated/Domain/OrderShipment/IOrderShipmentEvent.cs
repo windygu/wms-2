@@ -17,19 +17,23 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IOrderShipmentStateEvent : IOrderShipmentEvent
+    {
 		decimal? Quantity { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IOrderShipmentStateCreated : IOrderShipmentEvent//, IOrderShipmentStateProperties
+    }
+   
+	public interface IOrderShipmentStateCreated : IOrderShipmentStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderShipmentStateMergePatched : IOrderShipmentEvent//, IOrderShipmentStateProperties
+	public interface IOrderShipmentStateMergePatched : IOrderShipmentStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 

@@ -427,13 +427,13 @@ namespace Dddml.Wms.Domain.Shipment
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IItemIssuanceEvent stateEvent)
+        protected void ThrowOnWrongEvent(IItemIssuanceEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ItemIssuance|");
 
             var stateEntityIdShipmentId = (this as IGlobalIdentity<ShipmentItemIssuanceId>).GlobalId.ShipmentId;
-            var eventEntityIdShipmentId = stateEvent.ItemIssuanceEventId.ShipmentId;
+            var eventEntityIdShipmentId = e.ItemIssuanceEventId.ShipmentId;
             if (stateEntityIdShipmentId != eventEntityIdShipmentId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ShipmentId {0} in state but entity id ShipmentId {1} in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
@@ -441,7 +441,7 @@ namespace Dddml.Wms.Domain.Shipment
             id.Append(stateEntityIdShipmentId).Append(",");
 
             var stateEntityIdItemIssuanceSeqId = (this as IGlobalIdentity<ShipmentItemIssuanceId>).GlobalId.ItemIssuanceSeqId;
-            var eventEntityIdItemIssuanceSeqId = stateEvent.ItemIssuanceEventId.ItemIssuanceSeqId;
+            var eventEntityIdItemIssuanceSeqId = e.ItemIssuanceEventId.ItemIssuanceSeqId;
             if (stateEntityIdItemIssuanceSeqId != eventEntityIdItemIssuanceSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ItemIssuanceSeqId {0} in state but entity id ItemIssuanceSeqId {1} in event", stateEntityIdItemIssuanceSeqId, eventEntityIdItemIssuanceSeqId);
@@ -452,15 +452,18 @@ namespace Dddml.Wms.Domain.Shipment
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (ItemIssuanceState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IItemIssuanceStateEvent ? (IItemIssuanceStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (ItemIssuanceState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

@@ -18,6 +18,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string PhysicalInventoryDocumentNumber { get; set; }
+
+	}
+
+    public interface IPhysicalInventoryLineStateEvent : IPhysicalInventoryLineEvent
+    {
 		long Version { get; set; }
 
 		decimal? BookQuantity { get; set; }
@@ -32,18 +39,15 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		string Description { get; set; }
 
-		// Outer Id:
-		//string PhysicalInventoryDocumentNumber { get; set; }
-
-	}
-
-	public interface IPhysicalInventoryLineStateCreated : IPhysicalInventoryLineEvent//, IPhysicalInventoryLineStateProperties
+    }
+   
+	public interface IPhysicalInventoryLineStateCreated : IPhysicalInventoryLineStateEvent
 	{
 	
 	}
 
 
-	public interface IPhysicalInventoryLineStateMergePatched : IPhysicalInventoryLineEvent//, IPhysicalInventoryLineStateProperties
+	public interface IPhysicalInventoryLineStateMergePatched : IPhysicalInventoryLineStateEvent
 	{
 		bool IsPropertyBookQuantityRemoved { get; set; }
 
@@ -60,7 +64,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	}
 
-	public interface IPhysicalInventoryLineStateRemoved : IPhysicalInventoryLineEvent
+	public interface IPhysicalInventoryLineStateRemoved : IPhysicalInventoryLineStateEvent
 	{
 	}
 

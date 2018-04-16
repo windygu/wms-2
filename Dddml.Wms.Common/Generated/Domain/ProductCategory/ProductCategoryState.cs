@@ -337,13 +337,13 @@ namespace Dddml.Wms.Domain.ProductCategory
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IProductCategoryEvent stateEvent)
+        protected void ThrowOnWrongEvent(IProductCategoryEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ProductCategory|");
 
             var stateEntityId = this.ProductCategoryId; // Aggregate Id
-            var eventEntityId = stateEvent.ProductCategoryEventId.ProductCategoryId;
+            var eventEntityId = e.ProductCategoryEventId.ProductCategoryId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -353,7 +353,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.ProductCategoryEventId.Version;
+            var eventVersion = e.ProductCategoryEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

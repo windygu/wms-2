@@ -17,24 +17,28 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string AttributeSetId { get; set; }
+
+	}
+
+    public interface IAttributeUseStateEvent : IAttributeUseEvent
+    {
 		long Version { get; set; }
 
 		int? SequenceNumber { get; set; }
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string AttributeSetId { get; set; }
-
-	}
-
-	public interface IAttributeUseStateCreated : IAttributeUseEvent//, IAttributeUseStateProperties
+    }
+   
+	public interface IAttributeUseStateCreated : IAttributeUseStateEvent
 	{
 	
 	}
 
 
-	public interface IAttributeUseStateMergePatched : IAttributeUseEvent//, IAttributeUseStateProperties
+	public interface IAttributeUseStateMergePatched : IAttributeUseStateEvent
 	{
 		bool IsPropertySequenceNumberRemoved { get; set; }
 
@@ -43,7 +47,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 	}
 
-	public interface IAttributeUseStateRemoved : IAttributeUseEvent
+	public interface IAttributeUseStateRemoved : IAttributeUseStateEvent
 	{
 	}
 

@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.ShipmentType
             set { ShipmentTypeEventId.ShipmentTypeId = value; }
         }
 
-		public virtual string ParentTypeId { get; set; }
-
-		public virtual string HasTable { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +90,28 @@ namespace Dddml.Wms.Domain.ShipmentType
 
 	}
 
-	public class ShipmentTypeStateCreated : ShipmentTypeEventBase, IShipmentTypeStateCreated
+    public abstract class ShipmentTypeStateEventBase : ShipmentTypeEventBase, IShipmentTypeStateEvent
+    {
+
+		public virtual string ParentTypeId { get; set; }
+
+		public virtual string HasTable { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ShipmentTypeStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentTypeStateEventBase(ShipmentTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentTypeStateCreated : ShipmentTypeStateEventBase, IShipmentTypeStateCreated
 	{
 		public ShipmentTypeStateCreated () : this(new ShipmentTypeEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 	}
 
 
-	public class ShipmentTypeStateMergePatched : ShipmentTypeEventBase, IShipmentTypeStateMergePatched
+	public class ShipmentTypeStateMergePatched : ShipmentTypeStateEventBase, IShipmentTypeStateMergePatched
 	{
 		public virtual bool IsPropertyParentTypeIdRemoved { get; set; }
 

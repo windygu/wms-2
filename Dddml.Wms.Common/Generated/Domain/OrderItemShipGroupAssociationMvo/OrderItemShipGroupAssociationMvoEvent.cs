@@ -24,6 +24,76 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
             set { OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		OrderItemShipGroupAssociationMvoEventId IGlobalIdentity<OrderItemShipGroupAssociationMvoEventId>.GlobalId {
+			get
+			{
+				return this.OrderItemShipGroupAssociationMvoEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IOrderItemShipGroupAssociationMvoEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected OrderItemShipGroupAssociationMvoEventBase()
+        {
+        }
+
+        protected OrderItemShipGroupAssociationMvoEventBase(OrderItemShipGroupAssociationMvoEventId stateEventId)
+        {
+            this.OrderItemShipGroupAssociationMvoEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class OrderItemShipGroupAssociationMvoStateEventBase : OrderItemShipGroupAssociationMvoEventBase, IOrderItemShipGroupAssociationMvoStateEvent
+    {
+
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual decimal? CancelQuantity { get; set; }
@@ -140,74 +210,17 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 
 		public virtual bool? OrderActive { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		OrderItemShipGroupAssociationMvoEventId IGlobalIdentity<OrderItemShipGroupAssociationMvoEventId>.GlobalId {
-			get
-			{
-				return this.OrderItemShipGroupAssociationMvoEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IOrderItemShipGroupAssociationMvoEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected OrderItemShipGroupAssociationMvoEventBase()
+        protected OrderItemShipGroupAssociationMvoStateEventBase() : base()
         {
         }
 
-        protected OrderItemShipGroupAssociationMvoEventBase(OrderItemShipGroupAssociationMvoEventId stateEventId)
+        protected OrderItemShipGroupAssociationMvoStateEventBase(OrderItemShipGroupAssociationMvoEventId stateEventId) : base(stateEventId)
         {
-            this.OrderItemShipGroupAssociationMvoEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class OrderItemShipGroupAssociationMvoStateCreated : OrderItemShipGroupAssociationMvoEventBase, IOrderItemShipGroupAssociationMvoStateCreated
+	public class OrderItemShipGroupAssociationMvoStateCreated : OrderItemShipGroupAssociationMvoStateEventBase, IOrderItemShipGroupAssociationMvoStateCreated
 	{
 		public OrderItemShipGroupAssociationMvoStateCreated () : this(new OrderItemShipGroupAssociationMvoEventId())
 		{
@@ -226,7 +239,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 	}
 
 
-	public class OrderItemShipGroupAssociationMvoStateMergePatched : OrderItemShipGroupAssociationMvoEventBase, IOrderItemShipGroupAssociationMvoStateMergePatched
+	public class OrderItemShipGroupAssociationMvoStateMergePatched : OrderItemShipGroupAssociationMvoStateEventBase, IOrderItemShipGroupAssociationMvoStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
@@ -362,7 +375,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 	}
 
 
-	public class OrderItemShipGroupAssociationMvoStateDeleted : OrderItemShipGroupAssociationMvoEventBase, IOrderItemShipGroupAssociationMvoStateDeleted
+	public class OrderItemShipGroupAssociationMvoStateDeleted : OrderItemShipGroupAssociationMvoStateEventBase, IOrderItemShipGroupAssociationMvoStateDeleted
 	{
 		public OrderItemShipGroupAssociationMvoStateDeleted ()
 		{

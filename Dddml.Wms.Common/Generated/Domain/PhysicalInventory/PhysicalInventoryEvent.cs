@@ -24,36 +24,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set { PhysicalInventoryEventId.DocumentNumber = value; }
         }
 
-		public virtual string DocumentStatusId { get; set; }
-
-		public virtual string WarehouseId { get; set; }
-
-		public virtual string LocatorIdPattern { get; set; }
-
-		public virtual string ProductIdPattern { get; set; }
-
-		public virtual bool? Posted { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string Processing { get; set; }
-
-		public virtual string DocumentTypeId { get; set; }
-
-		public virtual DateTime? MovementDate { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? IsApproved { get; set; }
-
-		public virtual decimal? ApprovalAmount { get; set; }
-
-		public virtual bool? IsQuantityUpdated { get; set; }
-
-		public virtual string ReversalDocumentNumber { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -148,7 +118,50 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	}
 
-	public class PhysicalInventoryStateCreated : PhysicalInventoryEventBase, IPhysicalInventoryStateCreated, ISaveable
+    public abstract class PhysicalInventoryStateEventBase : PhysicalInventoryEventBase, IPhysicalInventoryStateEvent
+    {
+
+		public virtual string DocumentStatusId { get; set; }
+
+		public virtual string WarehouseId { get; set; }
+
+		public virtual string LocatorIdPattern { get; set; }
+
+		public virtual string ProductIdPattern { get; set; }
+
+		public virtual bool? Posted { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string Processing { get; set; }
+
+		public virtual string DocumentTypeId { get; set; }
+
+		public virtual DateTime? MovementDate { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? IsApproved { get; set; }
+
+		public virtual decimal? ApprovalAmount { get; set; }
+
+		public virtual bool? IsQuantityUpdated { get; set; }
+
+		public virtual string ReversalDocumentNumber { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected PhysicalInventoryStateEventBase() : base()
+        {
+        }
+
+        protected PhysicalInventoryStateEventBase(PhysicalInventoryEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PhysicalInventoryStateCreated : PhysicalInventoryStateEventBase, IPhysicalInventoryStateCreated, ISaveable
 	{
 		public PhysicalInventoryStateCreated () : this(new PhysicalInventoryEventId())
 		{
@@ -223,7 +236,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	}
 
 
-	public class PhysicalInventoryStateMergePatched : PhysicalInventoryEventBase, IPhysicalInventoryStateMergePatched, ISaveable
+	public class PhysicalInventoryStateMergePatched : PhysicalInventoryStateEventBase, IPhysicalInventoryStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyDocumentStatusIdRemoved { get; set; }
 

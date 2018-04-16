@@ -17,19 +17,23 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IRejectionReasonStateEvent : IRejectionReasonEvent
+    {
 		string Description { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IRejectionReasonStateCreated : IRejectionReasonEvent//, IRejectionReasonStateProperties
+    }
+   
+	public interface IRejectionReasonStateCreated : IRejectionReasonStateEvent
 	{
 	
 	}
 
 
-	public interface IRejectionReasonStateMergePatched : IRejectionReasonEvent//, IRejectionReasonStateProperties
+	public interface IRejectionReasonStateMergePatched : IRejectionReasonStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -38,7 +42,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
 	}
 
-	public interface IRejectionReasonStateDeleted : IRejectionReasonEvent
+	public interface IRejectionReasonStateDeleted : IRejectionReasonStateEvent
 	{
 	}
 

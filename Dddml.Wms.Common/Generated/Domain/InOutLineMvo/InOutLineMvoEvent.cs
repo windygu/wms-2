@@ -24,6 +24,76 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set { InOutLineMvoEventId.InOutLineId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		InOutLineMvoEventId IGlobalIdentity<InOutLineMvoEventId>.GlobalId {
+			get
+			{
+				return this.InOutLineMvoEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IInOutLineMvoEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected InOutLineMvoEventBase()
+        {
+        }
+
+        protected InOutLineMvoEventBase(InOutLineMvoEventId stateEventId)
+        {
+            this.InOutLineMvoEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class InOutLineMvoStateEventBase : InOutLineMvoEventBase, IInOutLineMvoStateEvent
+    {
+
 		public virtual string LocatorId { get; set; }
 
 		public virtual string ProductId { get; set; }
@@ -120,74 +190,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutActive { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		InOutLineMvoEventId IGlobalIdentity<InOutLineMvoEventId>.GlobalId {
-			get
-			{
-				return this.InOutLineMvoEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IInOutLineMvoEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected InOutLineMvoEventBase()
+        protected InOutLineMvoStateEventBase() : base()
         {
         }
 
-        protected InOutLineMvoEventBase(InOutLineMvoEventId stateEventId)
+        protected InOutLineMvoStateEventBase(InOutLineMvoEventId stateEventId) : base(stateEventId)
         {
-            this.InOutLineMvoEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class InOutLineMvoStateCreated : InOutLineMvoEventBase, IInOutLineMvoStateCreated
+	public class InOutLineMvoStateCreated : InOutLineMvoStateEventBase, IInOutLineMvoStateCreated
 	{
 		public InOutLineMvoStateCreated () : this(new InOutLineMvoEventId())
 		{
@@ -206,7 +219,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	}
 
 
-	public class InOutLineMvoStateMergePatched : InOutLineMvoEventBase, IInOutLineMvoStateMergePatched
+	public class InOutLineMvoStateMergePatched : InOutLineMvoStateEventBase, IInOutLineMvoStateMergePatched
 	{
 		public virtual bool IsPropertyLocatorIdRemoved { get; set; }
 
@@ -322,7 +335,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	}
 
 
-	public class InOutLineMvoStateDeleted : InOutLineMvoEventBase, IInOutLineMvoStateDeleted
+	public class InOutLineMvoStateDeleted : InOutLineMvoStateEventBase, IInOutLineMvoStateDeleted
 	{
 		public InOutLineMvoStateDeleted ()
 		{

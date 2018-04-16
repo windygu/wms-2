@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="OrderShipGroupStateEventBase" abstract="true">
+
     <property name="ShipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="SupplierPartyId" ><column name="SupplierPartyId" sql-type="VARCHAR(20)" /></property>
     <property name="VendorPartyId" ><column name="VendorPartyId" sql-type="VARCHAR(20)" /></property>
@@ -31,11 +39,6 @@
     <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
     <property name="PickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <property name="Version" column="Version" not-null="true" />
 
     <subclass name="OrderShipGroupStateCreated" discriminator-value="Created">
@@ -89,6 +92,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

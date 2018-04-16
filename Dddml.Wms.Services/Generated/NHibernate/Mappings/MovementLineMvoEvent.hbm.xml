@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="MovementLineMvoStateEventBase" abstract="true">
+
     <property name="MovementQuantity" ></property>
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
     <property name="LocatorIdFrom" ></property>
@@ -47,11 +55,6 @@
     <property name="MovementUpdatedAt" ><column name="MovementUpdatedAt" sql-type="DATETIME" /></property>
     <property name="MovementActive" ></property>
     <property name="MovementDeleted" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="MovementLineMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -135,6 +138,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

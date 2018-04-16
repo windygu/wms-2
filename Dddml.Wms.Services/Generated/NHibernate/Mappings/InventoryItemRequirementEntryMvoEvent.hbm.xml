@@ -14,6 +14,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="InventoryItemRequirementEntryMvoStateEventBase" abstract="true">
+
     <property name="Quantity" ></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId">
         <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="60" sql-type="VARCHAR(60)" /></property>
@@ -28,11 +36,6 @@
     <property name="InventoryItemRequirementCreatedAt" ><column name="InventoryItemRequirementCreatedAt" sql-type="DATETIME" /></property>
     <property name="InventoryItemRequirementUpdatedBy" ></property>
     <property name="InventoryItemRequirementUpdatedAt" ><column name="InventoryItemRequirementUpdatedAt" sql-type="DATETIME" /></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="InventoryItemRequirementEntryMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -57,6 +60,7 @@
         <property name="IsPropertyInventoryItemRequirementUpdatedAtRemoved" column="IsPropertyInventoryItemRequirementUpdatedAtRemoved"/>
     </subclass>
 
+        </subclass>
 
   </class>
   

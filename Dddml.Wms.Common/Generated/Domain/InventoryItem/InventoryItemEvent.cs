@@ -23,16 +23,6 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { InventoryItemEventId.InventoryItemId = value; }
         }
 
-		public virtual decimal? OnHandQuantity { get; set; }
-
-		public virtual decimal? InTransitQuantity { get; set; }
-
-		public virtual decimal? ReservedQuantity { get; set; }
-
-		public virtual decimal? OccupiedQuantity { get; set; }
-
-		public virtual decimal? VirtualQuantity { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -127,7 +117,30 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	}
 
-	public class InventoryItemStateCreated : InventoryItemEventBase, IInventoryItemStateCreated, ISaveable
+    public abstract class InventoryItemStateEventBase : InventoryItemEventBase, IInventoryItemStateEvent
+    {
+
+		public virtual decimal? OnHandQuantity { get; set; }
+
+		public virtual decimal? InTransitQuantity { get; set; }
+
+		public virtual decimal? ReservedQuantity { get; set; }
+
+		public virtual decimal? OccupiedQuantity { get; set; }
+
+		public virtual decimal? VirtualQuantity { get; set; }
+
+        protected InventoryItemStateEventBase() : base()
+        {
+        }
+
+        protected InventoryItemStateEventBase(InventoryItemEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InventoryItemStateCreated : InventoryItemStateEventBase, IInventoryItemStateCreated, ISaveable
 	{
 		public InventoryItemStateCreated () : this(new InventoryItemEventId())
 		{
@@ -202,7 +215,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 	}
 
 
-	public class InventoryItemStateMergePatched : InventoryItemEventBase, IInventoryItemStateMergePatched, ISaveable
+	public class InventoryItemStateMergePatched : InventoryItemStateEventBase, IInventoryItemStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyOnHandQuantityRemoved { get; set; }
 

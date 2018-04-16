@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.Warehouse
             set { WarehouseEventId.WarehouseId = value; }
         }
 
-		public virtual string WarehouseName { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? IsInTransit { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +90,28 @@ namespace Dddml.Wms.Domain.Warehouse
 
 	}
 
-	public class WarehouseStateCreated : WarehouseEventBase, IWarehouseStateCreated
+    public abstract class WarehouseStateEventBase : WarehouseEventBase, IWarehouseStateEvent
+    {
+
+		public virtual string WarehouseName { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? IsInTransit { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected WarehouseStateEventBase() : base()
+        {
+        }
+
+        protected WarehouseStateEventBase(WarehouseEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class WarehouseStateCreated : WarehouseStateEventBase, IWarehouseStateCreated
 	{
 		public WarehouseStateCreated () : this(new WarehouseEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.Warehouse
 	}
 
 
-	public class WarehouseStateMergePatched : WarehouseEventBase, IWarehouseStateMergePatched
+	public class WarehouseStateMergePatched : WarehouseStateEventBase, IWarehouseStateMergePatched
 	{
 		public virtual bool IsPropertyWarehouseNameRemoved { get; set; }
 
@@ -145,7 +158,7 @@ namespace Dddml.Wms.Domain.Warehouse
 	}
 
 
-	public class WarehouseStateDeleted : WarehouseEventBase, IWarehouseStateDeleted
+	public class WarehouseStateDeleted : WarehouseStateEventBase, IWarehouseStateDeleted
 	{
 		public WarehouseStateDeleted ()
 		{

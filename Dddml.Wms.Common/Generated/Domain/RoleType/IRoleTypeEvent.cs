@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.RoleType
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IRoleTypeStateEvent : IRoleTypeEvent
+    {
 		string ParentTypeId { get; set; }
 
 		string HasTable { get; set; }
@@ -25,15 +29,15 @@ namespace Dddml.Wms.Domain.RoleType
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IRoleTypeStateCreated : IRoleTypeEvent//, IRoleTypeStateProperties
+    }
+   
+	public interface IRoleTypeStateCreated : IRoleTypeStateEvent
 	{
 	
 	}
 
 
-	public interface IRoleTypeStateMergePatched : IRoleTypeEvent//, IRoleTypeStateProperties
+	public interface IRoleTypeStateMergePatched : IRoleTypeStateEvent
 	{
 		bool IsPropertyParentTypeIdRemoved { get; set; }
 
@@ -46,7 +50,7 @@ namespace Dddml.Wms.Domain.RoleType
 
 	}
 
-	public interface IRoleTypeStateDeleted : IRoleTypeEvent
+	public interface IRoleTypeStateDeleted : IRoleTypeStateEvent
 	{
 	}
 

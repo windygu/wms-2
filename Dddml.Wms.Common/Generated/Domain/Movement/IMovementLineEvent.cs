@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.Movement
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string MovementDocumentNumber { get; set; }
+
+	}
+
+    public interface IMovementLineStateEvent : IMovementLineEvent
+    {
 		long Version { get; set; }
 
 		decimal? MovementQuantity { get; set; }
@@ -35,18 +42,15 @@ namespace Dddml.Wms.Domain.Movement
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string MovementDocumentNumber { get; set; }
-
-	}
-
-	public interface IMovementLineStateCreated : IMovementLineEvent//, IMovementLineStateProperties
+    }
+   
+	public interface IMovementLineStateCreated : IMovementLineStateEvent
 	{
 	
 	}
 
 
-	public interface IMovementLineStateMergePatched : IMovementLineEvent//, IMovementLineStateProperties
+	public interface IMovementLineStateMergePatched : IMovementLineStateEvent
 	{
 		bool IsPropertyMovementQuantityRemoved { get; set; }
 
@@ -67,7 +71,7 @@ namespace Dddml.Wms.Domain.Movement
 
 	}
 
-	public interface IMovementLineStateRemoved : IMovementLineEvent
+	public interface IMovementLineStateRemoved : IMovementLineStateEvent
 	{
 	}
 

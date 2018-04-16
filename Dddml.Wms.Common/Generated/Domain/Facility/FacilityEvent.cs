@@ -23,42 +23,6 @@ namespace Dddml.Wms.Domain.Facility
             set { FacilityEventId.FacilityId = value; }
         }
 
-		public virtual string FacilityTypeId { get; set; }
-
-		public virtual string ParentFacilityId { get; set; }
-
-		public virtual string OwnerPartyId { get; set; }
-
-		public virtual string DefaultInventoryItemTypeId { get; set; }
-
-		public virtual string FacilityName { get; set; }
-
-		public virtual string PrimaryFacilityGroupId { get; set; }
-
-		public virtual long? OldSquareFootage { get; set; }
-
-		public virtual decimal? FacilitySize { get; set; }
-
-		public virtual string FacilitySizeUomId { get; set; }
-
-		public virtual string ProductStoreId { get; set; }
-
-		public virtual long? DefaultDaysToShip { get; set; }
-
-		public virtual DateTime? OpenedDate { get; set; }
-
-		public virtual DateTime? ClosedDate { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string DefaultDimensionUomId { get; set; }
-
-		public virtual string DefaultWeightUomId { get; set; }
-
-		public virtual string GeoPointId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -126,7 +90,56 @@ namespace Dddml.Wms.Domain.Facility
 
 	}
 
-	public class FacilityStateCreated : FacilityEventBase, IFacilityStateCreated
+    public abstract class FacilityStateEventBase : FacilityEventBase, IFacilityStateEvent
+    {
+
+		public virtual string FacilityTypeId { get; set; }
+
+		public virtual string ParentFacilityId { get; set; }
+
+		public virtual string OwnerPartyId { get; set; }
+
+		public virtual string DefaultInventoryItemTypeId { get; set; }
+
+		public virtual string FacilityName { get; set; }
+
+		public virtual string PrimaryFacilityGroupId { get; set; }
+
+		public virtual long? OldSquareFootage { get; set; }
+
+		public virtual decimal? FacilitySize { get; set; }
+
+		public virtual string FacilitySizeUomId { get; set; }
+
+		public virtual string ProductStoreId { get; set; }
+
+		public virtual long? DefaultDaysToShip { get; set; }
+
+		public virtual DateTime? OpenedDate { get; set; }
+
+		public virtual DateTime? ClosedDate { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string DefaultDimensionUomId { get; set; }
+
+		public virtual string DefaultWeightUomId { get; set; }
+
+		public virtual string GeoPointId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected FacilityStateEventBase() : base()
+        {
+        }
+
+        protected FacilityStateEventBase(FacilityEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class FacilityStateCreated : FacilityStateEventBase, IFacilityStateCreated
 	{
 		public FacilityStateCreated () : this(new FacilityEventId())
 		{
@@ -145,7 +158,7 @@ namespace Dddml.Wms.Domain.Facility
 	}
 
 
-	public class FacilityStateMergePatched : FacilityEventBase, IFacilityStateMergePatched
+	public class FacilityStateMergePatched : FacilityStateEventBase, IFacilityStateMergePatched
 	{
 		public virtual bool IsPropertyFacilityTypeIdRemoved { get; set; }
 
@@ -201,7 +214,7 @@ namespace Dddml.Wms.Domain.Facility
 	}
 
 
-	public class FacilityStateDeleted : FacilityEventBase, IFacilityStateDeleted
+	public class FacilityStateDeleted : FacilityStateEventBase, IFacilityStateDeleted
 	{
 		public FacilityStateDeleted ()
 		{

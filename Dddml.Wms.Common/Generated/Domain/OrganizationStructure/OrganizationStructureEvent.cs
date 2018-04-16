@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.OrganizationStructure
             set { OrganizationStructureEventId.Id = value; }
         }
 
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -92,7 +90,22 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
 	}
 
-	public class OrganizationStructureStateCreated : OrganizationStructureEventBase, IOrganizationStructureStateCreated
+    public abstract class OrganizationStructureStateEventBase : OrganizationStructureEventBase, IOrganizationStructureStateEvent
+    {
+
+		public virtual bool? Active { get; set; }
+
+        protected OrganizationStructureStateEventBase() : base()
+        {
+        }
+
+        protected OrganizationStructureStateEventBase(OrganizationStructureEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrganizationStructureStateCreated : OrganizationStructureStateEventBase, IOrganizationStructureStateCreated
 	{
 		public OrganizationStructureStateCreated () : this(new OrganizationStructureEventId())
 		{
@@ -111,7 +124,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 	}
 
 
-	public class OrganizationStructureStateMergePatched : OrganizationStructureEventBase, IOrganizationStructureStateMergePatched
+	public class OrganizationStructureStateMergePatched : OrganizationStructureStateEventBase, IOrganizationStructureStateMergePatched
 	{
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -133,7 +146,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 	}
 
 
-	public class OrganizationStructureStateDeleted : OrganizationStructureEventBase, IOrganizationStructureStateDeleted
+	public class OrganizationStructureStateDeleted : OrganizationStructureStateEventBase, IOrganizationStructureStateDeleted
 	{
 		public OrganizationStructureStateDeleted ()
 		{

@@ -443,13 +443,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPhysicalInventoryEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPhysicalInventoryEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PhysicalInventory|");
 
             var stateEntityId = this.DocumentNumber; // Aggregate Id
-            var eventEntityId = stateEvent.PhysicalInventoryEventId.DocumentNumber;
+            var eventEntityId = e.PhysicalInventoryEventId.DocumentNumber;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -459,7 +459,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.PhysicalInventoryEventId.Version;
+            var eventVersion = e.PhysicalInventoryEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

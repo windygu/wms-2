@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IShipmentItemMvoStateEvent : IShipmentItemMvoEvent
+    {
 		string ProductId { get; set; }
 
 		string AttributeSetInstanceId { get; set; }
@@ -90,15 +94,15 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		bool? ShipmentActive { get; set; }
 
-	}
-
-	public interface IShipmentItemMvoStateCreated : IShipmentItemMvoEvent//, IShipmentItemMvoStateProperties
+    }
+   
+	public interface IShipmentItemMvoStateCreated : IShipmentItemMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IShipmentItemMvoStateMergePatched : IShipmentItemMvoEvent//, IShipmentItemMvoStateProperties
+	public interface IShipmentItemMvoStateMergePatched : IShipmentItemMvoStateEvent
 	{
 		bool IsPropertyProductIdRemoved { get; set; }
 

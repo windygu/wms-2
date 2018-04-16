@@ -24,46 +24,6 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
             set { ShipmentPackageContentMvoEventId.ShipmentPackageContentId = value; }
         }
 
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual string SubProductId { get; set; }
-
-		public virtual decimal? SubProductQuantity { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string ShipmentPackageShipmentBoxTypeId { get; set; }
-
-		public virtual DateTime? ShipmentPackageDateCreated { get; set; }
-
-		public virtual decimal? ShipmentPackageBoxLength { get; set; }
-
-		public virtual decimal? ShipmentPackageBoxHeight { get; set; }
-
-		public virtual decimal? ShipmentPackageBoxWidth { get; set; }
-
-		public virtual string ShipmentPackageDimensionUomId { get; set; }
-
-		public virtual decimal? ShipmentPackageWeight { get; set; }
-
-		public virtual string ShipmentPackageWeightUomId { get; set; }
-
-		public virtual decimal? ShipmentPackageInsuredValue { get; set; }
-
-		public virtual string ShipmentPackageCreatedBy { get; set; }
-
-		public virtual DateTime? ShipmentPackageCreatedAt { get; set; }
-
-		public virtual string ShipmentPackageUpdatedBy { get; set; }
-
-		public virtual DateTime? ShipmentPackageUpdatedAt { get; set; }
-
-		public virtual bool? ShipmentPackageActive { get; set; }
-
-		public virtual bool? ShipmentPackageDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -131,7 +91,60 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
 	}
 
-	public class ShipmentPackageContentMvoStateCreated : ShipmentPackageContentMvoEventBase, IShipmentPackageContentMvoStateCreated
+    public abstract class ShipmentPackageContentMvoStateEventBase : ShipmentPackageContentMvoEventBase, IShipmentPackageContentMvoStateEvent
+    {
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual string SubProductId { get; set; }
+
+		public virtual decimal? SubProductQuantity { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string ShipmentPackageShipmentBoxTypeId { get; set; }
+
+		public virtual DateTime? ShipmentPackageDateCreated { get; set; }
+
+		public virtual decimal? ShipmentPackageBoxLength { get; set; }
+
+		public virtual decimal? ShipmentPackageBoxHeight { get; set; }
+
+		public virtual decimal? ShipmentPackageBoxWidth { get; set; }
+
+		public virtual string ShipmentPackageDimensionUomId { get; set; }
+
+		public virtual decimal? ShipmentPackageWeight { get; set; }
+
+		public virtual string ShipmentPackageWeightUomId { get; set; }
+
+		public virtual decimal? ShipmentPackageInsuredValue { get; set; }
+
+		public virtual string ShipmentPackageCreatedBy { get; set; }
+
+		public virtual DateTime? ShipmentPackageCreatedAt { get; set; }
+
+		public virtual string ShipmentPackageUpdatedBy { get; set; }
+
+		public virtual DateTime? ShipmentPackageUpdatedAt { get; set; }
+
+		public virtual bool? ShipmentPackageActive { get; set; }
+
+		public virtual bool? ShipmentPackageDeleted { get; set; }
+
+        protected ShipmentPackageContentMvoStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentPackageContentMvoStateEventBase(ShipmentPackageContentMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentPackageContentMvoStateCreated : ShipmentPackageContentMvoStateEventBase, IShipmentPackageContentMvoStateCreated
 	{
 		public ShipmentPackageContentMvoStateCreated () : this(new ShipmentPackageContentMvoEventId())
 		{
@@ -150,7 +163,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 	}
 
 
-	public class ShipmentPackageContentMvoStateMergePatched : ShipmentPackageContentMvoEventBase, IShipmentPackageContentMvoStateMergePatched
+	public class ShipmentPackageContentMvoStateMergePatched : ShipmentPackageContentMvoStateEventBase, IShipmentPackageContentMvoStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
@@ -210,7 +223,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 	}
 
 
-	public class ShipmentPackageContentMvoStateDeleted : ShipmentPackageContentMvoEventBase, IShipmentPackageContentMvoStateDeleted
+	public class ShipmentPackageContentMvoStateDeleted : ShipmentPackageContentMvoStateEventBase, IShipmentPackageContentMvoStateDeleted
 	{
 		public ShipmentPackageContentMvoStateDeleted ()
 		{

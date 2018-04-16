@@ -19,18 +19,22 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//InventoryItemId InventoryItemRequirementId { get; set; }
+
+	}
+
+    public interface IInventoryItemRequirementEntryStateEvent : IInventoryItemRequirementEntryEvent
+    {
 		long Version { get; set; }
 
 		decimal? Quantity { get; set; }
 
 		InventoryPRTriggeredId SourceEventId { get; set; }
 
-		// Outer Id:
-		//InventoryItemId InventoryItemRequirementId { get; set; }
-
-	}
-
-	public interface IInventoryItemRequirementEntryStateCreated : IInventoryItemRequirementEntryEvent//, IInventoryItemRequirementEntryStateProperties
+    }
+   
+	public interface IInventoryItemRequirementEntryStateCreated : IInventoryItemRequirementEntryStateEvent
 	{
 	
 	}

@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IAttributeSetInstanceExtensionFieldStateEvent : IAttributeSetInstanceExtensionFieldEvent
+    {
 		string Type { get; set; }
 
 		int? Length { get; set; }
@@ -29,15 +33,15 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IAttributeSetInstanceExtensionFieldStateCreated : IAttributeSetInstanceExtensionFieldEvent//, IAttributeSetInstanceExtensionFieldStateProperties
+    }
+   
+	public interface IAttributeSetInstanceExtensionFieldStateCreated : IAttributeSetInstanceExtensionFieldStateEvent
 	{
 	
 	}
 
 
-	public interface IAttributeSetInstanceExtensionFieldStateMergePatched : IAttributeSetInstanceExtensionFieldEvent//, IAttributeSetInstanceExtensionFieldStateProperties
+	public interface IAttributeSetInstanceExtensionFieldStateMergePatched : IAttributeSetInstanceExtensionFieldStateEvent
 	{
 		bool IsPropertyTypeRemoved { get; set; }
 
@@ -54,7 +58,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
 	}
 
-	public interface IAttributeSetInstanceExtensionFieldStateDeleted : IAttributeSetInstanceExtensionFieldEvent
+	public interface IAttributeSetInstanceExtensionFieldStateDeleted : IAttributeSetInstanceExtensionFieldStateEvent
 	{
 	}
 

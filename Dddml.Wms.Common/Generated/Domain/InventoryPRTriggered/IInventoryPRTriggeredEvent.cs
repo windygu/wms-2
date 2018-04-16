@@ -18,17 +18,21 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
         bool ReadOnly { get; set; }
 
-		bool? IsProcessed { get; set; }
-
 	}
 
-	public interface IInventoryPRTriggeredStateCreated : IInventoryPRTriggeredEvent//, IInventoryPRTriggeredStateProperties
+    public interface IInventoryPRTriggeredStateEvent : IInventoryPRTriggeredEvent
+    {
+		bool? IsProcessed { get; set; }
+
+    }
+   
+	public interface IInventoryPRTriggeredStateCreated : IInventoryPRTriggeredStateEvent
 	{
 	
 	}
 
 
-	public interface IInventoryPRTriggeredStateMergePatched : IInventoryPRTriggeredEvent//, IInventoryPRTriggeredStateProperties
+	public interface IInventoryPRTriggeredStateMergePatched : IInventoryPRTriggeredStateEvent
 	{
 		bool IsPropertyIsProcessedRemoved { get; set; }
 

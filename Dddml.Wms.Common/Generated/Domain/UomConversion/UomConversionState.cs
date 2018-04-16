@@ -281,13 +281,13 @@ namespace Dddml.Wms.Domain.UomConversion
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUomConversionEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUomConversionEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UomConversion|");
 
             var stateEntityId = this.UomConversionId; // Aggregate Id
-            var eventEntityId = stateEvent.UomConversionEventId.UomConversionId;
+            var eventEntityId = e.UomConversionEventId.UomConversionId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -297,7 +297,7 @@ namespace Dddml.Wms.Domain.UomConversion
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.UomConversionEventId.Version;
+            var eventVersion = e.UomConversionEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

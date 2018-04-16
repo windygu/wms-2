@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="MovementStateEventBase" abstract="true">
+
     <property name="DocumentStatusId" ></property>
     <property name="MovementDate" ><column name="MovementDate" sql-type="DATETIME" /></property>
     <property name="Posted" ></property>
@@ -32,11 +40,6 @@
     <property name="WarehouseIdTo" ></property>
     <property name="Description" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="MovementStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -92,6 +95,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

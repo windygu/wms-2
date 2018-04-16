@@ -23,30 +23,6 @@ namespace Dddml.Wms.Domain.InOut
             set { InOutLineEventId.LineNumber = value; }
         }
 
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string QuantityUomId { get; set; }
-
-		public virtual decimal? MovementQuantity { get; set; }
-
-		public virtual decimal? PickedQuantity { get; set; }
-
-		public virtual bool? IsInvoiced { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string RmaLineNumber { get; set; }
-
-		public virtual string ReversalLineNumber { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -116,7 +92,44 @@ namespace Dddml.Wms.Domain.InOut
 
 	}
 
-	public class InOutLineStateCreated : InOutLineEventBase, IInOutLineStateCreated
+    public abstract class InOutLineStateEventBase : InOutLineEventBase, IInOutLineStateEvent
+    {
+
+		public virtual string LocatorId { get; set; }
+
+		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string QuantityUomId { get; set; }
+
+		public virtual decimal? MovementQuantity { get; set; }
+
+		public virtual decimal? PickedQuantity { get; set; }
+
+		public virtual bool? IsInvoiced { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string RmaLineNumber { get; set; }
+
+		public virtual string ReversalLineNumber { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected InOutLineStateEventBase() : base()
+        {
+        }
+
+        protected InOutLineStateEventBase(InOutLineEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InOutLineStateCreated : InOutLineStateEventBase, IInOutLineStateCreated
 	{
 		public InOutLineStateCreated () : this(new InOutLineEventId())
 		{
@@ -135,7 +148,7 @@ namespace Dddml.Wms.Domain.InOut
 	}
 
 
-	public class InOutLineStateMergePatched : InOutLineEventBase, IInOutLineStateMergePatched
+	public class InOutLineStateMergePatched : InOutLineStateEventBase, IInOutLineStateMergePatched
 	{
 		public virtual bool IsPropertyLocatorIdRemoved { get; set; }
 
@@ -179,7 +192,7 @@ namespace Dddml.Wms.Domain.InOut
 	}
 
 
-	public class InOutLineStateRemoved : InOutLineEventBase, IInOutLineStateRemoved
+	public class InOutLineStateRemoved : InOutLineStateEventBase, IInOutLineStateRemoved
 	{
 		public InOutLineStateRemoved ()
 		{

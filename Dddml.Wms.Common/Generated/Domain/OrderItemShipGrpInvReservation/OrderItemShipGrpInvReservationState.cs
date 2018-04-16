@@ -365,13 +365,13 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemShipGrpInvReservationEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemShipGrpInvReservationEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemShipGrpInvReservation|");
 
             var stateEntityId = this.OrderItemShipGrpInvResId; // Aggregate Id
-            var eventEntityId = stateEvent.OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResId;
+            var eventEntityId = e.OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -381,7 +381,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.OrderItemShipGrpInvReservationEventId.Version;
+            var eventVersion = e.OrderItemShipGrpInvReservationEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

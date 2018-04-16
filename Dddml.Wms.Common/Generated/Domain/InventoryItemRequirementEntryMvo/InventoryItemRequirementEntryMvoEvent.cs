@@ -25,22 +25,6 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             set { InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryId = value; }
         }
 
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual decimal? InventoryItemRequirementQuantity { get; set; }
-
-		public virtual string InventoryItemRequirementCreatedBy { get; set; }
-
-		public virtual DateTime? InventoryItemRequirementCreatedAt { get; set; }
-
-		public virtual string InventoryItemRequirementUpdatedBy { get; set; }
-
-		public virtual DateTime? InventoryItemRequirementUpdatedAt { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -108,7 +92,36 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
 	}
 
-	public class InventoryItemRequirementEntryMvoStateCreated : InventoryItemRequirementEntryMvoEventBase, IInventoryItemRequirementEntryMvoStateCreated
+    public abstract class InventoryItemRequirementEntryMvoStateEventBase : InventoryItemRequirementEntryMvoEventBase, IInventoryItemRequirementEntryMvoStateEvent
+    {
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual decimal? InventoryItemRequirementQuantity { get; set; }
+
+		public virtual string InventoryItemRequirementCreatedBy { get; set; }
+
+		public virtual DateTime? InventoryItemRequirementCreatedAt { get; set; }
+
+		public virtual string InventoryItemRequirementUpdatedBy { get; set; }
+
+		public virtual DateTime? InventoryItemRequirementUpdatedAt { get; set; }
+
+        protected InventoryItemRequirementEntryMvoStateEventBase() : base()
+        {
+        }
+
+        protected InventoryItemRequirementEntryMvoStateEventBase(InventoryItemRequirementEntryMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InventoryItemRequirementEntryMvoStateCreated : InventoryItemRequirementEntryMvoStateEventBase, IInventoryItemRequirementEntryMvoStateCreated
 	{
 		public InventoryItemRequirementEntryMvoStateCreated () : this(new InventoryItemRequirementEntryMvoEventId())
 		{
@@ -127,7 +140,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 	}
 
 
-	public class InventoryItemRequirementEntryMvoStateMergePatched : InventoryItemRequirementEntryMvoEventBase, IInventoryItemRequirementEntryMvoStateMergePatched
+	public class InventoryItemRequirementEntryMvoStateMergePatched : InventoryItemRequirementEntryMvoStateEventBase, IInventoryItemRequirementEntryMvoStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 

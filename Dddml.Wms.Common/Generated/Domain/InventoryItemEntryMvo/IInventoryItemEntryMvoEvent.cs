@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IInventoryItemEntryMvoStateEvent : IInventoryItemEntryMvoEvent
+    {
 		decimal? OnHandQuantity { get; set; }
 
 		decimal? InTransitQuantity { get; set; }
@@ -50,15 +54,15 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		DateTime? InventoryItemUpdatedAt { get; set; }
 
-	}
-
-	public interface IInventoryItemEntryMvoStateCreated : IInventoryItemEntryMvoEvent//, IInventoryItemEntryMvoStateProperties
+    }
+   
+	public interface IInventoryItemEntryMvoStateCreated : IInventoryItemEntryMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IInventoryItemEntryMvoStateMergePatched : IInventoryItemEntryMvoEvent//, IInventoryItemEntryMvoStateProperties
+	public interface IInventoryItemEntryMvoStateMergePatched : IInventoryItemEntryMvoStateEvent
 	{
 		bool IsPropertyOnHandQuantityRemoved { get; set; }
 

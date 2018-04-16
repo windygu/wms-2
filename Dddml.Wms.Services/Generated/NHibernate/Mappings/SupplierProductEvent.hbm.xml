@@ -14,6 +14,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="SupplierProductStateEventBase" abstract="true">
+
     <property name="AvailableThruDate" ><column name="AvailableThruDate" sql-type="DATETIME" /></property>
     <property name="SupplierPrefOrderId" ><column name="SupplierPrefOrderId" sql-type="VARCHAR(20)" /></property>
     <property name="SupplierRatingTypeId" ><column name="SupplierRatingTypeId" sql-type="VARCHAR(20)" /></property>
@@ -28,11 +36,6 @@
     <property name="CanDropShip" ></property>
     <property name="Comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="SupplierProductStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -69,6 +72,7 @@
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
+        </subclass>
 
   </class>
   

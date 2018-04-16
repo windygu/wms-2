@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.Picklist
             set { PicklistRoleEventId.PartyRoleId = value; }
         }
 
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedByUserLogin { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -95,7 +93,22 @@ namespace Dddml.Wms.Domain.Picklist
 
 	}
 
-	public class PicklistRoleStateCreated : PicklistRoleEventBase, IPicklistRoleStateCreated
+    public abstract class PicklistRoleStateEventBase : PicklistRoleEventBase, IPicklistRoleStateEvent
+    {
+
+		public virtual bool? Active { get; set; }
+
+        protected PicklistRoleStateEventBase() : base()
+        {
+        }
+
+        protected PicklistRoleStateEventBase(PicklistRoleEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PicklistRoleStateCreated : PicklistRoleStateEventBase, IPicklistRoleStateCreated
 	{
 		public PicklistRoleStateCreated () : this(new PicklistRoleEventId())
 		{
@@ -114,7 +127,7 @@ namespace Dddml.Wms.Domain.Picklist
 	}
 
 
-	public class PicklistRoleStateMergePatched : PicklistRoleEventBase, IPicklistRoleStateMergePatched
+	public class PicklistRoleStateMergePatched : PicklistRoleStateEventBase, IPicklistRoleStateMergePatched
 	{
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -136,7 +149,7 @@ namespace Dddml.Wms.Domain.Picklist
 	}
 
 
-	public class PicklistRoleStateRemoved : PicklistRoleEventBase, IPicklistRoleStateRemoved
+	public class PicklistRoleStateRemoved : PicklistRoleStateEventBase, IPicklistRoleStateRemoved
 	{
 		public PicklistRoleStateRemoved ()
 		{

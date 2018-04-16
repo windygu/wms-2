@@ -24,6 +24,76 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
             set { ItemIssuanceMvoEventId.ShipmentItemIssuanceId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		ItemIssuanceMvoEventId IGlobalIdentity<ItemIssuanceMvoEventId>.GlobalId {
+			get
+			{
+				return this.ItemIssuanceMvoEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IItemIssuanceMvoEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected ItemIssuanceMvoEventBase()
+        {
+        }
+
+        protected ItemIssuanceMvoEventBase(ItemIssuanceMvoEventId stateEventId)
+        {
+            this.ItemIssuanceMvoEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class ItemIssuanceMvoStateEventBase : ItemIssuanceMvoEventBase, IItemIssuanceMvoStateEvent
+    {
+
 		public virtual string OrderId { get; set; }
 
 		public virtual string OrderItemSeqId { get; set; }
@@ -114,74 +184,17 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
 		public virtual bool? ShipmentActive { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		ItemIssuanceMvoEventId IGlobalIdentity<ItemIssuanceMvoEventId>.GlobalId {
-			get
-			{
-				return this.ItemIssuanceMvoEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IItemIssuanceMvoEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected ItemIssuanceMvoEventBase()
+        protected ItemIssuanceMvoStateEventBase() : base()
         {
         }
 
-        protected ItemIssuanceMvoEventBase(ItemIssuanceMvoEventId stateEventId)
+        protected ItemIssuanceMvoStateEventBase(ItemIssuanceMvoEventId stateEventId) : base(stateEventId)
         {
-            this.ItemIssuanceMvoEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class ItemIssuanceMvoStateCreated : ItemIssuanceMvoEventBase, IItemIssuanceMvoStateCreated
+	public class ItemIssuanceMvoStateCreated : ItemIssuanceMvoStateEventBase, IItemIssuanceMvoStateCreated
 	{
 		public ItemIssuanceMvoStateCreated () : this(new ItemIssuanceMvoEventId())
 		{
@@ -200,7 +213,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 	}
 
 
-	public class ItemIssuanceMvoStateMergePatched : ItemIssuanceMvoEventBase, IItemIssuanceMvoStateMergePatched
+	public class ItemIssuanceMvoStateMergePatched : ItemIssuanceMvoStateEventBase, IItemIssuanceMvoStateMergePatched
 	{
 		public virtual bool IsPropertyOrderIdRemoved { get; set; }
 
@@ -310,7 +323,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 	}
 
 
-	public class ItemIssuanceMvoStateDeleted : ItemIssuanceMvoEventBase, IItemIssuanceMvoStateDeleted
+	public class ItemIssuanceMvoStateDeleted : ItemIssuanceMvoStateEventBase, IItemIssuanceMvoStateDeleted
 	{
 		public ItemIssuanceMvoStateDeleted ()
 		{

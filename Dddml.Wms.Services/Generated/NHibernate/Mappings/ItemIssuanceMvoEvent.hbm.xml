@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="ItemIssuanceMvoStateEventBase" abstract="true">
+
     <property name="OrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
     <property name="OrderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
     <property name="ShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
@@ -57,11 +65,6 @@
     <property name="ShipmentUpdatedBy" ></property>
     <property name="ShipmentUpdatedAt" ><column name="ShipmentUpdatedAt" sql-type="DATETIME" /></property>
     <property name="ShipmentActive" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="ItemIssuanceMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -165,6 +168,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IAttributeAliasMvoStateEvent : IAttributeAliasMvoEvent
+    {
 		string Name { get; set; }
 
 		long? Version { get; set; }
@@ -54,15 +58,15 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 		bool? AttributeDeleted { get; set; }
 
-	}
-
-	public interface IAttributeAliasMvoStateCreated : IAttributeAliasMvoEvent//, IAttributeAliasMvoStateProperties
+    }
+   
+	public interface IAttributeAliasMvoStateCreated : IAttributeAliasMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IAttributeAliasMvoStateMergePatched : IAttributeAliasMvoEvent//, IAttributeAliasMvoStateProperties
+	public interface IAttributeAliasMvoStateMergePatched : IAttributeAliasMvoStateEvent
 	{
 		bool IsPropertyNameRemoved { get; set; }
 
@@ -103,7 +107,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 	}
 
-	public interface IAttributeAliasMvoStateDeleted : IAttributeAliasMvoEvent
+	public interface IAttributeAliasMvoStateDeleted : IAttributeAliasMvoStateEvent
 	{
 	}
 

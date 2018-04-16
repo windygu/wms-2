@@ -245,13 +245,13 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserPermissionEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserPermissionEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserPermission|");
 
             var stateEntityIdUserId = (this as IGlobalIdentity<UserPermissionId>).GlobalId.UserId;
-            var eventEntityIdUserId = stateEvent.UserPermissionEventId.UserId;
+            var eventEntityIdUserId = e.UserPermissionEventId.UserId;
             if (stateEntityIdUserId != eventEntityIdUserId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.User
             id.Append(stateEntityIdUserId).Append(",");
 
             var stateEntityIdPermissionId = (this as IGlobalIdentity<UserPermissionId>).GlobalId.PermissionId;
-            var eventEntityIdPermissionId = stateEvent.UserPermissionEventId.PermissionId;
+            var eventEntityIdPermissionId = e.UserPermissionEventId.PermissionId;
             if (stateEntityIdPermissionId != eventEntityIdPermissionId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PermissionId {0} in state but entity id PermissionId {1} in event", stateEntityIdPermissionId, eventEntityIdPermissionId);
@@ -270,15 +270,18 @@ namespace Dddml.Wms.Domain.User
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (UserPermissionState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IUserPermissionStateEvent ? (IUserPermissionStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (UserPermissionState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

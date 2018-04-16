@@ -491,13 +491,13 @@ namespace Dddml.Wms.Domain.ContactMech
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IContactMechEvent stateEvent)
+        protected void ThrowOnWrongEvent(IContactMechEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ContactMech|");
 
             var stateEntityId = this.ContactMechId; // Aggregate Id
-            var eventEntityId = stateEvent.ContactMechEventId.ContactMechId;
+            var eventEntityId = e.ContactMechEventId.ContactMechId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -507,7 +507,7 @@ namespace Dddml.Wms.Domain.ContactMech
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.ContactMechEventId.Version;
+            var eventVersion = e.ContactMechEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

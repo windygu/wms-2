@@ -13,6 +13,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedByUserLogin" column="CreatedByUserLogin"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="PicklistRoleMvoStateEventBase" abstract="true">
+
     <property name="Version" ></property>
     <property name="Active" ></property>
     <property name="PicklistDescription" ><column name="PicklistDescription" sql-type="VARCHAR(255)" /></property>
@@ -27,11 +35,6 @@
     <property name="PicklistUpdatedAt" ><column name="PicklistUpdatedAt" sql-type="DATETIME" /></property>
     <property name="PicklistActive" ></property>
     <property name="PicklistDeleted" ></property>
-
-    <property name="CreatedByUserLogin" column="CreatedByUserLogin"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="PicklistRoleMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -73,6 +76,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

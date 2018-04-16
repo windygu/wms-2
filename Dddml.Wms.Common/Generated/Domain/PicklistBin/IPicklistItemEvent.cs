@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string PicklistBinId { get; set; }
+
+	}
+
+    public interface IPicklistItemStateEvent : IPicklistItemEvent
+    {
 		long Version { get; set; }
 
 		string ItemStatusId { get; set; }
@@ -25,18 +32,15 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string PicklistBinId { get; set; }
-
-	}
-
-	public interface IPicklistItemStateCreated : IPicklistItemEvent//, IPicklistItemStateProperties
+    }
+   
+	public interface IPicklistItemStateCreated : IPicklistItemStateEvent
 	{
 	
 	}
 
 
-	public interface IPicklistItemStateMergePatched : IPicklistItemEvent//, IPicklistItemStateProperties
+	public interface IPicklistItemStateMergePatched : IPicklistItemStateEvent
 	{
 		bool IsPropertyItemStatusIdRemoved { get; set; }
 
@@ -47,7 +51,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 	}
 
-	public interface IPicklistItemStateRemoved : IPicklistItemEvent
+	public interface IPicklistItemStateRemoved : IPicklistItemStateEvent
 	{
 	}
 

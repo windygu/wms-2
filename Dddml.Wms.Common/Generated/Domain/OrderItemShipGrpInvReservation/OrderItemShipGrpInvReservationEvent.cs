@@ -23,28 +23,6 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
             set { OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResId = value; }
         }
 
-		public virtual string ReserveOrderEnumId { get; set; }
-
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual decimal? QuantityNotAvailable { get; set; }
-
-		public virtual DateTime? ReservedDatetime { get; set; }
-
-		public virtual DateTime? CreatedDatetime { get; set; }
-
-		public virtual DateTime? PromisedDatetime { get; set; }
-
-		public virtual DateTime? CurrentPromisedDate { get; set; }
-
-		public virtual string Priority { get; set; }
-
-		public virtual long? SequenceId { get; set; }
-
-		public virtual DateTime? OldPickStartDate { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -112,7 +90,42 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
 	}
 
-	public class OrderItemShipGrpInvReservationStateCreated : OrderItemShipGrpInvReservationEventBase, IOrderItemShipGrpInvReservationStateCreated
+    public abstract class OrderItemShipGrpInvReservationStateEventBase : OrderItemShipGrpInvReservationEventBase, IOrderItemShipGrpInvReservationStateEvent
+    {
+
+		public virtual string ReserveOrderEnumId { get; set; }
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual decimal? QuantityNotAvailable { get; set; }
+
+		public virtual DateTime? ReservedDatetime { get; set; }
+
+		public virtual DateTime? CreatedDatetime { get; set; }
+
+		public virtual DateTime? PromisedDatetime { get; set; }
+
+		public virtual DateTime? CurrentPromisedDate { get; set; }
+
+		public virtual string Priority { get; set; }
+
+		public virtual long? SequenceId { get; set; }
+
+		public virtual DateTime? OldPickStartDate { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected OrderItemShipGrpInvReservationStateEventBase() : base()
+        {
+        }
+
+        protected OrderItemShipGrpInvReservationStateEventBase(OrderItemShipGrpInvReservationEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrderItemShipGrpInvReservationStateCreated : OrderItemShipGrpInvReservationStateEventBase, IOrderItemShipGrpInvReservationStateCreated
 	{
 		public OrderItemShipGrpInvReservationStateCreated () : this(new OrderItemShipGrpInvReservationEventId())
 		{
@@ -131,7 +144,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 	}
 
 
-	public class OrderItemShipGrpInvReservationStateMergePatched : OrderItemShipGrpInvReservationEventBase, IOrderItemShipGrpInvReservationStateMergePatched
+	public class OrderItemShipGrpInvReservationStateMergePatched : OrderItemShipGrpInvReservationStateEventBase, IOrderItemShipGrpInvReservationStateMergePatched
 	{
 		public virtual bool IsPropertyReserveOrderEnumIdRemoved { get; set; }
 
@@ -173,7 +186,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 	}
 
 
-	public class OrderItemShipGrpInvReservationStateDeleted : OrderItemShipGrpInvReservationEventBase, IOrderItemShipGrpInvReservationStateDeleted
+	public class OrderItemShipGrpInvReservationStateDeleted : OrderItemShipGrpInvReservationStateEventBase, IOrderItemShipGrpInvReservationStateDeleted
 	{
 		public OrderItemShipGrpInvReservationStateDeleted ()
 		{

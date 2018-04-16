@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.Shipment
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string ShipmentId { get; set; }
+
+	}
+
+    public interface IShipmentReceiptStateEvent : IShipmentReceiptEvent
+    {
 		long Version { get; set; }
 
 		string ProductId { get; set; }
@@ -57,18 +64,15 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string ShipmentId { get; set; }
-
-	}
-
-	public interface IShipmentReceiptStateCreated : IShipmentReceiptEvent//, IShipmentReceiptStateProperties
+    }
+   
+	public interface IShipmentReceiptStateCreated : IShipmentReceiptStateEvent
 	{
 	
 	}
 
 
-	public interface IShipmentReceiptStateMergePatched : IShipmentReceiptEvent//, IShipmentReceiptStateProperties
+	public interface IShipmentReceiptStateMergePatched : IShipmentReceiptStateEvent
 	{
 		bool IsPropertyProductIdRemoved { get; set; }
 

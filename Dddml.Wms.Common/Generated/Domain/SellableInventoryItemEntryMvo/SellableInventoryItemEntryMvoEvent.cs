@@ -25,22 +25,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set { SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryId = value; }
         }
 
-		public virtual decimal? SellableQuantity { get; set; }
-
-		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual decimal? SellableInventoryItemSellableQuantity { get; set; }
-
-		public virtual string SellableInventoryItemCreatedBy { get; set; }
-
-		public virtual DateTime? SellableInventoryItemCreatedAt { get; set; }
-
-		public virtual string SellableInventoryItemUpdatedBy { get; set; }
-
-		public virtual DateTime? SellableInventoryItemUpdatedAt { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -108,7 +92,36 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 	}
 
-	public class SellableInventoryItemEntryMvoStateCreated : SellableInventoryItemEntryMvoEventBase, ISellableInventoryItemEntryMvoStateCreated
+    public abstract class SellableInventoryItemEntryMvoStateEventBase : SellableInventoryItemEntryMvoEventBase, ISellableInventoryItemEntryMvoStateEvent
+    {
+
+		public virtual decimal? SellableQuantity { get; set; }
+
+		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual decimal? SellableInventoryItemSellableQuantity { get; set; }
+
+		public virtual string SellableInventoryItemCreatedBy { get; set; }
+
+		public virtual DateTime? SellableInventoryItemCreatedAt { get; set; }
+
+		public virtual string SellableInventoryItemUpdatedBy { get; set; }
+
+		public virtual DateTime? SellableInventoryItemUpdatedAt { get; set; }
+
+        protected SellableInventoryItemEntryMvoStateEventBase() : base()
+        {
+        }
+
+        protected SellableInventoryItemEntryMvoStateEventBase(SellableInventoryItemEntryMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class SellableInventoryItemEntryMvoStateCreated : SellableInventoryItemEntryMvoStateEventBase, ISellableInventoryItemEntryMvoStateCreated
 	{
 		public SellableInventoryItemEntryMvoStateCreated () : this(new SellableInventoryItemEntryMvoEventId())
 		{
@@ -127,7 +140,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 	}
 
 
-	public class SellableInventoryItemEntryMvoStateMergePatched : SellableInventoryItemEntryMvoEventBase, ISellableInventoryItemEntryMvoStateMergePatched
+	public class SellableInventoryItemEntryMvoStateMergePatched : SellableInventoryItemEntryMvoStateEventBase, ISellableInventoryItemEntryMvoStateMergePatched
 	{
 		public virtual bool IsPropertySellableQuantityRemoved { get; set; }
 

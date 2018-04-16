@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.Lot
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface ILotStateEvent : ILotEvent
+    {
 		decimal? Quantity { get; set; }
 
 		DateTime? ExpirationDate { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface ILotStateCreated : ILotEvent//, ILotStateProperties
+    }
+   
+	public interface ILotStateCreated : ILotStateEvent
 	{
 	
 	}
 
 
-	public interface ILotStateMergePatched : ILotEvent//, ILotStateProperties
+	public interface ILotStateMergePatched : ILotStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.Lot
 
 	}
 
-	public interface ILotStateDeleted : ILotEvent
+	public interface ILotStateDeleted : ILotStateEvent
 	{
 	}
 

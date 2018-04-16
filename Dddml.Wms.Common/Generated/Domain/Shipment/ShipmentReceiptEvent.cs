@@ -23,44 +23,6 @@ namespace Dddml.Wms.Domain.Shipment
             set { ShipmentReceiptEventId.ReceiptSeqId = value; }
         }
 
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ShipmentItemSeqId { get; set; }
-
-		public virtual string ShipmentPackageSeqId { get; set; }
-
-		public virtual string OrderId { get; set; }
-
-		public virtual string OrderItemSeqId { get; set; }
-
-		public virtual string ReturnId { get; set; }
-
-		public virtual string ReturnItemSeqId { get; set; }
-
-		public virtual string RejectionReasonId { get; set; }
-
-		public virtual string DamageStatusId { get; set; }
-
-		public virtual string DamageReasonId { get; set; }
-
-		public virtual string ReceivedBy { get; set; }
-
-		public virtual DateTime? DatetimeReceived { get; set; }
-
-		public virtual string ItemDescription { get; set; }
-
-		public virtual decimal? AcceptedQuantity { get; set; }
-
-		public virtual decimal? RejectedQuantity { get; set; }
-
-		public virtual decimal? DamagedQuantity { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -130,7 +92,58 @@ namespace Dddml.Wms.Domain.Shipment
 
 	}
 
-	public class ShipmentReceiptStateCreated : ShipmentReceiptEventBase, IShipmentReceiptStateCreated
+    public abstract class ShipmentReceiptStateEventBase : ShipmentReceiptEventBase, IShipmentReceiptStateEvent
+    {
+
+		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string LocatorId { get; set; }
+
+		public virtual string ShipmentItemSeqId { get; set; }
+
+		public virtual string ShipmentPackageSeqId { get; set; }
+
+		public virtual string OrderId { get; set; }
+
+		public virtual string OrderItemSeqId { get; set; }
+
+		public virtual string ReturnId { get; set; }
+
+		public virtual string ReturnItemSeqId { get; set; }
+
+		public virtual string RejectionReasonId { get; set; }
+
+		public virtual string DamageStatusId { get; set; }
+
+		public virtual string DamageReasonId { get; set; }
+
+		public virtual string ReceivedBy { get; set; }
+
+		public virtual DateTime? DatetimeReceived { get; set; }
+
+		public virtual string ItemDescription { get; set; }
+
+		public virtual decimal? AcceptedQuantity { get; set; }
+
+		public virtual decimal? RejectedQuantity { get; set; }
+
+		public virtual decimal? DamagedQuantity { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ShipmentReceiptStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentReceiptStateEventBase(ShipmentReceiptEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentReceiptStateCreated : ShipmentReceiptStateEventBase, IShipmentReceiptStateCreated
 	{
 		public ShipmentReceiptStateCreated () : this(new ShipmentReceiptEventId())
 		{
@@ -149,7 +162,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ShipmentReceiptStateMergePatched : ShipmentReceiptEventBase, IShipmentReceiptStateMergePatched
+	public class ShipmentReceiptStateMergePatched : ShipmentReceiptStateEventBase, IShipmentReceiptStateMergePatched
 	{
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
 

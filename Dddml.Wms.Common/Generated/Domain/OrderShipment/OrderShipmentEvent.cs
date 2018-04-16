@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.OrderShipment
             set { OrderShipmentEventId.OrderShipmentId = value; }
         }
 
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -94,7 +90,24 @@ namespace Dddml.Wms.Domain.OrderShipment
 
 	}
 
-	public class OrderShipmentStateCreated : OrderShipmentEventBase, IOrderShipmentStateCreated
+    public abstract class OrderShipmentStateEventBase : OrderShipmentEventBase, IOrderShipmentStateEvent
+    {
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected OrderShipmentStateEventBase() : base()
+        {
+        }
+
+        protected OrderShipmentStateEventBase(OrderShipmentEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrderShipmentStateCreated : OrderShipmentStateEventBase, IOrderShipmentStateCreated
 	{
 		public OrderShipmentStateCreated () : this(new OrderShipmentEventId())
 		{
@@ -113,7 +126,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 	}
 
 
-	public class OrderShipmentStateMergePatched : OrderShipmentEventBase, IOrderShipmentStateMergePatched
+	public class OrderShipmentStateMergePatched : OrderShipmentStateEventBase, IOrderShipmentStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 

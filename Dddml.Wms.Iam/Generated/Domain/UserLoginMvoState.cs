@@ -478,13 +478,13 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserLoginMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserLoginMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserLoginMvo|");
 
             var stateEntityId = this.UserLoginId; // Aggregate Id
-            var eventEntityId = stateEvent.UserLoginMvoEventId.UserLoginId;
+            var eventEntityId = e.UserLoginMvoEventId.UserLoginId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -494,7 +494,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
             id.Append("]");
 
             var stateVersion = this.UserVersion;
-            var eventVersion = stateEvent.UserLoginMvoEventId.UserVersion;
+            var eventVersion = e.UserLoginMvoEventId.UserVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

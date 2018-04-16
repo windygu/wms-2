@@ -23,20 +23,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             set { AttributeSetEventId.AttributeSetId = value; }
         }
 
-		public virtual string AttributeSetName { get; set; }
-
-		public virtual string OrganizationId { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string ReferenceId { get; set; }
-
-		public virtual bool? IsInstanceAttributeSet { get; set; }
-
-		public virtual bool? IsMandatory { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -131,7 +117,34 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 	}
 
-	public class AttributeSetStateCreated : AttributeSetEventBase, IAttributeSetStateCreated, ISaveable
+    public abstract class AttributeSetStateEventBase : AttributeSetEventBase, IAttributeSetStateEvent
+    {
+
+		public virtual string AttributeSetName { get; set; }
+
+		public virtual string OrganizationId { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string ReferenceId { get; set; }
+
+		public virtual bool? IsInstanceAttributeSet { get; set; }
+
+		public virtual bool? IsMandatory { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected AttributeSetStateEventBase() : base()
+        {
+        }
+
+        protected AttributeSetStateEventBase(AttributeSetEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AttributeSetStateCreated : AttributeSetStateEventBase, IAttributeSetStateCreated, ISaveable
 	{
 		public AttributeSetStateCreated () : this(new AttributeSetEventId())
 		{
@@ -206,7 +219,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	}
 
 
-	public class AttributeSetStateMergePatched : AttributeSetEventBase, IAttributeSetStateMergePatched, ISaveable
+	public class AttributeSetStateMergePatched : AttributeSetStateEventBase, IAttributeSetStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyAttributeSetNameRemoved { get; set; }
 
@@ -308,7 +321,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	}
 
 
-	public class AttributeSetStateDeleted : AttributeSetEventBase, IAttributeSetStateDeleted, ISaveable
+	public class AttributeSetStateDeleted : AttributeSetStateEventBase, IAttributeSetStateDeleted, ISaveable
 	{
 		public AttributeSetStateDeleted ()
 		{

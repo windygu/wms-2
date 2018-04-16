@@ -24,6 +24,78 @@ namespace Dddml.Wms.Domain.Order
             set { OrderItemEventId.OrderItemSeqId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		OrderItemEventId IGlobalIdentity<OrderItemEventId>.GlobalId {
+			get
+			{
+				return this.OrderItemEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IOrderItemEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+		public virtual long Version { get; set; }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected OrderItemEventBase()
+        {
+        }
+
+        protected OrderItemEventBase(OrderItemEventId stateEventId)
+        {
+            this.OrderItemEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class OrderItemStateEventBase : OrderItemEventBase, IOrderItemStateEvent
+    {
+
 		public virtual string ProductId { get; set; }
 
 		public virtual string ExternalProductId { get; set; }
@@ -96,76 +168,17 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		OrderItemEventId IGlobalIdentity<OrderItemEventId>.GlobalId {
-			get
-			{
-				return this.OrderItemEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IOrderItemEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-		public virtual long Version { get; set; }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected OrderItemEventBase()
+        protected OrderItemStateEventBase() : base()
         {
         }
 
-        protected OrderItemEventBase(OrderItemEventId stateEventId)
+        protected OrderItemStateEventBase(OrderItemEventId stateEventId) : base(stateEventId)
         {
-            this.OrderItemEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class OrderItemStateCreated : OrderItemEventBase, IOrderItemStateCreated
+	public class OrderItemStateCreated : OrderItemStateEventBase, IOrderItemStateCreated
 	{
 		public OrderItemStateCreated () : this(new OrderItemEventId())
 		{
@@ -184,7 +197,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderItemStateMergePatched : OrderItemEventBase, IOrderItemStateMergePatched
+	public class OrderItemStateMergePatched : OrderItemStateEventBase, IOrderItemStateMergePatched
 	{
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
 

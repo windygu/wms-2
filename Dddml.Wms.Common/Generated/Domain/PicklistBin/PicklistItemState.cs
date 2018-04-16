@@ -273,13 +273,13 @@ namespace Dddml.Wms.Domain.PicklistBin
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistItemEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistItemEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistItem|");
 
             var stateEntityIdPicklistBinId = (this as IGlobalIdentity<PicklistBinPicklistItemId>).GlobalId.PicklistBinId;
-            var eventEntityIdPicklistBinId = stateEvent.PicklistItemEventId.PicklistBinId;
+            var eventEntityIdPicklistBinId = e.PicklistItemEventId.PicklistBinId;
             if (stateEntityIdPicklistBinId != eventEntityIdPicklistBinId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PicklistBinId {0} in state but entity id PicklistBinId {1} in event", stateEntityIdPicklistBinId, eventEntityIdPicklistBinId);
@@ -287,7 +287,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             id.Append(stateEntityIdPicklistBinId).Append(",");
 
             var stateEntityIdPicklistItemOrderShipGrpInvId = (this as IGlobalIdentity<PicklistBinPicklistItemId>).GlobalId.PicklistItemOrderShipGrpInvId;
-            var eventEntityIdPicklistItemOrderShipGrpInvId = stateEvent.PicklistItemEventId.PicklistItemOrderShipGrpInvId;
+            var eventEntityIdPicklistItemOrderShipGrpInvId = e.PicklistItemEventId.PicklistItemOrderShipGrpInvId;
             if (stateEntityIdPicklistItemOrderShipGrpInvId != eventEntityIdPicklistItemOrderShipGrpInvId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PicklistItemOrderShipGrpInvId {0} in state but entity id PicklistItemOrderShipGrpInvId {1} in event", stateEntityIdPicklistItemOrderShipGrpInvId, eventEntityIdPicklistItemOrderShipGrpInvId);
@@ -298,15 +298,18 @@ namespace Dddml.Wms.Domain.PicklistBin
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (PicklistItemState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IPicklistItemStateEvent ? (IPicklistItemStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (PicklistItemState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

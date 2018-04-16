@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="ProductCategoryStateEventBase" abstract="true">
+
     <property name="ProductCategoryTypeId" ><column name="ProductCategoryTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="PrimaryParentCategoryId" ><column name="PrimaryParentCategoryId" sql-type="VARCHAR(20)" /></property>
     <property name="CategoryName" ><column name="CategoryName" sql-type="VARCHAR(100)" /></property>
@@ -20,11 +28,6 @@
     <property name="ShowInSelect" ></property>
     <property name="AttributeSetId" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="ProductCategoryStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -56,6 +59,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

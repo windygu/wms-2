@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IOrderItemShipGroupAssociationMvoStateEvent : IOrderItemShipGroupAssociationMvoEvent
+    {
 		decimal? Quantity { get; set; }
 
 		decimal? CancelQuantity { get; set; }
@@ -134,15 +138,15 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 
 		bool? OrderActive { get; set; }
 
-	}
-
-	public interface IOrderItemShipGroupAssociationMvoStateCreated : IOrderItemShipGroupAssociationMvoEvent//, IOrderItemShipGroupAssociationMvoStateProperties
+    }
+   
+	public interface IOrderItemShipGroupAssociationMvoStateCreated : IOrderItemShipGroupAssociationMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderItemShipGroupAssociationMvoStateMergePatched : IOrderItemShipGroupAssociationMvoEvent//, IOrderItemShipGroupAssociationMvoStateProperties
+	public interface IOrderItemShipGroupAssociationMvoStateMergePatched : IOrderItemShipGroupAssociationMvoStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 
@@ -263,7 +267,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 
 	}
 
-	public interface IOrderItemShipGroupAssociationMvoStateDeleted : IOrderItemShipGroupAssociationMvoEvent
+	public interface IOrderItemShipGroupAssociationMvoStateDeleted : IOrderItemShipGroupAssociationMvoStateEvent
 	{
 	}
 

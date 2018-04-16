@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="UserClaimMvoStateEventBase" abstract="true">
+
     <property name="ClaimType" ></property>
     <property name="ClaimValue" ></property>
     <property name="Version" ></property>
@@ -33,11 +41,6 @@
     <property name="UserUpdatedAt" ><column name="UserUpdatedAt" sql-type="DATETIME" /></property>
     <property name="UserActive" ></property>
     <property name="UserDeleted" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="UserClaimMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -93,6 +96,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

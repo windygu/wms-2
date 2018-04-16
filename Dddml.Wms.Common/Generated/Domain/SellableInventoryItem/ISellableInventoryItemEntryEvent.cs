@@ -19,18 +19,22 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//InventoryItemId SellableInventoryItemId { get; set; }
+
+	}
+
+    public interface ISellableInventoryItemEntryStateEvent : ISellableInventoryItemEntryEvent
+    {
 		long Version { get; set; }
 
 		decimal? SellableQuantity { get; set; }
 
 		InventoryPRTriggeredId SourceEventId { get; set; }
 
-		// Outer Id:
-		//InventoryItemId SellableInventoryItemId { get; set; }
-
-	}
-
-	public interface ISellableInventoryItemEntryStateCreated : ISellableInventoryItemEntryEvent//, ISellableInventoryItemEntryStateProperties
+    }
+   
+	public interface ISellableInventoryItemEntryStateCreated : ISellableInventoryItemEntryStateEvent
 	{
 	
 	}

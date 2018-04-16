@@ -24,20 +24,6 @@ namespace Dddml.Wms.Domain.Picklist
             set { PicklistEventId.PicklistId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual string FacilityId { get; set; }
-
-		public virtual string ShipmentMethodTypeId { get; set; }
-
-		public virtual string StatusId { get; set; }
-
-		public virtual DateTime? PicklistDate { get; set; }
-
-		public virtual long? PickwaveId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -132,7 +118,34 @@ namespace Dddml.Wms.Domain.Picklist
 
 	}
 
-	public class PicklistStateCreated : PicklistEventBase, IPicklistStateCreated, ISaveable
+    public abstract class PicklistStateEventBase : PicklistEventBase, IPicklistStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual string FacilityId { get; set; }
+
+		public virtual string ShipmentMethodTypeId { get; set; }
+
+		public virtual string StatusId { get; set; }
+
+		public virtual DateTime? PicklistDate { get; set; }
+
+		public virtual long? PickwaveId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected PicklistStateEventBase() : base()
+        {
+        }
+
+        protected PicklistStateEventBase(PicklistEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PicklistStateCreated : PicklistStateEventBase, IPicklistStateCreated, ISaveable
 	{
 		public PicklistStateCreated () : this(new PicklistEventId())
 		{
@@ -207,7 +220,7 @@ namespace Dddml.Wms.Domain.Picklist
 	}
 
 
-	public class PicklistStateMergePatched : PicklistEventBase, IPicklistStateMergePatched, ISaveable
+	public class PicklistStateMergePatched : PicklistStateEventBase, IPicklistStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -309,7 +322,7 @@ namespace Dddml.Wms.Domain.Picklist
 	}
 
 
-	public class PicklistStateDeleted : PicklistEventBase, IPicklistStateDeleted, ISaveable
+	public class PicklistStateDeleted : PicklistStateEventBase, IPicklistStateDeleted, ISaveable
 	{
 		public PicklistStateDeleted ()
 		{

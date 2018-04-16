@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Product
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IProductStateEvent : IProductEvent
+    {
 		string ProductTypeId { get; set; }
 
 		string PrimaryProductCategoryId { get; set; }
@@ -139,15 +143,15 @@ namespace Dddml.Wms.Domain.Product
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IProductStateCreated : IProductEvent//, IProductStateProperties
+    }
+   
+	public interface IProductStateCreated : IProductStateEvent
 	{
 	
 	}
 
 
-	public interface IProductStateMergePatched : IProductEvent//, IProductStateProperties
+	public interface IProductStateMergePatched : IProductStateEvent
 	{
 		bool IsPropertyProductTypeIdRemoved { get; set; }
 

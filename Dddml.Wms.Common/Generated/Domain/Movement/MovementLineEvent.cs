@@ -23,22 +23,6 @@ namespace Dddml.Wms.Domain.Movement
             set { MovementLineEventId.LineNumber = value; }
         }
 
-		public virtual decimal? MovementQuantity { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string LocatorIdFrom { get; set; }
-
-		public virtual string LocatorIdTo { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string ReversalLineNumber { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -108,7 +92,36 @@ namespace Dddml.Wms.Domain.Movement
 
 	}
 
-	public class MovementLineStateCreated : MovementLineEventBase, IMovementLineStateCreated
+    public abstract class MovementLineStateEventBase : MovementLineEventBase, IMovementLineStateEvent
+    {
+
+		public virtual decimal? MovementQuantity { get; set; }
+
+		public virtual string ProductId { get; set; }
+
+		public virtual string LocatorIdFrom { get; set; }
+
+		public virtual string LocatorIdTo { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string ReversalLineNumber { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected MovementLineStateEventBase() : base()
+        {
+        }
+
+        protected MovementLineStateEventBase(MovementLineEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class MovementLineStateCreated : MovementLineStateEventBase, IMovementLineStateCreated
 	{
 		public MovementLineStateCreated () : this(new MovementLineEventId())
 		{
@@ -127,7 +140,7 @@ namespace Dddml.Wms.Domain.Movement
 	}
 
 
-	public class MovementLineStateMergePatched : MovementLineEventBase, IMovementLineStateMergePatched
+	public class MovementLineStateMergePatched : MovementLineStateEventBase, IMovementLineStateMergePatched
 	{
 		public virtual bool IsPropertyMovementQuantityRemoved { get; set; }
 
@@ -163,7 +176,7 @@ namespace Dddml.Wms.Domain.Movement
 	}
 
 
-	public class MovementLineStateRemoved : MovementLineEventBase, IMovementLineStateRemoved
+	public class MovementLineStateRemoved : MovementLineStateEventBase, IMovementLineStateRemoved
 	{
 		public MovementLineStateRemoved ()
 		{

@@ -245,13 +245,13 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserLoginEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserLoginEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserLogin|");
 
             var stateEntityIdUserId = (this as IGlobalIdentity<UserLoginId>).GlobalId.UserId;
-            var eventEntityIdUserId = stateEvent.UserLoginEventId.UserId;
+            var eventEntityIdUserId = e.UserLoginEventId.UserId;
             if (stateEntityIdUserId != eventEntityIdUserId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.User
             id.Append(stateEntityIdUserId).Append(",");
 
             var stateEntityIdLoginKey = (this as IGlobalIdentity<UserLoginId>).GlobalId.LoginKey;
-            var eventEntityIdLoginKey = stateEvent.UserLoginEventId.LoginKey;
+            var eventEntityIdLoginKey = e.UserLoginEventId.LoginKey;
             if (stateEntityIdLoginKey != eventEntityIdLoginKey)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id LoginKey {0} in state but entity id LoginKey {1} in event", stateEntityIdLoginKey, eventEntityIdLoginKey);
@@ -270,15 +270,18 @@ namespace Dddml.Wms.Domain.User
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (UserLoginState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IUserLoginStateEvent ? (IUserLoginStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (UserLoginState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

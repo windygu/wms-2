@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Permission
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPermissionStateEvent : IPermissionEvent
+    {
 		string Name { get; set; }
 
 		string ParentPermissionId { get; set; }
@@ -25,15 +29,15 @@ namespace Dddml.Wms.Domain.Permission
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IPermissionStateCreated : IPermissionEvent//, IPermissionStateProperties
+    }
+   
+	public interface IPermissionStateCreated : IPermissionStateEvent
 	{
 	
 	}
 
 
-	public interface IPermissionStateMergePatched : IPermissionEvent//, IPermissionStateProperties
+	public interface IPermissionStateMergePatched : IPermissionStateEvent
 	{
 		bool IsPropertyNameRemoved { get; set; }
 
@@ -46,7 +50,7 @@ namespace Dddml.Wms.Domain.Permission
 
 	}
 
-	public interface IPermissionStateDeleted : IPermissionEvent
+	public interface IPermissionStateDeleted : IPermissionStateEvent
 	{
 	}
 

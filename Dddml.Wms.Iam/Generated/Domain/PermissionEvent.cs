@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.Permission
             set { PermissionEventId.PermissionId = value; }
         }
 
-		public virtual string Name { get; set; }
-
-		public virtual string ParentPermissionId { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +90,28 @@ namespace Dddml.Wms.Domain.Permission
 
 	}
 
-	public class PermissionStateCreated : PermissionEventBase, IPermissionStateCreated
+    public abstract class PermissionStateEventBase : PermissionEventBase, IPermissionStateEvent
+    {
+
+		public virtual string Name { get; set; }
+
+		public virtual string ParentPermissionId { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected PermissionStateEventBase() : base()
+        {
+        }
+
+        protected PermissionStateEventBase(PermissionEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PermissionStateCreated : PermissionStateEventBase, IPermissionStateCreated
 	{
 		public PermissionStateCreated () : this(new PermissionEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.Permission
 	}
 
 
-	public class PermissionStateMergePatched : PermissionEventBase, IPermissionStateMergePatched
+	public class PermissionStateMergePatched : PermissionStateEventBase, IPermissionStateMergePatched
 	{
 		public virtual bool IsPropertyNameRemoved { get; set; }
 
@@ -145,7 +158,7 @@ namespace Dddml.Wms.Domain.Permission
 	}
 
 
-	public class PermissionStateDeleted : PermissionEventBase, IPermissionStateDeleted
+	public class PermissionStateDeleted : PermissionStateEventBase, IPermissionStateDeleted
 	{
 		public PermissionStateDeleted ()
 		{

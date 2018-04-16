@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IInventoryItemStateEvent : IInventoryItemEvent
+    {
 		decimal? OnHandQuantity { get; set; }
 
 		decimal? InTransitQuantity { get; set; }
@@ -27,9 +31,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		decimal? VirtualQuantity { get; set; }
 
-	}
-
-	public interface IInventoryItemStateCreated : IInventoryItemEvent//, IInventoryItemStateProperties
+    }
+   
+	public interface IInventoryItemStateCreated : IInventoryItemStateEvent
 	{
 		IEnumerable<IInventoryItemEntryStateCreated> InventoryItemEntryEvents { get; }
 		
@@ -41,7 +45,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 	}
 
 
-	public interface IInventoryItemStateMergePatched : IInventoryItemEvent//, IInventoryItemStateProperties
+	public interface IInventoryItemStateMergePatched : IInventoryItemStateEvent
 	{
 		bool IsPropertyOnHandQuantityRemoved { get; set; }
 

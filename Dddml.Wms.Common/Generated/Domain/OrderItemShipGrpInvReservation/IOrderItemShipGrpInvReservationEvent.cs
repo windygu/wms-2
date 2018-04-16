@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IOrderItemShipGrpInvReservationStateEvent : IOrderItemShipGrpInvReservationEvent
+    {
 		string ReserveOrderEnumId { get; set; }
 
 		decimal? Quantity { get; set; }
@@ -39,15 +43,15 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IOrderItemShipGrpInvReservationStateCreated : IOrderItemShipGrpInvReservationEvent//, IOrderItemShipGrpInvReservationStateProperties
+    }
+   
+	public interface IOrderItemShipGrpInvReservationStateCreated : IOrderItemShipGrpInvReservationStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderItemShipGrpInvReservationStateMergePatched : IOrderItemShipGrpInvReservationEvent//, IOrderItemShipGrpInvReservationStateProperties
+	public interface IOrderItemShipGrpInvReservationStateMergePatched : IOrderItemShipGrpInvReservationStateEvent
 	{
 		bool IsPropertyReserveOrderEnumIdRemoved { get; set; }
 
@@ -74,7 +78,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
 	}
 
-	public interface IOrderItemShipGrpInvReservationStateDeleted : IOrderItemShipGrpInvReservationEvent
+	public interface IOrderItemShipGrpInvReservationStateDeleted : IOrderItemShipGrpInvReservationStateEvent
 	{
 	}
 

@@ -23,46 +23,6 @@ namespace Dddml.Wms.Domain.ContactMech
             set { ContactMechEventId.ContactMechId = value; }
         }
 
-		public virtual string ContactMechTypeId { get; set; }
-
-		public virtual string InfoString { get; set; }
-
-		public virtual string ToName { get; set; }
-
-		public virtual string AttnName { get; set; }
-
-		public virtual string Address1 { get; set; }
-
-		public virtual string Address2 { get; set; }
-
-		public virtual string Directions { get; set; }
-
-		public virtual string City { get; set; }
-
-		public virtual string PostalCode { get; set; }
-
-		public virtual string PostalCodeExt { get; set; }
-
-		public virtual string CountryGeoId { get; set; }
-
-		public virtual string StateProvinceGeoId { get; set; }
-
-		public virtual string CountyGeoId { get; set; }
-
-		public virtual string PostalCodeGeoId { get; set; }
-
-		public virtual string GeoPointId { get; set; }
-
-		public virtual string CountryCode { get; set; }
-
-		public virtual string AreaCode { get; set; }
-
-		public virtual string ContactNumber { get; set; }
-
-		public virtual string AskForName { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -130,7 +90,60 @@ namespace Dddml.Wms.Domain.ContactMech
 
 	}
 
-	public class ContactMechStateCreated : ContactMechEventBase, IContactMechStateCreated
+    public abstract class ContactMechStateEventBase : ContactMechEventBase, IContactMechStateEvent
+    {
+
+		public virtual string ContactMechTypeId { get; set; }
+
+		public virtual string InfoString { get; set; }
+
+		public virtual string ToName { get; set; }
+
+		public virtual string AttnName { get; set; }
+
+		public virtual string Address1 { get; set; }
+
+		public virtual string Address2 { get; set; }
+
+		public virtual string Directions { get; set; }
+
+		public virtual string City { get; set; }
+
+		public virtual string PostalCode { get; set; }
+
+		public virtual string PostalCodeExt { get; set; }
+
+		public virtual string CountryGeoId { get; set; }
+
+		public virtual string StateProvinceGeoId { get; set; }
+
+		public virtual string CountyGeoId { get; set; }
+
+		public virtual string PostalCodeGeoId { get; set; }
+
+		public virtual string GeoPointId { get; set; }
+
+		public virtual string CountryCode { get; set; }
+
+		public virtual string AreaCode { get; set; }
+
+		public virtual string ContactNumber { get; set; }
+
+		public virtual string AskForName { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ContactMechStateEventBase() : base()
+        {
+        }
+
+        protected ContactMechStateEventBase(ContactMechEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ContactMechStateCreated : ContactMechStateEventBase, IContactMechStateCreated
 	{
 		public ContactMechStateCreated () : this(new ContactMechEventId())
 		{
@@ -149,7 +162,7 @@ namespace Dddml.Wms.Domain.ContactMech
 	}
 
 
-	public class ContactMechStateMergePatched : ContactMechEventBase, IContactMechStateMergePatched
+	public class ContactMechStateMergePatched : ContactMechStateEventBase, IContactMechStateMergePatched
 	{
 		public virtual bool IsPropertyContactMechTypeIdRemoved { get; set; }
 
@@ -209,7 +222,7 @@ namespace Dddml.Wms.Domain.ContactMech
 	}
 
 
-	public class ContactMechStateDeleted : ContactMechEventBase, IContactMechStateDeleted
+	public class ContactMechStateDeleted : ContactMechStateEventBase, IContactMechStateDeleted
 	{
 		public ContactMechStateDeleted ()
 		{

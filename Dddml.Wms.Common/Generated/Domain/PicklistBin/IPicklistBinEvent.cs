@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPicklistBinStateEvent : IPicklistBinEvent
+    {
 		string PicklistId { get; set; }
 
 		long? BinLocationNumber { get; set; }
@@ -27,9 +31,9 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IPicklistBinStateCreated : IPicklistBinEvent//, IPicklistBinStateProperties
+    }
+   
+	public interface IPicklistBinStateCreated : IPicklistBinStateEvent
 	{
 		IEnumerable<IPicklistItemStateCreated> PicklistItemEvents { get; }
 		
@@ -41,7 +45,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 	}
 
 
-	public interface IPicklistBinStateMergePatched : IPicklistBinEvent//, IPicklistBinStateProperties
+	public interface IPicklistBinStateMergePatched : IPicklistBinStateEvent
 	{
 		bool IsPropertyPicklistIdRemoved { get; set; }
 
@@ -66,7 +70,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 	}
 
-	public interface IPicklistBinStateDeleted : IPicklistBinEvent
+	public interface IPicklistBinStateDeleted : IPicklistBinStateEvent
 	{
 		IEnumerable<IPicklistItemStateRemoved> PicklistItemEvents { get; }
 		

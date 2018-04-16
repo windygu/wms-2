@@ -17,6 +17,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="PicklistItemMvoStateEventBase" abstract="true">
+
     <property name="ItemStatusId" ><column name="ItemStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="Version" ></property>
@@ -31,11 +39,6 @@
     <property name="PicklistBinUpdatedAt" ><column name="PicklistBinUpdatedAt" sql-type="DATETIME" /></property>
     <property name="PicklistBinActive" ></property>
     <property name="PicklistBinDeleted" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="PicklistItemMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -77,6 +80,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

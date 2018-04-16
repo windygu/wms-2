@@ -884,13 +884,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInOutLineMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInOutLineMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InOutLineMvo|");
 
             var stateEntityId = this.InOutLineId; // Aggregate Id
-            var eventEntityId = stateEvent.InOutLineMvoEventId.InOutLineId;
+            var eventEntityId = e.InOutLineMvoEventId.InOutLineId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -900,7 +900,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             id.Append("]");
 
             var stateVersion = this.InOutVersion;
-            var eventVersion = stateEvent.InOutLineMvoEventId.InOutVersion;
+            var eventVersion = e.InOutLineMvoEventId.InOutVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

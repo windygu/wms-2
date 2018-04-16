@@ -23,24 +23,6 @@ namespace Dddml.Wms.Domain.ProductCategory
             set { ProductCategoryEventId.ProductCategoryId = value; }
         }
 
-		public virtual string ProductCategoryTypeId { get; set; }
-
-		public virtual string PrimaryParentCategoryId { get; set; }
-
-		public virtual string CategoryName { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string CategoryImageUrl { get; set; }
-
-		public virtual string DetailScreen { get; set; }
-
-		public virtual bool? ShowInSelect { get; set; }
-
-		public virtual string AttributeSetId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -108,7 +90,38 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 	}
 
-	public class ProductCategoryStateCreated : ProductCategoryEventBase, IProductCategoryStateCreated
+    public abstract class ProductCategoryStateEventBase : ProductCategoryEventBase, IProductCategoryStateEvent
+    {
+
+		public virtual string ProductCategoryTypeId { get; set; }
+
+		public virtual string PrimaryParentCategoryId { get; set; }
+
+		public virtual string CategoryName { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string CategoryImageUrl { get; set; }
+
+		public virtual string DetailScreen { get; set; }
+
+		public virtual bool? ShowInSelect { get; set; }
+
+		public virtual string AttributeSetId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ProductCategoryStateEventBase() : base()
+        {
+        }
+
+        protected ProductCategoryStateEventBase(ProductCategoryEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ProductCategoryStateCreated : ProductCategoryStateEventBase, IProductCategoryStateCreated
 	{
 		public ProductCategoryStateCreated () : this(new ProductCategoryEventId())
 		{
@@ -127,7 +140,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 	}
 
 
-	public class ProductCategoryStateMergePatched : ProductCategoryEventBase, IProductCategoryStateMergePatched
+	public class ProductCategoryStateMergePatched : ProductCategoryStateEventBase, IProductCategoryStateMergePatched
 	{
 		public virtual bool IsPropertyProductCategoryTypeIdRemoved { get; set; }
 
@@ -165,7 +178,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 	}
 
 
-	public class ProductCategoryStateDeleted : ProductCategoryEventBase, IProductCategoryStateDeleted
+	public class ProductCategoryStateDeleted : ProductCategoryStateEventBase, IProductCategoryStateDeleted
 	{
 		public ProductCategoryStateDeleted ()
 		{

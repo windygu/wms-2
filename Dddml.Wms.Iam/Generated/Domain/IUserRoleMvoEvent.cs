@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUserRoleMvoStateEvent : IUserRoleMvoEvent
+    {
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
@@ -56,15 +60,15 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 		bool? UserDeleted { get; set; }
 
-	}
-
-	public interface IUserRoleMvoStateCreated : IUserRoleMvoEvent//, IUserRoleMvoStateProperties
+    }
+   
+	public interface IUserRoleMvoStateCreated : IUserRoleMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IUserRoleMvoStateMergePatched : IUserRoleMvoEvent//, IUserRoleMvoStateProperties
+	public interface IUserRoleMvoStateMergePatched : IUserRoleMvoStateEvent
 	{
 		bool IsPropertyVersionRemoved { get; set; }
 
@@ -107,7 +111,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 	}
 
-	public interface IUserRoleMvoStateDeleted : IUserRoleMvoEvent
+	public interface IUserRoleMvoStateDeleted : IUserRoleMvoStateEvent
 	{
 	}
 

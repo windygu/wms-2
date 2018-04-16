@@ -711,13 +711,13 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItem|");
 
             var stateEntityIdOrderId = (this as IGlobalIdentity<OrderItemId>).GlobalId.OrderId;
-            var eventEntityIdOrderId = stateEvent.OrderItemEventId.OrderId;
+            var eventEntityIdOrderId = e.OrderItemEventId.OrderId;
             if (stateEntityIdOrderId != eventEntityIdOrderId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderId {0} in state but entity id OrderId {1} in event", stateEntityIdOrderId, eventEntityIdOrderId);
@@ -725,7 +725,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append(stateEntityIdOrderId).Append(",");
 
             var stateEntityIdOrderItemSeqId = (this as IGlobalIdentity<OrderItemId>).GlobalId.OrderItemSeqId;
-            var eventEntityIdOrderItemSeqId = stateEvent.OrderItemEventId.OrderItemSeqId;
+            var eventEntityIdOrderItemSeqId = e.OrderItemEventId.OrderItemSeqId;
             if (stateEntityIdOrderItemSeqId != eventEntityIdOrderItemSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderItemSeqId {0} in state but entity id OrderItemSeqId {1} in event", stateEntityIdOrderItemSeqId, eventEntityIdOrderItemSeqId);
@@ -736,15 +736,18 @@ namespace Dddml.Wms.Domain.Order
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (OrderItemState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IOrderItemStateEvent ? (IOrderItemStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (OrderItemState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

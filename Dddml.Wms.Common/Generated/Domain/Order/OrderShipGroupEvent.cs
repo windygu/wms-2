@@ -24,44 +24,6 @@ namespace Dddml.Wms.Domain.Order
             set { OrderShipGroupEventId.ShipGroupSeqId = value; }
         }
 
-		public virtual string ShipmentMethodTypeId { get; set; }
-
-		public virtual string SupplierPartyId { get; set; }
-
-		public virtual string VendorPartyId { get; set; }
-
-		public virtual string CarrierPartyId { get; set; }
-
-		public virtual string CarrierRoleTypeId { get; set; }
-
-		public virtual string FacilityId { get; set; }
-
-		public virtual string ContactMechId { get; set; }
-
-		public virtual string TelecomContactMechId { get; set; }
-
-		public virtual string TrackingNumber { get; set; }
-
-		public virtual string ShippingInstructions { get; set; }
-
-		public virtual string MaySplit { get; set; }
-
-		public virtual string GiftMessage { get; set; }
-
-		public virtual string IsGift { get; set; }
-
-		public virtual DateTime? ShipAfterDate { get; set; }
-
-		public virtual DateTime? ShipByDate { get; set; }
-
-		public virtual DateTime? EstimatedShipDate { get; set; }
-
-		public virtual DateTime? EstimatedDeliveryDate { get; set; }
-
-		public virtual long? PickwaveId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -163,7 +125,58 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public class OrderShipGroupStateCreated : OrderShipGroupEventBase, IOrderShipGroupStateCreated, ISaveable
+    public abstract class OrderShipGroupStateEventBase : OrderShipGroupEventBase, IOrderShipGroupStateEvent
+    {
+
+		public virtual string ShipmentMethodTypeId { get; set; }
+
+		public virtual string SupplierPartyId { get; set; }
+
+		public virtual string VendorPartyId { get; set; }
+
+		public virtual string CarrierPartyId { get; set; }
+
+		public virtual string CarrierRoleTypeId { get; set; }
+
+		public virtual string FacilityId { get; set; }
+
+		public virtual string ContactMechId { get; set; }
+
+		public virtual string TelecomContactMechId { get; set; }
+
+		public virtual string TrackingNumber { get; set; }
+
+		public virtual string ShippingInstructions { get; set; }
+
+		public virtual string MaySplit { get; set; }
+
+		public virtual string GiftMessage { get; set; }
+
+		public virtual string IsGift { get; set; }
+
+		public virtual DateTime? ShipAfterDate { get; set; }
+
+		public virtual DateTime? ShipByDate { get; set; }
+
+		public virtual DateTime? EstimatedShipDate { get; set; }
+
+		public virtual DateTime? EstimatedDeliveryDate { get; set; }
+
+		public virtual long? PickwaveId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected OrderShipGroupStateEventBase() : base()
+        {
+        }
+
+        protected OrderShipGroupStateEventBase(OrderShipGroupEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrderShipGroupStateCreated : OrderShipGroupStateEventBase, IOrderShipGroupStateCreated, ISaveable
 	{
 		public OrderShipGroupStateCreated () : this(new OrderShipGroupEventId())
 		{
@@ -238,7 +251,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderShipGroupStateMergePatched : OrderShipGroupEventBase, IOrderShipGroupStateMergePatched, ISaveable
+	public class OrderShipGroupStateMergePatched : OrderShipGroupStateEventBase, IOrderShipGroupStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyShipmentMethodTypeIdRemoved { get; set; }
 
@@ -364,7 +377,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderShipGroupStateRemoved : OrderShipGroupEventBase, IOrderShipGroupStateRemoved, ISaveable
+	public class OrderShipGroupStateRemoved : OrderShipGroupStateEventBase, IOrderShipGroupStateRemoved, ISaveable
 	{
 		public OrderShipGroupStateRemoved ()
 		{

@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             set { InventoryItemRequirementEventId.InventoryItemRequirementId = value; }
         }
 
-		public virtual decimal? Quantity { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -116,7 +114,22 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 	}
 
-	public class InventoryItemRequirementStateCreated : InventoryItemRequirementEventBase, IInventoryItemRequirementStateCreated
+    public abstract class InventoryItemRequirementStateEventBase : InventoryItemRequirementEventBase, IInventoryItemRequirementStateEvent
+    {
+
+		public virtual decimal? Quantity { get; set; }
+
+        protected InventoryItemRequirementStateEventBase() : base()
+        {
+        }
+
+        protected InventoryItemRequirementStateEventBase(InventoryItemRequirementEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InventoryItemRequirementStateCreated : InventoryItemRequirementStateEventBase, IInventoryItemRequirementStateCreated
 	{
 		public InventoryItemRequirementStateCreated () : this(new InventoryItemRequirementEventId())
 		{
@@ -170,7 +183,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 	}
 
 
-	public class InventoryItemRequirementStateMergePatched : InventoryItemRequirementEventBase, IInventoryItemRequirementStateMergePatched
+	public class InventoryItemRequirementStateMergePatched : InventoryItemRequirementStateEventBase, IInventoryItemRequirementStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 

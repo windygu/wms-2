@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.RejectionReason
             set { RejectionReasonEventId.RejectionReasonId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -94,7 +90,24 @@ namespace Dddml.Wms.Domain.RejectionReason
 
 	}
 
-	public class RejectionReasonStateCreated : RejectionReasonEventBase, IRejectionReasonStateCreated
+    public abstract class RejectionReasonStateEventBase : RejectionReasonEventBase, IRejectionReasonStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected RejectionReasonStateEventBase() : base()
+        {
+        }
+
+        protected RejectionReasonStateEventBase(RejectionReasonEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class RejectionReasonStateCreated : RejectionReasonStateEventBase, IRejectionReasonStateCreated
 	{
 		public RejectionReasonStateCreated () : this(new RejectionReasonEventId())
 		{
@@ -113,7 +126,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 	}
 
 
-	public class RejectionReasonStateMergePatched : RejectionReasonEventBase, IRejectionReasonStateMergePatched
+	public class RejectionReasonStateMergePatched : RejectionReasonStateEventBase, IRejectionReasonStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -137,7 +150,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 	}
 
 
-	public class RejectionReasonStateDeleted : RejectionReasonEventBase, IRejectionReasonStateDeleted
+	public class RejectionReasonStateDeleted : RejectionReasonStateEventBase, IRejectionReasonStateDeleted
 	{
 		public RejectionReasonStateDeleted ()
 		{

@@ -1111,13 +1111,13 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemMvoEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemMvoEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemMvo|");
 
             var stateEntityId = this.OrderItemId; // Aggregate Id
-            var eventEntityId = stateEvent.OrderItemMvoEventId.OrderItemId;
+            var eventEntityId = e.OrderItemMvoEventId.OrderItemId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -1127,7 +1127,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
             id.Append("]");
 
             var stateVersion = this.OrderVersion;
-            var eventVersion = stateEvent.OrderItemMvoEventId.OrderVersion;
+            var eventVersion = e.OrderItemMvoEventId.OrderVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

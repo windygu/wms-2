@@ -24,6 +24,76 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set { ShipmentItemMvoEventId.ShipmentItemId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		ShipmentItemMvoEventId IGlobalIdentity<ShipmentItemMvoEventId>.GlobalId {
+			get
+			{
+				return this.ShipmentItemMvoEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IShipmentItemMvoEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected ShipmentItemMvoEventBase()
+        {
+        }
+
+        protected ShipmentItemMvoEventBase(ShipmentItemMvoEventId stateEventId)
+        {
+            this.ShipmentItemMvoEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class ShipmentItemMvoStateEventBase : ShipmentItemMvoEventBase, IShipmentItemMvoStateEvent
+    {
+
 		public virtual string ProductId { get; set; }
 
 		public virtual string AttributeSetInstanceId { get; set; }
@@ -96,74 +166,17 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		public virtual bool? ShipmentActive { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		ShipmentItemMvoEventId IGlobalIdentity<ShipmentItemMvoEventId>.GlobalId {
-			get
-			{
-				return this.ShipmentItemMvoEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IShipmentItemMvoEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected ShipmentItemMvoEventBase()
+        protected ShipmentItemMvoStateEventBase() : base()
         {
         }
 
-        protected ShipmentItemMvoEventBase(ShipmentItemMvoEventId stateEventId)
+        protected ShipmentItemMvoStateEventBase(ShipmentItemMvoEventId stateEventId) : base(stateEventId)
         {
-            this.ShipmentItemMvoEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class ShipmentItemMvoStateCreated : ShipmentItemMvoEventBase, IShipmentItemMvoStateCreated
+	public class ShipmentItemMvoStateCreated : ShipmentItemMvoStateEventBase, IShipmentItemMvoStateCreated
 	{
 		public ShipmentItemMvoStateCreated () : this(new ShipmentItemMvoEventId())
 		{
@@ -182,7 +195,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 	}
 
 
-	public class ShipmentItemMvoStateMergePatched : ShipmentItemMvoEventBase, IShipmentItemMvoStateMergePatched
+	public class ShipmentItemMvoStateMergePatched : ShipmentItemMvoStateEventBase, IShipmentItemMvoStateMergePatched
 	{
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
 

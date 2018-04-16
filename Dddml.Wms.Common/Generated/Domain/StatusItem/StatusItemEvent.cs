@@ -23,16 +23,6 @@ namespace Dddml.Wms.Domain.StatusItem
             set { StatusItemEventId.StatusId = value; }
         }
 
-		public virtual string StatusTypeId { get; set; }
-
-		public virtual string StatusCode { get; set; }
-
-		public virtual string SequenceId { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -100,7 +90,30 @@ namespace Dddml.Wms.Domain.StatusItem
 
 	}
 
-	public class StatusItemStateCreated : StatusItemEventBase, IStatusItemStateCreated
+    public abstract class StatusItemStateEventBase : StatusItemEventBase, IStatusItemStateEvent
+    {
+
+		public virtual string StatusTypeId { get; set; }
+
+		public virtual string StatusCode { get; set; }
+
+		public virtual string SequenceId { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected StatusItemStateEventBase() : base()
+        {
+        }
+
+        protected StatusItemStateEventBase(StatusItemEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class StatusItemStateCreated : StatusItemStateEventBase, IStatusItemStateCreated
 	{
 		public StatusItemStateCreated () : this(new StatusItemEventId())
 		{
@@ -119,7 +132,7 @@ namespace Dddml.Wms.Domain.StatusItem
 	}
 
 
-	public class StatusItemStateMergePatched : StatusItemEventBase, IStatusItemStateMergePatched
+	public class StatusItemStateMergePatched : StatusItemStateEventBase, IStatusItemStateMergePatched
 	{
 		public virtual bool IsPropertyStatusTypeIdRemoved { get; set; }
 

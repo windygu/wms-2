@@ -23,24 +23,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set { MovementConfirmationEventId.DocumentNumber = value; }
         }
 
-		public virtual string DocumentStatusId { get; set; }
-
-		public virtual string MovementDocumentNumber { get; set; }
-
-		public virtual bool? IsApproved { get; set; }
-
-		public virtual decimal? ApprovalAmount { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string Processing { get; set; }
-
-		public virtual string DocumentTypeId { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -135,7 +117,38 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 	}
 
-	public class MovementConfirmationStateCreated : MovementConfirmationEventBase, IMovementConfirmationStateCreated, ISaveable
+    public abstract class MovementConfirmationStateEventBase : MovementConfirmationEventBase, IMovementConfirmationStateEvent
+    {
+
+		public virtual string DocumentStatusId { get; set; }
+
+		public virtual string MovementDocumentNumber { get; set; }
+
+		public virtual bool? IsApproved { get; set; }
+
+		public virtual decimal? ApprovalAmount { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string Processing { get; set; }
+
+		public virtual string DocumentTypeId { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected MovementConfirmationStateEventBase() : base()
+        {
+        }
+
+        protected MovementConfirmationStateEventBase(MovementConfirmationEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class MovementConfirmationStateCreated : MovementConfirmationStateEventBase, IMovementConfirmationStateCreated, ISaveable
 	{
 		public MovementConfirmationStateCreated () : this(new MovementConfirmationEventId())
 		{
@@ -210,7 +223,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	}
 
 
-	public class MovementConfirmationStateMergePatched : MovementConfirmationEventBase, IMovementConfirmationStateMergePatched, ISaveable
+	public class MovementConfirmationStateMergePatched : MovementConfirmationStateEventBase, IMovementConfirmationStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
@@ -316,7 +329,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	}
 
 
-	public class MovementConfirmationStateDeleted : MovementConfirmationEventBase, IMovementConfirmationStateDeleted, ISaveable
+	public class MovementConfirmationStateDeleted : MovementConfirmationStateEventBase, IMovementConfirmationStateDeleted, ISaveable
 	{
 		public MovementConfirmationStateDeleted ()
 		{

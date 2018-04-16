@@ -19,6 +19,10 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IInventoryItemRequirementEntryMvoStateEvent : IInventoryItemRequirementEntryMvoEvent
+    {
 		decimal? Quantity { get; set; }
 
 		InventoryPRTriggeredId SourceEventId { get; set; }
@@ -35,15 +39,15 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
 		DateTime? InventoryItemRequirementUpdatedAt { get; set; }
 
-	}
-
-	public interface IInventoryItemRequirementEntryMvoStateCreated : IInventoryItemRequirementEntryMvoEvent//, IInventoryItemRequirementEntryMvoStateProperties
+    }
+   
+	public interface IInventoryItemRequirementEntryMvoStateCreated : IInventoryItemRequirementEntryMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IInventoryItemRequirementEntryMvoStateMergePatched : IInventoryItemRequirementEntryMvoEvent//, IInventoryItemRequirementEntryMvoStateProperties
+	public interface IInventoryItemRequirementEntryMvoStateMergePatched : IInventoryItemRequirementEntryMvoStateEvent
 	{
 		bool IsPropertyQuantityRemoved { get; set; }
 

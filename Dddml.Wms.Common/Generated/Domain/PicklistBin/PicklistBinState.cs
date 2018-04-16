@@ -339,13 +339,13 @@ namespace Dddml.Wms.Domain.PicklistBin
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistBinEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistBinEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistBin|");
 
             var stateEntityId = this.PicklistBinId; // Aggregate Id
-            var eventEntityId = stateEvent.PicklistBinEventId.PicklistBinId;
+            var eventEntityId = e.PicklistBinEventId.PicklistBinId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -355,7 +355,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.PicklistBinEventId.Version;
+            var eventVersion = e.PicklistBinEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

@@ -23,34 +23,6 @@ namespace Dddml.Wms.Domain.Shipment
             set { ItemIssuanceEventId.ItemIssuanceSeqId = value; }
         }
 
-		public virtual string OrderId { get; set; }
-
-		public virtual string OrderItemSeqId { get; set; }
-
-		public virtual long? ShipGroupSeqId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string LocatorId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual string ShipmentItemSeqId { get; set; }
-
-		public virtual string FixedAssetId { get; set; }
-
-		public virtual string MaintHistSeqId { get; set; }
-
-		public virtual DateTime? IssuedDateTime { get; set; }
-
-		public virtual string IssuedByUserLoginId { get; set; }
-
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual decimal? CancelQuantity { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -120,7 +92,48 @@ namespace Dddml.Wms.Domain.Shipment
 
 	}
 
-	public class ItemIssuanceStateCreated : ItemIssuanceEventBase, IItemIssuanceStateCreated
+    public abstract class ItemIssuanceStateEventBase : ItemIssuanceEventBase, IItemIssuanceStateEvent
+    {
+
+		public virtual string OrderId { get; set; }
+
+		public virtual string OrderItemSeqId { get; set; }
+
+		public virtual long? ShipGroupSeqId { get; set; }
+
+		public virtual string ProductId { get; set; }
+
+		public virtual string LocatorId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual string ShipmentItemSeqId { get; set; }
+
+		public virtual string FixedAssetId { get; set; }
+
+		public virtual string MaintHistSeqId { get; set; }
+
+		public virtual DateTime? IssuedDateTime { get; set; }
+
+		public virtual string IssuedByUserLoginId { get; set; }
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual decimal? CancelQuantity { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ItemIssuanceStateEventBase() : base()
+        {
+        }
+
+        protected ItemIssuanceStateEventBase(ItemIssuanceEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ItemIssuanceStateCreated : ItemIssuanceStateEventBase, IItemIssuanceStateCreated
 	{
 		public ItemIssuanceStateCreated () : this(new ItemIssuanceEventId())
 		{
@@ -139,7 +152,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ItemIssuanceStateMergePatched : ItemIssuanceEventBase, IItemIssuanceStateMergePatched
+	public class ItemIssuanceStateMergePatched : ItemIssuanceStateEventBase, IItemIssuanceStateMergePatched
 	{
 		public virtual bool IsPropertyOrderIdRemoved { get; set; }
 
@@ -187,7 +200,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ItemIssuanceStateRemoved : ItemIssuanceEventBase, IItemIssuanceStateRemoved
+	public class ItemIssuanceStateRemoved : ItemIssuanceStateEventBase, IItemIssuanceStateRemoved
 	{
 		public ItemIssuanceStateRemoved ()
 		{

@@ -17,6 +17,13 @@ namespace Dddml.Wms.Domain.InOut
 
         bool ReadOnly { get; set; }
 
+		// Outer Id:
+		//string InOutDocumentNumber { get; set; }
+
+	}
+
+    public interface IInOutLineStateEvent : IInOutLineEvent
+    {
 		long Version { get; set; }
 
 		string LocatorId { get; set; }
@@ -43,18 +50,15 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool? Active { get; set; }
 
-		// Outer Id:
-		//string InOutDocumentNumber { get; set; }
-
-	}
-
-	public interface IInOutLineStateCreated : IInOutLineEvent//, IInOutLineStateProperties
+    }
+   
+	public interface IInOutLineStateCreated : IInOutLineStateEvent
 	{
 	
 	}
 
 
-	public interface IInOutLineStateMergePatched : IInOutLineEvent//, IInOutLineStateProperties
+	public interface IInOutLineStateMergePatched : IInOutLineStateEvent
 	{
 		bool IsPropertyLocatorIdRemoved { get; set; }
 
@@ -83,7 +87,7 @@ namespace Dddml.Wms.Domain.InOut
 
 	}
 
-	public interface IInOutLineStateRemoved : IInOutLineEvent
+	public interface IInOutLineStateRemoved : IInOutLineStateEvent
 	{
 	}
 

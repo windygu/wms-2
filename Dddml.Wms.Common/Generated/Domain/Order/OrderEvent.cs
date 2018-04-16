@@ -24,56 +24,6 @@ namespace Dddml.Wms.Domain.Order
             set { OrderEventId.OrderId = value; }
         }
 
-		public virtual string OrderTypeId { get; set; }
-
-		public virtual string OrderName { get; set; }
-
-		public virtual string ExternalId { get; set; }
-
-		public virtual string SalesChannelEnumId { get; set; }
-
-		public virtual DateTime? OrderDate { get; set; }
-
-		public virtual string Priority { get; set; }
-
-		public virtual DateTime? EntryDate { get; set; }
-
-		public virtual DateTime? PickSheetPrintedDate { get; set; }
-
-		public virtual string StatusId { get; set; }
-
-		public virtual string CurrencyUom { get; set; }
-
-		public virtual string SyncStatusId { get; set; }
-
-		public virtual string BillingAccountId { get; set; }
-
-		public virtual string OriginFacilityId { get; set; }
-
-		public virtual string WebSiteId { get; set; }
-
-		public virtual string ProductStoreId { get; set; }
-
-		public virtual string TerminalId { get; set; }
-
-		public virtual string TransactionId { get; set; }
-
-		public virtual string AutoOrderShoppingListId { get; set; }
-
-		public virtual string NeedsInventoryIssuance { get; set; }
-
-		public virtual string IsRushOrder { get; set; }
-
-		public virtual string InternalCode { get; set; }
-
-		public virtual decimal? RemainingSubTotal { get; set; }
-
-		public virtual decimal? GrandTotal { get; set; }
-
-		public virtual string InvoicePerShipment { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -222,7 +172,70 @@ namespace Dddml.Wms.Domain.Order
 
 	}
 
-	public class OrderStateCreated : OrderEventBase, IOrderStateCreated, ISaveable
+    public abstract class OrderStateEventBase : OrderEventBase, IOrderStateEvent
+    {
+
+		public virtual string OrderTypeId { get; set; }
+
+		public virtual string OrderName { get; set; }
+
+		public virtual string ExternalId { get; set; }
+
+		public virtual string SalesChannelEnumId { get; set; }
+
+		public virtual DateTime? OrderDate { get; set; }
+
+		public virtual string Priority { get; set; }
+
+		public virtual DateTime? EntryDate { get; set; }
+
+		public virtual DateTime? PickSheetPrintedDate { get; set; }
+
+		public virtual string StatusId { get; set; }
+
+		public virtual string CurrencyUom { get; set; }
+
+		public virtual string SyncStatusId { get; set; }
+
+		public virtual string BillingAccountId { get; set; }
+
+		public virtual string OriginFacilityId { get; set; }
+
+		public virtual string WebSiteId { get; set; }
+
+		public virtual string ProductStoreId { get; set; }
+
+		public virtual string TerminalId { get; set; }
+
+		public virtual string TransactionId { get; set; }
+
+		public virtual string AutoOrderShoppingListId { get; set; }
+
+		public virtual string NeedsInventoryIssuance { get; set; }
+
+		public virtual string IsRushOrder { get; set; }
+
+		public virtual string InternalCode { get; set; }
+
+		public virtual decimal? RemainingSubTotal { get; set; }
+
+		public virtual decimal? GrandTotal { get; set; }
+
+		public virtual string InvoicePerShipment { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected OrderStateEventBase() : base()
+        {
+        }
+
+        protected OrderStateEventBase(OrderEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class OrderStateCreated : OrderStateEventBase, IOrderStateCreated, ISaveable
 	{
 		public OrderStateCreated () : this(new OrderEventId())
 		{
@@ -403,7 +416,7 @@ namespace Dddml.Wms.Domain.Order
 	}
 
 
-	public class OrderStateMergePatched : OrderEventBase, IOrderStateMergePatched, ISaveable
+	public class OrderStateMergePatched : OrderStateEventBase, IOrderStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyOrderTypeIdRemoved { get; set; }
 

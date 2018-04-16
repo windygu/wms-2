@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.Movement
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IMovementStateEvent : IMovementEvent
+    {
 		string DocumentStatusId { get; set; }
 
 		DateTime? MovementDate { get; set; }
@@ -59,9 +63,9 @@ namespace Dddml.Wms.Domain.Movement
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IMovementStateCreated : IMovementEvent//, IMovementStateProperties
+    }
+   
+	public interface IMovementStateCreated : IMovementStateEvent
 	{
 		IEnumerable<IMovementLineStateCreated> MovementLineEvents { get; }
 		
@@ -73,7 +77,7 @@ namespace Dddml.Wms.Domain.Movement
 	}
 
 
-	public interface IMovementStateMergePatched : IMovementEvent//, IMovementStateProperties
+	public interface IMovementStateMergePatched : IMovementStateEvent
 	{
 		bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
@@ -130,7 +134,7 @@ namespace Dddml.Wms.Domain.Movement
 
 	}
 
-	public interface IMovementStateDeleted : IMovementEvent
+	public interface IMovementStateDeleted : IMovementStateEvent
 	{
 		IEnumerable<IMovementLineStateRemoved> MovementLineEvents { get; }
 		

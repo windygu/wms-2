@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.MovementType
             set { MovementTypeEventId.MovementTypeId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -94,7 +90,24 @@ namespace Dddml.Wms.Domain.MovementType
 
 	}
 
-	public class MovementTypeStateCreated : MovementTypeEventBase, IMovementTypeStateCreated
+    public abstract class MovementTypeStateEventBase : MovementTypeEventBase, IMovementTypeStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected MovementTypeStateEventBase() : base()
+        {
+        }
+
+        protected MovementTypeStateEventBase(MovementTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class MovementTypeStateCreated : MovementTypeStateEventBase, IMovementTypeStateCreated
 	{
 		public MovementTypeStateCreated () : this(new MovementTypeEventId())
 		{
@@ -113,7 +126,7 @@ namespace Dddml.Wms.Domain.MovementType
 	}
 
 
-	public class MovementTypeStateMergePatched : MovementTypeEventBase, IMovementTypeStateMergePatched
+	public class MovementTypeStateMergePatched : MovementTypeStateEventBase, IMovementTypeStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -137,7 +150,7 @@ namespace Dddml.Wms.Domain.MovementType
 	}
 
 
-	public class MovementTypeStateDeleted : MovementTypeEventBase, IMovementTypeStateDeleted
+	public class MovementTypeStateDeleted : MovementTypeStateEventBase, IMovementTypeStateDeleted
 	{
 		public MovementTypeStateDeleted ()
 		{

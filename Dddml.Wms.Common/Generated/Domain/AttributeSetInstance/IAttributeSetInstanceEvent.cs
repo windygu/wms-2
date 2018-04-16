@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IAttributeSetInstanceStateEvent : IAttributeSetInstanceEvent
+    {
 		string AttributeSetId { get; set; }
 
 		string OrganizationId { get; set; }
@@ -153,9 +157,9 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IAttributeSetInstanceStateCreated : IAttributeSetInstanceEvent//, IAttributeSetInstanceStateProperties
+    }
+   
+	public interface IAttributeSetInstanceStateCreated : IAttributeSetInstanceStateEvent
 	{
 	
 	}

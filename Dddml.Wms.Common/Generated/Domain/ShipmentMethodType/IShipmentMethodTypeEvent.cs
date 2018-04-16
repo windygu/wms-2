@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IShipmentMethodTypeStateEvent : IShipmentMethodTypeEvent
+    {
 		string Description { get; set; }
 
 		long? SequenceNum { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IShipmentMethodTypeStateCreated : IShipmentMethodTypeEvent//, IShipmentMethodTypeStateProperties
+    }
+   
+	public interface IShipmentMethodTypeStateCreated : IShipmentMethodTypeStateEvent
 	{
 	
 	}
 
 
-	public interface IShipmentMethodTypeStateMergePatched : IShipmentMethodTypeEvent//, IShipmentMethodTypeStateProperties
+	public interface IShipmentMethodTypeStateMergePatched : IShipmentMethodTypeStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
 
 	}
 
-	public interface IShipmentMethodTypeStateDeleted : IShipmentMethodTypeEvent
+	public interface IShipmentMethodTypeStateDeleted : IShipmentMethodTypeStateEvent
 	{
 	}
 

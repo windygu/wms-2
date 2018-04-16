@@ -11,17 +11,20 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="AttributeSetInstanceExtensionFieldStateEventBase" abstract="true">
+
     <property name="Type" ></property>
     <property name="Length" ></property>
     <property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
     <property name="Description" ></property>
     <property name="GroupId" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="AttributeSetInstanceExtensionFieldStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -47,6 +50,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

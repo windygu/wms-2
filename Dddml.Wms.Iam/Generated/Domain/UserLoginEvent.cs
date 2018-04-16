@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.User
             set { UserLoginEventId.LoginKey = value; }
         }
 
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -94,7 +92,22 @@ namespace Dddml.Wms.Domain.User
 
 	}
 
-	public class UserLoginStateCreated : UserLoginEventBase, IUserLoginStateCreated
+    public abstract class UserLoginStateEventBase : UserLoginEventBase, IUserLoginStateEvent
+    {
+
+		public virtual bool? Active { get; set; }
+
+        protected UserLoginStateEventBase() : base()
+        {
+        }
+
+        protected UserLoginStateEventBase(UserLoginEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UserLoginStateCreated : UserLoginStateEventBase, IUserLoginStateCreated
 	{
 		public UserLoginStateCreated () : this(new UserLoginEventId())
 		{
@@ -113,7 +126,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserLoginStateMergePatched : UserLoginEventBase, IUserLoginStateMergePatched
+	public class UserLoginStateMergePatched : UserLoginStateEventBase, IUserLoginStateMergePatched
 	{
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -135,7 +148,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserLoginStateRemoved : UserLoginEventBase, IUserLoginStateRemoved
+	public class UserLoginStateRemoved : UserLoginStateEventBase, IUserLoginStateRemoved
 	{
 		public UserLoginStateRemoved ()
 		{

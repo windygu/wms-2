@@ -14,6 +14,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="PhysicalInventoryLineMvoStateEventBase" abstract="true">
+
     <property name="BookQuantity" ></property>
     <property name="CountedQuantity" ></property>
     <property name="Processed" ></property>
@@ -40,11 +48,6 @@
     <property name="PhysicalInventoryUpdatedBy" ></property>
     <property name="PhysicalInventoryUpdatedAt" ><column name="PhysicalInventoryUpdatedAt" sql-type="DATETIME" /></property>
     <property name="PhysicalInventoryActive" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="PhysicalInventoryLineMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -110,6 +113,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

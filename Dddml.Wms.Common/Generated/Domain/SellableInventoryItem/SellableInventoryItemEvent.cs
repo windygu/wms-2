@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { SellableInventoryItemEventId.SellableInventoryItemId = value; }
         }
 
-		public virtual decimal? SellableQuantity { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -116,7 +114,22 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 	}
 
-	public class SellableInventoryItemStateCreated : SellableInventoryItemEventBase, ISellableInventoryItemStateCreated
+    public abstract class SellableInventoryItemStateEventBase : SellableInventoryItemEventBase, ISellableInventoryItemStateEvent
+    {
+
+		public virtual decimal? SellableQuantity { get; set; }
+
+        protected SellableInventoryItemStateEventBase() : base()
+        {
+        }
+
+        protected SellableInventoryItemStateEventBase(SellableInventoryItemEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class SellableInventoryItemStateCreated : SellableInventoryItemStateEventBase, ISellableInventoryItemStateCreated
 	{
 		public SellableInventoryItemStateCreated () : this(new SellableInventoryItemEventId())
 		{
@@ -170,7 +183,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	}
 
 
-	public class SellableInventoryItemStateMergePatched : SellableInventoryItemEventBase, ISellableInventoryItemStateMergePatched
+	public class SellableInventoryItemStateMergePatched : SellableInventoryItemStateEventBase, ISellableInventoryItemStateMergePatched
 	{
 		public virtual bool IsPropertySellableQuantityRemoved { get; set; }
 

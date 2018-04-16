@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.Lot
             set { LotEventId.LotId = value; }
         }
 
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual DateTime? ExpirationDate { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +90,26 @@ namespace Dddml.Wms.Domain.Lot
 
 	}
 
-	public class LotStateCreated : LotEventBase, ILotStateCreated
+    public abstract class LotStateEventBase : LotEventBase, ILotStateEvent
+    {
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual DateTime? ExpirationDate { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected LotStateEventBase() : base()
+        {
+        }
+
+        protected LotStateEventBase(LotEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class LotStateCreated : LotStateEventBase, ILotStateCreated
 	{
 		public LotStateCreated () : this(new LotEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.Lot
 	}
 
 
-	public class LotStateMergePatched : LotEventBase, ILotStateMergePatched
+	public class LotStateMergePatched : LotStateEventBase, ILotStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
@@ -141,7 +154,7 @@ namespace Dddml.Wms.Domain.Lot
 	}
 
 
-	public class LotStateDeleted : LotEventBase, ILotStateDeleted
+	public class LotStateDeleted : LotStateEventBase, ILotStateDeleted
 	{
 		public LotStateDeleted ()
 		{

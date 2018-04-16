@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IItemIssuanceMvoStateEvent : IItemIssuanceMvoEvent
+    {
 		string OrderId { get; set; }
 
 		string OrderItemSeqId { get; set; }
@@ -108,15 +112,15 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
 		bool? ShipmentActive { get; set; }
 
-	}
-
-	public interface IItemIssuanceMvoStateCreated : IItemIssuanceMvoEvent//, IItemIssuanceMvoStateProperties
+    }
+   
+	public interface IItemIssuanceMvoStateCreated : IItemIssuanceMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IItemIssuanceMvoStateMergePatched : IItemIssuanceMvoEvent//, IItemIssuanceMvoStateProperties
+	public interface IItemIssuanceMvoStateMergePatched : IItemIssuanceMvoStateEvent
 	{
 		bool IsPropertyOrderIdRemoved { get; set; }
 
@@ -211,7 +215,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
 	}
 
-	public interface IItemIssuanceMvoStateDeleted : IItemIssuanceMvoEvent
+	public interface IItemIssuanceMvoStateDeleted : IItemIssuanceMvoStateEvent
 	{
 	}
 

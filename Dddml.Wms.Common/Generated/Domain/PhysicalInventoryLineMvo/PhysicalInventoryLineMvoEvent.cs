@@ -24,58 +24,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set { PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId = value; }
         }
 
-		public virtual decimal? BookQuantity { get; set; }
-
-		public virtual decimal? CountedQuantity { get; set; }
-
-		public virtual bool? Processed { get; set; }
-
-		public virtual string LineNumber { get; set; }
-
-		public virtual long? ReversalLineNumber { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual string PhysicalInventoryDocumentStatusId { get; set; }
-
-		public virtual string PhysicalInventoryWarehouseId { get; set; }
-
-		public virtual string PhysicalInventoryLocatorIdPattern { get; set; }
-
-		public virtual string PhysicalInventoryProductIdPattern { get; set; }
-
-		public virtual bool? PhysicalInventoryPosted { get; set; }
-
-		public virtual bool? PhysicalInventoryProcessed { get; set; }
-
-		public virtual string PhysicalInventoryProcessing { get; set; }
-
-		public virtual string PhysicalInventoryDocumentTypeId { get; set; }
-
-		public virtual DateTime? PhysicalInventoryMovementDate { get; set; }
-
-		public virtual string PhysicalInventoryDescription { get; set; }
-
-		public virtual bool? PhysicalInventoryIsApproved { get; set; }
-
-		public virtual decimal? PhysicalInventoryApprovalAmount { get; set; }
-
-		public virtual bool? PhysicalInventoryIsQuantityUpdated { get; set; }
-
-		public virtual string PhysicalInventoryReversalDocumentNumber { get; set; }
-
-		public virtual string PhysicalInventoryCreatedBy { get; set; }
-
-		public virtual DateTime? PhysicalInventoryCreatedAt { get; set; }
-
-		public virtual string PhysicalInventoryUpdatedBy { get; set; }
-
-		public virtual DateTime? PhysicalInventoryUpdatedAt { get; set; }
-
-		public virtual bool? PhysicalInventoryActive { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -143,7 +91,72 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 	}
 
-	public class PhysicalInventoryLineMvoStateCreated : PhysicalInventoryLineMvoEventBase, IPhysicalInventoryLineMvoStateCreated
+    public abstract class PhysicalInventoryLineMvoStateEventBase : PhysicalInventoryLineMvoEventBase, IPhysicalInventoryLineMvoStateEvent
+    {
+
+		public virtual decimal? BookQuantity { get; set; }
+
+		public virtual decimal? CountedQuantity { get; set; }
+
+		public virtual bool? Processed { get; set; }
+
+		public virtual string LineNumber { get; set; }
+
+		public virtual long? ReversalLineNumber { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual string PhysicalInventoryDocumentStatusId { get; set; }
+
+		public virtual string PhysicalInventoryWarehouseId { get; set; }
+
+		public virtual string PhysicalInventoryLocatorIdPattern { get; set; }
+
+		public virtual string PhysicalInventoryProductIdPattern { get; set; }
+
+		public virtual bool? PhysicalInventoryPosted { get; set; }
+
+		public virtual bool? PhysicalInventoryProcessed { get; set; }
+
+		public virtual string PhysicalInventoryProcessing { get; set; }
+
+		public virtual string PhysicalInventoryDocumentTypeId { get; set; }
+
+		public virtual DateTime? PhysicalInventoryMovementDate { get; set; }
+
+		public virtual string PhysicalInventoryDescription { get; set; }
+
+		public virtual bool? PhysicalInventoryIsApproved { get; set; }
+
+		public virtual decimal? PhysicalInventoryApprovalAmount { get; set; }
+
+		public virtual bool? PhysicalInventoryIsQuantityUpdated { get; set; }
+
+		public virtual string PhysicalInventoryReversalDocumentNumber { get; set; }
+
+		public virtual string PhysicalInventoryCreatedBy { get; set; }
+
+		public virtual DateTime? PhysicalInventoryCreatedAt { get; set; }
+
+		public virtual string PhysicalInventoryUpdatedBy { get; set; }
+
+		public virtual DateTime? PhysicalInventoryUpdatedAt { get; set; }
+
+		public virtual bool? PhysicalInventoryActive { get; set; }
+
+        protected PhysicalInventoryLineMvoStateEventBase() : base()
+        {
+        }
+
+        protected PhysicalInventoryLineMvoStateEventBase(PhysicalInventoryLineMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PhysicalInventoryLineMvoStateCreated : PhysicalInventoryLineMvoStateEventBase, IPhysicalInventoryLineMvoStateCreated
 	{
 		public PhysicalInventoryLineMvoStateCreated () : this(new PhysicalInventoryLineMvoEventId())
 		{
@@ -162,7 +175,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 	}
 
 
-	public class PhysicalInventoryLineMvoStateMergePatched : PhysicalInventoryLineMvoEventBase, IPhysicalInventoryLineMvoStateMergePatched
+	public class PhysicalInventoryLineMvoStateMergePatched : PhysicalInventoryLineMvoStateEventBase, IPhysicalInventoryLineMvoStateMergePatched
 	{
 		public virtual bool IsPropertyBookQuantityRemoved { get; set; }
 
@@ -234,7 +247,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 	}
 
 
-	public class PhysicalInventoryLineMvoStateDeleted : PhysicalInventoryLineMvoEventBase, IPhysicalInventoryLineMvoStateDeleted
+	public class PhysicalInventoryLineMvoStateDeleted : PhysicalInventoryLineMvoStateEventBase, IPhysicalInventoryLineMvoStateDeleted
 	{
 		public PhysicalInventoryLineMvoStateDeleted ()
 		{

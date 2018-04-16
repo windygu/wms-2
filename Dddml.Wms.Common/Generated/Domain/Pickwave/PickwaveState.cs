@@ -253,13 +253,13 @@ namespace Dddml.Wms.Domain.Pickwave
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPickwaveEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPickwaveEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Pickwave|");
 
             var stateEntityId = this.PickwaveId; // Aggregate Id
-            var eventEntityId = stateEvent.PickwaveEventId.PickwaveId;
+            var eventEntityId = e.PickwaveEventId.PickwaveId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.Pickwave
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.PickwaveEventId.Version;
+            var eventVersion = e.PickwaveEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

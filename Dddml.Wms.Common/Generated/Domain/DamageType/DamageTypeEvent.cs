@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.DamageType
             set { DamageTypeEventId.DamageTypeId = value; }
         }
 
-		public virtual string Description { get; set; }
-
-		public virtual string SequenceId { get; set; }
-
-		public virtual string DefaultHandlingMethodId { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +90,28 @@ namespace Dddml.Wms.Domain.DamageType
 
 	}
 
-	public class DamageTypeStateCreated : DamageTypeEventBase, IDamageTypeStateCreated
+    public abstract class DamageTypeStateEventBase : DamageTypeEventBase, IDamageTypeStateEvent
+    {
+
+		public virtual string Description { get; set; }
+
+		public virtual string SequenceId { get; set; }
+
+		public virtual string DefaultHandlingMethodId { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected DamageTypeStateEventBase() : base()
+        {
+        }
+
+        protected DamageTypeStateEventBase(DamageTypeEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class DamageTypeStateCreated : DamageTypeStateEventBase, IDamageTypeStateCreated
 	{
 		public DamageTypeStateCreated () : this(new DamageTypeEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.DamageType
 	}
 
 
-	public class DamageTypeStateMergePatched : DamageTypeEventBase, IDamageTypeStateMergePatched
+	public class DamageTypeStateMergePatched : DamageTypeStateEventBase, IDamageTypeStateMergePatched
 	{
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -145,7 +158,7 @@ namespace Dddml.Wms.Domain.DamageType
 	}
 
 
-	public class DamageTypeStateDeleted : DamageTypeEventBase, IDamageTypeStateDeleted
+	public class DamageTypeStateDeleted : DamageTypeStateEventBase, IDamageTypeStateDeleted
 	{
 		public DamageTypeStateDeleted ()
 		{

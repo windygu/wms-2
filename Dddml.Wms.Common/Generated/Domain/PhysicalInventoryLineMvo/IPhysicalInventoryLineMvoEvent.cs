@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IPhysicalInventoryLineMvoStateEvent : IPhysicalInventoryLineMvoEvent
+    {
 		decimal? BookQuantity { get; set; }
 
 		decimal? CountedQuantity { get; set; }
@@ -70,15 +74,15 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		bool? PhysicalInventoryActive { get; set; }
 
-	}
-
-	public interface IPhysicalInventoryLineMvoStateCreated : IPhysicalInventoryLineMvoEvent//, IPhysicalInventoryLineMvoStateProperties
+    }
+   
+	public interface IPhysicalInventoryLineMvoStateCreated : IPhysicalInventoryLineMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IPhysicalInventoryLineMvoStateMergePatched : IPhysicalInventoryLineMvoEvent//, IPhysicalInventoryLineMvoStateProperties
+	public interface IPhysicalInventoryLineMvoStateMergePatched : IPhysicalInventoryLineMvoStateEvent
 	{
 		bool IsPropertyBookQuantityRemoved { get; set; }
 
@@ -135,7 +139,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 	}
 
-	public interface IPhysicalInventoryLineMvoStateDeleted : IPhysicalInventoryLineMvoEvent
+	public interface IPhysicalInventoryLineMvoStateDeleted : IPhysicalInventoryLineMvoStateEvent
 	{
 	}
 

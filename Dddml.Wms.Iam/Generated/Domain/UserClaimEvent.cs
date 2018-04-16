@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.User
             set { UserClaimEventId.ClaimId = value; }
         }
 
-		public virtual string ClaimType { get; set; }
-
-		public virtual string ClaimValue { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +92,26 @@ namespace Dddml.Wms.Domain.User
 
 	}
 
-	public class UserClaimStateCreated : UserClaimEventBase, IUserClaimStateCreated
+    public abstract class UserClaimStateEventBase : UserClaimEventBase, IUserClaimStateEvent
+    {
+
+		public virtual string ClaimType { get; set; }
+
+		public virtual string ClaimValue { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected UserClaimStateEventBase() : base()
+        {
+        }
+
+        protected UserClaimStateEventBase(UserClaimEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UserClaimStateCreated : UserClaimStateEventBase, IUserClaimStateCreated
 	{
 		public UserClaimStateCreated () : this(new UserClaimEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserClaimStateMergePatched : UserClaimEventBase, IUserClaimStateMergePatched
+	public class UserClaimStateMergePatched : UserClaimStateEventBase, IUserClaimStateMergePatched
 	{
 		public virtual bool IsPropertyClaimTypeRemoved { get; set; }
 
@@ -143,7 +156,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public class UserClaimStateRemoved : UserClaimEventBase, IUserClaimStateRemoved
+	public class UserClaimStateRemoved : UserClaimStateEventBase, IUserClaimStateRemoved
 	{
 		public UserClaimStateRemoved ()
 		{

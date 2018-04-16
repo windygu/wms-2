@@ -24,44 +24,6 @@ namespace Dddml.Wms.Domain.UserLoginMvo
             set { UserLoginMvoEventId.UserLoginId = value; }
         }
 
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string UserUserName { get; set; }
-
-		public virtual int? UserAccessFailedCount { get; set; }
-
-		public virtual string UserEmail { get; set; }
-
-		public virtual bool? UserEmailConfirmed { get; set; }
-
-		public virtual bool? UserLockoutEnabled { get; set; }
-
-		public virtual DateTime? UserLockoutEndDateUtc { get; set; }
-
-		public virtual string UserPasswordHash { get; set; }
-
-		public virtual string UserPhoneNumber { get; set; }
-
-		public virtual bool? UserPhoneNumberConfirmed { get; set; }
-
-		public virtual bool? UserTwoFactorEnabled { get; set; }
-
-		public virtual string UserSecurityStamp { get; set; }
-
-		public virtual string UserCreatedBy { get; set; }
-
-		public virtual DateTime? UserCreatedAt { get; set; }
-
-		public virtual string UserUpdatedBy { get; set; }
-
-		public virtual DateTime? UserUpdatedAt { get; set; }
-
-		public virtual bool? UserActive { get; set; }
-
-		public virtual bool? UserDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -129,7 +91,58 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 	}
 
-	public class UserLoginMvoStateCreated : UserLoginMvoEventBase, IUserLoginMvoStateCreated
+    public abstract class UserLoginMvoStateEventBase : UserLoginMvoEventBase, IUserLoginMvoStateEvent
+    {
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string UserUserName { get; set; }
+
+		public virtual int? UserAccessFailedCount { get; set; }
+
+		public virtual string UserEmail { get; set; }
+
+		public virtual bool? UserEmailConfirmed { get; set; }
+
+		public virtual bool? UserLockoutEnabled { get; set; }
+
+		public virtual DateTime? UserLockoutEndDateUtc { get; set; }
+
+		public virtual string UserPasswordHash { get; set; }
+
+		public virtual string UserPhoneNumber { get; set; }
+
+		public virtual bool? UserPhoneNumberConfirmed { get; set; }
+
+		public virtual bool? UserTwoFactorEnabled { get; set; }
+
+		public virtual string UserSecurityStamp { get; set; }
+
+		public virtual string UserCreatedBy { get; set; }
+
+		public virtual DateTime? UserCreatedAt { get; set; }
+
+		public virtual string UserUpdatedBy { get; set; }
+
+		public virtual DateTime? UserUpdatedAt { get; set; }
+
+		public virtual bool? UserActive { get; set; }
+
+		public virtual bool? UserDeleted { get; set; }
+
+        protected UserLoginMvoStateEventBase() : base()
+        {
+        }
+
+        protected UserLoginMvoStateEventBase(UserLoginMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UserLoginMvoStateCreated : UserLoginMvoStateEventBase, IUserLoginMvoStateCreated
 	{
 		public UserLoginMvoStateCreated () : this(new UserLoginMvoEventId())
 		{
@@ -148,7 +161,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 	}
 
 
-	public class UserLoginMvoStateMergePatched : UserLoginMvoEventBase, IUserLoginMvoStateMergePatched
+	public class UserLoginMvoStateMergePatched : UserLoginMvoStateEventBase, IUserLoginMvoStateMergePatched
 	{
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 
@@ -206,7 +219,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 	}
 
 
-	public class UserLoginMvoStateDeleted : UserLoginMvoEventBase, IUserLoginMvoStateDeleted
+	public class UserLoginMvoStateDeleted : UserLoginMvoStateEventBase, IUserLoginMvoStateDeleted
 	{
 		public UserLoginMvoStateDeleted ()
 		{

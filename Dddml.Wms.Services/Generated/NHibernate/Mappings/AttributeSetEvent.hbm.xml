@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="AttributeSetStateEventBase" abstract="true">
+
     <property name="AttributeSetName" ></property>
     <property name="OrganizationId" ></property>
     <property name="Description" ></property>
@@ -18,11 +26,6 @@
     <property name="IsInstanceAttributeSet" ></property>
     <property name="IsMandatory" ></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="AttributeSetStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -50,6 +53,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

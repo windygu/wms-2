@@ -23,16 +23,6 @@ namespace Dddml.Wms.Domain.Shipment
             set { ShipmentItemEventId.ShipmentItemSeqId = value; }
         }
 
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual string ShipmentContentDescription { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -102,7 +92,30 @@ namespace Dddml.Wms.Domain.Shipment
 
 	}
 
-	public class ShipmentItemStateCreated : ShipmentItemEventBase, IShipmentItemStateCreated
+    public abstract class ShipmentItemStateEventBase : ShipmentItemEventBase, IShipmentItemStateEvent
+    {
+
+		public virtual string ProductId { get; set; }
+
+		public virtual string AttributeSetInstanceId { get; set; }
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual string ShipmentContentDescription { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ShipmentItemStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentItemStateEventBase(ShipmentItemEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentItemStateCreated : ShipmentItemStateEventBase, IShipmentItemStateCreated
 	{
 		public ShipmentItemStateCreated () : this(new ShipmentItemEventId())
 		{
@@ -121,7 +134,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ShipmentItemStateMergePatched : ShipmentItemEventBase, IShipmentItemStateMergePatched
+	public class ShipmentItemStateMergePatched : ShipmentItemStateEventBase, IShipmentItemStateMergePatched
 	{
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
 

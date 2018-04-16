@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.DocumentType
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IDocumentTypeStateEvent : IDocumentTypeEvent
+    {
 		string Description { get; set; }
 
 		string ParentDocumentTypeId { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IDocumentTypeStateCreated : IDocumentTypeEvent//, IDocumentTypeStateProperties
+    }
+   
+	public interface IDocumentTypeStateCreated : IDocumentTypeStateEvent
 	{
 	
 	}
 
 
-	public interface IDocumentTypeStateMergePatched : IDocumentTypeEvent//, IDocumentTypeStateProperties
+	public interface IDocumentTypeStateMergePatched : IDocumentTypeStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
 	}
 
-	public interface IDocumentTypeStateDeleted : IDocumentTypeEvent
+	public interface IDocumentTypeStateDeleted : IDocumentTypeStateEvent
 	{
 	}
 

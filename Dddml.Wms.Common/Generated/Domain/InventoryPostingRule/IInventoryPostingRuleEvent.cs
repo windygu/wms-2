@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IInventoryPostingRuleStateEvent : IInventoryPostingRuleEvent
+    {
 		InventoryItemId TriggerInventoryItemId { get; set; }
 
 		InventoryItemId OutputInventoryItemId { get; set; }
@@ -30,15 +34,15 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IInventoryPostingRuleStateCreated : IInventoryPostingRuleEvent//, IInventoryPostingRuleStateProperties
+    }
+   
+	public interface IInventoryPostingRuleStateCreated : IInventoryPostingRuleStateEvent
 	{
 	
 	}
 
 
-	public interface IInventoryPostingRuleStateMergePatched : IInventoryPostingRuleEvent//, IInventoryPostingRuleStateProperties
+	public interface IInventoryPostingRuleStateMergePatched : IInventoryPostingRuleStateEvent
 	{
 		bool IsPropertyTriggerInventoryItemIdRemoved { get; set; }
 
@@ -55,7 +59,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 	}
 
-	public interface IInventoryPostingRuleStateDeleted : IInventoryPostingRuleEvent
+	public interface IInventoryPostingRuleStateDeleted : IInventoryPostingRuleStateEvent
 	{
 	}
 

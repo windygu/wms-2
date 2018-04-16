@@ -18,6 +18,10 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IMovementConfirmationLineMvoStateEvent : IMovementConfirmationLineMvoEvent
+    {
 		string MovementLineNumber { get; set; }
 
 		decimal? TargetQuantity { get; set; }
@@ -64,15 +68,15 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		bool? MovementConfirmationDeleted { get; set; }
 
-	}
-
-	public interface IMovementConfirmationLineMvoStateCreated : IMovementConfirmationLineMvoEvent//, IMovementConfirmationLineMvoStateProperties
+    }
+   
+	public interface IMovementConfirmationLineMvoStateCreated : IMovementConfirmationLineMvoStateEvent
 	{
 	
 	}
 
 
-	public interface IMovementConfirmationLineMvoStateMergePatched : IMovementConfirmationLineMvoEvent//, IMovementConfirmationLineMvoStateProperties
+	public interface IMovementConfirmationLineMvoStateMergePatched : IMovementConfirmationLineMvoStateEvent
 	{
 		bool IsPropertyMovementLineNumberRemoved { get; set; }
 
@@ -123,7 +127,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 	}
 
-	public interface IMovementConfirmationLineMvoStateDeleted : IMovementConfirmationLineMvoEvent
+	public interface IMovementConfirmationLineMvoStateDeleted : IMovementConfirmationLineMvoStateEvent
 	{
 	}
 

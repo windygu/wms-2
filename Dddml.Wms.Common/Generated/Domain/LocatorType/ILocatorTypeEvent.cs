@@ -17,19 +17,23 @@ namespace Dddml.Wms.Domain.LocatorType
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface ILocatorTypeStateEvent : ILocatorTypeEvent
+    {
 		string Description { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface ILocatorTypeStateCreated : ILocatorTypeEvent//, ILocatorTypeStateProperties
+    }
+   
+	public interface ILocatorTypeStateCreated : ILocatorTypeStateEvent
 	{
 	
 	}
 
 
-	public interface ILocatorTypeStateMergePatched : ILocatorTypeEvent//, ILocatorTypeStateProperties
+	public interface ILocatorTypeStateMergePatched : ILocatorTypeStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -38,7 +42,7 @@ namespace Dddml.Wms.Domain.LocatorType
 
 	}
 
-	public interface ILocatorTypeStateDeleted : ILocatorTypeEvent
+	public interface ILocatorTypeStateDeleted : ILocatorTypeStateEvent
 	{
 	}
 

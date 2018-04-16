@@ -18,29 +18,33 @@ namespace Dddml.Wms.Domain.Order
 
         bool ReadOnly { get; set; }
 
-		long Version { get; set; }
-
-		bool? Active { get; set; }
-
 		// Outer Id:
 		//string OrderId { get; set; }
 
 	}
 
-	public interface IOrderRoleStateCreated : IOrderRoleEvent//, IOrderRoleStateProperties
+    public interface IOrderRoleStateEvent : IOrderRoleEvent
+    {
+		long Version { get; set; }
+
+		bool? Active { get; set; }
+
+    }
+   
+	public interface IOrderRoleStateCreated : IOrderRoleStateEvent
 	{
 	
 	}
 
 
-	public interface IOrderRoleStateMergePatched : IOrderRoleEvent//, IOrderRoleStateProperties
+	public interface IOrderRoleStateMergePatched : IOrderRoleStateEvent
 	{
 		bool IsPropertyActiveRemoved { get; set; }
 
 
 	}
 
-	public interface IOrderRoleStateRemoved : IOrderRoleEvent
+	public interface IOrderRoleStateRemoved : IOrderRoleStateEvent
 	{
 	}
 

@@ -246,13 +246,13 @@ namespace Dddml.Wms.Domain.Picklist
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistRoleEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistRoleEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistRole|");
 
             var stateEntityIdPicklistId = (this as IGlobalIdentity<PicklistRoleId>).GlobalId.PicklistId;
-            var eventEntityIdPicklistId = stateEvent.PicklistRoleEventId.PicklistId;
+            var eventEntityIdPicklistId = e.PicklistRoleEventId.PicklistId;
             if (stateEntityIdPicklistId != eventEntityIdPicklistId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PicklistId {0} in state but entity id PicklistId {1} in event", stateEntityIdPicklistId, eventEntityIdPicklistId);
@@ -260,7 +260,7 @@ namespace Dddml.Wms.Domain.Picklist
             id.Append(stateEntityIdPicklistId).Append(",");
 
             var stateEntityIdPartyRoleId = (this as IGlobalIdentity<PicklistRoleId>).GlobalId.PartyRoleId;
-            var eventEntityIdPartyRoleId = stateEvent.PicklistRoleEventId.PartyRoleId;
+            var eventEntityIdPartyRoleId = e.PicklistRoleEventId.PartyRoleId;
             if (stateEntityIdPartyRoleId != eventEntityIdPartyRoleId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PartyRoleId {0} in state but entity id PartyRoleId {1} in event", stateEntityIdPartyRoleId, eventEntityIdPartyRoleId);
@@ -271,15 +271,18 @@ namespace Dddml.Wms.Domain.Picklist
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (PicklistRoleState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IPicklistRoleStateEvent ? (IPicklistRoleStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (PicklistRoleState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

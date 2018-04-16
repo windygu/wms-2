@@ -24,6 +24,76 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set { ShipmentReceiptMvoEventId.ShipmentReceiptId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		ShipmentReceiptMvoEventId IGlobalIdentity<ShipmentReceiptMvoEventId>.GlobalId {
+			get
+			{
+				return this.ShipmentReceiptMvoEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IShipmentReceiptMvoEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected ShipmentReceiptMvoEventBase()
+        {
+        }
+
+        protected ShipmentReceiptMvoEventBase(ShipmentReceiptMvoEventId stateEventId)
+        {
+            this.ShipmentReceiptMvoEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class ShipmentReceiptMvoStateEventBase : ShipmentReceiptMvoEventBase, IShipmentReceiptMvoStateEvent
+    {
+
 		public virtual string ProductId { get; set; }
 
 		public virtual string AttributeSetInstanceId { get; set; }
@@ -124,74 +194,17 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual bool? ShipmentActive { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		ShipmentReceiptMvoEventId IGlobalIdentity<ShipmentReceiptMvoEventId>.GlobalId {
-			get
-			{
-				return this.ShipmentReceiptMvoEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IShipmentReceiptMvoEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected ShipmentReceiptMvoEventBase()
+        protected ShipmentReceiptMvoStateEventBase() : base()
         {
         }
 
-        protected ShipmentReceiptMvoEventBase(ShipmentReceiptMvoEventId stateEventId)
+        protected ShipmentReceiptMvoStateEventBase(ShipmentReceiptMvoEventId stateEventId) : base(stateEventId)
         {
-            this.ShipmentReceiptMvoEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class ShipmentReceiptMvoStateCreated : ShipmentReceiptMvoEventBase, IShipmentReceiptMvoStateCreated
+	public class ShipmentReceiptMvoStateCreated : ShipmentReceiptMvoStateEventBase, IShipmentReceiptMvoStateCreated
 	{
 		public ShipmentReceiptMvoStateCreated () : this(new ShipmentReceiptMvoEventId())
 		{
@@ -210,7 +223,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 	}
 
 
-	public class ShipmentReceiptMvoStateMergePatched : ShipmentReceiptMvoEventBase, IShipmentReceiptMvoStateMergePatched
+	public class ShipmentReceiptMvoStateMergePatched : ShipmentReceiptMvoStateEventBase, IShipmentReceiptMvoStateMergePatched
 	{
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
 

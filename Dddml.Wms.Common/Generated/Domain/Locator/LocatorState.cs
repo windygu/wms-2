@@ -369,13 +369,13 @@ namespace Dddml.Wms.Domain.Locator
             }
 		}
 
-        protected void ThrowOnWrongEvent(ILocatorEvent stateEvent)
+        protected void ThrowOnWrongEvent(ILocatorEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Locator|");
 
             var stateEntityId = this.LocatorId; // Aggregate Id
-            var eventEntityId = stateEvent.LocatorEventId.LocatorId;
+            var eventEntityId = e.LocatorEventId.LocatorId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -385,7 +385,7 @@ namespace Dddml.Wms.Domain.Locator
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.LocatorEventId.Version;
+            var eventVersion = e.LocatorEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

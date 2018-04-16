@@ -399,13 +399,13 @@ namespace Dddml.Wms.Domain.InOut
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInOutLineEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInOutLineEvent e)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InOutLine|");
 
             var stateEntityIdInOutDocumentNumber = (this as IGlobalIdentity<InOutLineId>).GlobalId.InOutDocumentNumber;
-            var eventEntityIdInOutDocumentNumber = stateEvent.InOutLineEventId.InOutDocumentNumber;
+            var eventEntityIdInOutDocumentNumber = e.InOutLineEventId.InOutDocumentNumber;
             if (stateEntityIdInOutDocumentNumber != eventEntityIdInOutDocumentNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id InOutDocumentNumber {0} in state but entity id InOutDocumentNumber {1} in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
@@ -413,7 +413,7 @@ namespace Dddml.Wms.Domain.InOut
             id.Append(stateEntityIdInOutDocumentNumber).Append(",");
 
             var stateEntityIdLineNumber = (this as IGlobalIdentity<InOutLineId>).GlobalId.LineNumber;
-            var eventEntityIdLineNumber = stateEvent.InOutLineEventId.LineNumber;
+            var eventEntityIdLineNumber = e.InOutLineEventId.LineNumber;
             if (stateEntityIdLineNumber != eventEntityIdLineNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
@@ -424,15 +424,18 @@ namespace Dddml.Wms.Domain.InOut
 
             if (ForReapplying) { return; }
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.Version;
-            if (InOutLineState.VersionZero == eventVersion)
-            {
-                eventVersion = stateEvent.Version = stateVersion;
-            }
-            if (stateVersion != eventVersion)
-            {
-                throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
-            }
+            var stateEvent = e is IInOutLineStateEvent ? (IInOutLineStateEvent)e : null;
+            if (e == null) { return; }
+            stateEvent.Version = stateVersion;
+            //var stateEventStateVersion = stateEvent.Version;
+            //if (InOutLineState.VersionZero == stateEventStateVersion)
+            //{
+            //    stateEventStateVersion = stateEvent.Version = stateVersion;
+            //}
+            //if (stateVersion != stateEventStateVersion)
+            //{
+            //    throw OptimisticConcurrencyException.Create(stateVersion, stateEventStateVersion, id.ToString());
+            //}
         }
     }
 

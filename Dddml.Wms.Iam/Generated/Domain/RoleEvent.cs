@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.Role
             set { RoleEventId.RoleId = value; }
         }
 
-		public virtual string Name { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -96,7 +90,26 @@ namespace Dddml.Wms.Domain.Role
 
 	}
 
-	public class RoleStateCreated : RoleEventBase, IRoleStateCreated
+    public abstract class RoleStateEventBase : RoleEventBase, IRoleStateEvent
+    {
+
+		public virtual string Name { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected RoleStateEventBase() : base()
+        {
+        }
+
+        protected RoleStateEventBase(RoleEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class RoleStateCreated : RoleStateEventBase, IRoleStateCreated
 	{
 		public RoleStateCreated () : this(new RoleEventId())
 		{
@@ -115,7 +128,7 @@ namespace Dddml.Wms.Domain.Role
 	}
 
 
-	public class RoleStateMergePatched : RoleEventBase, IRoleStateMergePatched
+	public class RoleStateMergePatched : RoleStateEventBase, IRoleStateMergePatched
 	{
 		public virtual bool IsPropertyNameRemoved { get; set; }
 
@@ -141,7 +154,7 @@ namespace Dddml.Wms.Domain.Role
 	}
 
 
-	public class RoleStateDeleted : RoleEventBase, IRoleStateDeleted
+	public class RoleStateDeleted : RoleStateEventBase, IRoleStateDeleted
 	{
 		public RoleStateDeleted ()
 		{

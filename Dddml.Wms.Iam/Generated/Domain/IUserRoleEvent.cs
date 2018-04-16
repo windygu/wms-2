@@ -17,29 +17,33 @@ namespace Dddml.Wms.Domain.User
 
         bool ReadOnly { get; set; }
 
-		long Version { get; set; }
-
-		bool? Active { get; set; }
-
 		// Outer Id:
 		//string UserId { get; set; }
 
 	}
 
-	public interface IUserRoleStateCreated : IUserRoleEvent//, IUserRoleStateProperties
+    public interface IUserRoleStateEvent : IUserRoleEvent
+    {
+		long Version { get; set; }
+
+		bool? Active { get; set; }
+
+    }
+   
+	public interface IUserRoleStateCreated : IUserRoleStateEvent
 	{
 	
 	}
 
 
-	public interface IUserRoleStateMergePatched : IUserRoleEvent//, IUserRoleStateProperties
+	public interface IUserRoleStateMergePatched : IUserRoleStateEvent
 	{
 		bool IsPropertyActiveRemoved { get; set; }
 
 
 	}
 
-	public interface IUserRoleStateRemoved : IUserRoleEvent
+	public interface IUserRoleStateRemoved : IUserRoleStateEvent
 	{
 	}
 

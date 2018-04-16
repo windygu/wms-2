@@ -24,44 +24,6 @@ namespace Dddml.Wms.Domain.UserRoleMvo
             set { UserRoleMvoEventId.UserRoleId = value; }
         }
 
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string UserUserName { get; set; }
-
-		public virtual int? UserAccessFailedCount { get; set; }
-
-		public virtual string UserEmail { get; set; }
-
-		public virtual bool? UserEmailConfirmed { get; set; }
-
-		public virtual bool? UserLockoutEnabled { get; set; }
-
-		public virtual DateTime? UserLockoutEndDateUtc { get; set; }
-
-		public virtual string UserPasswordHash { get; set; }
-
-		public virtual string UserPhoneNumber { get; set; }
-
-		public virtual bool? UserPhoneNumberConfirmed { get; set; }
-
-		public virtual bool? UserTwoFactorEnabled { get; set; }
-
-		public virtual string UserSecurityStamp { get; set; }
-
-		public virtual string UserCreatedBy { get; set; }
-
-		public virtual DateTime? UserCreatedAt { get; set; }
-
-		public virtual string UserUpdatedBy { get; set; }
-
-		public virtual DateTime? UserUpdatedAt { get; set; }
-
-		public virtual bool? UserActive { get; set; }
-
-		public virtual bool? UserDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -129,7 +91,58 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 	}
 
-	public class UserRoleMvoStateCreated : UserRoleMvoEventBase, IUserRoleMvoStateCreated
+    public abstract class UserRoleMvoStateEventBase : UserRoleMvoEventBase, IUserRoleMvoStateEvent
+    {
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string UserUserName { get; set; }
+
+		public virtual int? UserAccessFailedCount { get; set; }
+
+		public virtual string UserEmail { get; set; }
+
+		public virtual bool? UserEmailConfirmed { get; set; }
+
+		public virtual bool? UserLockoutEnabled { get; set; }
+
+		public virtual DateTime? UserLockoutEndDateUtc { get; set; }
+
+		public virtual string UserPasswordHash { get; set; }
+
+		public virtual string UserPhoneNumber { get; set; }
+
+		public virtual bool? UserPhoneNumberConfirmed { get; set; }
+
+		public virtual bool? UserTwoFactorEnabled { get; set; }
+
+		public virtual string UserSecurityStamp { get; set; }
+
+		public virtual string UserCreatedBy { get; set; }
+
+		public virtual DateTime? UserCreatedAt { get; set; }
+
+		public virtual string UserUpdatedBy { get; set; }
+
+		public virtual DateTime? UserUpdatedAt { get; set; }
+
+		public virtual bool? UserActive { get; set; }
+
+		public virtual bool? UserDeleted { get; set; }
+
+        protected UserRoleMvoStateEventBase() : base()
+        {
+        }
+
+        protected UserRoleMvoStateEventBase(UserRoleMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class UserRoleMvoStateCreated : UserRoleMvoStateEventBase, IUserRoleMvoStateCreated
 	{
 		public UserRoleMvoStateCreated () : this(new UserRoleMvoEventId())
 		{
@@ -148,7 +161,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 	}
 
 
-	public class UserRoleMvoStateMergePatched : UserRoleMvoEventBase, IUserRoleMvoStateMergePatched
+	public class UserRoleMvoStateMergePatched : UserRoleMvoStateEventBase, IUserRoleMvoStateMergePatched
 	{
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 
@@ -206,7 +219,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 	}
 
 
-	public class UserRoleMvoStateDeleted : UserRoleMvoEventBase, IUserRoleMvoStateDeleted
+	public class UserRoleMvoStateDeleted : UserRoleMvoStateEventBase, IUserRoleMvoStateDeleted
 	{
 		public UserRoleMvoStateDeleted ()
 		{

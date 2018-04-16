@@ -12,6 +12,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="AttributeUseMvoStateEventBase" abstract="true">
+
     <property name="SequenceNumber" ></property>
     <property name="Version" ></property>
     <property name="Active" ></property>
@@ -27,11 +35,6 @@
     <property name="AttributeSetUpdatedAt" ><column name="AttributeSetUpdatedAt" sql-type="DATETIME" /></property>
     <property name="AttributeSetActive" ></property>
     <property name="AttributeSetDeleted" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="AttributeUseMvoStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -75,6 +78,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

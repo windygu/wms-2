@@ -24,38 +24,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set { InventoryItemEntryMvoEventId.InventoryItemEntryId = value; }
         }
 
-		public virtual decimal? OnHandQuantity { get; set; }
-
-		public virtual decimal? InTransitQuantity { get; set; }
-
-		public virtual decimal? ReservedQuantity { get; set; }
-
-		public virtual decimal? OccupiedQuantity { get; set; }
-
-		public virtual decimal? VirtualQuantity { get; set; }
-
-		public virtual InventoryItemSourceInfo Source { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual decimal? InventoryItemOnHandQuantity { get; set; }
-
-		public virtual decimal? InventoryItemInTransitQuantity { get; set; }
-
-		public virtual decimal? InventoryItemReservedQuantity { get; set; }
-
-		public virtual decimal? InventoryItemOccupiedQuantity { get; set; }
-
-		public virtual decimal? InventoryItemVirtualQuantity { get; set; }
-
-		public virtual string InventoryItemCreatedBy { get; set; }
-
-		public virtual DateTime? InventoryItemCreatedAt { get; set; }
-
-		public virtual string InventoryItemUpdatedBy { get; set; }
-
-		public virtual DateTime? InventoryItemUpdatedAt { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -123,7 +91,52 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 	}
 
-	public class InventoryItemEntryMvoStateCreated : InventoryItemEntryMvoEventBase, IInventoryItemEntryMvoStateCreated
+    public abstract class InventoryItemEntryMvoStateEventBase : InventoryItemEntryMvoEventBase, IInventoryItemEntryMvoStateEvent
+    {
+
+		public virtual decimal? OnHandQuantity { get; set; }
+
+		public virtual decimal? InTransitQuantity { get; set; }
+
+		public virtual decimal? ReservedQuantity { get; set; }
+
+		public virtual decimal? OccupiedQuantity { get; set; }
+
+		public virtual decimal? VirtualQuantity { get; set; }
+
+		public virtual InventoryItemSourceInfo Source { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual decimal? InventoryItemOnHandQuantity { get; set; }
+
+		public virtual decimal? InventoryItemInTransitQuantity { get; set; }
+
+		public virtual decimal? InventoryItemReservedQuantity { get; set; }
+
+		public virtual decimal? InventoryItemOccupiedQuantity { get; set; }
+
+		public virtual decimal? InventoryItemVirtualQuantity { get; set; }
+
+		public virtual string InventoryItemCreatedBy { get; set; }
+
+		public virtual DateTime? InventoryItemCreatedAt { get; set; }
+
+		public virtual string InventoryItemUpdatedBy { get; set; }
+
+		public virtual DateTime? InventoryItemUpdatedAt { get; set; }
+
+        protected InventoryItemEntryMvoStateEventBase() : base()
+        {
+        }
+
+        protected InventoryItemEntryMvoStateEventBase(InventoryItemEntryMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class InventoryItemEntryMvoStateCreated : InventoryItemEntryMvoStateEventBase, IInventoryItemEntryMvoStateCreated
 	{
 		public InventoryItemEntryMvoStateCreated () : this(new InventoryItemEntryMvoEventId())
 		{
@@ -142,7 +155,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	}
 
 
-	public class InventoryItemEntryMvoStateMergePatched : InventoryItemEntryMvoEventBase, IInventoryItemEntryMvoStateMergePatched
+	public class InventoryItemEntryMvoStateMergePatched : InventoryItemEntryMvoStateEventBase, IInventoryItemEntryMvoStateMergePatched
 	{
 		public virtual bool IsPropertyOnHandQuantityRemoved { get; set; }
 

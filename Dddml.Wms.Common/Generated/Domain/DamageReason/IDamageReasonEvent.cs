@@ -17,21 +17,25 @@ namespace Dddml.Wms.Domain.DamageReason
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IDamageReasonStateEvent : IDamageReasonEvent
+    {
 		string Description { get; set; }
 
 		string SequenceId { get; set; }
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IDamageReasonStateCreated : IDamageReasonEvent//, IDamageReasonStateProperties
+    }
+   
+	public interface IDamageReasonStateCreated : IDamageReasonStateEvent
 	{
 	
 	}
 
 
-	public interface IDamageReasonStateMergePatched : IDamageReasonEvent//, IDamageReasonStateProperties
+	public interface IDamageReasonStateMergePatched : IDamageReasonStateEvent
 	{
 		bool IsPropertyDescriptionRemoved { get; set; }
 
@@ -42,7 +46,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
 	}
 
-	public interface IDamageReasonStateDeleted : IDamageReasonEvent
+	public interface IDamageReasonStateDeleted : IDamageReasonStateEvent
 	{
 	}
 

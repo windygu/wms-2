@@ -23,14 +23,6 @@ namespace Dddml.Wms.Domain.ShipmentPackage
             set { ShipmentPackageContentEventId.ShipmentItemSeqId = value; }
         }
 
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual string SubProductId { get; set; }
-
-		public virtual decimal? SubProductQuantity { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -100,7 +92,28 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
 	}
 
-	public class ShipmentPackageContentStateCreated : ShipmentPackageContentEventBase, IShipmentPackageContentStateCreated
+    public abstract class ShipmentPackageContentStateEventBase : ShipmentPackageContentEventBase, IShipmentPackageContentStateEvent
+    {
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual string SubProductId { get; set; }
+
+		public virtual decimal? SubProductQuantity { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected ShipmentPackageContentStateEventBase() : base()
+        {
+        }
+
+        protected ShipmentPackageContentStateEventBase(ShipmentPackageContentEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class ShipmentPackageContentStateCreated : ShipmentPackageContentStateEventBase, IShipmentPackageContentStateCreated
 	{
 		public ShipmentPackageContentStateCreated () : this(new ShipmentPackageContentEventId())
 		{
@@ -119,7 +132,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 	}
 
 
-	public class ShipmentPackageContentStateMergePatched : ShipmentPackageContentEventBase, IShipmentPackageContentStateMergePatched
+	public class ShipmentPackageContentStateMergePatched : ShipmentPackageContentStateEventBase, IShipmentPackageContentStateMergePatched
 	{
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
@@ -147,7 +160,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 	}
 
 
-	public class ShipmentPackageContentStateRemoved : ShipmentPackageContentEventBase, IShipmentPackageContentStateRemoved
+	public class ShipmentPackageContentStateRemoved : ShipmentPackageContentStateEventBase, IShipmentPackageContentStateRemoved
 	{
 		public ShipmentPackageContentStateRemoved ()
 		{

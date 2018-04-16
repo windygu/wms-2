@@ -24,36 +24,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set { AttributeUseMvoEventId.AttributeSetAttributeUseId = value; }
         }
 
-		public virtual int? SequenceNumber { get; set; }
-
-		public virtual long? Version { get; set; }
-
-		public virtual bool? Active { get; set; }
-
-		public virtual string AttributeSetAttributeSetName { get; set; }
-
-		public virtual string AttributeSetOrganizationId { get; set; }
-
-		public virtual string AttributeSetDescription { get; set; }
-
-		public virtual string AttributeSetReferenceId { get; set; }
-
-		public virtual bool? AttributeSetIsInstanceAttributeSet { get; set; }
-
-		public virtual bool? AttributeSetIsMandatory { get; set; }
-
-		public virtual string AttributeSetCreatedBy { get; set; }
-
-		public virtual DateTime? AttributeSetCreatedAt { get; set; }
-
-		public virtual string AttributeSetUpdatedBy { get; set; }
-
-		public virtual DateTime? AttributeSetUpdatedAt { get; set; }
-
-		public virtual bool? AttributeSetActive { get; set; }
-
-		public virtual bool? AttributeSetDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -121,7 +91,50 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 	}
 
-	public class AttributeUseMvoStateCreated : AttributeUseMvoEventBase, IAttributeUseMvoStateCreated
+    public abstract class AttributeUseMvoStateEventBase : AttributeUseMvoEventBase, IAttributeUseMvoStateEvent
+    {
+
+		public virtual int? SequenceNumber { get; set; }
+
+		public virtual long? Version { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+		public virtual string AttributeSetAttributeSetName { get; set; }
+
+		public virtual string AttributeSetOrganizationId { get; set; }
+
+		public virtual string AttributeSetDescription { get; set; }
+
+		public virtual string AttributeSetReferenceId { get; set; }
+
+		public virtual bool? AttributeSetIsInstanceAttributeSet { get; set; }
+
+		public virtual bool? AttributeSetIsMandatory { get; set; }
+
+		public virtual string AttributeSetCreatedBy { get; set; }
+
+		public virtual DateTime? AttributeSetCreatedAt { get; set; }
+
+		public virtual string AttributeSetUpdatedBy { get; set; }
+
+		public virtual DateTime? AttributeSetUpdatedAt { get; set; }
+
+		public virtual bool? AttributeSetActive { get; set; }
+
+		public virtual bool? AttributeSetDeleted { get; set; }
+
+        protected AttributeUseMvoStateEventBase() : base()
+        {
+        }
+
+        protected AttributeUseMvoStateEventBase(AttributeUseMvoEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class AttributeUseMvoStateCreated : AttributeUseMvoStateEventBase, IAttributeUseMvoStateCreated
 	{
 		public AttributeUseMvoStateCreated () : this(new AttributeUseMvoEventId())
 		{
@@ -140,7 +153,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 	}
 
 
-	public class AttributeUseMvoStateMergePatched : AttributeUseMvoEventBase, IAttributeUseMvoStateMergePatched
+	public class AttributeUseMvoStateMergePatched : AttributeUseMvoStateEventBase, IAttributeUseMvoStateMergePatched
 	{
 		public virtual bool IsPropertySequenceNumberRemoved { get; set; }
 
@@ -190,7 +203,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 	}
 
 
-	public class AttributeUseMvoStateDeleted : AttributeUseMvoEventBase, IAttributeUseMvoStateDeleted
+	public class AttributeUseMvoStateDeleted : AttributeUseMvoStateEventBase, IAttributeUseMvoStateDeleted
 	{
 		public AttributeUseMvoStateDeleted ()
 		{

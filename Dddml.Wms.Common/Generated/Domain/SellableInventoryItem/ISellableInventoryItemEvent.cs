@@ -19,11 +19,15 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         bool ReadOnly { get; set; }
 
-		decimal? SellableQuantity { get; set; }
-
 	}
 
-	public interface ISellableInventoryItemStateCreated : ISellableInventoryItemEvent//, ISellableInventoryItemStateProperties
+    public interface ISellableInventoryItemStateEvent : ISellableInventoryItemEvent
+    {
+		decimal? SellableQuantity { get; set; }
+
+    }
+   
+	public interface ISellableInventoryItemStateCreated : ISellableInventoryItemStateEvent
 	{
 		IEnumerable<ISellableInventoryItemEntryStateCreated> SellableInventoryItemEntryEvents { get; }
 		
@@ -35,7 +39,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	}
 
 
-	public interface ISellableInventoryItemStateMergePatched : ISellableInventoryItemEvent//, ISellableInventoryItemStateProperties
+	public interface ISellableInventoryItemStateMergePatched : ISellableInventoryItemStateEvent
 	{
 		bool IsPropertySellableQuantityRemoved { get; set; }
 

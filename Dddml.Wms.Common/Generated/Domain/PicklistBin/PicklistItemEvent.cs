@@ -23,12 +23,6 @@ namespace Dddml.Wms.Domain.PicklistBin
             set { PicklistItemEventId.PicklistItemOrderShipGrpInvId = value; }
         }
 
-		public virtual string ItemStatusId { get; set; }
-
-		public virtual decimal? Quantity { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -98,7 +92,26 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 	}
 
-	public class PicklistItemStateCreated : PicklistItemEventBase, IPicklistItemStateCreated
+    public abstract class PicklistItemStateEventBase : PicklistItemEventBase, IPicklistItemStateEvent
+    {
+
+		public virtual string ItemStatusId { get; set; }
+
+		public virtual decimal? Quantity { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected PicklistItemStateEventBase() : base()
+        {
+        }
+
+        protected PicklistItemStateEventBase(PicklistItemEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PicklistItemStateCreated : PicklistItemStateEventBase, IPicklistItemStateCreated
 	{
 		public PicklistItemStateCreated () : this(new PicklistItemEventId())
 		{
@@ -117,7 +130,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 	}
 
 
-	public class PicklistItemStateMergePatched : PicklistItemEventBase, IPicklistItemStateMergePatched
+	public class PicklistItemStateMergePatched : PicklistItemStateEventBase, IPicklistItemStateMergePatched
 	{
 		public virtual bool IsPropertyItemStatusIdRemoved { get; set; }
 
@@ -143,7 +156,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 	}
 
 
-	public class PicklistItemStateRemoved : PicklistItemEventBase, IPicklistItemStateRemoved
+	public class PicklistItemStateRemoved : PicklistItemStateEventBase, IPicklistItemStateRemoved
 	{
 		public PicklistItemStateRemoved ()
 		{

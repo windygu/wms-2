@@ -17,24 +17,28 @@ namespace Dddml.Wms.Domain.PartyRole
 
         bool ReadOnly { get; set; }
 
-		bool? Active { get; set; }
-
 	}
 
-	public interface IPartyRoleStateCreated : IPartyRoleEvent//, IPartyRoleStateProperties
+    public interface IPartyRoleStateEvent : IPartyRoleEvent
+    {
+		bool? Active { get; set; }
+
+    }
+   
+	public interface IPartyRoleStateCreated : IPartyRoleStateEvent
 	{
 	
 	}
 
 
-	public interface IPartyRoleStateMergePatched : IPartyRoleEvent//, IPartyRoleStateProperties
+	public interface IPartyRoleStateMergePatched : IPartyRoleStateEvent
 	{
 		bool IsPropertyActiveRemoved { get; set; }
 
 
 	}
 
-	public interface IPartyRoleStateDeleted : IPartyRoleEvent
+	public interface IPartyRoleStateDeleted : IPartyRoleStateEvent
 	{
 	}
 

@@ -23,34 +23,6 @@ namespace Dddml.Wms.Domain.SupplierProduct
             set { SupplierProductEventId.SupplierProductId = value; }
         }
 
-		public virtual DateTime? AvailableThruDate { get; set; }
-
-		public virtual string SupplierPrefOrderId { get; set; }
-
-		public virtual string SupplierRatingTypeId { get; set; }
-
-		public virtual decimal? StandardLeadTimeDays { get; set; }
-
-		public virtual decimal? ManufacturingLeadTimeDays { get; set; }
-
-		public virtual decimal? DeliveryLeadTimeDays { get; set; }
-
-		public virtual string QuantityUomId { get; set; }
-
-		public virtual decimal? LastPrice { get; set; }
-
-		public virtual decimal? ShippingPrice { get; set; }
-
-		public virtual string ExternalProductName { get; set; }
-
-		public virtual string ExternalProductId { get; set; }
-
-		public virtual bool? CanDropShip { get; set; }
-
-		public virtual string Comments { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -118,7 +90,48 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 	}
 
-	public class SupplierProductStateCreated : SupplierProductEventBase, ISupplierProductStateCreated
+    public abstract class SupplierProductStateEventBase : SupplierProductEventBase, ISupplierProductStateEvent
+    {
+
+		public virtual DateTime? AvailableThruDate { get; set; }
+
+		public virtual string SupplierPrefOrderId { get; set; }
+
+		public virtual string SupplierRatingTypeId { get; set; }
+
+		public virtual decimal? StandardLeadTimeDays { get; set; }
+
+		public virtual decimal? ManufacturingLeadTimeDays { get; set; }
+
+		public virtual decimal? DeliveryLeadTimeDays { get; set; }
+
+		public virtual string QuantityUomId { get; set; }
+
+		public virtual decimal? LastPrice { get; set; }
+
+		public virtual decimal? ShippingPrice { get; set; }
+
+		public virtual string ExternalProductName { get; set; }
+
+		public virtual string ExternalProductId { get; set; }
+
+		public virtual bool? CanDropShip { get; set; }
+
+		public virtual string Comments { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected SupplierProductStateEventBase() : base()
+        {
+        }
+
+        protected SupplierProductStateEventBase(SupplierProductEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class SupplierProductStateCreated : SupplierProductStateEventBase, ISupplierProductStateCreated
 	{
 		public SupplierProductStateCreated () : this(new SupplierProductEventId())
 		{
@@ -137,7 +150,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 	}
 
 
-	public class SupplierProductStateMergePatched : SupplierProductEventBase, ISupplierProductStateMergePatched
+	public class SupplierProductStateMergePatched : SupplierProductStateEventBase, ISupplierProductStateMergePatched
 	{
 		public virtual bool IsPropertyAvailableThruDateRemoved { get; set; }
 

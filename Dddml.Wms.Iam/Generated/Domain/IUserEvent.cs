@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.User
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IUserStateEvent : IUserEvent
+    {
 		string UserName { get; set; }
 
 		int? AccessFailedCount { get; set; }
@@ -41,9 +45,9 @@ namespace Dddml.Wms.Domain.User
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IUserStateCreated : IUserEvent//, IUserStateProperties
+    }
+   
+	public interface IUserStateCreated : IUserStateEvent
 	{
 		IEnumerable<IUserRoleStateCreated> UserRoleEvents { get; }
 		
@@ -73,7 +77,7 @@ namespace Dddml.Wms.Domain.User
 	}
 
 
-	public interface IUserStateMergePatched : IUserEvent//, IUserStateProperties
+	public interface IUserStateMergePatched : IUserStateEvent
 	{
 		bool IsPropertyUserNameRemoved { get; set; }
 
@@ -142,7 +146,7 @@ namespace Dddml.Wms.Domain.User
 
 	}
 
-	public interface IUserStateDeleted : IUserEvent
+	public interface IUserStateDeleted : IUserStateEvent
 	{
 		IEnumerable<IUserRoleStateRemoved> UserRoleEvents { get; }
 		

@@ -11,6 +11,14 @@
     </composite-id>
     <discriminator column="EventType" type="String" />
 
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="ContactMechStateEventBase" abstract="true">
+
     <property name="ContactMechTypeId" ><column name="ContactMechTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="InfoString" ><column name="InfoString" sql-type="VARCHAR(255)" /></property>
     <property name="ToName" ><column name="ToName" sql-type="VARCHAR(100)" /></property>
@@ -31,11 +39,6 @@
     <property name="ContactNumber" ><column name="ContactNumber" sql-type="VARCHAR(60)" /></property>
     <property name="AskForName" ><column name="AskForName" sql-type="VARCHAR(100)" /></property>
     <property name="Active" ></property>
-
-    <property name="CreatedBy" column="CreatedBy"/>
-
-    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
-    <property name="CommandId" column="CommandId"/>
     <subclass name="ContactMechStateCreated" discriminator-value="Created">
     	
     </subclass>
@@ -89,6 +92,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

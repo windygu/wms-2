@@ -17,6 +17,10 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         bool ReadOnly { get; set; }
 
+	}
+
+    public interface IShipmentPackageStateEvent : IShipmentPackageEvent
+    {
 		string ShipmentBoxTypeId { get; set; }
 
 		DateTime? DateCreated { get; set; }
@@ -37,9 +41,9 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
 		bool? Active { get; set; }
 
-	}
-
-	public interface IShipmentPackageStateCreated : IShipmentPackageEvent//, IShipmentPackageStateProperties
+    }
+   
+	public interface IShipmentPackageStateCreated : IShipmentPackageStateEvent
 	{
 		IEnumerable<IShipmentPackageContentStateCreated> ShipmentPackageContentEvents { get; }
 		
@@ -51,7 +55,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 	}
 
 
-	public interface IShipmentPackageStateMergePatched : IShipmentPackageEvent//, IShipmentPackageStateProperties
+	public interface IShipmentPackageStateMergePatched : IShipmentPackageStateEvent
 	{
 		bool IsPropertyShipmentBoxTypeIdRemoved { get; set; }
 
@@ -86,7 +90,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
 	}
 
-	public interface IShipmentPackageStateDeleted : IShipmentPackageEvent
+	public interface IShipmentPackageStateDeleted : IShipmentPackageStateEvent
 	{
 		IEnumerable<IShipmentPackageContentStateRemoved> ShipmentPackageContentEvents { get; }
 		

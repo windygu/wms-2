@@ -23,20 +23,6 @@ namespace Dddml.Wms.Domain.Party
             set { PartyEventId.PartyId = value; }
         }
 
-		public virtual string PartyTypeId { get; set; }
-
-		public virtual string PrimaryRoleTypeId { get; set; }
-
-		public virtual string OrganizationName { get; set; }
-
-		public virtual string Description { get; set; }
-
-		public virtual string Type { get; set; }
-
-		public virtual bool? IsSummary { get; set; }
-
-		public virtual bool? Active { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -104,7 +90,34 @@ namespace Dddml.Wms.Domain.Party
 
 	}
 
-	public class PartyStateCreated : PartyEventBase, IPartyStateCreated
+    public abstract class PartyStateEventBase : PartyEventBase, IPartyStateEvent
+    {
+
+		public virtual string PartyTypeId { get; set; }
+
+		public virtual string PrimaryRoleTypeId { get; set; }
+
+		public virtual string OrganizationName { get; set; }
+
+		public virtual string Description { get; set; }
+
+		public virtual string Type { get; set; }
+
+		public virtual bool? IsSummary { get; set; }
+
+		public virtual bool? Active { get; set; }
+
+        protected PartyStateEventBase() : base()
+        {
+        }
+
+        protected PartyStateEventBase(PartyEventId stateEventId) : base(stateEventId)
+        {
+        }
+
+    }
+
+	public class PartyStateCreated : PartyStateEventBase, IPartyStateCreated
 	{
 		public PartyStateCreated () : this(new PartyEventId())
 		{
@@ -123,7 +136,7 @@ namespace Dddml.Wms.Domain.Party
 	}
 
 
-	public class PartyStateMergePatched : PartyEventBase, IPartyStateMergePatched
+	public class PartyStateMergePatched : PartyStateEventBase, IPartyStateMergePatched
 	{
 		public virtual bool IsPropertyPartyTypeIdRemoved { get; set; }
 
@@ -157,7 +170,7 @@ namespace Dddml.Wms.Domain.Party
 	}
 
 
-	public class PartyStateDeleted : PartyEventBase, IPartyStateDeleted
+	public class PartyStateDeleted : PartyStateEventBase, IPartyStateDeleted
 	{
 		public PartyStateDeleted ()
 		{

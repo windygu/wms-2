@@ -24,6 +24,76 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
             set { OrderShipGroupMvoEventId.OrderShipGroupId = value; }
         }
 
+		public virtual string CreatedBy { get; set; }
+
+		public virtual DateTime CreatedAt { get; set; }
+
+        public virtual string CommandId { get; set; }
+
+        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
+
+		OrderShipGroupMvoEventId IGlobalIdentity<OrderShipGroupMvoEventId>.GlobalId {
+			get
+			{
+				return this.OrderShipGroupMvoEventId;
+			}
+		}
+
+        public virtual bool EventReadOnly { get; set; }
+
+        bool IOrderShipGroupMvoEvent.ReadOnly
+        {
+            get
+            {
+                return this.EventReadOnly;
+            }
+            set
+            {
+                this.EventReadOnly = value;
+            }
+        }
+
+
+		string ICreated<string>.CreatedBy {
+			get {
+				return this.CreatedBy;
+			}
+			set {
+				this.CreatedBy = value;
+			}
+		}
+
+		DateTime ICreated<string>.CreatedAt {
+			get {
+				return this.CreatedAt;
+			}
+			set {
+				this.CreatedAt = value;
+			}
+		}
+
+        protected OrderShipGroupMvoEventBase()
+        {
+        }
+
+        protected OrderShipGroupMvoEventBase(OrderShipGroupMvoEventId stateEventId)
+        {
+            this.OrderShipGroupMvoEventId = stateEventId;
+        }
+
+
+        string IEventDto.EventType
+        {
+            get { return this.GetEventType(); }
+        }
+
+        protected abstract string GetEventType();
+
+	}
+
+    public abstract class OrderShipGroupMvoStateEventBase : OrderShipGroupMvoEventBase, IOrderShipGroupMvoStateEvent
+    {
+
 		public virtual string ShipmentMethodTypeId { get; set; }
 
 		public virtual string SupplierPartyId { get; set; }
@@ -122,74 +192,17 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 
 		public virtual bool? OrderActive { get; set; }
 
-		public virtual string CreatedBy { get; set; }
-
-		public virtual DateTime CreatedAt { get; set; }
-
-        public virtual string CommandId { get; set; }
-
-        string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
-
-		OrderShipGroupMvoEventId IGlobalIdentity<OrderShipGroupMvoEventId>.GlobalId {
-			get
-			{
-				return this.OrderShipGroupMvoEventId;
-			}
-		}
-
-        public virtual bool EventReadOnly { get; set; }
-
-        bool IOrderShipGroupMvoEvent.ReadOnly
-        {
-            get
-            {
-                return this.EventReadOnly;
-            }
-            set
-            {
-                this.EventReadOnly = value;
-            }
-        }
-
-
-		string ICreated<string>.CreatedBy {
-			get {
-				return this.CreatedBy;
-			}
-			set {
-				this.CreatedBy = value;
-			}
-		}
-
-		DateTime ICreated<string>.CreatedAt {
-			get {
-				return this.CreatedAt;
-			}
-			set {
-				this.CreatedAt = value;
-			}
-		}
-
-        protected OrderShipGroupMvoEventBase()
+        protected OrderShipGroupMvoStateEventBase() : base()
         {
         }
 
-        protected OrderShipGroupMvoEventBase(OrderShipGroupMvoEventId stateEventId)
+        protected OrderShipGroupMvoStateEventBase(OrderShipGroupMvoEventId stateEventId) : base(stateEventId)
         {
-            this.OrderShipGroupMvoEventId = stateEventId;
         }
 
+    }
 
-        string IEventDto.EventType
-        {
-            get { return this.GetEventType(); }
-        }
-
-        protected abstract string GetEventType();
-
-	}
-
-	public class OrderShipGroupMvoStateCreated : OrderShipGroupMvoEventBase, IOrderShipGroupMvoStateCreated
+	public class OrderShipGroupMvoStateCreated : OrderShipGroupMvoStateEventBase, IOrderShipGroupMvoStateCreated
 	{
 		public OrderShipGroupMvoStateCreated () : this(new OrderShipGroupMvoEventId())
 		{
@@ -208,7 +221,7 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 	}
 
 
-	public class OrderShipGroupMvoStateMergePatched : OrderShipGroupMvoEventBase, IOrderShipGroupMvoStateMergePatched
+	public class OrderShipGroupMvoStateMergePatched : OrderShipGroupMvoStateEventBase, IOrderShipGroupMvoStateMergePatched
 	{
 		public virtual bool IsPropertyShipmentMethodTypeIdRemoved { get; set; }
 
@@ -326,7 +339,7 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 	}
 
 
-	public class OrderShipGroupMvoStateDeleted : OrderShipGroupMvoEventBase, IOrderShipGroupMvoStateDeleted
+	public class OrderShipGroupMvoStateDeleted : OrderShipGroupMvoStateEventBase, IOrderShipGroupMvoStateDeleted
 	{
 		public OrderShipGroupMvoStateDeleted ()
 		{
