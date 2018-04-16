@@ -237,21 +237,21 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
     {
     }
 
-    protected void throwOnWrongEvent(OrganizationStructureTypeEvent stateEvent)
+    protected void throwOnWrongEvent(OrganizationStructureTypeEvent event)
     {
         String stateEntityId = this.getId(); // Aggregate Id
-        String eventEntityId = stateEvent.getOrganizationStructureTypeEventId().getId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = event.getOrganizationStructureTypeEventId().getId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getOrganizationStructureTypeEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getOrganizationStructureTypeEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getOrganizationStructureTypeEventId().getVersion() == null");
+            throw new NullPointerException("event.getOrganizationStructureTypeEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(OrganizationStructureTypeState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(OrganizationStructureTypeState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

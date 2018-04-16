@@ -15,6 +15,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractPicklistEvent$AbstractPicklistStateEvent" abstract="true">
+
 	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
 	<property name="facilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
@@ -22,12 +31,6 @@
 	<property name="picklistDate" ><column name="PicklistDate" sql-type="DATETIME" /></property>
 	<property name="pickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractPicklistEvent$SimplePicklistStateCreated" discriminator-value="Created">
     	
@@ -57,6 +60,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

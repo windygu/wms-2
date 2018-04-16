@@ -1366,21 +1366,21 @@ public abstract class AbstractOrderShipGroupMvoState implements OrderShipGroupMv
     {
     }
 
-    protected void throwOnWrongEvent(OrderShipGroupMvoEvent stateEvent)
+    protected void throwOnWrongEvent(OrderShipGroupMvoEvent event)
     {
         OrderShipGroupId stateEntityId = this.getOrderShipGroupId(); // Aggregate Id
-        OrderShipGroupId eventEntityId = stateEvent.getOrderShipGroupMvoEventId().getOrderShipGroupId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        OrderShipGroupId eventEntityId = event.getOrderShipGroupMvoEventId().getOrderShipGroupId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getOrderVersion();
-        Long eventVersion = stateEvent.getOrderShipGroupMvoEventId().getOrderVersion();// Aggregate Version
+        Long eventVersion = event.getOrderShipGroupMvoEventId().getOrderVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getOrderShipGroupMvoEventId().getOrderVersion() == null");
+            throw new NullPointerException("event.getOrderShipGroupMvoEventId().getOrderVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(OrderShipGroupMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(OrderShipGroupMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

@@ -32,30 +32,6 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String partyTypeId;
-
-    public String getPartyTypeId()
-    {
-        return this.partyTypeId;
-    }
-
-    public void setPartyTypeId(String partyTypeId)
-    {
-        this.partyTypeId = partyTypeId;
-    }
-
-    private String primaryRoleTypeId;
-
-    public String getPrimaryRoleTypeId()
-    {
-        return this.primaryRoleTypeId;
-    }
-
-    public void setPrimaryRoleTypeId(String primaryRoleTypeId)
-    {
-        this.primaryRoleTypeId = primaryRoleTypeId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -80,18 +56,6 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -114,7 +78,49 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPartyStateCreated extends AbstractPartyEvent implements PartyEvent.PartyStateCreated
+    public static abstract class AbstractPartyStateEvent extends AbstractPartyEvent implements PartyEvent.PartyStateEvent {
+        private String partyTypeId;
+
+        public String getPartyTypeId()
+        {
+            return this.partyTypeId;
+        }
+
+        public void setPartyTypeId(String partyTypeId)
+        {
+            this.partyTypeId = partyTypeId;
+        }
+
+        private String primaryRoleTypeId;
+
+        public String getPrimaryRoleTypeId()
+        {
+            return this.primaryRoleTypeId;
+        }
+
+        public void setPrimaryRoleTypeId(String primaryRoleTypeId)
+        {
+            this.primaryRoleTypeId = primaryRoleTypeId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPartyStateEvent(PartyEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPartyStateCreated extends AbstractPartyStateEvent implements PartyEvent.PartyStateCreated
     {
         public AbstractPartyStateCreated() {
             this(new PartyEventId());
@@ -131,7 +137,7 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
     }
 
 
-    public static abstract class AbstractPartyStateMergePatched extends AbstractPartyEvent implements PartyEvent.PartyStateMergePatched
+    public static abstract class AbstractPartyStateMergePatched extends AbstractPartyStateEvent implements PartyEvent.PartyStateMergePatched
     {
         public AbstractPartyStateMergePatched() {
             this(new PartyEventId());
@@ -178,7 +184,7 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
     }
 
 
-    public static abstract class AbstractPartyStateDeleted extends AbstractPartyEvent implements PartyEvent.PartyStateDeleted
+    public static abstract class AbstractPartyStateDeleted extends AbstractPartyStateEvent implements PartyEvent.PartyStateDeleted
     {
         public AbstractPartyStateDeleted() {
             this(new PartyEventId());

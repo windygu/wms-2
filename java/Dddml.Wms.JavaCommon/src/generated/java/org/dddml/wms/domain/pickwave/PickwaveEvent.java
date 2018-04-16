@@ -13,14 +13,6 @@ public interface PickwaveEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getStatusId();
-
-    void setStatusId(String statusId);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,21 +21,32 @@ public interface PickwaveEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PickwaveStateCreated extends PickwaveEvent
+    interface PickwaveStateEvent extends PickwaveEvent {
+        String getStatusId();
+
+        void setStatusId(String statusId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PickwaveStateCreated extends PickwaveStateEvent
     {
     
     }
 
 
-    interface PickwaveStateMergePatched extends PickwaveEvent
+    interface PickwaveStateMergePatched extends PickwaveStateEvent
     {
         Boolean getIsPropertyStatusIdRemoved();
 
@@ -60,7 +63,7 @@ public interface PickwaveEvent extends Event
 
     }
 
-    interface PickwaveStateDeleted extends PickwaveEvent
+    interface PickwaveStateDeleted extends PickwaveStateEvent
     {
     }
 

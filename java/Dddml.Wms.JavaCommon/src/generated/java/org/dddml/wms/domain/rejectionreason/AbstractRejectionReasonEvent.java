@@ -32,18 +32,6 @@ public abstract class AbstractRejectionReasonEvent extends AbstractEvent impleme
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -68,18 +56,6 @@ public abstract class AbstractRejectionReasonEvent extends AbstractEvent impleme
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -102,7 +78,37 @@ public abstract class AbstractRejectionReasonEvent extends AbstractEvent impleme
     public abstract String getEventType();
 
 
-    public static abstract class AbstractRejectionReasonStateCreated extends AbstractRejectionReasonEvent implements RejectionReasonEvent.RejectionReasonStateCreated
+    public static abstract class AbstractRejectionReasonStateEvent extends AbstractRejectionReasonEvent implements RejectionReasonEvent.RejectionReasonStateEvent {
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractRejectionReasonStateEvent(RejectionReasonEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractRejectionReasonStateCreated extends AbstractRejectionReasonStateEvent implements RejectionReasonEvent.RejectionReasonStateCreated
     {
         public AbstractRejectionReasonStateCreated() {
             this(new RejectionReasonEventId());
@@ -119,7 +125,7 @@ public abstract class AbstractRejectionReasonEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractRejectionReasonStateMergePatched extends AbstractRejectionReasonEvent implements RejectionReasonEvent.RejectionReasonStateMergePatched
+    public static abstract class AbstractRejectionReasonStateMergePatched extends AbstractRejectionReasonStateEvent implements RejectionReasonEvent.RejectionReasonStateMergePatched
     {
         public AbstractRejectionReasonStateMergePatched() {
             this(new RejectionReasonEventId());
@@ -156,7 +162,7 @@ public abstract class AbstractRejectionReasonEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractRejectionReasonStateDeleted extends AbstractRejectionReasonEvent implements RejectionReasonEvent.RejectionReasonStateDeleted
+    public static abstract class AbstractRejectionReasonStateDeleted extends AbstractRejectionReasonStateEvent implements RejectionReasonEvent.RejectionReasonStateDeleted
     {
         public AbstractRejectionReasonStateDeleted() {
             this(new RejectionReasonEventId());

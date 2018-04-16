@@ -288,17 +288,17 @@ public abstract class AbstractShipmentPackageContentState implements ShipmentPac
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentPackageContentEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentPackageContentEvent event)
     {
         ShipmentPackageId stateEntityIdShipmentPackageId = this.getShipmentPackageContentId().getShipmentPackageId();
-        ShipmentPackageId eventEntityIdShipmentPackageId = stateEvent.getShipmentPackageContentEventId().getShipmentPackageId();
+        ShipmentPackageId eventEntityIdShipmentPackageId = event.getShipmentPackageContentEventId().getShipmentPackageId();
         if (!stateEntityIdShipmentPackageId.equals(eventEntityIdShipmentPackageId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentPackageId %1$s in state but entity id ShipmentPackageId %2$s in event", stateEntityIdShipmentPackageId, eventEntityIdShipmentPackageId);
         }
 
         String stateEntityIdShipmentItemSeqId = this.getShipmentPackageContentId().getShipmentItemSeqId();
-        String eventEntityIdShipmentItemSeqId = stateEvent.getShipmentPackageContentEventId().getShipmentItemSeqId();
+        String eventEntityIdShipmentItemSeqId = event.getShipmentPackageContentEventId().getShipmentItemSeqId();
         if (!stateEntityIdShipmentItemSeqId.equals(eventEntityIdShipmentItemSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentItemSeqId %1$s in state but entity id ShipmentItemSeqId %2$s in event", stateEntityIdShipmentItemSeqId, eventEntityIdShipmentItemSeqId);
@@ -306,16 +306,19 @@ public abstract class AbstractShipmentPackageContentState implements ShipmentPac
 
         if (getForReapplying()) { return; }
 
+        ShipmentPackageContentStateEvent stateEvent = event instanceof ShipmentPackageContentStateEvent ? (ShipmentPackageContentStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? ShipmentPackageContentState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(ShipmentPackageContentState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? ShipmentPackageContentState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(ShipmentPackageContentState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

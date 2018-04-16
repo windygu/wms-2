@@ -32,114 +32,6 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String attributeName;
-
-    public String getAttributeName()
-    {
-        return this.attributeName;
-    }
-
-    public void setAttributeName(String attributeName)
-    {
-        this.attributeName = attributeName;
-    }
-
-    private String organizationId;
-
-    public String getOrganizationId()
-    {
-        return this.organizationId;
-    }
-
-    public void setOrganizationId(String organizationId)
-    {
-        this.organizationId = organizationId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private Boolean isMandatory;
-
-    public Boolean getIsMandatory()
-    {
-        return this.isMandatory;
-    }
-
-    public void setIsMandatory(Boolean isMandatory)
-    {
-        this.isMandatory = isMandatory;
-    }
-
-    private String attributeValueType;
-
-    public String getAttributeValueType()
-    {
-        return this.attributeValueType;
-    }
-
-    public void setAttributeValueType(String attributeValueType)
-    {
-        this.attributeValueType = attributeValueType;
-    }
-
-    private Integer attributeValueLength;
-
-    public Integer getAttributeValueLength()
-    {
-        return this.attributeValueLength;
-    }
-
-    public void setAttributeValueLength(Integer attributeValueLength)
-    {
-        this.attributeValueLength = attributeValueLength;
-    }
-
-    private Boolean isList;
-
-    public Boolean getIsList()
-    {
-        return this.isList;
-    }
-
-    public void setIsList(Boolean isList)
-    {
-        this.isList = isList;
-    }
-
-    private String fieldName;
-
-    public String getFieldName()
-    {
-        return this.fieldName;
-    }
-
-    public void setFieldName(String fieldName)
-    {
-        this.fieldName = fieldName;
-    }
-
-    private String referenceId;
-
-    public String getReferenceId()
-    {
-        return this.referenceId;
-    }
-
-    public void setReferenceId(String referenceId)
-    {
-        this.referenceId = referenceId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -162,18 +54,6 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -274,7 +154,133 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeStateCreated extends AbstractAttributeEvent implements AttributeEvent.AttributeStateCreated, Saveable
+    public static abstract class AbstractAttributeStateEvent extends AbstractAttributeEvent implements AttributeEvent.AttributeStateEvent {
+        private String attributeName;
+
+        public String getAttributeName()
+        {
+            return this.attributeName;
+        }
+
+        public void setAttributeName(String attributeName)
+        {
+            this.attributeName = attributeName;
+        }
+
+        private String organizationId;
+
+        public String getOrganizationId()
+        {
+            return this.organizationId;
+        }
+
+        public void setOrganizationId(String organizationId)
+        {
+            this.organizationId = organizationId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean isMandatory;
+
+        public Boolean getIsMandatory()
+        {
+            return this.isMandatory;
+        }
+
+        public void setIsMandatory(Boolean isMandatory)
+        {
+            this.isMandatory = isMandatory;
+        }
+
+        private String attributeValueType;
+
+        public String getAttributeValueType()
+        {
+            return this.attributeValueType;
+        }
+
+        public void setAttributeValueType(String attributeValueType)
+        {
+            this.attributeValueType = attributeValueType;
+        }
+
+        private Integer attributeValueLength;
+
+        public Integer getAttributeValueLength()
+        {
+            return this.attributeValueLength;
+        }
+
+        public void setAttributeValueLength(Integer attributeValueLength)
+        {
+            this.attributeValueLength = attributeValueLength;
+        }
+
+        private Boolean isList;
+
+        public Boolean getIsList()
+        {
+            return this.isList;
+        }
+
+        public void setIsList(Boolean isList)
+        {
+            this.isList = isList;
+        }
+
+        private String fieldName;
+
+        public String getFieldName()
+        {
+            return this.fieldName;
+        }
+
+        public void setFieldName(String fieldName)
+        {
+            this.fieldName = fieldName;
+        }
+
+        private String referenceId;
+
+        public String getReferenceId()
+        {
+            return this.referenceId;
+        }
+
+        public void setReferenceId(String referenceId)
+        {
+            this.referenceId = referenceId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractAttributeStateEvent(AttributeEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeStateCreated extends AbstractAttributeStateEvent implements AttributeEvent.AttributeStateCreated, Saveable
     {
         public AbstractAttributeStateCreated() {
             this(new AttributeEventId());
@@ -384,7 +390,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
     }
 
 
-    public static abstract class AbstractAttributeStateMergePatched extends AbstractAttributeEvent implements AttributeEvent.AttributeStateMergePatched, Saveable
+    public static abstract class AbstractAttributeStateMergePatched extends AbstractAttributeStateEvent implements AttributeEvent.AttributeStateMergePatched, Saveable
     {
         public AbstractAttributeStateMergePatched() {
             this(new AttributeEventId());
@@ -594,7 +600,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
     }
 
 
-    public static abstract class AbstractAttributeStateDeleted extends AbstractAttributeEvent implements AttributeEvent.AttributeStateDeleted, Saveable
+    public static abstract class AbstractAttributeStateDeleted extends AbstractAttributeStateEvent implements AttributeEvent.AttributeStateDeleted, Saveable
     {
         public AbstractAttributeStateDeleted() {
             this(new AttributeEventId());

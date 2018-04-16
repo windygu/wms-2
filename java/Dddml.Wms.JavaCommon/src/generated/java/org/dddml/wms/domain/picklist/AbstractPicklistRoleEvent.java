@@ -33,18 +33,6 @@ public abstract class AbstractPicklistRoleEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdByUserLogin;
 
     public String getCreatedByUserLogin()
@@ -69,18 +57,6 @@ public abstract class AbstractPicklistRoleEvent extends AbstractEvent implements
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -103,7 +79,37 @@ public abstract class AbstractPicklistRoleEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPicklistRoleStateCreated extends AbstractPicklistRoleEvent implements PicklistRoleEvent.PicklistRoleStateCreated
+    public static abstract class AbstractPicklistRoleStateEvent extends AbstractPicklistRoleEvent implements PicklistRoleEvent.PicklistRoleStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPicklistRoleStateEvent(PicklistRoleEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPicklistRoleStateCreated extends AbstractPicklistRoleStateEvent implements PicklistRoleEvent.PicklistRoleStateCreated
     {
         public AbstractPicklistRoleStateCreated() {
             this(new PicklistRoleEventId());
@@ -120,7 +126,7 @@ public abstract class AbstractPicklistRoleEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractPicklistRoleStateMergePatched extends AbstractPicklistRoleEvent implements PicklistRoleEvent.PicklistRoleStateMergePatched
+    public static abstract class AbstractPicklistRoleStateMergePatched extends AbstractPicklistRoleStateEvent implements PicklistRoleEvent.PicklistRoleStateMergePatched
     {
         public AbstractPicklistRoleStateMergePatched() {
             this(new PicklistRoleEventId());
@@ -147,7 +153,7 @@ public abstract class AbstractPicklistRoleEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractPicklistRoleStateRemoved extends AbstractPicklistRoleEvent implements PicklistRoleEvent.PicklistRoleStateRemoved
+    public static abstract class AbstractPicklistRoleStateRemoved extends AbstractPicklistRoleStateEvent implements PicklistRoleEvent.PicklistRoleStateRemoved
     {
         public AbstractPicklistRoleStateRemoved() {
             this(new PicklistRoleEventId());

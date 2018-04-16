@@ -391,17 +391,17 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
     {
     }
 
-    protected void throwOnWrongEvent(MovementConfirmationLineEvent stateEvent)
+    protected void throwOnWrongEvent(MovementConfirmationLineEvent event)
     {
         String stateEntityIdMovementConfirmationDocumentNumber = this.getMovementConfirmationLineId().getMovementConfirmationDocumentNumber();
-        String eventEntityIdMovementConfirmationDocumentNumber = stateEvent.getMovementConfirmationLineEventId().getMovementConfirmationDocumentNumber();
+        String eventEntityIdMovementConfirmationDocumentNumber = event.getMovementConfirmationLineEventId().getMovementConfirmationDocumentNumber();
         if (!stateEntityIdMovementConfirmationDocumentNumber.equals(eventEntityIdMovementConfirmationDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id MovementConfirmationDocumentNumber %1$s in state but entity id MovementConfirmationDocumentNumber %2$s in event", stateEntityIdMovementConfirmationDocumentNumber, eventEntityIdMovementConfirmationDocumentNumber);
         }
 
         String stateEntityIdLineNumber = this.getMovementConfirmationLineId().getLineNumber();
-        String eventEntityIdLineNumber = stateEvent.getMovementConfirmationLineEventId().getLineNumber();
+        String eventEntityIdLineNumber = event.getMovementConfirmationLineEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
@@ -409,16 +409,19 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
 
         if (getForReapplying()) { return; }
 
+        MovementConfirmationLineStateEvent stateEvent = event instanceof MovementConfirmationLineStateEvent ? (MovementConfirmationLineStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? MovementConfirmationLineState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(MovementConfirmationLineState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? MovementConfirmationLineState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(MovementConfirmationLineState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

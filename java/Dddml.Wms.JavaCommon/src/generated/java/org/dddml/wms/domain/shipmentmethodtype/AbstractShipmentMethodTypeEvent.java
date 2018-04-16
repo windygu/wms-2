@@ -32,30 +32,6 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private Long sequenceNum;
-
-    public Long getSequenceNum()
-    {
-        return this.sequenceNum;
-    }
-
-    public void setSequenceNum(Long sequenceNum)
-    {
-        this.sequenceNum = sequenceNum;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -80,18 +56,6 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -114,7 +78,49 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
     public abstract String getEventType();
 
 
-    public static abstract class AbstractShipmentMethodTypeStateCreated extends AbstractShipmentMethodTypeEvent implements ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated
+    public static abstract class AbstractShipmentMethodTypeStateEvent extends AbstractShipmentMethodTypeEvent implements ShipmentMethodTypeEvent.ShipmentMethodTypeStateEvent {
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Long sequenceNum;
+
+        public Long getSequenceNum()
+        {
+            return this.sequenceNum;
+        }
+
+        public void setSequenceNum(Long sequenceNum)
+        {
+            this.sequenceNum = sequenceNum;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractShipmentMethodTypeStateEvent(ShipmentMethodTypeEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractShipmentMethodTypeStateCreated extends AbstractShipmentMethodTypeStateEvent implements ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated
     {
         public AbstractShipmentMethodTypeStateCreated() {
             this(new ShipmentMethodTypeEventId());
@@ -131,7 +137,7 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
     }
 
 
-    public static abstract class AbstractShipmentMethodTypeStateMergePatched extends AbstractShipmentMethodTypeEvent implements ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched
+    public static abstract class AbstractShipmentMethodTypeStateMergePatched extends AbstractShipmentMethodTypeStateEvent implements ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched
     {
         public AbstractShipmentMethodTypeStateMergePatched() {
             this(new ShipmentMethodTypeEventId());
@@ -178,7 +184,7 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
     }
 
 
-    public static abstract class AbstractShipmentMethodTypeStateDeleted extends AbstractShipmentMethodTypeEvent implements ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted
+    public static abstract class AbstractShipmentMethodTypeStateDeleted extends AbstractShipmentMethodTypeStateEvent implements ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted
     {
         public AbstractShipmentMethodTypeStateDeleted() {
             this(new ShipmentMethodTypeEventId());

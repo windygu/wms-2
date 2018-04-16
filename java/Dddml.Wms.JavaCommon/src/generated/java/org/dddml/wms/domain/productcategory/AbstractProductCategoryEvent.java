@@ -32,102 +32,6 @@ public abstract class AbstractProductCategoryEvent extends AbstractEvent impleme
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String productCategoryTypeId;
-
-    public String getProductCategoryTypeId()
-    {
-        return this.productCategoryTypeId;
-    }
-
-    public void setProductCategoryTypeId(String productCategoryTypeId)
-    {
-        this.productCategoryTypeId = productCategoryTypeId;
-    }
-
-    private String primaryParentCategoryId;
-
-    public String getPrimaryParentCategoryId()
-    {
-        return this.primaryParentCategoryId;
-    }
-
-    public void setPrimaryParentCategoryId(String primaryParentCategoryId)
-    {
-        this.primaryParentCategoryId = primaryParentCategoryId;
-    }
-
-    private String categoryName;
-
-    public String getCategoryName()
-    {
-        return this.categoryName;
-    }
-
-    public void setCategoryName(String categoryName)
-    {
-        this.categoryName = categoryName;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String categoryImageUrl;
-
-    public String getCategoryImageUrl()
-    {
-        return this.categoryImageUrl;
-    }
-
-    public void setCategoryImageUrl(String categoryImageUrl)
-    {
-        this.categoryImageUrl = categoryImageUrl;
-    }
-
-    private String detailScreen;
-
-    public String getDetailScreen()
-    {
-        return this.detailScreen;
-    }
-
-    public void setDetailScreen(String detailScreen)
-    {
-        this.detailScreen = detailScreen;
-    }
-
-    private Boolean showInSelect;
-
-    public Boolean getShowInSelect()
-    {
-        return this.showInSelect;
-    }
-
-    public void setShowInSelect(Boolean showInSelect)
-    {
-        this.showInSelect = showInSelect;
-    }
-
-    private String attributeSetId;
-
-    public String getAttributeSetId()
-    {
-        return this.attributeSetId;
-    }
-
-    public void setAttributeSetId(String attributeSetId)
-    {
-        this.attributeSetId = attributeSetId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -152,18 +56,6 @@ public abstract class AbstractProductCategoryEvent extends AbstractEvent impleme
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -186,7 +78,121 @@ public abstract class AbstractProductCategoryEvent extends AbstractEvent impleme
     public abstract String getEventType();
 
 
-    public static abstract class AbstractProductCategoryStateCreated extends AbstractProductCategoryEvent implements ProductCategoryEvent.ProductCategoryStateCreated
+    public static abstract class AbstractProductCategoryStateEvent extends AbstractProductCategoryEvent implements ProductCategoryEvent.ProductCategoryStateEvent {
+        private String productCategoryTypeId;
+
+        public String getProductCategoryTypeId()
+        {
+            return this.productCategoryTypeId;
+        }
+
+        public void setProductCategoryTypeId(String productCategoryTypeId)
+        {
+            this.productCategoryTypeId = productCategoryTypeId;
+        }
+
+        private String primaryParentCategoryId;
+
+        public String getPrimaryParentCategoryId()
+        {
+            return this.primaryParentCategoryId;
+        }
+
+        public void setPrimaryParentCategoryId(String primaryParentCategoryId)
+        {
+            this.primaryParentCategoryId = primaryParentCategoryId;
+        }
+
+        private String categoryName;
+
+        public String getCategoryName()
+        {
+            return this.categoryName;
+        }
+
+        public void setCategoryName(String categoryName)
+        {
+            this.categoryName = categoryName;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String categoryImageUrl;
+
+        public String getCategoryImageUrl()
+        {
+            return this.categoryImageUrl;
+        }
+
+        public void setCategoryImageUrl(String categoryImageUrl)
+        {
+            this.categoryImageUrl = categoryImageUrl;
+        }
+
+        private String detailScreen;
+
+        public String getDetailScreen()
+        {
+            return this.detailScreen;
+        }
+
+        public void setDetailScreen(String detailScreen)
+        {
+            this.detailScreen = detailScreen;
+        }
+
+        private Boolean showInSelect;
+
+        public Boolean getShowInSelect()
+        {
+            return this.showInSelect;
+        }
+
+        public void setShowInSelect(Boolean showInSelect)
+        {
+            this.showInSelect = showInSelect;
+        }
+
+        private String attributeSetId;
+
+        public String getAttributeSetId()
+        {
+            return this.attributeSetId;
+        }
+
+        public void setAttributeSetId(String attributeSetId)
+        {
+            this.attributeSetId = attributeSetId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractProductCategoryStateEvent(ProductCategoryEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractProductCategoryStateCreated extends AbstractProductCategoryStateEvent implements ProductCategoryEvent.ProductCategoryStateCreated
     {
         public AbstractProductCategoryStateCreated() {
             this(new ProductCategoryEventId());
@@ -203,7 +209,7 @@ public abstract class AbstractProductCategoryEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractProductCategoryStateMergePatched extends AbstractProductCategoryEvent implements ProductCategoryEvent.ProductCategoryStateMergePatched
+    public static abstract class AbstractProductCategoryStateMergePatched extends AbstractProductCategoryStateEvent implements ProductCategoryEvent.ProductCategoryStateMergePatched
     {
         public AbstractProductCategoryStateMergePatched() {
             this(new ProductCategoryEventId());
@@ -310,7 +316,7 @@ public abstract class AbstractProductCategoryEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractProductCategoryStateDeleted extends AbstractProductCategoryEvent implements ProductCategoryEvent.ProductCategoryStateDeleted
+    public static abstract class AbstractProductCategoryStateDeleted extends AbstractProductCategoryStateEvent implements ProductCategoryEvent.ProductCategoryStateDeleted
     {
         public AbstractProductCategoryStateDeleted() {
             this(new ProductCategoryEventId());

@@ -33,18 +33,6 @@ public abstract class AbstractOrderRoleEvent extends AbstractEvent implements Or
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -69,18 +57,6 @@ public abstract class AbstractOrderRoleEvent extends AbstractEvent implements Or
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -103,7 +79,37 @@ public abstract class AbstractOrderRoleEvent extends AbstractEvent implements Or
     public abstract String getEventType();
 
 
-    public static abstract class AbstractOrderRoleStateCreated extends AbstractOrderRoleEvent implements OrderRoleEvent.OrderRoleStateCreated
+    public static abstract class AbstractOrderRoleStateEvent extends AbstractOrderRoleEvent implements OrderRoleEvent.OrderRoleStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractOrderRoleStateEvent(OrderRoleEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractOrderRoleStateCreated extends AbstractOrderRoleStateEvent implements OrderRoleEvent.OrderRoleStateCreated
     {
         public AbstractOrderRoleStateCreated() {
             this(new OrderRoleEventId());
@@ -120,7 +126,7 @@ public abstract class AbstractOrderRoleEvent extends AbstractEvent implements Or
     }
 
 
-    public static abstract class AbstractOrderRoleStateMergePatched extends AbstractOrderRoleEvent implements OrderRoleEvent.OrderRoleStateMergePatched
+    public static abstract class AbstractOrderRoleStateMergePatched extends AbstractOrderRoleStateEvent implements OrderRoleEvent.OrderRoleStateMergePatched
     {
         public AbstractOrderRoleStateMergePatched() {
             this(new OrderRoleEventId());
@@ -147,7 +153,7 @@ public abstract class AbstractOrderRoleEvent extends AbstractEvent implements Or
     }
 
 
-    public static abstract class AbstractOrderRoleStateRemoved extends AbstractOrderRoleEvent implements OrderRoleEvent.OrderRoleStateRemoved
+    public static abstract class AbstractOrderRoleStateRemoved extends AbstractOrderRoleStateEvent implements OrderRoleEvent.OrderRoleStateRemoved
     {
         public AbstractOrderRoleStateRemoved() {
             this(new OrderRoleEventId());

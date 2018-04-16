@@ -33,102 +33,6 @@ public abstract class AbstractMovementLineEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private BigDecimal movementQuantity;
-
-    public BigDecimal getMovementQuantity()
-    {
-        return this.movementQuantity;
-    }
-
-    public void setMovementQuantity(BigDecimal movementQuantity)
-    {
-        this.movementQuantity = movementQuantity;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String locatorIdFrom;
-
-    public String getLocatorIdFrom()
-    {
-        return this.locatorIdFrom;
-    }
-
-    public void setLocatorIdFrom(String locatorIdFrom)
-    {
-        this.locatorIdFrom = locatorIdFrom;
-    }
-
-    private String locatorIdTo;
-
-    public String getLocatorIdTo()
-    {
-        return this.locatorIdTo;
-    }
-
-    public void setLocatorIdTo(String locatorIdTo)
-    {
-        this.locatorIdTo = locatorIdTo;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private String reversalLineNumber;
-
-    public String getReversalLineNumber()
-    {
-        return this.reversalLineNumber;
-    }
-
-    public void setReversalLineNumber(String reversalLineNumber)
-    {
-        this.reversalLineNumber = reversalLineNumber;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -153,18 +57,6 @@ public abstract class AbstractMovementLineEvent extends AbstractEvent implements
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -187,7 +79,121 @@ public abstract class AbstractMovementLineEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractMovementLineStateCreated extends AbstractMovementLineEvent implements MovementLineEvent.MovementLineStateCreated
+    public static abstract class AbstractMovementLineStateEvent extends AbstractMovementLineEvent implements MovementLineEvent.MovementLineStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private BigDecimal movementQuantity;
+
+        public BigDecimal getMovementQuantity()
+        {
+            return this.movementQuantity;
+        }
+
+        public void setMovementQuantity(BigDecimal movementQuantity)
+        {
+            this.movementQuantity = movementQuantity;
+        }
+
+        private String productId;
+
+        public String getProductId()
+        {
+            return this.productId;
+        }
+
+        public void setProductId(String productId)
+        {
+            this.productId = productId;
+        }
+
+        private String locatorIdFrom;
+
+        public String getLocatorIdFrom()
+        {
+            return this.locatorIdFrom;
+        }
+
+        public void setLocatorIdFrom(String locatorIdFrom)
+        {
+            this.locatorIdFrom = locatorIdFrom;
+        }
+
+        private String locatorIdTo;
+
+        public String getLocatorIdTo()
+        {
+            return this.locatorIdTo;
+        }
+
+        public void setLocatorIdTo(String locatorIdTo)
+        {
+            this.locatorIdTo = locatorIdTo;
+        }
+
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private String reversalLineNumber;
+
+        public String getReversalLineNumber()
+        {
+            return this.reversalLineNumber;
+        }
+
+        public void setReversalLineNumber(String reversalLineNumber)
+        {
+            this.reversalLineNumber = reversalLineNumber;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractMovementLineStateEvent(MovementLineEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractMovementLineStateCreated extends AbstractMovementLineStateEvent implements MovementLineEvent.MovementLineStateCreated
     {
         public AbstractMovementLineStateCreated() {
             this(new MovementLineEventId());
@@ -204,7 +210,7 @@ public abstract class AbstractMovementLineEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractMovementLineStateMergePatched extends AbstractMovementLineEvent implements MovementLineEvent.MovementLineStateMergePatched
+    public static abstract class AbstractMovementLineStateMergePatched extends AbstractMovementLineStateEvent implements MovementLineEvent.MovementLineStateMergePatched
     {
         public AbstractMovementLineStateMergePatched() {
             this(new MovementLineEventId());
@@ -301,7 +307,7 @@ public abstract class AbstractMovementLineEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractMovementLineStateRemoved extends AbstractMovementLineEvent implements MovementLineEvent.MovementLineStateRemoved
+    public static abstract class AbstractMovementLineStateRemoved extends AbstractMovementLineStateEvent implements MovementLineEvent.MovementLineStateRemoved
     {
         public AbstractMovementLineStateRemoved() {
             this(new MovementLineEventId());

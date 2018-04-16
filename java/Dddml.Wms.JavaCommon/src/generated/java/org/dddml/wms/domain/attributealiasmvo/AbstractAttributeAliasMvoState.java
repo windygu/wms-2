@@ -622,21 +622,21 @@ public abstract class AbstractAttributeAliasMvoState implements AttributeAliasMv
     {
     }
 
-    protected void throwOnWrongEvent(AttributeAliasMvoEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeAliasMvoEvent event)
     {
         AttributeAliasId stateEntityId = this.getAttributeAliasId(); // Aggregate Id
-        AttributeAliasId eventEntityId = stateEvent.getAttributeAliasMvoEventId().getAttributeAliasId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        AttributeAliasId eventEntityId = event.getAttributeAliasMvoEventId().getAttributeAliasId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getAttributeVersion();
-        Long eventVersion = stateEvent.getAttributeAliasMvoEventId().getAttributeVersion();// Aggregate Version
+        Long eventVersion = event.getAttributeAliasMvoEventId().getAttributeVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getAttributeAliasMvoEventId().getAttributeVersion() == null");
+            throw new NullPointerException("event.getAttributeAliasMvoEventId().getAttributeVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(AttributeAliasMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(AttributeAliasMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

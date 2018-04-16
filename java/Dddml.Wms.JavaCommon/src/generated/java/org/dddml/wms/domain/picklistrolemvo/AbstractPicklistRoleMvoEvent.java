@@ -45,18 +45,6 @@ public abstract class AbstractPicklistRoleMvoEvent extends AbstractEvent impleme
         this.createdByUserLogin = createdByUserLogin;
     }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private Date createdAt;
 
     public Date getCreatedAt()
@@ -67,162 +55,6 @@ public abstract class AbstractPicklistRoleMvoEvent extends AbstractEvent impleme
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
-    private String picklistDescription;
-
-    public String getPicklistDescription()
-    {
-        return this.picklistDescription;
-    }
-
-    public void setPicklistDescription(String picklistDescription)
-    {
-        this.picklistDescription = picklistDescription;
-    }
-
-    private String picklistFacilityId;
-
-    public String getPicklistFacilityId()
-    {
-        return this.picklistFacilityId;
-    }
-
-    public void setPicklistFacilityId(String picklistFacilityId)
-    {
-        this.picklistFacilityId = picklistFacilityId;
-    }
-
-    private String picklistShipmentMethodTypeId;
-
-    public String getPicklistShipmentMethodTypeId()
-    {
-        return this.picklistShipmentMethodTypeId;
-    }
-
-    public void setPicklistShipmentMethodTypeId(String picklistShipmentMethodTypeId)
-    {
-        this.picklistShipmentMethodTypeId = picklistShipmentMethodTypeId;
-    }
-
-    private String picklistStatusId;
-
-    public String getPicklistStatusId()
-    {
-        return this.picklistStatusId;
-    }
-
-    public void setPicklistStatusId(String picklistStatusId)
-    {
-        this.picklistStatusId = picklistStatusId;
-    }
-
-    private java.sql.Timestamp picklistPicklistDate;
-
-    public java.sql.Timestamp getPicklistPicklistDate()
-    {
-        return this.picklistPicklistDate;
-    }
-
-    public void setPicklistPicklistDate(java.sql.Timestamp picklistPicklistDate)
-    {
-        this.picklistPicklistDate = picklistPicklistDate;
-    }
-
-    private Long picklistPickwaveId;
-
-    public Long getPicklistPickwaveId()
-    {
-        return this.picklistPickwaveId;
-    }
-
-    public void setPicklistPickwaveId(Long picklistPickwaveId)
-    {
-        this.picklistPickwaveId = picklistPickwaveId;
-    }
-
-    private String picklistCreatedBy;
-
-    public String getPicklistCreatedBy()
-    {
-        return this.picklistCreatedBy;
-    }
-
-    public void setPicklistCreatedBy(String picklistCreatedBy)
-    {
-        this.picklistCreatedBy = picklistCreatedBy;
-    }
-
-    private Date picklistCreatedAt;
-
-    public Date getPicklistCreatedAt()
-    {
-        return this.picklistCreatedAt;
-    }
-
-    public void setPicklistCreatedAt(Date picklistCreatedAt)
-    {
-        this.picklistCreatedAt = picklistCreatedAt;
-    }
-
-    private String picklistUpdatedBy;
-
-    public String getPicklistUpdatedBy()
-    {
-        return this.picklistUpdatedBy;
-    }
-
-    public void setPicklistUpdatedBy(String picklistUpdatedBy)
-    {
-        this.picklistUpdatedBy = picklistUpdatedBy;
-    }
-
-    private Date picklistUpdatedAt;
-
-    public Date getPicklistUpdatedAt()
-    {
-        return this.picklistUpdatedAt;
-    }
-
-    public void setPicklistUpdatedAt(Date picklistUpdatedAt)
-    {
-        this.picklistUpdatedAt = picklistUpdatedAt;
-    }
-
-    private Boolean picklistActive;
-
-    public Boolean getPicklistActive()
-    {
-        return this.picklistActive;
-    }
-
-    public void setPicklistActive(Boolean picklistActive)
-    {
-        this.picklistActive = picklistActive;
-    }
-
-    private Boolean picklistDeleted;
-
-    public Boolean getPicklistDeleted()
-    {
-        return this.picklistDeleted;
-    }
-
-    public void setPicklistDeleted(Boolean picklistDeleted)
-    {
-        this.picklistDeleted = picklistDeleted;
     }
 
 
@@ -247,7 +79,181 @@ public abstract class AbstractPicklistRoleMvoEvent extends AbstractEvent impleme
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPicklistRoleMvoStateCreated extends AbstractPicklistRoleMvoEvent implements PicklistRoleMvoEvent.PicklistRoleMvoStateCreated
+    public static abstract class AbstractPicklistRoleMvoStateEvent extends AbstractPicklistRoleMvoEvent implements PicklistRoleMvoEvent.PicklistRoleMvoStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        private String picklistDescription;
+
+        public String getPicklistDescription()
+        {
+            return this.picklistDescription;
+        }
+
+        public void setPicklistDescription(String picklistDescription)
+        {
+            this.picklistDescription = picklistDescription;
+        }
+
+        private String picklistFacilityId;
+
+        public String getPicklistFacilityId()
+        {
+            return this.picklistFacilityId;
+        }
+
+        public void setPicklistFacilityId(String picklistFacilityId)
+        {
+            this.picklistFacilityId = picklistFacilityId;
+        }
+
+        private String picklistShipmentMethodTypeId;
+
+        public String getPicklistShipmentMethodTypeId()
+        {
+            return this.picklistShipmentMethodTypeId;
+        }
+
+        public void setPicklistShipmentMethodTypeId(String picklistShipmentMethodTypeId)
+        {
+            this.picklistShipmentMethodTypeId = picklistShipmentMethodTypeId;
+        }
+
+        private String picklistStatusId;
+
+        public String getPicklistStatusId()
+        {
+            return this.picklistStatusId;
+        }
+
+        public void setPicklistStatusId(String picklistStatusId)
+        {
+            this.picklistStatusId = picklistStatusId;
+        }
+
+        private java.sql.Timestamp picklistPicklistDate;
+
+        public java.sql.Timestamp getPicklistPicklistDate()
+        {
+            return this.picklistPicklistDate;
+        }
+
+        public void setPicklistPicklistDate(java.sql.Timestamp picklistPicklistDate)
+        {
+            this.picklistPicklistDate = picklistPicklistDate;
+        }
+
+        private Long picklistPickwaveId;
+
+        public Long getPicklistPickwaveId()
+        {
+            return this.picklistPickwaveId;
+        }
+
+        public void setPicklistPickwaveId(Long picklistPickwaveId)
+        {
+            this.picklistPickwaveId = picklistPickwaveId;
+        }
+
+        private String picklistCreatedBy;
+
+        public String getPicklistCreatedBy()
+        {
+            return this.picklistCreatedBy;
+        }
+
+        public void setPicklistCreatedBy(String picklistCreatedBy)
+        {
+            this.picklistCreatedBy = picklistCreatedBy;
+        }
+
+        private Date picklistCreatedAt;
+
+        public Date getPicklistCreatedAt()
+        {
+            return this.picklistCreatedAt;
+        }
+
+        public void setPicklistCreatedAt(Date picklistCreatedAt)
+        {
+            this.picklistCreatedAt = picklistCreatedAt;
+        }
+
+        private String picklistUpdatedBy;
+
+        public String getPicklistUpdatedBy()
+        {
+            return this.picklistUpdatedBy;
+        }
+
+        public void setPicklistUpdatedBy(String picklistUpdatedBy)
+        {
+            this.picklistUpdatedBy = picklistUpdatedBy;
+        }
+
+        private Date picklistUpdatedAt;
+
+        public Date getPicklistUpdatedAt()
+        {
+            return this.picklistUpdatedAt;
+        }
+
+        public void setPicklistUpdatedAt(Date picklistUpdatedAt)
+        {
+            this.picklistUpdatedAt = picklistUpdatedAt;
+        }
+
+        private Boolean picklistActive;
+
+        public Boolean getPicklistActive()
+        {
+            return this.picklistActive;
+        }
+
+        public void setPicklistActive(Boolean picklistActive)
+        {
+            this.picklistActive = picklistActive;
+        }
+
+        private Boolean picklistDeleted;
+
+        public Boolean getPicklistDeleted()
+        {
+            return this.picklistDeleted;
+        }
+
+        public void setPicklistDeleted(Boolean picklistDeleted)
+        {
+            this.picklistDeleted = picklistDeleted;
+        }
+
+        protected AbstractPicklistRoleMvoStateEvent(PicklistRoleMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPicklistRoleMvoStateCreated extends AbstractPicklistRoleMvoStateEvent implements PicklistRoleMvoEvent.PicklistRoleMvoStateCreated
     {
         public AbstractPicklistRoleMvoStateCreated() {
             this(new PicklistRoleMvoEventId());
@@ -264,7 +270,7 @@ public abstract class AbstractPicklistRoleMvoEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractPicklistRoleMvoStateMergePatched extends AbstractPicklistRoleMvoEvent implements PicklistRoleMvoEvent.PicklistRoleMvoStateMergePatched
+    public static abstract class AbstractPicklistRoleMvoStateMergePatched extends AbstractPicklistRoleMvoStateEvent implements PicklistRoleMvoEvent.PicklistRoleMvoStateMergePatched
     {
         public AbstractPicklistRoleMvoStateMergePatched() {
             this(new PicklistRoleMvoEventId());
@@ -421,7 +427,7 @@ public abstract class AbstractPicklistRoleMvoEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractPicklistRoleMvoStateDeleted extends AbstractPicklistRoleMvoEvent implements PicklistRoleMvoEvent.PicklistRoleMvoStateDeleted
+    public static abstract class AbstractPicklistRoleMvoStateDeleted extends AbstractPicklistRoleMvoStateEvent implements PicklistRoleMvoEvent.PicklistRoleMvoStateDeleted
     {
         public AbstractPicklistRoleMvoStateDeleted() {
             this(new PicklistRoleMvoEventId());

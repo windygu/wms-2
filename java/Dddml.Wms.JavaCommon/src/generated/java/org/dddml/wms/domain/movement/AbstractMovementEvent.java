@@ -33,246 +33,6 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String documentStatusId;
-
-    public String getDocumentStatusId()
-    {
-        return this.documentStatusId;
-    }
-
-    public void setDocumentStatusId(String documentStatusId)
-    {
-        this.documentStatusId = documentStatusId;
-    }
-
-    private Date movementDate;
-
-    public Date getMovementDate()
-    {
-        return this.movementDate;
-    }
-
-    public void setMovementDate(Date movementDate)
-    {
-        this.movementDate = movementDate;
-    }
-
-    private Boolean posted;
-
-    public Boolean getPosted()
-    {
-        return this.posted;
-    }
-
-    public void setPosted(Boolean posted)
-    {
-        this.posted = posted;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private String processing;
-
-    public String getProcessing()
-    {
-        return this.processing;
-    }
-
-    public void setProcessing(String processing)
-    {
-        this.processing = processing;
-    }
-
-    private Date dateReceived;
-
-    public Date getDateReceived()
-    {
-        return this.dateReceived;
-    }
-
-    public void setDateReceived(Date dateReceived)
-    {
-        this.dateReceived = dateReceived;
-    }
-
-    private String documentTypeId;
-
-    public String getDocumentTypeId()
-    {
-        return this.documentTypeId;
-    }
-
-    public void setDocumentTypeId(String documentTypeId)
-    {
-        this.documentTypeId = documentTypeId;
-    }
-
-    private Boolean isInTransit;
-
-    public Boolean getIsInTransit()
-    {
-        return this.isInTransit;
-    }
-
-    public void setIsInTransit(Boolean isInTransit)
-    {
-        this.isInTransit = isInTransit;
-    }
-
-    private Boolean isApproved;
-
-    public Boolean getIsApproved()
-    {
-        return this.isApproved;
-    }
-
-    public void setIsApproved(Boolean isApproved)
-    {
-        this.isApproved = isApproved;
-    }
-
-    private BigDecimal approvalAmount;
-
-    public BigDecimal getApprovalAmount()
-    {
-        return this.approvalAmount;
-    }
-
-    public void setApprovalAmount(BigDecimal approvalAmount)
-    {
-        this.approvalAmount = approvalAmount;
-    }
-
-    private String shipperId;
-
-    public String getShipperId()
-    {
-        return this.shipperId;
-    }
-
-    public void setShipperId(String shipperId)
-    {
-        this.shipperId = shipperId;
-    }
-
-    private String salesRepresentativeId;
-
-    public String getSalesRepresentativeId()
-    {
-        return this.salesRepresentativeId;
-    }
-
-    public void setSalesRepresentativeId(String salesRepresentativeId)
-    {
-        this.salesRepresentativeId = salesRepresentativeId;
-    }
-
-    private String businessPartnerId;
-
-    public String getBusinessPartnerId()
-    {
-        return this.businessPartnerId;
-    }
-
-    public void setBusinessPartnerId(String businessPartnerId)
-    {
-        this.businessPartnerId = businessPartnerId;
-    }
-
-    private BigDecimal chargeAmount;
-
-    public BigDecimal getChargeAmount()
-    {
-        return this.chargeAmount;
-    }
-
-    public void setChargeAmount(BigDecimal chargeAmount)
-    {
-        this.chargeAmount = chargeAmount;
-    }
-
-    private String createFrom;
-
-    public String getCreateFrom()
-    {
-        return this.createFrom;
-    }
-
-    public void setCreateFrom(String createFrom)
-    {
-        this.createFrom = createFrom;
-    }
-
-    private BigDecimal freightAmount;
-
-    public BigDecimal getFreightAmount()
-    {
-        return this.freightAmount;
-    }
-
-    public void setFreightAmount(BigDecimal freightAmount)
-    {
-        this.freightAmount = freightAmount;
-    }
-
-    private String reversalDocumentNumber;
-
-    public String getReversalDocumentNumber()
-    {
-        return this.reversalDocumentNumber;
-    }
-
-    public void setReversalDocumentNumber(String reversalDocumentNumber)
-    {
-        this.reversalDocumentNumber = reversalDocumentNumber;
-    }
-
-    private String warehouseIdFrom;
-
-    public String getWarehouseIdFrom()
-    {
-        return this.warehouseIdFrom;
-    }
-
-    public void setWarehouseIdFrom(String warehouseIdFrom)
-    {
-        this.warehouseIdFrom = warehouseIdFrom;
-    }
-
-    private String warehouseIdTo;
-
-    public String getWarehouseIdTo()
-    {
-        return this.warehouseIdTo;
-    }
-
-    public void setWarehouseIdTo(String warehouseIdTo)
-    {
-        this.warehouseIdTo = warehouseIdTo;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -295,18 +55,6 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -369,7 +117,265 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
     public abstract String getEventType();
 
 
-    public static abstract class AbstractMovementStateCreated extends AbstractMovementEvent implements MovementEvent.MovementStateCreated, Saveable
+    public static abstract class AbstractMovementStateEvent extends AbstractMovementEvent implements MovementEvent.MovementStateEvent {
+        private String documentStatusId;
+
+        public String getDocumentStatusId()
+        {
+            return this.documentStatusId;
+        }
+
+        public void setDocumentStatusId(String documentStatusId)
+        {
+            this.documentStatusId = documentStatusId;
+        }
+
+        private Date movementDate;
+
+        public Date getMovementDate()
+        {
+            return this.movementDate;
+        }
+
+        public void setMovementDate(Date movementDate)
+        {
+            this.movementDate = movementDate;
+        }
+
+        private Boolean posted;
+
+        public Boolean getPosted()
+        {
+            return this.posted;
+        }
+
+        public void setPosted(Boolean posted)
+        {
+            this.posted = posted;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private String processing;
+
+        public String getProcessing()
+        {
+            return this.processing;
+        }
+
+        public void setProcessing(String processing)
+        {
+            this.processing = processing;
+        }
+
+        private Date dateReceived;
+
+        public Date getDateReceived()
+        {
+            return this.dateReceived;
+        }
+
+        public void setDateReceived(Date dateReceived)
+        {
+            this.dateReceived = dateReceived;
+        }
+
+        private String documentTypeId;
+
+        public String getDocumentTypeId()
+        {
+            return this.documentTypeId;
+        }
+
+        public void setDocumentTypeId(String documentTypeId)
+        {
+            this.documentTypeId = documentTypeId;
+        }
+
+        private Boolean isInTransit;
+
+        public Boolean getIsInTransit()
+        {
+            return this.isInTransit;
+        }
+
+        public void setIsInTransit(Boolean isInTransit)
+        {
+            this.isInTransit = isInTransit;
+        }
+
+        private Boolean isApproved;
+
+        public Boolean getIsApproved()
+        {
+            return this.isApproved;
+        }
+
+        public void setIsApproved(Boolean isApproved)
+        {
+            this.isApproved = isApproved;
+        }
+
+        private BigDecimal approvalAmount;
+
+        public BigDecimal getApprovalAmount()
+        {
+            return this.approvalAmount;
+        }
+
+        public void setApprovalAmount(BigDecimal approvalAmount)
+        {
+            this.approvalAmount = approvalAmount;
+        }
+
+        private String shipperId;
+
+        public String getShipperId()
+        {
+            return this.shipperId;
+        }
+
+        public void setShipperId(String shipperId)
+        {
+            this.shipperId = shipperId;
+        }
+
+        private String salesRepresentativeId;
+
+        public String getSalesRepresentativeId()
+        {
+            return this.salesRepresentativeId;
+        }
+
+        public void setSalesRepresentativeId(String salesRepresentativeId)
+        {
+            this.salesRepresentativeId = salesRepresentativeId;
+        }
+
+        private String businessPartnerId;
+
+        public String getBusinessPartnerId()
+        {
+            return this.businessPartnerId;
+        }
+
+        public void setBusinessPartnerId(String businessPartnerId)
+        {
+            this.businessPartnerId = businessPartnerId;
+        }
+
+        private BigDecimal chargeAmount;
+
+        public BigDecimal getChargeAmount()
+        {
+            return this.chargeAmount;
+        }
+
+        public void setChargeAmount(BigDecimal chargeAmount)
+        {
+            this.chargeAmount = chargeAmount;
+        }
+
+        private String createFrom;
+
+        public String getCreateFrom()
+        {
+            return this.createFrom;
+        }
+
+        public void setCreateFrom(String createFrom)
+        {
+            this.createFrom = createFrom;
+        }
+
+        private BigDecimal freightAmount;
+
+        public BigDecimal getFreightAmount()
+        {
+            return this.freightAmount;
+        }
+
+        public void setFreightAmount(BigDecimal freightAmount)
+        {
+            this.freightAmount = freightAmount;
+        }
+
+        private String reversalDocumentNumber;
+
+        public String getReversalDocumentNumber()
+        {
+            return this.reversalDocumentNumber;
+        }
+
+        public void setReversalDocumentNumber(String reversalDocumentNumber)
+        {
+            this.reversalDocumentNumber = reversalDocumentNumber;
+        }
+
+        private String warehouseIdFrom;
+
+        public String getWarehouseIdFrom()
+        {
+            return this.warehouseIdFrom;
+        }
+
+        public void setWarehouseIdFrom(String warehouseIdFrom)
+        {
+            this.warehouseIdFrom = warehouseIdFrom;
+        }
+
+        private String warehouseIdTo;
+
+        public String getWarehouseIdTo()
+        {
+            return this.warehouseIdTo;
+        }
+
+        public void setWarehouseIdTo(String warehouseIdTo)
+        {
+            this.warehouseIdTo = warehouseIdTo;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractMovementStateEvent(MovementEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractMovementStateCreated extends AbstractMovementStateEvent implements MovementEvent.MovementStateCreated, Saveable
     {
         public AbstractMovementStateCreated() {
             this(new MovementEventId());
@@ -434,7 +440,7 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
     }
 
 
-    public static abstract class AbstractMovementStateMergePatched extends AbstractMovementEvent implements MovementEvent.MovementStateMergePatched, Saveable
+    public static abstract class AbstractMovementStateMergePatched extends AbstractMovementStateEvent implements MovementEvent.MovementStateMergePatched, Saveable
     {
         public AbstractMovementStateMergePatched() {
             this(new MovementEventId());
@@ -709,7 +715,7 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
     }
 
 
-    public static abstract class AbstractMovementStateDeleted extends AbstractMovementEvent implements MovementEvent.MovementStateDeleted, Saveable
+    public static abstract class AbstractMovementStateDeleted extends AbstractMovementStateEvent implements MovementEvent.MovementStateDeleted, Saveable
     {
         public AbstractMovementStateDeleted() {
             this(new MovementEventId());

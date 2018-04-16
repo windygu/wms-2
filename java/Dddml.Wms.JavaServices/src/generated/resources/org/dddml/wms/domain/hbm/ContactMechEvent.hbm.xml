@@ -15,6 +15,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractContactMechEvent$AbstractContactMechStateEvent" abstract="true">
+
 	<property name="contactMechTypeId" ><column name="ContactMechTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="infoString" ><column name="InfoString" sql-type="VARCHAR(255)" /></property>
 	<property name="toName" ><column name="ToName" sql-type="VARCHAR(100)" /></property>
@@ -35,12 +44,6 @@
 	<property name="contactNumber" ><column name="ContactNumber" sql-type="VARCHAR(60)" /></property>
 	<property name="askForName" ><column name="AskForName" sql-type="VARCHAR(100)" /></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractContactMechEvent$SimpleContactMechStateCreated" discriminator-value="Created">
     	
@@ -96,6 +99,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

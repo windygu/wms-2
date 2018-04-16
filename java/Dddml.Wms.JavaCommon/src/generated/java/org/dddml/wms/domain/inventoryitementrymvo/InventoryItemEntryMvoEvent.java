@@ -15,34 +15,6 @@ public interface InventoryItemEntryMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    BigDecimal getOnHandQuantity();
-
-    void setOnHandQuantity(BigDecimal onHandQuantity);
-
-    BigDecimal getInTransitQuantity();
-
-    void setInTransitQuantity(BigDecimal inTransitQuantity);
-
-    BigDecimal getReservedQuantity();
-
-    void setReservedQuantity(BigDecimal reservedQuantity);
-
-    BigDecimal getOccupiedQuantity();
-
-    void setOccupiedQuantity(BigDecimal occupiedQuantity);
-
-    BigDecimal getVirtualQuantity();
-
-    void setVirtualQuantity(BigDecimal virtualQuantity);
-
-    InventoryItemSourceInfo getSource();
-
-    void setSource(InventoryItemSourceInfo source);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -51,53 +23,84 @@ public interface InventoryItemEntryMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    BigDecimal getInventoryItemOnHandQuantity();
-
-    void setInventoryItemOnHandQuantity(BigDecimal inventoryItemOnHandQuantity);
-
-    BigDecimal getInventoryItemInTransitQuantity();
-
-    void setInventoryItemInTransitQuantity(BigDecimal inventoryItemInTransitQuantity);
-
-    BigDecimal getInventoryItemReservedQuantity();
-
-    void setInventoryItemReservedQuantity(BigDecimal inventoryItemReservedQuantity);
-
-    BigDecimal getInventoryItemOccupiedQuantity();
-
-    void setInventoryItemOccupiedQuantity(BigDecimal inventoryItemOccupiedQuantity);
-
-    BigDecimal getInventoryItemVirtualQuantity();
-
-    void setInventoryItemVirtualQuantity(BigDecimal inventoryItemVirtualQuantity);
-
-    String getInventoryItemCreatedBy();
-
-    void setInventoryItemCreatedBy(String inventoryItemCreatedBy);
-
-    Date getInventoryItemCreatedAt();
-
-    void setInventoryItemCreatedAt(Date inventoryItemCreatedAt);
-
-    String getInventoryItemUpdatedBy();
-
-    void setInventoryItemUpdatedBy(String inventoryItemUpdatedBy);
-
-    Date getInventoryItemUpdatedAt();
-
-    void setInventoryItemUpdatedAt(Date inventoryItemUpdatedAt);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface InventoryItemEntryMvoStateCreated extends InventoryItemEntryMvoEvent
+    interface InventoryItemEntryMvoStateEvent extends InventoryItemEntryMvoEvent {
+        BigDecimal getOnHandQuantity();
+
+        void setOnHandQuantity(BigDecimal onHandQuantity);
+
+        BigDecimal getInTransitQuantity();
+
+        void setInTransitQuantity(BigDecimal inTransitQuantity);
+
+        BigDecimal getReservedQuantity();
+
+        void setReservedQuantity(BigDecimal reservedQuantity);
+
+        BigDecimal getOccupiedQuantity();
+
+        void setOccupiedQuantity(BigDecimal occupiedQuantity);
+
+        BigDecimal getVirtualQuantity();
+
+        void setVirtualQuantity(BigDecimal virtualQuantity);
+
+        InventoryItemSourceInfo getSource();
+
+        void setSource(InventoryItemSourceInfo source);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getInventoryItemOnHandQuantity();
+
+        void setInventoryItemOnHandQuantity(BigDecimal inventoryItemOnHandQuantity);
+
+        BigDecimal getInventoryItemInTransitQuantity();
+
+        void setInventoryItemInTransitQuantity(BigDecimal inventoryItemInTransitQuantity);
+
+        BigDecimal getInventoryItemReservedQuantity();
+
+        void setInventoryItemReservedQuantity(BigDecimal inventoryItemReservedQuantity);
+
+        BigDecimal getInventoryItemOccupiedQuantity();
+
+        void setInventoryItemOccupiedQuantity(BigDecimal inventoryItemOccupiedQuantity);
+
+        BigDecimal getInventoryItemVirtualQuantity();
+
+        void setInventoryItemVirtualQuantity(BigDecimal inventoryItemVirtualQuantity);
+
+        String getInventoryItemCreatedBy();
+
+        void setInventoryItemCreatedBy(String inventoryItemCreatedBy);
+
+        Date getInventoryItemCreatedAt();
+
+        void setInventoryItemCreatedAt(Date inventoryItemCreatedAt);
+
+        String getInventoryItemUpdatedBy();
+
+        void setInventoryItemUpdatedBy(String inventoryItemUpdatedBy);
+
+        Date getInventoryItemUpdatedAt();
+
+        void setInventoryItemUpdatedAt(Date inventoryItemUpdatedAt);
+
+    }
+
+    interface InventoryItemEntryMvoStateCreated extends InventoryItemEntryMvoStateEvent
     {
     
     }
 
 
-    interface InventoryItemEntryMvoStateMergePatched extends InventoryItemEntryMvoEvent
+    interface InventoryItemEntryMvoStateMergePatched extends InventoryItemEntryMvoStateEvent
     {
         Boolean getIsPropertyOnHandQuantityRemoved();
 

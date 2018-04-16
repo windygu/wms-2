@@ -13,22 +13,6 @@ public interface UomConversionEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Double getConversionFactor();
-
-    void setConversionFactor(Double conversionFactor);
-
-    String getCustomMethodId();
-
-    void setCustomMethodId(String customMethodId);
-
-    Long getDecimalScale();
-
-    void setDecimalScale(Long decimalScale);
-
-    String getRoundingMode();
-
-    void setRoundingMode(String roundingMode);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -37,21 +21,40 @@ public interface UomConversionEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface UomConversionStateCreated extends UomConversionEvent
+    interface UomConversionStateEvent extends UomConversionEvent {
+        Double getConversionFactor();
+
+        void setConversionFactor(Double conversionFactor);
+
+        String getCustomMethodId();
+
+        void setCustomMethodId(String customMethodId);
+
+        Long getDecimalScale();
+
+        void setDecimalScale(Long decimalScale);
+
+        String getRoundingMode();
+
+        void setRoundingMode(String roundingMode);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface UomConversionStateCreated extends UomConversionStateEvent
     {
     
     }
 
 
-    interface UomConversionStateMergePatched extends UomConversionEvent
+    interface UomConversionStateMergePatched extends UomConversionStateEvent
     {
         Boolean getIsPropertyConversionFactorRemoved();
 
@@ -76,7 +79,7 @@ public interface UomConversionEvent extends Event
 
     }
 
-    interface UomConversionStateDeleted extends UomConversionEvent
+    interface UomConversionStateDeleted extends UomConversionStateEvent
     {
     }
 

@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractItemIssuanceMvoEvent$AbstractItemIssuanceMvoStateEvent" abstract="true">
+
 	<property name="orderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
 	<property name="orderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
@@ -61,12 +70,6 @@
 	<property name="shipmentUpdatedBy" ></property>
 	<property name="shipmentUpdatedAt" type="timestamp"><column name="ShipmentUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="shipmentActive" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractItemIssuanceMvoEvent$SimpleItemIssuanceMvoStateCreated" discriminator-value="Created">
     	
@@ -172,6 +175,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

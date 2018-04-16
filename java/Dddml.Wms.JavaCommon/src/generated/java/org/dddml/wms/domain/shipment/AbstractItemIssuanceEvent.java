@@ -32,174 +32,6 @@ public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String orderId;
-
-    public String getOrderId()
-    {
-        return this.orderId;
-    }
-
-    public void setOrderId(String orderId)
-    {
-        this.orderId = orderId;
-    }
-
-    private String orderItemSeqId;
-
-    public String getOrderItemSeqId()
-    {
-        return this.orderItemSeqId;
-    }
-
-    public void setOrderItemSeqId(String orderItemSeqId)
-    {
-        this.orderItemSeqId = orderItemSeqId;
-    }
-
-    private Long shipGroupSeqId;
-
-    public Long getShipGroupSeqId()
-    {
-        return this.shipGroupSeqId;
-    }
-
-    public void setShipGroupSeqId(Long shipGroupSeqId)
-    {
-        this.shipGroupSeqId = shipGroupSeqId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private String shipmentItemSeqId;
-
-    public String getShipmentItemSeqId()
-    {
-        return this.shipmentItemSeqId;
-    }
-
-    public void setShipmentItemSeqId(String shipmentItemSeqId)
-    {
-        this.shipmentItemSeqId = shipmentItemSeqId;
-    }
-
-    private String fixedAssetId;
-
-    public String getFixedAssetId()
-    {
-        return this.fixedAssetId;
-    }
-
-    public void setFixedAssetId(String fixedAssetId)
-    {
-        this.fixedAssetId = fixedAssetId;
-    }
-
-    private String maintHistSeqId;
-
-    public String getMaintHistSeqId()
-    {
-        return this.maintHistSeqId;
-    }
-
-    public void setMaintHistSeqId(String maintHistSeqId)
-    {
-        this.maintHistSeqId = maintHistSeqId;
-    }
-
-    private java.sql.Timestamp issuedDateTime;
-
-    public java.sql.Timestamp getIssuedDateTime()
-    {
-        return this.issuedDateTime;
-    }
-
-    public void setIssuedDateTime(java.sql.Timestamp issuedDateTime)
-    {
-        this.issuedDateTime = issuedDateTime;
-    }
-
-    private String issuedByUserLoginId;
-
-    public String getIssuedByUserLoginId()
-    {
-        return this.issuedByUserLoginId;
-    }
-
-    public void setIssuedByUserLoginId(String issuedByUserLoginId)
-    {
-        this.issuedByUserLoginId = issuedByUserLoginId;
-    }
-
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    private java.math.BigDecimal cancelQuantity;
-
-    public java.math.BigDecimal getCancelQuantity()
-    {
-        return this.cancelQuantity;
-    }
-
-    public void setCancelQuantity(java.math.BigDecimal cancelQuantity)
-    {
-        this.cancelQuantity = cancelQuantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -224,18 +56,6 @@ public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -258,7 +78,193 @@ public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractItemIssuanceStateCreated extends AbstractItemIssuanceEvent implements ItemIssuanceEvent.ItemIssuanceStateCreated
+    public static abstract class AbstractItemIssuanceStateEvent extends AbstractItemIssuanceEvent implements ItemIssuanceEvent.ItemIssuanceStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String orderId;
+
+        public String getOrderId()
+        {
+            return this.orderId;
+        }
+
+        public void setOrderId(String orderId)
+        {
+            this.orderId = orderId;
+        }
+
+        private String orderItemSeqId;
+
+        public String getOrderItemSeqId()
+        {
+            return this.orderItemSeqId;
+        }
+
+        public void setOrderItemSeqId(String orderItemSeqId)
+        {
+            this.orderItemSeqId = orderItemSeqId;
+        }
+
+        private Long shipGroupSeqId;
+
+        public Long getShipGroupSeqId()
+        {
+            return this.shipGroupSeqId;
+        }
+
+        public void setShipGroupSeqId(Long shipGroupSeqId)
+        {
+            this.shipGroupSeqId = shipGroupSeqId;
+        }
+
+        private String productId;
+
+        public String getProductId()
+        {
+            return this.productId;
+        }
+
+        public void setProductId(String productId)
+        {
+            this.productId = productId;
+        }
+
+        private String locatorId;
+
+        public String getLocatorId()
+        {
+            return this.locatorId;
+        }
+
+        public void setLocatorId(String locatorId)
+        {
+            this.locatorId = locatorId;
+        }
+
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
+        private String shipmentItemSeqId;
+
+        public String getShipmentItemSeqId()
+        {
+            return this.shipmentItemSeqId;
+        }
+
+        public void setShipmentItemSeqId(String shipmentItemSeqId)
+        {
+            this.shipmentItemSeqId = shipmentItemSeqId;
+        }
+
+        private String fixedAssetId;
+
+        public String getFixedAssetId()
+        {
+            return this.fixedAssetId;
+        }
+
+        public void setFixedAssetId(String fixedAssetId)
+        {
+            this.fixedAssetId = fixedAssetId;
+        }
+
+        private String maintHistSeqId;
+
+        public String getMaintHistSeqId()
+        {
+            return this.maintHistSeqId;
+        }
+
+        public void setMaintHistSeqId(String maintHistSeqId)
+        {
+            this.maintHistSeqId = maintHistSeqId;
+        }
+
+        private java.sql.Timestamp issuedDateTime;
+
+        public java.sql.Timestamp getIssuedDateTime()
+        {
+            return this.issuedDateTime;
+        }
+
+        public void setIssuedDateTime(java.sql.Timestamp issuedDateTime)
+        {
+            this.issuedDateTime = issuedDateTime;
+        }
+
+        private String issuedByUserLoginId;
+
+        public String getIssuedByUserLoginId()
+        {
+            return this.issuedByUserLoginId;
+        }
+
+        public void setIssuedByUserLoginId(String issuedByUserLoginId)
+        {
+            this.issuedByUserLoginId = issuedByUserLoginId;
+        }
+
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private java.math.BigDecimal cancelQuantity;
+
+        public java.math.BigDecimal getCancelQuantity()
+        {
+            return this.cancelQuantity;
+        }
+
+        public void setCancelQuantity(java.math.BigDecimal cancelQuantity)
+        {
+            this.cancelQuantity = cancelQuantity;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractItemIssuanceStateEvent(ItemIssuanceEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractItemIssuanceStateCreated extends AbstractItemIssuanceStateEvent implements ItemIssuanceEvent.ItemIssuanceStateCreated
     {
         public AbstractItemIssuanceStateCreated() {
             this(new ItemIssuanceEventId());
@@ -275,7 +281,7 @@ public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractItemIssuanceStateMergePatched extends AbstractItemIssuanceEvent implements ItemIssuanceEvent.ItemIssuanceStateMergePatched
+    public static abstract class AbstractItemIssuanceStateMergePatched extends AbstractItemIssuanceStateEvent implements ItemIssuanceEvent.ItemIssuanceStateMergePatched
     {
         public AbstractItemIssuanceStateMergePatched() {
             this(new ItemIssuanceEventId());
@@ -432,7 +438,7 @@ public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractItemIssuanceStateRemoved extends AbstractItemIssuanceEvent implements ItemIssuanceEvent.ItemIssuanceStateRemoved
+    public static abstract class AbstractItemIssuanceStateRemoved extends AbstractItemIssuanceStateEvent implements ItemIssuanceEvent.ItemIssuanceStateRemoved
     {
         public AbstractItemIssuanceStateRemoved() {
             this(new ItemIssuanceEventId());

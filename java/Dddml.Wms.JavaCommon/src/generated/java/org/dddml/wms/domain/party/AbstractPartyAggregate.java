@@ -86,7 +86,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         e.setDescription(c.getDescription());
         e.setType(c.getType());
         e.setIsSummary(c.getIsSummary());
-        ((AbstractOrganizationEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -134,7 +134,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         e.setIsPropertyPartyTypeIdRemoved(c.getIsPropertyPartyTypeIdRemoved());
         e.setIsPropertyPrimaryRoleTypeIdRemoved(c.getIsPropertyPrimaryRoleTypeIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractOrganizationEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -162,7 +162,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     protected OrganizationEvent mapToOrganizationEvent(PartyCommand.DeleteParty c) {
         PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         OrganizationEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
-        ((AbstractOrganizationEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;

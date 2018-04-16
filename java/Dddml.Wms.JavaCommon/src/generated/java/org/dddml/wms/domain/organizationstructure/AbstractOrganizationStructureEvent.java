@@ -56,18 +56,6 @@ public abstract class AbstractOrganizationStructureEvent extends AbstractEvent i
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -90,7 +78,25 @@ public abstract class AbstractOrganizationStructureEvent extends AbstractEvent i
     public abstract String getEventType();
 
 
-    public static abstract class AbstractOrganizationStructureStateCreated extends AbstractOrganizationStructureEvent implements OrganizationStructureEvent.OrganizationStructureStateCreated
+    public static abstract class AbstractOrganizationStructureStateEvent extends AbstractOrganizationStructureEvent implements OrganizationStructureEvent.OrganizationStructureStateEvent {
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractOrganizationStructureStateEvent(OrganizationStructureEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractOrganizationStructureStateCreated extends AbstractOrganizationStructureStateEvent implements OrganizationStructureEvent.OrganizationStructureStateCreated
     {
         public AbstractOrganizationStructureStateCreated() {
             this(new OrganizationStructureEventId());
@@ -107,7 +113,7 @@ public abstract class AbstractOrganizationStructureEvent extends AbstractEvent i
     }
 
 
-    public static abstract class AbstractOrganizationStructureStateMergePatched extends AbstractOrganizationStructureEvent implements OrganizationStructureEvent.OrganizationStructureStateMergePatched
+    public static abstract class AbstractOrganizationStructureStateMergePatched extends AbstractOrganizationStructureStateEvent implements OrganizationStructureEvent.OrganizationStructureStateMergePatched
     {
         public AbstractOrganizationStructureStateMergePatched() {
             this(new OrganizationStructureEventId());
@@ -134,7 +140,7 @@ public abstract class AbstractOrganizationStructureEvent extends AbstractEvent i
     }
 
 
-    public static abstract class AbstractOrganizationStructureStateDeleted extends AbstractOrganizationStructureEvent implements OrganizationStructureEvent.OrganizationStructureStateDeleted
+    public static abstract class AbstractOrganizationStructureStateDeleted extends AbstractOrganizationStructureStateEvent implements OrganizationStructureEvent.OrganizationStructureStateDeleted
     {
         public AbstractOrganizationStructureStateDeleted() {
             this(new OrganizationStructureEventId());

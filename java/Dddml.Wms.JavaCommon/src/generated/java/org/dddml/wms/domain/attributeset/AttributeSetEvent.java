@@ -13,30 +13,6 @@ public interface AttributeSetEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getAttributeSetName();
-
-    void setAttributeSetName(String attributeSetName);
-
-    String getOrganizationId();
-
-    void setOrganizationId(String organizationId);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getReferenceId();
-
-    void setReferenceId(String referenceId);
-
-    Boolean getIsInstanceAttributeSet();
-
-    void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet);
-
-    Boolean getIsMandatory();
-
-    void setIsMandatory(Boolean isMandatory);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -45,15 +21,42 @@ public interface AttributeSetEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeSetStateCreated extends AttributeSetEvent
+    interface AttributeSetStateEvent extends AttributeSetEvent {
+        String getAttributeSetName();
+
+        void setAttributeSetName(String attributeSetName);
+
+        String getOrganizationId();
+
+        void setOrganizationId(String organizationId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getReferenceId();
+
+        void setReferenceId(String referenceId);
+
+        Boolean getIsInstanceAttributeSet();
+
+        void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet);
+
+        Boolean getIsMandatory();
+
+        void setIsMandatory(Boolean isMandatory);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface AttributeSetStateCreated extends AttributeSetStateEvent
     {
         Iterable<AttributeUseEvent.AttributeUseStateCreated> getAttributeUseEvents();
         
@@ -65,7 +68,7 @@ public interface AttributeSetEvent extends Event
     }
 
 
-    interface AttributeSetStateMergePatched extends AttributeSetEvent
+    interface AttributeSetStateMergePatched extends AttributeSetStateEvent
     {
         Boolean getIsPropertyAttributeSetNameRemoved();
 
@@ -108,7 +111,7 @@ public interface AttributeSetEvent extends Event
 
     }
 
-    interface AttributeSetStateDeleted extends AttributeSetEvent
+    interface AttributeSetStateDeleted extends AttributeSetStateEvent
     {
         Iterable<AttributeUseEvent.AttributeUseStateRemoved> getAttributeUseEvents();
         

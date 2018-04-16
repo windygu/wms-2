@@ -34,90 +34,6 @@ public abstract class AbstractInventoryItemEntryMvoEvent extends AbstractEvent i
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal onHandQuantity;
-
-    public BigDecimal getOnHandQuantity()
-    {
-        return this.onHandQuantity;
-    }
-
-    public void setOnHandQuantity(BigDecimal onHandQuantity)
-    {
-        this.onHandQuantity = onHandQuantity;
-    }
-
-    private BigDecimal inTransitQuantity;
-
-    public BigDecimal getInTransitQuantity()
-    {
-        return this.inTransitQuantity;
-    }
-
-    public void setInTransitQuantity(BigDecimal inTransitQuantity)
-    {
-        this.inTransitQuantity = inTransitQuantity;
-    }
-
-    private BigDecimal reservedQuantity;
-
-    public BigDecimal getReservedQuantity()
-    {
-        return this.reservedQuantity;
-    }
-
-    public void setReservedQuantity(BigDecimal reservedQuantity)
-    {
-        this.reservedQuantity = reservedQuantity;
-    }
-
-    private BigDecimal occupiedQuantity;
-
-    public BigDecimal getOccupiedQuantity()
-    {
-        return this.occupiedQuantity;
-    }
-
-    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
-    {
-        this.occupiedQuantity = occupiedQuantity;
-    }
-
-    private BigDecimal virtualQuantity;
-
-    public BigDecimal getVirtualQuantity()
-    {
-        return this.virtualQuantity;
-    }
-
-    public void setVirtualQuantity(BigDecimal virtualQuantity)
-    {
-        this.virtualQuantity = virtualQuantity;
-    }
-
-    private InventoryItemSourceInfo source;
-
-    public InventoryItemSourceInfo getSource()
-    {
-        return this.source;
-    }
-
-    public void setSource(InventoryItemSourceInfo source)
-    {
-        this.source = source;
-    }
-
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -142,114 +58,6 @@ public abstract class AbstractInventoryItemEntryMvoEvent extends AbstractEvent i
         this.createdAt = createdAt;
     }
 
-    private BigDecimal inventoryItemOnHandQuantity;
-
-    public BigDecimal getInventoryItemOnHandQuantity()
-    {
-        return this.inventoryItemOnHandQuantity;
-    }
-
-    public void setInventoryItemOnHandQuantity(BigDecimal inventoryItemOnHandQuantity)
-    {
-        this.inventoryItemOnHandQuantity = inventoryItemOnHandQuantity;
-    }
-
-    private BigDecimal inventoryItemInTransitQuantity;
-
-    public BigDecimal getInventoryItemInTransitQuantity()
-    {
-        return this.inventoryItemInTransitQuantity;
-    }
-
-    public void setInventoryItemInTransitQuantity(BigDecimal inventoryItemInTransitQuantity)
-    {
-        this.inventoryItemInTransitQuantity = inventoryItemInTransitQuantity;
-    }
-
-    private BigDecimal inventoryItemReservedQuantity;
-
-    public BigDecimal getInventoryItemReservedQuantity()
-    {
-        return this.inventoryItemReservedQuantity;
-    }
-
-    public void setInventoryItemReservedQuantity(BigDecimal inventoryItemReservedQuantity)
-    {
-        this.inventoryItemReservedQuantity = inventoryItemReservedQuantity;
-    }
-
-    private BigDecimal inventoryItemOccupiedQuantity;
-
-    public BigDecimal getInventoryItemOccupiedQuantity()
-    {
-        return this.inventoryItemOccupiedQuantity;
-    }
-
-    public void setInventoryItemOccupiedQuantity(BigDecimal inventoryItemOccupiedQuantity)
-    {
-        this.inventoryItemOccupiedQuantity = inventoryItemOccupiedQuantity;
-    }
-
-    private BigDecimal inventoryItemVirtualQuantity;
-
-    public BigDecimal getInventoryItemVirtualQuantity()
-    {
-        return this.inventoryItemVirtualQuantity;
-    }
-
-    public void setInventoryItemVirtualQuantity(BigDecimal inventoryItemVirtualQuantity)
-    {
-        this.inventoryItemVirtualQuantity = inventoryItemVirtualQuantity;
-    }
-
-    private String inventoryItemCreatedBy;
-
-    public String getInventoryItemCreatedBy()
-    {
-        return this.inventoryItemCreatedBy;
-    }
-
-    public void setInventoryItemCreatedBy(String inventoryItemCreatedBy)
-    {
-        this.inventoryItemCreatedBy = inventoryItemCreatedBy;
-    }
-
-    private Date inventoryItemCreatedAt;
-
-    public Date getInventoryItemCreatedAt()
-    {
-        return this.inventoryItemCreatedAt;
-    }
-
-    public void setInventoryItemCreatedAt(Date inventoryItemCreatedAt)
-    {
-        this.inventoryItemCreatedAt = inventoryItemCreatedAt;
-    }
-
-    private String inventoryItemUpdatedBy;
-
-    public String getInventoryItemUpdatedBy()
-    {
-        return this.inventoryItemUpdatedBy;
-    }
-
-    public void setInventoryItemUpdatedBy(String inventoryItemUpdatedBy)
-    {
-        this.inventoryItemUpdatedBy = inventoryItemUpdatedBy;
-    }
-
-    private Date inventoryItemUpdatedAt;
-
-    public Date getInventoryItemUpdatedAt()
-    {
-        return this.inventoryItemUpdatedAt;
-    }
-
-    public void setInventoryItemUpdatedAt(Date inventoryItemUpdatedAt)
-    {
-        this.inventoryItemUpdatedAt = inventoryItemUpdatedAt;
-    }
-
 
     private String commandId;
 
@@ -272,7 +80,205 @@ public abstract class AbstractInventoryItemEntryMvoEvent extends AbstractEvent i
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryItemEntryMvoStateCreated extends AbstractInventoryItemEntryMvoEvent implements InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated
+    public static abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractInventoryItemEntryMvoEvent implements InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateEvent {
+        private BigDecimal onHandQuantity;
+
+        public BigDecimal getOnHandQuantity()
+        {
+            return this.onHandQuantity;
+        }
+
+        public void setOnHandQuantity(BigDecimal onHandQuantity)
+        {
+            this.onHandQuantity = onHandQuantity;
+        }
+
+        private BigDecimal inTransitQuantity;
+
+        public BigDecimal getInTransitQuantity()
+        {
+            return this.inTransitQuantity;
+        }
+
+        public void setInTransitQuantity(BigDecimal inTransitQuantity)
+        {
+            this.inTransitQuantity = inTransitQuantity;
+        }
+
+        private BigDecimal reservedQuantity;
+
+        public BigDecimal getReservedQuantity()
+        {
+            return this.reservedQuantity;
+        }
+
+        public void setReservedQuantity(BigDecimal reservedQuantity)
+        {
+            this.reservedQuantity = reservedQuantity;
+        }
+
+        private BigDecimal occupiedQuantity;
+
+        public BigDecimal getOccupiedQuantity()
+        {
+            return this.occupiedQuantity;
+        }
+
+        public void setOccupiedQuantity(BigDecimal occupiedQuantity)
+        {
+            this.occupiedQuantity = occupiedQuantity;
+        }
+
+        private BigDecimal virtualQuantity;
+
+        public BigDecimal getVirtualQuantity()
+        {
+            return this.virtualQuantity;
+        }
+
+        public void setVirtualQuantity(BigDecimal virtualQuantity)
+        {
+            this.virtualQuantity = virtualQuantity;
+        }
+
+        private InventoryItemSourceInfo source;
+
+        public InventoryItemSourceInfo getSource()
+        {
+            return this.source;
+        }
+
+        public void setSource(InventoryItemSourceInfo source)
+        {
+            this.source = source;
+        }
+
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private BigDecimal inventoryItemOnHandQuantity;
+
+        public BigDecimal getInventoryItemOnHandQuantity()
+        {
+            return this.inventoryItemOnHandQuantity;
+        }
+
+        public void setInventoryItemOnHandQuantity(BigDecimal inventoryItemOnHandQuantity)
+        {
+            this.inventoryItemOnHandQuantity = inventoryItemOnHandQuantity;
+        }
+
+        private BigDecimal inventoryItemInTransitQuantity;
+
+        public BigDecimal getInventoryItemInTransitQuantity()
+        {
+            return this.inventoryItemInTransitQuantity;
+        }
+
+        public void setInventoryItemInTransitQuantity(BigDecimal inventoryItemInTransitQuantity)
+        {
+            this.inventoryItemInTransitQuantity = inventoryItemInTransitQuantity;
+        }
+
+        private BigDecimal inventoryItemReservedQuantity;
+
+        public BigDecimal getInventoryItemReservedQuantity()
+        {
+            return this.inventoryItemReservedQuantity;
+        }
+
+        public void setInventoryItemReservedQuantity(BigDecimal inventoryItemReservedQuantity)
+        {
+            this.inventoryItemReservedQuantity = inventoryItemReservedQuantity;
+        }
+
+        private BigDecimal inventoryItemOccupiedQuantity;
+
+        public BigDecimal getInventoryItemOccupiedQuantity()
+        {
+            return this.inventoryItemOccupiedQuantity;
+        }
+
+        public void setInventoryItemOccupiedQuantity(BigDecimal inventoryItemOccupiedQuantity)
+        {
+            this.inventoryItemOccupiedQuantity = inventoryItemOccupiedQuantity;
+        }
+
+        private BigDecimal inventoryItemVirtualQuantity;
+
+        public BigDecimal getInventoryItemVirtualQuantity()
+        {
+            return this.inventoryItemVirtualQuantity;
+        }
+
+        public void setInventoryItemVirtualQuantity(BigDecimal inventoryItemVirtualQuantity)
+        {
+            this.inventoryItemVirtualQuantity = inventoryItemVirtualQuantity;
+        }
+
+        private String inventoryItemCreatedBy;
+
+        public String getInventoryItemCreatedBy()
+        {
+            return this.inventoryItemCreatedBy;
+        }
+
+        public void setInventoryItemCreatedBy(String inventoryItemCreatedBy)
+        {
+            this.inventoryItemCreatedBy = inventoryItemCreatedBy;
+        }
+
+        private Date inventoryItemCreatedAt;
+
+        public Date getInventoryItemCreatedAt()
+        {
+            return this.inventoryItemCreatedAt;
+        }
+
+        public void setInventoryItemCreatedAt(Date inventoryItemCreatedAt)
+        {
+            this.inventoryItemCreatedAt = inventoryItemCreatedAt;
+        }
+
+        private String inventoryItemUpdatedBy;
+
+        public String getInventoryItemUpdatedBy()
+        {
+            return this.inventoryItemUpdatedBy;
+        }
+
+        public void setInventoryItemUpdatedBy(String inventoryItemUpdatedBy)
+        {
+            this.inventoryItemUpdatedBy = inventoryItemUpdatedBy;
+        }
+
+        private Date inventoryItemUpdatedAt;
+
+        public Date getInventoryItemUpdatedAt()
+        {
+            return this.inventoryItemUpdatedAt;
+        }
+
+        public void setInventoryItemUpdatedAt(Date inventoryItemUpdatedAt)
+        {
+            this.inventoryItemUpdatedAt = inventoryItemUpdatedAt;
+        }
+
+        protected AbstractInventoryItemEntryMvoStateEvent(InventoryItemEntryMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractInventoryItemEntryMvoStateCreated extends AbstractInventoryItemEntryMvoStateEvent implements InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated
     {
         public AbstractInventoryItemEntryMvoStateCreated() {
             this(new InventoryItemEntryMvoEventId());
@@ -289,7 +295,7 @@ public abstract class AbstractInventoryItemEntryMvoEvent extends AbstractEvent i
     }
 
 
-    public static abstract class AbstractInventoryItemEntryMvoStateMergePatched extends AbstractInventoryItemEntryMvoEvent implements InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched
+    public static abstract class AbstractInventoryItemEntryMvoStateMergePatched extends AbstractInventoryItemEntryMvoStateEvent implements InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched
     {
         public AbstractInventoryItemEntryMvoStateMergePatched() {
             this(new InventoryItemEntryMvoEventId());

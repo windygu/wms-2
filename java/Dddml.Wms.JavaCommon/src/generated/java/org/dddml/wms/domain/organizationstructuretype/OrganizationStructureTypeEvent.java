@@ -13,10 +13,6 @@ public interface OrganizationStructureTypeEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -25,21 +21,28 @@ public interface OrganizationStructureTypeEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrganizationStructureTypeStateCreated extends OrganizationStructureTypeEvent
+    interface OrganizationStructureTypeStateEvent extends OrganizationStructureTypeEvent {
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface OrganizationStructureTypeStateCreated extends OrganizationStructureTypeStateEvent
     {
     
     }
 
 
-    interface OrganizationStructureTypeStateMergePatched extends OrganizationStructureTypeEvent
+    interface OrganizationStructureTypeStateMergePatched extends OrganizationStructureTypeStateEvent
     {
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -52,7 +55,7 @@ public interface OrganizationStructureTypeEvent extends Event
 
     }
 
-    interface OrganizationStructureTypeStateDeleted extends OrganizationStructureTypeEvent
+    interface OrganizationStructureTypeStateDeleted extends OrganizationStructureTypeStateEvent
     {
     }
 

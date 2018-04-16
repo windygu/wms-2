@@ -33,66 +33,6 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal onHandQuantity;
-
-    public BigDecimal getOnHandQuantity()
-    {
-        return this.onHandQuantity;
-    }
-
-    public void setOnHandQuantity(BigDecimal onHandQuantity)
-    {
-        this.onHandQuantity = onHandQuantity;
-    }
-
-    private BigDecimal inTransitQuantity;
-
-    public BigDecimal getInTransitQuantity()
-    {
-        return this.inTransitQuantity;
-    }
-
-    public void setInTransitQuantity(BigDecimal inTransitQuantity)
-    {
-        this.inTransitQuantity = inTransitQuantity;
-    }
-
-    private BigDecimal reservedQuantity;
-
-    public BigDecimal getReservedQuantity()
-    {
-        return this.reservedQuantity;
-    }
-
-    public void setReservedQuantity(BigDecimal reservedQuantity)
-    {
-        this.reservedQuantity = reservedQuantity;
-    }
-
-    private BigDecimal occupiedQuantity;
-
-    public BigDecimal getOccupiedQuantity()
-    {
-        return this.occupiedQuantity;
-    }
-
-    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
-    {
-        this.occupiedQuantity = occupiedQuantity;
-    }
-
-    private BigDecimal virtualQuantity;
-
-    public BigDecimal getVirtualQuantity()
-    {
-        return this.virtualQuantity;
-    }
-
-    public void setVirtualQuantity(BigDecimal virtualQuantity)
-    {
-        this.virtualQuantity = virtualQuantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -169,7 +109,73 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryItemStateCreated extends AbstractInventoryItemEvent implements InventoryItemEvent.InventoryItemStateCreated, Saveable
+    public static abstract class AbstractInventoryItemStateEvent extends AbstractInventoryItemEvent implements InventoryItemEvent.InventoryItemStateEvent {
+        private BigDecimal onHandQuantity;
+
+        public BigDecimal getOnHandQuantity()
+        {
+            return this.onHandQuantity;
+        }
+
+        public void setOnHandQuantity(BigDecimal onHandQuantity)
+        {
+            this.onHandQuantity = onHandQuantity;
+        }
+
+        private BigDecimal inTransitQuantity;
+
+        public BigDecimal getInTransitQuantity()
+        {
+            return this.inTransitQuantity;
+        }
+
+        public void setInTransitQuantity(BigDecimal inTransitQuantity)
+        {
+            this.inTransitQuantity = inTransitQuantity;
+        }
+
+        private BigDecimal reservedQuantity;
+
+        public BigDecimal getReservedQuantity()
+        {
+            return this.reservedQuantity;
+        }
+
+        public void setReservedQuantity(BigDecimal reservedQuantity)
+        {
+            this.reservedQuantity = reservedQuantity;
+        }
+
+        private BigDecimal occupiedQuantity;
+
+        public BigDecimal getOccupiedQuantity()
+        {
+            return this.occupiedQuantity;
+        }
+
+        public void setOccupiedQuantity(BigDecimal occupiedQuantity)
+        {
+            this.occupiedQuantity = occupiedQuantity;
+        }
+
+        private BigDecimal virtualQuantity;
+
+        public BigDecimal getVirtualQuantity()
+        {
+            return this.virtualQuantity;
+        }
+
+        public void setVirtualQuantity(BigDecimal virtualQuantity)
+        {
+            this.virtualQuantity = virtualQuantity;
+        }
+
+        protected AbstractInventoryItemStateEvent(InventoryItemEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractInventoryItemStateCreated extends AbstractInventoryItemStateEvent implements InventoryItemEvent.InventoryItemStateCreated, Saveable
     {
         public AbstractInventoryItemStateCreated() {
             this(new InventoryItemEventId());
@@ -234,7 +240,7 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
     }
 
 
-    public static abstract class AbstractInventoryItemStateMergePatched extends AbstractInventoryItemEvent implements InventoryItemEvent.InventoryItemStateMergePatched, Saveable
+    public static abstract class AbstractInventoryItemStateMergePatched extends AbstractInventoryItemStateEvent implements InventoryItemEvent.InventoryItemStateMergePatched, Saveable
     {
         public AbstractInventoryItemStateMergePatched() {
             this(new InventoryItemEventId());

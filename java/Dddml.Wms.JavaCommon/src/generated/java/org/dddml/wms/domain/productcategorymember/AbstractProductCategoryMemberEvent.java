@@ -32,54 +32,6 @@ public abstract class AbstractProductCategoryMemberEvent extends AbstractEvent i
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private java.sql.Timestamp thruDate;
-
-    public java.sql.Timestamp getThruDate()
-    {
-        return this.thruDate;
-    }
-
-    public void setThruDate(java.sql.Timestamp thruDate)
-    {
-        this.thruDate = thruDate;
-    }
-
-    private String comments;
-
-    public String getComments()
-    {
-        return this.comments;
-    }
-
-    public void setComments(String comments)
-    {
-        this.comments = comments;
-    }
-
-    private Long sequenceNum;
-
-    public Long getSequenceNum()
-    {
-        return this.sequenceNum;
-    }
-
-    public void setSequenceNum(Long sequenceNum)
-    {
-        this.sequenceNum = sequenceNum;
-    }
-
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -104,18 +56,6 @@ public abstract class AbstractProductCategoryMemberEvent extends AbstractEvent i
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -138,7 +78,73 @@ public abstract class AbstractProductCategoryMemberEvent extends AbstractEvent i
     public abstract String getEventType();
 
 
-    public static abstract class AbstractProductCategoryMemberStateCreated extends AbstractProductCategoryMemberEvent implements ProductCategoryMemberEvent.ProductCategoryMemberStateCreated
+    public static abstract class AbstractProductCategoryMemberStateEvent extends AbstractProductCategoryMemberEvent implements ProductCategoryMemberEvent.ProductCategoryMemberStateEvent {
+        private java.sql.Timestamp thruDate;
+
+        public java.sql.Timestamp getThruDate()
+        {
+            return this.thruDate;
+        }
+
+        public void setThruDate(java.sql.Timestamp thruDate)
+        {
+            this.thruDate = thruDate;
+        }
+
+        private String comments;
+
+        public String getComments()
+        {
+            return this.comments;
+        }
+
+        public void setComments(String comments)
+        {
+            this.comments = comments;
+        }
+
+        private Long sequenceNum;
+
+        public Long getSequenceNum()
+        {
+            return this.sequenceNum;
+        }
+
+        public void setSequenceNum(Long sequenceNum)
+        {
+            this.sequenceNum = sequenceNum;
+        }
+
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractProductCategoryMemberStateEvent(ProductCategoryMemberEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractProductCategoryMemberStateCreated extends AbstractProductCategoryMemberStateEvent implements ProductCategoryMemberEvent.ProductCategoryMemberStateCreated
     {
         public AbstractProductCategoryMemberStateCreated() {
             this(new ProductCategoryMemberEventId());
@@ -155,7 +161,7 @@ public abstract class AbstractProductCategoryMemberEvent extends AbstractEvent i
     }
 
 
-    public static abstract class AbstractProductCategoryMemberStateMergePatched extends AbstractProductCategoryMemberEvent implements ProductCategoryMemberEvent.ProductCategoryMemberStateMergePatched
+    public static abstract class AbstractProductCategoryMemberStateMergePatched extends AbstractProductCategoryMemberStateEvent implements ProductCategoryMemberEvent.ProductCategoryMemberStateMergePatched
     {
         public AbstractProductCategoryMemberStateMergePatched() {
             this(new ProductCategoryMemberEventId());

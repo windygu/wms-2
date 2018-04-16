@@ -13,18 +13,6 @@ public interface WarehouseEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getWarehouseName();
-
-    void setWarehouseName(String warehouseName);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    Boolean getIsInTransit();
-
-    void setIsInTransit(Boolean isInTransit);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -33,21 +21,36 @@ public interface WarehouseEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface WarehouseStateCreated extends WarehouseEvent
+    interface WarehouseStateEvent extends WarehouseEvent {
+        String getWarehouseName();
+
+        void setWarehouseName(String warehouseName);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getIsInTransit();
+
+        void setIsInTransit(Boolean isInTransit);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface WarehouseStateCreated extends WarehouseStateEvent
     {
     
     }
 
 
-    interface WarehouseStateMergePatched extends WarehouseEvent
+    interface WarehouseStateMergePatched extends WarehouseStateEvent
     {
         Boolean getIsPropertyWarehouseNameRemoved();
 
@@ -68,7 +71,7 @@ public interface WarehouseEvent extends Event
 
     }
 
-    interface WarehouseStateDeleted extends WarehouseEvent
+    interface WarehouseStateDeleted extends WarehouseStateEvent
     {
     }
 

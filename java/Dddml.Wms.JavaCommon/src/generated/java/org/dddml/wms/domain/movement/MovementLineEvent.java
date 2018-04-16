@@ -14,38 +14,6 @@ public interface MovementLineEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    BigDecimal getMovementQuantity();
-
-    void setMovementQuantity(BigDecimal movementQuantity);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getLocatorIdFrom();
-
-    void setLocatorIdFrom(String locatorIdFrom);
-
-    String getLocatorIdTo();
-
-    void setLocatorIdTo(String locatorIdTo);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getReversalLineNumber();
-
-    void setReversalLineNumber(String reversalLineNumber);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -54,21 +22,56 @@ public interface MovementLineEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface MovementLineStateCreated extends MovementLineEvent
+    interface MovementLineStateEvent extends MovementLineEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getMovementQuantity();
+
+        void setMovementQuantity(BigDecimal movementQuantity);
+
+        String getProductId();
+
+        void setProductId(String productId);
+
+        String getLocatorIdFrom();
+
+        void setLocatorIdFrom(String locatorIdFrom);
+
+        String getLocatorIdTo();
+
+        void setLocatorIdTo(String locatorIdTo);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getReversalLineNumber();
+
+        void setReversalLineNumber(String reversalLineNumber);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface MovementLineStateCreated extends MovementLineStateEvent
     {
     
     }
 
 
-    interface MovementLineStateMergePatched extends MovementLineEvent
+    interface MovementLineStateMergePatched extends MovementLineStateEvent
     {
         Boolean getIsPropertyMovementQuantityRemoved();
 
@@ -105,7 +108,7 @@ public interface MovementLineEvent extends Event
 
     }
 
-    interface MovementLineStateRemoved extends MovementLineEvent
+    interface MovementLineStateRemoved extends MovementLineStateEvent
     {
     }
 

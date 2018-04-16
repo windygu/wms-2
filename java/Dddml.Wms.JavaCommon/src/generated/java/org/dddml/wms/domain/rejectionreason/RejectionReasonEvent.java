@@ -13,10 +13,6 @@ public interface RejectionReasonEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -25,21 +21,28 @@ public interface RejectionReasonEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface RejectionReasonStateCreated extends RejectionReasonEvent
+    interface RejectionReasonStateEvent extends RejectionReasonEvent {
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface RejectionReasonStateCreated extends RejectionReasonStateEvent
     {
     
     }
 
 
-    interface RejectionReasonStateMergePatched extends RejectionReasonEvent
+    interface RejectionReasonStateMergePatched extends RejectionReasonStateEvent
     {
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -52,7 +55,7 @@ public interface RejectionReasonEvent extends Event
 
     }
 
-    interface RejectionReasonStateDeleted extends RejectionReasonEvent
+    interface RejectionReasonStateDeleted extends RejectionReasonStateEvent
     {
     }
 

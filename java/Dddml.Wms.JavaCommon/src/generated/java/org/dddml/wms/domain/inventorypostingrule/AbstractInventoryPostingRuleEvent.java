@@ -33,66 +33,6 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private InventoryItemId triggerInventoryItemId;
-
-    public InventoryItemId getTriggerInventoryItemId()
-    {
-        return this.triggerInventoryItemId;
-    }
-
-    public void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId)
-    {
-        this.triggerInventoryItemId = triggerInventoryItemId;
-    }
-
-    private InventoryItemId outputInventoryItemId;
-
-    public InventoryItemId getOutputInventoryItemId()
-    {
-        return this.outputInventoryItemId;
-    }
-
-    public void setOutputInventoryItemId(InventoryItemId outputInventoryItemId)
-    {
-        this.outputInventoryItemId = outputInventoryItemId;
-    }
-
-    private String triggerAccountName;
-
-    public String getTriggerAccountName()
-    {
-        return this.triggerAccountName;
-    }
-
-    public void setTriggerAccountName(String triggerAccountName)
-    {
-        this.triggerAccountName = triggerAccountName;
-    }
-
-    private String outputAccountName;
-
-    public String getOutputAccountName()
-    {
-        return this.outputAccountName;
-    }
-
-    public void setOutputAccountName(String outputAccountName)
-    {
-        this.outputAccountName = outputAccountName;
-    }
-
-    private Boolean isOutputNegated;
-
-    public Boolean getIsOutputNegated()
-    {
-        return this.isOutputNegated;
-    }
-
-    public void setIsOutputNegated(Boolean isOutputNegated)
-    {
-        this.isOutputNegated = isOutputNegated;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -117,18 +57,6 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -151,7 +79,85 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryPostingRuleStateCreated extends AbstractInventoryPostingRuleEvent implements InventoryPostingRuleEvent.InventoryPostingRuleStateCreated
+    public static abstract class AbstractInventoryPostingRuleStateEvent extends AbstractInventoryPostingRuleEvent implements InventoryPostingRuleEvent.InventoryPostingRuleStateEvent {
+        private InventoryItemId triggerInventoryItemId;
+
+        public InventoryItemId getTriggerInventoryItemId()
+        {
+            return this.triggerInventoryItemId;
+        }
+
+        public void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId)
+        {
+            this.triggerInventoryItemId = triggerInventoryItemId;
+        }
+
+        private InventoryItemId outputInventoryItemId;
+
+        public InventoryItemId getOutputInventoryItemId()
+        {
+            return this.outputInventoryItemId;
+        }
+
+        public void setOutputInventoryItemId(InventoryItemId outputInventoryItemId)
+        {
+            this.outputInventoryItemId = outputInventoryItemId;
+        }
+
+        private String triggerAccountName;
+
+        public String getTriggerAccountName()
+        {
+            return this.triggerAccountName;
+        }
+
+        public void setTriggerAccountName(String triggerAccountName)
+        {
+            this.triggerAccountName = triggerAccountName;
+        }
+
+        private String outputAccountName;
+
+        public String getOutputAccountName()
+        {
+            return this.outputAccountName;
+        }
+
+        public void setOutputAccountName(String outputAccountName)
+        {
+            this.outputAccountName = outputAccountName;
+        }
+
+        private Boolean isOutputNegated;
+
+        public Boolean getIsOutputNegated()
+        {
+            return this.isOutputNegated;
+        }
+
+        public void setIsOutputNegated(Boolean isOutputNegated)
+        {
+            this.isOutputNegated = isOutputNegated;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractInventoryPostingRuleStateEvent(InventoryPostingRuleEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractInventoryPostingRuleStateCreated extends AbstractInventoryPostingRuleStateEvent implements InventoryPostingRuleEvent.InventoryPostingRuleStateCreated
     {
         public AbstractInventoryPostingRuleStateCreated() {
             this(new InventoryPostingRuleEventId());
@@ -168,7 +174,7 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
     }
 
 
-    public static abstract class AbstractInventoryPostingRuleStateMergePatched extends AbstractInventoryPostingRuleEvent implements InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched
+    public static abstract class AbstractInventoryPostingRuleStateMergePatched extends AbstractInventoryPostingRuleStateEvent implements InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched
     {
         public AbstractInventoryPostingRuleStateMergePatched() {
             this(new InventoryPostingRuleEventId());
@@ -245,7 +251,7 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
     }
 
 
-    public static abstract class AbstractInventoryPostingRuleStateDeleted extends AbstractInventoryPostingRuleEvent implements InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted
+    public static abstract class AbstractInventoryPostingRuleStateDeleted extends AbstractInventoryPostingRuleStateEvent implements InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted
     {
         public AbstractInventoryPostingRuleStateDeleted() {
             this(new InventoryPostingRuleEventId());

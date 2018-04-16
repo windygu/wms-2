@@ -13,18 +13,6 @@ public interface PicklistItemEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getItemStatusId();
-
-    void setItemStatusId(String itemStatusId);
-
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -33,21 +21,36 @@ public interface PicklistItemEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PicklistItemStateCreated extends PicklistItemEvent
+    interface PicklistItemStateEvent extends PicklistItemEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getItemStatusId();
+
+        void setItemStatusId(String itemStatusId);
+
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PicklistItemStateCreated extends PicklistItemStateEvent
     {
     
     }
 
 
-    interface PicklistItemStateMergePatched extends PicklistItemEvent
+    interface PicklistItemStateMergePatched extends PicklistItemStateEvent
     {
         Boolean getIsPropertyItemStatusIdRemoved();
 
@@ -64,7 +67,7 @@ public interface PicklistItemEvent extends Event
 
     }
 
-    interface PicklistItemStateRemoved extends PicklistItemEvent
+    interface PicklistItemStateRemoved extends PicklistItemStateEvent
     {
     }
 

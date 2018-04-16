@@ -240,17 +240,17 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
     {
     }
 
-    protected void throwOnWrongEvent(AttributeUseEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeUseEvent event)
     {
         String stateEntityIdAttributeSetId = this.getAttributeSetAttributeUseId().getAttributeSetId();
-        String eventEntityIdAttributeSetId = stateEvent.getAttributeUseEventId().getAttributeSetId();
+        String eventEntityIdAttributeSetId = event.getAttributeUseEventId().getAttributeSetId();
         if (!stateEntityIdAttributeSetId.equals(eventEntityIdAttributeSetId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id AttributeSetId %1$s in state but entity id AttributeSetId %2$s in event", stateEntityIdAttributeSetId, eventEntityIdAttributeSetId);
         }
 
         String stateEntityIdAttributeId = this.getAttributeSetAttributeUseId().getAttributeId();
-        String eventEntityIdAttributeId = stateEvent.getAttributeUseEventId().getAttributeId();
+        String eventEntityIdAttributeId = event.getAttributeUseEventId().getAttributeId();
         if (!stateEntityIdAttributeId.equals(eventEntityIdAttributeId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id AttributeId %1$s in state but entity id AttributeId %2$s in event", stateEntityIdAttributeId, eventEntityIdAttributeId);
@@ -258,16 +258,19 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
 
         if (getForReapplying()) { return; }
 
+        AttributeUseStateEvent stateEvent = event instanceof AttributeUseStateEvent ? (AttributeUseStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? AttributeUseState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(AttributeUseState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? AttributeUseState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(AttributeUseState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

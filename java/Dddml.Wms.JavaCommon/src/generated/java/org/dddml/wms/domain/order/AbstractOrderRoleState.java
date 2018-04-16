@@ -217,17 +217,17 @@ public abstract class AbstractOrderRoleState implements OrderRoleState
     {
     }
 
-    protected void throwOnWrongEvent(OrderRoleEvent stateEvent)
+    protected void throwOnWrongEvent(OrderRoleEvent event)
     {
         String stateEntityIdOrderId = this.getOrderRoleId().getOrderId();
-        String eventEntityIdOrderId = stateEvent.getOrderRoleEventId().getOrderId();
+        String eventEntityIdOrderId = event.getOrderRoleEventId().getOrderId();
         if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
         PartyRoleId stateEntityIdPartyRoleId = this.getOrderRoleId().getPartyRoleId();
-        PartyRoleId eventEntityIdPartyRoleId = stateEvent.getOrderRoleEventId().getPartyRoleId();
+        PartyRoleId eventEntityIdPartyRoleId = event.getOrderRoleEventId().getPartyRoleId();
         if (!stateEntityIdPartyRoleId.equals(eventEntityIdPartyRoleId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PartyRoleId %1$s in state but entity id PartyRoleId %2$s in event", stateEntityIdPartyRoleId, eventEntityIdPartyRoleId);
@@ -235,16 +235,19 @@ public abstract class AbstractOrderRoleState implements OrderRoleState
 
         if (getForReapplying()) { return; }
 
+        OrderRoleStateEvent stateEvent = event instanceof OrderRoleStateEvent ? (OrderRoleStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? OrderRoleState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(OrderRoleState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? OrderRoleState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(OrderRoleState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

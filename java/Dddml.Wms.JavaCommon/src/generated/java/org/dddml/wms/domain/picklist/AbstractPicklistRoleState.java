@@ -217,17 +217,17 @@ public abstract class AbstractPicklistRoleState implements PicklistRoleState
     {
     }
 
-    protected void throwOnWrongEvent(PicklistRoleEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistRoleEvent event)
     {
         String stateEntityIdPicklistId = this.getPicklistRoleId().getPicklistId();
-        String eventEntityIdPicklistId = stateEvent.getPicklistRoleEventId().getPicklistId();
+        String eventEntityIdPicklistId = event.getPicklistRoleEventId().getPicklistId();
         if (!stateEntityIdPicklistId.equals(eventEntityIdPicklistId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PicklistId %1$s in state but entity id PicklistId %2$s in event", stateEntityIdPicklistId, eventEntityIdPicklistId);
         }
 
         PartyRoleId stateEntityIdPartyRoleId = this.getPicklistRoleId().getPartyRoleId();
-        PartyRoleId eventEntityIdPartyRoleId = stateEvent.getPicklistRoleEventId().getPartyRoleId();
+        PartyRoleId eventEntityIdPartyRoleId = event.getPicklistRoleEventId().getPartyRoleId();
         if (!stateEntityIdPartyRoleId.equals(eventEntityIdPartyRoleId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PartyRoleId %1$s in state but entity id PartyRoleId %2$s in event", stateEntityIdPartyRoleId, eventEntityIdPartyRoleId);
@@ -235,16 +235,19 @@ public abstract class AbstractPicklistRoleState implements PicklistRoleState
 
         if (getForReapplying()) { return; }
 
+        PicklistRoleStateEvent stateEvent = event instanceof PicklistRoleStateEvent ? (PicklistRoleStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? PicklistRoleState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(PicklistRoleState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? PicklistRoleState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(PicklistRoleState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

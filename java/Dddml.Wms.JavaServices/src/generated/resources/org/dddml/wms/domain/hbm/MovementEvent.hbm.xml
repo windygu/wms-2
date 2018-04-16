@@ -15,6 +15,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractMovementEvent$AbstractMovementStateEvent" abstract="true">
+
 	<property name="documentStatusId" ></property>
 	<property name="movementDate" type="timestamp"><column name="MovementDate" sql-type="DATETIME" /></property>
 	<property name="posted" ></property>
@@ -36,12 +45,6 @@
 	<property name="warehouseIdTo" ></property>
 	<property name="description" ></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractMovementEvent$SimpleMovementStateCreated" discriminator-value="Created">
     	
@@ -99,6 +102,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

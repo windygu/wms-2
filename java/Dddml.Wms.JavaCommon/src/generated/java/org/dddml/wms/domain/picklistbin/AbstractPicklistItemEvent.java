@@ -32,42 +32,6 @@ public abstract class AbstractPicklistItemEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String itemStatusId;
-
-    public String getItemStatusId()
-    {
-        return this.itemStatusId;
-    }
-
-    public void setItemStatusId(String itemStatusId)
-    {
-        this.itemStatusId = itemStatusId;
-    }
-
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -92,18 +56,6 @@ public abstract class AbstractPicklistItemEvent extends AbstractEvent implements
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -126,7 +78,61 @@ public abstract class AbstractPicklistItemEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPicklistItemStateCreated extends AbstractPicklistItemEvent implements PicklistItemEvent.PicklistItemStateCreated
+    public static abstract class AbstractPicklistItemStateEvent extends AbstractPicklistItemEvent implements PicklistItemEvent.PicklistItemStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String itemStatusId;
+
+        public String getItemStatusId()
+        {
+            return this.itemStatusId;
+        }
+
+        public void setItemStatusId(String itemStatusId)
+        {
+            this.itemStatusId = itemStatusId;
+        }
+
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPicklistItemStateEvent(PicklistItemEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPicklistItemStateCreated extends AbstractPicklistItemStateEvent implements PicklistItemEvent.PicklistItemStateCreated
     {
         public AbstractPicklistItemStateCreated() {
             this(new PicklistItemEventId());
@@ -143,7 +149,7 @@ public abstract class AbstractPicklistItemEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractPicklistItemStateMergePatched extends AbstractPicklistItemEvent implements PicklistItemEvent.PicklistItemStateMergePatched
+    public static abstract class AbstractPicklistItemStateMergePatched extends AbstractPicklistItemStateEvent implements PicklistItemEvent.PicklistItemStateMergePatched
     {
         public AbstractPicklistItemStateMergePatched() {
             this(new PicklistItemEventId());
@@ -190,7 +196,7 @@ public abstract class AbstractPicklistItemEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractPicklistItemStateRemoved extends AbstractPicklistItemEvent implements PicklistItemEvent.PicklistItemStateRemoved
+    public static abstract class AbstractPicklistItemStateRemoved extends AbstractPicklistItemStateEvent implements PicklistItemEvent.PicklistItemStateRemoved
     {
         public AbstractPicklistItemStateRemoved() {
             this(new PicklistItemEventId());

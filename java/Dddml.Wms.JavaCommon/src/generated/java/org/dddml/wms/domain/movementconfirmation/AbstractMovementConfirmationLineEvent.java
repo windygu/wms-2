@@ -33,102 +33,6 @@ public abstract class AbstractMovementConfirmationLineEvent extends AbstractEven
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String movementLineNumber;
-
-    public String getMovementLineNumber()
-    {
-        return this.movementLineNumber;
-    }
-
-    public void setMovementLineNumber(String movementLineNumber)
-    {
-        this.movementLineNumber = movementLineNumber;
-    }
-
-    private BigDecimal targetQuantity;
-
-    public BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
-    private BigDecimal confirmedQuantity;
-
-    public BigDecimal getConfirmedQuantity()
-    {
-        return this.confirmedQuantity;
-    }
-
-    public void setConfirmedQuantity(BigDecimal confirmedQuantity)
-    {
-        this.confirmedQuantity = confirmedQuantity;
-    }
-
-    private BigDecimal differenceQuantity;
-
-    public BigDecimal getDifferenceQuantity()
-    {
-        return this.differenceQuantity;
-    }
-
-    public void setDifferenceQuantity(BigDecimal differenceQuantity)
-    {
-        this.differenceQuantity = differenceQuantity;
-    }
-
-    private BigDecimal scrappedQuantity;
-
-    public BigDecimal getScrappedQuantity()
-    {
-        return this.scrappedQuantity;
-    }
-
-    public void setScrappedQuantity(BigDecimal scrappedQuantity)
-    {
-        this.scrappedQuantity = scrappedQuantity;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -153,18 +57,6 @@ public abstract class AbstractMovementConfirmationLineEvent extends AbstractEven
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -187,7 +79,121 @@ public abstract class AbstractMovementConfirmationLineEvent extends AbstractEven
     public abstract String getEventType();
 
 
-    public static abstract class AbstractMovementConfirmationLineStateCreated extends AbstractMovementConfirmationLineEvent implements MovementConfirmationLineEvent.MovementConfirmationLineStateCreated
+    public static abstract class AbstractMovementConfirmationLineStateEvent extends AbstractMovementConfirmationLineEvent implements MovementConfirmationLineEvent.MovementConfirmationLineStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String movementLineNumber;
+
+        public String getMovementLineNumber()
+        {
+            return this.movementLineNumber;
+        }
+
+        public void setMovementLineNumber(String movementLineNumber)
+        {
+            this.movementLineNumber = movementLineNumber;
+        }
+
+        private BigDecimal targetQuantity;
+
+        public BigDecimal getTargetQuantity()
+        {
+            return this.targetQuantity;
+        }
+
+        public void setTargetQuantity(BigDecimal targetQuantity)
+        {
+            this.targetQuantity = targetQuantity;
+        }
+
+        private BigDecimal confirmedQuantity;
+
+        public BigDecimal getConfirmedQuantity()
+        {
+            return this.confirmedQuantity;
+        }
+
+        public void setConfirmedQuantity(BigDecimal confirmedQuantity)
+        {
+            this.confirmedQuantity = confirmedQuantity;
+        }
+
+        private BigDecimal differenceQuantity;
+
+        public BigDecimal getDifferenceQuantity()
+        {
+            return this.differenceQuantity;
+        }
+
+        public void setDifferenceQuantity(BigDecimal differenceQuantity)
+        {
+            this.differenceQuantity = differenceQuantity;
+        }
+
+        private BigDecimal scrappedQuantity;
+
+        public BigDecimal getScrappedQuantity()
+        {
+            return this.scrappedQuantity;
+        }
+
+        public void setScrappedQuantity(BigDecimal scrappedQuantity)
+        {
+            this.scrappedQuantity = scrappedQuantity;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractMovementConfirmationLineStateEvent(MovementConfirmationLineEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractMovementConfirmationLineStateCreated extends AbstractMovementConfirmationLineStateEvent implements MovementConfirmationLineEvent.MovementConfirmationLineStateCreated
     {
         public AbstractMovementConfirmationLineStateCreated() {
             this(new MovementConfirmationLineEventId());
@@ -204,7 +210,7 @@ public abstract class AbstractMovementConfirmationLineEvent extends AbstractEven
     }
 
 
-    public static abstract class AbstractMovementConfirmationLineStateMergePatched extends AbstractMovementConfirmationLineEvent implements MovementConfirmationLineEvent.MovementConfirmationLineStateMergePatched
+    public static abstract class AbstractMovementConfirmationLineStateMergePatched extends AbstractMovementConfirmationLineStateEvent implements MovementConfirmationLineEvent.MovementConfirmationLineStateMergePatched
     {
         public AbstractMovementConfirmationLineStateMergePatched() {
             this(new MovementConfirmationLineEventId());
@@ -301,7 +307,7 @@ public abstract class AbstractMovementConfirmationLineEvent extends AbstractEven
     }
 
 
-    public static abstract class AbstractMovementConfirmationLineStateRemoved extends AbstractMovementConfirmationLineEvent implements MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved
+    public static abstract class AbstractMovementConfirmationLineStateRemoved extends AbstractMovementConfirmationLineStateEvent implements MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved
     {
         public AbstractMovementConfirmationLineStateRemoved() {
             this(new MovementConfirmationLineEventId());

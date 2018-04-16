@@ -32,30 +32,6 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -80,18 +56,6 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -114,7 +78,49 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPickwaveStateCreated extends AbstractPickwaveEvent implements PickwaveEvent.PickwaveStateCreated
+    public static abstract class AbstractPickwaveStateEvent extends AbstractPickwaveEvent implements PickwaveEvent.PickwaveStateEvent {
+        private String statusId;
+
+        public String getStatusId()
+        {
+            return this.statusId;
+        }
+
+        public void setStatusId(String statusId)
+        {
+            this.statusId = statusId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPickwaveStateEvent(PickwaveEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPickwaveStateCreated extends AbstractPickwaveStateEvent implements PickwaveEvent.PickwaveStateCreated
     {
         public AbstractPickwaveStateCreated() {
             this(new PickwaveEventId());
@@ -131,7 +137,7 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
     }
 
 
-    public static abstract class AbstractPickwaveStateMergePatched extends AbstractPickwaveEvent implements PickwaveEvent.PickwaveStateMergePatched
+    public static abstract class AbstractPickwaveStateMergePatched extends AbstractPickwaveStateEvent implements PickwaveEvent.PickwaveStateMergePatched
     {
         public AbstractPickwaveStateMergePatched() {
             this(new PickwaveEventId());
@@ -178,7 +184,7 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
     }
 
 
-    public static abstract class AbstractPickwaveStateDeleted extends AbstractPickwaveEvent implements PickwaveEvent.PickwaveStateDeleted
+    public static abstract class AbstractPickwaveStateDeleted extends AbstractPickwaveStateEvent implements PickwaveEvent.PickwaveStateDeleted
     {
         public AbstractPickwaveStateDeleted() {
             this(new PickwaveEventId());

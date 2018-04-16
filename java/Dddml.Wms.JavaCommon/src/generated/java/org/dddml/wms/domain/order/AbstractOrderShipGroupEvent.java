@@ -32,234 +32,6 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String shipmentMethodTypeId;
-
-    public String getShipmentMethodTypeId()
-    {
-        return this.shipmentMethodTypeId;
-    }
-
-    public void setShipmentMethodTypeId(String shipmentMethodTypeId)
-    {
-        this.shipmentMethodTypeId = shipmentMethodTypeId;
-    }
-
-    private String supplierPartyId;
-
-    public String getSupplierPartyId()
-    {
-        return this.supplierPartyId;
-    }
-
-    public void setSupplierPartyId(String supplierPartyId)
-    {
-        this.supplierPartyId = supplierPartyId;
-    }
-
-    private String vendorPartyId;
-
-    public String getVendorPartyId()
-    {
-        return this.vendorPartyId;
-    }
-
-    public void setVendorPartyId(String vendorPartyId)
-    {
-        this.vendorPartyId = vendorPartyId;
-    }
-
-    private String carrierPartyId;
-
-    public String getCarrierPartyId()
-    {
-        return this.carrierPartyId;
-    }
-
-    public void setCarrierPartyId(String carrierPartyId)
-    {
-        this.carrierPartyId = carrierPartyId;
-    }
-
-    private String carrierRoleTypeId;
-
-    public String getCarrierRoleTypeId()
-    {
-        return this.carrierRoleTypeId;
-    }
-
-    public void setCarrierRoleTypeId(String carrierRoleTypeId)
-    {
-        this.carrierRoleTypeId = carrierRoleTypeId;
-    }
-
-    private String facilityId;
-
-    public String getFacilityId()
-    {
-        return this.facilityId;
-    }
-
-    public void setFacilityId(String facilityId)
-    {
-        this.facilityId = facilityId;
-    }
-
-    private String contactMechId;
-
-    public String getContactMechId()
-    {
-        return this.contactMechId;
-    }
-
-    public void setContactMechId(String contactMechId)
-    {
-        this.contactMechId = contactMechId;
-    }
-
-    private String telecomContactMechId;
-
-    public String getTelecomContactMechId()
-    {
-        return this.telecomContactMechId;
-    }
-
-    public void setTelecomContactMechId(String telecomContactMechId)
-    {
-        this.telecomContactMechId = telecomContactMechId;
-    }
-
-    private String trackingNumber;
-
-    public String getTrackingNumber()
-    {
-        return this.trackingNumber;
-    }
-
-    public void setTrackingNumber(String trackingNumber)
-    {
-        this.trackingNumber = trackingNumber;
-    }
-
-    private String shippingInstructions;
-
-    public String getShippingInstructions()
-    {
-        return this.shippingInstructions;
-    }
-
-    public void setShippingInstructions(String shippingInstructions)
-    {
-        this.shippingInstructions = shippingInstructions;
-    }
-
-    private String maySplit;
-
-    public String getMaySplit()
-    {
-        return this.maySplit;
-    }
-
-    public void setMaySplit(String maySplit)
-    {
-        this.maySplit = maySplit;
-    }
-
-    private String giftMessage;
-
-    public String getGiftMessage()
-    {
-        return this.giftMessage;
-    }
-
-    public void setGiftMessage(String giftMessage)
-    {
-        this.giftMessage = giftMessage;
-    }
-
-    private String isGift;
-
-    public String getIsGift()
-    {
-        return this.isGift;
-    }
-
-    public void setIsGift(String isGift)
-    {
-        this.isGift = isGift;
-    }
-
-    private java.sql.Timestamp shipAfterDate;
-
-    public java.sql.Timestamp getShipAfterDate()
-    {
-        return this.shipAfterDate;
-    }
-
-    public void setShipAfterDate(java.sql.Timestamp shipAfterDate)
-    {
-        this.shipAfterDate = shipAfterDate;
-    }
-
-    private java.sql.Timestamp shipByDate;
-
-    public java.sql.Timestamp getShipByDate()
-    {
-        return this.shipByDate;
-    }
-
-    public void setShipByDate(java.sql.Timestamp shipByDate)
-    {
-        this.shipByDate = shipByDate;
-    }
-
-    private java.sql.Timestamp estimatedShipDate;
-
-    public java.sql.Timestamp getEstimatedShipDate()
-    {
-        return this.estimatedShipDate;
-    }
-
-    public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate)
-    {
-        this.estimatedShipDate = estimatedShipDate;
-    }
-
-    private java.sql.Timestamp estimatedDeliveryDate;
-
-    public java.sql.Timestamp getEstimatedDeliveryDate()
-    {
-        return this.estimatedDeliveryDate;
-    }
-
-    public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate)
-    {
-        this.estimatedDeliveryDate = estimatedDeliveryDate;
-    }
-
-    private Long pickwaveId;
-
-    public Long getPickwaveId()
-    {
-        return this.pickwaveId;
-    }
-
-    public void setPickwaveId(Long pickwaveId)
-    {
-        this.pickwaveId = pickwaveId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -282,18 +54,6 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -361,7 +121,253 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
     public abstract String getEventType();
 
 
-    public static abstract class AbstractOrderShipGroupStateCreated extends AbstractOrderShipGroupEvent implements OrderShipGroupEvent.OrderShipGroupStateCreated, Saveable
+    public static abstract class AbstractOrderShipGroupStateEvent extends AbstractOrderShipGroupEvent implements OrderShipGroupEvent.OrderShipGroupStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String shipmentMethodTypeId;
+
+        public String getShipmentMethodTypeId()
+        {
+            return this.shipmentMethodTypeId;
+        }
+
+        public void setShipmentMethodTypeId(String shipmentMethodTypeId)
+        {
+            this.shipmentMethodTypeId = shipmentMethodTypeId;
+        }
+
+        private String supplierPartyId;
+
+        public String getSupplierPartyId()
+        {
+            return this.supplierPartyId;
+        }
+
+        public void setSupplierPartyId(String supplierPartyId)
+        {
+            this.supplierPartyId = supplierPartyId;
+        }
+
+        private String vendorPartyId;
+
+        public String getVendorPartyId()
+        {
+            return this.vendorPartyId;
+        }
+
+        public void setVendorPartyId(String vendorPartyId)
+        {
+            this.vendorPartyId = vendorPartyId;
+        }
+
+        private String carrierPartyId;
+
+        public String getCarrierPartyId()
+        {
+            return this.carrierPartyId;
+        }
+
+        public void setCarrierPartyId(String carrierPartyId)
+        {
+            this.carrierPartyId = carrierPartyId;
+        }
+
+        private String carrierRoleTypeId;
+
+        public String getCarrierRoleTypeId()
+        {
+            return this.carrierRoleTypeId;
+        }
+
+        public void setCarrierRoleTypeId(String carrierRoleTypeId)
+        {
+            this.carrierRoleTypeId = carrierRoleTypeId;
+        }
+
+        private String facilityId;
+
+        public String getFacilityId()
+        {
+            return this.facilityId;
+        }
+
+        public void setFacilityId(String facilityId)
+        {
+            this.facilityId = facilityId;
+        }
+
+        private String contactMechId;
+
+        public String getContactMechId()
+        {
+            return this.contactMechId;
+        }
+
+        public void setContactMechId(String contactMechId)
+        {
+            this.contactMechId = contactMechId;
+        }
+
+        private String telecomContactMechId;
+
+        public String getTelecomContactMechId()
+        {
+            return this.telecomContactMechId;
+        }
+
+        public void setTelecomContactMechId(String telecomContactMechId)
+        {
+            this.telecomContactMechId = telecomContactMechId;
+        }
+
+        private String trackingNumber;
+
+        public String getTrackingNumber()
+        {
+            return this.trackingNumber;
+        }
+
+        public void setTrackingNumber(String trackingNumber)
+        {
+            this.trackingNumber = trackingNumber;
+        }
+
+        private String shippingInstructions;
+
+        public String getShippingInstructions()
+        {
+            return this.shippingInstructions;
+        }
+
+        public void setShippingInstructions(String shippingInstructions)
+        {
+            this.shippingInstructions = shippingInstructions;
+        }
+
+        private String maySplit;
+
+        public String getMaySplit()
+        {
+            return this.maySplit;
+        }
+
+        public void setMaySplit(String maySplit)
+        {
+            this.maySplit = maySplit;
+        }
+
+        private String giftMessage;
+
+        public String getGiftMessage()
+        {
+            return this.giftMessage;
+        }
+
+        public void setGiftMessage(String giftMessage)
+        {
+            this.giftMessage = giftMessage;
+        }
+
+        private String isGift;
+
+        public String getIsGift()
+        {
+            return this.isGift;
+        }
+
+        public void setIsGift(String isGift)
+        {
+            this.isGift = isGift;
+        }
+
+        private java.sql.Timestamp shipAfterDate;
+
+        public java.sql.Timestamp getShipAfterDate()
+        {
+            return this.shipAfterDate;
+        }
+
+        public void setShipAfterDate(java.sql.Timestamp shipAfterDate)
+        {
+            this.shipAfterDate = shipAfterDate;
+        }
+
+        private java.sql.Timestamp shipByDate;
+
+        public java.sql.Timestamp getShipByDate()
+        {
+            return this.shipByDate;
+        }
+
+        public void setShipByDate(java.sql.Timestamp shipByDate)
+        {
+            this.shipByDate = shipByDate;
+        }
+
+        private java.sql.Timestamp estimatedShipDate;
+
+        public java.sql.Timestamp getEstimatedShipDate()
+        {
+            return this.estimatedShipDate;
+        }
+
+        public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate)
+        {
+            this.estimatedShipDate = estimatedShipDate;
+        }
+
+        private java.sql.Timestamp estimatedDeliveryDate;
+
+        public java.sql.Timestamp getEstimatedDeliveryDate()
+        {
+            return this.estimatedDeliveryDate;
+        }
+
+        public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate)
+        {
+            this.estimatedDeliveryDate = estimatedDeliveryDate;
+        }
+
+        private Long pickwaveId;
+
+        public Long getPickwaveId()
+        {
+            return this.pickwaveId;
+        }
+
+        public void setPickwaveId(Long pickwaveId)
+        {
+            this.pickwaveId = pickwaveId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractOrderShipGroupStateEvent(OrderShipGroupEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractOrderShipGroupStateCreated extends AbstractOrderShipGroupStateEvent implements OrderShipGroupEvent.OrderShipGroupStateCreated, Saveable
     {
         public AbstractOrderShipGroupStateCreated() {
             this(new OrderShipGroupEventId());
@@ -426,7 +432,7 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
     }
 
 
-    public static abstract class AbstractOrderShipGroupStateMergePatched extends AbstractOrderShipGroupEvent implements OrderShipGroupEvent.OrderShipGroupStateMergePatched, Saveable
+    public static abstract class AbstractOrderShipGroupStateMergePatched extends AbstractOrderShipGroupStateEvent implements OrderShipGroupEvent.OrderShipGroupStateMergePatched, Saveable
     {
         public AbstractOrderShipGroupStateMergePatched() {
             this(new OrderShipGroupEventId());
@@ -681,7 +687,7 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
     }
 
 
-    public static abstract class AbstractOrderShipGroupStateRemoved extends AbstractOrderShipGroupEvent implements OrderShipGroupEvent.OrderShipGroupStateRemoved, Saveable
+    public static abstract class AbstractOrderShipGroupStateRemoved extends AbstractOrderShipGroupStateEvent implements OrderShipGroupEvent.OrderShipGroupStateRemoved, Saveable
     {
         public AbstractOrderShipGroupStateRemoved() {
             this(new OrderShipGroupEventId());

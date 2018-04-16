@@ -39,76 +39,6 @@ public abstract class AbstractInventoryItemEntryEvent extends AbstractEvent impl
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    public Long getVersion()
-    {
-        return this.state.getVersion();
-    }
-
-    public void setVersion(Long version)
-    {
-        this.state.setVersion(version);
-    }
-
-    public BigDecimal getOnHandQuantity()
-    {
-        return this.state.getOnHandQuantity();
-    }
-
-    public void setOnHandQuantity(BigDecimal onHandQuantity)
-    {
-        this.state.setOnHandQuantity(onHandQuantity);
-    }
-
-    public BigDecimal getInTransitQuantity()
-    {
-        return this.state.getInTransitQuantity();
-    }
-
-    public void setInTransitQuantity(BigDecimal inTransitQuantity)
-    {
-        this.state.setInTransitQuantity(inTransitQuantity);
-    }
-
-    public BigDecimal getReservedQuantity()
-    {
-        return this.state.getReservedQuantity();
-    }
-
-    public void setReservedQuantity(BigDecimal reservedQuantity)
-    {
-        this.state.setReservedQuantity(reservedQuantity);
-    }
-
-    public BigDecimal getOccupiedQuantity()
-    {
-        return this.state.getOccupiedQuantity();
-    }
-
-    public void setOccupiedQuantity(BigDecimal occupiedQuantity)
-    {
-        this.state.setOccupiedQuantity(occupiedQuantity);
-    }
-
-    public BigDecimal getVirtualQuantity()
-    {
-        return this.state.getVirtualQuantity();
-    }
-
-    public void setVirtualQuantity(BigDecimal virtualQuantity)
-    {
-        this.state.setVirtualQuantity(virtualQuantity);
-    }
-
-    public InventoryItemSourceInfo getSource()
-    {
-        return this.state.getSource();
-    }
-
-    public void setSource(InventoryItemSourceInfo source)
-    {
-        this.state.setSource(source);
-    }
-
     public String getCreatedBy()
     {
         return this.state.getCreatedBy();
@@ -156,7 +86,87 @@ public abstract class AbstractInventoryItemEntryEvent extends AbstractEvent impl
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryItemEntryStateCreated extends AbstractInventoryItemEntryEvent implements InventoryItemEntryEvent.InventoryItemEntryStateCreated
+    public static abstract class AbstractInventoryItemEntryStateEvent extends AbstractInventoryItemEntryEvent implements InventoryItemEntryEvent.InventoryItemEntryStateEvent {
+        public Long getVersion()
+        {
+            return this.getInventoryItemEntryState().getVersion();
+        }
+
+        public void setVersion(Long version)
+        {
+            this.getInventoryItemEntryState().setVersion(version);
+        }
+
+        public BigDecimal getOnHandQuantity()
+        {
+            return this.getInventoryItemEntryState().getOnHandQuantity();
+        }
+
+        public void setOnHandQuantity(BigDecimal onHandQuantity)
+        {
+            this.getInventoryItemEntryState().setOnHandQuantity(onHandQuantity);
+        }
+
+        public BigDecimal getInTransitQuantity()
+        {
+            return this.getInventoryItemEntryState().getInTransitQuantity();
+        }
+
+        public void setInTransitQuantity(BigDecimal inTransitQuantity)
+        {
+            this.getInventoryItemEntryState().setInTransitQuantity(inTransitQuantity);
+        }
+
+        public BigDecimal getReservedQuantity()
+        {
+            return this.getInventoryItemEntryState().getReservedQuantity();
+        }
+
+        public void setReservedQuantity(BigDecimal reservedQuantity)
+        {
+            this.getInventoryItemEntryState().setReservedQuantity(reservedQuantity);
+        }
+
+        public BigDecimal getOccupiedQuantity()
+        {
+            return this.getInventoryItemEntryState().getOccupiedQuantity();
+        }
+
+        public void setOccupiedQuantity(BigDecimal occupiedQuantity)
+        {
+            this.getInventoryItemEntryState().setOccupiedQuantity(occupiedQuantity);
+        }
+
+        public BigDecimal getVirtualQuantity()
+        {
+            return this.getInventoryItemEntryState().getVirtualQuantity();
+        }
+
+        public void setVirtualQuantity(BigDecimal virtualQuantity)
+        {
+            this.getInventoryItemEntryState().setVirtualQuantity(virtualQuantity);
+        }
+
+        public InventoryItemSourceInfo getSource()
+        {
+            return this.getInventoryItemEntryState().getSource();
+        }
+
+        public void setSource(InventoryItemSourceInfo source)
+        {
+            this.getInventoryItemEntryState().setSource(source);
+        }
+
+        protected AbstractInventoryItemEntryStateEvent(InventoryItemEntryEventId eventId) {
+            super(eventId);
+        }
+
+        public AbstractInventoryItemEntryStateEvent(InventoryItemEntryState s) {
+            super(s);
+        }
+    }
+
+    public static abstract class AbstractInventoryItemEntryStateCreated extends AbstractInventoryItemEntryStateEvent implements InventoryItemEntryEvent.InventoryItemEntryStateCreated
     {
         public AbstractInventoryItemEntryStateCreated() {
             this(new InventoryItemEntryEventId());

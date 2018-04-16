@@ -13,14 +13,6 @@ public interface AttributeUseEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    Integer getSequenceNumber();
-
-    void setSequenceNumber(Integer sequenceNumber);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,21 +21,32 @@ public interface AttributeUseEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeUseStateCreated extends AttributeUseEvent
+    interface AttributeUseStateEvent extends AttributeUseEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Integer getSequenceNumber();
+
+        void setSequenceNumber(Integer sequenceNumber);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface AttributeUseStateCreated extends AttributeUseStateEvent
     {
     
     }
 
 
-    interface AttributeUseStateMergePatched extends AttributeUseEvent
+    interface AttributeUseStateMergePatched extends AttributeUseStateEvent
     {
         Boolean getIsPropertySequenceNumberRemoved();
 
@@ -56,7 +59,7 @@ public interface AttributeUseEvent extends Event
 
     }
 
-    interface AttributeUseStateRemoved extends AttributeUseEvent
+    interface AttributeUseStateRemoved extends AttributeUseStateEvent
     {
     }
 

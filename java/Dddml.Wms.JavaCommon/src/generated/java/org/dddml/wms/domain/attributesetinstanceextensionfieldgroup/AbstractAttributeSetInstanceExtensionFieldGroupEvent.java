@@ -32,66 +32,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupEvent exten
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String fieldType;
-
-    public String getFieldType()
-    {
-        return this.fieldType;
-    }
-
-    public void setFieldType(String fieldType)
-    {
-        this.fieldType = fieldType;
-    }
-
-    private Integer fieldLength;
-
-    public Integer getFieldLength()
-    {
-        return this.fieldLength;
-    }
-
-    public void setFieldLength(Integer fieldLength)
-    {
-        this.fieldLength = fieldLength;
-    }
-
-    private Integer fieldCount;
-
-    public Integer getFieldCount()
-    {
-        return this.fieldCount;
-    }
-
-    public void setFieldCount(Integer fieldCount)
-    {
-        this.fieldCount = fieldCount;
-    }
-
-    private String nameFormat;
-
-    public String getNameFormat()
-    {
-        return this.nameFormat;
-    }
-
-    public void setNameFormat(String nameFormat)
-    {
-        this.nameFormat = nameFormat;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -116,18 +56,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupEvent exten
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -150,7 +78,85 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupEvent exten
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupEvent implements AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent extends AbstractAttributeSetInstanceExtensionFieldGroupEvent implements AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateEvent {
+        private String fieldType;
+
+        public String getFieldType()
+        {
+            return this.fieldType;
+        }
+
+        public void setFieldType(String fieldType)
+        {
+            this.fieldType = fieldType;
+        }
+
+        private Integer fieldLength;
+
+        public Integer getFieldLength()
+        {
+            return this.fieldLength;
+        }
+
+        public void setFieldLength(Integer fieldLength)
+        {
+            this.fieldLength = fieldLength;
+        }
+
+        private Integer fieldCount;
+
+        public Integer getFieldCount()
+        {
+            return this.fieldCount;
+        }
+
+        public void setFieldCount(Integer fieldCount)
+        {
+            this.fieldCount = fieldCount;
+        }
+
+        private String nameFormat;
+
+        public String getNameFormat()
+        {
+            return this.nameFormat;
+        }
+
+        public void setNameFormat(String nameFormat)
+        {
+            this.nameFormat = nameFormat;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractAttributeSetInstanceExtensionFieldGroupStateEvent(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateCreated() {
             this(new AttributeSetInstanceExtensionFieldGroupEventId());
@@ -167,7 +173,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupEvent exten
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupEvent implements AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched() {
             this(new AttributeSetInstanceExtensionFieldGroupEventId());
@@ -244,7 +250,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupEvent exten
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupEvent implements AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted() {
             this(new AttributeSetInstanceExtensionFieldGroupEventId());

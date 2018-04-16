@@ -56,18 +56,6 @@ public abstract class AbstractPartyRoleEvent extends AbstractEvent implements Pa
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -90,7 +78,25 @@ public abstract class AbstractPartyRoleEvent extends AbstractEvent implements Pa
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPartyRoleStateCreated extends AbstractPartyRoleEvent implements PartyRoleEvent.PartyRoleStateCreated
+    public static abstract class AbstractPartyRoleStateEvent extends AbstractPartyRoleEvent implements PartyRoleEvent.PartyRoleStateEvent {
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPartyRoleStateEvent(PartyRoleEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPartyRoleStateCreated extends AbstractPartyRoleStateEvent implements PartyRoleEvent.PartyRoleStateCreated
     {
         public AbstractPartyRoleStateCreated() {
             this(new PartyRoleEventId());
@@ -107,7 +113,7 @@ public abstract class AbstractPartyRoleEvent extends AbstractEvent implements Pa
     }
 
 
-    public static abstract class AbstractPartyRoleStateMergePatched extends AbstractPartyRoleEvent implements PartyRoleEvent.PartyRoleStateMergePatched
+    public static abstract class AbstractPartyRoleStateMergePatched extends AbstractPartyRoleStateEvent implements PartyRoleEvent.PartyRoleStateMergePatched
     {
         public AbstractPartyRoleStateMergePatched() {
             this(new PartyRoleEventId());
@@ -134,7 +140,7 @@ public abstract class AbstractPartyRoleEvent extends AbstractEvent implements Pa
     }
 
 
-    public static abstract class AbstractPartyRoleStateDeleted extends AbstractPartyRoleEvent implements PartyRoleEvent.PartyRoleStateDeleted
+    public static abstract class AbstractPartyRoleStateDeleted extends AbstractPartyRoleStateEvent implements PartyRoleEvent.PartyRoleStateDeleted
     {
         public AbstractPartyRoleStateDeleted() {
             this(new PartyRoleEventId());

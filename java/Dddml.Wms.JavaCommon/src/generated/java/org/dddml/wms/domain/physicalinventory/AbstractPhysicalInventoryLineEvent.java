@@ -34,90 +34,6 @@ public abstract class AbstractPhysicalInventoryLineEvent extends AbstractEvent i
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private BigDecimal bookQuantity;
-
-    public BigDecimal getBookQuantity()
-    {
-        return this.bookQuantity;
-    }
-
-    public void setBookQuantity(BigDecimal bookQuantity)
-    {
-        this.bookQuantity = bookQuantity;
-    }
-
-    private BigDecimal countedQuantity;
-
-    public BigDecimal getCountedQuantity()
-    {
-        return this.countedQuantity;
-    }
-
-    public void setCountedQuantity(BigDecimal countedQuantity)
-    {
-        this.countedQuantity = countedQuantity;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private String lineNumber;
-
-    public String getLineNumber()
-    {
-        return this.lineNumber;
-    }
-
-    public void setLineNumber(String lineNumber)
-    {
-        this.lineNumber = lineNumber;
-    }
-
-    private Long reversalLineNumber;
-
-    public Long getReversalLineNumber()
-    {
-        return this.reversalLineNumber;
-    }
-
-    public void setReversalLineNumber(Long reversalLineNumber)
-    {
-        this.reversalLineNumber = reversalLineNumber;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -164,7 +80,97 @@ public abstract class AbstractPhysicalInventoryLineEvent extends AbstractEvent i
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPhysicalInventoryLineStateCreated extends AbstractPhysicalInventoryLineEvent implements PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated
+    public static abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractPhysicalInventoryLineEvent implements PhysicalInventoryLineEvent.PhysicalInventoryLineStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private BigDecimal bookQuantity;
+
+        public BigDecimal getBookQuantity()
+        {
+            return this.bookQuantity;
+        }
+
+        public void setBookQuantity(BigDecimal bookQuantity)
+        {
+            this.bookQuantity = bookQuantity;
+        }
+
+        private BigDecimal countedQuantity;
+
+        public BigDecimal getCountedQuantity()
+        {
+            return this.countedQuantity;
+        }
+
+        public void setCountedQuantity(BigDecimal countedQuantity)
+        {
+            this.countedQuantity = countedQuantity;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private String lineNumber;
+
+        public String getLineNumber()
+        {
+            return this.lineNumber;
+        }
+
+        public void setLineNumber(String lineNumber)
+        {
+            this.lineNumber = lineNumber;
+        }
+
+        private Long reversalLineNumber;
+
+        public Long getReversalLineNumber()
+        {
+            return this.reversalLineNumber;
+        }
+
+        public void setReversalLineNumber(Long reversalLineNumber)
+        {
+            this.reversalLineNumber = reversalLineNumber;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        protected AbstractPhysicalInventoryLineStateEvent(PhysicalInventoryLineEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPhysicalInventoryLineStateCreated extends AbstractPhysicalInventoryLineStateEvent implements PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated
     {
         public AbstractPhysicalInventoryLineStateCreated() {
             this(new PhysicalInventoryLineEventId());
@@ -181,7 +187,7 @@ public abstract class AbstractPhysicalInventoryLineEvent extends AbstractEvent i
     }
 
 
-    public static abstract class AbstractPhysicalInventoryLineStateMergePatched extends AbstractPhysicalInventoryLineEvent implements PhysicalInventoryLineEvent.PhysicalInventoryLineStateMergePatched
+    public static abstract class AbstractPhysicalInventoryLineStateMergePatched extends AbstractPhysicalInventoryLineStateEvent implements PhysicalInventoryLineEvent.PhysicalInventoryLineStateMergePatched
     {
         public AbstractPhysicalInventoryLineStateMergePatched() {
             this(new PhysicalInventoryLineEventId());
@@ -258,7 +264,7 @@ public abstract class AbstractPhysicalInventoryLineEvent extends AbstractEvent i
     }
 
 
-    public static abstract class AbstractPhysicalInventoryLineStateRemoved extends AbstractPhysicalInventoryLineEvent implements PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved
+    public static abstract class AbstractPhysicalInventoryLineStateRemoved extends AbstractPhysicalInventoryLineStateEvent implements PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved
     {
         public AbstractPhysicalInventoryLineStateRemoved() {
             this(new PhysicalInventoryLineEventId());

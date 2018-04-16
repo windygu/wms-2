@@ -32,30 +32,6 @@ public abstract class AbstractAttributeUseEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private Integer sequenceNumber;
-
-    public Integer getSequenceNumber()
-    {
-        return this.sequenceNumber;
-    }
-
-    public void setSequenceNumber(Integer sequenceNumber)
-    {
-        this.sequenceNumber = sequenceNumber;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -80,18 +56,6 @@ public abstract class AbstractAttributeUseEvent extends AbstractEvent implements
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -114,7 +78,49 @@ public abstract class AbstractAttributeUseEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeUseStateCreated extends AbstractAttributeUseEvent implements AttributeUseEvent.AttributeUseStateCreated
+    public static abstract class AbstractAttributeUseStateEvent extends AbstractAttributeUseEvent implements AttributeUseEvent.AttributeUseStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Integer sequenceNumber;
+
+        public Integer getSequenceNumber()
+        {
+            return this.sequenceNumber;
+        }
+
+        public void setSequenceNumber(Integer sequenceNumber)
+        {
+            this.sequenceNumber = sequenceNumber;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractAttributeUseStateEvent(AttributeUseEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeUseStateCreated extends AbstractAttributeUseStateEvent implements AttributeUseEvent.AttributeUseStateCreated
     {
         public AbstractAttributeUseStateCreated() {
             this(new AttributeUseEventId());
@@ -131,7 +137,7 @@ public abstract class AbstractAttributeUseEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractAttributeUseStateMergePatched extends AbstractAttributeUseEvent implements AttributeUseEvent.AttributeUseStateMergePatched
+    public static abstract class AbstractAttributeUseStateMergePatched extends AbstractAttributeUseStateEvent implements AttributeUseEvent.AttributeUseStateMergePatched
     {
         public AbstractAttributeUseStateMergePatched() {
             this(new AttributeUseEventId());
@@ -168,7 +174,7 @@ public abstract class AbstractAttributeUseEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractAttributeUseStateRemoved extends AbstractAttributeUseEvent implements AttributeUseEvent.AttributeUseStateRemoved
+    public static abstract class AbstractAttributeUseStateRemoved extends AbstractAttributeUseStateEvent implements AttributeUseEvent.AttributeUseStateRemoved
     {
         public AbstractAttributeUseStateRemoved() {
             this(new AttributeUseEventId());

@@ -13,22 +13,6 @@ public interface ShipmentPackageContentEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
-    String getSubProductId();
-
-    void setSubProductId(String subProductId);
-
-    java.math.BigDecimal getSubProductQuantity();
-
-    void setSubProductQuantity(java.math.BigDecimal subProductQuantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -37,21 +21,40 @@ public interface ShipmentPackageContentEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ShipmentPackageContentStateCreated extends ShipmentPackageContentEvent
+    interface ShipmentPackageContentStateEvent extends ShipmentPackageContentEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        String getSubProductId();
+
+        void setSubProductId(String subProductId);
+
+        java.math.BigDecimal getSubProductQuantity();
+
+        void setSubProductQuantity(java.math.BigDecimal subProductQuantity);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ShipmentPackageContentStateCreated extends ShipmentPackageContentStateEvent
     {
     
     }
 
 
-    interface ShipmentPackageContentStateMergePatched extends ShipmentPackageContentEvent
+    interface ShipmentPackageContentStateMergePatched extends ShipmentPackageContentStateEvent
     {
         Boolean getIsPropertyQuantityRemoved();
 
@@ -72,7 +75,7 @@ public interface ShipmentPackageContentEvent extends Event
 
     }
 
-    interface ShipmentPackageContentStateRemoved extends ShipmentPackageContentEvent
+    interface ShipmentPackageContentStateRemoved extends ShipmentPackageContentStateEvent
     {
     }
 

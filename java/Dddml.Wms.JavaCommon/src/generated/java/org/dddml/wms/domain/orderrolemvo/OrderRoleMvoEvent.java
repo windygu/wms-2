@@ -14,10 +14,6 @@ public interface OrderRoleMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -26,137 +22,144 @@ public interface OrderRoleMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getOrderOrderTypeId();
-
-    void setOrderOrderTypeId(String orderOrderTypeId);
-
-    String getOrderOrderName();
-
-    void setOrderOrderName(String orderOrderName);
-
-    String getOrderExternalId();
-
-    void setOrderExternalId(String orderExternalId);
-
-    String getOrderSalesChannelEnumId();
-
-    void setOrderSalesChannelEnumId(String orderSalesChannelEnumId);
-
-    java.sql.Timestamp getOrderOrderDate();
-
-    void setOrderOrderDate(java.sql.Timestamp orderOrderDate);
-
-    String getOrderPriority();
-
-    void setOrderPriority(String orderPriority);
-
-    java.sql.Timestamp getOrderEntryDate();
-
-    void setOrderEntryDate(java.sql.Timestamp orderEntryDate);
-
-    java.sql.Timestamp getOrderPickSheetPrintedDate();
-
-    void setOrderPickSheetPrintedDate(java.sql.Timestamp orderPickSheetPrintedDate);
-
-    String getOrderStatusId();
-
-    void setOrderStatusId(String orderStatusId);
-
-    String getOrderCurrencyUom();
-
-    void setOrderCurrencyUom(String orderCurrencyUom);
-
-    String getOrderSyncStatusId();
-
-    void setOrderSyncStatusId(String orderSyncStatusId);
-
-    String getOrderBillingAccountId();
-
-    void setOrderBillingAccountId(String orderBillingAccountId);
-
-    String getOrderOriginFacilityId();
-
-    void setOrderOriginFacilityId(String orderOriginFacilityId);
-
-    String getOrderWebSiteId();
-
-    void setOrderWebSiteId(String orderWebSiteId);
-
-    String getOrderProductStoreId();
-
-    void setOrderProductStoreId(String orderProductStoreId);
-
-    String getOrderTerminalId();
-
-    void setOrderTerminalId(String orderTerminalId);
-
-    String getOrderTransactionId();
-
-    void setOrderTransactionId(String orderTransactionId);
-
-    String getOrderAutoOrderShoppingListId();
-
-    void setOrderAutoOrderShoppingListId(String orderAutoOrderShoppingListId);
-
-    String getOrderNeedsInventoryIssuance();
-
-    void setOrderNeedsInventoryIssuance(String orderNeedsInventoryIssuance);
-
-    String getOrderIsRushOrder();
-
-    void setOrderIsRushOrder(String orderIsRushOrder);
-
-    String getOrderInternalCode();
-
-    void setOrderInternalCode(String orderInternalCode);
-
-    java.math.BigDecimal getOrderRemainingSubTotal();
-
-    void setOrderRemainingSubTotal(java.math.BigDecimal orderRemainingSubTotal);
-
-    java.math.BigDecimal getOrderGrandTotal();
-
-    void setOrderGrandTotal(java.math.BigDecimal orderGrandTotal);
-
-    String getOrderInvoicePerShipment();
-
-    void setOrderInvoicePerShipment(String orderInvoicePerShipment);
-
-    String getOrderCreatedBy();
-
-    void setOrderCreatedBy(String orderCreatedBy);
-
-    Date getOrderCreatedAt();
-
-    void setOrderCreatedAt(Date orderCreatedAt);
-
-    String getOrderUpdatedBy();
-
-    void setOrderUpdatedBy(String orderUpdatedBy);
-
-    Date getOrderUpdatedAt();
-
-    void setOrderUpdatedAt(Date orderUpdatedAt);
-
-    Boolean getOrderActive();
-
-    void setOrderActive(Boolean orderActive);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrderRoleMvoStateCreated extends OrderRoleMvoEvent
+    interface OrderRoleMvoStateEvent extends OrderRoleMvoEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getOrderOrderTypeId();
+
+        void setOrderOrderTypeId(String orderOrderTypeId);
+
+        String getOrderOrderName();
+
+        void setOrderOrderName(String orderOrderName);
+
+        String getOrderExternalId();
+
+        void setOrderExternalId(String orderExternalId);
+
+        String getOrderSalesChannelEnumId();
+
+        void setOrderSalesChannelEnumId(String orderSalesChannelEnumId);
+
+        java.sql.Timestamp getOrderOrderDate();
+
+        void setOrderOrderDate(java.sql.Timestamp orderOrderDate);
+
+        String getOrderPriority();
+
+        void setOrderPriority(String orderPriority);
+
+        java.sql.Timestamp getOrderEntryDate();
+
+        void setOrderEntryDate(java.sql.Timestamp orderEntryDate);
+
+        java.sql.Timestamp getOrderPickSheetPrintedDate();
+
+        void setOrderPickSheetPrintedDate(java.sql.Timestamp orderPickSheetPrintedDate);
+
+        String getOrderStatusId();
+
+        void setOrderStatusId(String orderStatusId);
+
+        String getOrderCurrencyUom();
+
+        void setOrderCurrencyUom(String orderCurrencyUom);
+
+        String getOrderSyncStatusId();
+
+        void setOrderSyncStatusId(String orderSyncStatusId);
+
+        String getOrderBillingAccountId();
+
+        void setOrderBillingAccountId(String orderBillingAccountId);
+
+        String getOrderOriginFacilityId();
+
+        void setOrderOriginFacilityId(String orderOriginFacilityId);
+
+        String getOrderWebSiteId();
+
+        void setOrderWebSiteId(String orderWebSiteId);
+
+        String getOrderProductStoreId();
+
+        void setOrderProductStoreId(String orderProductStoreId);
+
+        String getOrderTerminalId();
+
+        void setOrderTerminalId(String orderTerminalId);
+
+        String getOrderTransactionId();
+
+        void setOrderTransactionId(String orderTransactionId);
+
+        String getOrderAutoOrderShoppingListId();
+
+        void setOrderAutoOrderShoppingListId(String orderAutoOrderShoppingListId);
+
+        String getOrderNeedsInventoryIssuance();
+
+        void setOrderNeedsInventoryIssuance(String orderNeedsInventoryIssuance);
+
+        String getOrderIsRushOrder();
+
+        void setOrderIsRushOrder(String orderIsRushOrder);
+
+        String getOrderInternalCode();
+
+        void setOrderInternalCode(String orderInternalCode);
+
+        java.math.BigDecimal getOrderRemainingSubTotal();
+
+        void setOrderRemainingSubTotal(java.math.BigDecimal orderRemainingSubTotal);
+
+        java.math.BigDecimal getOrderGrandTotal();
+
+        void setOrderGrandTotal(java.math.BigDecimal orderGrandTotal);
+
+        String getOrderInvoicePerShipment();
+
+        void setOrderInvoicePerShipment(String orderInvoicePerShipment);
+
+        String getOrderCreatedBy();
+
+        void setOrderCreatedBy(String orderCreatedBy);
+
+        Date getOrderCreatedAt();
+
+        void setOrderCreatedAt(Date orderCreatedAt);
+
+        String getOrderUpdatedBy();
+
+        void setOrderUpdatedBy(String orderUpdatedBy);
+
+        Date getOrderUpdatedAt();
+
+        void setOrderUpdatedAt(Date orderUpdatedAt);
+
+        Boolean getOrderActive();
+
+        void setOrderActive(Boolean orderActive);
+
+    }
+
+    interface OrderRoleMvoStateCreated extends OrderRoleMvoStateEvent
     {
     
     }
 
 
-    interface OrderRoleMvoStateMergePatched extends OrderRoleMvoEvent
+    interface OrderRoleMvoStateMergePatched extends OrderRoleMvoStateEvent
     {
         Boolean getIsPropertyVersionRemoved();
 
@@ -285,7 +288,7 @@ public interface OrderRoleMvoEvent extends Event
 
     }
 
-    interface OrderRoleMvoStateDeleted extends OrderRoleMvoEvent
+    interface OrderRoleMvoStateDeleted extends OrderRoleMvoStateEvent
     {
     }
 

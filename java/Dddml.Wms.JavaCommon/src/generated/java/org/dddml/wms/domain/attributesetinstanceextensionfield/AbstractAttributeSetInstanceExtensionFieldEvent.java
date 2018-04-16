@@ -32,66 +32,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldEvent extends Ab
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String type;
-
-    public String getType()
-    {
-        return this.type;
-    }
-
-    public void setType(String type)
-    {
-        this.type = type;
-    }
-
-    private Integer length;
-
-    public Integer getLength()
-    {
-        return this.length;
-    }
-
-    public void setLength(Integer length)
-    {
-        this.length = length;
-    }
-
-    private String alias;
-
-    public String getAlias()
-    {
-        return this.alias;
-    }
-
-    public void setAlias(String alias)
-    {
-        this.alias = alias;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String groupId;
-
-    public String getGroupId()
-    {
-        return this.groupId;
-    }
-
-    public void setGroupId(String groupId)
-    {
-        this.groupId = groupId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -116,18 +56,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldEvent extends Ab
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -150,7 +78,85 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldEvent extends Ab
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateCreated extends AbstractAttributeSetInstanceExtensionFieldEvent implements AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateCreated
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateEvent extends AbstractAttributeSetInstanceExtensionFieldEvent implements AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateEvent {
+        private String type;
+
+        public String getType()
+        {
+            return this.type;
+        }
+
+        public void setType(String type)
+        {
+            this.type = type;
+        }
+
+        private Integer length;
+
+        public Integer getLength()
+        {
+            return this.length;
+        }
+
+        public void setLength(Integer length)
+        {
+            this.length = length;
+        }
+
+        private String alias;
+
+        public String getAlias()
+        {
+            return this.alias;
+        }
+
+        public void setAlias(String alias)
+        {
+            this.alias = alias;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String groupId;
+
+        public String getGroupId()
+        {
+            return this.groupId;
+        }
+
+        public void setGroupId(String groupId)
+        {
+            this.groupId = groupId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractAttributeSetInstanceExtensionFieldStateEvent(AttributeSetInstanceExtensionFieldEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateCreated extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateCreated
     {
         public AbstractAttributeSetInstanceExtensionFieldStateCreated() {
             this(new AttributeSetInstanceExtensionFieldEventId());
@@ -167,7 +173,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldEvent extends Ab
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldEvent implements AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateMergePatched
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateMergePatched
     {
         public AbstractAttributeSetInstanceExtensionFieldStateMergePatched() {
             this(new AttributeSetInstanceExtensionFieldEventId());
@@ -244,7 +250,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldEvent extends Ab
     }
 
 
-    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateDeleted extends AbstractAttributeSetInstanceExtensionFieldEvent implements AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateDeleted
+    public static abstract class AbstractAttributeSetInstanceExtensionFieldStateDeleted extends AbstractAttributeSetInstanceExtensionFieldStateEvent implements AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateDeleted
     {
         public AbstractAttributeSetInstanceExtensionFieldStateDeleted() {
             this(new AttributeSetInstanceExtensionFieldEventId());

@@ -7,29 +7,32 @@ import org.dddml.wms.specialization.Event;
 
 public interface OrganizationEvent extends PartyEvent
 {
-    String getOrganizationName();
+    interface OrganizationStateEvent extends PartyStateEvent, OrganizationEvent {
+        String getOrganizationName();
 
-    void setOrganizationName(String organizationName);
+        void setOrganizationName(String organizationName);
 
-    String getDescription();
+        String getDescription();
 
-    void setDescription(String description);
+        void setDescription(String description);
 
-    String getType();
+        String getType();
 
-    void setType(String type);
+        void setType(String type);
 
-    Boolean getIsSummary();
+        Boolean getIsSummary();
 
-    void setIsSummary(Boolean isSummary);
+        void setIsSummary(Boolean isSummary);
 
-    interface OrganizationStateCreated extends OrganizationEvent
+    }
+
+    interface OrganizationStateCreated extends OrganizationStateEvent
     {
     
     }
 
 
-    interface OrganizationStateMergePatched extends OrganizationEvent
+    interface OrganizationStateMergePatched extends OrganizationStateEvent
     {
         Boolean getIsPropertyOrganizationNameRemoved();
 
@@ -62,7 +65,7 @@ public interface OrganizationEvent extends PartyEvent
 
     }
 
-    interface OrganizationStateDeleted extends OrganizationEvent
+    interface OrganizationStateDeleted extends OrganizationStateEvent
     {
     }
 

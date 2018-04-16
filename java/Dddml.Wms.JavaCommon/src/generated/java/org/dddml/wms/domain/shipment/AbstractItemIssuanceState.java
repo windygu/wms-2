@@ -528,17 +528,17 @@ public abstract class AbstractItemIssuanceState implements ItemIssuanceState
     {
     }
 
-    protected void throwOnWrongEvent(ItemIssuanceEvent stateEvent)
+    protected void throwOnWrongEvent(ItemIssuanceEvent event)
     {
         String stateEntityIdShipmentId = this.getShipmentItemIssuanceId().getShipmentId();
-        String eventEntityIdShipmentId = stateEvent.getItemIssuanceEventId().getShipmentId();
+        String eventEntityIdShipmentId = event.getItemIssuanceEventId().getShipmentId();
         if (!stateEntityIdShipmentId.equals(eventEntityIdShipmentId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentId %1$s in state but entity id ShipmentId %2$s in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
         }
 
         String stateEntityIdItemIssuanceSeqId = this.getShipmentItemIssuanceId().getItemIssuanceSeqId();
-        String eventEntityIdItemIssuanceSeqId = stateEvent.getItemIssuanceEventId().getItemIssuanceSeqId();
+        String eventEntityIdItemIssuanceSeqId = event.getItemIssuanceEventId().getItemIssuanceSeqId();
         if (!stateEntityIdItemIssuanceSeqId.equals(eventEntityIdItemIssuanceSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ItemIssuanceSeqId %1$s in state but entity id ItemIssuanceSeqId %2$s in event", stateEntityIdItemIssuanceSeqId, eventEntityIdItemIssuanceSeqId);
@@ -546,16 +546,19 @@ public abstract class AbstractItemIssuanceState implements ItemIssuanceState
 
         if (getForReapplying()) { return; }
 
+        ItemIssuanceStateEvent stateEvent = event instanceof ItemIssuanceStateEvent ? (ItemIssuanceStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? ItemIssuanceState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(ItemIssuanceState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? ItemIssuanceState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(ItemIssuanceState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

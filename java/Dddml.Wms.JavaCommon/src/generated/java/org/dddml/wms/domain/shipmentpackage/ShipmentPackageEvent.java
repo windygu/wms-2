@@ -13,42 +13,6 @@ public interface ShipmentPackageEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getShipmentBoxTypeId();
-
-    void setShipmentBoxTypeId(String shipmentBoxTypeId);
-
-    java.sql.Timestamp getDateCreated();
-
-    void setDateCreated(java.sql.Timestamp dateCreated);
-
-    java.math.BigDecimal getBoxLength();
-
-    void setBoxLength(java.math.BigDecimal boxLength);
-
-    java.math.BigDecimal getBoxHeight();
-
-    void setBoxHeight(java.math.BigDecimal boxHeight);
-
-    java.math.BigDecimal getBoxWidth();
-
-    void setBoxWidth(java.math.BigDecimal boxWidth);
-
-    String getDimensionUomId();
-
-    void setDimensionUomId(String dimensionUomId);
-
-    java.math.BigDecimal getWeight();
-
-    void setWeight(java.math.BigDecimal weight);
-
-    String getWeightUomId();
-
-    void setWeightUomId(String weightUomId);
-
-    java.math.BigDecimal getInsuredValue();
-
-    void setInsuredValue(java.math.BigDecimal insuredValue);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -57,15 +21,54 @@ public interface ShipmentPackageEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ShipmentPackageStateCreated extends ShipmentPackageEvent
+    interface ShipmentPackageStateEvent extends ShipmentPackageEvent {
+        String getShipmentBoxTypeId();
+
+        void setShipmentBoxTypeId(String shipmentBoxTypeId);
+
+        java.sql.Timestamp getDateCreated();
+
+        void setDateCreated(java.sql.Timestamp dateCreated);
+
+        java.math.BigDecimal getBoxLength();
+
+        void setBoxLength(java.math.BigDecimal boxLength);
+
+        java.math.BigDecimal getBoxHeight();
+
+        void setBoxHeight(java.math.BigDecimal boxHeight);
+
+        java.math.BigDecimal getBoxWidth();
+
+        void setBoxWidth(java.math.BigDecimal boxWidth);
+
+        String getDimensionUomId();
+
+        void setDimensionUomId(String dimensionUomId);
+
+        java.math.BigDecimal getWeight();
+
+        void setWeight(java.math.BigDecimal weight);
+
+        String getWeightUomId();
+
+        void setWeightUomId(String weightUomId);
+
+        java.math.BigDecimal getInsuredValue();
+
+        void setInsuredValue(java.math.BigDecimal insuredValue);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ShipmentPackageStateCreated extends ShipmentPackageStateEvent
     {
         Iterable<ShipmentPackageContentEvent.ShipmentPackageContentStateCreated> getShipmentPackageContentEvents();
         
@@ -77,7 +80,7 @@ public interface ShipmentPackageEvent extends Event
     }
 
 
-    interface ShipmentPackageStateMergePatched extends ShipmentPackageEvent
+    interface ShipmentPackageStateMergePatched extends ShipmentPackageStateEvent
     {
         Boolean getIsPropertyShipmentBoxTypeIdRemoved();
 
@@ -132,7 +135,7 @@ public interface ShipmentPackageEvent extends Event
 
     }
 
-    interface ShipmentPackageStateDeleted extends ShipmentPackageEvent
+    interface ShipmentPackageStateDeleted extends ShipmentPackageStateEvent
     {
         Iterable<ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved> getShipmentPackageContentEvents();
         

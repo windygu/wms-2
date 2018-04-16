@@ -33,102 +33,6 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String documentStatusId;
-
-    public String getDocumentStatusId()
-    {
-        return this.documentStatusId;
-    }
-
-    public void setDocumentStatusId(String documentStatusId)
-    {
-        this.documentStatusId = documentStatusId;
-    }
-
-    private String movementDocumentNumber;
-
-    public String getMovementDocumentNumber()
-    {
-        return this.movementDocumentNumber;
-    }
-
-    public void setMovementDocumentNumber(String movementDocumentNumber)
-    {
-        this.movementDocumentNumber = movementDocumentNumber;
-    }
-
-    private Boolean isApproved;
-
-    public Boolean getIsApproved()
-    {
-        return this.isApproved;
-    }
-
-    public void setIsApproved(Boolean isApproved)
-    {
-        this.isApproved = isApproved;
-    }
-
-    private BigDecimal approvalAmount;
-
-    public BigDecimal getApprovalAmount()
-    {
-        return this.approvalAmount;
-    }
-
-    public void setApprovalAmount(BigDecimal approvalAmount)
-    {
-        this.approvalAmount = approvalAmount;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private String processing;
-
-    public String getProcessing()
-    {
-        return this.processing;
-    }
-
-    public void setProcessing(String processing)
-    {
-        this.processing = processing;
-    }
-
-    private String documentTypeId;
-
-    public String getDocumentTypeId()
-    {
-        return this.documentTypeId;
-    }
-
-    public void setDocumentTypeId(String documentTypeId)
-    {
-        this.documentTypeId = documentTypeId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -151,18 +55,6 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -225,7 +117,121 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
     public abstract String getEventType();
 
 
-    public static abstract class AbstractMovementConfirmationStateCreated extends AbstractMovementConfirmationEvent implements MovementConfirmationEvent.MovementConfirmationStateCreated, Saveable
+    public static abstract class AbstractMovementConfirmationStateEvent extends AbstractMovementConfirmationEvent implements MovementConfirmationEvent.MovementConfirmationStateEvent {
+        private String documentStatusId;
+
+        public String getDocumentStatusId()
+        {
+            return this.documentStatusId;
+        }
+
+        public void setDocumentStatusId(String documentStatusId)
+        {
+            this.documentStatusId = documentStatusId;
+        }
+
+        private String movementDocumentNumber;
+
+        public String getMovementDocumentNumber()
+        {
+            return this.movementDocumentNumber;
+        }
+
+        public void setMovementDocumentNumber(String movementDocumentNumber)
+        {
+            this.movementDocumentNumber = movementDocumentNumber;
+        }
+
+        private Boolean isApproved;
+
+        public Boolean getIsApproved()
+        {
+            return this.isApproved;
+        }
+
+        public void setIsApproved(Boolean isApproved)
+        {
+            this.isApproved = isApproved;
+        }
+
+        private BigDecimal approvalAmount;
+
+        public BigDecimal getApprovalAmount()
+        {
+            return this.approvalAmount;
+        }
+
+        public void setApprovalAmount(BigDecimal approvalAmount)
+        {
+            this.approvalAmount = approvalAmount;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private String processing;
+
+        public String getProcessing()
+        {
+            return this.processing;
+        }
+
+        public void setProcessing(String processing)
+        {
+            this.processing = processing;
+        }
+
+        private String documentTypeId;
+
+        public String getDocumentTypeId()
+        {
+            return this.documentTypeId;
+        }
+
+        public void setDocumentTypeId(String documentTypeId)
+        {
+            this.documentTypeId = documentTypeId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractMovementConfirmationStateEvent(MovementConfirmationEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractMovementConfirmationStateCreated extends AbstractMovementConfirmationStateEvent implements MovementConfirmationEvent.MovementConfirmationStateCreated, Saveable
     {
         public AbstractMovementConfirmationStateCreated() {
             this(new MovementConfirmationEventId());
@@ -290,7 +296,7 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
     }
 
 
-    public static abstract class AbstractMovementConfirmationStateMergePatched extends AbstractMovementConfirmationEvent implements MovementConfirmationEvent.MovementConfirmationStateMergePatched, Saveable
+    public static abstract class AbstractMovementConfirmationStateMergePatched extends AbstractMovementConfirmationStateEvent implements MovementConfirmationEvent.MovementConfirmationStateMergePatched, Saveable
     {
         public AbstractMovementConfirmationStateMergePatched() {
             this(new MovementConfirmationEventId());
@@ -445,7 +451,7 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
     }
 
 
-    public static abstract class AbstractMovementConfirmationStateDeleted extends AbstractMovementConfirmationEvent implements MovementConfirmationEvent.MovementConfirmationStateDeleted, Saveable
+    public static abstract class AbstractMovementConfirmationStateDeleted extends AbstractMovementConfirmationStateEvent implements MovementConfirmationEvent.MovementConfirmationStateDeleted, Saveable
     {
         public AbstractMovementConfirmationStateDeleted() {
             this(new MovementConfirmationEventId());

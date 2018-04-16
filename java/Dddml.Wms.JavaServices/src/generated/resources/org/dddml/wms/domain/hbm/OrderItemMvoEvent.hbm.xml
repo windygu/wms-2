@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractOrderItemMvoEvent$AbstractOrderItemMvoStateEvent" abstract="true">
+
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="externalProductId" ><column name="ExternalProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
@@ -82,12 +91,6 @@
 	<property name="orderUpdatedBy" ></property>
 	<property name="orderUpdatedAt" type="timestamp"><column name="OrderUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="orderActive" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractOrderItemMvoEvent$SimpleOrderItemMvoStateCreated" discriminator-value="Created">
     	
@@ -230,6 +233,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

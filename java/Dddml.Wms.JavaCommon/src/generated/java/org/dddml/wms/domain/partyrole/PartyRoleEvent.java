@@ -21,21 +21,24 @@ public interface PartyRoleEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PartyRoleStateCreated extends PartyRoleEvent
+    interface PartyRoleStateEvent extends PartyRoleEvent {
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PartyRoleStateCreated extends PartyRoleStateEvent
     {
     
     }
 
 
-    interface PartyRoleStateMergePatched extends PartyRoleEvent
+    interface PartyRoleStateMergePatched extends PartyRoleStateEvent
     {
         Boolean getIsPropertyActiveRemoved();
 
@@ -44,7 +47,7 @@ public interface PartyRoleEvent extends Event
 
     }
 
-    interface PartyRoleStateDeleted extends PartyRoleEvent
+    interface PartyRoleStateDeleted extends PartyRoleStateEvent
     {
     }
 

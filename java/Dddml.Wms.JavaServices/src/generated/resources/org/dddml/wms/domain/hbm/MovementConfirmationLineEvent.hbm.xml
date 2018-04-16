@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractMovementConfirmationLineEvent$AbstractMovementConfirmationLineStateEvent" abstract="true">
+
 	<property name="movementLineNumber" ></property>
 	<property name="targetQuantity" ></property>
 	<property name="confirmedQuantity" ></property>
@@ -24,12 +33,6 @@
 	<property name="description" ></property>
 	<property name="processed" ></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <property name="version" column="Version" not-null="true" />
 
@@ -63,6 +66,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

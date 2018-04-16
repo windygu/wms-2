@@ -32,54 +32,6 @@ public abstract class AbstractShipmentPackageContentEvent extends AbstractEvent 
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    private String subProductId;
-
-    public String getSubProductId()
-    {
-        return this.subProductId;
-    }
-
-    public void setSubProductId(String subProductId)
-    {
-        this.subProductId = subProductId;
-    }
-
-    private java.math.BigDecimal subProductQuantity;
-
-    public java.math.BigDecimal getSubProductQuantity()
-    {
-        return this.subProductQuantity;
-    }
-
-    public void setSubProductQuantity(java.math.BigDecimal subProductQuantity)
-    {
-        this.subProductQuantity = subProductQuantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -104,18 +56,6 @@ public abstract class AbstractShipmentPackageContentEvent extends AbstractEvent 
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -138,7 +78,73 @@ public abstract class AbstractShipmentPackageContentEvent extends AbstractEvent 
     public abstract String getEventType();
 
 
-    public static abstract class AbstractShipmentPackageContentStateCreated extends AbstractShipmentPackageContentEvent implements ShipmentPackageContentEvent.ShipmentPackageContentStateCreated
+    public static abstract class AbstractShipmentPackageContentStateEvent extends AbstractShipmentPackageContentEvent implements ShipmentPackageContentEvent.ShipmentPackageContentStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private String subProductId;
+
+        public String getSubProductId()
+        {
+            return this.subProductId;
+        }
+
+        public void setSubProductId(String subProductId)
+        {
+            this.subProductId = subProductId;
+        }
+
+        private java.math.BigDecimal subProductQuantity;
+
+        public java.math.BigDecimal getSubProductQuantity()
+        {
+            return this.subProductQuantity;
+        }
+
+        public void setSubProductQuantity(java.math.BigDecimal subProductQuantity)
+        {
+            this.subProductQuantity = subProductQuantity;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractShipmentPackageContentStateEvent(ShipmentPackageContentEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractShipmentPackageContentStateCreated extends AbstractShipmentPackageContentStateEvent implements ShipmentPackageContentEvent.ShipmentPackageContentStateCreated
     {
         public AbstractShipmentPackageContentStateCreated() {
             this(new ShipmentPackageContentEventId());
@@ -155,7 +161,7 @@ public abstract class AbstractShipmentPackageContentEvent extends AbstractEvent 
     }
 
 
-    public static abstract class AbstractShipmentPackageContentStateMergePatched extends AbstractShipmentPackageContentEvent implements ShipmentPackageContentEvent.ShipmentPackageContentStateMergePatched
+    public static abstract class AbstractShipmentPackageContentStateMergePatched extends AbstractShipmentPackageContentStateEvent implements ShipmentPackageContentEvent.ShipmentPackageContentStateMergePatched
     {
         public AbstractShipmentPackageContentStateMergePatched() {
             this(new ShipmentPackageContentEventId());
@@ -212,7 +218,7 @@ public abstract class AbstractShipmentPackageContentEvent extends AbstractEvent 
     }
 
 
-    public static abstract class AbstractShipmentPackageContentStateRemoved extends AbstractShipmentPackageContentEvent implements ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved
+    public static abstract class AbstractShipmentPackageContentStateRemoved extends AbstractShipmentPackageContentStateEvent implements ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved
     {
         public AbstractShipmentPackageContentStateRemoved() {
             this(new ShipmentPackageContentEventId());

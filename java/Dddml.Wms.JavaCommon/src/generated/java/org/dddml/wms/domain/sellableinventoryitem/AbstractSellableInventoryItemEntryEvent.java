@@ -41,36 +41,6 @@ public abstract class AbstractSellableInventoryItemEntryEvent extends AbstractEv
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    public Long getVersion()
-    {
-        return this.state.getVersion();
-    }
-
-    public void setVersion(Long version)
-    {
-        this.state.setVersion(version);
-    }
-
-    public BigDecimal getSellableQuantity()
-    {
-        return this.state.getSellableQuantity();
-    }
-
-    public void setSellableQuantity(BigDecimal sellableQuantity)
-    {
-        this.state.setSellableQuantity(sellableQuantity);
-    }
-
-    public InventoryPRTriggeredId getSourceEventId()
-    {
-        return this.state.getSourceEventId();
-    }
-
-    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
-    {
-        this.state.setSourceEventId(sourceEventId);
-    }
-
     public String getCreatedBy()
     {
         return this.state.getCreatedBy();
@@ -118,7 +88,47 @@ public abstract class AbstractSellableInventoryItemEntryEvent extends AbstractEv
     public abstract String getEventType();
 
 
-    public static abstract class AbstractSellableInventoryItemEntryStateCreated extends AbstractSellableInventoryItemEntryEvent implements SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated
+    public static abstract class AbstractSellableInventoryItemEntryStateEvent extends AbstractSellableInventoryItemEntryEvent implements SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateEvent {
+        public Long getVersion()
+        {
+            return this.getSellableInventoryItemEntryState().getVersion();
+        }
+
+        public void setVersion(Long version)
+        {
+            this.getSellableInventoryItemEntryState().setVersion(version);
+        }
+
+        public BigDecimal getSellableQuantity()
+        {
+            return this.getSellableInventoryItemEntryState().getSellableQuantity();
+        }
+
+        public void setSellableQuantity(BigDecimal sellableQuantity)
+        {
+            this.getSellableInventoryItemEntryState().setSellableQuantity(sellableQuantity);
+        }
+
+        public InventoryPRTriggeredId getSourceEventId()
+        {
+            return this.getSellableInventoryItemEntryState().getSourceEventId();
+        }
+
+        public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
+        {
+            this.getSellableInventoryItemEntryState().setSourceEventId(sourceEventId);
+        }
+
+        protected AbstractSellableInventoryItemEntryStateEvent(SellableInventoryItemEntryEventId eventId) {
+            super(eventId);
+        }
+
+        public AbstractSellableInventoryItemEntryStateEvent(SellableInventoryItemEntryState s) {
+            super(s);
+        }
+    }
+
+    public static abstract class AbstractSellableInventoryItemEntryStateCreated extends AbstractSellableInventoryItemEntryStateEvent implements SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated
     {
         public AbstractSellableInventoryItemEntryStateCreated() {
             this(new SellableInventoryItemEntryEventId());

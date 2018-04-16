@@ -13,82 +13,6 @@ public interface ShipmentReceiptEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    String getLocatorId();
-
-    void setLocatorId(String locatorId);
-
-    String getShipmentItemSeqId();
-
-    void setShipmentItemSeqId(String shipmentItemSeqId);
-
-    String getShipmentPackageSeqId();
-
-    void setShipmentPackageSeqId(String shipmentPackageSeqId);
-
-    String getOrderId();
-
-    void setOrderId(String orderId);
-
-    String getOrderItemSeqId();
-
-    void setOrderItemSeqId(String orderItemSeqId);
-
-    String getReturnId();
-
-    void setReturnId(String returnId);
-
-    String getReturnItemSeqId();
-
-    void setReturnItemSeqId(String returnItemSeqId);
-
-    String getRejectionReasonId();
-
-    void setRejectionReasonId(String rejectionReasonId);
-
-    String getDamageStatusId();
-
-    void setDamageStatusId(String damageStatusId);
-
-    String getDamageReasonId();
-
-    void setDamageReasonId(String damageReasonId);
-
-    String getReceivedBy();
-
-    void setReceivedBy(String receivedBy);
-
-    java.sql.Timestamp getDatetimeReceived();
-
-    void setDatetimeReceived(java.sql.Timestamp datetimeReceived);
-
-    String getItemDescription();
-
-    void setItemDescription(String itemDescription);
-
-    java.math.BigDecimal getAcceptedQuantity();
-
-    void setAcceptedQuantity(java.math.BigDecimal acceptedQuantity);
-
-    java.math.BigDecimal getRejectedQuantity();
-
-    void setRejectedQuantity(java.math.BigDecimal rejectedQuantity);
-
-    java.math.BigDecimal getDamagedQuantity();
-
-    void setDamagedQuantity(java.math.BigDecimal damagedQuantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -97,21 +21,100 @@ public interface ShipmentReceiptEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ShipmentReceiptStateCreated extends ShipmentReceiptEvent
+    interface ShipmentReceiptStateEvent extends ShipmentReceiptEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getProductId();
+
+        void setProductId(String productId);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        String getLocatorId();
+
+        void setLocatorId(String locatorId);
+
+        String getShipmentItemSeqId();
+
+        void setShipmentItemSeqId(String shipmentItemSeqId);
+
+        String getShipmentPackageSeqId();
+
+        void setShipmentPackageSeqId(String shipmentPackageSeqId);
+
+        String getOrderId();
+
+        void setOrderId(String orderId);
+
+        String getOrderItemSeqId();
+
+        void setOrderItemSeqId(String orderItemSeqId);
+
+        String getReturnId();
+
+        void setReturnId(String returnId);
+
+        String getReturnItemSeqId();
+
+        void setReturnItemSeqId(String returnItemSeqId);
+
+        String getRejectionReasonId();
+
+        void setRejectionReasonId(String rejectionReasonId);
+
+        String getDamageStatusId();
+
+        void setDamageStatusId(String damageStatusId);
+
+        String getDamageReasonId();
+
+        void setDamageReasonId(String damageReasonId);
+
+        String getReceivedBy();
+
+        void setReceivedBy(String receivedBy);
+
+        java.sql.Timestamp getDatetimeReceived();
+
+        void setDatetimeReceived(java.sql.Timestamp datetimeReceived);
+
+        String getItemDescription();
+
+        void setItemDescription(String itemDescription);
+
+        java.math.BigDecimal getAcceptedQuantity();
+
+        void setAcceptedQuantity(java.math.BigDecimal acceptedQuantity);
+
+        java.math.BigDecimal getRejectedQuantity();
+
+        void setRejectedQuantity(java.math.BigDecimal rejectedQuantity);
+
+        java.math.BigDecimal getDamagedQuantity();
+
+        void setDamagedQuantity(java.math.BigDecimal damagedQuantity);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ShipmentReceiptStateCreated extends ShipmentReceiptStateEvent
     {
     
     }
 
 
-    interface ShipmentReceiptStateMergePatched extends ShipmentReceiptEvent
+    interface ShipmentReceiptStateMergePatched extends ShipmentReceiptStateEvent
     {
         Boolean getIsPropertyProductIdRemoved();
 

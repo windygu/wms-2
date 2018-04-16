@@ -13,46 +13,6 @@ public interface LocatorEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getWarehouseId();
-
-    void setWarehouseId(String warehouseId);
-
-    String getParentLocatorId();
-
-    void setParentLocatorId(String parentLocatorId);
-
-    String getLocatorType();
-
-    void setLocatorType(String locatorType);
-
-    String getPriorityNumber();
-
-    void setPriorityNumber(String priorityNumber);
-
-    Boolean getIsDefault();
-
-    void setIsDefault(Boolean isDefault);
-
-    String getX();
-
-    void setX(String x);
-
-    String getY();
-
-    void setY(String y);
-
-    String getZ();
-
-    void setZ(String z);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getLocatorTypeId();
-
-    void setLocatorTypeId(String locatorTypeId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -61,21 +21,64 @@ public interface LocatorEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface LocatorStateCreated extends LocatorEvent
+    interface LocatorStateEvent extends LocatorEvent {
+        String getWarehouseId();
+
+        void setWarehouseId(String warehouseId);
+
+        String getParentLocatorId();
+
+        void setParentLocatorId(String parentLocatorId);
+
+        String getLocatorType();
+
+        void setLocatorType(String locatorType);
+
+        String getPriorityNumber();
+
+        void setPriorityNumber(String priorityNumber);
+
+        Boolean getIsDefault();
+
+        void setIsDefault(Boolean isDefault);
+
+        String getX();
+
+        void setX(String x);
+
+        String getY();
+
+        void setY(String y);
+
+        String getZ();
+
+        void setZ(String z);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getLocatorTypeId();
+
+        void setLocatorTypeId(String locatorTypeId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface LocatorStateCreated extends LocatorStateEvent
     {
     
     }
 
 
-    interface LocatorStateMergePatched extends LocatorEvent
+    interface LocatorStateMergePatched extends LocatorStateEvent
     {
         Boolean getIsPropertyWarehouseIdRemoved();
 
@@ -124,7 +127,7 @@ public interface LocatorEvent extends Event
 
     }
 
-    interface LocatorStateDeleted extends LocatorEvent
+    interface LocatorStateDeleted extends LocatorStateEvent
     {
     }
 

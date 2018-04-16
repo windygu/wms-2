@@ -13,10 +13,6 @@ public interface OrderShipmentEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -25,21 +21,28 @@ public interface OrderShipmentEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrderShipmentStateCreated extends OrderShipmentEvent
+    interface OrderShipmentStateEvent extends OrderShipmentEvent {
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface OrderShipmentStateCreated extends OrderShipmentStateEvent
     {
     
     }
 
 
-    interface OrderShipmentStateMergePatched extends OrderShipmentEvent
+    interface OrderShipmentStateMergePatched extends OrderShipmentStateEvent
     {
         Boolean getIsPropertyQuantityRemoved();
 

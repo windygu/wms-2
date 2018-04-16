@@ -13,22 +13,6 @@ public interface AttributeValueEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getAttributeValueName();
-
-    void setAttributeValueName(String attributeValueName);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getReferenceId();
-
-    void setReferenceId(String referenceId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -37,21 +21,40 @@ public interface AttributeValueEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeValueStateCreated extends AttributeValueEvent
+    interface AttributeValueStateEvent extends AttributeValueEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getAttributeValueName();
+
+        void setAttributeValueName(String attributeValueName);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getReferenceId();
+
+        void setReferenceId(String referenceId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface AttributeValueStateCreated extends AttributeValueStateEvent
     {
     
     }
 
 
-    interface AttributeValueStateMergePatched extends AttributeValueEvent
+    interface AttributeValueStateMergePatched extends AttributeValueStateEvent
     {
         Boolean getIsPropertyAttributeValueNameRemoved();
 
@@ -72,7 +75,7 @@ public interface AttributeValueEvent extends Event
 
     }
 
-    interface AttributeValueStateRemoved extends AttributeValueEvent
+    interface AttributeValueStateRemoved extends AttributeValueStateEvent
     {
     }
 

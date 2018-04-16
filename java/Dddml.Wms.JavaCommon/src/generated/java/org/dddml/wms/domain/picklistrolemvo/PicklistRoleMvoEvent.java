@@ -18,77 +18,80 @@ public interface PicklistRoleMvoEvent extends Event
 
     void setCreatedByUserLogin(String createdByUserLogin);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
     Date getCreatedAt();
 
     void setCreatedAt(Date createdAt);
-
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getPicklistDescription();
-
-    void setPicklistDescription(String picklistDescription);
-
-    String getPicklistFacilityId();
-
-    void setPicklistFacilityId(String picklistFacilityId);
-
-    String getPicklistShipmentMethodTypeId();
-
-    void setPicklistShipmentMethodTypeId(String picklistShipmentMethodTypeId);
-
-    String getPicklistStatusId();
-
-    void setPicklistStatusId(String picklistStatusId);
-
-    java.sql.Timestamp getPicklistPicklistDate();
-
-    void setPicklistPicklistDate(java.sql.Timestamp picklistPicklistDate);
-
-    Long getPicklistPickwaveId();
-
-    void setPicklistPickwaveId(Long picklistPickwaveId);
-
-    String getPicklistCreatedBy();
-
-    void setPicklistCreatedBy(String picklistCreatedBy);
-
-    Date getPicklistCreatedAt();
-
-    void setPicklistCreatedAt(Date picklistCreatedAt);
-
-    String getPicklistUpdatedBy();
-
-    void setPicklistUpdatedBy(String picklistUpdatedBy);
-
-    Date getPicklistUpdatedAt();
-
-    void setPicklistUpdatedAt(Date picklistUpdatedAt);
-
-    Boolean getPicklistActive();
-
-    void setPicklistActive(Boolean picklistActive);
-
-    Boolean getPicklistDeleted();
-
-    void setPicklistDeleted(Boolean picklistDeleted);
 
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PicklistRoleMvoStateCreated extends PicklistRoleMvoEvent
+    interface PicklistRoleMvoStateEvent extends PicklistRoleMvoEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getPicklistDescription();
+
+        void setPicklistDescription(String picklistDescription);
+
+        String getPicklistFacilityId();
+
+        void setPicklistFacilityId(String picklistFacilityId);
+
+        String getPicklistShipmentMethodTypeId();
+
+        void setPicklistShipmentMethodTypeId(String picklistShipmentMethodTypeId);
+
+        String getPicklistStatusId();
+
+        void setPicklistStatusId(String picklistStatusId);
+
+        java.sql.Timestamp getPicklistPicklistDate();
+
+        void setPicklistPicklistDate(java.sql.Timestamp picklistPicklistDate);
+
+        Long getPicklistPickwaveId();
+
+        void setPicklistPickwaveId(Long picklistPickwaveId);
+
+        String getPicklistCreatedBy();
+
+        void setPicklistCreatedBy(String picklistCreatedBy);
+
+        Date getPicklistCreatedAt();
+
+        void setPicklistCreatedAt(Date picklistCreatedAt);
+
+        String getPicklistUpdatedBy();
+
+        void setPicklistUpdatedBy(String picklistUpdatedBy);
+
+        Date getPicklistUpdatedAt();
+
+        void setPicklistUpdatedAt(Date picklistUpdatedAt);
+
+        Boolean getPicklistActive();
+
+        void setPicklistActive(Boolean picklistActive);
+
+        Boolean getPicklistDeleted();
+
+        void setPicklistDeleted(Boolean picklistDeleted);
+
+    }
+
+    interface PicklistRoleMvoStateCreated extends PicklistRoleMvoStateEvent
     {
     
     }
 
 
-    interface PicklistRoleMvoStateMergePatched extends PicklistRoleMvoEvent
+    interface PicklistRoleMvoStateMergePatched extends PicklistRoleMvoStateEvent
     {
         Boolean getIsPropertyVersionRemoved();
 
@@ -149,7 +152,7 @@ public interface PicklistRoleMvoEvent extends Event
 
     }
 
-    interface PicklistRoleMvoStateDeleted extends PicklistRoleMvoEvent
+    interface PicklistRoleMvoStateDeleted extends PicklistRoleMvoStateEvent
     {
     }
 

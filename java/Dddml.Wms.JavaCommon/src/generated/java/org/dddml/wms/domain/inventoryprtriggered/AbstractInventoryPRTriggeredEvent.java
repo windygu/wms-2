@@ -32,18 +32,6 @@ public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent im
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Boolean isProcessed;
-
-    public Boolean getIsProcessed()
-    {
-        return this.isProcessed;
-    }
-
-    public void setIsProcessed(Boolean isProcessed)
-    {
-        this.isProcessed = isProcessed;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -90,7 +78,25 @@ public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent im
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryPRTriggeredStateCreated extends AbstractInventoryPRTriggeredEvent implements InventoryPRTriggeredEvent.InventoryPRTriggeredStateCreated
+    public static abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractInventoryPRTriggeredEvent implements InventoryPRTriggeredEvent.InventoryPRTriggeredStateEvent {
+        private Boolean isProcessed;
+
+        public Boolean getIsProcessed()
+        {
+            return this.isProcessed;
+        }
+
+        public void setIsProcessed(Boolean isProcessed)
+        {
+            this.isProcessed = isProcessed;
+        }
+
+        protected AbstractInventoryPRTriggeredStateEvent(InventoryPRTriggeredEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractInventoryPRTriggeredStateCreated extends AbstractInventoryPRTriggeredStateEvent implements InventoryPRTriggeredEvent.InventoryPRTriggeredStateCreated
     {
         public AbstractInventoryPRTriggeredStateCreated() {
             this(new InventoryPRTriggeredEventId());
@@ -107,7 +113,7 @@ public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent im
     }
 
 
-    public static abstract class AbstractInventoryPRTriggeredStateMergePatched extends AbstractInventoryPRTriggeredEvent implements InventoryPRTriggeredEvent.InventoryPRTriggeredStateMergePatched
+    public static abstract class AbstractInventoryPRTriggeredStateMergePatched extends AbstractInventoryPRTriggeredStateEvent implements InventoryPRTriggeredEvent.InventoryPRTriggeredStateMergePatched
     {
         public AbstractInventoryPRTriggeredStateMergePatched() {
             this(new InventoryPRTriggeredEventId());

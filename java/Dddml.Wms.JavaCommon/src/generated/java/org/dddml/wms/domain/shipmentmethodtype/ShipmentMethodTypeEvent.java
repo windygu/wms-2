@@ -13,14 +13,6 @@ public interface ShipmentMethodTypeEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDescription();
-
-    void setDescription(String description);
-
-    Long getSequenceNum();
-
-    void setSequenceNum(Long sequenceNum);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,21 +21,32 @@ public interface ShipmentMethodTypeEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ShipmentMethodTypeStateCreated extends ShipmentMethodTypeEvent
+    interface ShipmentMethodTypeStateEvent extends ShipmentMethodTypeEvent {
+        String getDescription();
+
+        void setDescription(String description);
+
+        Long getSequenceNum();
+
+        void setSequenceNum(Long sequenceNum);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ShipmentMethodTypeStateCreated extends ShipmentMethodTypeStateEvent
     {
     
     }
 
 
-    interface ShipmentMethodTypeStateMergePatched extends ShipmentMethodTypeEvent
+    interface ShipmentMethodTypeStateMergePatched extends ShipmentMethodTypeStateEvent
     {
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -60,7 +63,7 @@ public interface ShipmentMethodTypeEvent extends Event
 
     }
 
-    interface ShipmentMethodTypeStateDeleted extends ShipmentMethodTypeEvent
+    interface ShipmentMethodTypeStateDeleted extends ShipmentMethodTypeStateEvent
     {
     }
 

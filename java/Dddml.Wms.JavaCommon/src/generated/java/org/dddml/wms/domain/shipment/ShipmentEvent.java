@@ -13,106 +13,6 @@ public interface ShipmentEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getShipmentTypeId();
-
-    void setShipmentTypeId(String shipmentTypeId);
-
-    String getStatusId();
-
-    void setStatusId(String statusId);
-
-    String getPrimaryOrderId();
-
-    void setPrimaryOrderId(String primaryOrderId);
-
-    String getPrimaryReturnId();
-
-    void setPrimaryReturnId(String primaryReturnId);
-
-    Long getPrimaryShipGroupSeqId();
-
-    void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
-
-    String getPicklistBinId();
-
-    void setPicklistBinId(String picklistBinId);
-
-    java.sql.Timestamp getEstimatedReadyDate();
-
-    void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);
-
-    java.sql.Timestamp getEstimatedShipDate();
-
-    void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
-
-    String getEstimatedShipWorkEffId();
-
-    void setEstimatedShipWorkEffId(String estimatedShipWorkEffId);
-
-    java.sql.Timestamp getEstimatedArrivalDate();
-
-    void setEstimatedArrivalDate(java.sql.Timestamp estimatedArrivalDate);
-
-    String getEstimatedArrivalWorkEffId();
-
-    void setEstimatedArrivalWorkEffId(String estimatedArrivalWorkEffId);
-
-    java.sql.Timestamp getLatestCancelDate();
-
-    void setLatestCancelDate(java.sql.Timestamp latestCancelDate);
-
-    java.math.BigDecimal getEstimatedShipCost();
-
-    void setEstimatedShipCost(java.math.BigDecimal estimatedShipCost);
-
-    String getCurrencyUomId();
-
-    void setCurrencyUomId(String currencyUomId);
-
-    String getHandlingInstructions();
-
-    void setHandlingInstructions(String handlingInstructions);
-
-    String getOriginFacilityId();
-
-    void setOriginFacilityId(String originFacilityId);
-
-    String getDestinationFacilityId();
-
-    void setDestinationFacilityId(String destinationFacilityId);
-
-    String getOriginContactMechId();
-
-    void setOriginContactMechId(String originContactMechId);
-
-    String getOriginTelecomNumberId();
-
-    void setOriginTelecomNumberId(String originTelecomNumberId);
-
-    String getDestinationContactMechId();
-
-    void setDestinationContactMechId(String destinationContactMechId);
-
-    String getDestinationTelecomNumberId();
-
-    void setDestinationTelecomNumberId(String destinationTelecomNumberId);
-
-    String getPartyIdTo();
-
-    void setPartyIdTo(String partyIdTo);
-
-    String getPartyIdFrom();
-
-    void setPartyIdFrom(String partyIdFrom);
-
-    java.math.BigDecimal getAdditionalShippingCharge();
-
-    void setAdditionalShippingCharge(java.math.BigDecimal additionalShippingCharge);
-
-    String getAddtlShippingChargeDesc();
-
-    void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -121,15 +21,118 @@ public interface ShipmentEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ShipmentStateCreated extends ShipmentEvent
+    interface ShipmentStateEvent extends ShipmentEvent {
+        String getShipmentTypeId();
+
+        void setShipmentTypeId(String shipmentTypeId);
+
+        String getStatusId();
+
+        void setStatusId(String statusId);
+
+        String getPrimaryOrderId();
+
+        void setPrimaryOrderId(String primaryOrderId);
+
+        String getPrimaryReturnId();
+
+        void setPrimaryReturnId(String primaryReturnId);
+
+        Long getPrimaryShipGroupSeqId();
+
+        void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+
+        String getPicklistBinId();
+
+        void setPicklistBinId(String picklistBinId);
+
+        java.sql.Timestamp getEstimatedReadyDate();
+
+        void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);
+
+        java.sql.Timestamp getEstimatedShipDate();
+
+        void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
+
+        String getEstimatedShipWorkEffId();
+
+        void setEstimatedShipWorkEffId(String estimatedShipWorkEffId);
+
+        java.sql.Timestamp getEstimatedArrivalDate();
+
+        void setEstimatedArrivalDate(java.sql.Timestamp estimatedArrivalDate);
+
+        String getEstimatedArrivalWorkEffId();
+
+        void setEstimatedArrivalWorkEffId(String estimatedArrivalWorkEffId);
+
+        java.sql.Timestamp getLatestCancelDate();
+
+        void setLatestCancelDate(java.sql.Timestamp latestCancelDate);
+
+        java.math.BigDecimal getEstimatedShipCost();
+
+        void setEstimatedShipCost(java.math.BigDecimal estimatedShipCost);
+
+        String getCurrencyUomId();
+
+        void setCurrencyUomId(String currencyUomId);
+
+        String getHandlingInstructions();
+
+        void setHandlingInstructions(String handlingInstructions);
+
+        String getOriginFacilityId();
+
+        void setOriginFacilityId(String originFacilityId);
+
+        String getDestinationFacilityId();
+
+        void setDestinationFacilityId(String destinationFacilityId);
+
+        String getOriginContactMechId();
+
+        void setOriginContactMechId(String originContactMechId);
+
+        String getOriginTelecomNumberId();
+
+        void setOriginTelecomNumberId(String originTelecomNumberId);
+
+        String getDestinationContactMechId();
+
+        void setDestinationContactMechId(String destinationContactMechId);
+
+        String getDestinationTelecomNumberId();
+
+        void setDestinationTelecomNumberId(String destinationTelecomNumberId);
+
+        String getPartyIdTo();
+
+        void setPartyIdTo(String partyIdTo);
+
+        String getPartyIdFrom();
+
+        void setPartyIdFrom(String partyIdFrom);
+
+        java.math.BigDecimal getAdditionalShippingCharge();
+
+        void setAdditionalShippingCharge(java.math.BigDecimal additionalShippingCharge);
+
+        String getAddtlShippingChargeDesc();
+
+        void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ShipmentStateCreated extends ShipmentStateEvent
     {
         Iterable<ShipmentItemEvent.ShipmentItemStateCreated> getShipmentItemEvents();
         
@@ -153,7 +156,7 @@ public interface ShipmentEvent extends Event
     }
 
 
-    interface ShipmentStateMergePatched extends ShipmentEvent
+    interface ShipmentStateMergePatched extends ShipmentStateEvent
     {
         Boolean getIsPropertyShipmentTypeIdRemoved();
 

@@ -13,62 +13,6 @@ public interface ItemIssuanceEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getOrderId();
-
-    void setOrderId(String orderId);
-
-    String getOrderItemSeqId();
-
-    void setOrderItemSeqId(String orderItemSeqId);
-
-    Long getShipGroupSeqId();
-
-    void setShipGroupSeqId(Long shipGroupSeqId);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getLocatorId();
-
-    void setLocatorId(String locatorId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    String getShipmentItemSeqId();
-
-    void setShipmentItemSeqId(String shipmentItemSeqId);
-
-    String getFixedAssetId();
-
-    void setFixedAssetId(String fixedAssetId);
-
-    String getMaintHistSeqId();
-
-    void setMaintHistSeqId(String maintHistSeqId);
-
-    java.sql.Timestamp getIssuedDateTime();
-
-    void setIssuedDateTime(java.sql.Timestamp issuedDateTime);
-
-    String getIssuedByUserLoginId();
-
-    void setIssuedByUserLoginId(String issuedByUserLoginId);
-
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
-    java.math.BigDecimal getCancelQuantity();
-
-    void setCancelQuantity(java.math.BigDecimal cancelQuantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -77,21 +21,80 @@ public interface ItemIssuanceEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ItemIssuanceStateCreated extends ItemIssuanceEvent
+    interface ItemIssuanceStateEvent extends ItemIssuanceEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getOrderId();
+
+        void setOrderId(String orderId);
+
+        String getOrderItemSeqId();
+
+        void setOrderItemSeqId(String orderItemSeqId);
+
+        Long getShipGroupSeqId();
+
+        void setShipGroupSeqId(Long shipGroupSeqId);
+
+        String getProductId();
+
+        void setProductId(String productId);
+
+        String getLocatorId();
+
+        void setLocatorId(String locatorId);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        String getShipmentItemSeqId();
+
+        void setShipmentItemSeqId(String shipmentItemSeqId);
+
+        String getFixedAssetId();
+
+        void setFixedAssetId(String fixedAssetId);
+
+        String getMaintHistSeqId();
+
+        void setMaintHistSeqId(String maintHistSeqId);
+
+        java.sql.Timestamp getIssuedDateTime();
+
+        void setIssuedDateTime(java.sql.Timestamp issuedDateTime);
+
+        String getIssuedByUserLoginId();
+
+        void setIssuedByUserLoginId(String issuedByUserLoginId);
+
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        java.math.BigDecimal getCancelQuantity();
+
+        void setCancelQuantity(java.math.BigDecimal cancelQuantity);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ItemIssuanceStateCreated extends ItemIssuanceStateEvent
     {
     
     }
 
 
-    interface ItemIssuanceStateMergePatched extends ItemIssuanceEvent
+    interface ItemIssuanceStateMergePatched extends ItemIssuanceStateEvent
     {
         Boolean getIsPropertyOrderIdRemoved();
 
@@ -152,7 +155,7 @@ public interface ItemIssuanceEvent extends Event
 
     }
 
-    interface ItemIssuanceStateRemoved extends ItemIssuanceEvent
+    interface ItemIssuanceStateRemoved extends ItemIssuanceStateEvent
     {
     }
 

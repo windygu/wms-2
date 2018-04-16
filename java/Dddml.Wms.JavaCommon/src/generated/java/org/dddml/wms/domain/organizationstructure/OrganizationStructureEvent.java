@@ -21,21 +21,24 @@ public interface OrganizationStructureEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrganizationStructureStateCreated extends OrganizationStructureEvent
+    interface OrganizationStructureStateEvent extends OrganizationStructureEvent {
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface OrganizationStructureStateCreated extends OrganizationStructureStateEvent
     {
     
     }
 
 
-    interface OrganizationStructureStateMergePatched extends OrganizationStructureEvent
+    interface OrganizationStructureStateMergePatched extends OrganizationStructureStateEvent
     {
         Boolean getIsPropertyActiveRemoved();
 
@@ -44,7 +47,7 @@ public interface OrganizationStructureEvent extends Event
 
     }
 
-    interface OrganizationStructureStateDeleted extends OrganizationStructureEvent
+    interface OrganizationStructureStateDeleted extends OrganizationStructureStateEvent
     {
     }
 

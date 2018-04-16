@@ -14,38 +14,6 @@ public interface MovementConfirmationLineEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getMovementLineNumber();
-
-    void setMovementLineNumber(String movementLineNumber);
-
-    BigDecimal getTargetQuantity();
-
-    void setTargetQuantity(BigDecimal targetQuantity);
-
-    BigDecimal getConfirmedQuantity();
-
-    void setConfirmedQuantity(BigDecimal confirmedQuantity);
-
-    BigDecimal getDifferenceQuantity();
-
-    void setDifferenceQuantity(BigDecimal differenceQuantity);
-
-    BigDecimal getScrappedQuantity();
-
-    void setScrappedQuantity(BigDecimal scrappedQuantity);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -54,21 +22,56 @@ public interface MovementConfirmationLineEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface MovementConfirmationLineStateCreated extends MovementConfirmationLineEvent
+    interface MovementConfirmationLineStateEvent extends MovementConfirmationLineEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getMovementLineNumber();
+
+        void setMovementLineNumber(String movementLineNumber);
+
+        BigDecimal getTargetQuantity();
+
+        void setTargetQuantity(BigDecimal targetQuantity);
+
+        BigDecimal getConfirmedQuantity();
+
+        void setConfirmedQuantity(BigDecimal confirmedQuantity);
+
+        BigDecimal getDifferenceQuantity();
+
+        void setDifferenceQuantity(BigDecimal differenceQuantity);
+
+        BigDecimal getScrappedQuantity();
+
+        void setScrappedQuantity(BigDecimal scrappedQuantity);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface MovementConfirmationLineStateCreated extends MovementConfirmationLineStateEvent
     {
     
     }
 
 
-    interface MovementConfirmationLineStateMergePatched extends MovementConfirmationLineEvent
+    interface MovementConfirmationLineStateMergePatched extends MovementConfirmationLineStateEvent
     {
         Boolean getIsPropertyMovementLineNumberRemoved();
 
@@ -105,7 +108,7 @@ public interface MovementConfirmationLineEvent extends Event
 
     }
 
-    interface MovementConfirmationLineStateRemoved extends MovementConfirmationLineEvent
+    interface MovementConfirmationLineStateRemoved extends MovementConfirmationLineStateEvent
     {
     }
 

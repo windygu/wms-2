@@ -16,10 +16,6 @@ public interface InventoryItemRequirementEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    BigDecimal getQuantity();
-
-    void setQuantity(BigDecimal quantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -32,7 +28,14 @@ public interface InventoryItemRequirementEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface InventoryItemRequirementStateCreated extends InventoryItemRequirementEvent
+    interface InventoryItemRequirementStateEvent extends InventoryItemRequirementEvent {
+        BigDecimal getQuantity();
+
+        void setQuantity(BigDecimal quantity);
+
+    }
+
+    interface InventoryItemRequirementStateCreated extends InventoryItemRequirementStateEvent
     {
         Iterable<InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated> getInventoryItemRequirementEntryEvents();
         
@@ -44,7 +47,7 @@ public interface InventoryItemRequirementEvent extends Event
     }
 
 
-    interface InventoryItemRequirementStateMergePatched extends InventoryItemRequirementEvent
+    interface InventoryItemRequirementStateMergePatched extends InventoryItemRequirementStateEvent
     {
         Boolean getIsPropertyQuantityRemoved();
 

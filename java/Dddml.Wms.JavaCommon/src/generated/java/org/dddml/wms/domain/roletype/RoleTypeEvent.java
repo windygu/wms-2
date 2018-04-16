@@ -13,18 +13,6 @@ public interface RoleTypeEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getParentTypeId();
-
-    void setParentTypeId(String parentTypeId);
-
-    String getHasTable();
-
-    void setHasTable(String hasTable);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -33,21 +21,36 @@ public interface RoleTypeEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface RoleTypeStateCreated extends RoleTypeEvent
+    interface RoleTypeStateEvent extends RoleTypeEvent {
+        String getParentTypeId();
+
+        void setParentTypeId(String parentTypeId);
+
+        String getHasTable();
+
+        void setHasTable(String hasTable);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface RoleTypeStateCreated extends RoleTypeStateEvent
     {
     
     }
 
 
-    interface RoleTypeStateMergePatched extends RoleTypeEvent
+    interface RoleTypeStateMergePatched extends RoleTypeStateEvent
     {
         Boolean getIsPropertyParentTypeIdRemoved();
 
@@ -68,7 +71,7 @@ public interface RoleTypeEvent extends Event
 
     }
 
-    interface RoleTypeStateDeleted extends RoleTypeEvent
+    interface RoleTypeStateDeleted extends RoleTypeStateEvent
     {
     }
 

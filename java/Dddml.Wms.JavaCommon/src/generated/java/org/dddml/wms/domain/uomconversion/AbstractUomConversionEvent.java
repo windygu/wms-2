@@ -32,54 +32,6 @@ public abstract class AbstractUomConversionEvent extends AbstractEvent implement
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Double conversionFactor;
-
-    public Double getConversionFactor()
-    {
-        return this.conversionFactor;
-    }
-
-    public void setConversionFactor(Double conversionFactor)
-    {
-        this.conversionFactor = conversionFactor;
-    }
-
-    private String customMethodId;
-
-    public String getCustomMethodId()
-    {
-        return this.customMethodId;
-    }
-
-    public void setCustomMethodId(String customMethodId)
-    {
-        this.customMethodId = customMethodId;
-    }
-
-    private Long decimalScale;
-
-    public Long getDecimalScale()
-    {
-        return this.decimalScale;
-    }
-
-    public void setDecimalScale(Long decimalScale)
-    {
-        this.decimalScale = decimalScale;
-    }
-
-    private String roundingMode;
-
-    public String getRoundingMode()
-    {
-        return this.roundingMode;
-    }
-
-    public void setRoundingMode(String roundingMode)
-    {
-        this.roundingMode = roundingMode;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -104,18 +56,6 @@ public abstract class AbstractUomConversionEvent extends AbstractEvent implement
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -138,7 +78,73 @@ public abstract class AbstractUomConversionEvent extends AbstractEvent implement
     public abstract String getEventType();
 
 
-    public static abstract class AbstractUomConversionStateCreated extends AbstractUomConversionEvent implements UomConversionEvent.UomConversionStateCreated
+    public static abstract class AbstractUomConversionStateEvent extends AbstractUomConversionEvent implements UomConversionEvent.UomConversionStateEvent {
+        private Double conversionFactor;
+
+        public Double getConversionFactor()
+        {
+            return this.conversionFactor;
+        }
+
+        public void setConversionFactor(Double conversionFactor)
+        {
+            this.conversionFactor = conversionFactor;
+        }
+
+        private String customMethodId;
+
+        public String getCustomMethodId()
+        {
+            return this.customMethodId;
+        }
+
+        public void setCustomMethodId(String customMethodId)
+        {
+            this.customMethodId = customMethodId;
+        }
+
+        private Long decimalScale;
+
+        public Long getDecimalScale()
+        {
+            return this.decimalScale;
+        }
+
+        public void setDecimalScale(Long decimalScale)
+        {
+            this.decimalScale = decimalScale;
+        }
+
+        private String roundingMode;
+
+        public String getRoundingMode()
+        {
+            return this.roundingMode;
+        }
+
+        public void setRoundingMode(String roundingMode)
+        {
+            this.roundingMode = roundingMode;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractUomConversionStateEvent(UomConversionEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractUomConversionStateCreated extends AbstractUomConversionStateEvent implements UomConversionEvent.UomConversionStateCreated
     {
         public AbstractUomConversionStateCreated() {
             this(new UomConversionEventId());
@@ -155,7 +161,7 @@ public abstract class AbstractUomConversionEvent extends AbstractEvent implement
     }
 
 
-    public static abstract class AbstractUomConversionStateMergePatched extends AbstractUomConversionEvent implements UomConversionEvent.UomConversionStateMergePatched
+    public static abstract class AbstractUomConversionStateMergePatched extends AbstractUomConversionStateEvent implements UomConversionEvent.UomConversionStateMergePatched
     {
         public AbstractUomConversionStateMergePatched() {
             this(new UomConversionEventId());
@@ -222,7 +228,7 @@ public abstract class AbstractUomConversionEvent extends AbstractEvent implement
     }
 
 
-    public static abstract class AbstractUomConversionStateDeleted extends AbstractUomConversionEvent implements UomConversionEvent.UomConversionStateDeleted
+    public static abstract class AbstractUomConversionStateDeleted extends AbstractUomConversionStateEvent implements UomConversionEvent.UomConversionStateDeleted
     {
         public AbstractUomConversionStateDeleted() {
             this(new UomConversionEventId());

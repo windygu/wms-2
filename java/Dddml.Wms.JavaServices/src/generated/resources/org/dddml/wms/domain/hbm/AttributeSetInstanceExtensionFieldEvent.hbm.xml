@@ -15,18 +15,21 @@
 
     <discriminator column="EventType" type="string" />
 
-	<property name="type" ></property>
-	<property name="length" ></property>
-	<property name="alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
-	<property name="description" ></property>
-	<property name="groupId" ></property>
-	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractAttributeSetInstanceExtensionFieldEvent$AbstractAttributeSetInstanceExtensionFieldStateEvent" abstract="true">
+
+	<property name="type" ></property>
+	<property name="length" ></property>
+	<property name="alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
+	<property name="description" ></property>
+	<property name="groupId" ></property>
+	<property name="active" ></property>
 
     <subclass name="AbstractAttributeSetInstanceExtensionFieldEvent$SimpleAttributeSetInstanceExtensionFieldStateCreated" discriminator-value="Created">
     	
@@ -54,6 +57,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

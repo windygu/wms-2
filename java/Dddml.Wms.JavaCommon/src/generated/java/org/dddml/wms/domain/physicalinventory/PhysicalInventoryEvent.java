@@ -15,62 +15,6 @@ public interface PhysicalInventoryEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
-
-    String getWarehouseId();
-
-    void setWarehouseId(String warehouseId);
-
-    String getLocatorIdPattern();
-
-    void setLocatorIdPattern(String locatorIdPattern);
-
-    String getProductIdPattern();
-
-    void setProductIdPattern(String productIdPattern);
-
-    Boolean getPosted();
-
-    void setPosted(Boolean posted);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getProcessing();
-
-    void setProcessing(String processing);
-
-    String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
-
-    Date getMovementDate();
-
-    void setMovementDate(Date movementDate);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
-
-    BigDecimal getApprovalAmount();
-
-    void setApprovalAmount(BigDecimal approvalAmount);
-
-    Boolean getIsQuantityUpdated();
-
-    void setIsQuantityUpdated(Boolean isQuantityUpdated);
-
-    String getReversalDocumentNumber();
-
-    void setReversalDocumentNumber(String reversalDocumentNumber);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -79,15 +23,74 @@ public interface PhysicalInventoryEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PhysicalInventoryStateCreated extends PhysicalInventoryEvent
+    interface PhysicalInventoryStateEvent extends PhysicalInventoryEvent {
+        String getDocumentStatusId();
+
+        void setDocumentStatusId(String documentStatusId);
+
+        String getWarehouseId();
+
+        void setWarehouseId(String warehouseId);
+
+        String getLocatorIdPattern();
+
+        void setLocatorIdPattern(String locatorIdPattern);
+
+        String getProductIdPattern();
+
+        void setProductIdPattern(String productIdPattern);
+
+        Boolean getPosted();
+
+        void setPosted(Boolean posted);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getProcessing();
+
+        void setProcessing(String processing);
+
+        String getDocumentTypeId();
+
+        void setDocumentTypeId(String documentTypeId);
+
+        Date getMovementDate();
+
+        void setMovementDate(Date movementDate);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getIsApproved();
+
+        void setIsApproved(Boolean isApproved);
+
+        BigDecimal getApprovalAmount();
+
+        void setApprovalAmount(BigDecimal approvalAmount);
+
+        Boolean getIsQuantityUpdated();
+
+        void setIsQuantityUpdated(Boolean isQuantityUpdated);
+
+        String getReversalDocumentNumber();
+
+        void setReversalDocumentNumber(String reversalDocumentNumber);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PhysicalInventoryStateCreated extends PhysicalInventoryStateEvent
     {
         Iterable<PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated> getPhysicalInventoryLineEvents();
         
@@ -99,7 +102,7 @@ public interface PhysicalInventoryEvent extends Event
     }
 
 
-    interface PhysicalInventoryStateMergePatched extends PhysicalInventoryEvent
+    interface PhysicalInventoryStateMergePatched extends PhysicalInventoryStateEvent
     {
         Boolean getIsPropertyDocumentStatusIdRemoved();
 

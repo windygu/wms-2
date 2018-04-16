@@ -35,18 +35,6 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal sellableQuantity;
-
-    public BigDecimal getSellableQuantity()
-    {
-        return this.sellableQuantity;
-    }
-
-    public void setSellableQuantity(BigDecimal sellableQuantity)
-    {
-        this.sellableQuantity = sellableQuantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -119,7 +107,25 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
     public abstract String getEventType();
 
 
-    public static abstract class AbstractSellableInventoryItemStateCreated extends AbstractSellableInventoryItemEvent implements SellableInventoryItemEvent.SellableInventoryItemStateCreated
+    public static abstract class AbstractSellableInventoryItemStateEvent extends AbstractSellableInventoryItemEvent implements SellableInventoryItemEvent.SellableInventoryItemStateEvent {
+        private BigDecimal sellableQuantity;
+
+        public BigDecimal getSellableQuantity()
+        {
+            return this.sellableQuantity;
+        }
+
+        public void setSellableQuantity(BigDecimal sellableQuantity)
+        {
+            this.sellableQuantity = sellableQuantity;
+        }
+
+        protected AbstractSellableInventoryItemStateEvent(SellableInventoryItemEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractSellableInventoryItemStateCreated extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemEvent.SellableInventoryItemStateCreated
     {
         public AbstractSellableInventoryItemStateCreated() {
             this(new SellableInventoryItemEventId());
@@ -163,7 +169,7 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
     }
 
 
-    public static abstract class AbstractSellableInventoryItemStateMergePatched extends AbstractSellableInventoryItemEvent implements SellableInventoryItemEvent.SellableInventoryItemStateMergePatched
+    public static abstract class AbstractSellableInventoryItemStateMergePatched extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemEvent.SellableInventoryItemStateMergePatched
     {
         public AbstractSellableInventoryItemStateMergePatched() {
             this(new SellableInventoryItemEventId());

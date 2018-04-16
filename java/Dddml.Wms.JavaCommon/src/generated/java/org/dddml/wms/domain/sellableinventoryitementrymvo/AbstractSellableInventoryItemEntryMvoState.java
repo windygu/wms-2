@@ -358,21 +358,21 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
     {
     }
 
-    protected void throwOnWrongEvent(SellableInventoryItemEntryMvoEvent stateEvent)
+    protected void throwOnWrongEvent(SellableInventoryItemEntryMvoEvent event)
     {
         SellableInventoryItemEntryId stateEntityId = this.getSellableInventoryItemEntryId(); // Aggregate Id
-        SellableInventoryItemEntryId eventEntityId = stateEvent.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        SellableInventoryItemEntryId eventEntityId = event.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getSellableInventoryItemVersion();
-        Long eventVersion = stateEvent.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion();// Aggregate Version
+        Long eventVersion = event.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion() == null");
+            throw new NullPointerException("event.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(SellableInventoryItemEntryMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(SellableInventoryItemEntryMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

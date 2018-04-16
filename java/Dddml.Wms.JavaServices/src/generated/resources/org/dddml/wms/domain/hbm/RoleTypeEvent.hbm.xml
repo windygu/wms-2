@@ -15,16 +15,19 @@
 
     <discriminator column="EventType" type="string" />
 
-	<property name="parentTypeId" ><column name="ParentTypeId" sql-type="VARCHAR(20)" /></property>
-	<property name="hasTable" ><column name="HasTable" sql-type="CHAR(1)" /></property>
-	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
-	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractRoleTypeEvent$AbstractRoleTypeStateEvent" abstract="true">
+
+	<property name="parentTypeId" ><column name="ParentTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="hasTable" ><column name="HasTable" sql-type="CHAR(1)" /></property>
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="active" ></property>
 
     <subclass name="AbstractRoleTypeEvent$SimpleRoleTypeStateCreated" discriminator-value="Created">
     	
@@ -48,6 +51,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

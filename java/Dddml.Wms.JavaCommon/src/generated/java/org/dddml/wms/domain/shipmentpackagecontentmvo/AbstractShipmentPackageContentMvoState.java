@@ -670,21 +670,21 @@ public abstract class AbstractShipmentPackageContentMvoState implements Shipment
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentPackageContentMvoEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentPackageContentMvoEvent event)
     {
         ShipmentPackageContentId stateEntityId = this.getShipmentPackageContentId(); // Aggregate Id
-        ShipmentPackageContentId eventEntityId = stateEvent.getShipmentPackageContentMvoEventId().getShipmentPackageContentId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        ShipmentPackageContentId eventEntityId = event.getShipmentPackageContentMvoEventId().getShipmentPackageContentId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getShipmentPackageVersion();
-        Long eventVersion = stateEvent.getShipmentPackageContentMvoEventId().getShipmentPackageVersion();// Aggregate Version
+        Long eventVersion = event.getShipmentPackageContentMvoEventId().getShipmentPackageVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getShipmentPackageContentMvoEventId().getShipmentPackageVersion() == null");
+            throw new NullPointerException("event.getShipmentPackageContentMvoEventId().getShipmentPackageVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(ShipmentPackageContentMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(ShipmentPackageContentMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

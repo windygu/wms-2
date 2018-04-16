@@ -16,18 +16,6 @@ public interface SellableInventoryItemEntryEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    BigDecimal getSellableQuantity();
-
-    void setSellableQuantity(BigDecimal sellableQuantity);
-
-    InventoryPRTriggeredId getSourceEventId();
-
-    void setSourceEventId(InventoryPRTriggeredId sourceEventId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -40,7 +28,22 @@ public interface SellableInventoryItemEntryEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface SellableInventoryItemEntryStateCreated extends SellableInventoryItemEntryEvent
+    interface SellableInventoryItemEntryStateEvent extends SellableInventoryItemEntryEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getSellableQuantity();
+
+        void setSellableQuantity(BigDecimal sellableQuantity);
+
+        InventoryPRTriggeredId getSourceEventId();
+
+        void setSourceEventId(InventoryPRTriggeredId sourceEventId);
+
+    }
+
+    interface SellableInventoryItemEntryStateCreated extends SellableInventoryItemEntryStateEvent
     {
     
     }

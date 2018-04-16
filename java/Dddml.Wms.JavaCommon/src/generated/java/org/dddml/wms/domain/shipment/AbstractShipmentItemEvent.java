@@ -32,66 +32,6 @@ public abstract class AbstractShipmentItemEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    private String shipmentContentDescription;
-
-    public String getShipmentContentDescription()
-    {
-        return this.shipmentContentDescription;
-    }
-
-    public void setShipmentContentDescription(String shipmentContentDescription)
-    {
-        this.shipmentContentDescription = shipmentContentDescription;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -116,18 +56,6 @@ public abstract class AbstractShipmentItemEvent extends AbstractEvent implements
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -150,7 +78,85 @@ public abstract class AbstractShipmentItemEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractShipmentItemStateCreated extends AbstractShipmentItemEvent implements ShipmentItemEvent.ShipmentItemStateCreated
+    public static abstract class AbstractShipmentItemStateEvent extends AbstractShipmentItemEvent implements ShipmentItemEvent.ShipmentItemStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String productId;
+
+        public String getProductId()
+        {
+            return this.productId;
+        }
+
+        public void setProductId(String productId)
+        {
+            this.productId = productId;
+        }
+
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private String shipmentContentDescription;
+
+        public String getShipmentContentDescription()
+        {
+            return this.shipmentContentDescription;
+        }
+
+        public void setShipmentContentDescription(String shipmentContentDescription)
+        {
+            this.shipmentContentDescription = shipmentContentDescription;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractShipmentItemStateEvent(ShipmentItemEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractShipmentItemStateCreated extends AbstractShipmentItemStateEvent implements ShipmentItemEvent.ShipmentItemStateCreated
     {
         public AbstractShipmentItemStateCreated() {
             this(new ShipmentItemEventId());
@@ -167,7 +173,7 @@ public abstract class AbstractShipmentItemEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractShipmentItemStateMergePatched extends AbstractShipmentItemEvent implements ShipmentItemEvent.ShipmentItemStateMergePatched
+    public static abstract class AbstractShipmentItemStateMergePatched extends AbstractShipmentItemStateEvent implements ShipmentItemEvent.ShipmentItemStateMergePatched
     {
         public AbstractShipmentItemStateMergePatched() {
             this(new ShipmentItemEventId());

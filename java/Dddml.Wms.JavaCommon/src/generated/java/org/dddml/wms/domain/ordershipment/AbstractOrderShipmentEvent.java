@@ -32,18 +32,6 @@ public abstract class AbstractOrderShipmentEvent extends AbstractEvent implement
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -68,18 +56,6 @@ public abstract class AbstractOrderShipmentEvent extends AbstractEvent implement
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -102,7 +78,37 @@ public abstract class AbstractOrderShipmentEvent extends AbstractEvent implement
     public abstract String getEventType();
 
 
-    public static abstract class AbstractOrderShipmentStateCreated extends AbstractOrderShipmentEvent implements OrderShipmentEvent.OrderShipmentStateCreated
+    public static abstract class AbstractOrderShipmentStateEvent extends AbstractOrderShipmentEvent implements OrderShipmentEvent.OrderShipmentStateEvent {
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractOrderShipmentStateEvent(OrderShipmentEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractOrderShipmentStateCreated extends AbstractOrderShipmentStateEvent implements OrderShipmentEvent.OrderShipmentStateCreated
     {
         public AbstractOrderShipmentStateCreated() {
             this(new OrderShipmentEventId());
@@ -119,7 +125,7 @@ public abstract class AbstractOrderShipmentEvent extends AbstractEvent implement
     }
 
 
-    public static abstract class AbstractOrderShipmentStateMergePatched extends AbstractOrderShipmentEvent implements OrderShipmentEvent.OrderShipmentStateMergePatched
+    public static abstract class AbstractOrderShipmentStateMergePatched extends AbstractOrderShipmentStateEvent implements OrderShipmentEvent.OrderShipmentStateMergePatched
     {
         public AbstractOrderShipmentStateMergePatched() {
             this(new OrderShipmentEventId());

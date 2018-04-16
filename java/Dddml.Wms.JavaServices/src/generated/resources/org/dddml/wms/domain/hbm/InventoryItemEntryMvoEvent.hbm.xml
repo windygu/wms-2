@@ -18,6 +18,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractInventoryItemEntryMvoEvent$AbstractInventoryItemEntryMvoStateEvent" abstract="true">
+
 	<property name="onHandQuantity" ></property>
 	<property name="inTransitQuantity" ></property>
 	<property name="reservedQuantity" ></property>
@@ -39,12 +48,6 @@
 	<property name="inventoryItemCreatedAt" type="timestamp"><column name="InventoryItemCreatedAt" sql-type="DATETIME" /></property>
 	<property name="inventoryItemUpdatedBy" ></property>
 	<property name="inventoryItemUpdatedAt" type="timestamp"><column name="InventoryItemUpdatedAt" sql-type="DATETIME" /></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractInventoryItemEntryMvoEvent$SimpleInventoryItemEntryMvoStateCreated" discriminator-value="Created">
     	
@@ -87,6 +90,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

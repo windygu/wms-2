@@ -13,10 +13,6 @@ public interface InventoryPRTriggeredEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Boolean getIsProcessed();
-
-    void setIsProcessed(Boolean isProcessed);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,13 +25,20 @@ public interface InventoryPRTriggeredEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface InventoryPRTriggeredStateCreated extends InventoryPRTriggeredEvent
+    interface InventoryPRTriggeredStateEvent extends InventoryPRTriggeredEvent {
+        Boolean getIsProcessed();
+
+        void setIsProcessed(Boolean isProcessed);
+
+    }
+
+    interface InventoryPRTriggeredStateCreated extends InventoryPRTriggeredStateEvent
     {
     
     }
 
 
-    interface InventoryPRTriggeredStateMergePatched extends InventoryPRTriggeredEvent
+    interface InventoryPRTriggeredStateMergePatched extends InventoryPRTriggeredStateEvent
     {
         Boolean getIsPropertyIsProcessedRemoved();
 

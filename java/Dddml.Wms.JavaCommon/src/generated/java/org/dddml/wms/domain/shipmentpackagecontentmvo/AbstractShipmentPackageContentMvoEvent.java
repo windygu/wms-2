@@ -33,54 +33,6 @@ public abstract class AbstractShipmentPackageContentMvoEvent extends AbstractEve
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    private String subProductId;
-
-    public String getSubProductId()
-    {
-        return this.subProductId;
-    }
-
-    public void setSubProductId(String subProductId)
-    {
-        this.subProductId = subProductId;
-    }
-
-    private java.math.BigDecimal subProductQuantity;
-
-    public java.math.BigDecimal getSubProductQuantity()
-    {
-        return this.subProductQuantity;
-    }
-
-    public void setSubProductQuantity(java.math.BigDecimal subProductQuantity)
-    {
-        this.subProductQuantity = subProductQuantity;
-    }
-
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -105,198 +57,6 @@ public abstract class AbstractShipmentPackageContentMvoEvent extends AbstractEve
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
-    private String shipmentPackageShipmentBoxTypeId;
-
-    public String getShipmentPackageShipmentBoxTypeId()
-    {
-        return this.shipmentPackageShipmentBoxTypeId;
-    }
-
-    public void setShipmentPackageShipmentBoxTypeId(String shipmentPackageShipmentBoxTypeId)
-    {
-        this.shipmentPackageShipmentBoxTypeId = shipmentPackageShipmentBoxTypeId;
-    }
-
-    private java.sql.Timestamp shipmentPackageDateCreated;
-
-    public java.sql.Timestamp getShipmentPackageDateCreated()
-    {
-        return this.shipmentPackageDateCreated;
-    }
-
-    public void setShipmentPackageDateCreated(java.sql.Timestamp shipmentPackageDateCreated)
-    {
-        this.shipmentPackageDateCreated = shipmentPackageDateCreated;
-    }
-
-    private java.math.BigDecimal shipmentPackageBoxLength;
-
-    public java.math.BigDecimal getShipmentPackageBoxLength()
-    {
-        return this.shipmentPackageBoxLength;
-    }
-
-    public void setShipmentPackageBoxLength(java.math.BigDecimal shipmentPackageBoxLength)
-    {
-        this.shipmentPackageBoxLength = shipmentPackageBoxLength;
-    }
-
-    private java.math.BigDecimal shipmentPackageBoxHeight;
-
-    public java.math.BigDecimal getShipmentPackageBoxHeight()
-    {
-        return this.shipmentPackageBoxHeight;
-    }
-
-    public void setShipmentPackageBoxHeight(java.math.BigDecimal shipmentPackageBoxHeight)
-    {
-        this.shipmentPackageBoxHeight = shipmentPackageBoxHeight;
-    }
-
-    private java.math.BigDecimal shipmentPackageBoxWidth;
-
-    public java.math.BigDecimal getShipmentPackageBoxWidth()
-    {
-        return this.shipmentPackageBoxWidth;
-    }
-
-    public void setShipmentPackageBoxWidth(java.math.BigDecimal shipmentPackageBoxWidth)
-    {
-        this.shipmentPackageBoxWidth = shipmentPackageBoxWidth;
-    }
-
-    private String shipmentPackageDimensionUomId;
-
-    public String getShipmentPackageDimensionUomId()
-    {
-        return this.shipmentPackageDimensionUomId;
-    }
-
-    public void setShipmentPackageDimensionUomId(String shipmentPackageDimensionUomId)
-    {
-        this.shipmentPackageDimensionUomId = shipmentPackageDimensionUomId;
-    }
-
-    private java.math.BigDecimal shipmentPackageWeight;
-
-    public java.math.BigDecimal getShipmentPackageWeight()
-    {
-        return this.shipmentPackageWeight;
-    }
-
-    public void setShipmentPackageWeight(java.math.BigDecimal shipmentPackageWeight)
-    {
-        this.shipmentPackageWeight = shipmentPackageWeight;
-    }
-
-    private String shipmentPackageWeightUomId;
-
-    public String getShipmentPackageWeightUomId()
-    {
-        return this.shipmentPackageWeightUomId;
-    }
-
-    public void setShipmentPackageWeightUomId(String shipmentPackageWeightUomId)
-    {
-        this.shipmentPackageWeightUomId = shipmentPackageWeightUomId;
-    }
-
-    private java.math.BigDecimal shipmentPackageInsuredValue;
-
-    public java.math.BigDecimal getShipmentPackageInsuredValue()
-    {
-        return this.shipmentPackageInsuredValue;
-    }
-
-    public void setShipmentPackageInsuredValue(java.math.BigDecimal shipmentPackageInsuredValue)
-    {
-        this.shipmentPackageInsuredValue = shipmentPackageInsuredValue;
-    }
-
-    private String shipmentPackageCreatedBy;
-
-    public String getShipmentPackageCreatedBy()
-    {
-        return this.shipmentPackageCreatedBy;
-    }
-
-    public void setShipmentPackageCreatedBy(String shipmentPackageCreatedBy)
-    {
-        this.shipmentPackageCreatedBy = shipmentPackageCreatedBy;
-    }
-
-    private Date shipmentPackageCreatedAt;
-
-    public Date getShipmentPackageCreatedAt()
-    {
-        return this.shipmentPackageCreatedAt;
-    }
-
-    public void setShipmentPackageCreatedAt(Date shipmentPackageCreatedAt)
-    {
-        this.shipmentPackageCreatedAt = shipmentPackageCreatedAt;
-    }
-
-    private String shipmentPackageUpdatedBy;
-
-    public String getShipmentPackageUpdatedBy()
-    {
-        return this.shipmentPackageUpdatedBy;
-    }
-
-    public void setShipmentPackageUpdatedBy(String shipmentPackageUpdatedBy)
-    {
-        this.shipmentPackageUpdatedBy = shipmentPackageUpdatedBy;
-    }
-
-    private Date shipmentPackageUpdatedAt;
-
-    public Date getShipmentPackageUpdatedAt()
-    {
-        return this.shipmentPackageUpdatedAt;
-    }
-
-    public void setShipmentPackageUpdatedAt(Date shipmentPackageUpdatedAt)
-    {
-        this.shipmentPackageUpdatedAt = shipmentPackageUpdatedAt;
-    }
-
-    private Boolean shipmentPackageActive;
-
-    public Boolean getShipmentPackageActive()
-    {
-        return this.shipmentPackageActive;
-    }
-
-    public void setShipmentPackageActive(Boolean shipmentPackageActive)
-    {
-        this.shipmentPackageActive = shipmentPackageActive;
-    }
-
-    private Boolean shipmentPackageDeleted;
-
-    public Boolean getShipmentPackageDeleted()
-    {
-        return this.shipmentPackageDeleted;
-    }
-
-    public void setShipmentPackageDeleted(Boolean shipmentPackageDeleted)
-    {
-        this.shipmentPackageDeleted = shipmentPackageDeleted;
-    }
-
 
     private String commandId;
 
@@ -319,7 +79,253 @@ public abstract class AbstractShipmentPackageContentMvoEvent extends AbstractEve
     public abstract String getEventType();
 
 
-    public static abstract class AbstractShipmentPackageContentMvoStateCreated extends AbstractShipmentPackageContentMvoEvent implements ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated
+    public static abstract class AbstractShipmentPackageContentMvoStateEvent extends AbstractShipmentPackageContentMvoEvent implements ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateEvent {
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private String subProductId;
+
+        public String getSubProductId()
+        {
+            return this.subProductId;
+        }
+
+        public void setSubProductId(String subProductId)
+        {
+            this.subProductId = subProductId;
+        }
+
+        private java.math.BigDecimal subProductQuantity;
+
+        public java.math.BigDecimal getSubProductQuantity()
+        {
+            return this.subProductQuantity;
+        }
+
+        public void setSubProductQuantity(java.math.BigDecimal subProductQuantity)
+        {
+            this.subProductQuantity = subProductQuantity;
+        }
+
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        private String shipmentPackageShipmentBoxTypeId;
+
+        public String getShipmentPackageShipmentBoxTypeId()
+        {
+            return this.shipmentPackageShipmentBoxTypeId;
+        }
+
+        public void setShipmentPackageShipmentBoxTypeId(String shipmentPackageShipmentBoxTypeId)
+        {
+            this.shipmentPackageShipmentBoxTypeId = shipmentPackageShipmentBoxTypeId;
+        }
+
+        private java.sql.Timestamp shipmentPackageDateCreated;
+
+        public java.sql.Timestamp getShipmentPackageDateCreated()
+        {
+            return this.shipmentPackageDateCreated;
+        }
+
+        public void setShipmentPackageDateCreated(java.sql.Timestamp shipmentPackageDateCreated)
+        {
+            this.shipmentPackageDateCreated = shipmentPackageDateCreated;
+        }
+
+        private java.math.BigDecimal shipmentPackageBoxLength;
+
+        public java.math.BigDecimal getShipmentPackageBoxLength()
+        {
+            return this.shipmentPackageBoxLength;
+        }
+
+        public void setShipmentPackageBoxLength(java.math.BigDecimal shipmentPackageBoxLength)
+        {
+            this.shipmentPackageBoxLength = shipmentPackageBoxLength;
+        }
+
+        private java.math.BigDecimal shipmentPackageBoxHeight;
+
+        public java.math.BigDecimal getShipmentPackageBoxHeight()
+        {
+            return this.shipmentPackageBoxHeight;
+        }
+
+        public void setShipmentPackageBoxHeight(java.math.BigDecimal shipmentPackageBoxHeight)
+        {
+            this.shipmentPackageBoxHeight = shipmentPackageBoxHeight;
+        }
+
+        private java.math.BigDecimal shipmentPackageBoxWidth;
+
+        public java.math.BigDecimal getShipmentPackageBoxWidth()
+        {
+            return this.shipmentPackageBoxWidth;
+        }
+
+        public void setShipmentPackageBoxWidth(java.math.BigDecimal shipmentPackageBoxWidth)
+        {
+            this.shipmentPackageBoxWidth = shipmentPackageBoxWidth;
+        }
+
+        private String shipmentPackageDimensionUomId;
+
+        public String getShipmentPackageDimensionUomId()
+        {
+            return this.shipmentPackageDimensionUomId;
+        }
+
+        public void setShipmentPackageDimensionUomId(String shipmentPackageDimensionUomId)
+        {
+            this.shipmentPackageDimensionUomId = shipmentPackageDimensionUomId;
+        }
+
+        private java.math.BigDecimal shipmentPackageWeight;
+
+        public java.math.BigDecimal getShipmentPackageWeight()
+        {
+            return this.shipmentPackageWeight;
+        }
+
+        public void setShipmentPackageWeight(java.math.BigDecimal shipmentPackageWeight)
+        {
+            this.shipmentPackageWeight = shipmentPackageWeight;
+        }
+
+        private String shipmentPackageWeightUomId;
+
+        public String getShipmentPackageWeightUomId()
+        {
+            return this.shipmentPackageWeightUomId;
+        }
+
+        public void setShipmentPackageWeightUomId(String shipmentPackageWeightUomId)
+        {
+            this.shipmentPackageWeightUomId = shipmentPackageWeightUomId;
+        }
+
+        private java.math.BigDecimal shipmentPackageInsuredValue;
+
+        public java.math.BigDecimal getShipmentPackageInsuredValue()
+        {
+            return this.shipmentPackageInsuredValue;
+        }
+
+        public void setShipmentPackageInsuredValue(java.math.BigDecimal shipmentPackageInsuredValue)
+        {
+            this.shipmentPackageInsuredValue = shipmentPackageInsuredValue;
+        }
+
+        private String shipmentPackageCreatedBy;
+
+        public String getShipmentPackageCreatedBy()
+        {
+            return this.shipmentPackageCreatedBy;
+        }
+
+        public void setShipmentPackageCreatedBy(String shipmentPackageCreatedBy)
+        {
+            this.shipmentPackageCreatedBy = shipmentPackageCreatedBy;
+        }
+
+        private Date shipmentPackageCreatedAt;
+
+        public Date getShipmentPackageCreatedAt()
+        {
+            return this.shipmentPackageCreatedAt;
+        }
+
+        public void setShipmentPackageCreatedAt(Date shipmentPackageCreatedAt)
+        {
+            this.shipmentPackageCreatedAt = shipmentPackageCreatedAt;
+        }
+
+        private String shipmentPackageUpdatedBy;
+
+        public String getShipmentPackageUpdatedBy()
+        {
+            return this.shipmentPackageUpdatedBy;
+        }
+
+        public void setShipmentPackageUpdatedBy(String shipmentPackageUpdatedBy)
+        {
+            this.shipmentPackageUpdatedBy = shipmentPackageUpdatedBy;
+        }
+
+        private Date shipmentPackageUpdatedAt;
+
+        public Date getShipmentPackageUpdatedAt()
+        {
+            return this.shipmentPackageUpdatedAt;
+        }
+
+        public void setShipmentPackageUpdatedAt(Date shipmentPackageUpdatedAt)
+        {
+            this.shipmentPackageUpdatedAt = shipmentPackageUpdatedAt;
+        }
+
+        private Boolean shipmentPackageActive;
+
+        public Boolean getShipmentPackageActive()
+        {
+            return this.shipmentPackageActive;
+        }
+
+        public void setShipmentPackageActive(Boolean shipmentPackageActive)
+        {
+            this.shipmentPackageActive = shipmentPackageActive;
+        }
+
+        private Boolean shipmentPackageDeleted;
+
+        public Boolean getShipmentPackageDeleted()
+        {
+            return this.shipmentPackageDeleted;
+        }
+
+        public void setShipmentPackageDeleted(Boolean shipmentPackageDeleted)
+        {
+            this.shipmentPackageDeleted = shipmentPackageDeleted;
+        }
+
+        protected AbstractShipmentPackageContentMvoStateEvent(ShipmentPackageContentMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractShipmentPackageContentMvoStateCreated extends AbstractShipmentPackageContentMvoStateEvent implements ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated
     {
         public AbstractShipmentPackageContentMvoStateCreated() {
             this(new ShipmentPackageContentMvoEventId());
@@ -336,7 +342,7 @@ public abstract class AbstractShipmentPackageContentMvoEvent extends AbstractEve
     }
 
 
-    public static abstract class AbstractShipmentPackageContentMvoStateMergePatched extends AbstractShipmentPackageContentMvoEvent implements ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateMergePatched
+    public static abstract class AbstractShipmentPackageContentMvoStateMergePatched extends AbstractShipmentPackageContentMvoStateEvent implements ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateMergePatched
     {
         public AbstractShipmentPackageContentMvoStateMergePatched() {
             this(new ShipmentPackageContentMvoEventId());
@@ -553,7 +559,7 @@ public abstract class AbstractShipmentPackageContentMvoEvent extends AbstractEve
     }
 
 
-    public static abstract class AbstractShipmentPackageContentMvoStateDeleted extends AbstractShipmentPackageContentMvoEvent implements ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateDeleted
+    public static abstract class AbstractShipmentPackageContentMvoStateDeleted extends AbstractShipmentPackageContentMvoStateEvent implements ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateDeleted
     {
         public AbstractShipmentPackageContentMvoStateDeleted() {
             this(new ShipmentPackageContentMvoEventId());

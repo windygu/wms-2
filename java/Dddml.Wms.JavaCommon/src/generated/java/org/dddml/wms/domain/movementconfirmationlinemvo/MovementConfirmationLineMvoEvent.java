@@ -15,38 +15,6 @@ public interface MovementConfirmationLineMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getMovementLineNumber();
-
-    void setMovementLineNumber(String movementLineNumber);
-
-    BigDecimal getTargetQuantity();
-
-    void setTargetQuantity(BigDecimal targetQuantity);
-
-    BigDecimal getConfirmedQuantity();
-
-    void setConfirmedQuantity(BigDecimal confirmedQuantity);
-
-    BigDecimal getDifferenceQuantity();
-
-    void setDifferenceQuantity(BigDecimal differenceQuantity);
-
-    BigDecimal getScrappedQuantity();
-
-    void setScrappedQuantity(BigDecimal scrappedQuantity);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -55,77 +23,112 @@ public interface MovementConfirmationLineMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getMovementConfirmationDocumentStatusId();
-
-    void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId);
-
-    String getMovementConfirmationMovementDocumentNumber();
-
-    void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber);
-
-    Boolean getMovementConfirmationIsApproved();
-
-    void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved);
-
-    BigDecimal getMovementConfirmationApprovalAmount();
-
-    void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount);
-
-    Boolean getMovementConfirmationProcessed();
-
-    void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
-
-    String getMovementConfirmationProcessing();
-
-    void setMovementConfirmationProcessing(String movementConfirmationProcessing);
-
-    String getMovementConfirmationDocumentTypeId();
-
-    void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
-
-    String getMovementConfirmationDescription();
-
-    void setMovementConfirmationDescription(String movementConfirmationDescription);
-
-    String getMovementConfirmationCreatedBy();
-
-    void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy);
-
-    Date getMovementConfirmationCreatedAt();
-
-    void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt);
-
-    String getMovementConfirmationUpdatedBy();
-
-    void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy);
-
-    Date getMovementConfirmationUpdatedAt();
-
-    void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt);
-
-    Boolean getMovementConfirmationActive();
-
-    void setMovementConfirmationActive(Boolean movementConfirmationActive);
-
-    Boolean getMovementConfirmationDeleted();
-
-    void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface MovementConfirmationLineMvoStateCreated extends MovementConfirmationLineMvoEvent
+    interface MovementConfirmationLineMvoStateEvent extends MovementConfirmationLineMvoEvent {
+        String getMovementLineNumber();
+
+        void setMovementLineNumber(String movementLineNumber);
+
+        BigDecimal getTargetQuantity();
+
+        void setTargetQuantity(BigDecimal targetQuantity);
+
+        BigDecimal getConfirmedQuantity();
+
+        void setConfirmedQuantity(BigDecimal confirmedQuantity);
+
+        BigDecimal getDifferenceQuantity();
+
+        void setDifferenceQuantity(BigDecimal differenceQuantity);
+
+        BigDecimal getScrappedQuantity();
+
+        void setScrappedQuantity(BigDecimal scrappedQuantity);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getMovementConfirmationDocumentStatusId();
+
+        void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId);
+
+        String getMovementConfirmationMovementDocumentNumber();
+
+        void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber);
+
+        Boolean getMovementConfirmationIsApproved();
+
+        void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved);
+
+        BigDecimal getMovementConfirmationApprovalAmount();
+
+        void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount);
+
+        Boolean getMovementConfirmationProcessed();
+
+        void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed);
+
+        String getMovementConfirmationProcessing();
+
+        void setMovementConfirmationProcessing(String movementConfirmationProcessing);
+
+        String getMovementConfirmationDocumentTypeId();
+
+        void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId);
+
+        String getMovementConfirmationDescription();
+
+        void setMovementConfirmationDescription(String movementConfirmationDescription);
+
+        String getMovementConfirmationCreatedBy();
+
+        void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy);
+
+        Date getMovementConfirmationCreatedAt();
+
+        void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt);
+
+        String getMovementConfirmationUpdatedBy();
+
+        void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy);
+
+        Date getMovementConfirmationUpdatedAt();
+
+        void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt);
+
+        Boolean getMovementConfirmationActive();
+
+        void setMovementConfirmationActive(Boolean movementConfirmationActive);
+
+        Boolean getMovementConfirmationDeleted();
+
+        void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted);
+
+    }
+
+    interface MovementConfirmationLineMvoStateCreated extends MovementConfirmationLineMvoStateEvent
     {
     
     }
 
 
-    interface MovementConfirmationLineMvoStateMergePatched extends MovementConfirmationLineMvoEvent
+    interface MovementConfirmationLineMvoStateMergePatched extends MovementConfirmationLineMvoStateEvent
     {
         Boolean getIsPropertyMovementLineNumberRemoved();
 
@@ -222,7 +225,7 @@ public interface MovementConfirmationLineMvoEvent extends Event
 
     }
 
-    interface MovementConfirmationLineMvoStateDeleted extends MovementConfirmationLineMvoEvent
+    interface MovementConfirmationLineMvoStateDeleted extends MovementConfirmationLineMvoStateEvent
     {
     }
 

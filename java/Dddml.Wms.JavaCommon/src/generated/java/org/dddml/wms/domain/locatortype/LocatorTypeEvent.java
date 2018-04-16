@@ -13,10 +13,6 @@ public interface LocatorTypeEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -25,21 +21,28 @@ public interface LocatorTypeEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface LocatorTypeStateCreated extends LocatorTypeEvent
+    interface LocatorTypeStateEvent extends LocatorTypeEvent {
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface LocatorTypeStateCreated extends LocatorTypeStateEvent
     {
     
     }
 
 
-    interface LocatorTypeStateMergePatched extends LocatorTypeEvent
+    interface LocatorTypeStateMergePatched extends LocatorTypeStateEvent
     {
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -52,7 +55,7 @@ public interface LocatorTypeEvent extends Event
 
     }
 
-    interface LocatorTypeStateDeleted extends LocatorTypeEvent
+    interface LocatorTypeStateDeleted extends LocatorTypeStateEvent
     {
     }
 

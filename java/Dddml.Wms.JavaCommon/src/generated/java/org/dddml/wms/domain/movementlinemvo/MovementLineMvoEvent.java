@@ -15,38 +15,6 @@ public interface MovementLineMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    BigDecimal getMovementQuantity();
-
-    void setMovementQuantity(BigDecimal movementQuantity);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getLocatorIdFrom();
-
-    void setLocatorIdFrom(String locatorIdFrom);
-
-    String getLocatorIdTo();
-
-    void setLocatorIdTo(String locatorIdTo);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getReversalLineNumber();
-
-    void setReversalLineNumber(String reversalLineNumber);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -55,125 +23,160 @@ public interface MovementLineMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getMovementDocumentStatusId();
-
-    void setMovementDocumentStatusId(String movementDocumentStatusId);
-
-    Date getMovementMovementDate();
-
-    void setMovementMovementDate(Date movementMovementDate);
-
-    Boolean getMovementPosted();
-
-    void setMovementPosted(Boolean movementPosted);
-
-    Boolean getMovementProcessed();
-
-    void setMovementProcessed(Boolean movementProcessed);
-
-    String getMovementProcessing();
-
-    void setMovementProcessing(String movementProcessing);
-
-    Date getMovementDateReceived();
-
-    void setMovementDateReceived(Date movementDateReceived);
-
-    String getMovementDocumentTypeId();
-
-    void setMovementDocumentTypeId(String movementDocumentTypeId);
-
-    Boolean getMovementIsInTransit();
-
-    void setMovementIsInTransit(Boolean movementIsInTransit);
-
-    Boolean getMovementIsApproved();
-
-    void setMovementIsApproved(Boolean movementIsApproved);
-
-    BigDecimal getMovementApprovalAmount();
-
-    void setMovementApprovalAmount(BigDecimal movementApprovalAmount);
-
-    String getMovementShipperId();
-
-    void setMovementShipperId(String movementShipperId);
-
-    String getMovementSalesRepresentativeId();
-
-    void setMovementSalesRepresentativeId(String movementSalesRepresentativeId);
-
-    String getMovementBusinessPartnerId();
-
-    void setMovementBusinessPartnerId(String movementBusinessPartnerId);
-
-    BigDecimal getMovementChargeAmount();
-
-    void setMovementChargeAmount(BigDecimal movementChargeAmount);
-
-    String getMovementCreateFrom();
-
-    void setMovementCreateFrom(String movementCreateFrom);
-
-    BigDecimal getMovementFreightAmount();
-
-    void setMovementFreightAmount(BigDecimal movementFreightAmount);
-
-    String getMovementReversalDocumentNumber();
-
-    void setMovementReversalDocumentNumber(String movementReversalDocumentNumber);
-
-    String getMovementWarehouseIdFrom();
-
-    void setMovementWarehouseIdFrom(String movementWarehouseIdFrom);
-
-    String getMovementWarehouseIdTo();
-
-    void setMovementWarehouseIdTo(String movementWarehouseIdTo);
-
-    String getMovementDescription();
-
-    void setMovementDescription(String movementDescription);
-
-    String getMovementCreatedBy();
-
-    void setMovementCreatedBy(String movementCreatedBy);
-
-    Date getMovementCreatedAt();
-
-    void setMovementCreatedAt(Date movementCreatedAt);
-
-    String getMovementUpdatedBy();
-
-    void setMovementUpdatedBy(String movementUpdatedBy);
-
-    Date getMovementUpdatedAt();
-
-    void setMovementUpdatedAt(Date movementUpdatedAt);
-
-    Boolean getMovementActive();
-
-    void setMovementActive(Boolean movementActive);
-
-    Boolean getMovementDeleted();
-
-    void setMovementDeleted(Boolean movementDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface MovementLineMvoStateCreated extends MovementLineMvoEvent
+    interface MovementLineMvoStateEvent extends MovementLineMvoEvent {
+        BigDecimal getMovementQuantity();
+
+        void setMovementQuantity(BigDecimal movementQuantity);
+
+        String getProductId();
+
+        void setProductId(String productId);
+
+        String getLocatorIdFrom();
+
+        void setLocatorIdFrom(String locatorIdFrom);
+
+        String getLocatorIdTo();
+
+        void setLocatorIdTo(String locatorIdTo);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getReversalLineNumber();
+
+        void setReversalLineNumber(String reversalLineNumber);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getMovementDocumentStatusId();
+
+        void setMovementDocumentStatusId(String movementDocumentStatusId);
+
+        Date getMovementMovementDate();
+
+        void setMovementMovementDate(Date movementMovementDate);
+
+        Boolean getMovementPosted();
+
+        void setMovementPosted(Boolean movementPosted);
+
+        Boolean getMovementProcessed();
+
+        void setMovementProcessed(Boolean movementProcessed);
+
+        String getMovementProcessing();
+
+        void setMovementProcessing(String movementProcessing);
+
+        Date getMovementDateReceived();
+
+        void setMovementDateReceived(Date movementDateReceived);
+
+        String getMovementDocumentTypeId();
+
+        void setMovementDocumentTypeId(String movementDocumentTypeId);
+
+        Boolean getMovementIsInTransit();
+
+        void setMovementIsInTransit(Boolean movementIsInTransit);
+
+        Boolean getMovementIsApproved();
+
+        void setMovementIsApproved(Boolean movementIsApproved);
+
+        BigDecimal getMovementApprovalAmount();
+
+        void setMovementApprovalAmount(BigDecimal movementApprovalAmount);
+
+        String getMovementShipperId();
+
+        void setMovementShipperId(String movementShipperId);
+
+        String getMovementSalesRepresentativeId();
+
+        void setMovementSalesRepresentativeId(String movementSalesRepresentativeId);
+
+        String getMovementBusinessPartnerId();
+
+        void setMovementBusinessPartnerId(String movementBusinessPartnerId);
+
+        BigDecimal getMovementChargeAmount();
+
+        void setMovementChargeAmount(BigDecimal movementChargeAmount);
+
+        String getMovementCreateFrom();
+
+        void setMovementCreateFrom(String movementCreateFrom);
+
+        BigDecimal getMovementFreightAmount();
+
+        void setMovementFreightAmount(BigDecimal movementFreightAmount);
+
+        String getMovementReversalDocumentNumber();
+
+        void setMovementReversalDocumentNumber(String movementReversalDocumentNumber);
+
+        String getMovementWarehouseIdFrom();
+
+        void setMovementWarehouseIdFrom(String movementWarehouseIdFrom);
+
+        String getMovementWarehouseIdTo();
+
+        void setMovementWarehouseIdTo(String movementWarehouseIdTo);
+
+        String getMovementDescription();
+
+        void setMovementDescription(String movementDescription);
+
+        String getMovementCreatedBy();
+
+        void setMovementCreatedBy(String movementCreatedBy);
+
+        Date getMovementCreatedAt();
+
+        void setMovementCreatedAt(Date movementCreatedAt);
+
+        String getMovementUpdatedBy();
+
+        void setMovementUpdatedBy(String movementUpdatedBy);
+
+        Date getMovementUpdatedAt();
+
+        void setMovementUpdatedAt(Date movementUpdatedAt);
+
+        Boolean getMovementActive();
+
+        void setMovementActive(Boolean movementActive);
+
+        Boolean getMovementDeleted();
+
+        void setMovementDeleted(Boolean movementDeleted);
+
+    }
+
+    interface MovementLineMvoStateCreated extends MovementLineMvoStateEvent
     {
     
     }
 
 
-    interface MovementLineMvoStateMergePatched extends MovementLineMvoEvent
+    interface MovementLineMvoStateMergePatched extends MovementLineMvoStateEvent
     {
         Boolean getIsPropertyMovementQuantityRemoved();
 
@@ -318,7 +321,7 @@ public interface MovementLineMvoEvent extends Event
 
     }
 
-    interface MovementLineMvoStateDeleted extends MovementLineMvoEvent
+    interface MovementLineMvoStateDeleted extends MovementLineMvoStateEvent
     {
     }
 

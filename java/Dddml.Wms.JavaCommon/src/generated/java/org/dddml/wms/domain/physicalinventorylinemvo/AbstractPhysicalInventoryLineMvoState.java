@@ -815,21 +815,21 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     {
     }
 
-    protected void throwOnWrongEvent(PhysicalInventoryLineMvoEvent stateEvent)
+    protected void throwOnWrongEvent(PhysicalInventoryLineMvoEvent event)
     {
         PhysicalInventoryLineId stateEntityId = this.getPhysicalInventoryLineId(); // Aggregate Id
-        PhysicalInventoryLineId eventEntityId = stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        PhysicalInventoryLineId eventEntityId = event.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getPhysicalInventoryVersion();
-        Long eventVersion = stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion();// Aggregate Version
+        Long eventVersion = event.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion() == null");
+            throw new NullPointerException("event.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(PhysicalInventoryLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(PhysicalInventoryLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

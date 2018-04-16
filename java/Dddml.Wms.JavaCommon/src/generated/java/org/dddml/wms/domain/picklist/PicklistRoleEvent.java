@@ -14,10 +14,6 @@ public interface PicklistRoleEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedByUserLogin();
 
     void setCreatedByUserLogin(String createdByUserLogin);
@@ -26,21 +22,28 @@ public interface PicklistRoleEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PicklistRoleStateCreated extends PicklistRoleEvent
+    interface PicklistRoleStateEvent extends PicklistRoleEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PicklistRoleStateCreated extends PicklistRoleStateEvent
     {
     
     }
 
 
-    interface PicklistRoleStateMergePatched extends PicklistRoleEvent
+    interface PicklistRoleStateMergePatched extends PicklistRoleStateEvent
     {
         Boolean getIsPropertyActiveRemoved();
 
@@ -49,7 +52,7 @@ public interface PicklistRoleEvent extends Event
 
     }
 
-    interface PicklistRoleStateRemoved extends PicklistRoleEvent
+    interface PicklistRoleStateRemoved extends PicklistRoleStateEvent
     {
     }
 

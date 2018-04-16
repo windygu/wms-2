@@ -1270,21 +1270,21 @@ public abstract class AbstractItemIssuanceMvoState implements ItemIssuanceMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(ItemIssuanceMvoEvent stateEvent)
+    protected void throwOnWrongEvent(ItemIssuanceMvoEvent event)
     {
         ShipmentItemIssuanceId stateEntityId = this.getShipmentItemIssuanceId(); // Aggregate Id
-        ShipmentItemIssuanceId eventEntityId = stateEvent.getItemIssuanceMvoEventId().getShipmentItemIssuanceId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        ShipmentItemIssuanceId eventEntityId = event.getItemIssuanceMvoEventId().getShipmentItemIssuanceId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getShipmentVersion();
-        Long eventVersion = stateEvent.getItemIssuanceMvoEventId().getShipmentVersion();// Aggregate Version
+        Long eventVersion = event.getItemIssuanceMvoEventId().getShipmentVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getItemIssuanceMvoEventId().getShipmentVersion() == null");
+            throw new NullPointerException("event.getItemIssuanceMvoEventId().getShipmentVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(ItemIssuanceMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(ItemIssuanceMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

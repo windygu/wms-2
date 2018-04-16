@@ -32,210 +32,6 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String facilityTypeId;
-
-    public String getFacilityTypeId()
-    {
-        return this.facilityTypeId;
-    }
-
-    public void setFacilityTypeId(String facilityTypeId)
-    {
-        this.facilityTypeId = facilityTypeId;
-    }
-
-    private String parentFacilityId;
-
-    public String getParentFacilityId()
-    {
-        return this.parentFacilityId;
-    }
-
-    public void setParentFacilityId(String parentFacilityId)
-    {
-        this.parentFacilityId = parentFacilityId;
-    }
-
-    private String ownerPartyId;
-
-    public String getOwnerPartyId()
-    {
-        return this.ownerPartyId;
-    }
-
-    public void setOwnerPartyId(String ownerPartyId)
-    {
-        this.ownerPartyId = ownerPartyId;
-    }
-
-    private String defaultInventoryItemTypeId;
-
-    public String getDefaultInventoryItemTypeId()
-    {
-        return this.defaultInventoryItemTypeId;
-    }
-
-    public void setDefaultInventoryItemTypeId(String defaultInventoryItemTypeId)
-    {
-        this.defaultInventoryItemTypeId = defaultInventoryItemTypeId;
-    }
-
-    private String facilityName;
-
-    public String getFacilityName()
-    {
-        return this.facilityName;
-    }
-
-    public void setFacilityName(String facilityName)
-    {
-        this.facilityName = facilityName;
-    }
-
-    private String primaryFacilityGroupId;
-
-    public String getPrimaryFacilityGroupId()
-    {
-        return this.primaryFacilityGroupId;
-    }
-
-    public void setPrimaryFacilityGroupId(String primaryFacilityGroupId)
-    {
-        this.primaryFacilityGroupId = primaryFacilityGroupId;
-    }
-
-    private Long oldSquareFootage;
-
-    public Long getOldSquareFootage()
-    {
-        return this.oldSquareFootage;
-    }
-
-    public void setOldSquareFootage(Long oldSquareFootage)
-    {
-        this.oldSquareFootage = oldSquareFootage;
-    }
-
-    private java.math.BigDecimal facilitySize;
-
-    public java.math.BigDecimal getFacilitySize()
-    {
-        return this.facilitySize;
-    }
-
-    public void setFacilitySize(java.math.BigDecimal facilitySize)
-    {
-        this.facilitySize = facilitySize;
-    }
-
-    private String facilitySizeUomId;
-
-    public String getFacilitySizeUomId()
-    {
-        return this.facilitySizeUomId;
-    }
-
-    public void setFacilitySizeUomId(String facilitySizeUomId)
-    {
-        this.facilitySizeUomId = facilitySizeUomId;
-    }
-
-    private String productStoreId;
-
-    public String getProductStoreId()
-    {
-        return this.productStoreId;
-    }
-
-    public void setProductStoreId(String productStoreId)
-    {
-        this.productStoreId = productStoreId;
-    }
-
-    private Long defaultDaysToShip;
-
-    public Long getDefaultDaysToShip()
-    {
-        return this.defaultDaysToShip;
-    }
-
-    public void setDefaultDaysToShip(Long defaultDaysToShip)
-    {
-        this.defaultDaysToShip = defaultDaysToShip;
-    }
-
-    private java.sql.Timestamp openedDate;
-
-    public java.sql.Timestamp getOpenedDate()
-    {
-        return this.openedDate;
-    }
-
-    public void setOpenedDate(java.sql.Timestamp openedDate)
-    {
-        this.openedDate = openedDate;
-    }
-
-    private java.sql.Timestamp closedDate;
-
-    public java.sql.Timestamp getClosedDate()
-    {
-        return this.closedDate;
-    }
-
-    public void setClosedDate(java.sql.Timestamp closedDate)
-    {
-        this.closedDate = closedDate;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String defaultDimensionUomId;
-
-    public String getDefaultDimensionUomId()
-    {
-        return this.defaultDimensionUomId;
-    }
-
-    public void setDefaultDimensionUomId(String defaultDimensionUomId)
-    {
-        this.defaultDimensionUomId = defaultDimensionUomId;
-    }
-
-    private String defaultWeightUomId;
-
-    public String getDefaultWeightUomId()
-    {
-        return this.defaultWeightUomId;
-    }
-
-    public void setDefaultWeightUomId(String defaultWeightUomId)
-    {
-        this.defaultWeightUomId = defaultWeightUomId;
-    }
-
-    private String geoPointId;
-
-    public String getGeoPointId()
-    {
-        return this.geoPointId;
-    }
-
-    public void setGeoPointId(String geoPointId)
-    {
-        this.geoPointId = geoPointId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -260,18 +56,6 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -294,7 +78,229 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
     public abstract String getEventType();
 
 
-    public static abstract class AbstractFacilityStateCreated extends AbstractFacilityEvent implements FacilityEvent.FacilityStateCreated
+    public static abstract class AbstractFacilityStateEvent extends AbstractFacilityEvent implements FacilityEvent.FacilityStateEvent {
+        private String facilityTypeId;
+
+        public String getFacilityTypeId()
+        {
+            return this.facilityTypeId;
+        }
+
+        public void setFacilityTypeId(String facilityTypeId)
+        {
+            this.facilityTypeId = facilityTypeId;
+        }
+
+        private String parentFacilityId;
+
+        public String getParentFacilityId()
+        {
+            return this.parentFacilityId;
+        }
+
+        public void setParentFacilityId(String parentFacilityId)
+        {
+            this.parentFacilityId = parentFacilityId;
+        }
+
+        private String ownerPartyId;
+
+        public String getOwnerPartyId()
+        {
+            return this.ownerPartyId;
+        }
+
+        public void setOwnerPartyId(String ownerPartyId)
+        {
+            this.ownerPartyId = ownerPartyId;
+        }
+
+        private String defaultInventoryItemTypeId;
+
+        public String getDefaultInventoryItemTypeId()
+        {
+            return this.defaultInventoryItemTypeId;
+        }
+
+        public void setDefaultInventoryItemTypeId(String defaultInventoryItemTypeId)
+        {
+            this.defaultInventoryItemTypeId = defaultInventoryItemTypeId;
+        }
+
+        private String facilityName;
+
+        public String getFacilityName()
+        {
+            return this.facilityName;
+        }
+
+        public void setFacilityName(String facilityName)
+        {
+            this.facilityName = facilityName;
+        }
+
+        private String primaryFacilityGroupId;
+
+        public String getPrimaryFacilityGroupId()
+        {
+            return this.primaryFacilityGroupId;
+        }
+
+        public void setPrimaryFacilityGroupId(String primaryFacilityGroupId)
+        {
+            this.primaryFacilityGroupId = primaryFacilityGroupId;
+        }
+
+        private Long oldSquareFootage;
+
+        public Long getOldSquareFootage()
+        {
+            return this.oldSquareFootage;
+        }
+
+        public void setOldSquareFootage(Long oldSquareFootage)
+        {
+            this.oldSquareFootage = oldSquareFootage;
+        }
+
+        private java.math.BigDecimal facilitySize;
+
+        public java.math.BigDecimal getFacilitySize()
+        {
+            return this.facilitySize;
+        }
+
+        public void setFacilitySize(java.math.BigDecimal facilitySize)
+        {
+            this.facilitySize = facilitySize;
+        }
+
+        private String facilitySizeUomId;
+
+        public String getFacilitySizeUomId()
+        {
+            return this.facilitySizeUomId;
+        }
+
+        public void setFacilitySizeUomId(String facilitySizeUomId)
+        {
+            this.facilitySizeUomId = facilitySizeUomId;
+        }
+
+        private String productStoreId;
+
+        public String getProductStoreId()
+        {
+            return this.productStoreId;
+        }
+
+        public void setProductStoreId(String productStoreId)
+        {
+            this.productStoreId = productStoreId;
+        }
+
+        private Long defaultDaysToShip;
+
+        public Long getDefaultDaysToShip()
+        {
+            return this.defaultDaysToShip;
+        }
+
+        public void setDefaultDaysToShip(Long defaultDaysToShip)
+        {
+            this.defaultDaysToShip = defaultDaysToShip;
+        }
+
+        private java.sql.Timestamp openedDate;
+
+        public java.sql.Timestamp getOpenedDate()
+        {
+            return this.openedDate;
+        }
+
+        public void setOpenedDate(java.sql.Timestamp openedDate)
+        {
+            this.openedDate = openedDate;
+        }
+
+        private java.sql.Timestamp closedDate;
+
+        public java.sql.Timestamp getClosedDate()
+        {
+            return this.closedDate;
+        }
+
+        public void setClosedDate(java.sql.Timestamp closedDate)
+        {
+            this.closedDate = closedDate;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String defaultDimensionUomId;
+
+        public String getDefaultDimensionUomId()
+        {
+            return this.defaultDimensionUomId;
+        }
+
+        public void setDefaultDimensionUomId(String defaultDimensionUomId)
+        {
+            this.defaultDimensionUomId = defaultDimensionUomId;
+        }
+
+        private String defaultWeightUomId;
+
+        public String getDefaultWeightUomId()
+        {
+            return this.defaultWeightUomId;
+        }
+
+        public void setDefaultWeightUomId(String defaultWeightUomId)
+        {
+            this.defaultWeightUomId = defaultWeightUomId;
+        }
+
+        private String geoPointId;
+
+        public String getGeoPointId()
+        {
+            return this.geoPointId;
+        }
+
+        public void setGeoPointId(String geoPointId)
+        {
+            this.geoPointId = geoPointId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractFacilityStateEvent(FacilityEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractFacilityStateCreated extends AbstractFacilityStateEvent implements FacilityEvent.FacilityStateCreated
     {
         public AbstractFacilityStateCreated() {
             this(new FacilityEventId());
@@ -311,7 +317,7 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
     }
 
 
-    public static abstract class AbstractFacilityStateMergePatched extends AbstractFacilityEvent implements FacilityEvent.FacilityStateMergePatched
+    public static abstract class AbstractFacilityStateMergePatched extends AbstractFacilityStateEvent implements FacilityEvent.FacilityStateMergePatched
     {
         public AbstractFacilityStateMergePatched() {
             this(new FacilityEventId());
@@ -508,7 +514,7 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
     }
 
 
-    public static abstract class AbstractFacilityStateDeleted extends AbstractFacilityEvent implements FacilityEvent.FacilityStateDeleted
+    public static abstract class AbstractFacilityStateDeleted extends AbstractFacilityStateEvent implements FacilityEvent.FacilityStateDeleted
     {
         public AbstractFacilityStateDeleted() {
             this(new FacilityEventId());

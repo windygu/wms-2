@@ -18,6 +18,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractSellableInventoryItemEntryMvoEvent$AbstractSellableInventoryItemEntryMvoStateEvent" abstract="true">
+
 	<property name="sellableQuantity" ></property>
 	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
 		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="60" sql-type="VARCHAR(60)" /></property>
@@ -32,12 +41,6 @@
 	<property name="sellableInventoryItemCreatedAt" type="timestamp"><column name="SellableInventoryItemCreatedAt" sql-type="DATETIME" /></property>
 	<property name="sellableInventoryItemUpdatedBy" ></property>
 	<property name="sellableInventoryItemUpdatedAt" type="timestamp"><column name="SellableInventoryItemUpdatedAt" sql-type="DATETIME" /></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractSellableInventoryItemEntryMvoEvent$SimpleSellableInventoryItemEntryMvoStateCreated" discriminator-value="Created">
     	
@@ -64,6 +67,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

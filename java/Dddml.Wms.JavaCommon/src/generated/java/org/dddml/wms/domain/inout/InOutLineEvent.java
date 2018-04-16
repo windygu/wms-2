@@ -14,54 +14,6 @@ public interface InOutLineEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getLocatorId();
-
-    void setLocatorId(String locatorId);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getQuantityUomId();
-
-    void setQuantityUomId(String quantityUomId);
-
-    BigDecimal getMovementQuantity();
-
-    void setMovementQuantity(BigDecimal movementQuantity);
-
-    BigDecimal getPickedQuantity();
-
-    void setPickedQuantity(BigDecimal pickedQuantity);
-
-    Boolean getIsInvoiced();
-
-    void setIsInvoiced(Boolean isInvoiced);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getRmaLineNumber();
-
-    void setRmaLineNumber(String rmaLineNumber);
-
-    String getReversalLineNumber();
-
-    void setReversalLineNumber(String reversalLineNumber);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -70,21 +22,72 @@ public interface InOutLineEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface InOutLineStateCreated extends InOutLineEvent
+    interface InOutLineStateEvent extends InOutLineEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getLocatorId();
+
+        void setLocatorId(String locatorId);
+
+        String getProductId();
+
+        void setProductId(String productId);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getQuantityUomId();
+
+        void setQuantityUomId(String quantityUomId);
+
+        BigDecimal getMovementQuantity();
+
+        void setMovementQuantity(BigDecimal movementQuantity);
+
+        BigDecimal getPickedQuantity();
+
+        void setPickedQuantity(BigDecimal pickedQuantity);
+
+        Boolean getIsInvoiced();
+
+        void setIsInvoiced(Boolean isInvoiced);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getRmaLineNumber();
+
+        void setRmaLineNumber(String rmaLineNumber);
+
+        String getReversalLineNumber();
+
+        void setReversalLineNumber(String reversalLineNumber);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface InOutLineStateCreated extends InOutLineStateEvent
     {
     
     }
 
 
-    interface InOutLineStateMergePatched extends InOutLineEvent
+    interface InOutLineStateMergePatched extends InOutLineStateEvent
     {
         Boolean getIsPropertyLocatorIdRemoved();
 
@@ -137,7 +140,7 @@ public interface InOutLineEvent extends Event
 
     }
 
-    interface InOutLineStateRemoved extends InOutLineEvent
+    interface InOutLineStateRemoved extends InOutLineStateEvent
     {
     }
 

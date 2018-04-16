@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractOrderShipGroupEvent$AbstractOrderShipGroupStateEvent" abstract="true">
+
 	<property name="shipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="supplierPartyId" ><column name="SupplierPartyId" sql-type="VARCHAR(20)" /></property>
 	<property name="vendorPartyId" ><column name="VendorPartyId" sql-type="VARCHAR(20)" /></property>
@@ -35,12 +44,6 @@
 	<property name="estimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
 	<property name="pickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <property name="version" column="Version" not-null="true" />
 
@@ -96,6 +99,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

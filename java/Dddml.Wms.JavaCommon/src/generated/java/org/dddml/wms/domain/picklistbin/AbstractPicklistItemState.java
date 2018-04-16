@@ -264,17 +264,17 @@ public abstract class AbstractPicklistItemState implements PicklistItemState
     {
     }
 
-    protected void throwOnWrongEvent(PicklistItemEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistItemEvent event)
     {
         String stateEntityIdPicklistBinId = this.getPicklistBinPicklistItemId().getPicklistBinId();
-        String eventEntityIdPicklistBinId = stateEvent.getPicklistItemEventId().getPicklistBinId();
+        String eventEntityIdPicklistBinId = event.getPicklistItemEventId().getPicklistBinId();
         if (!stateEntityIdPicklistBinId.equals(eventEntityIdPicklistBinId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PicklistBinId %1$s in state but entity id PicklistBinId %2$s in event", stateEntityIdPicklistBinId, eventEntityIdPicklistBinId);
         }
 
         PicklistItemOrderShipGrpInvId stateEntityIdPicklistItemOrderShipGrpInvId = this.getPicklistBinPicklistItemId().getPicklistItemOrderShipGrpInvId();
-        PicklistItemOrderShipGrpInvId eventEntityIdPicklistItemOrderShipGrpInvId = stateEvent.getPicklistItemEventId().getPicklistItemOrderShipGrpInvId();
+        PicklistItemOrderShipGrpInvId eventEntityIdPicklistItemOrderShipGrpInvId = event.getPicklistItemEventId().getPicklistItemOrderShipGrpInvId();
         if (!stateEntityIdPicklistItemOrderShipGrpInvId.equals(eventEntityIdPicklistItemOrderShipGrpInvId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PicklistItemOrderShipGrpInvId %1$s in state but entity id PicklistItemOrderShipGrpInvId %2$s in event", stateEntityIdPicklistItemOrderShipGrpInvId, eventEntityIdPicklistItemOrderShipGrpInvId);
@@ -282,16 +282,19 @@ public abstract class AbstractPicklistItemState implements PicklistItemState
 
         if (getForReapplying()) { return; }
 
+        PicklistItemStateEvent stateEvent = event instanceof PicklistItemStateEvent ? (PicklistItemStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? PicklistItemState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(PicklistItemState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? PicklistItemState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(PicklistItemState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

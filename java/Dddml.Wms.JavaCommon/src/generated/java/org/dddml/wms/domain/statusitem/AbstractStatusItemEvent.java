@@ -32,54 +32,6 @@ public abstract class AbstractStatusItemEvent extends AbstractEvent implements S
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String statusTypeId;
-
-    public String getStatusTypeId()
-    {
-        return this.statusTypeId;
-    }
-
-    public void setStatusTypeId(String statusTypeId)
-    {
-        this.statusTypeId = statusTypeId;
-    }
-
-    private String statusCode;
-
-    public String getStatusCode()
-    {
-        return this.statusCode;
-    }
-
-    public void setStatusCode(String statusCode)
-    {
-        this.statusCode = statusCode;
-    }
-
-    private String sequenceId;
-
-    public String getSequenceId()
-    {
-        return this.sequenceId;
-    }
-
-    public void setSequenceId(String sequenceId)
-    {
-        this.sequenceId = sequenceId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -104,18 +56,6 @@ public abstract class AbstractStatusItemEvent extends AbstractEvent implements S
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -138,7 +78,73 @@ public abstract class AbstractStatusItemEvent extends AbstractEvent implements S
     public abstract String getEventType();
 
 
-    public static abstract class AbstractStatusItemStateCreated extends AbstractStatusItemEvent implements StatusItemEvent.StatusItemStateCreated
+    public static abstract class AbstractStatusItemStateEvent extends AbstractStatusItemEvent implements StatusItemEvent.StatusItemStateEvent {
+        private String statusTypeId;
+
+        public String getStatusTypeId()
+        {
+            return this.statusTypeId;
+        }
+
+        public void setStatusTypeId(String statusTypeId)
+        {
+            this.statusTypeId = statusTypeId;
+        }
+
+        private String statusCode;
+
+        public String getStatusCode()
+        {
+            return this.statusCode;
+        }
+
+        public void setStatusCode(String statusCode)
+        {
+            this.statusCode = statusCode;
+        }
+
+        private String sequenceId;
+
+        public String getSequenceId()
+        {
+            return this.sequenceId;
+        }
+
+        public void setSequenceId(String sequenceId)
+        {
+            this.sequenceId = sequenceId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractStatusItemStateEvent(StatusItemEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractStatusItemStateCreated extends AbstractStatusItemStateEvent implements StatusItemEvent.StatusItemStateCreated
     {
         public AbstractStatusItemStateCreated() {
             this(new StatusItemEventId());
@@ -155,7 +161,7 @@ public abstract class AbstractStatusItemEvent extends AbstractEvent implements S
     }
 
 
-    public static abstract class AbstractStatusItemStateMergePatched extends AbstractStatusItemEvent implements StatusItemEvent.StatusItemStateMergePatched
+    public static abstract class AbstractStatusItemStateMergePatched extends AbstractStatusItemStateEvent implements StatusItemEvent.StatusItemStateMergePatched
     {
         public AbstractStatusItemStateMergePatched() {
             this(new StatusItemEventId());

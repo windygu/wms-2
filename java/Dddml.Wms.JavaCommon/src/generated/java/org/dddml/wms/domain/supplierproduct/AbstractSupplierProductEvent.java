@@ -32,162 +32,6 @@ public abstract class AbstractSupplierProductEvent extends AbstractEvent impleme
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private java.sql.Timestamp availableThruDate;
-
-    public java.sql.Timestamp getAvailableThruDate()
-    {
-        return this.availableThruDate;
-    }
-
-    public void setAvailableThruDate(java.sql.Timestamp availableThruDate)
-    {
-        this.availableThruDate = availableThruDate;
-    }
-
-    private String supplierPrefOrderId;
-
-    public String getSupplierPrefOrderId()
-    {
-        return this.supplierPrefOrderId;
-    }
-
-    public void setSupplierPrefOrderId(String supplierPrefOrderId)
-    {
-        this.supplierPrefOrderId = supplierPrefOrderId;
-    }
-
-    private String supplierRatingTypeId;
-
-    public String getSupplierRatingTypeId()
-    {
-        return this.supplierRatingTypeId;
-    }
-
-    public void setSupplierRatingTypeId(String supplierRatingTypeId)
-    {
-        this.supplierRatingTypeId = supplierRatingTypeId;
-    }
-
-    private java.math.BigDecimal standardLeadTimeDays;
-
-    public java.math.BigDecimal getStandardLeadTimeDays()
-    {
-        return this.standardLeadTimeDays;
-    }
-
-    public void setStandardLeadTimeDays(java.math.BigDecimal standardLeadTimeDays)
-    {
-        this.standardLeadTimeDays = standardLeadTimeDays;
-    }
-
-    private java.math.BigDecimal manufacturingLeadTimeDays;
-
-    public java.math.BigDecimal getManufacturingLeadTimeDays()
-    {
-        return this.manufacturingLeadTimeDays;
-    }
-
-    public void setManufacturingLeadTimeDays(java.math.BigDecimal manufacturingLeadTimeDays)
-    {
-        this.manufacturingLeadTimeDays = manufacturingLeadTimeDays;
-    }
-
-    private java.math.BigDecimal deliveryLeadTimeDays;
-
-    public java.math.BigDecimal getDeliveryLeadTimeDays()
-    {
-        return this.deliveryLeadTimeDays;
-    }
-
-    public void setDeliveryLeadTimeDays(java.math.BigDecimal deliveryLeadTimeDays)
-    {
-        this.deliveryLeadTimeDays = deliveryLeadTimeDays;
-    }
-
-    private String quantityUomId;
-
-    public String getQuantityUomId()
-    {
-        return this.quantityUomId;
-    }
-
-    public void setQuantityUomId(String quantityUomId)
-    {
-        this.quantityUomId = quantityUomId;
-    }
-
-    private java.math.BigDecimal lastPrice;
-
-    public java.math.BigDecimal getLastPrice()
-    {
-        return this.lastPrice;
-    }
-
-    public void setLastPrice(java.math.BigDecimal lastPrice)
-    {
-        this.lastPrice = lastPrice;
-    }
-
-    private java.math.BigDecimal shippingPrice;
-
-    public java.math.BigDecimal getShippingPrice()
-    {
-        return this.shippingPrice;
-    }
-
-    public void setShippingPrice(java.math.BigDecimal shippingPrice)
-    {
-        this.shippingPrice = shippingPrice;
-    }
-
-    private String externalProductName;
-
-    public String getExternalProductName()
-    {
-        return this.externalProductName;
-    }
-
-    public void setExternalProductName(String externalProductName)
-    {
-        this.externalProductName = externalProductName;
-    }
-
-    private String externalProductId;
-
-    public String getExternalProductId()
-    {
-        return this.externalProductId;
-    }
-
-    public void setExternalProductId(String externalProductId)
-    {
-        this.externalProductId = externalProductId;
-    }
-
-    private Boolean canDropShip;
-
-    public Boolean getCanDropShip()
-    {
-        return this.canDropShip;
-    }
-
-    public void setCanDropShip(Boolean canDropShip)
-    {
-        this.canDropShip = canDropShip;
-    }
-
-    private String comments;
-
-    public String getComments()
-    {
-        return this.comments;
-    }
-
-    public void setComments(String comments)
-    {
-        this.comments = comments;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -212,18 +56,6 @@ public abstract class AbstractSupplierProductEvent extends AbstractEvent impleme
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -246,7 +78,181 @@ public abstract class AbstractSupplierProductEvent extends AbstractEvent impleme
     public abstract String getEventType();
 
 
-    public static abstract class AbstractSupplierProductStateCreated extends AbstractSupplierProductEvent implements SupplierProductEvent.SupplierProductStateCreated
+    public static abstract class AbstractSupplierProductStateEvent extends AbstractSupplierProductEvent implements SupplierProductEvent.SupplierProductStateEvent {
+        private java.sql.Timestamp availableThruDate;
+
+        public java.sql.Timestamp getAvailableThruDate()
+        {
+            return this.availableThruDate;
+        }
+
+        public void setAvailableThruDate(java.sql.Timestamp availableThruDate)
+        {
+            this.availableThruDate = availableThruDate;
+        }
+
+        private String supplierPrefOrderId;
+
+        public String getSupplierPrefOrderId()
+        {
+            return this.supplierPrefOrderId;
+        }
+
+        public void setSupplierPrefOrderId(String supplierPrefOrderId)
+        {
+            this.supplierPrefOrderId = supplierPrefOrderId;
+        }
+
+        private String supplierRatingTypeId;
+
+        public String getSupplierRatingTypeId()
+        {
+            return this.supplierRatingTypeId;
+        }
+
+        public void setSupplierRatingTypeId(String supplierRatingTypeId)
+        {
+            this.supplierRatingTypeId = supplierRatingTypeId;
+        }
+
+        private java.math.BigDecimal standardLeadTimeDays;
+
+        public java.math.BigDecimal getStandardLeadTimeDays()
+        {
+            return this.standardLeadTimeDays;
+        }
+
+        public void setStandardLeadTimeDays(java.math.BigDecimal standardLeadTimeDays)
+        {
+            this.standardLeadTimeDays = standardLeadTimeDays;
+        }
+
+        private java.math.BigDecimal manufacturingLeadTimeDays;
+
+        public java.math.BigDecimal getManufacturingLeadTimeDays()
+        {
+            return this.manufacturingLeadTimeDays;
+        }
+
+        public void setManufacturingLeadTimeDays(java.math.BigDecimal manufacturingLeadTimeDays)
+        {
+            this.manufacturingLeadTimeDays = manufacturingLeadTimeDays;
+        }
+
+        private java.math.BigDecimal deliveryLeadTimeDays;
+
+        public java.math.BigDecimal getDeliveryLeadTimeDays()
+        {
+            return this.deliveryLeadTimeDays;
+        }
+
+        public void setDeliveryLeadTimeDays(java.math.BigDecimal deliveryLeadTimeDays)
+        {
+            this.deliveryLeadTimeDays = deliveryLeadTimeDays;
+        }
+
+        private String quantityUomId;
+
+        public String getQuantityUomId()
+        {
+            return this.quantityUomId;
+        }
+
+        public void setQuantityUomId(String quantityUomId)
+        {
+            this.quantityUomId = quantityUomId;
+        }
+
+        private java.math.BigDecimal lastPrice;
+
+        public java.math.BigDecimal getLastPrice()
+        {
+            return this.lastPrice;
+        }
+
+        public void setLastPrice(java.math.BigDecimal lastPrice)
+        {
+            this.lastPrice = lastPrice;
+        }
+
+        private java.math.BigDecimal shippingPrice;
+
+        public java.math.BigDecimal getShippingPrice()
+        {
+            return this.shippingPrice;
+        }
+
+        public void setShippingPrice(java.math.BigDecimal shippingPrice)
+        {
+            this.shippingPrice = shippingPrice;
+        }
+
+        private String externalProductName;
+
+        public String getExternalProductName()
+        {
+            return this.externalProductName;
+        }
+
+        public void setExternalProductName(String externalProductName)
+        {
+            this.externalProductName = externalProductName;
+        }
+
+        private String externalProductId;
+
+        public String getExternalProductId()
+        {
+            return this.externalProductId;
+        }
+
+        public void setExternalProductId(String externalProductId)
+        {
+            this.externalProductId = externalProductId;
+        }
+
+        private Boolean canDropShip;
+
+        public Boolean getCanDropShip()
+        {
+            return this.canDropShip;
+        }
+
+        public void setCanDropShip(Boolean canDropShip)
+        {
+            this.canDropShip = canDropShip;
+        }
+
+        private String comments;
+
+        public String getComments()
+        {
+            return this.comments;
+        }
+
+        public void setComments(String comments)
+        {
+            this.comments = comments;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractSupplierProductStateEvent(SupplierProductEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractSupplierProductStateCreated extends AbstractSupplierProductStateEvent implements SupplierProductEvent.SupplierProductStateCreated
     {
         public AbstractSupplierProductStateCreated() {
             this(new SupplierProductEventId());
@@ -263,7 +269,7 @@ public abstract class AbstractSupplierProductEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractSupplierProductStateMergePatched extends AbstractSupplierProductEvent implements SupplierProductEvent.SupplierProductStateMergePatched
+    public static abstract class AbstractSupplierProductStateMergePatched extends AbstractSupplierProductStateEvent implements SupplierProductEvent.SupplierProductStateMergePatched
     {
         public AbstractSupplierProductStateMergePatched() {
             this(new SupplierProductEventId());

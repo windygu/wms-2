@@ -14,26 +14,6 @@ public interface InventoryPostingRuleEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    InventoryItemId getTriggerInventoryItemId();
-
-    void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId);
-
-    InventoryItemId getOutputInventoryItemId();
-
-    void setOutputInventoryItemId(InventoryItemId outputInventoryItemId);
-
-    String getTriggerAccountName();
-
-    void setTriggerAccountName(String triggerAccountName);
-
-    String getOutputAccountName();
-
-    void setOutputAccountName(String outputAccountName);
-
-    Boolean getIsOutputNegated();
-
-    void setIsOutputNegated(Boolean isOutputNegated);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -42,21 +22,44 @@ public interface InventoryPostingRuleEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface InventoryPostingRuleStateCreated extends InventoryPostingRuleEvent
+    interface InventoryPostingRuleStateEvent extends InventoryPostingRuleEvent {
+        InventoryItemId getTriggerInventoryItemId();
+
+        void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId);
+
+        InventoryItemId getOutputInventoryItemId();
+
+        void setOutputInventoryItemId(InventoryItemId outputInventoryItemId);
+
+        String getTriggerAccountName();
+
+        void setTriggerAccountName(String triggerAccountName);
+
+        String getOutputAccountName();
+
+        void setOutputAccountName(String outputAccountName);
+
+        Boolean getIsOutputNegated();
+
+        void setIsOutputNegated(Boolean isOutputNegated);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface InventoryPostingRuleStateCreated extends InventoryPostingRuleStateEvent
     {
     
     }
 
 
-    interface InventoryPostingRuleStateMergePatched extends InventoryPostingRuleEvent
+    interface InventoryPostingRuleStateMergePatched extends InventoryPostingRuleStateEvent
     {
         Boolean getIsPropertyTriggerInventoryItemIdRemoved();
 
@@ -85,7 +88,7 @@ public interface InventoryPostingRuleEvent extends Event
 
     }
 
-    interface InventoryPostingRuleStateDeleted extends InventoryPostingRuleEvent
+    interface InventoryPostingRuleStateDeleted extends InventoryPostingRuleStateEvent
     {
     }
 

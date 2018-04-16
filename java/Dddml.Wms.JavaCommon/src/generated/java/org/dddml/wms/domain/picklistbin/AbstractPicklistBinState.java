@@ -347,21 +347,21 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
 
     }
 
-    protected void throwOnWrongEvent(PicklistBinEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistBinEvent event)
     {
         String stateEntityId = this.getPicklistBinId(); // Aggregate Id
-        String eventEntityId = stateEvent.getPicklistBinEventId().getPicklistBinId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = event.getPicklistBinEventId().getPicklistBinId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getPicklistBinEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getPicklistBinEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getPicklistBinEventId().getVersion() == null");
+            throw new NullPointerException("event.getPicklistBinEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(PicklistBinState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(PicklistBinState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

@@ -14,126 +14,6 @@ public interface InOutEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
-
-    Boolean getPosted();
-
-    void setPosted(Boolean posted);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getProcessing();
-
-    void setProcessing(String processing);
-
-    String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getOrderId();
-
-    void setOrderId(String orderId);
-
-    Date getDateOrdered();
-
-    void setDateOrdered(Date dateOrdered);
-
-    Boolean getIsPrinted();
-
-    void setIsPrinted(Boolean isPrinted);
-
-    String getMovementTypeId();
-
-    void setMovementTypeId(String movementTypeId);
-
-    Date getMovementDate();
-
-    void setMovementDate(Date movementDate);
-
-    String getBusinessPartnerId();
-
-    void setBusinessPartnerId(String businessPartnerId);
-
-    String getWarehouseId();
-
-    void setWarehouseId(String warehouseId);
-
-    String getPOReference();
-
-    void setPOReference(String poReference);
-
-    BigDecimal getFreightAmount();
-
-    void setFreightAmount(BigDecimal freightAmount);
-
-    String getShipperId();
-
-    void setShipperId(String shipperId);
-
-    BigDecimal getChargeAmount();
-
-    void setChargeAmount(BigDecimal chargeAmount);
-
-    Date getDatePrinted();
-
-    void setDatePrinted(Date datePrinted);
-
-    String getCreatedFrom();
-
-    void setCreatedFrom(String createdFrom);
-
-    String getSalesRepresentativeId();
-
-    void setSalesRepresentativeId(String salesRepresentativeId);
-
-    Integer getNumberOfPackages();
-
-    void setNumberOfPackages(Integer numberOfPackages);
-
-    Date getPickDate();
-
-    void setPickDate(Date pickDate);
-
-    Date getShipDate();
-
-    void setShipDate(Date shipDate);
-
-    String getTrackingNumber();
-
-    void setTrackingNumber(String trackingNumber);
-
-    Date getDateReceived();
-
-    void setDateReceived(Date dateReceived);
-
-    Boolean getIsInTransit();
-
-    void setIsInTransit(Boolean isInTransit);
-
-    Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
-
-    Boolean getIsInDispute();
-
-    void setIsInDispute(Boolean isInDispute);
-
-    String getRmaDocumentNumber();
-
-    void setRmaDocumentNumber(String rmaDocumentNumber);
-
-    String getReversalDocumentNumber();
-
-    void setReversalDocumentNumber(String reversalDocumentNumber);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -142,15 +22,138 @@ public interface InOutEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface InOutStateCreated extends InOutEvent
+    interface InOutStateEvent extends InOutEvent {
+        String getDocumentStatusId();
+
+        void setDocumentStatusId(String documentStatusId);
+
+        Boolean getPosted();
+
+        void setPosted(Boolean posted);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getProcessing();
+
+        void setProcessing(String processing);
+
+        String getDocumentTypeId();
+
+        void setDocumentTypeId(String documentTypeId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getOrderId();
+
+        void setOrderId(String orderId);
+
+        Date getDateOrdered();
+
+        void setDateOrdered(Date dateOrdered);
+
+        Boolean getIsPrinted();
+
+        void setIsPrinted(Boolean isPrinted);
+
+        String getMovementTypeId();
+
+        void setMovementTypeId(String movementTypeId);
+
+        Date getMovementDate();
+
+        void setMovementDate(Date movementDate);
+
+        String getBusinessPartnerId();
+
+        void setBusinessPartnerId(String businessPartnerId);
+
+        String getWarehouseId();
+
+        void setWarehouseId(String warehouseId);
+
+        String getPOReference();
+
+        void setPOReference(String poReference);
+
+        BigDecimal getFreightAmount();
+
+        void setFreightAmount(BigDecimal freightAmount);
+
+        String getShipperId();
+
+        void setShipperId(String shipperId);
+
+        BigDecimal getChargeAmount();
+
+        void setChargeAmount(BigDecimal chargeAmount);
+
+        Date getDatePrinted();
+
+        void setDatePrinted(Date datePrinted);
+
+        String getCreatedFrom();
+
+        void setCreatedFrom(String createdFrom);
+
+        String getSalesRepresentativeId();
+
+        void setSalesRepresentativeId(String salesRepresentativeId);
+
+        Integer getNumberOfPackages();
+
+        void setNumberOfPackages(Integer numberOfPackages);
+
+        Date getPickDate();
+
+        void setPickDate(Date pickDate);
+
+        Date getShipDate();
+
+        void setShipDate(Date shipDate);
+
+        String getTrackingNumber();
+
+        void setTrackingNumber(String trackingNumber);
+
+        Date getDateReceived();
+
+        void setDateReceived(Date dateReceived);
+
+        Boolean getIsInTransit();
+
+        void setIsInTransit(Boolean isInTransit);
+
+        Boolean getIsApproved();
+
+        void setIsApproved(Boolean isApproved);
+
+        Boolean getIsInDispute();
+
+        void setIsInDispute(Boolean isInDispute);
+
+        String getRmaDocumentNumber();
+
+        void setRmaDocumentNumber(String rmaDocumentNumber);
+
+        String getReversalDocumentNumber();
+
+        void setReversalDocumentNumber(String reversalDocumentNumber);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface InOutStateCreated extends InOutStateEvent
     {
         Iterable<InOutLineEvent.InOutLineStateCreated> getInOutLineEvents();
         
@@ -162,7 +165,7 @@ public interface InOutEvent extends Event
     }
 
 
-    interface InOutStateMergePatched extends InOutEvent
+    interface InOutStateMergePatched extends InOutStateEvent
     {
         Boolean getIsPropertyDocumentStatusIdRemoved();
 

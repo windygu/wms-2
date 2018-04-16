@@ -32,30 +32,6 @@ public abstract class AbstractAttributeAliasEvent extends AbstractEvent implemen
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String name;
-
-    public String getName()
-    {
-        return this.name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -80,18 +56,6 @@ public abstract class AbstractAttributeAliasEvent extends AbstractEvent implemen
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -114,7 +78,49 @@ public abstract class AbstractAttributeAliasEvent extends AbstractEvent implemen
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeAliasStateCreated extends AbstractAttributeAliasEvent implements AttributeAliasEvent.AttributeAliasStateCreated
+    public static abstract class AbstractAttributeAliasStateEvent extends AbstractAttributeAliasEvent implements AttributeAliasEvent.AttributeAliasStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String name;
+
+        public String getName()
+        {
+            return this.name;
+        }
+
+        public void setName(String name)
+        {
+            this.name = name;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractAttributeAliasStateEvent(AttributeAliasEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeAliasStateCreated extends AbstractAttributeAliasStateEvent implements AttributeAliasEvent.AttributeAliasStateCreated
     {
         public AbstractAttributeAliasStateCreated() {
             this(new AttributeAliasEventId());
@@ -131,7 +137,7 @@ public abstract class AbstractAttributeAliasEvent extends AbstractEvent implemen
     }
 
 
-    public static abstract class AbstractAttributeAliasStateMergePatched extends AbstractAttributeAliasEvent implements AttributeAliasEvent.AttributeAliasStateMergePatched
+    public static abstract class AbstractAttributeAliasStateMergePatched extends AbstractAttributeAliasStateEvent implements AttributeAliasEvent.AttributeAliasStateMergePatched
     {
         public AbstractAttributeAliasStateMergePatched() {
             this(new AttributeAliasEventId());
@@ -168,7 +174,7 @@ public abstract class AbstractAttributeAliasEvent extends AbstractEvent implemen
     }
 
 
-    public static abstract class AbstractAttributeAliasStateRemoved extends AbstractAttributeAliasEvent implements AttributeAliasEvent.AttributeAliasStateRemoved
+    public static abstract class AbstractAttributeAliasStateRemoved extends AbstractAttributeAliasStateEvent implements AttributeAliasEvent.AttributeAliasStateRemoved
     {
         public AbstractAttributeAliasStateRemoved() {
             this(new AttributeAliasEventId());

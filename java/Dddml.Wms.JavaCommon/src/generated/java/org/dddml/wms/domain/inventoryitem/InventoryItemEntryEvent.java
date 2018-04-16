@@ -14,34 +14,6 @@ public interface InventoryItemEntryEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    BigDecimal getOnHandQuantity();
-
-    void setOnHandQuantity(BigDecimal onHandQuantity);
-
-    BigDecimal getInTransitQuantity();
-
-    void setInTransitQuantity(BigDecimal inTransitQuantity);
-
-    BigDecimal getReservedQuantity();
-
-    void setReservedQuantity(BigDecimal reservedQuantity);
-
-    BigDecimal getOccupiedQuantity();
-
-    void setOccupiedQuantity(BigDecimal occupiedQuantity);
-
-    BigDecimal getVirtualQuantity();
-
-    void setVirtualQuantity(BigDecimal virtualQuantity);
-
-    InventoryItemSourceInfo getSource();
-
-    void setSource(InventoryItemSourceInfo source);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -54,7 +26,38 @@ public interface InventoryItemEntryEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface InventoryItemEntryStateCreated extends InventoryItemEntryEvent
+    interface InventoryItemEntryStateEvent extends InventoryItemEntryEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getOnHandQuantity();
+
+        void setOnHandQuantity(BigDecimal onHandQuantity);
+
+        BigDecimal getInTransitQuantity();
+
+        void setInTransitQuantity(BigDecimal inTransitQuantity);
+
+        BigDecimal getReservedQuantity();
+
+        void setReservedQuantity(BigDecimal reservedQuantity);
+
+        BigDecimal getOccupiedQuantity();
+
+        void setOccupiedQuantity(BigDecimal occupiedQuantity);
+
+        BigDecimal getVirtualQuantity();
+
+        void setVirtualQuantity(BigDecimal virtualQuantity);
+
+        InventoryItemSourceInfo getSource();
+
+        void setSource(InventoryItemSourceInfo source);
+
+    }
+
+    interface InventoryItemEntryStateCreated extends InventoryItemEntryStateEvent
     {
     
     }

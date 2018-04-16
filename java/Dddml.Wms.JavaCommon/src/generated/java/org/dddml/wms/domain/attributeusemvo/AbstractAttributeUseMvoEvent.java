@@ -33,30 +33,6 @@ public abstract class AbstractAttributeUseMvoEvent extends AbstractEvent impleme
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Integer sequenceNumber;
-
-    public Integer getSequenceNumber()
-    {
-        return this.sequenceNumber;
-    }
-
-    public void setSequenceNumber(Integer sequenceNumber)
-    {
-        this.sequenceNumber = sequenceNumber;
-    }
-
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -81,162 +57,6 @@ public abstract class AbstractAttributeUseMvoEvent extends AbstractEvent impleme
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
-    private String attributeSetAttributeSetName;
-
-    public String getAttributeSetAttributeSetName()
-    {
-        return this.attributeSetAttributeSetName;
-    }
-
-    public void setAttributeSetAttributeSetName(String attributeSetAttributeSetName)
-    {
-        this.attributeSetAttributeSetName = attributeSetAttributeSetName;
-    }
-
-    private String attributeSetOrganizationId;
-
-    public String getAttributeSetOrganizationId()
-    {
-        return this.attributeSetOrganizationId;
-    }
-
-    public void setAttributeSetOrganizationId(String attributeSetOrganizationId)
-    {
-        this.attributeSetOrganizationId = attributeSetOrganizationId;
-    }
-
-    private String attributeSetDescription;
-
-    public String getAttributeSetDescription()
-    {
-        return this.attributeSetDescription;
-    }
-
-    public void setAttributeSetDescription(String attributeSetDescription)
-    {
-        this.attributeSetDescription = attributeSetDescription;
-    }
-
-    private String attributeSetReferenceId;
-
-    public String getAttributeSetReferenceId()
-    {
-        return this.attributeSetReferenceId;
-    }
-
-    public void setAttributeSetReferenceId(String attributeSetReferenceId)
-    {
-        this.attributeSetReferenceId = attributeSetReferenceId;
-    }
-
-    private Boolean attributeSetIsInstanceAttributeSet;
-
-    public Boolean getAttributeSetIsInstanceAttributeSet()
-    {
-        return this.attributeSetIsInstanceAttributeSet;
-    }
-
-    public void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet)
-    {
-        this.attributeSetIsInstanceAttributeSet = attributeSetIsInstanceAttributeSet;
-    }
-
-    private Boolean attributeSetIsMandatory;
-
-    public Boolean getAttributeSetIsMandatory()
-    {
-        return this.attributeSetIsMandatory;
-    }
-
-    public void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory)
-    {
-        this.attributeSetIsMandatory = attributeSetIsMandatory;
-    }
-
-    private String attributeSetCreatedBy;
-
-    public String getAttributeSetCreatedBy()
-    {
-        return this.attributeSetCreatedBy;
-    }
-
-    public void setAttributeSetCreatedBy(String attributeSetCreatedBy)
-    {
-        this.attributeSetCreatedBy = attributeSetCreatedBy;
-    }
-
-    private Date attributeSetCreatedAt;
-
-    public Date getAttributeSetCreatedAt()
-    {
-        return this.attributeSetCreatedAt;
-    }
-
-    public void setAttributeSetCreatedAt(Date attributeSetCreatedAt)
-    {
-        this.attributeSetCreatedAt = attributeSetCreatedAt;
-    }
-
-    private String attributeSetUpdatedBy;
-
-    public String getAttributeSetUpdatedBy()
-    {
-        return this.attributeSetUpdatedBy;
-    }
-
-    public void setAttributeSetUpdatedBy(String attributeSetUpdatedBy)
-    {
-        this.attributeSetUpdatedBy = attributeSetUpdatedBy;
-    }
-
-    private Date attributeSetUpdatedAt;
-
-    public Date getAttributeSetUpdatedAt()
-    {
-        return this.attributeSetUpdatedAt;
-    }
-
-    public void setAttributeSetUpdatedAt(Date attributeSetUpdatedAt)
-    {
-        this.attributeSetUpdatedAt = attributeSetUpdatedAt;
-    }
-
-    private Boolean attributeSetActive;
-
-    public Boolean getAttributeSetActive()
-    {
-        return this.attributeSetActive;
-    }
-
-    public void setAttributeSetActive(Boolean attributeSetActive)
-    {
-        this.attributeSetActive = attributeSetActive;
-    }
-
-    private Boolean attributeSetDeleted;
-
-    public Boolean getAttributeSetDeleted()
-    {
-        return this.attributeSetDeleted;
-    }
-
-    public void setAttributeSetDeleted(Boolean attributeSetDeleted)
-    {
-        this.attributeSetDeleted = attributeSetDeleted;
-    }
-
 
     private String commandId;
 
@@ -259,7 +79,193 @@ public abstract class AbstractAttributeUseMvoEvent extends AbstractEvent impleme
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeUseMvoStateCreated extends AbstractAttributeUseMvoEvent implements AttributeUseMvoEvent.AttributeUseMvoStateCreated
+    public static abstract class AbstractAttributeUseMvoStateEvent extends AbstractAttributeUseMvoEvent implements AttributeUseMvoEvent.AttributeUseMvoStateEvent {
+        private Integer sequenceNumber;
+
+        public Integer getSequenceNumber()
+        {
+            return this.sequenceNumber;
+        }
+
+        public void setSequenceNumber(Integer sequenceNumber)
+        {
+            this.sequenceNumber = sequenceNumber;
+        }
+
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        private String attributeSetAttributeSetName;
+
+        public String getAttributeSetAttributeSetName()
+        {
+            return this.attributeSetAttributeSetName;
+        }
+
+        public void setAttributeSetAttributeSetName(String attributeSetAttributeSetName)
+        {
+            this.attributeSetAttributeSetName = attributeSetAttributeSetName;
+        }
+
+        private String attributeSetOrganizationId;
+
+        public String getAttributeSetOrganizationId()
+        {
+            return this.attributeSetOrganizationId;
+        }
+
+        public void setAttributeSetOrganizationId(String attributeSetOrganizationId)
+        {
+            this.attributeSetOrganizationId = attributeSetOrganizationId;
+        }
+
+        private String attributeSetDescription;
+
+        public String getAttributeSetDescription()
+        {
+            return this.attributeSetDescription;
+        }
+
+        public void setAttributeSetDescription(String attributeSetDescription)
+        {
+            this.attributeSetDescription = attributeSetDescription;
+        }
+
+        private String attributeSetReferenceId;
+
+        public String getAttributeSetReferenceId()
+        {
+            return this.attributeSetReferenceId;
+        }
+
+        public void setAttributeSetReferenceId(String attributeSetReferenceId)
+        {
+            this.attributeSetReferenceId = attributeSetReferenceId;
+        }
+
+        private Boolean attributeSetIsInstanceAttributeSet;
+
+        public Boolean getAttributeSetIsInstanceAttributeSet()
+        {
+            return this.attributeSetIsInstanceAttributeSet;
+        }
+
+        public void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet)
+        {
+            this.attributeSetIsInstanceAttributeSet = attributeSetIsInstanceAttributeSet;
+        }
+
+        private Boolean attributeSetIsMandatory;
+
+        public Boolean getAttributeSetIsMandatory()
+        {
+            return this.attributeSetIsMandatory;
+        }
+
+        public void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory)
+        {
+            this.attributeSetIsMandatory = attributeSetIsMandatory;
+        }
+
+        private String attributeSetCreatedBy;
+
+        public String getAttributeSetCreatedBy()
+        {
+            return this.attributeSetCreatedBy;
+        }
+
+        public void setAttributeSetCreatedBy(String attributeSetCreatedBy)
+        {
+            this.attributeSetCreatedBy = attributeSetCreatedBy;
+        }
+
+        private Date attributeSetCreatedAt;
+
+        public Date getAttributeSetCreatedAt()
+        {
+            return this.attributeSetCreatedAt;
+        }
+
+        public void setAttributeSetCreatedAt(Date attributeSetCreatedAt)
+        {
+            this.attributeSetCreatedAt = attributeSetCreatedAt;
+        }
+
+        private String attributeSetUpdatedBy;
+
+        public String getAttributeSetUpdatedBy()
+        {
+            return this.attributeSetUpdatedBy;
+        }
+
+        public void setAttributeSetUpdatedBy(String attributeSetUpdatedBy)
+        {
+            this.attributeSetUpdatedBy = attributeSetUpdatedBy;
+        }
+
+        private Date attributeSetUpdatedAt;
+
+        public Date getAttributeSetUpdatedAt()
+        {
+            return this.attributeSetUpdatedAt;
+        }
+
+        public void setAttributeSetUpdatedAt(Date attributeSetUpdatedAt)
+        {
+            this.attributeSetUpdatedAt = attributeSetUpdatedAt;
+        }
+
+        private Boolean attributeSetActive;
+
+        public Boolean getAttributeSetActive()
+        {
+            return this.attributeSetActive;
+        }
+
+        public void setAttributeSetActive(Boolean attributeSetActive)
+        {
+            this.attributeSetActive = attributeSetActive;
+        }
+
+        private Boolean attributeSetDeleted;
+
+        public Boolean getAttributeSetDeleted()
+        {
+            return this.attributeSetDeleted;
+        }
+
+        public void setAttributeSetDeleted(Boolean attributeSetDeleted)
+        {
+            this.attributeSetDeleted = attributeSetDeleted;
+        }
+
+        protected AbstractAttributeUseMvoStateEvent(AttributeUseMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeUseMvoStateCreated extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoEvent.AttributeUseMvoStateCreated
     {
         public AbstractAttributeUseMvoStateCreated() {
             this(new AttributeUseMvoEventId());
@@ -276,7 +282,7 @@ public abstract class AbstractAttributeUseMvoEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoEvent implements AttributeUseMvoEvent.AttributeUseMvoStateMergePatched
+    public static abstract class AbstractAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoEvent.AttributeUseMvoStateMergePatched
     {
         public AbstractAttributeUseMvoStateMergePatched() {
             this(new AttributeUseMvoEventId());
@@ -443,7 +449,7 @@ public abstract class AbstractAttributeUseMvoEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoEvent implements AttributeUseMvoEvent.AttributeUseMvoStateDeleted
+    public static abstract class AbstractAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoEvent.AttributeUseMvoStateDeleted
     {
         public AbstractAttributeUseMvoStateDeleted() {
             this(new AttributeUseMvoEventId());

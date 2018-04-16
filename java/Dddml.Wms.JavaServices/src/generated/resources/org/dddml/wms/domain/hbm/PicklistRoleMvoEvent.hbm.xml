@@ -17,6 +17,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdByUserLogin" column="CreatedByUserLogin"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractPicklistRoleMvoEvent$AbstractPicklistRoleMvoStateEvent" abstract="true">
+
 	<property name="version" ></property>
 	<property name="active" ></property>
 	<property name="picklistDescription" ><column name="PicklistDescription" sql-type="VARCHAR(255)" /></property>
@@ -31,12 +40,6 @@
 	<property name="picklistUpdatedAt" type="timestamp"><column name="PicklistUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="picklistActive" ></property>
 	<property name="picklistDeleted" ></property>
-
-    <property name="createdByUserLogin" column="CreatedByUserLogin"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractPicklistRoleMvoEvent$SimplePicklistRoleMvoStateCreated" discriminator-value="Created">
     	
@@ -80,6 +83,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

@@ -15,34 +15,6 @@ public interface PhysicalInventoryLineEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    BigDecimal getBookQuantity();
-
-    void setBookQuantity(BigDecimal bookQuantity);
-
-    BigDecimal getCountedQuantity();
-
-    void setCountedQuantity(BigDecimal countedQuantity);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getLineNumber();
-
-    void setLineNumber(String lineNumber);
-
-    Long getReversalLineNumber();
-
-    void setReversalLineNumber(Long reversalLineNumber);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -55,13 +27,44 @@ public interface PhysicalInventoryLineEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface PhysicalInventoryLineStateCreated extends PhysicalInventoryLineEvent
+    interface PhysicalInventoryLineStateEvent extends PhysicalInventoryLineEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getBookQuantity();
+
+        void setBookQuantity(BigDecimal bookQuantity);
+
+        BigDecimal getCountedQuantity();
+
+        void setCountedQuantity(BigDecimal countedQuantity);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getLineNumber();
+
+        void setLineNumber(String lineNumber);
+
+        Long getReversalLineNumber();
+
+        void setReversalLineNumber(Long reversalLineNumber);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+    }
+
+    interface PhysicalInventoryLineStateCreated extends PhysicalInventoryLineStateEvent
     {
     
     }
 
 
-    interface PhysicalInventoryLineStateMergePatched extends PhysicalInventoryLineEvent
+    interface PhysicalInventoryLineStateMergePatched extends PhysicalInventoryLineStateEvent
     {
         Boolean getIsPropertyBookQuantityRemoved();
 
@@ -90,7 +93,7 @@ public interface PhysicalInventoryLineEvent extends Event
 
     }
 
-    interface PhysicalInventoryLineStateRemoved extends PhysicalInventoryLineEvent
+    interface PhysicalInventoryLineStateRemoved extends PhysicalInventoryLineStateEvent
     {
     }
 

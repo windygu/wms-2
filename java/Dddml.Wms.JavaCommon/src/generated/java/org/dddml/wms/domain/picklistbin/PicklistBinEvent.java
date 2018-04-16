@@ -13,22 +13,6 @@ public interface PicklistBinEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getPicklistId();
-
-    void setPicklistId(String picklistId);
-
-    Long getBinLocationNumber();
-
-    void setBinLocationNumber(Long binLocationNumber);
-
-    String getPrimaryOrderId();
-
-    void setPrimaryOrderId(String primaryOrderId);
-
-    Long getPrimaryShipGroupSeqId();
-
-    void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -37,15 +21,34 @@ public interface PicklistBinEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PicklistBinStateCreated extends PicklistBinEvent
+    interface PicklistBinStateEvent extends PicklistBinEvent {
+        String getPicklistId();
+
+        void setPicklistId(String picklistId);
+
+        Long getBinLocationNumber();
+
+        void setBinLocationNumber(Long binLocationNumber);
+
+        String getPrimaryOrderId();
+
+        void setPrimaryOrderId(String primaryOrderId);
+
+        Long getPrimaryShipGroupSeqId();
+
+        void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PicklistBinStateCreated extends PicklistBinStateEvent
     {
         Iterable<PicklistItemEvent.PicklistItemStateCreated> getPicklistItemEvents();
         
@@ -57,7 +60,7 @@ public interface PicklistBinEvent extends Event
     }
 
 
-    interface PicklistBinStateMergePatched extends PicklistBinEvent
+    interface PicklistBinStateMergePatched extends PicklistBinStateEvent
     {
         Boolean getIsPropertyPicklistIdRemoved();
 
@@ -92,7 +95,7 @@ public interface PicklistBinEvent extends Event
 
     }
 
-    interface PicklistBinStateDeleted extends PicklistBinEvent
+    interface PicklistBinStateDeleted extends PicklistBinStateEvent
     {
         Iterable<PicklistItemEvent.PicklistItemStateRemoved> getPicklistItemEvents();
         

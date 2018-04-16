@@ -15,6 +15,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractShipmentEvent$AbstractShipmentStateEvent" abstract="true">
+
 	<property name="shipmentTypeId" ><column name="ShipmentTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="primaryOrderId" ><column name="PrimaryOrderId" sql-type="VARCHAR(20)" /></property>
@@ -41,12 +50,6 @@
 	<property name="additionalShippingCharge" ><column name="AdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
 	<property name="addtlShippingChargeDesc" ><column name="AddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractShipmentEvent$SimpleShipmentStateCreated" discriminator-value="Created">
     	
@@ -109,6 +112,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

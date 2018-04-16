@@ -16,17 +16,20 @@
 
     <discriminator column="EventType" type="string" />
 
-	<property name="thruDate" ><column name="ThruDate" sql-type="DATETIME" /></property>
-	<property name="comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
-	<property name="sequenceNum" ><column name="SequenceNum" sql-type="DECIMAL(20,0)" /></property>
-	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
-	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractProductCategoryMemberEvent$AbstractProductCategoryMemberStateEvent" abstract="true">
+
+	<property name="thruDate" ><column name="ThruDate" sql-type="DATETIME" /></property>
+	<property name="comments" ><column name="Comments" sql-type="VARCHAR(255)" /></property>
+	<property name="sequenceNum" ><column name="SequenceNum" sql-type="DECIMAL(20,0)" /></property>
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="active" ></property>
 
     <subclass name="AbstractProductCategoryMemberEvent$SimpleProductCategoryMemberStateCreated" discriminator-value="Created">
     	
@@ -47,6 +50,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

@@ -32,42 +32,6 @@ public abstract class AbstractUomEvent extends AbstractEvent implements UomEvent
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String uomTypeId;
-
-    public String getUomTypeId()
-    {
-        return this.uomTypeId;
-    }
-
-    public void setUomTypeId(String uomTypeId)
-    {
-        this.uomTypeId = uomTypeId;
-    }
-
-    private String abbreviation;
-
-    public String getAbbreviation()
-    {
-        return this.abbreviation;
-    }
-
-    public void setAbbreviation(String abbreviation)
-    {
-        this.abbreviation = abbreviation;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -92,18 +56,6 @@ public abstract class AbstractUomEvent extends AbstractEvent implements UomEvent
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -126,7 +78,61 @@ public abstract class AbstractUomEvent extends AbstractEvent implements UomEvent
     public abstract String getEventType();
 
 
-    public static abstract class AbstractUomStateCreated extends AbstractUomEvent implements UomEvent.UomStateCreated
+    public static abstract class AbstractUomStateEvent extends AbstractUomEvent implements UomEvent.UomStateEvent {
+        private String uomTypeId;
+
+        public String getUomTypeId()
+        {
+            return this.uomTypeId;
+        }
+
+        public void setUomTypeId(String uomTypeId)
+        {
+            this.uomTypeId = uomTypeId;
+        }
+
+        private String abbreviation;
+
+        public String getAbbreviation()
+        {
+            return this.abbreviation;
+        }
+
+        public void setAbbreviation(String abbreviation)
+        {
+            this.abbreviation = abbreviation;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractUomStateEvent(UomEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractUomStateCreated extends AbstractUomStateEvent implements UomEvent.UomStateCreated
     {
         public AbstractUomStateCreated() {
             this(new UomEventId());
@@ -143,7 +149,7 @@ public abstract class AbstractUomEvent extends AbstractEvent implements UomEvent
     }
 
 
-    public static abstract class AbstractUomStateMergePatched extends AbstractUomEvent implements UomEvent.UomStateMergePatched
+    public static abstract class AbstractUomStateMergePatched extends AbstractUomStateEvent implements UomEvent.UomStateMergePatched
     {
         public AbstractUomStateMergePatched() {
             this(new UomEventId());
@@ -200,7 +206,7 @@ public abstract class AbstractUomEvent extends AbstractEvent implements UomEvent
     }
 
 
-    public static abstract class AbstractUomStateDeleted extends AbstractUomEvent implements UomEvent.UomStateDeleted
+    public static abstract class AbstractUomStateDeleted extends AbstractUomStateEvent implements UomEvent.UomStateDeleted
     {
         public AbstractUomStateDeleted() {
             this(new UomEventId());

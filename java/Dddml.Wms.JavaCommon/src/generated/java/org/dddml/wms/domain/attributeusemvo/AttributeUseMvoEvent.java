@@ -14,14 +14,6 @@ public interface AttributeUseMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Integer getSequenceNumber();
-
-    void setSequenceNumber(Integer sequenceNumber);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -30,69 +22,80 @@ public interface AttributeUseMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getAttributeSetAttributeSetName();
-
-    void setAttributeSetAttributeSetName(String attributeSetAttributeSetName);
-
-    String getAttributeSetOrganizationId();
-
-    void setAttributeSetOrganizationId(String attributeSetOrganizationId);
-
-    String getAttributeSetDescription();
-
-    void setAttributeSetDescription(String attributeSetDescription);
-
-    String getAttributeSetReferenceId();
-
-    void setAttributeSetReferenceId(String attributeSetReferenceId);
-
-    Boolean getAttributeSetIsInstanceAttributeSet();
-
-    void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet);
-
-    Boolean getAttributeSetIsMandatory();
-
-    void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory);
-
-    String getAttributeSetCreatedBy();
-
-    void setAttributeSetCreatedBy(String attributeSetCreatedBy);
-
-    Date getAttributeSetCreatedAt();
-
-    void setAttributeSetCreatedAt(Date attributeSetCreatedAt);
-
-    String getAttributeSetUpdatedBy();
-
-    void setAttributeSetUpdatedBy(String attributeSetUpdatedBy);
-
-    Date getAttributeSetUpdatedAt();
-
-    void setAttributeSetUpdatedAt(Date attributeSetUpdatedAt);
-
-    Boolean getAttributeSetActive();
-
-    void setAttributeSetActive(Boolean attributeSetActive);
-
-    Boolean getAttributeSetDeleted();
-
-    void setAttributeSetDeleted(Boolean attributeSetDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeUseMvoStateCreated extends AttributeUseMvoEvent
+    interface AttributeUseMvoStateEvent extends AttributeUseMvoEvent {
+        Integer getSequenceNumber();
+
+        void setSequenceNumber(Integer sequenceNumber);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getAttributeSetAttributeSetName();
+
+        void setAttributeSetAttributeSetName(String attributeSetAttributeSetName);
+
+        String getAttributeSetOrganizationId();
+
+        void setAttributeSetOrganizationId(String attributeSetOrganizationId);
+
+        String getAttributeSetDescription();
+
+        void setAttributeSetDescription(String attributeSetDescription);
+
+        String getAttributeSetReferenceId();
+
+        void setAttributeSetReferenceId(String attributeSetReferenceId);
+
+        Boolean getAttributeSetIsInstanceAttributeSet();
+
+        void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet);
+
+        Boolean getAttributeSetIsMandatory();
+
+        void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory);
+
+        String getAttributeSetCreatedBy();
+
+        void setAttributeSetCreatedBy(String attributeSetCreatedBy);
+
+        Date getAttributeSetCreatedAt();
+
+        void setAttributeSetCreatedAt(Date attributeSetCreatedAt);
+
+        String getAttributeSetUpdatedBy();
+
+        void setAttributeSetUpdatedBy(String attributeSetUpdatedBy);
+
+        Date getAttributeSetUpdatedAt();
+
+        void setAttributeSetUpdatedAt(Date attributeSetUpdatedAt);
+
+        Boolean getAttributeSetActive();
+
+        void setAttributeSetActive(Boolean attributeSetActive);
+
+        Boolean getAttributeSetDeleted();
+
+        void setAttributeSetDeleted(Boolean attributeSetDeleted);
+
+    }
+
+    interface AttributeUseMvoStateCreated extends AttributeUseMvoStateEvent
     {
     
     }
 
 
-    interface AttributeUseMvoStateMergePatched extends AttributeUseMvoEvent
+    interface AttributeUseMvoStateMergePatched extends AttributeUseMvoStateEvent
     {
         Boolean getIsPropertySequenceNumberRemoved();
 
@@ -157,7 +160,7 @@ public interface AttributeUseMvoEvent extends Event
 
     }
 
-    interface AttributeUseMvoStateDeleted extends AttributeUseMvoEvent
+    interface AttributeUseMvoStateDeleted extends AttributeUseMvoStateEvent
     {
     }
 

@@ -743,21 +743,21 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
     {
     }
 
-    protected void throwOnWrongEvent(MovementConfirmationLineMvoEvent stateEvent)
+    protected void throwOnWrongEvent(MovementConfirmationLineMvoEvent event)
     {
         MovementConfirmationLineId stateEntityId = this.getMovementConfirmationLineId(); // Aggregate Id
-        MovementConfirmationLineId eventEntityId = stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        MovementConfirmationLineId eventEntityId = event.getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getMovementConfirmationVersion();
-        Long eventVersion = stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion();// Aggregate Version
+        Long eventVersion = event.getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion() == null");
+            throw new NullPointerException("event.getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(MovementConfirmationLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(MovementConfirmationLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

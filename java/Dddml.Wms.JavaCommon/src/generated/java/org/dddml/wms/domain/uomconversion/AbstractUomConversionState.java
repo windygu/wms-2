@@ -309,21 +309,21 @@ public abstract class AbstractUomConversionState implements UomConversionState
     {
     }
 
-    protected void throwOnWrongEvent(UomConversionEvent stateEvent)
+    protected void throwOnWrongEvent(UomConversionEvent event)
     {
         UomConversionId stateEntityId = this.getUomConversionId(); // Aggregate Id
-        UomConversionId eventEntityId = stateEvent.getUomConversionEventId().getUomConversionId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        UomConversionId eventEntityId = event.getUomConversionEventId().getUomConversionId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getUomConversionEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getUomConversionEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getUomConversionEventId().getVersion() == null");
+            throw new NullPointerException("event.getUomConversionEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(UomConversionState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(UomConversionState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

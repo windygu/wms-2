@@ -14,14 +14,6 @@ public interface AttributeAliasMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getName();
-
-    void setName(String name);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -30,81 +22,92 @@ public interface AttributeAliasMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getAttributeAttributeName();
-
-    void setAttributeAttributeName(String attributeAttributeName);
-
-    String getAttributeOrganizationId();
-
-    void setAttributeOrganizationId(String attributeOrganizationId);
-
-    String getAttributeDescription();
-
-    void setAttributeDescription(String attributeDescription);
-
-    Boolean getAttributeIsMandatory();
-
-    void setAttributeIsMandatory(Boolean attributeIsMandatory);
-
-    String getAttributeAttributeValueType();
-
-    void setAttributeAttributeValueType(String attributeAttributeValueType);
-
-    Integer getAttributeAttributeValueLength();
-
-    void setAttributeAttributeValueLength(Integer attributeAttributeValueLength);
-
-    Boolean getAttributeIsList();
-
-    void setAttributeIsList(Boolean attributeIsList);
-
-    String getAttributeFieldName();
-
-    void setAttributeFieldName(String attributeFieldName);
-
-    String getAttributeReferenceId();
-
-    void setAttributeReferenceId(String attributeReferenceId);
-
-    String getAttributeCreatedBy();
-
-    void setAttributeCreatedBy(String attributeCreatedBy);
-
-    Date getAttributeCreatedAt();
-
-    void setAttributeCreatedAt(Date attributeCreatedAt);
-
-    String getAttributeUpdatedBy();
-
-    void setAttributeUpdatedBy(String attributeUpdatedBy);
-
-    Date getAttributeUpdatedAt();
-
-    void setAttributeUpdatedAt(Date attributeUpdatedAt);
-
-    Boolean getAttributeActive();
-
-    void setAttributeActive(Boolean attributeActive);
-
-    Boolean getAttributeDeleted();
-
-    void setAttributeDeleted(Boolean attributeDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeAliasMvoStateCreated extends AttributeAliasMvoEvent
+    interface AttributeAliasMvoStateEvent extends AttributeAliasMvoEvent {
+        String getName();
+
+        void setName(String name);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getAttributeAttributeName();
+
+        void setAttributeAttributeName(String attributeAttributeName);
+
+        String getAttributeOrganizationId();
+
+        void setAttributeOrganizationId(String attributeOrganizationId);
+
+        String getAttributeDescription();
+
+        void setAttributeDescription(String attributeDescription);
+
+        Boolean getAttributeIsMandatory();
+
+        void setAttributeIsMandatory(Boolean attributeIsMandatory);
+
+        String getAttributeAttributeValueType();
+
+        void setAttributeAttributeValueType(String attributeAttributeValueType);
+
+        Integer getAttributeAttributeValueLength();
+
+        void setAttributeAttributeValueLength(Integer attributeAttributeValueLength);
+
+        Boolean getAttributeIsList();
+
+        void setAttributeIsList(Boolean attributeIsList);
+
+        String getAttributeFieldName();
+
+        void setAttributeFieldName(String attributeFieldName);
+
+        String getAttributeReferenceId();
+
+        void setAttributeReferenceId(String attributeReferenceId);
+
+        String getAttributeCreatedBy();
+
+        void setAttributeCreatedBy(String attributeCreatedBy);
+
+        Date getAttributeCreatedAt();
+
+        void setAttributeCreatedAt(Date attributeCreatedAt);
+
+        String getAttributeUpdatedBy();
+
+        void setAttributeUpdatedBy(String attributeUpdatedBy);
+
+        Date getAttributeUpdatedAt();
+
+        void setAttributeUpdatedAt(Date attributeUpdatedAt);
+
+        Boolean getAttributeActive();
+
+        void setAttributeActive(Boolean attributeActive);
+
+        Boolean getAttributeDeleted();
+
+        void setAttributeDeleted(Boolean attributeDeleted);
+
+    }
+
+    interface AttributeAliasMvoStateCreated extends AttributeAliasMvoStateEvent
     {
     
     }
 
 
-    interface AttributeAliasMvoStateMergePatched extends AttributeAliasMvoEvent
+    interface AttributeAliasMvoStateMergePatched extends AttributeAliasMvoStateEvent
     {
         Boolean getIsPropertyNameRemoved();
 
@@ -181,7 +184,7 @@ public interface AttributeAliasMvoEvent extends Event
 
     }
 
-    interface AttributeAliasMvoStateDeleted extends AttributeAliasMvoEvent
+    interface AttributeAliasMvoStateDeleted extends AttributeAliasMvoStateEvent
     {
     }
 

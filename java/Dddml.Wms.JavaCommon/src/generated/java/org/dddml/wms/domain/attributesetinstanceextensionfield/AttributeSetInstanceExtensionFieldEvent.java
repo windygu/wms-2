@@ -13,26 +13,6 @@ public interface AttributeSetInstanceExtensionFieldEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getType();
-
-    void setType(String type);
-
-    Integer getLength();
-
-    void setLength(Integer length);
-
-    String getAlias();
-
-    void setAlias(String alias);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getGroupId();
-
-    void setGroupId(String groupId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -41,21 +21,44 @@ public interface AttributeSetInstanceExtensionFieldEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeSetInstanceExtensionFieldStateCreated extends AttributeSetInstanceExtensionFieldEvent
+    interface AttributeSetInstanceExtensionFieldStateEvent extends AttributeSetInstanceExtensionFieldEvent {
+        String getType();
+
+        void setType(String type);
+
+        Integer getLength();
+
+        void setLength(Integer length);
+
+        String getAlias();
+
+        void setAlias(String alias);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getGroupId();
+
+        void setGroupId(String groupId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface AttributeSetInstanceExtensionFieldStateCreated extends AttributeSetInstanceExtensionFieldStateEvent
     {
     
     }
 
 
-    interface AttributeSetInstanceExtensionFieldStateMergePatched extends AttributeSetInstanceExtensionFieldEvent
+    interface AttributeSetInstanceExtensionFieldStateMergePatched extends AttributeSetInstanceExtensionFieldStateEvent
     {
         Boolean getIsPropertyTypeRemoved();
 
@@ -84,7 +87,7 @@ public interface AttributeSetInstanceExtensionFieldEvent extends Event
 
     }
 
-    interface AttributeSetInstanceExtensionFieldStateDeleted extends AttributeSetInstanceExtensionFieldEvent
+    interface AttributeSetInstanceExtensionFieldStateDeleted extends AttributeSetInstanceExtensionFieldStateEvent
     {
     }
 

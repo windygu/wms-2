@@ -686,17 +686,17 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
 
     }
 
-    protected void throwOnWrongEvent(OrderShipGroupEvent stateEvent)
+    protected void throwOnWrongEvent(OrderShipGroupEvent event)
     {
         String stateEntityIdOrderId = this.getOrderShipGroupId().getOrderId();
-        String eventEntityIdOrderId = stateEvent.getOrderShipGroupEventId().getOrderId();
+        String eventEntityIdOrderId = event.getOrderShipGroupEventId().getOrderId();
         if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
         Long stateEntityIdShipGroupSeqId = this.getOrderShipGroupId().getShipGroupSeqId();
-        Long eventEntityIdShipGroupSeqId = stateEvent.getOrderShipGroupEventId().getShipGroupSeqId();
+        Long eventEntityIdShipGroupSeqId = event.getOrderShipGroupEventId().getShipGroupSeqId();
         if (!stateEntityIdShipGroupSeqId.equals(eventEntityIdShipGroupSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipGroupSeqId %1$s in state but entity id ShipGroupSeqId %2$s in event", stateEntityIdShipGroupSeqId, eventEntityIdShipGroupSeqId);
@@ -704,16 +704,19 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
 
         if (getForReapplying()) { return; }
 
+        OrderShipGroupStateEvent stateEvent = event instanceof OrderShipGroupStateEvent ? (OrderShipGroupStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? OrderShipGroupState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(OrderShipGroupState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? OrderShipGroupState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(OrderShipGroupState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

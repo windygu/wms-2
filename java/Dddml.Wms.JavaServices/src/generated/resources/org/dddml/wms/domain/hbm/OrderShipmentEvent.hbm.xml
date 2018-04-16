@@ -19,14 +19,17 @@
 
     <discriminator column="EventType" type="string" />
 
-	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
-	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractOrderShipmentEvent$AbstractOrderShipmentStateEvent" abstract="true">
+
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="active" ></property>
 
     <subclass name="AbstractOrderShipmentEvent$SimpleOrderShipmentStateCreated" discriminator-value="Created">
     	
@@ -41,6 +44,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

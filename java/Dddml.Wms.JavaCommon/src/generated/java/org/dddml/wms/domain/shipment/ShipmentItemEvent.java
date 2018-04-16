@@ -13,26 +13,6 @@ public interface ShipmentItemEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
-    String getShipmentContentDescription();
-
-    void setShipmentContentDescription(String shipmentContentDescription);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -41,21 +21,44 @@ public interface ShipmentItemEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ShipmentItemStateCreated extends ShipmentItemEvent
+    interface ShipmentItemStateEvent extends ShipmentItemEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getProductId();
+
+        void setProductId(String productId);
+
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        String getShipmentContentDescription();
+
+        void setShipmentContentDescription(String shipmentContentDescription);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ShipmentItemStateCreated extends ShipmentItemStateEvent
     {
     
     }
 
 
-    interface ShipmentItemStateMergePatched extends ShipmentItemEvent
+    interface ShipmentItemStateMergePatched extends ShipmentItemStateEvent
     {
         Boolean getIsPropertyProductIdRemoved();
 

@@ -16,18 +16,6 @@ public interface SellableInventoryItemEntryMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    BigDecimal getSellableQuantity();
-
-    void setSellableQuantity(BigDecimal sellableQuantity);
-
-    InventoryPRTriggeredId getSourceEventId();
-
-    void setSourceEventId(InventoryPRTriggeredId sourceEventId);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -36,37 +24,52 @@ public interface SellableInventoryItemEntryMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    BigDecimal getSellableInventoryItemSellableQuantity();
-
-    void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity);
-
-    String getSellableInventoryItemCreatedBy();
-
-    void setSellableInventoryItemCreatedBy(String sellableInventoryItemCreatedBy);
-
-    Date getSellableInventoryItemCreatedAt();
-
-    void setSellableInventoryItemCreatedAt(Date sellableInventoryItemCreatedAt);
-
-    String getSellableInventoryItemUpdatedBy();
-
-    void setSellableInventoryItemUpdatedBy(String sellableInventoryItemUpdatedBy);
-
-    Date getSellableInventoryItemUpdatedAt();
-
-    void setSellableInventoryItemUpdatedAt(Date sellableInventoryItemUpdatedAt);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface SellableInventoryItemEntryMvoStateCreated extends SellableInventoryItemEntryMvoEvent
+    interface SellableInventoryItemEntryMvoStateEvent extends SellableInventoryItemEntryMvoEvent {
+        BigDecimal getSellableQuantity();
+
+        void setSellableQuantity(BigDecimal sellableQuantity);
+
+        InventoryPRTriggeredId getSourceEventId();
+
+        void setSourceEventId(InventoryPRTriggeredId sourceEventId);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getSellableInventoryItemSellableQuantity();
+
+        void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity);
+
+        String getSellableInventoryItemCreatedBy();
+
+        void setSellableInventoryItemCreatedBy(String sellableInventoryItemCreatedBy);
+
+        Date getSellableInventoryItemCreatedAt();
+
+        void setSellableInventoryItemCreatedAt(Date sellableInventoryItemCreatedAt);
+
+        String getSellableInventoryItemUpdatedBy();
+
+        void setSellableInventoryItemUpdatedBy(String sellableInventoryItemUpdatedBy);
+
+        Date getSellableInventoryItemUpdatedAt();
+
+        void setSellableInventoryItemUpdatedAt(Date sellableInventoryItemUpdatedAt);
+
+    }
+
+    interface SellableInventoryItemEntryMvoStateCreated extends SellableInventoryItemEntryMvoStateEvent
     {
     
     }
 
 
-    interface SellableInventoryItemEntryMvoStateMergePatched extends SellableInventoryItemEntryMvoEvent
+    interface SellableInventoryItemEntryMvoStateMergePatched extends SellableInventoryItemEntryMvoStateEvent
     {
         Boolean getIsPropertySellableQuantityRemoved();
 

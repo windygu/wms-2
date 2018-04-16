@@ -526,21 +526,21 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(PicklistRoleMvoEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistRoleMvoEvent event)
     {
         PicklistRoleId stateEntityId = this.getPicklistRoleId(); // Aggregate Id
-        PicklistRoleId eventEntityId = stateEvent.getPicklistRoleMvoEventId().getPicklistRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        PicklistRoleId eventEntityId = event.getPicklistRoleMvoEventId().getPicklistRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getPicklistVersion();
-        Long eventVersion = stateEvent.getPicklistRoleMvoEventId().getPicklistVersion();// Aggregate Version
+        Long eventVersion = event.getPicklistRoleMvoEventId().getPicklistVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getPicklistRoleMvoEventId().getPicklistVersion() == null");
+            throw new NullPointerException("event.getPicklistRoleMvoEventId().getPicklistVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(PicklistRoleMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(PicklistRoleMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

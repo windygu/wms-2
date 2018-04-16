@@ -16,18 +16,6 @@ public interface InventoryItemRequirementEntryMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    BigDecimal getQuantity();
-
-    void setQuantity(BigDecimal quantity);
-
-    InventoryPRTriggeredId getSourceEventId();
-
-    void setSourceEventId(InventoryPRTriggeredId sourceEventId);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -36,37 +24,52 @@ public interface InventoryItemRequirementEntryMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    BigDecimal getInventoryItemRequirementQuantity();
-
-    void setInventoryItemRequirementQuantity(BigDecimal inventoryItemRequirementQuantity);
-
-    String getInventoryItemRequirementCreatedBy();
-
-    void setInventoryItemRequirementCreatedBy(String inventoryItemRequirementCreatedBy);
-
-    Date getInventoryItemRequirementCreatedAt();
-
-    void setInventoryItemRequirementCreatedAt(Date inventoryItemRequirementCreatedAt);
-
-    String getInventoryItemRequirementUpdatedBy();
-
-    void setInventoryItemRequirementUpdatedBy(String inventoryItemRequirementUpdatedBy);
-
-    Date getInventoryItemRequirementUpdatedAt();
-
-    void setInventoryItemRequirementUpdatedAt(Date inventoryItemRequirementUpdatedAt);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface InventoryItemRequirementEntryMvoStateCreated extends InventoryItemRequirementEntryMvoEvent
+    interface InventoryItemRequirementEntryMvoStateEvent extends InventoryItemRequirementEntryMvoEvent {
+        BigDecimal getQuantity();
+
+        void setQuantity(BigDecimal quantity);
+
+        InventoryPRTriggeredId getSourceEventId();
+
+        void setSourceEventId(InventoryPRTriggeredId sourceEventId);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getInventoryItemRequirementQuantity();
+
+        void setInventoryItemRequirementQuantity(BigDecimal inventoryItemRequirementQuantity);
+
+        String getInventoryItemRequirementCreatedBy();
+
+        void setInventoryItemRequirementCreatedBy(String inventoryItemRequirementCreatedBy);
+
+        Date getInventoryItemRequirementCreatedAt();
+
+        void setInventoryItemRequirementCreatedAt(Date inventoryItemRequirementCreatedAt);
+
+        String getInventoryItemRequirementUpdatedBy();
+
+        void setInventoryItemRequirementUpdatedBy(String inventoryItemRequirementUpdatedBy);
+
+        Date getInventoryItemRequirementUpdatedAt();
+
+        void setInventoryItemRequirementUpdatedAt(Date inventoryItemRequirementUpdatedAt);
+
+    }
+
+    interface InventoryItemRequirementEntryMvoStateCreated extends InventoryItemRequirementEntryMvoStateEvent
     {
     
     }
 
 
-    interface InventoryItemRequirementEntryMvoStateMergePatched extends InventoryItemRequirementEntryMvoEvent
+    interface InventoryItemRequirementEntryMvoStateMergePatched extends InventoryItemRequirementEntryMvoStateEvent
     {
         Boolean getIsPropertyQuantityRemoved();
 

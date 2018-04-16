@@ -13,82 +13,6 @@ public interface OrderShipGroupEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getShipmentMethodTypeId();
-
-    void setShipmentMethodTypeId(String shipmentMethodTypeId);
-
-    String getSupplierPartyId();
-
-    void setSupplierPartyId(String supplierPartyId);
-
-    String getVendorPartyId();
-
-    void setVendorPartyId(String vendorPartyId);
-
-    String getCarrierPartyId();
-
-    void setCarrierPartyId(String carrierPartyId);
-
-    String getCarrierRoleTypeId();
-
-    void setCarrierRoleTypeId(String carrierRoleTypeId);
-
-    String getFacilityId();
-
-    void setFacilityId(String facilityId);
-
-    String getContactMechId();
-
-    void setContactMechId(String contactMechId);
-
-    String getTelecomContactMechId();
-
-    void setTelecomContactMechId(String telecomContactMechId);
-
-    String getTrackingNumber();
-
-    void setTrackingNumber(String trackingNumber);
-
-    String getShippingInstructions();
-
-    void setShippingInstructions(String shippingInstructions);
-
-    String getMaySplit();
-
-    void setMaySplit(String maySplit);
-
-    String getGiftMessage();
-
-    void setGiftMessage(String giftMessage);
-
-    String getIsGift();
-
-    void setIsGift(String isGift);
-
-    java.sql.Timestamp getShipAfterDate();
-
-    void setShipAfterDate(java.sql.Timestamp shipAfterDate);
-
-    java.sql.Timestamp getShipByDate();
-
-    void setShipByDate(java.sql.Timestamp shipByDate);
-
-    java.sql.Timestamp getEstimatedShipDate();
-
-    void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
-
-    java.sql.Timestamp getEstimatedDeliveryDate();
-
-    void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
-
-    Long getPickwaveId();
-
-    void setPickwaveId(Long pickwaveId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -97,15 +21,94 @@ public interface OrderShipGroupEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrderShipGroupStateCreated extends OrderShipGroupEvent
+    interface OrderShipGroupStateEvent extends OrderShipGroupEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getShipmentMethodTypeId();
+
+        void setShipmentMethodTypeId(String shipmentMethodTypeId);
+
+        String getSupplierPartyId();
+
+        void setSupplierPartyId(String supplierPartyId);
+
+        String getVendorPartyId();
+
+        void setVendorPartyId(String vendorPartyId);
+
+        String getCarrierPartyId();
+
+        void setCarrierPartyId(String carrierPartyId);
+
+        String getCarrierRoleTypeId();
+
+        void setCarrierRoleTypeId(String carrierRoleTypeId);
+
+        String getFacilityId();
+
+        void setFacilityId(String facilityId);
+
+        String getContactMechId();
+
+        void setContactMechId(String contactMechId);
+
+        String getTelecomContactMechId();
+
+        void setTelecomContactMechId(String telecomContactMechId);
+
+        String getTrackingNumber();
+
+        void setTrackingNumber(String trackingNumber);
+
+        String getShippingInstructions();
+
+        void setShippingInstructions(String shippingInstructions);
+
+        String getMaySplit();
+
+        void setMaySplit(String maySplit);
+
+        String getGiftMessage();
+
+        void setGiftMessage(String giftMessage);
+
+        String getIsGift();
+
+        void setIsGift(String isGift);
+
+        java.sql.Timestamp getShipAfterDate();
+
+        void setShipAfterDate(java.sql.Timestamp shipAfterDate);
+
+        java.sql.Timestamp getShipByDate();
+
+        void setShipByDate(java.sql.Timestamp shipByDate);
+
+        java.sql.Timestamp getEstimatedShipDate();
+
+        void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
+
+        java.sql.Timestamp getEstimatedDeliveryDate();
+
+        void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
+
+        Long getPickwaveId();
+
+        void setPickwaveId(Long pickwaveId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface OrderShipGroupStateCreated extends OrderShipGroupStateEvent
     {
         Iterable<OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated> getOrderItemShipGroupAssociationEvents();
         
@@ -117,7 +120,7 @@ public interface OrderShipGroupEvent extends Event
     }
 
 
-    interface OrderShipGroupStateMergePatched extends OrderShipGroupEvent
+    interface OrderShipGroupStateMergePatched extends OrderShipGroupStateEvent
     {
         Boolean getIsPropertyShipmentMethodTypeIdRemoved();
 
@@ -208,7 +211,7 @@ public interface OrderShipGroupEvent extends Event
 
     }
 
-    interface OrderShipGroupStateRemoved extends OrderShipGroupEvent
+    interface OrderShipGroupStateRemoved extends OrderShipGroupStateEvent
     {
         Iterable<OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved> getOrderItemShipGroupAssociationEvents();
         

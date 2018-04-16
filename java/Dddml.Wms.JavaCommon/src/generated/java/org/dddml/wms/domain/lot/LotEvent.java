@@ -13,14 +13,6 @@ public interface LotEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
-    java.sql.Timestamp getExpirationDate();
-
-    void setExpirationDate(java.sql.Timestamp expirationDate);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,21 +21,32 @@ public interface LotEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface LotStateCreated extends LotEvent
+    interface LotStateEvent extends LotEvent {
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        java.sql.Timestamp getExpirationDate();
+
+        void setExpirationDate(java.sql.Timestamp expirationDate);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface LotStateCreated extends LotStateEvent
     {
     
     }
 
 
-    interface LotStateMergePatched extends LotEvent
+    interface LotStateMergePatched extends LotStateEvent
     {
         Boolean getIsPropertyQuantityRemoved();
 
@@ -60,7 +63,7 @@ public interface LotEvent extends Event
 
     }
 
-    interface LotStateDeleted extends LotEvent
+    interface LotStateDeleted extends LotStateEvent
     {
     }
 

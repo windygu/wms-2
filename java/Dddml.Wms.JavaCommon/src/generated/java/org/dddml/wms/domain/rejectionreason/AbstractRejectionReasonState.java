@@ -237,21 +237,21 @@ public abstract class AbstractRejectionReasonState implements RejectionReasonSta
     {
     }
 
-    protected void throwOnWrongEvent(RejectionReasonEvent stateEvent)
+    protected void throwOnWrongEvent(RejectionReasonEvent event)
     {
         String stateEntityId = this.getRejectionReasonId(); // Aggregate Id
-        String eventEntityId = stateEvent.getRejectionReasonEventId().getRejectionReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = event.getRejectionReasonEventId().getRejectionReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getRejectionReasonEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getRejectionReasonEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getRejectionReasonEventId().getVersion() == null");
+            throw new NullPointerException("event.getRejectionReasonEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(RejectionReasonState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(RejectionReasonState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

@@ -1582,21 +1582,21 @@ public abstract class AbstractOrderItemShipGroupAssociationMvoState implements O
     {
     }
 
-    protected void throwOnWrongEvent(OrderItemShipGroupAssociationMvoEvent stateEvent)
+    protected void throwOnWrongEvent(OrderItemShipGroupAssociationMvoEvent event)
     {
         OrderItemShipGroupAssociationId stateEntityId = this.getOrderItemShipGroupAssociationId(); // Aggregate Id
-        OrderItemShipGroupAssociationId eventEntityId = stateEvent.getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        OrderItemShipGroupAssociationId eventEntityId = event.getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getOrderVersion();
-        Long eventVersion = stateEvent.getOrderItemShipGroupAssociationMvoEventId().getOrderVersion();// Aggregate Version
+        Long eventVersion = event.getOrderItemShipGroupAssociationMvoEventId().getOrderVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getOrderItemShipGroupAssociationMvoEventId().getOrderVersion() == null");
+            throw new NullPointerException("event.getOrderItemShipGroupAssociationMvoEventId().getOrderVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(OrderItemShipGroupAssociationMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(OrderItemShipGroupAssociationMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

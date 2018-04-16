@@ -35,42 +35,6 @@ public abstract class AbstractSellableInventoryItemEntryMvoEvent extends Abstrac
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal sellableQuantity;
-
-    public BigDecimal getSellableQuantity()
-    {
-        return this.sellableQuantity;
-    }
-
-    public void setSellableQuantity(BigDecimal sellableQuantity)
-    {
-        this.sellableQuantity = sellableQuantity;
-    }
-
-    private InventoryPRTriggeredId sourceEventId;
-
-    public InventoryPRTriggeredId getSourceEventId()
-    {
-        return this.sourceEventId;
-    }
-
-    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
-    {
-        this.sourceEventId = sourceEventId;
-    }
-
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -95,66 +59,6 @@ public abstract class AbstractSellableInventoryItemEntryMvoEvent extends Abstrac
         this.createdAt = createdAt;
     }
 
-    private BigDecimal sellableInventoryItemSellableQuantity;
-
-    public BigDecimal getSellableInventoryItemSellableQuantity()
-    {
-        return this.sellableInventoryItemSellableQuantity;
-    }
-
-    public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity)
-    {
-        this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
-    }
-
-    private String sellableInventoryItemCreatedBy;
-
-    public String getSellableInventoryItemCreatedBy()
-    {
-        return this.sellableInventoryItemCreatedBy;
-    }
-
-    public void setSellableInventoryItemCreatedBy(String sellableInventoryItemCreatedBy)
-    {
-        this.sellableInventoryItemCreatedBy = sellableInventoryItemCreatedBy;
-    }
-
-    private Date sellableInventoryItemCreatedAt;
-
-    public Date getSellableInventoryItemCreatedAt()
-    {
-        return this.sellableInventoryItemCreatedAt;
-    }
-
-    public void setSellableInventoryItemCreatedAt(Date sellableInventoryItemCreatedAt)
-    {
-        this.sellableInventoryItemCreatedAt = sellableInventoryItemCreatedAt;
-    }
-
-    private String sellableInventoryItemUpdatedBy;
-
-    public String getSellableInventoryItemUpdatedBy()
-    {
-        return this.sellableInventoryItemUpdatedBy;
-    }
-
-    public void setSellableInventoryItemUpdatedBy(String sellableInventoryItemUpdatedBy)
-    {
-        this.sellableInventoryItemUpdatedBy = sellableInventoryItemUpdatedBy;
-    }
-
-    private Date sellableInventoryItemUpdatedAt;
-
-    public Date getSellableInventoryItemUpdatedAt()
-    {
-        return this.sellableInventoryItemUpdatedAt;
-    }
-
-    public void setSellableInventoryItemUpdatedAt(Date sellableInventoryItemUpdatedAt)
-    {
-        this.sellableInventoryItemUpdatedAt = sellableInventoryItemUpdatedAt;
-    }
-
 
     private String commandId;
 
@@ -177,7 +81,109 @@ public abstract class AbstractSellableInventoryItemEntryMvoEvent extends Abstrac
     public abstract String getEventType();
 
 
-    public static abstract class AbstractSellableInventoryItemEntryMvoStateCreated extends AbstractSellableInventoryItemEntryMvoEvent implements SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateCreated
+    public static abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends AbstractSellableInventoryItemEntryMvoEvent implements SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateEvent {
+        private BigDecimal sellableQuantity;
+
+        public BigDecimal getSellableQuantity()
+        {
+            return this.sellableQuantity;
+        }
+
+        public void setSellableQuantity(BigDecimal sellableQuantity)
+        {
+            this.sellableQuantity = sellableQuantity;
+        }
+
+        private InventoryPRTriggeredId sourceEventId;
+
+        public InventoryPRTriggeredId getSourceEventId()
+        {
+            return this.sourceEventId;
+        }
+
+        public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
+        {
+            this.sourceEventId = sourceEventId;
+        }
+
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private BigDecimal sellableInventoryItemSellableQuantity;
+
+        public BigDecimal getSellableInventoryItemSellableQuantity()
+        {
+            return this.sellableInventoryItemSellableQuantity;
+        }
+
+        public void setSellableInventoryItemSellableQuantity(BigDecimal sellableInventoryItemSellableQuantity)
+        {
+            this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
+        }
+
+        private String sellableInventoryItemCreatedBy;
+
+        public String getSellableInventoryItemCreatedBy()
+        {
+            return this.sellableInventoryItemCreatedBy;
+        }
+
+        public void setSellableInventoryItemCreatedBy(String sellableInventoryItemCreatedBy)
+        {
+            this.sellableInventoryItemCreatedBy = sellableInventoryItemCreatedBy;
+        }
+
+        private Date sellableInventoryItemCreatedAt;
+
+        public Date getSellableInventoryItemCreatedAt()
+        {
+            return this.sellableInventoryItemCreatedAt;
+        }
+
+        public void setSellableInventoryItemCreatedAt(Date sellableInventoryItemCreatedAt)
+        {
+            this.sellableInventoryItemCreatedAt = sellableInventoryItemCreatedAt;
+        }
+
+        private String sellableInventoryItemUpdatedBy;
+
+        public String getSellableInventoryItemUpdatedBy()
+        {
+            return this.sellableInventoryItemUpdatedBy;
+        }
+
+        public void setSellableInventoryItemUpdatedBy(String sellableInventoryItemUpdatedBy)
+        {
+            this.sellableInventoryItemUpdatedBy = sellableInventoryItemUpdatedBy;
+        }
+
+        private Date sellableInventoryItemUpdatedAt;
+
+        public Date getSellableInventoryItemUpdatedAt()
+        {
+            return this.sellableInventoryItemUpdatedAt;
+        }
+
+        public void setSellableInventoryItemUpdatedAt(Date sellableInventoryItemUpdatedAt)
+        {
+            this.sellableInventoryItemUpdatedAt = sellableInventoryItemUpdatedAt;
+        }
+
+        protected AbstractSellableInventoryItemEntryMvoStateEvent(SellableInventoryItemEntryMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractSellableInventoryItemEntryMvoStateCreated extends AbstractSellableInventoryItemEntryMvoStateEvent implements SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateCreated
     {
         public AbstractSellableInventoryItemEntryMvoStateCreated() {
             this(new SellableInventoryItemEntryMvoEventId());
@@ -194,7 +200,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoEvent extends Abstrac
     }
 
 
-    public static abstract class AbstractSellableInventoryItemEntryMvoStateMergePatched extends AbstractSellableInventoryItemEntryMvoEvent implements SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateMergePatched
+    public static abstract class AbstractSellableInventoryItemEntryMvoStateMergePatched extends AbstractSellableInventoryItemEntryMvoStateEvent implements SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateMergePatched
     {
         public AbstractSellableInventoryItemEntryMvoStateMergePatched() {
             this(new SellableInventoryItemEntryMvoEventId());

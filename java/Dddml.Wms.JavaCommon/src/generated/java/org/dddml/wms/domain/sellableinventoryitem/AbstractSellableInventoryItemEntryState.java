@@ -193,17 +193,17 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
     {
     }
 
-    protected void throwOnWrongEvent(SellableInventoryItemEntryEvent stateEvent)
+    protected void throwOnWrongEvent(SellableInventoryItemEntryEvent event)
     {
         InventoryItemId stateEntityIdSellableInventoryItemId = this.getSellableInventoryItemEntryId().getSellableInventoryItemId();
-        InventoryItemId eventEntityIdSellableInventoryItemId = stateEvent.getSellableInventoryItemEntryEventId().getSellableInventoryItemId();
+        InventoryItemId eventEntityIdSellableInventoryItemId = event.getSellableInventoryItemEntryEventId().getSellableInventoryItemId();
         if (!stateEntityIdSellableInventoryItemId.equals(eventEntityIdSellableInventoryItemId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id SellableInventoryItemId %1$s in state but entity id SellableInventoryItemId %2$s in event", stateEntityIdSellableInventoryItemId, eventEntityIdSellableInventoryItemId);
         }
 
         Long stateEntityIdEntrySeqId = this.getSellableInventoryItemEntryId().getEntrySeqId();
-        Long eventEntityIdEntrySeqId = stateEvent.getSellableInventoryItemEntryEventId().getEntrySeqId();
+        Long eventEntityIdEntrySeqId = event.getSellableInventoryItemEntryEventId().getEntrySeqId();
         if (!stateEntityIdEntrySeqId.equals(eventEntityIdEntrySeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id EntrySeqId %1$s in state but entity id EntrySeqId %2$s in event", stateEntityIdEntrySeqId, eventEntityIdEntrySeqId);
@@ -211,16 +211,19 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
 
         if (getForReapplying()) { return; }
 
+        SellableInventoryItemEntryStateEvent stateEvent = event instanceof SellableInventoryItemEntryStateEvent ? (SellableInventoryItemEntryStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? SellableInventoryItemEntryState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(SellableInventoryItemEntryState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? SellableInventoryItemEntryState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(SellableInventoryItemEntryState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

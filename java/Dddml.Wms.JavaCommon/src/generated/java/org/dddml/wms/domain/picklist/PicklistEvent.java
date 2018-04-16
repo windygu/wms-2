@@ -14,30 +14,6 @@ public interface PicklistEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getFacilityId();
-
-    void setFacilityId(String facilityId);
-
-    String getShipmentMethodTypeId();
-
-    void setShipmentMethodTypeId(String shipmentMethodTypeId);
-
-    String getStatusId();
-
-    void setStatusId(String statusId);
-
-    java.sql.Timestamp getPicklistDate();
-
-    void setPicklistDate(java.sql.Timestamp picklistDate);
-
-    Long getPickwaveId();
-
-    void setPickwaveId(Long pickwaveId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -46,15 +22,42 @@ public interface PicklistEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PicklistStateCreated extends PicklistEvent
+    interface PicklistStateEvent extends PicklistEvent {
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getFacilityId();
+
+        void setFacilityId(String facilityId);
+
+        String getShipmentMethodTypeId();
+
+        void setShipmentMethodTypeId(String shipmentMethodTypeId);
+
+        String getStatusId();
+
+        void setStatusId(String statusId);
+
+        java.sql.Timestamp getPicklistDate();
+
+        void setPicklistDate(java.sql.Timestamp picklistDate);
+
+        Long getPickwaveId();
+
+        void setPickwaveId(Long pickwaveId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PicklistStateCreated extends PicklistStateEvent
     {
         Iterable<PicklistRoleEvent.PicklistRoleStateCreated> getPicklistRoleEvents();
         
@@ -66,7 +69,7 @@ public interface PicklistEvent extends Event
     }
 
 
-    interface PicklistStateMergePatched extends PicklistEvent
+    interface PicklistStateMergePatched extends PicklistStateEvent
     {
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -109,7 +112,7 @@ public interface PicklistEvent extends Event
 
     }
 
-    interface PicklistStateDeleted extends PicklistEvent
+    interface PicklistStateDeleted extends PicklistStateEvent
     {
         Iterable<PicklistRoleEvent.PicklistRoleStateRemoved> getPicklistRoleEvents();
         

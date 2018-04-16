@@ -213,21 +213,21 @@ public abstract class AbstractPartyRoleState implements PartyRoleState
     {
     }
 
-    protected void throwOnWrongEvent(PartyRoleEvent stateEvent)
+    protected void throwOnWrongEvent(PartyRoleEvent event)
     {
         PartyRoleId stateEntityId = this.getPartyRoleId(); // Aggregate Id
-        PartyRoleId eventEntityId = stateEvent.getPartyRoleEventId().getPartyRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        PartyRoleId eventEntityId = event.getPartyRoleEventId().getPartyRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getPartyRoleEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getPartyRoleEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getPartyRoleEventId().getVersion() == null");
+            throw new NullPointerException("event.getPartyRoleEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(PartyRoleState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(PartyRoleState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

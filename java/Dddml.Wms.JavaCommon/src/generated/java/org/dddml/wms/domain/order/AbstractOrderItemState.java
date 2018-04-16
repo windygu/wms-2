@@ -1030,17 +1030,17 @@ public abstract class AbstractOrderItemState implements OrderItemState
     {
     }
 
-    protected void throwOnWrongEvent(OrderItemEvent stateEvent)
+    protected void throwOnWrongEvent(OrderItemEvent event)
     {
         String stateEntityIdOrderId = this.getOrderItemId().getOrderId();
-        String eventEntityIdOrderId = stateEvent.getOrderItemEventId().getOrderId();
+        String eventEntityIdOrderId = event.getOrderItemEventId().getOrderId();
         if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
         String stateEntityIdOrderItemSeqId = this.getOrderItemId().getOrderItemSeqId();
-        String eventEntityIdOrderItemSeqId = stateEvent.getOrderItemEventId().getOrderItemSeqId();
+        String eventEntityIdOrderItemSeqId = event.getOrderItemEventId().getOrderItemSeqId();
         if (!stateEntityIdOrderItemSeqId.equals(eventEntityIdOrderItemSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderItemSeqId %1$s in state but entity id OrderItemSeqId %2$s in event", stateEntityIdOrderItemSeqId, eventEntityIdOrderItemSeqId);
@@ -1048,16 +1048,19 @@ public abstract class AbstractOrderItemState implements OrderItemState
 
         if (getForReapplying()) { return; }
 
+        OrderItemStateEvent stateEvent = event instanceof OrderItemStateEvent ? (OrderItemStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? OrderItemState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(OrderItemState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? OrderItemState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(OrderItemState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

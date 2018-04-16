@@ -14,38 +14,6 @@ public interface MovementConfirmationEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
-
-    String getMovementDocumentNumber();
-
-    void setMovementDocumentNumber(String movementDocumentNumber);
-
-    Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
-
-    BigDecimal getApprovalAmount();
-
-    void setApprovalAmount(BigDecimal approvalAmount);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getProcessing();
-
-    void setProcessing(String processing);
-
-    String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -54,15 +22,50 @@ public interface MovementConfirmationEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface MovementConfirmationStateCreated extends MovementConfirmationEvent
+    interface MovementConfirmationStateEvent extends MovementConfirmationEvent {
+        String getDocumentStatusId();
+
+        void setDocumentStatusId(String documentStatusId);
+
+        String getMovementDocumentNumber();
+
+        void setMovementDocumentNumber(String movementDocumentNumber);
+
+        Boolean getIsApproved();
+
+        void setIsApproved(Boolean isApproved);
+
+        BigDecimal getApprovalAmount();
+
+        void setApprovalAmount(BigDecimal approvalAmount);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getProcessing();
+
+        void setProcessing(String processing);
+
+        String getDocumentTypeId();
+
+        void setDocumentTypeId(String documentTypeId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface MovementConfirmationStateCreated extends MovementConfirmationStateEvent
     {
         Iterable<MovementConfirmationLineEvent.MovementConfirmationLineStateCreated> getMovementConfirmationLineEvents();
         
@@ -74,7 +77,7 @@ public interface MovementConfirmationEvent extends Event
     }
 
 
-    interface MovementConfirmationStateMergePatched extends MovementConfirmationEvent
+    interface MovementConfirmationStateMergePatched extends MovementConfirmationStateEvent
     {
         Boolean getIsPropertyDocumentStatusIdRemoved();
 
@@ -125,7 +128,7 @@ public interface MovementConfirmationEvent extends Event
 
     }
 
-    interface MovementConfirmationStateDeleted extends MovementConfirmationEvent
+    interface MovementConfirmationStateDeleted extends MovementConfirmationStateEvent
     {
         Iterable<MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved> getMovementConfirmationLineEvents();
         

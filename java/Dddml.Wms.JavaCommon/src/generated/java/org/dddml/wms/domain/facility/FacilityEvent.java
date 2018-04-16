@@ -13,74 +13,6 @@ public interface FacilityEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getFacilityTypeId();
-
-    void setFacilityTypeId(String facilityTypeId);
-
-    String getParentFacilityId();
-
-    void setParentFacilityId(String parentFacilityId);
-
-    String getOwnerPartyId();
-
-    void setOwnerPartyId(String ownerPartyId);
-
-    String getDefaultInventoryItemTypeId();
-
-    void setDefaultInventoryItemTypeId(String defaultInventoryItemTypeId);
-
-    String getFacilityName();
-
-    void setFacilityName(String facilityName);
-
-    String getPrimaryFacilityGroupId();
-
-    void setPrimaryFacilityGroupId(String primaryFacilityGroupId);
-
-    Long getOldSquareFootage();
-
-    void setOldSquareFootage(Long oldSquareFootage);
-
-    java.math.BigDecimal getFacilitySize();
-
-    void setFacilitySize(java.math.BigDecimal facilitySize);
-
-    String getFacilitySizeUomId();
-
-    void setFacilitySizeUomId(String facilitySizeUomId);
-
-    String getProductStoreId();
-
-    void setProductStoreId(String productStoreId);
-
-    Long getDefaultDaysToShip();
-
-    void setDefaultDaysToShip(Long defaultDaysToShip);
-
-    java.sql.Timestamp getOpenedDate();
-
-    void setOpenedDate(java.sql.Timestamp openedDate);
-
-    java.sql.Timestamp getClosedDate();
-
-    void setClosedDate(java.sql.Timestamp closedDate);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getDefaultDimensionUomId();
-
-    void setDefaultDimensionUomId(String defaultDimensionUomId);
-
-    String getDefaultWeightUomId();
-
-    void setDefaultWeightUomId(String defaultWeightUomId);
-
-    String getGeoPointId();
-
-    void setGeoPointId(String geoPointId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -89,21 +21,92 @@ public interface FacilityEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface FacilityStateCreated extends FacilityEvent
+    interface FacilityStateEvent extends FacilityEvent {
+        String getFacilityTypeId();
+
+        void setFacilityTypeId(String facilityTypeId);
+
+        String getParentFacilityId();
+
+        void setParentFacilityId(String parentFacilityId);
+
+        String getOwnerPartyId();
+
+        void setOwnerPartyId(String ownerPartyId);
+
+        String getDefaultInventoryItemTypeId();
+
+        void setDefaultInventoryItemTypeId(String defaultInventoryItemTypeId);
+
+        String getFacilityName();
+
+        void setFacilityName(String facilityName);
+
+        String getPrimaryFacilityGroupId();
+
+        void setPrimaryFacilityGroupId(String primaryFacilityGroupId);
+
+        Long getOldSquareFootage();
+
+        void setOldSquareFootage(Long oldSquareFootage);
+
+        java.math.BigDecimal getFacilitySize();
+
+        void setFacilitySize(java.math.BigDecimal facilitySize);
+
+        String getFacilitySizeUomId();
+
+        void setFacilitySizeUomId(String facilitySizeUomId);
+
+        String getProductStoreId();
+
+        void setProductStoreId(String productStoreId);
+
+        Long getDefaultDaysToShip();
+
+        void setDefaultDaysToShip(Long defaultDaysToShip);
+
+        java.sql.Timestamp getOpenedDate();
+
+        void setOpenedDate(java.sql.Timestamp openedDate);
+
+        java.sql.Timestamp getClosedDate();
+
+        void setClosedDate(java.sql.Timestamp closedDate);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getDefaultDimensionUomId();
+
+        void setDefaultDimensionUomId(String defaultDimensionUomId);
+
+        String getDefaultWeightUomId();
+
+        void setDefaultWeightUomId(String defaultWeightUomId);
+
+        String getGeoPointId();
+
+        void setGeoPointId(String geoPointId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface FacilityStateCreated extends FacilityStateEvent
     {
     
     }
 
 
-    interface FacilityStateMergePatched extends FacilityEvent
+    interface FacilityStateMergePatched extends FacilityStateEvent
     {
         Boolean getIsPropertyFacilityTypeIdRemoved();
 
@@ -180,7 +183,7 @@ public interface FacilityEvent extends Event
 
     }
 
-    interface FacilityStateDeleted extends FacilityEvent
+    interface FacilityStateDeleted extends FacilityStateEvent
     {
     }
 

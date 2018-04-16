@@ -35,42 +35,6 @@ public abstract class AbstractInventoryItemRequirementEntryMvoEvent extends Abst
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal quantity;
-
-    public BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    private InventoryPRTriggeredId sourceEventId;
-
-    public InventoryPRTriggeredId getSourceEventId()
-    {
-        return this.sourceEventId;
-    }
-
-    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
-    {
-        this.sourceEventId = sourceEventId;
-    }
-
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -95,66 +59,6 @@ public abstract class AbstractInventoryItemRequirementEntryMvoEvent extends Abst
         this.createdAt = createdAt;
     }
 
-    private BigDecimal inventoryItemRequirementQuantity;
-
-    public BigDecimal getInventoryItemRequirementQuantity()
-    {
-        return this.inventoryItemRequirementQuantity;
-    }
-
-    public void setInventoryItemRequirementQuantity(BigDecimal inventoryItemRequirementQuantity)
-    {
-        this.inventoryItemRequirementQuantity = inventoryItemRequirementQuantity;
-    }
-
-    private String inventoryItemRequirementCreatedBy;
-
-    public String getInventoryItemRequirementCreatedBy()
-    {
-        return this.inventoryItemRequirementCreatedBy;
-    }
-
-    public void setInventoryItemRequirementCreatedBy(String inventoryItemRequirementCreatedBy)
-    {
-        this.inventoryItemRequirementCreatedBy = inventoryItemRequirementCreatedBy;
-    }
-
-    private Date inventoryItemRequirementCreatedAt;
-
-    public Date getInventoryItemRequirementCreatedAt()
-    {
-        return this.inventoryItemRequirementCreatedAt;
-    }
-
-    public void setInventoryItemRequirementCreatedAt(Date inventoryItemRequirementCreatedAt)
-    {
-        this.inventoryItemRequirementCreatedAt = inventoryItemRequirementCreatedAt;
-    }
-
-    private String inventoryItemRequirementUpdatedBy;
-
-    public String getInventoryItemRequirementUpdatedBy()
-    {
-        return this.inventoryItemRequirementUpdatedBy;
-    }
-
-    public void setInventoryItemRequirementUpdatedBy(String inventoryItemRequirementUpdatedBy)
-    {
-        this.inventoryItemRequirementUpdatedBy = inventoryItemRequirementUpdatedBy;
-    }
-
-    private Date inventoryItemRequirementUpdatedAt;
-
-    public Date getInventoryItemRequirementUpdatedAt()
-    {
-        return this.inventoryItemRequirementUpdatedAt;
-    }
-
-    public void setInventoryItemRequirementUpdatedAt(Date inventoryItemRequirementUpdatedAt)
-    {
-        this.inventoryItemRequirementUpdatedAt = inventoryItemRequirementUpdatedAt;
-    }
-
 
     private String commandId;
 
@@ -177,7 +81,109 @@ public abstract class AbstractInventoryItemRequirementEntryMvoEvent extends Abst
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryItemRequirementEntryMvoStateCreated extends AbstractInventoryItemRequirementEntryMvoEvent implements InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateCreated
+    public static abstract class AbstractInventoryItemRequirementEntryMvoStateEvent extends AbstractInventoryItemRequirementEntryMvoEvent implements InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateEvent {
+        private BigDecimal quantity;
+
+        public BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private InventoryPRTriggeredId sourceEventId;
+
+        public InventoryPRTriggeredId getSourceEventId()
+        {
+            return this.sourceEventId;
+        }
+
+        public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
+        {
+            this.sourceEventId = sourceEventId;
+        }
+
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private BigDecimal inventoryItemRequirementQuantity;
+
+        public BigDecimal getInventoryItemRequirementQuantity()
+        {
+            return this.inventoryItemRequirementQuantity;
+        }
+
+        public void setInventoryItemRequirementQuantity(BigDecimal inventoryItemRequirementQuantity)
+        {
+            this.inventoryItemRequirementQuantity = inventoryItemRequirementQuantity;
+        }
+
+        private String inventoryItemRequirementCreatedBy;
+
+        public String getInventoryItemRequirementCreatedBy()
+        {
+            return this.inventoryItemRequirementCreatedBy;
+        }
+
+        public void setInventoryItemRequirementCreatedBy(String inventoryItemRequirementCreatedBy)
+        {
+            this.inventoryItemRequirementCreatedBy = inventoryItemRequirementCreatedBy;
+        }
+
+        private Date inventoryItemRequirementCreatedAt;
+
+        public Date getInventoryItemRequirementCreatedAt()
+        {
+            return this.inventoryItemRequirementCreatedAt;
+        }
+
+        public void setInventoryItemRequirementCreatedAt(Date inventoryItemRequirementCreatedAt)
+        {
+            this.inventoryItemRequirementCreatedAt = inventoryItemRequirementCreatedAt;
+        }
+
+        private String inventoryItemRequirementUpdatedBy;
+
+        public String getInventoryItemRequirementUpdatedBy()
+        {
+            return this.inventoryItemRequirementUpdatedBy;
+        }
+
+        public void setInventoryItemRequirementUpdatedBy(String inventoryItemRequirementUpdatedBy)
+        {
+            this.inventoryItemRequirementUpdatedBy = inventoryItemRequirementUpdatedBy;
+        }
+
+        private Date inventoryItemRequirementUpdatedAt;
+
+        public Date getInventoryItemRequirementUpdatedAt()
+        {
+            return this.inventoryItemRequirementUpdatedAt;
+        }
+
+        public void setInventoryItemRequirementUpdatedAt(Date inventoryItemRequirementUpdatedAt)
+        {
+            this.inventoryItemRequirementUpdatedAt = inventoryItemRequirementUpdatedAt;
+        }
+
+        protected AbstractInventoryItemRequirementEntryMvoStateEvent(InventoryItemRequirementEntryMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractInventoryItemRequirementEntryMvoStateCreated extends AbstractInventoryItemRequirementEntryMvoStateEvent implements InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateCreated
     {
         public AbstractInventoryItemRequirementEntryMvoStateCreated() {
             this(new InventoryItemRequirementEntryMvoEventId());
@@ -194,7 +200,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoEvent extends Abst
     }
 
 
-    public static abstract class AbstractInventoryItemRequirementEntryMvoStateMergePatched extends AbstractInventoryItemRequirementEntryMvoEvent implements InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateMergePatched
+    public static abstract class AbstractInventoryItemRequirementEntryMvoStateMergePatched extends AbstractInventoryItemRequirementEntryMvoStateEvent implements InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateMergePatched
     {
         public AbstractInventoryItemRequirementEntryMvoStateMergePatched() {
             this(new InventoryItemRequirementEntryMvoEventId());

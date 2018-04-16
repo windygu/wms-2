@@ -32,18 +32,6 @@ public abstract class AbstractOrganizationStructureTypeEvent extends AbstractEve
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -68,18 +56,6 @@ public abstract class AbstractOrganizationStructureTypeEvent extends AbstractEve
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -102,7 +78,37 @@ public abstract class AbstractOrganizationStructureTypeEvent extends AbstractEve
     public abstract String getEventType();
 
 
-    public static abstract class AbstractOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeEvent implements OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated
+    public static abstract class AbstractOrganizationStructureTypeStateEvent extends AbstractOrganizationStructureTypeEvent implements OrganizationStructureTypeEvent.OrganizationStructureTypeStateEvent {
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractOrganizationStructureTypeStateEvent(OrganizationStructureTypeEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated
     {
         public AbstractOrganizationStructureTypeStateCreated() {
             this(new OrganizationStructureTypeEventId());
@@ -119,7 +125,7 @@ public abstract class AbstractOrganizationStructureTypeEvent extends AbstractEve
     }
 
 
-    public static abstract class AbstractOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeEvent implements OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched
+    public static abstract class AbstractOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched
     {
         public AbstractOrganizationStructureTypeStateMergePatched() {
             this(new OrganizationStructureTypeEventId());
@@ -156,7 +162,7 @@ public abstract class AbstractOrganizationStructureTypeEvent extends AbstractEve
     }
 
 
-    public static abstract class AbstractOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeEvent implements OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted
+    public static abstract class AbstractOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted
     {
         public AbstractOrganizationStructureTypeStateDeleted() {
             this(new OrganizationStructureTypeEventId());

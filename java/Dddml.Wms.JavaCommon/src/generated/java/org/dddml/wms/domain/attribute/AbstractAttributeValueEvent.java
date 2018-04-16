@@ -32,54 +32,6 @@ public abstract class AbstractAttributeValueEvent extends AbstractEvent implemen
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String attributeValueName;
-
-    public String getAttributeValueName()
-    {
-        return this.attributeValueName;
-    }
-
-    public void setAttributeValueName(String attributeValueName)
-    {
-        this.attributeValueName = attributeValueName;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String referenceId;
-
-    public String getReferenceId()
-    {
-        return this.referenceId;
-    }
-
-    public void setReferenceId(String referenceId)
-    {
-        this.referenceId = referenceId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -104,18 +56,6 @@ public abstract class AbstractAttributeValueEvent extends AbstractEvent implemen
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -138,7 +78,73 @@ public abstract class AbstractAttributeValueEvent extends AbstractEvent implemen
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeValueStateCreated extends AbstractAttributeValueEvent implements AttributeValueEvent.AttributeValueStateCreated
+    public static abstract class AbstractAttributeValueStateEvent extends AbstractAttributeValueEvent implements AttributeValueEvent.AttributeValueStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String attributeValueName;
+
+        public String getAttributeValueName()
+        {
+            return this.attributeValueName;
+        }
+
+        public void setAttributeValueName(String attributeValueName)
+        {
+            this.attributeValueName = attributeValueName;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String referenceId;
+
+        public String getReferenceId()
+        {
+            return this.referenceId;
+        }
+
+        public void setReferenceId(String referenceId)
+        {
+            this.referenceId = referenceId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractAttributeValueStateEvent(AttributeValueEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeValueStateCreated extends AbstractAttributeValueStateEvent implements AttributeValueEvent.AttributeValueStateCreated
     {
         public AbstractAttributeValueStateCreated() {
             this(new AttributeValueEventId());
@@ -155,7 +161,7 @@ public abstract class AbstractAttributeValueEvent extends AbstractEvent implemen
     }
 
 
-    public static abstract class AbstractAttributeValueStateMergePatched extends AbstractAttributeValueEvent implements AttributeValueEvent.AttributeValueStateMergePatched
+    public static abstract class AbstractAttributeValueStateMergePatched extends AbstractAttributeValueStateEvent implements AttributeValueEvent.AttributeValueStateMergePatched
     {
         public AbstractAttributeValueStateMergePatched() {
             this(new AttributeValueEventId());
@@ -212,7 +218,7 @@ public abstract class AbstractAttributeValueEvent extends AbstractEvent implemen
     }
 
 
-    public static abstract class AbstractAttributeValueStateRemoved extends AbstractAttributeValueEvent implements AttributeValueEvent.AttributeValueStateRemoved
+    public static abstract class AbstractAttributeValueStateRemoved extends AbstractAttributeValueStateEvent implements AttributeValueEvent.AttributeValueStateRemoved
     {
         public AbstractAttributeValueStateRemoved() {
             this(new AttributeValueEventId());

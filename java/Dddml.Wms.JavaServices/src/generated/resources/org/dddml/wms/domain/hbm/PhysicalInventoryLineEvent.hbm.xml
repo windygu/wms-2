@@ -18,18 +18,21 @@
 
     <discriminator column="EventType" type="string" />
 
-	<property name="bookQuantity" ></property>
-	<property name="countedQuantity" ></property>
-	<property name="processed" ></property>
-	<property name="lineNumber" ><column name="LineNumber" length="50" unique-key="UniqueLineNumber" /></property>
-	<property name="reversalLineNumber" ></property>
-	<property name="description" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractPhysicalInventoryLineEvent$AbstractPhysicalInventoryLineStateEvent" abstract="true">
+
+	<property name="bookQuantity" ></property>
+	<property name="countedQuantity" ></property>
+	<property name="processed" ></property>
+	<property name="lineNumber" ><column name="LineNumber" length="50" unique-key="UniqueLineNumber" /></property>
+	<property name="reversalLineNumber" ></property>
+	<property name="description" ></property>
 
     <property name="version" column="Version" not-null="true" />
 
@@ -59,6 +62,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

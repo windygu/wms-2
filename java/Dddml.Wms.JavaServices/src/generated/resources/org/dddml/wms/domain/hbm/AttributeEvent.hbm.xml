@@ -15,6 +15,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractAttributeEvent$AbstractAttributeStateEvent" abstract="true">
+
 	<property name="attributeName" ></property>
 	<property name="organizationId" ></property>
 	<property name="description" ></property>
@@ -25,12 +34,6 @@
 	<property name="fieldName" ><column name="FieldName" unique-key="UniqueFieldName" /></property>
 	<property name="referenceId" ></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractAttributeEvent$SimpleAttributeStateCreated" discriminator-value="Created">
     	
@@ -66,6 +69,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

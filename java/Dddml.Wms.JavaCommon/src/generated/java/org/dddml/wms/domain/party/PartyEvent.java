@@ -13,14 +13,6 @@ public interface PartyEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getPartyTypeId();
-
-    void setPartyTypeId(String partyTypeId);
-
-    String getPrimaryRoleTypeId();
-
-    void setPrimaryRoleTypeId(String primaryRoleTypeId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,21 +21,32 @@ public interface PartyEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PartyStateCreated extends PartyEvent
+    interface PartyStateEvent extends PartyEvent {
+        String getPartyTypeId();
+
+        void setPartyTypeId(String partyTypeId);
+
+        String getPrimaryRoleTypeId();
+
+        void setPrimaryRoleTypeId(String primaryRoleTypeId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface PartyStateCreated extends PartyStateEvent
     {
     
     }
 
 
-    interface PartyStateMergePatched extends PartyEvent
+    interface PartyStateMergePatched extends PartyStateEvent
     {
         Boolean getIsPropertyPartyTypeIdRemoved();
 
@@ -60,7 +63,7 @@ public interface PartyEvent extends Event
 
     }
 
-    interface PartyStateDeleted extends PartyEvent
+    interface PartyStateDeleted extends PartyStateEvent
     {
     }
 

@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractItemIssuanceEvent$AbstractItemIssuanceStateEvent" abstract="true">
+
 	<property name="orderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
 	<property name="orderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
@@ -30,12 +39,6 @@
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="cancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <property name="version" column="Version" not-null="true" />
 
@@ -81,6 +84,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

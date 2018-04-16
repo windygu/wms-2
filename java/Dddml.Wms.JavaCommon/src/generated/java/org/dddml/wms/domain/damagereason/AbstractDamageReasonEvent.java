@@ -32,30 +32,6 @@ public abstract class AbstractDamageReasonEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String sequenceId;
-
-    public String getSequenceId()
-    {
-        return this.sequenceId;
-    }
-
-    public void setSequenceId(String sequenceId)
-    {
-        this.sequenceId = sequenceId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -80,18 +56,6 @@ public abstract class AbstractDamageReasonEvent extends AbstractEvent implements
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -114,7 +78,49 @@ public abstract class AbstractDamageReasonEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractDamageReasonStateCreated extends AbstractDamageReasonEvent implements DamageReasonEvent.DamageReasonStateCreated
+    public static abstract class AbstractDamageReasonStateEvent extends AbstractDamageReasonEvent implements DamageReasonEvent.DamageReasonStateEvent {
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String sequenceId;
+
+        public String getSequenceId()
+        {
+            return this.sequenceId;
+        }
+
+        public void setSequenceId(String sequenceId)
+        {
+            this.sequenceId = sequenceId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractDamageReasonStateEvent(DamageReasonEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractDamageReasonStateCreated extends AbstractDamageReasonStateEvent implements DamageReasonEvent.DamageReasonStateCreated
     {
         public AbstractDamageReasonStateCreated() {
             this(new DamageReasonEventId());
@@ -131,7 +137,7 @@ public abstract class AbstractDamageReasonEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractDamageReasonStateMergePatched extends AbstractDamageReasonEvent implements DamageReasonEvent.DamageReasonStateMergePatched
+    public static abstract class AbstractDamageReasonStateMergePatched extends AbstractDamageReasonStateEvent implements DamageReasonEvent.DamageReasonStateMergePatched
     {
         public AbstractDamageReasonStateMergePatched() {
             this(new DamageReasonEventId());
@@ -178,7 +184,7 @@ public abstract class AbstractDamageReasonEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractDamageReasonStateDeleted extends AbstractDamageReasonEvent implements DamageReasonEvent.DamageReasonStateDeleted
+    public static abstract class AbstractDamageReasonStateDeleted extends AbstractDamageReasonStateEvent implements DamageReasonEvent.DamageReasonStateDeleted
     {
         public AbstractDamageReasonStateDeleted() {
             this(new DamageReasonEventId());

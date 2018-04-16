@@ -32,78 +32,6 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String attributeSetName;
-
-    public String getAttributeSetName()
-    {
-        return this.attributeSetName;
-    }
-
-    public void setAttributeSetName(String attributeSetName)
-    {
-        this.attributeSetName = attributeSetName;
-    }
-
-    private String organizationId;
-
-    public String getOrganizationId()
-    {
-        return this.organizationId;
-    }
-
-    public void setOrganizationId(String organizationId)
-    {
-        this.organizationId = organizationId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String referenceId;
-
-    public String getReferenceId()
-    {
-        return this.referenceId;
-    }
-
-    public void setReferenceId(String referenceId)
-    {
-        this.referenceId = referenceId;
-    }
-
-    private Boolean isInstanceAttributeSet;
-
-    public Boolean getIsInstanceAttributeSet()
-    {
-        return this.isInstanceAttributeSet;
-    }
-
-    public void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet)
-    {
-        this.isInstanceAttributeSet = isInstanceAttributeSet;
-    }
-
-    private Boolean isMandatory;
-
-    public Boolean getIsMandatory()
-    {
-        return this.isMandatory;
-    }
-
-    public void setIsMandatory(Boolean isMandatory)
-    {
-        this.isMandatory = isMandatory;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -126,18 +54,6 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -200,7 +116,97 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
     public abstract String getEventType();
 
 
-    public static abstract class AbstractAttributeSetStateCreated extends AbstractAttributeSetEvent implements AttributeSetEvent.AttributeSetStateCreated, Saveable
+    public static abstract class AbstractAttributeSetStateEvent extends AbstractAttributeSetEvent implements AttributeSetEvent.AttributeSetStateEvent {
+        private String attributeSetName;
+
+        public String getAttributeSetName()
+        {
+            return this.attributeSetName;
+        }
+
+        public void setAttributeSetName(String attributeSetName)
+        {
+            this.attributeSetName = attributeSetName;
+        }
+
+        private String organizationId;
+
+        public String getOrganizationId()
+        {
+            return this.organizationId;
+        }
+
+        public void setOrganizationId(String organizationId)
+        {
+            this.organizationId = organizationId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String referenceId;
+
+        public String getReferenceId()
+        {
+            return this.referenceId;
+        }
+
+        public void setReferenceId(String referenceId)
+        {
+            this.referenceId = referenceId;
+        }
+
+        private Boolean isInstanceAttributeSet;
+
+        public Boolean getIsInstanceAttributeSet()
+        {
+            return this.isInstanceAttributeSet;
+        }
+
+        public void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet)
+        {
+            this.isInstanceAttributeSet = isInstanceAttributeSet;
+        }
+
+        private Boolean isMandatory;
+
+        public Boolean getIsMandatory()
+        {
+            return this.isMandatory;
+        }
+
+        public void setIsMandatory(Boolean isMandatory)
+        {
+            this.isMandatory = isMandatory;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractAttributeSetStateEvent(AttributeSetEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractAttributeSetStateCreated extends AbstractAttributeSetStateEvent implements AttributeSetEvent.AttributeSetStateCreated, Saveable
     {
         public AbstractAttributeSetStateCreated() {
             this(new AttributeSetEventId());
@@ -265,7 +271,7 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractAttributeSetStateMergePatched extends AbstractAttributeSetEvent implements AttributeSetEvent.AttributeSetStateMergePatched, Saveable
+    public static abstract class AbstractAttributeSetStateMergePatched extends AbstractAttributeSetStateEvent implements AttributeSetEvent.AttributeSetStateMergePatched, Saveable
     {
         public AbstractAttributeSetStateMergePatched() {
             this(new AttributeSetEventId());
@@ -400,7 +406,7 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
     }
 
 
-    public static abstract class AbstractAttributeSetStateDeleted extends AbstractAttributeSetEvent implements AttributeSetEvent.AttributeSetStateDeleted, Saveable
+    public static abstract class AbstractAttributeSetStateDeleted extends AbstractAttributeSetStateEvent implements AttributeSetEvent.AttributeSetStateDeleted, Saveable
     {
         public AbstractAttributeSetStateDeleted() {
             this(new AttributeSetEventId());

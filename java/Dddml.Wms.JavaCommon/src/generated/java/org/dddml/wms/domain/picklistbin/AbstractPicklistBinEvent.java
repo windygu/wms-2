@@ -32,54 +32,6 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String picklistId;
-
-    public String getPicklistId()
-    {
-        return this.picklistId;
-    }
-
-    public void setPicklistId(String picklistId)
-    {
-        this.picklistId = picklistId;
-    }
-
-    private Long binLocationNumber;
-
-    public Long getBinLocationNumber()
-    {
-        return this.binLocationNumber;
-    }
-
-    public void setBinLocationNumber(Long binLocationNumber)
-    {
-        this.binLocationNumber = binLocationNumber;
-    }
-
-    private String primaryOrderId;
-
-    public String getPrimaryOrderId()
-    {
-        return this.primaryOrderId;
-    }
-
-    public void setPrimaryOrderId(String primaryOrderId)
-    {
-        this.primaryOrderId = primaryOrderId;
-    }
-
-    private Long primaryShipGroupSeqId;
-
-    public Long getPrimaryShipGroupSeqId()
-    {
-        return this.primaryShipGroupSeqId;
-    }
-
-    public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId)
-    {
-        this.primaryShipGroupSeqId = primaryShipGroupSeqId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -102,18 +54,6 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -176,7 +116,73 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPicklistBinStateCreated extends AbstractPicklistBinEvent implements PicklistBinEvent.PicklistBinStateCreated, Saveable
+    public static abstract class AbstractPicklistBinStateEvent extends AbstractPicklistBinEvent implements PicklistBinEvent.PicklistBinStateEvent {
+        private String picklistId;
+
+        public String getPicklistId()
+        {
+            return this.picklistId;
+        }
+
+        public void setPicklistId(String picklistId)
+        {
+            this.picklistId = picklistId;
+        }
+
+        private Long binLocationNumber;
+
+        public Long getBinLocationNumber()
+        {
+            return this.binLocationNumber;
+        }
+
+        public void setBinLocationNumber(Long binLocationNumber)
+        {
+            this.binLocationNumber = binLocationNumber;
+        }
+
+        private String primaryOrderId;
+
+        public String getPrimaryOrderId()
+        {
+            return this.primaryOrderId;
+        }
+
+        public void setPrimaryOrderId(String primaryOrderId)
+        {
+            this.primaryOrderId = primaryOrderId;
+        }
+
+        private Long primaryShipGroupSeqId;
+
+        public Long getPrimaryShipGroupSeqId()
+        {
+            return this.primaryShipGroupSeqId;
+        }
+
+        public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId)
+        {
+            this.primaryShipGroupSeqId = primaryShipGroupSeqId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPicklistBinStateEvent(PicklistBinEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPicklistBinStateCreated extends AbstractPicklistBinStateEvent implements PicklistBinEvent.PicklistBinStateCreated, Saveable
     {
         public AbstractPicklistBinStateCreated() {
             this(new PicklistBinEventId());
@@ -241,7 +247,7 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
     }
 
 
-    public static abstract class AbstractPicklistBinStateMergePatched extends AbstractPicklistBinEvent implements PicklistBinEvent.PicklistBinStateMergePatched, Saveable
+    public static abstract class AbstractPicklistBinStateMergePatched extends AbstractPicklistBinStateEvent implements PicklistBinEvent.PicklistBinStateMergePatched, Saveable
     {
         public AbstractPicklistBinStateMergePatched() {
             this(new PicklistBinEventId());
@@ -356,7 +362,7 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
     }
 
 
-    public static abstract class AbstractPicklistBinStateDeleted extends AbstractPicklistBinEvent implements PicklistBinEvent.PicklistBinStateDeleted, Saveable
+    public static abstract class AbstractPicklistBinStateDeleted extends AbstractPicklistBinStateEvent implements PicklistBinEvent.PicklistBinStateDeleted, Saveable
     {
         public AbstractPicklistBinStateDeleted() {
             this(new PicklistBinEventId());

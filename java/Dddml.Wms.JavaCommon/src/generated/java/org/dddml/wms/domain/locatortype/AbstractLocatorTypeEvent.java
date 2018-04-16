@@ -32,18 +32,6 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -68,18 +56,6 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -102,7 +78,37 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
     public abstract String getEventType();
 
 
-    public static abstract class AbstractLocatorTypeStateCreated extends AbstractLocatorTypeEvent implements LocatorTypeEvent.LocatorTypeStateCreated
+    public static abstract class AbstractLocatorTypeStateEvent extends AbstractLocatorTypeEvent implements LocatorTypeEvent.LocatorTypeStateEvent {
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractLocatorTypeStateEvent(LocatorTypeEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractLocatorTypeStateCreated extends AbstractLocatorTypeStateEvent implements LocatorTypeEvent.LocatorTypeStateCreated
     {
         public AbstractLocatorTypeStateCreated() {
             this(new LocatorTypeEventId());
@@ -119,7 +125,7 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
     }
 
 
-    public static abstract class AbstractLocatorTypeStateMergePatched extends AbstractLocatorTypeEvent implements LocatorTypeEvent.LocatorTypeStateMergePatched
+    public static abstract class AbstractLocatorTypeStateMergePatched extends AbstractLocatorTypeStateEvent implements LocatorTypeEvent.LocatorTypeStateMergePatched
     {
         public AbstractLocatorTypeStateMergePatched() {
             this(new LocatorTypeEventId());
@@ -156,7 +162,7 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
     }
 
 
-    public static abstract class AbstractLocatorTypeStateDeleted extends AbstractLocatorTypeEvent implements LocatorTypeEvent.LocatorTypeStateDeleted
+    public static abstract class AbstractLocatorTypeStateDeleted extends AbstractLocatorTypeStateEvent implements LocatorTypeEvent.LocatorTypeStateDeleted
     {
         public AbstractLocatorTypeStateDeleted() {
             this(new LocatorTypeEventId());

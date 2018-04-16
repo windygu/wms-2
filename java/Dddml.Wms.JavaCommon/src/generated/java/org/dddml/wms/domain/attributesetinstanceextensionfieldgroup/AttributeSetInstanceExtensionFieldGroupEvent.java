@@ -13,26 +13,6 @@ public interface AttributeSetInstanceExtensionFieldGroupEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getFieldType();
-
-    void setFieldType(String fieldType);
-
-    Integer getFieldLength();
-
-    void setFieldLength(Integer fieldLength);
-
-    Integer getFieldCount();
-
-    void setFieldCount(Integer fieldCount);
-
-    String getNameFormat();
-
-    void setNameFormat(String nameFormat);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -41,21 +21,44 @@ public interface AttributeSetInstanceExtensionFieldGroupEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeSetInstanceExtensionFieldGroupStateCreated extends AttributeSetInstanceExtensionFieldGroupEvent
+    interface AttributeSetInstanceExtensionFieldGroupStateEvent extends AttributeSetInstanceExtensionFieldGroupEvent {
+        String getFieldType();
+
+        void setFieldType(String fieldType);
+
+        Integer getFieldLength();
+
+        void setFieldLength(Integer fieldLength);
+
+        Integer getFieldCount();
+
+        void setFieldCount(Integer fieldCount);
+
+        String getNameFormat();
+
+        void setNameFormat(String nameFormat);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface AttributeSetInstanceExtensionFieldGroupStateCreated extends AttributeSetInstanceExtensionFieldGroupStateEvent
     {
     
     }
 
 
-    interface AttributeSetInstanceExtensionFieldGroupStateMergePatched extends AttributeSetInstanceExtensionFieldGroupEvent
+    interface AttributeSetInstanceExtensionFieldGroupStateMergePatched extends AttributeSetInstanceExtensionFieldGroupStateEvent
     {
         Boolean getIsPropertyFieldTypeRemoved();
 
@@ -84,7 +87,7 @@ public interface AttributeSetInstanceExtensionFieldGroupEvent extends Event
 
     }
 
-    interface AttributeSetInstanceExtensionFieldGroupStateDeleted extends AttributeSetInstanceExtensionFieldGroupEvent
+    interface AttributeSetInstanceExtensionFieldGroupStateDeleted extends AttributeSetInstanceExtensionFieldGroupStateEvent
     {
     }
 

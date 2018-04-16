@@ -193,17 +193,17 @@ public abstract class AbstractInventoryItemRequirementEntryState implements Inve
     {
     }
 
-    protected void throwOnWrongEvent(InventoryItemRequirementEntryEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryItemRequirementEntryEvent event)
     {
         InventoryItemId stateEntityIdInventoryItemRequirementId = this.getInventoryItemRequirementEntryId().getInventoryItemRequirementId();
-        InventoryItemId eventEntityIdInventoryItemRequirementId = stateEvent.getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId();
+        InventoryItemId eventEntityIdInventoryItemRequirementId = event.getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId();
         if (!stateEntityIdInventoryItemRequirementId.equals(eventEntityIdInventoryItemRequirementId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InventoryItemRequirementId %1$s in state but entity id InventoryItemRequirementId %2$s in event", stateEntityIdInventoryItemRequirementId, eventEntityIdInventoryItemRequirementId);
         }
 
         Long stateEntityIdEntrySeqId = this.getInventoryItemRequirementEntryId().getEntrySeqId();
-        Long eventEntityIdEntrySeqId = stateEvent.getInventoryItemRequirementEntryEventId().getEntrySeqId();
+        Long eventEntityIdEntrySeqId = event.getInventoryItemRequirementEntryEventId().getEntrySeqId();
         if (!stateEntityIdEntrySeqId.equals(eventEntityIdEntrySeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id EntrySeqId %1$s in state but entity id EntrySeqId %2$s in event", stateEntityIdEntrySeqId, eventEntityIdEntrySeqId);
@@ -211,16 +211,19 @@ public abstract class AbstractInventoryItemRequirementEntryState implements Inve
 
         if (getForReapplying()) { return; }
 
+        InventoryItemRequirementEntryStateEvent stateEvent = event instanceof InventoryItemRequirementEntryStateEvent ? (InventoryItemRequirementEntryStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? InventoryItemRequirementEntryState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(InventoryItemRequirementEntryState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? InventoryItemRequirementEntryState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(InventoryItemRequirementEntryState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

@@ -526,21 +526,21 @@ public abstract class AbstractPicklistItemMvoState implements PicklistItemMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(PicklistItemMvoEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistItemMvoEvent event)
     {
         PicklistBinPicklistItemId stateEntityId = this.getPicklistBinPicklistItemId(); // Aggregate Id
-        PicklistBinPicklistItemId eventEntityId = stateEvent.getPicklistItemMvoEventId().getPicklistBinPicklistItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        PicklistBinPicklistItemId eventEntityId = event.getPicklistItemMvoEventId().getPicklistBinPicklistItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getPicklistBinVersion();
-        Long eventVersion = stateEvent.getPicklistItemMvoEventId().getPicklistBinVersion();// Aggregate Version
+        Long eventVersion = event.getPicklistItemMvoEventId().getPicklistBinVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getPicklistItemMvoEventId().getPicklistBinVersion() == null");
+            throw new NullPointerException("event.getPicklistItemMvoEventId().getPicklistBinVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(PicklistItemMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(PicklistItemMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

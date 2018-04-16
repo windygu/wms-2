@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractAttributeAliasMvoEvent$AbstractAttributeAliasMvoStateEvent" abstract="true">
+
 	<property name="name" ><column name="Name" unique-key="UniqueAttributeAliasName" /></property>
 	<property name="version" ></property>
 	<property name="active" ></property>
@@ -34,12 +43,6 @@
 	<property name="attributeUpdatedAt" type="timestamp"><column name="AttributeUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="attributeActive" ></property>
 	<property name="attributeDeleted" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractAttributeAliasMvoEvent$SimpleAttributeAliasMvoStateCreated" discriminator-value="Created">
     	
@@ -91,6 +94,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

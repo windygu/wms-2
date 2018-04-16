@@ -14,102 +14,6 @@ public interface OrderEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getOrderTypeId();
-
-    void setOrderTypeId(String orderTypeId);
-
-    String getOrderName();
-
-    void setOrderName(String orderName);
-
-    String getExternalId();
-
-    void setExternalId(String externalId);
-
-    String getSalesChannelEnumId();
-
-    void setSalesChannelEnumId(String salesChannelEnumId);
-
-    java.sql.Timestamp getOrderDate();
-
-    void setOrderDate(java.sql.Timestamp orderDate);
-
-    String getPriority();
-
-    void setPriority(String priority);
-
-    java.sql.Timestamp getEntryDate();
-
-    void setEntryDate(java.sql.Timestamp entryDate);
-
-    java.sql.Timestamp getPickSheetPrintedDate();
-
-    void setPickSheetPrintedDate(java.sql.Timestamp pickSheetPrintedDate);
-
-    String getStatusId();
-
-    void setStatusId(String statusId);
-
-    String getCurrencyUom();
-
-    void setCurrencyUom(String currencyUom);
-
-    String getSyncStatusId();
-
-    void setSyncStatusId(String syncStatusId);
-
-    String getBillingAccountId();
-
-    void setBillingAccountId(String billingAccountId);
-
-    String getOriginFacilityId();
-
-    void setOriginFacilityId(String originFacilityId);
-
-    String getWebSiteId();
-
-    void setWebSiteId(String webSiteId);
-
-    String getProductStoreId();
-
-    void setProductStoreId(String productStoreId);
-
-    String getTerminalId();
-
-    void setTerminalId(String terminalId);
-
-    String getTransactionId();
-
-    void setTransactionId(String transactionId);
-
-    String getAutoOrderShoppingListId();
-
-    void setAutoOrderShoppingListId(String autoOrderShoppingListId);
-
-    String getNeedsInventoryIssuance();
-
-    void setNeedsInventoryIssuance(String needsInventoryIssuance);
-
-    String getIsRushOrder();
-
-    void setIsRushOrder(String isRushOrder);
-
-    String getInternalCode();
-
-    void setInternalCode(String internalCode);
-
-    java.math.BigDecimal getRemainingSubTotal();
-
-    void setRemainingSubTotal(java.math.BigDecimal remainingSubTotal);
-
-    java.math.BigDecimal getGrandTotal();
-
-    void setGrandTotal(java.math.BigDecimal grandTotal);
-
-    String getInvoicePerShipment();
-
-    void setInvoicePerShipment(String invoicePerShipment);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -118,15 +22,114 @@ public interface OrderEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrderStateCreated extends OrderEvent
+    interface OrderStateEvent extends OrderEvent {
+        String getOrderTypeId();
+
+        void setOrderTypeId(String orderTypeId);
+
+        String getOrderName();
+
+        void setOrderName(String orderName);
+
+        String getExternalId();
+
+        void setExternalId(String externalId);
+
+        String getSalesChannelEnumId();
+
+        void setSalesChannelEnumId(String salesChannelEnumId);
+
+        java.sql.Timestamp getOrderDate();
+
+        void setOrderDate(java.sql.Timestamp orderDate);
+
+        String getPriority();
+
+        void setPriority(String priority);
+
+        java.sql.Timestamp getEntryDate();
+
+        void setEntryDate(java.sql.Timestamp entryDate);
+
+        java.sql.Timestamp getPickSheetPrintedDate();
+
+        void setPickSheetPrintedDate(java.sql.Timestamp pickSheetPrintedDate);
+
+        String getStatusId();
+
+        void setStatusId(String statusId);
+
+        String getCurrencyUom();
+
+        void setCurrencyUom(String currencyUom);
+
+        String getSyncStatusId();
+
+        void setSyncStatusId(String syncStatusId);
+
+        String getBillingAccountId();
+
+        void setBillingAccountId(String billingAccountId);
+
+        String getOriginFacilityId();
+
+        void setOriginFacilityId(String originFacilityId);
+
+        String getWebSiteId();
+
+        void setWebSiteId(String webSiteId);
+
+        String getProductStoreId();
+
+        void setProductStoreId(String productStoreId);
+
+        String getTerminalId();
+
+        void setTerminalId(String terminalId);
+
+        String getTransactionId();
+
+        void setTransactionId(String transactionId);
+
+        String getAutoOrderShoppingListId();
+
+        void setAutoOrderShoppingListId(String autoOrderShoppingListId);
+
+        String getNeedsInventoryIssuance();
+
+        void setNeedsInventoryIssuance(String needsInventoryIssuance);
+
+        String getIsRushOrder();
+
+        void setIsRushOrder(String isRushOrder);
+
+        String getInternalCode();
+
+        void setInternalCode(String internalCode);
+
+        java.math.BigDecimal getRemainingSubTotal();
+
+        void setRemainingSubTotal(java.math.BigDecimal remainingSubTotal);
+
+        java.math.BigDecimal getGrandTotal();
+
+        void setGrandTotal(java.math.BigDecimal grandTotal);
+
+        String getInvoicePerShipment();
+
+        void setInvoicePerShipment(String invoicePerShipment);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface OrderStateCreated extends OrderStateEvent
     {
         Iterable<OrderRoleEvent.OrderRoleStateCreated> getOrderRoleEvents();
         
@@ -150,7 +153,7 @@ public interface OrderEvent extends Event
     }
 
 
-    interface OrderStateMergePatched extends OrderEvent
+    interface OrderStateMergePatched extends OrderStateEvent
     {
         Boolean getIsPropertyOrderTypeIdRemoved();
 

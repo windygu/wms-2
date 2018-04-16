@@ -14,26 +14,6 @@ public interface InventoryItemEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    BigDecimal getOnHandQuantity();
-
-    void setOnHandQuantity(BigDecimal onHandQuantity);
-
-    BigDecimal getInTransitQuantity();
-
-    void setInTransitQuantity(BigDecimal inTransitQuantity);
-
-    BigDecimal getReservedQuantity();
-
-    void setReservedQuantity(BigDecimal reservedQuantity);
-
-    BigDecimal getOccupiedQuantity();
-
-    void setOccupiedQuantity(BigDecimal occupiedQuantity);
-
-    BigDecimal getVirtualQuantity();
-
-    void setVirtualQuantity(BigDecimal virtualQuantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -46,7 +26,30 @@ public interface InventoryItemEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface InventoryItemStateCreated extends InventoryItemEvent
+    interface InventoryItemStateEvent extends InventoryItemEvent {
+        BigDecimal getOnHandQuantity();
+
+        void setOnHandQuantity(BigDecimal onHandQuantity);
+
+        BigDecimal getInTransitQuantity();
+
+        void setInTransitQuantity(BigDecimal inTransitQuantity);
+
+        BigDecimal getReservedQuantity();
+
+        void setReservedQuantity(BigDecimal reservedQuantity);
+
+        BigDecimal getOccupiedQuantity();
+
+        void setOccupiedQuantity(BigDecimal occupiedQuantity);
+
+        BigDecimal getVirtualQuantity();
+
+        void setVirtualQuantity(BigDecimal virtualQuantity);
+
+    }
+
+    interface InventoryItemStateCreated extends InventoryItemStateEvent
     {
         Iterable<InventoryItemEntryEvent.InventoryItemEntryStateCreated> getInventoryItemEntryEvents();
         
@@ -58,7 +61,7 @@ public interface InventoryItemEvent extends Event
     }
 
 
-    interface InventoryItemStateMergePatched extends InventoryItemEvent
+    interface InventoryItemStateMergePatched extends InventoryItemStateEvent
     {
         Boolean getIsPropertyOnHandQuantityRemoved();
 

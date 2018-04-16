@@ -13,14 +13,6 @@ public interface DamageReasonEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getSequenceId();
-
-    void setSequenceId(String sequenceId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,21 +21,32 @@ public interface DamageReasonEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface DamageReasonStateCreated extends DamageReasonEvent
+    interface DamageReasonStateEvent extends DamageReasonEvent {
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getSequenceId();
+
+        void setSequenceId(String sequenceId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface DamageReasonStateCreated extends DamageReasonStateEvent
     {
     
     }
 
 
-    interface DamageReasonStateMergePatched extends DamageReasonEvent
+    interface DamageReasonStateMergePatched extends DamageReasonStateEvent
     {
         Boolean getIsPropertyDescriptionRemoved();
 
@@ -60,7 +63,7 @@ public interface DamageReasonEvent extends Event
 
     }
 
-    interface DamageReasonStateDeleted extends DamageReasonEvent
+    interface DamageReasonStateDeleted extends DamageReasonStateEvent
     {
     }
 

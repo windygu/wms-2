@@ -13,14 +13,6 @@ public interface AttributeAliasEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    String getName();
-
-    void setName(String name);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -29,21 +21,32 @@ public interface AttributeAliasEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeAliasStateCreated extends AttributeAliasEvent
+    interface AttributeAliasStateEvent extends AttributeAliasEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        String getName();
+
+        void setName(String name);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface AttributeAliasStateCreated extends AttributeAliasStateEvent
     {
     
     }
 
 
-    interface AttributeAliasStateMergePatched extends AttributeAliasEvent
+    interface AttributeAliasStateMergePatched extends AttributeAliasStateEvent
     {
         Boolean getIsPropertyNameRemoved();
 
@@ -56,7 +59,7 @@ public interface AttributeAliasEvent extends Event
 
     }
 
-    interface AttributeAliasStateRemoved extends AttributeAliasEvent
+    interface AttributeAliasStateRemoved extends AttributeAliasStateEvent
     {
     }
 

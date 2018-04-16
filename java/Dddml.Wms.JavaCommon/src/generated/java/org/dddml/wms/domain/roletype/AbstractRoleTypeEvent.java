@@ -32,42 +32,6 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String parentTypeId;
-
-    public String getParentTypeId()
-    {
-        return this.parentTypeId;
-    }
-
-    public void setParentTypeId(String parentTypeId)
-    {
-        this.parentTypeId = parentTypeId;
-    }
-
-    private String hasTable;
-
-    public String getHasTable()
-    {
-        return this.hasTable;
-    }
-
-    public void setHasTable(String hasTable)
-    {
-        this.hasTable = hasTable;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -92,18 +56,6 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -126,7 +78,61 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
     public abstract String getEventType();
 
 
-    public static abstract class AbstractRoleTypeStateCreated extends AbstractRoleTypeEvent implements RoleTypeEvent.RoleTypeStateCreated
+    public static abstract class AbstractRoleTypeStateEvent extends AbstractRoleTypeEvent implements RoleTypeEvent.RoleTypeStateEvent {
+        private String parentTypeId;
+
+        public String getParentTypeId()
+        {
+            return this.parentTypeId;
+        }
+
+        public void setParentTypeId(String parentTypeId)
+        {
+            this.parentTypeId = parentTypeId;
+        }
+
+        private String hasTable;
+
+        public String getHasTable()
+        {
+            return this.hasTable;
+        }
+
+        public void setHasTable(String hasTable)
+        {
+            this.hasTable = hasTable;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractRoleTypeStateEvent(RoleTypeEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractRoleTypeStateCreated extends AbstractRoleTypeStateEvent implements RoleTypeEvent.RoleTypeStateCreated
     {
         public AbstractRoleTypeStateCreated() {
             this(new RoleTypeEventId());
@@ -143,7 +149,7 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
     }
 
 
-    public static abstract class AbstractRoleTypeStateMergePatched extends AbstractRoleTypeEvent implements RoleTypeEvent.RoleTypeStateMergePatched
+    public static abstract class AbstractRoleTypeStateMergePatched extends AbstractRoleTypeStateEvent implements RoleTypeEvent.RoleTypeStateMergePatched
     {
         public AbstractRoleTypeStateMergePatched() {
             this(new RoleTypeEventId());
@@ -200,7 +206,7 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
     }
 
 
-    public static abstract class AbstractRoleTypeStateDeleted extends AbstractRoleTypeEvent implements RoleTypeEvent.RoleTypeStateDeleted
+    public static abstract class AbstractRoleTypeStateDeleted extends AbstractRoleTypeStateEvent implements RoleTypeEvent.RoleTypeStateDeleted
     {
         public AbstractRoleTypeStateDeleted() {
             this(new RoleTypeEventId());

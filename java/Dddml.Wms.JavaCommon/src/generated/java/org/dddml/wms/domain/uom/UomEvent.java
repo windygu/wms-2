@@ -13,18 +13,6 @@ public interface UomEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getUomTypeId();
-
-    void setUomTypeId(String uomTypeId);
-
-    String getAbbreviation();
-
-    void setAbbreviation(String abbreviation);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -33,21 +21,36 @@ public interface UomEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface UomStateCreated extends UomEvent
+    interface UomStateEvent extends UomEvent {
+        String getUomTypeId();
+
+        void setUomTypeId(String uomTypeId);
+
+        String getAbbreviation();
+
+        void setAbbreviation(String abbreviation);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface UomStateCreated extends UomStateEvent
     {
     
     }
 
 
-    interface UomStateMergePatched extends UomEvent
+    interface UomStateMergePatched extends UomStateEvent
     {
         Boolean getIsPropertyUomTypeIdRemoved();
 
@@ -68,7 +71,7 @@ public interface UomEvent extends Event
 
     }
 
-    interface UomStateDeleted extends UomEvent
+    interface UomStateDeleted extends UomStateEvent
     {
     }
 

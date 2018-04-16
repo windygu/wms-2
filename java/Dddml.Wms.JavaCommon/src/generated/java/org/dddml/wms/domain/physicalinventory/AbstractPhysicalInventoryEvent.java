@@ -34,174 +34,6 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String documentStatusId;
-
-    public String getDocumentStatusId()
-    {
-        return this.documentStatusId;
-    }
-
-    public void setDocumentStatusId(String documentStatusId)
-    {
-        this.documentStatusId = documentStatusId;
-    }
-
-    private String warehouseId;
-
-    public String getWarehouseId()
-    {
-        return this.warehouseId;
-    }
-
-    public void setWarehouseId(String warehouseId)
-    {
-        this.warehouseId = warehouseId;
-    }
-
-    private String locatorIdPattern;
-
-    public String getLocatorIdPattern()
-    {
-        return this.locatorIdPattern;
-    }
-
-    public void setLocatorIdPattern(String locatorIdPattern)
-    {
-        this.locatorIdPattern = locatorIdPattern;
-    }
-
-    private String productIdPattern;
-
-    public String getProductIdPattern()
-    {
-        return this.productIdPattern;
-    }
-
-    public void setProductIdPattern(String productIdPattern)
-    {
-        this.productIdPattern = productIdPattern;
-    }
-
-    private Boolean posted;
-
-    public Boolean getPosted()
-    {
-        return this.posted;
-    }
-
-    public void setPosted(Boolean posted)
-    {
-        this.posted = posted;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private String processing;
-
-    public String getProcessing()
-    {
-        return this.processing;
-    }
-
-    public void setProcessing(String processing)
-    {
-        this.processing = processing;
-    }
-
-    private String documentTypeId;
-
-    public String getDocumentTypeId()
-    {
-        return this.documentTypeId;
-    }
-
-    public void setDocumentTypeId(String documentTypeId)
-    {
-        this.documentTypeId = documentTypeId;
-    }
-
-    private Date movementDate;
-
-    public Date getMovementDate()
-    {
-        return this.movementDate;
-    }
-
-    public void setMovementDate(Date movementDate)
-    {
-        this.movementDate = movementDate;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private Boolean isApproved;
-
-    public Boolean getIsApproved()
-    {
-        return this.isApproved;
-    }
-
-    public void setIsApproved(Boolean isApproved)
-    {
-        this.isApproved = isApproved;
-    }
-
-    private BigDecimal approvalAmount;
-
-    public BigDecimal getApprovalAmount()
-    {
-        return this.approvalAmount;
-    }
-
-    public void setApprovalAmount(BigDecimal approvalAmount)
-    {
-        this.approvalAmount = approvalAmount;
-    }
-
-    private Boolean isQuantityUpdated;
-
-    public Boolean getIsQuantityUpdated()
-    {
-        return this.isQuantityUpdated;
-    }
-
-    public void setIsQuantityUpdated(Boolean isQuantityUpdated)
-    {
-        this.isQuantityUpdated = isQuantityUpdated;
-    }
-
-    private String reversalDocumentNumber;
-
-    public String getReversalDocumentNumber()
-    {
-        return this.reversalDocumentNumber;
-    }
-
-    public void setReversalDocumentNumber(String reversalDocumentNumber)
-    {
-        this.reversalDocumentNumber = reversalDocumentNumber;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -224,18 +56,6 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -298,7 +118,193 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPhysicalInventoryStateCreated extends AbstractPhysicalInventoryEvent implements PhysicalInventoryEvent.PhysicalInventoryStateCreated, Saveable
+    public static abstract class AbstractPhysicalInventoryStateEvent extends AbstractPhysicalInventoryEvent implements PhysicalInventoryEvent.PhysicalInventoryStateEvent {
+        private String documentStatusId;
+
+        public String getDocumentStatusId()
+        {
+            return this.documentStatusId;
+        }
+
+        public void setDocumentStatusId(String documentStatusId)
+        {
+            this.documentStatusId = documentStatusId;
+        }
+
+        private String warehouseId;
+
+        public String getWarehouseId()
+        {
+            return this.warehouseId;
+        }
+
+        public void setWarehouseId(String warehouseId)
+        {
+            this.warehouseId = warehouseId;
+        }
+
+        private String locatorIdPattern;
+
+        public String getLocatorIdPattern()
+        {
+            return this.locatorIdPattern;
+        }
+
+        public void setLocatorIdPattern(String locatorIdPattern)
+        {
+            this.locatorIdPattern = locatorIdPattern;
+        }
+
+        private String productIdPattern;
+
+        public String getProductIdPattern()
+        {
+            return this.productIdPattern;
+        }
+
+        public void setProductIdPattern(String productIdPattern)
+        {
+            this.productIdPattern = productIdPattern;
+        }
+
+        private Boolean posted;
+
+        public Boolean getPosted()
+        {
+            return this.posted;
+        }
+
+        public void setPosted(Boolean posted)
+        {
+            this.posted = posted;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private String processing;
+
+        public String getProcessing()
+        {
+            return this.processing;
+        }
+
+        public void setProcessing(String processing)
+        {
+            this.processing = processing;
+        }
+
+        private String documentTypeId;
+
+        public String getDocumentTypeId()
+        {
+            return this.documentTypeId;
+        }
+
+        public void setDocumentTypeId(String documentTypeId)
+        {
+            this.documentTypeId = documentTypeId;
+        }
+
+        private Date movementDate;
+
+        public Date getMovementDate()
+        {
+            return this.movementDate;
+        }
+
+        public void setMovementDate(Date movementDate)
+        {
+            this.movementDate = movementDate;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean isApproved;
+
+        public Boolean getIsApproved()
+        {
+            return this.isApproved;
+        }
+
+        public void setIsApproved(Boolean isApproved)
+        {
+            this.isApproved = isApproved;
+        }
+
+        private BigDecimal approvalAmount;
+
+        public BigDecimal getApprovalAmount()
+        {
+            return this.approvalAmount;
+        }
+
+        public void setApprovalAmount(BigDecimal approvalAmount)
+        {
+            this.approvalAmount = approvalAmount;
+        }
+
+        private Boolean isQuantityUpdated;
+
+        public Boolean getIsQuantityUpdated()
+        {
+            return this.isQuantityUpdated;
+        }
+
+        public void setIsQuantityUpdated(Boolean isQuantityUpdated)
+        {
+            this.isQuantityUpdated = isQuantityUpdated;
+        }
+
+        private String reversalDocumentNumber;
+
+        public String getReversalDocumentNumber()
+        {
+            return this.reversalDocumentNumber;
+        }
+
+        public void setReversalDocumentNumber(String reversalDocumentNumber)
+        {
+            this.reversalDocumentNumber = reversalDocumentNumber;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPhysicalInventoryStateEvent(PhysicalInventoryEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPhysicalInventoryStateCreated extends AbstractPhysicalInventoryStateEvent implements PhysicalInventoryEvent.PhysicalInventoryStateCreated, Saveable
     {
         public AbstractPhysicalInventoryStateCreated() {
             this(new PhysicalInventoryEventId());
@@ -363,7 +369,7 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
     }
 
 
-    public static abstract class AbstractPhysicalInventoryStateMergePatched extends AbstractPhysicalInventoryEvent implements PhysicalInventoryEvent.PhysicalInventoryStateMergePatched, Saveable
+    public static abstract class AbstractPhysicalInventoryStateMergePatched extends AbstractPhysicalInventoryStateEvent implements PhysicalInventoryEvent.PhysicalInventoryStateMergePatched, Saveable
     {
         public AbstractPhysicalInventoryStateMergePatched() {
             this(new PhysicalInventoryEventId());

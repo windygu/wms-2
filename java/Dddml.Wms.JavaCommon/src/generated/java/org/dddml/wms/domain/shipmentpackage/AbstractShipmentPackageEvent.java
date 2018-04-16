@@ -32,114 +32,6 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String shipmentBoxTypeId;
-
-    public String getShipmentBoxTypeId()
-    {
-        return this.shipmentBoxTypeId;
-    }
-
-    public void setShipmentBoxTypeId(String shipmentBoxTypeId)
-    {
-        this.shipmentBoxTypeId = shipmentBoxTypeId;
-    }
-
-    private java.sql.Timestamp dateCreated;
-
-    public java.sql.Timestamp getDateCreated()
-    {
-        return this.dateCreated;
-    }
-
-    public void setDateCreated(java.sql.Timestamp dateCreated)
-    {
-        this.dateCreated = dateCreated;
-    }
-
-    private java.math.BigDecimal boxLength;
-
-    public java.math.BigDecimal getBoxLength()
-    {
-        return this.boxLength;
-    }
-
-    public void setBoxLength(java.math.BigDecimal boxLength)
-    {
-        this.boxLength = boxLength;
-    }
-
-    private java.math.BigDecimal boxHeight;
-
-    public java.math.BigDecimal getBoxHeight()
-    {
-        return this.boxHeight;
-    }
-
-    public void setBoxHeight(java.math.BigDecimal boxHeight)
-    {
-        this.boxHeight = boxHeight;
-    }
-
-    private java.math.BigDecimal boxWidth;
-
-    public java.math.BigDecimal getBoxWidth()
-    {
-        return this.boxWidth;
-    }
-
-    public void setBoxWidth(java.math.BigDecimal boxWidth)
-    {
-        this.boxWidth = boxWidth;
-    }
-
-    private String dimensionUomId;
-
-    public String getDimensionUomId()
-    {
-        return this.dimensionUomId;
-    }
-
-    public void setDimensionUomId(String dimensionUomId)
-    {
-        this.dimensionUomId = dimensionUomId;
-    }
-
-    private java.math.BigDecimal weight;
-
-    public java.math.BigDecimal getWeight()
-    {
-        return this.weight;
-    }
-
-    public void setWeight(java.math.BigDecimal weight)
-    {
-        this.weight = weight;
-    }
-
-    private String weightUomId;
-
-    public String getWeightUomId()
-    {
-        return this.weightUomId;
-    }
-
-    public void setWeightUomId(String weightUomId)
-    {
-        this.weightUomId = weightUomId;
-    }
-
-    private java.math.BigDecimal insuredValue;
-
-    public java.math.BigDecimal getInsuredValue()
-    {
-        return this.insuredValue;
-    }
-
-    public void setInsuredValue(java.math.BigDecimal insuredValue)
-    {
-        this.insuredValue = insuredValue;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -162,18 +54,6 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -236,7 +116,133 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
     public abstract String getEventType();
 
 
-    public static abstract class AbstractShipmentPackageStateCreated extends AbstractShipmentPackageEvent implements ShipmentPackageEvent.ShipmentPackageStateCreated, Saveable
+    public static abstract class AbstractShipmentPackageStateEvent extends AbstractShipmentPackageEvent implements ShipmentPackageEvent.ShipmentPackageStateEvent {
+        private String shipmentBoxTypeId;
+
+        public String getShipmentBoxTypeId()
+        {
+            return this.shipmentBoxTypeId;
+        }
+
+        public void setShipmentBoxTypeId(String shipmentBoxTypeId)
+        {
+            this.shipmentBoxTypeId = shipmentBoxTypeId;
+        }
+
+        private java.sql.Timestamp dateCreated;
+
+        public java.sql.Timestamp getDateCreated()
+        {
+            return this.dateCreated;
+        }
+
+        public void setDateCreated(java.sql.Timestamp dateCreated)
+        {
+            this.dateCreated = dateCreated;
+        }
+
+        private java.math.BigDecimal boxLength;
+
+        public java.math.BigDecimal getBoxLength()
+        {
+            return this.boxLength;
+        }
+
+        public void setBoxLength(java.math.BigDecimal boxLength)
+        {
+            this.boxLength = boxLength;
+        }
+
+        private java.math.BigDecimal boxHeight;
+
+        public java.math.BigDecimal getBoxHeight()
+        {
+            return this.boxHeight;
+        }
+
+        public void setBoxHeight(java.math.BigDecimal boxHeight)
+        {
+            this.boxHeight = boxHeight;
+        }
+
+        private java.math.BigDecimal boxWidth;
+
+        public java.math.BigDecimal getBoxWidth()
+        {
+            return this.boxWidth;
+        }
+
+        public void setBoxWidth(java.math.BigDecimal boxWidth)
+        {
+            this.boxWidth = boxWidth;
+        }
+
+        private String dimensionUomId;
+
+        public String getDimensionUomId()
+        {
+            return this.dimensionUomId;
+        }
+
+        public void setDimensionUomId(String dimensionUomId)
+        {
+            this.dimensionUomId = dimensionUomId;
+        }
+
+        private java.math.BigDecimal weight;
+
+        public java.math.BigDecimal getWeight()
+        {
+            return this.weight;
+        }
+
+        public void setWeight(java.math.BigDecimal weight)
+        {
+            this.weight = weight;
+        }
+
+        private String weightUomId;
+
+        public String getWeightUomId()
+        {
+            return this.weightUomId;
+        }
+
+        public void setWeightUomId(String weightUomId)
+        {
+            this.weightUomId = weightUomId;
+        }
+
+        private java.math.BigDecimal insuredValue;
+
+        public java.math.BigDecimal getInsuredValue()
+        {
+            return this.insuredValue;
+        }
+
+        public void setInsuredValue(java.math.BigDecimal insuredValue)
+        {
+            this.insuredValue = insuredValue;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractShipmentPackageStateEvent(ShipmentPackageEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractShipmentPackageStateCreated extends AbstractShipmentPackageStateEvent implements ShipmentPackageEvent.ShipmentPackageStateCreated, Saveable
     {
         public AbstractShipmentPackageStateCreated() {
             this(new ShipmentPackageEventId());
@@ -301,7 +307,7 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractShipmentPackageStateMergePatched extends AbstractShipmentPackageEvent implements ShipmentPackageEvent.ShipmentPackageStateMergePatched, Saveable
+    public static abstract class AbstractShipmentPackageStateMergePatched extends AbstractShipmentPackageStateEvent implements ShipmentPackageEvent.ShipmentPackageStateMergePatched, Saveable
     {
         public AbstractShipmentPackageStateMergePatched() {
             this(new ShipmentPackageEventId());
@@ -466,7 +472,7 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractShipmentPackageStateDeleted extends AbstractShipmentPackageEvent implements ShipmentPackageEvent.ShipmentPackageStateDeleted, Saveable
+    public static abstract class AbstractShipmentPackageStateDeleted extends AbstractShipmentPackageStateEvent implements ShipmentPackageEvent.ShipmentPackageStateDeleted, Saveable
     {
         public AbstractShipmentPackageStateDeleted() {
             this(new ShipmentPackageEventId());

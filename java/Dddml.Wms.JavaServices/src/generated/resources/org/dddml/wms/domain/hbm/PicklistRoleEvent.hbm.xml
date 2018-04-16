@@ -17,13 +17,16 @@
 
     <discriminator column="EventType" type="string" />
 
-	<property name="active" ></property>
 
     <property name="createdByUserLogin" column="CreatedByUserLogin"/>
 
     <property name="createdAt" column="CreatedAt" />
 
     <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractPicklistRoleEvent$AbstractPicklistRoleStateEvent" abstract="true">
+
+	<property name="active" ></property>
 
     <property name="version" column="Version" not-null="true" />
 
@@ -43,6 +46,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

@@ -16,18 +16,6 @@ public interface InventoryItemRequirementEntryEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    BigDecimal getQuantity();
-
-    void setQuantity(BigDecimal quantity);
-
-    InventoryPRTriggeredId getSourceEventId();
-
-    void setSourceEventId(InventoryPRTriggeredId sourceEventId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -40,7 +28,22 @@ public interface InventoryItemRequirementEntryEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface InventoryItemRequirementEntryStateCreated extends InventoryItemRequirementEntryEvent
+    interface InventoryItemRequirementEntryStateEvent extends InventoryItemRequirementEntryEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        BigDecimal getQuantity();
+
+        void setQuantity(BigDecimal quantity);
+
+        InventoryPRTriggeredId getSourceEventId();
+
+        void setSourceEventId(InventoryPRTriggeredId sourceEventId);
+
+    }
+
+    interface InventoryItemRequirementEntryStateCreated extends InventoryItemRequirementEntryStateEvent
     {
     
     }

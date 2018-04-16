@@ -33,150 +33,6 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String quantityUomId;
-
-    public String getQuantityUomId()
-    {
-        return this.quantityUomId;
-    }
-
-    public void setQuantityUomId(String quantityUomId)
-    {
-        this.quantityUomId = quantityUomId;
-    }
-
-    private BigDecimal movementQuantity;
-
-    public BigDecimal getMovementQuantity()
-    {
-        return this.movementQuantity;
-    }
-
-    public void setMovementQuantity(BigDecimal movementQuantity)
-    {
-        this.movementQuantity = movementQuantity;
-    }
-
-    private BigDecimal pickedQuantity;
-
-    public BigDecimal getPickedQuantity()
-    {
-        return this.pickedQuantity;
-    }
-
-    public void setPickedQuantity(BigDecimal pickedQuantity)
-    {
-        this.pickedQuantity = pickedQuantity;
-    }
-
-    private Boolean isInvoiced;
-
-    public Boolean getIsInvoiced()
-    {
-        return this.isInvoiced;
-    }
-
-    public void setIsInvoiced(Boolean isInvoiced)
-    {
-        this.isInvoiced = isInvoiced;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private String rmaLineNumber;
-
-    public String getRmaLineNumber()
-    {
-        return this.rmaLineNumber;
-    }
-
-    public void setRmaLineNumber(String rmaLineNumber)
-    {
-        this.rmaLineNumber = rmaLineNumber;
-    }
-
-    private String reversalLineNumber;
-
-    public String getReversalLineNumber()
-    {
-        return this.reversalLineNumber;
-    }
-
-    public void setReversalLineNumber(String reversalLineNumber)
-    {
-        this.reversalLineNumber = reversalLineNumber;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -201,18 +57,6 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -235,7 +79,169 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineEvent implements InOutLineEvent.InOutLineStateCreated
+    public static abstract class AbstractInOutLineStateEvent extends AbstractInOutLineEvent implements InOutLineEvent.InOutLineStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private String locatorId;
+
+        public String getLocatorId()
+        {
+            return this.locatorId;
+        }
+
+        public void setLocatorId(String locatorId)
+        {
+            this.locatorId = locatorId;
+        }
+
+        private String productId;
+
+        public String getProductId()
+        {
+            return this.productId;
+        }
+
+        public void setProductId(String productId)
+        {
+            this.productId = productId;
+        }
+
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String quantityUomId;
+
+        public String getQuantityUomId()
+        {
+            return this.quantityUomId;
+        }
+
+        public void setQuantityUomId(String quantityUomId)
+        {
+            this.quantityUomId = quantityUomId;
+        }
+
+        private BigDecimal movementQuantity;
+
+        public BigDecimal getMovementQuantity()
+        {
+            return this.movementQuantity;
+        }
+
+        public void setMovementQuantity(BigDecimal movementQuantity)
+        {
+            this.movementQuantity = movementQuantity;
+        }
+
+        private BigDecimal pickedQuantity;
+
+        public BigDecimal getPickedQuantity()
+        {
+            return this.pickedQuantity;
+        }
+
+        public void setPickedQuantity(BigDecimal pickedQuantity)
+        {
+            this.pickedQuantity = pickedQuantity;
+        }
+
+        private Boolean isInvoiced;
+
+        public Boolean getIsInvoiced()
+        {
+            return this.isInvoiced;
+        }
+
+        public void setIsInvoiced(Boolean isInvoiced)
+        {
+            this.isInvoiced = isInvoiced;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private String rmaLineNumber;
+
+        public String getRmaLineNumber()
+        {
+            return this.rmaLineNumber;
+        }
+
+        public void setRmaLineNumber(String rmaLineNumber)
+        {
+            this.rmaLineNumber = rmaLineNumber;
+        }
+
+        private String reversalLineNumber;
+
+        public String getReversalLineNumber()
+        {
+            return this.reversalLineNumber;
+        }
+
+        public void setReversalLineNumber(String reversalLineNumber)
+        {
+            this.reversalLineNumber = reversalLineNumber;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractInOutLineStateEvent(InOutLineEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateCreated
     {
         public AbstractInOutLineStateCreated() {
             this(new InOutLineEventId());
@@ -252,7 +258,7 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
     }
 
 
-    public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineEvent implements InOutLineEvent.InOutLineStateMergePatched
+    public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateMergePatched
     {
         public AbstractInOutLineStateMergePatched() {
             this(new InOutLineEventId());
@@ -389,7 +395,7 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
     }
 
 
-    public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineEvent implements InOutLineEvent.InOutLineStateRemoved
+    public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateRemoved
     {
         public AbstractInOutLineStateRemoved() {
             this(new InOutLineEventId());

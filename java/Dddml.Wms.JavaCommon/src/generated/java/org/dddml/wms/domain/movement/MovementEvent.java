@@ -14,86 +14,6 @@ public interface MovementEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
-
-    Date getMovementDate();
-
-    void setMovementDate(Date movementDate);
-
-    Boolean getPosted();
-
-    void setPosted(Boolean posted);
-
-    Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
-
-    String getProcessing();
-
-    void setProcessing(String processing);
-
-    Date getDateReceived();
-
-    void setDateReceived(Date dateReceived);
-
-    String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
-
-    Boolean getIsInTransit();
-
-    void setIsInTransit(Boolean isInTransit);
-
-    Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
-
-    BigDecimal getApprovalAmount();
-
-    void setApprovalAmount(BigDecimal approvalAmount);
-
-    String getShipperId();
-
-    void setShipperId(String shipperId);
-
-    String getSalesRepresentativeId();
-
-    void setSalesRepresentativeId(String salesRepresentativeId);
-
-    String getBusinessPartnerId();
-
-    void setBusinessPartnerId(String businessPartnerId);
-
-    BigDecimal getChargeAmount();
-
-    void setChargeAmount(BigDecimal chargeAmount);
-
-    String getCreateFrom();
-
-    void setCreateFrom(String createFrom);
-
-    BigDecimal getFreightAmount();
-
-    void setFreightAmount(BigDecimal freightAmount);
-
-    String getReversalDocumentNumber();
-
-    void setReversalDocumentNumber(String reversalDocumentNumber);
-
-    String getWarehouseIdFrom();
-
-    void setWarehouseIdFrom(String warehouseIdFrom);
-
-    String getWarehouseIdTo();
-
-    void setWarehouseIdTo(String warehouseIdTo);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -102,15 +22,98 @@ public interface MovementEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface MovementStateCreated extends MovementEvent
+    interface MovementStateEvent extends MovementEvent {
+        String getDocumentStatusId();
+
+        void setDocumentStatusId(String documentStatusId);
+
+        Date getMovementDate();
+
+        void setMovementDate(Date movementDate);
+
+        Boolean getPosted();
+
+        void setPosted(Boolean posted);
+
+        Boolean getProcessed();
+
+        void setProcessed(Boolean processed);
+
+        String getProcessing();
+
+        void setProcessing(String processing);
+
+        Date getDateReceived();
+
+        void setDateReceived(Date dateReceived);
+
+        String getDocumentTypeId();
+
+        void setDocumentTypeId(String documentTypeId);
+
+        Boolean getIsInTransit();
+
+        void setIsInTransit(Boolean isInTransit);
+
+        Boolean getIsApproved();
+
+        void setIsApproved(Boolean isApproved);
+
+        BigDecimal getApprovalAmount();
+
+        void setApprovalAmount(BigDecimal approvalAmount);
+
+        String getShipperId();
+
+        void setShipperId(String shipperId);
+
+        String getSalesRepresentativeId();
+
+        void setSalesRepresentativeId(String salesRepresentativeId);
+
+        String getBusinessPartnerId();
+
+        void setBusinessPartnerId(String businessPartnerId);
+
+        BigDecimal getChargeAmount();
+
+        void setChargeAmount(BigDecimal chargeAmount);
+
+        String getCreateFrom();
+
+        void setCreateFrom(String createFrom);
+
+        BigDecimal getFreightAmount();
+
+        void setFreightAmount(BigDecimal freightAmount);
+
+        String getReversalDocumentNumber();
+
+        void setReversalDocumentNumber(String reversalDocumentNumber);
+
+        String getWarehouseIdFrom();
+
+        void setWarehouseIdFrom(String warehouseIdFrom);
+
+        String getWarehouseIdTo();
+
+        void setWarehouseIdTo(String warehouseIdTo);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface MovementStateCreated extends MovementStateEvent
     {
         Iterable<MovementLineEvent.MovementLineStateCreated> getMovementLineEvents();
         
@@ -122,7 +125,7 @@ public interface MovementEvent extends Event
     }
 
 
-    interface MovementStateMergePatched extends MovementEvent
+    interface MovementStateMergePatched extends MovementStateEvent
     {
         Boolean getIsPropertyDocumentStatusIdRemoved();
 
@@ -221,7 +224,7 @@ public interface MovementEvent extends Event
 
     }
 
-    interface MovementStateDeleted extends MovementEvent
+    interface MovementStateDeleted extends MovementStateEvent
     {
         Iterable<MovementLineEvent.MovementLineStateRemoved> getMovementLineEvents();
         

@@ -32,30 +32,6 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    private java.sql.Timestamp expirationDate;
-
-    public java.sql.Timestamp getExpirationDate()
-    {
-        return this.expirationDate;
-    }
-
-    public void setExpirationDate(java.sql.Timestamp expirationDate)
-    {
-        this.expirationDate = expirationDate;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -80,18 +56,6 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -114,7 +78,49 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
     public abstract String getEventType();
 
 
-    public static abstract class AbstractLotStateCreated extends AbstractLotEvent implements LotEvent.LotStateCreated
+    public static abstract class AbstractLotStateEvent extends AbstractLotEvent implements LotEvent.LotStateEvent {
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private java.sql.Timestamp expirationDate;
+
+        public java.sql.Timestamp getExpirationDate()
+        {
+            return this.expirationDate;
+        }
+
+        public void setExpirationDate(java.sql.Timestamp expirationDate)
+        {
+            this.expirationDate = expirationDate;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractLotStateEvent(LotEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractLotStateCreated extends AbstractLotStateEvent implements LotEvent.LotStateCreated
     {
         public AbstractLotStateCreated() {
             this(new LotEventId());
@@ -131,7 +137,7 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
     }
 
 
-    public static abstract class AbstractLotStateMergePatched extends AbstractLotEvent implements LotEvent.LotStateMergePatched
+    public static abstract class AbstractLotStateMergePatched extends AbstractLotStateEvent implements LotEvent.LotStateMergePatched
     {
         public AbstractLotStateMergePatched() {
             this(new LotEventId());
@@ -178,7 +184,7 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
     }
 
 
-    public static abstract class AbstractLotStateDeleted extends AbstractLotEvent implements LotEvent.LotStateDeleted
+    public static abstract class AbstractLotStateDeleted extends AbstractLotStateEvent implements LotEvent.LotStateDeleted
     {
         public AbstractLotStateDeleted() {
             this(new LotEventId());

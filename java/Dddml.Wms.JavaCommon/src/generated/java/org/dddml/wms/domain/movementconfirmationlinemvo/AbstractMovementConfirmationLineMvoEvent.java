@@ -34,102 +34,6 @@ public abstract class AbstractMovementConfirmationLineMvoEvent extends AbstractE
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String movementLineNumber;
-
-    public String getMovementLineNumber()
-    {
-        return this.movementLineNumber;
-    }
-
-    public void setMovementLineNumber(String movementLineNumber)
-    {
-        this.movementLineNumber = movementLineNumber;
-    }
-
-    private BigDecimal targetQuantity;
-
-    public BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
-    private BigDecimal confirmedQuantity;
-
-    public BigDecimal getConfirmedQuantity()
-    {
-        return this.confirmedQuantity;
-    }
-
-    public void setConfirmedQuantity(BigDecimal confirmedQuantity)
-    {
-        this.confirmedQuantity = confirmedQuantity;
-    }
-
-    private BigDecimal differenceQuantity;
-
-    public BigDecimal getDifferenceQuantity()
-    {
-        return this.differenceQuantity;
-    }
-
-    public void setDifferenceQuantity(BigDecimal differenceQuantity)
-    {
-        this.differenceQuantity = differenceQuantity;
-    }
-
-    private BigDecimal scrappedQuantity;
-
-    public BigDecimal getScrappedQuantity()
-    {
-        return this.scrappedQuantity;
-    }
-
-    public void setScrappedQuantity(BigDecimal scrappedQuantity)
-    {
-        this.scrappedQuantity = scrappedQuantity;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -154,186 +58,6 @@ public abstract class AbstractMovementConfirmationLineMvoEvent extends AbstractE
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
-    private String movementConfirmationDocumentStatusId;
-
-    public String getMovementConfirmationDocumentStatusId()
-    {
-        return this.movementConfirmationDocumentStatusId;
-    }
-
-    public void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId)
-    {
-        this.movementConfirmationDocumentStatusId = movementConfirmationDocumentStatusId;
-    }
-
-    private String movementConfirmationMovementDocumentNumber;
-
-    public String getMovementConfirmationMovementDocumentNumber()
-    {
-        return this.movementConfirmationMovementDocumentNumber;
-    }
-
-    public void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber)
-    {
-        this.movementConfirmationMovementDocumentNumber = movementConfirmationMovementDocumentNumber;
-    }
-
-    private Boolean movementConfirmationIsApproved;
-
-    public Boolean getMovementConfirmationIsApproved()
-    {
-        return this.movementConfirmationIsApproved;
-    }
-
-    public void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved)
-    {
-        this.movementConfirmationIsApproved = movementConfirmationIsApproved;
-    }
-
-    private BigDecimal movementConfirmationApprovalAmount;
-
-    public BigDecimal getMovementConfirmationApprovalAmount()
-    {
-        return this.movementConfirmationApprovalAmount;
-    }
-
-    public void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount)
-    {
-        this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
-    }
-
-    private Boolean movementConfirmationProcessed;
-
-    public Boolean getMovementConfirmationProcessed()
-    {
-        return this.movementConfirmationProcessed;
-    }
-
-    public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed)
-    {
-        this.movementConfirmationProcessed = movementConfirmationProcessed;
-    }
-
-    private String movementConfirmationProcessing;
-
-    public String getMovementConfirmationProcessing()
-    {
-        return this.movementConfirmationProcessing;
-    }
-
-    public void setMovementConfirmationProcessing(String movementConfirmationProcessing)
-    {
-        this.movementConfirmationProcessing = movementConfirmationProcessing;
-    }
-
-    private String movementConfirmationDocumentTypeId;
-
-    public String getMovementConfirmationDocumentTypeId()
-    {
-        return this.movementConfirmationDocumentTypeId;
-    }
-
-    public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId)
-    {
-        this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
-    }
-
-    private String movementConfirmationDescription;
-
-    public String getMovementConfirmationDescription()
-    {
-        return this.movementConfirmationDescription;
-    }
-
-    public void setMovementConfirmationDescription(String movementConfirmationDescription)
-    {
-        this.movementConfirmationDescription = movementConfirmationDescription;
-    }
-
-    private String movementConfirmationCreatedBy;
-
-    public String getMovementConfirmationCreatedBy()
-    {
-        return this.movementConfirmationCreatedBy;
-    }
-
-    public void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy)
-    {
-        this.movementConfirmationCreatedBy = movementConfirmationCreatedBy;
-    }
-
-    private Date movementConfirmationCreatedAt;
-
-    public Date getMovementConfirmationCreatedAt()
-    {
-        return this.movementConfirmationCreatedAt;
-    }
-
-    public void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt)
-    {
-        this.movementConfirmationCreatedAt = movementConfirmationCreatedAt;
-    }
-
-    private String movementConfirmationUpdatedBy;
-
-    public String getMovementConfirmationUpdatedBy()
-    {
-        return this.movementConfirmationUpdatedBy;
-    }
-
-    public void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy)
-    {
-        this.movementConfirmationUpdatedBy = movementConfirmationUpdatedBy;
-    }
-
-    private Date movementConfirmationUpdatedAt;
-
-    public Date getMovementConfirmationUpdatedAt()
-    {
-        return this.movementConfirmationUpdatedAt;
-    }
-
-    public void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt)
-    {
-        this.movementConfirmationUpdatedAt = movementConfirmationUpdatedAt;
-    }
-
-    private Boolean movementConfirmationActive;
-
-    public Boolean getMovementConfirmationActive()
-    {
-        return this.movementConfirmationActive;
-    }
-
-    public void setMovementConfirmationActive(Boolean movementConfirmationActive)
-    {
-        this.movementConfirmationActive = movementConfirmationActive;
-    }
-
-    private Boolean movementConfirmationDeleted;
-
-    public Boolean getMovementConfirmationDeleted()
-    {
-        return this.movementConfirmationDeleted;
-    }
-
-    public void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted)
-    {
-        this.movementConfirmationDeleted = movementConfirmationDeleted;
-    }
-
 
     private String commandId;
 
@@ -356,7 +80,289 @@ public abstract class AbstractMovementConfirmationLineMvoEvent extends AbstractE
     public abstract String getEventType();
 
 
-    public static abstract class AbstractMovementConfirmationLineMvoStateCreated extends AbstractMovementConfirmationLineMvoEvent implements MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated
+    public static abstract class AbstractMovementConfirmationLineMvoStateEvent extends AbstractMovementConfirmationLineMvoEvent implements MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateEvent {
+        private String movementLineNumber;
+
+        public String getMovementLineNumber()
+        {
+            return this.movementLineNumber;
+        }
+
+        public void setMovementLineNumber(String movementLineNumber)
+        {
+            this.movementLineNumber = movementLineNumber;
+        }
+
+        private BigDecimal targetQuantity;
+
+        public BigDecimal getTargetQuantity()
+        {
+            return this.targetQuantity;
+        }
+
+        public void setTargetQuantity(BigDecimal targetQuantity)
+        {
+            this.targetQuantity = targetQuantity;
+        }
+
+        private BigDecimal confirmedQuantity;
+
+        public BigDecimal getConfirmedQuantity()
+        {
+            return this.confirmedQuantity;
+        }
+
+        public void setConfirmedQuantity(BigDecimal confirmedQuantity)
+        {
+            this.confirmedQuantity = confirmedQuantity;
+        }
+
+        private BigDecimal differenceQuantity;
+
+        public BigDecimal getDifferenceQuantity()
+        {
+            return this.differenceQuantity;
+        }
+
+        public void setDifferenceQuantity(BigDecimal differenceQuantity)
+        {
+            this.differenceQuantity = differenceQuantity;
+        }
+
+        private BigDecimal scrappedQuantity;
+
+        public BigDecimal getScrappedQuantity()
+        {
+            return this.scrappedQuantity;
+        }
+
+        public void setScrappedQuantity(BigDecimal scrappedQuantity)
+        {
+            this.scrappedQuantity = scrappedQuantity;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        private String movementConfirmationDocumentStatusId;
+
+        public String getMovementConfirmationDocumentStatusId()
+        {
+            return this.movementConfirmationDocumentStatusId;
+        }
+
+        public void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId)
+        {
+            this.movementConfirmationDocumentStatusId = movementConfirmationDocumentStatusId;
+        }
+
+        private String movementConfirmationMovementDocumentNumber;
+
+        public String getMovementConfirmationMovementDocumentNumber()
+        {
+            return this.movementConfirmationMovementDocumentNumber;
+        }
+
+        public void setMovementConfirmationMovementDocumentNumber(String movementConfirmationMovementDocumentNumber)
+        {
+            this.movementConfirmationMovementDocumentNumber = movementConfirmationMovementDocumentNumber;
+        }
+
+        private Boolean movementConfirmationIsApproved;
+
+        public Boolean getMovementConfirmationIsApproved()
+        {
+            return this.movementConfirmationIsApproved;
+        }
+
+        public void setMovementConfirmationIsApproved(Boolean movementConfirmationIsApproved)
+        {
+            this.movementConfirmationIsApproved = movementConfirmationIsApproved;
+        }
+
+        private BigDecimal movementConfirmationApprovalAmount;
+
+        public BigDecimal getMovementConfirmationApprovalAmount()
+        {
+            return this.movementConfirmationApprovalAmount;
+        }
+
+        public void setMovementConfirmationApprovalAmount(BigDecimal movementConfirmationApprovalAmount)
+        {
+            this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
+        }
+
+        private Boolean movementConfirmationProcessed;
+
+        public Boolean getMovementConfirmationProcessed()
+        {
+            return this.movementConfirmationProcessed;
+        }
+
+        public void setMovementConfirmationProcessed(Boolean movementConfirmationProcessed)
+        {
+            this.movementConfirmationProcessed = movementConfirmationProcessed;
+        }
+
+        private String movementConfirmationProcessing;
+
+        public String getMovementConfirmationProcessing()
+        {
+            return this.movementConfirmationProcessing;
+        }
+
+        public void setMovementConfirmationProcessing(String movementConfirmationProcessing)
+        {
+            this.movementConfirmationProcessing = movementConfirmationProcessing;
+        }
+
+        private String movementConfirmationDocumentTypeId;
+
+        public String getMovementConfirmationDocumentTypeId()
+        {
+            return this.movementConfirmationDocumentTypeId;
+        }
+
+        public void setMovementConfirmationDocumentTypeId(String movementConfirmationDocumentTypeId)
+        {
+            this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
+        }
+
+        private String movementConfirmationDescription;
+
+        public String getMovementConfirmationDescription()
+        {
+            return this.movementConfirmationDescription;
+        }
+
+        public void setMovementConfirmationDescription(String movementConfirmationDescription)
+        {
+            this.movementConfirmationDescription = movementConfirmationDescription;
+        }
+
+        private String movementConfirmationCreatedBy;
+
+        public String getMovementConfirmationCreatedBy()
+        {
+            return this.movementConfirmationCreatedBy;
+        }
+
+        public void setMovementConfirmationCreatedBy(String movementConfirmationCreatedBy)
+        {
+            this.movementConfirmationCreatedBy = movementConfirmationCreatedBy;
+        }
+
+        private Date movementConfirmationCreatedAt;
+
+        public Date getMovementConfirmationCreatedAt()
+        {
+            return this.movementConfirmationCreatedAt;
+        }
+
+        public void setMovementConfirmationCreatedAt(Date movementConfirmationCreatedAt)
+        {
+            this.movementConfirmationCreatedAt = movementConfirmationCreatedAt;
+        }
+
+        private String movementConfirmationUpdatedBy;
+
+        public String getMovementConfirmationUpdatedBy()
+        {
+            return this.movementConfirmationUpdatedBy;
+        }
+
+        public void setMovementConfirmationUpdatedBy(String movementConfirmationUpdatedBy)
+        {
+            this.movementConfirmationUpdatedBy = movementConfirmationUpdatedBy;
+        }
+
+        private Date movementConfirmationUpdatedAt;
+
+        public Date getMovementConfirmationUpdatedAt()
+        {
+            return this.movementConfirmationUpdatedAt;
+        }
+
+        public void setMovementConfirmationUpdatedAt(Date movementConfirmationUpdatedAt)
+        {
+            this.movementConfirmationUpdatedAt = movementConfirmationUpdatedAt;
+        }
+
+        private Boolean movementConfirmationActive;
+
+        public Boolean getMovementConfirmationActive()
+        {
+            return this.movementConfirmationActive;
+        }
+
+        public void setMovementConfirmationActive(Boolean movementConfirmationActive)
+        {
+            this.movementConfirmationActive = movementConfirmationActive;
+        }
+
+        private Boolean movementConfirmationDeleted;
+
+        public Boolean getMovementConfirmationDeleted()
+        {
+            return this.movementConfirmationDeleted;
+        }
+
+        public void setMovementConfirmationDeleted(Boolean movementConfirmationDeleted)
+        {
+            this.movementConfirmationDeleted = movementConfirmationDeleted;
+        }
+
+        protected AbstractMovementConfirmationLineMvoStateEvent(MovementConfirmationLineMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractMovementConfirmationLineMvoStateCreated extends AbstractMovementConfirmationLineMvoStateEvent implements MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated
     {
         public AbstractMovementConfirmationLineMvoStateCreated() {
             this(new MovementConfirmationLineMvoEventId());
@@ -373,7 +379,7 @@ public abstract class AbstractMovementConfirmationLineMvoEvent extends AbstractE
     }
 
 
-    public static abstract class AbstractMovementConfirmationLineMvoStateMergePatched extends AbstractMovementConfirmationLineMvoEvent implements MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched
+    public static abstract class AbstractMovementConfirmationLineMvoStateMergePatched extends AbstractMovementConfirmationLineMvoStateEvent implements MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched
     {
         public AbstractMovementConfirmationLineMvoStateMergePatched() {
             this(new MovementConfirmationLineMvoEventId());
@@ -620,7 +626,7 @@ public abstract class AbstractMovementConfirmationLineMvoEvent extends AbstractE
     }
 
 
-    public static abstract class AbstractMovementConfirmationLineMvoStateDeleted extends AbstractMovementConfirmationLineMvoEvent implements MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted
+    public static abstract class AbstractMovementConfirmationLineMvoStateDeleted extends AbstractMovementConfirmationLineMvoStateEvent implements MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted
     {
         public AbstractMovementConfirmationLineMvoStateDeleted() {
             this(new MovementConfirmationLineMvoEventId());

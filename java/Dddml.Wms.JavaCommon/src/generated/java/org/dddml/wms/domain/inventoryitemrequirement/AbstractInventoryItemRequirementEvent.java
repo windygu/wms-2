@@ -35,18 +35,6 @@ public abstract class AbstractInventoryItemRequirementEvent extends AbstractEven
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal quantity;
-
-    public BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -119,7 +107,25 @@ public abstract class AbstractInventoryItemRequirementEvent extends AbstractEven
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryItemRequirementStateCreated extends AbstractInventoryItemRequirementEvent implements InventoryItemRequirementEvent.InventoryItemRequirementStateCreated
+    public static abstract class AbstractInventoryItemRequirementStateEvent extends AbstractInventoryItemRequirementEvent implements InventoryItemRequirementEvent.InventoryItemRequirementStateEvent {
+        private BigDecimal quantity;
+
+        public BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        protected AbstractInventoryItemRequirementStateEvent(InventoryItemRequirementEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractInventoryItemRequirementStateCreated extends AbstractInventoryItemRequirementStateEvent implements InventoryItemRequirementEvent.InventoryItemRequirementStateCreated
     {
         public AbstractInventoryItemRequirementStateCreated() {
             this(new InventoryItemRequirementEventId());
@@ -163,7 +169,7 @@ public abstract class AbstractInventoryItemRequirementEvent extends AbstractEven
     }
 
 
-    public static abstract class AbstractInventoryItemRequirementStateMergePatched extends AbstractInventoryItemRequirementEvent implements InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched
+    public static abstract class AbstractInventoryItemRequirementStateMergePatched extends AbstractInventoryItemRequirementStateEvent implements InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched
     {
         public AbstractInventoryItemRequirementStateMergePatched() {
             this(new InventoryItemRequirementEventId());

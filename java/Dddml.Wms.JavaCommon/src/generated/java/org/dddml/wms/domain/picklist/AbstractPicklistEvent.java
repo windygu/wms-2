@@ -33,78 +33,6 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String facilityId;
-
-    public String getFacilityId()
-    {
-        return this.facilityId;
-    }
-
-    public void setFacilityId(String facilityId)
-    {
-        this.facilityId = facilityId;
-    }
-
-    private String shipmentMethodTypeId;
-
-    public String getShipmentMethodTypeId()
-    {
-        return this.shipmentMethodTypeId;
-    }
-
-    public void setShipmentMethodTypeId(String shipmentMethodTypeId)
-    {
-        this.shipmentMethodTypeId = shipmentMethodTypeId;
-    }
-
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
-    private java.sql.Timestamp picklistDate;
-
-    public java.sql.Timestamp getPicklistDate()
-    {
-        return this.picklistDate;
-    }
-
-    public void setPicklistDate(java.sql.Timestamp picklistDate)
-    {
-        this.picklistDate = picklistDate;
-    }
-
-    private Long pickwaveId;
-
-    public Long getPickwaveId()
-    {
-        return this.pickwaveId;
-    }
-
-    public void setPickwaveId(Long pickwaveId)
-    {
-        this.pickwaveId = pickwaveId;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -127,18 +55,6 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
 
@@ -201,7 +117,97 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
     public abstract String getEventType();
 
 
-    public static abstract class AbstractPicklistStateCreated extends AbstractPicklistEvent implements PicklistEvent.PicklistStateCreated, Saveable
+    public static abstract class AbstractPicklistStateEvent extends AbstractPicklistEvent implements PicklistEvent.PicklistStateEvent {
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String facilityId;
+
+        public String getFacilityId()
+        {
+            return this.facilityId;
+        }
+
+        public void setFacilityId(String facilityId)
+        {
+            this.facilityId = facilityId;
+        }
+
+        private String shipmentMethodTypeId;
+
+        public String getShipmentMethodTypeId()
+        {
+            return this.shipmentMethodTypeId;
+        }
+
+        public void setShipmentMethodTypeId(String shipmentMethodTypeId)
+        {
+            this.shipmentMethodTypeId = shipmentMethodTypeId;
+        }
+
+        private String statusId;
+
+        public String getStatusId()
+        {
+            return this.statusId;
+        }
+
+        public void setStatusId(String statusId)
+        {
+            this.statusId = statusId;
+        }
+
+        private java.sql.Timestamp picklistDate;
+
+        public java.sql.Timestamp getPicklistDate()
+        {
+            return this.picklistDate;
+        }
+
+        public void setPicklistDate(java.sql.Timestamp picklistDate)
+        {
+            this.picklistDate = picklistDate;
+        }
+
+        private Long pickwaveId;
+
+        public Long getPickwaveId()
+        {
+            return this.pickwaveId;
+        }
+
+        public void setPickwaveId(Long pickwaveId)
+        {
+            this.pickwaveId = pickwaveId;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractPicklistStateEvent(PicklistEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractPicklistStateCreated extends AbstractPicklistStateEvent implements PicklistEvent.PicklistStateCreated, Saveable
     {
         public AbstractPicklistStateCreated() {
             this(new PicklistEventId());
@@ -266,7 +272,7 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
     }
 
 
-    public static abstract class AbstractPicklistStateMergePatched extends AbstractPicklistEvent implements PicklistEvent.PicklistStateMergePatched, Saveable
+    public static abstract class AbstractPicklistStateMergePatched extends AbstractPicklistStateEvent implements PicklistEvent.PicklistStateMergePatched, Saveable
     {
         public AbstractPicklistStateMergePatched() {
             this(new PicklistEventId());
@@ -401,7 +407,7 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
     }
 
 
-    public static abstract class AbstractPicklistStateDeleted extends AbstractPicklistEvent implements PicklistEvent.PicklistStateDeleted, Saveable
+    public static abstract class AbstractPicklistStateDeleted extends AbstractPicklistStateEvent implements PicklistEvent.PicklistStateDeleted, Saveable
     {
         public AbstractPicklistStateDeleted() {
             this(new PicklistEventId());

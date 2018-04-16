@@ -14,10 +14,6 @@ public interface OrderRoleEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -26,21 +22,28 @@ public interface OrderRoleEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrderRoleStateCreated extends OrderRoleEvent
+    interface OrderRoleStateEvent extends OrderRoleEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface OrderRoleStateCreated extends OrderRoleStateEvent
     {
     
     }
 
 
-    interface OrderRoleStateMergePatched extends OrderRoleEvent
+    interface OrderRoleStateMergePatched extends OrderRoleStateEvent
     {
         Boolean getIsPropertyActiveRemoved();
 
@@ -49,7 +52,7 @@ public interface OrderRoleEvent extends Event
 
     }
 
-    interface OrderRoleStateRemoved extends OrderRoleEvent
+    interface OrderRoleStateRemoved extends OrderRoleStateEvent
     {
     }
 

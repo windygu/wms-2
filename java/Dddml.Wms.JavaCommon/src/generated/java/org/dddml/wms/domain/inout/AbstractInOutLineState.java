@@ -481,17 +481,17 @@ public abstract class AbstractInOutLineState implements InOutLineState
     {
     }
 
-    protected void throwOnWrongEvent(InOutLineEvent stateEvent)
+    protected void throwOnWrongEvent(InOutLineEvent event)
     {
         String stateEntityIdInOutDocumentNumber = this.getInOutLineId().getInOutDocumentNumber();
-        String eventEntityIdInOutDocumentNumber = stateEvent.getInOutLineEventId().getInOutDocumentNumber();
+        String eventEntityIdInOutDocumentNumber = event.getInOutLineEventId().getInOutDocumentNumber();
         if (!stateEntityIdInOutDocumentNumber.equals(eventEntityIdInOutDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutDocumentNumber %1$s in state but entity id InOutDocumentNumber %2$s in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
         }
 
         String stateEntityIdLineNumber = this.getInOutLineId().getLineNumber();
-        String eventEntityIdLineNumber = stateEvent.getInOutLineEventId().getLineNumber();
+        String eventEntityIdLineNumber = event.getInOutLineEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
@@ -499,16 +499,19 @@ public abstract class AbstractInOutLineState implements InOutLineState
 
         if (getForReapplying()) { return; }
 
+        InOutLineStateEvent stateEvent = event instanceof InOutLineStateEvent ? (InOutLineStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? InOutLineState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(InOutLineState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? InOutLineState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(InOutLineState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

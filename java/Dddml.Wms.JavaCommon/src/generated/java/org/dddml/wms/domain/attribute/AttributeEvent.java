@@ -13,42 +13,6 @@ public interface AttributeEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getAttributeName();
-
-    void setAttributeName(String attributeName);
-
-    String getOrganizationId();
-
-    void setOrganizationId(String organizationId);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    Boolean getIsMandatory();
-
-    void setIsMandatory(Boolean isMandatory);
-
-    String getAttributeValueType();
-
-    void setAttributeValueType(String attributeValueType);
-
-    Integer getAttributeValueLength();
-
-    void setAttributeValueLength(Integer attributeValueLength);
-
-    Boolean getIsList();
-
-    void setIsList(Boolean isList);
-
-    String getFieldName();
-
-    void setFieldName(String fieldName);
-
-    String getReferenceId();
-
-    void setReferenceId(String referenceId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -57,15 +21,54 @@ public interface AttributeEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface AttributeStateCreated extends AttributeEvent
+    interface AttributeStateEvent extends AttributeEvent {
+        String getAttributeName();
+
+        void setAttributeName(String attributeName);
+
+        String getOrganizationId();
+
+        void setOrganizationId(String organizationId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getIsMandatory();
+
+        void setIsMandatory(Boolean isMandatory);
+
+        String getAttributeValueType();
+
+        void setAttributeValueType(String attributeValueType);
+
+        Integer getAttributeValueLength();
+
+        void setAttributeValueLength(Integer attributeValueLength);
+
+        Boolean getIsList();
+
+        void setIsList(Boolean isList);
+
+        String getFieldName();
+
+        void setFieldName(String fieldName);
+
+        String getReferenceId();
+
+        void setReferenceId(String referenceId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface AttributeStateCreated extends AttributeStateEvent
     {
         Iterable<AttributeValueEvent.AttributeValueStateCreated> getAttributeValueEvents();
         
@@ -83,7 +86,7 @@ public interface AttributeEvent extends Event
     }
 
 
-    interface AttributeStateMergePatched extends AttributeEvent
+    interface AttributeStateMergePatched extends AttributeStateEvent
     {
         Boolean getIsPropertyAttributeNameRemoved();
 
@@ -148,7 +151,7 @@ public interface AttributeEvent extends Event
 
     }
 
-    interface AttributeStateDeleted extends AttributeEvent
+    interface AttributeStateDeleted extends AttributeStateEvent
     {
         Iterable<AttributeValueEvent.AttributeValueStateRemoved> getAttributeValueEvents();
         

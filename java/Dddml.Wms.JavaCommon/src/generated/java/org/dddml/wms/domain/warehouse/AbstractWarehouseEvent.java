@@ -32,42 +32,6 @@ public abstract class AbstractWarehouseEvent extends AbstractEvent implements Wa
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String warehouseName;
-
-    public String getWarehouseName()
-    {
-        return this.warehouseName;
-    }
-
-    public void setWarehouseName(String warehouseName)
-    {
-        this.warehouseName = warehouseName;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private Boolean isInTransit;
-
-    public Boolean getIsInTransit()
-    {
-        return this.isInTransit;
-    }
-
-    public void setIsInTransit(Boolean isInTransit)
-    {
-        this.isInTransit = isInTransit;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -92,18 +56,6 @@ public abstract class AbstractWarehouseEvent extends AbstractEvent implements Wa
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -126,7 +78,61 @@ public abstract class AbstractWarehouseEvent extends AbstractEvent implements Wa
     public abstract String getEventType();
 
 
-    public static abstract class AbstractWarehouseStateCreated extends AbstractWarehouseEvent implements WarehouseEvent.WarehouseStateCreated
+    public static abstract class AbstractWarehouseStateEvent extends AbstractWarehouseEvent implements WarehouseEvent.WarehouseStateEvent {
+        private String warehouseName;
+
+        public String getWarehouseName()
+        {
+            return this.warehouseName;
+        }
+
+        public void setWarehouseName(String warehouseName)
+        {
+            this.warehouseName = warehouseName;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private Boolean isInTransit;
+
+        public Boolean getIsInTransit()
+        {
+            return this.isInTransit;
+        }
+
+        public void setIsInTransit(Boolean isInTransit)
+        {
+            this.isInTransit = isInTransit;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractWarehouseStateEvent(WarehouseEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractWarehouseStateCreated extends AbstractWarehouseStateEvent implements WarehouseEvent.WarehouseStateCreated
     {
         public AbstractWarehouseStateCreated() {
             this(new WarehouseEventId());
@@ -143,7 +149,7 @@ public abstract class AbstractWarehouseEvent extends AbstractEvent implements Wa
     }
 
 
-    public static abstract class AbstractWarehouseStateMergePatched extends AbstractWarehouseEvent implements WarehouseEvent.WarehouseStateMergePatched
+    public static abstract class AbstractWarehouseStateMergePatched extends AbstractWarehouseStateEvent implements WarehouseEvent.WarehouseStateMergePatched
     {
         public AbstractWarehouseStateMergePatched() {
             this(new WarehouseEventId());
@@ -200,7 +206,7 @@ public abstract class AbstractWarehouseEvent extends AbstractEvent implements Wa
     }
 
 
-    public static abstract class AbstractWarehouseStateDeleted extends AbstractWarehouseEvent implements WarehouseEvent.WarehouseStateDeleted
+    public static abstract class AbstractWarehouseStateDeleted extends AbstractWarehouseStateEvent implements WarehouseEvent.WarehouseStateDeleted
     {
         public AbstractWarehouseStateDeleted() {
             this(new WarehouseEventId());

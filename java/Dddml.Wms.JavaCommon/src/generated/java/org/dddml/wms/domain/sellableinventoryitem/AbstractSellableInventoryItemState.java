@@ -223,21 +223,21 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
 
     }
 
-    protected void throwOnWrongEvent(SellableInventoryItemEvent stateEvent)
+    protected void throwOnWrongEvent(SellableInventoryItemEvent event)
     {
         InventoryItemId stateEntityId = this.getSellableInventoryItemId(); // Aggregate Id
-        InventoryItemId eventEntityId = stateEvent.getSellableInventoryItemEventId().getSellableInventoryItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        InventoryItemId eventEntityId = event.getSellableInventoryItemEventId().getSellableInventoryItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getSellableInventoryItemEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getSellableInventoryItemEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getSellableInventoryItemEventId().getVersion() == null");
+            throw new NullPointerException("event.getSellableInventoryItemEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(SellableInventoryItemState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(SellableInventoryItemState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

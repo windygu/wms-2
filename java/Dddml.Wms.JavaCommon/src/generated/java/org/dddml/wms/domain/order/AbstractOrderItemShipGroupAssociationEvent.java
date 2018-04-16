@@ -32,42 +32,6 @@ public abstract class AbstractOrderItemShipGroupAssociationEvent extends Abstrac
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
-    private java.math.BigDecimal quantity;
-
-    public java.math.BigDecimal getQuantity()
-    {
-        return this.quantity;
-    }
-
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    private java.math.BigDecimal cancelQuantity;
-
-    public java.math.BigDecimal getCancelQuantity()
-    {
-        return this.cancelQuantity;
-    }
-
-    public void setCancelQuantity(java.math.BigDecimal cancelQuantity)
-    {
-        this.cancelQuantity = cancelQuantity;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -92,18 +56,6 @@ public abstract class AbstractOrderItemShipGroupAssociationEvent extends Abstrac
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -126,7 +78,61 @@ public abstract class AbstractOrderItemShipGroupAssociationEvent extends Abstrac
     public abstract String getEventType();
 
 
-    public static abstract class AbstractOrderItemShipGroupAssociationStateCreated extends AbstractOrderItemShipGroupAssociationEvent implements OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated
+    public static abstract class AbstractOrderItemShipGroupAssociationStateEvent extends AbstractOrderItemShipGroupAssociationEvent implements OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateEvent {
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity()
+        {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        private java.math.BigDecimal cancelQuantity;
+
+        public java.math.BigDecimal getCancelQuantity()
+        {
+            return this.cancelQuantity;
+        }
+
+        public void setCancelQuantity(java.math.BigDecimal cancelQuantity)
+        {
+            this.cancelQuantity = cancelQuantity;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractOrderItemShipGroupAssociationStateEvent(OrderItemShipGroupAssociationEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractOrderItemShipGroupAssociationStateCreated extends AbstractOrderItemShipGroupAssociationStateEvent implements OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated
     {
         public AbstractOrderItemShipGroupAssociationStateCreated() {
             this(new OrderItemShipGroupAssociationEventId());
@@ -143,7 +149,7 @@ public abstract class AbstractOrderItemShipGroupAssociationEvent extends Abstrac
     }
 
 
-    public static abstract class AbstractOrderItemShipGroupAssociationStateMergePatched extends AbstractOrderItemShipGroupAssociationEvent implements OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched
+    public static abstract class AbstractOrderItemShipGroupAssociationStateMergePatched extends AbstractOrderItemShipGroupAssociationStateEvent implements OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched
     {
         public AbstractOrderItemShipGroupAssociationStateMergePatched() {
             this(new OrderItemShipGroupAssociationEventId());
@@ -190,7 +196,7 @@ public abstract class AbstractOrderItemShipGroupAssociationEvent extends Abstrac
     }
 
 
-    public static abstract class AbstractOrderItemShipGroupAssociationStateRemoved extends AbstractOrderItemShipGroupAssociationEvent implements OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved
+    public static abstract class AbstractOrderItemShipGroupAssociationStateRemoved extends AbstractOrderItemShipGroupAssociationStateEvent implements OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved
     {
         public AbstractOrderItemShipGroupAssociationStateRemoved() {
             this(new OrderItemShipGroupAssociationEventId());

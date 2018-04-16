@@ -8,54 +8,6 @@ import org.dddml.wms.domain.AbstractEvent;
 
 public abstract class AbstractOrganizationEvent extends AbstractPartyEvent implements PartyEvent 
 {
-    private String organizationName;
-
-    public String getOrganizationName()
-    {
-        return this.organizationName;
-    }
-
-    public void setOrganizationName(String organizationName)
-    {
-        this.organizationName = organizationName;
-    }
-
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String type;
-
-    public String getType()
-    {
-        return this.type;
-    }
-
-    public void setType(String type)
-    {
-        this.type = type;
-    }
-
-    private Boolean isSummary;
-
-    public Boolean getIsSummary()
-    {
-        return this.isSummary;
-    }
-
-    public void setIsSummary(Boolean isSummary)
-    {
-        this.isSummary = isSummary;
-    }
-
     protected AbstractOrganizationEvent() {
     }
 
@@ -64,7 +16,61 @@ public abstract class AbstractOrganizationEvent extends AbstractPartyEvent imple
     }
 
 
-    public static abstract class AbstractOrganizationStateCreated extends AbstractOrganizationEvent implements OrganizationEvent.OrganizationStateCreated
+    public static abstract class AbstractOrganizationStateEvent extends AbstractPartyStateEvent implements OrganizationEvent.OrganizationStateEvent {
+        private String organizationName;
+
+        public String getOrganizationName()
+        {
+            return this.organizationName;
+        }
+
+        public void setOrganizationName(String organizationName)
+        {
+            this.organizationName = organizationName;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
+        private String type;
+
+        public String getType()
+        {
+            return this.type;
+        }
+
+        public void setType(String type)
+        {
+            this.type = type;
+        }
+
+        private Boolean isSummary;
+
+        public Boolean getIsSummary()
+        {
+            return this.isSummary;
+        }
+
+        public void setIsSummary(Boolean isSummary)
+        {
+            this.isSummary = isSummary;
+        }
+
+        protected AbstractOrganizationStateEvent(PartyEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractOrganizationStateCreated extends AbstractOrganizationStateEvent implements OrganizationEvent.OrganizationStateCreated
     {
         public AbstractOrganizationStateCreated() {
             this(new PartyEventId());
@@ -81,7 +87,7 @@ public abstract class AbstractOrganizationEvent extends AbstractPartyEvent imple
     }
 
 
-    public static abstract class AbstractOrganizationStateMergePatched extends AbstractOrganizationEvent implements OrganizationEvent.OrganizationStateMergePatched
+    public static abstract class AbstractOrganizationStateMergePatched extends AbstractOrganizationStateEvent implements OrganizationEvent.OrganizationStateMergePatched
     {
         public AbstractOrganizationStateMergePatched() {
             this(new PartyEventId());
@@ -168,7 +174,7 @@ public abstract class AbstractOrganizationEvent extends AbstractPartyEvent imple
     }
 
 
-    public static abstract class AbstractOrganizationStateDeleted extends AbstractOrganizationEvent implements OrganizationEvent.OrganizationStateDeleted
+    public static abstract class AbstractOrganizationStateDeleted extends AbstractOrganizationStateEvent implements OrganizationEvent.OrganizationStateDeleted
     {
         public AbstractOrganizationStateDeleted() {
             this(new PartyEventId());

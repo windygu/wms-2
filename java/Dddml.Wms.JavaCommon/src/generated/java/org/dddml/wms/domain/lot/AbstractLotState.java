@@ -261,21 +261,21 @@ public abstract class AbstractLotState implements LotState
     {
     }
 
-    protected void throwOnWrongEvent(LotEvent stateEvent)
+    protected void throwOnWrongEvent(LotEvent event)
     {
         String stateEntityId = this.getLotId(); // Aggregate Id
-        String eventEntityId = stateEvent.getLotEventId().getLotId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = event.getLotEventId().getLotId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getLotEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getLotEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getLotEventId().getVersion() == null");
+            throw new NullPointerException("event.getLotEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(LotState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(LotState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

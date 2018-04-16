@@ -13,82 +13,6 @@ public interface ContactMechEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getContactMechTypeId();
-
-    void setContactMechTypeId(String contactMechTypeId);
-
-    String getInfoString();
-
-    void setInfoString(String infoString);
-
-    String getToName();
-
-    void setToName(String toName);
-
-    String getAttnName();
-
-    void setAttnName(String attnName);
-
-    String getAddress1();
-
-    void setAddress1(String address1);
-
-    String getAddress2();
-
-    void setAddress2(String address2);
-
-    String getDirections();
-
-    void setDirections(String directions);
-
-    String getCity();
-
-    void setCity(String city);
-
-    String getPostalCode();
-
-    void setPostalCode(String postalCode);
-
-    String getPostalCodeExt();
-
-    void setPostalCodeExt(String postalCodeExt);
-
-    String getCountryGeoId();
-
-    void setCountryGeoId(String countryGeoId);
-
-    String getStateProvinceGeoId();
-
-    void setStateProvinceGeoId(String stateProvinceGeoId);
-
-    String getCountyGeoId();
-
-    void setCountyGeoId(String countyGeoId);
-
-    String getPostalCodeGeoId();
-
-    void setPostalCodeGeoId(String postalCodeGeoId);
-
-    String getGeoPointId();
-
-    void setGeoPointId(String geoPointId);
-
-    String getCountryCode();
-
-    void setCountryCode(String countryCode);
-
-    String getAreaCode();
-
-    void setAreaCode(String areaCode);
-
-    String getContactNumber();
-
-    void setContactNumber(String contactNumber);
-
-    String getAskForName();
-
-    void setAskForName(String askForName);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -97,21 +21,100 @@ public interface ContactMechEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ContactMechStateCreated extends ContactMechEvent
+    interface ContactMechStateEvent extends ContactMechEvent {
+        String getContactMechTypeId();
+
+        void setContactMechTypeId(String contactMechTypeId);
+
+        String getInfoString();
+
+        void setInfoString(String infoString);
+
+        String getToName();
+
+        void setToName(String toName);
+
+        String getAttnName();
+
+        void setAttnName(String attnName);
+
+        String getAddress1();
+
+        void setAddress1(String address1);
+
+        String getAddress2();
+
+        void setAddress2(String address2);
+
+        String getDirections();
+
+        void setDirections(String directions);
+
+        String getCity();
+
+        void setCity(String city);
+
+        String getPostalCode();
+
+        void setPostalCode(String postalCode);
+
+        String getPostalCodeExt();
+
+        void setPostalCodeExt(String postalCodeExt);
+
+        String getCountryGeoId();
+
+        void setCountryGeoId(String countryGeoId);
+
+        String getStateProvinceGeoId();
+
+        void setStateProvinceGeoId(String stateProvinceGeoId);
+
+        String getCountyGeoId();
+
+        void setCountyGeoId(String countyGeoId);
+
+        String getPostalCodeGeoId();
+
+        void setPostalCodeGeoId(String postalCodeGeoId);
+
+        String getGeoPointId();
+
+        void setGeoPointId(String geoPointId);
+
+        String getCountryCode();
+
+        void setCountryCode(String countryCode);
+
+        String getAreaCode();
+
+        void setAreaCode(String areaCode);
+
+        String getContactNumber();
+
+        void setContactNumber(String contactNumber);
+
+        String getAskForName();
+
+        void setAskForName(String askForName);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ContactMechStateCreated extends ContactMechStateEvent
     {
     
     }
 
 
-    interface ContactMechStateMergePatched extends ContactMechEvent
+    interface ContactMechStateMergePatched extends ContactMechStateEvent
     {
         Boolean getIsPropertyContactMechTypeIdRemoved();
 
@@ -196,7 +199,7 @@ public interface ContactMechEvent extends Event
 
     }
 
-    interface ContactMechStateDeleted extends ContactMechEvent
+    interface ContactMechStateDeleted extends ContactMechStateEvent
     {
     }
 

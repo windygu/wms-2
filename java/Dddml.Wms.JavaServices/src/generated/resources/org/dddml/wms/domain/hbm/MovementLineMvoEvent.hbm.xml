@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractMovementLineMvoEvent$AbstractMovementLineMvoStateEvent" abstract="true">
+
 	<property name="movementQuantity" ></property>
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="locatorIdFrom" ></property>
@@ -51,12 +60,6 @@
 	<property name="movementUpdatedAt" type="timestamp"><column name="MovementUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="movementActive" ></property>
 	<property name="movementDeleted" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractMovementLineMvoEvent$SimpleMovementLineMvoStateCreated" discriminator-value="Created">
     	
@@ -142,6 +145,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

@@ -13,18 +13,6 @@ public interface OrderItemShipGroupAssociationEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    Long getVersion();
-
-    void setVersion(Long version);
-
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
-    java.math.BigDecimal getCancelQuantity();
-
-    void setCancelQuantity(java.math.BigDecimal cancelQuantity);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -33,21 +21,36 @@ public interface OrderItemShipGroupAssociationEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface OrderItemShipGroupAssociationStateCreated extends OrderItemShipGroupAssociationEvent
+    interface OrderItemShipGroupAssociationStateEvent extends OrderItemShipGroupAssociationEvent {
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        java.math.BigDecimal getCancelQuantity();
+
+        void setCancelQuantity(java.math.BigDecimal cancelQuantity);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface OrderItemShipGroupAssociationStateCreated extends OrderItemShipGroupAssociationStateEvent
     {
     
     }
 
 
-    interface OrderItemShipGroupAssociationStateMergePatched extends OrderItemShipGroupAssociationEvent
+    interface OrderItemShipGroupAssociationStateMergePatched extends OrderItemShipGroupAssociationStateEvent
     {
         Boolean getIsPropertyQuantityRemoved();
 
@@ -64,7 +67,7 @@ public interface OrderItemShipGroupAssociationEvent extends Event
 
     }
 
-    interface OrderItemShipGroupAssociationStateRemoved extends OrderItemShipGroupAssociationEvent
+    interface OrderItemShipGroupAssociationStateRemoved extends OrderItemShipGroupAssociationStateEvent
     {
     }
 

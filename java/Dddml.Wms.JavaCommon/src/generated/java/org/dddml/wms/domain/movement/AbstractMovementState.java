@@ -732,21 +732,21 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
     }
 
-    protected void throwOnWrongEvent(MovementEvent stateEvent)
+    protected void throwOnWrongEvent(MovementEvent event)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = stateEvent.getMovementEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = event.getMovementEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getMovementEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getMovementEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getMovementEventId().getVersion() == null");
+            throw new NullPointerException("event.getMovementEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(MovementState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(MovementState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

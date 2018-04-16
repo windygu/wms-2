@@ -14,18 +14,6 @@ public interface PicklistItemMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getItemStatusId();
-
-    void setItemStatusId(String itemStatusId);
-
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -34,61 +22,76 @@ public interface PicklistItemMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getPicklistBinPicklistId();
-
-    void setPicklistBinPicklistId(String picklistBinPicklistId);
-
-    Long getPicklistBinBinLocationNumber();
-
-    void setPicklistBinBinLocationNumber(Long picklistBinBinLocationNumber);
-
-    String getPicklistBinPrimaryOrderId();
-
-    void setPicklistBinPrimaryOrderId(String picklistBinPrimaryOrderId);
-
-    Long getPicklistBinPrimaryShipGroupSeqId();
-
-    void setPicklistBinPrimaryShipGroupSeqId(Long picklistBinPrimaryShipGroupSeqId);
-
-    String getPicklistBinCreatedBy();
-
-    void setPicklistBinCreatedBy(String picklistBinCreatedBy);
-
-    Date getPicklistBinCreatedAt();
-
-    void setPicklistBinCreatedAt(Date picklistBinCreatedAt);
-
-    String getPicklistBinUpdatedBy();
-
-    void setPicklistBinUpdatedBy(String picklistBinUpdatedBy);
-
-    Date getPicklistBinUpdatedAt();
-
-    void setPicklistBinUpdatedAt(Date picklistBinUpdatedAt);
-
-    Boolean getPicklistBinActive();
-
-    void setPicklistBinActive(Boolean picklistBinActive);
-
-    Boolean getPicklistBinDeleted();
-
-    void setPicklistBinDeleted(Boolean picklistBinDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface PicklistItemMvoStateCreated extends PicklistItemMvoEvent
+    interface PicklistItemMvoStateEvent extends PicklistItemMvoEvent {
+        String getItemStatusId();
+
+        void setItemStatusId(String itemStatusId);
+
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getPicklistBinPicklistId();
+
+        void setPicklistBinPicklistId(String picklistBinPicklistId);
+
+        Long getPicklistBinBinLocationNumber();
+
+        void setPicklistBinBinLocationNumber(Long picklistBinBinLocationNumber);
+
+        String getPicklistBinPrimaryOrderId();
+
+        void setPicklistBinPrimaryOrderId(String picklistBinPrimaryOrderId);
+
+        Long getPicklistBinPrimaryShipGroupSeqId();
+
+        void setPicklistBinPrimaryShipGroupSeqId(Long picklistBinPrimaryShipGroupSeqId);
+
+        String getPicklistBinCreatedBy();
+
+        void setPicklistBinCreatedBy(String picklistBinCreatedBy);
+
+        Date getPicklistBinCreatedAt();
+
+        void setPicklistBinCreatedAt(Date picklistBinCreatedAt);
+
+        String getPicklistBinUpdatedBy();
+
+        void setPicklistBinUpdatedBy(String picklistBinUpdatedBy);
+
+        Date getPicklistBinUpdatedAt();
+
+        void setPicklistBinUpdatedAt(Date picklistBinUpdatedAt);
+
+        Boolean getPicklistBinActive();
+
+        void setPicklistBinActive(Boolean picklistBinActive);
+
+        Boolean getPicklistBinDeleted();
+
+        void setPicklistBinDeleted(Boolean picklistBinDeleted);
+
+    }
+
+    interface PicklistItemMvoStateCreated extends PicklistItemMvoStateEvent
     {
     
     }
 
 
-    interface PicklistItemMvoStateMergePatched extends PicklistItemMvoEvent
+    interface PicklistItemMvoStateMergePatched extends PicklistItemMvoStateEvent
     {
         Boolean getIsPropertyItemStatusIdRemoved();
 
@@ -149,7 +152,7 @@ public interface PicklistItemMvoEvent extends Event
 
     }
 
-    interface PicklistItemMvoStateDeleted extends PicklistItemMvoEvent
+    interface PicklistItemMvoStateDeleted extends PicklistItemMvoStateEvent
     {
     }
 

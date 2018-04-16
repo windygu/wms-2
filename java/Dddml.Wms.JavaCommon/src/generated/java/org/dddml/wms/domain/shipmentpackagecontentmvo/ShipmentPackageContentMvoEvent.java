@@ -14,22 +14,6 @@ public interface ShipmentPackageContentMvoEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
-
-    String getSubProductId();
-
-    void setSubProductId(String subProductId);
-
-    java.math.BigDecimal getSubProductQuantity();
-
-    void setSubProductQuantity(java.math.BigDecimal subProductQuantity);
-
-    Long getVersion();
-
-    void setVersion(Long version);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -38,81 +22,100 @@ public interface ShipmentPackageContentMvoEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
-    String getShipmentPackageShipmentBoxTypeId();
-
-    void setShipmentPackageShipmentBoxTypeId(String shipmentPackageShipmentBoxTypeId);
-
-    java.sql.Timestamp getShipmentPackageDateCreated();
-
-    void setShipmentPackageDateCreated(java.sql.Timestamp shipmentPackageDateCreated);
-
-    java.math.BigDecimal getShipmentPackageBoxLength();
-
-    void setShipmentPackageBoxLength(java.math.BigDecimal shipmentPackageBoxLength);
-
-    java.math.BigDecimal getShipmentPackageBoxHeight();
-
-    void setShipmentPackageBoxHeight(java.math.BigDecimal shipmentPackageBoxHeight);
-
-    java.math.BigDecimal getShipmentPackageBoxWidth();
-
-    void setShipmentPackageBoxWidth(java.math.BigDecimal shipmentPackageBoxWidth);
-
-    String getShipmentPackageDimensionUomId();
-
-    void setShipmentPackageDimensionUomId(String shipmentPackageDimensionUomId);
-
-    java.math.BigDecimal getShipmentPackageWeight();
-
-    void setShipmentPackageWeight(java.math.BigDecimal shipmentPackageWeight);
-
-    String getShipmentPackageWeightUomId();
-
-    void setShipmentPackageWeightUomId(String shipmentPackageWeightUomId);
-
-    java.math.BigDecimal getShipmentPackageInsuredValue();
-
-    void setShipmentPackageInsuredValue(java.math.BigDecimal shipmentPackageInsuredValue);
-
-    String getShipmentPackageCreatedBy();
-
-    void setShipmentPackageCreatedBy(String shipmentPackageCreatedBy);
-
-    Date getShipmentPackageCreatedAt();
-
-    void setShipmentPackageCreatedAt(Date shipmentPackageCreatedAt);
-
-    String getShipmentPackageUpdatedBy();
-
-    void setShipmentPackageUpdatedBy(String shipmentPackageUpdatedBy);
-
-    Date getShipmentPackageUpdatedAt();
-
-    void setShipmentPackageUpdatedAt(Date shipmentPackageUpdatedAt);
-
-    Boolean getShipmentPackageActive();
-
-    void setShipmentPackageActive(Boolean shipmentPackageActive);
-
-    Boolean getShipmentPackageDeleted();
-
-    void setShipmentPackageDeleted(Boolean shipmentPackageDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ShipmentPackageContentMvoStateCreated extends ShipmentPackageContentMvoEvent
+    interface ShipmentPackageContentMvoStateEvent extends ShipmentPackageContentMvoEvent {
+        java.math.BigDecimal getQuantity();
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        String getSubProductId();
+
+        void setSubProductId(String subProductId);
+
+        java.math.BigDecimal getSubProductQuantity();
+
+        void setSubProductQuantity(java.math.BigDecimal subProductQuantity);
+
+        Long getVersion();
+
+        void setVersion(Long version);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+        String getShipmentPackageShipmentBoxTypeId();
+
+        void setShipmentPackageShipmentBoxTypeId(String shipmentPackageShipmentBoxTypeId);
+
+        java.sql.Timestamp getShipmentPackageDateCreated();
+
+        void setShipmentPackageDateCreated(java.sql.Timestamp shipmentPackageDateCreated);
+
+        java.math.BigDecimal getShipmentPackageBoxLength();
+
+        void setShipmentPackageBoxLength(java.math.BigDecimal shipmentPackageBoxLength);
+
+        java.math.BigDecimal getShipmentPackageBoxHeight();
+
+        void setShipmentPackageBoxHeight(java.math.BigDecimal shipmentPackageBoxHeight);
+
+        java.math.BigDecimal getShipmentPackageBoxWidth();
+
+        void setShipmentPackageBoxWidth(java.math.BigDecimal shipmentPackageBoxWidth);
+
+        String getShipmentPackageDimensionUomId();
+
+        void setShipmentPackageDimensionUomId(String shipmentPackageDimensionUomId);
+
+        java.math.BigDecimal getShipmentPackageWeight();
+
+        void setShipmentPackageWeight(java.math.BigDecimal shipmentPackageWeight);
+
+        String getShipmentPackageWeightUomId();
+
+        void setShipmentPackageWeightUomId(String shipmentPackageWeightUomId);
+
+        java.math.BigDecimal getShipmentPackageInsuredValue();
+
+        void setShipmentPackageInsuredValue(java.math.BigDecimal shipmentPackageInsuredValue);
+
+        String getShipmentPackageCreatedBy();
+
+        void setShipmentPackageCreatedBy(String shipmentPackageCreatedBy);
+
+        Date getShipmentPackageCreatedAt();
+
+        void setShipmentPackageCreatedAt(Date shipmentPackageCreatedAt);
+
+        String getShipmentPackageUpdatedBy();
+
+        void setShipmentPackageUpdatedBy(String shipmentPackageUpdatedBy);
+
+        Date getShipmentPackageUpdatedAt();
+
+        void setShipmentPackageUpdatedAt(Date shipmentPackageUpdatedAt);
+
+        Boolean getShipmentPackageActive();
+
+        void setShipmentPackageActive(Boolean shipmentPackageActive);
+
+        Boolean getShipmentPackageDeleted();
+
+        void setShipmentPackageDeleted(Boolean shipmentPackageDeleted);
+
+    }
+
+    interface ShipmentPackageContentMvoStateCreated extends ShipmentPackageContentMvoStateEvent
     {
     
     }
 
 
-    interface ShipmentPackageContentMvoStateMergePatched extends ShipmentPackageContentMvoEvent
+    interface ShipmentPackageContentMvoStateMergePatched extends ShipmentPackageContentMvoStateEvent
     {
         Boolean getIsPropertyQuantityRemoved();
 
@@ -197,7 +200,7 @@ public interface ShipmentPackageContentMvoEvent extends Event
 
     }
 
-    interface ShipmentPackageContentMvoStateDeleted extends ShipmentPackageContentMvoEvent
+    interface ShipmentPackageContentMvoStateDeleted extends ShipmentPackageContentMvoStateEvent
     {
     }
 

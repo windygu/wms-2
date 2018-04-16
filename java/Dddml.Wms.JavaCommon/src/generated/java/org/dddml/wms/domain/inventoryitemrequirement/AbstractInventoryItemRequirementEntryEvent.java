@@ -41,36 +41,6 @@ public abstract class AbstractInventoryItemRequirementEntryEvent extends Abstrac
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    public Long getVersion()
-    {
-        return this.state.getVersion();
-    }
-
-    public void setVersion(Long version)
-    {
-        this.state.setVersion(version);
-    }
-
-    public BigDecimal getQuantity()
-    {
-        return this.state.getQuantity();
-    }
-
-    public void setQuantity(BigDecimal quantity)
-    {
-        this.state.setQuantity(quantity);
-    }
-
-    public InventoryPRTriggeredId getSourceEventId()
-    {
-        return this.state.getSourceEventId();
-    }
-
-    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
-    {
-        this.state.setSourceEventId(sourceEventId);
-    }
-
     public String getCreatedBy()
     {
         return this.state.getCreatedBy();
@@ -118,7 +88,47 @@ public abstract class AbstractInventoryItemRequirementEntryEvent extends Abstrac
     public abstract String getEventType();
 
 
-    public static abstract class AbstractInventoryItemRequirementEntryStateCreated extends AbstractInventoryItemRequirementEntryEvent implements InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated
+    public static abstract class AbstractInventoryItemRequirementEntryStateEvent extends AbstractInventoryItemRequirementEntryEvent implements InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateEvent {
+        public Long getVersion()
+        {
+            return this.getInventoryItemRequirementEntryState().getVersion();
+        }
+
+        public void setVersion(Long version)
+        {
+            this.getInventoryItemRequirementEntryState().setVersion(version);
+        }
+
+        public BigDecimal getQuantity()
+        {
+            return this.getInventoryItemRequirementEntryState().getQuantity();
+        }
+
+        public void setQuantity(BigDecimal quantity)
+        {
+            this.getInventoryItemRequirementEntryState().setQuantity(quantity);
+        }
+
+        public InventoryPRTriggeredId getSourceEventId()
+        {
+            return this.getInventoryItemRequirementEntryState().getSourceEventId();
+        }
+
+        public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
+        {
+            this.getInventoryItemRequirementEntryState().setSourceEventId(sourceEventId);
+        }
+
+        protected AbstractInventoryItemRequirementEntryStateEvent(InventoryItemRequirementEntryEventId eventId) {
+            super(eventId);
+        }
+
+        public AbstractInventoryItemRequirementEntryStateEvent(InventoryItemRequirementEntryState s) {
+            super(s);
+        }
+    }
+
+    public static abstract class AbstractInventoryItemRequirementEntryStateCreated extends AbstractInventoryItemRequirementEntryStateEvent implements InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated
     {
         public AbstractInventoryItemRequirementEntryStateCreated() {
             this(new InventoryItemRequirementEntryEventId());

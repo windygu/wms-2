@@ -385,17 +385,17 @@ public abstract class AbstractMovementLineState implements MovementLineState
     {
     }
 
-    protected void throwOnWrongEvent(MovementLineEvent stateEvent)
+    protected void throwOnWrongEvent(MovementLineEvent event)
     {
         String stateEntityIdMovementDocumentNumber = this.getMovementLineId().getMovementDocumentNumber();
-        String eventEntityIdMovementDocumentNumber = stateEvent.getMovementLineEventId().getMovementDocumentNumber();
+        String eventEntityIdMovementDocumentNumber = event.getMovementLineEventId().getMovementDocumentNumber();
         if (!stateEntityIdMovementDocumentNumber.equals(eventEntityIdMovementDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id MovementDocumentNumber %1$s in state but entity id MovementDocumentNumber %2$s in event", stateEntityIdMovementDocumentNumber, eventEntityIdMovementDocumentNumber);
         }
 
         String stateEntityIdLineNumber = this.getMovementLineId().getLineNumber();
-        String eventEntityIdLineNumber = stateEvent.getMovementLineEventId().getLineNumber();
+        String eventEntityIdLineNumber = event.getMovementLineEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
@@ -403,16 +403,19 @@ public abstract class AbstractMovementLineState implements MovementLineState
 
         if (getForReapplying()) { return; }
 
+        MovementLineStateEvent stateEvent = event instanceof MovementLineStateEvent ? (MovementLineStateEvent)event : null;
+        if (stateEvent == null) { return; }
+
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getVersion();
-        if (eventVersion == null) {
-            eventVersion = stateVersion == null ? MovementLineState.VERSION_NULL : stateVersion;
-            stateEvent.setVersion(eventVersion);
-        }
-        if (!(stateVersion == null && eventVersion.equals(MovementLineState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
+        Long stateEventStateVersion = stateEvent.getVersion();
+        //if (stateEventStateVersion == null) {
+        stateEventStateVersion = stateVersion == null ? MovementLineState.VERSION_NULL : stateVersion;
+        stateEvent.setVersion(stateEventStateVersion);
+        //}
+        //if (!(stateVersion == null && stateEventStateVersion.equals(MovementLineState.VERSION_NULL)) && !stateEventStateVersion.equals(stateVersion))
+        //{
+        //    throw DomainError.named("concurrencyConflict", "Conflict between stateVersion (%1$s) and stateEventStateVersion (%2$s)", stateVersion, stateEventStateVersion);
+        //}
 
     }
 

@@ -15,6 +15,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractProductEvent$AbstractProductStateEvent" abstract="true">
+
 	<property name="productTypeId" ><column name="ProductTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="primaryProductCategoryId" ><column name="PrimaryProductCategoryId" sql-type="VARCHAR(20)" /></property>
 	<property name="manufacturerPartyId" ><column name="ManufacturerPartyId" sql-type="VARCHAR(20)" /></property>
@@ -76,12 +85,6 @@
 	<property name="attributeSetId" ></property>
 	<property name="attributeSetInstanceId" ></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractProductEvent$SimpleProductStateCreated" discriminator-value="Created">
     	
@@ -214,6 +217,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

@@ -16,6 +16,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractMovementConfirmationLineMvoEvent$AbstractMovementConfirmationLineMvoStateEvent" abstract="true">
+
 	<property name="movementLineNumber" ></property>
 	<property name="targetQuantity" ></property>
 	<property name="confirmedQuantity" ></property>
@@ -39,12 +48,6 @@
 	<property name="movementConfirmationUpdatedAt" type="timestamp"><column name="MovementConfirmationUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="movementConfirmationActive" ></property>
 	<property name="movementConfirmationDeleted" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractMovementConfirmationLineMvoEvent$SimpleMovementConfirmationLineMvoStateCreated" discriminator-value="Created">
     	
@@ -106,6 +109,7 @@
     </subclass>
 
 
+        </subclass>
 
   </class>
   

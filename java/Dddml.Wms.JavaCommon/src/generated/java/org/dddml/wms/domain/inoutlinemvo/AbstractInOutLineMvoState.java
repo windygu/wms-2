@@ -1343,21 +1343,21 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     {
     }
 
-    protected void throwOnWrongEvent(InOutLineMvoEvent stateEvent)
+    protected void throwOnWrongEvent(InOutLineMvoEvent event)
     {
         InOutLineId stateEntityId = this.getInOutLineId(); // Aggregate Id
-        InOutLineId eventEntityId = stateEvent.getInOutLineMvoEventId().getInOutLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        InOutLineId eventEntityId = event.getInOutLineMvoEventId().getInOutLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getInOutVersion();
-        Long eventVersion = stateEvent.getInOutLineMvoEventId().getInOutVersion();// Aggregate Version
+        Long eventVersion = event.getInOutLineMvoEventId().getInOutVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getInOutLineMvoEventId().getInOutVersion() == null");
+            throw new NullPointerException("event.getInOutLineMvoEventId().getInOutVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(InOutLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(InOutLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

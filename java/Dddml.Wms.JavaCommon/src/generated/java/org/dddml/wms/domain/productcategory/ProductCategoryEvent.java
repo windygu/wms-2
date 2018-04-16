@@ -13,38 +13,6 @@ public interface ProductCategoryEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getProductCategoryTypeId();
-
-    void setProductCategoryTypeId(String productCategoryTypeId);
-
-    String getPrimaryParentCategoryId();
-
-    void setPrimaryParentCategoryId(String primaryParentCategoryId);
-
-    String getCategoryName();
-
-    void setCategoryName(String categoryName);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getCategoryImageUrl();
-
-    void setCategoryImageUrl(String categoryImageUrl);
-
-    String getDetailScreen();
-
-    void setDetailScreen(String detailScreen);
-
-    Boolean getShowInSelect();
-
-    void setShowInSelect(Boolean showInSelect);
-
-    String getAttributeSetId();
-
-    void setAttributeSetId(String attributeSetId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -53,21 +21,56 @@ public interface ProductCategoryEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface ProductCategoryStateCreated extends ProductCategoryEvent
+    interface ProductCategoryStateEvent extends ProductCategoryEvent {
+        String getProductCategoryTypeId();
+
+        void setProductCategoryTypeId(String productCategoryTypeId);
+
+        String getPrimaryParentCategoryId();
+
+        void setPrimaryParentCategoryId(String primaryParentCategoryId);
+
+        String getCategoryName();
+
+        void setCategoryName(String categoryName);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        String getCategoryImageUrl();
+
+        void setCategoryImageUrl(String categoryImageUrl);
+
+        String getDetailScreen();
+
+        void setDetailScreen(String detailScreen);
+
+        Boolean getShowInSelect();
+
+        void setShowInSelect(Boolean showInSelect);
+
+        String getAttributeSetId();
+
+        void setAttributeSetId(String attributeSetId);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface ProductCategoryStateCreated extends ProductCategoryStateEvent
     {
     
     }
 
 
-    interface ProductCategoryStateMergePatched extends ProductCategoryEvent
+    interface ProductCategoryStateMergePatched extends ProductCategoryStateEvent
     {
         Boolean getIsPropertyProductCategoryTypeIdRemoved();
 
@@ -108,7 +111,7 @@ public interface ProductCategoryEvent extends Event
 
     }
 
-    interface ProductCategoryStateDeleted extends ProductCategoryEvent
+    interface ProductCategoryStateDeleted extends ProductCategoryStateEvent
     {
     }
 

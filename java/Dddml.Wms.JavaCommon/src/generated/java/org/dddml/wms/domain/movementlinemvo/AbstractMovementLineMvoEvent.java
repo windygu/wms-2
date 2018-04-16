@@ -34,102 +34,6 @@ public abstract class AbstractMovementLineMvoEvent extends AbstractEvent impleme
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private BigDecimal movementQuantity;
-
-    public BigDecimal getMovementQuantity()
-    {
-        return this.movementQuantity;
-    }
-
-    public void setMovementQuantity(BigDecimal movementQuantity)
-    {
-        this.movementQuantity = movementQuantity;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String locatorIdFrom;
-
-    public String getLocatorIdFrom()
-    {
-        return this.locatorIdFrom;
-    }
-
-    public void setLocatorIdFrom(String locatorIdFrom)
-    {
-        this.locatorIdFrom = locatorIdFrom;
-    }
-
-    private String locatorIdTo;
-
-    public String getLocatorIdTo()
-    {
-        return this.locatorIdTo;
-    }
-
-    public void setLocatorIdTo(String locatorIdTo)
-    {
-        this.locatorIdTo = locatorIdTo;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
-    private Boolean processed;
-
-    public Boolean getProcessed()
-    {
-        return this.processed;
-    }
-
-    public void setProcessed(Boolean processed)
-    {
-        this.processed = processed;
-    }
-
-    private String reversalLineNumber;
-
-    public String getReversalLineNumber()
-    {
-        return this.reversalLineNumber;
-    }
-
-    public void setReversalLineNumber(String reversalLineNumber)
-    {
-        this.reversalLineNumber = reversalLineNumber;
-    }
-
-    private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -154,330 +58,6 @@ public abstract class AbstractMovementLineMvoEvent extends AbstractEvent impleme
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
-    private String movementDocumentStatusId;
-
-    public String getMovementDocumentStatusId()
-    {
-        return this.movementDocumentStatusId;
-    }
-
-    public void setMovementDocumentStatusId(String movementDocumentStatusId)
-    {
-        this.movementDocumentStatusId = movementDocumentStatusId;
-    }
-
-    private Date movementMovementDate;
-
-    public Date getMovementMovementDate()
-    {
-        return this.movementMovementDate;
-    }
-
-    public void setMovementMovementDate(Date movementMovementDate)
-    {
-        this.movementMovementDate = movementMovementDate;
-    }
-
-    private Boolean movementPosted;
-
-    public Boolean getMovementPosted()
-    {
-        return this.movementPosted;
-    }
-
-    public void setMovementPosted(Boolean movementPosted)
-    {
-        this.movementPosted = movementPosted;
-    }
-
-    private Boolean movementProcessed;
-
-    public Boolean getMovementProcessed()
-    {
-        return this.movementProcessed;
-    }
-
-    public void setMovementProcessed(Boolean movementProcessed)
-    {
-        this.movementProcessed = movementProcessed;
-    }
-
-    private String movementProcessing;
-
-    public String getMovementProcessing()
-    {
-        return this.movementProcessing;
-    }
-
-    public void setMovementProcessing(String movementProcessing)
-    {
-        this.movementProcessing = movementProcessing;
-    }
-
-    private Date movementDateReceived;
-
-    public Date getMovementDateReceived()
-    {
-        return this.movementDateReceived;
-    }
-
-    public void setMovementDateReceived(Date movementDateReceived)
-    {
-        this.movementDateReceived = movementDateReceived;
-    }
-
-    private String movementDocumentTypeId;
-
-    public String getMovementDocumentTypeId()
-    {
-        return this.movementDocumentTypeId;
-    }
-
-    public void setMovementDocumentTypeId(String movementDocumentTypeId)
-    {
-        this.movementDocumentTypeId = movementDocumentTypeId;
-    }
-
-    private Boolean movementIsInTransit;
-
-    public Boolean getMovementIsInTransit()
-    {
-        return this.movementIsInTransit;
-    }
-
-    public void setMovementIsInTransit(Boolean movementIsInTransit)
-    {
-        this.movementIsInTransit = movementIsInTransit;
-    }
-
-    private Boolean movementIsApproved;
-
-    public Boolean getMovementIsApproved()
-    {
-        return this.movementIsApproved;
-    }
-
-    public void setMovementIsApproved(Boolean movementIsApproved)
-    {
-        this.movementIsApproved = movementIsApproved;
-    }
-
-    private BigDecimal movementApprovalAmount;
-
-    public BigDecimal getMovementApprovalAmount()
-    {
-        return this.movementApprovalAmount;
-    }
-
-    public void setMovementApprovalAmount(BigDecimal movementApprovalAmount)
-    {
-        this.movementApprovalAmount = movementApprovalAmount;
-    }
-
-    private String movementShipperId;
-
-    public String getMovementShipperId()
-    {
-        return this.movementShipperId;
-    }
-
-    public void setMovementShipperId(String movementShipperId)
-    {
-        this.movementShipperId = movementShipperId;
-    }
-
-    private String movementSalesRepresentativeId;
-
-    public String getMovementSalesRepresentativeId()
-    {
-        return this.movementSalesRepresentativeId;
-    }
-
-    public void setMovementSalesRepresentativeId(String movementSalesRepresentativeId)
-    {
-        this.movementSalesRepresentativeId = movementSalesRepresentativeId;
-    }
-
-    private String movementBusinessPartnerId;
-
-    public String getMovementBusinessPartnerId()
-    {
-        return this.movementBusinessPartnerId;
-    }
-
-    public void setMovementBusinessPartnerId(String movementBusinessPartnerId)
-    {
-        this.movementBusinessPartnerId = movementBusinessPartnerId;
-    }
-
-    private BigDecimal movementChargeAmount;
-
-    public BigDecimal getMovementChargeAmount()
-    {
-        return this.movementChargeAmount;
-    }
-
-    public void setMovementChargeAmount(BigDecimal movementChargeAmount)
-    {
-        this.movementChargeAmount = movementChargeAmount;
-    }
-
-    private String movementCreateFrom;
-
-    public String getMovementCreateFrom()
-    {
-        return this.movementCreateFrom;
-    }
-
-    public void setMovementCreateFrom(String movementCreateFrom)
-    {
-        this.movementCreateFrom = movementCreateFrom;
-    }
-
-    private BigDecimal movementFreightAmount;
-
-    public BigDecimal getMovementFreightAmount()
-    {
-        return this.movementFreightAmount;
-    }
-
-    public void setMovementFreightAmount(BigDecimal movementFreightAmount)
-    {
-        this.movementFreightAmount = movementFreightAmount;
-    }
-
-    private String movementReversalDocumentNumber;
-
-    public String getMovementReversalDocumentNumber()
-    {
-        return this.movementReversalDocumentNumber;
-    }
-
-    public void setMovementReversalDocumentNumber(String movementReversalDocumentNumber)
-    {
-        this.movementReversalDocumentNumber = movementReversalDocumentNumber;
-    }
-
-    private String movementWarehouseIdFrom;
-
-    public String getMovementWarehouseIdFrom()
-    {
-        return this.movementWarehouseIdFrom;
-    }
-
-    public void setMovementWarehouseIdFrom(String movementWarehouseIdFrom)
-    {
-        this.movementWarehouseIdFrom = movementWarehouseIdFrom;
-    }
-
-    private String movementWarehouseIdTo;
-
-    public String getMovementWarehouseIdTo()
-    {
-        return this.movementWarehouseIdTo;
-    }
-
-    public void setMovementWarehouseIdTo(String movementWarehouseIdTo)
-    {
-        this.movementWarehouseIdTo = movementWarehouseIdTo;
-    }
-
-    private String movementDescription;
-
-    public String getMovementDescription()
-    {
-        return this.movementDescription;
-    }
-
-    public void setMovementDescription(String movementDescription)
-    {
-        this.movementDescription = movementDescription;
-    }
-
-    private String movementCreatedBy;
-
-    public String getMovementCreatedBy()
-    {
-        return this.movementCreatedBy;
-    }
-
-    public void setMovementCreatedBy(String movementCreatedBy)
-    {
-        this.movementCreatedBy = movementCreatedBy;
-    }
-
-    private Date movementCreatedAt;
-
-    public Date getMovementCreatedAt()
-    {
-        return this.movementCreatedAt;
-    }
-
-    public void setMovementCreatedAt(Date movementCreatedAt)
-    {
-        this.movementCreatedAt = movementCreatedAt;
-    }
-
-    private String movementUpdatedBy;
-
-    public String getMovementUpdatedBy()
-    {
-        return this.movementUpdatedBy;
-    }
-
-    public void setMovementUpdatedBy(String movementUpdatedBy)
-    {
-        this.movementUpdatedBy = movementUpdatedBy;
-    }
-
-    private Date movementUpdatedAt;
-
-    public Date getMovementUpdatedAt()
-    {
-        return this.movementUpdatedAt;
-    }
-
-    public void setMovementUpdatedAt(Date movementUpdatedAt)
-    {
-        this.movementUpdatedAt = movementUpdatedAt;
-    }
-
-    private Boolean movementActive;
-
-    public Boolean getMovementActive()
-    {
-        return this.movementActive;
-    }
-
-    public void setMovementActive(Boolean movementActive)
-    {
-        this.movementActive = movementActive;
-    }
-
-    private Boolean movementDeleted;
-
-    public Boolean getMovementDeleted()
-    {
-        return this.movementDeleted;
-    }
-
-    public void setMovementDeleted(Boolean movementDeleted)
-    {
-        this.movementDeleted = movementDeleted;
-    }
-
 
     private String commandId;
 
@@ -500,7 +80,433 @@ public abstract class AbstractMovementLineMvoEvent extends AbstractEvent impleme
     public abstract String getEventType();
 
 
-    public static abstract class AbstractMovementLineMvoStateCreated extends AbstractMovementLineMvoEvent implements MovementLineMvoEvent.MovementLineMvoStateCreated
+    public static abstract class AbstractMovementLineMvoStateEvent extends AbstractMovementLineMvoEvent implements MovementLineMvoEvent.MovementLineMvoStateEvent {
+        private BigDecimal movementQuantity;
+
+        public BigDecimal getMovementQuantity()
+        {
+            return this.movementQuantity;
+        }
+
+        public void setMovementQuantity(BigDecimal movementQuantity)
+        {
+            this.movementQuantity = movementQuantity;
+        }
+
+        private String productId;
+
+        public String getProductId()
+        {
+            return this.productId;
+        }
+
+        public void setProductId(String productId)
+        {
+            this.productId = productId;
+        }
+
+        private String locatorIdFrom;
+
+        public String getLocatorIdFrom()
+        {
+            return this.locatorIdFrom;
+        }
+
+        public void setLocatorIdFrom(String locatorIdFrom)
+        {
+            this.locatorIdFrom = locatorIdFrom;
+        }
+
+        private String locatorIdTo;
+
+        public String getLocatorIdTo()
+        {
+            return this.locatorIdTo;
+        }
+
+        public void setLocatorIdTo(String locatorIdTo)
+        {
+            this.locatorIdTo = locatorIdTo;
+        }
+
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
+        private Boolean processed;
+
+        public Boolean getProcessed()
+        {
+            return this.processed;
+        }
+
+        public void setProcessed(Boolean processed)
+        {
+            this.processed = processed;
+        }
+
+        private String reversalLineNumber;
+
+        public String getReversalLineNumber()
+        {
+            return this.reversalLineNumber;
+        }
+
+        public void setReversalLineNumber(String reversalLineNumber)
+        {
+            this.reversalLineNumber = reversalLineNumber;
+        }
+
+        private Long version;
+
+        public Long getVersion()
+        {
+            return this.version;
+        }
+
+        public void setVersion(Long version)
+        {
+            this.version = version;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        private String movementDocumentStatusId;
+
+        public String getMovementDocumentStatusId()
+        {
+            return this.movementDocumentStatusId;
+        }
+
+        public void setMovementDocumentStatusId(String movementDocumentStatusId)
+        {
+            this.movementDocumentStatusId = movementDocumentStatusId;
+        }
+
+        private Date movementMovementDate;
+
+        public Date getMovementMovementDate()
+        {
+            return this.movementMovementDate;
+        }
+
+        public void setMovementMovementDate(Date movementMovementDate)
+        {
+            this.movementMovementDate = movementMovementDate;
+        }
+
+        private Boolean movementPosted;
+
+        public Boolean getMovementPosted()
+        {
+            return this.movementPosted;
+        }
+
+        public void setMovementPosted(Boolean movementPosted)
+        {
+            this.movementPosted = movementPosted;
+        }
+
+        private Boolean movementProcessed;
+
+        public Boolean getMovementProcessed()
+        {
+            return this.movementProcessed;
+        }
+
+        public void setMovementProcessed(Boolean movementProcessed)
+        {
+            this.movementProcessed = movementProcessed;
+        }
+
+        private String movementProcessing;
+
+        public String getMovementProcessing()
+        {
+            return this.movementProcessing;
+        }
+
+        public void setMovementProcessing(String movementProcessing)
+        {
+            this.movementProcessing = movementProcessing;
+        }
+
+        private Date movementDateReceived;
+
+        public Date getMovementDateReceived()
+        {
+            return this.movementDateReceived;
+        }
+
+        public void setMovementDateReceived(Date movementDateReceived)
+        {
+            this.movementDateReceived = movementDateReceived;
+        }
+
+        private String movementDocumentTypeId;
+
+        public String getMovementDocumentTypeId()
+        {
+            return this.movementDocumentTypeId;
+        }
+
+        public void setMovementDocumentTypeId(String movementDocumentTypeId)
+        {
+            this.movementDocumentTypeId = movementDocumentTypeId;
+        }
+
+        private Boolean movementIsInTransit;
+
+        public Boolean getMovementIsInTransit()
+        {
+            return this.movementIsInTransit;
+        }
+
+        public void setMovementIsInTransit(Boolean movementIsInTransit)
+        {
+            this.movementIsInTransit = movementIsInTransit;
+        }
+
+        private Boolean movementIsApproved;
+
+        public Boolean getMovementIsApproved()
+        {
+            return this.movementIsApproved;
+        }
+
+        public void setMovementIsApproved(Boolean movementIsApproved)
+        {
+            this.movementIsApproved = movementIsApproved;
+        }
+
+        private BigDecimal movementApprovalAmount;
+
+        public BigDecimal getMovementApprovalAmount()
+        {
+            return this.movementApprovalAmount;
+        }
+
+        public void setMovementApprovalAmount(BigDecimal movementApprovalAmount)
+        {
+            this.movementApprovalAmount = movementApprovalAmount;
+        }
+
+        private String movementShipperId;
+
+        public String getMovementShipperId()
+        {
+            return this.movementShipperId;
+        }
+
+        public void setMovementShipperId(String movementShipperId)
+        {
+            this.movementShipperId = movementShipperId;
+        }
+
+        private String movementSalesRepresentativeId;
+
+        public String getMovementSalesRepresentativeId()
+        {
+            return this.movementSalesRepresentativeId;
+        }
+
+        public void setMovementSalesRepresentativeId(String movementSalesRepresentativeId)
+        {
+            this.movementSalesRepresentativeId = movementSalesRepresentativeId;
+        }
+
+        private String movementBusinessPartnerId;
+
+        public String getMovementBusinessPartnerId()
+        {
+            return this.movementBusinessPartnerId;
+        }
+
+        public void setMovementBusinessPartnerId(String movementBusinessPartnerId)
+        {
+            this.movementBusinessPartnerId = movementBusinessPartnerId;
+        }
+
+        private BigDecimal movementChargeAmount;
+
+        public BigDecimal getMovementChargeAmount()
+        {
+            return this.movementChargeAmount;
+        }
+
+        public void setMovementChargeAmount(BigDecimal movementChargeAmount)
+        {
+            this.movementChargeAmount = movementChargeAmount;
+        }
+
+        private String movementCreateFrom;
+
+        public String getMovementCreateFrom()
+        {
+            return this.movementCreateFrom;
+        }
+
+        public void setMovementCreateFrom(String movementCreateFrom)
+        {
+            this.movementCreateFrom = movementCreateFrom;
+        }
+
+        private BigDecimal movementFreightAmount;
+
+        public BigDecimal getMovementFreightAmount()
+        {
+            return this.movementFreightAmount;
+        }
+
+        public void setMovementFreightAmount(BigDecimal movementFreightAmount)
+        {
+            this.movementFreightAmount = movementFreightAmount;
+        }
+
+        private String movementReversalDocumentNumber;
+
+        public String getMovementReversalDocumentNumber()
+        {
+            return this.movementReversalDocumentNumber;
+        }
+
+        public void setMovementReversalDocumentNumber(String movementReversalDocumentNumber)
+        {
+            this.movementReversalDocumentNumber = movementReversalDocumentNumber;
+        }
+
+        private String movementWarehouseIdFrom;
+
+        public String getMovementWarehouseIdFrom()
+        {
+            return this.movementWarehouseIdFrom;
+        }
+
+        public void setMovementWarehouseIdFrom(String movementWarehouseIdFrom)
+        {
+            this.movementWarehouseIdFrom = movementWarehouseIdFrom;
+        }
+
+        private String movementWarehouseIdTo;
+
+        public String getMovementWarehouseIdTo()
+        {
+            return this.movementWarehouseIdTo;
+        }
+
+        public void setMovementWarehouseIdTo(String movementWarehouseIdTo)
+        {
+            this.movementWarehouseIdTo = movementWarehouseIdTo;
+        }
+
+        private String movementDescription;
+
+        public String getMovementDescription()
+        {
+            return this.movementDescription;
+        }
+
+        public void setMovementDescription(String movementDescription)
+        {
+            this.movementDescription = movementDescription;
+        }
+
+        private String movementCreatedBy;
+
+        public String getMovementCreatedBy()
+        {
+            return this.movementCreatedBy;
+        }
+
+        public void setMovementCreatedBy(String movementCreatedBy)
+        {
+            this.movementCreatedBy = movementCreatedBy;
+        }
+
+        private Date movementCreatedAt;
+
+        public Date getMovementCreatedAt()
+        {
+            return this.movementCreatedAt;
+        }
+
+        public void setMovementCreatedAt(Date movementCreatedAt)
+        {
+            this.movementCreatedAt = movementCreatedAt;
+        }
+
+        private String movementUpdatedBy;
+
+        public String getMovementUpdatedBy()
+        {
+            return this.movementUpdatedBy;
+        }
+
+        public void setMovementUpdatedBy(String movementUpdatedBy)
+        {
+            this.movementUpdatedBy = movementUpdatedBy;
+        }
+
+        private Date movementUpdatedAt;
+
+        public Date getMovementUpdatedAt()
+        {
+            return this.movementUpdatedAt;
+        }
+
+        public void setMovementUpdatedAt(Date movementUpdatedAt)
+        {
+            this.movementUpdatedAt = movementUpdatedAt;
+        }
+
+        private Boolean movementActive;
+
+        public Boolean getMovementActive()
+        {
+            return this.movementActive;
+        }
+
+        public void setMovementActive(Boolean movementActive)
+        {
+            this.movementActive = movementActive;
+        }
+
+        private Boolean movementDeleted;
+
+        public Boolean getMovementDeleted()
+        {
+            return this.movementDeleted;
+        }
+
+        public void setMovementDeleted(Boolean movementDeleted)
+        {
+            this.movementDeleted = movementDeleted;
+        }
+
+        protected AbstractMovementLineMvoStateEvent(MovementLineMvoEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractMovementLineMvoStateCreated extends AbstractMovementLineMvoStateEvent implements MovementLineMvoEvent.MovementLineMvoStateCreated
     {
         public AbstractMovementLineMvoStateCreated() {
             this(new MovementLineMvoEventId());
@@ -517,7 +523,7 @@ public abstract class AbstractMovementLineMvoEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractMovementLineMvoStateMergePatched extends AbstractMovementLineMvoEvent implements MovementLineMvoEvent.MovementLineMvoStateMergePatched
+    public static abstract class AbstractMovementLineMvoStateMergePatched extends AbstractMovementLineMvoStateEvent implements MovementLineMvoEvent.MovementLineMvoStateMergePatched
     {
         public AbstractMovementLineMvoStateMergePatched() {
             this(new MovementLineMvoEventId());
@@ -884,7 +890,7 @@ public abstract class AbstractMovementLineMvoEvent extends AbstractEvent impleme
     }
 
 
-    public static abstract class AbstractMovementLineMvoStateDeleted extends AbstractMovementLineMvoEvent implements MovementLineMvoEvent.MovementLineMvoStateDeleted
+    public static abstract class AbstractMovementLineMvoStateDeleted extends AbstractMovementLineMvoStateEvent implements MovementLineMvoEvent.MovementLineMvoStateDeleted
     {
         public AbstractMovementLineMvoStateDeleted() {
             this(new MovementLineMvoEventId());

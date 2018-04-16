@@ -32,234 +32,6 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
 
     public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private String contactMechTypeId;
-
-    public String getContactMechTypeId()
-    {
-        return this.contactMechTypeId;
-    }
-
-    public void setContactMechTypeId(String contactMechTypeId)
-    {
-        this.contactMechTypeId = contactMechTypeId;
-    }
-
-    private String infoString;
-
-    public String getInfoString()
-    {
-        return this.infoString;
-    }
-
-    public void setInfoString(String infoString)
-    {
-        this.infoString = infoString;
-    }
-
-    private String toName;
-
-    public String getToName()
-    {
-        return this.toName;
-    }
-
-    public void setToName(String toName)
-    {
-        this.toName = toName;
-    }
-
-    private String attnName;
-
-    public String getAttnName()
-    {
-        return this.attnName;
-    }
-
-    public void setAttnName(String attnName)
-    {
-        this.attnName = attnName;
-    }
-
-    private String address1;
-
-    public String getAddress1()
-    {
-        return this.address1;
-    }
-
-    public void setAddress1(String address1)
-    {
-        this.address1 = address1;
-    }
-
-    private String address2;
-
-    public String getAddress2()
-    {
-        return this.address2;
-    }
-
-    public void setAddress2(String address2)
-    {
-        this.address2 = address2;
-    }
-
-    private String directions;
-
-    public String getDirections()
-    {
-        return this.directions;
-    }
-
-    public void setDirections(String directions)
-    {
-        this.directions = directions;
-    }
-
-    private String city;
-
-    public String getCity()
-    {
-        return this.city;
-    }
-
-    public void setCity(String city)
-    {
-        this.city = city;
-    }
-
-    private String postalCode;
-
-    public String getPostalCode()
-    {
-        return this.postalCode;
-    }
-
-    public void setPostalCode(String postalCode)
-    {
-        this.postalCode = postalCode;
-    }
-
-    private String postalCodeExt;
-
-    public String getPostalCodeExt()
-    {
-        return this.postalCodeExt;
-    }
-
-    public void setPostalCodeExt(String postalCodeExt)
-    {
-        this.postalCodeExt = postalCodeExt;
-    }
-
-    private String countryGeoId;
-
-    public String getCountryGeoId()
-    {
-        return this.countryGeoId;
-    }
-
-    public void setCountryGeoId(String countryGeoId)
-    {
-        this.countryGeoId = countryGeoId;
-    }
-
-    private String stateProvinceGeoId;
-
-    public String getStateProvinceGeoId()
-    {
-        return this.stateProvinceGeoId;
-    }
-
-    public void setStateProvinceGeoId(String stateProvinceGeoId)
-    {
-        this.stateProvinceGeoId = stateProvinceGeoId;
-    }
-
-    private String countyGeoId;
-
-    public String getCountyGeoId()
-    {
-        return this.countyGeoId;
-    }
-
-    public void setCountyGeoId(String countyGeoId)
-    {
-        this.countyGeoId = countyGeoId;
-    }
-
-    private String postalCodeGeoId;
-
-    public String getPostalCodeGeoId()
-    {
-        return this.postalCodeGeoId;
-    }
-
-    public void setPostalCodeGeoId(String postalCodeGeoId)
-    {
-        this.postalCodeGeoId = postalCodeGeoId;
-    }
-
-    private String geoPointId;
-
-    public String getGeoPointId()
-    {
-        return this.geoPointId;
-    }
-
-    public void setGeoPointId(String geoPointId)
-    {
-        this.geoPointId = geoPointId;
-    }
-
-    private String countryCode;
-
-    public String getCountryCode()
-    {
-        return this.countryCode;
-    }
-
-    public void setCountryCode(String countryCode)
-    {
-        this.countryCode = countryCode;
-    }
-
-    private String areaCode;
-
-    public String getAreaCode()
-    {
-        return this.areaCode;
-    }
-
-    public void setAreaCode(String areaCode)
-    {
-        this.areaCode = areaCode;
-    }
-
-    private String contactNumber;
-
-    public String getContactNumber()
-    {
-        return this.contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber)
-    {
-        this.contactNumber = contactNumber;
-    }
-
-    private String askForName;
-
-    public String getAskForName()
-    {
-        return this.askForName;
-    }
-
-    public void setAskForName(String askForName)
-    {
-        this.askForName = askForName;
-    }
-
     private String createdBy;
 
     public String getCreatedBy()
@@ -284,18 +56,6 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -318,7 +78,253 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
     public abstract String getEventType();
 
 
-    public static abstract class AbstractContactMechStateCreated extends AbstractContactMechEvent implements ContactMechEvent.ContactMechStateCreated
+    public static abstract class AbstractContactMechStateEvent extends AbstractContactMechEvent implements ContactMechEvent.ContactMechStateEvent {
+        private String contactMechTypeId;
+
+        public String getContactMechTypeId()
+        {
+            return this.contactMechTypeId;
+        }
+
+        public void setContactMechTypeId(String contactMechTypeId)
+        {
+            this.contactMechTypeId = contactMechTypeId;
+        }
+
+        private String infoString;
+
+        public String getInfoString()
+        {
+            return this.infoString;
+        }
+
+        public void setInfoString(String infoString)
+        {
+            this.infoString = infoString;
+        }
+
+        private String toName;
+
+        public String getToName()
+        {
+            return this.toName;
+        }
+
+        public void setToName(String toName)
+        {
+            this.toName = toName;
+        }
+
+        private String attnName;
+
+        public String getAttnName()
+        {
+            return this.attnName;
+        }
+
+        public void setAttnName(String attnName)
+        {
+            this.attnName = attnName;
+        }
+
+        private String address1;
+
+        public String getAddress1()
+        {
+            return this.address1;
+        }
+
+        public void setAddress1(String address1)
+        {
+            this.address1 = address1;
+        }
+
+        private String address2;
+
+        public String getAddress2()
+        {
+            return this.address2;
+        }
+
+        public void setAddress2(String address2)
+        {
+            this.address2 = address2;
+        }
+
+        private String directions;
+
+        public String getDirections()
+        {
+            return this.directions;
+        }
+
+        public void setDirections(String directions)
+        {
+            this.directions = directions;
+        }
+
+        private String city;
+
+        public String getCity()
+        {
+            return this.city;
+        }
+
+        public void setCity(String city)
+        {
+            this.city = city;
+        }
+
+        private String postalCode;
+
+        public String getPostalCode()
+        {
+            return this.postalCode;
+        }
+
+        public void setPostalCode(String postalCode)
+        {
+            this.postalCode = postalCode;
+        }
+
+        private String postalCodeExt;
+
+        public String getPostalCodeExt()
+        {
+            return this.postalCodeExt;
+        }
+
+        public void setPostalCodeExt(String postalCodeExt)
+        {
+            this.postalCodeExt = postalCodeExt;
+        }
+
+        private String countryGeoId;
+
+        public String getCountryGeoId()
+        {
+            return this.countryGeoId;
+        }
+
+        public void setCountryGeoId(String countryGeoId)
+        {
+            this.countryGeoId = countryGeoId;
+        }
+
+        private String stateProvinceGeoId;
+
+        public String getStateProvinceGeoId()
+        {
+            return this.stateProvinceGeoId;
+        }
+
+        public void setStateProvinceGeoId(String stateProvinceGeoId)
+        {
+            this.stateProvinceGeoId = stateProvinceGeoId;
+        }
+
+        private String countyGeoId;
+
+        public String getCountyGeoId()
+        {
+            return this.countyGeoId;
+        }
+
+        public void setCountyGeoId(String countyGeoId)
+        {
+            this.countyGeoId = countyGeoId;
+        }
+
+        private String postalCodeGeoId;
+
+        public String getPostalCodeGeoId()
+        {
+            return this.postalCodeGeoId;
+        }
+
+        public void setPostalCodeGeoId(String postalCodeGeoId)
+        {
+            this.postalCodeGeoId = postalCodeGeoId;
+        }
+
+        private String geoPointId;
+
+        public String getGeoPointId()
+        {
+            return this.geoPointId;
+        }
+
+        public void setGeoPointId(String geoPointId)
+        {
+            this.geoPointId = geoPointId;
+        }
+
+        private String countryCode;
+
+        public String getCountryCode()
+        {
+            return this.countryCode;
+        }
+
+        public void setCountryCode(String countryCode)
+        {
+            this.countryCode = countryCode;
+        }
+
+        private String areaCode;
+
+        public String getAreaCode()
+        {
+            return this.areaCode;
+        }
+
+        public void setAreaCode(String areaCode)
+        {
+            this.areaCode = areaCode;
+        }
+
+        private String contactNumber;
+
+        public String getContactNumber()
+        {
+            return this.contactNumber;
+        }
+
+        public void setContactNumber(String contactNumber)
+        {
+            this.contactNumber = contactNumber;
+        }
+
+        private String askForName;
+
+        public String getAskForName()
+        {
+            return this.askForName;
+        }
+
+        public void setAskForName(String askForName)
+        {
+            this.askForName = askForName;
+        }
+
+        private Boolean active;
+
+        public Boolean getActive()
+        {
+            return this.active;
+        }
+
+        public void setActive(Boolean active)
+        {
+            this.active = active;
+        }
+
+        protected AbstractContactMechStateEvent(ContactMechEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static abstract class AbstractContactMechStateCreated extends AbstractContactMechStateEvent implements ContactMechEvent.ContactMechStateCreated
     {
         public AbstractContactMechStateCreated() {
             this(new ContactMechEventId());
@@ -335,7 +341,7 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
     }
 
 
-    public static abstract class AbstractContactMechStateMergePatched extends AbstractContactMechEvent implements ContactMechEvent.ContactMechStateMergePatched
+    public static abstract class AbstractContactMechStateMergePatched extends AbstractContactMechStateEvent implements ContactMechEvent.ContactMechStateMergePatched
     {
         public AbstractContactMechStateMergePatched() {
             this(new ContactMechEventId());
@@ -552,7 +558,7 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
     }
 
 
-    public static abstract class AbstractContactMechStateDeleted extends AbstractContactMechEvent implements ContactMechEvent.ContactMechStateDeleted
+    public static abstract class AbstractContactMechStateDeleted extends AbstractContactMechStateEvent implements ContactMechEvent.ContactMechStateDeleted
     {
         public AbstractContactMechStateDeleted() {
             this(new ContactMechEventId());

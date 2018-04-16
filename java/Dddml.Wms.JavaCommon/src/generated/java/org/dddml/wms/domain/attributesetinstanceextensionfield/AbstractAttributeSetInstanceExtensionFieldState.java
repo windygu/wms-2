@@ -333,21 +333,21 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
     {
     }
 
-    protected void throwOnWrongEvent(AttributeSetInstanceExtensionFieldEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeSetInstanceExtensionFieldEvent event)
     {
         String stateEntityId = this.getName(); // Aggregate Id
-        String eventEntityId = stateEvent.getAttributeSetInstanceExtensionFieldEventId().getName(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = event.getAttributeSetInstanceExtensionFieldEventId().getName(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getAttributeSetInstanceExtensionFieldEventId().getVersion();// Aggregate Version
+        Long eventVersion = event.getAttributeSetInstanceExtensionFieldEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getAttributeSetInstanceExtensionFieldEventId().getVersion() == null");
+            throw new NullPointerException("event.getAttributeSetInstanceExtensionFieldEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(AttributeSetInstanceExtensionFieldState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        if (!(stateVersion == null && eventVersion.equals(AttributeSetInstanceExtensionFieldState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

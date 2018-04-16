@@ -15,6 +15,15 @@
 
     <discriminator column="EventType" type="string" />
 
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractOrderEvent$AbstractOrderStateEvent" abstract="true">
+
 	<property name="orderTypeId" ><column name="OrderTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="orderName" ><column name="OrderName" sql-type="VARCHAR(100)" /></property>
 	<property name="externalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
@@ -40,12 +49,6 @@
 	<property name="grandTotal" ><column name="GrandTotal" sql-type="DECIMAL(18,2)" /></property>
 	<property name="invoicePerShipment" ><column name="InvoicePerShipment" sql-type="CHAR(1)" /></property>
 	<property name="active" ></property>
-
-    <property name="createdBy" column="CreatedBy"/>
-
-    <property name="createdAt" column="CreatedAt" />
-
-    <property name="commandId" column="CommandId"/>
 
     <subclass name="AbstractOrderEvent$SimpleOrderStateCreated" discriminator-value="Created">
     	
@@ -106,6 +109,7 @@
 
     </subclass>
 
+        </subclass>
 
   </class>
   

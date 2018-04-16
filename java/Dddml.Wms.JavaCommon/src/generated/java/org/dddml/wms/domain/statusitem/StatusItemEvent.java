@@ -13,22 +13,6 @@ public interface StatusItemEvent extends Event
 
     void setEventReadOnly(boolean readOnly);
 
-    String getStatusTypeId();
-
-    void setStatusTypeId(String statusTypeId);
-
-    String getStatusCode();
-
-    void setStatusCode(String statusCode);
-
-    String getSequenceId();
-
-    void setSequenceId(String sequenceId);
-
-    String getDescription();
-
-    void setDescription(String description);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -37,21 +21,40 @@ public interface StatusItemEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
 
-    interface StatusItemStateCreated extends StatusItemEvent
+    interface StatusItemStateEvent extends StatusItemEvent {
+        String getStatusTypeId();
+
+        void setStatusTypeId(String statusTypeId);
+
+        String getStatusCode();
+
+        void setStatusCode(String statusCode);
+
+        String getSequenceId();
+
+        void setSequenceId(String sequenceId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
+        Boolean getActive();
+
+        void setActive(Boolean active);
+
+    }
+
+    interface StatusItemStateCreated extends StatusItemStateEvent
     {
     
     }
 
 
-    interface StatusItemStateMergePatched extends StatusItemEvent
+    interface StatusItemStateMergePatched extends StatusItemStateEvent
     {
         Boolean getIsPropertyStatusTypeIdRemoved();
 
