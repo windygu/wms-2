@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.Uom
 
     public class UomStateEventDtoConverter
     {
-        public virtual UomStateCreatedOrMergePatchedOrDeletedDto ToUomStateEventDto(IUomStateEvent stateEvent)
+        public virtual UomStateCreatedOrMergePatchedOrDeletedDto ToUomStateEventDto(IUomEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IUomStateCreated)stateEvent;
                 return ToUomStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IUomStateMergePatched)stateEvent;
                 return ToUomStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IUomStateDeleted)stateEvent;
                 return ToUomStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual UomStateCreatedDto ToUomStateCreatedDto(IUomStateCreated e)

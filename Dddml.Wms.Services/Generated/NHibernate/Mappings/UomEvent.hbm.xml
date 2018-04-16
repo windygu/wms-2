@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Uom">
   
-  <class name="UomStateEventBase" table="UomEvents" mutable="false" abstract="true">
+  <class name="UomEventBase" table="UomEvents" mutable="false" abstract="true">
 
     <composite-id name="UomEventId" class="Dddml.Wms.Domain.Uom.UomEventId">
         <key-property name="UomId" ><column name="UomId" sql-type="VARCHAR(20)" /></key-property>

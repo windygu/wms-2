@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeValueId = ((IAttributeValueMvoStateEvent)events.First()).AttributeValueMvoEventId.AttributeValueId;
+                this.AttributeValueId = ((IAttributeValueMvoEvent)events.First()).AttributeValueMvoEventId.AttributeValueId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -492,7 +492,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeValueMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeValueMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeValueMvo|");

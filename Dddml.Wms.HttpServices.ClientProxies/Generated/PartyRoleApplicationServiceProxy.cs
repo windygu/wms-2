@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IPartyRoleStateEvent> GetStateEventAsync(PartyRoleId partyRoleId, long version)
+        public async Task<IPartyRoleEvent> GetStateEventAsync(PartyRoleId partyRoleId, long version)
         {
             var idObj = PartyRoleProxyUtils.ToIdString(partyRoleId);
             var uriParameters = new PartyRoleStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPartyRoleStateEvent GetStateEvent(PartyRoleId partyRoleId, long version)
+        public IPartyRoleEvent GetEvent(PartyRoleId partyRoleId, long version)
         {
             return GetStateEventAsync(partyRoleId, version).GetAwaiter().GetResult();
         }

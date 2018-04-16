@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.Lot
 
     public class LotStateEventDtoConverter
     {
-        public virtual LotStateCreatedOrMergePatchedOrDeletedDto ToLotStateEventDto(ILotStateEvent stateEvent)
+        public virtual LotStateCreatedOrMergePatchedOrDeletedDto ToLotStateEventDto(ILotEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (ILotStateCreated)stateEvent;
                 return ToLotStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (ILotStateMergePatched)stateEvent;
                 return ToLotStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (ILotStateDeleted)stateEvent;
                 return ToLotStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual LotStateCreatedDto ToLotStateCreatedDto(ILotStateCreated e)

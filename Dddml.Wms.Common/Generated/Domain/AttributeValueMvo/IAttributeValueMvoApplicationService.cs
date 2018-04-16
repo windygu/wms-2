@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
         long GetCount(ICriterion filter);
 
-        IAttributeValueMvoStateEvent GetStateEvent(AttributeValueId attributeValueId, long version);
+        IAttributeValueMvoEvent GetEvent(AttributeValueId attributeValueId, long version);
 
         IAttributeValueMvoState GetHistoryState(AttributeValueId attributeValueId, long version);
 

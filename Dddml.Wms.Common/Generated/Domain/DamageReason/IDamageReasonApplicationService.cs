@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         long GetCount(ICriterion filter);
 
-        IDamageReasonStateEvent GetStateEvent(string damageReasonId, long version);
+        IDamageReasonEvent GetEvent(string damageReasonId, long version);
 
         IDamageReasonState GetHistoryState(string damageReasonId, long version);
 

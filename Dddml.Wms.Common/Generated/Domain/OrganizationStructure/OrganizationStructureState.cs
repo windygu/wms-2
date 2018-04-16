@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
         {
             if (events != null && events.Count() > 0)
             {
-                this.Id = ((IOrganizationStructureStateEvent)events.First()).OrganizationStructureEventId.Id;
+                this.Id = ((IOrganizationStructureEvent)events.First()).OrganizationStructureEventId.Id;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrganizationStructureStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrganizationStructureEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrganizationStructure|");

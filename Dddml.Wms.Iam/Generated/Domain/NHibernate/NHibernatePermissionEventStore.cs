@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.Permission.NHibernate
 			return new PermissionEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PermissionStateEventBase);
+			return typeof(PermissionEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PermissionStateEventBase);
+            Type supportedEventType = typeof(PermissionEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PermissionStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PermissionEventBase>();
             criteria.Add(Restrictions.Eq("PermissionEventId.PermissionId", idObj));
             criteria.Add(Restrictions.Le("PermissionEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PermissionEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (PermissionStateEventBase e in es)
+            foreach (PermissionEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PermissionStateEventBase)es.Last()).PermissionEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((PermissionEventBase)es.Last()).PermissionEventId.Version : default(long),
                 Events = es
             };
         }

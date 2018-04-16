@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.RejectionReason">
   
-  <class name="RejectionReasonStateEventBase" table="RejectionReasonEvents" mutable="false" abstract="true">
+  <class name="RejectionReasonEventBase" table="RejectionReasonEvents" mutable="false" abstract="true">
 
     <composite-id name="RejectionReasonEventId" class="Dddml.Wms.Domain.RejectionReason.RejectionReasonEventId">
         <key-property name="RejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></key-property>

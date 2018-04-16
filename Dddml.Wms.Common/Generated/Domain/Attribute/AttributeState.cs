@@ -181,7 +181,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeId = ((IAttributeStateEvent)events.First()).AttributeEventId.AttributeId;
+                this.AttributeId = ((IAttributeEvent)events.First()).AttributeEventId.AttributeId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -388,7 +388,7 @@ namespace Dddml.Wms.Domain.Attribute
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IAttributeValueStateEvent innerEvent in e.AttributeValueEvents)
+			foreach (IAttributeValueEvent innerEvent in e.AttributeValueEvents)
             {
                 IAttributeValueState innerState = this.AttributeValues.Get(innerEvent.GlobalId.Value);
 
@@ -401,7 +401,7 @@ namespace Dddml.Wms.Domain.Attribute
           
             }
 
-			foreach (IAttributeAliasStateEvent innerEvent in e.AttributeAliasEvents)
+			foreach (IAttributeAliasEvent innerEvent in e.AttributeAliasEvents)
             {
                 IAttributeAliasState innerState = this.Aliases.Get(innerEvent.GlobalId.Code);
 
@@ -429,8 +429,8 @@ namespace Dddml.Wms.Domain.Attribute
                 this.AttributeValues.Remove(innerState);
                 
                 var innerE = e.NewAttributeValueStateRemoved(innerState.Value);
-                ((AttributeValueStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((AttributeValueStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((AttributeValueEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((AttributeValueEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddAttributeValueEvent(innerE);
 
@@ -441,8 +441,8 @@ namespace Dddml.Wms.Domain.Attribute
                 this.Aliases.Remove(innerState);
                 
                 var innerE = e.NewAttributeAliasStateRemoved(innerState.Code);
-                ((AttributeAliasStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((AttributeAliasStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((AttributeAliasEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((AttributeAliasEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddAttributeAliasEvent(innerE);
 
@@ -457,7 +457,7 @@ namespace Dddml.Wms.Domain.Attribute
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Attribute|");

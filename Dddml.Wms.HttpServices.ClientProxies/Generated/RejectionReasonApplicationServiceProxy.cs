@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IRejectionReasonStateEvent> GetStateEventAsync(string rejectionReasonId, long version)
+        public async Task<IRejectionReasonEvent> GetStateEventAsync(string rejectionReasonId, long version)
         {
             var idObj = rejectionReasonId;
             var uriParameters = new RejectionReasonStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IRejectionReasonStateEvent GetStateEvent(string rejectionReasonId, long version)
+        public IRejectionReasonEvent GetEvent(string rejectionReasonId, long version)
         {
             return GetStateEventAsync(rejectionReasonId, version).GetAwaiter().GetResult();
         }

@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         long GetCount(ICriterion filter);
 
-        IAttributeSetInstanceStateEvent GetStateEvent(string attributeSetInstanceId, long version);
+        IAttributeSetInstanceEvent GetEvent(string attributeSetInstanceId, long version);
 
         IAttributeSetInstanceState GetHistoryState(string attributeSetInstanceId, long version);
 

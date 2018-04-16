@@ -76,7 +76,7 @@
     <Compile Include="Specialization\ISaveable.cs" />
     <Compile Include="Specialization\IState.cs" />
     <Compile Include="Specialization\IStateDtoWrapper.cs" />
-    <Compile Include="Specialization\IStateEventDto.cs" />
+    <Compile Include="Specialization\IEventDto.cs" />
     <Compile Include="Specialization\ITextFormatter.cs" />
     <Compile Include="Specialization\ITimestampService.cs" />
     <Compile Include="Specialization\ITreeNode.cs" />

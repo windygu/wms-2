@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         long GetCount(ICriterion filter);
 
-        IPhysicalInventoryStateEvent GetStateEvent(string documentNumber, long version);
+        IPhysicalInventoryEvent GetEvent(string documentNumber, long version);
 
         IPhysicalInventoryState GetHistoryState(string documentNumber, long version);
 

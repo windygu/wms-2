@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.NHibernate
 			return new AttributeSetInstanceExtensionFieldGroupEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(AttributeSetInstanceExtensionFieldGroupStateEventBase);
+			return typeof(AttributeSetInstanceExtensionFieldGroupEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(AttributeSetInstanceExtensionFieldGroupStateEventBase);
+            Type supportedEventType = typeof(AttributeSetInstanceExtensionFieldGroupEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<AttributeSetInstanceExtensionFieldGroupStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<AttributeSetInstanceExtensionFieldGroupEventBase>();
             criteria.Add(Restrictions.Eq("AttributeSetInstanceExtensionFieldGroupEventId.Id", idObj));
             criteria.Add(Restrictions.Le("AttributeSetInstanceExtensionFieldGroupEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("AttributeSetInstanceExtensionFieldGroupEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (AttributeSetInstanceExtensionFieldGroupStateEventBase e in es)
+            foreach (AttributeSetInstanceExtensionFieldGroupEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((AttributeSetInstanceExtensionFieldGroupStateEventBase)es.Last()).AttributeSetInstanceExtensionFieldGroupEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((AttributeSetInstanceExtensionFieldGroupEventBase)es.Last()).AttributeSetInstanceExtensionFieldGroupEventId.Version : default(long),
                 Events = es
             };
         }

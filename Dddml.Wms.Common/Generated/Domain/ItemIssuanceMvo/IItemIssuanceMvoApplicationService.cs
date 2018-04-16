@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
         long GetCount(ICriterion filter);
 
-        IItemIssuanceMvoStateEvent GetStateEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version);
+        IItemIssuanceMvoEvent GetEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version);
 
         IItemIssuanceMvoState GetHistoryState(ShipmentItemIssuanceId shipmentItemIssuanceId, long version);
 

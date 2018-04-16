@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
     public class OrganizationStructureStateEventDtoConverter
     {
-        public virtual OrganizationStructureStateCreatedOrMergePatchedOrDeletedDto ToOrganizationStructureStateEventDto(IOrganizationStructureStateEvent stateEvent)
+        public virtual OrganizationStructureStateCreatedOrMergePatchedOrDeletedDto ToOrganizationStructureStateEventDto(IOrganizationStructureEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IOrganizationStructureStateCreated)stateEvent;
                 return ToOrganizationStructureStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IOrganizationStructureStateMergePatched)stateEvent;
                 return ToOrganizationStructureStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IOrganizationStructureStateDeleted)stateEvent;
                 return ToOrganizationStructureStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual OrganizationStructureStateCreatedDto ToOrganizationStructureStateCreatedDto(IOrganizationStructureStateCreated e)

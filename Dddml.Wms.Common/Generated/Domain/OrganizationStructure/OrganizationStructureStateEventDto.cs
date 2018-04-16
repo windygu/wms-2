@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.OrganizationStructure;
 namespace Dddml.Wms.Domain.OrganizationStructure
 {
 
-	public abstract class OrganizationStructureStateEventDtoBase : IStateEventDto, IOrganizationStructureStateCreated, IOrganizationStructureStateMergePatched, IOrganizationStructureStateDeleted
+	public abstract class OrganizationStructureStateEventDtoBase : IEventDto, IOrganizationStructureStateCreated, IOrganizationStructureStateMergePatched, IOrganizationStructureStateDeleted
 	{
 
         private OrganizationStructureEventId _organizationStructureEventId;
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IOrganizationStructureStateEvent.ReadOnly
+        bool IOrganizationStructureEvent.ReadOnly
         {
             get
             {
@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 		}
 
 
-        OrganizationStructureEventId IOrganizationStructureStateEvent.OrganizationStructureEventId
+        OrganizationStructureEventId IOrganizationStructureEvent.OrganizationStructureEventId
         {
             get { return this.OrganizationStructureEventId; }
         }
@@ -127,12 +127,12 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -164,14 +164,14 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -187,14 +187,14 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -210,14 +210,14 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
             _innerStateEvents.Add((OrganizationStructureStateCreatedDto)e);
         }
 
-        public void AddOrganizationStructureEvent(IOrganizationStructureStateEvent e)
+        public void AddOrganizationStructureEvent(IOrganizationStructureEvent e)
         {
             _innerStateEvents.Add((OrganizationStructureStateCreatedOrMergePatchedOrDeletedDto)e);
         }

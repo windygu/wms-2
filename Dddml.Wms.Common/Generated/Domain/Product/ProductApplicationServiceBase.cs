@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Product
 			bool repeated = false;
 			if (((IProductStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IProductStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IProductEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -140,23 +140,23 @@ namespace Dddml.Wms.Domain.Product
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IProductStateEvent GetStateEvent(string productId, long version)
+	    public virtual IProductEvent GetEvent(string productId, long version)
         {
-            var e = (IProductStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(productId), version);
+            var e = (IProductEvent)EventStore.GetEvent(ToEventStoreAggregateId(productId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(productId, 0);
+                return GetEvent(productId, 0);
             }
             return e;
         }
 
         public virtual IProductState GetHistoryState(string productId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IProductStateEvent), ToEventStoreAggregateId(productId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IProductEvent), ToEventStoreAggregateId(productId), version - 1);
             return new ProductState(eventStream.Events);
         }
 

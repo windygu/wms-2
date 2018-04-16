@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.PhysicalInventoryLineId = ((IPhysicalInventoryLineMvoStateEvent)events.First()).PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId;
+                this.PhysicalInventoryLineId = ((IPhysicalInventoryLineMvoEvent)events.First()).PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -567,7 +567,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPhysicalInventoryLineMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPhysicalInventoryLineMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PhysicalInventoryLineMvo|");

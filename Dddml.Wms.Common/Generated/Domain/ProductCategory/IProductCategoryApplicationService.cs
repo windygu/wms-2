@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         long GetCount(ICriterion filter);
 
-        IProductCategoryStateEvent GetStateEvent(string productCategoryId, long version);
+        IProductCategoryEvent GetEvent(string productCategoryId, long version);
 
         IProductCategoryState GetHistoryState(string productCategoryId, long version);
 

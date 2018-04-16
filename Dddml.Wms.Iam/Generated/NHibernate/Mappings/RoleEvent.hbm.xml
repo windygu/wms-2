@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Iam" 
                    namespace="Dddml.Wms.Domain.Role">
   
-  <class name="RoleStateEventBase" table="RoleEvents" mutable="false" abstract="true">
+  <class name="RoleEventBase" table="RoleEvents" mutable="false" abstract="true">
 
     <composite-id name="RoleEventId" class="Dddml.Wms.Domain.Role.RoleEventId">
         <key-property name="RoleId" ><column name="RoleId" length="50" /></key-property>

@@ -283,7 +283,7 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemShipGroupAssociation|");

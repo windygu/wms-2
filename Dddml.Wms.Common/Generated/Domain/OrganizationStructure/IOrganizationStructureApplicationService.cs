@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         long GetCount(ICriterion filter);
 
-        IOrganizationStructureStateEvent GetStateEvent(OrganizationStructureId id, long version);
+        IOrganizationStructureEvent GetEvent(OrganizationStructureId id, long version);
 
         IOrganizationStructureState GetHistoryState(OrganizationStructureId id, long version);
 

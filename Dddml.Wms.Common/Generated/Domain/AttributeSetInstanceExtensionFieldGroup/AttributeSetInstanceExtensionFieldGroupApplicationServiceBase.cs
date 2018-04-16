@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 			bool repeated = false;
 			if (((IAttributeSetInstanceExtensionFieldGroupStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IAttributeSetInstanceExtensionFieldGroupStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IAttributeSetInstanceExtensionFieldGroupEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IAttributeSetInstanceExtensionFieldGroupStateEvent GetStateEvent(string id, long version)
+	    public virtual IAttributeSetInstanceExtensionFieldGroupEvent GetEvent(string id, long version)
         {
-            var e = (IAttributeSetInstanceExtensionFieldGroupStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(id), version);
+            var e = (IAttributeSetInstanceExtensionFieldGroupEvent)EventStore.GetEvent(ToEventStoreAggregateId(id), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(id, 0);
+                return GetEvent(id, 0);
             }
             return e;
         }
 
         public virtual IAttributeSetInstanceExtensionFieldGroupState GetHistoryState(string id, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IAttributeSetInstanceExtensionFieldGroupStateEvent), ToEventStoreAggregateId(id), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IAttributeSetInstanceExtensionFieldGroupEvent), ToEventStoreAggregateId(id), version - 1);
             return new AttributeSetInstanceExtensionFieldGroupState(eventStream.Events);
         }
 

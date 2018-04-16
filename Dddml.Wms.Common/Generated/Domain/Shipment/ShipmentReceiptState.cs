@@ -472,7 +472,7 @@ namespace Dddml.Wms.Domain.Shipment
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentReceiptStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentReceiptEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentReceipt|");

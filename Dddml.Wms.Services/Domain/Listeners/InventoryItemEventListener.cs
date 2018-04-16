@@ -51,11 +51,11 @@ namespace Dddml.Wms.Domain.Listeners
 
         public void EventAppended(AggregateEvent<IInventoryItemAggregate, IInventoryItemState> e)
         {
-            if (!(e.Event != null && e.Event is IInventoryItemStateEvent))
+            if (!(e.Event != null && e.Event is IInventoryItemEvent))
             {
                 return;
             }
-            IInventoryItemStateEvent inventoryItemEvent = (IInventoryItemStateEvent)e.Event;
+            IInventoryItemEvent inventoryItemEvent = (IInventoryItemEvent)e.Event;
             IEnumerable<IInventoryItemEntryStateCreated> itemEntriesCreated = null;
             if (inventoryItemEvent is IInventoryItemStateCreated)
             {

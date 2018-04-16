@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
     public class MovementConfirmationStateEventDtoConverter
     {
-        public virtual MovementConfirmationStateCreatedOrMergePatchedOrDeletedDto ToMovementConfirmationStateEventDto(IMovementConfirmationStateEvent stateEvent)
+        public virtual MovementConfirmationStateCreatedOrMergePatchedOrDeletedDto ToMovementConfirmationStateEventDto(IMovementConfirmationEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IMovementConfirmationStateCreated)stateEvent;
                 return ToMovementConfirmationStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IMovementConfirmationStateMergePatched)stateEvent;
                 return ToMovementConfirmationStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IMovementConfirmationStateDeleted)stateEvent;
                 return ToMovementConfirmationStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual MovementConfirmationStateCreatedDto ToMovementConfirmationStateCreatedDto(IMovementConfirmationStateCreated e)

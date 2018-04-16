@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new InventoryPostingRuleStateEventDtoConverter();
-            var se = _inventoryPostingRuleApplicationService.GetStateEvent(idObj, version);
+            var se = _inventoryPostingRuleApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToInventoryPostingRuleStateEventDto(se);
           } catch (Exception ex) { var response = InventoryPostingRulesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

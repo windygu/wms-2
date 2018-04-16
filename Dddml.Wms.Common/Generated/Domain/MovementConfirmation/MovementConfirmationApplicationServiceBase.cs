@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			bool repeated = false;
 			if (((IMovementConfirmationStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IMovementConfirmationStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IMovementConfirmationEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -150,23 +150,23 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IMovementConfirmationStateEvent GetStateEvent(string documentNumber, long version)
+	    public virtual IMovementConfirmationEvent GetEvent(string documentNumber, long version)
         {
-            var e = (IMovementConfirmationStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(documentNumber), version);
+            var e = (IMovementConfirmationEvent)EventStore.GetEvent(ToEventStoreAggregateId(documentNumber), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(documentNumber, 0);
+                return GetEvent(documentNumber, 0);
             }
             return e;
         }
 
         public virtual IMovementConfirmationState GetHistoryState(string documentNumber, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IMovementConfirmationStateEvent), ToEventStoreAggregateId(documentNumber), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IMovementConfirmationEvent), ToEventStoreAggregateId(documentNumber), version - 1);
             return new MovementConfirmationState(eventStream.Events);
         }
 

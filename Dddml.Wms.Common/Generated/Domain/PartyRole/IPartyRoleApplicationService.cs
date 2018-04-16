@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.PartyRole
 
         long GetCount(ICriterion filter);
 
-        IPartyRoleStateEvent GetStateEvent(PartyRoleId partyRoleId, long version);
+        IPartyRoleEvent GetEvent(PartyRoleId partyRoleId, long version);
 
         IPartyRoleState GetHistoryState(PartyRoleId partyRoleId, long version);
 

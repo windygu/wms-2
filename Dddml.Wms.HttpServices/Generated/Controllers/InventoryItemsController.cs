@@ -131,7 +131,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = InventoryItemsControllerUtils.ParseIdString(id);
             var conv = new InventoryItemStateEventDtoConverter();
-            var se = _inventoryItemApplicationService.GetStateEvent(idObj, version);
+            var se = _inventoryItemApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToInventoryItemStateEventDto(se);
           } catch (Exception ex) { var response = InventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

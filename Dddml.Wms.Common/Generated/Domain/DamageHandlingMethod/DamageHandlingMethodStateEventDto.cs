@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.DamageHandlingMethod;
 namespace Dddml.Wms.Domain.DamageHandlingMethod
 {
 
-	public abstract class DamageHandlingMethodStateEventDtoBase : IStateEventDto, IDamageHandlingMethodStateCreated, IDamageHandlingMethodStateMergePatched, IDamageHandlingMethodStateDeleted
+	public abstract class DamageHandlingMethodStateEventDtoBase : IEventDto, IDamageHandlingMethodStateCreated, IDamageHandlingMethodStateMergePatched, IDamageHandlingMethodStateDeleted
 	{
 
         private DamageHandlingMethodEventId _damageHandlingMethodEventId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IDamageHandlingMethodStateEvent.ReadOnly
+        bool IDamageHandlingMethodEvent.ReadOnly
         {
             get
             {
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 		}
 
 
-        DamageHandlingMethodEventId IDamageHandlingMethodStateEvent.DamageHandlingMethodEventId
+        DamageHandlingMethodEventId IDamageHandlingMethodEvent.DamageHandlingMethodEventId
         {
             get { return this.DamageHandlingMethodEventId; }
         }
@@ -169,12 +169,12 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -206,14 +206,14 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -229,14 +229,14 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -252,14 +252,14 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
             _innerStateEvents.Add((DamageHandlingMethodStateCreatedDto)e);
         }
 
-        public void AddDamageHandlingMethodEvent(IDamageHandlingMethodStateEvent e)
+        public void AddDamageHandlingMethodEvent(IDamageHandlingMethodEvent e)
         {
             _innerStateEvents.Add((DamageHandlingMethodStateCreatedOrMergePatchedOrDeletedDto)e);
         }

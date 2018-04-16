@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new PicklistStateEventDtoConverter();
-            var se = _picklistApplicationService.GetStateEvent(idObj, version);
+            var se = _picklistApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToPicklistStateEventDto(se);
           } catch (Exception ex) { var response = PicklistsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

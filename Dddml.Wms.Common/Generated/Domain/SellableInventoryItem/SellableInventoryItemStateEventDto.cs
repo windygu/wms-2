@@ -14,7 +14,7 @@ using Dddml.Wms.Domain.InventoryPRTriggered;
 namespace Dddml.Wms.Domain.SellableInventoryItem
 {
 
-	public abstract class SellableInventoryItemStateEventDtoBase : IStateEventDto, ISellableInventoryItemStateCreated, ISellableInventoryItemStateMergePatched
+	public abstract class SellableInventoryItemStateEventDtoBase : IEventDto, ISellableInventoryItemStateCreated, ISellableInventoryItemStateMergePatched
 	{
 
         private SellableInventoryItemEventId _sellableInventoryItemEventId;
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool ISellableInventoryItemStateEvent.ReadOnly
+        bool ISellableInventoryItemEvent.ReadOnly
         {
             get
             {
@@ -162,12 +162,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             return NewSellableInventoryItemEntryStateCreated(entrySeqId);
         }
 
-        IEnumerable<ISellableInventoryItemEntryStateEvent> ISellableInventoryItemStateMergePatched.SellableInventoryItemEntryEvents
+        IEnumerable<ISellableInventoryItemEntryEvent> ISellableInventoryItemStateMergePatched.SellableInventoryItemEntryEvents
         {
             get { return this._sellableInventoryItemEntryEvents; }
         }
 
-        void ISellableInventoryItemStateMergePatched.AddSellableInventoryItemEntryEvent(ISellableInventoryItemEntryStateEvent e)
+        void ISellableInventoryItemStateMergePatched.AddSellableInventoryItemEntryEvent(ISellableInventoryItemEntryEvent e)
         {
             this._sellableInventoryItemEntryEvents.AddSellableInventoryItemEntryEvent(e);
         }
@@ -178,7 +178,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         }
 
 
-        SellableInventoryItemEventId ISellableInventoryItemStateEvent.SellableInventoryItemEventId
+        SellableInventoryItemEventId ISellableInventoryItemEvent.SellableInventoryItemEventId
         {
             get { return this.SellableInventoryItemEventId; }
         }
@@ -194,12 +194,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -231,14 +231,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -254,14 +254,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -277,14 +277,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -332,7 +332,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             _innerStateEvents.Add((SellableInventoryItemStateCreatedDto)e);
         }
 
-        public void AddSellableInventoryItemEvent(ISellableInventoryItemStateEvent e)
+        public void AddSellableInventoryItemEvent(ISellableInventoryItemEvent e)
         {
             _innerStateEvents.Add((SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto)e);
         }

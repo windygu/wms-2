@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.AttributeValueMvo.NHibernate
 			return new AttributeValueMvoEventId((AttributeValueId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(AttributeValueMvoStateEventBase);
+			return typeof(AttributeValueMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(AttributeValueMvoStateEventBase);
+            Type supportedEventType = typeof(AttributeValueMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             AttributeValueId idObj = (AttributeValueId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<AttributeValueMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<AttributeValueMvoEventBase>();
             criteria.Add(Restrictions.Eq("AttributeValueMvoEventId.AttributeValueIdAttributeId", idObj.AttributeId));
             criteria.Add(Restrictions.Eq("AttributeValueMvoEventId.AttributeValueIdValue", idObj.Value));
             criteria.Add(Restrictions.Le("AttributeValueMvoEventId.AttributeVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("AttributeValueMvoEventId.AttributeVersion"));
             var es = criteria.List<IEvent>();
-            foreach (AttributeValueMvoStateEventBase e in es)
+            foreach (AttributeValueMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((AttributeValueMvoStateEventBase)es.Last()).AttributeValueMvoEventId.AttributeVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((AttributeValueMvoEventBase)es.Last()).AttributeValueMvoEventId.AttributeVersion : default(long),
                 Events = es
             };
         }

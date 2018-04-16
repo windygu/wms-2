@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
     public class UserClaimMvoStateEventDtoConverter
     {
-        public virtual UserClaimMvoStateCreatedOrMergePatchedOrDeletedDto ToUserClaimMvoStateEventDto(IUserClaimMvoStateEvent stateEvent)
+        public virtual UserClaimMvoStateCreatedOrMergePatchedOrDeletedDto ToUserClaimMvoStateEventDto(IUserClaimMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IUserClaimMvoStateCreated)stateEvent;
                 return ToUserClaimMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IUserClaimMvoStateMergePatched)stateEvent;
                 return ToUserClaimMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IUserClaimMvoStateDeleted)stateEvent;
                 return ToUserClaimMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual UserClaimMvoStateCreatedDto ToUserClaimMvoStateCreatedDto(IUserClaimMvoStateCreated e)

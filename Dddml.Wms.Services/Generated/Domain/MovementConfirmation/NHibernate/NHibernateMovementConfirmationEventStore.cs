@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
 			return new MovementConfirmationEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(MovementConfirmationStateEventBase);
+			return typeof(MovementConfirmationEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(MovementConfirmationStateEventBase);
+            Type supportedEventType = typeof(MovementConfirmationEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<MovementConfirmationStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<MovementConfirmationEventBase>();
             criteria.Add(Restrictions.Eq("MovementConfirmationEventId.DocumentNumber", idObj));
             criteria.Add(Restrictions.Le("MovementConfirmationEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("MovementConfirmationEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (MovementConfirmationStateEventBase e in es)
+            foreach (MovementConfirmationEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((MovementConfirmationStateEventBase)es.Last()).MovementConfirmationEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((MovementConfirmationEventBase)es.Last()).MovementConfirmationEventId.Version : default(long),
                 Events = es
             };
         }

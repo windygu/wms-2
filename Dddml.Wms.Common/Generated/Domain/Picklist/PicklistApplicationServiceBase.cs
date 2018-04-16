@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.Picklist
 			bool repeated = false;
 			if (((IPicklistStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPicklistStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPicklistEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.Picklist
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPicklistStateEvent GetStateEvent(string picklistId, long version)
+	    public virtual IPicklistEvent GetEvent(string picklistId, long version)
         {
-            var e = (IPicklistStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(picklistId), version);
+            var e = (IPicklistEvent)EventStore.GetEvent(ToEventStoreAggregateId(picklistId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(picklistId, 0);
+                return GetEvent(picklistId, 0);
             }
             return e;
         }
 
         public virtual IPicklistState GetHistoryState(string picklistId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPicklistStateEvent), ToEventStoreAggregateId(picklistId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPicklistEvent), ToEventStoreAggregateId(picklistId), version - 1);
             return new PicklistState(eventStream.Events);
         }
 

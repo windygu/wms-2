@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
         long GetCount(ICriterion filter);
 
-        IPicklistRoleMvoStateEvent GetStateEvent(PicklistRoleId picklistRoleId, long version);
+        IPicklistRoleMvoEvent GetEvent(PicklistRoleId picklistRoleId, long version);
 
         IPicklistRoleMvoState GetHistoryState(PicklistRoleId picklistRoleId, long version);
 

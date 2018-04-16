@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                ISellableInventoryItemEntryStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                ISellableInventoryItemEntryEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddSellableInventoryItemEntryEvent(innerEvent);
                 // ////////////////
                 if (!(innerEvent is ISellableInventoryItemEntryStateCreated)) { continue; }
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual ISellableInventoryItemEntryStateEvent Map(ISellableInventoryItemEntryCommand c, ISellableInventoryItemCommand outerCommand, long version, ISellableInventoryItemState outerState)
+        protected virtual ISellableInventoryItemEntryEvent Map(ISellableInventoryItemEntryCommand c, ISellableInventoryItemCommand outerCommand, long version, ISellableInventoryItemState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateSellableInventoryItemEntry) : null;
             if(create != null)

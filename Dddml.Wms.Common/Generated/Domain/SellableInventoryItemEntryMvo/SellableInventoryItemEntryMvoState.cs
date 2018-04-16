@@ -131,7 +131,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.SellableInventoryItemEntryId = ((ISellableInventoryItemEntryMvoStateEvent)events.First()).SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryId;
+                this.SellableInventoryItemEntryId = ((ISellableInventoryItemEntryMvoEvent)events.First()).SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -291,7 +291,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ISellableInventoryItemEntryMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(ISellableInventoryItemEntryMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("SellableInventoryItemEntryMvo|");

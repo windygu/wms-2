@@ -16,7 +16,7 @@ public class ShipmentItemStateEventDtoConverter {
             return toShipmentItemStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public ShipmentItemStateEventDto.ShipmentItemStateCreatedDto toShipmentItemStateCreatedDto(ShipmentItemEvent.ShipmentItemStateCreated e) {

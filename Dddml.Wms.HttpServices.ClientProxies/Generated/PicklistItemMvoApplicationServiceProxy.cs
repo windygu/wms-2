@@ -253,7 +253,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IPicklistItemMvoStateEvent> GetStateEventAsync(PicklistBinPicklistItemId picklistBinPicklistItemId, long version)
+        public async Task<IPicklistItemMvoEvent> GetStateEventAsync(PicklistBinPicklistItemId picklistBinPicklistItemId, long version)
         {
             var idObj = PicklistItemMvoProxyUtils.ToIdString(picklistBinPicklistItemId);
             var uriParameters = new PicklistItemMvoStateEventUriParameters();
@@ -266,7 +266,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPicklistItemMvoStateEvent GetStateEvent(PicklistBinPicklistItemId picklistBinPicklistItemId, long version)
+        public IPicklistItemMvoEvent GetEvent(PicklistBinPicklistItemId picklistBinPicklistItemId, long version)
         {
             return GetStateEventAsync(picklistBinPicklistItemId, version).GetAwaiter().GetResult();
         }

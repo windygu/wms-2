@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.ContactMech
 
         long GetCount(ICriterion filter);
 
-        IContactMechStateEvent GetStateEvent(string contactMechId, long version);
+        IContactMechEvent GetEvent(string contactMechId, long version);
 
         IContactMechState GetHistoryState(string contactMechId, long version);
 

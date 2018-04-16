@@ -63,18 +63,18 @@ namespace Dddml.Wms.Domain.AttributeSetInstance.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEvent FindLastEvent(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
+        public virtual IEvent GetEvent(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
             Type supportedEventType = typeof(AttributeSetInstanceStateCreated);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
-            return GetStateEvent(eventStoreAggregateId, version);
+            return GetEvent(eventStoreAggregateId, version);
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEvent GetStateEvent(IEventStoreAggregateId eventStoreAggregateId, long version)
+        public virtual IEvent GetEvent(IEventStoreAggregateId eventStoreAggregateId, long version)
         {
             object idObj = ((EventStoreAggregateId)eventStoreAggregateId).Id;
             AttributeSetInstanceState state = CurrentSession.Get<AttributeSetInstanceState>(idObj);
@@ -89,7 +89,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance.NHibernate
             {
                 throw new NotSupportedException();
             }
-            IEvent e = GetStateEvent(eventStoreAggregateId, version);
+            IEvent e = GetEvent(eventStoreAggregateId, version);
             return new EventStream()
             {
                 Events = e != null ? (new IEvent[]{ e }).ToList() : new List<IEvent>()

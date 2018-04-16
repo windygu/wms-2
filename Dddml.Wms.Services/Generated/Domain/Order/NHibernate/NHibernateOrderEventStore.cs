@@ -25,32 +25,32 @@ namespace Dddml.Wms.Domain.Order.NHibernate
 			return new OrderEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(OrderStateEventBase);
+			return typeof(OrderEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(OrderStateEventBase);
+            Type supportedEventType = typeof(OrderEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<OrderStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<OrderEventBase>();
             criteria.Add(Restrictions.Eq("OrderEventId.OrderId", idObj));
             criteria.Add(Restrictions.Le("OrderEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrderEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (OrderStateEventBase e in es)
+            foreach (OrderEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrderStateEventBase)es.Last()).OrderEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((OrderEventBase)es.Last()).OrderEventId.Version : default(long),
                 Events = es
             };
         }

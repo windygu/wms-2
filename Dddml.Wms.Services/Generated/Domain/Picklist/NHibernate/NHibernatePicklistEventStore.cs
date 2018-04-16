@@ -25,32 +25,32 @@ namespace Dddml.Wms.Domain.Picklist.NHibernate
 			return new PicklistEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PicklistStateEventBase);
+			return typeof(PicklistEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PicklistStateEventBase);
+            Type supportedEventType = typeof(PicklistEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PicklistStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PicklistEventBase>();
             criteria.Add(Restrictions.Eq("PicklistEventId.PicklistId", idObj));
             criteria.Add(Restrictions.Le("PicklistEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PicklistEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (PicklistStateEventBase e in es)
+            foreach (PicklistEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PicklistStateEventBase)es.Last()).PicklistEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((PicklistEventBase)es.Last()).PicklistEventId.Version : default(long),
                 Events = es
             };
         }

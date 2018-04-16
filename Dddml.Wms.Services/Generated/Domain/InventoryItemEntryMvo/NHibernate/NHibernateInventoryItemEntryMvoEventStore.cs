@@ -25,21 +25,21 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo.NHibernate
 			return new InventoryItemEntryMvoEventId((InventoryItemEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(InventoryItemEntryMvoStateEventBase);
+			return typeof(InventoryItemEntryMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(InventoryItemEntryMvoStateEventBase);
+            Type supportedEventType = typeof(InventoryItemEntryMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             InventoryItemEntryId idObj = (InventoryItemEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<InventoryItemEntryMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<InventoryItemEntryMvoEventBase>();
             criteria.Add(Restrictions.Eq("InventoryItemEntryMvoEventId.InventoryItemEntryIdInventoryItemIdProductId", idObj.InventoryItemId.ProductId));
             criteria.Add(Restrictions.Eq("InventoryItemEntryMvoEventId.InventoryItemEntryIdInventoryItemIdLocatorId", idObj.InventoryItemId.LocatorId));
             criteria.Add(Restrictions.Eq("InventoryItemEntryMvoEventId.InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemId.AttributeSetInstanceId));
@@ -47,13 +47,13 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo.NHibernate
             criteria.Add(Restrictions.Le("InventoryItemEntryMvoEventId.InventoryItemVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryItemEntryMvoEventId.InventoryItemVersion"));
             var es = criteria.List<IEvent>();
-            foreach (InventoryItemEntryMvoStateEventBase e in es)
+            foreach (InventoryItemEntryMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InventoryItemEntryMvoStateEventBase)es.Last()).InventoryItemEntryMvoEventId.InventoryItemVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((InventoryItemEntryMvoEventBase)es.Last()).InventoryItemEntryMvoEventId.InventoryItemVersion : default(long),
                 Events = es
             };
         }

@@ -25,34 +25,34 @@ namespace Dddml.Wms.Domain.UserLoginMvo.NHibernate
 			return new UserLoginMvoEventId((UserLoginId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(UserLoginMvoStateEventBase);
+			return typeof(UserLoginMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(UserLoginMvoStateEventBase);
+            Type supportedEventType = typeof(UserLoginMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             UserLoginId idObj = (UserLoginId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<UserLoginMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<UserLoginMvoEventBase>();
             criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdUserId", idObj.UserId));
             criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdLoginKeyLoginProvider", idObj.LoginKey.LoginProvider));
             criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdLoginKeyProviderKey", idObj.LoginKey.ProviderKey));
             criteria.Add(Restrictions.Le("UserLoginMvoEventId.UserVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UserLoginMvoEventId.UserVersion"));
             var es = criteria.List<IEvent>();
-            foreach (UserLoginMvoStateEventBase e in es)
+            foreach (UserLoginMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((UserLoginMvoStateEventBase)es.Last()).UserLoginMvoEventId.UserVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((UserLoginMvoEventBase)es.Last()).UserLoginMvoEventId.UserVersion : default(long),
                 Events = es
             };
         }

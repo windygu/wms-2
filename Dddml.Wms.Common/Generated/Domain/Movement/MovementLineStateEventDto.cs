@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Movement;
 namespace Dddml.Wms.Domain.Movement
 {
 
-	public abstract class MovementLineStateEventDtoBase : IStateEventDto, IMovementLineStateCreated, IMovementLineStateMergePatched, IMovementLineStateRemoved
+	public abstract class MovementLineStateEventDtoBase : IEventDto, IMovementLineStateCreated, IMovementLineStateMergePatched, IMovementLineStateRemoved
 	{
 
         private MovementLineEventId _movementLineEventId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.Movement
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IMovementLineStateEvent.ReadOnly
+        bool IMovementLineEvent.ReadOnly
         {
             get
             {
@@ -254,7 +254,7 @@ namespace Dddml.Wms.Domain.Movement
 		}
 
 
-        MovementLineEventId IMovementLineStateEvent.MovementLineEventId
+        MovementLineEventId IMovementLineEvent.MovementLineEventId
         {
             get { return this.MovementLineEventId; }
         }
@@ -270,12 +270,12 @@ namespace Dddml.Wms.Domain.Movement
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -290,7 +290,7 @@ namespace Dddml.Wms.Domain.Movement
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -307,14 +307,14 @@ namespace Dddml.Wms.Domain.Movement
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -330,14 +330,14 @@ namespace Dddml.Wms.Domain.Movement
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -353,14 +353,14 @@ namespace Dddml.Wms.Domain.Movement
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Removed;
         }
@@ -412,7 +412,7 @@ namespace Dddml.Wms.Domain.Movement
             _innerStateEvents.Add((MovementLineStateCreatedDto)e);
         }
 
-        public void AddMovementLineEvent(IMovementLineStateEvent e)
+        public void AddMovementLineEvent(IMovementLineEvent e)
         {
             _innerStateEvents.Add((MovementLineStateCreatedOrMergePatchedOrRemovedDto)e);
         }

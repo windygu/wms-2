@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 
         long GetCount(ICriterion filter);
 
-        IOrderRoleMvoStateEvent GetStateEvent(OrderRoleId orderRoleId, long version);
+        IOrderRoleMvoEvent GetEvent(OrderRoleId orderRoleId, long version);
 
         IOrderRoleMvoState GetHistoryState(OrderRoleId orderRoleId, long version);
 

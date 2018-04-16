@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Pickwave;
 namespace Dddml.Wms.Domain.Pickwave
 {
 
-	public abstract class PickwaveStateEventDtoBase : IStateEventDto, IPickwaveStateCreated, IPickwaveStateMergePatched, IPickwaveStateDeleted
+	public abstract class PickwaveStateEventDtoBase : IEventDto, IPickwaveStateCreated, IPickwaveStateMergePatched, IPickwaveStateDeleted
 	{
 
         private PickwaveEventId _pickwaveEventId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.Pickwave
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IPickwaveStateEvent.ReadOnly
+        bool IPickwaveEvent.ReadOnly
         {
             get
             {
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.Pickwave
 		}
 
 
-        PickwaveEventId IPickwaveStateEvent.PickwaveEventId
+        PickwaveEventId IPickwaveEvent.PickwaveEventId
         {
             get { return this.PickwaveEventId; }
         }
@@ -169,12 +169,12 @@ namespace Dddml.Wms.Domain.Pickwave
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.Pickwave
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -206,14 +206,14 @@ namespace Dddml.Wms.Domain.Pickwave
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -229,14 +229,14 @@ namespace Dddml.Wms.Domain.Pickwave
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -252,14 +252,14 @@ namespace Dddml.Wms.Domain.Pickwave
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.Pickwave
             _innerStateEvents.Add((PickwaveStateCreatedDto)e);
         }
 
-        public void AddPickwaveEvent(IPickwaveStateEvent e)
+        public void AddPickwaveEvent(IPickwaveEvent e)
         {
             _innerStateEvents.Add((PickwaveStateCreatedOrMergePatchedOrDeletedDto)e);
         }

@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.ProductCategory
         {
             if (events != null && events.Count() > 0)
             {
-                this.ProductCategoryId = ((IProductCategoryStateEvent)events.First()).ProductCategoryEventId.ProductCategoryId;
+                this.ProductCategoryId = ((IProductCategoryEvent)events.First()).ProductCategoryEventId.ProductCategoryId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -337,7 +337,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IProductCategoryStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IProductCategoryEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ProductCategory|");

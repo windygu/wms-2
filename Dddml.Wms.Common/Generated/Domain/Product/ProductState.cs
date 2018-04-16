@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain.Product
         {
             if (events != null && events.Count() > 0)
             {
-                this.ProductId = ((IProductStateEvent)events.First()).ProductEventId.ProductId;
+                this.ProductId = ((IProductEvent)events.First()).ProductEventId.ProductId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -1040,7 +1040,7 @@ namespace Dddml.Wms.Domain.Product
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IProductStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IProductEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Product|");

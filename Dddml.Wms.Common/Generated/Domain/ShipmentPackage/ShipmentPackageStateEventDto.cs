@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.ShipmentPackage;
 namespace Dddml.Wms.Domain.ShipmentPackage
 {
 
-	public abstract class ShipmentPackageStateEventDtoBase : IStateEventDto, IShipmentPackageStateCreated, IShipmentPackageStateMergePatched, IShipmentPackageStateDeleted
+	public abstract class ShipmentPackageStateEventDtoBase : IEventDto, IShipmentPackageStateCreated, IShipmentPackageStateMergePatched, IShipmentPackageStateDeleted
 	{
 
         private ShipmentPackageEventId _shipmentPackageEventId;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IShipmentPackageStateEvent.ReadOnly
+        bool IShipmentPackageEvent.ReadOnly
         {
             get
             {
@@ -365,12 +365,12 @@ namespace Dddml.Wms.Domain.ShipmentPackage
             return NewShipmentPackageContentStateCreated(shipmentItemSeqId);
         }
 
-        IEnumerable<IShipmentPackageContentStateEvent> IShipmentPackageStateMergePatched.ShipmentPackageContentEvents
+        IEnumerable<IShipmentPackageContentEvent> IShipmentPackageStateMergePatched.ShipmentPackageContentEvents
         {
             get { return this._shipmentPackageContentEvents; }
         }
 
-        void IShipmentPackageStateMergePatched.AddShipmentPackageContentEvent(IShipmentPackageContentStateEvent e)
+        void IShipmentPackageStateMergePatched.AddShipmentPackageContentEvent(IShipmentPackageContentEvent e)
         {
             this._shipmentPackageContentEvents.AddShipmentPackageContentEvent(e);
         }
@@ -408,7 +408,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
 
 
-        ShipmentPackageEventId IShipmentPackageStateEvent.ShipmentPackageEventId
+        ShipmentPackageEventId IShipmentPackageEvent.ShipmentPackageEventId
         {
             get { return this.ShipmentPackageEventId; }
         }
@@ -424,12 +424,12 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -444,7 +444,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -461,14 +461,14 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -484,14 +484,14 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -507,14 +507,14 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -566,7 +566,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
             _innerStateEvents.Add((ShipmentPackageStateCreatedDto)e);
         }
 
-        public void AddShipmentPackageEvent(IShipmentPackageStateEvent e)
+        public void AddShipmentPackageEvent(IShipmentPackageEvent e)
         {
             _innerStateEvents.Add((ShipmentPackageStateCreatedOrMergePatchedOrDeletedDto)e);
         }

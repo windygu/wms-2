@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
     public class UserPermissionMvoStateEventDtoConverter
     {
-        public virtual UserPermissionMvoStateCreatedOrMergePatchedOrDeletedDto ToUserPermissionMvoStateEventDto(IUserPermissionMvoStateEvent stateEvent)
+        public virtual UserPermissionMvoStateCreatedOrMergePatchedOrDeletedDto ToUserPermissionMvoStateEventDto(IUserPermissionMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IUserPermissionMvoStateCreated)stateEvent;
                 return ToUserPermissionMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IUserPermissionMvoStateMergePatched)stateEvent;
                 return ToUserPermissionMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IUserPermissionMvoStateDeleted)stateEvent;
                 return ToUserPermissionMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual UserPermissionMvoStateCreatedDto ToUserPermissionMvoStateCreatedDto(IUserPermissionMvoStateCreated e)

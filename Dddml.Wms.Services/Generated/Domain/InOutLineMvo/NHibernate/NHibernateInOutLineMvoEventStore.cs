@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.InOutLineMvo.NHibernate
 			return new InOutLineMvoEventId((InOutLineId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(InOutLineMvoStateEventBase);
+			return typeof(InOutLineMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(InOutLineMvoStateEventBase);
+            Type supportedEventType = typeof(InOutLineMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             InOutLineId idObj = (InOutLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<InOutLineMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<InOutLineMvoEventBase>();
             criteria.Add(Restrictions.Eq("InOutLineMvoEventId.InOutLineIdInOutDocumentNumber", idObj.InOutDocumentNumber));
             criteria.Add(Restrictions.Eq("InOutLineMvoEventId.InOutLineIdLineNumber", idObj.LineNumber));
             criteria.Add(Restrictions.Le("InOutLineMvoEventId.InOutVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InOutLineMvoEventId.InOutVersion"));
             var es = criteria.List<IEvent>();
-            foreach (InOutLineMvoStateEventBase e in es)
+            foreach (InOutLineMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InOutLineMvoStateEventBase)es.Last()).InOutLineMvoEventId.InOutVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((InOutLineMvoEventBase)es.Last()).InOutLineMvoEventId.InOutVersion : default(long),
                 Events = es
             };
         }

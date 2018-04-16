@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.Order
 
     public class OrderItemShipGroupAssociationStateEventDtoConverter
     {
-        public virtual OrderItemShipGroupAssociationStateCreatedOrMergePatchedOrRemovedDto ToOrderItemShipGroupAssociationStateEventDto(IOrderItemShipGroupAssociationStateEvent stateEvent)
+        public virtual OrderItemShipGroupAssociationStateCreatedOrMergePatchedOrRemovedDto ToOrderItemShipGroupAssociationStateEventDto(IOrderItemShipGroupAssociationEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IOrderItemShipGroupAssociationStateCreated)stateEvent;
                 return ToOrderItemShipGroupAssociationStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IOrderItemShipGroupAssociationStateMergePatched)stateEvent;
                 return ToOrderItemShipGroupAssociationStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Removed)
+            else if (stateEvent.EventType == StateEventType.Removed)
             {
                 var e = (IOrderItemShipGroupAssociationStateRemoved)stateEvent;
                 return ToOrderItemShipGroupAssociationStateRemovedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual OrderItemShipGroupAssociationStateCreatedDto ToOrderItemShipGroupAssociationStateCreatedDto(IOrderItemShipGroupAssociationStateCreated e)

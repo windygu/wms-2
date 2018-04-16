@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.UomConversion">
   
-  <class name="UomConversionStateEventBase" table="UomConversionEvents" mutable="false" abstract="true">
+  <class name="UomConversionEventBase" table="UomConversionEvents" mutable="false" abstract="true">
 
     <composite-id name="UomConversionEventId" class="Dddml.Wms.Domain.UomConversion.UomConversionEventId">
         <key-property name="UomConversionIdUomId" ><column name="UomConversionIdUomId" sql-type="VARCHAR(20)" /></key-property>

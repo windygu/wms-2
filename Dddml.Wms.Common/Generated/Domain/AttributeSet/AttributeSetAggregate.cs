@@ -165,7 +165,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IAttributeUseStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IAttributeUseEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddAttributeUseEvent(innerEvent);
             }
 
@@ -211,7 +211,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IAttributeUseStateEvent Map(IAttributeUseCommand c, IAttributeSetCommand outerCommand, long version, IAttributeSetState outerState)
+        protected virtual IAttributeUseEvent Map(IAttributeUseCommand c, IAttributeSetCommand outerCommand, long version, IAttributeSetState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateAttributeUse) : null;
             if(create != null)

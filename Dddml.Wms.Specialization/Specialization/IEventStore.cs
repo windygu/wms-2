@@ -9,9 +9,9 @@ namespace Dddml.Wms.Specialization
 
         void AppendEvents(IEventStoreAggregateId eventStoreAggregateId, long version, ICollection<IEvent> events, Action afterEventsAppended);
 
-        IEvent FindLastEvent(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version);
+        IEvent GetEvent(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version);
 
-        IEvent GetStateEvent(IEventStoreAggregateId eventStoreAggregateId, long version);
+        IEvent GetEvent(IEventStoreAggregateId eventStoreAggregateId, long version);
 
         EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version);
 

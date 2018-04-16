@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
     public class DamageHandlingMethodStateEventDtoConverter
     {
-        public virtual DamageHandlingMethodStateCreatedOrMergePatchedOrDeletedDto ToDamageHandlingMethodStateEventDto(IDamageHandlingMethodStateEvent stateEvent)
+        public virtual DamageHandlingMethodStateCreatedOrMergePatchedOrDeletedDto ToDamageHandlingMethodStateEventDto(IDamageHandlingMethodEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IDamageHandlingMethodStateCreated)stateEvent;
                 return ToDamageHandlingMethodStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IDamageHandlingMethodStateMergePatched)stateEvent;
                 return ToDamageHandlingMethodStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IDamageHandlingMethodStateDeleted)stateEvent;
                 return ToDamageHandlingMethodStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual DamageHandlingMethodStateCreatedDto ToDamageHandlingMethodStateCreatedDto(IDamageHandlingMethodStateCreated e)

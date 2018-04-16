@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.Order
 
     public class OrderRoleStateEventDtoConverter
     {
-        public virtual OrderRoleStateCreatedOrMergePatchedOrRemovedDto ToOrderRoleStateEventDto(IOrderRoleStateEvent stateEvent)
+        public virtual OrderRoleStateCreatedOrMergePatchedOrRemovedDto ToOrderRoleStateEventDto(IOrderRoleEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IOrderRoleStateCreated)stateEvent;
                 return ToOrderRoleStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IOrderRoleStateMergePatched)stateEvent;
                 return ToOrderRoleStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Removed)
+            else if (stateEvent.EventType == StateEventType.Removed)
             {
                 var e = (IOrderRoleStateRemoved)stateEvent;
                 return ToOrderRoleStateRemovedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual OrderRoleStateCreatedDto ToOrderRoleStateCreatedDto(IOrderRoleStateCreated e)

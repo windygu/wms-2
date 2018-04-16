@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.PicklistBin;
 namespace Dddml.Wms.Domain.PicklistBin
 {
 
-	public abstract class PicklistBinStateEventDtoBase : IStateEventDto, IPicklistBinStateCreated, IPicklistBinStateMergePatched, IPicklistBinStateDeleted
+	public abstract class PicklistBinStateEventDtoBase : IEventDto, IPicklistBinStateCreated, IPicklistBinStateMergePatched, IPicklistBinStateDeleted
 	{
 
         private PicklistBinEventId _picklistBinEventId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IPicklistBinStateEvent.ReadOnly
+        bool IPicklistBinEvent.ReadOnly
         {
             get
             {
@@ -260,12 +260,12 @@ namespace Dddml.Wms.Domain.PicklistBin
             return NewPicklistItemStateCreated(picklistItemOrderShipGrpInvId);
         }
 
-        IEnumerable<IPicklistItemStateEvent> IPicklistBinStateMergePatched.PicklistItemEvents
+        IEnumerable<IPicklistItemEvent> IPicklistBinStateMergePatched.PicklistItemEvents
         {
             get { return this._picklistItemEvents; }
         }
 
-        void IPicklistBinStateMergePatched.AddPicklistItemEvent(IPicklistItemStateEvent e)
+        void IPicklistBinStateMergePatched.AddPicklistItemEvent(IPicklistItemEvent e)
         {
             this._picklistItemEvents.AddPicklistItemEvent(e);
         }
@@ -303,7 +303,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 
 
-        PicklistBinEventId IPicklistBinStateEvent.PicklistBinEventId
+        PicklistBinEventId IPicklistBinEvent.PicklistBinEventId
         {
             get { return this.PicklistBinEventId; }
         }
@@ -319,12 +319,12 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -339,7 +339,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -356,14 +356,14 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -379,14 +379,14 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -402,14 +402,14 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -461,7 +461,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             _innerStateEvents.Add((PicklistBinStateCreatedDto)e);
         }
 
-        public void AddPicklistBinEvent(IPicklistBinStateEvent e)
+        public void AddPicklistBinEvent(IPicklistBinEvent e)
         {
             _innerStateEvents.Add((PicklistBinStateCreatedOrMergePatchedOrDeletedDto)e);
         }

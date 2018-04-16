@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.MovementConfirmation">
   
-  <class name="MovementConfirmationLineStateEventBase" table="MovementConfirmationLineEvents" mutable="false" abstract="true">
+  <class name="MovementConfirmationLineEventBase" table="MovementConfirmationLineEvents" mutable="false" abstract="true">
 
     <composite-id name="MovementConfirmationLineEventId" class="Dddml.Wms.Domain.MovementConfirmation.MovementConfirmationLineEventId">
         <key-property name="MovementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>

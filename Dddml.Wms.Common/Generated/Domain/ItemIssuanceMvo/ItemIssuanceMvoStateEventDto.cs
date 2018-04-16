@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.Shipment;
 namespace Dddml.Wms.Domain.ItemIssuanceMvo
 {
 
-	public abstract class ItemIssuanceMvoStateEventDtoBase : IStateEventDto, IItemIssuanceMvoStateCreated, IItemIssuanceMvoStateMergePatched, IItemIssuanceMvoStateDeleted
+	public abstract class ItemIssuanceMvoStateEventDtoBase : IEventDto, IItemIssuanceMvoStateCreated, IItemIssuanceMvoStateMergePatched, IItemIssuanceMvoStateDeleted
 	{
 
         private ItemIssuanceMvoEventId _itemIssuanceMvoEventId;
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IItemIssuanceMvoStateEvent.ReadOnly
+        bool IItemIssuanceMvoEvent.ReadOnly
         {
             get
             {
@@ -1036,7 +1036,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 		}
 
 
-        ItemIssuanceMvoEventId IItemIssuanceMvoStateEvent.ItemIssuanceMvoEventId
+        ItemIssuanceMvoEventId IItemIssuanceMvoEvent.ItemIssuanceMvoEventId
         {
             get { return this.ItemIssuanceMvoEventId; }
         }
@@ -1052,12 +1052,12 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -1072,7 +1072,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -1089,14 +1089,14 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -1112,14 +1112,14 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -1135,14 +1135,14 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -1194,7 +1194,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
             _innerStateEvents.Add((ItemIssuanceMvoStateCreatedDto)e);
         }
 
-        public void AddItemIssuanceMvoEvent(IItemIssuanceMvoStateEvent e)
+        public void AddItemIssuanceMvoEvent(IItemIssuanceMvoEvent e)
         {
             _innerStateEvents.Add((ItemIssuanceMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         long GetCount(ICriterion filter);
 
-        IShipmentStateEvent GetStateEvent(string shipmentId, long version);
+        IShipmentEvent GetEvent(string shipmentId, long version);
 
         IShipmentState GetHistoryState(string shipmentId, long version);
 

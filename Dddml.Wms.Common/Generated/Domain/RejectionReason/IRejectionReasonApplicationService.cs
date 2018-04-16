@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         long GetCount(ICriterion filter);
 
-        IRejectionReasonStateEvent GetStateEvent(string rejectionReasonId, long version);
+        IRejectionReasonEvent GetEvent(string rejectionReasonId, long version);
 
         IRejectionReasonState GetHistoryState(string rejectionReasonId, long version);
 

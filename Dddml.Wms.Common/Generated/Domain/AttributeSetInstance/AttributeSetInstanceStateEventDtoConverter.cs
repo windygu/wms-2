@@ -15,14 +15,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
     public class AttributeSetInstanceStateEventDtoConverter
     {
-        public virtual AttributeSetInstanceStateCreatedOrMergePatchedOrDeletedDto ToAttributeSetInstanceStateEventDto(IAttributeSetInstanceStateEvent stateEvent)
+        public virtual AttributeSetInstanceStateCreatedOrMergePatchedOrDeletedDto ToAttributeSetInstanceStateEventDto(IAttributeSetInstanceEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IAttributeSetInstanceStateCreated)stateEvent;
                 return ToAttributeSetInstanceStateCreatedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual AttributeSetInstanceStateCreatedDto ToAttributeSetInstanceStateCreatedDto(IAttributeSetInstanceStateCreated e)

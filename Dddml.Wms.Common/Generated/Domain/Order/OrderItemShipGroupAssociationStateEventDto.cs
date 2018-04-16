@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.PartyRole;
 namespace Dddml.Wms.Domain.Order
 {
 
-	public abstract class OrderItemShipGroupAssociationStateEventDtoBase : IStateEventDto, IOrderItemShipGroupAssociationStateCreated, IOrderItemShipGroupAssociationStateMergePatched, IOrderItemShipGroupAssociationStateRemoved
+	public abstract class OrderItemShipGroupAssociationStateEventDtoBase : IEventDto, IOrderItemShipGroupAssociationStateCreated, IOrderItemShipGroupAssociationStateMergePatched, IOrderItemShipGroupAssociationStateRemoved
 	{
 
         private OrderItemShipGroupAssociationEventId _orderItemShipGroupAssociationEventId;
@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.Order
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IOrderItemShipGroupAssociationStateEvent.ReadOnly
+        bool IOrderItemShipGroupAssociationEvent.ReadOnly
         {
             get
             {
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
-        OrderItemShipGroupAssociationEventId IOrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationEventId
+        OrderItemShipGroupAssociationEventId IOrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationEventId
         {
             get { return this.OrderItemShipGroupAssociationEventId; }
         }
@@ -166,12 +166,12 @@ namespace Dddml.Wms.Domain.Order
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.Order
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -203,14 +203,14 @@ namespace Dddml.Wms.Domain.Order
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -226,14 +226,14 @@ namespace Dddml.Wms.Domain.Order
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -249,14 +249,14 @@ namespace Dddml.Wms.Domain.Order
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Removed;
         }
@@ -308,7 +308,7 @@ namespace Dddml.Wms.Domain.Order
             _innerStateEvents.Add((OrderItemShipGroupAssociationStateCreatedDto)e);
         }
 
-        public void AddOrderItemShipGroupAssociationEvent(IOrderItemShipGroupAssociationStateEvent e)
+        public void AddOrderItemShipGroupAssociationEvent(IOrderItemShipGroupAssociationEvent e)
         {
             _innerStateEvents.Add((OrderItemShipGroupAssociationStateCreatedOrMergePatchedOrRemovedDto)e);
         }

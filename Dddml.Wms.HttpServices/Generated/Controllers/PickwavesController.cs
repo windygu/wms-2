@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new PickwaveStateEventDtoConverter();
-            var se = _pickwaveApplicationService.GetStateEvent(idObj, version);
+            var se = _pickwaveApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToPickwaveStateEventDto(se);
           } catch (Exception ex) { var response = PickwavesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryItemRequirementEntryStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryItemRequirementEntryEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryItemRequirementEntry|");

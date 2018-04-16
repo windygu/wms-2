@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrderItemShipGroupAssociationId = ((IOrderItemShipGroupAssociationMvoStateEvent)events.First()).OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationId;
+                this.OrderItemShipGroupAssociationId = ((IOrderItemShipGroupAssociationMvoEvent)events.First()).OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -1024,7 +1024,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemShipGroupAssociationMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemShipGroupAssociationMvo|");

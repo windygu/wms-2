@@ -24,33 +24,33 @@ namespace Dddml.Wms.Domain.ProductCategoryMember.NHibernate
 			return new ProductCategoryMemberEventId((ProductCategoryMemberId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ProductCategoryMemberStateEventBase);
+			return typeof(ProductCategoryMemberEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ProductCategoryMemberStateEventBase);
+            Type supportedEventType = typeof(ProductCategoryMemberEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             ProductCategoryMemberId idObj = (ProductCategoryMemberId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ProductCategoryMemberStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ProductCategoryMemberEventBase>();
             criteria.Add(Restrictions.Eq("ProductCategoryMemberEventId.ProductCategoryMemberIdProductCategoryId", idObj.ProductCategoryId));
             criteria.Add(Restrictions.Eq("ProductCategoryMemberEventId.ProductCategoryMemberIdProductId", idObj.ProductId));
             criteria.Add(Restrictions.Le("ProductCategoryMemberEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ProductCategoryMemberEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (ProductCategoryMemberStateEventBase e in es)
+            foreach (ProductCategoryMemberEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ProductCategoryMemberStateEventBase)es.Last()).ProductCategoryMemberEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((ProductCategoryMemberEventBase)es.Last()).ProductCategoryMemberEventId.Version : default(long),
                 Events = es
             };
         }

@@ -159,7 +159,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IPicklistItemStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IPicklistItemEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddPicklistItemEvent(innerEvent);
             }
 
@@ -205,7 +205,7 @@ namespace Dddml.Wms.Domain.PicklistBin
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IPicklistItemStateEvent Map(IPicklistItemCommand c, IPicklistBinCommand outerCommand, long version, IPicklistBinState outerState)
+        protected virtual IPicklistItemEvent Map(IPicklistItemCommand c, IPicklistBinCommand outerCommand, long version, IPicklistBinState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreatePicklistItem) : null;
             if(create != null)

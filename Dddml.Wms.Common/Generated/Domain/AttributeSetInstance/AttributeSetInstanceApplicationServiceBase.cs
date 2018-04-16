@@ -102,7 +102,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 			bool repeated = false;
 			if (((IAttributeSetInstanceStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IAttributeSetInstanceStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IAttributeSetInstanceEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -163,23 +163,23 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IAttributeSetInstanceStateEvent GetStateEvent(string attributeSetInstanceId, long version)
+	    public virtual IAttributeSetInstanceEvent GetEvent(string attributeSetInstanceId, long version)
         {
-            var e = (IAttributeSetInstanceStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(attributeSetInstanceId), version);
+            var e = (IAttributeSetInstanceEvent)EventStore.GetEvent(ToEventStoreAggregateId(attributeSetInstanceId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(attributeSetInstanceId, 0);
+                return GetEvent(attributeSetInstanceId, 0);
             }
             return e;
         }
 
         public virtual IAttributeSetInstanceState GetHistoryState(string attributeSetInstanceId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IAttributeSetInstanceStateEvent), ToEventStoreAggregateId(attributeSetInstanceId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IAttributeSetInstanceEvent), ToEventStoreAggregateId(attributeSetInstanceId), version - 1);
             return new AttributeSetInstanceState(eventStream.Events);
         }
 

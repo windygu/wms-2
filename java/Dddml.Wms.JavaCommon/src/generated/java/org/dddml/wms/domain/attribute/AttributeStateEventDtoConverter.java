@@ -19,7 +19,7 @@ public class AttributeStateEventDtoConverter {
             return toAttributeStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public AttributeStateEventDto.AttributeStateCreatedDto toAttributeStateCreatedDto(AttributeEvent.AttributeStateCreated e) {

@@ -258,7 +258,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IPhysicalInventoryStateEvent> GetStateEventAsync(string documentNumber, long version)
+        public async Task<IPhysicalInventoryEvent> GetStateEventAsync(string documentNumber, long version)
         {
             var idObj = documentNumber;
             var uriParameters = new PhysicalInventoryStateEventUriParameters();
@@ -271,7 +271,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPhysicalInventoryStateEvent GetStateEvent(string documentNumber, long version)
+        public IPhysicalInventoryEvent GetEvent(string documentNumber, long version)
         {
             return GetStateEventAsync(documentNumber, version).GetAwaiter().GetResult();
         }

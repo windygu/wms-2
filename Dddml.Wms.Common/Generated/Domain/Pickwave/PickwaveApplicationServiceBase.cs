@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Pickwave
 			bool repeated = false;
 			if (((IPickwaveStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPickwaveStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPickwaveEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.Pickwave
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPickwaveStateEvent GetStateEvent(long? pickwaveId, long version)
+	    public virtual IPickwaveEvent GetEvent(long? pickwaveId, long version)
         {
-            var e = (IPickwaveStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(pickwaveId), version);
+            var e = (IPickwaveEvent)EventStore.GetEvent(ToEventStoreAggregateId(pickwaveId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(pickwaveId, 0);
+                return GetEvent(pickwaveId, 0);
             }
             return e;
         }
 
         public virtual IPickwaveState GetHistoryState(long? pickwaveId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPickwaveStateEvent), ToEventStoreAggregateId(pickwaveId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPickwaveEvent), ToEventStoreAggregateId(pickwaveId), version - 1);
             return new PickwaveState(eventStream.Events);
         }
 

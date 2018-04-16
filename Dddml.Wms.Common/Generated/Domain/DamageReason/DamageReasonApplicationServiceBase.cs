@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.DamageReason
 			bool repeated = false;
 			if (((IDamageReasonStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IDamageReasonStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IDamageReasonEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.DamageReason
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IDamageReasonStateEvent GetStateEvent(string damageReasonId, long version)
+	    public virtual IDamageReasonEvent GetEvent(string damageReasonId, long version)
         {
-            var e = (IDamageReasonStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(damageReasonId), version);
+            var e = (IDamageReasonEvent)EventStore.GetEvent(ToEventStoreAggregateId(damageReasonId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(damageReasonId, 0);
+                return GetEvent(damageReasonId, 0);
             }
             return e;
         }
 
         public virtual IDamageReasonState GetHistoryState(string damageReasonId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IDamageReasonStateEvent), ToEventStoreAggregateId(damageReasonId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IDamageReasonEvent), ToEventStoreAggregateId(damageReasonId), version - 1);
             return new DamageReasonState(eventStream.Events);
         }
 

@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Iam" 
                    namespace="Dddml.Wms.Domain.User">
   
-  <class name="UserRoleStateEventBase" table="UserRoleEvents" mutable="false" abstract="true">
+  <class name="UserRoleEventBase" table="UserRoleEvents" mutable="false" abstract="true">
 
     <composite-id name="UserRoleEventId" class="Dddml.Wms.Domain.User.UserRoleEventId">
         <key-property name="UserId" ><column name="UserRoleIdUserId" length="50" /></key-property>

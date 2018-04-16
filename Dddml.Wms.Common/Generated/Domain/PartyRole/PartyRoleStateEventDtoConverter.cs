@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.PartyRole
 
     public class PartyRoleStateEventDtoConverter
     {
-        public virtual PartyRoleStateCreatedOrMergePatchedOrDeletedDto ToPartyRoleStateEventDto(IPartyRoleStateEvent stateEvent)
+        public virtual PartyRoleStateCreatedOrMergePatchedOrDeletedDto ToPartyRoleStateEventDto(IPartyRoleEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IPartyRoleStateCreated)stateEvent;
                 return ToPartyRoleStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IPartyRoleStateMergePatched)stateEvent;
                 return ToPartyRoleStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IPartyRoleStateDeleted)stateEvent;
                 return ToPartyRoleStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual PartyRoleStateCreatedDto ToPartyRoleStateCreatedDto(IPartyRoleStateCreated e)

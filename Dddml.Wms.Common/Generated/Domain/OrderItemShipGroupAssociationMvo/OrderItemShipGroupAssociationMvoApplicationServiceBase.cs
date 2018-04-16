@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 			bool repeated = false;
 			if (((IOrderItemShipGroupAssociationMvoStateProperties)state).OrderVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IOrderItemShipGroupAssociationMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IOrderItemShipGroupAssociationMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IOrderItemShipGroupAssociationMvoStateEvent GetStateEvent(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version)
+	    public virtual IOrderItemShipGroupAssociationMvoEvent GetEvent(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version)
         {
-            var e = (IOrderItemShipGroupAssociationMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(orderItemShipGroupAssociationId), version);
+            var e = (IOrderItemShipGroupAssociationMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(orderItemShipGroupAssociationId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(orderItemShipGroupAssociationId, 0);
+                return GetEvent(orderItemShipGroupAssociationId, 0);
             }
             return e;
         }
 
         public virtual IOrderItemShipGroupAssociationMvoState GetHistoryState(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IOrderItemShipGroupAssociationMvoStateEvent), ToEventStoreAggregateId(orderItemShipGroupAssociationId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IOrderItemShipGroupAssociationMvoEvent), ToEventStoreAggregateId(orderItemShipGroupAssociationId), version - 1);
             return new OrderItemShipGroupAssociationMvoState(eventStream.Events);
         }
 

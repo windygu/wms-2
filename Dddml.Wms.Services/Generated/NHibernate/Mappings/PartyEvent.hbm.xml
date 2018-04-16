@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Party">
   
-  <class name="PartyStateEventBase" table="PartyEvents" mutable="false" abstract="true">
+  <class name="PartyEventBase" table="PartyEvents" mutable="false" abstract="true">
 
     <composite-id name="PartyEventId" class="Dddml.Wms.Domain.Party.PartyEventId">
         <key-property name="PartyId" ><column name="PartyId" length="50" /></key-property>

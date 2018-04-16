@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.RolePermission
 			bool repeated = false;
 			if (((IRolePermissionStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IRolePermissionStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IRolePermissionEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.RolePermission
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IRolePermissionStateEvent GetStateEvent(RolePermissionId id, long version)
+	    public virtual IRolePermissionEvent GetEvent(RolePermissionId id, long version)
         {
-            var e = (IRolePermissionStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(id), version);
+            var e = (IRolePermissionEvent)EventStore.GetEvent(ToEventStoreAggregateId(id), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(id, 0);
+                return GetEvent(id, 0);
             }
             return e;
         }
 
         public virtual IRolePermissionState GetHistoryState(RolePermissionId id, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IRolePermissionStateEvent), ToEventStoreAggregateId(id), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IRolePermissionEvent), ToEventStoreAggregateId(id), version - 1);
             return new RolePermissionState(eventStream.Events);
         }
 

@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.UomConversion
         {
             if (events != null && events.Count() > 0)
             {
-                this.UomConversionId = ((IUomConversionStateEvent)events.First()).UomConversionEventId.UomConversionId;
+                this.UomConversionId = ((IUomConversionEvent)events.First()).UomConversionEventId.UomConversionId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -281,7 +281,7 @@ namespace Dddml.Wms.Domain.UomConversion
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUomConversionStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUomConversionEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UomConversion|");

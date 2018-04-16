@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.ShipmentItemIssuanceId = ((IItemIssuanceMvoStateEvent)events.First()).ItemIssuanceMvoEventId.ShipmentItemIssuanceId;
+                this.ShipmentItemIssuanceId = ((IItemIssuanceMvoEvent)events.First()).ItemIssuanceMvoEventId.ShipmentItemIssuanceId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -842,7 +842,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IItemIssuanceMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IItemIssuanceMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ItemIssuanceMvo|");

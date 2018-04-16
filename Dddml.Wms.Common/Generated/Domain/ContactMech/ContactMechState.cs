@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.ContactMech
         {
             if (events != null && events.Count() > 0)
             {
-                this.ContactMechId = ((IContactMechStateEvent)events.First()).ContactMechEventId.ContactMechId;
+                this.ContactMechId = ((IContactMechEvent)events.First()).ContactMechEventId.ContactMechId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -491,7 +491,7 @@ namespace Dddml.Wms.Domain.ContactMech
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IContactMechStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IContactMechEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ContactMech|");

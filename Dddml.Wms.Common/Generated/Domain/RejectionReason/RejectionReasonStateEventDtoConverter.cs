@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.RejectionReason
 
     public class RejectionReasonStateEventDtoConverter
     {
-        public virtual RejectionReasonStateCreatedOrMergePatchedOrDeletedDto ToRejectionReasonStateEventDto(IRejectionReasonStateEvent stateEvent)
+        public virtual RejectionReasonStateCreatedOrMergePatchedOrDeletedDto ToRejectionReasonStateEventDto(IRejectionReasonEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IRejectionReasonStateCreated)stateEvent;
                 return ToRejectionReasonStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IRejectionReasonStateMergePatched)stateEvent;
                 return ToRejectionReasonStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IRejectionReasonStateDeleted)stateEvent;
                 return ToRejectionReasonStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual RejectionReasonStateCreatedDto ToRejectionReasonStateCreatedDto(IRejectionReasonStateCreated e)

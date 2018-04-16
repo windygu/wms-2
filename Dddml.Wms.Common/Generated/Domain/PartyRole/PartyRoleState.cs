@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.PartyRole
         {
             if (events != null && events.Count() > 0)
             {
-                this.PartyRoleId = ((IPartyRoleStateEvent)events.First()).PartyRoleEventId.PartyRoleId;
+                this.PartyRoleId = ((IPartyRoleEvent)events.First()).PartyRoleEventId.PartyRoleId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain.PartyRole
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPartyRoleStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPartyRoleEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PartyRole|");

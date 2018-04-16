@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.LocatorType
 			bool repeated = false;
 			if (((ILocatorTypeStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(ILocatorTypeStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(ILocatorTypeEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.LocatorType
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual ILocatorTypeStateEvent GetStateEvent(string locatorTypeId, long version)
+	    public virtual ILocatorTypeEvent GetEvent(string locatorTypeId, long version)
         {
-            var e = (ILocatorTypeStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(locatorTypeId), version);
+            var e = (ILocatorTypeEvent)EventStore.GetEvent(ToEventStoreAggregateId(locatorTypeId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(locatorTypeId, 0);
+                return GetEvent(locatorTypeId, 0);
             }
             return e;
         }
 
         public virtual ILocatorTypeState GetHistoryState(string locatorTypeId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(ILocatorTypeStateEvent), ToEventStoreAggregateId(locatorTypeId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(ILocatorTypeEvent), ToEventStoreAggregateId(locatorTypeId), version - 1);
             return new LocatorTypeState(eventStream.Events);
         }
 

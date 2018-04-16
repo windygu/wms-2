@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IPicklistBinStateEvent> GetStateEventAsync(string picklistBinId, long version)
+        public async Task<IPicklistBinEvent> GetStateEventAsync(string picklistBinId, long version)
         {
             var idObj = picklistBinId;
             var uriParameters = new PicklistBinStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPicklistBinStateEvent GetStateEvent(string picklistBinId, long version)
+        public IPicklistBinEvent GetEvent(string picklistBinId, long version)
         {
             return GetStateEventAsync(picklistBinId, version).GetAwaiter().GetResult();
         }

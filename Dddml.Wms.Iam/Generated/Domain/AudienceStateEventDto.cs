@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Audience;
 namespace Dddml.Wms.Domain.Audience
 {
 
-	public abstract class AudienceStateEventDtoBase : IStateEventDto, IAudienceStateCreated, IAudienceStateMergePatched, IAudienceStateDeleted
+	public abstract class AudienceStateEventDtoBase : IEventDto, IAudienceStateCreated, IAudienceStateMergePatched, IAudienceStateDeleted
 	{
 
         private AudienceEventId _audienceEventId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.Audience
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IAudienceStateEvent.ReadOnly
+        bool IAudienceEvent.ReadOnly
         {
             get
             {
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.Audience
 		}
 
 
-        AudienceEventId IAudienceStateEvent.AudienceEventId
+        AudienceEventId IAudienceEvent.AudienceEventId
         {
             get { return this.AudienceEventId; }
         }
@@ -169,12 +169,12 @@ namespace Dddml.Wms.Domain.Audience
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.Audience
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -206,14 +206,14 @@ namespace Dddml.Wms.Domain.Audience
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -229,14 +229,14 @@ namespace Dddml.Wms.Domain.Audience
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -252,14 +252,14 @@ namespace Dddml.Wms.Domain.Audience
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.Audience
             _innerStateEvents.Add((AudienceStateCreatedDto)e);
         }
 
-        public void AddAudienceEvent(IAudienceStateEvent e)
+        public void AddAudienceEvent(IAudienceEvent e)
         {
             _innerStateEvents.Add((AudienceStateCreatedOrMergePatchedOrDeletedDto)e);
         }

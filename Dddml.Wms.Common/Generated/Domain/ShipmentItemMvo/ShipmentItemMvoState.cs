@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.ShipmentItemId = ((IShipmentItemMvoStateEvent)events.First()).ShipmentItemMvoEventId.ShipmentItemId;
+                this.ShipmentItemId = ((IShipmentItemMvoEvent)events.First()).ShipmentItemMvoEventId.ShipmentItemId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -691,7 +691,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentItemMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentItemMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentItemMvo|");

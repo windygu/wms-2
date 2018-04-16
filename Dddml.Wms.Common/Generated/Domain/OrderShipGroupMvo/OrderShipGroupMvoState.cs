@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrderShipGroupId = ((IOrderShipGroupMvoStateEvent)events.First()).OrderShipGroupMvoEventId.OrderShipGroupId;
+                this.OrderShipGroupId = ((IOrderShipGroupMvoEvent)events.First()).OrderShipGroupMvoEventId.OrderShipGroupId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -898,7 +898,7 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderShipGroupMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderShipGroupMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderShipGroupMvo|");

@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 			bool repeated = false;
 			if (((IAttributeUseMvoStateProperties)state).AttributeSetVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IAttributeUseMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IAttributeUseMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IAttributeUseMvoStateEvent GetStateEvent(AttributeSetAttributeUseId attributeSetAttributeUseId, long version)
+	    public virtual IAttributeUseMvoEvent GetEvent(AttributeSetAttributeUseId attributeSetAttributeUseId, long version)
         {
-            var e = (IAttributeUseMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(attributeSetAttributeUseId), version);
+            var e = (IAttributeUseMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(attributeSetAttributeUseId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(attributeSetAttributeUseId, 0);
+                return GetEvent(attributeSetAttributeUseId, 0);
             }
             return e;
         }
 
         public virtual IAttributeUseMvoState GetHistoryState(AttributeSetAttributeUseId attributeSetAttributeUseId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IAttributeUseMvoStateEvent), ToEventStoreAggregateId(attributeSetAttributeUseId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IAttributeUseMvoEvent), ToEventStoreAggregateId(attributeSetAttributeUseId), version - 1);
             return new AttributeUseMvoState(eventStream.Events);
         }
 

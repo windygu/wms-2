@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
         {
             if (events != null && events.Count() > 0)
             {
-                this.ShipmentPackageId = ((IShipmentPackageStateEvent)events.First()).ShipmentPackageEventId.ShipmentPackageId;
+                this.ShipmentPackageId = ((IShipmentPackageEvent)events.First()).ShipmentPackageEventId.ShipmentPackageId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -365,7 +365,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IShipmentPackageContentStateEvent innerEvent in e.ShipmentPackageContentEvents)
+			foreach (IShipmentPackageContentEvent innerEvent in e.ShipmentPackageContentEvents)
             {
                 IShipmentPackageContentState innerState = this.ShipmentPackageContents.Get(innerEvent.GlobalId.ShipmentItemSeqId);
 
@@ -393,8 +393,8 @@ namespace Dddml.Wms.Domain.ShipmentPackage
                 this.ShipmentPackageContents.Remove(innerState);
                 
                 var innerE = e.NewShipmentPackageContentStateRemoved(innerState.ShipmentItemSeqId);
-                ((ShipmentPackageContentStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((ShipmentPackageContentStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((ShipmentPackageContentEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((ShipmentPackageContentEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddShipmentPackageContentEvent(innerE);
 
@@ -409,7 +409,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentPackageStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentPackageEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentPackage|");

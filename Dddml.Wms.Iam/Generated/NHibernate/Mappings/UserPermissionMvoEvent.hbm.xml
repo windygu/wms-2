@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Iam" 
                    namespace="Dddml.Wms.Domain.UserPermissionMvo">
   
-  <class name="UserPermissionMvoStateEventBase" table="UserPermissionMvoEvents" mutable="false" abstract="true">
+  <class name="UserPermissionMvoEventBase" table="UserPermissionMvoEvents" mutable="false" abstract="true">
 
     <composite-id name="UserPermissionMvoEventId" class="Dddml.Wms.Domain.UserPermissionMvo.UserPermissionMvoEventId">
         <key-property name="UserPermissionIdUserId" ><column name="UserPermissionIdUserId" length="50" /></key-property>

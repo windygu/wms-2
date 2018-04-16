@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.Movement
         {
             if (events != null && events.Count() > 0)
             {
-                this.DocumentNumber = ((IMovementStateEvent)events.First()).MovementEventId.DocumentNumber;
+                this.DocumentNumber = ((IMovementEvent)events.First()).MovementEventId.DocumentNumber;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -519,7 +519,7 @@ namespace Dddml.Wms.Domain.Movement
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IMovementLineStateEvent innerEvent in e.MovementLineEvents)
+			foreach (IMovementLineEvent innerEvent in e.MovementLineEvents)
             {
                 IMovementLineState innerState = this.MovementLines.Get(innerEvent.GlobalId.LineNumber);
 
@@ -547,8 +547,8 @@ namespace Dddml.Wms.Domain.Movement
                 this.MovementLines.Remove(innerState);
                 
                 var innerE = e.NewMovementLineStateRemoved(innerState.LineNumber);
-                ((MovementLineStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((MovementLineStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((MovementLineEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((MovementLineEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddMovementLineEvent(innerE);
 
@@ -563,7 +563,7 @@ namespace Dddml.Wms.Domain.Movement
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Movement|");

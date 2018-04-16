@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = PhysicalInventoryLineMvosControllerUtils.ParseIdString(id);
             var conv = new PhysicalInventoryLineMvoStateEventDtoConverter();
-            var se = _physicalInventoryLineMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _physicalInventoryLineMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToPhysicalInventoryLineMvoStateEventDto(se);
           } catch (Exception ex) { var response = PhysicalInventoryLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

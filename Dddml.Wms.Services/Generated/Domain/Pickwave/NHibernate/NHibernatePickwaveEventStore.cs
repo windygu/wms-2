@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.Pickwave.NHibernate
 			return new PickwaveEventId((long?)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PickwaveStateEventBase);
+			return typeof(PickwaveEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PickwaveStateEventBase);
+            Type supportedEventType = typeof(PickwaveEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             long? idObj = (long?)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PickwaveStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PickwaveEventBase>();
             criteria.Add(Restrictions.Eq("PickwaveEventId.PickwaveId", idObj));
             criteria.Add(Restrictions.Le("PickwaveEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PickwaveEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (PickwaveStateEventBase e in es)
+            foreach (PickwaveEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PickwaveStateEventBase)es.Last()).PickwaveEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((PickwaveEventBase)es.Last()).PickwaveEventId.Version : default(long),
                 Events = es
             };
         }

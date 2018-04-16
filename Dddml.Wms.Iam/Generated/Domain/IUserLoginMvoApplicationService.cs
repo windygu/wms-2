@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         long GetCount(ICriterion filter);
 
-        IUserLoginMvoStateEvent GetStateEvent(UserLoginId userLoginId, long version);
+        IUserLoginMvoEvent GetEvent(UserLoginId userLoginId, long version);
 
         IUserLoginMvoState GetHistoryState(UserLoginId userLoginId, long version);
 

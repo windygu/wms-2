@@ -16,19 +16,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
     public class ShipmentReceiptMvoStateEventDtoConverter
     {
-        public virtual ShipmentReceiptMvoStateCreatedOrMergePatchedOrDeletedDto ToShipmentReceiptMvoStateEventDto(IShipmentReceiptMvoStateEvent stateEvent)
+        public virtual ShipmentReceiptMvoStateCreatedOrMergePatchedOrDeletedDto ToShipmentReceiptMvoStateEventDto(IShipmentReceiptMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IShipmentReceiptMvoStateCreated)stateEvent;
                 return ToShipmentReceiptMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IShipmentReceiptMvoStateMergePatched)stateEvent;
                 return ToShipmentReceiptMvoStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual ShipmentReceiptMvoStateCreatedDto ToShipmentReceiptMvoStateCreatedDto(IShipmentReceiptMvoStateCreated e)

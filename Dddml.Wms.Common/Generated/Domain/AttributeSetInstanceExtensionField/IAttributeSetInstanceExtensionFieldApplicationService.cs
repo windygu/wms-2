@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
         long GetCount(ICriterion filter);
 
-        IAttributeSetInstanceExtensionFieldStateEvent GetStateEvent(string name, long version);
+        IAttributeSetInstanceExtensionFieldEvent GetEvent(string name, long version);
 
         IAttributeSetInstanceExtensionFieldState GetHistoryState(string name, long version);
 

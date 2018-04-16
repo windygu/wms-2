@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
 			bool repeated = false;
 			if (((IShipmentMethodTypeStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IShipmentMethodTypeStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IShipmentMethodTypeEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IShipmentMethodTypeStateEvent GetStateEvent(string shipmentMethodTypeId, long version)
+	    public virtual IShipmentMethodTypeEvent GetEvent(string shipmentMethodTypeId, long version)
         {
-            var e = (IShipmentMethodTypeStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(shipmentMethodTypeId), version);
+            var e = (IShipmentMethodTypeEvent)EventStore.GetEvent(ToEventStoreAggregateId(shipmentMethodTypeId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(shipmentMethodTypeId, 0);
+                return GetEvent(shipmentMethodTypeId, 0);
             }
             return e;
         }
 
         public virtual IShipmentMethodTypeState GetHistoryState(string shipmentMethodTypeId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IShipmentMethodTypeStateEvent), ToEventStoreAggregateId(shipmentMethodTypeId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IShipmentMethodTypeEvent), ToEventStoreAggregateId(shipmentMethodTypeId), version - 1);
             return new ShipmentMethodTypeState(eventStream.Events);
         }
 

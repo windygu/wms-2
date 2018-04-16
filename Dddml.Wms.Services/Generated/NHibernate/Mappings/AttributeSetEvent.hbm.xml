@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.AttributeSet">
   
-  <class name="AttributeSetStateEventBase" table="AttributeSetEvents" mutable="false" abstract="true">
+  <class name="AttributeSetEventBase" table="AttributeSetEvents" mutable="false" abstract="true">
 
     <composite-id name="AttributeSetEventId" class="Dddml.Wms.Domain.AttributeSet.AttributeSetEventId">
         <key-property name="AttributeSetId" ><column name="AttributeSetId" length="50" /></key-property>

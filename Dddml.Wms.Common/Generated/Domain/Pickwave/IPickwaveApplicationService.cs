@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Pickwave
 
         long GetCount(ICriterion filter);
 
-        IPickwaveStateEvent GetStateEvent(long? pickwaveId, long version);
+        IPickwaveEvent GetEvent(long? pickwaveId, long version);
 
         IPickwaveState GetHistoryState(long? pickwaveId, long version);
 

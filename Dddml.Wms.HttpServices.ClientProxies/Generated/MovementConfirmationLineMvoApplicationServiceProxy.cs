@@ -253,7 +253,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IMovementConfirmationLineMvoStateEvent> GetStateEventAsync(MovementConfirmationLineId movementConfirmationLineId, long version)
+        public async Task<IMovementConfirmationLineMvoEvent> GetStateEventAsync(MovementConfirmationLineId movementConfirmationLineId, long version)
         {
             var idObj = MovementConfirmationLineMvoProxyUtils.ToIdString(movementConfirmationLineId);
             var uriParameters = new MovementConfirmationLineMvoStateEventUriParameters();
@@ -266,7 +266,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IMovementConfirmationLineMvoStateEvent GetStateEvent(MovementConfirmationLineId movementConfirmationLineId, long version)
+        public IMovementConfirmationLineMvoEvent GetEvent(MovementConfirmationLineId movementConfirmationLineId, long version)
         {
             return GetStateEventAsync(movementConfirmationLineId, version).GetAwaiter().GetResult();
         }

@@ -253,7 +253,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IOrderRoleMvoStateEvent> GetStateEventAsync(OrderRoleId orderRoleId, long version)
+        public async Task<IOrderRoleMvoEvent> GetStateEventAsync(OrderRoleId orderRoleId, long version)
         {
             var idObj = OrderRoleMvoProxyUtils.ToIdString(orderRoleId);
             var uriParameters = new OrderRoleMvoStateEventUriParameters();
@@ -266,7 +266,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IOrderRoleMvoStateEvent GetStateEvent(OrderRoleId orderRoleId, long version)
+        public IOrderRoleMvoEvent GetEvent(OrderRoleId orderRoleId, long version)
         {
             return GetStateEventAsync(orderRoleId, version).GetAwaiter().GetResult();
         }

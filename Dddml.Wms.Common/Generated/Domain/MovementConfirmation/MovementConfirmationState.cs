@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
             if (events != null && events.Count() > 0)
             {
-                this.DocumentNumber = ((IMovementConfirmationStateEvent)events.First()).MovementConfirmationEventId.DocumentNumber;
+                this.DocumentNumber = ((IMovementConfirmationEvent)events.First()).MovementConfirmationEventId.DocumentNumber;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -351,7 +351,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IMovementConfirmationLineStateEvent innerEvent in e.MovementConfirmationLineEvents)
+			foreach (IMovementConfirmationLineEvent innerEvent in e.MovementConfirmationLineEvents)
             {
                 IMovementConfirmationLineState innerState = this.MovementConfirmationLines.Get(innerEvent.GlobalId.LineNumber);
 
@@ -379,8 +379,8 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                 this.MovementConfirmationLines.Remove(innerState);
                 
                 var innerE = e.NewMovementConfirmationLineStateRemoved(innerState.LineNumber);
-                ((MovementConfirmationLineStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((MovementConfirmationLineStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((MovementConfirmationLineEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((MovementConfirmationLineEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddMovementConfirmationLineEvent(innerE);
 
@@ -395,7 +395,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementConfirmationStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementConfirmationEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementConfirmation|");

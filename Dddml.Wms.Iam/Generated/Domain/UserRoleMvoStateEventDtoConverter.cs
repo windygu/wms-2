@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
     public class UserRoleMvoStateEventDtoConverter
     {
-        public virtual UserRoleMvoStateCreatedOrMergePatchedOrDeletedDto ToUserRoleMvoStateEventDto(IUserRoleMvoStateEvent stateEvent)
+        public virtual UserRoleMvoStateCreatedOrMergePatchedOrDeletedDto ToUserRoleMvoStateEventDto(IUserRoleMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IUserRoleMvoStateCreated)stateEvent;
                 return ToUserRoleMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IUserRoleMvoStateMergePatched)stateEvent;
                 return ToUserRoleMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IUserRoleMvoStateDeleted)stateEvent;
                 return ToUserRoleMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual UserRoleMvoStateCreatedDto ToUserRoleMvoStateCreatedDto(IUserRoleMvoStateCreated e)

@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IRoleTypeStateEvent> GetStateEventAsync(string roleTypeId, long version)
+        public async Task<IRoleTypeEvent> GetStateEventAsync(string roleTypeId, long version)
         {
             var idObj = roleTypeId;
             var uriParameters = new RoleTypeStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IRoleTypeStateEvent GetStateEvent(string roleTypeId, long version)
+        public IRoleTypeEvent GetEvent(string roleTypeId, long version)
         {
             return GetStateEventAsync(roleTypeId, version).GetAwaiter().GetResult();
         }

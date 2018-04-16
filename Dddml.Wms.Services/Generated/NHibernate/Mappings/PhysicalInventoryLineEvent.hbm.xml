@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.PhysicalInventory">
   
-  <class name="PhysicalInventoryLineStateEventBase" table="PhysicalInventoryLineEvents" mutable="false" abstract="true">
+  <class name="PhysicalInventoryLineEventBase" table="PhysicalInventoryLineEvents" mutable="false" abstract="true">
 
     <composite-id name="PhysicalInventoryLineEventId" class="Dddml.Wms.Domain.PhysicalInventory.PhysicalInventoryLineEventId">
         <key-property name="PhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>

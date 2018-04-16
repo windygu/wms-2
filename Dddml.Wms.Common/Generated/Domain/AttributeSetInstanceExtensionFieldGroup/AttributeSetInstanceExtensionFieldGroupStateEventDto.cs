@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
 namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 {
 
-	public abstract class AttributeSetInstanceExtensionFieldGroupStateEventDtoBase : IStateEventDto, IAttributeSetInstanceExtensionFieldGroupStateCreated, IAttributeSetInstanceExtensionFieldGroupStateMergePatched, IAttributeSetInstanceExtensionFieldGroupStateDeleted
+	public abstract class AttributeSetInstanceExtensionFieldGroupStateEventDtoBase : IEventDto, IAttributeSetInstanceExtensionFieldGroupStateCreated, IAttributeSetInstanceExtensionFieldGroupStateMergePatched, IAttributeSetInstanceExtensionFieldGroupStateDeleted
 	{
 
         private AttributeSetInstanceExtensionFieldGroupEventId _attributeSetInstanceExtensionFieldGroupEventId;
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IAttributeSetInstanceExtensionFieldGroupStateEvent.ReadOnly
+        bool IAttributeSetInstanceExtensionFieldGroupEvent.ReadOnly
         {
             get
             {
@@ -216,7 +216,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		}
 
 
-        AttributeSetInstanceExtensionFieldGroupEventId IAttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupEventId
+        AttributeSetInstanceExtensionFieldGroupEventId IAttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupEventId
         {
             get { return this.AttributeSetInstanceExtensionFieldGroupEventId; }
         }
@@ -232,12 +232,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -252,7 +252,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -269,14 +269,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -292,14 +292,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -315,14 +315,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -374,7 +374,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             _innerStateEvents.Add((AttributeSetInstanceExtensionFieldGroupStateCreatedDto)e);
         }
 
-        public void AddAttributeSetInstanceExtensionFieldGroupEvent(IAttributeSetInstanceExtensionFieldGroupStateEvent e)
+        public void AddAttributeSetInstanceExtensionFieldGroupEvent(IAttributeSetInstanceExtensionFieldGroupEvent e)
         {
             _innerStateEvents.Add((AttributeSetInstanceExtensionFieldGroupStateCreatedOrMergePatchedOrDeletedDto)e);
         }

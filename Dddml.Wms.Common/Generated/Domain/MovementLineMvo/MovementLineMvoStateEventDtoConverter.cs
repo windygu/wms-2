@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
     public class MovementLineMvoStateEventDtoConverter
     {
-        public virtual MovementLineMvoStateCreatedOrMergePatchedOrDeletedDto ToMovementLineMvoStateEventDto(IMovementLineMvoStateEvent stateEvent)
+        public virtual MovementLineMvoStateCreatedOrMergePatchedOrDeletedDto ToMovementLineMvoStateEventDto(IMovementLineMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IMovementLineMvoStateCreated)stateEvent;
                 return ToMovementLineMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IMovementLineMvoStateMergePatched)stateEvent;
                 return ToMovementLineMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IMovementLineMvoStateDeleted)stateEvent;
                 return ToMovementLineMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual MovementLineMvoStateCreatedDto ToMovementLineMvoStateCreatedDto(IMovementLineMvoStateCreated e)

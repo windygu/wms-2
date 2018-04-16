@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.Order
 			bool repeated = false;
 			if (((IOrderStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IOrderStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IOrderEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -141,23 +141,23 @@ namespace Dddml.Wms.Domain.Order
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IOrderStateEvent GetStateEvent(string orderId, long version)
+	    public virtual IOrderEvent GetEvent(string orderId, long version)
         {
-            var e = (IOrderStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(orderId), version);
+            var e = (IOrderEvent)EventStore.GetEvent(ToEventStoreAggregateId(orderId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(orderId, 0);
+                return GetEvent(orderId, 0);
             }
             return e;
         }
 
         public virtual IOrderState GetHistoryState(string orderId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IOrderStateEvent), ToEventStoreAggregateId(orderId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IOrderEvent), ToEventStoreAggregateId(orderId), version - 1);
             return new OrderState(eventStream.Events);
         }
 

@@ -167,7 +167,7 @@ namespace Dddml.Wms.Domain.Picklist
         {
             if (events != null && events.Count() > 0)
             {
-                this.PicklistId = ((IPicklistStateEvent)events.First()).PicklistEventId.PicklistId;
+                this.PicklistId = ((IPicklistEvent)events.First()).PicklistEventId.PicklistId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -324,7 +324,7 @@ namespace Dddml.Wms.Domain.Picklist
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IPicklistRoleStateEvent innerEvent in e.PicklistRoleEvents)
+			foreach (IPicklistRoleEvent innerEvent in e.PicklistRoleEvents)
             {
                 IPicklistRoleState innerState = this.PicklistRoles.Get(innerEvent.GlobalId.PartyRoleId);
 
@@ -352,8 +352,8 @@ namespace Dddml.Wms.Domain.Picklist
                 this.PicklistRoles.Remove(innerState);
                 
                 var innerE = e.NewPicklistRoleStateRemoved(innerState.PartyRoleId);
-                ((PicklistRoleStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((PicklistRoleStateEventBase)innerE).CreatedByUserLogin = e.CreatedBy;
+                ((PicklistRoleEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((PicklistRoleEventBase)innerE).CreatedByUserLogin = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddPicklistRoleEvent(innerE);
 
@@ -368,7 +368,7 @@ namespace Dddml.Wms.Domain.Picklist
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Picklist|");

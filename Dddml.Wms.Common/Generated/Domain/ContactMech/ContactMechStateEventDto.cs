@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.ContactMech;
 namespace Dddml.Wms.Domain.ContactMech
 {
 
-	public abstract class ContactMechStateEventDtoBase : IStateEventDto, IContactMechStateCreated, IContactMechStateMergePatched, IContactMechStateDeleted
+	public abstract class ContactMechStateEventDtoBase : IEventDto, IContactMechStateCreated, IContactMechStateMergePatched, IContactMechStateDeleted
 	{
 
         private ContactMechEventId _contactMechEventId;
@@ -99,7 +99,7 @@ namespace Dddml.Wms.Domain.ContactMech
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IContactMechStateEvent.ReadOnly
+        bool IContactMechEvent.ReadOnly
         {
             get
             {
@@ -510,7 +510,7 @@ namespace Dddml.Wms.Domain.ContactMech
 		}
 
 
-        ContactMechEventId IContactMechStateEvent.ContactMechEventId
+        ContactMechEventId IContactMechEvent.ContactMechEventId
         {
             get { return this.ContactMechEventId; }
         }
@@ -526,12 +526,12 @@ namespace Dddml.Wms.Domain.ContactMech
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -546,7 +546,7 @@ namespace Dddml.Wms.Domain.ContactMech
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -563,14 +563,14 @@ namespace Dddml.Wms.Domain.ContactMech
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -586,14 +586,14 @@ namespace Dddml.Wms.Domain.ContactMech
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -609,14 +609,14 @@ namespace Dddml.Wms.Domain.ContactMech
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -668,7 +668,7 @@ namespace Dddml.Wms.Domain.ContactMech
             _innerStateEvents.Add((ContactMechStateCreatedDto)e);
         }
 
-        public void AddContactMechEvent(IContactMechStateEvent e)
+        public void AddContactMechEvent(IContactMechEvent e)
         {
             _innerStateEvents.Add((ContactMechStateCreatedOrMergePatchedOrDeletedDto)e);
         }

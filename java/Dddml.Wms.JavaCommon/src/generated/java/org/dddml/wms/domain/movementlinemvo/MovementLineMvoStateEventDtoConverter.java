@@ -21,7 +21,7 @@ public class MovementLineMvoStateEventDtoConverter {
             return toMovementLineMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto toMovementLineMvoStateCreatedDto(MovementLineMvoEvent.MovementLineMvoStateCreated e) {

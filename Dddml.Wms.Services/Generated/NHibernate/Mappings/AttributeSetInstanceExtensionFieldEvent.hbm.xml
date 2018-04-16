@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.AttributeSetInstanceExtensionField">
   
-  <class name="AttributeSetInstanceExtensionFieldStateEventBase" table="AttributeSetInstanceExtensionFieldEvents" mutable="false" abstract="true">
+  <class name="AttributeSetInstanceExtensionFieldEventBase" table="AttributeSetInstanceExtensionFieldEvents" mutable="false" abstract="true">
 
     <composite-id name="AttributeSetInstanceExtensionFieldEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionField.AttributeSetInstanceExtensionFieldEventId">
         <key-property name="Name" ><column name="Name" length="50" /></key-property>

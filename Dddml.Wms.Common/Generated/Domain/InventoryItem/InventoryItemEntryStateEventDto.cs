@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItem
 {
 
-	public abstract class InventoryItemEntryStateEventDtoBase : IStateEventDto, IInventoryItemEntryStateCreated
+	public abstract class InventoryItemEntryStateEventDtoBase : IEventDto, IInventoryItemEntryStateCreated
 	{
 
         private InventoryItemEntryEventId _inventoryItemEntryEventId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IInventoryItemEntryStateEvent.ReadOnly
+        bool IInventoryItemEntryEvent.ReadOnly
         {
             get
             {
@@ -98,7 +98,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 		}
 
 
-        InventoryItemEntryEventId IInventoryItemEntryStateEvent.InventoryItemEntryEventId
+        InventoryItemEntryEventId IInventoryItemEntryEvent.InventoryItemEntryEventId
         {
             get { return this.InventoryItemEntryEventId; }
         }
@@ -114,12 +114,12 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -134,7 +134,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -151,14 +151,14 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -174,14 +174,14 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -197,14 +197,14 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Removed;
         }
@@ -247,7 +247,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             _innerStateEvents.Add((InventoryItemEntryStateCreatedDto)e);
         }
 
-        public void AddInventoryItemEntryEvent(IInventoryItemEntryStateEvent e)
+        public void AddInventoryItemEntryEvent(IInventoryItemEntryEvent e)
         {
             _innerStateEvents.Add((InventoryItemEntryStateCreatedOrMergePatchedOrRemovedDto)e);
         }

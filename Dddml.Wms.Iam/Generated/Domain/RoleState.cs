@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Role
         {
             if (events != null && events.Count() > 0)
             {
-                this.RoleId = ((IRoleStateEvent)events.First()).RoleEventId.RoleId;
+                this.RoleId = ((IRoleEvent)events.First()).RoleEventId.RoleId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain.Role
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IRoleStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IRoleEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Role|");

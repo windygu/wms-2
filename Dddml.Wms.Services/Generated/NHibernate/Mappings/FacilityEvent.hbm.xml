@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Facility">
   
-  <class name="FacilityStateEventBase" table="FacilityEvents" mutable="false" abstract="true">
+  <class name="FacilityEventBase" table="FacilityEvents" mutable="false" abstract="true">
 
     <composite-id name="FacilityEventId" class="Dddml.Wms.Domain.Facility.FacilityEventId">
         <key-property name="FacilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></key-property>

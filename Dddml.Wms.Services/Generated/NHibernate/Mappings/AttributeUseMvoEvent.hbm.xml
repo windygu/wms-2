@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.AttributeUseMvo">
   
-  <class name="AttributeUseMvoStateEventBase" table="AttributeUseMvoEvents" mutable="false" abstract="true">
+  <class name="AttributeUseMvoEventBase" table="AttributeUseMvoEvents" mutable="false" abstract="true">
 
     <composite-id name="AttributeUseMvoEventId" class="Dddml.Wms.Domain.AttributeUseMvo.AttributeUseMvoEventId">
         <key-property name="AttributeSetAttributeUseIdAttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>

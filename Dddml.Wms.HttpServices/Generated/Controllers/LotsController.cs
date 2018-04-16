@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new LotStateEventDtoConverter();
-            var se = _lotApplicationService.GetStateEvent(idObj, version);
+            var se = _lotApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToLotStateEventDto(se);
           } catch (Exception ex) { var response = LotsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

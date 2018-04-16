@@ -15,19 +15,19 @@ namespace Dddml.Wms.Domain.OrderShipment
 
     public class OrderShipmentStateEventDtoConverter
     {
-        public virtual OrderShipmentStateCreatedOrMergePatchedOrDeletedDto ToOrderShipmentStateEventDto(IOrderShipmentStateEvent stateEvent)
+        public virtual OrderShipmentStateCreatedOrMergePatchedOrDeletedDto ToOrderShipmentStateEventDto(IOrderShipmentEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IOrderShipmentStateCreated)stateEvent;
                 return ToOrderShipmentStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IOrderShipmentStateMergePatched)stateEvent;
                 return ToOrderShipmentStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual OrderShipmentStateCreatedDto ToOrderShipmentStateCreatedDto(IOrderShipmentStateCreated e)

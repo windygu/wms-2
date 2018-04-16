@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         long GetCount(ICriterion filter);
 
-        IUserPermissionMvoStateEvent GetStateEvent(UserPermissionId userPermissionId, long version);
+        IUserPermissionMvoEvent GetEvent(UserPermissionId userPermissionId, long version);
 
         IUserPermissionMvoState GetHistoryState(UserPermissionId userPermissionId, long version);
 

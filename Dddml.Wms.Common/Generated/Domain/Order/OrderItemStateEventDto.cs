@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.PartyRole;
 namespace Dddml.Wms.Domain.Order
 {
 
-	public abstract class OrderItemStateEventDtoBase : IStateEventDto, IOrderItemStateCreated, IOrderItemStateMergePatched
+	public abstract class OrderItemStateEventDtoBase : IEventDto, IOrderItemStateCreated, IOrderItemStateMergePatched
 	{
 
         private OrderItemEventId _orderItemEventId;
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain.Order
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IOrderItemStateEvent.ReadOnly
+        bool IOrderItemEvent.ReadOnly
         {
             get
             {
@@ -843,7 +843,7 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
-        OrderItemEventId IOrderItemStateEvent.OrderItemEventId
+        OrderItemEventId IOrderItemEvent.OrderItemEventId
         {
             get { return this.OrderItemEventId; }
         }
@@ -859,12 +859,12 @@ namespace Dddml.Wms.Domain.Order
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -879,7 +879,7 @@ namespace Dddml.Wms.Domain.Order
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -896,14 +896,14 @@ namespace Dddml.Wms.Domain.Order
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -919,14 +919,14 @@ namespace Dddml.Wms.Domain.Order
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -942,14 +942,14 @@ namespace Dddml.Wms.Domain.Order
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Removed;
         }
@@ -997,7 +997,7 @@ namespace Dddml.Wms.Domain.Order
             _innerStateEvents.Add((OrderItemStateCreatedDto)e);
         }
 
-        public void AddOrderItemEvent(IOrderItemStateEvent e)
+        public void AddOrderItemEvent(IOrderItemEvent e)
         {
             _innerStateEvents.Add((OrderItemStateCreatedOrMergePatchedOrRemovedDto)e);
         }

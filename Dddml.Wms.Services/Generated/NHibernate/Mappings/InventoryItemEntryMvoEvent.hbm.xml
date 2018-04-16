@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.InventoryItemEntryMvo">
   
-  <class name="InventoryItemEntryMvoStateEventBase" table="InventoryItemEntryMvoEvents" mutable="false" abstract="true">
+  <class name="InventoryItemEntryMvoEventBase" table="InventoryItemEntryMvoEvents" mutable="false" abstract="true">
 
     <composite-id name="InventoryItemEntryMvoEventId" class="Dddml.Wms.Domain.InventoryItemEntryMvo.InventoryItemEntryMvoEventId">
         <key-property name="InventoryItemEntryIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>

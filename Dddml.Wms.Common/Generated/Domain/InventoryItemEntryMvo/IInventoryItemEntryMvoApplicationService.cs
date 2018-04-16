@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         long GetCount(ICriterion filter);
 
-        IInventoryItemEntryMvoStateEvent GetStateEvent(InventoryItemEntryId inventoryItemEntryId, long version);
+        IInventoryItemEntryMvoEvent GetEvent(InventoryItemEntryId inventoryItemEntryId, long version);
 
         IInventoryItemEntryMvoState GetHistoryState(InventoryItemEntryId inventoryItemEntryId, long version);
 

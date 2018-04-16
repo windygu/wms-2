@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 			bool repeated = false;
 			if (((IItemIssuanceMvoStateProperties)state).ShipmentVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IItemIssuanceMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IItemIssuanceMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IItemIssuanceMvoStateEvent GetStateEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version)
+	    public virtual IItemIssuanceMvoEvent GetEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version)
         {
-            var e = (IItemIssuanceMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(shipmentItemIssuanceId), version);
+            var e = (IItemIssuanceMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(shipmentItemIssuanceId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(shipmentItemIssuanceId, 0);
+                return GetEvent(shipmentItemIssuanceId, 0);
             }
             return e;
         }
 
         public virtual IItemIssuanceMvoState GetHistoryState(ShipmentItemIssuanceId shipmentItemIssuanceId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IItemIssuanceMvoStateEvent), ToEventStoreAggregateId(shipmentItemIssuanceId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IItemIssuanceMvoEvent), ToEventStoreAggregateId(shipmentItemIssuanceId), version - 1);
             return new ItemIssuanceMvoState(eventStream.Events);
         }
 

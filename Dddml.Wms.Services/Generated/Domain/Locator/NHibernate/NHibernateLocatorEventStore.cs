@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.Locator.NHibernate
 			return new LocatorEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(LocatorStateEventBase);
+			return typeof(LocatorEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(LocatorStateEventBase);
+            Type supportedEventType = typeof(LocatorEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<LocatorStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<LocatorEventBase>();
             criteria.Add(Restrictions.Eq("LocatorEventId.LocatorId", idObj));
             criteria.Add(Restrictions.Le("LocatorEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("LocatorEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (LocatorStateEventBase e in es)
+            foreach (LocatorEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((LocatorStateEventBase)es.Last()).LocatorEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((LocatorEventBase)es.Last()).LocatorEventId.Version : default(long),
                 Events = es
             };
         }

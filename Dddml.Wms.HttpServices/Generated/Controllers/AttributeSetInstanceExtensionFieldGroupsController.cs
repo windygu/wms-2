@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
-            var se = _attributeSetInstanceExtensionFieldGroupApplicationService.GetStateEvent(idObj, version);
+            var se = _attributeSetInstanceExtensionFieldGroupApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToAttributeSetInstanceExtensionFieldGroupStateEventDto(se);
           } catch (Exception ex) { var response = AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

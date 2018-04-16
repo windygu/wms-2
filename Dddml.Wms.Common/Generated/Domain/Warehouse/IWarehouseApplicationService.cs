@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
         long GetCount(ICriterion filter);
 
-        IWarehouseStateEvent GetStateEvent(string warehouseId, long version);
+        IWarehouseEvent GetEvent(string warehouseId, long version);
 
         IWarehouseState GetHistoryState(string warehouseId, long version);
 

@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.RolePermission
         {
             if (events != null && events.Count() > 0)
             {
-                this.Id = ((IRolePermissionStateEvent)events.First()).RolePermissionEventId.Id;
+                this.Id = ((IRolePermissionEvent)events.First()).RolePermissionEventId.Id;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain.RolePermission
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IRolePermissionStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IRolePermissionEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("RolePermission|");

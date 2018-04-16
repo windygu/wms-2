@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = ShipmentPackagesControllerUtils.ParseIdString(id);
             var conv = new ShipmentPackageStateEventDtoConverter();
-            var se = _shipmentPackageApplicationService.GetStateEvent(idObj, version);
+            var se = _shipmentPackageApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToShipmentPackageStateEventDto(se);
           } catch (Exception ex) { var response = ShipmentPackagesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

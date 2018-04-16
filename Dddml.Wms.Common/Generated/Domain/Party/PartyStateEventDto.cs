@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Party;
 namespace Dddml.Wms.Domain.Party
 {
 
-	public abstract class PartyStateEventDtoBase : IStateEventDto, IPartyStateCreated, IPartyStateMergePatched, IPartyStateDeleted
+	public abstract class PartyStateEventDtoBase : IEventDto, IPartyStateCreated, IPartyStateMergePatched, IPartyStateDeleted
 	{
 
         private PartyEventId _partyEventId;
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.Party
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IPartyStateEvent.ReadOnly
+        bool IPartyEvent.ReadOnly
         {
             get
             {
@@ -237,7 +237,7 @@ namespace Dddml.Wms.Domain.Party
 		}
 
 
-        PartyEventId IPartyStateEvent.PartyEventId
+        PartyEventId IPartyEvent.PartyEventId
         {
             get { return this.PartyEventId; }
         }
@@ -253,12 +253,12 @@ namespace Dddml.Wms.Domain.Party
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Party
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -290,14 +290,14 @@ namespace Dddml.Wms.Domain.Party
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -313,14 +313,14 @@ namespace Dddml.Wms.Domain.Party
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -336,14 +336,14 @@ namespace Dddml.Wms.Domain.Party
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -395,7 +395,7 @@ namespace Dddml.Wms.Domain.Party
             _innerStateEvents.Add((PartyStateCreatedDto)e);
         }
 
-        public void AddPartyEvent(IPartyStateEvent e)
+        public void AddPartyEvent(IPartyEvent e)
         {
             _innerStateEvents.Add((PartyStateCreatedOrMergePatchedOrDeletedDto)e);
         }

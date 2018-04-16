@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Iam" 
                    namespace="Dddml.Wms.Domain.Audience">
   
-  <class name="AudienceStateEventBase" table="AudienceEvents" mutable="false" abstract="true">
+  <class name="AudienceEventBase" table="AudienceEvents" mutable="false" abstract="true">
 
     <composite-id name="AudienceEventId" class="Dddml.Wms.Domain.Audience.AudienceEventId">
         <key-property name="ClientId" ><column name="ClientId" length="50" /></key-property>

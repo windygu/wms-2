@@ -219,7 +219,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IAttributeSetInstanceStateEvent> GetStateEventAsync(string attributeSetInstanceId, long version)
+        public async Task<IAttributeSetInstanceEvent> GetStateEventAsync(string attributeSetInstanceId, long version)
         {
             var idObj = attributeSetInstanceId;
             var uriParameters = new AttributeSetInstanceStateEventUriParameters();
@@ -232,7 +232,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IAttributeSetInstanceStateEvent GetStateEvent(string attributeSetInstanceId, long version)
+        public IAttributeSetInstanceEvent GetEvent(string attributeSetInstanceId, long version)
         {
             return GetStateEventAsync(attributeSetInstanceId, version).GetAwaiter().GetResult();
         }

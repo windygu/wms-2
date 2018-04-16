@@ -26,21 +26,21 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.NHibernate
 			return new InventoryItemRequirementEntryMvoEventId((InventoryItemRequirementEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(InventoryItemRequirementEntryMvoStateEventBase);
+			return typeof(InventoryItemRequirementEntryMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(InventoryItemRequirementEntryMvoStateEventBase);
+            Type supportedEventType = typeof(InventoryItemRequirementEntryMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             InventoryItemRequirementEntryId idObj = (InventoryItemRequirementEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<InventoryItemRequirementEntryMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<InventoryItemRequirementEntryMvoEventBase>();
             criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.InventoryItemRequirementId.ProductId));
             criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.InventoryItemRequirementId.LocatorId));
             criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.InventoryItemRequirementId.AttributeSetInstanceId));
@@ -48,13 +48,13 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.NHibernate
             criteria.Add(Restrictions.Le("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementVersion"));
             var es = criteria.List<IEvent>();
-            foreach (InventoryItemRequirementEntryMvoStateEventBase e in es)
+            foreach (InventoryItemRequirementEntryMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InventoryItemRequirementEntryMvoStateEventBase)es.Last()).InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((InventoryItemRequirementEntryMvoEventBase)es.Last()).InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementVersion : default(long),
                 Events = es
             };
         }

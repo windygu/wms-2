@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo
 
     public class OrderItemShipGroupAssociationMvoStateEventDtoConverter
     {
-        public virtual OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto ToOrderItemShipGroupAssociationMvoStateEventDto(IOrderItemShipGroupAssociationMvoStateEvent stateEvent)
+        public virtual OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto ToOrderItemShipGroupAssociationMvoStateEventDto(IOrderItemShipGroupAssociationMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IOrderItemShipGroupAssociationMvoStateCreated)stateEvent;
                 return ToOrderItemShipGroupAssociationMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IOrderItemShipGroupAssociationMvoStateMergePatched)stateEvent;
                 return ToOrderItemShipGroupAssociationMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IOrderItemShipGroupAssociationMvoStateDeleted)stateEvent;
                 return ToOrderItemShipGroupAssociationMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual OrderItemShipGroupAssociationMvoStateCreatedDto ToOrderItemShipGroupAssociationMvoStateCreatedDto(IOrderItemShipGroupAssociationMvoStateCreated e)

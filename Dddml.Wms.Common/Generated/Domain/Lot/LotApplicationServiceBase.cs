@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Lot
 			bool repeated = false;
 			if (((ILotStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(ILotStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(ILotEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.Lot
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual ILotStateEvent GetStateEvent(string lotId, long version)
+	    public virtual ILotEvent GetEvent(string lotId, long version)
         {
-            var e = (ILotStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(lotId), version);
+            var e = (ILotEvent)EventStore.GetEvent(ToEventStoreAggregateId(lotId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(lotId, 0);
+                return GetEvent(lotId, 0);
             }
             return e;
         }
 
         public virtual ILotState GetHistoryState(string lotId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(ILotStateEvent), ToEventStoreAggregateId(lotId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(ILotEvent), ToEventStoreAggregateId(lotId), version - 1);
             return new LotState(eventStream.Events);
         }
 

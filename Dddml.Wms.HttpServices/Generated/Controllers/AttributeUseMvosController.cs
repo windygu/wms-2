@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = AttributeUseMvosControllerUtils.ParseIdString(id);
             var conv = new AttributeUseMvoStateEventDtoConverter();
-            var se = _attributeUseMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _attributeUseMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToAttributeUseMvoStateEventDto(se);
           } catch (Exception ex) { var response = AttributeUseMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

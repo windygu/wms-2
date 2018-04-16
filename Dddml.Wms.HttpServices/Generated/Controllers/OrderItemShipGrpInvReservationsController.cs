@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = OrderItemShipGrpInvReservationsControllerUtils.ParseIdString(id);
             var conv = new OrderItemShipGrpInvReservationStateEventDtoConverter();
-            var se = _orderItemShipGrpInvReservationApplicationService.GetStateEvent(idObj, version);
+            var se = _orderItemShipGrpInvReservationApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToOrderItemShipGrpInvReservationStateEventDto(se);
           } catch (Exception ex) { var response = OrderItemShipGrpInvReservationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

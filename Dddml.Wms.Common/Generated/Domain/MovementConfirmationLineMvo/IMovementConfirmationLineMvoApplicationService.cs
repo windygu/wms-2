@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         long GetCount(ICriterion filter);
 
-        IMovementConfirmationLineMvoStateEvent GetStateEvent(MovementConfirmationLineId movementConfirmationLineId, long version);
+        IMovementConfirmationLineMvoEvent GetEvent(MovementConfirmationLineId movementConfirmationLineId, long version);
 
         IMovementConfirmationLineMvoState GetHistoryState(MovementConfirmationLineId movementConfirmationLineId, long version);
 

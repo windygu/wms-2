@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         long GetCount(ICriterion filter);
 
-        ISupplierProductStateEvent GetStateEvent(SupplierProductId supplierProductId, long version);
+        ISupplierProductEvent GetEvent(SupplierProductId supplierProductId, long version);
 
         ISupplierProductState GetHistoryState(SupplierProductId supplierProductId, long version);
 

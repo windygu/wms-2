@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Lot
 
         long GetCount(ICriterion filter);
 
-        ILotStateEvent GetStateEvent(string lotId, long version);
+        ILotEvent GetEvent(string lotId, long version);
 
         ILotState GetHistoryState(string lotId, long version);
 

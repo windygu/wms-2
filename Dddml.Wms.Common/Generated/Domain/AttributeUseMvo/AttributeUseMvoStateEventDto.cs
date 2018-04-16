@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.AttributeSet;
 namespace Dddml.Wms.Domain.AttributeUseMvo
 {
 
-	public abstract class AttributeUseMvoStateEventDtoBase : IStateEventDto, IAttributeUseMvoStateCreated, IAttributeUseMvoStateMergePatched, IAttributeUseMvoStateDeleted
+	public abstract class AttributeUseMvoStateEventDtoBase : IEventDto, IAttributeUseMvoStateCreated, IAttributeUseMvoStateMergePatched, IAttributeUseMvoStateDeleted
 	{
 
         private AttributeUseMvoEventId _attributeUseMvoEventId;
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IAttributeUseMvoStateEvent.ReadOnly
+        bool IAttributeUseMvoEvent.ReadOnly
         {
             get
             {
@@ -406,7 +406,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		}
 
 
-        AttributeUseMvoEventId IAttributeUseMvoStateEvent.AttributeUseMvoEventId
+        AttributeUseMvoEventId IAttributeUseMvoEvent.AttributeUseMvoEventId
         {
             get { return this.AttributeUseMvoEventId; }
         }
@@ -422,12 +422,12 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -442,7 +442,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -459,14 +459,14 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -482,14 +482,14 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -505,14 +505,14 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -564,7 +564,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             _innerStateEvents.Add((AttributeUseMvoStateCreatedDto)e);
         }
 
-        public void AddAttributeUseMvoEvent(IAttributeUseMvoStateEvent e)
+        public void AddAttributeUseMvoEvent(IAttributeUseMvoEvent e)
         {
             _innerStateEvents.Add((AttributeUseMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

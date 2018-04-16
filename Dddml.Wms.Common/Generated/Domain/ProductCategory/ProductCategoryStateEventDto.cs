@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.ProductCategory;
 namespace Dddml.Wms.Domain.ProductCategory
 {
 
-	public abstract class ProductCategoryStateEventDtoBase : IStateEventDto, IProductCategoryStateCreated, IProductCategoryStateMergePatched, IProductCategoryStateDeleted
+	public abstract class ProductCategoryStateEventDtoBase : IEventDto, IProductCategoryStateCreated, IProductCategoryStateMergePatched, IProductCategoryStateDeleted
 	{
 
         private ProductCategoryEventId _productCategoryEventId;
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IProductCategoryStateEvent.ReadOnly
+        bool IProductCategoryEvent.ReadOnly
         {
             get
             {
@@ -279,7 +279,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 		}
 
 
-        ProductCategoryEventId IProductCategoryStateEvent.ProductCategoryEventId
+        ProductCategoryEventId IProductCategoryEvent.ProductCategoryEventId
         {
             get { return this.ProductCategoryEventId; }
         }
@@ -295,12 +295,12 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -315,7 +315,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -332,14 +332,14 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -355,14 +355,14 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -378,14 +378,14 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -437,7 +437,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             _innerStateEvents.Add((ProductCategoryStateCreatedDto)e);
         }
 
-        public void AddProductCategoryEvent(IProductCategoryStateEvent e)
+        public void AddProductCategoryEvent(IProductCategoryEvent e)
         {
             _innerStateEvents.Add((ProductCategoryStateCreatedOrMergePatchedOrDeletedDto)e);
         }

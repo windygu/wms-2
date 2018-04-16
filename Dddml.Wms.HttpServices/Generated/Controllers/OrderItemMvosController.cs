@@ -176,7 +176,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = OrderItemMvosControllerUtils.ParseIdString(id);
             var conv = new OrderItemMvoStateEventDtoConverter();
-            var se = _orderItemMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _orderItemMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToOrderItemMvoStateEventDto(se);
           } catch (Exception ex) { var response = OrderItemMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

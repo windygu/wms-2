@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Pickwave
         {
             if (events != null && events.Count() > 0)
             {
-                this.PickwaveId = ((IPickwaveStateEvent)events.First()).PickwaveEventId.PickwaveId;
+                this.PickwaveId = ((IPickwaveEvent)events.First()).PickwaveEventId.PickwaveId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain.Pickwave
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPickwaveStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPickwaveEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Pickwave|");

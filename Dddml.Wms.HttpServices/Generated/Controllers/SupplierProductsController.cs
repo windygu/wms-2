@@ -175,7 +175,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = SupplierProductsControllerUtils.ParseIdString(id);
             var conv = new SupplierProductStateEventDtoConverter();
-            var se = _supplierProductApplicationService.GetStateEvent(idObj, version);
+            var se = _supplierProductApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToSupplierProductStateEventDto(se);
           } catch (Exception ex) { var response = SupplierProductsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

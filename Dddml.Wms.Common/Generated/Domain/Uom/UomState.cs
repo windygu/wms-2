@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Uom
         {
             if (events != null && events.Count() > 0)
             {
-                this.UomId = ((IUomStateEvent)events.First()).UomEventId.UomId;
+                this.UomId = ((IUomEvent)events.First()).UomEventId.UomId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -267,7 +267,7 @@ namespace Dddml.Wms.Domain.Uom
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUomStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUomEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Uom|");

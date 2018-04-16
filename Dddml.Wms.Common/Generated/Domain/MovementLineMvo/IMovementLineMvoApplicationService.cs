@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
         long GetCount(ICriterion filter);
 
-        IMovementLineMvoStateEvent GetStateEvent(MovementLineId movementLineId, long version);
+        IMovementLineMvoEvent GetEvent(MovementLineId movementLineId, long version);
 
         IMovementLineMvoState GetHistoryState(MovementLineId movementLineId, long version);
 

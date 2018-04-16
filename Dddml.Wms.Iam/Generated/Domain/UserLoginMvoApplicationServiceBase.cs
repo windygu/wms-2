@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 			bool repeated = false;
 			if (((IUserLoginMvoStateProperties)state).UserVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IUserLoginMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IUserLoginMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.UserLoginMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IUserLoginMvoStateEvent GetStateEvent(UserLoginId userLoginId, long version)
+	    public virtual IUserLoginMvoEvent GetEvent(UserLoginId userLoginId, long version)
         {
-            var e = (IUserLoginMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(userLoginId), version);
+            var e = (IUserLoginMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(userLoginId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(userLoginId, 0);
+                return GetEvent(userLoginId, 0);
             }
             return e;
         }
 
         public virtual IUserLoginMvoState GetHistoryState(UserLoginId userLoginId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IUserLoginMvoStateEvent), ToEventStoreAggregateId(userLoginId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IUserLoginMvoEvent), ToEventStoreAggregateId(userLoginId), version - 1);
             return new UserLoginMvoState(eventStream.Events);
         }
 

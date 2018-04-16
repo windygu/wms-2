@@ -177,7 +177,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = SellableInventoryItemEntryMvosControllerUtils.ParseIdString(id);
             var conv = new SellableInventoryItemEntryMvoStateEventDtoConverter();
-            var se = _sellableInventoryItemEntryMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _sellableInventoryItemEntryMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToSellableInventoryItemEntryMvoStateEventDto(se);
           } catch (Exception ex) { var response = SellableInventoryItemEntryMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

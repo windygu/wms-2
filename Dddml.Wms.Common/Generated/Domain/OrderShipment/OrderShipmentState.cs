@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain.OrderShipment
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrderShipmentId = ((IOrderShipmentStateEvent)events.First()).OrderShipmentEventId.OrderShipmentId;
+                this.OrderShipmentId = ((IOrderShipmentEvent)events.First()).OrderShipmentEventId.OrderShipmentId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderShipmentStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderShipmentEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderShipment|");

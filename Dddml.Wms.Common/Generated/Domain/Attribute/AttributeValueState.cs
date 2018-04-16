@@ -287,7 +287,7 @@ namespace Dddml.Wms.Domain.Attribute
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeValueStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeValueEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeValue|");

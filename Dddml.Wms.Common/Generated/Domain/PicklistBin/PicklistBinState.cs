@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.PicklistBin
         {
             if (events != null && events.Count() > 0)
             {
-                this.PicklistBinId = ((IPicklistBinStateEvent)events.First()).PicklistBinEventId.PicklistBinId;
+                this.PicklistBinId = ((IPicklistBinEvent)events.First()).PicklistBinEventId.PicklistBinId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -295,7 +295,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IPicklistItemStateEvent innerEvent in e.PicklistItemEvents)
+			foreach (IPicklistItemEvent innerEvent in e.PicklistItemEvents)
             {
                 IPicklistItemState innerState = this.PicklistItems.Get(innerEvent.GlobalId.PicklistItemOrderShipGrpInvId);
 
@@ -323,8 +323,8 @@ namespace Dddml.Wms.Domain.PicklistBin
                 this.PicklistItems.Remove(innerState);
                 
                 var innerE = e.NewPicklistItemStateRemoved(innerState.PicklistItemOrderShipGrpInvId);
-                ((PicklistItemStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((PicklistItemStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((PicklistItemEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((PicklistItemEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddPicklistItemEvent(innerE);
 
@@ -339,7 +339,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistBinStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistBinEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistBin|");

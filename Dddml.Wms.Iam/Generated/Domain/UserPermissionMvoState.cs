@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.UserPermissionId = ((IUserPermissionMvoStateEvent)events.First()).UserPermissionMvoEventId.UserPermissionId;
+                this.UserPermissionId = ((IUserPermissionMvoEvent)events.First()).UserPermissionMvoEventId.UserPermissionId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -478,7 +478,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserPermissionMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserPermissionMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserPermissionMvo|");

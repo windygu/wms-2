@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.ShipmentPackage;
 namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 {
 
-	public abstract class ShipmentPackageContentMvoStateEventDtoBase : IStateEventDto, IShipmentPackageContentMvoStateCreated, IShipmentPackageContentMvoStateMergePatched, IShipmentPackageContentMvoStateDeleted
+	public abstract class ShipmentPackageContentMvoStateEventDtoBase : IEventDto, IShipmentPackageContentMvoStateCreated, IShipmentPackageContentMvoStateMergePatched, IShipmentPackageContentMvoStateDeleted
 	{
 
         private ShipmentPackageContentMvoEventId _shipmentPackageContentMvoEventId;
@@ -100,7 +100,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IShipmentPackageContentMvoStateEvent.ReadOnly
+        bool IShipmentPackageContentMvoEvent.ReadOnly
         {
             get
             {
@@ -511,7 +511,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 		}
 
 
-        ShipmentPackageContentMvoEventId IShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoEventId
+        ShipmentPackageContentMvoEventId IShipmentPackageContentMvoEvent.ShipmentPackageContentMvoEventId
         {
             get { return this.ShipmentPackageContentMvoEventId; }
         }
@@ -527,12 +527,12 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -547,7 +547,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -564,14 +564,14 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -587,14 +587,14 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -610,14 +610,14 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -669,7 +669,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
             _innerStateEvents.Add((ShipmentPackageContentMvoStateCreatedDto)e);
         }
 
-        public void AddShipmentPackageContentMvoEvent(IShipmentPackageContentMvoStateEvent e)
+        public void AddShipmentPackageContentMvoEvent(IShipmentPackageContentMvoEvent e)
         {
             _innerStateEvents.Add((ShipmentPackageContentMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         long GetCount(ICriterion filter);
 
-        IShipmentReceiptMvoStateEvent GetStateEvent(ShipmentReceiptId shipmentReceiptId, long version);
+        IShipmentReceiptMvoEvent GetEvent(ShipmentReceiptId shipmentReceiptId, long version);
 
         IShipmentReceiptMvoState GetHistoryState(ShipmentReceiptId shipmentReceiptId, long version);
 

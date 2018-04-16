@@ -7,7 +7,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="attributeValueStateEventDao" type="Dddml.Wms.Domain.Attribute.NHibernate.NHibernateAttributeValueStateEventDao, Dddml.Wms.Services">
+  <object id="attributeValueEventDao" type="Dddml.Wms.Domain.Attribute.NHibernate.NHibernateAttributeValueEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -16,7 +16,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="attributeAliasStateEventDao" type="Dddml.Wms.Domain.Attribute.NHibernate.NHibernateAttributeAliasStateEventDao, Dddml.Wms.Services">
+  <object id="attributeAliasEventDao" type="Dddml.Wms.Domain.Attribute.NHibernate.NHibernateAttributeAliasEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -47,7 +47,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="attributeUseStateEventDao" type="Dddml.Wms.Domain.AttributeSet.NHibernate.NHibernateAttributeUseStateEventDao, Dddml.Wms.Services">
+  <object id="attributeUseEventDao" type="Dddml.Wms.Domain.AttributeSet.NHibernate.NHibernateAttributeUseEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -195,7 +195,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="inOutLineStateEventDao" type="Dddml.Wms.Domain.InOut.NHibernate.NHibernateInOutLineStateEventDao, Dddml.Wms.Services">
+  <object id="inOutLineEventDao" type="Dddml.Wms.Domain.InOut.NHibernate.NHibernateInOutLineEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -226,7 +226,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="inventoryItemEntryStateEventDao" type="Dddml.Wms.Domain.InventoryItem.NHibernate.NHibernateInventoryItemEntryStateEventDao, Dddml.Wms.Services">
+  <object id="inventoryItemEntryEventDao" type="Dddml.Wms.Domain.InventoryItem.NHibernate.NHibernateInventoryItemEntryEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -385,7 +385,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="movementLineStateEventDao" type="Dddml.Wms.Domain.Movement.NHibernate.NHibernateMovementLineStateEventDao, Dddml.Wms.Services">
+  <object id="movementLineEventDao" type="Dddml.Wms.Domain.Movement.NHibernate.NHibernateMovementLineEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -416,7 +416,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="movementConfirmationLineStateEventDao" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.NHibernateMovementConfirmationLineStateEventDao, Dddml.Wms.Services">
+  <object id="movementConfirmationLineEventDao" type="Dddml.Wms.Domain.MovementConfirmation.NHibernate.NHibernateMovementConfirmationLineEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -464,7 +464,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="orderRoleStateEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderRoleStateEventDao, Dddml.Wms.Services">
+  <object id="orderRoleEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderRoleEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -473,7 +473,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="orderItemStateEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderItemStateEventDao, Dddml.Wms.Services">
+  <object id="orderItemEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderItemEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -482,7 +482,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="orderShipGroupStateEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderShipGroupStateEventDao, Dddml.Wms.Services">
+  <object id="orderShipGroupEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderShipGroupEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -491,7 +491,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="orderItemShipGroupAssociationStateEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderItemShipGroupAssociationStateEventDao, Dddml.Wms.Services">
+  <object id="orderItemShipGroupAssociationEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderItemShipGroupAssociationEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -659,7 +659,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="physicalInventoryLineStateEventDao" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.NHibernatePhysicalInventoryLineStateEventDao, Dddml.Wms.Services">
+  <object id="physicalInventoryLineEventDao" type="Dddml.Wms.Domain.PhysicalInventory.NHibernate.NHibernatePhysicalInventoryLineEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -690,7 +690,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="picklistRoleStateEventDao" type="Dddml.Wms.Domain.Picklist.NHibernate.NHibernatePicklistRoleStateEventDao, Dddml.Wms.Services">
+  <object id="picklistRoleEventDao" type="Dddml.Wms.Domain.Picklist.NHibernate.NHibernatePicklistRoleEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -721,7 +721,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="picklistItemStateEventDao" type="Dddml.Wms.Domain.PicklistBin.NHibernate.NHibernatePicklistItemStateEventDao, Dddml.Wms.Services">
+  <object id="picklistItemEventDao" type="Dddml.Wms.Domain.PicklistBin.NHibernate.NHibernatePicklistItemEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -906,7 +906,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="shipmentItemStateEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentItemStateEventDao, Dddml.Wms.Services">
+  <object id="shipmentItemEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentItemEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -915,7 +915,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="shipmentReceiptStateEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentReceiptStateEventDao, Dddml.Wms.Services">
+  <object id="shipmentReceiptEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentReceiptEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -924,7 +924,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="itemIssuanceStateEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateItemIssuanceStateEventDao, Dddml.Wms.Services">
+  <object id="itemIssuanceEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateItemIssuanceEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -977,7 +977,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="shipmentPackageContentStateEventDao" type="Dddml.Wms.Domain.ShipmentPackage.NHibernate.NHibernateShipmentPackageContentStateEventDao, Dddml.Wms.Services">
+  <object id="shipmentPackageContentEventDao" type="Dddml.Wms.Domain.ShipmentPackage.NHibernate.NHibernateShipmentPackageContentEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 

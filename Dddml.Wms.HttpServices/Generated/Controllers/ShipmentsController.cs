@@ -251,7 +251,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new ShipmentStateEventDtoConverter();
-            var se = _shipmentApplicationService.GetStateEvent(idObj, version);
+            var se = _shipmentApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToShipmentStateEventDto(se);
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

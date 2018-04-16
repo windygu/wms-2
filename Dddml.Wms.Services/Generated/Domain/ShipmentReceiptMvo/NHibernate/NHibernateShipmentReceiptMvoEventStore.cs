@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo.NHibernate
 			return new ShipmentReceiptMvoEventId((ShipmentReceiptId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ShipmentReceiptMvoStateEventBase);
+			return typeof(ShipmentReceiptMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ShipmentReceiptMvoStateEventBase);
+            Type supportedEventType = typeof(ShipmentReceiptMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             ShipmentReceiptId idObj = (ShipmentReceiptId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ShipmentReceiptMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ShipmentReceiptMvoEventBase>();
             criteria.Add(Restrictions.Eq("ShipmentReceiptMvoEventId.ShipmentReceiptIdShipmentId", idObj.ShipmentId));
             criteria.Add(Restrictions.Eq("ShipmentReceiptMvoEventId.ShipmentReceiptIdReceiptSeqId", idObj.ReceiptSeqId));
             criteria.Add(Restrictions.Le("ShipmentReceiptMvoEventId.ShipmentVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ShipmentReceiptMvoEventId.ShipmentVersion"));
             var es = criteria.List<IEvent>();
-            foreach (ShipmentReceiptMvoStateEventBase e in es)
+            foreach (ShipmentReceiptMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ShipmentReceiptMvoStateEventBase)es.Last()).ShipmentReceiptMvoEventId.ShipmentVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((ShipmentReceiptMvoEventBase)es.Last()).ShipmentReceiptMvoEventId.ShipmentVersion : default(long),
                 Events = es
             };
         }

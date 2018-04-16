@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.Movement
 
         long GetCount(ICriterion filter);
 
-        IMovementStateEvent GetStateEvent(string documentNumber, long version);
+        IMovementEvent GetEvent(string documentNumber, long version);
 
         IMovementState GetHistoryState(string documentNumber, long version);
 

@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.ShipmentPackageContentId = ((IShipmentPackageContentMvoStateEvent)events.First()).ShipmentPackageContentMvoEventId.ShipmentPackageContentId;
+                this.ShipmentPackageContentId = ((IShipmentPackageContentMvoEvent)events.First()).ShipmentPackageContentMvoEventId.ShipmentPackageContentId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -492,7 +492,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentPackageContentMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentPackageContentMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentPackageContentMvo|");

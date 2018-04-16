@@ -253,7 +253,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IPhysicalInventoryLineMvoStateEvent> GetStateEventAsync(PhysicalInventoryLineId physicalInventoryLineId, long version)
+        public async Task<IPhysicalInventoryLineMvoEvent> GetStateEventAsync(PhysicalInventoryLineId physicalInventoryLineId, long version)
         {
             var idObj = PhysicalInventoryLineMvoProxyUtils.ToIdString(physicalInventoryLineId);
             var uriParameters = new PhysicalInventoryLineMvoStateEventUriParameters();
@@ -266,7 +266,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPhysicalInventoryLineMvoStateEvent GetStateEvent(PhysicalInventoryLineId physicalInventoryLineId, long version)
+        public IPhysicalInventoryLineMvoEvent GetEvent(PhysicalInventoryLineId physicalInventoryLineId, long version)
         {
             return GetStateEventAsync(physicalInventoryLineId, version).GetAwaiter().GetResult();
         }

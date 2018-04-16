@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistItemStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistItemEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistItem|");

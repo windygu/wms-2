@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Permission
 			bool repeated = false;
 			if (((IPermissionStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPermissionStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPermissionEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.Permission
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPermissionStateEvent GetStateEvent(string permissionId, long version)
+	    public virtual IPermissionEvent GetEvent(string permissionId, long version)
         {
-            var e = (IPermissionStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(permissionId), version);
+            var e = (IPermissionEvent)EventStore.GetEvent(ToEventStoreAggregateId(permissionId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(permissionId, 0);
+                return GetEvent(permissionId, 0);
             }
             return e;
         }
 
         public virtual IPermissionState GetHistoryState(string permissionId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPermissionStateEvent), ToEventStoreAggregateId(permissionId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPermissionEvent), ToEventStoreAggregateId(permissionId), version - 1);
             return new PermissionState(eventStream.Events);
         }
 

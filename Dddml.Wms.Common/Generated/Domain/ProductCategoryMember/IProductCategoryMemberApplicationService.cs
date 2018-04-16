@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         long GetCount(ICriterion filter);
 
-        IProductCategoryMemberStateEvent GetStateEvent(ProductCategoryMemberId productCategoryMemberId, long version);
+        IProductCategoryMemberEvent GetEvent(ProductCategoryMemberId productCategoryMemberId, long version);
 
         IProductCategoryMemberState GetHistoryState(ProductCategoryMemberId productCategoryMemberId, long version);
 

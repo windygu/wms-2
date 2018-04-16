@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 			bool repeated = false;
 			if (((IRejectionReasonStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IRejectionReasonStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IRejectionReasonEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.RejectionReason
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IRejectionReasonStateEvent GetStateEvent(string rejectionReasonId, long version)
+	    public virtual IRejectionReasonEvent GetEvent(string rejectionReasonId, long version)
         {
-            var e = (IRejectionReasonStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(rejectionReasonId), version);
+            var e = (IRejectionReasonEvent)EventStore.GetEvent(ToEventStoreAggregateId(rejectionReasonId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(rejectionReasonId, 0);
+                return GetEvent(rejectionReasonId, 0);
             }
             return e;
         }
 
         public virtual IRejectionReasonState GetHistoryState(string rejectionReasonId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IRejectionReasonStateEvent), ToEventStoreAggregateId(rejectionReasonId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IRejectionReasonEvent), ToEventStoreAggregateId(rejectionReasonId), version - 1);
             return new RejectionReasonState(eventStream.Events);
         }
 

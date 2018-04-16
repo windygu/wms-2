@@ -148,7 +148,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         {
             if (events != null && events.Count() > 0)
             {
-                this.InventoryItemRequirementId = ((IInventoryItemRequirementStateEvent)events.First()).InventoryItemRequirementEventId.InventoryItemRequirementId;
+                this.InventoryItemRequirementId = ((IInventoryItemRequirementEvent)events.First()).InventoryItemRequirementEventId.InventoryItemRequirementId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -219,7 +219,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IInventoryItemRequirementEntryStateEvent innerEvent in e.InventoryItemRequirementEntryEvents)
+			foreach (IInventoryItemRequirementEntryEvent innerEvent in e.InventoryItemRequirementEntryEvents)
             {
                 IInventoryItemRequirementEntryState innerState = this.Entries.Get(innerEvent.GlobalId.EntrySeqId);
 
@@ -236,7 +236,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryItemRequirementStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryItemRequirementEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryItemRequirement|");

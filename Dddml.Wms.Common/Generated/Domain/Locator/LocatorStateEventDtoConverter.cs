@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.Locator
 
     public class LocatorStateEventDtoConverter
     {
-        public virtual LocatorStateCreatedOrMergePatchedOrDeletedDto ToLocatorStateEventDto(ILocatorStateEvent stateEvent)
+        public virtual LocatorStateCreatedOrMergePatchedOrDeletedDto ToLocatorStateEventDto(ILocatorEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (ILocatorStateCreated)stateEvent;
                 return ToLocatorStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (ILocatorStateMergePatched)stateEvent;
                 return ToLocatorStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (ILocatorStateDeleted)stateEvent;
                 return ToLocatorStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual LocatorStateCreatedDto ToLocatorStateCreatedDto(ILocatorStateCreated e)

@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
 			return new MovementEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(MovementStateEventBase);
+			return typeof(MovementEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(MovementStateEventBase);
+            Type supportedEventType = typeof(MovementEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<MovementStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<MovementEventBase>();
             criteria.Add(Restrictions.Eq("MovementEventId.DocumentNumber", idObj));
             criteria.Add(Restrictions.Le("MovementEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("MovementEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (MovementStateEventBase e in es)
+            foreach (MovementEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((MovementStateEventBase)es.Last()).MovementEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((MovementEventBase)es.Last()).MovementEventId.Version : default(long),
                 Events = es
             };
         }

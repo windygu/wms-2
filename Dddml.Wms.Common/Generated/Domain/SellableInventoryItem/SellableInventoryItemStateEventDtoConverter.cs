@@ -17,19 +17,19 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
     public class SellableInventoryItemStateEventDtoConverter
     {
-        public virtual SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto ToSellableInventoryItemStateEventDto(ISellableInventoryItemStateEvent stateEvent)
+        public virtual SellableInventoryItemStateCreatedOrMergePatchedOrDeletedDto ToSellableInventoryItemStateEventDto(ISellableInventoryItemEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (ISellableInventoryItemStateCreated)stateEvent;
                 return ToSellableInventoryItemStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (ISellableInventoryItemStateMergePatched)stateEvent;
                 return ToSellableInventoryItemStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual SellableInventoryItemStateCreatedDto ToSellableInventoryItemStateCreatedDto(ISellableInventoryItemStateCreated e)

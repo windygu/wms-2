@@ -24,33 +24,33 @@ namespace Dddml.Wms.Domain.ShipmentPackage.NHibernate
 			return new ShipmentPackageEventId((ShipmentPackageId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ShipmentPackageStateEventBase);
+			return typeof(ShipmentPackageEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ShipmentPackageStateEventBase);
+            Type supportedEventType = typeof(ShipmentPackageEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             ShipmentPackageId idObj = (ShipmentPackageId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ShipmentPackageStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ShipmentPackageEventBase>();
             criteria.Add(Restrictions.Eq("ShipmentPackageEventId.ShipmentPackageIdShipmentId", idObj.ShipmentId));
             criteria.Add(Restrictions.Eq("ShipmentPackageEventId.ShipmentPackageIdShipmentPackageSeqId", idObj.ShipmentPackageSeqId));
             criteria.Add(Restrictions.Le("ShipmentPackageEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ShipmentPackageEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (ShipmentPackageStateEventBase e in es)
+            foreach (ShipmentPackageEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ShipmentPackageStateEventBase)es.Last()).ShipmentPackageEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((ShipmentPackageEventBase)es.Last()).ShipmentPackageEventId.Version : default(long),
                 Events = es
             };
         }

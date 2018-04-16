@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 {
 
-	public abstract class InventoryItemEntryMvoStateEventDtoBase : IStateEventDto, IInventoryItemEntryMvoStateCreated, IInventoryItemEntryMvoStateMergePatched
+	public abstract class InventoryItemEntryMvoStateEventDtoBase : IEventDto, IInventoryItemEntryMvoStateCreated, IInventoryItemEntryMvoStateMergePatched
 	{
 
         private InventoryItemEntryMvoEventId _inventoryItemEntryMvoEventId;
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IInventoryItemEntryMvoStateEvent.ReadOnly
+        bool IInventoryItemEntryMvoEvent.ReadOnly
         {
             get
             {
@@ -427,7 +427,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		}
 
 
-        InventoryItemEntryMvoEventId IInventoryItemEntryMvoStateEvent.InventoryItemEntryMvoEventId
+        InventoryItemEntryMvoEventId IInventoryItemEntryMvoEvent.InventoryItemEntryMvoEventId
         {
             get { return this.InventoryItemEntryMvoEventId; }
         }
@@ -443,12 +443,12 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -463,7 +463,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -480,14 +480,14 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -503,14 +503,14 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -526,14 +526,14 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -581,7 +581,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             _innerStateEvents.Add((InventoryItemEntryMvoStateCreatedDto)e);
         }
 
-        public void AddInventoryItemEntryMvoEvent(IInventoryItemEntryMvoStateEvent e)
+        public void AddInventoryItemEntryMvoEvent(IInventoryItemEntryMvoEvent e)
         {
             _innerStateEvents.Add((InventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

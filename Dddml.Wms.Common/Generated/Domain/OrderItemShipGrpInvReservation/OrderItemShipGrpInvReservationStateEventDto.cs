@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.OrderItemShipGrpInvReservation;
 namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 {
 
-	public abstract class OrderItemShipGrpInvReservationStateEventDtoBase : IStateEventDto, IOrderItemShipGrpInvReservationStateCreated, IOrderItemShipGrpInvReservationStateMergePatched, IOrderItemShipGrpInvReservationStateDeleted
+	public abstract class OrderItemShipGrpInvReservationStateEventDtoBase : IEventDto, IOrderItemShipGrpInvReservationStateCreated, IOrderItemShipGrpInvReservationStateMergePatched, IOrderItemShipGrpInvReservationStateDeleted
 	{
 
         private OrderItemShipGrpInvReservationEventId _orderItemShipGrpInvReservationEventId;
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IOrderItemShipGrpInvReservationStateEvent.ReadOnly
+        bool IOrderItemShipGrpInvReservationEvent.ReadOnly
         {
             get
             {
@@ -321,7 +321,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 		}
 
 
-        OrderItemShipGrpInvReservationEventId IOrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationEventId
+        OrderItemShipGrpInvReservationEventId IOrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationEventId
         {
             get { return this.OrderItemShipGrpInvReservationEventId; }
         }
@@ -337,12 +337,12 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -357,7 +357,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -374,14 +374,14 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -397,14 +397,14 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -420,14 +420,14 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -479,7 +479,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
             _innerStateEvents.Add((OrderItemShipGrpInvReservationStateCreatedDto)e);
         }
 
-        public void AddOrderItemShipGrpInvReservationEvent(IOrderItemShipGrpInvReservationStateEvent e)
+        public void AddOrderItemShipGrpInvReservationEvent(IOrderItemShipGrpInvReservationEvent e)
         {
             _innerStateEvents.Add((OrderItemShipGrpInvReservationStateCreatedOrMergePatchedOrDeletedDto)e);
         }

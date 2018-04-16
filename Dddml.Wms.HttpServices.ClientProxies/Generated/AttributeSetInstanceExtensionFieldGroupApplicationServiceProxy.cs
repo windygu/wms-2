@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IAttributeSetInstanceExtensionFieldGroupStateEvent> GetStateEventAsync(string id, long version)
+        public async Task<IAttributeSetInstanceExtensionFieldGroupEvent> GetStateEventAsync(string id, long version)
         {
             var idObj = id;
             var uriParameters = new AttributeSetInstanceExtensionFieldGroupStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IAttributeSetInstanceExtensionFieldGroupStateEvent GetStateEvent(string id, long version)
+        public IAttributeSetInstanceExtensionFieldGroupEvent GetEvent(string id, long version)
         {
             return GetStateEventAsync(id, version).GetAwaiter().GetResult();
         }

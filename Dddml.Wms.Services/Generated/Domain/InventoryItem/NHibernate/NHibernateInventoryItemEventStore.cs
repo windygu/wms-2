@@ -24,34 +24,34 @@ namespace Dddml.Wms.Domain.InventoryItem.NHibernate
 			return new InventoryItemEventId((InventoryItemId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(InventoryItemStateEventBase);
+			return typeof(InventoryItemEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(InventoryItemStateEventBase);
+            Type supportedEventType = typeof(InventoryItemEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             InventoryItemId idObj = (InventoryItemId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<InventoryItemStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<InventoryItemEventBase>();
             criteria.Add(Restrictions.Eq("InventoryItemEventId.InventoryItemIdProductId", idObj.ProductId));
             criteria.Add(Restrictions.Eq("InventoryItemEventId.InventoryItemIdLocatorId", idObj.LocatorId));
             criteria.Add(Restrictions.Eq("InventoryItemEventId.InventoryItemIdAttributeSetInstanceId", idObj.AttributeSetInstanceId));
             criteria.Add(Restrictions.Le("InventoryItemEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryItemEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (InventoryItemStateEventBase e in es)
+            foreach (InventoryItemEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InventoryItemStateEventBase)es.Last()).InventoryItemEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((InventoryItemEventBase)es.Last()).InventoryItemEventId.Version : default(long),
                 Events = es
             };
         }

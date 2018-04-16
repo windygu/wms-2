@@ -25,32 +25,32 @@ namespace Dddml.Wms.Domain.PhysicalInventory.NHibernate
 			return new PhysicalInventoryEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PhysicalInventoryStateEventBase);
+			return typeof(PhysicalInventoryEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PhysicalInventoryStateEventBase);
+            Type supportedEventType = typeof(PhysicalInventoryEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PhysicalInventoryStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PhysicalInventoryEventBase>();
             criteria.Add(Restrictions.Eq("PhysicalInventoryEventId.DocumentNumber", idObj));
             criteria.Add(Restrictions.Le("PhysicalInventoryEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PhysicalInventoryEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (PhysicalInventoryStateEventBase e in es)
+            foreach (PhysicalInventoryEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PhysicalInventoryStateEventBase)es.Last()).PhysicalInventoryEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((PhysicalInventoryEventBase)es.Last()).PhysicalInventoryEventId.Version : default(long),
                 Events = es
             };
         }

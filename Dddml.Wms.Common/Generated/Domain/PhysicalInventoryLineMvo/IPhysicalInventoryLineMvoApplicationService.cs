@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         long GetCount(ICriterion filter);
 
-        IPhysicalInventoryLineMvoStateEvent GetStateEvent(PhysicalInventoryLineId physicalInventoryLineId, long version);
+        IPhysicalInventoryLineMvoEvent GetEvent(PhysicalInventoryLineId physicalInventoryLineId, long version);
 
         IPhysicalInventoryLineMvoState GetHistoryState(PhysicalInventoryLineId physicalInventoryLineId, long version);
 

@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			bool repeated = false;
 			if (((IInOutLineMvoStateProperties)state).InOutVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IInOutLineMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IInOutLineMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IInOutLineMvoStateEvent GetStateEvent(InOutLineId inOutLineId, long version)
+	    public virtual IInOutLineMvoEvent GetEvent(InOutLineId inOutLineId, long version)
         {
-            var e = (IInOutLineMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(inOutLineId), version);
+            var e = (IInOutLineMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(inOutLineId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(inOutLineId, 0);
+                return GetEvent(inOutLineId, 0);
             }
             return e;
         }
 
         public virtual IInOutLineMvoState GetHistoryState(InOutLineId inOutLineId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IInOutLineMvoStateEvent), ToEventStoreAggregateId(inOutLineId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IInOutLineMvoEvent), ToEventStoreAggregateId(inOutLineId), version - 1);
             return new InOutLineMvoState(eventStream.Events);
         }
 

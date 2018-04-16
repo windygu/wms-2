@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
     public class InOutLineMvoStateEventDtoConverter
     {
-        public virtual InOutLineMvoStateCreatedOrMergePatchedOrDeletedDto ToInOutLineMvoStateEventDto(IInOutLineMvoStateEvent stateEvent)
+        public virtual InOutLineMvoStateCreatedOrMergePatchedOrDeletedDto ToInOutLineMvoStateEventDto(IInOutLineMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IInOutLineMvoStateCreated)stateEvent;
                 return ToInOutLineMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IInOutLineMvoStateMergePatched)stateEvent;
                 return ToInOutLineMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IInOutLineMvoStateDeleted)stateEvent;
                 return ToInOutLineMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual InOutLineMvoStateCreatedDto ToInOutLineMvoStateCreatedDto(IInOutLineMvoStateCreated e)

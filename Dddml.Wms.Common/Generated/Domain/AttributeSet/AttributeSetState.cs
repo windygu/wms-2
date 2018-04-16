@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeSetId = ((IAttributeSetStateEvent)events.First()).AttributeSetEventId.AttributeSetId;
+                this.AttributeSetId = ((IAttributeSetEvent)events.First()).AttributeSetEventId.AttributeSetId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -323,7 +323,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IAttributeUseStateEvent innerEvent in e.AttributeUseEvents)
+			foreach (IAttributeUseEvent innerEvent in e.AttributeUseEvents)
             {
                 IAttributeUseState innerState = this.AttributeUses.Get(innerEvent.GlobalId.AttributeId);
 
@@ -351,8 +351,8 @@ namespace Dddml.Wms.Domain.AttributeSet
                 this.AttributeUses.Remove(innerState);
                 
                 var innerE = e.NewAttributeUseStateRemoved(innerState.AttributeId);
-                ((AttributeUseStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((AttributeUseStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((AttributeUseEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((AttributeUseEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddAttributeUseEvent(innerE);
 
@@ -367,7 +367,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeSetStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeSetEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeSet|");

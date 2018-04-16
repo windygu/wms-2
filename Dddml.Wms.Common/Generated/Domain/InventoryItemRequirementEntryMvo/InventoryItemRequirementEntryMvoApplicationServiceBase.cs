@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 			bool repeated = false;
 			if (((IInventoryItemRequirementEntryMvoStateProperties)state).InventoryItemRequirementVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IInventoryItemRequirementEntryMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IInventoryItemRequirementEntryMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -142,23 +142,23 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IInventoryItemRequirementEntryMvoStateEvent GetStateEvent(InventoryItemRequirementEntryId inventoryItemRequirementEntryId, long version)
+	    public virtual IInventoryItemRequirementEntryMvoEvent GetEvent(InventoryItemRequirementEntryId inventoryItemRequirementEntryId, long version)
         {
-            var e = (IInventoryItemRequirementEntryMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(inventoryItemRequirementEntryId), version);
+            var e = (IInventoryItemRequirementEntryMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(inventoryItemRequirementEntryId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(inventoryItemRequirementEntryId, 0);
+                return GetEvent(inventoryItemRequirementEntryId, 0);
             }
             return e;
         }
 
         public virtual IInventoryItemRequirementEntryMvoState GetHistoryState(InventoryItemRequirementEntryId inventoryItemRequirementEntryId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IInventoryItemRequirementEntryMvoStateEvent), ToEventStoreAggregateId(inventoryItemRequirementEntryId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IInventoryItemRequirementEntryMvoEvent), ToEventStoreAggregateId(inventoryItemRequirementEntryId), version - 1);
             return new InventoryItemRequirementEntryMvoState(eventStream.Events);
         }
 

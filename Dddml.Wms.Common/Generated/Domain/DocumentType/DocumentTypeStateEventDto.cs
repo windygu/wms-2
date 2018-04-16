@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.DocumentType;
 namespace Dddml.Wms.Domain.DocumentType
 {
 
-	public abstract class DocumentTypeStateEventDtoBase : IStateEventDto, IDocumentTypeStateCreated, IDocumentTypeStateMergePatched, IDocumentTypeStateDeleted
+	public abstract class DocumentTypeStateEventDtoBase : IEventDto, IDocumentTypeStateCreated, IDocumentTypeStateMergePatched, IDocumentTypeStateDeleted
 	{
 
         private DocumentTypeEventId _documentTypeEventId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IDocumentTypeStateEvent.ReadOnly
+        bool IDocumentTypeEvent.ReadOnly
         {
             get
             {
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.DocumentType
 		}
 
 
-        DocumentTypeEventId IDocumentTypeStateEvent.DocumentTypeEventId
+        DocumentTypeEventId IDocumentTypeEvent.DocumentTypeEventId
         {
             get { return this.DocumentTypeEventId; }
         }
@@ -169,12 +169,12 @@ namespace Dddml.Wms.Domain.DocumentType
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.DocumentType
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -206,14 +206,14 @@ namespace Dddml.Wms.Domain.DocumentType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -229,14 +229,14 @@ namespace Dddml.Wms.Domain.DocumentType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -252,14 +252,14 @@ namespace Dddml.Wms.Domain.DocumentType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.DocumentType
             _innerStateEvents.Add((DocumentTypeStateCreatedDto)e);
         }
 
-        public void AddDocumentTypeEvent(IDocumentTypeStateEvent e)
+        public void AddDocumentTypeEvent(IDocumentTypeEvent e)
         {
             _innerStateEvents.Add((DocumentTypeStateCreatedOrMergePatchedOrDeletedDto)e);
         }

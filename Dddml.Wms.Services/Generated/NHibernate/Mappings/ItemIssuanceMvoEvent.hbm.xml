@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.ItemIssuanceMvo">
   
-  <class name="ItemIssuanceMvoStateEventBase" table="ItemIssuanceMvoEvents" mutable="false" abstract="true">
+  <class name="ItemIssuanceMvoEventBase" table="ItemIssuanceMvoEvents" mutable="false" abstract="true">
 
     <composite-id name="ItemIssuanceMvoEventId" class="Dddml.Wms.Domain.ItemIssuanceMvo.ItemIssuanceMvoEventId">
         <key-property name="ShipmentItemIssuanceIdShipmentId" ><column name="ShipmentItemIssuanceIdShipmentId" sql-type="VARCHAR(20)" /></key-property>

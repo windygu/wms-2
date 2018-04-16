@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.LocatorType;
 namespace Dddml.Wms.Domain.LocatorType
 {
 
-	public abstract class LocatorTypeStateEventDtoBase : IStateEventDto, ILocatorTypeStateCreated, ILocatorTypeStateMergePatched, ILocatorTypeStateDeleted
+	public abstract class LocatorTypeStateEventDtoBase : IEventDto, ILocatorTypeStateCreated, ILocatorTypeStateMergePatched, ILocatorTypeStateDeleted
 	{
 
         private LocatorTypeEventId _locatorTypeEventId;
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.LocatorType
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool ILocatorTypeStateEvent.ReadOnly
+        bool ILocatorTypeEvent.ReadOnly
         {
             get
             {
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.LocatorType
 		}
 
 
-        LocatorTypeEventId ILocatorTypeStateEvent.LocatorTypeEventId
+        LocatorTypeEventId ILocatorTypeEvent.LocatorTypeEventId
         {
             get { return this.LocatorTypeEventId; }
         }
@@ -148,12 +148,12 @@ namespace Dddml.Wms.Domain.LocatorType
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.LocatorType
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -185,14 +185,14 @@ namespace Dddml.Wms.Domain.LocatorType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -208,14 +208,14 @@ namespace Dddml.Wms.Domain.LocatorType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -231,14 +231,14 @@ namespace Dddml.Wms.Domain.LocatorType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -290,7 +290,7 @@ namespace Dddml.Wms.Domain.LocatorType
             _innerStateEvents.Add((LocatorTypeStateCreatedDto)e);
         }
 
-        public void AddLocatorTypeEvent(ILocatorTypeStateEvent e)
+        public void AddLocatorTypeEvent(ILocatorTypeEvent e)
         {
             _innerStateEvents.Add((LocatorTypeStateCreatedOrMergePatchedOrDeletedDto)e);
         }

@@ -183,7 +183,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
             if (events != null && events.Count() > 0)
             {
-                this.ShipmentId = ((IShipmentStateEvent)events.First()).ShipmentEventId.ShipmentId;
+                this.ShipmentId = ((IShipmentEvent)events.First()).ShipmentEventId.ShipmentId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -620,7 +620,7 @@ namespace Dddml.Wms.Domain.Shipment
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IShipmentItemStateEvent innerEvent in e.ShipmentItemEvents)
+			foreach (IShipmentItemEvent innerEvent in e.ShipmentItemEvents)
             {
                 IShipmentItemState innerState = this.ShipmentItems.Get(innerEvent.GlobalId.ShipmentItemSeqId);
 
@@ -628,7 +628,7 @@ namespace Dddml.Wms.Domain.Shipment
           
             }
 
-			foreach (IShipmentReceiptStateEvent innerEvent in e.ShipmentReceiptEvents)
+			foreach (IShipmentReceiptEvent innerEvent in e.ShipmentReceiptEvents)
             {
                 IShipmentReceiptState innerState = this.ShipmentReceipts.Get(innerEvent.GlobalId.ReceiptSeqId);
 
@@ -636,7 +636,7 @@ namespace Dddml.Wms.Domain.Shipment
           
             }
 
-			foreach (IItemIssuanceStateEvent innerEvent in e.ItemIssuanceEvents)
+			foreach (IItemIssuanceEvent innerEvent in e.ItemIssuanceEvents)
             {
                 IItemIssuanceState innerState = this.ItemIssuances.Get(innerEvent.GlobalId.ItemIssuanceSeqId);
 
@@ -658,7 +658,7 @@ namespace Dddml.Wms.Domain.Shipment
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Shipment|");

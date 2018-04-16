@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IContactMechStateEvent> GetStateEventAsync(string contactMechId, long version)
+        public async Task<IContactMechEvent> GetStateEventAsync(string contactMechId, long version)
         {
             var idObj = contactMechId;
             var uriParameters = new ContactMechStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IContactMechStateEvent GetStateEvent(string contactMechId, long version)
+        public IContactMechEvent GetEvent(string contactMechId, long version)
         {
             return GetStateEventAsync(contactMechId, version).GetAwaiter().GetResult();
         }

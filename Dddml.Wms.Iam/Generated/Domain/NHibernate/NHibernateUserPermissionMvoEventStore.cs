@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.UserPermissionMvo.NHibernate
 			return new UserPermissionMvoEventId((UserPermissionId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(UserPermissionMvoStateEventBase);
+			return typeof(UserPermissionMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(UserPermissionMvoStateEventBase);
+            Type supportedEventType = typeof(UserPermissionMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             UserPermissionId idObj = (UserPermissionId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<UserPermissionMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<UserPermissionMvoEventBase>();
             criteria.Add(Restrictions.Eq("UserPermissionMvoEventId.UserPermissionIdUserId", idObj.UserId));
             criteria.Add(Restrictions.Eq("UserPermissionMvoEventId.UserPermissionIdPermissionId", idObj.PermissionId));
             criteria.Add(Restrictions.Le("UserPermissionMvoEventId.UserVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UserPermissionMvoEventId.UserVersion"));
             var es = criteria.List<IEvent>();
-            foreach (UserPermissionMvoStateEventBase e in es)
+            foreach (UserPermissionMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((UserPermissionMvoStateEventBase)es.Last()).UserPermissionMvoEventId.UserVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((UserPermissionMvoEventBase)es.Last()).UserPermissionMvoEventId.UserVersion : default(long),
                 Events = es
             };
         }

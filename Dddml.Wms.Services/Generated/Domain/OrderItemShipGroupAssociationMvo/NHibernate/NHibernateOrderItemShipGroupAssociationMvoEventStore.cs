@@ -25,34 +25,34 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo.NHibernate
 			return new OrderItemShipGroupAssociationMvoEventId((OrderItemShipGroupAssociationId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(OrderItemShipGroupAssociationMvoStateEventBase);
+			return typeof(OrderItemShipGroupAssociationMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(OrderItemShipGroupAssociationMvoStateEventBase);
+            Type supportedEventType = typeof(OrderItemShipGroupAssociationMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             OrderItemShipGroupAssociationId idObj = (OrderItemShipGroupAssociationId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<OrderItemShipGroupAssociationMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<OrderItemShipGroupAssociationMvoEventBase>();
             criteria.Add(Restrictions.Eq("OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationIdOrderId", idObj.OrderId));
             criteria.Add(Restrictions.Eq("OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId", idObj.OrderShipGroupShipGroupSeqId));
             criteria.Add(Restrictions.Eq("OrderItemShipGroupAssociationMvoEventId.OrderItemShipGroupAssociationIdOrderItemSeqId", idObj.OrderItemSeqId));
             criteria.Add(Restrictions.Le("OrderItemShipGroupAssociationMvoEventId.OrderVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrderItemShipGroupAssociationMvoEventId.OrderVersion"));
             var es = criteria.List<IEvent>();
-            foreach (OrderItemShipGroupAssociationMvoStateEventBase e in es)
+            foreach (OrderItemShipGroupAssociationMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrderItemShipGroupAssociationMvoStateEventBase)es.Last()).OrderItemShipGroupAssociationMvoEventId.OrderVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((OrderItemShipGroupAssociationMvoEventBase)es.Last()).OrderItemShipGroupAssociationMvoEventId.OrderVersion : default(long),
                 Events = es
             };
         }

@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Picklist">
   
-  <class name="PicklistStateEventBase" table="PicklistEvents" mutable="false" abstract="true">
+  <class name="PicklistEventBase" table="PicklistEvents" mutable="false" abstract="true">
 
     <composite-id name="PicklistEventId" class="Dddml.Wms.Domain.Picklist.PicklistEventId">
         <key-property name="PicklistId" ><column name="PicklistId" sql-type="VARCHAR(20)" /></key-property>

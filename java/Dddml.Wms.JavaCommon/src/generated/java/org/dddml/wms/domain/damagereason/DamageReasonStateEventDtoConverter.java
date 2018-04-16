@@ -19,7 +19,7 @@ public class DamageReasonStateEventDtoConverter {
             return toDamageReasonStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public DamageReasonStateEventDto.DamageReasonStateCreatedDto toDamageReasonStateCreatedDto(DamageReasonEvent.DamageReasonStateCreated e) {

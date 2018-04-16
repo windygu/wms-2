@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.Party
 
         long GetCount<T>(ICriterion filter) where T : class, IPartyState;
 
-        IPartyStateEvent GetStateEvent(string partyId, long version);
+        IPartyEvent GetEvent(string partyId, long version);
 
         IPartyState GetHistoryState(string partyId, long version);
 

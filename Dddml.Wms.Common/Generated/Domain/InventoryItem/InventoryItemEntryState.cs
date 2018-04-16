@@ -215,7 +215,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryItemEntryStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryItemEntryEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryItemEntry|");

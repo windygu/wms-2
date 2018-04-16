@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<ILocatorStateEvent> GetStateEventAsync(string locatorId, long version)
+        public async Task<ILocatorEvent> GetStateEventAsync(string locatorId, long version)
         {
             var idObj = locatorId;
             var uriParameters = new LocatorStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public ILocatorStateEvent GetStateEvent(string locatorId, long version)
+        public ILocatorEvent GetEvent(string locatorId, long version)
         {
             return GetStateEventAsync(locatorId, version).GetAwaiter().GetResult();
         }

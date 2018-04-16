@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = UomConversionsControllerUtils.ParseIdString(id);
             var conv = new UomConversionStateEventDtoConverter();
-            var se = _uomConversionApplicationService.GetStateEvent(idObj, version);
+            var se = _uomConversionApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToUomConversionStateEventDto(se);
           } catch (Exception ex) { var response = UomConversionsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

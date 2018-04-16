@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
 			bool repeated = false;
 			if (((IShipmentPackageContentMvoStateProperties)state).ShipmentPackageVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IShipmentPackageContentMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IShipmentPackageContentMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IShipmentPackageContentMvoStateEvent GetStateEvent(ShipmentPackageContentId shipmentPackageContentId, long version)
+	    public virtual IShipmentPackageContentMvoEvent GetEvent(ShipmentPackageContentId shipmentPackageContentId, long version)
         {
-            var e = (IShipmentPackageContentMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(shipmentPackageContentId), version);
+            var e = (IShipmentPackageContentMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(shipmentPackageContentId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(shipmentPackageContentId, 0);
+                return GetEvent(shipmentPackageContentId, 0);
             }
             return e;
         }
 
         public virtual IShipmentPackageContentMvoState GetHistoryState(ShipmentPackageContentId shipmentPackageContentId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IShipmentPackageContentMvoStateEvent), ToEventStoreAggregateId(shipmentPackageContentId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IShipmentPackageContentMvoEvent), ToEventStoreAggregateId(shipmentPackageContentId), version - 1);
             return new ShipmentPackageContentMvoState(eventStream.Events);
         }
 

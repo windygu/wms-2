@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo.NHibernate
 			return new ItemIssuanceMvoEventId((ShipmentItemIssuanceId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ItemIssuanceMvoStateEventBase);
+			return typeof(ItemIssuanceMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ItemIssuanceMvoStateEventBase);
+            Type supportedEventType = typeof(ItemIssuanceMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             ShipmentItemIssuanceId idObj = (ShipmentItemIssuanceId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ItemIssuanceMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ItemIssuanceMvoEventBase>();
             criteria.Add(Restrictions.Eq("ItemIssuanceMvoEventId.ShipmentItemIssuanceIdShipmentId", idObj.ShipmentId));
             criteria.Add(Restrictions.Eq("ItemIssuanceMvoEventId.ShipmentItemIssuanceIdItemIssuanceSeqId", idObj.ItemIssuanceSeqId));
             criteria.Add(Restrictions.Le("ItemIssuanceMvoEventId.ShipmentVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ItemIssuanceMvoEventId.ShipmentVersion"));
             var es = criteria.List<IEvent>();
-            foreach (ItemIssuanceMvoStateEventBase e in es)
+            foreach (ItemIssuanceMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ItemIssuanceMvoStateEventBase)es.Last()).ItemIssuanceMvoEventId.ShipmentVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((ItemIssuanceMvoEventBase)es.Last()).ItemIssuanceMvoEventId.ShipmentVersion : default(long),
                 Events = es
             };
         }

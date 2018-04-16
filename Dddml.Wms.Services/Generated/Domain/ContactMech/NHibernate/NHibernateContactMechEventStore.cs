@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.ContactMech.NHibernate
 			return new ContactMechEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ContactMechStateEventBase);
+			return typeof(ContactMechEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ContactMechStateEventBase);
+            Type supportedEventType = typeof(ContactMechEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ContactMechStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ContactMechEventBase>();
             criteria.Add(Restrictions.Eq("ContactMechEventId.ContactMechId", idObj));
             criteria.Add(Restrictions.Le("ContactMechEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ContactMechEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (ContactMechStateEventBase e in es)
+            foreach (ContactMechEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ContactMechStateEventBase)es.Last()).ContactMechEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((ContactMechEventBase)es.Last()).ContactMechEventId.Version : default(long),
                 Events = es
             };
         }

@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
         {
             if (events != null && events.Count() > 0)
             {
-                this.Name = ((IAttributeSetInstanceExtensionFieldStateEvent)events.First()).AttributeSetInstanceExtensionFieldEventId.Name;
+                this.Name = ((IAttributeSetInstanceExtensionFieldEvent)events.First()).AttributeSetInstanceExtensionFieldEventId.Name;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -295,7 +295,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeSetInstanceExtensionFieldStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeSetInstanceExtensionFieldEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeSetInstanceExtensionField|");

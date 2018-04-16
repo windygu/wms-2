@@ -204,7 +204,7 @@ namespace Dddml.Wms.Domain.User
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IUserRoleStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IUserRoleEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddUserRoleEvent(innerEvent);
             }
 
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.User
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IUserClaimStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IUserClaimEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddUserClaimEvent(innerEvent);
             }
 
@@ -220,7 +220,7 @@ namespace Dddml.Wms.Domain.User
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IUserPermissionStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IUserPermissionEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddUserPermissionEvent(innerEvent);
             }
 
@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain.User
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IUserLoginStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IUserLoginEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddUserLoginEvent(innerEvent);
             }
 
@@ -340,7 +340,7 @@ namespace Dddml.Wms.Domain.User
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IUserRoleStateEvent Map(IUserRoleCommand c, IUserCommand outerCommand, long version, IUserState outerState)
+        protected virtual IUserRoleEvent Map(IUserRoleCommand c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateUserRole) : null;
             if(create != null)
@@ -412,7 +412,7 @@ namespace Dddml.Wms.Domain.User
         }// END Map(IRemove... ////////////////////////////
 
 
-        protected virtual IUserClaimStateEvent Map(IUserClaimCommand c, IUserCommand outerCommand, long version, IUserState outerState)
+        protected virtual IUserClaimEvent Map(IUserClaimCommand c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateUserClaim) : null;
             if(create != null)
@@ -490,7 +490,7 @@ namespace Dddml.Wms.Domain.User
         }// END Map(IRemove... ////////////////////////////
 
 
-        protected virtual IUserPermissionStateEvent Map(IUserPermissionCommand c, IUserCommand outerCommand, long version, IUserState outerState)
+        protected virtual IUserPermissionEvent Map(IUserPermissionCommand c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateUserPermission) : null;
             if(create != null)
@@ -562,7 +562,7 @@ namespace Dddml.Wms.Domain.User
         }// END Map(IRemove... ////////////////////////////
 
 
-        protected virtual IUserLoginStateEvent Map(IUserLoginCommand c, IUserCommand outerCommand, long version, IUserState outerState)
+        protected virtual IUserLoginEvent Map(IUserLoginCommand c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateUserLogin) : null;
             if(create != null)

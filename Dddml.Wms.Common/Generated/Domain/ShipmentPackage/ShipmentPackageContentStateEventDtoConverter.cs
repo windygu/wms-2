@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
     public class ShipmentPackageContentStateEventDtoConverter
     {
-        public virtual ShipmentPackageContentStateCreatedOrMergePatchedOrRemovedDto ToShipmentPackageContentStateEventDto(IShipmentPackageContentStateEvent stateEvent)
+        public virtual ShipmentPackageContentStateCreatedOrMergePatchedOrRemovedDto ToShipmentPackageContentStateEventDto(IShipmentPackageContentEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IShipmentPackageContentStateCreated)stateEvent;
                 return ToShipmentPackageContentStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IShipmentPackageContentStateMergePatched)stateEvent;
                 return ToShipmentPackageContentStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Removed)
+            else if (stateEvent.EventType == StateEventType.Removed)
             {
                 var e = (IShipmentPackageContentStateRemoved)stateEvent;
                 return ToShipmentPackageContentStateRemovedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual ShipmentPackageContentStateCreatedDto ToShipmentPackageContentStateCreatedDto(IShipmentPackageContentStateCreated e)

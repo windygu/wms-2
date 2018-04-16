@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
         {
             if (events != null && events.Count() > 0)
             {
-                this.ProductCategoryMemberId = ((IProductCategoryMemberStateEvent)events.First()).ProductCategoryMemberEventId.ProductCategoryMemberId;
+                this.ProductCategoryMemberId = ((IProductCategoryMemberEvent)events.First()).ProductCategoryMemberEventId.ProductCategoryMemberId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IProductCategoryMemberStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IProductCategoryMemberEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ProductCategoryMember|");

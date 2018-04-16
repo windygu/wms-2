@@ -20,7 +20,7 @@ public class InOutLineStateEventDtoConverter {
             return toInOutLineStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public InOutLineStateEventDto.InOutLineStateCreatedDto toInOutLineStateCreatedDto(InOutLineEvent.InOutLineStateCreated e) {

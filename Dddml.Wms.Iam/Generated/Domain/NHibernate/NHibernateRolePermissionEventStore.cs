@@ -24,33 +24,33 @@ namespace Dddml.Wms.Domain.RolePermission.NHibernate
 			return new RolePermissionEventId((RolePermissionId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(RolePermissionStateEventBase);
+			return typeof(RolePermissionEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(RolePermissionStateEventBase);
+            Type supportedEventType = typeof(RolePermissionEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             RolePermissionId idObj = (RolePermissionId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<RolePermissionStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<RolePermissionEventBase>();
             criteria.Add(Restrictions.Eq("RolePermissionEventId.IdRoleId", idObj.RoleId));
             criteria.Add(Restrictions.Eq("RolePermissionEventId.IdPermissionId", idObj.PermissionId));
             criteria.Add(Restrictions.Le("RolePermissionEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("RolePermissionEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (RolePermissionStateEventBase e in es)
+            foreach (RolePermissionEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((RolePermissionStateEventBase)es.Last()).RolePermissionEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((RolePermissionEventBase)es.Last()).RolePermissionEventId.Version : default(long),
                 Events = es
             };
         }

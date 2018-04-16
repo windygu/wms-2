@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserPermissionStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserPermissionEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserPermission|");

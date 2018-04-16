@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
 			return new MovementConfirmationLineMvoEventId((MovementConfirmationLineId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(MovementConfirmationLineMvoStateEventBase);
+			return typeof(MovementConfirmationLineMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(MovementConfirmationLineMvoStateEventBase);
+            Type supportedEventType = typeof(MovementConfirmationLineMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             MovementConfirmationLineId idObj = (MovementConfirmationLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<MovementConfirmationLineMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<MovementConfirmationLineMvoEventBase>();
             criteria.Add(Restrictions.Eq("MovementConfirmationLineMvoEventId.MovementConfirmationLineIdMovementConfirmationDocumentNumber", idObj.MovementConfirmationDocumentNumber));
             criteria.Add(Restrictions.Eq("MovementConfirmationLineMvoEventId.MovementConfirmationLineIdLineNumber", idObj.LineNumber));
             criteria.Add(Restrictions.Le("MovementConfirmationLineMvoEventId.MovementConfirmationVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("MovementConfirmationLineMvoEventId.MovementConfirmationVersion"));
             var es = criteria.List<IEvent>();
-            foreach (MovementConfirmationLineMvoStateEventBase e in es)
+            foreach (MovementConfirmationLineMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((MovementConfirmationLineMvoStateEventBase)es.Last()).MovementConfirmationLineMvoEventId.MovementConfirmationVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((MovementConfirmationLineMvoEventBase)es.Last()).MovementConfirmationLineMvoEventId.MovementConfirmationVersion : default(long),
                 Events = es
             };
         }

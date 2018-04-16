@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Iam" 
                    namespace="Dddml.Wms.Domain.UserClaimMvo">
   
-  <class name="UserClaimMvoStateEventBase" table="UserClaimMvoEvents" mutable="false" abstract="true">
+  <class name="UserClaimMvoEventBase" table="UserClaimMvoEvents" mutable="false" abstract="true">
 
     <composite-id name="UserClaimMvoEventId" class="Dddml.Wms.Domain.UserClaimMvo.UserClaimMvoEventId">
         <key-property name="UserClaimIdUserId" ><column name="UserClaimIdUserId" length="50" /></key-property>

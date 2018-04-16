@@ -158,10 +158,10 @@
     <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeSetStateRepository.cs">
       <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeUseStateDao.cs">
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeUseEventDao.cs">
       <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeUseStateEventDao.cs">
+    <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeUseStateDao.cs">
       <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\AttributeUseMvoApplicationService.cs">
@@ -191,10 +191,10 @@
     <Compile Include="Generated\Domain\Attribute\NHibernate\AttributeApplicationService.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeAliasStateDao.cs">
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeAliasEventDao.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeAliasStateEventDao.cs">
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeAliasStateDao.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeEventStore.cs">
@@ -206,10 +206,10 @@
     <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeStateRepository.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueStateDao.cs">
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueEventDao.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueStateEventDao.cs">
+    <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueStateDao.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ContactMech\NHibernate\ContactMechApplicationService.cs">
@@ -293,10 +293,10 @@
     <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutEventStore.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineStateDao.cs">
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineEventDao.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineStateEventDao.cs">
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineStateDao.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutStateQueryRepository.cs">
@@ -344,10 +344,10 @@
     <Compile Include="Generated\Domain\InventoryItem\NHibernate\InventoryItemApplicationService.cs">
       <DependentUpon>GenerateInventoryItemDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\NHibernate\NHibernateInventoryItemEntryStateDao.cs">
+    <Compile Include="Generated\Domain\InventoryItem\NHibernate\NHibernateInventoryItemEntryEventDao.cs">
       <DependentUpon>GenerateInventoryItemDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\NHibernate\NHibernateInventoryItemEntryStateEventDao.cs">
+    <Compile Include="Generated\Domain\InventoryItem\NHibernate\NHibernateInventoryItemEntryStateDao.cs">
       <DependentUpon>GenerateInventoryItemDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItem\NHibernate\NHibernateInventoryItemEventStore.cs">
@@ -452,10 +452,10 @@
     <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationEventStore.cs">
       <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationLineStateDao.cs">
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationLineEventDao.cs">
       <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationLineStateEventDao.cs">
+    <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationLineStateDao.cs">
       <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationStateQueryRepository.cs">
@@ -491,10 +491,10 @@
     <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementEventStore.cs">
       <DependentUpon>GenerateMovementDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementLineStateDao.cs">
+    <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementLineEventDao.cs">
       <DependentUpon>GenerateMovementDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementLineStateEventDao.cs">
+    <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementLineStateDao.cs">
       <DependentUpon>GenerateMovementDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Movement\NHibernate\NHibernateMovementStateQueryRepository.cs">
@@ -584,28 +584,28 @@
     <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderEventStore.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemShipGroupAssociationStateDao.cs">
+    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemEventDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemShipGroupAssociationStateEventDao.cs">
+    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemShipGroupAssociationEventDao.cs">
+      <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemShipGroupAssociationStateDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemStateDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemStateEventDao.cs">
+    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderRoleEventDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderRoleStateDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderRoleStateEventDao.cs">
+    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderShipGroupEventDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderShipGroupStateDao.cs">
-      <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderShipGroupStateEventDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderStateQueryRepository.cs">
@@ -689,10 +689,10 @@
     <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryEventStore.cs">
       <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryLineStateDao.cs">
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryLineEventDao.cs">
       <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryLineStateEventDao.cs">
+    <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryLineStateDao.cs">
       <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryStateQueryRepository.cs">
@@ -713,10 +713,10 @@
     <Compile Include="Generated\Domain\PicklistBin\NHibernate\NHibernatePicklistBinStateRepository.cs">
       <DependentUpon>GeneratePicklistBinDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PicklistBin\NHibernate\NHibernatePicklistItemStateDao.cs">
+    <Compile Include="Generated\Domain\PicklistBin\NHibernate\NHibernatePicklistItemEventDao.cs">
       <DependentUpon>GeneratePicklistBinDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PicklistBin\NHibernate\NHibernatePicklistItemStateEventDao.cs">
+    <Compile Include="Generated\Domain\PicklistBin\NHibernate\NHibernatePicklistItemStateDao.cs">
       <DependentUpon>GeneratePicklistBinDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PicklistBin\NHibernate\PicklistBinApplicationService.cs">
@@ -749,10 +749,10 @@
     <Compile Include="Generated\Domain\Picklist\NHibernate\NHibernatePicklistEventStore.cs">
       <DependentUpon>GeneratePicklistDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Picklist\NHibernate\NHibernatePicklistRoleStateDao.cs">
+    <Compile Include="Generated\Domain\Picklist\NHibernate\NHibernatePicklistRoleEventDao.cs">
       <DependentUpon>GeneratePicklistDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Picklist\NHibernate\NHibernatePicklistRoleStateEventDao.cs">
+    <Compile Include="Generated\Domain\Picklist\NHibernate\NHibernatePicklistRoleStateDao.cs">
       <DependentUpon>GeneratePicklistDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Picklist\NHibernate\NHibernatePicklistStateQueryRepository.cs">
@@ -896,10 +896,10 @@
     <Compile Include="Generated\Domain\ShipmentPackageContentMvo\NHibernate\ShipmentPackageContentMvoApplicationService.cs">
       <DependentUpon>GenerateShipmentPackageContentMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ShipmentPackage\NHibernate\NHibernateShipmentPackageContentStateDao.cs">
+    <Compile Include="Generated\Domain\ShipmentPackage\NHibernate\NHibernateShipmentPackageContentEventDao.cs">
       <DependentUpon>GenerateShipmentPackageDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ShipmentPackage\NHibernate\NHibernateShipmentPackageContentStateEventDao.cs">
+    <Compile Include="Generated\Domain\ShipmentPackage\NHibernate\NHibernateShipmentPackageContentStateDao.cs">
       <DependentUpon>GenerateShipmentPackageDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ShipmentPackage\NHibernate\NHibernateShipmentPackageEventStore.cs">
@@ -935,25 +935,25 @@
     <Compile Include="Generated\Domain\ShipmentType\NHibernate\ShipmentTypeApplicationService.cs">
       <DependentUpon>GenerateShipmentTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateItemIssuanceStateDao.cs">
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateItemIssuanceEventDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateItemIssuanceStateEventDao.cs">
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateItemIssuanceStateDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentEventStore.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentItemEventDao.cs">
+      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentItemStateDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentItemStateEventDao.cs">
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptEventDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptStateDao.cs">
-      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptStateEventDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentStateQueryRepository.cs">
@@ -2170,13 +2170,13 @@
       <LastOutputs>
 .\AttributeApplicationService.cs
 .\GenerateAttributeDomainNHibernate.txt
+.\NHibernateAttributeAliasEventDao.cs
 .\NHibernateAttributeAliasStateDao.cs
-.\NHibernateAttributeAliasStateEventDao.cs
 .\NHibernateAttributeEventStore.cs
 .\NHibernateAttributeStateQueryRepository.cs
 .\NHibernateAttributeStateRepository.cs
+.\NHibernateAttributeValueEventDao.cs
 .\NHibernateAttributeValueStateDao.cs
-.\NHibernateAttributeValueStateEventDao.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\AttributeSet\NHibernate\GenerateAttributeSetDomainNHibernate.tt">
@@ -2188,8 +2188,8 @@
 .\NHibernateAttributeSetEventStore.cs
 .\NHibernateAttributeSetStateQueryRepository.cs
 .\NHibernateAttributeSetStateRepository.cs
+.\NHibernateAttributeUseEventDao.cs
 .\NHibernateAttributeUseStateDao.cs
-.\NHibernateAttributeUseStateEventDao.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\InOut\NHibernate\GenerateInOutDomainNHibernate.tt">
@@ -2199,8 +2199,8 @@
 .\GenerateInOutDomainNHibernate.txt
 .\InOutApplicationService.cs
 .\NHibernateInOutEventStore.cs
+.\NHibernateInOutLineEventDao.cs
 .\NHibernateInOutLineStateDao.cs
-.\NHibernateInOutLineStateEventDao.cs
 .\NHibernateInOutStateQueryRepository.cs
 .\NHibernateInOutStateRepository.cs
 </LastOutputs>
@@ -2312,8 +2312,8 @@
       <LastOutputs>
 .\GenerateInventoryItemDomainNHibernate.txt
 .\InventoryItemApplicationService.cs
+.\NHibernateInventoryItemEntryEventDao.cs
 .\NHibernateInventoryItemEntryStateDao.cs
-.\NHibernateInventoryItemEntryStateEventDao.cs
 .\NHibernateInventoryItemEventStore.cs
 .\NHibernateInventoryItemStateQueryRepository.cs
 .\NHibernateInventoryItemStateRepository.cs
@@ -2442,13 +2442,13 @@
       <LastGenOutput>GenerateShipmentDomainNHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateShipmentDomainNHibernate.txt
+.\NHibernateItemIssuanceEventDao.cs
 .\NHibernateItemIssuanceStateDao.cs
-.\NHibernateItemIssuanceStateEventDao.cs
 .\NHibernateShipmentEventStore.cs
+.\NHibernateShipmentItemEventDao.cs
 .\NHibernateShipmentItemStateDao.cs
-.\NHibernateShipmentItemStateEventDao.cs
+.\NHibernateShipmentReceiptEventDao.cs
 .\NHibernateShipmentReceiptStateDao.cs
-.\NHibernateShipmentReceiptStateEventDao.cs
 .\NHibernateShipmentStateQueryRepository.cs
 .\NHibernateShipmentStateRepository.cs
 .\ShipmentApplicationService.cs
@@ -2480,14 +2480,14 @@
       <LastOutputs>
 .\GenerateOrderDomainNHibernate.txt
 .\NHibernateOrderEventStore.cs
+.\NHibernateOrderItemEventDao.cs
+.\NHibernateOrderItemShipGroupAssociationEventDao.cs
 .\NHibernateOrderItemShipGroupAssociationStateDao.cs
-.\NHibernateOrderItemShipGroupAssociationStateEventDao.cs
 .\NHibernateOrderItemStateDao.cs
-.\NHibernateOrderItemStateEventDao.cs
+.\NHibernateOrderRoleEventDao.cs
 .\NHibernateOrderRoleStateDao.cs
-.\NHibernateOrderRoleStateEventDao.cs
+.\NHibernateOrderShipGroupEventDao.cs
 .\NHibernateOrderShipGroupStateDao.cs
-.\NHibernateOrderShipGroupStateEventDao.cs
 .\NHibernateOrderStateQueryRepository.cs
 .\NHibernateOrderStateRepository.cs
 .\OrderApplicationService.cs
@@ -2555,8 +2555,8 @@
 .\GenerateMovementDomainNHibernate.txt
 .\MovementApplicationService.cs
 .\NHibernateMovementEventStore.cs
+.\NHibernateMovementLineEventDao.cs
 .\NHibernateMovementLineStateDao.cs
-.\NHibernateMovementLineStateEventDao.cs
 .\NHibernateMovementStateQueryRepository.cs
 .\NHibernateMovementStateRepository.cs
 </LastOutputs>
@@ -2590,8 +2590,8 @@
 .\GenerateMovementConfirmationDomainNHibernate.txt
 .\MovementConfirmationApplicationService.cs
 .\NHibernateMovementConfirmationEventStore.cs
+.\NHibernateMovementConfirmationLineEventDao.cs
 .\NHibernateMovementConfirmationLineStateDao.cs
-.\NHibernateMovementConfirmationLineStateEventDao.cs
 .\NHibernateMovementConfirmationStateQueryRepository.cs
 .\NHibernateMovementConfirmationStateRepository.cs
 </LastOutputs>
@@ -2602,8 +2602,8 @@
       <LastOutputs>
 .\GeneratePhysicalInventoryDomainNHibernate.txt
 .\NHibernatePhysicalInventoryEventStore.cs
+.\NHibernatePhysicalInventoryLineEventDao.cs
 .\NHibernatePhysicalInventoryLineStateDao.cs
-.\NHibernatePhysicalInventoryLineStateEventDao.cs
 .\NHibernatePhysicalInventoryStateQueryRepository.cs
 .\NHibernatePhysicalInventoryStateRepository.cs
 .\PhysicalInventoryApplicationService.cs
@@ -2789,8 +2789,8 @@
       <LastOutputs>
 .\GeneratePicklistDomainNHibernate.txt
 .\NHibernatePicklistEventStore.cs
+.\NHibernatePicklistRoleEventDao.cs
 .\NHibernatePicklistRoleStateDao.cs
-.\NHibernatePicklistRoleStateEventDao.cs
 .\NHibernatePicklistStateQueryRepository.cs
 .\NHibernatePicklistStateRepository.cs
 .\PicklistApplicationService.cs
@@ -2804,8 +2804,8 @@
 .\NHibernatePicklistBinEventStore.cs
 .\NHibernatePicklistBinStateQueryRepository.cs
 .\NHibernatePicklistBinStateRepository.cs
+.\NHibernatePicklistItemEventDao.cs
 .\NHibernatePicklistItemStateDao.cs
-.\NHibernatePicklistItemStateEventDao.cs
 .\PicklistBinApplicationService.cs
 </LastOutputs>
     </Content>
@@ -2836,8 +2836,8 @@
       <LastGenOutput>GenerateShipmentPackageDomainNHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateShipmentPackageDomainNHibernate.txt
+.\NHibernateShipmentPackageContentEventDao.cs
 .\NHibernateShipmentPackageContentStateDao.cs
-.\NHibernateShipmentPackageContentStateEventDao.cs
 .\NHibernateShipmentPackageEventStore.cs
 .\NHibernateShipmentPackageStateQueryRepository.cs
 .\NHibernateShipmentPackageStateRepository.cs

@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Movement
 			bool repeated = false;
 			if (((IMovementStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IMovementStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IMovementEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -150,23 +150,23 @@ namespace Dddml.Wms.Domain.Movement
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IMovementStateEvent GetStateEvent(string documentNumber, long version)
+	    public virtual IMovementEvent GetEvent(string documentNumber, long version)
         {
-            var e = (IMovementStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(documentNumber), version);
+            var e = (IMovementEvent)EventStore.GetEvent(ToEventStoreAggregateId(documentNumber), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(documentNumber, 0);
+                return GetEvent(documentNumber, 0);
             }
             return e;
         }
 
         public virtual IMovementState GetHistoryState(string documentNumber, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IMovementStateEvent), ToEventStoreAggregateId(documentNumber), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IMovementEvent), ToEventStoreAggregateId(documentNumber), version - 1);
             return new MovementState(eventStream.Events);
         }
 

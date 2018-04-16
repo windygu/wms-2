@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         long GetCount(ICriterion filter);
 
-        IOrderItemMvoStateEvent GetStateEvent(OrderItemId orderItemId, long version);
+        IOrderItemMvoEvent GetEvent(OrderItemId orderItemId, long version);
 
         IOrderItemMvoState GetHistoryState(OrderItemId orderItemId, long version);
 

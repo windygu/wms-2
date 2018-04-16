@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.UserClaimId = ((IUserClaimMvoStateEvent)events.First()).UserClaimMvoEventId.UserClaimId;
+                this.UserClaimId = ((IUserClaimMvoEvent)events.First()).UserClaimMvoEventId.UserClaimId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -506,7 +506,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserClaimMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserClaimMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserClaimMvo|");

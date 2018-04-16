@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Iam" 
                    namespace="Dddml.Wms.Domain.Permission">
   
-  <class name="PermissionStateEventBase" table="PermissionEvents" mutable="false" abstract="true">
+  <class name="PermissionEventBase" table="PermissionEvents" mutable="false" abstract="true">
 
     <composite-id name="PermissionEventId" class="Dddml.Wms.Domain.Permission.PermissionEventId">
         <key-property name="PermissionId" ><column name="PermissionId" length="50" /></key-property>

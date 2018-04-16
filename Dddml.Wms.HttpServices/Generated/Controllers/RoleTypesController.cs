@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new RoleTypeStateEventDtoConverter();
-            var se = _roleTypeApplicationService.GetStateEvent(idObj, version);
+            var se = _roleTypeApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToRoleTypeStateEventDto(se);
           } catch (Exception ex) { var response = RoleTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.InOut
         {
             if (events != null && events.Count() > 0)
             {
-                this.DocumentNumber = ((IInOutStateEvent)events.First()).InOutEventId.DocumentNumber;
+                this.DocumentNumber = ((IInOutEvent)events.First()).InOutEventId.DocumentNumber;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -644,7 +644,7 @@ namespace Dddml.Wms.Domain.InOut
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IInOutLineStateEvent innerEvent in e.InOutLineEvents)
+			foreach (IInOutLineEvent innerEvent in e.InOutLineEvents)
             {
                 IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.LineNumber);
 
@@ -666,7 +666,7 @@ namespace Dddml.Wms.Domain.InOut
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInOutStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInOutEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InOut|");

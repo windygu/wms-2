@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.UserLoginId = ((IUserLoginMvoStateEvent)events.First()).UserLoginMvoEventId.UserLoginId;
+                this.UserLoginId = ((IUserLoginMvoEvent)events.First()).UserLoginMvoEventId.UserLoginId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -478,7 +478,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserLoginMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserLoginMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserLoginMvo|");

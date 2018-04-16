@@ -25,34 +25,34 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo.NHibernate
 			return new PicklistRoleMvoEventId((PicklistRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PicklistRoleMvoStateEventBase);
+			return typeof(PicklistRoleMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PicklistRoleMvoStateEventBase);
+            Type supportedEventType = typeof(PicklistRoleMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             PicklistRoleId idObj = (PicklistRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PicklistRoleMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PicklistRoleMvoEventBase>();
             criteria.Add(Restrictions.Eq("PicklistRoleMvoEventId.PicklistRoleIdPicklistId", idObj.PicklistId));
             criteria.Add(Restrictions.Eq("PicklistRoleMvoEventId.PicklistRoleIdPartyRoleIdPartyId", idObj.PartyRoleId.PartyId));
             criteria.Add(Restrictions.Eq("PicklistRoleMvoEventId.PicklistRoleIdPartyRoleIdRoleTypeId", idObj.PartyRoleId.RoleTypeId));
             criteria.Add(Restrictions.Le("PicklistRoleMvoEventId.PicklistVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PicklistRoleMvoEventId.PicklistVersion"));
             var es = criteria.List<IEvent>();
-            foreach (PicklistRoleMvoStateEventBase e in es)
+            foreach (PicklistRoleMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PicklistRoleMvoStateEventBase)es.Last()).PicklistRoleMvoEventId.PicklistVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((PicklistRoleMvoEventBase)es.Last()).PicklistRoleMvoEventId.PicklistVersion : default(long),
                 Events = es
             };
         }

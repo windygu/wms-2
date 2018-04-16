@@ -24,33 +24,33 @@ namespace Dddml.Wms.Domain.PartyRole.NHibernate
 			return new PartyRoleEventId((PartyRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PartyRoleStateEventBase);
+			return typeof(PartyRoleEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PartyRoleStateEventBase);
+            Type supportedEventType = typeof(PartyRoleEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             PartyRoleId idObj = (PartyRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PartyRoleStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PartyRoleEventBase>();
             criteria.Add(Restrictions.Eq("PartyRoleEventId.PartyRoleIdPartyId", idObj.PartyId));
             criteria.Add(Restrictions.Eq("PartyRoleEventId.PartyRoleIdRoleTypeId", idObj.RoleTypeId));
             criteria.Add(Restrictions.Le("PartyRoleEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PartyRoleEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (PartyRoleStateEventBase e in es)
+            foreach (PartyRoleEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PartyRoleStateEventBase)es.Last()).PartyRoleEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((PartyRoleEventBase)es.Last()).PartyRoleEventId.Version : default(long),
                 Events = es
             };
         }

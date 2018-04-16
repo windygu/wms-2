@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeAliasId = ((IAttributeAliasMvoStateEvent)events.First()).AttributeAliasMvoEventId.AttributeAliasId;
+                this.AttributeAliasId = ((IAttributeAliasMvoEvent)events.First()).AttributeAliasMvoEventId.AttributeAliasId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -464,7 +464,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeAliasMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeAliasMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeAliasMvo|");

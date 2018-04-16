@@ -24,33 +24,33 @@ namespace Dddml.Wms.Domain.UomConversion.NHibernate
 			return new UomConversionEventId((UomConversionId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(UomConversionStateEventBase);
+			return typeof(UomConversionEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(UomConversionStateEventBase);
+            Type supportedEventType = typeof(UomConversionEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             UomConversionId idObj = (UomConversionId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<UomConversionStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<UomConversionEventBase>();
             criteria.Add(Restrictions.Eq("UomConversionEventId.UomConversionIdUomId", idObj.UomId));
             criteria.Add(Restrictions.Eq("UomConversionEventId.UomConversionIdUomIdTo", idObj.UomIdTo));
             criteria.Add(Restrictions.Le("UomConversionEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UomConversionEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (UomConversionStateEventBase e in es)
+            foreach (UomConversionEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((UomConversionStateEventBase)es.Last()).UomConversionEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((UomConversionEventBase)es.Last()).UomConversionEventId.Version : default(long),
                 Events = es
             };
         }

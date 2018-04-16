@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			bool repeated = false;
 			if (((IPhysicalInventoryLineMvoStateProperties)state).PhysicalInventoryVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPhysicalInventoryLineMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPhysicalInventoryLineMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPhysicalInventoryLineMvoStateEvent GetStateEvent(PhysicalInventoryLineId physicalInventoryLineId, long version)
+	    public virtual IPhysicalInventoryLineMvoEvent GetEvent(PhysicalInventoryLineId physicalInventoryLineId, long version)
         {
-            var e = (IPhysicalInventoryLineMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(physicalInventoryLineId), version);
+            var e = (IPhysicalInventoryLineMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(physicalInventoryLineId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(physicalInventoryLineId, 0);
+                return GetEvent(physicalInventoryLineId, 0);
             }
             return e;
         }
 
         public virtual IPhysicalInventoryLineMvoState GetHistoryState(PhysicalInventoryLineId physicalInventoryLineId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPhysicalInventoryLineMvoStateEvent), ToEventStoreAggregateId(physicalInventoryLineId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPhysicalInventoryLineMvoEvent), ToEventStoreAggregateId(physicalInventoryLineId), version - 1);
             return new PhysicalInventoryLineMvoState(eventStream.Events);
         }
 

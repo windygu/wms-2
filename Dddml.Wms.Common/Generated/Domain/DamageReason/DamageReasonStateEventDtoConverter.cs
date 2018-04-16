@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.DamageReason
 
     public class DamageReasonStateEventDtoConverter
     {
-        public virtual DamageReasonStateCreatedOrMergePatchedOrDeletedDto ToDamageReasonStateEventDto(IDamageReasonStateEvent stateEvent)
+        public virtual DamageReasonStateCreatedOrMergePatchedOrDeletedDto ToDamageReasonStateEventDto(IDamageReasonEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IDamageReasonStateCreated)stateEvent;
                 return ToDamageReasonStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IDamageReasonStateMergePatched)stateEvent;
                 return ToDamageReasonStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IDamageReasonStateDeleted)stateEvent;
                 return ToDamageReasonStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual DamageReasonStateCreatedDto ToDamageReasonStateCreatedDto(IDamageReasonStateCreated e)

@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Order">
   
-  <class name="OrderShipGroupStateEventBase" table="OrderShipGroupEvents" mutable="false" abstract="true">
+  <class name="OrderShipGroupEventBase" table="OrderShipGroupEvents" mutable="false" abstract="true">
 
     <composite-id name="OrderShipGroupEventId" class="Dddml.Wms.Domain.Order.OrderShipGroupEventId">
         <key-property name="OrderId" ><column name="OrderShipGroupIdOrderId" sql-type="VARCHAR(20)" /></key-property>

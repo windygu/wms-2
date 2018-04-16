@@ -289,7 +289,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new InOutStateEventDtoConverter();
-            var se = _inOutApplicationService.GetStateEvent(idObj, version);
+            var se = _inOutApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToInOutStateEventDto(se);
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

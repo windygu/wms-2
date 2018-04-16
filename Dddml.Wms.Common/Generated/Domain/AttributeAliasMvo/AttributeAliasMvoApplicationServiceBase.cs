@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 			bool repeated = false;
 			if (((IAttributeAliasMvoStateProperties)state).AttributeVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IAttributeAliasMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IAttributeAliasMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IAttributeAliasMvoStateEvent GetStateEvent(AttributeAliasId attributeAliasId, long version)
+	    public virtual IAttributeAliasMvoEvent GetEvent(AttributeAliasId attributeAliasId, long version)
         {
-            var e = (IAttributeAliasMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(attributeAliasId), version);
+            var e = (IAttributeAliasMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(attributeAliasId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(attributeAliasId, 0);
+                return GetEvent(attributeAliasId, 0);
             }
             return e;
         }
 
         public virtual IAttributeAliasMvoState GetHistoryState(AttributeAliasId attributeAliasId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IAttributeAliasMvoStateEvent), ToEventStoreAggregateId(attributeAliasId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IAttributeAliasMvoEvent), ToEventStoreAggregateId(attributeAliasId), version - 1);
             return new AttributeAliasMvoState(eventStream.Events);
         }
 

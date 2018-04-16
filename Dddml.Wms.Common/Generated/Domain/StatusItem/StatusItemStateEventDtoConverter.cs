@@ -15,19 +15,19 @@ namespace Dddml.Wms.Domain.StatusItem
 
     public class StatusItemStateEventDtoConverter
     {
-        public virtual StatusItemStateCreatedOrMergePatchedOrDeletedDto ToStatusItemStateEventDto(IStatusItemStateEvent stateEvent)
+        public virtual StatusItemStateCreatedOrMergePatchedOrDeletedDto ToStatusItemStateEventDto(IStatusItemEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IStatusItemStateCreated)stateEvent;
                 return ToStatusItemStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IStatusItemStateMergePatched)stateEvent;
                 return ToStatusItemStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual StatusItemStateCreatedDto ToStatusItemStateCreatedDto(IStatusItemStateCreated e)

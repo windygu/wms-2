@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
 
-	public abstract class PhysicalInventoryStateEventDtoBase : IStateEventDto, IPhysicalInventoryStateCreated, IPhysicalInventoryStateMergePatched
+	public abstract class PhysicalInventoryStateEventDtoBase : IEventDto, IPhysicalInventoryStateCreated, IPhysicalInventoryStateMergePatched
 	{
 
         private PhysicalInventoryEventId _physicalInventoryEventId;
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IPhysicalInventoryStateEvent.ReadOnly
+        bool IPhysicalInventoryEvent.ReadOnly
         {
             get
             {
@@ -471,12 +471,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return NewPhysicalInventoryLineStateCreated(inventoryItemId);
         }
 
-        IEnumerable<IPhysicalInventoryLineStateEvent> IPhysicalInventoryStateMergePatched.PhysicalInventoryLineEvents
+        IEnumerable<IPhysicalInventoryLineEvent> IPhysicalInventoryStateMergePatched.PhysicalInventoryLineEvents
         {
             get { return this._physicalInventoryLineEvents; }
         }
 
-        void IPhysicalInventoryStateMergePatched.AddPhysicalInventoryLineEvent(IPhysicalInventoryLineStateEvent e)
+        void IPhysicalInventoryStateMergePatched.AddPhysicalInventoryLineEvent(IPhysicalInventoryLineEvent e)
         {
             this._physicalInventoryLineEvents.AddPhysicalInventoryLineEvent(e);
         }
@@ -497,7 +497,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }
 
 
-        PhysicalInventoryEventId IPhysicalInventoryStateEvent.PhysicalInventoryEventId
+        PhysicalInventoryEventId IPhysicalInventoryEvent.PhysicalInventoryEventId
         {
             get { return this.PhysicalInventoryEventId; }
         }
@@ -513,12 +513,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -533,7 +533,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -550,14 +550,14 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -573,14 +573,14 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -596,14 +596,14 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -651,7 +651,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             _innerStateEvents.Add((PhysicalInventoryStateCreatedDto)e);
         }
 
-        public void AddPhysicalInventoryEvent(IPhysicalInventoryStateEvent e)
+        public void AddPhysicalInventoryEvent(IPhysicalInventoryEvent e)
         {
             _innerStateEvents.Add((PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDto)e);
         }

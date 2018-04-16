@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.RoleType.NHibernate
 			return new RoleTypeEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(RoleTypeStateEventBase);
+			return typeof(RoleTypeEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(RoleTypeStateEventBase);
+            Type supportedEventType = typeof(RoleTypeEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<RoleTypeStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<RoleTypeEventBase>();
             criteria.Add(Restrictions.Eq("RoleTypeEventId.RoleTypeId", idObj));
             criteria.Add(Restrictions.Le("RoleTypeEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("RoleTypeEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (RoleTypeStateEventBase e in es)
+            foreach (RoleTypeEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((RoleTypeStateEventBase)es.Last()).RoleTypeEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((RoleTypeEventBase)es.Last()).RoleTypeEventId.Version : default(long),
                 Events = es
             };
         }

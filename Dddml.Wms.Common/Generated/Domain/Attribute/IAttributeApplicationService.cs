@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         long GetCount(ICriterion filter);
 
-        IAttributeStateEvent GetStateEvent(string attributeId, long version);
+        IAttributeEvent GetEvent(string attributeId, long version);
 
         IAttributeState GetHistoryState(string attributeId, long version);
 

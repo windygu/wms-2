@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.RejectionReason;
 namespace Dddml.Wms.Domain.RejectionReason
 {
 
-	public abstract class RejectionReasonStateEventDtoBase : IStateEventDto, IRejectionReasonStateCreated, IRejectionReasonStateMergePatched, IRejectionReasonStateDeleted
+	public abstract class RejectionReasonStateEventDtoBase : IEventDto, IRejectionReasonStateCreated, IRejectionReasonStateMergePatched, IRejectionReasonStateDeleted
 	{
 
         private RejectionReasonEventId _rejectionReasonEventId;
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IRejectionReasonStateEvent.ReadOnly
+        bool IRejectionReasonEvent.ReadOnly
         {
             get
             {
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 		}
 
 
-        RejectionReasonEventId IRejectionReasonStateEvent.RejectionReasonEventId
+        RejectionReasonEventId IRejectionReasonEvent.RejectionReasonEventId
         {
             get { return this.RejectionReasonEventId; }
         }
@@ -148,12 +148,12 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.RejectionReason
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -185,14 +185,14 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -208,14 +208,14 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -231,14 +231,14 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -290,7 +290,7 @@ namespace Dddml.Wms.Domain.RejectionReason
             _innerStateEvents.Add((RejectionReasonStateCreatedDto)e);
         }
 
-        public void AddRejectionReasonEvent(IRejectionReasonStateEvent e)
+        public void AddRejectionReasonEvent(IRejectionReasonEvent e)
         {
             _innerStateEvents.Add((RejectionReasonStateCreatedOrMergePatchedOrDeletedDto)e);
         }

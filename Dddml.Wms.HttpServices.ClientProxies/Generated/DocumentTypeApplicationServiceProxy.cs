@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IDocumentTypeStateEvent> GetStateEventAsync(string documentTypeId, long version)
+        public async Task<IDocumentTypeEvent> GetStateEventAsync(string documentTypeId, long version)
         {
             var idObj = documentTypeId;
             var uriParameters = new DocumentTypeStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IDocumentTypeStateEvent GetStateEvent(string documentTypeId, long version)
+        public IDocumentTypeEvent GetEvent(string documentTypeId, long version)
         {
             return GetStateEventAsync(documentTypeId, version).GetAwaiter().GetResult();
         }

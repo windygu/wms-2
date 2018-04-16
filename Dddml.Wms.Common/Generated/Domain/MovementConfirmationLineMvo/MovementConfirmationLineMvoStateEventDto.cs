@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.MovementConfirmation;
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
 
-	public abstract class MovementConfirmationLineMvoStateEventDtoBase : IStateEventDto, IMovementConfirmationLineMvoStateCreated, IMovementConfirmationLineMvoStateMergePatched, IMovementConfirmationLineMvoStateDeleted
+	public abstract class MovementConfirmationLineMvoStateEventDtoBase : IEventDto, IMovementConfirmationLineMvoStateCreated, IMovementConfirmationLineMvoStateMergePatched, IMovementConfirmationLineMvoStateDeleted
 	{
 
         private MovementConfirmationLineMvoEventId _movementConfirmationLineMvoEventId;
@@ -106,7 +106,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IMovementConfirmationLineMvoStateEvent.ReadOnly
+        bool IMovementConfirmationLineMvoEvent.ReadOnly
         {
             get
             {
@@ -574,7 +574,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		}
 
 
-        MovementConfirmationLineMvoEventId IMovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoEventId
+        MovementConfirmationLineMvoEventId IMovementConfirmationLineMvoEvent.MovementConfirmationLineMvoEventId
         {
             get { return this.MovementConfirmationLineMvoEventId; }
         }
@@ -590,12 +590,12 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -610,7 +610,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -627,14 +627,14 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -650,14 +650,14 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -673,14 +673,14 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -732,7 +732,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             _innerStateEvents.Add((MovementConfirmationLineMvoStateCreatedDto)e);
         }
 
-        public void AddMovementConfirmationLineMvoEvent(IMovementConfirmationLineMvoStateEvent e)
+        public void AddMovementConfirmationLineMvoEvent(IMovementConfirmationLineMvoEvent e)
         {
             _innerStateEvents.Add((MovementConfirmationLineMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

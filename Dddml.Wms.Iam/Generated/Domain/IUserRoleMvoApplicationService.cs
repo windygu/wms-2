@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         long GetCount(ICriterion filter);
 
-        IUserRoleMvoStateEvent GetStateEvent(UserRoleId userRoleId, long version);
+        IUserRoleMvoEvent GetEvent(UserRoleId userRoleId, long version);
 
         IUserRoleMvoState GetHistoryState(UserRoleId userRoleId, long version);
 

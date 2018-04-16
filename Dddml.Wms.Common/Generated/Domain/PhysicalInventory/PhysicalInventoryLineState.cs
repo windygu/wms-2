@@ -307,7 +307,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPhysicalInventoryLineStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPhysicalInventoryLineEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PhysicalInventoryLine|");

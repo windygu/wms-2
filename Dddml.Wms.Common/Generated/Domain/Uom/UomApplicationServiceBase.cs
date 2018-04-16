@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Uom
 			bool repeated = false;
 			if (((IUomStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IUomStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IUomEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.Uom
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IUomStateEvent GetStateEvent(string uomId, long version)
+	    public virtual IUomEvent GetEvent(string uomId, long version)
         {
-            var e = (IUomStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(uomId), version);
+            var e = (IUomEvent)EventStore.GetEvent(ToEventStoreAggregateId(uomId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(uomId, 0);
+                return GetEvent(uomId, 0);
             }
             return e;
         }
 
         public virtual IUomState GetHistoryState(string uomId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IUomStateEvent), ToEventStoreAggregateId(uomId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IUomEvent), ToEventStoreAggregateId(uomId), version - 1);
             return new UomState(eventStream.Events);
         }
 

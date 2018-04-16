@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 			bool repeated = false;
 			if (((IAttributeSetInstanceExtensionFieldStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IAttributeSetInstanceExtensionFieldStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IAttributeSetInstanceExtensionFieldEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IAttributeSetInstanceExtensionFieldStateEvent GetStateEvent(string name, long version)
+	    public virtual IAttributeSetInstanceExtensionFieldEvent GetEvent(string name, long version)
         {
-            var e = (IAttributeSetInstanceExtensionFieldStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(name), version);
+            var e = (IAttributeSetInstanceExtensionFieldEvent)EventStore.GetEvent(ToEventStoreAggregateId(name), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(name, 0);
+                return GetEvent(name, 0);
             }
             return e;
         }
 
         public virtual IAttributeSetInstanceExtensionFieldState GetHistoryState(string name, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IAttributeSetInstanceExtensionFieldStateEvent), ToEventStoreAggregateId(name), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IAttributeSetInstanceExtensionFieldEvent), ToEventStoreAggregateId(name), version - 1);
             return new AttributeSetInstanceExtensionFieldState(eventStream.Events);
         }
 

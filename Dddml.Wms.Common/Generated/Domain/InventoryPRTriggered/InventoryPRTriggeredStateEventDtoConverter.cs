@@ -16,19 +16,19 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
     public class InventoryPRTriggeredStateEventDtoConverter
     {
-        public virtual InventoryPRTriggeredStateCreatedOrMergePatchedOrDeletedDto ToInventoryPRTriggeredStateEventDto(IInventoryPRTriggeredStateEvent stateEvent)
+        public virtual InventoryPRTriggeredStateCreatedOrMergePatchedOrDeletedDto ToInventoryPRTriggeredStateEventDto(IInventoryPRTriggeredEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IInventoryPRTriggeredStateCreated)stateEvent;
                 return ToInventoryPRTriggeredStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IInventoryPRTriggeredStateMergePatched)stateEvent;
                 return ToInventoryPRTriggeredStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual InventoryPRTriggeredStateCreatedDto ToInventoryPRTriggeredStateCreatedDto(IInventoryPRTriggeredStateCreated e)

@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.User
 			bool repeated = false;
 			if (((IUserStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IUserStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IUserEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.User
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IUserStateEvent GetStateEvent(string userId, long version)
+	    public virtual IUserEvent GetEvent(string userId, long version)
         {
-            var e = (IUserStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(userId), version);
+            var e = (IUserEvent)EventStore.GetEvent(ToEventStoreAggregateId(userId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(userId, 0);
+                return GetEvent(userId, 0);
             }
             return e;
         }
 
         public virtual IUserState GetHistoryState(string userId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IUserStateEvent), ToEventStoreAggregateId(userId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IUserEvent), ToEventStoreAggregateId(userId), version - 1);
             return new UserState(eventStream.Events);
         }
 

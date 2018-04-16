@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
     public class OrderItemShipGrpInvReservationStateEventDtoConverter
     {
-        public virtual OrderItemShipGrpInvReservationStateCreatedOrMergePatchedOrDeletedDto ToOrderItemShipGrpInvReservationStateEventDto(IOrderItemShipGrpInvReservationStateEvent stateEvent)
+        public virtual OrderItemShipGrpInvReservationStateCreatedOrMergePatchedOrDeletedDto ToOrderItemShipGrpInvReservationStateEventDto(IOrderItemShipGrpInvReservationEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IOrderItemShipGrpInvReservationStateCreated)stateEvent;
                 return ToOrderItemShipGrpInvReservationStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IOrderItemShipGrpInvReservationStateMergePatched)stateEvent;
                 return ToOrderItemShipGrpInvReservationStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IOrderItemShipGrpInvReservationStateDeleted)stateEvent;
                 return ToOrderItemShipGrpInvReservationStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual OrderItemShipGrpInvReservationStateCreatedDto ToOrderItemShipGrpInvReservationStateCreatedDto(IOrderItemShipGrpInvReservationStateCreated e)

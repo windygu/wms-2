@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.RoleType
 			bool repeated = false;
 			if (((IRoleTypeStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IRoleTypeStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IRoleTypeEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.RoleType
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IRoleTypeStateEvent GetStateEvent(string roleTypeId, long version)
+	    public virtual IRoleTypeEvent GetEvent(string roleTypeId, long version)
         {
-            var e = (IRoleTypeStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(roleTypeId), version);
+            var e = (IRoleTypeEvent)EventStore.GetEvent(ToEventStoreAggregateId(roleTypeId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(roleTypeId, 0);
+                return GetEvent(roleTypeId, 0);
             }
             return e;
         }
 
         public virtual IRoleTypeState GetHistoryState(string roleTypeId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IRoleTypeStateEvent), ToEventStoreAggregateId(roleTypeId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IRoleTypeEvent), ToEventStoreAggregateId(roleTypeId), version - 1);
             return new RoleTypeState(eventStream.Events);
         }
 

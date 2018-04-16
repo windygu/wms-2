@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.OrderItemMvo.NHibernate
 			return new OrderItemMvoEventId((OrderItemId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(OrderItemMvoStateEventBase);
+			return typeof(OrderItemMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(OrderItemMvoStateEventBase);
+            Type supportedEventType = typeof(OrderItemMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             OrderItemId idObj = (OrderItemId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<OrderItemMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<OrderItemMvoEventBase>();
             criteria.Add(Restrictions.Eq("OrderItemMvoEventId.OrderItemIdOrderId", idObj.OrderId));
             criteria.Add(Restrictions.Eq("OrderItemMvoEventId.OrderItemIdOrderItemSeqId", idObj.OrderItemSeqId));
             criteria.Add(Restrictions.Le("OrderItemMvoEventId.OrderVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrderItemMvoEventId.OrderVersion"));
             var es = criteria.List<IEvent>();
-            foreach (OrderItemMvoStateEventBase e in es)
+            foreach (OrderItemMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrderItemMvoStateEventBase)es.Last()).OrderItemMvoEventId.OrderVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((OrderItemMvoEventBase)es.Last()).OrderItemMvoEventId.OrderVersion : default(long),
                 Events = es
             };
         }

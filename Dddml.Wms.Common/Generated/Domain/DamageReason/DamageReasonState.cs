@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.DamageReason
         {
             if (events != null && events.Count() > 0)
             {
-                this.DamageReasonId = ((IDamageReasonStateEvent)events.First()).DamageReasonEventId.DamageReasonId;
+                this.DamageReasonId = ((IDamageReasonEvent)events.First()).DamageReasonEventId.DamageReasonId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain.DamageReason
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IDamageReasonStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IDamageReasonEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("DamageReason|");

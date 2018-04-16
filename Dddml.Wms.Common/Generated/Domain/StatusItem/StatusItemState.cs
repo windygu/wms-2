@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.StatusItem
         {
             if (events != null && events.Count() > 0)
             {
-                this.StatusId = ((IStatusItemStateEvent)events.First()).StatusItemEventId.StatusId;
+                this.StatusId = ((IStatusItemEvent)events.First()).StatusItemEventId.StatusId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -258,7 +258,7 @@ namespace Dddml.Wms.Domain.StatusItem
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IStatusItemStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IStatusItemEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("StatusItem|");

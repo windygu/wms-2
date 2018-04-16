@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.InOutLineId = ((IInOutLineMvoStateEvent)events.First()).InOutLineMvoEventId.InOutLineId;
+                this.InOutLineId = ((IInOutLineMvoEvent)events.First()).InOutLineMvoEventId.InOutLineId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -884,7 +884,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInOutLineMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInOutLineMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InOutLineMvo|");

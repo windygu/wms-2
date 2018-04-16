@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 			bool repeated = false;
 			if (((IOrganizationStructureTypeStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IOrganizationStructureTypeStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IOrganizationStructureTypeEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IOrganizationStructureTypeStateEvent GetStateEvent(string id, long version)
+	    public virtual IOrganizationStructureTypeEvent GetEvent(string id, long version)
         {
-            var e = (IOrganizationStructureTypeStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(id), version);
+            var e = (IOrganizationStructureTypeEvent)EventStore.GetEvent(ToEventStoreAggregateId(id), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(id, 0);
+                return GetEvent(id, 0);
             }
             return e;
         }
 
         public virtual IOrganizationStructureTypeState GetHistoryState(string id, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IOrganizationStructureTypeStateEvent), ToEventStoreAggregateId(id), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IOrganizationStructureTypeEvent), ToEventStoreAggregateId(id), version - 1);
             return new OrganizationStructureTypeState(eventStream.Events);
         }
 

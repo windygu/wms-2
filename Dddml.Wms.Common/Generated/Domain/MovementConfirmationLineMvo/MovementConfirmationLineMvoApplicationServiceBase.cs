@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			bool repeated = false;
 			if (((IMovementConfirmationLineMvoStateProperties)state).MovementConfirmationVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IMovementConfirmationLineMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IMovementConfirmationLineMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IMovementConfirmationLineMvoStateEvent GetStateEvent(MovementConfirmationLineId movementConfirmationLineId, long version)
+	    public virtual IMovementConfirmationLineMvoEvent GetEvent(MovementConfirmationLineId movementConfirmationLineId, long version)
         {
-            var e = (IMovementConfirmationLineMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(movementConfirmationLineId), version);
+            var e = (IMovementConfirmationLineMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(movementConfirmationLineId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(movementConfirmationLineId, 0);
+                return GetEvent(movementConfirmationLineId, 0);
             }
             return e;
         }
 
         public virtual IMovementConfirmationLineMvoState GetHistoryState(MovementConfirmationLineId movementConfirmationLineId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IMovementConfirmationLineMvoStateEvent), ToEventStoreAggregateId(movementConfirmationLineId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IMovementConfirmationLineMvoEvent), ToEventStoreAggregateId(movementConfirmationLineId), version - 1);
             return new MovementConfirmationLineMvoState(eventStream.Events);
         }
 

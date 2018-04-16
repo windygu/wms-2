@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Uom
 
         long GetCount(ICriterion filter);
 
-        IUomStateEvent GetStateEvent(string uomId, long version);
+        IUomEvent GetEvent(string uomId, long version);
 
         IUomState GetHistoryState(string uomId, long version);
 

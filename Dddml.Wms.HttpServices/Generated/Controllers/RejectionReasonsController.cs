@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new RejectionReasonStateEventDtoConverter();
-            var se = _rejectionReasonApplicationService.GetStateEvent(idObj, version);
+            var se = _rejectionReasonApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToRejectionReasonStateEventDto(se);
           } catch (Exception ex) { var response = RejectionReasonsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

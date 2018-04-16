@@ -154,7 +154,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
             if (events != null && events.Count() > 0)
             {
-                this.DocumentNumber = ((IPhysicalInventoryStateEvent)events.First()).PhysicalInventoryEventId.DocumentNumber;
+                this.DocumentNumber = ((IPhysicalInventoryEvent)events.First()).PhysicalInventoryEventId.DocumentNumber;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -421,7 +421,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IPhysicalInventoryLineStateEvent innerEvent in e.PhysicalInventoryLineEvents)
+			foreach (IPhysicalInventoryLineEvent innerEvent in e.PhysicalInventoryLineEvents)
             {
                 IPhysicalInventoryLineState innerState = this.PhysicalInventoryLines.Get(innerEvent.GlobalId.InventoryItemId);
 
@@ -443,7 +443,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPhysicalInventoryStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPhysicalInventoryEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PhysicalInventory|");

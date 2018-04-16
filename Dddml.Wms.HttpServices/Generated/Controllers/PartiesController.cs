@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new PartyStateEventDtoConverter();
-            var se = _partyApplicationService.GetStateEvent(idObj, version);
+            var se = _partyApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToPartyStateEventDto(se);
           } catch (Exception ex) { var response = PartiesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

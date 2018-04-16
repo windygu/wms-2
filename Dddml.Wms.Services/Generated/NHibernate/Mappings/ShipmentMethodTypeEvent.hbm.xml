@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.ShipmentMethodType">
   
-  <class name="ShipmentMethodTypeStateEventBase" table="ShipmentMethodTypeEvents" mutable="false" abstract="true">
+  <class name="ShipmentMethodTypeEventBase" table="ShipmentMethodTypeEvents" mutable="false" abstract="true">
 
     <composite-id name="ShipmentMethodTypeEventId" class="Dddml.Wms.Domain.ShipmentMethodType.ShipmentMethodTypeEventId">
         <key-property name="ShipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></key-property>

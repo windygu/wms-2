@@ -15,14 +15,14 @@ namespace Dddml.Wms.Domain.InventoryItem
 
     public class InventoryItemEntryStateEventDtoConverter
     {
-        public virtual InventoryItemEntryStateCreatedOrMergePatchedOrRemovedDto ToInventoryItemEntryStateEventDto(IInventoryItemEntryStateEvent stateEvent)
+        public virtual InventoryItemEntryStateCreatedOrMergePatchedOrRemovedDto ToInventoryItemEntryStateEventDto(IInventoryItemEntryEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IInventoryItemEntryStateCreated)stateEvent;
                 return ToInventoryItemEntryStateCreatedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual InventoryItemEntryStateCreatedDto ToInventoryItemEntryStateCreatedDto(IInventoryItemEntryStateCreated e)

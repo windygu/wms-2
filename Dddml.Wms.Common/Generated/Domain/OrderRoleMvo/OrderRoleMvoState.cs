@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrderRoleId = ((IOrderRoleMvoStateEvent)events.First()).OrderRoleMvoEventId.OrderRoleId;
+                this.OrderRoleId = ((IOrderRoleMvoEvent)events.First()).OrderRoleMvoEventId.OrderRoleId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -646,7 +646,7 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderRoleMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderRoleMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderRoleMvo|");

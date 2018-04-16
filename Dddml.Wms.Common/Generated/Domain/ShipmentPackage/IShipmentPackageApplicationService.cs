@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         long GetCount(ICriterion filter);
 
-        IShipmentPackageStateEvent GetStateEvent(ShipmentPackageId shipmentPackageId, long version);
+        IShipmentPackageEvent GetEvent(ShipmentPackageId shipmentPackageId, long version);
 
         IShipmentPackageState GetHistoryState(ShipmentPackageId shipmentPackageId, long version);
 

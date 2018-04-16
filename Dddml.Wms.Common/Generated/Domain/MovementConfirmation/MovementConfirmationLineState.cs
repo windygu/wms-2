@@ -351,7 +351,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             }
 		}
 
-        protected void ThrowOnWrongEvent(IMovementConfirmationLineStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementConfirmationLineEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementConfirmationLine|");

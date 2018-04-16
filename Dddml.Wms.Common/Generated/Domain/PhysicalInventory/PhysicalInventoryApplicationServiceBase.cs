@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			bool repeated = false;
 			if (((IPhysicalInventoryStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPhysicalInventoryStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPhysicalInventoryEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -151,23 +151,23 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPhysicalInventoryStateEvent GetStateEvent(string documentNumber, long version)
+	    public virtual IPhysicalInventoryEvent GetEvent(string documentNumber, long version)
         {
-            var e = (IPhysicalInventoryStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(documentNumber), version);
+            var e = (IPhysicalInventoryEvent)EventStore.GetEvent(ToEventStoreAggregateId(documentNumber), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(documentNumber, 0);
+                return GetEvent(documentNumber, 0);
             }
             return e;
         }
 
         public virtual IPhysicalInventoryState GetHistoryState(string documentNumber, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPhysicalInventoryStateEvent), ToEventStoreAggregateId(documentNumber), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPhysicalInventoryEvent), ToEventStoreAggregateId(documentNumber), version - 1);
             return new PhysicalInventoryState(eventStream.Events);
         }
 

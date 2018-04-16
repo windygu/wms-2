@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
     public class AttributeUseMvoStateEventDtoConverter
     {
-        public virtual AttributeUseMvoStateCreatedOrMergePatchedOrDeletedDto ToAttributeUseMvoStateEventDto(IAttributeUseMvoStateEvent stateEvent)
+        public virtual AttributeUseMvoStateCreatedOrMergePatchedOrDeletedDto ToAttributeUseMvoStateEventDto(IAttributeUseMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IAttributeUseMvoStateCreated)stateEvent;
                 return ToAttributeUseMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IAttributeUseMvoStateMergePatched)stateEvent;
                 return ToAttributeUseMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IAttributeUseMvoStateDeleted)stateEvent;
                 return ToAttributeUseMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual AttributeUseMvoStateCreatedDto ToAttributeUseMvoStateCreatedDto(IAttributeUseMvoStateCreated e)

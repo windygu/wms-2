@@ -249,7 +249,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IInventoryItemRequirementStateEvent> GetStateEventAsync(InventoryItemId inventoryItemRequirementId, long version)
+        public async Task<IInventoryItemRequirementEvent> GetStateEventAsync(InventoryItemId inventoryItemRequirementId, long version)
         {
             var idObj = InventoryItemRequirementProxyUtils.ToIdString(inventoryItemRequirementId);
             var uriParameters = new InventoryItemRequirementStateEventUriParameters();
@@ -262,7 +262,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IInventoryItemRequirementStateEvent GetStateEvent(InventoryItemId inventoryItemRequirementId, long version)
+        public IInventoryItemRequirementEvent GetEvent(InventoryItemId inventoryItemRequirementId, long version)
         {
             return GetStateEventAsync(inventoryItemRequirementId, version).GetAwaiter().GetResult();
         }

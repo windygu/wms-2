@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.AttributeValueMvo">
   
-  <class name="AttributeValueMvoStateEventBase" table="AttributeValueMvoEvents" mutable="false" abstract="true">
+  <class name="AttributeValueMvoEventBase" table="AttributeValueMvoEvents" mutable="false" abstract="true">
 
     <composite-id name="AttributeValueMvoEventId" class="Dddml.Wms.Domain.AttributeValueMvo.AttributeValueMvoEventId">
         <key-property name="AttributeValueIdAttributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>

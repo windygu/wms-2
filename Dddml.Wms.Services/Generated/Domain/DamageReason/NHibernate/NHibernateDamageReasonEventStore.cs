@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.DamageReason.NHibernate
 			return new DamageReasonEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(DamageReasonStateEventBase);
+			return typeof(DamageReasonEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(DamageReasonStateEventBase);
+            Type supportedEventType = typeof(DamageReasonEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<DamageReasonStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<DamageReasonEventBase>();
             criteria.Add(Restrictions.Eq("DamageReasonEventId.DamageReasonId", idObj));
             criteria.Add(Restrictions.Le("DamageReasonEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("DamageReasonEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (DamageReasonStateEventBase e in es)
+            foreach (DamageReasonEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((DamageReasonStateEventBase)es.Last()).DamageReasonEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((DamageReasonEventBase)es.Last()).DamageReasonEventId.Version : default(long),
                 Events = es
             };
         }

@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Audience
 			bool repeated = false;
 			if (((IAudienceStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IAudienceStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IAudienceEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.Audience
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IAudienceStateEvent GetStateEvent(string clientId, long version)
+	    public virtual IAudienceEvent GetEvent(string clientId, long version)
         {
-            var e = (IAudienceStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(clientId), version);
+            var e = (IAudienceEvent)EventStore.GetEvent(ToEventStoreAggregateId(clientId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(clientId, 0);
+                return GetEvent(clientId, 0);
             }
             return e;
         }
 
         public virtual IAudienceState GetHistoryState(string clientId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IAudienceStateEvent), ToEventStoreAggregateId(clientId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IAudienceEvent), ToEventStoreAggregateId(clientId), version - 1);
             return new AudienceState(eventStream.Events);
         }
 

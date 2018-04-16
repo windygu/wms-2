@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.Lot.NHibernate
 			return new LotEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(LotStateEventBase);
+			return typeof(LotEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(LotStateEventBase);
+            Type supportedEventType = typeof(LotEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<LotStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<LotEventBase>();
             criteria.Add(Restrictions.Eq("LotEventId.LotId", idObj));
             criteria.Add(Restrictions.Le("LotEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("LotEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (LotStateEventBase e in es)
+            foreach (LotEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((LotStateEventBase)es.Last()).LotEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((LotEventBase)es.Last()).LotEventId.Version : default(long),
                 Events = es
             };
         }

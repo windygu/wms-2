@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.OrderItemShipGrpInvReservation">
   
-  <class name="OrderItemShipGrpInvReservationStateEventBase" table="OrderItemShipGrpInvReservationEvents" mutable="false" abstract="true">
+  <class name="OrderItemShipGrpInvReservationEventBase" table="OrderItemShipGrpInvReservationEvents" mutable="false" abstract="true">
 
     <composite-id name="OrderItemShipGrpInvReservationEventId" class="Dddml.Wms.Domain.OrderItemShipGrpInvReservation.OrderItemShipGrpInvReservationEventId">
         <key-property name="OrderItemShipGrpInvResIdOrderId" ><column name="OrderItemShipGrpInvResIdOrderId" sql-type="VARCHAR(20)" /></key-property>

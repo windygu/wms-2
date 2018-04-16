@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Pickwave">
   
-  <class name="PickwaveStateEventBase" table="PickwaveEvents" mutable="false" abstract="true">
+  <class name="PickwaveEventBase" table="PickwaveEvents" mutable="false" abstract="true">
 
     <composite-id name="PickwaveEventId" class="Dddml.Wms.Domain.Pickwave.PickwaveEventId">
         <key-property name="PickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></key-property>

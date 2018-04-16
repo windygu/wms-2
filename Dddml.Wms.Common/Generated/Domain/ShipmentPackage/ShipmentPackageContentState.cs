@@ -287,7 +287,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentPackageContentStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentPackageContentEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentPackageContent|");

@@ -45,9 +45,9 @@ namespace Dddml.Wms.Specialization.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEvent FindLastEvent(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
+        public virtual IEvent GetEvent(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = GetSupportedStateEventType();
+            Type supportedEventType = GetSupportedEventType();
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
@@ -58,15 +58,15 @@ namespace Dddml.Wms.Specialization.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEvent GetStateEvent(IEventStoreAggregateId eventStoreAggregateId, long version)
+        public virtual IEvent GetEvent(IEventStoreAggregateId eventStoreAggregateId, long version)
         {
             object eventId = GetEventId(eventStoreAggregateId, version);
-            return CurrentSession.Get(GetSupportedStateEventType(), eventId) as IEvent;
+            return CurrentSession.Get(GetSupportedEventType(), eventId) as IEvent;
         }
 
         #endregion
 
-        public abstract Type GetSupportedStateEventType();
+        public abstract Type GetSupportedEventType();
 
         public abstract object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version);
 

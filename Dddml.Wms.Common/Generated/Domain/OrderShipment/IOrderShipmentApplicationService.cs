@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         long GetCount(ICriterion filter);
 
-        IOrderShipmentStateEvent GetStateEvent(OrderShipmentId orderShipmentId, long version);
+        IOrderShipmentEvent GetEvent(OrderShipmentId orderShipmentId, long version);
 
         IOrderShipmentState GetHistoryState(OrderShipmentId orderShipmentId, long version);
 

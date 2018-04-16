@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Lot
         {
             if (events != null && events.Count() > 0)
             {
-                this.LotId = ((ILotStateEvent)events.First()).LotEventId.LotId;
+                this.LotId = ((ILotEvent)events.First()).LotEventId.LotId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain.Lot
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ILotStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(ILotEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Lot|");

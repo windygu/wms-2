@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.DamageType;
 namespace Dddml.Wms.Domain.DamageType
 {
 
-	public abstract class DamageTypeStateEventDtoBase : IStateEventDto, IDamageTypeStateCreated, IDamageTypeStateMergePatched, IDamageTypeStateDeleted
+	public abstract class DamageTypeStateEventDtoBase : IEventDto, IDamageTypeStateCreated, IDamageTypeStateMergePatched, IDamageTypeStateDeleted
 	{
 
         private DamageTypeEventId _damageTypeEventId;
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IDamageTypeStateEvent.ReadOnly
+        bool IDamageTypeEvent.ReadOnly
         {
             get
             {
@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.DamageType
 		}
 
 
-        DamageTypeEventId IDamageTypeStateEvent.DamageTypeEventId
+        DamageTypeEventId IDamageTypeEvent.DamageTypeEventId
         {
             get { return this.DamageTypeEventId; }
         }
@@ -190,12 +190,12 @@ namespace Dddml.Wms.Domain.DamageType
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain.DamageType
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -227,14 +227,14 @@ namespace Dddml.Wms.Domain.DamageType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -250,14 +250,14 @@ namespace Dddml.Wms.Domain.DamageType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -273,14 +273,14 @@ namespace Dddml.Wms.Domain.DamageType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -332,7 +332,7 @@ namespace Dddml.Wms.Domain.DamageType
             _innerStateEvents.Add((DamageTypeStateCreatedDto)e);
         }
 
-        public void AddDamageTypeEvent(IDamageTypeStateEvent e)
+        public void AddDamageTypeEvent(IDamageTypeEvent e)
         {
             _innerStateEvents.Add((DamageTypeStateCreatedOrMergePatchedOrDeletedDto)e);
         }

@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 
         long GetCount(ICriterion filter);
 
-        IOrderShipGroupMvoStateEvent GetStateEvent(OrderShipGroupId orderShipGroupId, long version);
+        IOrderShipGroupMvoEvent GetEvent(OrderShipGroupId orderShipGroupId, long version);
 
         IOrderShipGroupMvoState GetHistoryState(OrderShipGroupId orderShipGroupId, long version);
 

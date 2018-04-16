@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Uom;
 namespace Dddml.Wms.Domain.Uom
 {
 
-	public abstract class UomStateEventDtoBase : IStateEventDto, IUomStateCreated, IUomStateMergePatched, IUomStateDeleted
+	public abstract class UomStateEventDtoBase : IEventDto, IUomStateCreated, IUomStateMergePatched, IUomStateDeleted
 	{
 
         private UomEventId _uomEventId;
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.Uom
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IUomStateEvent.ReadOnly
+        bool IUomEvent.ReadOnly
         {
             get
             {
@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.Uom
 		}
 
 
-        UomEventId IUomStateEvent.UomEventId
+        UomEventId IUomEvent.UomEventId
         {
             get { return this.UomEventId; }
         }
@@ -190,12 +190,12 @@ namespace Dddml.Wms.Domain.Uom
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain.Uom
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -227,14 +227,14 @@ namespace Dddml.Wms.Domain.Uom
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -250,14 +250,14 @@ namespace Dddml.Wms.Domain.Uom
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -273,14 +273,14 @@ namespace Dddml.Wms.Domain.Uom
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -332,7 +332,7 @@ namespace Dddml.Wms.Domain.Uom
             _innerStateEvents.Add((UomStateCreatedDto)e);
         }
 
-        public void AddUomEvent(IUomStateEvent e)
+        public void AddUomEvent(IUomEvent e)
         {
             _innerStateEvents.Add((UomStateCreatedOrMergePatchedOrDeletedDto)e);
         }

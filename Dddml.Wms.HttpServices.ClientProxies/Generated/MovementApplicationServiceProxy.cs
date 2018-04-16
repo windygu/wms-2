@@ -257,7 +257,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IMovementStateEvent> GetStateEventAsync(string documentNumber, long version)
+        public async Task<IMovementEvent> GetStateEventAsync(string documentNumber, long version)
         {
             var idObj = documentNumber;
             var uriParameters = new MovementStateEventUriParameters();
@@ -270,7 +270,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IMovementStateEvent GetStateEvent(string documentNumber, long version)
+        public IMovementEvent GetEvent(string documentNumber, long version)
         {
             return GetStateEventAsync(documentNumber, version).GetAwaiter().GetResult();
         }

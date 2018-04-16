@@ -205,7 +205,7 @@ namespace Dddml.Wms.Domain.Movement
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IMovementLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IMovementLineEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddMovementLineEvent(innerEvent);
             }
 
@@ -251,7 +251,7 @@ namespace Dddml.Wms.Domain.Movement
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IMovementLineStateEvent Map(IMovementLineCommand c, IMovementCommand outerCommand, long version, IMovementState outerState)
+        protected virtual IMovementLineEvent Map(IMovementLineCommand c, IMovementCommand outerCommand, long version, IMovementState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateMovementLine) : null;
             if(create != null)

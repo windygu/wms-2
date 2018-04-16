@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         {
             if (events != null && events.Count() > 0)
             {
-                this.InventoryPostingRuleId = ((IInventoryPostingRuleStateEvent)events.First()).InventoryPostingRuleEventId.InventoryPostingRuleId;
+                this.InventoryPostingRuleId = ((IInventoryPostingRuleEvent)events.First()).InventoryPostingRuleEventId.InventoryPostingRuleId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -296,7 +296,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryPostingRuleStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryPostingRuleEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryPostingRule|");

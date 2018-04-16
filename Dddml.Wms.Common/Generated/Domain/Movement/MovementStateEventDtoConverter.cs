@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.Movement
 
     public class MovementStateEventDtoConverter
     {
-        public virtual MovementStateCreatedOrMergePatchedOrDeletedDto ToMovementStateEventDto(IMovementStateEvent stateEvent)
+        public virtual MovementStateCreatedOrMergePatchedOrDeletedDto ToMovementStateEventDto(IMovementEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IMovementStateCreated)stateEvent;
                 return ToMovementStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IMovementStateMergePatched)stateEvent;
                 return ToMovementStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IMovementStateDeleted)stateEvent;
                 return ToMovementStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual MovementStateCreatedDto ToMovementStateCreatedDto(IMovementStateCreated e)

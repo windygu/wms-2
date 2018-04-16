@@ -24,21 +24,21 @@ namespace Dddml.Wms.Domain.SupplierProduct.NHibernate
 			return new SupplierProductEventId((SupplierProductId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(SupplierProductStateEventBase);
+			return typeof(SupplierProductEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(SupplierProductStateEventBase);
+            Type supportedEventType = typeof(SupplierProductEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             SupplierProductId idObj = (SupplierProductId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<SupplierProductStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<SupplierProductEventBase>();
             criteria.Add(Restrictions.Eq("SupplierProductEventId.SupplierProductIdProductId", idObj.ProductId));
             criteria.Add(Restrictions.Eq("SupplierProductEventId.SupplierProductIdPartyId", idObj.PartyId));
             criteria.Add(Restrictions.Eq("SupplierProductEventId.SupplierProductIdCurrencyUomId", idObj.CurrencyUomId));
@@ -46,13 +46,13 @@ namespace Dddml.Wms.Domain.SupplierProduct.NHibernate
             criteria.Add(Restrictions.Le("SupplierProductEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("SupplierProductEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (SupplierProductStateEventBase e in es)
+            foreach (SupplierProductEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((SupplierProductStateEventBase)es.Last()).SupplierProductEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((SupplierProductEventBase)es.Last()).SupplierProductEventId.Version : default(long),
                 Events = es
             };
         }

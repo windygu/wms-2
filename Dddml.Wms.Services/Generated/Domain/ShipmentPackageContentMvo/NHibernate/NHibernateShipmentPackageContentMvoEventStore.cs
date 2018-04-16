@@ -25,34 +25,34 @@ namespace Dddml.Wms.Domain.ShipmentPackageContentMvo.NHibernate
 			return new ShipmentPackageContentMvoEventId((ShipmentPackageContentId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ShipmentPackageContentMvoStateEventBase);
+			return typeof(ShipmentPackageContentMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ShipmentPackageContentMvoStateEventBase);
+            Type supportedEventType = typeof(ShipmentPackageContentMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             ShipmentPackageContentId idObj = (ShipmentPackageContentId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ShipmentPackageContentMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ShipmentPackageContentMvoEventBase>();
             criteria.Add(Restrictions.Eq("ShipmentPackageContentMvoEventId.ShipmentPackageContentIdShipmentPackageIdShipmentId", idObj.ShipmentPackageId.ShipmentId));
             criteria.Add(Restrictions.Eq("ShipmentPackageContentMvoEventId.ShipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId", idObj.ShipmentPackageId.ShipmentPackageSeqId));
             criteria.Add(Restrictions.Eq("ShipmentPackageContentMvoEventId.ShipmentPackageContentIdShipmentItemSeqId", idObj.ShipmentItemSeqId));
             criteria.Add(Restrictions.Le("ShipmentPackageContentMvoEventId.ShipmentPackageVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ShipmentPackageContentMvoEventId.ShipmentPackageVersion"));
             var es = criteria.List<IEvent>();
-            foreach (ShipmentPackageContentMvoStateEventBase e in es)
+            foreach (ShipmentPackageContentMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ShipmentPackageContentMvoStateEventBase)es.Last()).ShipmentPackageContentMvoEventId.ShipmentPackageVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((ShipmentPackageContentMvoEventBase)es.Last()).ShipmentPackageContentMvoEventId.ShipmentPackageVersion : default(long),
                 Events = es
             };
         }

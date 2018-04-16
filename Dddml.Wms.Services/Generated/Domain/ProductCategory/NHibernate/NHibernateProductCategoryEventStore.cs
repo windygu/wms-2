@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.ProductCategory.NHibernate
 			return new ProductCategoryEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ProductCategoryStateEventBase);
+			return typeof(ProductCategoryEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ProductCategoryStateEventBase);
+            Type supportedEventType = typeof(ProductCategoryEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ProductCategoryStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ProductCategoryEventBase>();
             criteria.Add(Restrictions.Eq("ProductCategoryEventId.ProductCategoryId", idObj));
             criteria.Add(Restrictions.Le("ProductCategoryEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ProductCategoryEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (ProductCategoryStateEventBase e in es)
+            foreach (ProductCategoryEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ProductCategoryStateEventBase)es.Last()).ProductCategoryEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((ProductCategoryEventBase)es.Last()).ProductCategoryEventId.Version : default(long),
                 Events = es
             };
         }

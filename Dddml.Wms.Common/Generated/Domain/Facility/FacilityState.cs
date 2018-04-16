@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Facility
         {
             if (events != null && events.Count() > 0)
             {
-                this.FacilityId = ((IFacilityStateEvent)events.First()).FacilityEventId.FacilityId;
+                this.FacilityId = ((IFacilityEvent)events.First()).FacilityEventId.FacilityId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -463,7 +463,7 @@ namespace Dddml.Wms.Domain.Facility
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IFacilityStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IFacilityEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Facility|");

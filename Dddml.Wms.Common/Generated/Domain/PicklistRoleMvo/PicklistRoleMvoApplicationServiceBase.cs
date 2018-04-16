@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 			bool repeated = false;
 			if (((IPicklistRoleMvoStateProperties)state).PicklistVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPicklistRoleMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPicklistRoleMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPicklistRoleMvoStateEvent GetStateEvent(PicklistRoleId picklistRoleId, long version)
+	    public virtual IPicklistRoleMvoEvent GetEvent(PicklistRoleId picklistRoleId, long version)
         {
-            var e = (IPicklistRoleMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(picklistRoleId), version);
+            var e = (IPicklistRoleMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(picklistRoleId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(picklistRoleId, 0);
+                return GetEvent(picklistRoleId, 0);
             }
             return e;
         }
 
         public virtual IPicklistRoleMvoState GetHistoryState(PicklistRoleId picklistRoleId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPicklistRoleMvoStateEvent), ToEventStoreAggregateId(picklistRoleId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPicklistRoleMvoEvent), ToEventStoreAggregateId(picklistRoleId), version - 1);
             return new PicklistRoleMvoState(eventStream.Events);
         }
 

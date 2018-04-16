@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.PicklistRoleId = ((IPicklistRoleMvoStateEvent)events.First()).PicklistRoleMvoEventId.PicklistRoleId;
+                this.PicklistRoleId = ((IPicklistRoleMvoEvent)events.First()).PicklistRoleMvoEventId.PicklistRoleId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -408,7 +408,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistRoleMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistRoleMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistRoleMvo|");

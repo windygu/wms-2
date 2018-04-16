@@ -14,7 +14,7 @@ using Dddml.Wms.Domain.InventoryPRTriggered;
 namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 {
 
-	public abstract class SellableInventoryItemEntryMvoStateEventDtoBase : IStateEventDto, ISellableInventoryItemEntryMvoStateCreated, ISellableInventoryItemEntryMvoStateMergePatched
+	public abstract class SellableInventoryItemEntryMvoStateEventDtoBase : IEventDto, ISellableInventoryItemEntryMvoStateCreated, ISellableInventoryItemEntryMvoStateMergePatched
 	{
 
         private SellableInventoryItemEntryMvoEventId _sellableInventoryItemEntryMvoEventId;
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool ISellableInventoryItemEntryMvoStateEvent.ReadOnly
+        bool ISellableInventoryItemEntryMvoEvent.ReadOnly
         {
             get
             {
@@ -260,7 +260,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 		}
 
 
-        SellableInventoryItemEntryMvoEventId ISellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoEventId
+        SellableInventoryItemEntryMvoEventId ISellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoEventId
         {
             get { return this.SellableInventoryItemEntryMvoEventId; }
         }
@@ -276,12 +276,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -296,7 +296,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -313,14 +313,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -336,14 +336,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -359,14 +359,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -414,7 +414,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             _innerStateEvents.Add((SellableInventoryItemEntryMvoStateCreatedDto)e);
         }
 
-        public void AddSellableInventoryItemEntryMvoEvent(ISellableInventoryItemEntryMvoStateEvent e)
+        public void AddSellableInventoryItemEntryMvoEvent(ISellableInventoryItemEntryMvoEvent e)
         {
             _innerStateEvents.Add((SellableInventoryItemEntryMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

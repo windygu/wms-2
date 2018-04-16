@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.InventoryPostingRule">
   
-  <class name="InventoryPostingRuleStateEventBase" table="InventoryPostingRuleEvents" mutable="false" abstract="true">
+  <class name="InventoryPostingRuleEventBase" table="InventoryPostingRuleEvents" mutable="false" abstract="true">
 
     <composite-id name="InventoryPostingRuleEventId" class="Dddml.Wms.Domain.InventoryPostingRule.InventoryPostingRuleEventId">
         <key-property name="InventoryPostingRuleId" ><column name="InventoryPostingRuleId" length="50" /></key-property>

@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ISellableInventoryItemEntryStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(ISellableInventoryItemEntryEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("SellableInventoryItemEntry|");

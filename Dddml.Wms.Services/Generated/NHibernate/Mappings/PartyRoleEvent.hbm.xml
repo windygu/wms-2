@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.PartyRole">
   
-  <class name="PartyRoleStateEventBase" table="PartyRoleEvents" mutable="false" abstract="true">
+  <class name="PartyRoleEventBase" table="PartyRoleEvents" mutable="false" abstract="true">
 
     <composite-id name="PartyRoleEventId" class="Dddml.Wms.Domain.PartyRole.PartyRoleEventId">
         <key-property name="PartyRoleIdPartyId" ><column name="PartyRoleIdPartyId" sql-type="VARCHAR(20)" /></key-property>

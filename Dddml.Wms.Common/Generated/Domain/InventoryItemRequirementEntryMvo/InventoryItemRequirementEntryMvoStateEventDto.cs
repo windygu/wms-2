@@ -14,7 +14,7 @@ using Dddml.Wms.Domain.InventoryPRTriggered;
 namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 {
 
-	public abstract class InventoryItemRequirementEntryMvoStateEventDtoBase : IStateEventDto, IInventoryItemRequirementEntryMvoStateCreated, IInventoryItemRequirementEntryMvoStateMergePatched
+	public abstract class InventoryItemRequirementEntryMvoStateEventDtoBase : IEventDto, IInventoryItemRequirementEntryMvoStateCreated, IInventoryItemRequirementEntryMvoStateMergePatched
 	{
 
         private InventoryItemRequirementEntryMvoEventId _inventoryItemRequirementEntryMvoEventId;
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IInventoryItemRequirementEntryMvoStateEvent.ReadOnly
+        bool IInventoryItemRequirementEntryMvoEvent.ReadOnly
         {
             get
             {
@@ -260,7 +260,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 		}
 
 
-        InventoryItemRequirementEntryMvoEventId IInventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoEventId
+        InventoryItemRequirementEntryMvoEventId IInventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoEventId
         {
             get { return this.InventoryItemRequirementEntryMvoEventId; }
         }
@@ -276,12 +276,12 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -296,7 +296,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -313,14 +313,14 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -336,14 +336,14 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -359,14 +359,14 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -414,7 +414,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             _innerStateEvents.Add((InventoryItemRequirementEntryMvoStateCreatedDto)e);
         }
 
-        public void AddInventoryItemRequirementEntryMvoEvent(IInventoryItemRequirementEntryMvoStateEvent e)
+        public void AddInventoryItemRequirementEntryMvoEvent(IInventoryItemRequirementEntryMvoEvent e)
         {
             _innerStateEvents.Add((InventoryItemRequirementEntryMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

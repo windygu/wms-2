@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Permission
         {
             if (events != null && events.Count() > 0)
             {
-                this.PermissionId = ((IPermissionStateEvent)events.First()).PermissionEventId.PermissionId;
+                this.PermissionId = ((IPermissionEvent)events.First()).PermissionEventId.PermissionId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -267,7 +267,7 @@ namespace Dddml.Wms.Domain.Permission
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPermissionStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPermissionEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Permission|");

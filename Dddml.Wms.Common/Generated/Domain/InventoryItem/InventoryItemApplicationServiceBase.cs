@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			bool repeated = false;
 			if (((IInventoryItemStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IInventoryItemStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IInventoryItemEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -140,23 +140,23 @@ namespace Dddml.Wms.Domain.InventoryItem
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IInventoryItemStateEvent GetStateEvent(InventoryItemId inventoryItemId, long version)
+	    public virtual IInventoryItemEvent GetEvent(InventoryItemId inventoryItemId, long version)
         {
-            var e = (IInventoryItemStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(inventoryItemId), version);
+            var e = (IInventoryItemEvent)EventStore.GetEvent(ToEventStoreAggregateId(inventoryItemId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(inventoryItemId, 0);
+                return GetEvent(inventoryItemId, 0);
             }
             return e;
         }
 
         public virtual IInventoryItemState GetHistoryState(InventoryItemId inventoryItemId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IInventoryItemStateEvent), ToEventStoreAggregateId(inventoryItemId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IInventoryItemEvent), ToEventStoreAggregateId(inventoryItemId), version - 1);
             return new InventoryItemState(eventStream.Events);
         }
 

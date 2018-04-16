@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = OrderRoleMvosControllerUtils.ParseIdString(id);
             var conv = new OrderRoleMvoStateEventDtoConverter();
-            var se = _orderRoleMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _orderRoleMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToOrderRoleMvoStateEventDto(se);
           } catch (Exception ex) { var response = OrderRoleMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

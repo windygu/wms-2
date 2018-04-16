@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 			bool repeated = false;
 			if (((IProductCategoryStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IProductCategoryStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IProductCategoryEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.ProductCategory
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IProductCategoryStateEvent GetStateEvent(string productCategoryId, long version)
+	    public virtual IProductCategoryEvent GetEvent(string productCategoryId, long version)
         {
-            var e = (IProductCategoryStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(productCategoryId), version);
+            var e = (IProductCategoryEvent)EventStore.GetEvent(ToEventStoreAggregateId(productCategoryId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(productCategoryId, 0);
+                return GetEvent(productCategoryId, 0);
             }
             return e;
         }
 
         public virtual IProductCategoryState GetHistoryState(string productCategoryId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IProductCategoryStateEvent), ToEventStoreAggregateId(productCategoryId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IProductCategoryEvent), ToEventStoreAggregateId(productCategoryId), version - 1);
             return new ProductCategoryState(eventStream.Events);
         }
 

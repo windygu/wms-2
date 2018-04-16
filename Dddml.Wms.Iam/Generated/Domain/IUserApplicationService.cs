@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.User
 
         long GetCount(ICriterion filter);
 
-        IUserStateEvent GetStateEvent(string userId, long version);
+        IUserEvent GetEvent(string userId, long version);
 
         IUserState GetHistoryState(string userId, long version);
 

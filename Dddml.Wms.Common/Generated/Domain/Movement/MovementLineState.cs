@@ -343,7 +343,7 @@ namespace Dddml.Wms.Domain.Movement
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementLineStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementLineEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementLine|");

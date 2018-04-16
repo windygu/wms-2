@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.PartyRole;
 namespace Dddml.Wms.Domain.Picklist
 {
 
-	public abstract class PicklistStateEventDtoBase : IStateEventDto, IPicklistStateCreated, IPicklistStateMergePatched, IPicklistStateDeleted
+	public abstract class PicklistStateEventDtoBase : IEventDto, IPicklistStateCreated, IPicklistStateMergePatched, IPicklistStateDeleted
 	{
 
         private PicklistEventId _picklistEventId;
@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Picklist
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IPicklistStateEvent.ReadOnly
+        bool IPicklistEvent.ReadOnly
         {
             get
             {
@@ -303,12 +303,12 @@ namespace Dddml.Wms.Domain.Picklist
             return NewPicklistRoleStateCreated(partyRoleId);
         }
 
-        IEnumerable<IPicklistRoleStateEvent> IPicklistStateMergePatched.PicklistRoleEvents
+        IEnumerable<IPicklistRoleEvent> IPicklistStateMergePatched.PicklistRoleEvents
         {
             get { return this._picklistRoleEvents; }
         }
 
-        void IPicklistStateMergePatched.AddPicklistRoleEvent(IPicklistRoleStateEvent e)
+        void IPicklistStateMergePatched.AddPicklistRoleEvent(IPicklistRoleEvent e)
         {
             this._picklistRoleEvents.AddPicklistRoleEvent(e);
         }
@@ -346,7 +346,7 @@ namespace Dddml.Wms.Domain.Picklist
 
 
 
-        PicklistEventId IPicklistStateEvent.PicklistEventId
+        PicklistEventId IPicklistEvent.PicklistEventId
         {
             get { return this.PicklistEventId; }
         }
@@ -362,12 +362,12 @@ namespace Dddml.Wms.Domain.Picklist
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -382,7 +382,7 @@ namespace Dddml.Wms.Domain.Picklist
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -399,14 +399,14 @@ namespace Dddml.Wms.Domain.Picklist
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -422,14 +422,14 @@ namespace Dddml.Wms.Domain.Picklist
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -445,14 +445,14 @@ namespace Dddml.Wms.Domain.Picklist
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -504,7 +504,7 @@ namespace Dddml.Wms.Domain.Picklist
             _innerStateEvents.Add((PicklistStateCreatedDto)e);
         }
 
-        public void AddPicklistEvent(IPicklistStateEvent e)
+        public void AddPicklistEvent(IPicklistEvent e)
         {
             _innerStateEvents.Add((PicklistStateCreatedOrMergePatchedOrDeletedDto)e);
         }

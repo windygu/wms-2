@@ -246,7 +246,7 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderRoleStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderRoleEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderRole|");

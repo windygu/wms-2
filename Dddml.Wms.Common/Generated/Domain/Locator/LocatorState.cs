@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Locator
         {
             if (events != null && events.Count() > 0)
             {
-                this.LocatorId = ((ILocatorStateEvent)events.First()).LocatorEventId.LocatorId;
+                this.LocatorId = ((ILocatorEvent)events.First()).LocatorEventId.LocatorId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -369,7 +369,7 @@ namespace Dddml.Wms.Domain.Locator
             }
 		}
 
-        protected void ThrowOnWrongEvent(ILocatorStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(ILocatorEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Locator|");

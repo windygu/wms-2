@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 			bool repeated = false;
 			if (((IPicklistBinStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPicklistBinStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPicklistBinEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.PicklistBin
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPicklistBinStateEvent GetStateEvent(string picklistBinId, long version)
+	    public virtual IPicklistBinEvent GetEvent(string picklistBinId, long version)
         {
-            var e = (IPicklistBinStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(picklistBinId), version);
+            var e = (IPicklistBinEvent)EventStore.GetEvent(ToEventStoreAggregateId(picklistBinId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(picklistBinId, 0);
+                return GetEvent(picklistBinId, 0);
             }
             return e;
         }
 
         public virtual IPicklistBinState GetHistoryState(string picklistBinId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPicklistBinStateEvent), ToEventStoreAggregateId(picklistBinId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPicklistBinEvent), ToEventStoreAggregateId(picklistBinId), version - 1);
             return new PicklistBinState(eventStream.Events);
         }
 

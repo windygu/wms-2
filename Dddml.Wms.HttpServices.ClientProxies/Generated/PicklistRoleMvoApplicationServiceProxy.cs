@@ -253,7 +253,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IPicklistRoleMvoStateEvent> GetStateEventAsync(PicklistRoleId picklistRoleId, long version)
+        public async Task<IPicklistRoleMvoEvent> GetStateEventAsync(PicklistRoleId picklistRoleId, long version)
         {
             var idObj = PicklistRoleMvoProxyUtils.ToIdString(picklistRoleId);
             var uriParameters = new PicklistRoleMvoStateEventUriParameters();
@@ -266,7 +266,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPicklistRoleMvoStateEvent GetStateEvent(PicklistRoleId picklistRoleId, long version)
+        public IPicklistRoleMvoEvent GetEvent(PicklistRoleId picklistRoleId, long version)
         {
             return GetStateEventAsync(picklistRoleId, version).GetAwaiter().GetResult();
         }

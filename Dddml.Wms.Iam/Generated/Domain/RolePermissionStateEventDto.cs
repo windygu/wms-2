@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.RolePermission;
 namespace Dddml.Wms.Domain.RolePermission
 {
 
-	public abstract class RolePermissionStateEventDtoBase : IStateEventDto, IRolePermissionStateCreated, IRolePermissionStateMergePatched, IRolePermissionStateDeleted
+	public abstract class RolePermissionStateEventDtoBase : IEventDto, IRolePermissionStateCreated, IRolePermissionStateMergePatched, IRolePermissionStateDeleted
 	{
 
         private RolePermissionEventId _rolePermissionEventId;
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IRolePermissionStateEvent.ReadOnly
+        bool IRolePermissionEvent.ReadOnly
         {
             get
             {
@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain.RolePermission
 		}
 
 
-        RolePermissionEventId IRolePermissionStateEvent.RolePermissionEventId
+        RolePermissionEventId IRolePermissionEvent.RolePermissionEventId
         {
             get { return this.RolePermissionEventId; }
         }
@@ -127,12 +127,12 @@ namespace Dddml.Wms.Domain.RolePermission
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.RolePermission
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -164,14 +164,14 @@ namespace Dddml.Wms.Domain.RolePermission
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -187,14 +187,14 @@ namespace Dddml.Wms.Domain.RolePermission
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -210,14 +210,14 @@ namespace Dddml.Wms.Domain.RolePermission
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.RolePermission
             _innerStateEvents.Add((RolePermissionStateCreatedDto)e);
         }
 
-        public void AddRolePermissionEvent(IRolePermissionStateEvent e)
+        public void AddRolePermissionEvent(IRolePermissionEvent e)
         {
             _innerStateEvents.Add((RolePermissionStateCreatedOrMergePatchedOrDeletedDto)e);
         }

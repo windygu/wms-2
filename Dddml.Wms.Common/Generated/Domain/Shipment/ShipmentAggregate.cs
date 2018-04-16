@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain.Shipment
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IShipmentItemStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IShipmentItemEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddShipmentItemEvent(innerEvent);
             }
 
@@ -236,7 +236,7 @@ namespace Dddml.Wms.Domain.Shipment
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IShipmentReceiptStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IShipmentReceiptEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddShipmentReceiptEvent(innerEvent);
             }
 
@@ -244,7 +244,7 @@ namespace Dddml.Wms.Domain.Shipment
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IItemIssuanceStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IItemIssuanceEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddItemIssuanceEvent(innerEvent);
             }
 
@@ -319,7 +319,7 @@ namespace Dddml.Wms.Domain.Shipment
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IShipmentItemStateEvent Map(IShipmentItemCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        protected virtual IShipmentItemEvent Map(IShipmentItemCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentItem) : null;
             if(create != null)
@@ -384,7 +384,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 
 
-        protected virtual IShipmentReceiptStateEvent Map(IShipmentReceiptCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        protected virtual IShipmentReceiptEvent Map(IShipmentReceiptCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentReceipt) : null;
             if(create != null)
@@ -491,7 +491,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 
 
-        protected virtual IItemIssuanceStateEvent Map(IItemIssuanceCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        protected virtual IItemIssuanceEvent Map(IItemIssuanceCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateItemIssuance) : null;
             if(create != null)

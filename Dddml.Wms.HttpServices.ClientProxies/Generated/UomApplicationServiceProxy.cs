@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IUomStateEvent> GetStateEventAsync(string uomId, long version)
+        public async Task<IUomEvent> GetStateEventAsync(string uomId, long version)
         {
             var idObj = uomId;
             var uriParameters = new UomStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IUomStateEvent GetStateEvent(string uomId, long version)
+        public IUomEvent GetEvent(string uomId, long version)
         {
             return GetStateEventAsync(uomId, version).GetAwaiter().GetResult();
         }

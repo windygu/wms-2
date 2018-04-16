@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo
 
     public class ItemIssuanceMvoStateEventDtoConverter
     {
-        public virtual ItemIssuanceMvoStateCreatedOrMergePatchedOrDeletedDto ToItemIssuanceMvoStateEventDto(IItemIssuanceMvoStateEvent stateEvent)
+        public virtual ItemIssuanceMvoStateCreatedOrMergePatchedOrDeletedDto ToItemIssuanceMvoStateEventDto(IItemIssuanceMvoEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IItemIssuanceMvoStateCreated)stateEvent;
                 return ToItemIssuanceMvoStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IItemIssuanceMvoStateMergePatched)stateEvent;
                 return ToItemIssuanceMvoStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IItemIssuanceMvoStateDeleted)stateEvent;
                 return ToItemIssuanceMvoStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual ItemIssuanceMvoStateCreatedDto ToItemIssuanceMvoStateCreatedDto(IItemIssuanceMvoStateCreated e)

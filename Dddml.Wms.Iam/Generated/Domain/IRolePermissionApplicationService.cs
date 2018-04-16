@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         long GetCount(ICriterion filter);
 
-        IRolePermissionStateEvent GetStateEvent(RolePermissionId id, long version);
+        IRolePermissionEvent GetEvent(RolePermissionId id, long version);
 
         IRolePermissionState GetHistoryState(RolePermissionId id, long version);
 

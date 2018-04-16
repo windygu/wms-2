@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.UserRoleMvo.NHibernate
 			return new UserRoleMvoEventId((UserRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(UserRoleMvoStateEventBase);
+			return typeof(UserRoleMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(UserRoleMvoStateEventBase);
+            Type supportedEventType = typeof(UserRoleMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             UserRoleId idObj = (UserRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<UserRoleMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<UserRoleMvoEventBase>();
             criteria.Add(Restrictions.Eq("UserRoleMvoEventId.UserRoleIdUserId", idObj.UserId));
             criteria.Add(Restrictions.Eq("UserRoleMvoEventId.UserRoleIdRoleId", idObj.RoleId));
             criteria.Add(Restrictions.Le("UserRoleMvoEventId.UserVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UserRoleMvoEventId.UserVersion"));
             var es = criteria.List<IEvent>();
-            foreach (UserRoleMvoStateEventBase e in es)
+            foreach (UserRoleMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((UserRoleMvoStateEventBase)es.Last()).UserRoleMvoEventId.UserVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((UserRoleMvoEventBase)es.Last()).UserRoleMvoEventId.UserVersion : default(long),
                 Events = es
             };
         }

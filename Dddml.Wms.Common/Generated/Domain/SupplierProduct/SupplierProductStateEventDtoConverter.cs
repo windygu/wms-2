@@ -15,19 +15,19 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
     public class SupplierProductStateEventDtoConverter
     {
-        public virtual SupplierProductStateCreatedOrMergePatchedOrDeletedDto ToSupplierProductStateEventDto(ISupplierProductStateEvent stateEvent)
+        public virtual SupplierProductStateCreatedOrMergePatchedOrDeletedDto ToSupplierProductStateEventDto(ISupplierProductEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (ISupplierProductStateCreated)stateEvent;
                 return ToSupplierProductStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (ISupplierProductStateMergePatched)stateEvent;
                 return ToSupplierProductStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual SupplierProductStateCreatedDto ToSupplierProductStateCreatedDto(ISupplierProductStateCreated e)

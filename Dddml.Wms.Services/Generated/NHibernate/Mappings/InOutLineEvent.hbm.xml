@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.InOut">
   
-  <class name="InOutLineStateEventBase" table="InOutLineEvents" mutable="false" abstract="true">
+  <class name="InOutLineEventBase" table="InOutLineEvents" mutable="false" abstract="true">
 
     <composite-id name="InOutLineEventId" class="Dddml.Wms.Domain.InOut.InOutLineEventId">
         <key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>

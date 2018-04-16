@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.PicklistBin;
 namespace Dddml.Wms.Domain.PicklistBin
 {
 
-	public abstract class PicklistItemStateEventDtoBase : IStateEventDto, IPicklistItemStateCreated, IPicklistItemStateMergePatched, IPicklistItemStateRemoved
+	public abstract class PicklistItemStateEventDtoBase : IEventDto, IPicklistItemStateCreated, IPicklistItemStateMergePatched, IPicklistItemStateRemoved
 	{
 
         private PicklistItemEventId _picklistItemEventId;
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IPicklistItemStateEvent.ReadOnly
+        bool IPicklistItemEvent.ReadOnly
         {
             get
             {
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 		}
 
 
-        PicklistItemEventId IPicklistItemStateEvent.PicklistItemEventId
+        PicklistItemEventId IPicklistItemEvent.PicklistItemEventId
         {
             get { return this.PicklistItemEventId; }
         }
@@ -165,12 +165,12 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -202,14 +202,14 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -225,14 +225,14 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -248,14 +248,14 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Removed;
         }
@@ -307,7 +307,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             _innerStateEvents.Add((PicklistItemStateCreatedDto)e);
         }
 
-        public void AddPicklistItemEvent(IPicklistItemStateEvent e)
+        public void AddPicklistItemEvent(IPicklistItemEvent e)
         {
             _innerStateEvents.Add((PicklistItemStateCreatedOrMergePatchedOrRemovedDto)e);
         }

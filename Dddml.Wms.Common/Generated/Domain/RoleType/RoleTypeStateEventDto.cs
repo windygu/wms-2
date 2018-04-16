@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.RoleType;
 namespace Dddml.Wms.Domain.RoleType
 {
 
-	public abstract class RoleTypeStateEventDtoBase : IStateEventDto, IRoleTypeStateCreated, IRoleTypeStateMergePatched, IRoleTypeStateDeleted
+	public abstract class RoleTypeStateEventDtoBase : IEventDto, IRoleTypeStateCreated, IRoleTypeStateMergePatched, IRoleTypeStateDeleted
 	{
 
         private RoleTypeEventId _roleTypeEventId;
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.RoleType
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IRoleTypeStateEvent.ReadOnly
+        bool IRoleTypeEvent.ReadOnly
         {
             get
             {
@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.RoleType
 		}
 
 
-        RoleTypeEventId IRoleTypeStateEvent.RoleTypeEventId
+        RoleTypeEventId IRoleTypeEvent.RoleTypeEventId
         {
             get { return this.RoleTypeEventId; }
         }
@@ -190,12 +190,12 @@ namespace Dddml.Wms.Domain.RoleType
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain.RoleType
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -227,14 +227,14 @@ namespace Dddml.Wms.Domain.RoleType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -250,14 +250,14 @@ namespace Dddml.Wms.Domain.RoleType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -273,14 +273,14 @@ namespace Dddml.Wms.Domain.RoleType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -332,7 +332,7 @@ namespace Dddml.Wms.Domain.RoleType
             _innerStateEvents.Add((RoleTypeStateCreatedDto)e);
         }
 
-        public void AddRoleTypeEvent(IRoleTypeStateEvent e)
+        public void AddRoleTypeEvent(IRoleTypeEvent e)
         {
             _innerStateEvents.Add((RoleTypeStateCreatedOrMergePatchedOrDeletedDto)e);
         }

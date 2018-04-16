@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 			bool repeated = false;
 			if (((IMovementLineMvoStateProperties)state).MovementVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IMovementLineMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IMovementLineMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IMovementLineMvoStateEvent GetStateEvent(MovementLineId movementLineId, long version)
+	    public virtual IMovementLineMvoEvent GetEvent(MovementLineId movementLineId, long version)
         {
-            var e = (IMovementLineMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(movementLineId), version);
+            var e = (IMovementLineMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(movementLineId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(movementLineId, 0);
+                return GetEvent(movementLineId, 0);
             }
             return e;
         }
 
         public virtual IMovementLineMvoState GetHistoryState(MovementLineId movementLineId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IMovementLineMvoStateEvent), ToEventStoreAggregateId(movementLineId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IMovementLineMvoEvent), ToEventStoreAggregateId(movementLineId), version - 1);
             return new MovementLineMvoState(eventStream.Events);
         }
 

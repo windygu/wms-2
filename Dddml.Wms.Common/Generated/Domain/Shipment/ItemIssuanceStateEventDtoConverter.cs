@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.Shipment
 
     public class ItemIssuanceStateEventDtoConverter
     {
-        public virtual ItemIssuanceStateCreatedOrMergePatchedOrRemovedDto ToItemIssuanceStateEventDto(IItemIssuanceStateEvent stateEvent)
+        public virtual ItemIssuanceStateCreatedOrMergePatchedOrRemovedDto ToItemIssuanceStateEventDto(IItemIssuanceEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IItemIssuanceStateCreated)stateEvent;
                 return ToItemIssuanceStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IItemIssuanceStateMergePatched)stateEvent;
                 return ToItemIssuanceStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Removed)
+            else if (stateEvent.EventType == StateEventType.Removed)
             {
                 var e = (IItemIssuanceStateRemoved)stateEvent;
                 return ToItemIssuanceStateRemovedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual ItemIssuanceStateCreatedDto ToItemIssuanceStateCreatedDto(IItemIssuanceStateCreated e)

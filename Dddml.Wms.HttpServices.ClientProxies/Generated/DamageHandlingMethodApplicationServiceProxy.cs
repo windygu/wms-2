@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IDamageHandlingMethodStateEvent> GetStateEventAsync(string damageHandlingMethodId, long version)
+        public async Task<IDamageHandlingMethodEvent> GetStateEventAsync(string damageHandlingMethodId, long version)
         {
             var idObj = damageHandlingMethodId;
             var uriParameters = new DamageHandlingMethodStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IDamageHandlingMethodStateEvent GetStateEvent(string damageHandlingMethodId, long version)
+        public IDamageHandlingMethodEvent GetEvent(string damageHandlingMethodId, long version)
         {
             return GetStateEventAsync(damageHandlingMethodId, version).GetAwaiter().GetResult();
         }

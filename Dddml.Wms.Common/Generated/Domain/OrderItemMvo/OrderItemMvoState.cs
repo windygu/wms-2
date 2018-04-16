@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrderItemId = ((IOrderItemMvoStateEvent)events.First()).OrderItemMvoEventId.OrderItemId;
+                this.OrderItemId = ((IOrderItemMvoEvent)events.First()).OrderItemMvoEventId.OrderItemId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -1111,7 +1111,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemMvo|");

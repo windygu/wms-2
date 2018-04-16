@@ -253,7 +253,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IMovementLineMvoStateEvent> GetStateEventAsync(MovementLineId movementLineId, long version)
+        public async Task<IMovementLineMvoEvent> GetStateEventAsync(MovementLineId movementLineId, long version)
         {
             var idObj = MovementLineMvoProxyUtils.ToIdString(movementLineId);
             var uriParameters = new MovementLineMvoStateEventUriParameters();
@@ -266,7 +266,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IMovementLineMvoStateEvent GetStateEvent(MovementLineId movementLineId, long version)
+        public IMovementLineMvoEvent GetEvent(MovementLineId movementLineId, long version)
         {
             return GetStateEventAsync(movementLineId, version).GetAwaiter().GetResult();
         }

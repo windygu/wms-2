@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.DamageReason;
 namespace Dddml.Wms.Domain.DamageReason
 {
 
-	public abstract class DamageReasonStateEventDtoBase : IStateEventDto, IDamageReasonStateCreated, IDamageReasonStateMergePatched, IDamageReasonStateDeleted
+	public abstract class DamageReasonStateEventDtoBase : IEventDto, IDamageReasonStateCreated, IDamageReasonStateMergePatched, IDamageReasonStateDeleted
 	{
 
         private DamageReasonEventId _damageReasonEventId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IDamageReasonStateEvent.ReadOnly
+        bool IDamageReasonEvent.ReadOnly
         {
             get
             {
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.DamageReason
 		}
 
 
-        DamageReasonEventId IDamageReasonStateEvent.DamageReasonEventId
+        DamageReasonEventId IDamageReasonEvent.DamageReasonEventId
         {
             get { return this.DamageReasonEventId; }
         }
@@ -169,12 +169,12 @@ namespace Dddml.Wms.Domain.DamageReason
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.DamageReason
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -206,14 +206,14 @@ namespace Dddml.Wms.Domain.DamageReason
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -229,14 +229,14 @@ namespace Dddml.Wms.Domain.DamageReason
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -252,14 +252,14 @@ namespace Dddml.Wms.Domain.DamageReason
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.DamageReason
             _innerStateEvents.Add((DamageReasonStateCreatedDto)e);
         }
 
-        public void AddDamageReasonEvent(IDamageReasonStateEvent e)
+        public void AddDamageReasonEvent(IDamageReasonEvent e)
         {
             _innerStateEvents.Add((DamageReasonStateCreatedOrMergePatchedOrDeletedDto)e);
         }

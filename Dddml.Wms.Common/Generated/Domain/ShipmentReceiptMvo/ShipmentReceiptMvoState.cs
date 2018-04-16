@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.ShipmentReceiptId = ((IShipmentReceiptMvoStateEvent)events.First()).ShipmentReceiptMvoEventId.ShipmentReceiptId;
+                this.ShipmentReceiptId = ((IShipmentReceiptMvoEvent)events.First()).ShipmentReceiptMvoEventId.ShipmentReceiptId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -887,7 +887,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentReceiptMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentReceiptMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentReceiptMvo|");

@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IOrganizationStructureStateEvent> GetStateEventAsync(OrganizationStructureId id, long version)
+        public async Task<IOrganizationStructureEvent> GetStateEventAsync(OrganizationStructureId id, long version)
         {
             var idObj = OrganizationStructureProxyUtils.ToIdString(id);
             var uriParameters = new OrganizationStructureStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IOrganizationStructureStateEvent GetStateEvent(OrganizationStructureId id, long version)
+        public IOrganizationStructureEvent GetEvent(OrganizationStructureId id, long version)
         {
             return GetStateEventAsync(id, version).GetAwaiter().GetResult();
         }

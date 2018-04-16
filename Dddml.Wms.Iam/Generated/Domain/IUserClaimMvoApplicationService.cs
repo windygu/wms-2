@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         long GetCount(ICriterion filter);
 
-        IUserClaimMvoStateEvent GetStateEvent(UserClaimId userClaimId, long version);
+        IUserClaimMvoEvent GetEvent(UserClaimId userClaimId, long version);
 
         IUserClaimMvoState GetHistoryState(UserClaimId userClaimId, long version);
 

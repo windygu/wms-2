@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.RoleType
 
         long GetCount(ICriterion filter);
 
-        IRoleTypeStateEvent GetStateEvent(string roleTypeId, long version);
+        IRoleTypeEvent GetEvent(string roleTypeId, long version);
 
         IRoleTypeState GetHistoryState(string roleTypeId, long version);
 

@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Party
         {
             if (events != null && events.Count() > 0)
             {
-                this.PartyId = ((IPartyStateEvent)events.First()).PartyEventId.PartyId;
+                this.PartyId = ((IPartyEvent)events.First()).PartyEventId.PartyId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -309,7 +309,7 @@ namespace Dddml.Wms.Domain.Party
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPartyStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPartyEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Party|");

@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.ShipmentType
         {
             if (events != null && events.Count() > 0)
             {
-                this.ShipmentTypeId = ((IShipmentTypeStateEvent)events.First()).ShipmentTypeEventId.ShipmentTypeId;
+                this.ShipmentTypeId = ((IShipmentTypeEvent)events.First()).ShipmentTypeEventId.ShipmentTypeId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -244,7 +244,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IShipmentTypeStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IShipmentTypeEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("ShipmentType|");

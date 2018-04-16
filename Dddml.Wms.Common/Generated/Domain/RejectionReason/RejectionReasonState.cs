@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.RejectionReason
         {
             if (events != null && events.Count() > 0)
             {
-                this.RejectionReasonId = ((IRejectionReasonStateEvent)events.First()).RejectionReasonEventId.RejectionReasonId;
+                this.RejectionReasonId = ((IRejectionReasonEvent)events.First()).RejectionReasonEventId.RejectionReasonId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -239,7 +239,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IRejectionReasonStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IRejectionReasonEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("RejectionReason|");

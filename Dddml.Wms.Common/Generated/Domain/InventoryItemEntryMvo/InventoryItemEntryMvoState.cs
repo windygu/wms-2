@@ -130,7 +130,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.InventoryItemEntryId = ((IInventoryItemEntryMvoStateEvent)events.First()).InventoryItemEntryMvoEventId.InventoryItemEntryId;
+                this.InventoryItemEntryId = ((IInventoryItemEntryMvoEvent)events.First()).InventoryItemEntryMvoEventId.InventoryItemEntryId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -402,7 +402,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryItemEntryMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryItemEntryMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryItemEntryMvo|");

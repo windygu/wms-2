@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Facility
 			bool repeated = false;
 			if (((IFacilityStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IFacilityStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IFacilityEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.Facility
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IFacilityStateEvent GetStateEvent(string facilityId, long version)
+	    public virtual IFacilityEvent GetEvent(string facilityId, long version)
         {
-            var e = (IFacilityStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(facilityId), version);
+            var e = (IFacilityEvent)EventStore.GetEvent(ToEventStoreAggregateId(facilityId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(facilityId, 0);
+                return GetEvent(facilityId, 0);
             }
             return e;
         }
 
         public virtual IFacilityState GetHistoryState(string facilityId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IFacilityStateEvent), ToEventStoreAggregateId(facilityId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IFacilityEvent), ToEventStoreAggregateId(facilityId), version - 1);
             return new FacilityState(eventStream.Events);
         }
 

@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Lot">
   
-  <class name="LotStateEventBase" table="LotEvents" mutable="false" abstract="true">
+  <class name="LotEventBase" table="LotEvents" mutable="false" abstract="true">
 
     <composite-id name="LotEventId" class="Dddml.Wms.Domain.Lot.LotEventId">
         <key-property name="LotId" ><column name="LotId" sql-type="VARCHAR(20)" /></key-property>

@@ -20,7 +20,7 @@ public class MovementLineStateEventDtoConverter {
             return toMovementLineStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public MovementLineStateEventDto.MovementLineStateCreatedDto toMovementLineStateCreatedDto(MovementLineEvent.MovementLineStateCreated e) {

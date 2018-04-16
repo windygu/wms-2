@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.RejectionReason.NHibernate
 			return new RejectionReasonEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(RejectionReasonStateEventBase);
+			return typeof(RejectionReasonEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(RejectionReasonStateEventBase);
+            Type supportedEventType = typeof(RejectionReasonEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<RejectionReasonStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<RejectionReasonEventBase>();
             criteria.Add(Restrictions.Eq("RejectionReasonEventId.RejectionReasonId", idObj));
             criteria.Add(Restrictions.Le("RejectionReasonEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("RejectionReasonEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (RejectionReasonStateEventBase e in es)
+            foreach (RejectionReasonEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((RejectionReasonStateEventBase)es.Last()).RejectionReasonEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((RejectionReasonEventBase)es.Last()).RejectionReasonEventId.Version : default(long),
                 Events = es
             };
         }

@@ -16,24 +16,24 @@ namespace Dddml.Wms.Domain.Picklist
 
     public class PicklistRoleStateEventDtoConverter
     {
-        public virtual PicklistRoleStateCreatedOrMergePatchedOrRemovedDto ToPicklistRoleStateEventDto(IPicklistRoleStateEvent stateEvent)
+        public virtual PicklistRoleStateCreatedOrMergePatchedOrRemovedDto ToPicklistRoleStateEventDto(IPicklistRoleEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IPicklistRoleStateCreated)stateEvent;
                 return ToPicklistRoleStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IPicklistRoleStateMergePatched)stateEvent;
                 return ToPicklistRoleStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Removed)
+            else if (stateEvent.EventType == StateEventType.Removed)
             {
                 var e = (IPicklistRoleStateRemoved)stateEvent;
                 return ToPicklistRoleStateRemovedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual PicklistRoleStateCreatedDto ToPicklistRoleStateCreatedDto(IPicklistRoleStateCreated e)

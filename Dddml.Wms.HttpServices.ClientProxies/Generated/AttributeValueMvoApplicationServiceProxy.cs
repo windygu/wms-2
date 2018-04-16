@@ -253,7 +253,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IAttributeValueMvoStateEvent> GetStateEventAsync(AttributeValueId attributeValueId, long version)
+        public async Task<IAttributeValueMvoEvent> GetStateEventAsync(AttributeValueId attributeValueId, long version)
         {
             var idObj = AttributeValueMvoProxyUtils.ToIdString(attributeValueId);
             var uriParameters = new AttributeValueMvoStateEventUriParameters();
@@ -266,7 +266,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IAttributeValueMvoStateEvent GetStateEvent(AttributeValueId attributeValueId, long version)
+        public IAttributeValueMvoEvent GetEvent(AttributeValueId attributeValueId, long version)
         {
             return GetStateEventAsync(attributeValueId, version).GetAwaiter().GetResult();
         }

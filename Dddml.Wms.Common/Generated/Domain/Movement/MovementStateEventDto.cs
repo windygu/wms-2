@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Movement;
 namespace Dddml.Wms.Domain.Movement
 {
 
-	public abstract class MovementStateEventDtoBase : IStateEventDto, IMovementStateCreated, IMovementStateMergePatched, IMovementStateDeleted
+	public abstract class MovementStateEventDtoBase : IEventDto, IMovementStateCreated, IMovementStateMergePatched, IMovementStateDeleted
 	{
 
         private MovementEventId _movementEventId;
@@ -101,7 +101,7 @@ namespace Dddml.Wms.Domain.Movement
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IMovementStateEvent.ReadOnly
+        bool IMovementEvent.ReadOnly
         {
             get
             {
@@ -596,12 +596,12 @@ namespace Dddml.Wms.Domain.Movement
             return NewMovementLineStateCreated(lineNumber);
         }
 
-        IEnumerable<IMovementLineStateEvent> IMovementStateMergePatched.MovementLineEvents
+        IEnumerable<IMovementLineEvent> IMovementStateMergePatched.MovementLineEvents
         {
             get { return this._movementLineEvents; }
         }
 
-        void IMovementStateMergePatched.AddMovementLineEvent(IMovementLineStateEvent e)
+        void IMovementStateMergePatched.AddMovementLineEvent(IMovementLineEvent e)
         {
             this._movementLineEvents.AddMovementLineEvent(e);
         }
@@ -639,7 +639,7 @@ namespace Dddml.Wms.Domain.Movement
 
 
 
-        MovementEventId IMovementStateEvent.MovementEventId
+        MovementEventId IMovementEvent.MovementEventId
         {
             get { return this.MovementEventId; }
         }
@@ -655,12 +655,12 @@ namespace Dddml.Wms.Domain.Movement
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -675,7 +675,7 @@ namespace Dddml.Wms.Domain.Movement
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -692,14 +692,14 @@ namespace Dddml.Wms.Domain.Movement
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -715,14 +715,14 @@ namespace Dddml.Wms.Domain.Movement
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -738,14 +738,14 @@ namespace Dddml.Wms.Domain.Movement
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -797,7 +797,7 @@ namespace Dddml.Wms.Domain.Movement
             _innerStateEvents.Add((MovementStateCreatedDto)e);
         }
 
-        public void AddMovementEvent(IMovementStateEvent e)
+        public void AddMovementEvent(IMovementEvent e)
         {
             _innerStateEvents.Add((MovementStateCreatedOrMergePatchedOrDeletedDto)e);
         }

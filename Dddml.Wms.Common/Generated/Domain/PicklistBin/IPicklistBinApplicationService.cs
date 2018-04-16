@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         long GetCount(ICriterion filter);
 
-        IPicklistBinStateEvent GetStateEvent(string picklistBinId, long version);
+        IPicklistBinEvent GetEvent(string picklistBinId, long version);
 
         IPicklistBinState GetHistoryState(string picklistBinId, long version);
 

@@ -25,33 +25,33 @@ namespace Dddml.Wms.Domain.UserClaimMvo.NHibernate
 			return new UserClaimMvoEventId((UserClaimId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(UserClaimMvoStateEventBase);
+			return typeof(UserClaimMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(UserClaimMvoStateEventBase);
+            Type supportedEventType = typeof(UserClaimMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             UserClaimId idObj = (UserClaimId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<UserClaimMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<UserClaimMvoEventBase>();
             criteria.Add(Restrictions.Eq("UserClaimMvoEventId.UserClaimIdUserId", idObj.UserId));
             criteria.Add(Restrictions.Eq("UserClaimMvoEventId.UserClaimIdClaimId", idObj.ClaimId));
             criteria.Add(Restrictions.Le("UserClaimMvoEventId.UserVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UserClaimMvoEventId.UserVersion"));
             var es = criteria.List<IEvent>();
-            foreach (UserClaimMvoStateEventBase e in es)
+            foreach (UserClaimMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((UserClaimMvoStateEventBase)es.Last()).UserClaimMvoEventId.UserVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((UserClaimMvoEventBase)es.Last()).UserClaimMvoEventId.UserVersion : default(long),
                 Events = es
             };
         }

@@ -207,7 +207,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new MovementStateEventDtoConverter();
-            var se = _movementApplicationService.GetStateEvent(idObj, version);
+            var se = _movementApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToMovementStateEventDto(se);
           } catch (Exception ex) { var response = MovementsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

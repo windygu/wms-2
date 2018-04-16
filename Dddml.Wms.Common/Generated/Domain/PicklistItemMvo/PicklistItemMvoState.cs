@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.PicklistBinPicklistItemId = ((IPicklistItemMvoStateEvent)events.First()).PicklistItemMvoEventId.PicklistBinPicklistItemId;
+                this.PicklistBinPicklistItemId = ((IPicklistItemMvoEvent)events.First()).PicklistItemMvoEventId.PicklistBinPicklistItemId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -408,7 +408,7 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistItemMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistItemMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistItemMvo|");

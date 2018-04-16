@@ -25,21 +25,21 @@ namespace Dddml.Wms.Domain.PicklistItemMvo.NHibernate
 			return new PicklistItemMvoEventId((PicklistBinPicklistItemId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PicklistItemMvoStateEventBase);
+			return typeof(PicklistItemMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PicklistItemMvoStateEventBase);
+            Type supportedEventType = typeof(PicklistItemMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             PicklistBinPicklistItemId idObj = (PicklistBinPicklistItemId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PicklistItemMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PicklistItemMvoEventBase>();
             criteria.Add(Restrictions.Eq("PicklistItemMvoEventId.PicklistBinPicklistItemIdPicklistBinId", idObj.PicklistBinId));
             criteria.Add(Restrictions.Eq("PicklistItemMvoEventId.PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdOrderId", idObj.PicklistItemOrderShipGrpInvId.OrderId));
             criteria.Add(Restrictions.Eq("PicklistItemMvoEventId.PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdOrderItemSeqId", idObj.PicklistItemOrderShipGrpInvId.OrderItemSeqId));
@@ -50,13 +50,13 @@ namespace Dddml.Wms.Domain.PicklistItemMvo.NHibernate
             criteria.Add(Restrictions.Le("PicklistItemMvoEventId.PicklistBinVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PicklistItemMvoEventId.PicklistBinVersion"));
             var es = criteria.List<IEvent>();
-            foreach (PicklistItemMvoStateEventBase e in es)
+            foreach (PicklistItemMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PicklistItemMvoStateEventBase)es.Last()).PicklistItemMvoEventId.PicklistBinVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((PicklistItemMvoEventBase)es.Last()).PicklistItemMvoEventId.PicklistBinVersion : default(long),
                 Events = es
             };
         }

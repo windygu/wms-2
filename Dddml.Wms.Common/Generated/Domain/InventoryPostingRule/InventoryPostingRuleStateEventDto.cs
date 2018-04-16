@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.InventoryItem;
 namespace Dddml.Wms.Domain.InventoryPostingRule
 {
 
-	public abstract class InventoryPostingRuleStateEventDtoBase : IStateEventDto, IInventoryPostingRuleStateCreated, IInventoryPostingRuleStateMergePatched, IInventoryPostingRuleStateDeleted
+	public abstract class InventoryPostingRuleStateEventDtoBase : IEventDto, IInventoryPostingRuleStateCreated, IInventoryPostingRuleStateMergePatched, IInventoryPostingRuleStateDeleted
 	{
 
         private InventoryPostingRuleEventId _inventoryPostingRuleEventId;
@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IInventoryPostingRuleStateEvent.ReadOnly
+        bool IInventoryPostingRuleEvent.ReadOnly
         {
             get
             {
@@ -217,7 +217,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		}
 
 
-        InventoryPostingRuleEventId IInventoryPostingRuleStateEvent.InventoryPostingRuleEventId
+        InventoryPostingRuleEventId IInventoryPostingRuleEvent.InventoryPostingRuleEventId
         {
             get { return this.InventoryPostingRuleEventId; }
         }
@@ -233,12 +233,12 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -270,14 +270,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -293,14 +293,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -316,14 +316,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -375,7 +375,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             _innerStateEvents.Add((InventoryPostingRuleStateCreatedDto)e);
         }
 
-        public void AddInventoryPostingRuleEvent(IInventoryPostingRuleStateEvent e)
+        public void AddInventoryPostingRuleEvent(IInventoryPostingRuleEvent e)
         {
             _innerStateEvents.Add((InventoryPostingRuleStateCreatedOrMergePatchedOrDeletedDto)e);
         }

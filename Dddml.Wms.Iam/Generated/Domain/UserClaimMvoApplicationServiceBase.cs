@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 			bool repeated = false;
 			if (((IUserClaimMvoStateProperties)state).UserVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IUserClaimMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IUserClaimMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IUserClaimMvoStateEvent GetStateEvent(UserClaimId userClaimId, long version)
+	    public virtual IUserClaimMvoEvent GetEvent(UserClaimId userClaimId, long version)
         {
-            var e = (IUserClaimMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(userClaimId), version);
+            var e = (IUserClaimMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(userClaimId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(userClaimId, 0);
+                return GetEvent(userClaimId, 0);
             }
             return e;
         }
 
         public virtual IUserClaimMvoState GetHistoryState(UserClaimId userClaimId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IUserClaimMvoStateEvent), ToEventStoreAggregateId(userClaimId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IUserClaimMvoEvent), ToEventStoreAggregateId(userClaimId), version - 1);
             return new UserClaimMvoState(eventStream.Events);
         }
 

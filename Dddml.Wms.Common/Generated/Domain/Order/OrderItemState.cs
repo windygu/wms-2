@@ -711,7 +711,7 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItem|");

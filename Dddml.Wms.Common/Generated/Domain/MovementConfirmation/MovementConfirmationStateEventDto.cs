@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.MovementConfirmation;
 namespace Dddml.Wms.Domain.MovementConfirmation
 {
 
-	public abstract class MovementConfirmationStateEventDtoBase : IStateEventDto, IMovementConfirmationStateCreated, IMovementConfirmationStateMergePatched, IMovementConfirmationStateDeleted
+	public abstract class MovementConfirmationStateEventDtoBase : IEventDto, IMovementConfirmationStateCreated, IMovementConfirmationStateMergePatched, IMovementConfirmationStateDeleted
 	{
 
         private MovementConfirmationEventId _movementConfirmationEventId;
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IMovementConfirmationStateEvent.ReadOnly
+        bool IMovementConfirmationEvent.ReadOnly
         {
             get
             {
@@ -344,12 +344,12 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             return NewMovementConfirmationLineStateCreated(lineNumber);
         }
 
-        IEnumerable<IMovementConfirmationLineStateEvent> IMovementConfirmationStateMergePatched.MovementConfirmationLineEvents
+        IEnumerable<IMovementConfirmationLineEvent> IMovementConfirmationStateMergePatched.MovementConfirmationLineEvents
         {
             get { return this._movementConfirmationLineEvents; }
         }
 
-        void IMovementConfirmationStateMergePatched.AddMovementConfirmationLineEvent(IMovementConfirmationLineStateEvent e)
+        void IMovementConfirmationStateMergePatched.AddMovementConfirmationLineEvent(IMovementConfirmationLineEvent e)
         {
             this._movementConfirmationLineEvents.AddMovementConfirmationLineEvent(e);
         }
@@ -387,7 +387,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 
 
-        MovementConfirmationEventId IMovementConfirmationStateEvent.MovementConfirmationEventId
+        MovementConfirmationEventId IMovementConfirmationEvent.MovementConfirmationEventId
         {
             get { return this.MovementConfirmationEventId; }
         }
@@ -403,12 +403,12 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -423,7 +423,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -440,14 +440,14 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -463,14 +463,14 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -486,14 +486,14 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -545,7 +545,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             _innerStateEvents.Add((MovementConfirmationStateCreatedDto)e);
         }
 
-        public void AddMovementConfirmationEvent(IMovementConfirmationStateEvent e)
+        public void AddMovementConfirmationEvent(IMovementConfirmationEvent e)
         {
             _innerStateEvents.Add((MovementConfirmationStateCreatedOrMergePatchedOrDeletedDto)e);
         }

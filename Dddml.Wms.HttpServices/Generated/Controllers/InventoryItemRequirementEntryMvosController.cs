@@ -177,7 +177,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = InventoryItemRequirementEntryMvosControllerUtils.ParseIdString(id);
             var conv = new InventoryItemRequirementEntryMvoStateEventDtoConverter();
-            var se = _inventoryItemRequirementEntryMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _inventoryItemRequirementEntryMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToInventoryItemRequirementEntryMvoStateEventDto(se);
           } catch (Exception ex) { var response = InventoryItemRequirementEntryMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

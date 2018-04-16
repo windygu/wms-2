@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Permission;
 namespace Dddml.Wms.Domain.Permission
 {
 
-	public abstract class PermissionStateEventDtoBase : IStateEventDto, IPermissionStateCreated, IPermissionStateMergePatched, IPermissionStateDeleted
+	public abstract class PermissionStateEventDtoBase : IEventDto, IPermissionStateCreated, IPermissionStateMergePatched, IPermissionStateDeleted
 	{
 
         private PermissionEventId _permissionEventId;
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.Permission
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IPermissionStateEvent.ReadOnly
+        bool IPermissionEvent.ReadOnly
         {
             get
             {
@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.Permission
 		}
 
 
-        PermissionEventId IPermissionStateEvent.PermissionEventId
+        PermissionEventId IPermissionEvent.PermissionEventId
         {
             get { return this.PermissionEventId; }
         }
@@ -190,12 +190,12 @@ namespace Dddml.Wms.Domain.Permission
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain.Permission
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -227,14 +227,14 @@ namespace Dddml.Wms.Domain.Permission
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -250,14 +250,14 @@ namespace Dddml.Wms.Domain.Permission
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -273,14 +273,14 @@ namespace Dddml.Wms.Domain.Permission
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -332,7 +332,7 @@ namespace Dddml.Wms.Domain.Permission
             _innerStateEvents.Add((PermissionStateCreatedDto)e);
         }
 
-        public void AddPermissionEvent(IPermissionStateEvent e)
+        public void AddPermissionEvent(IPermissionEvent e)
         {
             _innerStateEvents.Add((PermissionStateCreatedOrMergePatchedOrDeletedDto)e);
         }

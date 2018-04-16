@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			bool repeated = false;
 			if (((IInventoryItemEntryMvoStateProperties)state).InventoryItemVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IInventoryItemEntryMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IInventoryItemEntryMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -141,23 +141,23 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IInventoryItemEntryMvoStateEvent GetStateEvent(InventoryItemEntryId inventoryItemEntryId, long version)
+	    public virtual IInventoryItemEntryMvoEvent GetEvent(InventoryItemEntryId inventoryItemEntryId, long version)
         {
-            var e = (IInventoryItemEntryMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(inventoryItemEntryId), version);
+            var e = (IInventoryItemEntryMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(inventoryItemEntryId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(inventoryItemEntryId, 0);
+                return GetEvent(inventoryItemEntryId, 0);
             }
             return e;
         }
 
         public virtual IInventoryItemEntryMvoState GetHistoryState(InventoryItemEntryId inventoryItemEntryId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IInventoryItemEntryMvoStateEvent), ToEventStoreAggregateId(inventoryItemEntryId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IInventoryItemEntryMvoEvent), ToEventStoreAggregateId(inventoryItemEntryId), version - 1);
             return new InventoryItemEntryMvoState(eventStream.Events);
         }
 

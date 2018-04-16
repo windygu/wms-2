@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         long GetCount(ICriterion filter);
 
-        IMovementConfirmationStateEvent GetStateEvent(string documentNumber, long version);
+        IMovementConfirmationEvent GetEvent(string documentNumber, long version);
 
         IMovementConfirmationState GetHistoryState(string documentNumber, long version);
 

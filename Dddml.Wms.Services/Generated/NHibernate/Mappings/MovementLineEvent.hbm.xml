@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Movement">
   
-  <class name="MovementLineStateEventBase" table="MovementLineEvents" mutable="false" abstract="true">
+  <class name="MovementLineEventBase" table="MovementLineEvents" mutable="false" abstract="true">
 
     <composite-id name="MovementLineEventId" class="Dddml.Wms.Domain.Movement.MovementLineEventId">
         <key-property name="MovementDocumentNumber" ><column name="MovementLineIdMovementDocumentNumber" length="50" /></key-property>

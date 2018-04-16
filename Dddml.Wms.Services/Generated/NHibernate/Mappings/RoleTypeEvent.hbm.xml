@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.RoleType">
   
-  <class name="RoleTypeStateEventBase" table="RoleTypeEvents" mutable="false" abstract="true">
+  <class name="RoleTypeEventBase" table="RoleTypeEvents" mutable="false" abstract="true">
 
     <composite-id name="RoleTypeEventId" class="Dddml.Wms.Domain.RoleType.RoleTypeEventId">
         <key-property name="RoleTypeId" ><column name="RoleTypeId" sql-type="VARCHAR(20)" /></key-property>

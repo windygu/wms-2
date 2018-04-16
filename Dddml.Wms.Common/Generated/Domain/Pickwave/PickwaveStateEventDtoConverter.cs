@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.Pickwave
 
     public class PickwaveStateEventDtoConverter
     {
-        public virtual PickwaveStateCreatedOrMergePatchedOrDeletedDto ToPickwaveStateEventDto(IPickwaveStateEvent stateEvent)
+        public virtual PickwaveStateCreatedOrMergePatchedOrDeletedDto ToPickwaveStateEventDto(IPickwaveEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IPickwaveStateCreated)stateEvent;
                 return ToPickwaveStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IPickwaveStateMergePatched)stateEvent;
                 return ToPickwaveStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IPickwaveStateDeleted)stateEvent;
                 return ToPickwaveStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual PickwaveStateCreatedDto ToPickwaveStateCreatedDto(IPickwaveStateCreated e)

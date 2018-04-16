@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         {
             if (events != null && events.Count() > 0)
             {
-                this.Id = ((IAttributeSetInstanceExtensionFieldGroupStateEvent)events.First()).AttributeSetInstanceExtensionFieldGroupEventId.Id;
+                this.Id = ((IAttributeSetInstanceExtensionFieldGroupEvent)events.First()).AttributeSetInstanceExtensionFieldGroupEventId.Id;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -295,7 +295,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeSetInstanceExtensionFieldGroupStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeSetInstanceExtensionFieldGroupEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeSetInstanceExtensionFieldGroup|");

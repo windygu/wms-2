@@ -246,7 +246,7 @@ namespace Dddml.Wms.Domain.Picklist
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IPicklistRoleStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IPicklistRoleEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("PicklistRole|");

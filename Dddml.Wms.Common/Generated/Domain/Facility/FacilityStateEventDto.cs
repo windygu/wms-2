@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Facility;
 namespace Dddml.Wms.Domain.Facility
 {
 
-	public abstract class FacilityStateEventDtoBase : IStateEventDto, IFacilityStateCreated, IFacilityStateMergePatched, IFacilityStateDeleted
+	public abstract class FacilityStateEventDtoBase : IEventDto, IFacilityStateCreated, IFacilityStateMergePatched, IFacilityStateDeleted
 	{
 
         private FacilityEventId _facilityEventId;
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.Facility
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IFacilityStateEvent.ReadOnly
+        bool IFacilityEvent.ReadOnly
         {
             get
             {
@@ -468,7 +468,7 @@ namespace Dddml.Wms.Domain.Facility
 		}
 
 
-        FacilityEventId IFacilityStateEvent.FacilityEventId
+        FacilityEventId IFacilityEvent.FacilityEventId
         {
             get { return this.FacilityEventId; }
         }
@@ -484,12 +484,12 @@ namespace Dddml.Wms.Domain.Facility
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -504,7 +504,7 @@ namespace Dddml.Wms.Domain.Facility
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -521,14 +521,14 @@ namespace Dddml.Wms.Domain.Facility
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -544,14 +544,14 @@ namespace Dddml.Wms.Domain.Facility
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -567,14 +567,14 @@ namespace Dddml.Wms.Domain.Facility
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -626,7 +626,7 @@ namespace Dddml.Wms.Domain.Facility
             _innerStateEvents.Add((FacilityStateCreatedDto)e);
         }
 
-        public void AddFacilityEvent(IFacilityStateEvent e)
+        public void AddFacilityEvent(IFacilityEvent e)
         {
             _innerStateEvents.Add((FacilityStateCreatedOrMergePatchedOrDeletedDto)e);
         }

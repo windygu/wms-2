@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Permission
 
         long GetCount(ICriterion filter);
 
-        IPermissionStateEvent GetStateEvent(string permissionId, long version);
+        IPermissionEvent GetEvent(string permissionId, long version);
 
         IPermissionState GetHistoryState(string permissionId, long version);
 

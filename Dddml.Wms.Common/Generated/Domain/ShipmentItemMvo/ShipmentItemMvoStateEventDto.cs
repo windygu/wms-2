@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.Shipment;
 namespace Dddml.Wms.Domain.ShipmentItemMvo
 {
 
-	public abstract class ShipmentItemMvoStateEventDtoBase : IStateEventDto, IShipmentItemMvoStateCreated, IShipmentItemMvoStateMergePatched
+	public abstract class ShipmentItemMvoStateEventDtoBase : IEventDto, IShipmentItemMvoStateCreated, IShipmentItemMvoStateMergePatched
 	{
 
         private ShipmentItemMvoEventId _shipmentItemMvoEventId;
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IShipmentItemMvoStateEvent.ReadOnly
+        bool IShipmentItemMvoEvent.ReadOnly
         {
             get
             {
@@ -847,7 +847,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		}
 
 
-        ShipmentItemMvoEventId IShipmentItemMvoStateEvent.ShipmentItemMvoEventId
+        ShipmentItemMvoEventId IShipmentItemMvoEvent.ShipmentItemMvoEventId
         {
             get { return this.ShipmentItemMvoEventId; }
         }
@@ -863,12 +863,12 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -883,7 +883,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -900,14 +900,14 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -923,14 +923,14 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -946,14 +946,14 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -1001,7 +1001,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             _innerStateEvents.Add((ShipmentItemMvoStateCreatedDto)e);
         }
 
-        public void AddShipmentItemMvoEvent(IShipmentItemMvoStateEvent e)
+        public void AddShipmentItemMvoEvent(IShipmentItemMvoEvent e)
         {
             _innerStateEvents.Add((ShipmentItemMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

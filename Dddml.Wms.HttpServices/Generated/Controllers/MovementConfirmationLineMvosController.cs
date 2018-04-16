@@ -189,7 +189,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = MovementConfirmationLineMvosControllerUtils.ParseIdString(id);
             var conv = new MovementConfirmationLineMvoStateEventDtoConverter();
-            var se = _movementConfirmationLineMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _movementConfirmationLineMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToMovementConfirmationLineMvoStateEventDto(se);
           } catch (Exception ex) { var response = MovementConfirmationLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

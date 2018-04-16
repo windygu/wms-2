@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.OrganizationStructureType;
 namespace Dddml.Wms.Domain.OrganizationStructureType
 {
 
-	public abstract class OrganizationStructureTypeStateEventDtoBase : IStateEventDto, IOrganizationStructureTypeStateCreated, IOrganizationStructureTypeStateMergePatched, IOrganizationStructureTypeStateDeleted
+	public abstract class OrganizationStructureTypeStateEventDtoBase : IEventDto, IOrganizationStructureTypeStateCreated, IOrganizationStructureTypeStateMergePatched, IOrganizationStructureTypeStateDeleted
 	{
 
         private OrganizationStructureTypeEventId _organizationStructureTypeEventId;
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IOrganizationStructureTypeStateEvent.ReadOnly
+        bool IOrganizationStructureTypeEvent.ReadOnly
         {
             get
             {
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 		}
 
 
-        OrganizationStructureTypeEventId IOrganizationStructureTypeStateEvent.OrganizationStructureTypeEventId
+        OrganizationStructureTypeEventId IOrganizationStructureTypeEvent.OrganizationStructureTypeEventId
         {
             get { return this.OrganizationStructureTypeEventId; }
         }
@@ -148,12 +148,12 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -185,14 +185,14 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -208,14 +208,14 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -231,14 +231,14 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -290,7 +290,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             _innerStateEvents.Add((OrganizationStructureTypeStateCreatedDto)e);
         }
 
-        public void AddOrganizationStructureTypeEvent(IOrganizationStructureTypeStateEvent e)
+        public void AddOrganizationStructureTypeEvent(IOrganizationStructureTypeEvent e)
         {
             _innerStateEvents.Add((OrganizationStructureTypeStateCreatedOrMergePatchedOrDeletedDto)e);
         }

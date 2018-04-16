@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.DocumentType
 
     public class DocumentTypeStateEventDtoConverter
     {
-        public virtual DocumentTypeStateCreatedOrMergePatchedOrDeletedDto ToDocumentTypeStateEventDto(IDocumentTypeStateEvent stateEvent)
+        public virtual DocumentTypeStateCreatedOrMergePatchedOrDeletedDto ToDocumentTypeStateEventDto(IDocumentTypeEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IDocumentTypeStateCreated)stateEvent;
                 return ToDocumentTypeStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IDocumentTypeStateMergePatched)stateEvent;
                 return ToDocumentTypeStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IDocumentTypeStateDeleted)stateEvent;
                 return ToDocumentTypeStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual DocumentTypeStateCreatedDto ToDocumentTypeStateCreatedDto(IDocumentTypeStateCreated e)

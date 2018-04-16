@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = PartyRolesControllerUtils.ParseIdString(id);
             var conv = new PartyRoleStateEventDtoConverter();
-            var se = _partyRoleApplicationService.GetStateEvent(idObj, version);
+            var se = _partyRoleApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToPartyRoleStateEventDto(se);
           } catch (Exception ex) { var response = PartyRolesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

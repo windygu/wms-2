@@ -174,7 +174,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IShipmentPackageContentStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IShipmentPackageContentEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddShipmentPackageContentEvent(innerEvent);
             }
 
@@ -220,7 +220,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IShipmentPackageContentStateEvent Map(IShipmentPackageContentCommand c, IShipmentPackageCommand outerCommand, long version, IShipmentPackageState outerState)
+        protected virtual IShipmentPackageContentEvent Map(IShipmentPackageContentCommand c, IShipmentPackageCommand outerCommand, long version, IShipmentPackageState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentPackageContent) : null;
             if(create != null)

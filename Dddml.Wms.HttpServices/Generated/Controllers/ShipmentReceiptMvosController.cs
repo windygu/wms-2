@@ -176,7 +176,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = ShipmentReceiptMvosControllerUtils.ParseIdString(id);
             var conv = new ShipmentReceiptMvoStateEventDtoConverter();
-            var se = _shipmentReceiptMvoApplicationService.GetStateEvent(idObj, version);
+            var se = _shipmentReceiptMvoApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToShipmentReceiptMvoStateEventDto(se);
           } catch (Exception ex) { var response = ShipmentReceiptMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

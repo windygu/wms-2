@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         {
             if (events != null && events.Count() > 0)
             {
-                this.InventoryPRTriggeredId = ((IInventoryPRTriggeredStateEvent)events.First()).InventoryPRTriggeredEventId.InventoryPRTriggeredId;
+                this.InventoryPRTriggeredId = ((IInventoryPRTriggeredEvent)events.First()).InventoryPRTriggeredEventId.InventoryPRTriggeredId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -194,7 +194,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryPRTriggeredStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryPRTriggeredEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryPRTriggered|");

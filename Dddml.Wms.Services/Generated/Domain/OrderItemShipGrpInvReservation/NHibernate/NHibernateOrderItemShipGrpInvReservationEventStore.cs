@@ -24,21 +24,21 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation.NHibernate
 			return new OrderItemShipGrpInvReservationEventId((OrderItemShipGrpInvResId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(OrderItemShipGrpInvReservationStateEventBase);
+			return typeof(OrderItemShipGrpInvReservationEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(OrderItemShipGrpInvReservationStateEventBase);
+            Type supportedEventType = typeof(OrderItemShipGrpInvReservationEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             OrderItemShipGrpInvResId idObj = (OrderItemShipGrpInvResId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<OrderItemShipGrpInvReservationStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<OrderItemShipGrpInvReservationEventBase>();
             criteria.Add(Restrictions.Eq("OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResIdOrderId", idObj.OrderId));
             criteria.Add(Restrictions.Eq("OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResIdShipGroupSeqId", idObj.ShipGroupSeqId));
             criteria.Add(Restrictions.Eq("OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResIdOrderItemSeqId", idObj.OrderItemSeqId));
@@ -48,13 +48,13 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation.NHibernate
             criteria.Add(Restrictions.Le("OrderItemShipGrpInvReservationEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrderItemShipGrpInvReservationEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (OrderItemShipGrpInvReservationStateEventBase e in es)
+            foreach (OrderItemShipGrpInvReservationEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrderItemShipGrpInvReservationStateEventBase)es.Last()).OrderItemShipGrpInvReservationEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((OrderItemShipGrpInvReservationEventBase)es.Last()).OrderItemShipGrpInvReservationEventId.Version : default(long),
                 Events = es
             };
         }

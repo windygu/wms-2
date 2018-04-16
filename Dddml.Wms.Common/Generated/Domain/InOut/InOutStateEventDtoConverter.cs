@@ -15,19 +15,19 @@ namespace Dddml.Wms.Domain.InOut
 
     public class InOutStateEventDtoConverter
     {
-        public virtual InOutStateCreatedOrMergePatchedOrDeletedDto ToInOutStateEventDto(IInOutStateEvent stateEvent)
+        public virtual InOutStateCreatedOrMergePatchedOrDeletedDto ToInOutStateEventDto(IInOutEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IInOutStateCreated)stateEvent;
                 return ToInOutStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IInOutStateMergePatched)stateEvent;
                 return ToInOutStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual InOutStateCreatedDto ToInOutStateCreatedDto(IInOutStateCreated e)

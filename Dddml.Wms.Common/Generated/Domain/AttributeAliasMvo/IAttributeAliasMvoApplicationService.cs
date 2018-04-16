@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         long GetCount(ICriterion filter);
 
-        IAttributeAliasMvoStateEvent GetStateEvent(AttributeAliasId attributeAliasId, long version);
+        IAttributeAliasMvoEvent GetEvent(AttributeAliasId attributeAliasId, long version);
 
         IAttributeAliasMvoState GetHistoryState(AttributeAliasId attributeAliasId, long version);
 

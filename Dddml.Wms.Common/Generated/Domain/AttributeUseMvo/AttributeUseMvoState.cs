@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeSetAttributeUseId = ((IAttributeUseMvoStateEvent)events.First()).AttributeUseMvoEventId.AttributeSetAttributeUseId;
+                this.AttributeSetAttributeUseId = ((IAttributeUseMvoEvent)events.First()).AttributeUseMvoEventId.AttributeSetAttributeUseId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -422,7 +422,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeUseMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeUseMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeUseMvo|");

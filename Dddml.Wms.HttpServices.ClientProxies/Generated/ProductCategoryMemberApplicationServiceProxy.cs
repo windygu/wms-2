@@ -247,7 +247,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IProductCategoryMemberStateEvent> GetStateEventAsync(ProductCategoryMemberId productCategoryMemberId, long version)
+        public async Task<IProductCategoryMemberEvent> GetStateEventAsync(ProductCategoryMemberId productCategoryMemberId, long version)
         {
             var idObj = ProductCategoryMemberProxyUtils.ToIdString(productCategoryMemberId);
             var uriParameters = new ProductCategoryMemberStateEventUriParameters();
@@ -260,7 +260,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IProductCategoryMemberStateEvent GetStateEvent(ProductCategoryMemberId productCategoryMemberId, long version)
+        public IProductCategoryMemberEvent GetEvent(ProductCategoryMemberId productCategoryMemberId, long version)
         {
             return GetStateEventAsync(productCategoryMemberId, version).GetAwaiter().GetResult();
         }

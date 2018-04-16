@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         long GetCount(ICriterion filter);
 
-        IInOutLineMvoStateEvent GetStateEvent(InOutLineId inOutLineId, long version);
+        IInOutLineMvoEvent GetEvent(InOutLineId inOutLineId, long version);
 
         IInOutLineMvoState GetHistoryState(InOutLineId inOutLineId, long version);
 

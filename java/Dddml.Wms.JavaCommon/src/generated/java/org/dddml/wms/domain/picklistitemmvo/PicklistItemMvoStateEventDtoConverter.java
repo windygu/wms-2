@@ -20,7 +20,7 @@ public class PicklistItemMvoStateEventDtoConverter {
             return toPicklistItemMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public PicklistItemMvoStateEventDto.PicklistItemMvoStateCreatedDto toPicklistItemMvoStateCreatedDto(PicklistItemMvoEvent.PicklistItemMvoStateCreated e) {

@@ -512,7 +512,7 @@ namespace Dddml.Wms.Domain.Order
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IOrderItemShipGroupAssociationStateEvent innerEvent in e.OrderItemShipGroupAssociationEvents)
+			foreach (IOrderItemShipGroupAssociationEvent innerEvent in e.OrderItemShipGroupAssociationEvents)
             {
                 IOrderItemShipGroupAssociationState innerState = this.OrderItemShipGroupAssociations.Get(innerEvent.GlobalId.OrderItemSeqId);
 
@@ -540,8 +540,8 @@ namespace Dddml.Wms.Domain.Order
                 this.OrderItemShipGroupAssociations.Remove(innerState);
                 
                 var innerE = e.NewOrderItemShipGroupAssociationStateRemoved(innerState.OrderItemSeqId);
-                ((OrderItemShipGroupAssociationStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((OrderItemShipGroupAssociationStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((OrderItemShipGroupAssociationEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((OrderItemShipGroupAssociationEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddOrderItemShipGroupAssociationEvent(innerE);
 
@@ -556,7 +556,7 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderShipGroupStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderShipGroupEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderShipGroup|");

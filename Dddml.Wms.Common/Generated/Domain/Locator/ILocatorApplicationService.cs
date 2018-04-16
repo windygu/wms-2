@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Locator
 
         long GetCount(ICriterion filter);
 
-        ILocatorStateEvent GetStateEvent(string locatorId, long version);
+        ILocatorEvent GetEvent(string locatorId, long version);
 
         ILocatorState GetHistoryState(string locatorId, long version);
 

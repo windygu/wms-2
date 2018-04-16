@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.MovementLineId = ((IMovementLineMvoStateEvent)events.First()).MovementLineMvoEventId.MovementLineId;
+                this.MovementLineId = ((IMovementLineMvoEvent)events.First()).MovementLineMvoEventId.MovementLineId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -702,7 +702,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementLineMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementLineMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementLineMvo|");

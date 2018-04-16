@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrderItemShipGrpInvResId = ((IOrderItemShipGrpInvReservationStateEvent)events.First()).OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResId;
+                this.OrderItemShipGrpInvResId = ((IOrderItemShipGrpInvReservationEvent)events.First()).OrderItemShipGrpInvReservationEventId.OrderItemShipGrpInvResId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -365,7 +365,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderItemShipGrpInvReservationStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderItemShipGrpInvReservationEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("OrderItemShipGrpInvReservation|");

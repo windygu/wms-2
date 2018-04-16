@@ -19,7 +19,7 @@ public class ItemIssuanceStateEventDtoConverter {
             return toItemIssuanceStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto toItemIssuanceStateCreatedDto(ItemIssuanceEvent.ItemIssuanceStateCreated e) {

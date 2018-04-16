@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Audience
 
         long GetCount(ICriterion filter);
 
-        IAudienceStateEvent GetStateEvent(string clientId, long version);
+        IAudienceEvent GetEvent(string clientId, long version);
 
         IAudienceState GetHistoryState(string clientId, long version);
 

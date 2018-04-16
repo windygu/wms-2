@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
         long GetCount(ICriterion filter);
 
-        IUomConversionStateEvent GetStateEvent(UomConversionId uomConversionId, long version);
+        IUomConversionEvent GetEvent(UomConversionId uomConversionId, long version);
 
         IUomConversionState GetHistoryState(UomConversionId uomConversionId, long version);
 

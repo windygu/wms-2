@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserClaimStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserClaimEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserClaim|");

@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
         {
             if (events != null && events.Count() > 0)
             {
-                this.DamageHandlingMethodId = ((IDamageHandlingMethodStateEvent)events.First()).DamageHandlingMethodEventId.DamageHandlingMethodId;
+                this.DamageHandlingMethodId = ((IDamageHandlingMethodEvent)events.First()).DamageHandlingMethodEventId.DamageHandlingMethodId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IDamageHandlingMethodStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IDamageHandlingMethodEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("DamageHandlingMethod|");

@@ -25,32 +25,32 @@ namespace Dddml.Wms.Domain.InventoryPostingRule.NHibernate
 			return new InventoryPostingRuleEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(InventoryPostingRuleStateEventBase);
+			return typeof(InventoryPostingRuleEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(InventoryPostingRuleStateEventBase);
+            Type supportedEventType = typeof(InventoryPostingRuleEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<InventoryPostingRuleStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<InventoryPostingRuleEventBase>();
             criteria.Add(Restrictions.Eq("InventoryPostingRuleEventId.InventoryPostingRuleId", idObj));
             criteria.Add(Restrictions.Le("InventoryPostingRuleEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryPostingRuleEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (InventoryPostingRuleStateEventBase e in es)
+            foreach (InventoryPostingRuleEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InventoryPostingRuleStateEventBase)es.Last()).InventoryPostingRuleEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((InventoryPostingRuleEventBase)es.Last()).InventoryPostingRuleEventId.Version : default(long),
                 Events = es
             };
         }

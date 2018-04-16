@@ -270,7 +270,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         public virtual long GetCount<T>(ICriterion filter) where T : class, IPartyState
         { throw new NotImplementedException(); }//todo
 
-        public async Task<IPartyStateEvent> GetStateEventAsync(string partyId, long version)
+        public async Task<IPartyEvent> GetStateEventAsync(string partyId, long version)
         {
             var idObj = partyId;
             var uriParameters = new PartyStateEventUriParameters();
@@ -283,7 +283,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPartyStateEvent GetStateEvent(string partyId, long version)
+        public IPartyEvent GetEvent(string partyId, long version)
         {
             return GetStateEventAsync(partyId, version).GetAwaiter().GetResult();
         }

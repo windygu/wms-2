@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain.Attribute
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IAttributeValueStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IAttributeValueEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddAttributeValueEvent(innerEvent);
             }
 
@@ -190,7 +190,7 @@ namespace Dddml.Wms.Domain.Attribute
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IAttributeAliasStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IAttributeAliasEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddAttributeAliasEvent(innerEvent);
             }
 
@@ -258,7 +258,7 @@ namespace Dddml.Wms.Domain.Attribute
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IAttributeValueStateEvent Map(IAttributeValueCommand c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
+        protected virtual IAttributeValueEvent Map(IAttributeValueCommand c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateAttributeValue) : null;
             if(create != null)
@@ -339,7 +339,7 @@ namespace Dddml.Wms.Domain.Attribute
         }// END Map(IRemove... ////////////////////////////
 
 
-        protected virtual IAttributeAliasStateEvent Map(IAttributeAliasCommand c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
+        protected virtual IAttributeAliasEvent Map(IAttributeAliasCommand c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateAttributeAlias) : null;
             if(create != null)

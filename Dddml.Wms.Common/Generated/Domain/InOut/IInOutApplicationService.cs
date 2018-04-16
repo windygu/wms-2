@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.InOut
 
         long GetCount(ICriterion filter);
 
-        IInOutStateEvent GetStateEvent(string documentNumber, long version);
+        IInOutEvent GetEvent(string documentNumber, long version);
 
         IInOutState GetHistoryState(string documentNumber, long version);
 

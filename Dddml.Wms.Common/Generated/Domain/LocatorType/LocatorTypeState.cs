@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.LocatorType
         {
             if (events != null && events.Count() > 0)
             {
-                this.LocatorTypeId = ((ILocatorTypeStateEvent)events.First()).LocatorTypeEventId.LocatorTypeId;
+                this.LocatorTypeId = ((ILocatorTypeEvent)events.First()).LocatorTypeEventId.LocatorTypeId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -239,7 +239,7 @@ namespace Dddml.Wms.Domain.LocatorType
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(ILocatorTypeStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(ILocatorTypeEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("LocatorType|");

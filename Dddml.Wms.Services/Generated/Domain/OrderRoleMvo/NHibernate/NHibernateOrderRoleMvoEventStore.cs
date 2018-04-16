@@ -25,34 +25,34 @@ namespace Dddml.Wms.Domain.OrderRoleMvo.NHibernate
 			return new OrderRoleMvoEventId((OrderRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(OrderRoleMvoStateEventBase);
+			return typeof(OrderRoleMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(OrderRoleMvoStateEventBase);
+            Type supportedEventType = typeof(OrderRoleMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             OrderRoleId idObj = (OrderRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<OrderRoleMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<OrderRoleMvoEventBase>();
             criteria.Add(Restrictions.Eq("OrderRoleMvoEventId.OrderRoleIdOrderId", idObj.OrderId));
             criteria.Add(Restrictions.Eq("OrderRoleMvoEventId.OrderRoleIdPartyRoleIdPartyId", idObj.PartyRoleId.PartyId));
             criteria.Add(Restrictions.Eq("OrderRoleMvoEventId.OrderRoleIdPartyRoleIdRoleTypeId", idObj.PartyRoleId.RoleTypeId));
             criteria.Add(Restrictions.Le("OrderRoleMvoEventId.OrderVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrderRoleMvoEventId.OrderVersion"));
             var es = criteria.List<IEvent>();
-            foreach (OrderRoleMvoStateEventBase e in es)
+            foreach (OrderRoleMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrderRoleMvoStateEventBase)es.Last()).OrderRoleMvoEventId.OrderVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((OrderRoleMvoEventBase)es.Last()).OrderRoleMvoEventId.OrderVersion : default(long),
                 Events = es
             };
         }

@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.User;
 namespace Dddml.Wms.Domain.User
 {
 
-	public abstract class UserLoginStateEventDtoBase : IStateEventDto, IUserLoginStateCreated, IUserLoginStateMergePatched, IUserLoginStateRemoved
+	public abstract class UserLoginStateEventDtoBase : IEventDto, IUserLoginStateCreated, IUserLoginStateMergePatched, IUserLoginStateRemoved
 	{
 
         private UserLoginEventId _userLoginEventId;
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.User
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IUserLoginStateEvent.ReadOnly
+        bool IUserLoginEvent.ReadOnly
         {
             get
             {
@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.User
 		}
 
 
-        UserLoginEventId IUserLoginStateEvent.UserLoginEventId
+        UserLoginEventId IUserLoginEvent.UserLoginEventId
         {
             get { return this.UserLoginEventId; }
         }
@@ -123,12 +123,12 @@ namespace Dddml.Wms.Domain.User
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.User
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -160,14 +160,14 @@ namespace Dddml.Wms.Domain.User
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -183,14 +183,14 @@ namespace Dddml.Wms.Domain.User
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -206,14 +206,14 @@ namespace Dddml.Wms.Domain.User
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Removed;
         }
@@ -265,7 +265,7 @@ namespace Dddml.Wms.Domain.User
             _innerStateEvents.Add((UserLoginStateCreatedDto)e);
         }
 
-        public void AddUserLoginEvent(IUserLoginStateEvent e)
+        public void AddUserLoginEvent(IUserLoginEvent e)
         {
             _innerStateEvents.Add((UserLoginStateCreatedOrMergePatchedOrRemovedDto)e);
         }

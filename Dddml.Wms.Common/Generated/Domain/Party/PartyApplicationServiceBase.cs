@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.Party
 			bool repeated = false;
 			if (((IPartyStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPartyStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPartyEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -208,23 +208,23 @@ namespace Dddml.Wms.Domain.Party
             return StateQueryRepository.GetCount<T>(filter);
 		}
 
-	    public virtual IPartyStateEvent GetStateEvent(string partyId, long version)
+	    public virtual IPartyEvent GetEvent(string partyId, long version)
         {
-            var e = (IPartyStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(partyId), version);
+            var e = (IPartyEvent)EventStore.GetEvent(ToEventStoreAggregateId(partyId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(partyId, 0);
+                return GetEvent(partyId, 0);
             }
             return e;
         }
 
         public virtual IPartyState GetHistoryState(string partyId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPartyStateEvent), ToEventStoreAggregateId(partyId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPartyEvent), ToEventStoreAggregateId(partyId), version - 1);
             return new PartyState(eventStream.Events);
         }
 

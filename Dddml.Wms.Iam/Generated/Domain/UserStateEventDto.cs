@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.User;
 namespace Dddml.Wms.Domain.User
 {
 
-	public abstract class UserStateEventDtoBase : IStateEventDto, IUserStateCreated, IUserStateMergePatched, IUserStateDeleted
+	public abstract class UserStateEventDtoBase : IEventDto, IUserStateCreated, IUserStateMergePatched, IUserStateDeleted
 	{
 
         private UserEventId _userEventId;
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.User
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IUserStateEvent.ReadOnly
+        bool IUserEvent.ReadOnly
         {
             get
             {
@@ -407,12 +407,12 @@ namespace Dddml.Wms.Domain.User
             return NewUserRoleStateCreated(roleId);
         }
 
-        IEnumerable<IUserRoleStateEvent> IUserStateMergePatched.UserRoleEvents
+        IEnumerable<IUserRoleEvent> IUserStateMergePatched.UserRoleEvents
         {
             get { return this._userRoleEvents; }
         }
 
-        void IUserStateMergePatched.AddUserRoleEvent(IUserRoleStateEvent e)
+        void IUserStateMergePatched.AddUserRoleEvent(IUserRoleEvent e)
         {
             this._userRoleEvents.AddUserRoleEvent(e);
         }
@@ -515,12 +515,12 @@ namespace Dddml.Wms.Domain.User
             return NewUserClaimStateCreated(claimId);
         }
 
-        IEnumerable<IUserClaimStateEvent> IUserStateMergePatched.UserClaimEvents
+        IEnumerable<IUserClaimEvent> IUserStateMergePatched.UserClaimEvents
         {
             get { return this._userClaimEvents; }
         }
 
-        void IUserStateMergePatched.AddUserClaimEvent(IUserClaimStateEvent e)
+        void IUserStateMergePatched.AddUserClaimEvent(IUserClaimEvent e)
         {
             this._userClaimEvents.AddUserClaimEvent(e);
         }
@@ -623,12 +623,12 @@ namespace Dddml.Wms.Domain.User
             return NewUserPermissionStateCreated(permissionId);
         }
 
-        IEnumerable<IUserPermissionStateEvent> IUserStateMergePatched.UserPermissionEvents
+        IEnumerable<IUserPermissionEvent> IUserStateMergePatched.UserPermissionEvents
         {
             get { return this._userPermissionEvents; }
         }
 
-        void IUserStateMergePatched.AddUserPermissionEvent(IUserPermissionStateEvent e)
+        void IUserStateMergePatched.AddUserPermissionEvent(IUserPermissionEvent e)
         {
             this._userPermissionEvents.AddUserPermissionEvent(e);
         }
@@ -731,12 +731,12 @@ namespace Dddml.Wms.Domain.User
             return NewUserLoginStateCreated(loginKey);
         }
 
-        IEnumerable<IUserLoginStateEvent> IUserStateMergePatched.UserLoginEvents
+        IEnumerable<IUserLoginEvent> IUserStateMergePatched.UserLoginEvents
         {
             get { return this._userLoginEvents; }
         }
 
-        void IUserStateMergePatched.AddUserLoginEvent(IUserLoginStateEvent e)
+        void IUserStateMergePatched.AddUserLoginEvent(IUserLoginEvent e)
         {
             this._userLoginEvents.AddUserLoginEvent(e);
         }
@@ -774,7 +774,7 @@ namespace Dddml.Wms.Domain.User
 
 
 
-        UserEventId IUserStateEvent.UserEventId
+        UserEventId IUserEvent.UserEventId
         {
             get { return this.UserEventId; }
         }
@@ -790,12 +790,12 @@ namespace Dddml.Wms.Domain.User
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -810,7 +810,7 @@ namespace Dddml.Wms.Domain.User
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -827,14 +827,14 @@ namespace Dddml.Wms.Domain.User
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -850,14 +850,14 @@ namespace Dddml.Wms.Domain.User
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -873,14 +873,14 @@ namespace Dddml.Wms.Domain.User
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -932,7 +932,7 @@ namespace Dddml.Wms.Domain.User
             _innerStateEvents.Add((UserStateCreatedDto)e);
         }
 
-        public void AddUserEvent(IUserStateEvent e)
+        public void AddUserEvent(IUserEvent e)
         {
             _innerStateEvents.Add((UserStateCreatedOrMergePatchedOrDeletedDto)e);
         }

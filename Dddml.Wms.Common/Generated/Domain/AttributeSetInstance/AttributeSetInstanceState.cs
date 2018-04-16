@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeSetInstanceId = ((IAttributeSetInstanceStateEvent)events.First()).AttributeSetInstanceEventId.AttributeSetInstanceId;
+                this.AttributeSetInstanceId = ((IAttributeSetInstanceEvent)events.First()).AttributeSetInstanceEventId.AttributeSetInstanceId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -328,7 +328,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeSetInstanceStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeSetInstanceEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeSetInstance|");

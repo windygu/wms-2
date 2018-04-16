@@ -24,34 +24,34 @@ namespace Dddml.Wms.Domain.OrganizationStructure.NHibernate
 			return new OrganizationStructureEventId((OrganizationStructureId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(OrganizationStructureStateEventBase);
+			return typeof(OrganizationStructureEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(OrganizationStructureStateEventBase);
+            Type supportedEventType = typeof(OrganizationStructureEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             OrganizationStructureId idObj = (OrganizationStructureId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<OrganizationStructureEventBase>();
             criteria.Add(Restrictions.Eq("OrganizationStructureEventId.IdOrganizationStructureTypeId", idObj.OrganizationStructureTypeId));
             criteria.Add(Restrictions.Eq("OrganizationStructureEventId.IdParentId", idObj.ParentId));
             criteria.Add(Restrictions.Eq("OrganizationStructureEventId.IdSubsidiaryId", idObj.SubsidiaryId));
             criteria.Add(Restrictions.Le("OrganizationStructureEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrganizationStructureEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (OrganizationStructureStateEventBase e in es)
+            foreach (OrganizationStructureEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrganizationStructureStateEventBase)es.Last()).OrganizationStructureEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((OrganizationStructureEventBase)es.Last()).OrganizationStructureEventId.Version : default(long),
                 Events = es
             };
         }

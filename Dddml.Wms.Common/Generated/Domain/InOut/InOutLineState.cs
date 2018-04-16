@@ -399,7 +399,7 @@ namespace Dddml.Wms.Domain.InOut
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInOutLineStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInOutLineEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InOutLine|");

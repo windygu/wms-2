@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new WarehouseStateEventDtoConverter();
-            var se = _warehouseApplicationService.GetStateEvent(idObj, version);
+            var se = _warehouseApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToWarehouseStateEventDto(se);
           } catch (Exception ex) { var response = WarehousesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

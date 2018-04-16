@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IPickwaveStateEvent> GetStateEventAsync(long? pickwaveId, long version)
+        public async Task<IPickwaveEvent> GetStateEventAsync(long? pickwaveId, long version)
         {
             var idObj = pickwaveId;
             var uriParameters = new PickwaveStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IPickwaveStateEvent GetStateEvent(long? pickwaveId, long version)
+        public IPickwaveEvent GetEvent(long? pickwaveId, long version)
         {
             return GetStateEventAsync(pickwaveId, version).GetAwaiter().GetResult();
         }

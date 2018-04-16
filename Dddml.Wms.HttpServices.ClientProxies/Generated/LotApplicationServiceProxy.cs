@@ -252,7 +252,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<ILotStateEvent> GetStateEventAsync(string lotId, long version)
+        public async Task<ILotEvent> GetStateEventAsync(string lotId, long version)
         {
             var idObj = lotId;
             var uriParameters = new LotStateEventUriParameters();
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public ILotStateEvent GetStateEvent(string lotId, long version)
+        public ILotEvent GetEvent(string lotId, long version)
         {
             return GetStateEventAsync(lotId, version).GetAwaiter().GetResult();
         }

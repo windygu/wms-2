@@ -25,21 +25,21 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate
 			return new PhysicalInventoryLineMvoEventId((PhysicalInventoryLineId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(PhysicalInventoryLineMvoStateEventBase);
+			return typeof(PhysicalInventoryLineMvoEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(PhysicalInventoryLineMvoStateEventBase);
+            Type supportedEventType = typeof(PhysicalInventoryLineMvoEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             PhysicalInventoryLineId idObj = (PhysicalInventoryLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<PhysicalInventoryLineMvoStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<PhysicalInventoryLineMvoEventBase>();
             criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdPhysicalInventoryDocumentNumber", idObj.PhysicalInventoryDocumentNumber));
             criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdProductId", idObj.InventoryItemId.ProductId));
             criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdLocatorId", idObj.InventoryItemId.LocatorId));
@@ -47,13 +47,13 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate
             criteria.Add(Restrictions.Le("PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion"));
             var es = criteria.List<IEvent>();
-            foreach (PhysicalInventoryLineMvoStateEventBase e in es)
+            foreach (PhysicalInventoryLineMvoEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PhysicalInventoryLineMvoStateEventBase)es.Last()).PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((PhysicalInventoryLineMvoEventBase)es.Last()).PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion : default(long),
                 Events = es
             };
         }

@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.ContactMech
 			bool repeated = false;
 			if (((IContactMechStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IContactMechStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IContactMechEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.ContactMech
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IContactMechStateEvent GetStateEvent(string contactMechId, long version)
+	    public virtual IContactMechEvent GetEvent(string contactMechId, long version)
         {
-            var e = (IContactMechStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(contactMechId), version);
+            var e = (IContactMechEvent)EventStore.GetEvent(ToEventStoreAggregateId(contactMechId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(contactMechId, 0);
+                return GetEvent(contactMechId, 0);
             }
             return e;
         }
 
         public virtual IContactMechState GetHistoryState(string contactMechId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IContactMechStateEvent), ToEventStoreAggregateId(contactMechId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IContactMechEvent), ToEventStoreAggregateId(contactMechId), version - 1);
             return new ContactMechState(eventStream.Events);
         }
 

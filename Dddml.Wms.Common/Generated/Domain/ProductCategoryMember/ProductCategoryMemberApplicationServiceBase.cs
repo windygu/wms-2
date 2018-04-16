@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 			bool repeated = false;
 			if (((IProductCategoryMemberStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IProductCategoryMemberStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IProductCategoryMemberEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -140,23 +140,23 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IProductCategoryMemberStateEvent GetStateEvent(ProductCategoryMemberId productCategoryMemberId, long version)
+	    public virtual IProductCategoryMemberEvent GetEvent(ProductCategoryMemberId productCategoryMemberId, long version)
         {
-            var e = (IProductCategoryMemberStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(productCategoryMemberId), version);
+            var e = (IProductCategoryMemberEvent)EventStore.GetEvent(ToEventStoreAggregateId(productCategoryMemberId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(productCategoryMemberId, 0);
+                return GetEvent(productCategoryMemberId, 0);
             }
             return e;
         }
 
         public virtual IProductCategoryMemberState GetHistoryState(ProductCategoryMemberId productCategoryMemberId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IProductCategoryMemberStateEvent), ToEventStoreAggregateId(productCategoryMemberId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IProductCategoryMemberEvent), ToEventStoreAggregateId(productCategoryMemberId), version - 1);
             return new ProductCategoryMemberState(eventStream.Events);
         }
 

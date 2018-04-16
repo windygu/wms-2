@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IInventoryItemRequirementEntryStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IInventoryItemRequirementEntryEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddInventoryItemRequirementEntryEvent(innerEvent);
                 // ////////////////
                 if (!(innerEvent is IInventoryItemRequirementEntryStateCreated)) { continue; }
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IInventoryItemRequirementEntryStateEvent Map(IInventoryItemRequirementEntryCommand c, IInventoryItemRequirementCommand outerCommand, long version, IInventoryItemRequirementState outerState)
+        protected virtual IInventoryItemRequirementEntryEvent Map(IInventoryItemRequirementEntryCommand c, IInventoryItemRequirementCommand outerCommand, long version, IInventoryItemRequirementState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateInventoryItemRequirementEntry) : null;
             if(create != null)

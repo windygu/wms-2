@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new ContactMechStateEventDtoConverter();
-            var se = _contactMechApplicationService.GetStateEvent(idObj, version);
+            var se = _contactMechApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToContactMechStateEventDto(se);
           } catch (Exception ex) { var response = ContactMechesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

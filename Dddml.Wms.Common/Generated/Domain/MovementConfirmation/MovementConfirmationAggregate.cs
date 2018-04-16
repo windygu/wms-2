@@ -169,7 +169,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IMovementConfirmationLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IMovementConfirmationLineEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddMovementConfirmationLineEvent(innerEvent);
             }
 
@@ -215,7 +215,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IMovementConfirmationLineStateEvent Map(IMovementConfirmationLineCommand c, IMovementConfirmationCommand outerCommand, long version, IMovementConfirmationState outerState)
+        protected virtual IMovementConfirmationLineEvent Map(IMovementConfirmationLineCommand c, IMovementConfirmationCommand outerCommand, long version, IMovementConfirmationState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateMovementConfirmationLine) : null;
             if(create != null)

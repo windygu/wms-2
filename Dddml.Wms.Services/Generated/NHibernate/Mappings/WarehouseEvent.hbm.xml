@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.Warehouse">
   
-  <class name="WarehouseStateEventBase" table="WarehouseEvents" mutable="false" abstract="true">
+  <class name="WarehouseEventBase" table="WarehouseEvents" mutable="false" abstract="true">
 
     <composite-id name="WarehouseEventId" class="Dddml.Wms.Domain.Warehouse.WarehouseEventId">
         <key-property name="WarehouseId" ><column name="WarehouseId" length="50" /></key-property>

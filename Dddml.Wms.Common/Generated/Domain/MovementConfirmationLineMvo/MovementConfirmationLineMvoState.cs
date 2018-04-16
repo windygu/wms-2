@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.MovementConfirmationLineId = ((IMovementConfirmationLineMvoStateEvent)events.First()).MovementConfirmationLineMvoEventId.MovementConfirmationLineId;
+                this.MovementConfirmationLineId = ((IMovementConfirmationLineMvoEvent)events.First()).MovementConfirmationLineMvoEventId.MovementConfirmationLineId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -534,7 +534,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementConfirmationLineMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementConfirmationLineMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementConfirmationLineMvo|");

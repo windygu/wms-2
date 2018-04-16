@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain.InOut
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IInOutLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IInOutLineEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddInOutLineEvent(innerEvent);
             }
 
@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.InOut
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IInOutLineStateEvent Map(IInOutLineCommand c, IInOutCommand outerCommand, long version, IInOutState outerState)
+        protected virtual IInOutLineEvent Map(IInOutLineCommand c, IInOutCommand outerCommand, long version, IInOutState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateInOutLine) : null;
             if(create != null)

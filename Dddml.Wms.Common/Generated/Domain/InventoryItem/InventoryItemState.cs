@@ -144,7 +144,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         {
             if (events != null && events.Count() > 0)
             {
-                this.InventoryItemId = ((IInventoryItemStateEvent)events.First()).InventoryItemEventId.InventoryItemId;
+                this.InventoryItemId = ((IInventoryItemEvent)events.First()).InventoryItemEventId.InventoryItemId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -271,7 +271,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IInventoryItemEntryStateEvent innerEvent in e.InventoryItemEntryEvents)
+			foreach (IInventoryItemEntryEvent innerEvent in e.InventoryItemEntryEvents)
             {
                 IInventoryItemEntryState innerState = this.Entries.Get(innerEvent.GlobalId.EntrySeqId);
 
@@ -288,7 +288,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IInventoryItemStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IInventoryItemEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("InventoryItem|");

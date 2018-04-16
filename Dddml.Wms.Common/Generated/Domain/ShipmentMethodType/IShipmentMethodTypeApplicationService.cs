@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.ShipmentMethodType
 
         long GetCount(ICriterion filter);
 
-        IShipmentMethodTypeStateEvent GetStateEvent(string shipmentMethodTypeId, long version);
+        IShipmentMethodTypeEvent GetEvent(string shipmentMethodTypeId, long version);
 
         IShipmentMethodTypeState GetHistoryState(string shipmentMethodTypeId, long version);
 

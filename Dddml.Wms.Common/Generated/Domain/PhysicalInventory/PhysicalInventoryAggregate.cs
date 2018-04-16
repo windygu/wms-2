@@ -178,7 +178,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IPhysicalInventoryLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IPhysicalInventoryLineEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddPhysicalInventoryLineEvent(innerEvent);
             }
 
@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IPhysicalInventoryLineStateEvent Map(IPhysicalInventoryLineCommand c, IPhysicalInventoryCommand outerCommand, long version, IPhysicalInventoryState outerState)
+        protected virtual IPhysicalInventoryLineEvent Map(IPhysicalInventoryLineCommand c, IPhysicalInventoryCommand outerCommand, long version, IPhysicalInventoryState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreatePhysicalInventoryLine) : null;
             if(create != null)

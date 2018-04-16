@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.User;
 namespace Dddml.Wms.Domain.UserClaimMvo
 {
 
-	public abstract class UserClaimMvoStateEventDtoBase : IStateEventDto, IUserClaimMvoStateCreated, IUserClaimMvoStateMergePatched, IUserClaimMvoStateDeleted
+	public abstract class UserClaimMvoStateEventDtoBase : IEventDto, IUserClaimMvoStateCreated, IUserClaimMvoStateMergePatched, IUserClaimMvoStateDeleted
 	{
 
         private UserClaimMvoEventId _userClaimMvoEventId;
@@ -102,7 +102,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IUserClaimMvoStateEvent.ReadOnly
+        bool IUserClaimMvoEvent.ReadOnly
         {
             get
             {
@@ -532,7 +532,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 		}
 
 
-        UserClaimMvoEventId IUserClaimMvoStateEvent.UserClaimMvoEventId
+        UserClaimMvoEventId IUserClaimMvoEvent.UserClaimMvoEventId
         {
             get { return this.UserClaimMvoEventId; }
         }
@@ -548,12 +548,12 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -568,7 +568,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -585,14 +585,14 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -608,14 +608,14 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -631,14 +631,14 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -690,7 +690,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             _innerStateEvents.Add((UserClaimMvoStateCreatedDto)e);
         }
 
-        public void AddUserClaimMvoEvent(IUserClaimMvoStateEvent e)
+        public void AddUserClaimMvoEvent(IUserClaimMvoEvent e)
         {
             _innerStateEvents.Add((UserClaimMvoStateCreatedOrMergePatchedOrDeletedDto)e);
         }

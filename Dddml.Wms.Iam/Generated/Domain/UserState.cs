@@ -211,7 +211,7 @@ namespace Dddml.Wms.Domain.User
         {
             if (events != null && events.Count() > 0)
             {
-                this.UserId = ((IUserStateEvent)events.First()).UserEventId.UserId;
+                this.UserId = ((IUserEvent)events.First()).UserEventId.UserId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -462,7 +462,7 @@ namespace Dddml.Wms.Domain.User
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IUserRoleStateEvent innerEvent in e.UserRoleEvents)
+			foreach (IUserRoleEvent innerEvent in e.UserRoleEvents)
             {
                 IUserRoleState innerState = this.UserRoles.Get(innerEvent.GlobalId.RoleId);
 
@@ -475,7 +475,7 @@ namespace Dddml.Wms.Domain.User
           
             }
 
-			foreach (IUserClaimStateEvent innerEvent in e.UserClaimEvents)
+			foreach (IUserClaimEvent innerEvent in e.UserClaimEvents)
             {
                 IUserClaimState innerState = this.UserClaims.Get(innerEvent.GlobalId.ClaimId);
 
@@ -488,7 +488,7 @@ namespace Dddml.Wms.Domain.User
           
             }
 
-			foreach (IUserPermissionStateEvent innerEvent in e.UserPermissionEvents)
+			foreach (IUserPermissionEvent innerEvent in e.UserPermissionEvents)
             {
                 IUserPermissionState innerState = this.UserPermissions.Get(innerEvent.GlobalId.PermissionId);
 
@@ -501,7 +501,7 @@ namespace Dddml.Wms.Domain.User
           
             }
 
-			foreach (IUserLoginStateEvent innerEvent in e.UserLoginEvents)
+			foreach (IUserLoginEvent innerEvent in e.UserLoginEvents)
             {
                 IUserLoginState innerState = this.UserLogins.Get(innerEvent.GlobalId.LoginKey);
 
@@ -529,8 +529,8 @@ namespace Dddml.Wms.Domain.User
                 this.UserRoles.Remove(innerState);
                 
                 var innerE = e.NewUserRoleStateRemoved(innerState.RoleId);
-                ((UserRoleStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((UserRoleStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((UserRoleEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((UserRoleEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddUserRoleEvent(innerE);
 
@@ -541,8 +541,8 @@ namespace Dddml.Wms.Domain.User
                 this.UserClaims.Remove(innerState);
                 
                 var innerE = e.NewUserClaimStateRemoved(innerState.ClaimId);
-                ((UserClaimStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((UserClaimStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((UserClaimEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((UserClaimEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddUserClaimEvent(innerE);
 
@@ -553,8 +553,8 @@ namespace Dddml.Wms.Domain.User
                 this.UserPermissions.Remove(innerState);
                 
                 var innerE = e.NewUserPermissionStateRemoved(innerState.PermissionId);
-                ((UserPermissionStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((UserPermissionStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((UserPermissionEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((UserPermissionEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddUserPermissionEvent(innerE);
 
@@ -565,8 +565,8 @@ namespace Dddml.Wms.Domain.User
                 this.UserLogins.Remove(innerState);
                 
                 var innerE = e.NewUserLoginStateRemoved(innerState.LoginKey);
-                ((UserLoginStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((UserLoginStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                ((UserLoginEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((UserLoginEventBase)innerE).CreatedBy = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddUserLoginEvent(innerE);
 
@@ -581,7 +581,7 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("User|");

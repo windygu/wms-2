@@ -24,32 +24,32 @@ namespace Dddml.Wms.Domain.ShipmentMethodType.NHibernate
 			return new ShipmentMethodTypeEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
-		public override Type GetSupportedStateEventType()
+		public override Type GetSupportedEventType()
 		{
-			return typeof(ShipmentMethodTypeStateEventBase);
+			return typeof(ShipmentMethodTypeEventBase);
 		}
 
         [Transaction(ReadOnly = true)]
         public override EventStream LoadEventStream(Type eventType, IEventStoreAggregateId eventStoreAggregateId, long version)
         {
-            Type supportedEventType = typeof(ShipmentMethodTypeStateEventBase);
+            Type supportedEventType = typeof(ShipmentMethodTypeEventBase);
             if (!eventType.IsAssignableFrom(supportedEventType))
             {
                 throw new NotSupportedException();
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
-            var criteria = CurrentSession.CreateCriteria<ShipmentMethodTypeStateEventBase>();
+            var criteria = CurrentSession.CreateCriteria<ShipmentMethodTypeEventBase>();
             criteria.Add(Restrictions.Eq("ShipmentMethodTypeEventId.ShipmentMethodTypeId", idObj));
             criteria.Add(Restrictions.Le("ShipmentMethodTypeEventId.Version", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ShipmentMethodTypeEventId.Version"));
             var es = criteria.List<IEvent>();
-            foreach (ShipmentMethodTypeStateEventBase e in es)
+            foreach (ShipmentMethodTypeEventBase e in es)
             {
                 e.EventReadOnly = true;
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ShipmentMethodTypeStateEventBase)es.Last()).ShipmentMethodTypeEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((ShipmentMethodTypeEventBase)es.Last()).ShipmentMethodTypeEventId.Version : default(long),
                 Events = es
             };
         }

@@ -188,7 +188,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             var idObj = id;
             var conv = new DamageReasonStateEventDtoConverter();
-            var se = _damageReasonApplicationService.GetStateEvent(idObj, version);
+            var se = _damageReasonApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToDamageReasonStateEventDto(se);
           } catch (Exception ex) { var response = DamageReasonsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }

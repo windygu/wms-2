@@ -226,7 +226,7 @@ namespace Dddml.Wms.Domain.Order
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IOrderRoleStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IOrderRoleEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddOrderRoleEvent(innerEvent);
             }
 
@@ -234,7 +234,7 @@ namespace Dddml.Wms.Domain.Order
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IOrderItemStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IOrderItemEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddOrderItemEvent(innerEvent);
             }
 
@@ -242,7 +242,7 @@ namespace Dddml.Wms.Domain.Order
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IOrderShipGroupStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IOrderShipGroupEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddOrderShipGroupEvent(innerEvent);
             }
 
@@ -352,7 +352,7 @@ namespace Dddml.Wms.Domain.Order
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IOrderRoleStateEvent Map(IOrderRoleCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        protected virtual IOrderRoleEvent Map(IOrderRoleCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderRole) : null;
             if(create != null)
@@ -424,7 +424,7 @@ namespace Dddml.Wms.Domain.Order
         }// END Map(IRemove... ////////////////////////////
 
 
-        protected virtual IOrderItemStateEvent Map(IOrderItemCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        protected virtual IOrderItemEvent Map(IOrderItemCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderItem) : null;
             if(create != null)
@@ -582,7 +582,7 @@ namespace Dddml.Wms.Domain.Order
 
 
 
-        protected virtual IOrderShipGroupStateEvent Map(IOrderShipGroupCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        protected virtual IOrderShipGroupEvent Map(IOrderShipGroupCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderShipGroup) : null;
             if(create != null)
@@ -702,7 +702,7 @@ namespace Dddml.Wms.Domain.Order
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IOrderItemShipGroupAssociationStateEvent innerEvent = Map(innerCommand, c, version, s);
+                IOrderItemShipGroupAssociationEvent innerEvent = Map(innerCommand, c, version, s);
                 e.AddOrderItemShipGroupAssociationEvent(innerEvent);
             }
 
@@ -726,7 +726,7 @@ namespace Dddml.Wms.Domain.Order
         }// END Map(IRemove... ////////////////////////////
 
 
-        protected virtual IOrderItemShipGroupAssociationStateEvent Map(IOrderItemShipGroupAssociationCommand c, IOrderShipGroupCommand outerCommand, long version, IOrderShipGroupState outerState)
+        protected virtual IOrderItemShipGroupAssociationEvent Map(IOrderItemShipGroupAssociationCommand c, IOrderShipGroupCommand outerCommand, long version, IOrderShipGroupState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderItemShipGroupAssociation) : null;
             if(create != null)

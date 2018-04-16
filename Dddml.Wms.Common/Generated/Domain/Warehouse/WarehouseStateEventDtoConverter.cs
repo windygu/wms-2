@@ -15,24 +15,24 @@ namespace Dddml.Wms.Domain.Warehouse
 
     public class WarehouseStateEventDtoConverter
     {
-        public virtual WarehouseStateCreatedOrMergePatchedOrDeletedDto ToWarehouseStateEventDto(IWarehouseStateEvent stateEvent)
+        public virtual WarehouseStateCreatedOrMergePatchedOrDeletedDto ToWarehouseStateEventDto(IWarehouseEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IWarehouseStateCreated)stateEvent;
                 return ToWarehouseStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IWarehouseStateMergePatched)stateEvent;
                 return ToWarehouseStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
+            else if (stateEvent.EventType == StateEventType.Deleted)
             {
                 var e = (IWarehouseStateDeleted)stateEvent;
                 return ToWarehouseStateDeletedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual WarehouseStateCreatedDto ToWarehouseStateCreatedDto(IWarehouseStateCreated e)

@@ -19,7 +19,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter {
             return toAttributeSetInstanceExtensionFieldGroupStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateCreatedDto toAttributeSetInstanceExtensionFieldGroupStateCreatedDto(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e) {

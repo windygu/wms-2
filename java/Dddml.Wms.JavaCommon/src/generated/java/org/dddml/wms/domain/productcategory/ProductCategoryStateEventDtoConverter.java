@@ -19,7 +19,7 @@ public class ProductCategoryStateEventDtoConverter {
             return toProductCategoryStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
+        throw DomainError.named("invalidEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
     public ProductCategoryStateEventDto.ProductCategoryStateCreatedDto toProductCategoryStateCreatedDto(ProductCategoryEvent.ProductCategoryStateCreated e) {

@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Warehouse
         {
             if (events != null && events.Count() > 0)
             {
-                this.WarehouseId = ((IWarehouseStateEvent)events.First()).WarehouseEventId.WarehouseId;
+                this.WarehouseId = ((IWarehouseEvent)events.First()).WarehouseEventId.WarehouseId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -267,7 +267,7 @@ namespace Dddml.Wms.Domain.Warehouse
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IWarehouseStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IWarehouseEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Warehouse|");

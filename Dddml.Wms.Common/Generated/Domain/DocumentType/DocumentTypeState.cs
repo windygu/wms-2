@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.DocumentType
         {
             if (events != null && events.Count() > 0)
             {
-                this.DocumentTypeId = ((IDocumentTypeStateEvent)events.First()).DocumentTypeEventId.DocumentTypeId;
+                this.DocumentTypeId = ((IDocumentTypeEvent)events.First()).DocumentTypeEventId.DocumentTypeId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.DocumentType
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IDocumentTypeStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IDocumentTypeEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("DocumentType|");

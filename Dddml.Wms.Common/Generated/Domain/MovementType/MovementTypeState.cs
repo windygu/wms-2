@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.MovementType
         {
             if (events != null && events.Count() > 0)
             {
-                this.MovementTypeId = ((IMovementTypeStateEvent)events.First()).MovementTypeEventId.MovementTypeId;
+                this.MovementTypeId = ((IMovementTypeEvent)events.First()).MovementTypeEventId.MovementTypeId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain.MovementType
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IMovementTypeStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IMovementTypeEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("MovementType|");

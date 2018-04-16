@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.DamageType
         {
             if (events != null && events.Count() > 0)
             {
-                this.DamageTypeId = ((IDamageTypeStateEvent)events.First()).DamageTypeEventId.DamageTypeId;
+                this.DamageTypeId = ((IDamageTypeEvent)events.First()).DamageTypeEventId.DamageTypeId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.DamageType
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IDamageTypeStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IDamageTypeEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("DamageType|");

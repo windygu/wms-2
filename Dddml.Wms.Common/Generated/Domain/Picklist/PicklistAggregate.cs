@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.Picklist
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
-                IPicklistRoleStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                IPicklistRoleEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddPicklistRoleEvent(innerEvent);
             }
 
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.Picklist
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
-        protected virtual IPicklistRoleStateEvent Map(IPicklistRoleCommand c, IPicklistCommand outerCommand, long version, IPicklistState outerState)
+        protected virtual IPicklistRoleEvent Map(IPicklistRoleCommand c, IPicklistCommand outerCommand, long version, IPicklistState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreatePicklistRole) : null;
             if(create != null)

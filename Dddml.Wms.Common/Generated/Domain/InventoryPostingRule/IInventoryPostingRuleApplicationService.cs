@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         long GetCount(ICriterion filter);
 
-        IInventoryPostingRuleStateEvent GetStateEvent(string inventoryPostingRuleId, long version);
+        IInventoryPostingRuleEvent GetEvent(string inventoryPostingRuleId, long version);
 
         IInventoryPostingRuleState GetHistoryState(string inventoryPostingRuleId, long version);
 

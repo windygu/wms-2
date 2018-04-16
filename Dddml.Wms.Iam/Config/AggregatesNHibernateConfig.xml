@@ -29,7 +29,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userRoleStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserRoleStateEventDao, Dddml.Wms.Iam">
+  <object id="userRoleEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserRoleEventDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -38,7 +38,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userClaimStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserClaimStateEventDao, Dddml.Wms.Iam">
+  <object id="userClaimEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserClaimEventDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -47,7 +47,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userPermissionStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserPermissionStateEventDao, Dddml.Wms.Iam">
+  <object id="userPermissionEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserPermissionEventDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
@@ -56,7 +56,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="userLoginStateEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserLoginStateEventDao, Dddml.Wms.Iam">
+  <object id="userLoginEventDao" type="Dddml.Wms.Domain.User.NHibernate.NHibernateUserLoginEventDao, Dddml.Wms.Iam">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 

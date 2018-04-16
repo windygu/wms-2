@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.PartyRole
 			bool repeated = false;
 			if (((IPartyRoleStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IPartyRoleStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IPartyRoleEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.PartyRole
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IPartyRoleStateEvent GetStateEvent(PartyRoleId partyRoleId, long version)
+	    public virtual IPartyRoleEvent GetEvent(PartyRoleId partyRoleId, long version)
         {
-            var e = (IPartyRoleStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(partyRoleId), version);
+            var e = (IPartyRoleEvent)EventStore.GetEvent(ToEventStoreAggregateId(partyRoleId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(partyRoleId, 0);
+                return GetEvent(partyRoleId, 0);
             }
             return e;
         }
 
         public virtual IPartyRoleState GetHistoryState(PartyRoleId partyRoleId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IPartyRoleStateEvent), ToEventStoreAggregateId(partyRoleId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IPartyRoleEvent), ToEventStoreAggregateId(partyRoleId), version - 1);
             return new PartyRoleState(eventStream.Events);
         }
 

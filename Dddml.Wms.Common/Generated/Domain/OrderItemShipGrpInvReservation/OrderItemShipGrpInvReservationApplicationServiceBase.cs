@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 			bool repeated = false;
 			if (((IOrderItemShipGrpInvReservationStateProperties)state).Version > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IOrderItemShipGrpInvReservationStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IOrderItemShipGrpInvReservationEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -145,23 +145,23 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IOrderItemShipGrpInvReservationStateEvent GetStateEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version)
+	    public virtual IOrderItemShipGrpInvReservationEvent GetEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version)
         {
-            var e = (IOrderItemShipGrpInvReservationStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(orderItemShipGrpInvResId), version);
+            var e = (IOrderItemShipGrpInvReservationEvent)EventStore.GetEvent(ToEventStoreAggregateId(orderItemShipGrpInvResId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(orderItemShipGrpInvResId, 0);
+                return GetEvent(orderItemShipGrpInvResId, 0);
             }
             return e;
         }
 
         public virtual IOrderItemShipGrpInvReservationState GetHistoryState(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IOrderItemShipGrpInvReservationStateEvent), ToEventStoreAggregateId(orderItemShipGrpInvResId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IOrderItemShipGrpInvReservationEvent), ToEventStoreAggregateId(orderItemShipGrpInvResId), version - 1);
             return new OrderItemShipGrpInvReservationState(eventStream.Events);
         }
 

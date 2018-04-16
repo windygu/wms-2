@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 			bool repeated = false;
 			if (((ISellableInventoryItemEntryMvoStateProperties)state).SellableInventoryItemVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(ISellableInventoryItemEntryMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(ISellableInventoryItemEntryMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -142,23 +142,23 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual ISellableInventoryItemEntryMvoStateEvent GetStateEvent(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version)
+	    public virtual ISellableInventoryItemEntryMvoEvent GetEvent(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version)
         {
-            var e = (ISellableInventoryItemEntryMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(sellableInventoryItemEntryId), version);
+            var e = (ISellableInventoryItemEntryMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(sellableInventoryItemEntryId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(sellableInventoryItemEntryId, 0);
+                return GetEvent(sellableInventoryItemEntryId, 0);
             }
             return e;
         }
 
         public virtual ISellableInventoryItemEntryMvoState GetHistoryState(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(ISellableInventoryItemEntryMvoStateEvent), ToEventStoreAggregateId(sellableInventoryItemEntryId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(ISellableInventoryItemEntryMvoEvent), ToEventStoreAggregateId(sellableInventoryItemEntryId), version - 1);
             return new SellableInventoryItemEntryMvoState(eventStream.Events);
         }
 

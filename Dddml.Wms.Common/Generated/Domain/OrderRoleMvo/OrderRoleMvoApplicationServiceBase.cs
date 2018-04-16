@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
 			bool repeated = false;
 			if (((IOrderRoleMvoStateProperties)state).OrderVersion > command.AggregateVersion)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IOrderRoleMvoStateEvent), eventStoreAggregateId, command.AggregateVersion);
+				var lastEvent = EventStore.GetEvent(typeof(IOrderRoleMvoEvent), eventStoreAggregateId, command.AggregateVersion);
 				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
 				{
 					repeated = true;
@@ -146,23 +146,23 @@ namespace Dddml.Wms.Domain.OrderRoleMvo
             return StateQueryRepository.GetCount(filter);
 		}
 
-	    public virtual IOrderRoleMvoStateEvent GetStateEvent(OrderRoleId orderRoleId, long version)
+	    public virtual IOrderRoleMvoEvent GetEvent(OrderRoleId orderRoleId, long version)
         {
-            var e = (IOrderRoleMvoStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(orderRoleId), version);
+            var e = (IOrderRoleMvoEvent)EventStore.GetEvent(ToEventStoreAggregateId(orderRoleId), version);
             if (e != null)
             {
                 e.ReadOnly = true;
             }
             else if (version == -1)
             {
-                return GetStateEvent(orderRoleId, 0);
+                return GetEvent(orderRoleId, 0);
             }
             return e;
         }
 
         public virtual IOrderRoleMvoState GetHistoryState(OrderRoleId orderRoleId, long version)
         {
-            var eventStream = EventStore.LoadEventStream(typeof(IOrderRoleMvoStateEvent), ToEventStoreAggregateId(orderRoleId), version - 1);
+            var eventStream = EventStore.LoadEventStream(typeof(IOrderRoleMvoEvent), ToEventStoreAggregateId(orderRoleId), version - 1);
             return new OrderRoleMvoState(eventStream.Events);
         }
 

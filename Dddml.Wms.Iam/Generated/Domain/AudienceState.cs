@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Audience
         {
             if (events != null && events.Count() > 0)
             {
-                this.ClientId = ((IAudienceStateEvent)events.First()).AudienceEventId.ClientId;
+                this.ClientId = ((IAudienceEvent)events.First()).AudienceEventId.ClientId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -253,7 +253,7 @@ namespace Dddml.Wms.Domain.Audience
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAudienceStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAudienceEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Audience|");

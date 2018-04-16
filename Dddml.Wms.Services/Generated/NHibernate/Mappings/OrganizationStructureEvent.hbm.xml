@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.OrganizationStructure">
   
-  <class name="OrganizationStructureStateEventBase" table="OrganizationStructureEvents" mutable="false" abstract="true">
+  <class name="OrganizationStructureEventBase" table="OrganizationStructureEvents" mutable="false" abstract="true">
 
     <composite-id name="OrganizationStructureEventId" class="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureEventId">
         <key-property name="IdOrganizationStructureTypeId" ></key-property>

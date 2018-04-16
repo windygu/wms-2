@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain.User
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserRoleStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserRoleEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserRole|");

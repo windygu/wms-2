@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.AttributeSet;
 namespace Dddml.Wms.Domain.AttributeSet
 {
 
-	public abstract class AttributeSetStateEventDtoBase : IStateEventDto, IAttributeSetStateCreated, IAttributeSetStateMergePatched, IAttributeSetStateDeleted
+	public abstract class AttributeSetStateEventDtoBase : IEventDto, IAttributeSetStateCreated, IAttributeSetStateMergePatched, IAttributeSetStateDeleted
 	{
 
         private AttributeSetEventId _attributeSetEventId;
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IAttributeSetStateEvent.ReadOnly
+        bool IAttributeSetEvent.ReadOnly
         {
             get
             {
@@ -302,12 +302,12 @@ namespace Dddml.Wms.Domain.AttributeSet
             return NewAttributeUseStateCreated(attributeId);
         }
 
-        IEnumerable<IAttributeUseStateEvent> IAttributeSetStateMergePatched.AttributeUseEvents
+        IEnumerable<IAttributeUseEvent> IAttributeSetStateMergePatched.AttributeUseEvents
         {
             get { return this._attributeUseEvents; }
         }
 
-        void IAttributeSetStateMergePatched.AddAttributeUseEvent(IAttributeUseStateEvent e)
+        void IAttributeSetStateMergePatched.AddAttributeUseEvent(IAttributeUseEvent e)
         {
             this._attributeUseEvents.AddAttributeUseEvent(e);
         }
@@ -345,7 +345,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 
 
-        AttributeSetEventId IAttributeSetStateEvent.AttributeSetEventId
+        AttributeSetEventId IAttributeSetEvent.AttributeSetEventId
         {
             get { return this.AttributeSetEventId; }
         }
@@ -361,12 +361,12 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -381,7 +381,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -398,14 +398,14 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -421,14 +421,14 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -444,14 +444,14 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -503,7 +503,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             _innerStateEvents.Add((AttributeSetStateCreatedDto)e);
         }
 
-        public void AddAttributeSetEvent(IAttributeSetStateEvent e)
+        public void AddAttributeSetEvent(IAttributeSetEvent e)
         {
             _innerStateEvents.Add((AttributeSetStateCreatedOrMergePatchedOrDeletedDto)e);
         }

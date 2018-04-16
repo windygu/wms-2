@@ -16,19 +16,19 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
     public class PhysicalInventoryStateEventDtoConverter
     {
-        public virtual PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDto ToPhysicalInventoryStateEventDto(IPhysicalInventoryStateEvent stateEvent)
+        public virtual PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDto ToPhysicalInventoryStateEventDto(IPhysicalInventoryEvent stateEvent)
         {
-            if (stateEvent.StateEventType == StateEventType.Created)
+            if (stateEvent.EventType == StateEventType.Created)
             {
                 var e = (IPhysicalInventoryStateCreated)stateEvent;
                 return ToPhysicalInventoryStateCreatedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.MergePatched)
+            else if (stateEvent.EventType == StateEventType.MergePatched)
             {
                 var e = (IPhysicalInventoryStateMergePatched)stateEvent;
                 return ToPhysicalInventoryStateMergePatchedDto(e);
             }
-            throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
+            throw DomainError.Named("invalidEventType", String.Format("Invalid state event type: {0}", stateEvent.EventType));
         }
 
         public virtual PhysicalInventoryStateCreatedDto ToPhysicalInventoryStateCreatedDto(IPhysicalInventoryStateCreated e)

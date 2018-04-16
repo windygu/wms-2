@@ -184,7 +184,7 @@ namespace Dddml.Wms.Domain.Order
         {
             if (events != null && events.Count() > 0)
             {
-                this.OrderId = ((IOrderStateEvent)events.First()).OrderEventId.OrderId;
+                this.OrderId = ((IOrderEvent)events.First()).OrderEventId.OrderId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -607,7 +607,7 @@ namespace Dddml.Wms.Domain.Order
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IOrderRoleStateEvent innerEvent in e.OrderRoleEvents)
+			foreach (IOrderRoleEvent innerEvent in e.OrderRoleEvents)
             {
                 IOrderRoleState innerState = this.OrderRoles.Get(innerEvent.GlobalId.PartyRoleId);
 
@@ -620,7 +620,7 @@ namespace Dddml.Wms.Domain.Order
           
             }
 
-			foreach (IOrderItemStateEvent innerEvent in e.OrderItemEvents)
+			foreach (IOrderItemEvent innerEvent in e.OrderItemEvents)
             {
                 IOrderItemState innerState = this.OrderItems.Get(innerEvent.GlobalId.OrderItemSeqId);
 
@@ -628,7 +628,7 @@ namespace Dddml.Wms.Domain.Order
           
             }
 
-			foreach (IOrderShipGroupStateEvent innerEvent in e.OrderShipGroupEvents)
+			foreach (IOrderShipGroupEvent innerEvent in e.OrderShipGroupEvents)
             {
                 IOrderShipGroupState innerState = this.OrderShipGroups.Get(innerEvent.GlobalId.ShipGroupSeqId);
 
@@ -650,7 +650,7 @@ namespace Dddml.Wms.Domain.Order
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IOrderStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IOrderEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("Order|");

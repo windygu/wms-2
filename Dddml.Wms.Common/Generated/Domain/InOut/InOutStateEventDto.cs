@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.InOut;
 namespace Dddml.Wms.Domain.InOut
 {
 
-	public abstract class InOutStateEventDtoBase : IStateEventDto, IInOutStateCreated, IInOutStateMergePatched
+	public abstract class InOutStateEventDtoBase : IEventDto, IInOutStateCreated, IInOutStateMergePatched
 	{
 
         private InOutEventId _inOutEventId;
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain.InOut
 
         public virtual bool EventReadOnly { get; set; }
 
-        bool IInOutStateEvent.ReadOnly
+        bool IInOutEvent.ReadOnly
         {
             get
             {
@@ -806,12 +806,12 @@ namespace Dddml.Wms.Domain.InOut
             return NewInOutLineStateCreated(lineNumber);
         }
 
-        IEnumerable<IInOutLineStateEvent> IInOutStateMergePatched.InOutLineEvents
+        IEnumerable<IInOutLineEvent> IInOutStateMergePatched.InOutLineEvents
         {
             get { return this._inOutLineEvents; }
         }
 
-        void IInOutStateMergePatched.AddInOutLineEvent(IInOutLineStateEvent e)
+        void IInOutStateMergePatched.AddInOutLineEvent(IInOutLineEvent e)
         {
             this._inOutLineEvents.AddInOutLineEvent(e);
         }
@@ -832,7 +832,7 @@ namespace Dddml.Wms.Domain.InOut
         }
 
 
-        InOutEventId IInOutStateEvent.InOutEventId
+        InOutEventId IInOutEvent.InOutEventId
         {
             get { return this.InOutEventId; }
         }
@@ -848,12 +848,12 @@ namespace Dddml.Wms.Domain.InOut
 
         // //////////////////////////////////////////////////
 
-        string IStateEventDto.StateEventType 
+        string IEventDto.EventType 
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
         }
 
-        protected abstract string GetStateEventType();
+        protected abstract string GetEventType();
 
 	}
 
@@ -868,7 +868,7 @@ namespace Dddml.Wms.Domain.InOut
             set { _eventType = value; }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return this._eventType;
         }
@@ -885,14 +885,14 @@ namespace Dddml.Wms.Domain.InOut
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Created;
         }
@@ -908,14 +908,14 @@ namespace Dddml.Wms.Domain.InOut
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.MergePatched;
         }
@@ -931,14 +931,14 @@ namespace Dddml.Wms.Domain.InOut
 
         public override string EventType
         {
-            get { return this.GetStateEventType(); }
+            get { return this.GetEventType(); }
             set
             {
                 // do nothing
             }
         }
 
-        protected override string GetStateEventType()
+        protected override string GetEventType()
         {
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
@@ -986,7 +986,7 @@ namespace Dddml.Wms.Domain.InOut
             _innerStateEvents.Add((InOutStateCreatedDto)e);
         }
 
-        public void AddInOutEvent(IInOutStateEvent e)
+        public void AddInOutEvent(IInOutEvent e)
         {
             _innerStateEvents.Add((InOutStateCreatedOrMergePatchedOrDeletedDto)e);
         }

@@ -3,7 +3,7 @@
                    assembly="Dddml.Wms.Common" 
                    namespace="Dddml.Wms.Domain.LocatorType">
   
-  <class name="LocatorTypeStateEventBase" table="LocatorTypeEvents" mutable="false" abstract="true">
+  <class name="LocatorTypeEventBase" table="LocatorTypeEvents" mutable="false" abstract="true">
 
     <composite-id name="LocatorTypeEventId" class="Dddml.Wms.Domain.LocatorType.LocatorTypeEventId">
         <key-property name="LocatorTypeId" ><column name="LocatorTypeId" length="50" /></key-property>

@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Facility
 
         long GetCount(ICriterion filter);
 
-        IFacilityStateEvent GetStateEvent(string facilityId, long version);
+        IFacilityEvent GetEvent(string facilityId, long version);
 
         IFacilityState GetHistoryState(string facilityId, long version);
 

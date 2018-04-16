@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IAttributeUseStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IAttributeUseEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("AttributeUse|");

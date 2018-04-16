@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.UserRoleId = ((IUserRoleMvoStateEvent)events.First()).UserRoleMvoEventId.UserRoleId;
+                this.UserRoleId = ((IUserRoleMvoEvent)events.First()).UserRoleMvoEventId.UserRoleId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -478,7 +478,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 			((dynamic)this).When((dynamic)e);
 		}
 
-        protected void ThrowOnWrongEvent(IUserRoleMvoStateEvent stateEvent)
+        protected void ThrowOnWrongEvent(IUserRoleMvoEvent stateEvent)
         {
             var id = new System.Text.StringBuilder(); 
             id.Append("[").Append("UserRoleMvo|");

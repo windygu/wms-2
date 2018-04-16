@@ -248,7 +248,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
-        public async Task<IShipmentReceiptMvoStateEvent> GetStateEventAsync(ShipmentReceiptId shipmentReceiptId, long version)
+        public async Task<IShipmentReceiptMvoEvent> GetStateEventAsync(ShipmentReceiptId shipmentReceiptId, long version)
         {
             var idObj = ShipmentReceiptMvoProxyUtils.ToIdString(shipmentReceiptId);
             var uriParameters = new ShipmentReceiptMvoStateEventUriParameters();
@@ -261,7 +261,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return resp.Content;
         }
 
-        public IShipmentReceiptMvoStateEvent GetStateEvent(ShipmentReceiptId shipmentReceiptId, long version)
+        public IShipmentReceiptMvoEvent GetEvent(ShipmentReceiptId shipmentReceiptId, long version)
         {
             return GetStateEventAsync(shipmentReceiptId, version).GetAwaiter().GetResult();
         }

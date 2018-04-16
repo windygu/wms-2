@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         long GetCount(ICriterion filter);
 
-        IOrderItemShipGrpInvReservationStateEvent GetStateEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version);
+        IOrderItemShipGrpInvReservationEvent GetEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version);
 
         IOrderItemShipGrpInvReservationState GetHistoryState(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version);
 
