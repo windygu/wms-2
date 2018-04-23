@@ -87,6 +87,7 @@ aggregates:
             TargetQuantity:
               description: The Quantity which should have been received.
               type: decimal
+              defaultValue: 0
               defaultLogic:
                 Java: "BigDecimal.ZERO"
               
@@ -94,6 +95,7 @@ aggregates:
             ConfirmedQuantity:
               description: Confirmation of a received quantity.
               type: decimal
+              defaultValue: 0
               defaultLogic:
                 Java: "BigDecimal.ZERO"
               
@@ -101,6 +103,7 @@ aggregates:
             DifferenceQuantity:
               description: If there is a difference quantity, a Physical Inventory is created for the source (from) warehouse. 
               type: decimal
+              defaultValue: 0
               defaultLogic:
                 Java: "BigDecimal.ZERO"
 
@@ -108,6 +111,7 @@ aggregates:
             ScrappedQuantity:
               description: "The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse."
               type: decimal
+              defaultValue: 0
               defaultLogic:
                 Java: "BigDecimal.ZERO"
           
