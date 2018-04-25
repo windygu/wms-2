@@ -337,7 +337,7 @@ aggregates:
     
       # --------------------------------------
       # 导入装运单
-      Import:
+      ImportShipment:
         parameters:
           ShipmentTypeId:
             type: id

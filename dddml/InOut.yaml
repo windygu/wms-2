@@ -286,9 +286,8 @@ aggregates:
         # 关闭
         Close:
           parameters:
-          
         # 取消
-        Void:
+        Cancel:
           parameters:
           
         # 反转
