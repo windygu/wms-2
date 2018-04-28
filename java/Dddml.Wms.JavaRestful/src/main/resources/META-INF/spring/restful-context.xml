@@ -11,7 +11,7 @@
                 <bean class="org.dddml.wms.restful.resource.IndexResource"/>
                 <bean class="org.dddml.wms.restful.resource.AttributeSetResource"/>
                 <bean class="org.dddml.wms.restful.resource.InOutResource"/>
-                <bean class="org.dddml.wms.restful.resource.PersonResource"/>
+                <!--<bean class="org.dddml.wms.restful.resource.PersonResource"/>-->
                 <bean class="org.dddml.wms.restful.resource.LocatorTreeResource"/>
                 <bean class="org.dddml.wms.restful.resource.AttributeSetInstanceResource"/>
             </list>
