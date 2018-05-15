@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.InventoryItem
         {
             InventoryItemEntryId globalId = new InventoryItemEntryId(_inventoryItemState.InventoryItemId, entrySeqId);
             if (_loadedInventoryItemEntryStates.ContainsKey(globalId)) {
-                return _loadedInventoryItemEntryStates[globalId];
+                var state = _loadedInventoryItemEntryStates[globalId];
+                if (this._inventoryItemState != null && this._inventoryItemState.ReadOnly == false) { ((IInventoryItemEntryState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new InventoryItemEntryState(ForReapplying);
                 state.InventoryItemEntryId = globalId;
                 _loadedInventoryItemEntryStates.Add(globalId, state);
+                if (this._inventoryItemState != null && this._inventoryItemState.ReadOnly == false) { ((IInventoryItemEntryState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                 {
                     _loadedInventoryItemEntryStates.Add(globalId, state);
                 }
+                if (this._inventoryItemState != null && this._inventoryItemState.ReadOnly == false) { ((IInventoryItemEntryState)state).ReadOnly = false; }
                 return state;
             }
         }

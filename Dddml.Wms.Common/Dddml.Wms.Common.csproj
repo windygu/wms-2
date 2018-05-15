@@ -4281,7 +4281,7 @@
     <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateQueryRepository.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs">
+    <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateQueryRepositoryOrganizationTree.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateRepository.cs">
@@ -7755,7 +7755,7 @@
 .\IOrganizationStructureStateDto.cs
 .\IOrganizationStructureStateProperties.cs
 .\IOrganizationStructureStateQueryRepository.cs
-.\IOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs
+.\IOrganizationStructureStateQueryRepositoryOrganizationTree.cs
 .\IOrganizationStructureStateRepository.cs
 .\OrganizationStructureAggregate.cs
 .\OrganizationStructureApplicationServiceBase.cs

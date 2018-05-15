@@ -42,9 +42,9 @@ public class HibernateAttributeUseStateDao implements AttributeUseStateDao
             state = new AbstractAttributeUseState.SimpleAttributeUseState();
             state.setAttributeSetAttributeUseId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeUseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeUseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (AttributeUseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeUseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

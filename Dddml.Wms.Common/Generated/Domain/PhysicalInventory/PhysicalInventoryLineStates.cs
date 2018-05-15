@@ -95,13 +95,16 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
             PhysicalInventoryLineId globalId = new PhysicalInventoryLineId(_physicalInventoryState.DocumentNumber, inventoryItemId);
             if (_loadedPhysicalInventoryLineStates.ContainsKey(globalId)) {
-                return _loadedPhysicalInventoryLineStates[globalId];
+                var state = _loadedPhysicalInventoryLineStates[globalId];
+                if (this._physicalInventoryState != null && this._physicalInventoryState.ReadOnly == false) { ((IPhysicalInventoryLineState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new PhysicalInventoryLineState(ForReapplying);
                 state.PhysicalInventoryLineId = globalId;
                 _loadedPhysicalInventoryLineStates.Add(globalId, state);
+                if (this._physicalInventoryState != null && this._physicalInventoryState.ReadOnly == false) { ((IPhysicalInventoryLineState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -111,6 +114,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 {
                     _loadedPhysicalInventoryLineStates.Add(globalId, state);
                 }
+                if (this._physicalInventoryState != null && this._physicalInventoryState.ReadOnly == false) { ((IPhysicalInventoryLineState)state).ReadOnly = false; }
                 return state;
             }
         }

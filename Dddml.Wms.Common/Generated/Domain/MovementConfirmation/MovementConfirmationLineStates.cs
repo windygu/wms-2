@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
             MovementConfirmationLineId globalId = new MovementConfirmationLineId(_movementConfirmationState.DocumentNumber, lineNumber);
             if (_loadedMovementConfirmationLineStates.ContainsKey(globalId)) {
-                return _loadedMovementConfirmationLineStates[globalId];
+                var state = _loadedMovementConfirmationLineStates[globalId];
+                if (this._movementConfirmationState != null && this._movementConfirmationState.ReadOnly == false) { ((IMovementConfirmationLineState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new MovementConfirmationLineState(ForReapplying);
                 state.MovementConfirmationLineId = globalId;
                 _loadedMovementConfirmationLineStates.Add(globalId, state);
+                if (this._movementConfirmationState != null && this._movementConfirmationState.ReadOnly == false) { ((IMovementConfirmationLineState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                 {
                     _loadedMovementConfirmationLineStates.Add(globalId, state);
                 }
+                if (this._movementConfirmationState != null && this._movementConfirmationState.ReadOnly == false) { ((IMovementConfirmationLineState)state).ReadOnly = false; }
                 return state;
             }
         }

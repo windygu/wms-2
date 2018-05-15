@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.Attribute
         {
             AttributeAliasId globalId = new AttributeAliasId(_attributeState.AttributeId, code);
             if (_loadedAttributeAliasStates.ContainsKey(globalId)) {
-                return _loadedAttributeAliasStates[globalId];
+                var state = _loadedAttributeAliasStates[globalId];
+                if (this._attributeState != null && this._attributeState.ReadOnly == false) { ((IAttributeAliasState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new AttributeAliasState(ForReapplying);
                 state.AttributeAliasId = globalId;
                 _loadedAttributeAliasStates.Add(globalId, state);
+                if (this._attributeState != null && this._attributeState.ReadOnly == false) { ((IAttributeAliasState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.Attribute
                 {
                     _loadedAttributeAliasStates.Add(globalId, state);
                 }
+                if (this._attributeState != null && this._attributeState.ReadOnly == false) { ((IAttributeAliasState)state).ReadOnly = false; }
                 return state;
             }
         }

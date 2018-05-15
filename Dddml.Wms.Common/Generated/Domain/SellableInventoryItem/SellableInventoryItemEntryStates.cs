@@ -96,13 +96,16 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         {
             SellableInventoryItemEntryId globalId = new SellableInventoryItemEntryId(_sellableInventoryItemState.SellableInventoryItemId, entrySeqId);
             if (_loadedSellableInventoryItemEntryStates.ContainsKey(globalId)) {
-                return _loadedSellableInventoryItemEntryStates[globalId];
+                var state = _loadedSellableInventoryItemEntryStates[globalId];
+                if (this._sellableInventoryItemState != null && this._sellableInventoryItemState.ReadOnly == false) { ((ISellableInventoryItemEntryState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new SellableInventoryItemEntryState(ForReapplying);
                 state.SellableInventoryItemEntryId = globalId;
                 _loadedSellableInventoryItemEntryStates.Add(globalId, state);
+                if (this._sellableInventoryItemState != null && this._sellableInventoryItemState.ReadOnly == false) { ((ISellableInventoryItemEntryState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -112,6 +115,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
                 {
                     _loadedSellableInventoryItemEntryStates.Add(globalId, state);
                 }
+                if (this._sellableInventoryItemState != null && this._sellableInventoryItemState.ReadOnly == false) { ((ISellableInventoryItemEntryState)state).ReadOnly = false; }
                 return state;
             }
         }

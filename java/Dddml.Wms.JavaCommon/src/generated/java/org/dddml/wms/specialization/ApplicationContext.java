@@ -39,6 +39,10 @@ public class ApplicationContext {
         };
     }
 
+    public ClobConverter getClobConverter() {
+        return (ClobConverter) get("clobConverter");
+    }
+
     public static class DefaultTypeConverter implements TypeConverter {
 
         private org.dddml.support.criterion.DefaultTypeConverter innerTypeConverter = new org.dddml.support.criterion.DefaultTypeConverter();

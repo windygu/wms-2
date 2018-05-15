@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.Movement
         {
             MovementLineId globalId = new MovementLineId(_movementState.DocumentNumber, lineNumber);
             if (_loadedMovementLineStates.ContainsKey(globalId)) {
-                return _loadedMovementLineStates[globalId];
+                var state = _loadedMovementLineStates[globalId];
+                if (this._movementState != null && this._movementState.ReadOnly == false) { ((IMovementLineState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new MovementLineState(ForReapplying);
                 state.MovementLineId = globalId;
                 _loadedMovementLineStates.Add(globalId, state);
+                if (this._movementState != null && this._movementState.ReadOnly == false) { ((IMovementLineState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.Movement
                 {
                     _loadedMovementLineStates.Add(globalId, state);
                 }
+                if (this._movementState != null && this._movementState.ReadOnly == false) { ((IMovementLineState)state).ReadOnly = false; }
                 return state;
             }
         }

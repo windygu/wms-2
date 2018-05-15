@@ -95,13 +95,16 @@ namespace Dddml.Wms.Domain.Order
         {
             OrderItemShipGroupAssociationId globalId = new OrderItemShipGroupAssociationId((_orderShipGroupState as IGlobalIdentity<OrderShipGroupId>).GlobalId.OrderId, (_orderShipGroupState as IGlobalIdentity<OrderShipGroupId>).GlobalId.ShipGroupSeqId, orderItemSeqId);
             if (_loadedOrderItemShipGroupAssociationStates.ContainsKey(globalId)) {
-                return _loadedOrderItemShipGroupAssociationStates[globalId];
+                var state = _loadedOrderItemShipGroupAssociationStates[globalId];
+                if (this._orderShipGroupState != null && this._orderShipGroupState.ReadOnly == false) { ((IOrderItemShipGroupAssociationState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new OrderItemShipGroupAssociationState(ForReapplying);
                 state.OrderItemShipGroupAssociationId = globalId;
                 _loadedOrderItemShipGroupAssociationStates.Add(globalId, state);
+                if (this._orderShipGroupState != null && this._orderShipGroupState.ReadOnly == false) { ((IOrderItemShipGroupAssociationState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -111,6 +114,7 @@ namespace Dddml.Wms.Domain.Order
                 {
                     _loadedOrderItemShipGroupAssociationStates.Add(globalId, state);
                 }
+                if (this._orderShipGroupState != null && this._orderShipGroupState.ReadOnly == false) { ((IOrderItemShipGroupAssociationState)state).ReadOnly = false; }
                 return state;
             }
         }

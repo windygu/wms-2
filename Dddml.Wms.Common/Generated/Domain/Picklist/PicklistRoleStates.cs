@@ -95,13 +95,16 @@ namespace Dddml.Wms.Domain.Picklist
         {
             PicklistRoleId globalId = new PicklistRoleId(_picklistState.PicklistId, partyRoleId);
             if (_loadedPicklistRoleStates.ContainsKey(globalId)) {
-                return _loadedPicklistRoleStates[globalId];
+                var state = _loadedPicklistRoleStates[globalId];
+                if (this._picklistState != null && this._picklistState.ReadOnly == false) { ((IPicklistRoleState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new PicklistRoleState(ForReapplying);
                 state.PicklistRoleId = globalId;
                 _loadedPicklistRoleStates.Add(globalId, state);
+                if (this._picklistState != null && this._picklistState.ReadOnly == false) { ((IPicklistRoleState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -111,6 +114,7 @@ namespace Dddml.Wms.Domain.Picklist
                 {
                     _loadedPicklistRoleStates.Add(globalId, state);
                 }
+                if (this._picklistState != null && this._picklistState.ReadOnly == false) { ((IPicklistRoleState)state).ReadOnly = false; }
                 return state;
             }
         }

@@ -44,9 +44,9 @@ public class HibernatePhysicalInventoryLineStateDao implements PhysicalInventory
             state = new AbstractPhysicalInventoryLineState.SimplePhysicalInventoryLineState();
             state.setPhysicalInventoryLineId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PhysicalInventoryLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PhysicalInventoryLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (PhysicalInventoryLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PhysicalInventoryLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

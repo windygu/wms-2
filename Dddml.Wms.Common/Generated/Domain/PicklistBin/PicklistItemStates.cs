@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.PicklistBin
         {
             PicklistBinPicklistItemId globalId = new PicklistBinPicklistItemId(_picklistBinState.PicklistBinId, picklistItemOrderShipGrpInvId);
             if (_loadedPicklistItemStates.ContainsKey(globalId)) {
-                return _loadedPicklistItemStates[globalId];
+                var state = _loadedPicklistItemStates[globalId];
+                if (this._picklistBinState != null && this._picklistBinState.ReadOnly == false) { ((IPicklistItemState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new PicklistItemState(ForReapplying);
                 state.PicklistBinPicklistItemId = globalId;
                 _loadedPicklistItemStates.Add(globalId, state);
+                if (this._picklistBinState != null && this._picklistBinState.ReadOnly == false) { ((IPicklistItemState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.PicklistBin
                 {
                     _loadedPicklistItemStates.Add(globalId, state);
                 }
+                if (this._picklistBinState != null && this._picklistBinState.ReadOnly == false) { ((IPicklistItemState)state).ReadOnly = false; }
                 return state;
             }
         }

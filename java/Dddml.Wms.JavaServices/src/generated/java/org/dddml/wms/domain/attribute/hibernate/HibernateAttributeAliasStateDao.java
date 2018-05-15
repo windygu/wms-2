@@ -42,9 +42,9 @@ public class HibernateAttributeAliasStateDao implements AttributeAliasStateDao
             state = new AbstractAttributeAliasState.SimpleAttributeAliasState();
             state.setAttributeAliasId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeAliasState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeAliasState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (AttributeAliasState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeAliasState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.Shipment
         {
             ShipmentReceiptId globalId = new ShipmentReceiptId(_shipmentState.ShipmentId, receiptSeqId);
             if (_loadedShipmentReceiptStates.ContainsKey(globalId)) {
-                return _loadedShipmentReceiptStates[globalId];
+                var state = _loadedShipmentReceiptStates[globalId];
+                if (this._shipmentState != null && this._shipmentState.ReadOnly == false) { ((IShipmentReceiptState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new ShipmentReceiptState(ForReapplying);
                 state.ShipmentReceiptId = globalId;
                 _loadedShipmentReceiptStates.Add(globalId, state);
+                if (this._shipmentState != null && this._shipmentState.ReadOnly == false) { ((IShipmentReceiptState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.Shipment
                 {
                     _loadedShipmentReceiptStates.Add(globalId, state);
                 }
+                if (this._shipmentState != null && this._shipmentState.ReadOnly == false) { ((IShipmentReceiptState)state).ReadOnly = false; }
                 return state;
             }
         }

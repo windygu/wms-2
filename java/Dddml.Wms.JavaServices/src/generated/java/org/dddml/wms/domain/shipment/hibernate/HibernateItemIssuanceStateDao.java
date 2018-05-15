@@ -42,9 +42,9 @@ public class HibernateItemIssuanceStateDao implements ItemIssuanceStateDao
             state = new AbstractItemIssuanceState.SimpleItemIssuanceState();
             state.setShipmentItemIssuanceId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ItemIssuanceState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ItemIssuanceState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (ItemIssuanceState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ItemIssuanceState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

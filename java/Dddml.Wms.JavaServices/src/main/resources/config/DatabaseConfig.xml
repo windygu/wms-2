@@ -64,4 +64,6 @@
     <bean id="stateReadOnlyProxyGenerator" class="org.dddml.wms.specialization.ReflectReadOnlyProxyGenerator"></bean>
     <!--<bean id="stateReadOnlyProxyGenerator" class=" org.dddml.wms.specializatio.NullReadOnlyProxyGenerator"></bean>-->
 
+    <bean id="clobConverter" class="org.dddml.wms.specialization.json.FastJsonClobConverter"></bean>
+
 </beans>

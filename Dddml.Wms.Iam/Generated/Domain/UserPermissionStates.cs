@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.User
         {
             UserPermissionId globalId = new UserPermissionId(_userState.UserId, permissionId);
             if (_loadedUserPermissionStates.ContainsKey(globalId)) {
-                return _loadedUserPermissionStates[globalId];
+                var state = _loadedUserPermissionStates[globalId];
+                if (this._userState != null && this._userState.ReadOnly == false) { ((IUserPermissionState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new UserPermissionState(ForReapplying);
                 state.UserPermissionId = globalId;
                 _loadedUserPermissionStates.Add(globalId, state);
+                if (this._userState != null && this._userState.ReadOnly == false) { ((IUserPermissionState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.User
                 {
                     _loadedUserPermissionStates.Add(globalId, state);
                 }
+                if (this._userState != null && this._userState.ReadOnly == false) { ((IUserPermissionState)state).ReadOnly = false; }
                 return state;
             }
         }

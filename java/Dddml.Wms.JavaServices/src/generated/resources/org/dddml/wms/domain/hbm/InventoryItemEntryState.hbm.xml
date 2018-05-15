@@ -6,7 +6,7 @@
 
 <hibernate-mapping package="org.dddml.wms.domain.inventoryitem">
   
-  <class name="org.dddml.wms.domain.inventoryitem.AbstractInventoryItemEntryState$SimpleInventoryItemEntryState" table="InventoryItemEntries">
+  <class name="org.dddml.wms.domain.inventoryitem.AbstractInventoryItemEntryState$SimpleInventoryItemEntryState" mutable="false" table="InventoryItemEntries">
 
     <cache usage="read-only"/>
 	<composite-id name="inventoryItemEntryId" class="org.dddml.wms.domain.inventoryitem.InventoryItemEntryId">

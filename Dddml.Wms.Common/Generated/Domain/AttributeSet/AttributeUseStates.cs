@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
             AttributeSetAttributeUseId globalId = new AttributeSetAttributeUseId(_attributeSetState.AttributeSetId, attributeId);
             if (_loadedAttributeUseStates.ContainsKey(globalId)) {
-                return _loadedAttributeUseStates[globalId];
+                var state = _loadedAttributeUseStates[globalId];
+                if (this._attributeSetState != null && this._attributeSetState.ReadOnly == false) { ((IAttributeUseState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new AttributeUseState(ForReapplying);
                 state.AttributeSetAttributeUseId = globalId;
                 _loadedAttributeUseStates.Add(globalId, state);
+                if (this._attributeSetState != null && this._attributeSetState.ReadOnly == false) { ((IAttributeUseState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                 {
                     _loadedAttributeUseStates.Add(globalId, state);
                 }
+                if (this._attributeSetState != null && this._attributeSetState.ReadOnly == false) { ((IAttributeUseState)state).ReadOnly = false; }
                 return state;
             }
         }

@@ -43,9 +43,9 @@ public class HibernatePicklistRoleStateDao implements PicklistRoleStateDao
             state = new AbstractPicklistRoleState.SimplePicklistRoleState();
             state.setPicklistRoleId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PicklistRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (PicklistRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 
