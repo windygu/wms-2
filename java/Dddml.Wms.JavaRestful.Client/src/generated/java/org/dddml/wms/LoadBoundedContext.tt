@@ -1,0 +1,53 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ include file="DddmlSerializationForT4.tc" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ import namespace="Dddml.Serialization" #>
+<#@ import namespace="Dddml.T4" #>
+<#@ import namespace="Dddml.T4.Extensions" #>
+<#@ include file="T4Toolbox.tt" #>
+<#
+    var boundedContext = LoadBoundedContextFiles();
+	boundedContext.Refresh();
+	ReplacePropertyTypesWithBaseTypes(boundedContext);
+
+	var generationOptions = new GenerationOptions();
+	generationOptions.Java = true;
+	generationOptions.CSharp = false;
+	generationOptions.NoMViewObjects = false;
+	boundedContext.PrepareGeneration(generationOptions);
+
+	var mviewObjects = boundedContext.GetMViewObjects();
+#>
+<#+
+	private void ReplacePropertyTypesWithBaseTypes(BoundedContext boundedContext)
+	{
+		boundedContext.ReplacePropertyTypesWithBaseTypes();	
+	}
+
+    private BoundedContext LoadBoundedContextFiles()
+    {
+        string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");
+		string projectDir = System.IO.Path.GetDirectoryName(projectFile);
+
+		var excludedFiles = new List<string>();
+		//excludedFiles.Add("Audience.yaml");
+		//excludedFiles.Add("IdentityManagement.yaml");
+		//excludedFiles.Add("AccessManagement.yaml");
+
+		var additionalFiles = new List<string>();
+		//string filePath1 = System.IO.Path.Combine(projectDir, "../Xxx.Yyy.Metadata/AttributeSetInstanceDddml.yaml");
+		//string filePath2 = System.IO.Path.Combine(projectDir, "../Xxx.Yyy.Metadata/AttributeSetInstanceExtensionFieldGroupDddml.yaml");
+		//additionalFiles.Add(filePath1);
+		//additionalFiles.Add(filePath2);
+
+		var dddmlDir = System.IO.Path.Combine(projectDir, "..\\..\\dddml");
+
+		//BoundedContext boundedContext = BoundedContextUtils.LoadFromDirectory(dddmlDir, "*.yaml", excludedFiles, additionalFiles);
+		BoundedContext boundedContext = BoundedContextUtils.LoadFromProjectFile(System.IO.Path.Combine(dddmlDir, "wms.project"));
+
+        return boundedContext; 
+    }
+#>
