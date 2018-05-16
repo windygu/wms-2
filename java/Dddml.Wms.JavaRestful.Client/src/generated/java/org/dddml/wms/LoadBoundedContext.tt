@@ -43,10 +43,14 @@
 		//additionalFiles.Add(filePath1);
 		//additionalFiles.Add(filePath2);
 
-		var dddmlDir = System.IO.Path.Combine(projectDir, "..\\..\\dddml");
-
-		//BoundedContext boundedContext = BoundedContextUtils.LoadFromDirectory(dddmlDir, "*.yaml", excludedFiles, additionalFiles);
-		BoundedContext boundedContext = BoundedContextUtils.LoadFromProjectFile(System.IO.Path.Combine(dddmlDir, "wms.project"));
+		var dddmlDir = System.IO.Path.Combine(projectDir, @"..\..\dddml\");
+		var dddmlProjFileName = "wms.project";
+		BoundedContext boundedContext = null;
+		if (!String.IsNullOrWhiteSpace(dddmlProjFileName)) {
+			boundedContext = BoundedContextUtils.LoadFromProjectFile(System.IO.Path.Combine(dddmlDir, dddmlProjFileName));
+		} else {
+			boundedContext = BoundedContextUtils.LoadFromDirectory(dddmlDir, "*.yaml", excludedFiles, additionalFiles);
+        }
 
         return boundedContext; 
     }
