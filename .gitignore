@@ -269,3 +269,4 @@ java/Dddml.Wms.JavaServices/.settings/
 java/org.dddml.wms.parent.iml
 *.iml
 tests/test01.yaml
+java/Dddml.Wms.JavaRestful.Client/target/

@@ -12,7 +12,12 @@
   "pom": {
     "parentGroupId": "com.syj.platform",
     "parentArtifactId": "wms",
-    "parentVersion": "0.0.1-SNAPSHOT"
+    "parentVersion": "0.0.1-SNAPSHOT",
+	"groupId": "org.dddml"
+  },
+  "restfulClientPom": {
+    "artifactId": "wms-restful-client",
+	"name": "dddml-wms-restful-client"
   },
   "javaSpecializationPackageCopy": {
 	"sourceProjectSrcJavaSubDirectoryPath": "src\\generated\\java",

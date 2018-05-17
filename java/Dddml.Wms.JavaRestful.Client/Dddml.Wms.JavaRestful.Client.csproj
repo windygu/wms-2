@@ -46,18 +46,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Content Include="src\generated\java\org\dddml\wms\domain\AbstractCommand.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\AbstractEvent.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\AbstractLocatorTreeApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\AbstractOrganizationTreeApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoCommandDto.java">
       <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
     </Content>
@@ -305,9 +293,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\RemoveAttributeValueDto.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\Command.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechCommandDto.java">
       <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
     </Content>
@@ -391,9 +376,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\DocumentAction.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeCommandDto.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
@@ -433,11 +415,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomain.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\AbstractInOutLineMvoCommandDto.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
@@ -723,15 +700,6 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateEventDto.java">
       <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\LocatorTreeApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\LocatorTreeNode.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\LocatorTreeRepository.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeCommandDto.java">
       <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
@@ -1258,15 +1226,6 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureStateEventDto.java">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\OrganizationTreeApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\OrganizationTreeNode.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\OrganizationTreeRepository.java">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleCommandDto.java">
       <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
@@ -2130,25 +2089,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
       <LastOutputs>.\LoadBoundedContext.txt</LastOutputs>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomain.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
-      <LastOutputs>
-.\AbstractCommand.java
-.\AbstractEvent.java
-.\AbstractLocatorTreeApplicationService.java
-.\AbstractOrganizationTreeApplicationService.java
-.\Command.java
-.\DocumentAction.java
-.\GenerateBoundedContextDomain.txt
-.\LocatorTreeApplicationService.java
-.\LocatorTreeNode.java
-.\LocatorTreeRepository.java
-.\OrganizationTreeApplicationService.java
-.\OrganizationTreeNode.java
-.\OrganizationTreeRepository.java
-</LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\service\GenerateBoundedContextDomainServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -3205,6 +3145,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LoadBoundedContext.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
     </Content>
   </ItemGroup>
   <ItemGroup>
