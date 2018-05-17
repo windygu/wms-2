@@ -1,0 +1,13 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Restful\RetrofitClient\RetrofitClientTreesInterfacesGenerator.tt" #>
+<#@ include file="..\..\LoadBoundedContext.tt" #>
+<#
+
+		var generator = new RetrofitClientTreesInterfacesGenerator(boundedContext.Trees.Values);
+		generator.UsingRxJava = false;
+	    generator.Run();
+
+#>

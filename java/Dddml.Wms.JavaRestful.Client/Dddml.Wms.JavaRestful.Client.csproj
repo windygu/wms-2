@@ -46,6 +46,12 @@
   </Target>
   -->
   <ItemGroup>
+    <Content Include="src\generated\java\org\dddml\wms\domain\AbstractCommand.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\AbstractEvent.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributealiasmvo\AbstractAttributeAliasMvoCommandDto.java">
       <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
     </Content>
@@ -293,6 +299,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\RemoveAttributeValueDto.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\Command.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechCommandDto.java">
       <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
     </Content>
@@ -376,6 +385,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\DocumentAction.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeCommandDto.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
@@ -415,6 +427,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\AbstractInOutLineMvoCommandDto.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
@@ -3148,6 +3165,642 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomain.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateBoundedContextDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractCommand.java
+.\AbstractEvent.java
+.\Command.java
+.\DocumentAction.java
+.\GenerateBoundedContextDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeAliasMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeSetInstanceExtensionFieldGroupsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeSetInstanceExtensionFieldsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeSetInstancesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeSetsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeUseMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeValueMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ContactMechesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\DamageHandlingMethodsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\DamageReasonsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\DamageTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\DocumentTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\FacilitiesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateAggregatesInterfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAggregatesInterfaces.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeAliasMvosClient.java
+.\AttributesClient.java
+.\AttributeSetInstanceExtensionFieldGroupsClient.java
+.\AttributeSetInstanceExtensionFieldsClient.java
+.\AttributeSetInstancesClient.java
+.\AttributeSetsClient.java
+.\AttributeUseMvosClient.java
+.\AttributeValueMvosClient.java
+.\ContactMechesClient.java
+.\DamageHandlingMethodsClient.java
+.\DamageReasonsClient.java
+.\DamageTypesClient.java
+.\DocumentTypesClient.java
+.\FacilitiesClient.java
+.\GenerateAggregatesInterfaces.txt
+.\InOutLineMvosClient.java
+.\InOutsClient.java
+.\InventoryItemEntryMvosClient.java
+.\InventoryItemRequirementEntryMvosClient.java
+.\InventoryItemRequirementsClient.java
+.\InventoryItemsClient.java
+.\InventoryPostingRulesClient.java
+.\InventoryPRTriggeredsClient.java
+.\ItemIssuanceMvosClient.java
+.\LocatorsClient.java
+.\LocatorTypesClient.java
+.\LotsClient.java
+.\MovementConfirmationLineMvosClient.java
+.\MovementConfirmationsClient.java
+.\MovementLineMvosClient.java
+.\MovementsClient.java
+.\MovementTypesClient.java
+.\OrderItemMvosClient.java
+.\OrderItemShipGroupAssociationMvosClient.java
+.\OrderItemShipGrpInvReservationsClient.java
+.\OrderRoleMvosClient.java
+.\OrdersClient.java
+.\OrderShipGroupMvosClient.java
+.\OrderShipmentsClient.java
+.\OrganizationStructuresClient.java
+.\OrganizationStructureTypesClient.java
+.\PartiesClient.java
+.\PartyRolesClient.java
+.\PhysicalInventoriesClient.java
+.\PhysicalInventoryLineMvosClient.java
+.\PicklistBinsClient.java
+.\PicklistItemMvosClient.java
+.\PicklistRoleMvosClient.java
+.\PicklistsClient.java
+.\PickwavesClient.java
+.\ProductCategoriesClient.java
+.\ProductCategoryMembersClient.java
+.\ProductsClient.java
+.\RejectionReasonsClient.java
+.\RoleTypesClient.java
+.\SellableInventoryItemEntryMvosClient.java
+.\SellableInventoryItemsClient.java
+.\ShipmentItemMvosClient.java
+.\ShipmentMethodTypesClient.java
+.\ShipmentPackageContentMvosClient.java
+.\ShipmentPackagesClient.java
+.\ShipmentReceiptMvosClient.java
+.\ShipmentsClient.java
+.\ShipmentTypesClient.java
+.\StatusItemsClient.java
+.\SupplierProductsClient.java
+.\UomConversionsClient.java
+.\UomsClient.java
+.\UomTypesClient.java
+.\WarehousesClient.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateAggregatesInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateDomainServicesInterfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDomainServicesInterfaces.txt</LastGenOutput>
+      <LastOutputs>.\GenerateDomainServicesInterfaces.txt</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateDomainServicesInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDomainServicesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateTreesInterfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateTreesInterfaces.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateTreesInterfaces.txt
+.\LocatorTreesClient.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateTreesInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateTreesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryItemEntryMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryItemRequirementEntryMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryItemRequirementsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryItemsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryPostingRulesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryPRTriggeredsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ItemIssuanceMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\LocatorsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\LocatorTreesClient.java">
+      <DependentUpon>GenerateTreesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\LocatorTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\LotsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementConfirmationLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementConfirmationsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderItemMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderItemShipGroupAssociationMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderItemShipGrpInvReservationsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderRoleMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrdersClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderShipGroupMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderShipmentsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrganizationStructuresClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrganizationStructureTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PartiesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PartyRolesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PhysicalInventoriesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PhysicalInventoryLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistBinsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistItemMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistRoleMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PickwavesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ProductCategoriesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ProductCategoryMembersClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ProductsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\RejectionReasonsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\RoleTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateAggregatesRxInterfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAggregatesRxInterfaces.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAggregatesRxInterfaces.txt
+.\RxAttributeAliasMvosClient.java
+.\RxAttributesClient.java
+.\RxAttributeSetInstanceExtensionFieldGroupsClient.java
+.\RxAttributeSetInstanceExtensionFieldsClient.java
+.\RxAttributeSetInstancesClient.java
+.\RxAttributeSetsClient.java
+.\RxAttributeUseMvosClient.java
+.\RxAttributeValueMvosClient.java
+.\RxContactMechesClient.java
+.\RxDamageHandlingMethodsClient.java
+.\RxDamageReasonsClient.java
+.\RxDamageTypesClient.java
+.\RxDocumentTypesClient.java
+.\RxFacilitiesClient.java
+.\RxInOutLineMvosClient.java
+.\RxInOutsClient.java
+.\RxInventoryItemEntryMvosClient.java
+.\RxInventoryItemRequirementEntryMvosClient.java
+.\RxInventoryItemRequirementsClient.java
+.\RxInventoryItemsClient.java
+.\RxInventoryPostingRulesClient.java
+.\RxInventoryPRTriggeredsClient.java
+.\RxItemIssuanceMvosClient.java
+.\RxLocatorsClient.java
+.\RxLocatorTypesClient.java
+.\RxLotsClient.java
+.\RxMovementConfirmationLineMvosClient.java
+.\RxMovementConfirmationsClient.java
+.\RxMovementLineMvosClient.java
+.\RxMovementsClient.java
+.\RxMovementTypesClient.java
+.\RxOrderItemMvosClient.java
+.\RxOrderItemShipGroupAssociationMvosClient.java
+.\RxOrderItemShipGrpInvReservationsClient.java
+.\RxOrderRoleMvosClient.java
+.\RxOrdersClient.java
+.\RxOrderShipGroupMvosClient.java
+.\RxOrderShipmentsClient.java
+.\RxOrganizationStructuresClient.java
+.\RxOrganizationStructureTypesClient.java
+.\RxPartiesClient.java
+.\RxPartyRolesClient.java
+.\RxPhysicalInventoriesClient.java
+.\RxPhysicalInventoryLineMvosClient.java
+.\RxPicklistBinsClient.java
+.\RxPicklistItemMvosClient.java
+.\RxPicklistRoleMvosClient.java
+.\RxPicklistsClient.java
+.\RxPickwavesClient.java
+.\RxProductCategoriesClient.java
+.\RxProductCategoryMembersClient.java
+.\RxProductsClient.java
+.\RxRejectionReasonsClient.java
+.\RxRoleTypesClient.java
+.\RxSellableInventoryItemEntryMvosClient.java
+.\RxSellableInventoryItemsClient.java
+.\RxShipmentItemMvosClient.java
+.\RxShipmentMethodTypesClient.java
+.\RxShipmentPackageContentMvosClient.java
+.\RxShipmentPackagesClient.java
+.\RxShipmentReceiptMvosClient.java
+.\RxShipmentsClient.java
+.\RxShipmentTypesClient.java
+.\RxStatusItemsClient.java
+.\RxSupplierProductsClient.java
+.\RxUomConversionsClient.java
+.\RxUomsClient.java
+.\RxUomTypesClient.java
+.\RxWarehousesClient.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateAggregatesRxInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateDomainServicesRxInterfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDomainServicesRxInterfaces.txt</LastGenOutput>
+      <LastOutputs>.\GenerateDomainServicesRxInterfaces.txt</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateDomainServicesRxInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDomainServicesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateTreesRxInterfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateTreesRxInterfaces.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateTreesRxInterfaces.txt
+.\RxLocatorTreesClient.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateTreesRxInterfaces.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateTreesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeAliasMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeSetInstanceExtensionFieldGroupsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeSetInstanceExtensionFieldsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeSetInstancesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeSetsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeUseMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeValueMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxContactMechesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxDamageHandlingMethodsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxDamageReasonsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxDamageTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxDocumentTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxFacilitiesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryItemEntryMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryItemRequirementEntryMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryItemRequirementsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryItemsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryPostingRulesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryPRTriggeredsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxItemIssuanceMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxLocatorsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxLocatorTreesClient.java">
+      <DependentUpon>GenerateTreesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxLocatorTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxLotsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementConfirmationLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementConfirmationsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderItemMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderItemShipGroupAssociationMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderItemShipGrpInvReservationsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderRoleMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrdersClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderShipGroupMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderShipmentsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrganizationStructuresClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrganizationStructureTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPartiesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPartyRolesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPhysicalInventoriesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPhysicalInventoryLineMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistBinsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistItemMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistRoleMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPickwavesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxProductCategoriesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxProductCategoryMembersClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxProductsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxRejectionReasonsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxRoleTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSellableInventoryItemEntryMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSellableInventoryItemsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentItemMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentMethodTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentPackageContentMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentPackagesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentReceiptMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxStatusItemsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSupplierProductsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxUomConversionsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxUomsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxUomTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxWarehousesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\SellableInventoryItemEntryMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\SellableInventoryItemsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentItemMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentMethodTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentPackageContentMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentPackagesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentReceiptMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\StatusItemsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\SupplierProductsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\UomConversionsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\UomsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\UomTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\WarehousesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
