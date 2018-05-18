@@ -17,6 +17,11 @@ import java.util.UUID;
  */
 public class InOutTests {
 
+    public static final String TEST_WAREHOUSE_ID = "TEST";
+    public static final String TEST_LOCATOR_ID_1 = "TEST_1";
+    public static final String TEST_LOCATOR_ID_1_RECEIVING_AREA = "TEST_1-RECEIVING_AREA";
+    public static final String  TEST_LOCATOR_ID_2 = "TEST_2";
+
     private ProductApplicationService productApplicationService;
 
     private AttributeSetInstanceApplicationService attributeSetInstanceApplicationService;
@@ -57,7 +62,7 @@ public class InOutTests {
         addLine.setVersion(inOut_1.getVersion());
         addLine.setCommandId(UUID.randomUUID().toString());
         addLine.setProductId(prd_1.getProductId());
-        addLine.setLocatorId("1-TEST1");
+        addLine.setLocatorId(TEST_LOCATOR_ID_1);
         //addLine.setQuantityUomId();
         addLine.setMovementQuantity(BigDecimal.valueOf(112));
         // /////////////////////////////////////
@@ -140,7 +145,7 @@ public class InOutTests {
         InOutLineCommand.CreateInOutLine line_1 = inOut.newCreateInOutLine();
         line_1.setLineNumber(String.valueOf(new java.util.Date().getTime()));
         line_1.setProductId("TEST_" + new java.util.Date().getTime());
-        line_1.setLocatorId("TEST_" + new java.util.Date().getTime());
+        line_1.setLocatorId(TEST_LOCATOR_ID_2);//("TEST_" + new java.util.Date().getTime());
         line_1.setAttributeSetInstanceId("EMPTY");
         line_1.setMovementQuantity(BigDecimal.valueOf(123));
         inOut.getInOutLines().add(line_1);
