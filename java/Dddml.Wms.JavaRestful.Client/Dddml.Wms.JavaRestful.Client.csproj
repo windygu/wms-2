@@ -1284,6 +1284,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\OrganizationStateDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyEventId.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
@@ -2519,6 +2522,7 @@
 .\CreateOrMergePatchPartyDto.java
 .\DeletePartyDto.java
 .\GeneratePartyDomain.txt
+.\OrganizationStateDto.java
 .\PartyEventId.java
 .\PartyStateDto.java
 .\PartyStateEventDto.java
@@ -3313,6 +3317,7 @@
       <LastOutputs>
 .\GenerateTreesInterfaces.txt
 .\LocatorTreesClient.java
+.\OrganizationTreesClient.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateTreesInterfaces.txt">
@@ -3400,6 +3405,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrganizationStructureTypesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrganizationTreesClient.java">
+      <DependentUpon>GenerateTreesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\PartiesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
@@ -3540,6 +3548,7 @@
       <LastOutputs>
 .\GenerateTreesRxInterfaces.txt
 .\RxLocatorTreesClient.java
+.\RxOrganizationTreesClient.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateTreesRxInterfaces.txt">
@@ -3669,6 +3678,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrganizationStructureTypesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrganizationTreesClient.java">
+      <DependentUpon>GenerateTreesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPartiesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
