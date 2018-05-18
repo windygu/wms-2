@@ -17,25 +17,29 @@
         <!--<property name="url" value="jdbc:mysql://10.201.2.13:3306/test?characterEncoding=utf8"/>-->
         <!--<property name="username" value="db_user"/>-->
         <!--<property name="password" value="z5J9OT0urtbfVuRuViK7"/>-->
-        <property name="url" value="jdbc:mysql://192.168.0.131:3306/wms?useUnicode=true&amp;characterEncoding=utf8mb4&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2b8"/>
+        <!--<property name="url" value="jdbc:mysql://192.168.0.131:3306/wms?useUnicode=true&amp;characterEncoding=utf8mb4&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2b8"/>
         <property name="username" value="root"/>
-        <property name="password" value="xampp123%"/>
+        <property name="password" value="xampp123%"/>-->
+        <property name="url" value="jdbc:mysql://localhost/test?characterEncoding=utf8&amp;serverTimezone=GMT%2b8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
     </bean>
 
     <bean id="hibernateSessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource1"/>
         <property name="mappingLocations">
-            <!--<list>-->
-                <value>classpath*:/org/dddml/wms/domain/hbm/*.hbm.xml</value>
-                <!--<value>classpath:/org/dddml/wms/tool/hibernate/hbm/*.hbm.xml</value>-->
-            <!--</list>-->
+            <list>
+                <value>classpath:/org/dddml/wms/domain/hbm/*.hbm.xml</value>
+                <value>classpath:/org/dddml/wms/tool/hibernate/hbm/*.hbm.xml</value>
+            </list>
         </property>
+        <!-- 使用这个能避免其它数据库中存在同名表的时候的一些异常。 -->
+        <!--hibernate.default_catalog=wms-->
         <property name="hibernateProperties">
             <value>
-                hibernate.default_catalog=wms
                 hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
-                hibernate.hbm2ddl.auto=update
+                hibernate.hbm2ddl.auto=none
                 hibernate.order_updates=true
                 hibernate.format_sql=true
                 hibernate.use_sql_comments=true
