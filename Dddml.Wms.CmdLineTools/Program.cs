@@ -13,6 +13,12 @@ namespace Dddml.Wms.CmdLineTools
     {
         static void Main(string[] args)
         {
+            // ////////////////////////////////////////////////
+            //new LineCounter().Count();
+            //System.Console.ReadKey();
+            //return;
+
+            // ////////////////////////////////////////////////
             var domainProjectConfig = new ProjectConfiguration
             {
 
