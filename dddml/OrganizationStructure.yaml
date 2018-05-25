@@ -4,30 +4,7 @@
 
 # ------------------------------
 aggregates:
-
-    # --------------- aggregate ---------------
-    # 组织
-    Organization:
-      inheritedFrom: Party
-      id:
-        name: PartyId
-        type: string
-
-      properties:
-        OrganizationName:
-          type: string
-        Description:
-          type: string
-        Type:
-          type: string
-        IsSummary:
-          type: bool
-          
-        # ad_replicationstrategy_id numeric,
-        
-      discriminatorValue: "Organization"
-
-        
+       
     # --------------- aggregate ---------------
     # 组织结构
     OrganizationStructure:
