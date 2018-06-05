@@ -1275,6 +1275,17 @@ public class ProductStateEventDto extends AbstractEvent
     }
 
 
+    private GoodIdentificationStateEventDto[] goodIdentificationEvents;
+
+    public GoodIdentificationStateEventDto[] getGoodIdentificationEvents() {
+        return this.goodIdentificationEvents;
+    }
+
+    public void setGoodIdentificationEvents(GoodIdentificationStateEventDto[] events) {
+        this.goodIdentificationEvents = events;
+    }
+
+
 	public static class ProductStateCreatedDto extends ProductStateEventDto
 	{
         @Override

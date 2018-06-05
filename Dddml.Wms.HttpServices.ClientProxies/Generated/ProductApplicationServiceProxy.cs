@@ -284,6 +284,28 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(productId, version).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IGoodIdentificationState> GetGoodIdentificationAsync(string productId, string goodIdentificationTypeId)
+        {
+            var uriParameters = new GoodIdentificationUriParameters();
+            uriParameters.ProductId = productId;
+            uriParameters.GoodIdentificationTypeId = goodIdentificationTypeId;
+
+            var req = new GoodIdentificationGetRequest(uriParameters);
+            var resp = await _ramlClient.GoodIdentification.Get(req);
+            ProductProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToGoodIdentificationState();
+        }
+
+        public virtual IGoodIdentificationState GetGoodIdentification(string productId, string goodIdentificationTypeId)
+        {
+            return GetGoodIdentificationAsync(productId, goodIdentificationTypeId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IGoodIdentificationState> GetGoodIdentifications(string productId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

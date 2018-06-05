@@ -275,6 +275,30 @@
     <Compile Include="Generated\Domain\Facility\NHibernate\NHibernateFacilityStateRepository.cs">
       <DependentUpon>GenerateFacilityDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\GoodIdentificationMvoApplicationService.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\NHibernateGoodIdentificationMvoEventStore.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\NHibernateGoodIdentificationMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\NHibernateGoodIdentificationMvoStateRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\NHibernate\GoodIdentificationTypeApplicationService.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\NHibernate\NHibernateGoodIdentificationTypeEventStore.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\NHibernate\NHibernateGoodIdentificationTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\NHibernate\NHibernateGoodIdentificationTypeStateRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\InOutLineMvoApplicationService.cs">
       <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -800,6 +824,12 @@
     <Compile Include="Generated\Domain\ProductCategory\NHibernate\ProductCategoryApplicationService.cs">
       <DependentUpon>GenerateProductCategoryDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Product\NHibernate\NHibernateGoodIdentificationEventDao.cs">
+      <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\NHibernate\NHibernateGoodIdentificationStateDao.cs">
+      <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Product\NHibernate\NHibernateProductEventStore.cs">
       <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -1161,6 +1191,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\GoodIdentificationMvo\NHibernate\GenerateGoodIdentificationMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\GoodIdentificationType\NHibernate\GenerateGoodIdentificationTypeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\InOutLineMvo\NHibernate\GenerateInOutLineMvoDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1579,6 +1619,12 @@
 .\FacilityEvent.hbm.xml
 .\FacilityState.hbm.xml
 .\GenerateAggregatesHbm.txt
+.\GoodIdentificationEvent.hbm.xml
+.\GoodIdentificationMvoEvent.hbm.xml
+.\GoodIdentificationMvoState.hbm.xml
+.\GoodIdentificationState.hbm.xml
+.\GoodIdentificationTypeEvent.hbm.xml
+.\GoodIdentificationTypeState.hbm.xml
 .\InOutEvent.hbm.xml
 .\InOutLineEvent.hbm.xml
 .\InOutLineMvoEvent.hbm.xml
@@ -2131,6 +2177,24 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentPackageContentMvoEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationTypeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
@@ -2398,6 +2462,8 @@
       <LastGenOutput>GenerateProductDomainNHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateProductDomainNHibernate.txt
+.\NHibernateGoodIdentificationEventDao.cs
+.\NHibernateGoodIdentificationStateDao.cs
 .\NHibernateProductEventStore.cs
 .\NHibernateProductStateQueryRepository.cs
 .\NHibernateProductStateRepository.cs
@@ -2952,6 +3018,28 @@
 .\NHibernateOrderItemShipGroupAssociationMvoStateQueryRepository.cs
 .\NHibernateOrderItemShipGroupAssociationMvoStateRepository.cs
 .\OrderItemShipGroupAssociationMvoApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\GoodIdentificationType\NHibernate\GenerateGoodIdentificationTypeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationTypeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateGoodIdentificationTypeDomainNHibernate.txt
+.\GoodIdentificationTypeApplicationService.cs
+.\NHibernateGoodIdentificationTypeEventStore.cs
+.\NHibernateGoodIdentificationTypeStateQueryRepository.cs
+.\NHibernateGoodIdentificationTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\GoodIdentificationMvo\NHibernate\GenerateGoodIdentificationMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateGoodIdentificationMvoDomainNHibernate.txt
+.\GoodIdentificationMvoApplicationService.cs
+.\NHibernateGoodIdentificationMvoEventStore.cs
+.\NHibernateGoodIdentificationMvoStateQueryRepository.cs
+.\NHibernateGoodIdentificationMvoStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

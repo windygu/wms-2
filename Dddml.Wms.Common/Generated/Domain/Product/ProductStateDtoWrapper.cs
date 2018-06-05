@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Product
 	public partial class ProductStateDtoWrapper : StateDtoWrapperBase, IProductStateDto, IProductState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] {  };
+        internal static IList<string> _collectionFieldNames = new string[] { "GoodIdentifications" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -1949,6 +1949,52 @@ namespace Dddml.Wms.Domain.Product
             get { return this.Version == ProductState.VersionZero; }
         }
 
+        public virtual IGoodIdentificationStateDto[] GoodIdentifications
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("GoodIdentifications"))
+                {
+                    return null;
+                }
+                var dtos = new List<IGoodIdentificationStateDto>();
+                if (this._state.GoodIdentifications != null)
+                {
+                    foreach (var s in this._state.GoodIdentifications)
+                    {
+                        var dto = new GoodIdentificationStateDtoWrapper((GoodIdentificationState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "GoodIdentifications");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new GoodIdentificationStateDtoWrapper[0]; }
+                var states = new List<IGoodIdentificationState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToGoodIdentificationState());
+                }
+                this._state.GoodIdentifications = new DtoGoodIdentificationStates(this._state, states);
+            }
+        }
+
+        IGoodIdentificationStates IProductState.GoodIdentifications
+        {
+            get { return _state.GoodIdentifications; }
+            set { _state.GoodIdentifications = value; }
+        }
+
 		void IProductState.When(IProductStateCreated e)
 		{
             throw new NotSupportedException();
@@ -1978,6 +2024,67 @@ namespace Dddml.Wms.Domain.Product
 		}
 
         // //////////////////////////////////////////////////////////////
+
+        public class DtoGoodIdentificationStates : IGoodIdentificationStates
+        {
+
+            private IProductState _outerState;
+
+            private IEnumerable<IGoodIdentificationState> _innerStates;
+
+            public DtoGoodIdentificationStates(IProductState outerState, IEnumerable<IGoodIdentificationState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IGoodIdentificationState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IGoodIdentificationState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IGoodIdentificationState Get(string goodIdentificationTypeId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IGoodIdentificationState Get(string goodIdentificationTypeId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IGoodIdentificationState Get(string goodIdentificationTypeId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IGoodIdentificationState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IGoodIdentificationState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
 
 	}
 

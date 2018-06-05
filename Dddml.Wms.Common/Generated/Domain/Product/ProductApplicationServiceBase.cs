@@ -160,6 +160,16 @@ namespace Dddml.Wms.Domain.Product
             return new ProductState(eventStream.Events);
         }
 
+        public virtual IGoodIdentificationState GetGoodIdentification(string productId, string goodIdentificationTypeId)
+        {
+            return StateQueryRepository.GetGoodIdentification(productId, goodIdentificationTypeId);
+        }
+
+        public IEnumerable<IGoodIdentificationState> GetGoodIdentifications(string productId)
+        {
+            return StateQueryRepository.GetGoodIdentifications(productId);
+        }
+
 
 		public abstract IProductAggregate GetProductAggregate(IProductState state);
 

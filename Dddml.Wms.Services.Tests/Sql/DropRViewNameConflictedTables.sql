@@ -13,6 +13,7 @@ DROP TABLE if exists `OrderItemShipGroupAssociation_RV`;
 DROP TABLE if exists `PhysicalInventoryLine_RV`;
 DROP TABLE if exists `PicklistRole_RV`;
 DROP TABLE if exists `PicklistItem_RV`;
+DROP TABLE if exists `GoodIdentification_RV`;
 DROP TABLE if exists `SellableInventoryItemEntry_RV`;
 DROP TABLE if exists `ShipmentItem_RV`;
 DROP TABLE if exists `ShipmentReceipt_RV`;

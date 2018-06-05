@@ -247,6 +247,34 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\facility\hibernate\HibernateFacilityStateRepository.java">
       <DependentUpon>GenerateFacilityDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\hibernate\GenerateGoodIdentificationMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\hibernate\HibernateGoodIdentificationMvoEventStore.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\hibernate\HibernateGoodIdentificationMvoStateQueryRepository.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\hibernate\HibernateGoodIdentificationMvoStateRepository.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\hibernate\GenerateGoodIdentificationTypeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\hibernate\HibernateGoodIdentificationTypeEventStore.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\hibernate\HibernateGoodIdentificationTypeStateQueryRepository.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\hibernate\HibernateGoodIdentificationTypeStateRepository.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateHibernateTrees.txt</LastGenOutput>
@@ -867,6 +895,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\GenerateProductDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\HibernateGoodIdentificationEventDao.java">
+      <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\HibernateGoodIdentificationStateDao.java">
       <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\HibernateProductEventStore.java">
@@ -1633,6 +1667,24 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentMvoEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\GoodIdentificationTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\GoodIdentificationTypeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\GoodIdentificationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\GoodIdentificationEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\GoodIdentificationMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\GoodIdentificationMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\generated\resources\script\AddStateIdForeignKeyConstraints.sql">
       <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
     </Content>
@@ -1744,6 +1796,12 @@
 .\FacilityEvent.hbm.xml
 .\FacilityState.hbm.xml
 .\GenerateAggregatesHbm.txt
+.\GoodIdentificationEvent.hbm.xml
+.\GoodIdentificationMvoEvent.hbm.xml
+.\GoodIdentificationMvoState.hbm.xml
+.\GoodIdentificationState.hbm.xml
+.\GoodIdentificationTypeEvent.hbm.xml
+.\GoodIdentificationTypeState.hbm.xml
 .\InOutEvent.hbm.xml
 .\InOutLineEvent.hbm.xml
 .\InOutLineMvoEvent.hbm.xml
@@ -2099,6 +2157,8 @@
       <LastGenOutput>GenerateProductDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateProductDomainHibernate.txt
+.\HibernateGoodIdentificationEventDao.java
+.\HibernateGoodIdentificationStateDao.java
 .\HibernateProductEventStore.java
 .\HibernateProductStateQueryRepository.java
 .\HibernateProductStateRepository.java
@@ -2604,6 +2664,26 @@
 .\HibernateOrderItemShipGroupAssociationMvoEventStore.java
 .\HibernateOrderItemShipGroupAssociationMvoStateQueryRepository.java
 .\HibernateOrderItemShipGroupAssociationMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\hibernate\GenerateGoodIdentificationTypeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationTypeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateGoodIdentificationTypeDomainHibernate.txt
+.\HibernateGoodIdentificationTypeEventStore.java
+.\HibernateGoodIdentificationTypeStateQueryRepository.java
+.\HibernateGoodIdentificationTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\hibernate\GenerateGoodIdentificationMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateGoodIdentificationMvoDomainHibernate.txt
+.\HibernateGoodIdentificationMvoEventStore.java
+.\HibernateGoodIdentificationMvoStateQueryRepository.java
+.\HibernateGoodIdentificationMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

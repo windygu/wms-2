@@ -737,6 +737,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchGoodIdentificationDto[] goodIdentifications;
+
+    public CreateOrMergePatchGoodIdentificationDto[] getGoodIdentifications()
+    {
+        return this.goodIdentifications;
+    }
+
+    public void setGoodIdentifications(CreateOrMergePatchGoodIdentificationDto[] goodIdentifications)
+    {
+        this.goodIdentifications = goodIdentifications;
+    }
+
     private Boolean isPropertyProductTypeIdRemoved;
 
     public Boolean getIsPropertyProductTypeIdRemoved()
@@ -1543,10 +1555,20 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractProductCommand.SimpleCreateProduct command = new AbstractProductCommand.SimpleCreateProduct();
             copyTo((AbstractProductCommand.AbstractCreateProduct) command);
+            if (this.getGoodIdentifications() != null) {
+                for (CreateOrMergePatchGoodIdentificationDto cmd : this.getGoodIdentifications()) {
+                    command.getGoodIdentifications().add((GoodIdentificationCommand.CreateGoodIdentification) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractProductCommand.SimpleMergePatchProduct command = new AbstractProductCommand.SimpleMergePatchProduct();
             copyTo((AbstractProductCommand.SimpleMergePatchProduct) command);
+            if (this.getGoodIdentifications() != null) {
+                for (CreateOrMergePatchGoodIdentificationDto cmd : this.getGoodIdentifications()) {
+                    command.getGoodIdentificationCommands().add(cmd.toCommand());
+                }
+            }
             return command;
         } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());

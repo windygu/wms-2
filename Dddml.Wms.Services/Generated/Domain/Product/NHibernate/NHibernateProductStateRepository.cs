@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Product.NHibernate
 			}
             if (ReadOnlyProxyGenerator != null && state != null)
             {
-                return ReadOnlyProxyGenerator.CreateProxy<IProductState>(state, new Type[] {  }, _readOnlyPropertyNames);
+                return ReadOnlyProxyGenerator.CreateProxy<IProductState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
             }
 			return state;
 		}

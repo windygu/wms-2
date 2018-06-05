@@ -86,6 +86,13 @@ public class ProductStateEventDtoConverter {
         dto.setAttributeSetId(e.getAttributeSetId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setActive(e.getActive());
+        List<GoodIdentificationStateEventDto.GoodIdentificationStateCreatedDto> goodIdentificationEvents = new ArrayList<>();
+        for (GoodIdentificationEvent.GoodIdentificationStateCreated ee : e.getGoodIdentificationEvents()) {
+            GoodIdentificationStateEventDto.GoodIdentificationStateCreatedDto eeDto = getGoodIdentificationStateEventDtoConverter().toGoodIdentificationStateCreatedDto(ee);
+            goodIdentificationEvents.add(eeDto);
+        }
+        dto.setGoodIdentificationEvents(goodIdentificationEvents.toArray(new GoodIdentificationStateEventDto.GoodIdentificationStateCreatedDto[0]));
+
         return dto;
     }
 
@@ -217,9 +224,20 @@ public class ProductStateEventDtoConverter {
         dto.setIsPropertyAttributeSetIdRemoved(e.getIsPropertyAttributeSetIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
+        List<GoodIdentificationStateEventDto> goodIdentificationEvents = new ArrayList<>();
+        for (GoodIdentificationEvent ee : e.getGoodIdentificationEvents()) {
+            GoodIdentificationStateEventDto eeDto = getGoodIdentificationStateEventDtoConverter().toGoodIdentificationStateEventDto((AbstractGoodIdentificationEvent) ee);
+            goodIdentificationEvents.add(eeDto);
+        }
+        dto.setGoodIdentificationEvents(goodIdentificationEvents.toArray(new GoodIdentificationStateEventDto[0]));
+
         return dto;
     }
 
+
+    protected GoodIdentificationStateEventDtoConverter getGoodIdentificationStateEventDtoConverter() {
+        return new GoodIdentificationStateEventDtoConverter();
+    }
 
 }
 

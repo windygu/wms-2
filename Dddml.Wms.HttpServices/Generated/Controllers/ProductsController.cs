@@ -201,6 +201,37 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ProductsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{productId}/GoodIdentifications/{goodIdentificationTypeId}")]
+        [HttpGet]
+        public IGoodIdentificationStateDto GetGoodIdentification(string productId, string goodIdentificationTypeId)
+        {
+          try {
+            var state = (GoodIdentificationState)_productApplicationService.GetGoodIdentification(productId, goodIdentificationTypeId);
+            if (state == null) { return null; }
+            var stateDto = new GoodIdentificationStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = ProductsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{productId}/GoodIdentifications/")]
+        [HttpGet]
+        public IEnumerable<IGoodIdentificationStateDto> GetGoodIdentifications(string productId)
+        {
+          try {
+            var states = _productApplicationService.GetGoodIdentifications(productId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IGoodIdentificationStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is GoodIdentificationStateDtoWrapper ? (GoodIdentificationStateDtoWrapper)s : new GoodIdentificationStateDtoWrapper((GoodIdentificationState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = ProductsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

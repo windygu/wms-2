@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.product.ProductEvent.*;
 
-public abstract class AbstractProductState implements ProductState
+public abstract class AbstractProductState implements ProductState, Saveable
 {
 
     private String productId;
@@ -818,6 +818,18 @@ public abstract class AbstractProductState implements ProductState
         return this.getVersion() == null;
     }
 
+    private GoodIdentificationStates goodIdentifications;
+
+    public GoodIdentificationStates getGoodIdentifications()
+    {
+        return this.goodIdentifications;
+    }
+
+    public void setGoodIdentifications(GoodIdentificationStates goodIdentifications)
+    {
+        this.goodIdentifications = goodIdentifications;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -857,6 +869,7 @@ public abstract class AbstractProductState implements ProductState
     }
     
     protected void initializeProperties() {
+        goodIdentifications = new SimpleGoodIdentificationStates(this);
     }
 
 
@@ -940,6 +953,10 @@ public abstract class AbstractProductState implements ProductState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (GoodIdentificationEvent.GoodIdentificationStateCreated innerEvent : e.getGoodIdentificationEvents()) {
+            GoodIdentificationState innerState = this.getGoodIdentifications().get(innerEvent.getGoodIdentificationEventId().getGoodIdentificationTypeId());
+            innerState.mutate(innerEvent);
+        }
     }
 
     public void when(ProductStateMergePatched e)
@@ -1621,10 +1638,21 @@ public abstract class AbstractProductState implements ProductState
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (GoodIdentificationEvent innerEvent : e.getGoodIdentificationEvents()) {
+            GoodIdentificationState innerState = this.getGoodIdentifications().get(innerEvent.getGoodIdentificationEventId().getGoodIdentificationTypeId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof GoodIdentificationEvent.GoodIdentificationStateRemoved)
+            {
+                //GoodIdentificationEvent.GoodIdentificationStateRemoved removed = (GoodIdentificationEvent.GoodIdentificationStateRemoved)innerEvent;
+                this.getGoodIdentifications().remove(innerState);
+            }
+        }
     }
 
     public void save()
     {
+        goodIdentifications.save();
+
     }
 
     protected void throwOnWrongEvent(ProductEvent event)
@@ -1662,6 +1690,14 @@ public abstract class AbstractProductState implements ProductState
             super(events);
         }
 
+    }
+
+    static class SimpleGoodIdentificationStates extends AbstractGoodIdentificationStates
+    {
+        public SimpleGoodIdentificationStates(AbstractProductState outerState)
+        {
+            super(outerState);
+        }
     }
 
 

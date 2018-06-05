@@ -115,6 +115,14 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         ((AbstractProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        Long version = c.getVersion();
+        for (GoodIdentificationCommand.CreateGoodIdentification innerCommand : c.getGoodIdentifications())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            GoodIdentificationEvent.GoodIdentificationStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            e.addGoodIdentificationEvent(innerEvent);
+        }
+
         return e;
     }
 
@@ -246,8 +254,103 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         ((AbstractProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        Long version = c.getVersion();
+        for (GoodIdentificationCommand innerCommand : c.getGoodIdentificationCommands())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            GoodIdentificationEvent innerEvent = map(innerCommand, c, version, this.state);
+            e.addGoodIdentificationEvent(innerEvent);
+        }
+
         return e;
     }
+
+
+    protected GoodIdentificationEvent map(GoodIdentificationCommand c, ProductCommand outerCommand, Long version, ProductState outerState)
+    {
+        GoodIdentificationCommand.CreateGoodIdentification create = (c.getCommandType().equals(CommandType.CREATE)) ? ((GoodIdentificationCommand.CreateGoodIdentification)c) : null;
+        if(create != null)
+        {
+            return mapCreate(create, outerCommand, version, outerState);
+        }
+
+        GoodIdentificationCommand.MergePatchGoodIdentification merge = (c.getCommandType().equals(CommandType.MERGE_PATCH)) ? ((GoodIdentificationCommand.MergePatchGoodIdentification)c) : null;
+        if(merge != null)
+        {
+            return mapMergePatch(merge, outerCommand, version, outerState);
+        }
+
+        GoodIdentificationCommand.RemoveGoodIdentification remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((GoodIdentificationCommand.RemoveGoodIdentification)c) : null;
+        if (remove != null)
+        {
+            return mapRemove(remove, outerCommand, version);
+        }
+        throw new UnsupportedOperationException();
+    }
+
+    protected GoodIdentificationEvent.GoodIdentificationStateCreated mapCreate(GoodIdentificationCommand.CreateGoodIdentification c, ProductCommand outerCommand, Long version, ProductState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        GoodIdentificationEventId stateEventId = new GoodIdentificationEventId(c.getProductId(), c.getGoodIdentificationTypeId(), version);
+        GoodIdentificationEvent.GoodIdentificationStateCreated e = newGoodIdentificationStateCreated(stateEventId);
+        GoodIdentificationState s = outerState.getGoodIdentifications().get(c.getGoodIdentificationTypeId());
+
+        e.setIdValue(c.getIdValue());
+        e.setActive(c.getActive());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(ICreate... ////////////////////////////
+
+    protected GoodIdentificationEvent.GoodIdentificationStateMergePatched mapMergePatch(GoodIdentificationCommand.MergePatchGoodIdentification c, ProductCommand outerCommand, Long version, ProductState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        GoodIdentificationEventId stateEventId = new GoodIdentificationEventId(c.getProductId(), c.getGoodIdentificationTypeId(), version);
+        GoodIdentificationEvent.GoodIdentificationStateMergePatched e = newGoodIdentificationStateMergePatched(stateEventId);
+        GoodIdentificationState s = outerState.getGoodIdentifications().get(c.getGoodIdentificationTypeId());
+
+        e.setIdValue(c.getIdValue());
+        e.setActive(c.getActive());
+        e.setIsPropertyIdValueRemoved(c.getIsPropertyIdValueRemoved());
+        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(IMergePatch... ////////////////////////////
+
+    protected GoodIdentificationEvent.GoodIdentificationStateRemoved mapRemove(GoodIdentificationCommand.RemoveGoodIdentification c, ProductCommand outerCommand, Long version)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        GoodIdentificationEventId stateEventId = new GoodIdentificationEventId(c.getProductId(), c.getGoodIdentificationTypeId(), version);
+        GoodIdentificationEvent.GoodIdentificationStateRemoved e = newGoodIdentificationStateRemoved(stateEventId);
+
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        return e;
+
+    }// END map(IRemove... ////////////////////////////
+
+    protected void throwOnInconsistentCommands(ProductCommand command, GoodIdentificationCommand innerCommand)
+    {
+        AbstractProductCommand properties = command instanceof AbstractProductCommand ? (AbstractProductCommand) command : null;
+        AbstractGoodIdentificationCommand innerProperties = innerCommand instanceof AbstractGoodIdentificationCommand ? (AbstractGoodIdentificationCommand) innerCommand : null;
+        if (properties == null || innerProperties == null) { return; }
+        String outerProductIdName = "ProductId";
+        String outerProductIdValue = properties.getProductId();
+        String innerProductIdName = "ProductId";
+        String innerProductIdValue = innerProperties.getProductId();
+        if (innerProductIdValue == null) {
+            innerProperties.setProductId(outerProductIdValue);
+        }
+        else if (innerProductIdValue != outerProductIdValue 
+            && (innerProductIdValue == null || innerProductIdValue != null && !innerProductIdValue.equals(outerProductIdValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerProductIdName, outerProductIdValue, innerProductIdName, innerProductIdValue);
+        }
+    }// END throwOnInconsistentCommands /////////////////////
 
 
     ////////////////////////
@@ -276,6 +379,19 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
 
     protected ProductEvent.ProductStateMergePatched newProductStateMergePatched(ProductEventId stateEventId) {
         return new AbstractProductEvent.SimpleProductStateMergePatched(stateEventId);
+    }
+
+    protected GoodIdentificationEvent.GoodIdentificationStateCreated newGoodIdentificationStateCreated(GoodIdentificationEventId stateEventId) {
+        return new AbstractGoodIdentificationEvent.SimpleGoodIdentificationStateCreated(stateEventId);
+    }
+
+    protected GoodIdentificationEvent.GoodIdentificationStateMergePatched newGoodIdentificationStateMergePatched(GoodIdentificationEventId stateEventId) {
+        return new AbstractGoodIdentificationEvent.SimpleGoodIdentificationStateMergePatched(stateEventId);
+    }
+
+    protected GoodIdentificationEvent.GoodIdentificationStateRemoved newGoodIdentificationStateRemoved(GoodIdentificationEventId stateEventId)
+    {
+        return new AbstractGoodIdentificationEvent.SimpleGoodIdentificationStateRemoved(stateEventId);
     }
 
     public static class SimpleProductAggregate extends AbstractProductAggregate

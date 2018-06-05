@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Product.NHibernate
 			IProductState state = CurrentSession.Get<ProductState>(id);
             if (ReadOnlyProxyGenerator != null && state != null)
             {
-                return ReadOnlyProxyGenerator.CreateProxy<IProductState>(state, new Type[] {  }, _readOnlyPropertyNames);
+                return ReadOnlyProxyGenerator.CreateProxy<IProductState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
             }
 			return state;
 		}
@@ -124,6 +124,24 @@ namespace Dddml.Wms.Domain.Product.NHibernate
             }
             AddNotDeletedRestriction(criteria);
             return criteria.UniqueResult<long>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IGoodIdentificationState GetGoodIdentification(string productId, string goodIdentificationTypeId)
+        {
+            var entityId = new ProductGoodIdentificationId(productId, goodIdentificationTypeId);
+            return CurrentSession.Get<GoodIdentificationState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IGoodIdentificationState> GetGoodIdentifications(string productId)
+        {
+            var criteria = CurrentSession.CreateCriteria<GoodIdentificationState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ProductGoodIdentificationId.ProductId", productId))
+                ;
+
+            return criteria.Add(partIdCondition).List<GoodIdentificationState>();
         }
 
 

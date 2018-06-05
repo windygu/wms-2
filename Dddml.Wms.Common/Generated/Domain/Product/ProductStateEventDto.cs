@@ -1371,6 +1371,97 @@ namespace Dddml.Wms.Domain.Product
 		}
 
 
+        private GoodIdentificationStateCreatedOrMergePatchedOrRemovedDtos _goodIdentificationEvents = new GoodIdentificationStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual GoodIdentificationStateCreatedOrMergePatchedOrRemovedDto[] GoodIdentificationEvents
+        {
+            get
+            {
+                return _goodIdentificationEvents.ToArray();
+            }
+            set
+            {
+                _goodIdentificationEvents.Clear();
+                _goodIdentificationEvents.AddRange(value);
+            }
+        }
+
+
+
+        private GoodIdentificationEventId NewGoodIdentificationEventId(string goodIdentificationTypeId)
+        {
+            var eId = new GoodIdentificationEventId();
+            eId.ProductId = this.ProductEventId.ProductId;
+            eId.GoodIdentificationTypeId = goodIdentificationTypeId;
+            eId.ProductVersion = this.ProductEventId.Version;
+            return eId;
+        }
+
+        public virtual GoodIdentificationStateCreatedDto NewGoodIdentificationStateCreated(string goodIdentificationTypeId)
+        {
+            var e = new GoodIdentificationStateCreatedDto();
+            var eId = NewGoodIdentificationEventId(goodIdentificationTypeId);
+            e.GoodIdentificationEventId = eId;
+            return e;
+        }
+
+        public virtual GoodIdentificationStateMergePatchedDto NewGoodIdentificationStateMergePatched(string goodIdentificationTypeId)
+        {
+            var e = new GoodIdentificationStateMergePatchedDto();
+            var eId = NewGoodIdentificationEventId(goodIdentificationTypeId);
+            e.GoodIdentificationEventId = eId;
+            return e;
+        }
+
+        public virtual GoodIdentificationStateRemovedDto NewGoodIdentificationStateRemoved(string goodIdentificationTypeId)
+        {
+            var e = new GoodIdentificationStateRemovedDto();
+            var eId = NewGoodIdentificationEventId(goodIdentificationTypeId);
+            e.GoodIdentificationEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IGoodIdentificationStateCreated> IProductStateCreated.GoodIdentificationEvents
+        {
+            get { return this._goodIdentificationEvents; }
+        }
+
+        void IProductStateCreated.AddGoodIdentificationEvent(IGoodIdentificationStateCreated e)
+        {
+            this._goodIdentificationEvents.AddGoodIdentificationEvent(e);
+        }
+
+        IGoodIdentificationStateCreated IProductStateCreated.NewGoodIdentificationStateCreated(string goodIdentificationTypeId)
+        {
+            return NewGoodIdentificationStateCreated(goodIdentificationTypeId);
+        }
+
+        IEnumerable<IGoodIdentificationEvent> IProductStateMergePatched.GoodIdentificationEvents
+        {
+            get { return this._goodIdentificationEvents; }
+        }
+
+        void IProductStateMergePatched.AddGoodIdentificationEvent(IGoodIdentificationEvent e)
+        {
+            this._goodIdentificationEvents.AddGoodIdentificationEvent(e);
+        }
+
+        IGoodIdentificationStateCreated IProductStateMergePatched.NewGoodIdentificationStateCreated(string goodIdentificationTypeId)
+        {
+            return NewGoodIdentificationStateCreated(goodIdentificationTypeId);
+        }
+
+        IGoodIdentificationStateMergePatched IProductStateMergePatched.NewGoodIdentificationStateMergePatched(string goodIdentificationTypeId)
+        {
+            return NewGoodIdentificationStateMergePatched(goodIdentificationTypeId);
+        }
+
+        IGoodIdentificationStateRemoved IProductStateMergePatched.NewGoodIdentificationStateRemoved(string goodIdentificationTypeId)
+        {
+            return NewGoodIdentificationStateRemoved(goodIdentificationTypeId);
+        }
+
+
         ProductEventId IProductEvent.ProductEventId
         {
             get { return this.ProductEventId; }

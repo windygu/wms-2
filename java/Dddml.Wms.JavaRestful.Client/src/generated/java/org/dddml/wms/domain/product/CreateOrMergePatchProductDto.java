@@ -737,6 +737,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchGoodIdentificationDto[] goodIdentifications;
+
+    public CreateOrMergePatchGoodIdentificationDto[] getGoodIdentifications()
+    {
+        return this.goodIdentifications;
+    }
+
+    public void setGoodIdentifications(CreateOrMergePatchGoodIdentificationDto[] goodIdentifications)
+    {
+        this.goodIdentifications = goodIdentifications;
+    }
+
     private Boolean isPropertyProductTypeIdRemoved;
 
     public Boolean getIsPropertyProductTypeIdRemoved()

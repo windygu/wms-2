@@ -1025,6 +1025,136 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoAggregate.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoApplicationService.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoCommand.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoCommandDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoEvent.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoState.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoStateCommandConverter.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\CreateOrMergePatchGoodIdentificationMvoDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\DeleteGoodIdentificationMvoDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GenerateGoodIdentificationMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoAggregate.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoApplicationService.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoCommand.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoEvent.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoEventId.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoState.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoStateDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoStateEventDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoStateQueryRepository.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoStateRepository.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeAggregate.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeApplicationService.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeCommand.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeCommandDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeEvent.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeState.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeStateCommandConverter.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\CreateOrMergePatchGoodIdentificationTypeDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\DeleteGoodIdentificationTypeDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GenerateGoodIdentificationTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeAggregate.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeApplicationService.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeCommand.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeEvent.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeEventId.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeState.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateEventDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateEventDtoConverter.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateQueryRepository.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateRepository.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\AbstractInOutLineMvoEvent.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Content>
@@ -1296,6 +1426,15 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\FacilityMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\GoodIdentificationMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\GoodIdentificationMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\GoodIdentificationTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMetadata.java">
@@ -2587,13 +2726,121 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\ProductCategoryEventId.java">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationCommand.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationCommandDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationEvent.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationState.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationStateCommandConverter.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationStates.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductAggregate.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductApplicationService.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductCommand.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductCommandDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductEvent.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductState.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductStateCommandConverter.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\CreateOrMergePatchGoodIdentificationDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\CreateOrMergePatchProductDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\DeleteProductDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationCommand.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationEvent.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationEventDao.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationEventId.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationState.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateDao.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateEventDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateEventDtoConverter.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStates.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductAggregate.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductApplicationService.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductCommand.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductEvent.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductEventId.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductGoodIdentificationId.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductState.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateEventDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateEventDtoConverter.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateQueryRepository.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateRepository.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\RemoveGoodIdentificationDto.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonEvent.java">
@@ -3978,6 +4225,9 @@
 .\DocumentTypeMetadata.java
 .\FacilityMetadata.java
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
+.\GoodIdentificationMetadata.java
+.\GoodIdentificationMvoMetadata.java
+.\GoodIdentificationTypeMetadata.java
 .\InOutLineMetadata.java
 .\InOutLineMvoMetadata.java
 .\InOutMetadata.java
@@ -5177,60 +5427,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\ProductCategoryStateRepository.java">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductAggregate.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductApplicationService.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductCommand.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductCommandDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductState.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductStateCommandConverter.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\CreateOrMergePatchProductDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\DeleteProductDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\GenerateProductDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductAggregate.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductApplicationService.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductCommand.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductState.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateEventDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateEventDtoConverter.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateQueryRepository.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateRepository.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonAggregate.java">
@@ -6770,6 +6969,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateProductDomain.txt</LastGenOutput>
       <LastOutputs>
+.\AbstractGoodIdentificationCommand.java
+.\AbstractGoodIdentificationCommandDto.java
+.\AbstractGoodIdentificationEvent.java
+.\AbstractGoodIdentificationState.java
+.\AbstractGoodIdentificationStateCommandConverter.java
+.\AbstractGoodIdentificationStates.java
 .\AbstractProductAggregate.java
 .\AbstractProductApplicationService.java
 .\AbstractProductCommand.java
@@ -6777,20 +6982,33 @@
 .\AbstractProductEvent.java
 .\AbstractProductState.java
 .\AbstractProductStateCommandConverter.java
+.\CreateOrMergePatchGoodIdentificationDto.java
 .\CreateOrMergePatchProductDto.java
 .\DeleteProductDto.java
 .\GenerateProductDomain.txt
+.\GoodIdentificationCommand.java
+.\GoodIdentificationEvent.java
+.\GoodIdentificationEventDao.java
+.\GoodIdentificationEventId.java
+.\GoodIdentificationState.java
+.\GoodIdentificationStateDao.java
+.\GoodIdentificationStateDto.java
+.\GoodIdentificationStateEventDto.java
+.\GoodIdentificationStateEventDtoConverter.java
+.\GoodIdentificationStates.java
 .\ProductAggregate.java
 .\ProductApplicationService.java
 .\ProductCommand.java
 .\ProductEvent.java
 .\ProductEventId.java
+.\ProductGoodIdentificationId.java
 .\ProductState.java
 .\ProductStateDto.java
 .\ProductStateEventDto.java
 .\ProductStateEventDtoConverter.java
 .\ProductStateQueryRepository.java
 .\ProductStateRepository.java
+.\RemoveGoodIdentificationDto.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\GenerateProductCategoryDomain.tt">
@@ -8342,6 +8560,60 @@
 .\OrderItemShipGroupAssociationMvoStateEventDtoConverter.java
 .\OrderItemShipGroupAssociationMvoStateQueryRepository.java
 .\OrderItemShipGroupAssociationMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GenerateGoodIdentificationTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractGoodIdentificationTypeAggregate.java
+.\AbstractGoodIdentificationTypeApplicationService.java
+.\AbstractGoodIdentificationTypeCommand.java
+.\AbstractGoodIdentificationTypeCommandDto.java
+.\AbstractGoodIdentificationTypeEvent.java
+.\AbstractGoodIdentificationTypeState.java
+.\AbstractGoodIdentificationTypeStateCommandConverter.java
+.\CreateOrMergePatchGoodIdentificationTypeDto.java
+.\DeleteGoodIdentificationTypeDto.java
+.\GenerateGoodIdentificationTypeDomain.txt
+.\GoodIdentificationTypeAggregate.java
+.\GoodIdentificationTypeApplicationService.java
+.\GoodIdentificationTypeCommand.java
+.\GoodIdentificationTypeEvent.java
+.\GoodIdentificationTypeEventId.java
+.\GoodIdentificationTypeState.java
+.\GoodIdentificationTypeStateDto.java
+.\GoodIdentificationTypeStateEventDto.java
+.\GoodIdentificationTypeStateEventDtoConverter.java
+.\GoodIdentificationTypeStateQueryRepository.java
+.\GoodIdentificationTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GenerateGoodIdentificationMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractGoodIdentificationMvoAggregate.java
+.\AbstractGoodIdentificationMvoApplicationService.java
+.\AbstractGoodIdentificationMvoCommand.java
+.\AbstractGoodIdentificationMvoCommandDto.java
+.\AbstractGoodIdentificationMvoEvent.java
+.\AbstractGoodIdentificationMvoState.java
+.\AbstractGoodIdentificationMvoStateCommandConverter.java
+.\CreateOrMergePatchGoodIdentificationMvoDto.java
+.\DeleteGoodIdentificationMvoDto.java
+.\GenerateGoodIdentificationMvoDomain.txt
+.\GoodIdentificationMvoAggregate.java
+.\GoodIdentificationMvoApplicationService.java
+.\GoodIdentificationMvoCommand.java
+.\GoodIdentificationMvoEvent.java
+.\GoodIdentificationMvoEventId.java
+.\GoodIdentificationMvoState.java
+.\GoodIdentificationMvoStateDto.java
+.\GoodIdentificationMvoStateEventDto.java
+.\GoodIdentificationMvoStateEventDtoConverter.java
+.\GoodIdentificationMvoStateQueryRepository.java
+.\GoodIdentificationMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -48,6 +48,10 @@ public interface RxProductsClient {
     Observable<ProductStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
+    @GET("Products/{productId}/GoodIdentifications/{goodIdentificationTypeId}")
+    Observable<GoodIdentificationStateDto> getGoodIdentification(@Path("productId") String productId, @Path("goodIdentificationTypeId") String goodIdentificationTypeId);
+ 
+    @Headers("Accept: application/json")
     @PUT("Products/{id}")
     Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchProductDto.CreateProductDto value);
 

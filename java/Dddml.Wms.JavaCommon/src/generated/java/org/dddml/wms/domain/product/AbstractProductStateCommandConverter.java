@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractProductStateCommandConverter<TCreateProduct extends ProductCommand.CreateProduct, TMergePatchProduct extends ProductCommand.MergePatchProduct, TDeleteProduct extends ProductCommand.DeleteProduct>
+public abstract class AbstractProductStateCommandConverter<TCreateProduct extends ProductCommand.CreateProduct, TMergePatchProduct extends ProductCommand.MergePatchProduct, TDeleteProduct extends ProductCommand.DeleteProduct, TCreateGoodIdentification extends GoodIdentificationCommand.CreateGoodIdentification, TMergePatchGoodIdentification extends GoodIdentificationCommand.MergePatchGoodIdentification, TRemoveGoodIdentification extends GoodIdentificationCommand.RemoveGoodIdentification>
 {
     public ProductCommand toCreateOrMergePatchProduct(ProductState state)
     {
@@ -160,6 +160,11 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         if (state.getAttributeSetId() == null) { cmd.setIsPropertyAttributeSetIdRemoved(true); }
         if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        for (GoodIdentificationState d : state.getGoodIdentifications())
+        {
+            GoodIdentificationCommand c = getGoodIdentificationStateCommandConverter().toCreateOrMergePatchGoodIdentification(d);
+            cmd.getGoodIdentificationCommands().add(c);
+        }
         return cmd;
     }
 
@@ -230,8 +235,16 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setActive(state.getActive());
+        for (GoodIdentificationState d : state.getGoodIdentifications())
+        {
+            GoodIdentificationCommand.CreateGoodIdentification c = getGoodIdentificationStateCommandConverter().toCreateGoodIdentification(d);
+            cmd.getGoodIdentifications().add(c);
+        }
         return cmd;
     }
+
+    protected abstract AbstractGoodIdentificationStateCommandConverter<TCreateGoodIdentification, TMergePatchGoodIdentification, TRemoveGoodIdentification>
+        getGoodIdentificationStateCommandConverter();
 
     protected abstract TCreateProduct newCreateProduct();
 
@@ -239,7 +252,7 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
 
     protected abstract TDeleteProduct newDeleteProduct();
 
-    public static class SimpleProductStateCommandConverter extends AbstractProductStateCommandConverter<AbstractProductCommand.SimpleCreateProduct, AbstractProductCommand.SimpleMergePatchProduct, AbstractProductCommand.SimpleDeleteProduct>
+    public static class SimpleProductStateCommandConverter extends AbstractProductStateCommandConverter<AbstractProductCommand.SimpleCreateProduct, AbstractProductCommand.SimpleMergePatchProduct, AbstractProductCommand.SimpleDeleteProduct, AbstractGoodIdentificationCommand.SimpleCreateGoodIdentification, AbstractGoodIdentificationCommand.SimpleMergePatchGoodIdentification, AbstractGoodIdentificationCommand.SimpleRemoveGoodIdentification>
     {
         @Override
         protected AbstractProductCommand.SimpleCreateProduct newCreateProduct() {
@@ -254,6 +267,12 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         @Override
         protected AbstractProductCommand.SimpleDeleteProduct newDeleteProduct() {
             return new AbstractProductCommand.SimpleDeleteProduct();
+        }
+
+        @Override
+        protected AbstractGoodIdentificationStateCommandConverter<AbstractGoodIdentificationCommand.SimpleCreateGoodIdentification, AbstractGoodIdentificationCommand.SimpleMergePatchGoodIdentification, AbstractGoodIdentificationCommand.SimpleRemoveGoodIdentification> getGoodIdentificationStateCommandConverter()
+        {
+            return new AbstractGoodIdentificationStateCommandConverter.SimpleGoodIdentificationStateCommandConverter();
         }
 
 

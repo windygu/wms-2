@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Product
 
         public static IProductCommand ToCreateOrMergePatchProduct(this ProductStateDtoWrapper state)
         {
-            return state.ToCreateOrMergePatchProduct<CreateProductDto, MergePatchProductDto>();
+            return state.ToCreateOrMergePatchProduct<CreateProductDto, MergePatchProductDto, CreateGoodIdentificationDto, MergePatchGoodIdentificationDto>();
         }
 
         public static DeleteProductDto ToDeleteProduct(this ProductStateDtoWrapper state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.Product
 
         public static MergePatchProductDto ToMergePatchProduct(this ProductStateDtoWrapper state)
         {
-            return state.ToMergePatchProduct<MergePatchProductDto>();
+            return state.ToMergePatchProduct<MergePatchProductDto, CreateGoodIdentificationDto, MergePatchGoodIdentificationDto>();
         }
 
         public static CreateProductDto ToCreateProduct(this ProductStateDtoWrapper state)
         {
-            return state.ToCreateProduct<CreateProductDto>();
+            return state.ToCreateProduct<CreateProductDto, CreateGoodIdentificationDto>();
         }
 		
 

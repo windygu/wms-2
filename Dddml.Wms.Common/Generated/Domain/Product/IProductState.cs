@@ -29,6 +29,9 @@ namespace Dddml.Wms.Domain.Product
 		void Mutate(IEvent e);
 
 
+		IGoodIdentificationStates GoodIdentifications { get; set; }
+
+
         bool IsUnsaved { get; }
 
 	}

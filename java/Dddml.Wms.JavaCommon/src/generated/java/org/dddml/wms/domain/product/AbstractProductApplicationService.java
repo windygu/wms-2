@@ -98,6 +98,14 @@ public abstract class AbstractProductApplicationService implements ProductApplic
         return new AbstractProductState.SimpleProductState(eventStream.getEvents());
     }
 
+    public GoodIdentificationState getGoodIdentification(String productId, String goodIdentificationTypeId) {
+        return getStateQueryRepository().getGoodIdentification(productId, goodIdentificationTypeId);
+    }
+
+    public Iterable<GoodIdentificationState> getGoodIdentifications(String productId) {
+        return getStateQueryRepository().getGoodIdentifications(productId);
+    }
+
 
     public ProductAggregate getProductAggregate(ProductState state)
     {

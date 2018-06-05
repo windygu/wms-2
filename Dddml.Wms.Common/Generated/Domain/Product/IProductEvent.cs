@@ -147,6 +147,12 @@ namespace Dddml.Wms.Domain.Product
    
 	public interface IProductStateCreated : IProductStateEvent
 	{
+		IEnumerable<IGoodIdentificationStateCreated> GoodIdentificationEvents { get; }
+		
+		void AddGoodIdentificationEvent(IGoodIdentificationStateCreated e);
+
+		IGoodIdentificationStateCreated NewGoodIdentificationStateCreated(string goodIdentificationTypeId);
+
 	
 	}
 
@@ -274,6 +280,16 @@ namespace Dddml.Wms.Domain.Product
 		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
+
+		IEnumerable<IGoodIdentificationEvent> GoodIdentificationEvents { get; }
+		
+		void AddGoodIdentificationEvent(IGoodIdentificationEvent e);
+
+		IGoodIdentificationStateCreated NewGoodIdentificationStateCreated(string goodIdentificationTypeId);
+
+		IGoodIdentificationStateMergePatched NewGoodIdentificationStateMergePatched(string goodIdentificationTypeId);
+
+		IGoodIdentificationStateRemoved NewGoodIdentificationStateRemoved(string goodIdentificationTypeId);
 
 
 	}

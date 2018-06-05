@@ -47,6 +47,10 @@ public interface ProductsClient {
     Call<ProductStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
+    @GET("Products/{productId}/GoodIdentifications/{goodIdentificationTypeId}")
+    Call<GoodIdentificationStateDto> getGoodIdentification(@Path("productId") String productId, @Path("goodIdentificationTypeId") String goodIdentificationTypeId);
+ 
+    @Headers("Accept: application/json")
     @PUT("Products/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchProductDto.CreateProductDto value);
 

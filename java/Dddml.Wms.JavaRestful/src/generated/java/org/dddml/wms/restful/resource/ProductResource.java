@@ -184,6 +184,31 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{productId}/GoodIdentifications/{goodIdentificationTypeId}") @GET
+    public GoodIdentificationStateDto getGoodIdentification(@PathParam("productId") String productId, @PathParam("goodIdentificationTypeId") String goodIdentificationTypeId) {
+        try {
+
+            GoodIdentificationState state = productApplicationService.getGoodIdentification(productId, goodIdentificationTypeId);
+            if (state == null) { return null; }
+            GoodIdentificationStateDto.DtoConverter dtoConverter = new GoodIdentificationStateDto.DtoConverter();
+            GoodIdentificationStateDto stateDto = dtoConverter.toGoodIdentificationStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{productId}/GoodIdentifications/") @GET
+    public GoodIdentificationStateDto[] getGoodIdentifications(@PathParam("productId") String productId) {
+        try {
+            Iterable<GoodIdentificationState> states = productApplicationService.getGoodIdentifications(productId);
+            if (states == null) { return null; }
+            GoodIdentificationStateDto.DtoConverter dtoConverter = new GoodIdentificationStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toGoodIdentificationStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  ProductStateEventDtoConverter getProductStateEventDtoConverter() {
         return new ProductStateEventDtoConverter();

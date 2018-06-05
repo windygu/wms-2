@@ -80,6 +80,33 @@ namespace Dddml.Wms.Domain.Product
             this.ProductEventId = stateEventId;
         }
 
+		protected IGoodIdentificationEventDao GoodIdentificationEventDao
+		{
+			get { return ApplicationContext.Current["GoodIdentificationEventDao"] as IGoodIdentificationEventDao; }
+		}
+
+        protected GoodIdentificationEventId NewGoodIdentificationEventId(string goodIdentificationTypeId)
+        {
+            var stateEventId = new GoodIdentificationEventId(this.ProductEventId.ProductId, goodIdentificationTypeId, this.ProductEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IGoodIdentificationEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IProductEvent oe, IGoodIdentificationEvent e)
+		{
+			if (!oe.ProductEventId.ProductId.Equals(e.GoodIdentificationEventId.ProductId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id ProductId {0} but inner id ProductId {1}", 
+					oe.ProductEventId.ProductId, e.GoodIdentificationEventId.ProductId);
+			}
+		}
+
+
 
         string IEventDto.EventType
         {
@@ -225,7 +252,7 @@ namespace Dddml.Wms.Domain.Product
 
     }
 
-	public class ProductStateCreated : ProductStateEventBase, IProductStateCreated
+	public class ProductStateCreated : ProductStateEventBase, IProductStateCreated, ISaveable
 	{
 		public ProductStateCreated () : this(new ProductEventId())
 		{
@@ -235,6 +262,62 @@ namespace Dddml.Wms.Domain.Product
 		{
 		}
 
+		private Dictionary<GoodIdentificationEventId, IGoodIdentificationStateCreated> _goodIdentificationEvents = new Dictionary<GoodIdentificationEventId, IGoodIdentificationStateCreated>();
+        
+        private IEnumerable<IGoodIdentificationStateCreated> _readOnlyGoodIdentificationEvents;
+
+        public virtual IEnumerable<IGoodIdentificationStateCreated> GoodIdentificationEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._goodIdentificationEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyGoodIdentificationEvents != null) { return _readOnlyGoodIdentificationEvents; }
+                    var eventDao = GoodIdentificationEventDao;
+                    var eL = new List<IGoodIdentificationStateCreated>();
+                    foreach (var e in eventDao.FindByProductEventId(this.ProductEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IGoodIdentificationStateCreated)e);
+                    }
+                    return (_readOnlyGoodIdentificationEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddGoodIdentificationEvent(e);
+                    }
+                }
+                else { this._goodIdentificationEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddGoodIdentificationEvent(IGoodIdentificationStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._goodIdentificationEvents[e.GoodIdentificationEventId] = e;
+		}
+
+        public virtual IGoodIdentificationStateCreated NewGoodIdentificationStateCreated(string goodIdentificationTypeId)
+        {
+            var stateEvent = new GoodIdentificationStateCreated(NewGoodIdentificationEventId(goodIdentificationTypeId));
+            return stateEvent;
+        }
+
+		public virtual void Save ()
+		{
+			foreach (IGoodIdentificationStateCreated e in this.GoodIdentificationEvents) {
+				GoodIdentificationEventDao.Save(e);
+			}
+		}
 
         protected override string GetEventType()
         {
@@ -244,7 +327,7 @@ namespace Dddml.Wms.Domain.Product
 	}
 
 
-	public class ProductStateMergePatched : ProductStateEventBase, IProductStateMergePatched
+	public class ProductStateMergePatched : ProductStateEventBase, IProductStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyProductTypeIdRemoved { get; set; }
 
@@ -377,6 +460,74 @@ namespace Dddml.Wms.Domain.Product
 		{
 		}
 
+		private Dictionary<GoodIdentificationEventId, IGoodIdentificationEvent> _goodIdentificationEvents = new Dictionary<GoodIdentificationEventId, IGoodIdentificationEvent>();
+
+        private IEnumerable<IGoodIdentificationEvent> _readOnlyGoodIdentificationEvents;
+        
+        public virtual IEnumerable<IGoodIdentificationEvent> GoodIdentificationEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._goodIdentificationEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyGoodIdentificationEvents != null) { return _readOnlyGoodIdentificationEvents; }
+                    var eventDao = GoodIdentificationEventDao;
+                    var eL = new List<IGoodIdentificationEvent>();
+                    foreach (var e in eventDao.FindByProductEventId(this.ProductEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IGoodIdentificationEvent)e);
+                    }
+                    return (_readOnlyGoodIdentificationEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddGoodIdentificationEvent(e);
+                    }
+                }
+                else { this._goodIdentificationEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddGoodIdentificationEvent(IGoodIdentificationEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._goodIdentificationEvents[e.GoodIdentificationEventId] = e;
+		}
+
+        public virtual IGoodIdentificationStateCreated NewGoodIdentificationStateCreated(string goodIdentificationTypeId)
+        {
+            var stateEvent = new GoodIdentificationStateCreated(NewGoodIdentificationEventId(goodIdentificationTypeId));
+            return stateEvent;
+        }
+
+        public virtual IGoodIdentificationStateMergePatched NewGoodIdentificationStateMergePatched(string goodIdentificationTypeId)
+        {
+            var stateEvent = new GoodIdentificationStateMergePatched(NewGoodIdentificationEventId(goodIdentificationTypeId));
+            return stateEvent;
+        }
+
+        public virtual IGoodIdentificationStateRemoved NewGoodIdentificationStateRemoved(string goodIdentificationTypeId)
+        {
+            var stateEvent = new GoodIdentificationStateRemoved(NewGoodIdentificationEventId(goodIdentificationTypeId));
+            return stateEvent;
+        }
+
+		public virtual void Save ()
+		{
+			foreach (IGoodIdentificationEvent e in this.GoodIdentificationEvents) {
+				GoodIdentificationEventDao.Save(e);
+			}
+		}
 
         protected override string GetEventType()
         {

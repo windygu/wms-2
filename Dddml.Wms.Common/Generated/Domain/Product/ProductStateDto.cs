@@ -417,6 +417,18 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        public virtual GoodIdentificationStateDto[] GoodIdentifications
+        {
+            get;
+            set;
+        }
+
+        IGoodIdentificationStateDto[] IProductStateDto.GoodIdentifications
+        {
+            get { return this.GoodIdentifications; }
+            set { this.GoodIdentifications = value.Select(e => ((GoodIdentificationStateDto)e)).ToArray(); }
+        }
+
         public virtual IProductState ToProductState()
         {
             var state = new ProductState(true);
@@ -487,6 +499,7 @@ namespace Dddml.Wms.Domain.Product
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.GoodIdentifications != null) { foreach (var s in this.GoodIdentifications) { state.GoodIdentifications.AddToSave(s.ToGoodIdentificationState()); } };
 
             return state;
         }

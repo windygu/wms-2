@@ -433,6 +433,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\AbstractGoodIdentificationMvoCommandDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\CreateOrMergePatchGoodIdentificationMvoDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\DeleteGoodIdentificationMvoDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GenerateGoodIdentificationMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoEventId.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoStateDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GoodIdentificationMvoStateEventDto.java">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeCommandDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\CreateOrMergePatchGoodIdentificationTypeDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\DeleteGoodIdentificationTypeDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GenerateGoodIdentificationTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeEventId.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateEventDto.java">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\AbstractInOutLineMvoCommandDto.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Content>
@@ -1578,7 +1624,13 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\ProductCategoryStateEventDto.java">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationCommandDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductCommandDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\CreateOrMergePatchGoodIdentificationDto.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\CreateOrMergePatchProductDto.java">
@@ -1592,13 +1644,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationEventId.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateEventDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductEventId.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductGoodIdentificationId.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateDto.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateEventDto.java">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\RemoveGoodIdentificationDto.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonCommandDto.java">
@@ -2622,13 +2689,20 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateProductDomain.txt</LastGenOutput>
       <LastOutputs>
+.\AbstractGoodIdentificationCommandDto.java
 .\AbstractProductCommandDto.java
+.\CreateOrMergePatchGoodIdentificationDto.java
 .\CreateOrMergePatchProductDto.java
 .\DeleteProductDto.java
 .\GenerateProductDomain.txt
+.\GoodIdentificationEventId.java
+.\GoodIdentificationStateDto.java
+.\GoodIdentificationStateEventDto.java
 .\ProductEventId.java
+.\ProductGoodIdentificationId.java
 .\ProductStateDto.java
 .\ProductStateEventDto.java
+.\RemoveGoodIdentificationDto.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\GenerateProductCategoryDomain.tt">
@@ -3239,6 +3313,8 @@
 .\DocumentTypesClient.java
 .\FacilitiesClient.java
 .\GenerateAggregatesInterfaces.txt
+.\GoodIdentificationMvosClient.java
+.\GoodIdentificationTypesClient.java
 .\InOutLineMvosClient.java
 .\InOutsClient.java
 .\InventoryItemEntryMvosClient.java
@@ -3324,6 +3400,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GoodIdentificationMvosClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\GoodIdentificationTypesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutLineMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
@@ -3470,6 +3552,8 @@
 .\RxDamageTypesClient.java
 .\RxDocumentTypesClient.java
 .\RxFacilitiesClient.java
+.\RxGoodIdentificationMvosClient.java
+.\RxGoodIdentificationTypesClient.java
 .\RxInOutLineMvosClient.java
 .\RxInOutsClient.java
 .\RxInventoryItemEntryMvosClient.java
@@ -3596,6 +3680,12 @@
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxFacilitiesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxGoodIdentificationMvosClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxGoodIdentificationTypesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutLineMvosClient.java">
@@ -3813,6 +3903,32 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\WarehousesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GenerateGoodIdentificationTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractGoodIdentificationTypeCommandDto.java
+.\CreateOrMergePatchGoodIdentificationTypeDto.java
+.\DeleteGoodIdentificationTypeDto.java
+.\GenerateGoodIdentificationTypeDomain.txt
+.\GoodIdentificationTypeEventId.java
+.\GoodIdentificationTypeStateDto.java
+.\GoodIdentificationTypeStateEventDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationmvo\GenerateGoodIdentificationMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractGoodIdentificationMvoCommandDto.java
+.\CreateOrMergePatchGoodIdentificationMvoDto.java
+.\DeleteGoodIdentificationMvoDto.java
+.\GenerateGoodIdentificationMvoDomain.txt
+.\GoodIdentificationMvoEventId.java
+.\GoodIdentificationMvoStateDto.java
+.\GoodIdentificationMvoStateEventDto.java
+</LastOutputs>
     </Content>
   </ItemGroup>
   <ItemGroup>

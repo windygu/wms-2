@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.product">
+  
+  <class name="org.dddml.wms.domain.product.AbstractGoodIdentificationState$SimpleGoodIdentificationState" table="GoodIdentifications">
+
+	<composite-id name="productGoodIdentificationId" class="org.dddml.wms.domain.product.ProductGoodIdentificationId">
+		<key-property name="productId" ><column name="ProductGoodIdentificationIdProductId" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="goodIdentificationTypeId" ><column name="ProductGoodIdentificationIdGoodIdentificationTypeId" sql-type="VARCHAR(20)" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="idValue" ><column name="IdValue" not-null="true" sql-type="VARCHAR(60)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

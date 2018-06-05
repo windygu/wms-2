@@ -43,7 +43,7 @@ public class HibernateProductStateQueryRepository implements ProductStateQueryRe
 
         ProductState state = (ProductState)getCurrentSession().get(AbstractProductState.SimpleProductState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ProductState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ProductState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ProductState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ProductState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -130,6 +130,21 @@ public class HibernateProductStateQueryRepository implements ProductStateQueryRe
         }
         addNotDeletedRestriction(criteria);
         return (long)criteria.uniqueResult();
+    }
+
+    @Transactional(readOnly = true)
+    public GoodIdentificationState getGoodIdentification(String productId, String goodIdentificationTypeId) {
+        ProductGoodIdentificationId entityId = new ProductGoodIdentificationId(productId, goodIdentificationTypeId);
+        return (GoodIdentificationState) getCurrentSession().get(AbstractGoodIdentificationState.SimpleGoodIdentificationState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<GoodIdentificationState> getGoodIdentifications(String productId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractGoodIdentificationState.SimpleGoodIdentificationState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("productGoodIdentificationId.productId", productId))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

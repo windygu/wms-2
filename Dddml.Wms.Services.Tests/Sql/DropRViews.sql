@@ -13,6 +13,7 @@ DROP view if exists `OrderItemShipGroupAssociation_RV` ;
 DROP view if exists `PhysicalInventoryLine_RV` ;
 DROP view if exists `PicklistRole_RV` ;
 DROP view if exists `PicklistItem_RV` ;
+DROP view if exists `GoodIdentification_RV` ;
 DROP view if exists `SellableInventoryItemEntry_RV` ;
 DROP view if exists `ShipmentItem_RV` ;
 DROP view if exists `ShipmentReceipt_RV` ;

@@ -190,6 +190,28 @@
   </object>
 
 
+
+  <object id="goodIdentificationTypeStateRepository" type="Dddml.Wms.Domain.GoodIdentificationType.NHibernate.NHibernateGoodIdentificationTypeStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="goodIdentificationTypeStateQueryRepository" type="Dddml.Wms.Domain.GoodIdentificationType.NHibernate.NHibernateGoodIdentificationTypeStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="goodIdentificationTypeEventStore" type="Dddml.Wms.Domain.GoodIdentificationType.NHibernate.NHibernateGoodIdentificationTypeEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="goodIdentificationTypeApplicationService" type="Dddml.Wms.Domain.GoodIdentificationType.NHibernate.GoodIdentificationTypeApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="goodIdentificationTypeEventStore"/>
+    <constructor-arg ref="goodIdentificationTypeStateRepository"/>
+    <constructor-arg ref="goodIdentificationTypeStateQueryRepository"/>
+  </object>
+
+
   <object id="inOutLineStateDao" type="Dddml.Wms.Domain.InOut.NHibernate.NHibernateInOutLineStateDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
@@ -768,6 +790,15 @@
     <constructor-arg ref="pickwaveStateQueryRepository"/>
   </object>
 
+
+  <object id="goodIdentificationStateDao" type="Dddml.Wms.Domain.Product.NHibernate.NHibernateGoodIdentificationStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="goodIdentificationEventDao" type="Dddml.Wms.Domain.Product.NHibernate.NHibernateGoodIdentificationEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
 
 
   <object id="productStateRepository" type="Dddml.Wms.Domain.Product.NHibernate.NHibernateProductStateRepository, Dddml.Wms.Services">
@@ -1536,6 +1567,28 @@
     <constructor-arg ref="picklistItemMvoEventStore"/>
     <constructor-arg ref="picklistItemMvoStateRepository"/>
     <constructor-arg ref="picklistItemMvoStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="goodIdentificationMvoStateRepository" type="Dddml.Wms.Domain.GoodIdentificationMvo.NHibernate.NHibernateGoodIdentificationMvoStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="goodIdentificationMvoStateQueryRepository" type="Dddml.Wms.Domain.GoodIdentificationMvo.NHibernate.NHibernateGoodIdentificationMvoStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="goodIdentificationMvoEventStore" type="Dddml.Wms.Domain.GoodIdentificationMvo.NHibernate.NHibernateGoodIdentificationMvoEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="goodIdentificationMvoApplicationService" type="Dddml.Wms.Domain.GoodIdentificationMvo.NHibernate.GoodIdentificationMvoApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="goodIdentificationMvoEventStore"/>
+    <constructor-arg ref="goodIdentificationMvoStateRepository"/>
+    <constructor-arg ref="goodIdentificationMvoStateQueryRepository"/>
   </object>
 
 

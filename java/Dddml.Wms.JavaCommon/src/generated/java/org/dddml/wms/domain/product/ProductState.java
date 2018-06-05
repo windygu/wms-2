@@ -285,6 +285,8 @@ public interface ProductState
 
     boolean getForReapplying();
 
+    GoodIdentificationStates getGoodIdentifications();
+
 
     void mutate(Event e);
 

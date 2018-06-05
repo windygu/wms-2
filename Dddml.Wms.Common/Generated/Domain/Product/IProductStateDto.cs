@@ -416,6 +416,12 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        IGoodIdentificationStateDto[] GoodIdentifications
+        {
+            get;
+            set;
+        }
+
         IProductState ToProductState();
 
     }

@@ -813,5 +813,17 @@ public class ProductStateDto
         this.updatedAt = updatedAt;
     }
 
+    private GoodIdentificationStateDto[] goodIdentifications;
+
+    public GoodIdentificationStateDto[] getGoodIdentifications()
+    {
+        return this.goodIdentifications;
+    }	
+
+    public void setGoodIdentifications(GoodIdentificationStateDto[] goodIdentifications)
+    {
+        this.goodIdentifications = goodIdentifications;
+    }
+
 }
 

@@ -15,18 +15,20 @@ namespace Dddml.Wms.Domain.Product
 	public static partial class ProductStateInterfaceExtension
 	{
 
-        public static IProductCommand ToCreateOrMergePatchProduct<TCreateProduct, TMergePatchProduct>(this IProductState state)
+        public static IProductCommand ToCreateOrMergePatchProduct<TCreateProduct, TMergePatchProduct, TCreateGoodIdentification, TMergePatchGoodIdentification>(this IProductState state)
             where TCreateProduct : ICreateProduct, new()
             where TMergePatchProduct : IMergePatchProduct, new()
+            where TCreateGoodIdentification : ICreateGoodIdentification, new()
+            where TMergePatchGoodIdentification : IMergePatchGoodIdentification, new()
         {
             bool bUnsaved = ((IProductState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateProduct<TCreateProduct>();
+                return state.ToCreateProduct<TCreateProduct, TCreateGoodIdentification>();
             }
             else 
             {
-                return state.ToMergePatchProduct<TMergePatchProduct>();
+                return state.ToMergePatchProduct<TMergePatchProduct, TCreateGoodIdentification, TMergePatchGoodIdentification>();
             }
         }
 
@@ -40,8 +42,10 @@ namespace Dddml.Wms.Domain.Product
             return cmd;
         }
 
-        public static TMergePatchProduct ToMergePatchProduct<TMergePatchProduct>(this IProductState state)
+        public static TMergePatchProduct ToMergePatchProduct<TMergePatchProduct, TCreateGoodIdentification, TMergePatchGoodIdentification>(this IProductState state)
             where TMergePatchProduct : IMergePatchProduct, new()
+            where TCreateGoodIdentification : ICreateGoodIdentification, new()
+            where TMergePatchGoodIdentification : IMergePatchGoodIdentification, new()
         {
             var cmd = new TMergePatchProduct();
 
@@ -168,11 +172,17 @@ namespace Dddml.Wms.Domain.Product
             if (state.DefaultShipmentBoxTypeId == null) { cmd.IsPropertyDefaultShipmentBoxTypeIdRemoved = true; }
             if (state.AttributeSetId == null) { cmd.IsPropertyAttributeSetIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
+            foreach (var d in state.GoodIdentifications)
+            {
+                var c = d.ToCreateOrMergePatchGoodIdentification<TCreateGoodIdentification, TMergePatchGoodIdentification>();
+                cmd.GoodIdentificationCommands.Add(c);
+            }
             return cmd;
         }
 
-        public static TCreateProduct ToCreateProduct<TCreateProduct>(this IProductState state)
+        public static TCreateProduct ToCreateProduct<TCreateProduct, TCreateGoodIdentification>(this IProductState state)
             where TCreateProduct : ICreateProduct, new()
+            where TCreateGoodIdentification : ICreateGoodIdentification, new()
         {
             var cmd = new TCreateProduct();
 
@@ -240,6 +250,11 @@ namespace Dddml.Wms.Domain.Product
             cmd.AttributeSetId = state.AttributeSetId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Active = ((IProductStateProperties)state).Active;
+            foreach (var d in state.GoodIdentifications)
+            {
+                var c = d.ToCreateGoodIdentification<TCreateGoodIdentification>();
+                cmd.GoodIdentifications.Add(c);
+            }
             return cmd;
         }
 		

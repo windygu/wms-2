@@ -194,6 +194,8 @@ aggregates:
         notNull: false
         
       #----------------------------------------
+      GoodIdentifications:
+        itemType: GoodIdentification
       
     references:
       ProductCategory:
@@ -215,5 +217,18 @@ aggregates:
     
     # metadata:
       # StateEventDatabaseTableName: PRODUCT_STATE_EVENT
-
       
+    # ---------------------------------------------------
+    entities:
+      GoodIdentification:
+        id:
+          name: GoodIdentificationTypeId
+          type: id-ne
+          referenceType: GoodIdentificationType
+        properties:
+          IdValue:
+            type: id-long
+            notNull: true
+
+            
+            
