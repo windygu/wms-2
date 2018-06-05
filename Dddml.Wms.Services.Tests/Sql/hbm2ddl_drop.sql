@@ -331,4 +331,16 @@
 
     drop table if exists ShipmentPackageContentMvoEvents;
 
+    drop table if exists GoodIdentificationTypes;
+
+    drop table if exists GoodIdentificationTypeEvents;
+
+    drop table if exists GoodIdentifications;
+
+    drop table if exists GoodIdentificationEvents;
+
+    drop table if exists GoodIdentification_RV;
+
+    drop table if exists GoodIdentificationMvoEvents;
+
     drop table if exists nhibernate_hilo_table;
