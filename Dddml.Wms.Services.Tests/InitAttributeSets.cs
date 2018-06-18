@@ -80,6 +80,7 @@ namespace Dddml.Wms.Services.Tests
 
             public decimal? WeightLbs { get; set; }
 
+            [IsMandatory(true)]
             public decimal? WeightKg { get; set; }
 
             public decimal? AirDryWeightLbs { get; set; }

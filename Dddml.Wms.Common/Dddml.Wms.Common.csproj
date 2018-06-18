@@ -7436,6 +7436,7 @@
     </Compile>
     <Compile Include="Support\AttributeAttribute.cs" />
     <Compile Include="Support\AttributeGroupAttribute.cs" />
+    <Compile Include="Support\IsMandatoryAttribute.cs" />
     <Compile Include="Support\AttributeIgnoreAttribute.cs" />
     <Compile Include="Support\AttributeSetBuilder.cs">
       <SubType>Code</SubType>
