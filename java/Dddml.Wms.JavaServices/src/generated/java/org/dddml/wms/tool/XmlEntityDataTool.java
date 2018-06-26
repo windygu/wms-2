@@ -323,7 +323,7 @@ public class XmlEntityDataTool {
                 addPropertyPropertySetter(setterMap, propertyDescriptor);
             } else if (propertyDescriptor.getName().equalsIgnoreCase(superEntityName + "EventId")) {
                 addPropertyPropertySetter(setterMap, propertyDescriptor);
-            }        
+            }
         }
         return setterMap;
     }

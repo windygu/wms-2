@@ -59,7 +59,9 @@ namespace Dddml.Wms.CmdLineTools
             };
 
             var javaRestDomainProjectGenerator = new DomainAggregateT4ScriptGenerator(javaRestDomainProjConfig);
+            javaRestDomainProjectGenerator.IsMViewObjectDisabled = true;
             javaRestDomainProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
+            javaRestDomainProjectGenerator.CleanAggregatesDirectoriesAndScripts(aggregates);
         }
 
         private static void UpdateHibernateProjects(IList<Aggregate> aggregates)

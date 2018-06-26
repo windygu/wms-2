@@ -8,6 +8,7 @@
 
 		var generator = new RetrofitClientAggregatesInterfacesGenerator(boundedContext.Aggregates.Values);
 		generator.UsingRxJava = false;
+        generator.IsMViewObjectDisabled = true;
 	    generator.Run();
 
 #>
