@@ -2509,9 +2509,6 @@
 .\GenerateBoundedContextDomain.txt
 </LastOutputs>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeAliasMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
@@ -2525,12 +2522,6 @@
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeSetsClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeUseMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributeValueMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\ContactMechesClient.java">
@@ -2555,14 +2546,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesInterfaces.txt</LastGenOutput>
       <LastOutputs>
-.\AttributeAliasMvosClient.java
 .\AttributesClient.java
 .\AttributeSetInstanceExtensionFieldGroupsClient.java
 .\AttributeSetInstanceExtensionFieldsClient.java
 .\AttributeSetInstancesClient.java
 .\AttributeSetsClient.java
-.\AttributeUseMvosClient.java
-.\AttributeValueMvosClient.java
 .\ContactMechesClient.java
 .\DamageHandlingMethodsClient.java
 .\DamageReasonsClient.java
@@ -2570,41 +2558,27 @@
 .\DocumentTypesClient.java
 .\FacilitiesClient.java
 .\GenerateAggregatesInterfaces.txt
-.\GoodIdentificationMvosClient.java
 .\GoodIdentificationTypesClient.java
-.\InOutLineMvosClient.java
 .\InOutsClient.java
-.\InventoryItemEntryMvosClient.java
-.\InventoryItemRequirementEntryMvosClient.java
 .\InventoryItemRequirementsClient.java
 .\InventoryItemsClient.java
 .\InventoryPostingRulesClient.java
 .\InventoryPRTriggeredsClient.java
-.\ItemIssuanceMvosClient.java
 .\LocatorsClient.java
 .\LocatorTypesClient.java
 .\LotsClient.java
-.\MovementConfirmationLineMvosClient.java
 .\MovementConfirmationsClient.java
-.\MovementLineMvosClient.java
 .\MovementsClient.java
 .\MovementTypesClient.java
-.\OrderItemMvosClient.java
-.\OrderItemShipGroupAssociationMvosClient.java
 .\OrderItemShipGrpInvReservationsClient.java
-.\OrderRoleMvosClient.java
 .\OrdersClient.java
-.\OrderShipGroupMvosClient.java
 .\OrderShipmentsClient.java
 .\OrganizationStructuresClient.java
 .\OrganizationStructureTypesClient.java
 .\PartiesClient.java
 .\PartyRolesClient.java
 .\PhysicalInventoriesClient.java
-.\PhysicalInventoryLineMvosClient.java
 .\PicklistBinsClient.java
-.\PicklistItemMvosClient.java
-.\PicklistRoleMvosClient.java
 .\PicklistsClient.java
 .\PickwavesClient.java
 .\ProductCategoriesClient.java
@@ -2612,13 +2586,9 @@
 .\ProductsClient.java
 .\RejectionReasonsClient.java
 .\RoleTypesClient.java
-.\SellableInventoryItemEntryMvosClient.java
 .\SellableInventoryItemsClient.java
-.\ShipmentItemMvosClient.java
 .\ShipmentMethodTypesClient.java
-.\ShipmentPackageContentMvosClient.java
 .\ShipmentPackagesClient.java
-.\ShipmentReceiptMvosClient.java
 .\ShipmentsClient.java
 .\ShipmentTypesClient.java
 .\StatusItemsClient.java
@@ -2658,22 +2628,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\GoodIdentificationMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\GoodIdentificationTypesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutLineMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutsClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryItemEntryMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryItemRequirementEntryMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryItemRequirementsClient.java">
@@ -2688,9 +2646,6 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\InventoryPRTriggeredsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\ItemIssuanceMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\LocatorsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
@@ -2703,13 +2658,7 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\LotsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementConfirmationLineMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementConfirmationsClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementLineMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementsClient.java">
@@ -2718,22 +2667,10 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\MovementTypesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderItemMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderItemShipGroupAssociationMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderItemShipGrpInvReservationsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderRoleMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrdersClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderShipGroupMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderShipmentsClient.java">
@@ -2757,16 +2694,7 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\PhysicalInventoriesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\PhysicalInventoryLineMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistBinsClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistItemMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistRoleMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\PicklistsClient.java">
@@ -2795,55 +2723,38 @@
       <LastGenOutput>GenerateAggregatesRxInterfaces.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateAggregatesRxInterfaces.txt
-.\RxAttributeAliasMvosClient.java
 .\RxAttributesClient.java
 .\RxAttributeSetInstanceExtensionFieldGroupsClient.java
 .\RxAttributeSetInstanceExtensionFieldsClient.java
 .\RxAttributeSetInstancesClient.java
 .\RxAttributeSetsClient.java
-.\RxAttributeUseMvosClient.java
-.\RxAttributeValueMvosClient.java
 .\RxContactMechesClient.java
 .\RxDamageHandlingMethodsClient.java
 .\RxDamageReasonsClient.java
 .\RxDamageTypesClient.java
 .\RxDocumentTypesClient.java
 .\RxFacilitiesClient.java
-.\RxGoodIdentificationMvosClient.java
 .\RxGoodIdentificationTypesClient.java
-.\RxInOutLineMvosClient.java
 .\RxInOutsClient.java
-.\RxInventoryItemEntryMvosClient.java
-.\RxInventoryItemRequirementEntryMvosClient.java
 .\RxInventoryItemRequirementsClient.java
 .\RxInventoryItemsClient.java
 .\RxInventoryPostingRulesClient.java
 .\RxInventoryPRTriggeredsClient.java
-.\RxItemIssuanceMvosClient.java
 .\RxLocatorsClient.java
 .\RxLocatorTypesClient.java
 .\RxLotsClient.java
-.\RxMovementConfirmationLineMvosClient.java
 .\RxMovementConfirmationsClient.java
-.\RxMovementLineMvosClient.java
 .\RxMovementsClient.java
 .\RxMovementTypesClient.java
-.\RxOrderItemMvosClient.java
-.\RxOrderItemShipGroupAssociationMvosClient.java
 .\RxOrderItemShipGrpInvReservationsClient.java
-.\RxOrderRoleMvosClient.java
 .\RxOrdersClient.java
-.\RxOrderShipGroupMvosClient.java
 .\RxOrderShipmentsClient.java
 .\RxOrganizationStructuresClient.java
 .\RxOrganizationStructureTypesClient.java
 .\RxPartiesClient.java
 .\RxPartyRolesClient.java
 .\RxPhysicalInventoriesClient.java
-.\RxPhysicalInventoryLineMvosClient.java
 .\RxPicklistBinsClient.java
-.\RxPicklistItemMvosClient.java
-.\RxPicklistRoleMvosClient.java
 .\RxPicklistsClient.java
 .\RxPickwavesClient.java
 .\RxProductCategoriesClient.java
@@ -2851,13 +2762,9 @@
 .\RxProductsClient.java
 .\RxRejectionReasonsClient.java
 .\RxRoleTypesClient.java
-.\RxSellableInventoryItemEntryMvosClient.java
 .\RxSellableInventoryItemsClient.java
-.\RxShipmentItemMvosClient.java
 .\RxShipmentMethodTypesClient.java
-.\RxShipmentPackageContentMvosClient.java
 .\RxShipmentPackagesClient.java
-.\RxShipmentReceiptMvosClient.java
 .\RxShipmentsClient.java
 .\RxShipmentTypesClient.java
 .\RxStatusItemsClient.java
@@ -2897,9 +2804,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeAliasMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
@@ -2913,12 +2817,6 @@
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeSetsClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeUseMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxAttributeValueMvosClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxContactMechesClient.java">
@@ -2939,22 +2837,10 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxFacilitiesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxGoodIdentificationMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxGoodIdentificationTypesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutLineMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutsClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryItemEntryMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryItemRequirementEntryMvosClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryItemRequirementsClient.java">
@@ -2969,9 +2855,6 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInventoryPRTriggeredsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxItemIssuanceMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxLocatorsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
@@ -2984,13 +2867,7 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxLotsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementConfirmationLineMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementConfirmationsClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementLineMvosClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementsClient.java">
@@ -2999,22 +2876,10 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxMovementTypesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderItemMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderItemShipGroupAssociationMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderItemShipGrpInvReservationsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderRoleMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrdersClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderShipGroupMvosClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderShipmentsClient.java">
@@ -3038,16 +2903,7 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPhysicalInventoriesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPhysicalInventoryLineMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistBinsClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistItemMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistRoleMvosClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPicklistsClient.java">
@@ -3071,25 +2927,13 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxRoleTypesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSellableInventoryItemEntryMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSellableInventoryItemsClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentItemMvosClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentMethodTypesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentPackageContentMvosClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentPackagesClient.java">
-      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentReceiptMvosClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxShipmentsClient.java">
@@ -3116,25 +2960,13 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxWarehousesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\SellableInventoryItemEntryMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\SellableInventoryItemsClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentItemMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentMethodTypesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentPackageContentMvosClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentPackagesClient.java">
-      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentReceiptMvosClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\ShipmentsClient.java">
