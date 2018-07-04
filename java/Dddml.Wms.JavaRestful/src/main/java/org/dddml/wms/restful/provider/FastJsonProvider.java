@@ -1,3 +1,4 @@
+/*
 package org.dddml.wms.restful.provider;
 
 import com.alibaba.fastjson.JSON;
@@ -16,20 +17,13 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 
-/**
- * JAX-RS Provider for FastJson.
- *
- * @author smallnest
- */
 @Provider
 public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyWriter<Object> {
 
     private FastJsonProvider() throws Exception {
-        /**
-         * 添加反序列化器
-         */
+         // 添加反序列化器
         ParserConfig.global.putDeserializer(Money.class, new JodaMoneyFastJsonDeserializer());
-        //添加序列化器
+        // 添加序列化器
         SerializeConfig.getGlobalInstance().put(Money.class, new JodaMoneyFastJsonSerializer());
     }
 
@@ -87,3 +81,4 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
         entityStream.write(JSON.toJSONString(o).getBytes(Charset.forName("utf8")));
     }
 }
+*/

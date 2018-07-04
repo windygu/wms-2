@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("ProductCategoryMembers") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "ProductCategoryMembers", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class ProductCategoryMemberResource {
 
 
@@ -26,13 +26,13 @@ public class ProductCategoryMemberResource {
     private ProductCategoryMemberApplicationService productCategoryMemberApplicationService;
 
 
-    @GET
-    public ProductCategoryMemberStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public ProductCategoryMemberStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -63,8 +63,8 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public ProductCategoryMemberStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public ProductCategoryMemberStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);
             ProductCategoryMemberState state = productCategoryMemberApplicationService.get(idObj);
@@ -81,9 +81,9 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -98,8 +98,8 @@ public class ProductCategoryMemberResource {
     }
 
 
-    @POST
-    public ProductCategoryMemberId post(CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public ProductCategoryMemberId post(@RequestBody CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value,  HttpServletResponse response) {
         try {
             ProductCategoryMemberCommand.CreateProductCategoryMember cmd = value.toCreateProductCategoryMember();
             if (cmd.getProductCategoryMemberId() == null) {
@@ -113,8 +113,8 @@ public class ProductCategoryMemberResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchProductCategoryMemberDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchProductCategoryMemberDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -133,8 +133,8 @@ public class ProductCategoryMemberResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value) {
         try {
 
             ProductCategoryMemberCommand.MergePatchProductCategoryMember cmd = value.toMergePatchProductCategoryMember();
@@ -144,7 +144,7 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -157,8 +157,8 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public ProductCategoryMemberStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public ProductCategoryMemberStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);
@@ -168,8 +168,8 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public ProductCategoryMemberStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public ProductCategoryMemberStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);

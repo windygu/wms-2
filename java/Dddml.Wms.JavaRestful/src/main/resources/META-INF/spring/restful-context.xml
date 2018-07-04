@@ -3,58 +3,59 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="org.apache.cxf.jaxrs.JAXRSServerFactoryBean"
-          init-method="create">
-        <property name="address" value="/"/>
-        <property name="serviceBeans">
-            <list>
-                <bean class="org.dddml.wms.restful.resource.IndexResource"/>
-                <bean class="org.dddml.wms.restful.resource.AttributeSetResource"/>
-                <bean class="org.dddml.wms.restful.resource.InOutResource"/>
-                <!--<bean class="org.dddml.wms.restful.resource.PersonResource"/>-->
-                <bean class="org.dddml.wms.restful.resource.LocatorTreeResource"/>
-                <bean class="org.dddml.wms.restful.resource.AttributeSetInstanceResource"/>
-            </list>
-        </property>
-        <property name="providers">
-            <list>
-                <!--Jackson 方式-->
-                <!--<ref bean="jsonProvider"/>-->
-                <!--FastJson方式，任选其一-->
-                <bean class="org.dddml.wms.restful.provider.FastJsonProvider"/>
-                <bean class="org.dddml.wms.restful.provider.CustomExceptionMapper"/>
-                <bean class="org.dddml.wms.restful.provider.CustomJwtAuthenticationFilter">
-                    <property name="jwsVerifier" ref="hmacJwsSignatureVerifier"/>
-                    <property name="expectedAuthScheme" value="Bearer"/>
-                </bean>
-            </list>
-        </property>
-        <property name="properties">
-            <map>
-                <entry key="attachment-memory-threshold" value="404800"></entry>
-                <entry key="attachment-max-size" value="2048000"></entry>
-            </map>
-        </property>
-        <property name="inInterceptors">
-            <list>
-                <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
-                <bean class="org.dddml.wms.restful.provider.SetRequestIdInterceptor"/>
-                <!-- bean
-                    class="org.apache.cxf.jaxrs.validation.JAXRSBeanValidationInInterceptor" /-->
-            </list>
-        </property>
-        <property name="outInterceptors">
-            <list>
-                <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
-            </list>
-        </property>
-    </bean>
-    <bean name="hmacJwsSignatureVerifier" class="org.apache.cxf.rs.security.jose.jws.HmacJwsSignatureVerifier">
-        <constructor-arg name="encodedKey" value="dWEgNi-mXlzYCeyh44hYHhDfa0iU161WWRu2SEAE8rU"/>
-    </bean>
     <bean name="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider">
-        <constructor-arg name="mapper" ref="mapper"/>
+        <constructor-arg  ref="mapper"/>
     </bean>
     <bean name="mapper" class="org.dddml.wms.restful.provider.CustomObjectMapper"/>
+
+    <!--<bean class="org.apache.cxf.jaxrs.JAXRSServerFactoryBean"-->
+          <!--init-method="create">-->
+        <!--<property name="address" value="/"/>-->
+        <!--<property name="serviceBeans">-->
+            <!--<list>-->
+                <!--&lt;!&ndash;<bean class="org.dddml.wms.restful.resource.IndexResource"/>&ndash;&gt;-->
+                <!--<bean class="org.dddml.wms.restful.resource.AttributeSetResource"/>-->
+                <!--<bean class="org.dddml.wms.restful.resource.InOutResource"/>-->
+                <!--&lt;!&ndash;<bean class="org.dddml.wms.restful.resource.PersonResource"/>&ndash;&gt;-->
+                <!--<bean class="org.dddml.wms.restful.resource.LocatorTreeResource"/>-->
+                <!--<bean class="org.dddml.wms.restful.resource.AttributeSetInstanceResource"/>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="providers">-->
+            <!--<list>-->
+                <!--&lt;!&ndash;Jackson 方式&ndash;&gt;-->
+                <!--&lt;!&ndash;<ref bean="jsonProvider"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;FastJson方式，任选其一&ndash;&gt;-->
+                <!--<bean class="org.dddml.wms.restful.provider.FastJsonProvider"/>-->
+                <!--<bean class="org.dddml.wms.restful.provider.CustomExceptionMapper"/>-->
+                <!--<bean class="org.dddml.wms.restful.provider.CustomJwtAuthenticationFilter">-->
+                    <!--<property name="jwsVerifier" ref="hmacJwsSignatureVerifier"/>-->
+                    <!--<property name="expectedAuthScheme" value="Bearer"/>-->
+                <!--</bean>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="properties">-->
+            <!--<map>-->
+                <!--<entry key="attachment-memory-threshold" value="404800"></entry>-->
+                <!--<entry key="attachment-max-size" value="2048000"></entry>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="inInterceptors">-->
+            <!--<list>-->
+                <!--&lt;!&ndash;<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<bean class="org.dddml.wms.restful.provider.SetRequestIdInterceptor"/>&ndash;&gt;-->
+                <!--&lt;!&ndash; bean class="org.apache.cxf.jaxrs.validation.JAXRSBeanValidationInInterceptor" /&ndash;&gt;-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="outInterceptors">-->
+            <!--<list>-->
+                <!--<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean name="hmacJwsSignatureVerifier" class="org.apache.cxf.rs.security.jose.jws.HmacJwsSignatureVerifier">-->
+        <!--<constructor-arg name="encodedKey" value="dWEgNi-mXlzYCeyh44hYHhDfa0iU161WWRu2SEAE8rU"/>-->
+    <!--</bean>-->
+
 </beans>
 

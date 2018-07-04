@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("Attributes") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "Attributes", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class AttributeResource {
 
     @Autowired
@@ -29,13 +29,13 @@ public class AttributeResource {
     private AttributeApplicationService attributeApplicationService;
 
 
-    @GET
-    public AttributeStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public AttributeStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -66,8 +66,8 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public AttributeStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public AttributeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             AttributeState state = attributeApplicationService.get(idObj);
@@ -85,16 +85,16 @@ public class AttributeResource {
     }
 
 
-    @Path("_nextId") @GET
+    @GetMapping("_nextId")
     public String getNextId() {
         try {
             return attributeIdGenerator.getNextId();
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -109,8 +109,8 @@ public class AttributeResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchAttributeDto.CreateAttributeDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchAttributeDto.CreateAttributeDto value,  HttpServletResponse response) {
         try {
             AttributeCommand.CreateAttribute cmd = value.toCreateAttribute();
             if (cmd.getAttributeId() == null) {
@@ -124,8 +124,8 @@ public class AttributeResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -144,8 +144,8 @@ public class AttributeResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
         try {
 
             AttributeCommand.MergePatchAttribute cmd = value.toMergePatchAttribute();
@@ -155,11 +155,11 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") String id,
+                       @NotNull @RequestParam(value = "commandId", required = false) String commandId,
+                       @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
             AttributeCommand.DeleteAttribute deleteCmd = new AbstractAttributeCommand.SimpleDeleteAttribute();
@@ -173,7 +173,7 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -186,8 +186,8 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public AttributeStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public AttributeStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
@@ -197,8 +197,8 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public AttributeStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public AttributeStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             String idObj = id;
@@ -213,8 +213,8 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{attributeId}/AttributeValues/{value}") @GET
-    public AttributeValueStateDto getAttributeValue(@PathParam("attributeId") String attributeId, @PathParam("value") String value) {
+    @GetMapping("{attributeId}/AttributeValues/{value}")
+    public AttributeValueStateDto getAttributeValue(@PathVariable("attributeId") String attributeId, @PathVariable("value") String value) {
         try {
 
             AttributeValueState state = attributeApplicationService.getAttributeValue(attributeId, value);
@@ -227,8 +227,8 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{attributeId}/AttributeValues/") @GET
-    public AttributeValueStateDto[] getAttributeValues(@PathParam("attributeId") String attributeId) {
+    @GetMapping("{attributeId}/AttributeValues/")
+    public AttributeValueStateDto[] getAttributeValues(@PathVariable("attributeId") String attributeId) {
         try {
             Iterable<AttributeValueState> states = attributeApplicationService.getAttributeValues(attributeId);
             if (states == null) { return null; }
@@ -238,8 +238,8 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{attributeId}/AttributeAlias/{code}") @GET
-    public AttributeAliasStateDto getAttributeAlias(@PathParam("attributeId") String attributeId, @PathParam("code") String code) {
+    @GetMapping("{attributeId}/AttributeAlias/{code}")
+    public AttributeAliasStateDto getAttributeAlias(@PathVariable("attributeId") String attributeId, @PathVariable("code") String code) {
         try {
 
             AttributeAliasState state = attributeApplicationService.getAttributeAlias(attributeId, code);
@@ -252,8 +252,8 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{attributeId}/AttributeAlias/") @GET
-    public AttributeAliasStateDto[] getAttributeAlias(@PathParam("attributeId") String attributeId) {
+    @GetMapping("{attributeId}/AttributeAlias/")
+    public AttributeAliasStateDto[] getAttributeAlias(@PathVariable("attributeId") String attributeId) {
         try {
             Iterable<AttributeAliasState> states = attributeApplicationService.getAttributeAlias(attributeId);
             if (states == null) { return null; }

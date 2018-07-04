@@ -1,3 +1,4 @@
+/*
 package org.dddml.wms.restful.provider;
 
 import org.apache.cxf.helpers.CastUtils;
@@ -16,9 +17,7 @@ import javax.ws.rs.core.SecurityContext;
 import java.lang.reflect.Method;
 import java.util.List;
 
-/**
- * 按需给 {@link Command Command} 设置 requesterId
- */
+// 给 {@link Command Command} 设置 requesterId
 public class SetRequestIdInterceptor extends AbstractPhaseInterceptor<Message> {
 
     public SetRequestIdInterceptor() {
@@ -70,3 +69,4 @@ public class SetRequestIdInterceptor extends AbstractPhaseInterceptor<Message> {
         }
     }
 }
+*/

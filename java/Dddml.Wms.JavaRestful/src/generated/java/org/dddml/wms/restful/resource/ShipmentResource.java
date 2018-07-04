@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("Shipments") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "Shipments", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class ShipmentResource {
 
 
@@ -26,13 +26,13 @@ public class ShipmentResource {
     private ShipmentApplicationService shipmentApplicationService;
 
 
-    @GET
-    public ShipmentStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public ShipmentStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -63,8 +63,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public ShipmentStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public ShipmentStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             ShipmentState state = shipmentApplicationService.get(idObj);
@@ -81,9 +81,9 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -98,8 +98,8 @@ public class ShipmentResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchShipmentDto.CreateShipmentDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchShipmentDto.CreateShipmentDto value,  HttpServletResponse response) {
         try {
             ShipmentCommand.CreateShipment cmd = value.toCreateShipment();
             if (cmd.getShipmentId() == null) {
@@ -113,8 +113,8 @@ public class ShipmentResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchShipmentDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -133,8 +133,8 @@ public class ShipmentResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchShipmentDto.MergePatchShipmentDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchShipmentDto.MergePatchShipmentDto value) {
         try {
 
             ShipmentCommand.MergePatchShipment cmd = value.toMergePatchShipment();
@@ -145,8 +145,8 @@ public class ShipmentResource {
     }
 
 
-    @Path("{id}/_commands/Import") @PUT
-    public void _import(@PathParam("id") String id, ShipmentCommandDtos.ImportRequestContent content) {
+    @PutMapping("{id}/_commands/Import")
+    public void _import(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ImportRequestContent content) {
         try {
 
             ShipmentCommands.Import cmd = content.toImport();
@@ -162,8 +162,8 @@ public class ShipmentResource {
     }
 
 
-    @Path("{id}/_commands/Ship") @PUT
-    public void ship(@PathParam("id") String id, ShipmentCommandDtos.ShipRequestContent content) {
+    @PutMapping("{id}/_commands/Ship")
+    public void ship(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ShipRequestContent content) {
         try {
 
             ShipmentCommands.Ship cmd = content.toShip();
@@ -179,8 +179,8 @@ public class ShipmentResource {
     }
 
 
-    @Path("{id}/_commands/ReceiveItem") @PUT
-    public void receiveItem(@PathParam("id") String id, ShipmentCommandDtos.ReceiveItemRequestContent content) {
+    @PutMapping("{id}/_commands/ReceiveItem")
+    public void receiveItem(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ReceiveItemRequestContent content) {
         try {
 
             ShipmentCommands.ReceiveItem cmd = content.toReceiveItem();
@@ -196,8 +196,8 @@ public class ShipmentResource {
     }
 
 
-    @Path("{id}/_commands/ConfirmAllItemsReceived") @PUT
-    public void confirmAllItemsReceived(@PathParam("id") String id, ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content) {
+    @PutMapping("{id}/_commands/ConfirmAllItemsReceived")
+    public void confirmAllItemsReceived(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content) {
         try {
 
             ShipmentCommands.ConfirmAllItemsReceived cmd = content.toConfirmAllItemsReceived();
@@ -212,7 +212,7 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -225,8 +225,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public ShipmentStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public ShipmentStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
@@ -236,8 +236,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public ShipmentStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public ShipmentStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             String idObj = id;
@@ -252,8 +252,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{shipmentId}/ShipmentItems/{shipmentItemSeqId}") @GET
-    public ShipmentItemStateDto getShipmentItem(@PathParam("shipmentId") String shipmentId, @PathParam("shipmentItemSeqId") String shipmentItemSeqId) {
+    @GetMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
+    public ShipmentItemStateDto getShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId) {
         try {
 
             ShipmentItemState state = shipmentApplicationService.getShipmentItem(shipmentId, shipmentItemSeqId);
@@ -266,8 +266,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{shipmentId}/ShipmentItems/") @GET
-    public ShipmentItemStateDto[] getShipmentItems(@PathParam("shipmentId") String shipmentId) {
+    @GetMapping("{shipmentId}/ShipmentItems/")
+    public ShipmentItemStateDto[] getShipmentItems(@PathVariable("shipmentId") String shipmentId) {
         try {
             Iterable<ShipmentItemState> states = shipmentApplicationService.getShipmentItems(shipmentId);
             if (states == null) { return null; }
@@ -277,8 +277,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{shipmentId}/ShipmentReceipts/{receiptSeqId}") @GET
-    public ShipmentReceiptStateDto getShipmentReceipt(@PathParam("shipmentId") String shipmentId, @PathParam("receiptSeqId") String receiptSeqId) {
+    @GetMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
+    public ShipmentReceiptStateDto getShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId) {
         try {
 
             ShipmentReceiptState state = shipmentApplicationService.getShipmentReceipt(shipmentId, receiptSeqId);
@@ -291,8 +291,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{shipmentId}/ShipmentReceipts/") @GET
-    public ShipmentReceiptStateDto[] getShipmentReceipts(@PathParam("shipmentId") String shipmentId) {
+    @GetMapping("{shipmentId}/ShipmentReceipts/")
+    public ShipmentReceiptStateDto[] getShipmentReceipts(@PathVariable("shipmentId") String shipmentId) {
         try {
             Iterable<ShipmentReceiptState> states = shipmentApplicationService.getShipmentReceipts(shipmentId);
             if (states == null) { return null; }
@@ -302,8 +302,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}") @GET
-    public ItemIssuanceStateDto getItemIssuance(@PathParam("shipmentId") String shipmentId, @PathParam("itemIssuanceSeqId") String itemIssuanceSeqId) {
+    @GetMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
+    public ItemIssuanceStateDto getItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId) {
         try {
 
             ItemIssuanceState state = shipmentApplicationService.getItemIssuance(shipmentId, itemIssuanceSeqId);
@@ -316,8 +316,8 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{shipmentId}/ItemIssuances/") @GET
-    public ItemIssuanceStateDto[] getItemIssuances(@PathParam("shipmentId") String shipmentId) {
+    @GetMapping("{shipmentId}/ItemIssuances/")
+    public ItemIssuanceStateDto[] getItemIssuances(@PathVariable("shipmentId") String shipmentId) {
         try {
             Iterable<ItemIssuanceState> states = shipmentApplicationService.getItemIssuances(shipmentId);
             if (states == null) { return null; }

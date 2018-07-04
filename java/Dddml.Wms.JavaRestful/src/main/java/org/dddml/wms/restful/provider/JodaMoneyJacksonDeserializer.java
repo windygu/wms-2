@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * 将金额转化为JodaMoney，Jackson Json 反序列化器
+ * JodaMoney Jackson Json 反序列化器
  */
 public class JodaMoneyJacksonDeserializer extends JsonDeserializer<Money> {
     @Override

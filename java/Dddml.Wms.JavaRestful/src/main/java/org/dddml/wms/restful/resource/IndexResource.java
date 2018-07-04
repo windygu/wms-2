@@ -1,6 +1,5 @@
+/*
 package org.dddml.wms.restful.resource;
-
-import org.dddml.wms.restful.annotation.Logged;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,9 +8,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-/**
- * Created by Li Yongchun on 2016/8/31.
- */
+// Created by Li Yongchun on 2016/8/31.
 @Path("/")
 public class IndexResource {
 
@@ -21,7 +18,6 @@ public class IndexResource {
     private SecurityContext securityContext;
 
     @GET
-    @Logged
     public PersonTemp get(@Context SecurityContext context) {
         System.out.println(context.getUserPrincipal().getName());
         PersonTemp person = new PersonTemp();
@@ -60,3 +56,4 @@ public class IndexResource {
         }
     }
 }
+*/

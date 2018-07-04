@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.physicalinventory.*;
@@ -20,7 +19,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("PhysicalInventoryLineMvos") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "PhysicalInventoryLineMvos", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class PhysicalInventoryLineMvoResource {
 
 
@@ -28,13 +28,13 @@ public class PhysicalInventoryLineMvoResource {
     private PhysicalInventoryLineMvoApplicationService physicalInventoryLineMvoApplicationService;
 
 
-    @GET
-    public PhysicalInventoryLineMvoStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public PhysicalInventoryLineMvoStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -65,8 +65,8 @@ public class PhysicalInventoryLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public PhysicalInventoryLineMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public PhysicalInventoryLineMvoStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             PhysicalInventoryLineId idObj = PhysicalInventoryLineMvoResourceUtils.parseIdString(id);
             PhysicalInventoryLineMvoState state = physicalInventoryLineMvoApplicationService.get(idObj);
@@ -83,9 +83,9 @@ public class PhysicalInventoryLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -100,8 +100,8 @@ public class PhysicalInventoryLineMvoResource {
     }
 
 
-    @POST
-    public PhysicalInventoryLineId post(CreateOrMergePatchPhysicalInventoryLineMvoDto.CreatePhysicalInventoryLineMvoDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public PhysicalInventoryLineId post(@RequestBody CreateOrMergePatchPhysicalInventoryLineMvoDto.CreatePhysicalInventoryLineMvoDto value,  HttpServletResponse response) {
         try {
             PhysicalInventoryLineMvoCommand.CreatePhysicalInventoryLineMvo cmd = value.toCreatePhysicalInventoryLineMvo();
             if (cmd.getPhysicalInventoryLineId() == null) {
@@ -115,8 +115,8 @@ public class PhysicalInventoryLineMvoResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchPhysicalInventoryLineMvoDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPhysicalInventoryLineMvoDto value) {
         try {
             if (value.getPhysicalInventoryVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -135,8 +135,8 @@ public class PhysicalInventoryLineMvoResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchPhysicalInventoryLineMvoDto.MergePatchPhysicalInventoryLineMvoDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPhysicalInventoryLineMvoDto.MergePatchPhysicalInventoryLineMvoDto value) {
         try {
 
             PhysicalInventoryLineMvoCommand.MergePatchPhysicalInventoryLineMvo cmd = value.toMergePatchPhysicalInventoryLineMvo();
@@ -146,11 +146,11 @@ public class PhysicalInventoryLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") String id,
+                       @NotNull @RequestParam(value = "commandId", required = false) String commandId,
+                       @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
             PhysicalInventoryLineMvoCommand.DeletePhysicalInventoryLineMvo deleteCmd = new AbstractPhysicalInventoryLineMvoCommand.SimpleDeletePhysicalInventoryLineMvo();
@@ -164,7 +164,7 @@ public class PhysicalInventoryLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -177,8 +177,8 @@ public class PhysicalInventoryLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public PhysicalInventoryLineMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public PhysicalInventoryLineMvoStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             PhysicalInventoryLineId idObj = PhysicalInventoryLineMvoResourceUtils.parseIdString(id);
@@ -188,8 +188,8 @@ public class PhysicalInventoryLineMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public PhysicalInventoryLineMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public PhysicalInventoryLineMvoStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             PhysicalInventoryLineId idObj = PhysicalInventoryLineMvoResourceUtils.parseIdString(id);

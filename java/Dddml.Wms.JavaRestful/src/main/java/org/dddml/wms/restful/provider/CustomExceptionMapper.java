@@ -1,3 +1,4 @@
+/*
 package org.dddml.wms.restful.provider;
 
 import com.alibaba.fastjson.JSONException;
@@ -31,7 +32,7 @@ public class CustomExceptionMapper implements ExceptionMapper<Exception> {
         } else if (e instanceof JSONException) {
             return Response.status(Status.BAD_REQUEST).encoding("UTF-8").language(Locale.SIMPLIFIED_CHINESE)
                     .type(MediaType.TEXT_PLAIN).entity("参数转换失败").build();
-        } else if (e instanceof ConstraintViolationException) {/** 参数验证失败异常 */
+        } else if (e instanceof ConstraintViolationException) {//参数验证失败异常
             ConstraintViolationException exception = (ConstraintViolationException) e;
             StringBuilder sbHint = new StringBuilder("参数错误");
             StringBuilder errorLog = new StringBuilder("\r\n");
@@ -84,3 +85,4 @@ public class CustomExceptionMapper implements ExceptionMapper<Exception> {
     }
 
 }
+*/

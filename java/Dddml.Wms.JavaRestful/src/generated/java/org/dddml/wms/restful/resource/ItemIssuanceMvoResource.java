@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.shipment.*;
@@ -19,7 +18,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("ItemIssuanceMvos") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "ItemIssuanceMvos", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class ItemIssuanceMvoResource {
 
 
@@ -27,13 +27,13 @@ public class ItemIssuanceMvoResource {
     private ItemIssuanceMvoApplicationService itemIssuanceMvoApplicationService;
 
 
-    @GET
-    public ItemIssuanceMvoStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public ItemIssuanceMvoStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -64,8 +64,8 @@ public class ItemIssuanceMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public ItemIssuanceMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public ItemIssuanceMvoStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             ShipmentItemIssuanceId idObj = ItemIssuanceMvoResourceUtils.parseIdString(id);
             ItemIssuanceMvoState state = itemIssuanceMvoApplicationService.get(idObj);
@@ -82,9 +82,9 @@ public class ItemIssuanceMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -99,8 +99,8 @@ public class ItemIssuanceMvoResource {
     }
 
 
-    @POST
-    public ShipmentItemIssuanceId post(CreateOrMergePatchItemIssuanceMvoDto.CreateItemIssuanceMvoDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public ShipmentItemIssuanceId post(@RequestBody CreateOrMergePatchItemIssuanceMvoDto.CreateItemIssuanceMvoDto value,  HttpServletResponse response) {
         try {
             ItemIssuanceMvoCommand.CreateItemIssuanceMvo cmd = value.toCreateItemIssuanceMvo();
             if (cmd.getShipmentItemIssuanceId() == null) {
@@ -114,8 +114,8 @@ public class ItemIssuanceMvoResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchItemIssuanceMvoDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchItemIssuanceMvoDto value) {
         try {
             if (value.getShipmentVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -134,8 +134,8 @@ public class ItemIssuanceMvoResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchItemIssuanceMvoDto.MergePatchItemIssuanceMvoDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchItemIssuanceMvoDto.MergePatchItemIssuanceMvoDto value) {
         try {
 
             ItemIssuanceMvoCommand.MergePatchItemIssuanceMvo cmd = value.toMergePatchItemIssuanceMvo();
@@ -145,11 +145,11 @@ public class ItemIssuanceMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") String id,
+                       @NotNull @RequestParam(value = "commandId", required = false) String commandId,
+                       @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
             ItemIssuanceMvoCommand.DeleteItemIssuanceMvo deleteCmd = new AbstractItemIssuanceMvoCommand.SimpleDeleteItemIssuanceMvo();
@@ -163,7 +163,7 @@ public class ItemIssuanceMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -176,8 +176,8 @@ public class ItemIssuanceMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public ItemIssuanceMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public ItemIssuanceMvoStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             ShipmentItemIssuanceId idObj = ItemIssuanceMvoResourceUtils.parseIdString(id);
@@ -187,8 +187,8 @@ public class ItemIssuanceMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public ItemIssuanceMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public ItemIssuanceMvoStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             ShipmentItemIssuanceId idObj = ItemIssuanceMvoResourceUtils.parseIdString(id);

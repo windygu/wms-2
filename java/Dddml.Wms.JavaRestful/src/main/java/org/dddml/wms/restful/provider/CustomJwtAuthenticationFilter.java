@@ -1,3 +1,4 @@
+/*
 package org.dddml.wms.restful.provider;
 
 import org.apache.cxf.common.logging.LogUtils;
@@ -11,9 +12,7 @@ import org.apache.cxf.rs.security.jose.jaxrs.JwtTokenSecurityContext;
 import org.apache.cxf.rs.security.jose.jwa.SignatureAlgorithm;
 import org.apache.cxf.rs.security.jose.jwt.JoseJwtConsumer;
 import org.apache.cxf.rs.security.jose.jwt.JwtToken;
-import org.apache.cxf.rs.security.jose.jwt.JwtUtils;
 import org.apache.cxf.security.SecurityContext;
-import org.dddml.wms.restful.annotation.Logged;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
@@ -21,14 +20,9 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
 import java.io.IOException;
-import java.security.Principal;
 import java.util.logging.Logger;
 
-/**
- * 处理JWT
- * Created by Li Yongchun on 2016/9/12.
- */
-@Logged
+// Created by Li Yongchun on 2016/9/12.
 @Priority(Priorities.AUTHENTICATION)
 public class CustomJwtAuthenticationFilter extends JoseJwtConsumer implements ContainerRequestFilter {
 
@@ -116,3 +110,4 @@ public class CustomJwtAuthenticationFilter extends JoseJwtConsumer implements Co
         this.ttl = ttl;
     }
 }
+*/
