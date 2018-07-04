@@ -1,4 +1,4 @@
-package org.dddml.wms.restful.provider;
+package org.dddml.wms.restful.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;

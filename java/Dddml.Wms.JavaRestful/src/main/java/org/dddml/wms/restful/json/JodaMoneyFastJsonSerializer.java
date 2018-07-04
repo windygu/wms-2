@@ -1,13 +1,11 @@
-package org.dddml.wms.restful.provider;
+package org.dddml.wms.restful.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;
 import com.alibaba.fastjson.serializer.SerializeWriter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.support.spring.FastjsonSockJsMessageCodec;
 import org.joda.money.Money;
 
 import java.io.IOException;

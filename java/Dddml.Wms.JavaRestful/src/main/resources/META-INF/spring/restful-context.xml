@@ -6,7 +6,7 @@
     <bean name="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider">
         <constructor-arg  ref="mapper"/>
     </bean>
-    <bean name="mapper" class="org.dddml.wms.restful.provider.CustomObjectMapper"/>
+    <bean name="mapper" class="org.dddml.wms.restful.json.CustomObjectMapper"/>
 
     <!--<bean class="org.apache.cxf.jaxrs.JAXRSServerFactoryBean"-->
           <!--init-method="create">-->

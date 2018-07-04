@@ -1,4 +1,4 @@
-package org.dddml.wms.restful.provider;
+package org.dddml.wms.restful.json;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 import java.math.BigDecimal;
 
 /**
- * 将金额转化为JodaMoney，FastJson 反序列化器
+ * JodaMoney FastJson 反序列化器
  */
 public class JodaMoneyFastJsonDeserializer implements ObjectDeserializer {
     public static final String AMOUNT = "amount";
