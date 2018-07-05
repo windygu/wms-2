@@ -39,7 +39,7 @@ aggregates:
               type: InventoryPRTriggeredId
               referenceType: InventoryPRTriggered
               notNull: true
-              columnNamePrefix: "Ise"
+              columnNamePrefix: "SrcEvent"
           reservedProperties:
             noActive: true
           # ------------------------------
