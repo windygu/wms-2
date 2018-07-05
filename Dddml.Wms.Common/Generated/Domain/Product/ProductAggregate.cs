@@ -165,6 +165,14 @@ namespace Dddml.Wms.Domain.Product
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
+            foreach (ICreateGoodIdentification innerCommand in c.GoodIdentifications)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IGoodIdentificationStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddGoodIdentificationEvent(innerEvent);
+            }
+
 
             return e;
         }
@@ -305,9 +313,114 @@ namespace Dddml.Wms.Domain.Product
 
 			var version = c.Version;
 
+            foreach (IGoodIdentificationCommand innerCommand in c.GoodIdentificationCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IGoodIdentificationEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddGoodIdentificationEvent(innerEvent);
+            }
+
 
             return e;
         }
+
+
+        protected void ThrowOnInconsistentCommands(IProductCommand command, IGoodIdentificationCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteProduct;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveGoodIdentification;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.ProductId == default(string))
+            {
+                innerProperties.ProductId = properties.ProductId;
+            }
+            else
+            {
+                var outerProductIdName = "ProductId";
+                var outerProductIdValue = properties.ProductId;
+                var innerProductIdName = "ProductId";
+                var innerProductIdValue = innerProperties.ProductId;
+                ThrowOnInconsistentIds(innerProperties, innerProductIdName, innerProductIdValue, outerProductIdName, outerProductIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected virtual IGoodIdentificationEvent Map(IGoodIdentificationCommand c, IProductCommand outerCommand, long version, IProductState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateGoodIdentification) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchGoodIdentification) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveGoodIdentification) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IGoodIdentificationStateCreated MapCreate(ICreateGoodIdentification c, IProductCommand outerCommand, long version, IProductState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new GoodIdentificationEventId(c.ProductId, c.GoodIdentificationTypeId, version);
+            IGoodIdentificationStateCreated e = NewGoodIdentificationStateCreated(stateEventId);
+            var s = outerState.GoodIdentifications.Get(c.GoodIdentificationTypeId, true);
+
+            e.IdValue = c.IdValue;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IGoodIdentificationStateMergePatched MapMergePatch(IMergePatchGoodIdentification c, IProductCommand outerCommand, long version, IProductState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new GoodIdentificationEventId(c.ProductId, c.GoodIdentificationTypeId, version);
+            IGoodIdentificationStateMergePatched e = NewGoodIdentificationStateMergePatched(stateEventId);
+            var s = outerState.GoodIdentifications.Get(c.GoodIdentificationTypeId);
+
+            e.IdValue = c.IdValue;
+            e.Active = c.Active;
+            e.IsPropertyIdValueRemoved = c.IsPropertyIdValueRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IGoodIdentificationStateRemoved MapRemove(IRemoveGoodIdentification c, IProductCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new GoodIdentificationEventId(c.ProductId, c.GoodIdentificationTypeId, version);
+            IGoodIdentificationStateRemoved e = NewGoodIdentificationStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
@@ -360,6 +473,22 @@ namespace Dddml.Wms.Domain.Product
         private ProductStateMergePatched NewProductStateMergePatched(ProductEventId stateEventId)
 		{
 			return new ProductStateMergePatched(stateEventId);
+		}
+
+
+		private GoodIdentificationStateCreated NewGoodIdentificationStateCreated(GoodIdentificationEventId stateEventId)
+		{
+			return new GoodIdentificationStateCreated(stateEventId);
+		}
+
+        private GoodIdentificationStateMergePatched NewGoodIdentificationStateMergePatched(GoodIdentificationEventId stateEventId)
+		{
+			return new GoodIdentificationStateMergePatched(stateEventId);
+		}
+
+        private GoodIdentificationStateRemoved NewGoodIdentificationStateRemoved(GoodIdentificationEventId stateEventId)
+		{
+			return new GoodIdentificationStateRemoved(stateEventId);
 		}
 
     }

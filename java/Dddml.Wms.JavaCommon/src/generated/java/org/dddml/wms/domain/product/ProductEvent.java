@@ -274,6 +274,12 @@ public interface ProductEvent extends Event
 
     interface ProductStateCreated extends ProductStateEvent
     {
+        Iterable<GoodIdentificationEvent.GoodIdentificationStateCreated> getGoodIdentificationEvents();
+        
+        void addGoodIdentificationEvent(GoodIdentificationEvent.GoodIdentificationStateCreated e);
+
+        GoodIdentificationEvent.GoodIdentificationStateCreated newGoodIdentificationStateCreated(String goodIdentificationTypeId);
+
     
     }
 
@@ -523,6 +529,16 @@ public interface ProductEvent extends Event
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Iterable<GoodIdentificationEvent> getGoodIdentificationEvents();
+        
+        void addGoodIdentificationEvent(GoodIdentificationEvent e);
+
+        GoodIdentificationEvent.GoodIdentificationStateCreated newGoodIdentificationStateCreated(String goodIdentificationTypeId);
+
+        GoodIdentificationEvent.GoodIdentificationStateMergePatched newGoodIdentificationStateMergePatched(String goodIdentificationTypeId);
+
+        GoodIdentificationEvent.GoodIdentificationStateRemoved newGoodIdentificationStateRemoved(String goodIdentificationTypeId);
 
 
     }

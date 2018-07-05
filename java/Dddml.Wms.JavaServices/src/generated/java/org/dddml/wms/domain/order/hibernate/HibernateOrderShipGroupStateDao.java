@@ -42,9 +42,9 @@ public class HibernateOrderShipGroupStateDao implements OrderShipGroupStateDao
             state = new AbstractOrderShipGroupState.SimpleOrderShipGroupState();
             state.setOrderShipGroupId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderShipGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipGroupState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (OrderShipGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipGroupState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

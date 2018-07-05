@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.inventoryitem.*;
@@ -21,7 +20,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("InventoryItemRequirements") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "InventoryItemRequirements", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class InventoryItemRequirementResource {
 
 
@@ -29,13 +29,13 @@ public class InventoryItemRequirementResource {
     private InventoryItemRequirementApplicationService inventoryItemRequirementApplicationService;
 
 
-    @GET
-    public InventoryItemRequirementStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public InventoryItemRequirementStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -66,8 +66,8 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public InventoryItemRequirementStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public InventoryItemRequirementStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             InventoryItemId idObj = InventoryItemRequirementResourceUtils.parseIdString(id);
             InventoryItemRequirementState state = inventoryItemRequirementApplicationService.get(idObj);
@@ -84,9 +84,9 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -101,8 +101,8 @@ public class InventoryItemRequirementResource {
     }
 
 
-    @POST
-    public InventoryItemId post(CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public InventoryItemId post(@RequestBody CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto value,  HttpServletResponse response) {
         try {
             InventoryItemRequirementCommand.CreateInventoryItemRequirement cmd = value.toCreateInventoryItemRequirement();
             if (cmd.getInventoryItemRequirementId() == null) {
@@ -116,8 +116,8 @@ public class InventoryItemRequirementResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryItemRequirementDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryItemRequirementDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -136,8 +136,8 @@ public class InventoryItemRequirementResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchInventoryItemRequirementDto.MergePatchInventoryItemRequirementDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryItemRequirementDto.MergePatchInventoryItemRequirementDto value) {
         try {
 
             InventoryItemRequirementCommand.MergePatchInventoryItemRequirement cmd = value.toMergePatchInventoryItemRequirement();
@@ -147,7 +147,7 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -160,8 +160,8 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{inventoryItemRequirementId}/InventoryItemRequirementEntries/{entrySeqId}") @GET
-    public InventoryItemRequirementEntryStateDto getInventoryItemRequirementEntry(@PathParam("inventoryItemRequirementId") String inventoryItemRequirementId, @PathParam("entrySeqId") Long entrySeqId) {
+    @GetMapping("{inventoryItemRequirementId}/InventoryItemRequirementEntries/{entrySeqId}")
+    public InventoryItemRequirementEntryStateDto getInventoryItemRequirementEntry(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId, @PathVariable("entrySeqId") Long entrySeqId) {
         try {
 
             InventoryItemRequirementEntryState state = inventoryItemRequirementApplicationService.getInventoryItemRequirementEntry((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
@@ -179,8 +179,8 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{inventoryItemRequirementId}/InventoryItemRequirementEntries/") @GET
-    public InventoryItemRequirementEntryStateDto[] getInventoryItemRequirementEntries(@PathParam("inventoryItemRequirementId") String inventoryItemRequirementId) {
+    @GetMapping("{inventoryItemRequirementId}/InventoryItemRequirementEntries/")
+    public InventoryItemRequirementEntryStateDto[] getInventoryItemRequirementEntries(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId) {
         try {
             Iterable<InventoryItemRequirementEntryState> states = inventoryItemRequirementApplicationService.getInventoryItemRequirementEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
                         @Override

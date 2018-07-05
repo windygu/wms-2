@@ -150,6 +150,10 @@ namespace Dddml.Wms.Domain.Product
 
 	public interface ICreateProduct : ICreateOrMergePatchOrDeleteProduct
 	{
+        ICreateGoodIdentificationCommands GoodIdentifications { get; }
+
+        ICreateGoodIdentification NewCreateGoodIdentification();
+
 	}
 
 	public interface IMergePatchProduct : ICreateOrMergePatchOrDeleteProduct
@@ -277,12 +281,40 @@ namespace Dddml.Wms.Domain.Product
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+        IGoodIdentificationCommands GoodIdentificationCommands { get; }
+
+        ICreateGoodIdentification NewCreateGoodIdentification();
+
+        IMergePatchGoodIdentification NewMergePatchGoodIdentification();
+
+        IRemoveGoodIdentification NewRemoveGoodIdentification();
+
 
 	}
 
 	public interface IDeleteProduct : ICreateOrMergePatchOrDeleteProduct
 	{
 	}
+
+    public interface ICreateGoodIdentificationCommands : IEnumerable<ICreateGoodIdentification>
+    {
+        void Add(ICreateGoodIdentification c);
+
+        void Remove(ICreateGoodIdentification c);
+
+        void Clear();
+
+    }
+
+    public interface IGoodIdentificationCommands : IEnumerable<IGoodIdentificationCommand>
+    {
+        void Add(IGoodIdentificationCommand c);
+
+        void Remove(IGoodIdentificationCommand c);
+
+        void Clear();
+
+    }
 
 
 }

@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("PicklistBins") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "PicklistBins", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class PicklistBinResource {
 
 
@@ -26,13 +26,13 @@ public class PicklistBinResource {
     private PicklistBinApplicationService picklistBinApplicationService;
 
 
-    @GET
-    public PicklistBinStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public PicklistBinStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -63,8 +63,8 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public PicklistBinStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public PicklistBinStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             PicklistBinState state = picklistBinApplicationService.get(idObj);
@@ -81,9 +81,9 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -98,8 +98,8 @@ public class PicklistBinResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value,  HttpServletResponse response) {
         try {
             PicklistBinCommand.CreatePicklistBin cmd = value.toCreatePicklistBin();
             if (cmd.getPicklistBinId() == null) {
@@ -113,8 +113,8 @@ public class PicklistBinResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchPicklistBinDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPicklistBinDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -133,8 +133,8 @@ public class PicklistBinResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value) {
         try {
 
             PicklistBinCommand.MergePatchPicklistBin cmd = value.toMergePatchPicklistBin();
@@ -144,11 +144,11 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") String id,
+                       @NotNull @RequestParam(value = "commandId", required = false) String commandId,
+                       @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
             PicklistBinCommand.DeletePicklistBin deleteCmd = new AbstractPicklistBinCommand.SimpleDeletePicklistBin();
@@ -162,7 +162,7 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -175,8 +175,8 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public PicklistBinStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public PicklistBinStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
@@ -186,8 +186,8 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public PicklistBinStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public PicklistBinStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             String idObj = id;
@@ -202,8 +202,8 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}") @GET
-    public PicklistItemStateDto getPicklistItem(@PathParam("picklistBinId") String picklistBinId, @PathParam("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId) {
+    @GetMapping("{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
+    public PicklistItemStateDto getPicklistItem(@PathVariable("picklistBinId") String picklistBinId, @PathVariable("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId) {
         try {
 
             PicklistItemState state = picklistBinApplicationService.getPicklistItem(picklistBinId, (new AbstractValueObjectTextFormatter<PicklistItemOrderShipGrpInvId>(PicklistItemOrderShipGrpInvId.class, ",") {
@@ -221,8 +221,8 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{picklistBinId}/PicklistItems/") @GET
-    public PicklistItemStateDto[] getPicklistItems(@PathParam("picklistBinId") String picklistBinId) {
+    @GetMapping("{picklistBinId}/PicklistItems/")
+    public PicklistItemStateDto[] getPicklistItems(@PathVariable("picklistBinId") String picklistBinId) {
         try {
             Iterable<PicklistItemState> states = picklistBinApplicationService.getPicklistItems(picklistBinId);
             if (states == null) { return null; }

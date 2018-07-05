@@ -401,6 +401,7 @@ namespace Dddml.Wms.Support
             SetAttributeByAttributeAttribute(memberInfo, a);
             SetAttributeByDescriptionAttribute(memberInfo, a);
             a.AttributeId = this._theIdGenerator.GenerateAttributeId(a);
+            a.IsMandatory = IsMemberMandatory(memberInfo);
             attribute = a;
             return true;
         }
@@ -475,19 +476,39 @@ namespace Dddml.Wms.Support
         {
             if (IgnoredMembers.Contains(memberInfo.Name))
             { return true; }
-            if (memberInfo.MemberType == MemberTypes.Field)
-            { if (((FieldInfo)memberInfo).IsStatic) { return true; } }
-            if (memberInfo.MemberType == MemberTypes.Property)
-            {
-                PropertyInfo pInfo = (PropertyInfo)memberInfo;
-                if (!pInfo.CanRead || !pInfo.CanWrite) { return true; }
-                if (pInfo.GetGetMethod().IsStatic) { return true; }
-                if (pInfo.GetSetMethod().IsStatic) { return true; }
-            }
+            if (IsStaticOrReadOnlyOrWriteOnlyMember(memberInfo))
+            { return true; }
             AttributeIgnoreAttribute[] ignoreAttributes = (AttributeIgnoreAttribute[])(Attribute.GetCustomAttributes(memberInfo, typeof(AttributeIgnoreAttribute)));
             if (ignoreAttributes != null && ignoreAttributes.Length > 0)
             {
                 return ignoreAttributes[0].Ignore;
+            }
+            return false;
+        }
+
+        private static bool IsStaticOrReadOnlyOrWriteOnlyMember(MemberInfo memberInfo)
+        {
+            bool defaultVal = true;
+            if (memberInfo.MemberType == MemberTypes.Field)
+            { if (((FieldInfo)memberInfo).IsStatic) { return defaultVal; } }
+            if (memberInfo.MemberType == MemberTypes.Property)
+            {
+                PropertyInfo pInfo = (PropertyInfo)memberInfo;
+                if (!pInfo.CanRead || !pInfo.CanWrite) { return defaultVal; }
+                if (pInfo.GetGetMethod().IsStatic) { return defaultVal; }
+                if (pInfo.GetSetMethod().IsStatic) { return defaultVal; }
+            }
+            return false;
+        }
+
+        private bool IsMemberMandatory(MemberInfo memberInfo)
+        {
+            if (IsStaticOrReadOnlyOrWriteOnlyMember(memberInfo))
+            { return false; }
+            IsMandatoryAttribute[] isMandatoryAttributes = (IsMandatoryAttribute[])(Attribute.GetCustomAttributes(memberInfo, typeof(IsMandatoryAttribute)));
+            if (isMandatoryAttributes != null && isMandatoryAttributes.Length > 0)
+            {
+                return isMandatoryAttributes[0].IsMandatory;
             }
             return false;
         }

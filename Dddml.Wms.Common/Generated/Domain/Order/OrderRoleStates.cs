@@ -95,13 +95,16 @@ namespace Dddml.Wms.Domain.Order
         {
             OrderRoleId globalId = new OrderRoleId(_orderState.OrderId, partyRoleId);
             if (_loadedOrderRoleStates.ContainsKey(globalId)) {
-                return _loadedOrderRoleStates[globalId];
+                var state = _loadedOrderRoleStates[globalId];
+                if (this._orderState != null && this._orderState.ReadOnly == false) { ((IOrderRoleState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new OrderRoleState(ForReapplying);
                 state.OrderRoleId = globalId;
                 _loadedOrderRoleStates.Add(globalId, state);
+                if (this._orderState != null && this._orderState.ReadOnly == false) { ((IOrderRoleState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -111,6 +114,7 @@ namespace Dddml.Wms.Domain.Order
                 {
                     _loadedOrderRoleStates.Add(globalId, state);
                 }
+                if (this._orderState != null && this._orderState.ReadOnly == false) { ((IOrderRoleState)state).ReadOnly = false; }
                 return state;
             }
         }

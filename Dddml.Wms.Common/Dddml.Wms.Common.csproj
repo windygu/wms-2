@@ -1383,6 +1383,162 @@
     <Compile Include="Generated\Domain\Facility\IFacilityStateRepository.cs">
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoAggregate.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoApplicationServiceBase.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoCommand.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoCommandDto.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoEvent.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoEventId.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoState.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateDto.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateDtoExtension.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateDtoWrapper.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateEventDto.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateEventDtoConverter.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateExtension.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateInterfaceExtension.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\GoodIdentificationMvoStateProperties.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoAggregate.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoApplicationService.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoCommand.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoEvent.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoState.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoStateDto.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoStateProperties.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationMvo\IGoodIdentificationMvoStateRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeAggregate.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeApplicationServiceBase.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeCommand.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeCommandDto.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeEvent.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeEventId.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeState.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateDto.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateDtoExtension.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateDtoWrapper.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateEventDto.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateEventDtoConverter.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateExtension.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateInterfaceExtension.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\GoodIdentificationTypeStateProperties.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeAggregate.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeApplicationService.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeCommand.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeEvent.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeState.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeStateDto.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeStateProperties.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\GoodIdentificationType\IGoodIdentificationTypeStateRepository.cs">
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\ILocatorTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
@@ -2602,6 +2758,15 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\FacilityMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\GoodIdentificationMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\GoodIdentificationMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\GoodIdentificationTypeMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\InOutLineMetadata.cs">
@@ -4281,7 +4446,7 @@
     <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateQueryRepository.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs">
+    <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateQueryRepositoryOrganizationTree.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrganizationStructure\IOrganizationStructureStateRepository.cs">
@@ -5427,6 +5592,72 @@
     <Compile Include="Generated\Domain\ProductCategory\ProductCategoryStateProperties.cs">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationCommand.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationCommandDto.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationEvent.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationEventId.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationState.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateDto.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateDtoExtension.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateDtoWrapper.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateEventDto.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateEventDtoConverter.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateExtension.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateInterfaceExtension.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStateProperties.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\GoodIdentificationStates.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationCommand.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationEvent.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationEventDao.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationState.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationStateDao.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationStateDto.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationStateProperties.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\IGoodIdentificationStates.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Product\IProductAggregate.cs">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Compile>
@@ -5476,6 +5707,9 @@
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Product\ProductEventId.cs">
+      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Product\ProductGoodIdentificationId.cs">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Product\ProductState.cs">
@@ -7202,6 +7436,7 @@
     </Compile>
     <Compile Include="Support\AttributeAttribute.cs" />
     <Compile Include="Support\AttributeGroupAttribute.cs" />
+    <Compile Include="Support\IsMandatoryAttribute.cs" />
     <Compile Include="Support\AttributeIgnoreAttribute.cs" />
     <Compile Include="Support\AttributeSetBuilder.cs">
       <SubType>Code</SubType>
@@ -7276,6 +7511,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\GoodIdentificationMvo\GenerateGoodIdentificationMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\GoodIdentificationType\GenerateGoodIdentificationTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\InOutLineMvo\GenerateInOutLineMvoDomain.txt">
       <AutoGen>True</AutoGen>
@@ -7755,7 +8000,7 @@
 .\IOrganizationStructureStateDto.cs
 .\IOrganizationStructureStateProperties.cs
 .\IOrganizationStructureStateQueryRepository.cs
-.\IOrganizationStructureStateQueryRepositoryOrganizationTreeStructure.cs
+.\IOrganizationStructureStateQueryRepositoryOrganizationTree.cs
 .\IOrganizationStructureStateRepository.cs
 .\OrganizationStructureAggregate.cs
 .\OrganizationStructureApplicationServiceBase.cs
@@ -8462,6 +8707,28 @@
       <LastGenOutput>GenerateProductDomain.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateProductDomain.txt
+.\GoodIdentificationCommand.cs
+.\GoodIdentificationCommandDto.cs
+.\GoodIdentificationEvent.cs
+.\GoodIdentificationEventId.cs
+.\GoodIdentificationState.cs
+.\GoodIdentificationStateDto.cs
+.\GoodIdentificationStateDtoExtension.cs
+.\GoodIdentificationStateDtoWrapper.cs
+.\GoodIdentificationStateEventDto.cs
+.\GoodIdentificationStateEventDtoConverter.cs
+.\GoodIdentificationStateExtension.cs
+.\GoodIdentificationStateInterfaceExtension.cs
+.\GoodIdentificationStateProperties.cs
+.\GoodIdentificationStates.cs
+.\IGoodIdentificationCommand.cs
+.\IGoodIdentificationEvent.cs
+.\IGoodIdentificationEventDao.cs
+.\IGoodIdentificationState.cs
+.\IGoodIdentificationStateDao.cs
+.\IGoodIdentificationStateDto.cs
+.\IGoodIdentificationStateProperties.cs
+.\IGoodIdentificationStates.cs
 .\IProductAggregate.cs
 .\IProductApplicationService.cs
 .\IProductApplicationServiceFactory.cs
@@ -8479,6 +8746,7 @@
 .\ProductCommandDto.cs
 .\ProductEvent.cs
 .\ProductEventId.cs
+.\ProductGoodIdentificationId.cs
 .\ProductState.cs
 .\ProductStateDto.cs
 .\ProductStateDtoExtension.cs
@@ -10409,6 +10677,72 @@
 .\OrderItemShipGroupAssociationMvoStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\GoodIdentificationType\GenerateGoodIdentificationTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateGoodIdentificationTypeDomain.txt
+.\GoodIdentificationTypeAggregate.cs
+.\GoodIdentificationTypeApplicationServiceBase.cs
+.\GoodIdentificationTypeApplicationServiceFactory.cs
+.\GoodIdentificationTypeCommand.cs
+.\GoodIdentificationTypeCommandDto.cs
+.\GoodIdentificationTypeEvent.cs
+.\GoodIdentificationTypeEventId.cs
+.\GoodIdentificationTypeState.cs
+.\GoodIdentificationTypeStateDto.cs
+.\GoodIdentificationTypeStateDtoExtension.cs
+.\GoodIdentificationTypeStateDtoWrapper.cs
+.\GoodIdentificationTypeStateEventDto.cs
+.\GoodIdentificationTypeStateEventDtoConverter.cs
+.\GoodIdentificationTypeStateExtension.cs
+.\GoodIdentificationTypeStateInterfaceExtension.cs
+.\GoodIdentificationTypeStateProperties.cs
+.\IGoodIdentificationTypeAggregate.cs
+.\IGoodIdentificationTypeApplicationService.cs
+.\IGoodIdentificationTypeApplicationServiceFactory.cs
+.\IGoodIdentificationTypeCommand.cs
+.\IGoodIdentificationTypeEvent.cs
+.\IGoodIdentificationTypeState.cs
+.\IGoodIdentificationTypeStateDto.cs
+.\IGoodIdentificationTypeStateProperties.cs
+.\IGoodIdentificationTypeStateQueryRepository.cs
+.\IGoodIdentificationTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\GoodIdentificationMvo\GenerateGoodIdentificationMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateGoodIdentificationMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateGoodIdentificationMvoDomain.txt
+.\GoodIdentificationMvoAggregate.cs
+.\GoodIdentificationMvoApplicationServiceBase.cs
+.\GoodIdentificationMvoApplicationServiceFactory.cs
+.\GoodIdentificationMvoCommand.cs
+.\GoodIdentificationMvoCommandDto.cs
+.\GoodIdentificationMvoEvent.cs
+.\GoodIdentificationMvoEventId.cs
+.\GoodIdentificationMvoState.cs
+.\GoodIdentificationMvoStateDto.cs
+.\GoodIdentificationMvoStateDtoExtension.cs
+.\GoodIdentificationMvoStateDtoWrapper.cs
+.\GoodIdentificationMvoStateEventDto.cs
+.\GoodIdentificationMvoStateEventDtoConverter.cs
+.\GoodIdentificationMvoStateExtension.cs
+.\GoodIdentificationMvoStateInterfaceExtension.cs
+.\GoodIdentificationMvoStateProperties.cs
+.\IGoodIdentificationMvoAggregate.cs
+.\IGoodIdentificationMvoApplicationService.cs
+.\IGoodIdentificationMvoApplicationServiceFactory.cs
+.\IGoodIdentificationMvoCommand.cs
+.\IGoodIdentificationMvoEvent.cs
+.\IGoodIdentificationMvoState.cs
+.\IGoodIdentificationMvoStateDto.cs
+.\IGoodIdentificationMvoStateProperties.cs
+.\IGoodIdentificationMvoStateQueryRepository.cs
+.\IGoodIdentificationMvoStateRepository.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -10463,6 +10797,9 @@
 .\DocumentTypeMetadata.cs
 .\FacilityMetadata.cs
 .\GenerateDomainMetadata.txt
+.\GoodIdentificationMetadata.cs
+.\GoodIdentificationMvoMetadata.cs
+.\GoodIdentificationTypeMetadata.cs
 .\InOutLineMetadata.cs
 .\InOutLineMvoMetadata.cs
 .\InOutMetadata.cs

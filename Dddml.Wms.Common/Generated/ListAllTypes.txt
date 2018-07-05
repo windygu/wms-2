@@ -29,6 +29,7 @@
                 dict.Add("PicklistItemOrderShipGrpInvId", "_PICKLISTITEMORDERSHIPGRPINVID_");
                 dict.Add("PicklistRoleId", "_PICKLISTROLEID_");
                 dict.Add("ProductCategoryMemberId", "_PRODUCTCATEGORYMEMBERID_");
+                dict.Add("ProductGoodIdentificationId", "_PRODUCTGOODIDENTIFICATIONID_");
                 dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
                 dict.Add("ShipmentItemId", "_SHIPMENTITEMID_");
                 dict.Add("ShipmentItemIssuanceId", "_SHIPMENTITEMISSUANCEID_");

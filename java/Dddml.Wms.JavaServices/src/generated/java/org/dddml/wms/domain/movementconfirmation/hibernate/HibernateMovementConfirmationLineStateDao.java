@@ -43,9 +43,9 @@ public class HibernateMovementConfirmationLineStateDao implements MovementConfir
             state = new AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState();
             state.setMovementConfirmationLineId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (MovementConfirmationLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (MovementConfirmationLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

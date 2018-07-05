@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("AttributeSetInstanceExtensionFieldGroups") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "AttributeSetInstanceExtensionFieldGroups", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class AttributeSetInstanceExtensionFieldGroupResource {
 
 
@@ -26,13 +26,13 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     private AttributeSetInstanceExtensionFieldGroupApplicationService attributeSetInstanceExtensionFieldGroupApplicationService;
 
 
-    @GET
-    public AttributeSetInstanceExtensionFieldGroupStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public AttributeSetInstanceExtensionFieldGroupStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -63,8 +63,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public AttributeSetInstanceExtensionFieldGroupStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public AttributeSetInstanceExtensionFieldGroupStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             AttributeSetInstanceExtensionFieldGroupState state = attributeSetInstanceExtensionFieldGroupApplicationService.get(idObj);
@@ -81,9 +81,9 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -98,8 +98,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.CreateAttributeSetInstanceExtensionFieldGroupDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.CreateAttributeSetInstanceExtensionFieldGroupDto value,  HttpServletResponse response) {
         try {
             AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup cmd = value.toCreateAttributeSetInstanceExtensionFieldGroup();
             if (cmd.getId() == null) {
@@ -113,8 +113,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -133,8 +133,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.MergePatchAttributeSetInstanceExtensionFieldGroupDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.MergePatchAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
 
             AttributeSetInstanceExtensionFieldGroupCommand.MergePatchAttributeSetInstanceExtensionFieldGroup cmd = value.toMergePatchAttributeSetInstanceExtensionFieldGroup();
@@ -144,11 +144,11 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") String id,
+                       @NotNull @RequestParam(value = "commandId", required = false) String commandId,
+                       @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
             AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup deleteCmd = new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup();
@@ -162,7 +162,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -175,8 +175,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public AttributeSetInstanceExtensionFieldGroupStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public AttributeSetInstanceExtensionFieldGroupStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
@@ -186,8 +186,8 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public AttributeSetInstanceExtensionFieldGroupStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public AttributeSetInstanceExtensionFieldGroupStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             String idObj = id;

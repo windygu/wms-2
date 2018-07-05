@@ -98,6 +98,14 @@ namespace Dddml.Wms.Domain.Product
             dto.AttributeSetId = e.AttributeSetId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Active = e.Active;
+            var goodIdentificationEvents = new List<GoodIdentificationStateCreatedDto>();
+            foreach (var ee in e.GoodIdentificationEvents)
+            {
+                GoodIdentificationStateCreatedDto eeDto = GoodIdentificationStateEventDtoConverter.ToGoodIdentificationStateCreatedDto(ee);
+                goodIdentificationEvents.Add(eeDto);
+            }
+            dto.GoodIdentificationEvents = goodIdentificationEvents.ToArray();
+
             return dto;
         }
 
@@ -230,10 +238,26 @@ namespace Dddml.Wms.Domain.Product
             dto.IsPropertyAttributeSetIdRemoved = e.IsPropertyAttributeSetIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var goodIdentificationEvents = new List<GoodIdentificationStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.GoodIdentificationEvents)
+            {
+                GoodIdentificationStateCreatedOrMergePatchedOrRemovedDto eeDto = GoodIdentificationStateEventDtoConverter.ToGoodIdentificationStateEventDto(ee);
+                goodIdentificationEvents.Add(eeDto);
+            }
+            dto.GoodIdentificationEvents = goodIdentificationEvents.ToArray();
+
 
             return dto;
         }
 
+
+        protected virtual GoodIdentificationStateEventDtoConverter GoodIdentificationStateEventDtoConverter
+        {
+            get
+            {
+                return new GoodIdentificationStateEventDtoConverter();
+            }
+        }
 
 
     }

@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.math.BigDecimal;
@@ -19,7 +18,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("InOuts") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "InOuts", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class InOutResource {
 
 
@@ -27,13 +27,13 @@ public class InOutResource {
     private InOutApplicationService inOutApplicationService;
 
 
-    @GET
-    public InOutStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public InOutStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -64,8 +64,8 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public InOutStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public InOutStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             InOutState state = inOutApplicationService.get(idObj);
@@ -82,9 +82,9 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -99,8 +99,8 @@ public class InOutResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchInOutDto.CreateInOutDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchInOutDto.CreateInOutDto value,  HttpServletResponse response) {
         try {
             InOutCommand.CreateInOut cmd = value.toCreateInOut();
             if (cmd.getDocumentNumber() == null) {
@@ -114,8 +114,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInOutDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInOutDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -134,8 +134,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchInOutDto.MergePatchInOutDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInOutDto.MergePatchInOutDto value) {
         try {
 
             InOutCommand.MergePatchInOut cmd = value.toMergePatchInOut();
@@ -146,8 +146,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}/_commands/Complete") @PUT
-    public void complete(@PathParam("id") String id, InOutCommandDtos.CompleteRequestContent content) {
+    @PutMapping("{id}/_commands/Complete")
+    public void complete(@PathVariable("id") String id, @RequestBody InOutCommandDtos.CompleteRequestContent content) {
         try {
 
             InOutCommands.Complete cmd = content.toComplete();
@@ -163,8 +163,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}/_commands/Close") @PUT
-    public void close(@PathParam("id") String id, InOutCommandDtos.CloseRequestContent content) {
+    @PutMapping("{id}/_commands/Close")
+    public void close(@PathVariable("id") String id, @RequestBody InOutCommandDtos.CloseRequestContent content) {
         try {
 
             InOutCommands.Close cmd = content.toClose();
@@ -180,8 +180,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}/_commands/Void") @PUT
-    public void _void(@PathParam("id") String id, InOutCommandDtos.VoidRequestContent content) {
+    @PutMapping("{id}/_commands/Void")
+    public void _void(@PathVariable("id") String id, @RequestBody InOutCommandDtos.VoidRequestContent content) {
         try {
 
             InOutCommands.Void cmd = content.toVoid();
@@ -197,8 +197,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}/_commands/Reverse") @PUT
-    public void reverse(@PathParam("id") String id, InOutCommandDtos.ReverseRequestContent content) {
+    @PutMapping("{id}/_commands/Reverse")
+    public void reverse(@PathVariable("id") String id, @RequestBody InOutCommandDtos.ReverseRequestContent content) {
         try {
 
             InOutCommands.Reverse cmd = content.toReverse();
@@ -214,8 +214,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}/_commands/AddLine") @PUT
-    public void addLine(@PathParam("id") String id, InOutCommandDtos.AddLineRequestContent content) {
+    @PutMapping("{id}/_commands/AddLine")
+    public void addLine(@PathVariable("id") String id, @RequestBody InOutCommandDtos.AddLineRequestContent content) {
         try {
 
             InOutCommands.AddLine cmd = content.toAddLine();
@@ -231,8 +231,8 @@ public class InOutResource {
     }
 
 
-    @Path("{id}/_commands/DocumentAction") @PUT
-    public void documentAction(@PathParam("id") String id, InOutCommandDtos.DocumentActionRequestContent content) {
+    @PutMapping("{id}/_commands/DocumentAction")
+    public void documentAction(@PathVariable("id") String id, @RequestBody InOutCommandDtos.DocumentActionRequestContent content) {
         try {
 
             InOutCommands.DocumentAction cmd = content.toDocumentAction();
@@ -247,7 +247,7 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -260,8 +260,8 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public InOutStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public InOutStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
@@ -271,8 +271,8 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public InOutStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public InOutStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             String idObj = id;
@@ -287,8 +287,8 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{inOutDocumentNumber}/InOutLines/{lineNumber}") @GET
-    public InOutLineStateDto getInOutLine(@PathParam("inOutDocumentNumber") String inOutDocumentNumber, @PathParam("lineNumber") String lineNumber) {
+    @GetMapping("{inOutDocumentNumber}/InOutLines/{lineNumber}")
+    public InOutLineStateDto getInOutLine(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
 
             InOutLineState state = inOutApplicationService.getInOutLine(inOutDocumentNumber, lineNumber);
@@ -301,8 +301,8 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{inOutDocumentNumber}/InOutLines/") @GET
-    public InOutLineStateDto[] getInOutLines(@PathParam("inOutDocumentNumber") String inOutDocumentNumber) {
+    @GetMapping("{inOutDocumentNumber}/InOutLines/")
+    public InOutLineStateDto[] getInOutLines(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber) {
         try {
             Iterable<InOutLineState> states = inOutApplicationService.getInOutLines(inOutDocumentNumber);
             if (states == null) { return null; }

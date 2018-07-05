@@ -196,6 +196,31 @@ namespace Dddml.Wms.Domain.Product
 		}
 
 
+        private CreateGoodIdentificationCommands _goodIdentifications = new CreateGoodIdentificationCommands();
+
+        public ICreateGoodIdentificationCommands GoodIdentifications
+        {
+            get
+            {
+                return this._goodIdentifications;
+            }
+        }
+
+        public CreateGoodIdentification NewCreateGoodIdentification()
+        {
+            var c = new CreateGoodIdentification();
+            c.ProductId = this.ProductId;
+
+            return c;
+        }
+
+        ICreateGoodIdentification ICreateProduct.NewCreateGoodIdentification()
+        {
+            return this.NewCreateGoodIdentification();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -333,6 +358,58 @@ namespace Dddml.Wms.Domain.Product
 		{
 		}
 
+        private GoodIdentificationCommands _goodIdentificationCommands = new GoodIdentificationCommands();
+
+        public IGoodIdentificationCommands GoodIdentificationCommands
+        {
+            get
+            {
+                return this._goodIdentificationCommands;
+            }
+        }
+
+
+        public CreateGoodIdentification NewCreateGoodIdentification()
+        {
+            var c = new CreateGoodIdentification();
+            c.ProductId = this.ProductId;
+
+            return c;
+        }
+
+        ICreateGoodIdentification IMergePatchProduct.NewCreateGoodIdentification()
+        {
+            return this.NewCreateGoodIdentification();
+        }
+
+        public MergePatchGoodIdentification NewMergePatchGoodIdentification()
+        {
+            var c = new MergePatchGoodIdentification();
+            c.ProductId = this.ProductId;
+
+            return c;
+        }
+
+        IMergePatchGoodIdentification IMergePatchProduct.NewMergePatchGoodIdentification()
+        {
+            return this.NewMergePatchGoodIdentification();
+        }
+
+
+        public RemoveGoodIdentification NewRemoveGoodIdentification()
+        {
+            var c = new RemoveGoodIdentification();
+            c.ProductId = this.ProductId;
+
+            return c;
+        }
+
+        IRemoveGoodIdentification IMergePatchProduct.NewRemoveGoodIdentification()
+        {
+            return this.NewRemoveGoodIdentification();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -352,6 +429,69 @@ namespace Dddml.Wms.Domain.Product
         }
 
 	}
+
+
+    public class CreateGoodIdentificationCommands : ICreateGoodIdentificationCommands
+    {
+        private List<ICreateGoodIdentification> _innerCommands = new List<ICreateGoodIdentification>();
+
+        public void Add(ICreateGoodIdentification c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateGoodIdentification c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateGoodIdentification> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class GoodIdentificationCommands : IGoodIdentificationCommands
+    {
+        private List<IGoodIdentificationCommand> _innerCommands = new List<IGoodIdentificationCommand>();
+
+        public void Add(IGoodIdentificationCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IGoodIdentificationCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IGoodIdentificationCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
     public static partial class ProductCommands
     {

@@ -26,5 +26,9 @@ public interface ProductStateQueryRepository
 
     long getCount(Criterion filter);
 
+    GoodIdentificationState getGoodIdentification(String productId, String goodIdentificationTypeId);
+
+    Iterable<GoodIdentificationState> getGoodIdentifications(String productId);
+
 }
 

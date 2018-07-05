@@ -43,9 +43,9 @@ public class HibernateInventoryItemEntryStateDao implements InventoryItemEntrySt
             state = new AbstractInventoryItemEntryState.SimpleInventoryItemEntryState();
             state.setInventoryItemEntryId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InventoryItemEntryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemEntryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (InventoryItemEntryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemEntryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

@@ -29,3 +29,29 @@ aggregates:
     metadata:
       DiscriminatorConstObjectNameFormat: "{0}s"
     
+    # --------------- subtypes ---------------
+    subtypes:
+    
+      # -----------------------------------------
+      # 组织
+      Organization:
+        # inheritedFrom: Party
+        id:
+          name: PartyId
+          type: string
+          
+        discriminatorValue: "Organization"
+
+        properties:
+          OrganizationName:
+            type: string
+          Description:
+            type: string
+          Type:
+            type: string
+          IsSummary:
+            type: bool
+          # ad_replicationstrategy_id numeric,
+
+          
+          

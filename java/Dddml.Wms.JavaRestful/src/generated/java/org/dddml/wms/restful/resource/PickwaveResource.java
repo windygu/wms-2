@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("Pickwaves") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "Pickwaves", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class PickwaveResource {
 
 
@@ -26,13 +26,13 @@ public class PickwaveResource {
     private PickwaveApplicationService pickwaveApplicationService;
 
 
-    @GET
-    public PickwaveStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public PickwaveStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -63,8 +63,8 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public PickwaveStateDto get(@PathParam("id") Long id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public PickwaveStateDto get(@PathVariable("id") Long id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             Long idObj = id;
             PickwaveState state = pickwaveApplicationService.get(idObj);
@@ -81,9 +81,9 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -98,8 +98,8 @@ public class PickwaveResource {
     }
 
 
-    @POST
-    public Long post(CreateOrMergePatchPickwaveDto.CreatePickwaveDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public Long post(@RequestBody CreateOrMergePatchPickwaveDto.CreatePickwaveDto value,  HttpServletResponse response) {
         try {
             PickwaveCommand.CreatePickwave cmd = value.toCreatePickwave();
             if (cmd.getPickwaveId() == null) {
@@ -113,8 +113,8 @@ public class PickwaveResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") Long id, CreateOrMergePatchPickwaveDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") Long id, @RequestBody CreateOrMergePatchPickwaveDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -133,8 +133,8 @@ public class PickwaveResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") Long id, CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") Long id, @RequestBody CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value) {
         try {
 
             PickwaveCommand.MergePatchPickwave cmd = value.toMergePatchPickwave();
@@ -144,11 +144,11 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") Long id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") Long id,
+                       @NotNull @RequestParam(value = "commandId", required = false) String commandId,
+                       @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
             PickwaveCommand.DeletePickwave deleteCmd = new AbstractPickwaveCommand.SimpleDeletePickwave();
@@ -162,7 +162,7 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -175,8 +175,8 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public PickwaveStateEventDto getStateEvent(@PathParam("id") Long id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public PickwaveStateEventDto getStateEvent(@PathVariable("id") Long id, @PathVariable("version") long version) {
         try {
 
             Long idObj = id;
@@ -186,8 +186,8 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public PickwaveStateDto getHistoryState(@PathParam("id") Long id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public PickwaveStateDto getHistoryState(@PathVariable("id") Long id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             Long idObj = id;

@@ -6,41 +6,59 @@
 
     <groupId>org.dddml</groupId>
     <artifactId>org.dddml.wms.parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <!-- <modules> -->
-        <!-- <module>../Dddml.Wms.JavaCommon</module> -->
-        <!-- <module>../Dddml.Wms.JavaServices</module> -->
-        <!-- <module>../Dddml.Wms.JavaRestful</module> -->
-    <!-- </modules> -->
     <packaging>pom</packaging>
-
-    <distributionManagement>
-        <repository>
-            <id>maven-snapshots</id>
-            <url>http://10.201.2.14:8081/repository/maven-snapshots</url>
-        </repository>
-    </distributionManagement>
-
+    <parent>
+        <groupId>com.syj.platform</groupId>
+        <artifactId>saas-platform-boot-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modules>
+        <module>Dddml.Wms.JavaCommon</module>
+        <module>Dddml.Wms.JavaServices</module>
+        <module>Dddml.Wms.JavaRestful</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-version>4.3.2.RELEASE</spring-version>
+        <hibernate-version>5.2.2.Final</hibernate-version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
+                <groupId>org.dddml</groupId>
+                <artifactId>dddml-wms-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dddml</groupId>
+                <artifactId>dddml-wms-services</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dddml</groupId>
+                <artifactId>dddml-criterion-support</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+            <dependency>
+                <groupId>org.joda</groupId>
+                <artifactId>joda-money</artifactId>
+                <version>0.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.squirrelframework</groupId>
+                <artifactId>squirrel-foundation</artifactId>
+                <version>0.3.8</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

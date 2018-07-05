@@ -42,9 +42,9 @@ public class HibernateShipmentPackageContentStateDao implements ShipmentPackageC
             state = new AbstractShipmentPackageContentState.SimpleShipmentPackageContentState();
             state.setShipmentPackageContentId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ShipmentPackageContentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageContentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (ShipmentPackageContentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageContentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

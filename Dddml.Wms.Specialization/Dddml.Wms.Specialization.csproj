@@ -57,6 +57,7 @@
     <Compile Include="Specialization\IAggregateEventListener.cs" />
     <Compile Include="Specialization\IApplicationContext.cs" />
     <Compile Include="Specialization\IApplicationService.cs" />
+    <Compile Include="Specialization\IClobConverter.cs" />
     <Compile Include="Specialization\ICommand.cs" />
     <Compile Include="Specialization\ICommandDto.cs" />
     <Compile Include="Specialization\ICreated.cs" />

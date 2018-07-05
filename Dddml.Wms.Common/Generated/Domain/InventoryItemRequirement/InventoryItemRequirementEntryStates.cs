@@ -96,13 +96,16 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         {
             InventoryItemRequirementEntryId globalId = new InventoryItemRequirementEntryId(_inventoryItemRequirementState.InventoryItemRequirementId, entrySeqId);
             if (_loadedInventoryItemRequirementEntryStates.ContainsKey(globalId)) {
-                return _loadedInventoryItemRequirementEntryStates[globalId];
+                var state = _loadedInventoryItemRequirementEntryStates[globalId];
+                if (this._inventoryItemRequirementState != null && this._inventoryItemRequirementState.ReadOnly == false) { ((IInventoryItemRequirementEntryState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new InventoryItemRequirementEntryState(ForReapplying);
                 state.InventoryItemRequirementEntryId = globalId;
                 _loadedInventoryItemRequirementEntryStates.Add(globalId, state);
+                if (this._inventoryItemRequirementState != null && this._inventoryItemRequirementState.ReadOnly == false) { ((IInventoryItemRequirementEntryState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -112,6 +115,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
                 {
                     _loadedInventoryItemRequirementEntryStates.Add(globalId, state);
                 }
+                if (this._inventoryItemRequirementState != null && this._inventoryItemRequirementState.ReadOnly == false) { ((IInventoryItemRequirementEntryState)state).ReadOnly = false; }
                 return state;
             }
         }

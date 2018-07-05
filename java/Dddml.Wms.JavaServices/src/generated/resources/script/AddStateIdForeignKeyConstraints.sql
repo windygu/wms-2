@@ -102,6 +102,14 @@ alter TABLE `PicklistItems` add
     (`PicklistBinId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `GoodIdentifications` add
+  CONSTRAINT `FK_GoodIdentification_Product_StateId` 
+  FOREIGN KEY 
+    (`ProductGoodIdentificationIdProductId`) 
+  REFERENCES `Products` 
+    (`ProductId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `ShipmentItems` add
   CONSTRAINT `FK_ShipmentItem_Shipment_StateId` 
   FOREIGN KEY 

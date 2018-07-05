@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("OrderShipments") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "OrderShipments", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class OrderShipmentResource {
 
 
@@ -26,13 +26,13 @@ public class OrderShipmentResource {
     private OrderShipmentApplicationService orderShipmentApplicationService;
 
 
-    @GET
-    public OrderShipmentStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public OrderShipmentStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -63,8 +63,8 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public OrderShipmentStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public OrderShipmentStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(id);
             OrderShipmentState state = orderShipmentApplicationService.get(idObj);
@@ -81,9 +81,9 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -98,8 +98,8 @@ public class OrderShipmentResource {
     }
 
 
-    @POST
-    public OrderShipmentId post(CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public OrderShipmentId post(@RequestBody CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto value,  HttpServletResponse response) {
         try {
             OrderShipmentCommand.CreateOrderShipment cmd = value.toCreateOrderShipment();
             if (cmd.getOrderShipmentId() == null) {
@@ -113,8 +113,8 @@ public class OrderShipmentResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrderShipmentDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderShipmentDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -133,8 +133,8 @@ public class OrderShipmentResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchOrderShipmentDto.MergePatchOrderShipmentDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderShipmentDto.MergePatchOrderShipmentDto value) {
         try {
 
             OrderShipmentCommand.MergePatchOrderShipment cmd = value.toMergePatchOrderShipment();
@@ -144,7 +144,7 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -157,8 +157,8 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public OrderShipmentStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public OrderShipmentStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(id);
@@ -168,8 +168,8 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public OrderShipmentStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public OrderShipmentStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(id);

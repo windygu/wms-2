@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.ShipmentPackage
         {
             ShipmentPackageContentId globalId = new ShipmentPackageContentId(_shipmentPackageState.ShipmentPackageId, shipmentItemSeqId);
             if (_loadedShipmentPackageContentStates.ContainsKey(globalId)) {
-                return _loadedShipmentPackageContentStates[globalId];
+                var state = _loadedShipmentPackageContentStates[globalId];
+                if (this._shipmentPackageState != null && this._shipmentPackageState.ReadOnly == false) { ((IShipmentPackageContentState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new ShipmentPackageContentState(ForReapplying);
                 state.ShipmentPackageContentId = globalId;
                 _loadedShipmentPackageContentStates.Add(globalId, state);
+                if (this._shipmentPackageState != null && this._shipmentPackageState.ReadOnly == false) { ((IShipmentPackageContentState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
                 {
                     _loadedShipmentPackageContentStates.Add(globalId, state);
                 }
+                if (this._shipmentPackageState != null && this._shipmentPackageState.ReadOnly == false) { ((IShipmentPackageContentState)state).ReadOnly = false; }
                 return state;
             }
         }

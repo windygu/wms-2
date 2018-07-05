@@ -42,9 +42,9 @@ public class HibernatePicklistItemStateDao implements PicklistItemStateDao
             state = new AbstractPicklistItemState.SimplePicklistItemState();
             state.setPicklistBinPicklistItemId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PicklistItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (PicklistItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -19,7 +18,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("Orders") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "Orders", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class OrderResource {
 
 
@@ -27,13 +27,13 @@ public class OrderResource {
     private OrderApplicationService orderApplicationService;
 
 
-    @GET
-    public OrderStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public OrderStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -64,8 +64,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public OrderStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public OrderStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             OrderState state = orderApplicationService.get(idObj);
@@ -82,9 +82,9 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -99,8 +99,8 @@ public class OrderResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchOrderDto.CreateOrderDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchOrderDto.CreateOrderDto value,  HttpServletResponse response) {
         try {
             OrderCommand.CreateOrder cmd = value.toCreateOrder();
             if (cmd.getOrderId() == null) {
@@ -114,8 +114,8 @@ public class OrderResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrderDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -134,8 +134,8 @@ public class OrderResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchOrderDto.MergePatchOrderDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderDto.MergePatchOrderDto value) {
         try {
 
             OrderCommand.MergePatchOrder cmd = value.toMergePatchOrder();
@@ -145,7 +145,7 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -158,8 +158,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public OrderStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public OrderStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
@@ -169,8 +169,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public OrderStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public OrderStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             String idObj = id;
@@ -185,8 +185,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderRoles/{partyRoleId}") @GET
-    public OrderRoleStateDto getOrderRole(@PathParam("orderId") String orderId, @PathParam("partyRoleId") String partyRoleId) {
+    @GetMapping("{orderId}/OrderRoles/{partyRoleId}")
+    public OrderRoleStateDto getOrderRole(@PathVariable("orderId") String orderId, @PathVariable("partyRoleId") String partyRoleId) {
         try {
 
             OrderRoleState state = orderApplicationService.getOrderRole(orderId, (new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class, ",") {
@@ -204,8 +204,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderRoles/") @GET
-    public OrderRoleStateDto[] getOrderRoles(@PathParam("orderId") String orderId) {
+    @GetMapping("{orderId}/OrderRoles/")
+    public OrderRoleStateDto[] getOrderRoles(@PathVariable("orderId") String orderId) {
         try {
             Iterable<OrderRoleState> states = orderApplicationService.getOrderRoles(orderId);
             if (states == null) { return null; }
@@ -215,8 +215,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderItems/{orderItemSeqId}") @GET
-    public OrderItemStateDto getOrderItem(@PathParam("orderId") String orderId, @PathParam("orderItemSeqId") String orderItemSeqId) {
+    @GetMapping("{orderId}/OrderItems/{orderItemSeqId}")
+    public OrderItemStateDto getOrderItem(@PathVariable("orderId") String orderId, @PathVariable("orderItemSeqId") String orderItemSeqId) {
         try {
 
             OrderItemState state = orderApplicationService.getOrderItem(orderId, orderItemSeqId);
@@ -229,8 +229,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderItems/") @GET
-    public OrderItemStateDto[] getOrderItems(@PathParam("orderId") String orderId) {
+    @GetMapping("{orderId}/OrderItems/")
+    public OrderItemStateDto[] getOrderItems(@PathVariable("orderId") String orderId) {
         try {
             Iterable<OrderItemState> states = orderApplicationService.getOrderItems(orderId);
             if (states == null) { return null; }
@@ -240,8 +240,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderShipGroups/{shipGroupSeqId}") @GET
-    public OrderShipGroupStateDto getOrderShipGroup(@PathParam("orderId") String orderId, @PathParam("shipGroupSeqId") Long shipGroupSeqId) {
+    @GetMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
+    public OrderShipGroupStateDto getOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId) {
         try {
 
             OrderShipGroupState state = orderApplicationService.getOrderShipGroup(orderId, shipGroupSeqId);
@@ -254,8 +254,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderShipGroups/") @GET
-    public OrderShipGroupStateDto[] getOrderShipGroups(@PathParam("orderId") String orderId) {
+    @GetMapping("{orderId}/OrderShipGroups/")
+    public OrderShipGroupStateDto[] getOrderShipGroups(@PathVariable("orderId") String orderId) {
         try {
             Iterable<OrderShipGroupState> states = orderApplicationService.getOrderShipGroups(orderId);
             if (states == null) { return null; }
@@ -265,8 +265,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}") @GET
-    public OrderItemShipGroupAssociationStateDto getOrderItemShipGroupAssociation(@PathParam("orderId") String orderId, @PathParam("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathParam("orderItemSeqId") String orderItemSeqId) {
+    @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
+    public OrderItemShipGroupAssociationStateDto getOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId) {
         try {
 
             OrderItemShipGroupAssociationState state = orderApplicationService.getOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
@@ -279,8 +279,8 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/") @GET
-    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathParam("orderId") String orderId, @PathParam("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId) {
+    @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/")
+    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId) {
         try {
             Iterable<OrderItemShipGroupAssociationState> states = orderApplicationService.getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
             if (states == null) { return null; }

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.product">
+  
+  <class name="AbstractGoodIdentificationEvent" table="GoodIdentificationEvents" mutable="false" abstract="true">
+
+	<composite-id name="goodIdentificationEventId" class="org.dddml.wms.domain.product.GoodIdentificationEventId">
+		<key-property name="productId" ><column name="ProductGoodIdentificationIdProductId" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="goodIdentificationTypeId" ><column name="ProductGoodIdentificationIdGoodIdentificationTypeId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="productVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractGoodIdentificationEvent$AbstractGoodIdentificationStateEvent" abstract="true">
+
+	<property name="idValue" ><column name="IdValue" sql-type="VARCHAR(60)" /></property>
+	<property name="active" ></property>
+
+    <property name="version" column="Version" not-null="true" />
+
+    <subclass name="AbstractGoodIdentificationEvent$SimpleGoodIdentificationStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractGoodIdentificationEvent$SimpleGoodIdentificationStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyIdValueRemoved" column="IsPropertyIdValueRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractGoodIdentificationEvent$SimpleGoodIdentificationStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
+
+        </subclass>
+
+  </class>
+  
+</hibernate-mapping>

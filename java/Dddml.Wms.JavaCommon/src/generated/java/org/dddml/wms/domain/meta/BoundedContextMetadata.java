@@ -35,6 +35,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("DamageType", "DamageType");
         typeToAggMap.put("DocumentType", "DocumentType");
         typeToAggMap.put("Facility", "Facility");
+        typeToAggMap.put("GoodIdentificationType", "GoodIdentificationType");
         typeToAggMap.put("InOut", "InOut");
         typeToAggMap.put("InOutLine", "InOut");
         typeToAggMap.put("InventoryItem", "InventoryItem");
@@ -71,6 +72,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("PicklistItem", "PicklistBin");
         typeToAggMap.put("Pickwave", "Pickwave");
         typeToAggMap.put("Product", "Product");
+        typeToAggMap.put("GoodIdentification", "Product");
         typeToAggMap.put("ProductCategory", "ProductCategory");
         typeToAggMap.put("ProductCategoryMember", "ProductCategoryMember");
         typeToAggMap.put("RejectionReason", "RejectionReason");
@@ -109,6 +111,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("PhysicalInventoryLineMvo", "PhysicalInventoryLineMvo");
         typeToAggMap.put("PicklistRoleMvo", "PicklistRoleMvo");
         typeToAggMap.put("PicklistItemMvo", "PicklistItemMvo");
+        typeToAggMap.put("GoodIdentificationMvo", "GoodIdentificationMvo");
         typeToAggMap.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
         typeToAggMap.put("ShipmentItemMvo", "ShipmentItemMvo");
         typeToAggMap.put("ShipmentReceiptMvo", "ShipmentReceiptMvo");

@@ -1,0 +1,32 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+  GoodIdentificationType:
+    id:
+      name: GoodIdentificationTypeId
+      type: id-ne
+    properties:
+      ParentTypeId:
+        type: id
+      HasTable:
+        type: indicator
+      Description:
+        type: description
+        
+    references:
+      ParentTypeId:
+        name: ParentTypeId
+        displayName: PARENT-TYPE-ID
+        description: Parent
+        type: GoodIdentificationType
+        properties:
+        - ParentTypeId
+        foreignKeyName: GOOD_ID_TYPE_PAR
+        
+    reservedProperties: {}
+    
+    #metadata:
+      #StateEventDatabaseTableName: GOOD_IDENTIFICATION_TYPE_STATE_EVENT

@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.InOut
         {
             InOutLineId globalId = new InOutLineId(_inOutState.DocumentNumber, lineNumber);
             if (_loadedInOutLineStates.ContainsKey(globalId)) {
-                return _loadedInOutLineStates[globalId];
+                var state = _loadedInOutLineStates[globalId];
+                if (this._inOutState != null && this._inOutState.ReadOnly == false) { ((IInOutLineState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new InOutLineState(ForReapplying);
                 state.InOutLineId = globalId;
                 _loadedInOutLineStates.Add(globalId, state);
+                if (this._inOutState != null && this._inOutState.ReadOnly == false) { ((IInOutLineState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.InOut
                 {
                     _loadedInOutLineStates.Add(globalId, state);
                 }
+                if (this._inOutState != null && this._inOutState.ReadOnly == false) { ((IInOutLineState)state).ReadOnly = false; }
                 return state;
             }
         }

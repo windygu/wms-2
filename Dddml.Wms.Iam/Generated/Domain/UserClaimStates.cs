@@ -94,13 +94,16 @@ namespace Dddml.Wms.Domain.User
         {
             UserClaimId globalId = new UserClaimId(_userState.UserId, claimId);
             if (_loadedUserClaimStates.ContainsKey(globalId)) {
-                return _loadedUserClaimStates[globalId];
+                var state = _loadedUserClaimStates[globalId];
+                if (this._userState != null && this._userState.ReadOnly == false) { ((IUserClaimState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new UserClaimState(ForReapplying);
                 state.UserClaimId = globalId;
                 _loadedUserClaimStates.Add(globalId, state);
+                if (this._userState != null && this._userState.ReadOnly == false) { ((IUserClaimState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -110,6 +113,7 @@ namespace Dddml.Wms.Domain.User
                 {
                     _loadedUserClaimStates.Add(globalId, state);
                 }
+                if (this._userState != null && this._userState.ReadOnly == false) { ((IUserClaimState)state).ReadOnly = false; }
                 return state;
             }
         }

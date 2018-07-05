@@ -37,6 +37,10 @@ namespace Dddml.Wms.Domain.Product
 
         IProductState GetHistoryState(string productId, long version);
 
+        IGoodIdentificationState GetGoodIdentification(string productId, string goodIdentificationTypeId);
+
+        IEnumerable<IGoodIdentificationState> GetGoodIdentifications(string productId);
+
 
 	}
 

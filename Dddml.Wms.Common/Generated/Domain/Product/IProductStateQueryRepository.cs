@@ -32,6 +32,10 @@ namespace Dddml.Wms.Domain.Product
 
         long GetCount(ICriterion filter);
 
+        IGoodIdentificationState GetGoodIdentification(string productId, string goodIdentificationTypeId);
+
+        IEnumerable<IGoodIdentificationState> GetGoodIdentifications(string productId);
+
 	}
 
 }

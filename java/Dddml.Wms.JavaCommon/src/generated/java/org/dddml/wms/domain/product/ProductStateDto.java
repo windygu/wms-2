@@ -813,10 +813,22 @@ public class ProductStateDto
         this.updatedAt = updatedAt;
     }
 
+    private GoodIdentificationStateDto[] goodIdentifications;
+
+    public GoodIdentificationStateDto[] getGoodIdentifications()
+    {
+        return this.goodIdentifications;
+    }	
+
+    public void setGoodIdentifications(GoodIdentificationStateDto[] goodIdentifications)
+    {
+        this.goodIdentifications = goodIdentifications;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"GoodIdentifications"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -1039,6 +1051,18 @@ public class ProductStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("GoodIdentifications")) {
+                ArrayList<GoodIdentificationStateDto> arrayList = new ArrayList();
+                if (state.getGoodIdentifications() != null) {
+                    GoodIdentificationStateDto.DtoConverter conv = new GoodIdentificationStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "GoodIdentifications");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (GoodIdentificationState s : state.getGoodIdentifications()) {
+                        arrayList.add(conv.toGoodIdentificationStateDto(s));
+                    }
+                }
+                dto.setGoodIdentifications(arrayList.toArray(new GoodIdentificationStateDto[0]));
             }
             return dto;
         }

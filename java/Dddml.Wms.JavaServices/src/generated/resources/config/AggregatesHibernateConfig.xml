@@ -186,6 +186,27 @@
   </bean>
 
 
+  <bean id="goodIdentificationTypeStateRepository" class="org.dddml.wms.domain.goodidentificationtype.hibernate.HibernateGoodIdentificationTypeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="goodIdentificationTypeStateQueryRepository" class="org.dddml.wms.domain.goodidentificationtype.hibernate.HibernateGoodIdentificationTypeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="goodIdentificationTypeEventStore" class="org.dddml.wms.domain.goodidentificationtype.hibernate.HibernateGoodIdentificationTypeEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="goodIdentificationTypeApplicationService" class="org.dddml.wms.domain.goodidentificationtype.AbstractGoodIdentificationTypeApplicationService$SimpleGoodIdentificationTypeApplicationService">
+    <constructor-arg ref="goodIdentificationTypeEventStore"/>
+    <constructor-arg ref="goodIdentificationTypeStateRepository"/>
+    <constructor-arg ref="goodIdentificationTypeStateQueryRepository"/>
+  </bean>
+
+
   <bean id="inOutLineStateDao" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutLineStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -742,6 +763,15 @@
     <constructor-arg ref="pickwaveStateQueryRepository"/>
   </bean>
 
+
+  <bean id="goodIdentificationStateDao" class="org.dddml.wms.domain.product.hibernate.HibernateGoodIdentificationStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="goodIdentificationEventDao" class="org.dddml.wms.domain.product.hibernate.HibernateGoodIdentificationEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
 
   <bean id="productStateRepository" class="org.dddml.wms.domain.product.hibernate.HibernateProductStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
@@ -1476,6 +1506,27 @@
     <constructor-arg ref="picklistItemMvoEventStore"/>
     <constructor-arg ref="picklistItemMvoStateRepository"/>
     <constructor-arg ref="picklistItemMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="goodIdentificationMvoStateRepository" class="org.dddml.wms.domain.goodidentificationmvo.hibernate.HibernateGoodIdentificationMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="goodIdentificationMvoStateQueryRepository" class="org.dddml.wms.domain.goodidentificationmvo.hibernate.HibernateGoodIdentificationMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="goodIdentificationMvoEventStore" class="org.dddml.wms.domain.goodidentificationmvo.hibernate.HibernateGoodIdentificationMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="goodIdentificationMvoApplicationService" class="org.dddml.wms.domain.goodidentificationmvo.AbstractGoodIdentificationMvoApplicationService$SimpleGoodIdentificationMvoApplicationService">
+    <constructor-arg ref="goodIdentificationMvoEventStore"/>
+    <constructor-arg ref="goodIdentificationMvoStateRepository"/>
+    <constructor-arg ref="goodIdentificationMvoStateQueryRepository"/>
   </bean>
 
 

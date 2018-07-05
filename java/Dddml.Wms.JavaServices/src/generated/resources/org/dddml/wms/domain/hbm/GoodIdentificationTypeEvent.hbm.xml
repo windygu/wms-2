@@ -1,0 +1,58 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.goodidentificationtype">
+  
+  <class name="AbstractGoodIdentificationTypeEvent" table="GoodIdentificationTypeEvents" mutable="false" abstract="true">
+
+	<composite-id name="goodIdentificationTypeEventId" class="org.dddml.wms.domain.goodidentificationtype.GoodIdentificationTypeEventId">
+		<key-property name="goodIdentificationTypeId" ><column name="GoodIdentificationTypeId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractGoodIdentificationTypeEvent$AbstractGoodIdentificationTypeStateEvent" abstract="true">
+
+	<property name="parentTypeId" ><column name="ParentTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="hasTable" ><column name="HasTable" sql-type="CHAR(1)" /></property>
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="active" ></property>
+
+    <subclass name="AbstractGoodIdentificationTypeEvent$SimpleGoodIdentificationTypeStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractGoodIdentificationTypeEvent$SimpleGoodIdentificationTypeStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyParentTypeIdRemoved" column="IsPropertyParentTypeIdRemoved"/>
+
+        <property name="isPropertyHasTableRemoved" column="IsPropertyHasTableRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractGoodIdentificationTypeEvent$SimpleGoodIdentificationTypeStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+        </subclass>
+
+  </class>
+  
+</hibernate-mapping>

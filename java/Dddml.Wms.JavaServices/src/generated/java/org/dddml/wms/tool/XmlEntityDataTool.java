@@ -318,9 +318,10 @@ public class XmlEntityDataTool {
                     return propertyDescriptor.getPropertyType();
                 }
             });
-            if (propertyDescriptor.getName().equalsIgnoreCase(entityName + "Id")) {
+            String superEntityName = BoundedContextMetadata.TYPE_NAME_TO_AGGREGATE_NAME_MAP.get(entityName);
+            if (propertyDescriptor.getName().equalsIgnoreCase(superEntityName + "Id")) {
                 addPropertyPropertySetter(setterMap, propertyDescriptor);
-            } else if (propertyDescriptor.getName().equalsIgnoreCase(entityName + "EventId")) {
+            } else if (propertyDescriptor.getName().equalsIgnoreCase(superEntityName + "EventId")) {
                 addPropertyPropertySetter(setterMap, propertyDescriptor);
             }
         }

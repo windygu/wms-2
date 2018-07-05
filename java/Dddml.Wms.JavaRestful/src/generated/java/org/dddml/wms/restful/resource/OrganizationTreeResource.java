@@ -3,8 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -17,20 +17,21 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("OrganizationTrees") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "OrganizationTrees", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class OrganizationTreeResource {
 
     @Autowired
     OrganizationTreeApplicationService organizationTreeApplicationService;
 
-    @GET
-    public OrganizationStateDto[] get(@Context HttpServletRequest request,
-                                   @QueryParam("parentId") String parentId,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public OrganizationStateDto[] get( HttpServletRequest request,
+                                   @RequestParam(value = "parentId", required = false) String parentId,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -130,7 +131,7 @@ public class OrganizationTreeResource {
     }
 
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public Iterable<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 

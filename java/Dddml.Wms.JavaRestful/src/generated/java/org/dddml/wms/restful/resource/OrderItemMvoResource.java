@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.order.*;
@@ -19,7 +18,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("OrderItemMvos") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "OrderItemMvos", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class OrderItemMvoResource {
 
 
@@ -27,13 +27,13 @@ public class OrderItemMvoResource {
     private OrderItemMvoApplicationService orderItemMvoApplicationService;
 
 
-    @GET
-    public OrderItemMvoStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public OrderItemMvoStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -64,8 +64,8 @@ public class OrderItemMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public OrderItemMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public OrderItemMvoStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             OrderItemId idObj = OrderItemMvoResourceUtils.parseIdString(id);
             OrderItemMvoState state = orderItemMvoApplicationService.get(idObj);
@@ -82,9 +82,9 @@ public class OrderItemMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -99,8 +99,8 @@ public class OrderItemMvoResource {
     }
 
 
-    @POST
-    public OrderItemId post(CreateOrMergePatchOrderItemMvoDto.CreateOrderItemMvoDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public OrderItemId post(@RequestBody CreateOrMergePatchOrderItemMvoDto.CreateOrderItemMvoDto value,  HttpServletResponse response) {
         try {
             OrderItemMvoCommand.CreateOrderItemMvo cmd = value.toCreateOrderItemMvo();
             if (cmd.getOrderItemId() == null) {
@@ -114,8 +114,8 @@ public class OrderItemMvoResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrderItemMvoDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderItemMvoDto value) {
         try {
             if (value.getOrderVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -134,8 +134,8 @@ public class OrderItemMvoResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchOrderItemMvoDto.MergePatchOrderItemMvoDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderItemMvoDto.MergePatchOrderItemMvoDto value) {
         try {
 
             OrderItemMvoCommand.MergePatchOrderItemMvo cmd = value.toMergePatchOrderItemMvo();
@@ -145,7 +145,7 @@ public class OrderItemMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -158,8 +158,8 @@ public class OrderItemMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public OrderItemMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public OrderItemMvoStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             OrderItemId idObj = OrderItemMvoResourceUtils.parseIdString(id);
@@ -169,8 +169,8 @@ public class OrderItemMvoResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public OrderItemMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public OrderItemMvoStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             OrderItemId idObj = OrderItemMvoResourceUtils.parseIdString(id);

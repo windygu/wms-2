@@ -6,7 +6,7 @@
 
 <hibernate-mapping package="org.dddml.wms.domain.attributesetinstance">
   
-  <class name="org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceState$SimpleAttributeSetInstanceState" table="AttributeSetInstances">
+  <class name="org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceState$SimpleAttributeSetInstanceState" mutable="false" table="AttributeSetInstances">
 
     <cache usage="read-only"/>
 	<id name="attributeSetInstanceId" length="50" column="AttributeSetInstanceId"><generator class="assigned"/></id>

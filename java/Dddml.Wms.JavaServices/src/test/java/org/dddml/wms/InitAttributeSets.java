@@ -26,7 +26,7 @@ public class InitAttributeSets {
             new String[]{"WidthInch", "Decimal"},
             new String[]{"DiameterInch", "Decimal"},
             new String[]{"WeightLbs", "Decimal"},
-            new String[]{"WeightKg", "Decimal"},
+            new String[]{"WeightKg", "Decimal", "true"},//isMandatory
             new String[]{"AirDryWeightLbs", "Decimal"},
             new String[]{"AirDryWeightKg", "Decimal"},
             new String[]{"AirDryMetricTon", "Decimal"},
@@ -52,12 +52,15 @@ public class InitAttributeSets {
 
     private static List<AttributeCommand.CreateAttribute> createFluffPulpAttributes(){
         List<AttributeCommand.CreateAttribute> attrs = new ArrayList<>();
-        for(String[] attrInfo : FLUFF_PULP_ATTRS){
+        for(String[] attrInfo : FLUFF_PULP_ATTRS) {
             AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
             a.setAttributeId(attrInfo[0]);
             a.setAttributeName(a.getAttributeId());
             a.setActive(true);
             a.setAttributeValueType(attrInfo[1]);
+            if (attrInfo.length > 2) {
+                a.setIsMandatory(Boolean.parseBoolean(attrInfo[2]));
+            }
             attrs.add(a);
         }
         return attrs;

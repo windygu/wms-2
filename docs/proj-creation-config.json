@@ -1,0 +1,27 @@
+{
+  "dddmlDirectoryPath": "C:\\Users\\yangjiefeng\\Documents\\GitHub\\wms\\dddml",
+  "dddmlProjectFileName": "wms.project",
+  "boundedContextName": "Dddml.Wms",
+  "boundedContextJavaPackageName": "org.dddml.wms",
+  "javaRestfulClientProjectDirectoryPath": "C:\\Users\\yangjiefeng\\Documents\\GitHub\\wms\\java\\Dddml.Wms.JavaRestful.Client",
+  "javaRestfulClientProjectName": "Dddml.Wms.JavaRestful.Client",
+  "sourceProjectRootPackageName": "org.dddml.templates.tests",
+  "sourceJavaDomainProjectDirectoryPath": "C:\\Users\\yangjiefeng\\Documents\\GitHub\\dddml-dotnet-tools\\Dddml.T4.Templates.Java.Tests",
+  "aggregateT4ScriptUpdate": true,
+  "aggregateT4ScriptClean": true,
+  "pom": {
+    "parentGroupId": "com.syj.platform",
+    "parentArtifactId": "wms",
+    "parentVersion": "0.0.1-SNAPSHOT",
+	"groupId": "org.dddml"
+  },
+  "restfulClientPom": {
+    "artifactId": "wms-restful-client",
+	"name": "dddml-wms-restful-client"
+  },
+  "javaSpecializationPackageCopy": {
+	"sourceProjectSrcJavaSubDirectoryPath": "src\\generated\\java",
+    "sourceProjectSubPackageName": "specialization",
+    "targetProjectSrcJavaSubDirectoryPath": "src\\generated\\java"
+  }
+}

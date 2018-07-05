@@ -42,9 +42,9 @@ public class HibernateAttributeValueStateDao implements AttributeValueStateDao
             state = new AbstractAttributeValueState.SimpleAttributeValueState();
             state.setAttributeValueId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeValueState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeValueState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (AttributeValueState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeValueState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

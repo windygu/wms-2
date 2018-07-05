@@ -766,6 +766,30 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             this.active = active;
         }
 
+        public GoodIdentificationCommand.CreateGoodIdentification newCreateGoodIdentification()
+        {
+            AbstractGoodIdentificationCommand.SimpleCreateGoodIdentification c = new AbstractGoodIdentificationCommand.SimpleCreateGoodIdentification();
+            c.setProductId(this.getProductId());
+
+            return c;
+        }
+
+        public GoodIdentificationCommand.MergePatchGoodIdentification newMergePatchGoodIdentification()
+        {
+            AbstractGoodIdentificationCommand.SimpleMergePatchGoodIdentification c = new AbstractGoodIdentificationCommand.SimpleMergePatchGoodIdentification();
+            c.setProductId(this.getProductId());
+
+            return c;
+        }
+
+        public GoodIdentificationCommand.RemoveGoodIdentification newRemoveGoodIdentification()
+        {
+            AbstractGoodIdentificationCommand.SimpleRemoveGoodIdentification c = new AbstractGoodIdentificationCommand.SimpleRemoveGoodIdentification();
+            c.setProductId(this.getProductId());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateProduct extends AbstractCreateOrMergePatchProduct implements CreateProduct
@@ -773,6 +797,13 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        private CreateGoodIdentificationCommands goodIdentifications = new SimpleCreateGoodIdentificationCommands();
+
+        public CreateGoodIdentificationCommands getGoodIdentifications()
+        {
+            return this.goodIdentifications;
         }
 
     }
@@ -1516,6 +1547,13 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             this.isPropertyActiveRemoved = removed;
         }
 
+        private GoodIdentificationCommands goodIdentificationCommands = new SimpleGoodIdentificationCommands();
+
+        public GoodIdentificationCommands getGoodIdentificationCommands()
+        {
+            return this.goodIdentificationCommands;
+        }
+
     }
 
     public static class SimpleCreateProduct extends AbstractCreateProduct
@@ -1537,6 +1575,58 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
 	}
 
     
+    public static class SimpleCreateGoodIdentificationCommands implements CreateGoodIdentificationCommands
+    {
+        private List<GoodIdentificationCommand.CreateGoodIdentification> innerCommands = new ArrayList<GoodIdentificationCommand.CreateGoodIdentification>();
+
+        public void add(GoodIdentificationCommand.CreateGoodIdentification c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(GoodIdentificationCommand.CreateGoodIdentification c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<GoodIdentificationCommand.CreateGoodIdentification> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleGoodIdentificationCommands implements GoodIdentificationCommands
+    {
+        private List<GoodIdentificationCommand> innerCommands = new ArrayList<GoodIdentificationCommand>();
+
+        public void add(GoodIdentificationCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(GoodIdentificationCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<GoodIdentificationCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
 
 }
 

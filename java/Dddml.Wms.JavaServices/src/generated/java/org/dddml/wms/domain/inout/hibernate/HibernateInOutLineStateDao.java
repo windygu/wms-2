@@ -43,9 +43,9 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
             state = new AbstractInOutLineState.SimpleInOutLineState();
             state.setInOutLineId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InOutLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (InOutLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

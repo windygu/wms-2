@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+    <!-- C:\svn\ofbiz.15.12\applications\accounting\data\AccountingTypeData.xml -->
+    <!-- <GoodIdentificationType description="replacement value for partyId in the invoice export function in accounting" goodIdentificationTypeId="INVOICE_EXPORT" /> -->
+
+    <!-- C:\svn\ofbiz.15.12\applications\product\data\ProductTypeData.xml -->
+    <GoodIdentificationType description="ISBN" goodIdentificationTypeId="ISBN" hasTable="N" parentTypeId="" />
+    <GoodIdentificationType description="Manufacturer (Model) Number" goodIdentificationTypeId="MANUFACTURER_ID_NO" hasTable="N" parentTypeId="" />
+    <GoodIdentificationType description="Model Year" goodIdentificationTypeId="MODEL_YEAR" hasTable="N" parentTypeId="" />
+    <GoodIdentificationType description="Other" goodIdentificationTypeId="OTHER_ID" hasTable="N" parentTypeId="" />
+    <GoodIdentificationType description="SKU" goodIdentificationTypeId="SKU" hasTable="N" parentTypeId="" />
+    <GoodIdentificationType description="UPCA" goodIdentificationTypeId="UPCA" hasTable="N" parentTypeId="" />
+    <GoodIdentificationType description="UPCE" goodIdentificationTypeId="UPCE" hasTable="N" parentTypeId="" />
+    <GoodIdentificationType description="EAN" goodIdentificationTypeId="EAN" hasTable="N" parentTypeId="" />
+    <!-- <GoodIdentificationType description="Library of Congress" goodIdentificationTypeId="LOC" hasTable="N" parentTypeId="" /> -->
+    <!-- <GoodIdentificationType description="Harmonized System Codes (HS Code)" goodIdentificationTypeId="HS_CODE" hasTable="N" parentTypeId="" /> -->
+
+    <!-- C:\svn\ofbiz.15.12\specialpurpose\googlebase\data\GoogleBaseTypeData.xml -->
+    <!-- <GoodIdentificationType description="Google Id" goodIdentificationTypeId="GOOGLE_ID" hasTable="N" parentTypeId="" /> -->
+    <!-- <GoodIdentificationType description="Google Id en_US" goodIdentificationTypeId="GOOGLE_ID_en_US" hasTable="N" /> -->
+    <!-- <GoodIdentificationType description="Google Id en_GB" goodIdentificationTypeId="GOOGLE_ID_en_GB" hasTable="N" /> -->
+    <!-- <GoodIdentificationType description="Google Id de" goodIdentificationTypeId="GOOGLE_ID_de" hasTable="N" /> -->
+
+</entity-engine-xml>

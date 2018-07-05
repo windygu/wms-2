@@ -1,6 +1,12 @@
 package org.dddml.wms;
 
 import org.dddml.wms.domain.inventoryitem.*;
+import org.dddml.wms.domain.locator.AbstractLocatorCommand;
+import org.dddml.wms.domain.locator.LocatorApplicationService;
+import org.dddml.wms.domain.locator.LocatorCommand;
+import org.dddml.wms.domain.warehouse.AbstractWarehouseCommand;
+import org.dddml.wms.domain.warehouse.WarehouseApplicationService;
+import org.dddml.wms.domain.warehouse.WarehouseCommand;
 import org.dddml.wms.specialization.ApplicationContext;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -29,7 +35,6 @@ public class TestMain {
 
     public static void main(final String[] args) throws Exception {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
-
         // //////////////////  initialize database data /////////////////
         if(true) { // if need to initialize, switch to true, else to false.
             InitEntityXmlData.createEntityXmlData();
@@ -55,6 +60,18 @@ public class TestMain {
             }
         }
         // ////////////////////////////////////////////////////////////
+        try {
+            testCreateWarehouse();
+            testCreateLocators();
+        } catch (Exception ex) {
+            if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
+                ex.printStackTrace();
+            } else {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        }
+        //if(true) {return;}
         //testInventoryItemApplicationService();
         //if(true) return;
 
@@ -71,6 +88,34 @@ public class TestMain {
         shipmentTests.testImportAndReceive();
 
     }
+
+    private static void testCreateWarehouse() {
+        WarehouseCommand.CreateWarehouse createWarehouse = new AbstractWarehouseCommand.SimpleCreateWarehouse();
+        createWarehouse.setWarehouseId(InOutTests.TEST_WAREHOUSE_ID);
+        createWarehouse.setCommandId(UUID.randomUUID().toString());
+        createWarehouse.setRequesterId("111111");
+        createWarehouse.setActive(true);
+        WarehouseApplicationService service = (WarehouseApplicationService) ApplicationContext.current.get("warehouseApplicationService");
+        service.when(createWarehouse);
+    }
+    
+    private static void testCreateLocators() {
+        testCreateLocator(InOutTests.TEST_LOCATOR_ID_1);
+        testCreateLocator(InOutTests.TEST_LOCATOR_ID_1_RECEIVING_AREA);
+        testCreateLocator(InOutTests.TEST_LOCATOR_ID_2);
+    }
+
+    private static void testCreateLocator(String locatorId) {
+        LocatorCommand.CreateLocator createLocator = new AbstractLocatorCommand.SimpleCreateLocator();
+        createLocator.setWarehouseId(InOutTests.TEST_WAREHOUSE_ID);
+        createLocator.setLocatorId(locatorId);
+        createLocator.setCommandId(UUID.randomUUID().toString());
+        createLocator.setRequesterId("111111");
+        createLocator.setActive(true);
+        LocatorApplicationService service = (LocatorApplicationService) ApplicationContext.current.get("locatorApplicationService");
+        service.when(createLocator);
+    }
+
 
     //        ReflectReadOnlyProxyGenerator generator = new ReflectReadOnlyProxyGenerator();
     //        TestIntf1 testIntf1 = (TestIntf1) generator.createProxy(new TestClass1(), new Class[]{TestIntf1.class}, "getStateReadOnly", TestClass1.readOnlyPropertyNames);

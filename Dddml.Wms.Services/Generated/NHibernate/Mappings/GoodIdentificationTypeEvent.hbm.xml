@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.GoodIdentificationType">
+  
+  <class name="GoodIdentificationTypeEventBase" table="GoodIdentificationTypeEvents" mutable="false" abstract="true">
+
+    <composite-id name="GoodIdentificationTypeEventId" class="Dddml.Wms.Domain.GoodIdentificationType.GoodIdentificationTypeEventId">
+        <key-property name="GoodIdentificationTypeId" ><column name="GoodIdentificationTypeId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="GoodIdentificationTypeStateEventBase" abstract="true">
+
+    <property name="ParentTypeId" ><column name="ParentTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="HasTable" ><column name="HasTable" sql-type="CHAR(1)" /></property>
+    <property name="Description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+    <property name="Active" ></property>
+    <subclass name="GoodIdentificationTypeStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="GoodIdentificationTypeStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyParentTypeIdRemoved" column="IsPropertyParentTypeIdRemoved"/>
+
+        <property name="IsPropertyHasTableRemoved" column="IsPropertyHasTableRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="GoodIdentificationTypeStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+        </subclass>
+
+  </class>
+  
+</hibernate-mapping>

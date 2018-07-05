@@ -32,5 +32,9 @@ public interface ProductApplicationService
 
     ProductState getHistoryState(String productId, long version);
 
+    GoodIdentificationState getGoodIdentification(String productId, String goodIdentificationTypeId);
+
+    Iterable<GoodIdentificationState> getGoodIdentifications(String productId);
+
 }
 

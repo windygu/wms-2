@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.Product;
 namespace Dddml.Wms.Domain.Product
 {
 
-	public partial class ProductState : ProductStateProperties, IProductState
+	public partial class ProductState : ProductStateProperties, IProductState, ISaveable
 	{
 
 		public virtual string CreatedBy { get; set; }
@@ -118,6 +118,21 @@ namespace Dddml.Wms.Domain.Product
 		}
 
 
+        private IGoodIdentificationStates _goodIdentifications;
+      
+        public virtual IGoodIdentificationStates GoodIdentifications
+        {
+            get
+            {
+                return this._goodIdentifications;
+            }
+            set
+            {
+                this._goodIdentifications = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -154,8 +169,22 @@ namespace Dddml.Wms.Domain.Product
         public ProductState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _goodIdentifications = new GoodIdentificationStates(this);
+
             InitializeProperties();
         }
+
+
+		#region Saveable Implements
+
+        public virtual void Save()
+        {
+            _goodIdentifications.Save();
+
+        }
+
+
+		#endregion
 
 
 		public virtual void When(IProductStateCreated e)
@@ -286,6 +315,10 @@ namespace Dddml.Wms.Domain.Product
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IGoodIdentificationStateCreated innerEvent in e.GoodIdentificationEvents) {
+				IGoodIdentificationState innerState = this.GoodIdentifications.Get(innerEvent.GlobalId.GoodIdentificationTypeId, true);
+				innerState.Mutate (innerEvent);
+			}
 
 		}
 
@@ -1030,6 +1063,19 @@ namespace Dddml.Wms.Domain.Product
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
+
+			foreach (IGoodIdentificationEvent innerEvent in e.GoodIdentificationEvents)
+            {
+                IGoodIdentificationState innerState = this.GoodIdentifications.Get(innerEvent.GlobalId.GoodIdentificationTypeId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IGoodIdentificationStateRemoved;
+                if (removed != null)
+                {
+                    this.GoodIdentifications.Remove(innerState);
+                }
+          
+            }
 
 		}
 

@@ -38,6 +38,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("DamageType");
             _aggregateNames.Add("DocumentType");
             _aggregateNames.Add("Facility");
+            _aggregateNames.Add("GoodIdentificationType");
             _aggregateNames.Add("InOut");
             _aggregateNames.Add("InventoryItem");
             _aggregateNames.Add("InventoryItemRequirement");
@@ -94,6 +95,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("PhysicalInventoryLineMvo");
             _aggregateNames.Add("PicklistRoleMvo");
             _aggregateNames.Add("PicklistItemMvo");
+            _aggregateNames.Add("GoodIdentificationMvo");
             _aggregateNames.Add("SellableInventoryItemEntryMvo");
             _aggregateNames.Add("ShipmentItemMvo");
             _aggregateNames.Add("ShipmentReceiptMvo");
@@ -109,6 +111,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("DamageType", "Dddml.Wms.Domain.DamageType");
             _aggregateNamespaces.Add("DocumentType", "Dddml.Wms.Domain.DocumentType");
             _aggregateNamespaces.Add("Facility", "Dddml.Wms.Domain.Facility");
+            _aggregateNamespaces.Add("GoodIdentificationType", "Dddml.Wms.Domain.GoodIdentificationType");
             _aggregateNamespaces.Add("InOut", "Dddml.Wms.Domain.InOut");
             _aggregateNamespaces.Add("InventoryItem", "Dddml.Wms.Domain.InventoryItem");
             _aggregateNamespaces.Add("InventoryItemRequirement", "Dddml.Wms.Domain.InventoryItemRequirement");
@@ -165,6 +168,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("PhysicalInventoryLineMvo", "Dddml.Wms.Domain.PhysicalInventoryLineMvo");
             _aggregateNamespaces.Add("PicklistRoleMvo", "Dddml.Wms.Domain.PicklistRoleMvo");
             _aggregateNamespaces.Add("PicklistItemMvo", "Dddml.Wms.Domain.PicklistItemMvo");
+            _aggregateNamespaces.Add("GoodIdentificationMvo", "Dddml.Wms.Domain.GoodIdentificationMvo");
             _aggregateNamespaces.Add("SellableInventoryItemEntryMvo", "Dddml.Wms.Domain.SellableInventoryItemEntryMvo");
             _aggregateNamespaces.Add("ShipmentItemMvo", "Dddml.Wms.Domain.ShipmentItemMvo");
             _aggregateNamespaces.Add("ShipmentReceiptMvo", "Dddml.Wms.Domain.ShipmentReceiptMvo");

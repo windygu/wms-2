@@ -1,0 +1,54 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+       
+    # --------------- aggregate ---------------
+    # 组织结构
+    OrganizationStructure:
+      id:
+        name: Id
+        type: OrganizationStructureId
+
+      # properties:
+          
+      # ------------------------------
+      valueObjects:
+      
+        # --------------- valueObject ---------------
+        OrganizationStructureId:
+          properties:
+            OrganizationStructureTypeId:
+              referenceType: OrganizationStructureType
+            ParentId:
+              referenceType: Organization
+            SubsidiaryId:
+              referenceType: Organization
+
+
+    # --------------- aggregate ---------------
+    # 组织结构类型
+    OrganizationStructureType:
+      id: 
+        name: Id
+        type: string
+      
+      properties:
+        Description:
+          type: string
+        
+        
+# -------------------------------------
+trees:
+    
+    # 组织树
+    OrganizationTree:
+      nodeContentType: Organization
+      structureType: OrganizationStructure
+      parentId: Id.ParentId
+      childId: Id.SubsidiaryId
+      rootParentIdValues: [""]
+
+      

@@ -6,14 +6,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.*;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceStateDto;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -36,7 +36,7 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         String url = RESOURCE_URL.concat("?sort=").concat(sort).concat("&fields=").concat(fields).concat("&firstResult=")
                 .concat(String.valueOf(firstResult)).concat("&maxResults=").concat(String.valueOf(maxResults));
         HttpGet httpGet = new HttpGet(url);
-        httpGet.setHeader(HTTP_HEADER_ACCEPT, MediaType.APPLICATION_JSON);
+        httpGet.setHeader(HTTP_HEADER_ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
         try {
             HttpResponse response = HTTP_CLIENT.execute(httpGet);
             String responseText = getContentFromResponse(response);
@@ -61,13 +61,13 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         String attributeSetInstanceId = "4af69ca7-59c3-4ec2-827a-73c6f05ffce6";
         String url = RESOURCE_URL.concat("/").concat(attributeSetInstanceId);
         HttpGet httpGet = new HttpGet(url);
-        httpGet.setHeader(HTTP_HEADER_ACCEPT, MediaType.APPLICATION_JSON);
+        httpGet.setHeader(HTTP_HEADER_ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
         try {
             HttpResponse response = HTTP_CLIENT.execute(httpGet);
             String responseText = getContentFromResponse(response);
             System.out.println(responseText);
             Assert.assertEquals(true, String.valueOf(response.getStatusLine().getStatusCode()).startsWith("20"));
-            if (response.getStatusLine().getStatusCode() == Response.Status.OK.getStatusCode()) {
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 JSONObject jsonObject = JSONObject.parseObject(responseText);
                 Assert.assertNotNull(jsonObject);
                 System.out.println(JSON.toJSONString(jsonObject, SerializerFeature.PrettyFormat));
@@ -82,7 +82,7 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
     public void getCount() {
         String url = RESOURCE_URL.concat("/_count").concat("?attributeSetId=").concat("TestColorAttributeSetId8c0fXA8idM6GE");
         HttpGet httpGet = new HttpGet(url);
-        httpGet.setHeader(HTTP_HEADER_ACCEPT, MediaType.APPLICATION_JSON);
+        httpGet.setHeader(HTTP_HEADER_ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
         try {
             HttpResponse response = HTTP_CLIENT.execute(httpGet);
             String responseText = getContentFromResponse(response);
@@ -107,9 +107,9 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         jsonObject.put("Color", "G");//注意，凡是动态字段的属性名称第一个字母必须大写，否则影响转换
         HttpPut httpPut = new HttpPut(url);
         StringEntity entity = new StringEntity(jsonObject.toJSONString(), "utf-8");
-        entity.setContentType(MediaType.APPLICATION_JSON);
+        entity.setContentType(ContentType.APPLICATION_JSON.getMimeType());
         httpPut.setEntity(entity);
-        httpPut.setHeader(HTTP_HEADER_ACCEPT, MediaType.APPLICATION_JSON);
+        httpPut.setHeader(HTTP_HEADER_ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
         try {
             HttpResponse response = HTTP_CLIENT.execute(httpPut);
             System.out.println(getContentFromResponse(response));
@@ -132,9 +132,9 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         jsonObject.put("Color", "P");//注意，凡是动态字段的属性名称第一个字母必须大写，否则影响转换
         HttpPost httpPost = new HttpPost(url);
         StringEntity entity = new StringEntity(jsonObject.toJSONString(), "utf-8");
-        entity.setContentType(MediaType.APPLICATION_JSON);
+        entity.setContentType(ContentType.APPLICATION_JSON.getMimeType());
         httpPost.setEntity(entity);
-        httpPost.setHeader(HTTP_HEADER_ACCEPT, MediaType.APPLICATION_JSON);
+        httpPost.setHeader(HTTP_HEADER_ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
         try {
             HttpResponse response = HTTP_CLIENT.execute(httpPost);
             String attributeSetInstanceId = getContentFromResponse(response);
@@ -162,9 +162,9 @@ public class AttributeSetInstanceResourceTest extends AbstractResourceTest {
         jsonObject.put("Color", "F");//注意，凡是动态字段的属性名称第一个字母必须大写，否则影响转换
         HttpPatch httpPatch = new HttpPatch(url);
         StringEntity entity = new StringEntity(jsonObject.toJSONString(), "utf-8");
-        entity.setContentType(MediaType.APPLICATION_JSON);
+        entity.setContentType(ContentType.APPLICATION_JSON.getMimeType());
         httpPatch.setEntity(entity);
-        httpPatch.setHeader(HTTP_HEADER_ACCEPT, MediaType.APPLICATION_JSON);
+        httpPatch.setHeader(HTTP_HEADER_ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
         try {
             HttpResponse response = HTTP_CLIENT.execute(httpPatch);
             System.out.println(getContentFromResponse(response));

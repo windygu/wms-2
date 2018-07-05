@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.inventoryitem.*;
@@ -21,7 +20,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("SellableInventoryItems") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "SellableInventoryItems", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class SellableInventoryItemResource {
 
 
@@ -29,13 +29,13 @@ public class SellableInventoryItemResource {
     private SellableInventoryItemApplicationService sellableInventoryItemApplicationService;
 
 
-    @GET
-    public SellableInventoryItemStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public SellableInventoryItemStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -66,8 +66,8 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public SellableInventoryItemStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public SellableInventoryItemStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             InventoryItemId idObj = SellableInventoryItemResourceUtils.parseIdString(id);
             SellableInventoryItemState state = sellableInventoryItemApplicationService.get(idObj);
@@ -84,9 +84,9 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -101,8 +101,8 @@ public class SellableInventoryItemResource {
     }
 
 
-    @POST
-    public InventoryItemId post(CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public InventoryItemId post(@RequestBody CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value,  HttpServletResponse response) {
         try {
             SellableInventoryItemCommand.CreateSellableInventoryItem cmd = value.toCreateSellableInventoryItem();
             if (cmd.getSellableInventoryItemId() == null) {
@@ -116,8 +116,8 @@ public class SellableInventoryItemResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchSellableInventoryItemDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchSellableInventoryItemDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -136,8 +136,8 @@ public class SellableInventoryItemResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value) {
         try {
 
             SellableInventoryItemCommand.MergePatchSellableInventoryItem cmd = value.toMergePatchSellableInventoryItem();
@@ -147,7 +147,7 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -160,8 +160,8 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}") @GET
-    public SellableInventoryItemEntryStateDto getSellableInventoryItemEntry(@PathParam("sellableInventoryItemId") String sellableInventoryItemId, @PathParam("entrySeqId") Long entrySeqId) {
+    @GetMapping("{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}")
+    public SellableInventoryItemEntryStateDto getSellableInventoryItemEntry(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId, @PathVariable("entrySeqId") Long entrySeqId) {
         try {
 
             SellableInventoryItemEntryState state = sellableInventoryItemApplicationService.getSellableInventoryItemEntry((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
@@ -179,8 +179,8 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{sellableInventoryItemId}/SellableInventoryItemEntries/") @GET
-    public SellableInventoryItemEntryStateDto[] getSellableInventoryItemEntries(@PathParam("sellableInventoryItemId") String sellableInventoryItemId) {
+    @GetMapping("{sellableInventoryItemId}/SellableInventoryItemEntries/")
+    public SellableInventoryItemEntryStateDto[] getSellableInventoryItemEntries(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId) {
         try {
             Iterable<SellableInventoryItemEntryState> states = sellableInventoryItemApplicationService.getSellableInventoryItemEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
                         @Override

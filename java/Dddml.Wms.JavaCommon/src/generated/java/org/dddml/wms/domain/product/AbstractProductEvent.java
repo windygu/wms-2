@@ -74,6 +74,44 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
         this.productEventId = eventId;
     }
 
+    protected GoodIdentificationEventDao getGoodIdentificationEventDao() {
+        return (GoodIdentificationEventDao)ApplicationContext.current.get("GoodIdentificationEventDao");
+    }
+
+    protected GoodIdentificationEventId newGoodIdentificationEventId(String goodIdentificationTypeId)
+    {
+        GoodIdentificationEventId eventId = new GoodIdentificationEventId(this.getProductEventId().getProductId(), 
+            goodIdentificationTypeId, 
+            this.getProductEventId().getVersion());
+        return eventId;
+    }
+
+    protected void throwOnInconsistentEventIds(GoodIdentificationEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(ProductEvent oe, GoodIdentificationEvent e)
+    {
+        if (!oe.getProductEventId().getProductId().equals(e.getGoodIdentificationEventId().getProductId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id ProductId %1$s but inner id ProductId %2$s", 
+                oe.getProductEventId().getProductId(), e.getGoodIdentificationEventId().getProductId());
+        }
+    }
+
+    public GoodIdentificationEvent.GoodIdentificationStateCreated newGoodIdentificationStateCreated(String goodIdentificationTypeId) {
+        return new AbstractGoodIdentificationEvent.SimpleGoodIdentificationStateCreated(newGoodIdentificationEventId(goodIdentificationTypeId));
+    }
+
+    public GoodIdentificationEvent.GoodIdentificationStateMergePatched newGoodIdentificationStateMergePatched(String goodIdentificationTypeId) {
+        return new AbstractGoodIdentificationEvent.SimpleGoodIdentificationStateMergePatched(newGoodIdentificationEventId(goodIdentificationTypeId));
+    }
+
+    public GoodIdentificationEvent.GoodIdentificationStateRemoved newGoodIdentificationStateRemoved(String goodIdentificationTypeId) {
+        return new AbstractGoodIdentificationEvent.SimpleGoodIdentificationStateRemoved(newGoodIdentificationEventId(goodIdentificationTypeId));
+    }
+
 
     public abstract String getEventType();
 
@@ -816,7 +854,7 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
         }
     }
 
-    public static abstract class AbstractProductStateCreated extends AbstractProductStateEvent implements ProductEvent.ProductStateCreated
+    public static abstract class AbstractProductStateCreated extends AbstractProductStateEvent implements ProductEvent.ProductStateCreated, Saveable
     {
         public AbstractProductStateCreated() {
             this(new ProductEventId());
@@ -830,10 +868,58 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
             return StateEventType.CREATED;
         }
 
+        private Map<GoodIdentificationEventId, GoodIdentificationEvent.GoodIdentificationStateCreated> goodIdentificationEvents = new HashMap<GoodIdentificationEventId, GoodIdentificationEvent.GoodIdentificationStateCreated>();
+        
+        private Iterable<GoodIdentificationEvent.GoodIdentificationStateCreated> readOnlyGoodIdentificationEvents;
+
+        public Iterable<GoodIdentificationEvent.GoodIdentificationStateCreated> getGoodIdentificationEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.goodIdentificationEvents.values();
+            }
+            else
+            {
+                if (readOnlyGoodIdentificationEvents != null) { return readOnlyGoodIdentificationEvents; }
+                GoodIdentificationEventDao eventDao = getGoodIdentificationEventDao();
+                List<GoodIdentificationEvent.GoodIdentificationStateCreated> eL = new ArrayList<GoodIdentificationEvent.GoodIdentificationStateCreated>();
+                for (GoodIdentificationEvent e : eventDao.findByProductEventId(this.getProductEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((GoodIdentificationEvent.GoodIdentificationStateCreated)e);
+                }
+                return (readOnlyGoodIdentificationEvents = eL);
+            }
+        }
+
+        public void setGoodIdentificationEvents(Iterable<GoodIdentificationEvent.GoodIdentificationStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (GoodIdentificationEvent.GoodIdentificationStateCreated e : es)
+                {
+                    addGoodIdentificationEvent(e);
+                }
+            }
+            else { this.goodIdentificationEvents.clear(); }
+        }
+        
+        public void addGoodIdentificationEvent(GoodIdentificationEvent.GoodIdentificationStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.goodIdentificationEvents.put(e.getGoodIdentificationEventId(), e);
+        }
+
+        public void save()
+        {
+            for (GoodIdentificationEvent.GoodIdentificationStateCreated e : this.getGoodIdentificationEvents()) {
+                getGoodIdentificationEventDao().save(e);
+            }
+        }
     }
 
 
-    public static abstract class AbstractProductStateMergePatched extends AbstractProductStateEvent implements ProductEvent.ProductStateMergePatched
+    public static abstract class AbstractProductStateMergePatched extends AbstractProductStateEvent implements ProductEvent.ProductStateMergePatched, Saveable
     {
         public AbstractProductStateMergePatched() {
             this(new ProductEventId());
@@ -1457,6 +1543,54 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
             this.isPropertyActiveRemoved = removed;
         }
 
+        private Map<GoodIdentificationEventId, GoodIdentificationEvent> goodIdentificationEvents = new HashMap<GoodIdentificationEventId, GoodIdentificationEvent>();
+        
+        private Iterable<GoodIdentificationEvent> readOnlyGoodIdentificationEvents;
+
+        public Iterable<GoodIdentificationEvent> getGoodIdentificationEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.goodIdentificationEvents.values();
+            }
+            else
+            {
+                if (readOnlyGoodIdentificationEvents != null) { return readOnlyGoodIdentificationEvents; }
+                GoodIdentificationEventDao eventDao = getGoodIdentificationEventDao();
+                List<GoodIdentificationEvent> eL = new ArrayList<GoodIdentificationEvent>();
+                for (GoodIdentificationEvent e : eventDao.findByProductEventId(this.getProductEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((GoodIdentificationEvent)e);
+                }
+                return (readOnlyGoodIdentificationEvents = eL);
+            }
+        }
+
+        public void setGoodIdentificationEvents(Iterable<GoodIdentificationEvent> es)
+        {
+            if (es != null)
+            {
+                for (GoodIdentificationEvent e : es)
+                {
+                    addGoodIdentificationEvent(e);
+                }
+            }
+            else { this.goodIdentificationEvents.clear(); }
+        }
+        
+        public void addGoodIdentificationEvent(GoodIdentificationEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.goodIdentificationEvents.put(e.getGoodIdentificationEventId(), e);
+        }
+
+        public void save()
+        {
+            for (GoodIdentificationEvent e : this.getGoodIdentificationEvents()) {
+                getGoodIdentificationEventDao().save(e);
+            }
+        }
     }
 
 

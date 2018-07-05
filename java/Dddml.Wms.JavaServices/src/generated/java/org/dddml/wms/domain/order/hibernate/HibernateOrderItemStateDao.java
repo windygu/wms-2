@@ -42,9 +42,9 @@ public class HibernateOrderItemStateDao implements OrderItemStateDao
             state = new AbstractOrderItemState.SimpleOrderItemState();
             state.setOrderItemId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
+        //if (getReadOnlyProxyGenerator() != null && state != null) {
+        //    return (OrderItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //}
         return state;
     }
 

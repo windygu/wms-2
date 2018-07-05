@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.math.BigDecimal;
@@ -20,7 +19,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("PhysicalInventories") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "PhysicalInventories", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class PhysicalInventoryResource {
 
 
@@ -28,13 +28,13 @@ public class PhysicalInventoryResource {
     private PhysicalInventoryApplicationService physicalInventoryApplicationService;
 
 
-    @GET
-    public PhysicalInventoryStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public PhysicalInventoryStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -65,8 +65,8 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public PhysicalInventoryStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public PhysicalInventoryStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             PhysicalInventoryState state = physicalInventoryApplicationService.get(idObj);
@@ -83,9 +83,9 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -100,8 +100,8 @@ public class PhysicalInventoryResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value,  HttpServletResponse response) {
         try {
             PhysicalInventoryCommand.CreatePhysicalInventory cmd = value.toCreatePhysicalInventory();
             if (cmd.getDocumentNumber() == null) {
@@ -115,8 +115,8 @@ public class PhysicalInventoryResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchPhysicalInventoryDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPhysicalInventoryDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -135,8 +135,8 @@ public class PhysicalInventoryResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value) {
         try {
 
             PhysicalInventoryCommand.MergePatchPhysicalInventory cmd = value.toMergePatchPhysicalInventory();
@@ -147,8 +147,8 @@ public class PhysicalInventoryResource {
     }
 
 
-    @Path("{id}/_commands/CountItem") @PUT
-    public void countItem(@PathParam("id") String id, PhysicalInventoryCommandDtos.CountItemRequestContent content) {
+    @PutMapping("{id}/_commands/CountItem")
+    public void countItem(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommandDtos.CountItemRequestContent content) {
         try {
 
             PhysicalInventoryCommands.CountItem cmd = content.toCountItem();
@@ -164,8 +164,8 @@ public class PhysicalInventoryResource {
     }
 
 
-    @Path("{id}/_commands/DocumentAction") @PUT
-    public void documentAction(@PathParam("id") String id, PhysicalInventoryCommandDtos.DocumentActionRequestContent content) {
+    @PutMapping("{id}/_commands/DocumentAction")
+    public void documentAction(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommandDtos.DocumentActionRequestContent content) {
         try {
 
             PhysicalInventoryCommands.DocumentAction cmd = content.toDocumentAction();
@@ -180,7 +180,7 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -193,8 +193,8 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
-    public PhysicalInventoryStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    @GetMapping("{id}/_stateEvents/{version}")
+    public PhysicalInventoryStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
@@ -204,8 +204,8 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
-    public PhysicalInventoryStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    @GetMapping("{id}/_historyStates/{version}")
+    public PhysicalInventoryStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
             String idObj = id;
@@ -220,8 +220,8 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}") @GET
-    public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathParam("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathParam("inventoryItemId") String inventoryItemId) {
+    @GetMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
+    public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathVariable("inventoryItemId") String inventoryItemId) {
         try {
 
             PhysicalInventoryLineState state = physicalInventoryApplicationService.getPhysicalInventoryLine(physicalInventoryDocumentNumber, (new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
@@ -239,8 +239,8 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/") @GET
-    public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathParam("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber) {
+    @GetMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/")
+    public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber) {
         try {
             Iterable<PhysicalInventoryLineState> states = physicalInventoryApplicationService.getPhysicalInventoryLines(physicalInventoryDocumentNumber);
             if (states == null) { return null; }

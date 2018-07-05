@@ -13,38 +13,66 @@ namespace Dddml.Wms.CmdLineTools
     {
         static void Main(string[] args)
         {
-            var domainProjectConfig = new ProjectConfiguration
+            // ////////////////////////////////////////////////
+            //new LineCounter().Count();
+            //System.Console.ReadKey();
+            //return;
+
+            var aggregates = GetAggaregates();
+
+            UpdateDomainProjects(aggregates);
+
+            UpdateHibernateProjects(aggregates);
+
+            UpdateRestfulClientProjects(aggregates);
+
+            Console.WriteLine("Ok!");
+            Console.ReadKey();
+
+        }
+
+        private static void UpdateRestfulClientProjects(IList<Aggregate> aggregates)
+        {
+            // ///////////////////////////////////////////////////////
+            var javaRestDomainProjConfig = new ProjectConfiguration
             {
-
-                //RestfulClientDomainProjectFilePath = @"..\..\..\Dddml.Wms.HttpServices.RestfulClient\Dddml.Wms.HttpServices.RestfulClient.csproj",
+                DomainProjectEnabled = false,
                 RestfulClientDomainProjectEnabled = false,
-                //JavaRestfulClientDomainProjectFilePath = @"..\..\..\Dddml.Wms.JavaRestfulClient\Dddml.Wms.JavaRestfulClient.csproj",
-                JavaRestfulClientDomainProjectEnabled = false,
-
-                // ///////////////////////////////////////////
-                DomainProjectEnabled = true,
-                DomainMsbProjectFilePath = @"..\..\..\Dddml.Wms.Common\Dddml.Wms.Common.csproj",
-                //T4GenerateAggregateDomainNHibernateScriptTemplateIncludeFile = @"..\..\..\..\LoadBoundedContext.tt",
                 DomainProjectNHibernateEnabled = false,
-                DomainSubDirectoryPath = @"Generated\Domain",
-                T4GenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
 
-                // ///////////////////////////////////////////
-                JavaDomainProjectEnabled = true,
-                JavaDomainMsbProjectFilePath = @"..\..\..\java\Dddml.Wms.JavaCommon\Dddml.Wms.JavaCommon.csproj",
-                //T4JavaGenerateAggregateDomainHibernateScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
+                JavaDomainProjectEnabled = false,
+                //JavaDomainMsbProjectFilePath = @"...",
+                //JavaDomainProjectDirectoryPath = javaDomainProjDir,
+                //JavaDomainProjectName = javaDomainProjName,
+                //JavaDomainSubDirectoryPath = @"...",
+                //JavaSrcGeneratedJavaSubDirectoryPath = @"src\generated\java",
+
+                // ////////////////////////////////////////////////////////
+                BoundedContextJavaPackageName = "org.dddml.wms",
+                JavaRestfulClientDomainMsbProjectFilePath = @"..\..\..\java\Dddml.Wms.JavaRestful.Client\Dddml.Wms.JavaRestful.Client.csproj",
+                //JavaRestfulClientDomainProjectName = "Dddml.Wms.JavaRestful.Client",
+                JavaRestfulClientDomainProjectEnabled = true,
+                // ////////////////////////////////////////////////////////
+
                 JavaDomainProjectHibernateEnabled = false,
-                JavaDomainSubDirectoryPath = @"src\generated\java\org\dddml\wms\domain",
-                T4JavaGenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\LoadBoundedContext.tt",
-
+                //DomainSubDirectoryPath = @"Generated\Domain",
             };
+
+            var javaRestDomainProjectGenerator = new DomainAggregateT4ScriptGenerator(javaRestDomainProjConfig);
+            javaRestDomainProjectGenerator.IsMViewObjectDisabled = true;
+            javaRestDomainProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
+            javaRestDomainProjectGenerator.CleanAggregatesDirectoriesAndScripts(aggregates);
+        }
+
+        private static void UpdateHibernateProjects(IList<Aggregate> aggregates)
+        {
 
             var hibernateProjectConfig = new ProjectConfiguration
             {
                 DomainProjectEnabled = false,
                 DomainProjectNHibernateEnabled = false,
                 RestfulClientDomainProjectEnabled = false,
-                
+
                 JavaDomainProjectEnabled = false,
                 JavaRestfulClientDomainProjectEnabled = false,
                 JavaDomainProjectHibernateEnabled = false,
@@ -65,17 +93,41 @@ namespace Dddml.Wms.CmdLineTools
 
             };
 
-            var aggregates = GetAggaregates();
+            var hibernateProjectGenerator = new DomainAggregateT4ScriptGenerator(hibernateProjectConfig);
+            hibernateProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
+        }
+
+        private static void UpdateDomainProjects(IList<Aggregate> aggregates)
+        {
+            // ////////////////////////////////////////////////
+            var domainProjectConfig = new ProjectConfiguration
+            {
+
+                //RestfulClientDomainProjectFilePath = @"..\..\..\Dddml.Wms.HttpServices.RestfulClient\Dddml.Wms.HttpServices.RestfulClient.csproj",
+                RestfulClientDomainProjectEnabled = false,
+                //JavaRestfulClientDomainProjectFilePath = @"..\..\..\java\Dddml.Wms.JavaRestful.Client\Dddml.Wms.JavaRestful.Client.csproj",
+                JavaRestfulClientDomainProjectEnabled = false,
+
+                // ///////////////////////////////////////////
+                DomainProjectEnabled = true,
+                DomainMsbProjectFilePath = @"..\..\..\Dddml.Wms.Common\Dddml.Wms.Common.csproj",
+                //T4GenerateAggregateDomainNHibernateScriptTemplateIncludeFile = @"..\..\..\..\LoadBoundedContext.tt",
+                DomainProjectNHibernateEnabled = false,
+                DomainSubDirectoryPath = @"Generated\Domain",
+                T4GenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
+
+                // ///////////////////////////////////////////
+                JavaDomainProjectEnabled = true,
+                JavaDomainMsbProjectFilePath = @"..\..\..\java\Dddml.Wms.JavaCommon\Dddml.Wms.JavaCommon.csproj",
+                //T4JavaGenerateAggregateDomainHibernateScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
+                JavaDomainProjectHibernateEnabled = false,
+                JavaDomainSubDirectoryPath = @"src\generated\java\org\dddml\wms\domain",
+                T4JavaGenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\LoadBoundedContext.tt",
+
+            };
 
             var domainProjectGenerator = new DomainAggregateT4ScriptGenerator(domainProjectConfig);
             domainProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
-
-            var hibernateProjectGenerator = new DomainAggregateT4ScriptGenerator(hibernateProjectConfig);
-            hibernateProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
-
-            Console.WriteLine("Ok!");
-            Console.ReadKey();
-
         }
 
         private static IList<Aggregate> GetAggaregates()

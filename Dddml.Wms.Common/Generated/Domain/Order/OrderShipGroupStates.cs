@@ -95,13 +95,16 @@ namespace Dddml.Wms.Domain.Order
         {
             OrderShipGroupId globalId = new OrderShipGroupId(_orderState.OrderId, shipGroupSeqId);
             if (_loadedOrderShipGroupStates.ContainsKey(globalId)) {
-                return _loadedOrderShipGroupStates[globalId];
+                var state = _loadedOrderShipGroupStates[globalId];
+                if (this._orderState != null && this._orderState.ReadOnly == false) { ((IOrderShipGroupState)state).ReadOnly = false; }
+                return state;
             }
             if (forCreation || ForReapplying)
             {
                 var state = new OrderShipGroupState(ForReapplying);
                 state.OrderShipGroupId = globalId;
                 _loadedOrderShipGroupStates.Add(globalId, state);
+                if (this._orderState != null && this._orderState.ReadOnly == false) { ((IOrderShipGroupState)state).ReadOnly = false; }
                 return state;
             }
             else
@@ -111,6 +114,7 @@ namespace Dddml.Wms.Domain.Order
                 {
                     _loadedOrderShipGroupStates.Add(globalId, state);
                 }
+                if (this._orderState != null && this._orderState.ReadOnly == false) { ((IOrderShipGroupState)state).ReadOnly = false; }
                 return state;
             }
         }

@@ -41,6 +41,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/DocumentTypeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/FacilityState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/FacilityEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/GoodIdentificationTypeState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/GoodIdentificationTypeEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineState.hbm.xml"/>
@@ -106,6 +108,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/PickwaveEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/GoodIdentificationState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/GoodIdentificationEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryMemberState.hbm.xml"/>
@@ -176,6 +180,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/PicklistRoleMvoEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PicklistItemMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PicklistItemMvoEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/GoodIdentificationMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/GoodIdentificationMvoEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemMvoState.hbm.xml"/>

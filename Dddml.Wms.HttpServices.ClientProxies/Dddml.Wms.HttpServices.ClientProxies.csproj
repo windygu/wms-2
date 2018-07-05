@@ -116,6 +116,12 @@
     <Compile Include="Generated\FacilityApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\GoodIdentificationMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\GoodIdentificationTypeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\InOutApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -310,6 +316,8 @@
 .\DocumentTypeApplicationServiceProxy.cs
 .\FacilityApplicationServiceProxy.cs
 .\GenerateRamlClientProxies.txt
+.\GoodIdentificationMvoApplicationServiceProxy.cs
+.\GoodIdentificationTypeApplicationServiceProxy.cs
 .\InOutApplicationServiceProxy.cs
 .\InOutLineMvoApplicationServiceProxy.cs
 .\InventoryItemApplicationServiceProxy.cs

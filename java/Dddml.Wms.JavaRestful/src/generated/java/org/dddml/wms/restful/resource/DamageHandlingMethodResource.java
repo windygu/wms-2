@@ -3,9 +3,8 @@ package org.dddml.wms.restful.resource;
 import java.util.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import org.apache.cxf.jaxrs.ext.PATCH;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
@@ -18,7 +17,8 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@Path("DamageHandlingMethods") @Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "DamageHandlingMethods", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
 public class DamageHandlingMethodResource {
 
 
@@ -26,13 +26,13 @@ public class DamageHandlingMethodResource {
     private DamageHandlingMethodApplicationService damageHandlingMethodApplicationService;
 
 
-    @GET
-    public DamageHandlingMethodStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
+    @GetMapping
+    public DamageHandlingMethodStateDto[] getAll( HttpServletRequest request,
+                                   @RequestParam(value = "sort", required = false) String sort,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                                   @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -63,8 +63,8 @@ public class DamageHandlingMethodResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @GET
-    public DamageHandlingMethodStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    @GetMapping("{id}")
+    public DamageHandlingMethodStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
             String idObj = id;
             DamageHandlingMethodState state = damageHandlingMethodApplicationService.get(idObj);
@@ -81,9 +81,9 @@ public class DamageHandlingMethodResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count") @GET
-    public long getCount(@Context HttpServletRequest request,
-                         @QueryParam("filter") String filter) {
+    @GetMapping("_count")
+    public long getCount( HttpServletRequest request,
+                         @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
@@ -98,8 +98,8 @@ public class DamageHandlingMethodResource {
     }
 
 
-    @POST
-    public String post(CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value, @Context HttpServletResponse response) {
+    @PostMapping
+    public String post(@RequestBody CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value,  HttpServletResponse response) {
         try {
             DamageHandlingMethodCommand.CreateDamageHandlingMethod cmd = value.toCreateDamageHandlingMethod();
             if (cmd.getDamageHandlingMethodId() == null) {
@@ -113,8 +113,8 @@ public class DamageHandlingMethodResource {
     }
 
 
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchDamageHandlingMethodDto value) {
+    @PutMapping("{id}")
+    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageHandlingMethodDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
@@ -133,8 +133,8 @@ public class DamageHandlingMethodResource {
     }
 
 
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value) {
+    @PatchMapping("{id}")
+    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value) {
         try {
 
             DamageHandlingMethodCommand.MergePatchDamageHandlingMethod cmd = value.toMergePatchDamageHandlingMethod();
@@ -144,11 +144,11 @@ public class DamageHandlingMethodResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") String id,
+                       @NotNull @RequestParam(value = "commandId", required = false) String commandId,
+                       @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
             DamageHandlingMethodCommand.DeleteDamageHandlingMethod deleteCmd = new DeleteDamageHandlingMethodDto().toDeleteDamageHandlingMethod();;
@@ -162,7 +162,7 @@ public class DamageHandlingMethodResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 

@@ -33,6 +33,14 @@ namespace Dddml.Wms.Specialization
             get;
         }
 
+        public virtual IClobConverter ClobConverter
+        {
+            get
+            {
+                return (IClobConverter)this["ClobConverter"];
+            }
+        }
+
         public virtual ITimestampService TimestampService
         {
             get { return new DefaultTimestampService(); }

@@ -314,6 +314,12 @@
     <Compile Include="Generated\Controllers\FacilitiesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\GoodIdentificationMvosController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\GoodIdentificationTypesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\InOutLineMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -557,6 +563,8 @@
 .\DocumentTypesController.cs
 .\FacilitiesController.cs
 .\GenerateAggregatesControllers.txt
+.\GoodIdentificationMvosController.cs
+.\GoodIdentificationTypesController.cs
 .\InOutLineMvosController.cs
 .\InOutsController.cs
 .\InventoryItemEntryMvosController.cs

@@ -1334,6 +1334,81 @@ namespace Dddml.Wms.Domain.Product
             }
         }
 
+        ICreateGoodIdentificationCommands ICreateProduct.GoodIdentifications
+        {
+            get
+            {
+                return this._goodIdentifications;
+            }
+        }
+
+        IGoodIdentificationCommands IMergePatchProduct.GoodIdentificationCommands
+        {
+            get
+            {
+                return this._goodIdentifications;
+            }
+        }
+
+        public virtual CreateGoodIdentificationDto NewCreateGoodIdentification()
+        {
+            var c = new CreateGoodIdentificationDto();
+            c.ProductId = this.ProductId;
+
+            return c;
+        }
+
+        ICreateGoodIdentification ICreateProduct.NewCreateGoodIdentification()
+        {
+            return this.NewCreateGoodIdentification();
+        }
+
+        ICreateGoodIdentification IMergePatchProduct.NewCreateGoodIdentification()
+        {
+            return this.NewCreateGoodIdentification();
+        }
+
+        public virtual MergePatchGoodIdentificationDto NewMergePatchGoodIdentification()
+        {
+            var c = new MergePatchGoodIdentificationDto();
+            c.ProductId = this.ProductId;
+
+            return c;
+        }
+
+        IMergePatchGoodIdentification IMergePatchProduct.NewMergePatchGoodIdentification()
+        {
+            return this.NewMergePatchGoodIdentification();
+        }
+
+        public virtual RemoveGoodIdentificationDto NewRemoveGoodIdentification()
+        {
+            var c = new RemoveGoodIdentificationDto();
+            c.ProductId = this.ProductId;
+
+            return c;
+        }
+
+        IRemoveGoodIdentification IMergePatchProduct.NewRemoveGoodIdentification()
+        {
+            return this.NewRemoveGoodIdentification();
+        }
+
+        private CreateOrMergePatchOrRemoveGoodIdentificationDtos _goodIdentifications = new CreateOrMergePatchOrRemoveGoodIdentificationDtos();
+
+        public virtual CreateOrMergePatchOrRemoveGoodIdentificationDto[] GoodIdentifications
+        {
+            get
+            {
+                return _goodIdentifications.ToArray();
+            }
+            set
+            {
+                _goodIdentifications.Clear();
+                _goodIdentifications.AddRange(value);
+            }
+        }
+
 
         string ICommandDto.CommandType 
         {

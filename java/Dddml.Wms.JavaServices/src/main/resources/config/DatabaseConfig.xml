@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="myDataSource1"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource"><!-- destroy-method="close" -->
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <!--<property name="url" value="jdbc:mysql://10.201.2.13:3306/test?characterEncoding=utf8"/>-->
-        <!--<property name="username" value="db_user"/>-->
-        <!--<property name="password" value="z5J9OT0urtbfVuRuViK7"/>-->
-        <property name="url" value="jdbc:mysql://localhost/test?characterEncoding=utf8&amp;serverTimezone=GMT%2b8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="123456"/>
-    </bean>
 
     <bean id="hibernateSessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="myDataSource1"/>
+        <property name="dataSource" ref="dataSource"/>
         <property name="mappingLocations">
             <list>
                 <value>classpath:/org/dddml/wms/domain/hbm/*.hbm.xml</value>
@@ -33,12 +19,22 @@
         </property>
         <property name="hibernateProperties">
             <value>
-                hibernate.dialect=org.hibernate.dialect.MySQLDialect
-                hibernate.show_sql=true
-                hibernate.connection.pool_size=1
+                hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
                 hibernate.hbm2ddl.auto=none
-                hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+                hibernate.order_updates=true
+                hibernate.format_sql=true
+                hibernate.use_sql_comments=true
+                hibernate.default_batch_fetch_size=30
+                hibernate.max_fetch_depth=3
+                hibernate.jdbc.fetch_size=30
+                hibernate.jdbc.batch_size=30
+                hibernate.cache.use_query_cache=false
                 hibernate.cache.use_second_level_cache=false
+                hibernate.generate_statistics=false
+                hibernate.connection.autocommit=true
+                hibernate.cache.use_structured_entries=false
+                hibernate.connection.release_mode=auto
+                hibernate.show_sql=true
             </value>
         </property>
     </bean>
@@ -52,5 +48,7 @@
 
     <bean id="stateReadOnlyProxyGenerator" class="org.dddml.wms.specialization.ReflectReadOnlyProxyGenerator"></bean>
     <!--<bean id="stateReadOnlyProxyGenerator" class=" org.dddml.wms.specializatio.NullReadOnlyProxyGenerator"></bean>-->
+
+    <bean id="clobConverter" class="org.dddml.wms.specialization.json.FastJsonClobConverter"></bean>
 
 </beans>
