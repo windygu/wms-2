@@ -287,7 +287,7 @@ aggregates:
         Close:
           parameters:
         # 取消
-        Cancel:
+        Void:
           parameters:
           
         # 反转
