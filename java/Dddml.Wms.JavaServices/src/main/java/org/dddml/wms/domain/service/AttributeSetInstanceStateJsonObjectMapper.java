@@ -7,12 +7,14 @@ import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCom
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
 import org.dddml.wms.specialization.AbstractDynamicObjectMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
 /**
  * Created by Li Yongchun on 2016/9/8.
  */
+
 public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicObjectMapper<JSONObject,
         AttributeSetInstanceState,
         AttributeSetInstanceCommand.CreateAttributeSetInstance,

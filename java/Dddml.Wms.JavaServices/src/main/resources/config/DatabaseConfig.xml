@@ -1,41 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="myDataSource1"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource"><!-- destroy-method="close" -->
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <!--<property name="url" value="jdbc:mysql://10.201.2.13:3306/test?characterEncoding=utf8"/>-->
-        <!--<property name="username" value="db_user"/>-->
-        <!--<property name="password" value="z5J9OT0urtbfVuRuViK7"/>-->
-        <!--<property name="url" value="jdbc:mysql://192.168.0.131:3306/wms?useUnicode=true&amp;characterEncoding=utf8mb4&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2b8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="xampp123%"/>-->
-        <property name="url" value="jdbc:mysql://localhost/test?characterEncoding=utf8&amp;serverTimezone=GMT%2b8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="123456"/>
-    </bean>
 
     <bean id="hibernateSessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="myDataSource1"/>
+        <property name="dataSource" ref="dataSource"/>
         <property name="mappingLocations">
             <list>
                 <value>classpath:/org/dddml/wms/domain/hbm/*.hbm.xml</value>
                 <value>classpath:/org/dddml/wms/tool/hibernate/hbm/*.hbm.xml</value>
             </list>
         </property>
-        <!-- 使用这个能避免其它数据库中存在同名表的时候的一些异常。 -->
-        <!--hibernate.default_catalog=wms-->
         <property name="hibernateProperties">
             <value>
                 hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect

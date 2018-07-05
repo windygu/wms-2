@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.200.50.55:3306/wms_default?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 1qaz!QAZ
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+  jpa:
+    open-in-view: false

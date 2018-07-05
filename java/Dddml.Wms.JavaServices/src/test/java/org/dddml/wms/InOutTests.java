@@ -6,7 +6,6 @@ import org.dddml.wms.domain.inout.*;
 import org.dddml.wms.domain.product.AbstractProductCommand;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductCommand;
-import org.dddml.wms.domain.shipment.ShipmentApplicationService;
 import org.dddml.wms.specialization.ApplicationContext;
 
 import java.math.BigDecimal;
