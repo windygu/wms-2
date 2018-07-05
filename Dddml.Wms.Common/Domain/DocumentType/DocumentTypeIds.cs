@@ -39,6 +39,9 @@ namespace Dddml.Wms.Domain.DocumentType
 
         #region Child Document Types
 
+        public const string In = "In";
+
+        public const string Out = "Out";
 
         /// <summary>
         /// 在途移库。
