@@ -286,6 +286,7 @@ aggregates:
         # 关闭
         Close:
           parameters:
+
         # 取消
         Void:
           parameters:
