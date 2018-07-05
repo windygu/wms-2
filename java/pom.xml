@@ -17,11 +17,6 @@
         <module>Dddml.Wms.JavaServices</module>
         <module>Dddml.Wms.JavaRestful</module>
     </modules>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-version>4.3.2.RELEASE</spring-version>
-        <hibernate-version>5.2.2.Final</hibernate-version>
-    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -53,11 +48,23 @@
                 <groupId>org.squirrelframework</groupId>
                 <artifactId>squirrel-foundation</artifactId>
                 <version>0.3.8</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
                 <version>1.9.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

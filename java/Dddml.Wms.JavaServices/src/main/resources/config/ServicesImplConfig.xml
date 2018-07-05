@@ -10,5 +10,9 @@
         <property name="attributeSetStateQueryRepository" ref="attributeSetStateQueryRepository"/>
     </bean>
 
+    <bean id="attributeSetInstanceStateJsonObjectMapper" class="org.dddml.wms.domain.service.AttributeSetInstanceStateJsonObjectMapper">
+        <property name="attributeSetService" ref="attributeSetService" />
+    </bean>
+
 </beans>
 
