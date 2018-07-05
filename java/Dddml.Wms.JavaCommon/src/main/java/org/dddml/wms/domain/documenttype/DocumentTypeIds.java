@@ -31,8 +31,14 @@ public class DocumentTypeIds {
 
     // //////////////////// 以上是"父"类型 //////////////////////////
 
+    /**
+     * 入库单。
+     */
     public static final String IN = "In";
-    
+
+    /**
+     * 出库单。
+     */
     public static final String OUT = "Out";
 
     /**
