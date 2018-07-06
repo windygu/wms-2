@@ -23,8 +23,8 @@ public class TestMain {
 
     static {
         springFrameworkApplicationContext = new ClassPathXmlApplicationContext(
-                "config/SpringConfigs.xml"
-                //"config/DatabaseConfig.xml"
+                "config/SpringConfigs.xml",
+                "config/TestDataSourceConfig.xml"
                 //"config/AggregatesHibernateConfig.xml",
                 //"config/TreesHibernateConfig.xml",
                 //"config/TreesConfig.xml",
