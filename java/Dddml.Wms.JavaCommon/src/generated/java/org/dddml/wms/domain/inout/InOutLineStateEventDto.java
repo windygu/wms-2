@@ -10,7 +10,7 @@ public class InOutLineStateEventDto extends AbstractEvent
 
     private InOutLineEventId inOutLineEventId;
 
-    InOutLineEventId getStateEventId() {
+    InOutLineEventId getInOutLineEventId() {
         if (inOutLineEventId == null) { inOutLineEventId = new InOutLineEventId(); }
         return inOutLineEventId;
     }
@@ -20,11 +20,11 @@ public class InOutLineStateEventDto extends AbstractEvent
     }
 
     public String getLineNumber() {
-        return getStateEventId().getLineNumber();
+        return getInOutLineEventId().getLineNumber();
     }
 
     public void setLineNumber(String lineNumber) {
-        getStateEventId().setLineNumber(lineNumber);
+        getInOutLineEventId().setLineNumber(lineNumber);
     }
 
     private String locatorId;

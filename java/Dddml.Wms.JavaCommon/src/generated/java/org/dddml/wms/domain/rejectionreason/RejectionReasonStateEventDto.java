@@ -9,7 +9,7 @@ public class RejectionReasonStateEventDto extends AbstractEvent
 
     private RejectionReasonEventId rejectionReasonEventId;
 
-    RejectionReasonEventId getStateEventId() {
+    RejectionReasonEventId getRejectionReasonEventId() {
         if (rejectionReasonEventId == null) { rejectionReasonEventId = new RejectionReasonEventId(); }
         return rejectionReasonEventId;
     }
@@ -19,19 +19,19 @@ public class RejectionReasonStateEventDto extends AbstractEvent
     }
 
     public String getRejectionReasonId() {
-        return getStateEventId().getRejectionReasonId();
+        return getRejectionReasonEventId().getRejectionReasonId();
     }
 
     public void setRejectionReasonId(String rejectionReasonId) {
-        getStateEventId().setRejectionReasonId(rejectionReasonId);
+        getRejectionReasonEventId().setRejectionReasonId(rejectionReasonId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getRejectionReasonEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getRejectionReasonEventId().setVersion(version);
     }
 
     private String description;

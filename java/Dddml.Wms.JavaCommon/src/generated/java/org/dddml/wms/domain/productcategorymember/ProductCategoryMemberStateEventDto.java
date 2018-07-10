@@ -9,7 +9,7 @@ public class ProductCategoryMemberStateEventDto extends AbstractEvent
 
     private ProductCategoryMemberEventId productCategoryMemberEventId;
 
-    ProductCategoryMemberEventId getStateEventId() {
+    ProductCategoryMemberEventId getProductCategoryMemberEventId() {
         if (productCategoryMemberEventId == null) { productCategoryMemberEventId = new ProductCategoryMemberEventId(); }
         return productCategoryMemberEventId;
     }
@@ -19,19 +19,19 @@ public class ProductCategoryMemberStateEventDto extends AbstractEvent
     }
 
     public ProductCategoryMemberId getProductCategoryMemberId() {
-        return getStateEventId().getProductCategoryMemberId();
+        return getProductCategoryMemberEventId().getProductCategoryMemberId();
     }
 
     public void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId) {
-        getStateEventId().setProductCategoryMemberId(productCategoryMemberId);
+        getProductCategoryMemberEventId().setProductCategoryMemberId(productCategoryMemberId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getProductCategoryMemberEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getProductCategoryMemberEventId().setVersion(version);
     }
 
     private java.sql.Timestamp thruDate;

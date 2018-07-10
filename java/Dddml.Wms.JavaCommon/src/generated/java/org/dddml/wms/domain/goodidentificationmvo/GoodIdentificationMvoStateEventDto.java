@@ -10,7 +10,7 @@ public class GoodIdentificationMvoStateEventDto extends AbstractEvent
 
     private GoodIdentificationMvoEventId goodIdentificationMvoEventId;
 
-    GoodIdentificationMvoEventId getStateEventId() {
+    GoodIdentificationMvoEventId getGoodIdentificationMvoEventId() {
         if (goodIdentificationMvoEventId == null) { goodIdentificationMvoEventId = new GoodIdentificationMvoEventId(); }
         return goodIdentificationMvoEventId;
     }
@@ -20,19 +20,19 @@ public class GoodIdentificationMvoStateEventDto extends AbstractEvent
     }
 
     public ProductGoodIdentificationId getProductGoodIdentificationId() {
-        return getStateEventId().getProductGoodIdentificationId();
+        return getGoodIdentificationMvoEventId().getProductGoodIdentificationId();
     }
 
     public void setProductGoodIdentificationId(ProductGoodIdentificationId productGoodIdentificationId) {
-        getStateEventId().setProductGoodIdentificationId(productGoodIdentificationId);
+        getGoodIdentificationMvoEventId().setProductGoodIdentificationId(productGoodIdentificationId);
     }
 
     public Long getProductVersion() {
-        return getStateEventId().getProductVersion();
+        return getGoodIdentificationMvoEventId().getProductVersion();
     }
     
     public void getProductVersion(Long productVersion) {
-        getStateEventId().setProductVersion(productVersion);
+        getGoodIdentificationMvoEventId().setProductVersion(productVersion);
     }
 
     private String idValue;

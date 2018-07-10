@@ -18,13 +18,37 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		public virtual string MovementLineNumber { get; set; }
 
-		public virtual decimal TargetQuantity { get; set; }
+        private decimal _targetQuantity = 0;
 
-		public virtual decimal ConfirmedQuantity { get; set; }
+        public virtual decimal TargetQuantity
+        {
+            get { return this._targetQuantity; }
+            set { this._targetQuantity = value; }
+        }
 
-		public virtual decimal DifferenceQuantity { get; set; }
+        private decimal _confirmedQuantity = 0;
 
-		public virtual decimal ScrappedQuantity { get; set; }
+        public virtual decimal ConfirmedQuantity
+        {
+            get { return this._confirmedQuantity; }
+            set { this._confirmedQuantity = value; }
+        }
+
+        private decimal _differenceQuantity = 0;
+
+        public virtual decimal DifferenceQuantity
+        {
+            get { return this._differenceQuantity; }
+            set { this._differenceQuantity = value; }
+        }
+
+        private decimal _scrappedQuantity = 0;
+
+        public virtual decimal ScrappedQuantity
+        {
+            get { return this._scrappedQuantity; }
+            set { this._scrappedQuantity = value; }
+        }
 
 		public virtual string Description { get; set; }
 

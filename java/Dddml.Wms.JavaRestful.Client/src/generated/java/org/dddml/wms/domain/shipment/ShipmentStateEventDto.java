@@ -9,7 +9,7 @@ public class ShipmentStateEventDto extends AbstractEvent
 
     private ShipmentEventId shipmentEventId;
 
-    ShipmentEventId getStateEventId() {
+    ShipmentEventId getShipmentEventId() {
         if (shipmentEventId == null) { shipmentEventId = new ShipmentEventId(); }
         return shipmentEventId;
     }
@@ -19,19 +19,19 @@ public class ShipmentStateEventDto extends AbstractEvent
     }
 
     public String getShipmentId() {
-        return getStateEventId().getShipmentId();
+        return getShipmentEventId().getShipmentId();
     }
 
     public void setShipmentId(String shipmentId) {
-        getStateEventId().setShipmentId(shipmentId);
+        getShipmentEventId().setShipmentId(shipmentId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getShipmentEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getShipmentEventId().setVersion(version);
     }
 
     private String shipmentTypeId;

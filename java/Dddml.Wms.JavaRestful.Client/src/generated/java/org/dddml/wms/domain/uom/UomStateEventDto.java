@@ -9,7 +9,7 @@ public class UomStateEventDto extends AbstractEvent
 
     private UomEventId uomEventId;
 
-    UomEventId getStateEventId() {
+    UomEventId getUomEventId() {
         if (uomEventId == null) { uomEventId = new UomEventId(); }
         return uomEventId;
     }
@@ -19,19 +19,19 @@ public class UomStateEventDto extends AbstractEvent
     }
 
     public String getUomId() {
-        return getStateEventId().getUomId();
+        return getUomEventId().getUomId();
     }
 
     public void setUomId(String uomId) {
-        getStateEventId().setUomId(uomId);
+        getUomEventId().setUomId(uomId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getUomEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getUomEventId().setVersion(version);
     }
 
     private String uomTypeId;

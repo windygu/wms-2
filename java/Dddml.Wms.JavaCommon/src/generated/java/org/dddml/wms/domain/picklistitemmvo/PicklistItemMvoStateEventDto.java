@@ -10,7 +10,7 @@ public class PicklistItemMvoStateEventDto extends AbstractEvent
 
     private PicklistItemMvoEventId picklistItemMvoEventId;
 
-    PicklistItemMvoEventId getStateEventId() {
+    PicklistItemMvoEventId getPicklistItemMvoEventId() {
         if (picklistItemMvoEventId == null) { picklistItemMvoEventId = new PicklistItemMvoEventId(); }
         return picklistItemMvoEventId;
     }
@@ -20,19 +20,19 @@ public class PicklistItemMvoStateEventDto extends AbstractEvent
     }
 
     public PicklistBinPicklistItemId getPicklistBinPicklistItemId() {
-        return getStateEventId().getPicklistBinPicklistItemId();
+        return getPicklistItemMvoEventId().getPicklistBinPicklistItemId();
     }
 
     public void setPicklistBinPicklistItemId(PicklistBinPicklistItemId picklistBinPicklistItemId) {
-        getStateEventId().setPicklistBinPicklistItemId(picklistBinPicklistItemId);
+        getPicklistItemMvoEventId().setPicklistBinPicklistItemId(picklistBinPicklistItemId);
     }
 
     public Long getPicklistBinVersion() {
-        return getStateEventId().getPicklistBinVersion();
+        return getPicklistItemMvoEventId().getPicklistBinVersion();
     }
     
     public void getPicklistBinVersion(Long picklistBinVersion) {
-        getStateEventId().setPicklistBinVersion(picklistBinVersion);
+        getPicklistItemMvoEventId().setPicklistBinVersion(picklistBinVersion);
     }
 
     private String itemStatusId;

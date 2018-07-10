@@ -11,7 +11,7 @@ public class PhysicalInventoryStateEventDto extends AbstractEvent
 
     private PhysicalInventoryEventId physicalInventoryEventId;
 
-    PhysicalInventoryEventId getStateEventId() {
+    PhysicalInventoryEventId getPhysicalInventoryEventId() {
         if (physicalInventoryEventId == null) { physicalInventoryEventId = new PhysicalInventoryEventId(); }
         return physicalInventoryEventId;
     }
@@ -21,19 +21,19 @@ public class PhysicalInventoryStateEventDto extends AbstractEvent
     }
 
     public String getDocumentNumber() {
-        return getStateEventId().getDocumentNumber();
+        return getPhysicalInventoryEventId().getDocumentNumber();
     }
 
     public void setDocumentNumber(String documentNumber) {
-        getStateEventId().setDocumentNumber(documentNumber);
+        getPhysicalInventoryEventId().setDocumentNumber(documentNumber);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getPhysicalInventoryEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getPhysicalInventoryEventId().setVersion(version);
     }
 
     private String documentStatusId;

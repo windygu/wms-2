@@ -9,7 +9,7 @@ public class ShipmentPackageStateEventDto extends AbstractEvent
 
     private ShipmentPackageEventId shipmentPackageEventId;
 
-    ShipmentPackageEventId getStateEventId() {
+    ShipmentPackageEventId getShipmentPackageEventId() {
         if (shipmentPackageEventId == null) { shipmentPackageEventId = new ShipmentPackageEventId(); }
         return shipmentPackageEventId;
     }
@@ -19,19 +19,19 @@ public class ShipmentPackageStateEventDto extends AbstractEvent
     }
 
     public ShipmentPackageId getShipmentPackageId() {
-        return getStateEventId().getShipmentPackageId();
+        return getShipmentPackageEventId().getShipmentPackageId();
     }
 
     public void setShipmentPackageId(ShipmentPackageId shipmentPackageId) {
-        getStateEventId().setShipmentPackageId(shipmentPackageId);
+        getShipmentPackageEventId().setShipmentPackageId(shipmentPackageId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getShipmentPackageEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getShipmentPackageEventId().setVersion(version);
     }
 
     private String shipmentBoxTypeId;

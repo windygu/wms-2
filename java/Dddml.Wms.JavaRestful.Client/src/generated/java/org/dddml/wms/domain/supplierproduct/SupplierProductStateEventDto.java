@@ -9,7 +9,7 @@ public class SupplierProductStateEventDto extends AbstractEvent
 
     private SupplierProductEventId supplierProductEventId;
 
-    SupplierProductEventId getStateEventId() {
+    SupplierProductEventId getSupplierProductEventId() {
         if (supplierProductEventId == null) { supplierProductEventId = new SupplierProductEventId(); }
         return supplierProductEventId;
     }
@@ -19,19 +19,19 @@ public class SupplierProductStateEventDto extends AbstractEvent
     }
 
     public SupplierProductId getSupplierProductId() {
-        return getStateEventId().getSupplierProductId();
+        return getSupplierProductEventId().getSupplierProductId();
     }
 
     public void setSupplierProductId(SupplierProductId supplierProductId) {
-        getStateEventId().setSupplierProductId(supplierProductId);
+        getSupplierProductEventId().setSupplierProductId(supplierProductId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getSupplierProductEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getSupplierProductEventId().setVersion(version);
     }
 
     private java.sql.Timestamp availableThruDate;

@@ -10,7 +10,7 @@ public class ItemIssuanceMvoStateEventDto extends AbstractEvent
 
     private ItemIssuanceMvoEventId itemIssuanceMvoEventId;
 
-    ItemIssuanceMvoEventId getStateEventId() {
+    ItemIssuanceMvoEventId getItemIssuanceMvoEventId() {
         if (itemIssuanceMvoEventId == null) { itemIssuanceMvoEventId = new ItemIssuanceMvoEventId(); }
         return itemIssuanceMvoEventId;
     }
@@ -20,19 +20,19 @@ public class ItemIssuanceMvoStateEventDto extends AbstractEvent
     }
 
     public ShipmentItemIssuanceId getShipmentItemIssuanceId() {
-        return getStateEventId().getShipmentItemIssuanceId();
+        return getItemIssuanceMvoEventId().getShipmentItemIssuanceId();
     }
 
     public void setShipmentItemIssuanceId(ShipmentItemIssuanceId shipmentItemIssuanceId) {
-        getStateEventId().setShipmentItemIssuanceId(shipmentItemIssuanceId);
+        getItemIssuanceMvoEventId().setShipmentItemIssuanceId(shipmentItemIssuanceId);
     }
 
     public Long getShipmentVersion() {
-        return getStateEventId().getShipmentVersion();
+        return getItemIssuanceMvoEventId().getShipmentVersion();
     }
     
     public void getShipmentVersion(Long shipmentVersion) {
-        getStateEventId().setShipmentVersion(shipmentVersion);
+        getItemIssuanceMvoEventId().setShipmentVersion(shipmentVersion);
     }
 
     private String orderId;

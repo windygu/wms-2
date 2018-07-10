@@ -10,7 +10,7 @@ public class OrderItemShipGroupAssociationMvoStateEventDto extends AbstractEvent
 
     private OrderItemShipGroupAssociationMvoEventId orderItemShipGroupAssociationMvoEventId;
 
-    OrderItemShipGroupAssociationMvoEventId getStateEventId() {
+    OrderItemShipGroupAssociationMvoEventId getOrderItemShipGroupAssociationMvoEventId() {
         if (orderItemShipGroupAssociationMvoEventId == null) { orderItemShipGroupAssociationMvoEventId = new OrderItemShipGroupAssociationMvoEventId(); }
         return orderItemShipGroupAssociationMvoEventId;
     }
@@ -20,19 +20,19 @@ public class OrderItemShipGroupAssociationMvoStateEventDto extends AbstractEvent
     }
 
     public OrderItemShipGroupAssociationId getOrderItemShipGroupAssociationId() {
-        return getStateEventId().getOrderItemShipGroupAssociationId();
+        return getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId();
     }
 
     public void setOrderItemShipGroupAssociationId(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId) {
-        getStateEventId().setOrderItemShipGroupAssociationId(orderItemShipGroupAssociationId);
+        getOrderItemShipGroupAssociationMvoEventId().setOrderItemShipGroupAssociationId(orderItemShipGroupAssociationId);
     }
 
     public Long getOrderVersion() {
-        return getStateEventId().getOrderVersion();
+        return getOrderItemShipGroupAssociationMvoEventId().getOrderVersion();
     }
     
     public void getOrderVersion(Long orderVersion) {
-        getStateEventId().setOrderVersion(orderVersion);
+        getOrderItemShipGroupAssociationMvoEventId().setOrderVersion(orderVersion);
     }
 
     private java.math.BigDecimal quantity;

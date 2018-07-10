@@ -9,7 +9,7 @@ public class ContactMechStateEventDto extends AbstractEvent
 
     private ContactMechEventId contactMechEventId;
 
-    ContactMechEventId getStateEventId() {
+    ContactMechEventId getContactMechEventId() {
         if (contactMechEventId == null) { contactMechEventId = new ContactMechEventId(); }
         return contactMechEventId;
     }
@@ -19,19 +19,19 @@ public class ContactMechStateEventDto extends AbstractEvent
     }
 
     public String getContactMechId() {
-        return getStateEventId().getContactMechId();
+        return getContactMechEventId().getContactMechId();
     }
 
     public void setContactMechId(String contactMechId) {
-        getStateEventId().setContactMechId(contactMechId);
+        getContactMechEventId().setContactMechId(contactMechId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getContactMechEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getContactMechEventId().setVersion(version);
     }
 
     private String contactMechTypeId;

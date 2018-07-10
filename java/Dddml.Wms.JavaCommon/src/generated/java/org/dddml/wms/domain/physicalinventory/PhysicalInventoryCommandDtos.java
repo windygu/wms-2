@@ -37,14 +37,14 @@ public class PhysicalInventoryCommandDtos
             this.productId = productId;
         }
 
-        private String attributeSetInstanceId;
+        private java.util.Map<String, Object> attributeSetInstance;
 
-        public String getAttributeSetInstanceId() {
-            return this.attributeSetInstanceId;
+        public java.util.Map<String, Object> getAttributeSetInstance() {
+            return this.attributeSetInstance;
         }
 
-        public void setAttributeSetInstanceId(String attributeSetInstanceId) {
-            this.attributeSetInstanceId = attributeSetInstanceId;
+        public void setAttributeSetInstance(java.util.Map<String, Object> attributeSetInstance) {
+            this.attributeSetInstance = attributeSetInstance;
         }
 
         private BigDecimal countedQuantity;
@@ -101,7 +101,7 @@ public class PhysicalInventoryCommandDtos
             PhysicalInventoryCommands.CountItem cmd = new PhysicalInventoryCommands.CountItem();
             cmd.setLocatorId(this.getLocatorId());
             cmd.setProductId(this.getProductId());
-            cmd.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
+            cmd.setAttributeSetInstance(this.getAttributeSetInstance());
             cmd.setCountedQuantity(this.getCountedQuantity());
             cmd.setDocumentNumber(this.getDocumentNumber());
             cmd.setVersion(this.getVersion());

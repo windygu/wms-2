@@ -11,7 +11,7 @@ public class InOutLineMvoStateEventDto extends AbstractEvent
 
     private InOutLineMvoEventId inOutLineMvoEventId;
 
-    InOutLineMvoEventId getStateEventId() {
+    InOutLineMvoEventId getInOutLineMvoEventId() {
         if (inOutLineMvoEventId == null) { inOutLineMvoEventId = new InOutLineMvoEventId(); }
         return inOutLineMvoEventId;
     }
@@ -21,19 +21,19 @@ public class InOutLineMvoStateEventDto extends AbstractEvent
     }
 
     public InOutLineId getInOutLineId() {
-        return getStateEventId().getInOutLineId();
+        return getInOutLineMvoEventId().getInOutLineId();
     }
 
     public void setInOutLineId(InOutLineId inOutLineId) {
-        getStateEventId().setInOutLineId(inOutLineId);
+        getInOutLineMvoEventId().setInOutLineId(inOutLineId);
     }
 
     public Long getInOutVersion() {
-        return getStateEventId().getInOutVersion();
+        return getInOutLineMvoEventId().getInOutVersion();
     }
     
     public void getInOutVersion(Long inOutVersion) {
-        getStateEventId().setInOutVersion(inOutVersion);
+        getInOutLineMvoEventId().setInOutVersion(inOutVersion);
     }
 
     private String locatorId;

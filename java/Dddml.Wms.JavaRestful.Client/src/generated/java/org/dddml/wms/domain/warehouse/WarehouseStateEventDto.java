@@ -9,7 +9,7 @@ public class WarehouseStateEventDto extends AbstractEvent
 
     private WarehouseEventId warehouseEventId;
 
-    WarehouseEventId getStateEventId() {
+    WarehouseEventId getWarehouseEventId() {
         if (warehouseEventId == null) { warehouseEventId = new WarehouseEventId(); }
         return warehouseEventId;
     }
@@ -19,19 +19,19 @@ public class WarehouseStateEventDto extends AbstractEvent
     }
 
     public String getWarehouseId() {
-        return getStateEventId().getWarehouseId();
+        return getWarehouseEventId().getWarehouseId();
     }
 
     public void setWarehouseId(String warehouseId) {
-        getStateEventId().setWarehouseId(warehouseId);
+        getWarehouseEventId().setWarehouseId(warehouseId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getWarehouseEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getWarehouseEventId().setVersion(version);
     }
 
     private String warehouseName;

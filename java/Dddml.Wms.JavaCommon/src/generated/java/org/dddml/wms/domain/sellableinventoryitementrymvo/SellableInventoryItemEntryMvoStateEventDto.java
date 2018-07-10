@@ -12,7 +12,7 @@ public class SellableInventoryItemEntryMvoStateEventDto extends AbstractEvent
 
     private SellableInventoryItemEntryMvoEventId sellableInventoryItemEntryMvoEventId;
 
-    SellableInventoryItemEntryMvoEventId getStateEventId() {
+    SellableInventoryItemEntryMvoEventId getSellableInventoryItemEntryMvoEventId() {
         if (sellableInventoryItemEntryMvoEventId == null) { sellableInventoryItemEntryMvoEventId = new SellableInventoryItemEntryMvoEventId(); }
         return sellableInventoryItemEntryMvoEventId;
     }
@@ -22,19 +22,19 @@ public class SellableInventoryItemEntryMvoStateEventDto extends AbstractEvent
     }
 
     public SellableInventoryItemEntryId getSellableInventoryItemEntryId() {
-        return getStateEventId().getSellableInventoryItemEntryId();
+        return getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId();
     }
 
     public void setSellableInventoryItemEntryId(SellableInventoryItemEntryId sellableInventoryItemEntryId) {
-        getStateEventId().setSellableInventoryItemEntryId(sellableInventoryItemEntryId);
+        getSellableInventoryItemEntryMvoEventId().setSellableInventoryItemEntryId(sellableInventoryItemEntryId);
     }
 
     public Long getSellableInventoryItemVersion() {
-        return getStateEventId().getSellableInventoryItemVersion();
+        return getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion();
     }
     
     public void getSellableInventoryItemVersion(Long sellableInventoryItemVersion) {
-        getStateEventId().setSellableInventoryItemVersion(sellableInventoryItemVersion);
+        getSellableInventoryItemEntryMvoEventId().setSellableInventoryItemVersion(sellableInventoryItemVersion);
     }
 
     private BigDecimal sellableQuantity;

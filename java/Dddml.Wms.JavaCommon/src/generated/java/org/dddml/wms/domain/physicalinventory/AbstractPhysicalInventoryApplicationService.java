@@ -56,7 +56,7 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
     }
 
     public void when(PhysicalInventoryCommands.CountItem c) {
-        update(c, ar -> ar.countItem(c.getLocatorId(), c.getProductId(), c.getAttributeSetInstanceId(), c.getCountedQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.countItem(c.getLocatorId(), c.getProductId(), c.getAttributeSetInstance(), c.getCountedQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(PhysicalInventoryCommands.DocumentAction c) {

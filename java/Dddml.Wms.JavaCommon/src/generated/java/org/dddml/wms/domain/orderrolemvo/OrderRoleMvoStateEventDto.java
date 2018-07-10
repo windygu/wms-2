@@ -10,7 +10,7 @@ public class OrderRoleMvoStateEventDto extends AbstractEvent
 
     private OrderRoleMvoEventId orderRoleMvoEventId;
 
-    OrderRoleMvoEventId getStateEventId() {
+    OrderRoleMvoEventId getOrderRoleMvoEventId() {
         if (orderRoleMvoEventId == null) { orderRoleMvoEventId = new OrderRoleMvoEventId(); }
         return orderRoleMvoEventId;
     }
@@ -20,19 +20,19 @@ public class OrderRoleMvoStateEventDto extends AbstractEvent
     }
 
     public OrderRoleId getOrderRoleId() {
-        return getStateEventId().getOrderRoleId();
+        return getOrderRoleMvoEventId().getOrderRoleId();
     }
 
     public void setOrderRoleId(OrderRoleId orderRoleId) {
-        getStateEventId().setOrderRoleId(orderRoleId);
+        getOrderRoleMvoEventId().setOrderRoleId(orderRoleId);
     }
 
     public Long getOrderVersion() {
-        return getStateEventId().getOrderVersion();
+        return getOrderRoleMvoEventId().getOrderVersion();
     }
     
     public void getOrderVersion(Long orderVersion) {
-        getStateEventId().setOrderVersion(orderVersion);
+        getOrderRoleMvoEventId().setOrderVersion(orderVersion);
     }
 
     private Long version;

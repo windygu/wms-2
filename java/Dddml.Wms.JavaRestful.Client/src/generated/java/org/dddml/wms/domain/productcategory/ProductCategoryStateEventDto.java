@@ -9,7 +9,7 @@ public class ProductCategoryStateEventDto extends AbstractEvent
 
     private ProductCategoryEventId productCategoryEventId;
 
-    ProductCategoryEventId getStateEventId() {
+    ProductCategoryEventId getProductCategoryEventId() {
         if (productCategoryEventId == null) { productCategoryEventId = new ProductCategoryEventId(); }
         return productCategoryEventId;
     }
@@ -19,19 +19,19 @@ public class ProductCategoryStateEventDto extends AbstractEvent
     }
 
     public String getProductCategoryId() {
-        return getStateEventId().getProductCategoryId();
+        return getProductCategoryEventId().getProductCategoryId();
     }
 
     public void setProductCategoryId(String productCategoryId) {
-        getStateEventId().setProductCategoryId(productCategoryId);
+        getProductCategoryEventId().setProductCategoryId(productCategoryId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getProductCategoryEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getProductCategoryEventId().setVersion(version);
     }
 
     private String productCategoryTypeId;

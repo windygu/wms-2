@@ -15,8 +15,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             Apply(e);
         }
 
-        public void CountItem(string locatorId, string productId, string attributeSetInstanceId, decimal countedQuantity, long version, string commandId, string requesterId)
+        public void CountItem(string locatorId, string productId, IDictionary<string, object> attributeSetInstance, decimal countedQuantity, long version, string commandId, string requesterId)
         {
+            string attributeSetInstanceId = attributeSetInstance["attributeSetInstanceId"] as string;
+            if (String.IsNullOrWhiteSpace(attributeSetInstanceId))
+            {
+                //todo
+            }
             var notNullAttrSetInstId = String.IsNullOrEmpty(attributeSetInstanceId) 
                 ? InventoryItemIds.EmptyAttributeSetInstanceId : attributeSetInstanceId;
             var inventoryItemId = new InventoryItemId(productId, locatorId, notNullAttrSetInstId);
@@ -39,5 +44,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 Apply(e);
             }
         }
+
+
     }
 }

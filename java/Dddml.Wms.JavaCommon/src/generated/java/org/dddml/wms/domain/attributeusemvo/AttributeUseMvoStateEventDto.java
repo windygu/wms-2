@@ -10,7 +10,7 @@ public class AttributeUseMvoStateEventDto extends AbstractEvent
 
     private AttributeUseMvoEventId attributeUseMvoEventId;
 
-    AttributeUseMvoEventId getStateEventId() {
+    AttributeUseMvoEventId getAttributeUseMvoEventId() {
         if (attributeUseMvoEventId == null) { attributeUseMvoEventId = new AttributeUseMvoEventId(); }
         return attributeUseMvoEventId;
     }
@@ -20,19 +20,19 @@ public class AttributeUseMvoStateEventDto extends AbstractEvent
     }
 
     public AttributeSetAttributeUseId getAttributeSetAttributeUseId() {
-        return getStateEventId().getAttributeSetAttributeUseId();
+        return getAttributeUseMvoEventId().getAttributeSetAttributeUseId();
     }
 
     public void setAttributeSetAttributeUseId(AttributeSetAttributeUseId attributeSetAttributeUseId) {
-        getStateEventId().setAttributeSetAttributeUseId(attributeSetAttributeUseId);
+        getAttributeUseMvoEventId().setAttributeSetAttributeUseId(attributeSetAttributeUseId);
     }
 
     public Long getAttributeSetVersion() {
-        return getStateEventId().getAttributeSetVersion();
+        return getAttributeUseMvoEventId().getAttributeSetVersion();
     }
     
     public void getAttributeSetVersion(Long attributeSetVersion) {
-        getStateEventId().setAttributeSetVersion(attributeSetVersion);
+        getAttributeUseMvoEventId().setAttributeSetVersion(attributeSetVersion);
     }
 
     private Integer sequenceNumber;

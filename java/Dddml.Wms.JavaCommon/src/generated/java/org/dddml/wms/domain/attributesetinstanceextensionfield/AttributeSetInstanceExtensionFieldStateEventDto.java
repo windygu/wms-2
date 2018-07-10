@@ -9,7 +9,7 @@ public class AttributeSetInstanceExtensionFieldStateEventDto extends AbstractEve
 
     private AttributeSetInstanceExtensionFieldEventId attributeSetInstanceExtensionFieldEventId;
 
-    AttributeSetInstanceExtensionFieldEventId getStateEventId() {
+    AttributeSetInstanceExtensionFieldEventId getAttributeSetInstanceExtensionFieldEventId() {
         if (attributeSetInstanceExtensionFieldEventId == null) { attributeSetInstanceExtensionFieldEventId = new AttributeSetInstanceExtensionFieldEventId(); }
         return attributeSetInstanceExtensionFieldEventId;
     }
@@ -19,19 +19,19 @@ public class AttributeSetInstanceExtensionFieldStateEventDto extends AbstractEve
     }
 
     public String getName() {
-        return getStateEventId().getName();
+        return getAttributeSetInstanceExtensionFieldEventId().getName();
     }
 
     public void setName(String name) {
-        getStateEventId().setName(name);
+        getAttributeSetInstanceExtensionFieldEventId().setName(name);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getAttributeSetInstanceExtensionFieldEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getAttributeSetInstanceExtensionFieldEventId().setVersion(version);
     }
 
     private String type;

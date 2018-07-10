@@ -320,7 +320,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
             public string ProductId { get; set; }
 
-            public string AttributeSetInstanceId { get; set; }
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
 
             public decimal CountedQuantity { get; set; }
 

@@ -10,7 +10,7 @@ public class MovementLineStateEventDto extends AbstractEvent
 
     private MovementLineEventId movementLineEventId;
 
-    MovementLineEventId getStateEventId() {
+    MovementLineEventId getMovementLineEventId() {
         if (movementLineEventId == null) { movementLineEventId = new MovementLineEventId(); }
         return movementLineEventId;
     }
@@ -20,11 +20,11 @@ public class MovementLineStateEventDto extends AbstractEvent
     }
 
     public String getLineNumber() {
-        return getStateEventId().getLineNumber();
+        return getMovementLineEventId().getLineNumber();
     }
 
     public void setLineNumber(String lineNumber) {
-        getStateEventId().setLineNumber(lineNumber);
+        getMovementLineEventId().setLineNumber(lineNumber);
     }
 
     private BigDecimal movementQuantity;

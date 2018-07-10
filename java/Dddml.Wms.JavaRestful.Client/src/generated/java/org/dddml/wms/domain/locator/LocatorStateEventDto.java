@@ -9,7 +9,7 @@ public class LocatorStateEventDto extends AbstractEvent
 
     private LocatorEventId locatorEventId;
 
-    LocatorEventId getStateEventId() {
+    LocatorEventId getLocatorEventId() {
         if (locatorEventId == null) { locatorEventId = new LocatorEventId(); }
         return locatorEventId;
     }
@@ -19,19 +19,19 @@ public class LocatorStateEventDto extends AbstractEvent
     }
 
     public String getLocatorId() {
-        return getStateEventId().getLocatorId();
+        return getLocatorEventId().getLocatorId();
     }
 
     public void setLocatorId(String locatorId) {
-        getStateEventId().setLocatorId(locatorId);
+        getLocatorEventId().setLocatorId(locatorId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getLocatorEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getLocatorEventId().setVersion(version);
     }
 
     private String warehouseId;

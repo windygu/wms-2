@@ -9,7 +9,7 @@ public class PickwaveStateEventDto extends AbstractEvent
 
     private PickwaveEventId pickwaveEventId;
 
-    PickwaveEventId getStateEventId() {
+    PickwaveEventId getPickwaveEventId() {
         if (pickwaveEventId == null) { pickwaveEventId = new PickwaveEventId(); }
         return pickwaveEventId;
     }
@@ -19,19 +19,19 @@ public class PickwaveStateEventDto extends AbstractEvent
     }
 
     public Long getPickwaveId() {
-        return getStateEventId().getPickwaveId();
+        return getPickwaveEventId().getPickwaveId();
     }
 
     public void setPickwaveId(Long pickwaveId) {
-        getStateEventId().setPickwaveId(pickwaveId);
+        getPickwaveEventId().setPickwaveId(pickwaveId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getPickwaveEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getPickwaveEventId().setVersion(version);
     }
 
     private String statusId;

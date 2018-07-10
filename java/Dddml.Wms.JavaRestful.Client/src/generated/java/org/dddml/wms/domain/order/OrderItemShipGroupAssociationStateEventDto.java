@@ -9,7 +9,7 @@ public class OrderItemShipGroupAssociationStateEventDto extends AbstractEvent
 
     private OrderItemShipGroupAssociationEventId orderItemShipGroupAssociationEventId;
 
-    OrderItemShipGroupAssociationEventId getStateEventId() {
+    OrderItemShipGroupAssociationEventId getOrderItemShipGroupAssociationEventId() {
         if (orderItemShipGroupAssociationEventId == null) { orderItemShipGroupAssociationEventId = new OrderItemShipGroupAssociationEventId(); }
         return orderItemShipGroupAssociationEventId;
     }
@@ -19,11 +19,11 @@ public class OrderItemShipGroupAssociationStateEventDto extends AbstractEvent
     }
 
     public String getOrderItemSeqId() {
-        return getStateEventId().getOrderItemSeqId();
+        return getOrderItemShipGroupAssociationEventId().getOrderItemSeqId();
     }
 
     public void setOrderItemSeqId(String orderItemSeqId) {
-        getStateEventId().setOrderItemSeqId(orderItemSeqId);
+        getOrderItemShipGroupAssociationEventId().setOrderItemSeqId(orderItemSeqId);
     }
 
     private java.math.BigDecimal quantity;

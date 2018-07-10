@@ -10,7 +10,7 @@ public class OrderStateEventDto extends AbstractEvent
 
     private OrderEventId orderEventId;
 
-    OrderEventId getStateEventId() {
+    OrderEventId getOrderEventId() {
         if (orderEventId == null) { orderEventId = new OrderEventId(); }
         return orderEventId;
     }
@@ -20,19 +20,19 @@ public class OrderStateEventDto extends AbstractEvent
     }
 
     public String getOrderId() {
-        return getStateEventId().getOrderId();
+        return getOrderEventId().getOrderId();
     }
 
     public void setOrderId(String orderId) {
-        getStateEventId().setOrderId(orderId);
+        getOrderEventId().setOrderId(orderId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getOrderEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getOrderEventId().setVersion(version);
     }
 
     private String orderTypeId;

@@ -11,7 +11,7 @@ public class PhysicalInventoryLineStateEventDto extends AbstractEvent
 
     private PhysicalInventoryLineEventId physicalInventoryLineEventId;
 
-    PhysicalInventoryLineEventId getStateEventId() {
+    PhysicalInventoryLineEventId getPhysicalInventoryLineEventId() {
         if (physicalInventoryLineEventId == null) { physicalInventoryLineEventId = new PhysicalInventoryLineEventId(); }
         return physicalInventoryLineEventId;
     }
@@ -21,11 +21,11 @@ public class PhysicalInventoryLineStateEventDto extends AbstractEvent
     }
 
     public InventoryItemId getInventoryItemId() {
-        return getStateEventId().getInventoryItemId();
+        return getPhysicalInventoryLineEventId().getInventoryItemId();
     }
 
     public void setInventoryItemId(InventoryItemId inventoryItemId) {
-        getStateEventId().setInventoryItemId(inventoryItemId);
+        getPhysicalInventoryLineEventId().setInventoryItemId(inventoryItemId);
     }
 
     private BigDecimal bookQuantity;

@@ -9,7 +9,7 @@ public class UomConversionStateEventDto extends AbstractEvent
 
     private UomConversionEventId uomConversionEventId;
 
-    UomConversionEventId getStateEventId() {
+    UomConversionEventId getUomConversionEventId() {
         if (uomConversionEventId == null) { uomConversionEventId = new UomConversionEventId(); }
         return uomConversionEventId;
     }
@@ -19,19 +19,19 @@ public class UomConversionStateEventDto extends AbstractEvent
     }
 
     public UomConversionId getUomConversionId() {
-        return getStateEventId().getUomConversionId();
+        return getUomConversionEventId().getUomConversionId();
     }
 
     public void setUomConversionId(UomConversionId uomConversionId) {
-        getStateEventId().setUomConversionId(uomConversionId);
+        getUomConversionEventId().setUomConversionId(uomConversionId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getUomConversionEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getUomConversionEventId().setVersion(version);
     }
 
     private Double conversionFactor;

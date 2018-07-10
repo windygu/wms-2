@@ -9,7 +9,7 @@ public class GoodIdentificationTypeStateEventDto extends AbstractEvent
 
     private GoodIdentificationTypeEventId goodIdentificationTypeEventId;
 
-    GoodIdentificationTypeEventId getStateEventId() {
+    GoodIdentificationTypeEventId getGoodIdentificationTypeEventId() {
         if (goodIdentificationTypeEventId == null) { goodIdentificationTypeEventId = new GoodIdentificationTypeEventId(); }
         return goodIdentificationTypeEventId;
     }
@@ -19,19 +19,19 @@ public class GoodIdentificationTypeStateEventDto extends AbstractEvent
     }
 
     public String getGoodIdentificationTypeId() {
-        return getStateEventId().getGoodIdentificationTypeId();
+        return getGoodIdentificationTypeEventId().getGoodIdentificationTypeId();
     }
 
     public void setGoodIdentificationTypeId(String goodIdentificationTypeId) {
-        getStateEventId().setGoodIdentificationTypeId(goodIdentificationTypeId);
+        getGoodIdentificationTypeEventId().setGoodIdentificationTypeId(goodIdentificationTypeId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getGoodIdentificationTypeEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getGoodIdentificationTypeEventId().setVersion(version);
     }
 
     private String parentTypeId;

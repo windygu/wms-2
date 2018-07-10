@@ -177,13 +177,13 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			ThrowOnWrongEvent(e);
 			this.MovementLineNumber = e.MovementLineNumber;
 
-            this.TargetQuantity = (e.TargetQuantity != null && e.TargetQuantity.HasValue) ? e.TargetQuantity.Value : default(decimal);
+            if(e.TargetQuantity != null) { this.TargetQuantity = (e.TargetQuantity != null && e.TargetQuantity.HasValue) ? e.TargetQuantity.Value : default(decimal); }
 
-            this.ConfirmedQuantity = (e.ConfirmedQuantity != null && e.ConfirmedQuantity.HasValue) ? e.ConfirmedQuantity.Value : default(decimal);
+            if(e.ConfirmedQuantity != null) { this.ConfirmedQuantity = (e.ConfirmedQuantity != null && e.ConfirmedQuantity.HasValue) ? e.ConfirmedQuantity.Value : default(decimal); }
 
-            this.DifferenceQuantity = (e.DifferenceQuantity != null && e.DifferenceQuantity.HasValue) ? e.DifferenceQuantity.Value : default(decimal);
+            if(e.DifferenceQuantity != null) { this.DifferenceQuantity = (e.DifferenceQuantity != null && e.DifferenceQuantity.HasValue) ? e.DifferenceQuantity.Value : default(decimal); }
 
-            this.ScrappedQuantity = (e.ScrappedQuantity != null && e.ScrappedQuantity.HasValue) ? e.ScrappedQuantity.Value : default(decimal);
+            if(e.ScrappedQuantity != null) { this.ScrappedQuantity = (e.ScrappedQuantity != null && e.ScrappedQuantity.HasValue) ? e.ScrappedQuantity.Value : default(decimal); }
 
 			this.Description = e.Description;
 

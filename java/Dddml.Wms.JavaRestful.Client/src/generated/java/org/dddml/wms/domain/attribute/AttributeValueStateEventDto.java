@@ -9,7 +9,7 @@ public class AttributeValueStateEventDto extends AbstractEvent
 
     private AttributeValueEventId attributeValueEventId;
 
-    AttributeValueEventId getStateEventId() {
+    AttributeValueEventId getAttributeValueEventId() {
         if (attributeValueEventId == null) { attributeValueEventId = new AttributeValueEventId(); }
         return attributeValueEventId;
     }
@@ -19,11 +19,11 @@ public class AttributeValueStateEventDto extends AbstractEvent
     }
 
     public String getValue() {
-        return getStateEventId().getValue();
+        return getAttributeValueEventId().getValue();
     }
 
     public void setValue(String value) {
-        getStateEventId().setValue(value);
+        getAttributeValueEventId().setValue(value);
     }
 
     private String attributeValueName;

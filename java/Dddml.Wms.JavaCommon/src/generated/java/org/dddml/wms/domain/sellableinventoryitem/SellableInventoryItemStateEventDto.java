@@ -12,7 +12,7 @@ public class SellableInventoryItemStateEventDto extends AbstractEvent
 
     private SellableInventoryItemEventId sellableInventoryItemEventId;
 
-    SellableInventoryItemEventId getStateEventId() {
+    SellableInventoryItemEventId getSellableInventoryItemEventId() {
         if (sellableInventoryItemEventId == null) { sellableInventoryItemEventId = new SellableInventoryItemEventId(); }
         return sellableInventoryItemEventId;
     }
@@ -22,19 +22,19 @@ public class SellableInventoryItemStateEventDto extends AbstractEvent
     }
 
     public InventoryItemId getSellableInventoryItemId() {
-        return getStateEventId().getSellableInventoryItemId();
+        return getSellableInventoryItemEventId().getSellableInventoryItemId();
     }
 
     public void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId) {
-        getStateEventId().setSellableInventoryItemId(sellableInventoryItemId);
+        getSellableInventoryItemEventId().setSellableInventoryItemId(sellableInventoryItemId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getSellableInventoryItemEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getSellableInventoryItemEventId().setVersion(version);
     }
 
     private BigDecimal sellableQuantity;

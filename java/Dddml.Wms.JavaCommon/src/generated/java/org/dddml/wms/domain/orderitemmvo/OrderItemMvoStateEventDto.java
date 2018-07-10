@@ -10,7 +10,7 @@ public class OrderItemMvoStateEventDto extends AbstractEvent
 
     private OrderItemMvoEventId orderItemMvoEventId;
 
-    OrderItemMvoEventId getStateEventId() {
+    OrderItemMvoEventId getOrderItemMvoEventId() {
         if (orderItemMvoEventId == null) { orderItemMvoEventId = new OrderItemMvoEventId(); }
         return orderItemMvoEventId;
     }
@@ -20,19 +20,19 @@ public class OrderItemMvoStateEventDto extends AbstractEvent
     }
 
     public OrderItemId getOrderItemId() {
-        return getStateEventId().getOrderItemId();
+        return getOrderItemMvoEventId().getOrderItemId();
     }
 
     public void setOrderItemId(OrderItemId orderItemId) {
-        getStateEventId().setOrderItemId(orderItemId);
+        getOrderItemMvoEventId().setOrderItemId(orderItemId);
     }
 
     public Long getOrderVersion() {
-        return getStateEventId().getOrderVersion();
+        return getOrderItemMvoEventId().getOrderVersion();
     }
     
     public void getOrderVersion(Long orderVersion) {
-        getStateEventId().setOrderVersion(orderVersion);
+        getOrderItemMvoEventId().setOrderVersion(orderVersion);
     }
 
     private String productId;

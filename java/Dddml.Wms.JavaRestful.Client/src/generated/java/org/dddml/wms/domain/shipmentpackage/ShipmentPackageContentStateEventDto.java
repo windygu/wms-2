@@ -9,7 +9,7 @@ public class ShipmentPackageContentStateEventDto extends AbstractEvent
 
     private ShipmentPackageContentEventId shipmentPackageContentEventId;
 
-    ShipmentPackageContentEventId getStateEventId() {
+    ShipmentPackageContentEventId getShipmentPackageContentEventId() {
         if (shipmentPackageContentEventId == null) { shipmentPackageContentEventId = new ShipmentPackageContentEventId(); }
         return shipmentPackageContentEventId;
     }
@@ -19,11 +19,11 @@ public class ShipmentPackageContentStateEventDto extends AbstractEvent
     }
 
     public String getShipmentItemSeqId() {
-        return getStateEventId().getShipmentItemSeqId();
+        return getShipmentPackageContentEventId().getShipmentItemSeqId();
     }
 
     public void setShipmentItemSeqId(String shipmentItemSeqId) {
-        getStateEventId().setShipmentItemSeqId(shipmentItemSeqId);
+        getShipmentPackageContentEventId().setShipmentItemSeqId(shipmentItemSeqId);
     }
 
     private java.math.BigDecimal quantity;

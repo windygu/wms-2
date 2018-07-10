@@ -10,7 +10,7 @@ public class InOutStateEventDto extends AbstractEvent
 
     private InOutEventId inOutEventId;
 
-    InOutEventId getStateEventId() {
+    InOutEventId getInOutEventId() {
         if (inOutEventId == null) { inOutEventId = new InOutEventId(); }
         return inOutEventId;
     }
@@ -20,19 +20,19 @@ public class InOutStateEventDto extends AbstractEvent
     }
 
     public String getDocumentNumber() {
-        return getStateEventId().getDocumentNumber();
+        return getInOutEventId().getDocumentNumber();
     }
 
     public void setDocumentNumber(String documentNumber) {
-        getStateEventId().setDocumentNumber(documentNumber);
+        getInOutEventId().setDocumentNumber(documentNumber);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getInOutEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getInOutEventId().setVersion(version);
     }
 
     private String documentStatusId;

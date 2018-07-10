@@ -523,7 +523,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
             public string ProductId { get; set; }
 
-            public string AttributeSetInstanceId { get; set; }
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
 
             public decimal CountedQuantity { get; set; }
 
@@ -540,7 +540,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 var cmd = new PhysicalInventoryCommands.CountItem();
                 cmd.LocatorId = this.LocatorId;
                 cmd.ProductId = this.ProductId;
-                cmd.AttributeSetInstanceId = this.AttributeSetInstanceId;
+                cmd.AttributeSetInstance = this.AttributeSetInstance;
                 cmd.CountedQuantity = this.CountedQuantity;
                 cmd.DocumentNumber = this.DocumentNumber;
                 cmd.Version = this.Version;

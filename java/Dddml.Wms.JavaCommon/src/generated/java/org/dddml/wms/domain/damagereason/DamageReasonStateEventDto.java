@@ -9,7 +9,7 @@ public class DamageReasonStateEventDto extends AbstractEvent
 
     private DamageReasonEventId damageReasonEventId;
 
-    DamageReasonEventId getStateEventId() {
+    DamageReasonEventId getDamageReasonEventId() {
         if (damageReasonEventId == null) { damageReasonEventId = new DamageReasonEventId(); }
         return damageReasonEventId;
     }
@@ -19,19 +19,19 @@ public class DamageReasonStateEventDto extends AbstractEvent
     }
 
     public String getDamageReasonId() {
-        return getStateEventId().getDamageReasonId();
+        return getDamageReasonEventId().getDamageReasonId();
     }
 
     public void setDamageReasonId(String damageReasonId) {
-        getStateEventId().setDamageReasonId(damageReasonId);
+        getDamageReasonEventId().setDamageReasonId(damageReasonId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getDamageReasonEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getDamageReasonEventId().setVersion(version);
     }
 
     private String description;

@@ -9,7 +9,7 @@ public class OrderShipmentStateEventDto extends AbstractEvent
 
     private OrderShipmentEventId orderShipmentEventId;
 
-    OrderShipmentEventId getStateEventId() {
+    OrderShipmentEventId getOrderShipmentEventId() {
         if (orderShipmentEventId == null) { orderShipmentEventId = new OrderShipmentEventId(); }
         return orderShipmentEventId;
     }
@@ -19,19 +19,19 @@ public class OrderShipmentStateEventDto extends AbstractEvent
     }
 
     public OrderShipmentId getOrderShipmentId() {
-        return getStateEventId().getOrderShipmentId();
+        return getOrderShipmentEventId().getOrderShipmentId();
     }
 
     public void setOrderShipmentId(OrderShipmentId orderShipmentId) {
-        getStateEventId().setOrderShipmentId(orderShipmentId);
+        getOrderShipmentEventId().setOrderShipmentId(orderShipmentId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getOrderShipmentEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getOrderShipmentEventId().setVersion(version);
     }
 
     private java.math.BigDecimal quantity;

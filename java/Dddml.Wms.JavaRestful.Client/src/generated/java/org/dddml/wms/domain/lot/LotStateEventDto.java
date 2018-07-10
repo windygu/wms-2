@@ -9,7 +9,7 @@ public class LotStateEventDto extends AbstractEvent
 
     private LotEventId lotEventId;
 
-    LotEventId getStateEventId() {
+    LotEventId getLotEventId() {
         if (lotEventId == null) { lotEventId = new LotEventId(); }
         return lotEventId;
     }
@@ -19,19 +19,19 @@ public class LotStateEventDto extends AbstractEvent
     }
 
     public String getLotId() {
-        return getStateEventId().getLotId();
+        return getLotEventId().getLotId();
     }
 
     public void setLotId(String lotId) {
-        getStateEventId().setLotId(lotId);
+        getLotEventId().setLotId(lotId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getLotEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getLotEventId().setVersion(version);
     }
 
     private java.math.BigDecimal quantity;

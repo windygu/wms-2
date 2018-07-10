@@ -9,7 +9,7 @@ public class OrganizationStructureStateEventDto extends AbstractEvent
 
     private OrganizationStructureEventId organizationStructureEventId;
 
-    OrganizationStructureEventId getStateEventId() {
+    OrganizationStructureEventId getOrganizationStructureEventId() {
         if (organizationStructureEventId == null) { organizationStructureEventId = new OrganizationStructureEventId(); }
         return organizationStructureEventId;
     }
@@ -19,19 +19,19 @@ public class OrganizationStructureStateEventDto extends AbstractEvent
     }
 
     public OrganizationStructureId getId() {
-        return getStateEventId().getId();
+        return getOrganizationStructureEventId().getId();
     }
 
     public void setId(OrganizationStructureId id) {
-        getStateEventId().setId(id);
+        getOrganizationStructureEventId().setId(id);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getOrganizationStructureEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getOrganizationStructureEventId().setVersion(version);
     }
 
     private Boolean active;

@@ -9,7 +9,7 @@ public class PicklistItemStateEventDto extends AbstractEvent
 
     private PicklistItemEventId picklistItemEventId;
 
-    PicklistItemEventId getStateEventId() {
+    PicklistItemEventId getPicklistItemEventId() {
         if (picklistItemEventId == null) { picklistItemEventId = new PicklistItemEventId(); }
         return picklistItemEventId;
     }
@@ -19,11 +19,11 @@ public class PicklistItemStateEventDto extends AbstractEvent
     }
 
     public PicklistItemOrderShipGrpInvId getPicklistItemOrderShipGrpInvId() {
-        return getStateEventId().getPicklistItemOrderShipGrpInvId();
+        return getPicklistItemEventId().getPicklistItemOrderShipGrpInvId();
     }
 
     public void setPicklistItemOrderShipGrpInvId(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId) {
-        getStateEventId().setPicklistItemOrderShipGrpInvId(picklistItemOrderShipGrpInvId);
+        getPicklistItemEventId().setPicklistItemOrderShipGrpInvId(picklistItemOrderShipGrpInvId);
     }
 
     private String itemStatusId;

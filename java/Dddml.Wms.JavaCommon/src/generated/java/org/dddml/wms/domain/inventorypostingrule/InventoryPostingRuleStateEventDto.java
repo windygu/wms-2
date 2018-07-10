@@ -10,7 +10,7 @@ public class InventoryPostingRuleStateEventDto extends AbstractEvent
 
     private InventoryPostingRuleEventId inventoryPostingRuleEventId;
 
-    InventoryPostingRuleEventId getStateEventId() {
+    InventoryPostingRuleEventId getInventoryPostingRuleEventId() {
         if (inventoryPostingRuleEventId == null) { inventoryPostingRuleEventId = new InventoryPostingRuleEventId(); }
         return inventoryPostingRuleEventId;
     }
@@ -20,19 +20,19 @@ public class InventoryPostingRuleStateEventDto extends AbstractEvent
     }
 
     public String getInventoryPostingRuleId() {
-        return getStateEventId().getInventoryPostingRuleId();
+        return getInventoryPostingRuleEventId().getInventoryPostingRuleId();
     }
 
     public void setInventoryPostingRuleId(String inventoryPostingRuleId) {
-        getStateEventId().setInventoryPostingRuleId(inventoryPostingRuleId);
+        getInventoryPostingRuleEventId().setInventoryPostingRuleId(inventoryPostingRuleId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getInventoryPostingRuleEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getInventoryPostingRuleEventId().setVersion(version);
     }
 
     private InventoryItemId triggerInventoryItemId;

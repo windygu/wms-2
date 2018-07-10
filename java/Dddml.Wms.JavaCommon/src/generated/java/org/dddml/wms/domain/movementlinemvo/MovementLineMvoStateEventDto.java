@@ -11,7 +11,7 @@ public class MovementLineMvoStateEventDto extends AbstractEvent
 
     private MovementLineMvoEventId movementLineMvoEventId;
 
-    MovementLineMvoEventId getStateEventId() {
+    MovementLineMvoEventId getMovementLineMvoEventId() {
         if (movementLineMvoEventId == null) { movementLineMvoEventId = new MovementLineMvoEventId(); }
         return movementLineMvoEventId;
     }
@@ -21,19 +21,19 @@ public class MovementLineMvoStateEventDto extends AbstractEvent
     }
 
     public MovementLineId getMovementLineId() {
-        return getStateEventId().getMovementLineId();
+        return getMovementLineMvoEventId().getMovementLineId();
     }
 
     public void setMovementLineId(MovementLineId movementLineId) {
-        getStateEventId().setMovementLineId(movementLineId);
+        getMovementLineMvoEventId().setMovementLineId(movementLineId);
     }
 
     public Long getMovementVersion() {
-        return getStateEventId().getMovementVersion();
+        return getMovementLineMvoEventId().getMovementVersion();
     }
     
     public void getMovementVersion(Long movementVersion) {
-        getStateEventId().setMovementVersion(movementVersion);
+        getMovementLineMvoEventId().setMovementVersion(movementVersion);
     }
 
     private BigDecimal movementQuantity;

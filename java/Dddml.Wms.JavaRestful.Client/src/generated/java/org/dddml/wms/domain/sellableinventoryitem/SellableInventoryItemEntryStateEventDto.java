@@ -12,7 +12,7 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractEvent
 
     private SellableInventoryItemEntryEventId sellableInventoryItemEntryEventId;
 
-    SellableInventoryItemEntryEventId getStateEventId() {
+    SellableInventoryItemEntryEventId getSellableInventoryItemEntryEventId() {
         if (sellableInventoryItemEntryEventId == null) { sellableInventoryItemEntryEventId = new SellableInventoryItemEntryEventId(); }
         return sellableInventoryItemEntryEventId;
     }
@@ -22,11 +22,11 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractEvent
     }
 
     public Long getEntrySeqId() {
-        return getStateEventId().getEntrySeqId();
+        return getSellableInventoryItemEntryEventId().getEntrySeqId();
     }
 
     public void setEntrySeqId(Long entrySeqId) {
-        getStateEventId().setEntrySeqId(entrySeqId);
+        getSellableInventoryItemEntryEventId().setEntrySeqId(entrySeqId);
     }
 
     private BigDecimal sellableQuantity;

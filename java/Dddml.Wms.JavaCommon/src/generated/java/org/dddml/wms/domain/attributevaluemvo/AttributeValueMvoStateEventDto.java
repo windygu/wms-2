@@ -10,7 +10,7 @@ public class AttributeValueMvoStateEventDto extends AbstractEvent
 
     private AttributeValueMvoEventId attributeValueMvoEventId;
 
-    AttributeValueMvoEventId getStateEventId() {
+    AttributeValueMvoEventId getAttributeValueMvoEventId() {
         if (attributeValueMvoEventId == null) { attributeValueMvoEventId = new AttributeValueMvoEventId(); }
         return attributeValueMvoEventId;
     }
@@ -20,19 +20,19 @@ public class AttributeValueMvoStateEventDto extends AbstractEvent
     }
 
     public AttributeValueId getAttributeValueId() {
-        return getStateEventId().getAttributeValueId();
+        return getAttributeValueMvoEventId().getAttributeValueId();
     }
 
     public void setAttributeValueId(AttributeValueId attributeValueId) {
-        getStateEventId().setAttributeValueId(attributeValueId);
+        getAttributeValueMvoEventId().setAttributeValueId(attributeValueId);
     }
 
     public Long getAttributeVersion() {
-        return getStateEventId().getAttributeVersion();
+        return getAttributeValueMvoEventId().getAttributeVersion();
     }
     
     public void getAttributeVersion(Long attributeVersion) {
-        getStateEventId().setAttributeVersion(attributeVersion);
+        getAttributeValueMvoEventId().setAttributeVersion(attributeVersion);
     }
 
     private String attributeValueName;

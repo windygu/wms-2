@@ -9,7 +9,7 @@ public class OrderShipGroupStateEventDto extends AbstractEvent
 
     private OrderShipGroupEventId orderShipGroupEventId;
 
-    OrderShipGroupEventId getStateEventId() {
+    OrderShipGroupEventId getOrderShipGroupEventId() {
         if (orderShipGroupEventId == null) { orderShipGroupEventId = new OrderShipGroupEventId(); }
         return orderShipGroupEventId;
     }
@@ -19,11 +19,11 @@ public class OrderShipGroupStateEventDto extends AbstractEvent
     }
 
     public Long getShipGroupSeqId() {
-        return getStateEventId().getShipGroupSeqId();
+        return getOrderShipGroupEventId().getShipGroupSeqId();
     }
 
     public void setShipGroupSeqId(Long shipGroupSeqId) {
-        getStateEventId().setShipGroupSeqId(shipGroupSeqId);
+        getOrderShipGroupEventId().setShipGroupSeqId(shipGroupSeqId);
     }
 
     private String shipmentMethodTypeId;

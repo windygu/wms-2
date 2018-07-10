@@ -9,7 +9,7 @@ public class OrderItemStateEventDto extends AbstractEvent
 
     private OrderItemEventId orderItemEventId;
 
-    OrderItemEventId getStateEventId() {
+    OrderItemEventId getOrderItemEventId() {
         if (orderItemEventId == null) { orderItemEventId = new OrderItemEventId(); }
         return orderItemEventId;
     }
@@ -19,11 +19,11 @@ public class OrderItemStateEventDto extends AbstractEvent
     }
 
     public String getOrderItemSeqId() {
-        return getStateEventId().getOrderItemSeqId();
+        return getOrderItemEventId().getOrderItemSeqId();
     }
 
     public void setOrderItemSeqId(String orderItemSeqId) {
-        getStateEventId().setOrderItemSeqId(orderItemSeqId);
+        getOrderItemEventId().setOrderItemSeqId(orderItemSeqId);
     }
 
     private String productId;

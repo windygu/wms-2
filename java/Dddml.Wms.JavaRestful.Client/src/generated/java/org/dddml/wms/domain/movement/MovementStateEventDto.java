@@ -10,7 +10,7 @@ public class MovementStateEventDto extends AbstractEvent
 
     private MovementEventId movementEventId;
 
-    MovementEventId getStateEventId() {
+    MovementEventId getMovementEventId() {
         if (movementEventId == null) { movementEventId = new MovementEventId(); }
         return movementEventId;
     }
@@ -20,19 +20,19 @@ public class MovementStateEventDto extends AbstractEvent
     }
 
     public String getDocumentNumber() {
-        return getStateEventId().getDocumentNumber();
+        return getMovementEventId().getDocumentNumber();
     }
 
     public void setDocumentNumber(String documentNumber) {
-        getStateEventId().setDocumentNumber(documentNumber);
+        getMovementEventId().setDocumentNumber(documentNumber);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getMovementEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getMovementEventId().setVersion(version);
     }
 
     private String documentStatusId;

@@ -9,7 +9,7 @@ public class AttributeAliasStateEventDto extends AbstractEvent
 
     private AttributeAliasEventId attributeAliasEventId;
 
-    AttributeAliasEventId getStateEventId() {
+    AttributeAliasEventId getAttributeAliasEventId() {
         if (attributeAliasEventId == null) { attributeAliasEventId = new AttributeAliasEventId(); }
         return attributeAliasEventId;
     }
@@ -19,11 +19,11 @@ public class AttributeAliasStateEventDto extends AbstractEvent
     }
 
     public String getCode() {
-        return getStateEventId().getCode();
+        return getAttributeAliasEventId().getCode();
     }
 
     public void setCode(String code) {
-        getStateEventId().setCode(code);
+        getAttributeAliasEventId().setCode(code);
     }
 
     private String name;

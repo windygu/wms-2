@@ -11,7 +11,7 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractEvent
 
     private MovementConfirmationLineMvoEventId movementConfirmationLineMvoEventId;
 
-    MovementConfirmationLineMvoEventId getStateEventId() {
+    MovementConfirmationLineMvoEventId getMovementConfirmationLineMvoEventId() {
         if (movementConfirmationLineMvoEventId == null) { movementConfirmationLineMvoEventId = new MovementConfirmationLineMvoEventId(); }
         return movementConfirmationLineMvoEventId;
     }
@@ -21,19 +21,19 @@ public class MovementConfirmationLineMvoStateEventDto extends AbstractEvent
     }
 
     public MovementConfirmationLineId getMovementConfirmationLineId() {
-        return getStateEventId().getMovementConfirmationLineId();
+        return getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId();
     }
 
     public void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId) {
-        getStateEventId().setMovementConfirmationLineId(movementConfirmationLineId);
+        getMovementConfirmationLineMvoEventId().setMovementConfirmationLineId(movementConfirmationLineId);
     }
 
     public Long getMovementConfirmationVersion() {
-        return getStateEventId().getMovementConfirmationVersion();
+        return getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion();
     }
     
     public void getMovementConfirmationVersion(Long movementConfirmationVersion) {
-        getStateEventId().setMovementConfirmationVersion(movementConfirmationVersion);
+        getMovementConfirmationLineMvoEventId().setMovementConfirmationVersion(movementConfirmationVersion);
     }
 
     private String movementLineNumber;

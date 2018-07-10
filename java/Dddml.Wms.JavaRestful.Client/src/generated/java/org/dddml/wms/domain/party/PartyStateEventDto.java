@@ -9,7 +9,7 @@ public class PartyStateEventDto extends AbstractEvent
 
     private PartyEventId partyEventId;
 
-    PartyEventId getStateEventId() {
+    PartyEventId getPartyEventId() {
         if (partyEventId == null) { partyEventId = new PartyEventId(); }
         return partyEventId;
     }
@@ -19,19 +19,19 @@ public class PartyStateEventDto extends AbstractEvent
     }
 
     public String getPartyId() {
-        return getStateEventId().getPartyId();
+        return getPartyEventId().getPartyId();
     }
 
     public void setPartyId(String partyId) {
-        getStateEventId().setPartyId(partyId);
+        getPartyEventId().setPartyId(partyId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getPartyEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getPartyEventId().setVersion(version);
     }
 
     private String partyTypeId;

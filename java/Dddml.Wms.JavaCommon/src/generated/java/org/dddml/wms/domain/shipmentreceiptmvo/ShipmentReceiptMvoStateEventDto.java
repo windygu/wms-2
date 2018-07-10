@@ -10,7 +10,7 @@ public class ShipmentReceiptMvoStateEventDto extends AbstractEvent
 
     private ShipmentReceiptMvoEventId shipmentReceiptMvoEventId;
 
-    ShipmentReceiptMvoEventId getStateEventId() {
+    ShipmentReceiptMvoEventId getShipmentReceiptMvoEventId() {
         if (shipmentReceiptMvoEventId == null) { shipmentReceiptMvoEventId = new ShipmentReceiptMvoEventId(); }
         return shipmentReceiptMvoEventId;
     }
@@ -20,19 +20,19 @@ public class ShipmentReceiptMvoStateEventDto extends AbstractEvent
     }
 
     public ShipmentReceiptId getShipmentReceiptId() {
-        return getStateEventId().getShipmentReceiptId();
+        return getShipmentReceiptMvoEventId().getShipmentReceiptId();
     }
 
     public void setShipmentReceiptId(ShipmentReceiptId shipmentReceiptId) {
-        getStateEventId().setShipmentReceiptId(shipmentReceiptId);
+        getShipmentReceiptMvoEventId().setShipmentReceiptId(shipmentReceiptId);
     }
 
     public Long getShipmentVersion() {
-        return getStateEventId().getShipmentVersion();
+        return getShipmentReceiptMvoEventId().getShipmentVersion();
     }
     
     public void getShipmentVersion(Long shipmentVersion) {
-        getStateEventId().setShipmentVersion(shipmentVersion);
+        getShipmentReceiptMvoEventId().setShipmentVersion(shipmentVersion);
     }
 
     private String productId;

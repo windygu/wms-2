@@ -55,6 +55,7 @@
                 dict.Add("description", "_DESCRIPTION_");
                 dict.Add("fixed-point", "_FIXED-POINT_");
                 dict.Add("floating-point", "_FLOATING-POINT_");
+                dict.Add("GoodIdentification", "_GOODIDENTIFICATION_");
                 dict.Add("id", "_ID_");
                 dict.Add("id-long", "_ID-LONG_");
                 dict.Add("id-long-ne", "_ID-LONG-NE_");

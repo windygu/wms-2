@@ -9,7 +9,7 @@ public class FacilityStateEventDto extends AbstractEvent
 
     private FacilityEventId facilityEventId;
 
-    FacilityEventId getStateEventId() {
+    FacilityEventId getFacilityEventId() {
         if (facilityEventId == null) { facilityEventId = new FacilityEventId(); }
         return facilityEventId;
     }
@@ -19,19 +19,19 @@ public class FacilityStateEventDto extends AbstractEvent
     }
 
     public String getFacilityId() {
-        return getStateEventId().getFacilityId();
+        return getFacilityEventId().getFacilityId();
     }
 
     public void setFacilityId(String facilityId) {
-        getStateEventId().setFacilityId(facilityId);
+        getFacilityEventId().setFacilityId(facilityId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getFacilityEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getFacilityEventId().setVersion(version);
     }
 
     private String facilityTypeId;

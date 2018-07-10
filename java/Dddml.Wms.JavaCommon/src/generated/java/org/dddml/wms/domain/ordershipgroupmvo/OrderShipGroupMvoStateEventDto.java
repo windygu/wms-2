@@ -10,7 +10,7 @@ public class OrderShipGroupMvoStateEventDto extends AbstractEvent
 
     private OrderShipGroupMvoEventId orderShipGroupMvoEventId;
 
-    OrderShipGroupMvoEventId getStateEventId() {
+    OrderShipGroupMvoEventId getOrderShipGroupMvoEventId() {
         if (orderShipGroupMvoEventId == null) { orderShipGroupMvoEventId = new OrderShipGroupMvoEventId(); }
         return orderShipGroupMvoEventId;
     }
@@ -20,19 +20,19 @@ public class OrderShipGroupMvoStateEventDto extends AbstractEvent
     }
 
     public OrderShipGroupId getOrderShipGroupId() {
-        return getStateEventId().getOrderShipGroupId();
+        return getOrderShipGroupMvoEventId().getOrderShipGroupId();
     }
 
     public void setOrderShipGroupId(OrderShipGroupId orderShipGroupId) {
-        getStateEventId().setOrderShipGroupId(orderShipGroupId);
+        getOrderShipGroupMvoEventId().setOrderShipGroupId(orderShipGroupId);
     }
 
     public Long getOrderVersion() {
-        return getStateEventId().getOrderVersion();
+        return getOrderShipGroupMvoEventId().getOrderVersion();
     }
     
     public void getOrderVersion(Long orderVersion) {
-        getStateEventId().setOrderVersion(orderVersion);
+        getOrderShipGroupMvoEventId().setOrderVersion(orderVersion);
     }
 
     private String shipmentMethodTypeId;

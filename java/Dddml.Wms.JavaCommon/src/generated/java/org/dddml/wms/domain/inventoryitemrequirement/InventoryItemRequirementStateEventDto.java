@@ -12,7 +12,7 @@ public class InventoryItemRequirementStateEventDto extends AbstractEvent
 
     private InventoryItemRequirementEventId inventoryItemRequirementEventId;
 
-    InventoryItemRequirementEventId getStateEventId() {
+    InventoryItemRequirementEventId getInventoryItemRequirementEventId() {
         if (inventoryItemRequirementEventId == null) { inventoryItemRequirementEventId = new InventoryItemRequirementEventId(); }
         return inventoryItemRequirementEventId;
     }
@@ -22,19 +22,19 @@ public class InventoryItemRequirementStateEventDto extends AbstractEvent
     }
 
     public InventoryItemId getInventoryItemRequirementId() {
-        return getStateEventId().getInventoryItemRequirementId();
+        return getInventoryItemRequirementEventId().getInventoryItemRequirementId();
     }
 
     public void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId) {
-        getStateEventId().setInventoryItemRequirementId(inventoryItemRequirementId);
+        getInventoryItemRequirementEventId().setInventoryItemRequirementId(inventoryItemRequirementId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getInventoryItemRequirementEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getInventoryItemRequirementEventId().setVersion(version);
     }
 
     private BigDecimal quantity;

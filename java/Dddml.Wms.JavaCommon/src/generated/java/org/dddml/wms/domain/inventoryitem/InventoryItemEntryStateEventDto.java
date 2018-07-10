@@ -10,7 +10,7 @@ public class InventoryItemEntryStateEventDto extends AbstractEvent
 
     private InventoryItemEntryEventId inventoryItemEntryEventId;
 
-    InventoryItemEntryEventId getStateEventId() {
+    InventoryItemEntryEventId getInventoryItemEntryEventId() {
         if (inventoryItemEntryEventId == null) { inventoryItemEntryEventId = new InventoryItemEntryEventId(); }
         return inventoryItemEntryEventId;
     }
@@ -20,11 +20,11 @@ public class InventoryItemEntryStateEventDto extends AbstractEvent
     }
 
     public Long getEntrySeqId() {
-        return getStateEventId().getEntrySeqId();
+        return getInventoryItemEntryEventId().getEntrySeqId();
     }
 
     public void setEntrySeqId(Long entrySeqId) {
-        getStateEventId().setEntrySeqId(entrySeqId);
+        getInventoryItemEntryEventId().setEntrySeqId(entrySeqId);
     }
 
     private BigDecimal onHandQuantity;

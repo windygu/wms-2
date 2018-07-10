@@ -9,7 +9,7 @@ public class PartyRoleStateEventDto extends AbstractEvent
 
     private PartyRoleEventId partyRoleEventId;
 
-    PartyRoleEventId getStateEventId() {
+    PartyRoleEventId getPartyRoleEventId() {
         if (partyRoleEventId == null) { partyRoleEventId = new PartyRoleEventId(); }
         return partyRoleEventId;
     }
@@ -19,19 +19,19 @@ public class PartyRoleStateEventDto extends AbstractEvent
     }
 
     public PartyRoleId getPartyRoleId() {
-        return getStateEventId().getPartyRoleId();
+        return getPartyRoleEventId().getPartyRoleId();
     }
 
     public void setPartyRoleId(PartyRoleId partyRoleId) {
-        getStateEventId().setPartyRoleId(partyRoleId);
+        getPartyRoleEventId().setPartyRoleId(partyRoleId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getPartyRoleEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getPartyRoleEventId().setVersion(version);
     }
 
     private Boolean active;

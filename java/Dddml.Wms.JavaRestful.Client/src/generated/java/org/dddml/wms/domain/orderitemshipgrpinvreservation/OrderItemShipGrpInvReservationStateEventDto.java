@@ -9,7 +9,7 @@ public class OrderItemShipGrpInvReservationStateEventDto extends AbstractEvent
 
     private OrderItemShipGrpInvReservationEventId orderItemShipGrpInvReservationEventId;
 
-    OrderItemShipGrpInvReservationEventId getStateEventId() {
+    OrderItemShipGrpInvReservationEventId getOrderItemShipGrpInvReservationEventId() {
         if (orderItemShipGrpInvReservationEventId == null) { orderItemShipGrpInvReservationEventId = new OrderItemShipGrpInvReservationEventId(); }
         return orderItemShipGrpInvReservationEventId;
     }
@@ -19,19 +19,19 @@ public class OrderItemShipGrpInvReservationStateEventDto extends AbstractEvent
     }
 
     public OrderItemShipGrpInvResId getOrderItemShipGrpInvResId() {
-        return getStateEventId().getOrderItemShipGrpInvResId();
+        return getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId();
     }
 
     public void setOrderItemShipGrpInvResId(OrderItemShipGrpInvResId orderItemShipGrpInvResId) {
-        getStateEventId().setOrderItemShipGrpInvResId(orderItemShipGrpInvResId);
+        getOrderItemShipGrpInvReservationEventId().setOrderItemShipGrpInvResId(orderItemShipGrpInvResId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getOrderItemShipGrpInvReservationEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getOrderItemShipGrpInvReservationEventId().setVersion(version);
     }
 
     private String reserveOrderEnumId;

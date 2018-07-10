@@ -10,7 +10,7 @@ public class AttributeSetInstanceStateEventDto extends AbstractEvent
 
     private AttributeSetInstanceEventId attributeSetInstanceEventId;
 
-    AttributeSetInstanceEventId getStateEventId() {
+    AttributeSetInstanceEventId getAttributeSetInstanceEventId() {
         if (attributeSetInstanceEventId == null) { attributeSetInstanceEventId = new AttributeSetInstanceEventId(); }
         return attributeSetInstanceEventId;
     }
@@ -20,19 +20,19 @@ public class AttributeSetInstanceStateEventDto extends AbstractEvent
     }
 
     public String getAttributeSetInstanceId() {
-        return getStateEventId().getAttributeSetInstanceId();
+        return getAttributeSetInstanceEventId().getAttributeSetInstanceId();
     }
 
     public void setAttributeSetInstanceId(String attributeSetInstanceId) {
-        getStateEventId().setAttributeSetInstanceId(attributeSetInstanceId);
+        getAttributeSetInstanceEventId().setAttributeSetInstanceId(attributeSetInstanceId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getAttributeSetInstanceEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getAttributeSetInstanceEventId().setVersion(version);
     }
 
     private String attributeSetId;

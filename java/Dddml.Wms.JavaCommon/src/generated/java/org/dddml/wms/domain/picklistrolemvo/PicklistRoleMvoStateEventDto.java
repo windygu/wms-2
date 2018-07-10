@@ -10,7 +10,7 @@ public class PicklistRoleMvoStateEventDto extends AbstractEvent
 
     private PicklistRoleMvoEventId picklistRoleMvoEventId;
 
-    PicklistRoleMvoEventId getStateEventId() {
+    PicklistRoleMvoEventId getPicklistRoleMvoEventId() {
         if (picklistRoleMvoEventId == null) { picklistRoleMvoEventId = new PicklistRoleMvoEventId(); }
         return picklistRoleMvoEventId;
     }
@@ -20,19 +20,19 @@ public class PicklistRoleMvoStateEventDto extends AbstractEvent
     }
 
     public PicklistRoleId getPicklistRoleId() {
-        return getStateEventId().getPicklistRoleId();
+        return getPicklistRoleMvoEventId().getPicklistRoleId();
     }
 
     public void setPicklistRoleId(PicklistRoleId picklistRoleId) {
-        getStateEventId().setPicklistRoleId(picklistRoleId);
+        getPicklistRoleMvoEventId().setPicklistRoleId(picklistRoleId);
     }
 
     public Long getPicklistVersion() {
-        return getStateEventId().getPicklistVersion();
+        return getPicklistRoleMvoEventId().getPicklistVersion();
     }
     
     public void getPicklistVersion(Long picklistVersion) {
-        getStateEventId().setPicklistVersion(picklistVersion);
+        getPicklistRoleMvoEventId().setPicklistVersion(picklistVersion);
     }
 
     private Long version;

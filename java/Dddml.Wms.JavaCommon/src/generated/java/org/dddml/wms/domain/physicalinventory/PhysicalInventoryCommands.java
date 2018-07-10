@@ -41,14 +41,14 @@ public class PhysicalInventoryCommands
             this.productId = productId;
         }
 
-        private String attributeSetInstanceId;
+        private java.util.Map<String, Object> attributeSetInstance;
 
-        public String getAttributeSetInstanceId() {
-            return this.attributeSetInstanceId;
+        public java.util.Map<String, Object> getAttributeSetInstance() {
+            return this.attributeSetInstance;
         }
 
-        public void setAttributeSetInstanceId(String attributeSetInstanceId) {
-            this.attributeSetInstanceId = attributeSetInstanceId;
+        public void setAttributeSetInstance(java.util.Map<String, Object> attributeSetInstance) {
+            this.attributeSetInstance = attributeSetInstance;
         }
 
         private BigDecimal countedQuantity;

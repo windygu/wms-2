@@ -9,7 +9,7 @@ public class RoleTypeStateEventDto extends AbstractEvent
 
     private RoleTypeEventId roleTypeEventId;
 
-    RoleTypeEventId getStateEventId() {
+    RoleTypeEventId getRoleTypeEventId() {
         if (roleTypeEventId == null) { roleTypeEventId = new RoleTypeEventId(); }
         return roleTypeEventId;
     }
@@ -19,19 +19,19 @@ public class RoleTypeStateEventDto extends AbstractEvent
     }
 
     public String getRoleTypeId() {
-        return getStateEventId().getRoleTypeId();
+        return getRoleTypeEventId().getRoleTypeId();
     }
 
     public void setRoleTypeId(String roleTypeId) {
-        getStateEventId().setRoleTypeId(roleTypeId);
+        getRoleTypeEventId().setRoleTypeId(roleTypeId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getRoleTypeEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getRoleTypeEventId().setVersion(version);
     }
 
     private String parentTypeId;

@@ -9,7 +9,7 @@ public class StatusItemStateEventDto extends AbstractEvent
 
     private StatusItemEventId statusItemEventId;
 
-    StatusItemEventId getStateEventId() {
+    StatusItemEventId getStatusItemEventId() {
         if (statusItemEventId == null) { statusItemEventId = new StatusItemEventId(); }
         return statusItemEventId;
     }
@@ -19,19 +19,19 @@ public class StatusItemStateEventDto extends AbstractEvent
     }
 
     public String getStatusId() {
-        return getStateEventId().getStatusId();
+        return getStatusItemEventId().getStatusId();
     }
 
     public void setStatusId(String statusId) {
-        getStateEventId().setStatusId(statusId);
+        getStatusItemEventId().setStatusId(statusId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getStatusItemEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getStatusItemEventId().setVersion(version);
     }
 
     private String statusTypeId;

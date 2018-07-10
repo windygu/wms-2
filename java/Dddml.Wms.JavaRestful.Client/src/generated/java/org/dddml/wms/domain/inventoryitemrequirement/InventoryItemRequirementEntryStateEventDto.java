@@ -12,7 +12,7 @@ public class InventoryItemRequirementEntryStateEventDto extends AbstractEvent
 
     private InventoryItemRequirementEntryEventId inventoryItemRequirementEntryEventId;
 
-    InventoryItemRequirementEntryEventId getStateEventId() {
+    InventoryItemRequirementEntryEventId getInventoryItemRequirementEntryEventId() {
         if (inventoryItemRequirementEntryEventId == null) { inventoryItemRequirementEntryEventId = new InventoryItemRequirementEntryEventId(); }
         return inventoryItemRequirementEntryEventId;
     }
@@ -22,11 +22,11 @@ public class InventoryItemRequirementEntryStateEventDto extends AbstractEvent
     }
 
     public Long getEntrySeqId() {
-        return getStateEventId().getEntrySeqId();
+        return getInventoryItemRequirementEntryEventId().getEntrySeqId();
     }
 
     public void setEntrySeqId(Long entrySeqId) {
-        getStateEventId().setEntrySeqId(entrySeqId);
+        getInventoryItemRequirementEntryEventId().setEntrySeqId(entrySeqId);
     }
 
     private BigDecimal quantity;

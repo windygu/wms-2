@@ -153,8 +153,12 @@ aggregates:
               type: string
             ProductId:
               type: id-long
-            AttributeSetInstanceId:
-              type: string
+            # AttributeSetInstanceId:
+            #   type: string
+            # --------------------------------
+            # 属性集实例。这里是一个 Map
+            AttributeSetInstance:
+              type: map
 
             CountedQuantity: 
               type: decimal

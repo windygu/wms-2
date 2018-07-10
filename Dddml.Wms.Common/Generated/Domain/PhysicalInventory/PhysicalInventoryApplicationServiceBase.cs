@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public virtual void When(PhysicalInventoryCommands.CountItem c)
 		{
-			Update(c, ar => ar.CountItem(c.LocatorId, c.ProductId, c.AttributeSetInstanceId, c.CountedQuantity, c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.CountItem(c.LocatorId, c.ProductId, c.AttributeSetInstance, c.CountedQuantity, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(PhysicalInventoryCommands.DocumentAction c)

@@ -35,7 +35,7 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.movementLineNumber = movementLineNumber;
     }
 
-    private BigDecimal targetQuantity;
+    private BigDecimal targetQuantity = BigDecimal.valueOf(0);
 
     public BigDecimal getTargetQuantity()
     {
@@ -47,7 +47,7 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.targetQuantity = targetQuantity;
     }
 
-    private BigDecimal confirmedQuantity;
+    private BigDecimal confirmedQuantity = BigDecimal.valueOf(0);
 
     public BigDecimal getConfirmedQuantity()
     {
@@ -59,7 +59,7 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.confirmedQuantity = confirmedQuantity;
     }
 
-    private BigDecimal differenceQuantity;
+    private BigDecimal differenceQuantity = BigDecimal.valueOf(0);
 
     public BigDecimal getDifferenceQuantity()
     {
@@ -71,7 +71,7 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         this.differenceQuantity = differenceQuantity;
     }
 
-    private BigDecimal scrappedQuantity;
+    private BigDecimal scrappedQuantity = BigDecimal.valueOf(0);
 
     public BigDecimal getScrappedQuantity()
     {
@@ -436,10 +436,10 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
         throwOnWrongEvent(e);
 
         this.setMovementLineNumber(e.getMovementLineNumber());
-        this.setTargetQuantity(e.getTargetQuantity());
-        this.setConfirmedQuantity(e.getConfirmedQuantity());
-        this.setDifferenceQuantity(e.getDifferenceQuantity());
-        this.setScrappedQuantity(e.getScrappedQuantity());
+        if(e.getTargetQuantity() != null) { this.setTargetQuantity(e.getTargetQuantity()); }
+        if(e.getConfirmedQuantity() != null) { this.setConfirmedQuantity(e.getConfirmedQuantity()); }
+        if(e.getDifferenceQuantity() != null) { this.setDifferenceQuantity(e.getDifferenceQuantity()); }
+        if(e.getScrappedQuantity() != null) { this.setScrappedQuantity(e.getScrappedQuantity()); }
         this.setDescription(e.getDescription());
         this.setProcessed(e.getProcessed());
         this.setVersion(e.getVersion());

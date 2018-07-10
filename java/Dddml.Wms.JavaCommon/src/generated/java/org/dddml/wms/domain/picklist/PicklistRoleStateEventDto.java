@@ -10,7 +10,7 @@ public class PicklistRoleStateEventDto extends AbstractEvent
 
     private PicklistRoleEventId picklistRoleEventId;
 
-    PicklistRoleEventId getStateEventId() {
+    PicklistRoleEventId getPicklistRoleEventId() {
         if (picklistRoleEventId == null) { picklistRoleEventId = new PicklistRoleEventId(); }
         return picklistRoleEventId;
     }
@@ -20,11 +20,11 @@ public class PicklistRoleStateEventDto extends AbstractEvent
     }
 
     public PartyRoleId getPartyRoleId() {
-        return getStateEventId().getPartyRoleId();
+        return getPicklistRoleEventId().getPartyRoleId();
     }
 
     public void setPartyRoleId(PartyRoleId partyRoleId) {
-        getStateEventId().setPartyRoleId(partyRoleId);
+        getPicklistRoleEventId().setPartyRoleId(partyRoleId);
     }
 
     private Boolean active;

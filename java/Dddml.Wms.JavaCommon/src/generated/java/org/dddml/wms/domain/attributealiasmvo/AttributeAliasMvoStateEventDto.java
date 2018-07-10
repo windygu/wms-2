@@ -10,7 +10,7 @@ public class AttributeAliasMvoStateEventDto extends AbstractEvent
 
     private AttributeAliasMvoEventId attributeAliasMvoEventId;
 
-    AttributeAliasMvoEventId getStateEventId() {
+    AttributeAliasMvoEventId getAttributeAliasMvoEventId() {
         if (attributeAliasMvoEventId == null) { attributeAliasMvoEventId = new AttributeAliasMvoEventId(); }
         return attributeAliasMvoEventId;
     }
@@ -20,19 +20,19 @@ public class AttributeAliasMvoStateEventDto extends AbstractEvent
     }
 
     public AttributeAliasId getAttributeAliasId() {
-        return getStateEventId().getAttributeAliasId();
+        return getAttributeAliasMvoEventId().getAttributeAliasId();
     }
 
     public void setAttributeAliasId(AttributeAliasId attributeAliasId) {
-        getStateEventId().setAttributeAliasId(attributeAliasId);
+        getAttributeAliasMvoEventId().setAttributeAliasId(attributeAliasId);
     }
 
     public Long getAttributeVersion() {
-        return getStateEventId().getAttributeVersion();
+        return getAttributeAliasMvoEventId().getAttributeVersion();
     }
     
     public void getAttributeVersion(Long attributeVersion) {
-        getStateEventId().setAttributeVersion(attributeVersion);
+        getAttributeAliasMvoEventId().setAttributeVersion(attributeVersion);
     }
 
     private String name;

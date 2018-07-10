@@ -10,7 +10,7 @@ public class MovementConfirmationStateEventDto extends AbstractEvent
 
     private MovementConfirmationEventId movementConfirmationEventId;
 
-    MovementConfirmationEventId getStateEventId() {
+    MovementConfirmationEventId getMovementConfirmationEventId() {
         if (movementConfirmationEventId == null) { movementConfirmationEventId = new MovementConfirmationEventId(); }
         return movementConfirmationEventId;
     }
@@ -20,19 +20,19 @@ public class MovementConfirmationStateEventDto extends AbstractEvent
     }
 
     public String getDocumentNumber() {
-        return getStateEventId().getDocumentNumber();
+        return getMovementConfirmationEventId().getDocumentNumber();
     }
 
     public void setDocumentNumber(String documentNumber) {
-        getStateEventId().setDocumentNumber(documentNumber);
+        getMovementConfirmationEventId().setDocumentNumber(documentNumber);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getMovementConfirmationEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getMovementConfirmationEventId().setVersion(version);
     }
 
     private String documentStatusId;

@@ -9,7 +9,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends Abstra
 
     private AttributeSetInstanceExtensionFieldGroupEventId attributeSetInstanceExtensionFieldGroupEventId;
 
-    AttributeSetInstanceExtensionFieldGroupEventId getStateEventId() {
+    AttributeSetInstanceExtensionFieldGroupEventId getAttributeSetInstanceExtensionFieldGroupEventId() {
         if (attributeSetInstanceExtensionFieldGroupEventId == null) { attributeSetInstanceExtensionFieldGroupEventId = new AttributeSetInstanceExtensionFieldGroupEventId(); }
         return attributeSetInstanceExtensionFieldGroupEventId;
     }
@@ -19,19 +19,19 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends Abstra
     }
 
     public String getId() {
-        return getStateEventId().getId();
+        return getAttributeSetInstanceExtensionFieldGroupEventId().getId();
     }
 
     public void setId(String id) {
-        getStateEventId().setId(id);
+        getAttributeSetInstanceExtensionFieldGroupEventId().setId(id);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getAttributeSetInstanceExtensionFieldGroupEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getAttributeSetInstanceExtensionFieldGroupEventId().setVersion(version);
     }
 
     private String fieldType;

@@ -10,7 +10,7 @@ public class MovementConfirmationLineStateEventDto extends AbstractEvent
 
     private MovementConfirmationLineEventId movementConfirmationLineEventId;
 
-    MovementConfirmationLineEventId getStateEventId() {
+    MovementConfirmationLineEventId getMovementConfirmationLineEventId() {
         if (movementConfirmationLineEventId == null) { movementConfirmationLineEventId = new MovementConfirmationLineEventId(); }
         return movementConfirmationLineEventId;
     }
@@ -20,11 +20,11 @@ public class MovementConfirmationLineStateEventDto extends AbstractEvent
     }
 
     public String getLineNumber() {
-        return getStateEventId().getLineNumber();
+        return getMovementConfirmationLineEventId().getLineNumber();
     }
 
     public void setLineNumber(String lineNumber) {
-        getStateEventId().setLineNumber(lineNumber);
+        getMovementConfirmationLineEventId().setLineNumber(lineNumber);
     }
 
     private String movementLineNumber;

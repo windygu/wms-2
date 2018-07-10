@@ -9,7 +9,7 @@ public class ShipmentItemStateEventDto extends AbstractEvent
 
     private ShipmentItemEventId shipmentItemEventId;
 
-    ShipmentItemEventId getStateEventId() {
+    ShipmentItemEventId getShipmentItemEventId() {
         if (shipmentItemEventId == null) { shipmentItemEventId = new ShipmentItemEventId(); }
         return shipmentItemEventId;
     }
@@ -19,11 +19,11 @@ public class ShipmentItemStateEventDto extends AbstractEvent
     }
 
     public String getShipmentItemSeqId() {
-        return getStateEventId().getShipmentItemSeqId();
+        return getShipmentItemEventId().getShipmentItemSeqId();
     }
 
     public void setShipmentItemSeqId(String shipmentItemSeqId) {
-        getStateEventId().setShipmentItemSeqId(shipmentItemSeqId);
+        getShipmentItemEventId().setShipmentItemSeqId(shipmentItemSeqId);
     }
 
     private String productId;

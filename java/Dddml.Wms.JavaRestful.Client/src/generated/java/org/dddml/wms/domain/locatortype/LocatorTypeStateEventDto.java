@@ -9,7 +9,7 @@ public class LocatorTypeStateEventDto extends AbstractEvent
 
     private LocatorTypeEventId locatorTypeEventId;
 
-    LocatorTypeEventId getStateEventId() {
+    LocatorTypeEventId getLocatorTypeEventId() {
         if (locatorTypeEventId == null) { locatorTypeEventId = new LocatorTypeEventId(); }
         return locatorTypeEventId;
     }
@@ -19,19 +19,19 @@ public class LocatorTypeStateEventDto extends AbstractEvent
     }
 
     public String getLocatorTypeId() {
-        return getStateEventId().getLocatorTypeId();
+        return getLocatorTypeEventId().getLocatorTypeId();
     }
 
     public void setLocatorTypeId(String locatorTypeId) {
-        getStateEventId().setLocatorTypeId(locatorTypeId);
+        getLocatorTypeEventId().setLocatorTypeId(locatorTypeId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getLocatorTypeEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getLocatorTypeEventId().setVersion(version);
     }
 
     private String description;

@@ -9,7 +9,7 @@ public class ItemIssuanceStateEventDto extends AbstractEvent
 
     private ItemIssuanceEventId itemIssuanceEventId;
 
-    ItemIssuanceEventId getStateEventId() {
+    ItemIssuanceEventId getItemIssuanceEventId() {
         if (itemIssuanceEventId == null) { itemIssuanceEventId = new ItemIssuanceEventId(); }
         return itemIssuanceEventId;
     }
@@ -19,11 +19,11 @@ public class ItemIssuanceStateEventDto extends AbstractEvent
     }
 
     public String getItemIssuanceSeqId() {
-        return getStateEventId().getItemIssuanceSeqId();
+        return getItemIssuanceEventId().getItemIssuanceSeqId();
     }
 
     public void setItemIssuanceSeqId(String itemIssuanceSeqId) {
-        getStateEventId().setItemIssuanceSeqId(itemIssuanceSeqId);
+        getItemIssuanceEventId().setItemIssuanceSeqId(itemIssuanceSeqId);
     }
 
     private String orderId;

@@ -9,7 +9,7 @@ public class AttributeUseStateEventDto extends AbstractEvent
 
     private AttributeUseEventId attributeUseEventId;
 
-    AttributeUseEventId getStateEventId() {
+    AttributeUseEventId getAttributeUseEventId() {
         if (attributeUseEventId == null) { attributeUseEventId = new AttributeUseEventId(); }
         return attributeUseEventId;
     }
@@ -19,11 +19,11 @@ public class AttributeUseStateEventDto extends AbstractEvent
     }
 
     public String getAttributeId() {
-        return getStateEventId().getAttributeId();
+        return getAttributeUseEventId().getAttributeId();
     }
 
     public void setAttributeId(String attributeId) {
-        getStateEventId().setAttributeId(attributeId);
+        getAttributeUseEventId().setAttributeId(attributeId);
     }
 
     private Integer sequenceNumber;

@@ -10,7 +10,7 @@ public class OrderRoleStateEventDto extends AbstractEvent
 
     private OrderRoleEventId orderRoleEventId;
 
-    OrderRoleEventId getStateEventId() {
+    OrderRoleEventId getOrderRoleEventId() {
         if (orderRoleEventId == null) { orderRoleEventId = new OrderRoleEventId(); }
         return orderRoleEventId;
     }
@@ -20,11 +20,11 @@ public class OrderRoleStateEventDto extends AbstractEvent
     }
 
     public PartyRoleId getPartyRoleId() {
-        return getStateEventId().getPartyRoleId();
+        return getOrderRoleEventId().getPartyRoleId();
     }
 
     public void setPartyRoleId(PartyRoleId partyRoleId) {
-        getStateEventId().setPartyRoleId(partyRoleId);
+        getOrderRoleEventId().setPartyRoleId(partyRoleId);
     }
 
     private Boolean active;

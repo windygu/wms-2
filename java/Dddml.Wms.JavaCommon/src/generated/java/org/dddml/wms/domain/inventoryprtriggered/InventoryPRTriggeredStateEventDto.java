@@ -9,7 +9,7 @@ public class InventoryPRTriggeredStateEventDto extends AbstractEvent
 
     private InventoryPRTriggeredEventId inventoryPRTriggeredEventId;
 
-    InventoryPRTriggeredEventId getStateEventId() {
+    InventoryPRTriggeredEventId getInventoryPRTriggeredEventId() {
         if (inventoryPRTriggeredEventId == null) { inventoryPRTriggeredEventId = new InventoryPRTriggeredEventId(); }
         return inventoryPRTriggeredEventId;
     }
@@ -19,19 +19,19 @@ public class InventoryPRTriggeredStateEventDto extends AbstractEvent
     }
 
     public InventoryPRTriggeredId getInventoryPRTriggeredId() {
-        return getStateEventId().getInventoryPRTriggeredId();
+        return getInventoryPRTriggeredEventId().getInventoryPRTriggeredId();
     }
 
     public void setInventoryPRTriggeredId(InventoryPRTriggeredId inventoryPRTriggeredId) {
-        getStateEventId().setInventoryPRTriggeredId(inventoryPRTriggeredId);
+        getInventoryPRTriggeredEventId().setInventoryPRTriggeredId(inventoryPRTriggeredId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getInventoryPRTriggeredEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getInventoryPRTriggeredEventId().setVersion(version);
     }
 
     private Boolean isProcessed;

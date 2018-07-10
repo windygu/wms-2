@@ -10,7 +10,7 @@ public class PicklistStateEventDto extends AbstractEvent
 
     private PicklistEventId picklistEventId;
 
-    PicklistEventId getStateEventId() {
+    PicklistEventId getPicklistEventId() {
         if (picklistEventId == null) { picklistEventId = new PicklistEventId(); }
         return picklistEventId;
     }
@@ -20,19 +20,19 @@ public class PicklistStateEventDto extends AbstractEvent
     }
 
     public String getPicklistId() {
-        return getStateEventId().getPicklistId();
+        return getPicklistEventId().getPicklistId();
     }
 
     public void setPicklistId(String picklistId) {
-        getStateEventId().setPicklistId(picklistId);
+        getPicklistEventId().setPicklistId(picklistId);
     }
 
     public Long getVersion() {
-        return getStateEventId().getVersion();
+        return getPicklistEventId().getVersion();
     }
     
     public void getVersion(Long version) {
-        getStateEventId().setVersion(version);
+        getPicklistEventId().setVersion(version);
     }
 
     private String description;

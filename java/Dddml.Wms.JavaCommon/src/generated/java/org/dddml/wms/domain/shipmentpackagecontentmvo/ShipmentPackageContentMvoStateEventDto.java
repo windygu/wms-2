@@ -10,7 +10,7 @@ public class ShipmentPackageContentMvoStateEventDto extends AbstractEvent
 
     private ShipmentPackageContentMvoEventId shipmentPackageContentMvoEventId;
 
-    ShipmentPackageContentMvoEventId getStateEventId() {
+    ShipmentPackageContentMvoEventId getShipmentPackageContentMvoEventId() {
         if (shipmentPackageContentMvoEventId == null) { shipmentPackageContentMvoEventId = new ShipmentPackageContentMvoEventId(); }
         return shipmentPackageContentMvoEventId;
     }
@@ -20,19 +20,19 @@ public class ShipmentPackageContentMvoStateEventDto extends AbstractEvent
     }
 
     public ShipmentPackageContentId getShipmentPackageContentId() {
-        return getStateEventId().getShipmentPackageContentId();
+        return getShipmentPackageContentMvoEventId().getShipmentPackageContentId();
     }
 
     public void setShipmentPackageContentId(ShipmentPackageContentId shipmentPackageContentId) {
-        getStateEventId().setShipmentPackageContentId(shipmentPackageContentId);
+        getShipmentPackageContentMvoEventId().setShipmentPackageContentId(shipmentPackageContentId);
     }
 
     public Long getShipmentPackageVersion() {
-        return getStateEventId().getShipmentPackageVersion();
+        return getShipmentPackageContentMvoEventId().getShipmentPackageVersion();
     }
     
     public void getShipmentPackageVersion(Long shipmentPackageVersion) {
-        getStateEventId().setShipmentPackageVersion(shipmentPackageVersion);
+        getShipmentPackageContentMvoEventId().setShipmentPackageVersion(shipmentPackageVersion);
     }
 
     private java.math.BigDecimal quantity;
