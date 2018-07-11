@@ -35,6 +35,7 @@ public class TestMain {
 
     public static void main(final String[] args) throws Exception {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
+
         // //////////////////  initialize database data /////////////////
         if(true) { // if need to initialize, switch to true, else to false.
             InitEntityXmlData.createEntityXmlData();
@@ -71,7 +72,13 @@ public class TestMain {
                 throw new RuntimeException(ex);
             }
         }
+
+
+        ProductTests productTests = new ProductTests();
+        productTests.setUp();
+        productTests.testCreateAttributesAndProducts();
         //if(true) {return;}
+
         //testInventoryItemApplicationService();
         //if(true) return;
 

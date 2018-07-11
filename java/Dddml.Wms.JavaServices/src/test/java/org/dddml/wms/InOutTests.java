@@ -30,7 +30,8 @@ public class InOutTests {
     public void setUp() {
         productApplicationService = (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
         attributeSetInstanceApplicationService = (AttributeSetInstanceApplicationService) ApplicationContext.current.get("attributeSetInstanceApplicationService");
-        inOutApplicationService = (InOutApplicationService) ApplicationContext.current.get("inOutApplicationService");   }
+        inOutApplicationService = (InOutApplicationService) ApplicationContext.current.get("inOutApplicationService");
+    }
 
     public void testCreateAndCompleteAndReverseInOut() {
         String documentNumber_1 = testCreateAndComplateInOut_0();
