@@ -222,7 +222,11 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
 
     protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(InOutState inOut, InOutLineState inOutLine) {
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
-        entry.setInventoryItemId(new InventoryItemId(inOutLine.getProductId(), inOutLine.getLocatorId(), inOutLine.getAttributeSetInstanceId()));
+        String attrSetInstId = inOutLine.getAttributeSetInstanceId();
+        if(attrSetInstId == null || attrSetInstId.isEmpty()) {
+            attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
+        }
+        entry.setInventoryItemId(new InventoryItemId(inOutLine.getProductId(), inOutLine.getLocatorId(), attrSetInstId));
         entry.setEntrySeqId(getSeqIdGenerator().getNextId());//DateTime.Now.Ticks;
         entry.setOnHandQuantity(inOutLine.getMovementQuantity());// *signum;
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.IN_OUT, inOut.getDocumentNumber(), inOutLine.getLineNumber(), 0));
