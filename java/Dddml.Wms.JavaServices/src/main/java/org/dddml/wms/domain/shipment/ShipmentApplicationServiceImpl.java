@@ -151,7 +151,11 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ShipmentReceiptState lineReceipt) {
         String targetLocatorId = WarehouseUtils.getReceivingLocatorId(shipment.getDestinationFacilityId());
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
-        entry.setInventoryItemId(new InventoryItemId(lineReceipt.getProductId(), targetLocatorId, lineReceipt.getAttributeSetInstanceId()));
+        String attrSetInstId = lineReceipt.getAttributeSetInstanceId();
+        if(attrSetInstId == null || attrSetInstId.isEmpty()) {
+            attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
+        }
+        entry.setInventoryItemId(new InventoryItemId(lineReceipt.getProductId(), targetLocatorId, attrSetInstId));
         entry.setEntrySeqId(getSeqIdGenerator().getNextId()); //DateTime.Now.Ticks;
         entry.setOnHandQuantity(lineReceipt.getAcceptedQuantity()); // *signum;
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.SHIPMENT, shipment.getShipmentId(),

@@ -275,7 +275,11 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
 
     static InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(MovementState movement, MovementLineState movementLine, String locatorId, java.math.BigDecimal quantity, int lineSubSeqId, Supplier<Long> nextEntrySeqId, boolean usingInTransitQty) {
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
-        InventoryItemId invItemId = new InventoryItemId(movementLine.getProductId(), locatorId, movementLine.getAttributeSetInstanceId());
+        String attrSetInstId = movementLine.getAttributeSetInstanceId();
+        if(attrSetInstId == null || attrSetInstId.isEmpty()) {
+            attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
+        }
+        InventoryItemId invItemId = new InventoryItemId(movementLine.getProductId(), locatorId, attrSetInstId);
         entry.setInventoryItemId(invItemId);
         entry.setEntrySeqId(nextEntrySeqId.get());
         if (!usingInTransitQty) {

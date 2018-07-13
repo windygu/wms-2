@@ -51,7 +51,7 @@ public class ProductTests {
         AttributeSetCommand.CreateAttributeSet attrSet = new AbstractAttributeSetCommand.SimpleCreateAttributeSet();
         attrSet.setAttributeSetId("TShirtAttrSet");
         attrSet.setAttributeSetName("TShirt Attribute Set");
-        attrSet.setCommandId("TShirtAttrSet");
+        attrSet.setCommandId(attrSet.getAttributeSetId());
         AttributeUseCommand.CreateAttributeUse useColor = attrSet.newCreateAttributeUse();
         useColor.setAttributeId(colorAttrId);
         useColor.setActive(true);
@@ -74,6 +74,7 @@ public class ProductTests {
         sizeAttr.setActive(true);
         sizeAttr.setIsMandatory(true);
         sizeAttr.setIsList(true);
+        sizeAttr.setCommandId(sizeAttr.getAttributeId());
         AttributeValueCommand.CreateAttributeValue s = sizeAttr.newCreateAttributeValue();
         s.setValue("S");
         s.setActive(true);
@@ -103,7 +104,7 @@ public class ProductTests {
         colorAttr.setActive(true);
         colorAttr.setIsMandatory(true);
         colorAttr.setIsList(true);
-        colorAttr.setCommandId(UUID.randomUUID().toString());
+        colorAttr.setCommandId(colorAttr.getAttributeId());
         AttributeValueCommand.CreateAttributeValue r = colorAttr.newCreateAttributeValue();
         r.setValue("R");
         r.setActive(true);

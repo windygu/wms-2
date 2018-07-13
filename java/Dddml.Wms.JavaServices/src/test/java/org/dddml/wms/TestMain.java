@@ -77,6 +77,9 @@ public class TestMain {
         ProductTests productTests = new ProductTests();
         productTests.setUp();
         productTests.testCreateAttributesAndProducts();
+        //        ProductTests productTests2 = new ProductTests();
+        //        productTests2.setUp();
+        //        productTests2.testCreateAttributesAndProducts();
         //if(true) {return;}
 
         //testInventoryItemApplicationService();
