@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 		{
 			get
 			{
-				return this.PicklistVersion;
+				return this.PicklistVersion != null ? this.PicklistVersion.Value : default(long);
 			}
 		}
 
-		public virtual long PicklistVersion { get; set; }
+        long IPicklistRoleMvoCommand.PicklistVersion
+        {
+            get { return this.PicklistVersion != null ? this.PicklistVersion.Value : default(long); }
+            set { this.PicklistVersion = value; }
+        }
+
+		public virtual long? PicklistVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

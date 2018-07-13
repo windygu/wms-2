@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.GoodIdentificationMvo
 		{
 			get
 			{
-				return this.ProductVersion;
+				return this.ProductVersion != null ? this.ProductVersion.Value : default(long);
 			}
 		}
 
-		public virtual long ProductVersion { get; set; }
+        long IGoodIdentificationMvoCommand.ProductVersion
+        {
+            get { return this.ProductVersion != null ? this.ProductVersion.Value : default(long); }
+            set { this.ProductVersion = value; }
+        }
+
+		public virtual long? ProductVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

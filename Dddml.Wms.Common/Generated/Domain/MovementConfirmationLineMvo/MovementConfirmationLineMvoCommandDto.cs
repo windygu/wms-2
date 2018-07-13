@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		{
 			get
 			{
-				return this.MovementConfirmationVersion;
+				return this.MovementConfirmationVersion != null ? this.MovementConfirmationVersion.Value : default(long);
 			}
 		}
 
-		public virtual long MovementConfirmationVersion { get; set; }
+        long IMovementConfirmationLineMvoCommand.MovementConfirmationVersion
+        {
+            get { return this.MovementConfirmationVersion != null ? this.MovementConfirmationVersion.Value : default(long); }
+            set { this.MovementConfirmationVersion = value; }
+        }
+
+		public virtual long? MovementConfirmationVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

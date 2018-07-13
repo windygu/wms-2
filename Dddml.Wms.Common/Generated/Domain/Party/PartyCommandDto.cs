@@ -29,11 +29,17 @@ namespace Dddml.Wms.Domain.Party
 		{
 			get
 			{
-				return this.Version;
+				return this.Version != null ? this.Version.Value : default(long);
 			}
 		}
 
-		public virtual long Version { get; set; }
+        long IPartyCommand.Version
+        {
+            get { return this.Version != null ? this.Version.Value : default(long); }
+            set { this.Version = value; }
+        }
+
+		public virtual long? Version { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

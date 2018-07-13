@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		{
 			get
 			{
-				return this.InOutVersion;
+				return this.InOutVersion != null ? this.InOutVersion.Value : default(long);
 			}
 		}
 
-		public virtual long InOutVersion { get; set; }
+        long IInOutLineMvoCommand.InOutVersion
+        {
+            get { return this.InOutVersion != null ? this.InOutVersion.Value : default(long); }
+            set { this.InOutVersion = value; }
+        }
+
+		public virtual long? InOutVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

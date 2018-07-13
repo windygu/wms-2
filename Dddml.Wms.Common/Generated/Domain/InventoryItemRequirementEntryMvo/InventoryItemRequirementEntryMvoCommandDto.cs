@@ -31,11 +31,17 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 		{
 			get
 			{
-				return this.InventoryItemRequirementVersion;
+				return this.InventoryItemRequirementVersion != null ? this.InventoryItemRequirementVersion.Value : default(long);
 			}
 		}
 
-		public virtual long InventoryItemRequirementVersion { get; set; }
+        long IInventoryItemRequirementEntryMvoCommand.InventoryItemRequirementVersion
+        {
+            get { return this.InventoryItemRequirementVersion != null ? this.InventoryItemRequirementVersion.Value : default(long); }
+            set { this.InventoryItemRequirementVersion = value; }
+        }
+
+		public virtual long? InventoryItemRequirementVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

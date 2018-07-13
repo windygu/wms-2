@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		{
 			get
 			{
-				return this.UserVersion;
+				return this.UserVersion != null ? this.UserVersion.Value : default(long);
 			}
 		}
 
-		public virtual long UserVersion { get; set; }
+        long IUserRoleMvoCommand.UserVersion
+        {
+            get { return this.UserVersion != null ? this.UserVersion.Value : default(long); }
+            set { this.UserVersion = value; }
+        }
+
+		public virtual long? UserVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		{
 			get
 			{
-				return this.ShipmentVersion;
+				return this.ShipmentVersion != null ? this.ShipmentVersion.Value : default(long);
 			}
 		}
 
-		public virtual long ShipmentVersion { get; set; }
+        long IShipmentReceiptMvoCommand.ShipmentVersion
+        {
+            get { return this.ShipmentVersion != null ? this.ShipmentVersion.Value : default(long); }
+            set { this.ShipmentVersion = value; }
+        }
+
+		public virtual long? ShipmentVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

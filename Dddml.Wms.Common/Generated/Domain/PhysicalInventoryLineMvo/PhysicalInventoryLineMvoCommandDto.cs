@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		{
 			get
 			{
-				return this.PhysicalInventoryVersion;
+				return this.PhysicalInventoryVersion != null ? this.PhysicalInventoryVersion.Value : default(long);
 			}
 		}
 
-		public virtual long PhysicalInventoryVersion { get; set; }
+        long IPhysicalInventoryLineMvoCommand.PhysicalInventoryVersion
+        {
+            get { return this.PhysicalInventoryVersion != null ? this.PhysicalInventoryVersion.Value : default(long); }
+            set { this.PhysicalInventoryVersion = value; }
+        }
+
+		public virtual long? PhysicalInventoryVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

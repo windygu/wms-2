@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.PicklistItemMvo
 		{
 			get
 			{
-				return this.PicklistBinVersion;
+				return this.PicklistBinVersion != null ? this.PicklistBinVersion.Value : default(long);
 			}
 		}
 
-		public virtual long PicklistBinVersion { get; set; }
+        long IPicklistItemMvoCommand.PicklistBinVersion
+        {
+            get { return this.PicklistBinVersion != null ? this.PicklistBinVersion.Value : default(long); }
+            set { this.PicklistBinVersion = value; }
+        }
+
+		public virtual long? PicklistBinVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

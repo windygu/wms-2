@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 		{
 			get
 			{
-				return this.AttributeVersion;
+				return this.AttributeVersion != null ? this.AttributeVersion.Value : default(long);
 			}
 		}
 
-		public virtual long AttributeVersion { get; set; }
+        long IAttributeValueMvoCommand.AttributeVersion
+        {
+            get { return this.AttributeVersion != null ? this.AttributeVersion.Value : default(long); }
+            set { this.AttributeVersion = value; }
+        }
+
+		public virtual long? AttributeVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

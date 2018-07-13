@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		{
 			get
 			{
-				return this.MovementVersion;
+				return this.MovementVersion != null ? this.MovementVersion.Value : default(long);
 			}
 		}
 
-		public virtual long MovementVersion { get; set; }
+        long IMovementLineMvoCommand.MovementVersion
+        {
+            get { return this.MovementVersion != null ? this.MovementVersion.Value : default(long); }
+            set { this.MovementVersion = value; }
+        }
+
+		public virtual long? MovementVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 		{
 			get
 			{
-				return this.OrderVersion;
+				return this.OrderVersion != null ? this.OrderVersion.Value : default(long);
 			}
 		}
 
-		public virtual long OrderVersion { get; set; }
+        long IOrderShipGroupMvoCommand.OrderVersion
+        {
+            get { return this.OrderVersion != null ? this.OrderVersion.Value : default(long); }
+            set { this.OrderVersion = value; }
+        }
+
+		public virtual long? OrderVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 

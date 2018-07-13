@@ -30,11 +30,17 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		{
 			get
 			{
-				return this.UserVersion;
+				return this.UserVersion != null ? this.UserVersion.Value : default(long);
 			}
 		}
 
-		public virtual long UserVersion { get; set; }
+        long IUserPermissionMvoCommand.UserVersion
+        {
+            get { return this.UserVersion != null ? this.UserVersion.Value : default(long); }
+            set { this.UserVersion = value; }
+        }
+
+		public virtual long? UserVersion { get; set; }
 
 		public virtual string RequesterId { get; set; }
 
