@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -52,6 +53,10 @@ public interface SellableInventoryItemsClient {
     @Headers("Accept: application/json")
     @PUT("SellableInventoryItems/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
+
+    @Headers("Accept: application/json")
+    @POST("SellableInventoryItems")
+    Call<InventoryItemId> post(@Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
 
     @Headers("Accept: application/json")
     @PATCH("SellableInventoryItems/{id}")

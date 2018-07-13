@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -45,6 +46,10 @@ public interface InventoryPRTriggeredsClient {
     @Headers("Accept: application/json")
     @PUT("InventoryPRTriggereds/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
+
+    @Headers("Accept: application/json")
+    @POST("InventoryPRTriggereds")
+    Call<InventoryPRTriggeredId> post(@Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
     @PATCH("InventoryPRTriggereds/{id}")

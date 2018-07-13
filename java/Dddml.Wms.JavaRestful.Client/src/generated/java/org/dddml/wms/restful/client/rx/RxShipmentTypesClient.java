@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -46,6 +47,10 @@ public interface RxShipmentTypesClient {
     @Headers("Accept: application/json")
     @PUT("ShipmentTypes/{id}")
     Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value);
+
+    @Headers("Accept: application/json")
+    @POST("ShipmentTypes")
+    Observable<String> post(@Body CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value);
 
     @Headers("Accept: application/json")
     @PATCH("ShipmentTypes/{id}")

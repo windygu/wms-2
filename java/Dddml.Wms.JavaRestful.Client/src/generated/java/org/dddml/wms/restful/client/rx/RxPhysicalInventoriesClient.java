@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -56,6 +57,10 @@ public interface RxPhysicalInventoriesClient {
     @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{id}")
     Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
+
+    @Headers("Accept: application/json")
+    @POST("PhysicalInventories")
+    Observable<String> post(@Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
     @PATCH("PhysicalInventories/{id}")

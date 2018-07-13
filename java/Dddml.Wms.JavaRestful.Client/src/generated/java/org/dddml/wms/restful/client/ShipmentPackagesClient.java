@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -53,6 +54,10 @@ public interface ShipmentPackagesClient {
     @Headers("Accept: application/json")
     @PUT("ShipmentPackages/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
+
+    @Headers("Accept: application/json")
+    @POST("ShipmentPackages")
+    Call<ShipmentPackageId> post(@Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
 
     @Headers("Accept: application/json")
     @PATCH("ShipmentPackages/{id}")

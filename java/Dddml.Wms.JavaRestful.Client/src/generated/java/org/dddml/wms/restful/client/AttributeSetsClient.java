@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -53,6 +54,10 @@ public interface AttributeSetsClient {
     @Headers("Accept: application/json")
     @PUT("AttributeSets/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
+
+    @Headers("Accept: application/json")
+    @POST("AttributeSets")
+    Call<String> post(@Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
 
     @Headers("Accept: application/json")
     @PATCH("AttributeSets/{id}")

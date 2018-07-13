@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -45,6 +46,10 @@ public interface DamageTypesClient {
     @Headers("Accept: application/json")
     @PUT("DamageTypes/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
+
+    @Headers("Accept: application/json")
+    @POST("DamageTypes")
+    Call<String> post(@Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
 
     @Headers("Accept: application/json")
     @PATCH("DamageTypes/{id}")

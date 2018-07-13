@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -52,6 +53,10 @@ public interface InventoryItemRequirementsClient {
     @Headers("Accept: application/json")
     @PUT("InventoryItemRequirements/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto value);
+
+    @Headers("Accept: application/json")
+    @POST("InventoryItemRequirements")
+    Call<InventoryItemId> post(@Body CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto value);
 
     @Headers("Accept: application/json")
     @PATCH("InventoryItemRequirements/{id}")

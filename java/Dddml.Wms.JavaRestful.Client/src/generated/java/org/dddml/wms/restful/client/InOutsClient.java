@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -54,6 +55,10 @@ public interface InOutsClient {
     @Headers("Accept: application/json")
     @PUT("InOuts/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
+
+    @Headers("Accept: application/json")
+    @POST("InOuts")
+    Call<String> post(@Body CreateOrMergePatchInOutDto.CreateInOutDto value);
 
     @Headers("Accept: application/json")
     @PATCH("InOuts/{id}")

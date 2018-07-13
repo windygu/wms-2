@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -53,6 +54,10 @@ public interface PicklistBinsClient {
     @Headers("Accept: application/json")
     @PUT("PicklistBins/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
+
+    @Headers("Accept: application/json")
+    @POST("PicklistBins")
+    Call<String> post(@Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 
     @Headers("Accept: application/json")
     @PATCH("PicklistBins/{id}")

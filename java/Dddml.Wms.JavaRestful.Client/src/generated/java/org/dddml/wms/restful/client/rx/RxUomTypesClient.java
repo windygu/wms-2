@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -46,6 +47,10 @@ public interface RxUomTypesClient {
     @Headers("Accept: application/json")
     @PUT("UomTypes/{id}")
     Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
+
+    @Headers("Accept: application/json")
+    @POST("UomTypes")
+    Observable<String> post(@Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
 
     @Headers("Accept: application/json")
     @PATCH("UomTypes/{id}")

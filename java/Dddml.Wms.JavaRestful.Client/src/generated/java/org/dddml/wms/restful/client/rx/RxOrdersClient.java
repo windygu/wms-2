@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -67,6 +68,10 @@ public interface RxOrdersClient {
     @Headers("Accept: application/json")
     @PUT("Orders/{id}")
     Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
+
+    @Headers("Accept: application/json")
+    @POST("Orders")
+    Observable<String> post(@Body CreateOrMergePatchOrderDto.CreateOrderDto value);
 
     @Headers("Accept: application/json")
     @PATCH("Orders/{id}")

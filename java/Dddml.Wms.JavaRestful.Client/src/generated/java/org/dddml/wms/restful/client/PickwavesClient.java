@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -49,6 +50,10 @@ public interface PickwavesClient {
     @Headers("Accept: application/json")
     @PUT("Pickwaves/{id}")
     Call<String> put(@Path("id") Long id, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
+
+    @Headers("Accept: application/json")
+    @POST("Pickwaves")
+    Call<Long> post(@Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
 
     @Headers("Accept: application/json")
     @PATCH("Pickwaves/{id}")

@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -49,6 +50,10 @@ public interface ProductCategoriesClient {
     @Headers("Accept: application/json")
     @PUT("ProductCategories/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchProductCategoryDto.CreateProductCategoryDto value);
+
+    @Headers("Accept: application/json")
+    @POST("ProductCategories")
+    Call<String> post(@Body CreateOrMergePatchProductCategoryDto.CreateProductCategoryDto value);
 
     @Headers("Accept: application/json")
     @PATCH("ProductCategories/{id}")

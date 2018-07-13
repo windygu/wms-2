@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -49,6 +50,10 @@ public interface ContactMechesClient {
     @Headers("Accept: application/json")
     @PUT("ContactMeches/{id}")
     Call<String> put(@Path("id") String id, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
+
+    @Headers("Accept: application/json")
+    @POST("ContactMeches")
+    Call<String> post(@Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
 
     @Headers("Accept: application/json")
     @PATCH("ContactMeches/{id}")

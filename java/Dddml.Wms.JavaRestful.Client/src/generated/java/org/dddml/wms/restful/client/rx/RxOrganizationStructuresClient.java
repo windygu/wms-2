@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -50,6 +51,10 @@ public interface RxOrganizationStructuresClient {
     @Headers("Accept: application/json")
     @PUT("OrganizationStructures/{id}")
     Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto value);
+
+    @Headers("Accept: application/json")
+    @POST("OrganizationStructures")
+    Observable<OrganizationStructureId> post(@Body CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto value);
 
     @Headers("Accept: application/json")
     @PATCH("OrganizationStructures/{id}")
