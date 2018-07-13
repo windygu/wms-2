@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.client;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -26,7 +27,7 @@ public interface AttributeSetInstancesClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances")
-    Call<List<AttributeSetInstanceStateDto>> getAll(@Query("sort") String sort, @Query("fields") String fields, @Query("firstResult") int firstResult, @Query("maxResults") int maxResults, @Query("filter") String filter);
+    Call<List<Map<String, Object>>> getAll(@Query("sort") String sort, @Query("fields") String fields, @Query("firstResult") int firstResult, @Query("maxResults") int maxResults, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/_count")
@@ -34,7 +35,7 @@ public interface AttributeSetInstancesClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/{id}")
-    Call<AttributeSetInstanceStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    Call<Map<String, Object>> get(@Path("id") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/_metadata/filteringFields")
@@ -50,11 +51,11 @@ public interface AttributeSetInstancesClient {
 
     @Headers("Accept: application/json")
     @PUT("AttributeSetInstances/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchAttributeSetInstanceDto.CreateAttributeSetInstanceDto value);
+    Call<String> put(@Path("id") String id, @Body Map<String, Object> value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSetInstances")
-    Call<String> post(@Body CreateOrMergePatchAttributeSetInstanceDto.CreateAttributeSetInstanceDto value);
+    Call<String> post(@Body Map<String, Object> value);
 
 }
 

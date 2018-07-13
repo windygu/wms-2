@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.client.rx;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
