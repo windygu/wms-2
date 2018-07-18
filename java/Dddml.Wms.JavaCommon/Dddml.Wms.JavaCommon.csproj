@@ -2947,6 +2947,20 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEventId.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\GenerateBoundedContextDomainServices.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdApplicationService.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommandDtos.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommands.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\AbstractShipmentItemMvoEvent.java">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Content>
@@ -8626,6 +8640,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
       <LastOutputs>.\GenerateBoundedContextDomainServices.txt</LastOutputs>
+    </None>
+    <None Include="src\generated\java\org\dddml\wms\domain\service\GenerateBoundedContextDomainServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateBoundedContextDomainServices.txt
+.\IdApplicationService.java
+.\IdServiceCommandDtos.java
+.\IdServiceCommands.java
+</LastOutputs>
     </None>
     <None Include="src\generated\java\org\dddml\wms\domain\statusitem\GenerateStatusItemOfbizDataConstObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

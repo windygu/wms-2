@@ -2607,7 +2607,10 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateDomainServicesInterfaces.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDomainServicesInterfaces.txt</LastGenOutput>
-      <LastOutputs>.\GenerateDomainServicesInterfaces.txt</LastOutputs>
+      <LastOutputs>
+.\GenerateDomainServicesInterfaces.txt
+.\IdServiceClient.java
+</LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateDomainServicesInterfaces.txt">
       <AutoGen>True</AutoGen>
@@ -2630,6 +2633,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\GoodIdentificationTypesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\IdServiceClient.java">
+      <DependentUpon>GenerateDomainServicesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
@@ -2783,7 +2789,10 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateDomainServicesRxInterfaces.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDomainServicesRxInterfaces.txt</LastGenOutput>
-      <LastOutputs>.\GenerateDomainServicesRxInterfaces.txt</LastOutputs>
+      <LastOutputs>
+.\GenerateDomainServicesRxInterfaces.txt
+.\RxIdServiceClient.java
+</LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateDomainServicesRxInterfaces.txt">
       <AutoGen>True</AutoGen>
@@ -2839,6 +2848,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxGoodIdentificationTypesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxIdServiceClient.java">
+      <DependentUpon>GenerateDomainServicesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>

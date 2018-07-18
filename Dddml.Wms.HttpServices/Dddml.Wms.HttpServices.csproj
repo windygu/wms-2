@@ -320,6 +320,9 @@
     <Compile Include="Generated\Controllers\GoodIdentificationTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\IdServiceController.cs">
+      <DependentUpon>GenerateDomainServicesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\InOutLineMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -527,7 +530,10 @@
     </Content>
     <Content Include="Generated\Controllers\GenerateDomainServicesControllers.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastOutputs>.\GenerateDomainServicesControllers.txt</LastOutputs>
+      <LastOutputs>
+.\GenerateDomainServicesControllers.txt
+.\IdServiceController.cs
+</LastOutputs>
       <LastGenOutput>GenerateDomainServicesControllers.txt</LastGenOutput>
     </Content>
     <Content Include="Generated\Controllers\GenerateDomainServicesControllers.txt">
