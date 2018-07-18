@@ -25,7 +25,7 @@ public class IdApplicationServiceImpl implements IdApplicationService  {
             docTypePrefix = "M";
         } else if (DocumentTypeIds.PHYSICAL_INVENTORY.equalsIgnoreCase(docType)) {
             docTypePrefix = "P";
-        } else if (DocumentTypeIds.)
+        } 
         //todo more type???
 
         return docTypePrefix + seqId;
