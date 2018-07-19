@@ -34,8 +34,76 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     public void mergePatch(InOutCommand.MergePatchInOut c)
     {
+        try {
+            verifyPatch(c);
+        } catch (Exception ex) {
+            throw new DomainError("VerificationFailed", ex);
+        }
         InOutEvent e = map(c);
         apply(e);
+    }
+
+    private void verifyPatch(InOutCommand.MergePatchInOut c) {
+        Boolean posted = c.getPosted();
+        Boolean Posted = posted;
+        Boolean processed = c.getProcessed();
+        Boolean Processed = processed;
+        String processing = c.getProcessing();
+        String Processing = processing;
+        String documentTypeId = c.getDocumentTypeId();
+        String DocumentTypeId = documentTypeId;
+        String description = c.getDescription();
+        String Description = description;
+        String orderId = c.getOrderId();
+        String OrderId = orderId;
+        Date dateOrdered = c.getDateOrdered();
+        Date DateOrdered = dateOrdered;
+        Boolean isPrinted = c.getIsPrinted();
+        Boolean IsPrinted = isPrinted;
+        String movementTypeId = c.getMovementTypeId();
+        String MovementTypeId = movementTypeId;
+        Date movementDate = c.getMovementDate();
+        Date MovementDate = movementDate;
+        String businessPartnerId = c.getBusinessPartnerId();
+        String BusinessPartnerId = businessPartnerId;
+        String warehouseId = c.getWarehouseId();
+        String WarehouseId = warehouseId;
+        String POReference = c.getPOReference();
+        BigDecimal freightAmount = c.getFreightAmount();
+        BigDecimal FreightAmount = freightAmount;
+        String shipperId = c.getShipperId();
+        String ShipperId = shipperId;
+        BigDecimal chargeAmount = c.getChargeAmount();
+        BigDecimal ChargeAmount = chargeAmount;
+        Date datePrinted = c.getDatePrinted();
+        Date DatePrinted = datePrinted;
+        String createdFrom = c.getCreatedFrom();
+        String CreatedFrom = createdFrom;
+        String salesRepresentativeId = c.getSalesRepresentativeId();
+        String SalesRepresentativeId = salesRepresentativeId;
+        Integer numberOfPackages = c.getNumberOfPackages();
+        Integer NumberOfPackages = numberOfPackages;
+        Date pickDate = c.getPickDate();
+        Date PickDate = pickDate;
+        Date shipDate = c.getShipDate();
+        Date ShipDate = shipDate;
+        String trackingNumber = c.getTrackingNumber();
+        String TrackingNumber = trackingNumber;
+        Date dateReceived = c.getDateReceived();
+        Date DateReceived = dateReceived;
+        Boolean isInTransit = c.getIsInTransit();
+        Boolean IsInTransit = isInTransit;
+        Boolean isApproved = c.getIsApproved();
+        Boolean IsApproved = isApproved;
+        Boolean isInDispute = c.getIsInDispute();
+        Boolean IsInDispute = isInDispute;
+        String rmaDocumentNumber = c.getRmaDocumentNumber();
+        String RmaDocumentNumber = rmaDocumentNumber;
+        String reversalDocumentNumber = c.getReversalDocumentNumber();
+        String ReversalDocumentNumber = reversalDocumentNumber;
+
+        if (!"Drafted".equalsIgnoreCase(getState().getDocumentStatusId())) { throw new IllegalArgumentException("DocumentStatus error."); }
+
     }
 
     public void throwOnInvalidStateTransition(Command c) {

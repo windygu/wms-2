@@ -1164,16 +1164,46 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\InOutLineMvoEventId.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutAggregate.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutApplicationService.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutEvent.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineCommand.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineCommandDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineEvent.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineState.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineStateCommandConverter.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineStates.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutLineDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutCommands.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutEvent.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutEventId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineCommand.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineEvent.java">
@@ -1183,6 +1213,30 @@
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineEventId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineState.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateDao.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateEventDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateEventDtoConverter.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStates.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\RemoveInOutLineDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitementrymvo\AbstractInventoryItemEntryMvoEvent.java">
@@ -2947,6 +3001,20 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEventId.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\GenerateBoundedContextDomainServices.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdApplicationService.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommandDtos.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommands.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\AbstractShipmentItemMvoEvent.java">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Content>
@@ -3494,31 +3562,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\InOutLineMvoStateRepository.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutAggregate.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutApplicationService.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutCommand.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutCommandDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineCommand.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineCommandDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineState.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineStateCommandConverter.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineStates.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutState.java">
@@ -3528,9 +3575,6 @@
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutLineDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\DeleteInOutDto.java">
@@ -3553,33 +3597,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutCommandDtos.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutCommands.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineCommand.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineId.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineState.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateDao.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateEventDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateEventDtoConverter.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStates.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutState.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -3596,9 +3613,6 @@
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutStateRepository.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\RemoveInOutLineDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitementrymvo\AbstractInventoryItemEntryMvoAggregate.java">
@@ -8626,6 +8640,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
       <LastOutputs>.\GenerateBoundedContextDomainServices.txt</LastOutputs>
+    </None>
+    <None Include="src\generated\java\org\dddml\wms\domain\service\GenerateBoundedContextDomainServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateBoundedContextDomainServices.txt
+.\IdApplicationService.java
+.\IdServiceCommandDtos.java
+.\IdServiceCommands.java
+</LastOutputs>
     </None>
     <None Include="src\generated\java\org\dddml\wms\domain\statusitem\GenerateStatusItemOfbizDataConstObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

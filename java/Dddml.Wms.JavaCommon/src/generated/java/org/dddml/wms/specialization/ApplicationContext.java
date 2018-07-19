@@ -16,6 +16,9 @@ public class ApplicationContext {
         throw new UnsupportedOperationException();
     }
 
+    public <T> T get(Class<T> type) {
+        throw new UnsupportedOperationException();
+    }
 
     public TypeConverter getTypeConverter() {
         return new DefaultTypeConverter();

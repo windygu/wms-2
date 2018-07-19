@@ -14,5 +14,7 @@
         <property name="attributeSetService" ref="attributeSetService" />
     </bean>
 
+    <bean id="idApplicationService" class="org.dddml.wms.domain.service.IdApplicationServiceImpl" />
+
 </beans>
 

@@ -6120,6 +6120,15 @@
     <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemStateProperties.cs">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Services\IdServiceCommandDtos.cs">
+      <DependentUpon>GenerateDomainServicesDtos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Services\IdServiceCommands.cs">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Services\IIdApplicationService.cs">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\ShipmentItemMvo\IShipmentItemMvoAggregate.cs">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Compile>
@@ -7735,7 +7744,12 @@
     <Content Include="Generated\Domain\Services\GenerateBoundedContextDomainServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
-      <LastOutputs>.\GenerateBoundedContextDomainServices.txt</LastOutputs>
+      <LastOutputs>
+.\GenerateBoundedContextDomainServices.txt
+.\IdServiceCommandDtos.cs
+.\IdServiceCommands.cs
+.\IIdApplicationService.cs
+</LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Services\GenerateBoundedContextDomainServices.txt">
       <AutoGen>True</AutoGen>
@@ -7745,7 +7759,10 @@
     <Content Include="Generated\Domain\Services\GenerateDomainServicesDtos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDomainServicesDtos.txt</LastGenOutput>
-      <LastOutputs>.\GenerateDomainServicesDtos.txt</LastOutputs>
+      <LastOutputs>
+.\GenerateDomainServicesDtos.txt
+.\IdServiceCommandDtos.cs
+</LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Services\GenerateDomainServicesDtos.txt">
       <AutoGen>True</AutoGen>

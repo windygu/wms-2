@@ -279,6 +279,14 @@ aggregates:
       # 方法
       methods:
       
+        # 对生成的方法进行设置
+        Patch:
+          verificationLogic:
+            Java: >
+              if (!"Drafted".equalsIgnoreCase({this}.getDocumentStatusId())) { throw new IllegalArgumentException("DocumentStatus error."); }
+              
+        # ----------------------------
+      
         # 完成
         Complete:
           parameters:
@@ -320,7 +328,6 @@ aggregates:
             # 出入库数量.
             MovementQuantity: 
               type: decimal
-
                           
       # --------------------------------------------
       metadata:

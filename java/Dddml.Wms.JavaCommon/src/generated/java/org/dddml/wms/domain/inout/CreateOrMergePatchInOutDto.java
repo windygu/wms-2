@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
 {
+    /**
+     * Posted
+     */
     private Boolean posted;
 
     public Boolean getPosted()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.posted = posted;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.processed = processed;
     }
 
+    /**
+     * Processing
+     */
     private String processing;
 
     public String getProcessing()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.processing = processing;
     }
 
+    /**
+     * Document Type Id
+     */
     private String documentTypeId;
 
     public String getDocumentTypeId()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.documentTypeId = documentTypeId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.description = description;
     }
 
+    /**
+     * Order Id
+     */
     private String orderId;
 
     public String getOrderId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.orderId = orderId;
     }
 
+    /**
+     * Date Ordered
+     */
     private Date dateOrdered;
 
     public Date getDateOrdered()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.dateOrdered = dateOrdered;
     }
 
+    /**
+     * Is Printed
+     */
     private Boolean isPrinted;
 
     public Boolean getIsPrinted()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isPrinted = isPrinted;
     }
 
+    /**
+     * Movement Type Id
+     */
     private String movementTypeId;
 
     public String getMovementTypeId()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.movementTypeId = movementTypeId;
     }
 
+    /**
+     * Movement Date
+     */
     private Date movementDate;
 
     public Date getMovementDate()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.movementDate = movementDate;
     }
 
+    /**
+     * Business Partner Id
+     */
     private String businessPartnerId;
 
     public String getBusinessPartnerId()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.businessPartnerId = businessPartnerId;
     }
 
+    /**
+     * Warehouse Id
+     */
     private String warehouseId;
 
     public String getWarehouseId()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.warehouseId = warehouseId;
     }
 
+    /**
+     * PO Reference
+     */
     private String POReference;
 
     public String getPOReference()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.POReference = poReference;
     }
 
+    /**
+     * Freight Amount
+     */
     private BigDecimal freightAmount;
 
     public BigDecimal getFreightAmount()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.freightAmount = freightAmount;
     }
 
+    /**
+     * Shipper Id
+     */
     private String shipperId;
 
     public String getShipperId()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.shipperId = shipperId;
     }
 
+    /**
+     * Charge Amount
+     */
     private BigDecimal chargeAmount;
 
     public BigDecimal getChargeAmount()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.chargeAmount = chargeAmount;
     }
 
+    /**
+     * Date Printed
+     */
     private Date datePrinted;
 
     public Date getDatePrinted()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.datePrinted = datePrinted;
     }
 
+    /**
+     * Created From
+     */
     private String createdFrom;
 
     public String getCreatedFrom()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.createdFrom = createdFrom;
     }
 
+    /**
+     * Sales Representative Id
+     */
     private String salesRepresentativeId;
 
     public String getSalesRepresentativeId()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.salesRepresentativeId = salesRepresentativeId;
     }
 
+    /**
+     * Number Of Packages
+     */
     private Integer numberOfPackages;
 
     public Integer getNumberOfPackages()
@@ -246,6 +306,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.numberOfPackages = numberOfPackages;
     }
 
+    /**
+     * Pick Date
+     */
     private Date pickDate;
 
     public Date getPickDate()
@@ -258,6 +321,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.pickDate = pickDate;
     }
 
+    /**
+     * Ship Date
+     */
     private Date shipDate;
 
     public Date getShipDate()
@@ -270,6 +336,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.shipDate = shipDate;
     }
 
+    /**
+     * Tracking Number
+     */
     private String trackingNumber;
 
     public String getTrackingNumber()
@@ -282,6 +351,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.trackingNumber = trackingNumber;
     }
 
+    /**
+     * Date Received
+     */
     private Date dateReceived;
 
     public Date getDateReceived()
@@ -294,6 +366,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.dateReceived = dateReceived;
     }
 
+    /**
+     * Is In Transit
+     */
     private Boolean isInTransit;
 
     public Boolean getIsInTransit()
@@ -306,6 +381,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isInTransit = isInTransit;
     }
 
+    /**
+     * Is Approved
+     */
     private Boolean isApproved;
 
     public Boolean getIsApproved()
@@ -318,6 +396,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isApproved = isApproved;
     }
 
+    /**
+     * Is In Dispute
+     */
     private Boolean isInDispute;
 
     public Boolean getIsInDispute()
@@ -330,6 +411,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.isInDispute = isInDispute;
     }
 
+    /**
+     * Rma Document Number
+     */
     private String rmaDocumentNumber;
 
     public String getRmaDocumentNumber()
@@ -342,6 +426,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.rmaDocumentNumber = rmaDocumentNumber;
     }
 
+    /**
+     * Reversal Document Number
+     */
     private String reversalDocumentNumber;
 
     public String getReversalDocumentNumber()
@@ -354,6 +441,9 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.reversalDocumentNumber = reversalDocumentNumber;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()

@@ -36,4 +36,10 @@ public class SpringApplicationContext extends ApplicationContext {
             }
         }
     }
+
+    @Override
+    public <T> T get(final Class<T> type) {
+        return innerApplicationContext.getBean(type);
+    }
+
 }
