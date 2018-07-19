@@ -5,6 +5,7 @@ import org.dddml.wms.domain.service.AttributeSetService;
 import org.dddml.wms.specialization.DomainError;
 import org.dddml.wms.specialization.ReflectUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,13 +16,14 @@ public class AttributeSetInstanceUtils {
     public static String createAttributeSetInstance(
             AttributeSetService attributeSetService, AttributeSetInstanceApplicationService attrSetInstApplicationService,
                                                     String attrSetId, Map<String, Object> attrSetInstDict) {
+        Map<String, String> nameDict = null;
         if (attrSetId == null) {
-            return null;
+            nameDict = new HashMap<>();
+        } else {
+            nameDict = attributeSetService.getPropertyExtensionFieldDictionary(attrSetId);
         }
-        Map<String, String> nameDict = attributeSetService.getPropertyExtensionFieldDictionary(attrSetId);
-
         AttributeSetInstanceCommand.CreateAttributeSetInstance createAttrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
-        createAttrSetInst.setAttributeSetId(attrSetId);
+        createAttrSetInst.setAttributeSetId(attrSetId == null ? "*" : attrSetId);
         for (Map.Entry<String, Object> kv : attrSetInstDict.entrySet()) {
             String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
             // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
