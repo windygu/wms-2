@@ -16,14 +16,18 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         public static string CreateAttributeSetInstance(IAttributeSetService attributeSetService, IAttributeSetInstanceApplicationService attrSetInstApplicationService,
             string attrSetId, IDictionary<string, object> attrSetInstDict)
         {
+            IDictionary<string, string> nameDict = null;
             if (String.IsNullOrWhiteSpace(attrSetId))
             {
-                return null;
+                nameDict = new Dictionary<string, string>();
             }
-            var nameDict = attributeSetService.GetPropertyExtensionFieldDictionary(attrSetId);
+            else
+            {
+                nameDict = attributeSetService.GetPropertyExtensionFieldDictionary(attrSetId);
+            }
 
             var createAttrSetInst = new CreateAttributeSetInstance();
-            createAttrSetInst.AttributeSetId = attrSetId;
+            createAttrSetInst.AttributeSetId = (attrSetId == null ? "*" : attrSetId);
             foreach (var kv in attrSetInstDict)
             {
                 // //////////////////////////////////////////
