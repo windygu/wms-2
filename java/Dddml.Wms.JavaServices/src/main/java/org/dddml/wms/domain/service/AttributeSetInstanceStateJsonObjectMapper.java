@@ -69,6 +69,10 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
         Map<String, String> maps = attributeSetService.
                 getPropertyExtensionFieldDictionary(state.getAttributeSetId());
         maps.forEach((name, fieldName) -> {
+        	//fieldName开头首字母转小写
+        	  if (Character.isUpperCase(fieldName.charAt(0))) {
+        		  fieldName = Character.toLowerCase(fieldName.charAt(0)) + fieldName.substring(1);
+              }
             //FIXME 这里应该判断fields是否为空，并且判断 name 是否位于 fields 中
             try {
                 /**这里还是自己重写吧，没有必要引进一个库，直接使用 JDK 的内省读写*/
