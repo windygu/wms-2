@@ -31,9 +31,9 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
     @Override
     public JSONObject mapState(AttributeSetInstanceState state, String fields) {
         JSONObject jsonObject = new JSONObject();
-        //FIXME 先不判断 fields
+        // 保留字段
         if (state.getAttributeSetId() != null) {
-            jsonObject.put("AttributeSetInstanceId", state.getAttributeSetInstanceId());
+            jsonObject.put("attributeSetInstanceId", state.getAttributeSetInstanceId());
         }
         if (state.getAttributeSetId() != null) {
             jsonObject.put("attributeSetId", state.getAttributeSetId());
@@ -69,19 +69,18 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
         Map<String, String> maps = attributeSetService.
                 getPropertyExtensionFieldDictionary(state.getAttributeSetId());
         maps.forEach((name, fieldName) -> {
-        	//fieldName开头首字母转小写
-        	  if (Character.isUpperCase(fieldName.charAt(0))) {
-        		  fieldName = Character.toLowerCase(fieldName.charAt(0)) + fieldName.substring(1);
-              }
-            //FIXME 这里应该判断fields是否为空，并且判断 name 是否位于 fields 中
+            // fieldName 作为 property 名称的时候，应该是 camelCase 的
+            if (Character.isUpperCase(fieldName.charAt(0))) {
+                fieldName = Character.toLowerCase(fieldName.charAt(0)) + fieldName.substring(1);
+            }
             try {
-                /**这里还是自己重写吧，没有必要引进一个库，直接使用 JDK 的内省读写*/
+                // todo 这里还是自己重写？没有必要引进一个库？？？
                 Object value = new PropertyUtilsBean().getSimpleProperty(state, fieldName);
                 if (value != null) {
                     jsonObject.put(name, value);
                 }
             } catch (Exception ex) {
-
+                //FIXME 直接吞掉异常？
             }
         });
         return jsonObject;
