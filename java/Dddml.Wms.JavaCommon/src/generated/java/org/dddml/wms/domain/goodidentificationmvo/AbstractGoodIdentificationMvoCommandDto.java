@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractGoodIdentificationMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Product Good Identification Id
+     */
     private ProductGoodIdentificationId productGoodIdentificationId;
 
     public ProductGoodIdentificationId getProductGoodIdentificationId()
@@ -19,6 +22,9 @@ public abstract class AbstractGoodIdentificationMvoCommandDto extends AbstractCo
         this.productGoodIdentificationId = productGoodIdentificationId;
     }
 
+    /**
+     * Product Version
+     */
     private Long productVersion;
 
     public Long getProductVersion()

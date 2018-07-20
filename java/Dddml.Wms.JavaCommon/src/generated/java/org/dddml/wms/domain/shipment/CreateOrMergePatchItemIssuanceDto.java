@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceCommandDto
 {
+    /**
+     * Order Id
+     */
     private String orderId;
 
     public String getOrderId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.orderId = orderId;
     }
 
+    /**
+     * Order Item Seq Id
+     */
     private String orderItemSeqId;
 
     public String getOrderItemSeqId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.orderItemSeqId = orderItemSeqId;
     }
 
+    /**
+     * Ship Group Seq Id
+     */
     private Long shipGroupSeqId;
 
     public Long getShipGroupSeqId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.shipGroupSeqId = shipGroupSeqId;
     }
 
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.productId = productId;
     }
 
+    /**
+     * Locator Id
+     */
     private String locatorId;
 
     public String getLocatorId()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.locatorId = locatorId;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Shipment Item Seq Id
+     */
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.shipmentItemSeqId = shipmentItemSeqId;
     }
 
+    /**
+     * Fixed Asset Id
+     */
     private String fixedAssetId;
 
     public String getFixedAssetId()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.fixedAssetId = fixedAssetId;
     }
 
+    /**
+     * Maint Hist Seq Id
+     */
     private String maintHistSeqId;
 
     public String getMaintHistSeqId()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.maintHistSeqId = maintHistSeqId;
     }
 
+    /**
+     * Issued Date Time
+     */
     private java.sql.Timestamp issuedDateTime;
 
     public java.sql.Timestamp getIssuedDateTime()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.issuedDateTime = issuedDateTime;
     }
 
+    /**
+     * Issued By User Login Id
+     */
     private String issuedByUserLoginId;
 
     public String getIssuedByUserLoginId()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.issuedByUserLoginId = issuedByUserLoginId;
     }
 
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.quantity = quantity;
     }
 
+    /**
+     * Cancel Quantity
+     */
     private java.math.BigDecimal cancelQuantity;
 
     public java.math.BigDecimal getCancelQuantity()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
         this.cancelQuantity = cancelQuantity;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -408,6 +450,10 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
 
     public static class CreateItemIssuanceDto extends CreateOrMergePatchItemIssuanceDto
     {
+        public CreateItemIssuanceDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -421,6 +467,10 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
 
     public static class MergePatchItemIssuanceDto extends CreateOrMergePatchItemIssuanceDto
     {
+        public MergePatchItemIssuanceDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

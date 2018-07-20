@@ -9,6 +9,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInventoryItemRequirementEntryCommandDto extends AbstractCommand
 {
+    /**
+     * Entry Seq Id
+     */
     private Long entrySeqId;
 
     public Long getEntrySeqId()

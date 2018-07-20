@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractUomConversionCommandDto extends AbstractCommand
 {
+    /**
+     * Uom Conversion Id
+     */
     private UomConversionId uomConversionId;
 
     public UomConversionId getUomConversionId()
@@ -18,6 +21,9 @@ public abstract class AbstractUomConversionCommandDto extends AbstractCommand
         this.uomConversionId = uomConversionId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

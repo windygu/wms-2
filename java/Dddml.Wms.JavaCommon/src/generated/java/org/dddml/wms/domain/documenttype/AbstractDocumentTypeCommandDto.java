@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractDocumentTypeCommandDto extends AbstractCommand
 {
+    /**
+     * Document Type Id
+     */
     private String documentTypeId;
 
     public String getDocumentTypeId()
@@ -18,6 +21,9 @@ public abstract class AbstractDocumentTypeCommandDto extends AbstractCommand
         this.documentTypeId = documentTypeId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

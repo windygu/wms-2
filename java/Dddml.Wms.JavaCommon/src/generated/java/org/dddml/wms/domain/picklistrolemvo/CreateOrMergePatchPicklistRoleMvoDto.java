@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMvoCommandDto
 {
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.active = active;
     }
 
+    /**
+     * Picklist Description
+     */
     private String picklistDescription;
 
     public String getPicklistDescription()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistDescription = picklistDescription;
     }
 
+    /**
+     * Picklist Facility Id
+     */
     private String picklistFacilityId;
 
     public String getPicklistFacilityId()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistFacilityId = picklistFacilityId;
     }
 
+    /**
+     * Picklist Shipment Method Type Id
+     */
     private String picklistShipmentMethodTypeId;
 
     public String getPicklistShipmentMethodTypeId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistShipmentMethodTypeId = picklistShipmentMethodTypeId;
     }
 
+    /**
+     * Picklist Status Id
+     */
     private String picklistStatusId;
 
     public String getPicklistStatusId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistStatusId = picklistStatusId;
     }
 
+    /**
+     * Picklist Picklist Date
+     */
     private java.sql.Timestamp picklistPicklistDate;
 
     public java.sql.Timestamp getPicklistPicklistDate()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistPicklistDate = picklistPicklistDate;
     }
 
+    /**
+     * Picklist Pickwave Id
+     */
     private Long picklistPickwaveId;
 
     public Long getPicklistPickwaveId()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistPickwaveId = picklistPickwaveId;
     }
 
+    /**
+     * Picklist Created By
+     */
     private String picklistCreatedBy;
 
     public String getPicklistCreatedBy()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistCreatedBy = picklistCreatedBy;
     }
 
+    /**
+     * Picklist Created At
+     */
     private Date picklistCreatedAt;
 
     public Date getPicklistCreatedAt()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistCreatedAt = picklistCreatedAt;
     }
 
+    /**
+     * Picklist Updated By
+     */
     private String picklistUpdatedBy;
 
     public String getPicklistUpdatedBy()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistUpdatedBy = picklistUpdatedBy;
     }
 
+    /**
+     * Picklist Updated At
+     */
     private Date picklistUpdatedAt;
 
     public Date getPicklistUpdatedAt()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistUpdatedAt = picklistUpdatedAt;
     }
 
+    /**
+     * Picklist Active
+     */
     private Boolean picklistActive;
 
     public Boolean getPicklistActive()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistActive = picklistActive;
     }
 
+    /**
+     * Picklist Deleted
+     */
     private Boolean picklistDeleted;
 
     public Boolean getPicklistDeleted()
@@ -404,6 +446,10 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
 
     public static class CreatePicklistRoleMvoDto extends CreateOrMergePatchPicklistRoleMvoDto
     {
+        public CreatePicklistRoleMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -417,6 +463,10 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
 
     public static class MergePatchPicklistRoleMvoDto extends CreateOrMergePatchPicklistRoleMvoDto
     {
+        public MergePatchPicklistRoleMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

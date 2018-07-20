@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderItemShipGroupAssociationDto extends AbstractOrderItemShipGroupAssociationCommandDto
 {
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationDto extends Abstract
         this.quantity = quantity;
     }
 
+    /**
+     * Cancel Quantity
+     */
     private java.math.BigDecimal cancelQuantity;
 
     public java.math.BigDecimal getCancelQuantity()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationDto extends Abstract
         this.cancelQuantity = cancelQuantity;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -122,6 +131,10 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationDto extends Abstract
 
     public static class CreateOrderItemShipGroupAssociationDto extends CreateOrMergePatchOrderItemShipGroupAssociationDto
     {
+        public CreateOrderItemShipGroupAssociationDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -135,6 +148,10 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationDto extends Abstract
 
     public static class MergePatchOrderItemShipGroupAssociationDto extends CreateOrMergePatchOrderItemShipGroupAssociationDto
     {
+        public MergePatchOrderItemShipGroupAssociationDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

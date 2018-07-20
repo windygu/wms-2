@@ -8,6 +8,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryItemRequirementEntryDto extends AbstractInventoryItemRequirementEntryCommandDto
 {
+    /**
+     * Quantity
+     */
     private BigDecimal quantity;
 
     public BigDecimal getQuantity()
@@ -20,6 +23,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryDto extends Abstract
         this.quantity = quantity;
     }
 
+    /**
+     * Source Event Id
+     */
     private InventoryPRTriggeredId sourceEventId;
 
     public InventoryPRTriggeredId getSourceEventId()
@@ -32,6 +38,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryDto extends Abstract
         this.sourceEventId = sourceEventId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -108,6 +117,10 @@ public class CreateOrMergePatchInventoryItemRequirementEntryDto extends Abstract
 
     public static class CreateInventoryItemRequirementEntryDto extends CreateOrMergePatchInventoryItemRequirementEntryDto
     {
+        public CreateInventoryItemRequirementEntryDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;

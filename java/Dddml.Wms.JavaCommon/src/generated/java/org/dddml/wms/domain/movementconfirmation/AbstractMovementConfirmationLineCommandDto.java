@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractMovementConfirmationLineCommandDto extends AbstractCommand
 {
+    /**
+     * Line Number
+     */
     private String lineNumber;
 
     public String getLineNumber()

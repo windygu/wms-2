@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIdentificationMvoCommandDto
 {
+    /**
+     * Id Value
+     */
     private String idValue;
 
     public String getIdValue()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.idValue = idValue;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.active = active;
     }
 
+    /**
+     * Product Product Type Id
+     */
     private String productProductTypeId;
 
     public String getProductProductTypeId()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductTypeId = productProductTypeId;
     }
 
+    /**
+     * The primary category ; it should be one of the productCategoryId already setup in ProductCategoryMember
+     */
     private String productPrimaryProductCategoryId;
 
     public String getProductPrimaryProductCategoryId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productPrimaryProductCategoryId = productPrimaryProductCategoryId;
     }
 
+    /**
+     * Product Manufacturer Party Id
+     */
     private String productManufacturerPartyId;
 
     public String getProductManufacturerPartyId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productManufacturerPartyId = productManufacturerPartyId;
     }
 
+    /**
+     * Product Facility Id
+     */
     private String productFacilityId;
 
     public String getProductFacilityId()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productFacilityId = productFacilityId;
     }
 
+    /**
+     * Product Introduction Date
+     */
     private java.sql.Timestamp productIntroductionDate;
 
     public java.sql.Timestamp getProductIntroductionDate()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productIntroductionDate = productIntroductionDate;
     }
 
+    /**
+     * Product Release Date
+     */
     private java.sql.Timestamp productReleaseDate;
 
     public java.sql.Timestamp getProductReleaseDate()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productReleaseDate = productReleaseDate;
     }
 
+    /**
+     * Product Support Discontinuation Date
+     */
     private java.sql.Timestamp productSupportDiscontinuationDate;
 
     public java.sql.Timestamp getProductSupportDiscontinuationDate()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productSupportDiscontinuationDate = productSupportDiscontinuationDate;
     }
 
+    /**
+     * Product Sales Discontinuation Date
+     */
     private java.sql.Timestamp productSalesDiscontinuationDate;
 
     public java.sql.Timestamp getProductSalesDiscontinuationDate()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productSalesDiscontinuationDate = productSalesDiscontinuationDate;
     }
 
+    /**
+     * Product Sales Disc When Not Avail
+     */
     private String productSalesDiscWhenNotAvail;
 
     public String getProductSalesDiscWhenNotAvail()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productSalesDiscWhenNotAvail = productSalesDiscWhenNotAvail;
     }
 
+    /**
+     * Product Internal Name
+     */
     private String productInternalName;
 
     public String getProductInternalName()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productInternalName = productInternalName;
     }
 
+    /**
+     * Product Brand Name
+     */
     private String productBrandName;
 
     public String getProductBrandName()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productBrandName = productBrandName;
     }
 
+    /**
+     * Product Comments
+     */
     private String productComments;
 
     public String getProductComments()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productComments = productComments;
     }
 
+    /**
+     * Product Product Name
+     */
     private String productProductName;
 
     public String getProductProductName()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductName = productProductName;
     }
 
+    /**
+     * Product Description
+     */
     private String productDescription;
 
     public String getProductDescription()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productDescription = productDescription;
     }
 
+    /**
+     * Product Price Detail Text
+     */
     private String productPriceDetailText;
 
     public String getProductPriceDetailText()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productPriceDetailText = productPriceDetailText;
     }
 
+    /**
+     * Product Small Image Url
+     */
     private String productSmallImageUrl;
 
     public String getProductSmallImageUrl()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productSmallImageUrl = productSmallImageUrl;
     }
 
+    /**
+     * Product Medium Image Url
+     */
     private String productMediumImageUrl;
 
     public String getProductMediumImageUrl()
@@ -246,6 +306,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productMediumImageUrl = productMediumImageUrl;
     }
 
+    /**
+     * Product Large Image Url
+     */
     private String productLargeImageUrl;
 
     public String getProductLargeImageUrl()
@@ -258,6 +321,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productLargeImageUrl = productLargeImageUrl;
     }
 
+    /**
+     * Product Detail Image Url
+     */
     private String productDetailImageUrl;
 
     public String getProductDetailImageUrl()
@@ -270,6 +336,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productDetailImageUrl = productDetailImageUrl;
     }
 
+    /**
+     * Product Original Image Url
+     */
     private String productOriginalImageUrl;
 
     public String getProductOriginalImageUrl()
@@ -282,6 +351,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productOriginalImageUrl = productOriginalImageUrl;
     }
 
+    /**
+     * Product Detail Screen
+     */
     private String productDetailScreen;
 
     public String getProductDetailScreen()
@@ -294,6 +366,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productDetailScreen = productDetailScreen;
     }
 
+    /**
+     * Product Inventory Message
+     */
     private String productInventoryMessage;
 
     public String getProductInventoryMessage()
@@ -306,6 +381,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productInventoryMessage = productInventoryMessage;
     }
 
+    /**
+     * Product Inventory Item Type Id
+     */
     private String productInventoryItemTypeId;
 
     public String getProductInventoryItemTypeId()
@@ -318,6 +396,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productInventoryItemTypeId = productInventoryItemTypeId;
     }
 
+    /**
+     * Product Require Inventory
+     */
     private String productRequireInventory;
 
     public String getProductRequireInventory()
@@ -330,6 +411,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productRequireInventory = productRequireInventory;
     }
 
+    /**
+     * Product Quantity Uom Id
+     */
     private String productQuantityUomId;
 
     public String getProductQuantityUomId()
@@ -342,6 +426,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productQuantityUomId = productQuantityUomId;
     }
 
+    /**
+     * Product Quantity Included
+     */
     private java.math.BigDecimal productQuantityIncluded;
 
     public java.math.BigDecimal getProductQuantityIncluded()
@@ -354,6 +441,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productQuantityIncluded = productQuantityIncluded;
     }
 
+    /**
+     * Product Pieces Included
+     */
     private Long productPiecesIncluded;
 
     public Long getProductPiecesIncluded()
@@ -366,6 +456,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productPiecesIncluded = productPiecesIncluded;
     }
 
+    /**
+     * Product Require Amount
+     */
     private String productRequireAmount;
 
     public String getProductRequireAmount()
@@ -378,6 +471,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productRequireAmount = productRequireAmount;
     }
 
+    /**
+     * Product Fixed Amount
+     */
     private java.math.BigDecimal productFixedAmount;
 
     public java.math.BigDecimal getProductFixedAmount()
@@ -390,6 +486,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productFixedAmount = productFixedAmount;
     }
 
+    /**
+     * Product Amount Uom Type Id
+     */
     private String productAmountUomTypeId;
 
     public String getProductAmountUomTypeId()
@@ -402,6 +501,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productAmountUomTypeId = productAmountUomTypeId;
     }
 
+    /**
+     * Product Weight Uom Id
+     */
     private String productWeightUomId;
 
     public String getProductWeightUomId()
@@ -414,6 +516,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productWeightUomId = productWeightUomId;
     }
 
+    /**
+     * Product Shipping Weight
+     */
     private java.math.BigDecimal productShippingWeight;
 
     public java.math.BigDecimal getProductShippingWeight()
@@ -426,6 +531,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productShippingWeight = productShippingWeight;
     }
 
+    /**
+     * Product Product Weight
+     */
     private java.math.BigDecimal productProductWeight;
 
     public java.math.BigDecimal getProductProductWeight()
@@ -438,6 +546,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductWeight = productProductWeight;
     }
 
+    /**
+     * Product Height Uom Id
+     */
     private String productHeightUomId;
 
     public String getProductHeightUomId()
@@ -450,6 +561,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productHeightUomId = productHeightUomId;
     }
 
+    /**
+     * Product Product Height
+     */
     private java.math.BigDecimal productProductHeight;
 
     public java.math.BigDecimal getProductProductHeight()
@@ -462,6 +576,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductHeight = productProductHeight;
     }
 
+    /**
+     * Product Shipping Height
+     */
     private java.math.BigDecimal productShippingHeight;
 
     public java.math.BigDecimal getProductShippingHeight()
@@ -474,6 +591,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productShippingHeight = productShippingHeight;
     }
 
+    /**
+     * Product Width Uom Id
+     */
     private String productWidthUomId;
 
     public String getProductWidthUomId()
@@ -486,6 +606,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productWidthUomId = productWidthUomId;
     }
 
+    /**
+     * Product Product Width
+     */
     private java.math.BigDecimal productProductWidth;
 
     public java.math.BigDecimal getProductProductWidth()
@@ -498,6 +621,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductWidth = productProductWidth;
     }
 
+    /**
+     * Product Shipping Width
+     */
     private java.math.BigDecimal productShippingWidth;
 
     public java.math.BigDecimal getProductShippingWidth()
@@ -510,6 +636,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productShippingWidth = productShippingWidth;
     }
 
+    /**
+     * Product Depth Uom Id
+     */
     private String productDepthUomId;
 
     public String getProductDepthUomId()
@@ -522,6 +651,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productDepthUomId = productDepthUomId;
     }
 
+    /**
+     * Product Product Depth
+     */
     private java.math.BigDecimal productProductDepth;
 
     public java.math.BigDecimal getProductProductDepth()
@@ -534,6 +666,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductDepth = productProductDepth;
     }
 
+    /**
+     * Product Shipping Depth
+     */
     private java.math.BigDecimal productShippingDepth;
 
     public java.math.BigDecimal getProductShippingDepth()
@@ -546,6 +681,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productShippingDepth = productShippingDepth;
     }
 
+    /**
+     * Product Diameter Uom Id
+     */
     private String productDiameterUomId;
 
     public String getProductDiameterUomId()
@@ -558,6 +696,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productDiameterUomId = productDiameterUomId;
     }
 
+    /**
+     * Product Product Diameter
+     */
     private java.math.BigDecimal productProductDiameter;
 
     public java.math.BigDecimal getProductProductDiameter()
@@ -570,6 +711,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductDiameter = productProductDiameter;
     }
 
+    /**
+     * Product Product Rating
+     */
     private java.math.BigDecimal productProductRating;
 
     public java.math.BigDecimal getProductProductRating()
@@ -582,6 +726,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productProductRating = productProductRating;
     }
 
+    /**
+     * Product Rating Type Enum
+     */
     private String productRatingTypeEnum;
 
     public String getProductRatingTypeEnum()
@@ -594,6 +741,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productRatingTypeEnum = productRatingTypeEnum;
     }
 
+    /**
+     * Product Returnable
+     */
     private String productReturnable;
 
     public String getProductReturnable()
@@ -606,6 +756,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productReturnable = productReturnable;
     }
 
+    /**
+     * Product Taxable
+     */
     private String productTaxable;
 
     public String getProductTaxable()
@@ -618,6 +771,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productTaxable = productTaxable;
     }
 
+    /**
+     * Product Charge Shipping
+     */
     private String productChargeShipping;
 
     public String getProductChargeShipping()
@@ -630,6 +786,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productChargeShipping = productChargeShipping;
     }
 
+    /**
+     * Product Auto Create Keywords
+     */
     private String productAutoCreateKeywords;
 
     public String getProductAutoCreateKeywords()
@@ -642,6 +801,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productAutoCreateKeywords = productAutoCreateKeywords;
     }
 
+    /**
+     * Product Include In Promotions
+     */
     private String productIncludeInPromotions;
 
     public String getProductIncludeInPromotions()
@@ -654,6 +816,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productIncludeInPromotions = productIncludeInPromotions;
     }
 
+    /**
+     * Product Is Virtual
+     */
     private String productIsVirtual;
 
     public String getProductIsVirtual()
@@ -666,6 +831,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productIsVirtual = productIsVirtual;
     }
 
+    /**
+     * Product Is Variant
+     */
     private String productIsVariant;
 
     public String getProductIsVariant()
@@ -678,6 +846,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productIsVariant = productIsVariant;
     }
 
+    /**
+     * This field defines the method of selecting a variant from the selectable features on the virtual product. Either as a variant explosion which will work to about 200 variants or as feature explosion which almost has no limits
+     */
     private String productVirtualVariantMethodEnum;
 
     public String getProductVirtualVariantMethodEnum()
@@ -690,6 +861,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productVirtualVariantMethodEnum = productVirtualVariantMethodEnum;
     }
 
+    /**
+     * Product In Shipping Box
+     */
     private String productInShippingBox;
 
     public String getProductInShippingBox()
@@ -702,6 +876,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productInShippingBox = productInShippingBox;
     }
 
+    /**
+     * Product Default Shipment Box Type Id
+     */
     private String productDefaultShipmentBoxTypeId;
 
     public String getProductDefaultShipmentBoxTypeId()
@@ -714,6 +891,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productDefaultShipmentBoxTypeId = productDefaultShipmentBoxTypeId;
     }
 
+    /**
+     * Product Is Serial Numbered
+     */
     private Boolean productIsSerialNumbered;
 
     public Boolean getProductIsSerialNumbered()
@@ -726,6 +906,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productIsSerialNumbered = productIsSerialNumbered;
     }
 
+    /**
+     * Product Is Managed By Lot
+     */
     private Boolean productIsManagedByLot;
 
     public Boolean getProductIsManagedByLot()
@@ -738,6 +921,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productIsManagedByLot = productIsManagedByLot;
     }
 
+    /**
+     * Product Attribute Set Id
+     */
     private String productAttributeSetId;
 
     public String getProductAttributeSetId()
@@ -750,6 +936,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productAttributeSetId = productAttributeSetId;
     }
 
+    /**
+     * Product Attribute Set Instance Id
+     */
     private String productAttributeSetInstanceId;
 
     public String getProductAttributeSetInstanceId()
@@ -762,6 +951,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productAttributeSetInstanceId = productAttributeSetInstanceId;
     }
 
+    /**
+     * Product Created By
+     */
     private String productCreatedBy;
 
     public String getProductCreatedBy()
@@ -774,6 +966,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productCreatedBy = productCreatedBy;
     }
 
+    /**
+     * Product Created At
+     */
     private Date productCreatedAt;
 
     public Date getProductCreatedAt()
@@ -786,6 +981,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productCreatedAt = productCreatedAt;
     }
 
+    /**
+     * Product Updated By
+     */
     private String productUpdatedBy;
 
     public String getProductUpdatedBy()
@@ -798,6 +996,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productUpdatedBy = productUpdatedBy;
     }
 
+    /**
+     * Product Updated At
+     */
     private Date productUpdatedAt;
 
     public Date getProductUpdatedAt()
@@ -810,6 +1011,9 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
         this.productUpdatedAt = productUpdatedAt;
     }
 
+    /**
+     * Product Active
+     */
     private Boolean productActive;
 
     public Boolean getProductActive()
@@ -1808,6 +2012,10 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
 
     public static class CreateGoodIdentificationMvoDto extends CreateOrMergePatchGoodIdentificationMvoDto
     {
+        public CreateGoodIdentificationMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -1821,6 +2029,10 @@ public class CreateOrMergePatchGoodIdentificationMvoDto extends AbstractGoodIden
 
     public static class MergePatchGoodIdentificationMvoDto extends CreateOrMergePatchGoodIdentificationMvoDto
     {
+        public MergePatchGoodIdentificationMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

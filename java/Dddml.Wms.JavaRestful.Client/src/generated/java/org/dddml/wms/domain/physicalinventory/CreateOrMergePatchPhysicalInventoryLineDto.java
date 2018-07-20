@@ -7,6 +7,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysicalInventoryLineCommandDto
 {
+    /**
+     * Book Quantity
+     */
     private BigDecimal bookQuantity;
 
     public BigDecimal getBookQuantity()
@@ -19,6 +22,9 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.bookQuantity = bookQuantity;
     }
 
+    /**
+     * Counted Quantity
+     */
     private BigDecimal countedQuantity;
 
     public BigDecimal getCountedQuantity()
@@ -31,6 +37,9 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.countedQuantity = countedQuantity;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -43,6 +52,9 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.processed = processed;
     }
 
+    /**
+     * Line Number
+     */
     private String lineNumber;
 
     public String getLineNumber()
@@ -55,6 +67,9 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.lineNumber = lineNumber;
     }
 
+    /**
+     * Reversal Line Number
+     */
     private Long reversalLineNumber;
 
     public Long getReversalLineNumber()
@@ -67,6 +82,9 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.reversalLineNumber = reversalLineNumber;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -79,6 +97,9 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -177,6 +198,10 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
 
     public static class CreatePhysicalInventoryLineDto extends CreateOrMergePatchPhysicalInventoryLineDto
     {
+        public CreatePhysicalInventoryLineDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -186,6 +211,10 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
 
     public static class MergePatchPhysicalInventoryLineDto extends CreateOrMergePatchPhysicalInventoryLineDto
     {
+        public MergePatchPhysicalInventoryLineDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

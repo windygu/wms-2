@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInventoryPRTriggeredCommandDto extends AbstractCommand
 {
+    /**
+     * Inventory PR Triggered Id
+     */
     private InventoryPRTriggeredId inventoryPRTriggeredId;
 
     public InventoryPRTriggeredId getInventoryPRTriggeredId()
@@ -18,6 +21,9 @@ public abstract class AbstractInventoryPRTriggeredCommandDto extends AbstractCom
         this.inventoryPRTriggeredId = inventoryPRTriggeredId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

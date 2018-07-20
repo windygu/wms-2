@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
 {
+    /**
+     * Shipment Type Id
+     */
     private String shipmentTypeId;
 
     public String getShipmentTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.shipmentTypeId = shipmentTypeId;
     }
 
+    /**
+     * Status Id
+     */
     private String statusId;
 
     public String getStatusId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.statusId = statusId;
     }
 
+    /**
+     * Primary Order Id
+     */
     private String primaryOrderId;
 
     public String getPrimaryOrderId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.primaryOrderId = primaryOrderId;
     }
 
+    /**
+     * Primary Return Id
+     */
     private String primaryReturnId;
 
     public String getPrimaryReturnId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.primaryReturnId = primaryReturnId;
     }
 
+    /**
+     * Primary Ship Group Seq Id
+     */
     private Long primaryShipGroupSeqId;
 
     public Long getPrimaryShipGroupSeqId()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.primaryShipGroupSeqId = primaryShipGroupSeqId;
     }
 
+    /**
+     * Picklist Bin Id
+     */
     private String picklistBinId;
 
     public String getPicklistBinId()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.picklistBinId = picklistBinId;
     }
 
+    /**
+     * Estimated Ready Date
+     */
     private java.sql.Timestamp estimatedReadyDate;
 
     public java.sql.Timestamp getEstimatedReadyDate()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.estimatedReadyDate = estimatedReadyDate;
     }
 
+    /**
+     * Estimated Ship Date
+     */
     private java.sql.Timestamp estimatedShipDate;
 
     public java.sql.Timestamp getEstimatedShipDate()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.estimatedShipDate = estimatedShipDate;
     }
 
+    /**
+     * Estimated Ship Work Eff Id
+     */
     private String estimatedShipWorkEffId;
 
     public String getEstimatedShipWorkEffId()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.estimatedShipWorkEffId = estimatedShipWorkEffId;
     }
 
+    /**
+     * Estimated Arrival Date
+     */
     private java.sql.Timestamp estimatedArrivalDate;
 
     public java.sql.Timestamp getEstimatedArrivalDate()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.estimatedArrivalDate = estimatedArrivalDate;
     }
 
+    /**
+     * Estimated Arrival Work Eff Id
+     */
     private String estimatedArrivalWorkEffId;
 
     public String getEstimatedArrivalWorkEffId()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.estimatedArrivalWorkEffId = estimatedArrivalWorkEffId;
     }
 
+    /**
+     * Latest Cancel Date
+     */
     private java.sql.Timestamp latestCancelDate;
 
     public java.sql.Timestamp getLatestCancelDate()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.latestCancelDate = latestCancelDate;
     }
 
+    /**
+     * Estimated Ship Cost
+     */
     private java.math.BigDecimal estimatedShipCost;
 
     public java.math.BigDecimal getEstimatedShipCost()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.estimatedShipCost = estimatedShipCost;
     }
 
+    /**
+     * Currency Uom Id
+     */
     private String currencyUomId;
 
     public String getCurrencyUomId()
@@ -173,6 +215,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.currencyUomId = currencyUomId;
     }
 
+    /**
+     * Handling Instructions
+     */
     private String handlingInstructions;
 
     public String getHandlingInstructions()
@@ -185,6 +230,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.handlingInstructions = handlingInstructions;
     }
 
+    /**
+     * Origin Facility Id
+     */
     private String originFacilityId;
 
     public String getOriginFacilityId()
@@ -197,6 +245,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.originFacilityId = originFacilityId;
     }
 
+    /**
+     * Destination Facility Id
+     */
     private String destinationFacilityId;
 
     public String getDestinationFacilityId()
@@ -209,6 +260,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.destinationFacilityId = destinationFacilityId;
     }
 
+    /**
+     * Origin Contact Mech Id
+     */
     private String originContactMechId;
 
     public String getOriginContactMechId()
@@ -221,6 +275,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.originContactMechId = originContactMechId;
     }
 
+    /**
+     * Origin Telecom Number Id
+     */
     private String originTelecomNumberId;
 
     public String getOriginTelecomNumberId()
@@ -233,6 +290,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.originTelecomNumberId = originTelecomNumberId;
     }
 
+    /**
+     * Destination Contact Mech Id
+     */
     private String destinationContactMechId;
 
     public String getDestinationContactMechId()
@@ -245,6 +305,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.destinationContactMechId = destinationContactMechId;
     }
 
+    /**
+     * Destination Telecom Number Id
+     */
     private String destinationTelecomNumberId;
 
     public String getDestinationTelecomNumberId()
@@ -257,6 +320,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.destinationTelecomNumberId = destinationTelecomNumberId;
     }
 
+    /**
+     * Party Id To
+     */
     private String partyIdTo;
 
     public String getPartyIdTo()
@@ -269,6 +335,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.partyIdTo = partyIdTo;
     }
 
+    /**
+     * Party Id From
+     */
     private String partyIdFrom;
 
     public String getPartyIdFrom()
@@ -281,6 +350,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.partyIdFrom = partyIdFrom;
     }
 
+    /**
+     * Additional Shipping Charge
+     */
     private java.math.BigDecimal additionalShippingCharge;
 
     public java.math.BigDecimal getAdditionalShippingCharge()
@@ -293,6 +365,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.additionalShippingCharge = additionalShippingCharge;
     }
 
+    /**
+     * Addtl Shipping Charge Desc
+     */
     private String addtlShippingChargeDesc;
 
     public String getAddtlShippingChargeDesc()
@@ -305,6 +380,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -781,6 +859,10 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
 
     public static class CreateShipmentDto extends CreateOrMergePatchShipmentDto
     {
+        public CreateShipmentDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -794,6 +876,10 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
 
     public static class MergePatchShipmentDto extends CreateOrMergePatchShipmentDto
     {
+        public MergePatchShipmentDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommandDto
 {
+    /**
+     * Picklist Id
+     */
     private String picklistId;
 
     public String getPicklistId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommand
         this.picklistId = picklistId;
     }
 
+    /**
+     * Bin Location Number
+     */
     private Long binLocationNumber;
 
     public Long getBinLocationNumber()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommand
         this.binLocationNumber = binLocationNumber;
     }
 
+    /**
+     * Primary Order Id
+     */
     private String primaryOrderId;
 
     public String getPrimaryOrderId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommand
         this.primaryOrderId = primaryOrderId;
     }
 
+    /**
+     * Primary Ship Group Seq Id
+     */
     private Long primaryShipGroupSeqId;
 
     public Long getPrimaryShipGroupSeqId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommand
         this.primaryShipGroupSeqId = primaryShipGroupSeqId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -139,6 +154,10 @@ public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommand
 
     public static class CreatePicklistBinDto extends CreateOrMergePatchPicklistBinDto
     {
+        public CreatePicklistBinDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -148,6 +167,10 @@ public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommand
 
     public static class MergePatchPicklistBinDto extends CreateOrMergePatchPicklistBinDto
     {
+        public MergePatchPicklistBinDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

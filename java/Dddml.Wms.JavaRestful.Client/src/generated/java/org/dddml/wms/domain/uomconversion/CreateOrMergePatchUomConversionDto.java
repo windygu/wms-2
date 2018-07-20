@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchUomConversionDto extends AbstractUomConversionCommandDto
 {
+    /**
+     * Conversion Factor
+     */
     private Double conversionFactor;
 
     public Double getConversionFactor()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchUomConversionDto extends AbstractUomConversionCom
         this.conversionFactor = conversionFactor;
     }
 
+    /**
+     * Custom Method Id
+     */
     private String customMethodId;
 
     public String getCustomMethodId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchUomConversionDto extends AbstractUomConversionCom
         this.customMethodId = customMethodId;
     }
 
+    /**
+     * Decimal Scale
+     */
     private Long decimalScale;
 
     public Long getDecimalScale()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchUomConversionDto extends AbstractUomConversionCom
         this.decimalScale = decimalScale;
     }
 
+    /**
+     * Rounding Mode
+     */
     private String roundingMode;
 
     public String getRoundingMode()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchUomConversionDto extends AbstractUomConversionCom
         this.roundingMode = roundingMode;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -127,6 +142,10 @@ public class CreateOrMergePatchUomConversionDto extends AbstractUomConversionCom
 
     public static class CreateUomConversionDto extends CreateOrMergePatchUomConversionDto
     {
+        public CreateUomConversionDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -136,6 +155,10 @@ public class CreateOrMergePatchUomConversionDto extends AbstractUomConversionCom
 
     public static class MergePatchUomConversionDto extends CreateOrMergePatchUomConversionDto
     {
+        public MergePatchUomConversionDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

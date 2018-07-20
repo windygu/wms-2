@@ -3501,11 +3501,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomainServices.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\AbstractInOutLineMvoAggregate.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Content>
@@ -8636,11 +8631,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\generated\java\org\dddml\wms\DddmlSerializationForT4.tc" />
-    <None Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomainServices.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
-      <LastOutputs>.\GenerateBoundedContextDomainServices.txt</LastOutputs>
-    </None>
     <None Include="src\generated\java\org\dddml\wms\domain\service\GenerateBoundedContextDomainServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>

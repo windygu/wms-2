@@ -8,6 +8,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSellableInventoryItemEntryCommandDto
 {
+    /**
+     * Sellable Quantity
+     */
     private BigDecimal sellableQuantity;
 
     public BigDecimal getSellableQuantity()
@@ -20,6 +23,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSel
         this.sellableQuantity = sellableQuantity;
     }
 
+    /**
+     * Source Event Id
+     */
     private InventoryPRTriggeredId sourceEventId;
 
     public InventoryPRTriggeredId getSourceEventId()
@@ -32,6 +38,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSel
         this.sourceEventId = sourceEventId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -108,6 +117,10 @@ public class CreateOrMergePatchSellableInventoryItemEntryDto extends AbstractSel
 
     public static class CreateSellableInventoryItemEntryDto extends CreateOrMergePatchSellableInventoryItemEntryDto
     {
+        public CreateSellableInventoryItemEntryDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;

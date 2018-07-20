@@ -8,6 +8,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInventoryItemEntryMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Inventory Item Entry Id
+     */
     private InventoryItemEntryId inventoryItemEntryId;
 
     public InventoryItemEntryId getInventoryItemEntryId()
@@ -20,6 +23,9 @@ public abstract class AbstractInventoryItemEntryMvoCommandDto extends AbstractCo
         this.inventoryItemEntryId = inventoryItemEntryId;
     }
 
+    /**
+     * Inventory Item Version
+     */
     private Long inventoryItemVersion;
 
     public Long getInventoryItemVersion()

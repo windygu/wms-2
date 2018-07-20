@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchDamageTypeDto extends AbstractDamageTypeCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchDamageTypeDto extends AbstractDamageTypeCommandDt
         this.description = description;
     }
 
+    /**
+     * Sequence Id
+     */
     private String sequenceId;
 
     public String getSequenceId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchDamageTypeDto extends AbstractDamageTypeCommandDt
         this.sequenceId = sequenceId;
     }
 
+    /**
+     * Default Handling Method Id
+     */
     private String defaultHandlingMethodId;
 
     public String getDefaultHandlingMethodId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchDamageTypeDto extends AbstractDamageTypeCommandDt
         this.defaultHandlingMethodId = defaultHandlingMethodId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -348,6 +360,10 @@ public class CreateOrMergePatchDamageTypeDto extends AbstractDamageTypeCommandDt
 
     public static class CreateDamageTypeDto extends CreateOrMergePatchDamageTypeDto
     {
+        public CreateDamageTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -361,6 +377,10 @@ public class CreateOrMergePatchDamageTypeDto extends AbstractDamageTypeCommandDt
 
     public static class MergePatchDamageTypeDto extends CreateOrMergePatchDamageTypeDto
     {
+        public MergePatchDamageTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

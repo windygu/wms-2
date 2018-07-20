@@ -5,7 +5,7 @@ import org.dddml.wms.specialization.CommandType;
 public abstract class AbstractCommand implements Command
 {
 
-    private String commandType;
+    protected String commandType;
 
     public String getCommandType()
     {

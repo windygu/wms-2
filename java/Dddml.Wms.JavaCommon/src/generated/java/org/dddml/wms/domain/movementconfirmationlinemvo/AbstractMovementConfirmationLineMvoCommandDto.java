@@ -8,6 +8,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractMovementConfirmationLineMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Movement Confirmation Line Id
+     */
     private MovementConfirmationLineId movementConfirmationLineId;
 
     public MovementConfirmationLineId getMovementConfirmationLineId()
@@ -20,6 +23,9 @@ public abstract class AbstractMovementConfirmationLineMvoCommandDto extends Abst
         this.movementConfirmationLineId = movementConfirmationLineId;
     }
 
+    /**
+     * Movement Confirmation Version
+     */
     private Long movementConfirmationVersion;
 
     public Long getMovementConfirmationVersion()

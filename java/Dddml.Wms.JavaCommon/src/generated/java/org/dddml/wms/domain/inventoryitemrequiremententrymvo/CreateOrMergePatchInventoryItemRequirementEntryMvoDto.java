@@ -8,6 +8,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends AbstractInventoryItemRequirementEntryMvoCommandDto
 {
+    /**
+     * Quantity
+     */
     private BigDecimal quantity;
 
     public BigDecimal getQuantity()
@@ -20,6 +23,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.quantity = quantity;
     }
 
+    /**
+     * Source Event Id
+     */
     private InventoryPRTriggeredId sourceEventId;
 
     public InventoryPRTriggeredId getSourceEventId()
@@ -32,6 +38,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.sourceEventId = sourceEventId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -44,6 +53,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -56,6 +68,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.active = active;
     }
 
+    /**
+     * Inventory Item Requirement Quantity
+     */
     private BigDecimal inventoryItemRequirementQuantity;
 
     public BigDecimal getInventoryItemRequirementQuantity()
@@ -68,6 +83,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.inventoryItemRequirementQuantity = inventoryItemRequirementQuantity;
     }
 
+    /**
+     * Inventory Item Requirement Created By
+     */
     private String inventoryItemRequirementCreatedBy;
 
     public String getInventoryItemRequirementCreatedBy()
@@ -80,6 +98,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.inventoryItemRequirementCreatedBy = inventoryItemRequirementCreatedBy;
     }
 
+    /**
+     * Inventory Item Requirement Created At
+     */
     private Date inventoryItemRequirementCreatedAt;
 
     public Date getInventoryItemRequirementCreatedAt()
@@ -92,6 +113,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.inventoryItemRequirementCreatedAt = inventoryItemRequirementCreatedAt;
     }
 
+    /**
+     * Inventory Item Requirement Updated By
+     */
     private String inventoryItemRequirementUpdatedBy;
 
     public String getInventoryItemRequirementUpdatedBy()
@@ -104,6 +128,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
         this.inventoryItemRequirementUpdatedBy = inventoryItemRequirementUpdatedBy;
     }
 
+    /**
+     * Inventory Item Requirement Updated At
+     */
     private Date inventoryItemRequirementUpdatedAt;
 
     public Date getInventoryItemRequirementUpdatedAt()
@@ -276,6 +303,10 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
 
     public static class CreateInventoryItemRequirementEntryMvoDto extends CreateOrMergePatchInventoryItemRequirementEntryMvoDto
     {
+        public CreateInventoryItemRequirementEntryMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -289,6 +320,10 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
 
     public static class MergePatchInventoryItemRequirementEntryMvoDto extends CreateOrMergePatchInventoryItemRequirementEntryMvoDto
     {
+        public MergePatchInventoryItemRequirementEntryMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

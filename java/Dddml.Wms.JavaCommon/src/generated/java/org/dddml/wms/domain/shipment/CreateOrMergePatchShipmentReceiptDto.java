@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceiptCommandDto
 {
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.productId = productId;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Locator Id
+     */
     private String locatorId;
 
     public String getLocatorId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.locatorId = locatorId;
     }
 
+    /**
+     * Shipment Item Seq Id
+     */
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.shipmentItemSeqId = shipmentItemSeqId;
     }
 
+    /**
+     * Shipment Package Seq Id
+     */
     private String shipmentPackageSeqId;
 
     public String getShipmentPackageSeqId()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.shipmentPackageSeqId = shipmentPackageSeqId;
     }
 
+    /**
+     * Order Id
+     */
     private String orderId;
 
     public String getOrderId()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.orderId = orderId;
     }
 
+    /**
+     * Order Item Seq Id
+     */
     private String orderItemSeqId;
 
     public String getOrderItemSeqId()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.orderItemSeqId = orderItemSeqId;
     }
 
+    /**
+     * Return Id
+     */
     private String returnId;
 
     public String getReturnId()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.returnId = returnId;
     }
 
+    /**
+     * Return Item Seq Id
+     */
     private String returnItemSeqId;
 
     public String getReturnItemSeqId()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.returnItemSeqId = returnItemSeqId;
     }
 
+    /**
+     * Rejection Reason Id
+     */
     private String rejectionReasonId;
 
     public String getRejectionReasonId()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.rejectionReasonId = rejectionReasonId;
     }
 
+    /**
+     * Damage Status Id
+     */
     private String damageStatusId;
 
     public String getDamageStatusId()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.damageStatusId = damageStatusId;
     }
 
+    /**
+     * Damage Reason Id
+     */
     private String damageReasonId;
 
     public String getDamageReasonId()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.damageReasonId = damageReasonId;
     }
 
+    /**
+     * Received By
+     */
     private String receivedBy;
 
     public String getReceivedBy()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.receivedBy = receivedBy;
     }
 
+    /**
+     * Datetime Received
+     */
     private java.sql.Timestamp datetimeReceived;
 
     public java.sql.Timestamp getDatetimeReceived()
@@ -173,6 +215,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.datetimeReceived = datetimeReceived;
     }
 
+    /**
+     * Item Description
+     */
     private String itemDescription;
 
     public String getItemDescription()
@@ -185,6 +230,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.itemDescription = itemDescription;
     }
 
+    /**
+     * Accepted Quantity
+     */
     private java.math.BigDecimal acceptedQuantity;
 
     public java.math.BigDecimal getAcceptedQuantity()
@@ -197,6 +245,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.acceptedQuantity = acceptedQuantity;
     }
 
+    /**
+     * Rejected Quantity
+     */
     private java.math.BigDecimal rejectedQuantity;
 
     public java.math.BigDecimal getRejectedQuantity()
@@ -209,6 +260,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.rejectedQuantity = rejectedQuantity;
     }
 
+    /**
+     * Damaged Quantity
+     */
     private java.math.BigDecimal damagedQuantity;
 
     public java.math.BigDecimal getDamagedQuantity()
@@ -221,6 +275,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.damagedQuantity = damagedQuantity;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -538,6 +595,10 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
 
     public static class CreateShipmentReceiptDto extends CreateOrMergePatchShipmentReceiptDto
     {
+        public CreateShipmentReceiptDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -551,6 +612,10 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
 
     public static class MergePatchShipmentReceiptDto extends CreateOrMergePatchShipmentReceiptDto
     {
+        public MergePatchShipmentReceiptDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

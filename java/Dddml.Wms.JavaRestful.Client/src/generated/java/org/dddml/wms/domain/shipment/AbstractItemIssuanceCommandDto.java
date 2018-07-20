@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractItemIssuanceCommandDto extends AbstractCommand
 {
+    /**
+     * Item Issuance Seq Id
+     */
     private String itemIssuanceSeqId;
 
     public String getItemIssuanceSeqId()

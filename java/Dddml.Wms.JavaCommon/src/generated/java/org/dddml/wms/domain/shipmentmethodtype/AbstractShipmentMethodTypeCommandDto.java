@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractShipmentMethodTypeCommandDto extends AbstractCommand
 {
+    /**
+     * Shipment Method Type Id
+     */
     private String shipmentMethodTypeId;
 
     public String getShipmentMethodTypeId()
@@ -18,6 +21,9 @@ public abstract class AbstractShipmentMethodTypeCommandDto extends AbstractComma
         this.shipmentMethodTypeId = shipmentMethodTypeId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

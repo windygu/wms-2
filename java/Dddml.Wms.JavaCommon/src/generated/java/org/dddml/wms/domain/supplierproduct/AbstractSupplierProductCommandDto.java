@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractSupplierProductCommandDto extends AbstractCommand
 {
+    /**
+     * Supplier Product Id
+     */
     private SupplierProductId supplierProductId;
 
     public SupplierProductId getSupplierProductId()
@@ -18,6 +21,9 @@ public abstract class AbstractSupplierProductCommandDto extends AbstractCommand
         this.supplierProductId = supplierProductId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

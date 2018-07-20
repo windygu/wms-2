@@ -7,6 +7,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysicalInventoryLineMvoCommandDto
 {
+    /**
+     * Book Quantity
+     */
     private BigDecimal bookQuantity;
 
     public BigDecimal getBookQuantity()
@@ -19,6 +22,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.bookQuantity = bookQuantity;
     }
 
+    /**
+     * Counted Quantity
+     */
     private BigDecimal countedQuantity;
 
     public BigDecimal getCountedQuantity()
@@ -31,6 +37,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.countedQuantity = countedQuantity;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -43,6 +52,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.processed = processed;
     }
 
+    /**
+     * Line Number
+     */
     private String lineNumber;
 
     public String getLineNumber()
@@ -55,6 +67,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.lineNumber = lineNumber;
     }
 
+    /**
+     * Reversal Line Number
+     */
     private Long reversalLineNumber;
 
     public Long getReversalLineNumber()
@@ -67,6 +82,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.reversalLineNumber = reversalLineNumber;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -79,6 +97,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.description = description;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -91,6 +112,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -103,6 +127,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.active = active;
     }
 
+    /**
+     * Physical Inventory Document Status Id
+     */
     private String physicalInventoryDocumentStatusId;
 
     public String getPhysicalInventoryDocumentStatusId()
@@ -115,6 +142,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryDocumentStatusId = physicalInventoryDocumentStatusId;
     }
 
+    /**
+     * Physical Inventory Warehouse Id
+     */
     private String physicalInventoryWarehouseId;
 
     public String getPhysicalInventoryWarehouseId()
@@ -127,6 +157,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryWarehouseId = physicalInventoryWarehouseId;
     }
 
+    /**
+     * Physical Inventory Locator Id Pattern
+     */
     private String physicalInventoryLocatorIdPattern;
 
     public String getPhysicalInventoryLocatorIdPattern()
@@ -139,6 +172,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryLocatorIdPattern = physicalInventoryLocatorIdPattern;
     }
 
+    /**
+     * Physical Inventory Product Id Pattern
+     */
     private String physicalInventoryProductIdPattern;
 
     public String getPhysicalInventoryProductIdPattern()
@@ -151,6 +187,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryProductIdPattern = physicalInventoryProductIdPattern;
     }
 
+    /**
+     * Physical Inventory Posted
+     */
     private Boolean physicalInventoryPosted;
 
     public Boolean getPhysicalInventoryPosted()
@@ -163,6 +202,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryPosted = physicalInventoryPosted;
     }
 
+    /**
+     * Physical Inventory Processed
+     */
     private Boolean physicalInventoryProcessed;
 
     public Boolean getPhysicalInventoryProcessed()
@@ -175,6 +217,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryProcessed = physicalInventoryProcessed;
     }
 
+    /**
+     * Physical Inventory Processing
+     */
     private String physicalInventoryProcessing;
 
     public String getPhysicalInventoryProcessing()
@@ -187,6 +232,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryProcessing = physicalInventoryProcessing;
     }
 
+    /**
+     * Physical Inventory Document Type Id
+     */
     private String physicalInventoryDocumentTypeId;
 
     public String getPhysicalInventoryDocumentTypeId()
@@ -199,6 +247,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryDocumentTypeId = physicalInventoryDocumentTypeId;
     }
 
+    /**
+     * Physical Inventory Movement Date
+     */
     private Date physicalInventoryMovementDate;
 
     public Date getPhysicalInventoryMovementDate()
@@ -211,6 +262,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryMovementDate = physicalInventoryMovementDate;
     }
 
+    /**
+     * Physical Inventory Description
+     */
     private String physicalInventoryDescription;
 
     public String getPhysicalInventoryDescription()
@@ -223,6 +277,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryDescription = physicalInventoryDescription;
     }
 
+    /**
+     * Physical Inventory Is Approved
+     */
     private Boolean physicalInventoryIsApproved;
 
     public Boolean getPhysicalInventoryIsApproved()
@@ -235,6 +292,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryIsApproved = physicalInventoryIsApproved;
     }
 
+    /**
+     * Physical Inventory Approval Amount
+     */
     private BigDecimal physicalInventoryApprovalAmount;
 
     public BigDecimal getPhysicalInventoryApprovalAmount()
@@ -247,6 +307,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryApprovalAmount = physicalInventoryApprovalAmount;
     }
 
+    /**
+     * Physical Inventory Is Quantity Updated
+     */
     private Boolean physicalInventoryIsQuantityUpdated;
 
     public Boolean getPhysicalInventoryIsQuantityUpdated()
@@ -259,6 +322,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryIsQuantityUpdated = physicalInventoryIsQuantityUpdated;
     }
 
+    /**
+     * Physical Inventory Reversal Document Number
+     */
     private String physicalInventoryReversalDocumentNumber;
 
     public String getPhysicalInventoryReversalDocumentNumber()
@@ -271,6 +337,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryReversalDocumentNumber = physicalInventoryReversalDocumentNumber;
     }
 
+    /**
+     * Physical Inventory Created By
+     */
     private String physicalInventoryCreatedBy;
 
     public String getPhysicalInventoryCreatedBy()
@@ -283,6 +352,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryCreatedBy = physicalInventoryCreatedBy;
     }
 
+    /**
+     * Physical Inventory Created At
+     */
     private Date physicalInventoryCreatedAt;
 
     public Date getPhysicalInventoryCreatedAt()
@@ -295,6 +367,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryCreatedAt = physicalInventoryCreatedAt;
     }
 
+    /**
+     * Physical Inventory Updated By
+     */
     private String physicalInventoryUpdatedBy;
 
     public String getPhysicalInventoryUpdatedBy()
@@ -307,6 +382,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryUpdatedBy = physicalInventoryUpdatedBy;
     }
 
+    /**
+     * Physical Inventory Updated At
+     */
     private Date physicalInventoryUpdatedAt;
 
     public Date getPhysicalInventoryUpdatedAt()
@@ -319,6 +397,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryUpdatedAt = physicalInventoryUpdatedAt;
     }
 
+    /**
+     * Physical Inventory Active
+     */
     private Boolean physicalInventoryActive;
 
     public Boolean getPhysicalInventoryActive()
@@ -743,6 +824,10 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
 
     public static class CreatePhysicalInventoryLineMvoDto extends CreateOrMergePatchPhysicalInventoryLineMvoDto
     {
+        public CreatePhysicalInventoryLineMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -756,6 +841,10 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
 
     public static class MergePatchPhysicalInventoryLineMvoDto extends CreateOrMergePatchPhysicalInventoryLineMvoDto
     {
+        public MergePatchPhysicalInventoryLineMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

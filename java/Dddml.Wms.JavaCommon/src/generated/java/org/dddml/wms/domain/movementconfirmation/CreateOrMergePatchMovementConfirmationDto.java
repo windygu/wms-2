@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementConfirmationCommandDto
 {
+    /**
+     * Movement Document Number
+     */
     private String movementDocumentNumber;
 
     public String getMovementDocumentNumber()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.movementDocumentNumber = movementDocumentNumber;
     }
 
+    /**
+     * Is Approved
+     */
     private Boolean isApproved;
 
     public Boolean getIsApproved()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.isApproved = isApproved;
     }
 
+    /**
+     * Approval Amount
+     */
     private BigDecimal approvalAmount;
 
     public BigDecimal getApprovalAmount()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.approvalAmount = approvalAmount;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.processed = processed;
     }
 
+    /**
+     * Processing
+     */
     private String processing;
 
     public String getProcessing()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.processing = processing;
     }
 
+    /**
+     * Document Type Id
+     */
     private String documentTypeId;
 
     public String getDocumentTypeId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.documentTypeId = documentTypeId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -270,6 +294,10 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
 
     public static class CreateMovementConfirmationDto extends CreateOrMergePatchMovementConfirmationDto
     {
+        public CreateMovementConfirmationDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -283,6 +311,10 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
 
     public static class MergePatchMovementConfirmationDto extends CreateOrMergePatchMovementConfirmationDto
     {
+        public MergePatchMovementConfirmationDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

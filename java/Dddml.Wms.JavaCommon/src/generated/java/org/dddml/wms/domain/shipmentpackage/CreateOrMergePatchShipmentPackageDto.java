@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackageCommandDto
 {
+    /**
+     * Shipment Box Type Id
+     */
     private String shipmentBoxTypeId;
 
     public String getShipmentBoxTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.shipmentBoxTypeId = shipmentBoxTypeId;
     }
 
+    /**
+     * Date Created
+     */
     private java.sql.Timestamp dateCreated;
 
     public java.sql.Timestamp getDateCreated()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.dateCreated = dateCreated;
     }
 
+    /**
+     * This field store the length of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+     */
     private java.math.BigDecimal boxLength;
 
     public java.math.BigDecimal getBoxLength()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.boxLength = boxLength;
     }
 
+    /**
+     * This field store the height of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+     */
     private java.math.BigDecimal boxHeight;
 
     public java.math.BigDecimal getBoxHeight()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.boxHeight = boxHeight;
     }
 
+    /**
+     * This field store the width of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+     */
     private java.math.BigDecimal boxWidth;
 
     public java.math.BigDecimal getBoxWidth()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.boxWidth = boxWidth;
     }
 
+    /**
+     * This field store the unit of measurement of dimension (length, width and height)
+     */
     private String dimensionUomId;
 
     public String getDimensionUomId()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.dimensionUomId = dimensionUomId;
     }
 
+    /**
+     * Weight
+     */
     private java.math.BigDecimal weight;
 
     public java.math.BigDecimal getWeight()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.weight = weight;
     }
 
+    /**
+     * Weight Uom Id
+     */
     private String weightUomId;
 
     public String getWeightUomId()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.weightUomId = weightUomId;
     }
 
+    /**
+     * Insured Value
+     */
     private java.math.BigDecimal insuredValue;
 
     public java.math.BigDecimal getInsuredValue()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
         this.insuredValue = insuredValue;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -321,6 +351,10 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
 
     public static class CreateShipmentPackageDto extends CreateOrMergePatchShipmentPackageDto
     {
+        public CreateShipmentPackageDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -334,6 +368,10 @@ public class CreateOrMergePatchShipmentPackageDto extends AbstractShipmentPackag
 
     public static class MergePatchShipmentPackageDto extends CreateOrMergePatchShipmentPackageDto
     {
+        public MergePatchShipmentPackageDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
 {
+    /**
+     * Warehouse Id
+     */
     private String warehouseId;
 
     public String getWarehouseId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.warehouseId = warehouseId;
     }
 
+    /**
+     * Parent Locator Id
+     */
     private String parentLocatorId;
 
     public String getParentLocatorId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.parentLocatorId = parentLocatorId;
     }
 
+    /**
+     * Locator Type
+     */
     private String locatorType;
 
     public String getLocatorType()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.locatorType = locatorType;
     }
 
+    /**
+     * Priority Number
+     */
     private String priorityNumber;
 
     public String getPriorityNumber()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.priorityNumber = priorityNumber;
     }
 
+    /**
+     * Is Default
+     */
     private Boolean isDefault;
 
     public Boolean getIsDefault()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.isDefault = isDefault;
     }
 
+    /**
+     * X
+     */
     private String x;
 
     public String getX()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.x = x;
     }
 
+    /**
+     * Y
+     */
     private String y;
 
     public String getY()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.y = y;
     }
 
+    /**
+     * Z
+     */
     private String z;
 
     public String getZ()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.z = z;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.description = description;
     }
 
+    /**
+     * Locator Type Id
+     */
     private String locatorTypeId;
 
     public String getLocatorTypeId()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.locatorTypeId = locatorTypeId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -271,6 +304,10 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
 
     public static class CreateLocatorDto extends CreateOrMergePatchLocatorDto
     {
+        public CreateLocatorDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -280,6 +317,10 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
 
     public static class MergePatchLocatorDto extends CreateOrMergePatchLocatorDto
     {
+        public MergePatchLocatorDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

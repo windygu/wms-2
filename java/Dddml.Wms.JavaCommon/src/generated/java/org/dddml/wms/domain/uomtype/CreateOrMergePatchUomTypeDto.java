@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
 {
+    /**
+     * Parent Type Id
+     */
     private String parentTypeId;
 
     public String getParentTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
         this.parentTypeId = parentTypeId;
     }
 
+    /**
+     * Has Table
+     */
     private String hasTable;
 
     public String getHasTable()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
         this.hasTable = hasTable;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -348,6 +360,10 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
 
     public static class CreateUomTypeDto extends CreateOrMergePatchUomTypeDto
     {
+        public CreateUomTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -361,6 +377,10 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
 
     public static class MergePatchUomTypeDto extends CreateOrMergePatchUomTypeDto
     {
+        public MergePatchUomTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

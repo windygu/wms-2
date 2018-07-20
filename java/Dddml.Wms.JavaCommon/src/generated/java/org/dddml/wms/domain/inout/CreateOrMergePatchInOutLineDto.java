@@ -393,6 +393,10 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
 
     public static class CreateInOutLineDto extends CreateOrMergePatchInOutLineDto
     {
+        public CreateInOutLineDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -406,6 +410,10 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
 
     public static class MergePatchInOutLineDto extends CreateOrMergePatchInOutLineDto
     {
+        public MergePatchInOutLineDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

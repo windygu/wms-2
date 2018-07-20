@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
         this.description = description;
     }
 
+    /**
+     * Parent Document Type Id
+     */
     private String parentDocumentTypeId;
 
     public String getParentDocumentTypeId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
         this.parentDocumentTypeId = parentDocumentTypeId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -79,6 +88,10 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
 
     public static class CreateDocumentTypeDto extends CreateOrMergePatchDocumentTypeDto
     {
+        public CreateDocumentTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -88,6 +101,10 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
 
     public static class MergePatchDocumentTypeDto extends CreateOrMergePatchDocumentTypeDto
     {
+        public MergePatchDocumentTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

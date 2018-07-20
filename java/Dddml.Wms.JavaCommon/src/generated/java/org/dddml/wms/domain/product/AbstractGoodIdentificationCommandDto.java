@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractGoodIdentificationCommandDto extends AbstractCommand
 {
+    /**
+     * Good Identification Type Id
+     */
     private String goodIdentificationTypeId;
 
     public String getGoodIdentificationTypeId()

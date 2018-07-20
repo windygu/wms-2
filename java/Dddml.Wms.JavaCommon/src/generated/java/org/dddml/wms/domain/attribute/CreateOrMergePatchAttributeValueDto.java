@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueCommandDto
 {
+    /**
+     * Attribute Value Name
+     */
     private String attributeValueName;
 
     public String getAttributeValueName()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
         this.attributeValueName = attributeValueName;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
         this.description = description;
     }
 
+    /**
+     * Reference Id
+     */
     private String referenceId;
 
     public String getReferenceId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
         this.referenceId = referenceId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -148,6 +160,10 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
 
     public static class CreateAttributeValueDto extends CreateOrMergePatchAttributeValueDto
     {
+        public CreateAttributeValueDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -161,6 +177,10 @@ public class CreateOrMergePatchAttributeValueDto extends AbstractAttributeValueC
 
     public static class MergePatchAttributeValueDto extends CreateOrMergePatchAttributeValueDto
     {
+        public MergePatchAttributeValueDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

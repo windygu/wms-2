@@ -7,6 +7,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInventoryCommandDto
 {
+    /**
+     * Warehouse Id
+     */
     private String warehouseId;
 
     public String getWarehouseId()
@@ -19,6 +22,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.warehouseId = warehouseId;
     }
 
+    /**
+     * Locator Id Pattern
+     */
     private String locatorIdPattern;
 
     public String getLocatorIdPattern()
@@ -31,6 +37,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.locatorIdPattern = locatorIdPattern;
     }
 
+    /**
+     * Product Id Pattern
+     */
     private String productIdPattern;
 
     public String getProductIdPattern()
@@ -43,6 +52,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.productIdPattern = productIdPattern;
     }
 
+    /**
+     * Posted
+     */
     private Boolean posted;
 
     public Boolean getPosted()
@@ -55,6 +67,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.posted = posted;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -67,6 +82,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.processed = processed;
     }
 
+    /**
+     * Processing
+     */
     private String processing;
 
     public String getProcessing()
@@ -79,6 +97,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.processing = processing;
     }
 
+    /**
+     * Document Type Id
+     */
     private String documentTypeId;
 
     public String getDocumentTypeId()
@@ -91,6 +112,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.documentTypeId = documentTypeId;
     }
 
+    /**
+     * Movement Date
+     */
     private Date movementDate;
 
     public Date getMovementDate()
@@ -103,6 +127,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.movementDate = movementDate;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -115,6 +142,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.description = description;
     }
 
+    /**
+     * Is Approved
+     */
     private Boolean isApproved;
 
     public Boolean getIsApproved()
@@ -127,6 +157,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.isApproved = isApproved;
     }
 
+    /**
+     * Approval Amount
+     */
     private BigDecimal approvalAmount;
 
     public BigDecimal getApprovalAmount()
@@ -139,6 +172,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.approvalAmount = approvalAmount;
     }
 
+    /**
+     * Is Quantity Updated
+     */
     private Boolean isQuantityUpdated;
 
     public Boolean getIsQuantityUpdated()
@@ -151,6 +187,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.isQuantityUpdated = isQuantityUpdated;
     }
 
+    /**
+     * Reversal Document Number
+     */
     private String reversalDocumentNumber;
 
     public String getReversalDocumentNumber()
@@ -163,6 +202,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.reversalDocumentNumber = reversalDocumentNumber;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -357,6 +399,10 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
 
     public static class CreatePhysicalInventoryDto extends CreateOrMergePatchPhysicalInventoryDto
     {
+        public CreatePhysicalInventoryDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -366,6 +412,10 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
 
     public static class MergePatchPhysicalInventoryDto extends CreateOrMergePatchPhysicalInventoryDto
     {
+        public MergePatchPhysicalInventoryDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

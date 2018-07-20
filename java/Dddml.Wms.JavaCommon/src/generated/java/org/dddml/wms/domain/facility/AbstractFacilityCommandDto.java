@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractFacilityCommandDto extends AbstractCommand
 {
+    /**
+     * Facility Id
+     */
     private String facilityId;
 
     public String getFacilityId()
@@ -18,6 +21,9 @@ public abstract class AbstractFacilityCommandDto extends AbstractCommand
         this.facilityId = facilityId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

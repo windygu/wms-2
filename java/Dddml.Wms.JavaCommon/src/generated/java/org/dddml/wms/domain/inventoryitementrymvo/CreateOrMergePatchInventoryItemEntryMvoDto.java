@@ -7,6 +7,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventoryItemEntryMvoCommandDto
 {
+    /**
+     * On Hand Quantity
+     */
     private BigDecimal onHandQuantity;
 
     public BigDecimal getOnHandQuantity()
@@ -19,6 +22,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.onHandQuantity = onHandQuantity;
     }
 
+    /**
+     * In Transit Quantity
+     */
     private BigDecimal inTransitQuantity;
 
     public BigDecimal getInTransitQuantity()
@@ -31,6 +37,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inTransitQuantity = inTransitQuantity;
     }
 
+    /**
+     * Reserved Quantity
+     */
     private BigDecimal reservedQuantity;
 
     public BigDecimal getReservedQuantity()
@@ -43,6 +52,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.reservedQuantity = reservedQuantity;
     }
 
+    /**
+     * Occupied Quantity
+     */
     private BigDecimal occupiedQuantity;
 
     public BigDecimal getOccupiedQuantity()
@@ -55,6 +67,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.occupiedQuantity = occupiedQuantity;
     }
 
+    /**
+     * Virtual Quantity
+     */
     private BigDecimal virtualQuantity;
 
     public BigDecimal getVirtualQuantity()
@@ -67,6 +82,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.virtualQuantity = virtualQuantity;
     }
 
+    /**
+     * Source
+     */
     private InventoryItemSourceInfo source;
 
     public InventoryItemSourceInfo getSource()
@@ -79,6 +97,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.source = source;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -91,6 +112,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -103,6 +127,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.active = active;
     }
 
+    /**
+     * Inventory Item On Hand Quantity
+     */
     private BigDecimal inventoryItemOnHandQuantity;
 
     public BigDecimal getInventoryItemOnHandQuantity()
@@ -115,6 +142,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemOnHandQuantity = inventoryItemOnHandQuantity;
     }
 
+    /**
+     * Inventory Item In Transit Quantity
+     */
     private BigDecimal inventoryItemInTransitQuantity;
 
     public BigDecimal getInventoryItemInTransitQuantity()
@@ -127,6 +157,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemInTransitQuantity = inventoryItemInTransitQuantity;
     }
 
+    /**
+     * Inventory Item Reserved Quantity
+     */
     private BigDecimal inventoryItemReservedQuantity;
 
     public BigDecimal getInventoryItemReservedQuantity()
@@ -139,6 +172,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemReservedQuantity = inventoryItemReservedQuantity;
     }
 
+    /**
+     * Inventory Item Occupied Quantity
+     */
     private BigDecimal inventoryItemOccupiedQuantity;
 
     public BigDecimal getInventoryItemOccupiedQuantity()
@@ -151,6 +187,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemOccupiedQuantity = inventoryItemOccupiedQuantity;
     }
 
+    /**
+     * Inventory Item Virtual Quantity
+     */
     private BigDecimal inventoryItemVirtualQuantity;
 
     public BigDecimal getInventoryItemVirtualQuantity()
@@ -163,6 +202,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemVirtualQuantity = inventoryItemVirtualQuantity;
     }
 
+    /**
+     * Inventory Item Created By
+     */
     private String inventoryItemCreatedBy;
 
     public String getInventoryItemCreatedBy()
@@ -175,6 +217,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemCreatedBy = inventoryItemCreatedBy;
     }
 
+    /**
+     * Inventory Item Created At
+     */
     private Date inventoryItemCreatedAt;
 
     public Date getInventoryItemCreatedAt()
@@ -187,6 +232,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemCreatedAt = inventoryItemCreatedAt;
     }
 
+    /**
+     * Inventory Item Updated By
+     */
     private String inventoryItemUpdatedBy;
 
     public String getInventoryItemUpdatedBy()
@@ -199,6 +247,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
         this.inventoryItemUpdatedBy = inventoryItemUpdatedBy;
     }
 
+    /**
+     * Inventory Item Updated At
+     */
     private Date inventoryItemUpdatedAt;
 
     public Date getInventoryItemUpdatedAt()
@@ -483,6 +534,10 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
 
     public static class CreateInventoryItemEntryMvoDto extends CreateOrMergePatchInventoryItemEntryMvoDto
     {
+        public CreateInventoryItemEntryMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -496,6 +551,10 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
 
     public static class MergePatchInventoryItemEntryMvoDto extends CreateOrMergePatchInventoryItemEntryMvoDto
     {
+        public MergePatchInventoryItemEntryMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

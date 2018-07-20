@@ -7,6 +7,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMvoCommandDto
 {
+    /**
+     * The Movement Quantity indicates the quantity of a product that has been moved.
+     */
     private BigDecimal movementQuantity;
 
     public BigDecimal getMovementQuantity()
@@ -19,6 +22,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementQuantity = movementQuantity;
     }
 
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -31,6 +37,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.productId = productId;
     }
 
+    /**
+     * Locator Id From
+     */
     private String locatorIdFrom;
 
     public String getLocatorIdFrom()
@@ -43,6 +52,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.locatorIdFrom = locatorIdFrom;
     }
 
+    /**
+     * Locator Id To
+     */
     private String locatorIdTo;
 
     public String getLocatorIdTo()
@@ -55,6 +67,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.locatorIdTo = locatorIdTo;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -67,6 +82,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -79,6 +97,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.processed = processed;
     }
 
+    /**
+     * Reversal Line Number
+     */
     private String reversalLineNumber;
 
     public String getReversalLineNumber()
@@ -91,6 +112,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.reversalLineNumber = reversalLineNumber;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -103,6 +127,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -115,6 +142,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.active = active;
     }
 
+    /**
+     * Movement Document Status Id
+     */
     private String movementDocumentStatusId;
 
     public String getMovementDocumentStatusId()
@@ -127,6 +157,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementDocumentStatusId = movementDocumentStatusId;
     }
 
+    /**
+     * Movement Movement Date
+     */
     private Date movementMovementDate;
 
     public Date getMovementMovementDate()
@@ -139,6 +172,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementMovementDate = movementMovementDate;
     }
 
+    /**
+     * Movement Posted
+     */
     private Boolean movementPosted;
 
     public Boolean getMovementPosted()
@@ -151,6 +187,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementPosted = movementPosted;
     }
 
+    /**
+     * Movement Processed
+     */
     private Boolean movementProcessed;
 
     public Boolean getMovementProcessed()
@@ -163,6 +202,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementProcessed = movementProcessed;
     }
 
+    /**
+     * Movement Processing
+     */
     private String movementProcessing;
 
     public String getMovementProcessing()
@@ -175,6 +217,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementProcessing = movementProcessing;
     }
 
+    /**
+     * Movement Date Received
+     */
     private Date movementDateReceived;
 
     public Date getMovementDateReceived()
@@ -187,6 +232,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementDateReceived = movementDateReceived;
     }
 
+    /**
+     * Movement Document Type Id
+     */
     private String movementDocumentTypeId;
 
     public String getMovementDocumentTypeId()
@@ -199,6 +247,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementDocumentTypeId = movementDocumentTypeId;
     }
 
+    /**
+     * Movement Is In Transit
+     */
     private Boolean movementIsInTransit;
 
     public Boolean getMovementIsInTransit()
@@ -211,6 +262,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementIsInTransit = movementIsInTransit;
     }
 
+    /**
+     * Movement Is Approved
+     */
     private Boolean movementIsApproved;
 
     public Boolean getMovementIsApproved()
@@ -223,6 +277,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementIsApproved = movementIsApproved;
     }
 
+    /**
+     * Movement Approval Amount
+     */
     private BigDecimal movementApprovalAmount;
 
     public BigDecimal getMovementApprovalAmount()
@@ -235,6 +292,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementApprovalAmount = movementApprovalAmount;
     }
 
+    /**
+     * Movement Shipper Id
+     */
     private String movementShipperId;
 
     public String getMovementShipperId()
@@ -247,6 +307,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementShipperId = movementShipperId;
     }
 
+    /**
+     * Movement Sales Representative Id
+     */
     private String movementSalesRepresentativeId;
 
     public String getMovementSalesRepresentativeId()
@@ -259,6 +322,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementSalesRepresentativeId = movementSalesRepresentativeId;
     }
 
+    /**
+     * Movement Business Partner Id
+     */
     private String movementBusinessPartnerId;
 
     public String getMovementBusinessPartnerId()
@@ -271,6 +337,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementBusinessPartnerId = movementBusinessPartnerId;
     }
 
+    /**
+     * Movement Charge Amount
+     */
     private BigDecimal movementChargeAmount;
 
     public BigDecimal getMovementChargeAmount()
@@ -283,6 +352,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementChargeAmount = movementChargeAmount;
     }
 
+    /**
+     * Movement Create From
+     */
     private String movementCreateFrom;
 
     public String getMovementCreateFrom()
@@ -295,6 +367,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementCreateFrom = movementCreateFrom;
     }
 
+    /**
+     * Movement Freight Amount
+     */
     private BigDecimal movementFreightAmount;
 
     public BigDecimal getMovementFreightAmount()
@@ -307,6 +382,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementFreightAmount = movementFreightAmount;
     }
 
+    /**
+     * Movement Reversal Document Number
+     */
     private String movementReversalDocumentNumber;
 
     public String getMovementReversalDocumentNumber()
@@ -319,6 +397,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementReversalDocumentNumber = movementReversalDocumentNumber;
     }
 
+    /**
+     * Movement Warehouse Id From
+     */
     private String movementWarehouseIdFrom;
 
     public String getMovementWarehouseIdFrom()
@@ -331,6 +412,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementWarehouseIdFrom = movementWarehouseIdFrom;
     }
 
+    /**
+     * Movement Warehouse Id To
+     */
     private String movementWarehouseIdTo;
 
     public String getMovementWarehouseIdTo()
@@ -343,6 +427,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementWarehouseIdTo = movementWarehouseIdTo;
     }
 
+    /**
+     * Movement Description
+     */
     private String movementDescription;
 
     public String getMovementDescription()
@@ -355,6 +442,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementDescription = movementDescription;
     }
 
+    /**
+     * Movement Created By
+     */
     private String movementCreatedBy;
 
     public String getMovementCreatedBy()
@@ -367,6 +457,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementCreatedBy = movementCreatedBy;
     }
 
+    /**
+     * Movement Created At
+     */
     private Date movementCreatedAt;
 
     public Date getMovementCreatedAt()
@@ -379,6 +472,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementCreatedAt = movementCreatedAt;
     }
 
+    /**
+     * Movement Updated By
+     */
     private String movementUpdatedBy;
 
     public String getMovementUpdatedBy()
@@ -391,6 +487,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementUpdatedBy = movementUpdatedBy;
     }
 
+    /**
+     * Movement Updated At
+     */
     private Date movementUpdatedAt;
 
     public Date getMovementUpdatedAt()
@@ -403,6 +502,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementUpdatedAt = movementUpdatedAt;
     }
 
+    /**
+     * Movement Active
+     */
     private Boolean movementActive;
 
     public Boolean getMovementActive()
@@ -415,6 +517,9 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.movementActive = movementActive;
     }
 
+    /**
+     * Movement Deleted
+     */
     private Boolean movementDeleted;
 
     public Boolean getMovementDeleted()
@@ -951,6 +1056,10 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
 
     public static class CreateMovementLineMvoDto extends CreateOrMergePatchMovementLineMvoDto
     {
+        public CreateMovementLineMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -964,6 +1073,10 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
 
     public static class MergePatchMovementLineMvoDto extends CreateOrMergePatchMovementLineMvoDto
     {
+        public MergePatchMovementLineMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

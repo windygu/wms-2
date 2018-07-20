@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInventoryPostingRuleCommandDto extends AbstractCommand
 {
+    /**
+     * Inventory Posting Rule Id
+     */
     private String inventoryPostingRuleId;
 
     public String getInventoryPostingRuleId()
@@ -19,6 +22,9 @@ public abstract class AbstractInventoryPostingRuleCommandDto extends AbstractCom
         this.inventoryPostingRuleId = inventoryPostingRuleId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

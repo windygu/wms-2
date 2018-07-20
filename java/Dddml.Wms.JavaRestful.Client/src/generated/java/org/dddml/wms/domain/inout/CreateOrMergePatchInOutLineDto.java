@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
 {
+    /**
+     * Locator Id
+     */
     private String locatorId;
 
     public String getLocatorId()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.locatorId = locatorId;
     }
 
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.productId = productId;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.description = description;
     }
 
+    /**
+     * Quantity Uom Id
+     */
     private String quantityUomId;
 
     public String getQuantityUomId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.quantityUomId = quantityUomId;
     }
 
+    /**
+     * Movement Quantity
+     */
     private BigDecimal movementQuantity;
 
     public BigDecimal getMovementQuantity()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.movementQuantity = movementQuantity;
     }
 
+    /**
+     * Picked Quantity
+     */
     private BigDecimal pickedQuantity;
 
     public BigDecimal getPickedQuantity()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.pickedQuantity = pickedQuantity;
     }
 
+    /**
+     * Is Invoiced
+     */
     private Boolean isInvoiced;
 
     public Boolean getIsInvoiced()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.isInvoiced = isInvoiced;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.processed = processed;
     }
 
+    /**
+     * Rma Line Number
+     */
     private String rmaLineNumber;
 
     public String getRmaLineNumber()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.rmaLineNumber = rmaLineNumber;
     }
 
+    /**
+     * Reversal Line Number
+     */
     private String reversalLineNumber;
 
     public String getReversalLineNumber()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.reversalLineNumber = reversalLineNumber;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -296,6 +332,10 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
 
     public static class CreateInOutLineDto extends CreateOrMergePatchInOutLineDto
     {
+        public CreateInOutLineDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -305,6 +345,10 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
 
     public static class MergePatchInOutLineDto extends CreateOrMergePatchInOutLineDto
     {
+        public MergePatchInOutLineDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

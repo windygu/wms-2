@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
 {
+    /**
+     * Order Type Id
+     */
     private String orderTypeId;
 
     public String getOrderTypeId()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.orderTypeId = orderTypeId;
     }
 
+    /**
+     * Order Name
+     */
     private String orderName;
 
     public String getOrderName()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.orderName = orderName;
     }
 
+    /**
+     * External Id
+     */
     private String externalId;
 
     public String getExternalId()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.externalId = externalId;
     }
 
+    /**
+     * Sales Channel Enum Id
+     */
     private String salesChannelEnumId;
 
     public String getSalesChannelEnumId()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.salesChannelEnumId = salesChannelEnumId;
     }
 
+    /**
+     * Order Date
+     */
     private java.sql.Timestamp orderDate;
 
     public java.sql.Timestamp getOrderDate()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.orderDate = orderDate;
     }
 
+    /**
+     * Priority
+     */
     private String priority;
 
     public String getPriority()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.priority = priority;
     }
 
+    /**
+     * Entry Date
+     */
     private java.sql.Timestamp entryDate;
 
     public java.sql.Timestamp getEntryDate()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.entryDate = entryDate;
     }
 
+    /**
+     * This will be set to a date when pick sheet of the order is printed
+     */
     private java.sql.Timestamp pickSheetPrintedDate;
 
     public java.sql.Timestamp getPickSheetPrintedDate()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.pickSheetPrintedDate = pickSheetPrintedDate;
     }
 
+    /**
+     * Status Id
+     */
     private String statusId;
 
     public String getStatusId()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.statusId = statusId;
     }
 
+    /**
+     * Currency Uom
+     */
     private String currencyUom;
 
     public String getCurrencyUom()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.currencyUom = currencyUom;
     }
 
+    /**
+     * Sync Status Id
+     */
     private String syncStatusId;
 
     public String getSyncStatusId()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.syncStatusId = syncStatusId;
     }
 
+    /**
+     * Billing Account Id
+     */
     private String billingAccountId;
 
     public String getBillingAccountId()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.billingAccountId = billingAccountId;
     }
 
+    /**
+     * Origin Facility Id
+     */
     private String originFacilityId;
 
     public String getOriginFacilityId()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.originFacilityId = originFacilityId;
     }
 
+    /**
+     * Web Site Id
+     */
     private String webSiteId;
 
     public String getWebSiteId()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.webSiteId = webSiteId;
     }
 
+    /**
+     * Product Store Id
+     */
     private String productStoreId;
 
     public String getProductStoreId()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.productStoreId = productStoreId;
     }
 
+    /**
+     * Terminal Id
+     */
     private String terminalId;
 
     public String getTerminalId()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.terminalId = terminalId;
     }
 
+    /**
+     * Transaction Id
+     */
     private String transactionId;
 
     public String getTransactionId()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.transactionId = transactionId;
     }
 
+    /**
+     * Auto Order Shopping List Id
+     */
     private String autoOrderShoppingListId;
 
     public String getAutoOrderShoppingListId()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.autoOrderShoppingListId = autoOrderShoppingListId;
     }
 
+    /**
+     * Needs Inventory Issuance
+     */
     private String needsInventoryIssuance;
 
     public String getNeedsInventoryIssuance()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.needsInventoryIssuance = needsInventoryIssuance;
     }
 
+    /**
+     * Is Rush Order
+     */
     private String isRushOrder;
 
     public String getIsRushOrder()
@@ -246,6 +306,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.isRushOrder = isRushOrder;
     }
 
+    /**
+     * Internal Code
+     */
     private String internalCode;
 
     public String getInternalCode()
@@ -258,6 +321,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.internalCode = internalCode;
     }
 
+    /**
+     * Remaining Sub Total
+     */
     private java.math.BigDecimal remainingSubTotal;
 
     public java.math.BigDecimal getRemainingSubTotal()
@@ -270,6 +336,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.remainingSubTotal = remainingSubTotal;
     }
 
+    /**
+     * Grand Total
+     */
     private java.math.BigDecimal grandTotal;
 
     public java.math.BigDecimal getGrandTotal()
@@ -282,6 +351,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.grandTotal = grandTotal;
     }
 
+    /**
+     * Invoice Per Shipment
+     */
     private String invoicePerShipment;
 
     public String getInvoicePerShipment()
@@ -294,6 +366,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.invoicePerShipment = invoicePerShipment;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -644,6 +719,10 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
 
     public static class CreateOrderDto extends CreateOrMergePatchOrderDto
     {
+        public CreateOrderDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -653,6 +732,10 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
 
     public static class MergePatchOrderDto extends CreateOrMergePatchOrderDto
     {
+        public MergePatchOrderDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

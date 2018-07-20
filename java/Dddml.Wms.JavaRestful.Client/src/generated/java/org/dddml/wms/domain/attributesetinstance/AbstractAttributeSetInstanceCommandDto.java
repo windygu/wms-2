@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractAttributeSetInstanceCommandDto extends AbstractCommand
 {
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -19,6 +22,9 @@ public abstract class AbstractAttributeSetInstanceCommandDto extends AbstractCom
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

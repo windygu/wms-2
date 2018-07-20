@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProductCommandDto
 {
+    /**
+     * Available Thru Date
+     */
     private java.sql.Timestamp availableThruDate;
 
     public java.sql.Timestamp getAvailableThruDate()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.availableThruDate = availableThruDate;
     }
 
+    /**
+     * Supplier Pref Order Id
+     */
     private String supplierPrefOrderId;
 
     public String getSupplierPrefOrderId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.supplierPrefOrderId = supplierPrefOrderId;
     }
 
+    /**
+     * Supplier Rating Type Id
+     */
     private String supplierRatingTypeId;
 
     public String getSupplierRatingTypeId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.supplierRatingTypeId = supplierRatingTypeId;
     }
 
+    /**
+     * Standard Lead Time Days
+     */
     private java.math.BigDecimal standardLeadTimeDays;
 
     public java.math.BigDecimal getStandardLeadTimeDays()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.standardLeadTimeDays = standardLeadTimeDays;
     }
 
+    /**
+     * Manufacturing Lead Time Days
+     */
     private java.math.BigDecimal manufacturingLeadTimeDays;
 
     public java.math.BigDecimal getManufacturingLeadTimeDays()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.manufacturingLeadTimeDays = manufacturingLeadTimeDays;
     }
 
+    /**
+     * Delivery Lead Time Days
+     */
     private java.math.BigDecimal deliveryLeadTimeDays;
 
     public java.math.BigDecimal getDeliveryLeadTimeDays()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.deliveryLeadTimeDays = deliveryLeadTimeDays;
     }
 
+    /**
+     * Quantity Uom Id
+     */
     private String quantityUomId;
 
     public String getQuantityUomId()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.quantityUomId = quantityUomId;
     }
 
+    /**
+     * Last Price
+     */
     private java.math.BigDecimal lastPrice;
 
     public java.math.BigDecimal getLastPrice()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.lastPrice = lastPrice;
     }
 
+    /**
+     * Shipping Price
+     */
     private java.math.BigDecimal shippingPrice;
 
     public java.math.BigDecimal getShippingPrice()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.shippingPrice = shippingPrice;
     }
 
+    /**
+     * External Product Name
+     */
     private String externalProductName;
 
     public String getExternalProductName()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.externalProductName = externalProductName;
     }
 
+    /**
+     * External Product Id
+     */
     private String externalProductId;
 
     public String getExternalProductId()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.externalProductId = externalProductId;
     }
 
+    /**
+     * Can Drop Ship
+     */
     private Boolean canDropShip;
 
     public Boolean getCanDropShip()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.canDropShip = canDropShip;
     }
 
+    /**
+     * Comments
+     */
     private String comments;
 
     public String getComments()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
         this.comments = comments;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -343,6 +385,10 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
 
     public static class CreateSupplierProductDto extends CreateOrMergePatchSupplierProductDto
     {
+        public CreateSupplierProductDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -352,6 +398,10 @@ public class CreateOrMergePatchSupplierProductDto extends AbstractSupplierProduc
 
     public static class MergePatchSupplierProductDto extends CreateOrMergePatchSupplierProductDto
     {
+        public MergePatchSupplierProductDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

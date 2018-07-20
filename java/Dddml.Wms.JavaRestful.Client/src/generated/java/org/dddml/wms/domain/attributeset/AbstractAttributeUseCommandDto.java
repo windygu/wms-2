@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractAttributeUseCommandDto extends AbstractCommand
 {
+    /**
+     * Attribute Id
+     */
     private String attributeId;
 
     public String getAttributeId()

@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractUomCommandDto extends AbstractCommand
 {
+    /**
+     * Uom Id
+     */
     private String uomId;
 
     public String getUomId()
@@ -18,6 +21,9 @@ public abstract class AbstractUomCommandDto extends AbstractCommand
         this.uomId = uomId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

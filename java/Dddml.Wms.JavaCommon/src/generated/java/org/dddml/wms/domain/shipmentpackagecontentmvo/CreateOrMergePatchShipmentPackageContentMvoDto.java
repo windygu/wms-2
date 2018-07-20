@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShipmentPackageContentMvoCommandDto
 {
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.quantity = quantity;
     }
 
+    /**
+     * Sub Product Id
+     */
     private String subProductId;
 
     public String getSubProductId()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.subProductId = subProductId;
     }
 
+    /**
+     * Sub Product Quantity
+     */
     private java.math.BigDecimal subProductQuantity;
 
     public java.math.BigDecimal getSubProductQuantity()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.subProductQuantity = subProductQuantity;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.active = active;
     }
 
+    /**
+     * Shipment Package Shipment Box Type Id
+     */
     private String shipmentPackageShipmentBoxTypeId;
 
     public String getShipmentPackageShipmentBoxTypeId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageShipmentBoxTypeId = shipmentPackageShipmentBoxTypeId;
     }
 
+    /**
+     * Shipment Package Date Created
+     */
     private java.sql.Timestamp shipmentPackageDateCreated;
 
     public java.sql.Timestamp getShipmentPackageDateCreated()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageDateCreated = shipmentPackageDateCreated;
     }
 
+    /**
+     * This field store the length of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+     */
     private java.math.BigDecimal shipmentPackageBoxLength;
 
     public java.math.BigDecimal getShipmentPackageBoxLength()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageBoxLength = shipmentPackageBoxLength;
     }
 
+    /**
+     * This field store the height of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+     */
     private java.math.BigDecimal shipmentPackageBoxHeight;
 
     public java.math.BigDecimal getShipmentPackageBoxHeight()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageBoxHeight = shipmentPackageBoxHeight;
     }
 
+    /**
+     * This field store the width of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+     */
     private java.math.BigDecimal shipmentPackageBoxWidth;
 
     public java.math.BigDecimal getShipmentPackageBoxWidth()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageBoxWidth = shipmentPackageBoxWidth;
     }
 
+    /**
+     * This field store the unit of measurement of dimension (length, width and height)
+     */
     private String shipmentPackageDimensionUomId;
 
     public String getShipmentPackageDimensionUomId()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageDimensionUomId = shipmentPackageDimensionUomId;
     }
 
+    /**
+     * Shipment Package Weight
+     */
     private java.math.BigDecimal shipmentPackageWeight;
 
     public java.math.BigDecimal getShipmentPackageWeight()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageWeight = shipmentPackageWeight;
     }
 
+    /**
+     * Shipment Package Weight Uom Id
+     */
     private String shipmentPackageWeightUomId;
 
     public String getShipmentPackageWeightUomId()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageWeightUomId = shipmentPackageWeightUomId;
     }
 
+    /**
+     * Shipment Package Insured Value
+     */
     private java.math.BigDecimal shipmentPackageInsuredValue;
 
     public java.math.BigDecimal getShipmentPackageInsuredValue()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageInsuredValue = shipmentPackageInsuredValue;
     }
 
+    /**
+     * Shipment Package Created By
+     */
     private String shipmentPackageCreatedBy;
 
     public String getShipmentPackageCreatedBy()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageCreatedBy = shipmentPackageCreatedBy;
     }
 
+    /**
+     * Shipment Package Created At
+     */
     private Date shipmentPackageCreatedAt;
 
     public Date getShipmentPackageCreatedAt()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageCreatedAt = shipmentPackageCreatedAt;
     }
 
+    /**
+     * Shipment Package Updated By
+     */
     private String shipmentPackageUpdatedBy;
 
     public String getShipmentPackageUpdatedBy()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageUpdatedBy = shipmentPackageUpdatedBy;
     }
 
+    /**
+     * Shipment Package Updated At
+     */
     private Date shipmentPackageUpdatedAt;
 
     public Date getShipmentPackageUpdatedAt()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageUpdatedAt = shipmentPackageUpdatedAt;
     }
 
+    /**
+     * Shipment Package Active
+     */
     private Boolean shipmentPackageActive;
 
     public Boolean getShipmentPackageActive()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
         this.shipmentPackageActive = shipmentPackageActive;
     }
 
+    /**
+     * Shipment Package Deleted
+     */
     private Boolean shipmentPackageDeleted;
 
     public Boolean getShipmentPackageDeleted()
@@ -560,6 +620,10 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
 
     public static class CreateShipmentPackageContentMvoDto extends CreateOrMergePatchShipmentPackageContentMvoDto
     {
+        public CreateShipmentPackageContentMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -573,6 +637,10 @@ public class CreateOrMergePatchShipmentPackageContentMvoDto extends AbstractShip
 
     public static class MergePatchShipmentPackageContentMvoDto extends CreateOrMergePatchShipmentPackageContentMvoDto
     {
+        public MergePatchShipmentPackageContentMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

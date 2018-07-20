@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderShipmentDto extends AbstractOrderShipmentCommandDto
 {
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchOrderShipmentDto extends AbstractOrderShipmentCom
         this.quantity = quantity;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -91,6 +97,10 @@ public class CreateOrMergePatchOrderShipmentDto extends AbstractOrderShipmentCom
 
     public static class CreateOrderShipmentDto extends CreateOrMergePatchOrderShipmentDto
     {
+        public CreateOrderShipmentDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -104,6 +114,10 @@ public class CreateOrMergePatchOrderShipmentDto extends AbstractOrderShipmentCom
 
     public static class MergePatchOrderShipmentDto extends CreateOrMergePatchOrderShipmentDto
     {
+        public MergePatchOrderShipmentDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMvoCommandDto
 {
+    /**
+     * Item Status Id
+     */
     private String itemStatusId;
 
     public String getItemStatusId()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.itemStatusId = itemStatusId;
     }
 
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.quantity = quantity;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.active = active;
     }
 
+    /**
+     * Picklist Bin Picklist Id
+     */
     private String picklistBinPicklistId;
 
     public String getPicklistBinPicklistId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinPicklistId = picklistBinPicklistId;
     }
 
+    /**
+     * Picklist Bin Bin Location Number
+     */
     private Long picklistBinBinLocationNumber;
 
     public Long getPicklistBinBinLocationNumber()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinBinLocationNumber = picklistBinBinLocationNumber;
     }
 
+    /**
+     * Picklist Bin Primary Order Id
+     */
     private String picklistBinPrimaryOrderId;
 
     public String getPicklistBinPrimaryOrderId()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinPrimaryOrderId = picklistBinPrimaryOrderId;
     }
 
+    /**
+     * Picklist Bin Primary Ship Group Seq Id
+     */
     private Long picklistBinPrimaryShipGroupSeqId;
 
     public Long getPicklistBinPrimaryShipGroupSeqId()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinPrimaryShipGroupSeqId = picklistBinPrimaryShipGroupSeqId;
     }
 
+    /**
+     * Picklist Bin Created By
+     */
     private String picklistBinCreatedBy;
 
     public String getPicklistBinCreatedBy()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinCreatedBy = picklistBinCreatedBy;
     }
 
+    /**
+     * Picklist Bin Created At
+     */
     private Date picklistBinCreatedAt;
 
     public Date getPicklistBinCreatedAt()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinCreatedAt = picklistBinCreatedAt;
     }
 
+    /**
+     * Picklist Bin Updated By
+     */
     private String picklistBinUpdatedBy;
 
     public String getPicklistBinUpdatedBy()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinUpdatedBy = picklistBinUpdatedBy;
     }
 
+    /**
+     * Picklist Bin Updated At
+     */
     private Date picklistBinUpdatedAt;
 
     public Date getPicklistBinUpdatedAt()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinUpdatedAt = picklistBinUpdatedAt;
     }
 
+    /**
+     * Picklist Bin Active
+     */
     private Boolean picklistBinActive;
 
     public Boolean getPicklistBinActive()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
         this.picklistBinActive = picklistBinActive;
     }
 
+    /**
+     * Picklist Bin Deleted
+     */
     private Boolean picklistBinDeleted;
 
     public Boolean getPicklistBinDeleted()
@@ -404,6 +446,10 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
 
     public static class CreatePicklistItemMvoDto extends CreateOrMergePatchPicklistItemMvoDto
     {
+        public CreatePicklistItemMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -417,6 +463,10 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
 
     public static class MergePatchPicklistItemMvoDto extends CreateOrMergePatchPicklistItemMvoDto
     {
+        public MergePatchPicklistItemMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

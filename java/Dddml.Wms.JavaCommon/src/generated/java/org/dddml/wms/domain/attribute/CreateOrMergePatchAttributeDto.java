@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
 {
+    /**
+     * Attribute Name
+     */
     private String attributeName;
 
     public String getAttributeName()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.attributeName = attributeName;
     }
 
+    /**
+     * Organization Id
+     */
     private String organizationId;
 
     public String getOrganizationId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.organizationId = organizationId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.description = description;
     }
 
+    /**
+     * The field must have a value for the record to be saved to the database.
+     */
     private Boolean isMandatory;
 
     public Boolean getIsMandatory()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.isMandatory = isMandatory;
     }
 
+    /**
+     * The Attribute Value type deternines the data/validation type.
+     */
     private String attributeValueType;
 
     public String getAttributeValueType()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.attributeValueType = attributeValueType;
     }
 
+    /**
+     * Attribute Value Length
+     */
     private Integer attributeValueLength;
 
     public Integer getAttributeValueLength()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.attributeValueLength = attributeValueLength;
     }
 
+    /**
+     * Is the attribute values a list(enumerable).
+     */
     private Boolean isList;
 
     public Boolean getIsList()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.isList = isList;
     }
 
+    /**
+     * The field name to save this attribute.
+     */
     private String fieldName;
 
     public String getFieldName()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.fieldName = fieldName;
     }
 
+    /**
+     * Reference Id
+     */
     private String referenceId;
 
     public String getReferenceId()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.referenceId = referenceId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -343,6 +373,10 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
 
     public static class CreateAttributeDto extends CreateOrMergePatchAttributeDto
     {
+        public CreateAttributeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -356,6 +390,10 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
 
     public static class MergePatchAttributeDto extends CreateOrMergePatchAttributeDto
     {
+        public MergePatchAttributeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

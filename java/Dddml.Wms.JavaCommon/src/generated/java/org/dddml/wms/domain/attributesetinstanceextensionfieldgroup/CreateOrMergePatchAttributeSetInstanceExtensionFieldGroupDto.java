@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extends AbstractAttributeSetInstanceExtensionFieldGroupCommandDto
 {
+    /**
+     * Field Type
+     */
     private String fieldType;
 
     public String getFieldType()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
         this.fieldType = fieldType;
     }
 
+    /**
+     * Field Length
+     */
     private Integer fieldLength;
 
     public Integer getFieldLength()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
         this.fieldLength = fieldLength;
     }
 
+    /**
+     * Field Count
+     */
     private Integer fieldCount;
 
     public Integer getFieldCount()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
         this.fieldCount = fieldCount;
     }
 
+    /**
+     * Name Format
+     */
     private String nameFormat;
 
     public String getNameFormat()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
         this.nameFormat = nameFormat;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -195,6 +213,10 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
 
     public static class CreateAttributeSetInstanceExtensionFieldGroupDto extends CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto
     {
+        public CreateAttributeSetInstanceExtensionFieldGroupDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -208,6 +230,10 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
 
     public static class MergePatchAttributeSetInstanceExtensionFieldGroupDto extends CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto
     {
+        public MergePatchAttributeSetInstanceExtensionFieldGroupDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

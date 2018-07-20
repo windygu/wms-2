@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderItemMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Order Item Id
+     */
     private OrderItemId orderItemId;
 
     public OrderItemId getOrderItemId()
@@ -19,6 +22,9 @@ public abstract class AbstractOrderItemMvoCommandDto extends AbstractCommand
         this.orderItemId = orderItemId;
     }
 
+    /**
+     * Order Version
+     */
     private Long orderVersion;
 
     public Long getOrderVersion()

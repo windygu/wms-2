@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeUseDto extends AbstractAttributeUseCommandDto
 {
+    /**
+     * Sequence Number
+     */
     private Integer sequenceNumber;
 
     public Integer getSequenceNumber()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchAttributeUseDto extends AbstractAttributeUseComma
         this.sequenceNumber = sequenceNumber;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -55,6 +61,10 @@ public class CreateOrMergePatchAttributeUseDto extends AbstractAttributeUseComma
 
     public static class CreateAttributeUseDto extends CreateOrMergePatchAttributeUseDto
     {
+        public CreateAttributeUseDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -64,6 +74,10 @@ public class CreateOrMergePatchAttributeUseDto extends AbstractAttributeUseComma
 
     public static class MergePatchAttributeUseDto extends CreateOrMergePatchAttributeUseDto
     {
+        public MergePatchAttributeUseDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

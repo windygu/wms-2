@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.description = description;
     }
 
+    /**
+     * Facility Id
+     */
     private String facilityId;
 
     public String getFacilityId()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.facilityId = facilityId;
     }
 
+    /**
+     * Shipment Method Type Id
+     */
     private String shipmentMethodTypeId;
 
     public String getShipmentMethodTypeId()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.shipmentMethodTypeId = shipmentMethodTypeId;
     }
 
+    /**
+     * Status Id
+     */
     private String statusId;
 
     public String getStatusId()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.statusId = statusId;
     }
 
+    /**
+     * Picklist Date
+     */
     private java.sql.Timestamp picklistDate;
 
     public java.sql.Timestamp getPicklistDate()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.picklistDate = picklistDate;
     }
 
+    /**
+     * Pickwave Id
+     */
     private Long pickwaveId;
 
     public Long getPickwaveId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.pickwaveId = pickwaveId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -244,6 +265,10 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
 
     public static class CreatePicklistDto extends CreateOrMergePatchPicklistDto
     {
+        public CreatePicklistDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -257,6 +282,10 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
 
     public static class MergePatchPicklistDto extends CreateOrMergePatchPicklistDto
     {
+        public MergePatchPicklistDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

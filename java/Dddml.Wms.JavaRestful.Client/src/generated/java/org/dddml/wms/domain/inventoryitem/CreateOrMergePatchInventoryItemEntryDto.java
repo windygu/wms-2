@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryItemEntryCommandDto
 {
+    /**
+     * On Hand Quantity
+     */
     private BigDecimal onHandQuantity;
 
     public BigDecimal getOnHandQuantity()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.onHandQuantity = onHandQuantity;
     }
 
+    /**
+     * In Transit Quantity
+     */
     private BigDecimal inTransitQuantity;
 
     public BigDecimal getInTransitQuantity()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.inTransitQuantity = inTransitQuantity;
     }
 
+    /**
+     * Reserved Quantity
+     */
     private BigDecimal reservedQuantity;
 
     public BigDecimal getReservedQuantity()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.reservedQuantity = reservedQuantity;
     }
 
+    /**
+     * Occupied Quantity
+     */
     private BigDecimal occupiedQuantity;
 
     public BigDecimal getOccupiedQuantity()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.occupiedQuantity = occupiedQuantity;
     }
 
+    /**
+     * Virtual Quantity
+     */
     private BigDecimal virtualQuantity;
 
     public BigDecimal getVirtualQuantity()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.virtualQuantity = virtualQuantity;
     }
 
+    /**
+     * Source
+     */
     private InventoryItemSourceInfo source;
 
     public InventoryItemSourceInfo getSource()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.source = source;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -176,6 +197,10 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
 
     public static class CreateInventoryItemEntryDto extends CreateOrMergePatchInventoryItemEntryDto
     {
+        public CreateInventoryItemEntryDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;

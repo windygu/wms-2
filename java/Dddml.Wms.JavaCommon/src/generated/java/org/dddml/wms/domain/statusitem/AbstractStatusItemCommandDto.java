@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractStatusItemCommandDto extends AbstractCommand
 {
+    /**
+     * Status Id
+     */
     private String statusId;
 
     public String getStatusId()
@@ -18,6 +21,9 @@ public abstract class AbstractStatusItemCommandDto extends AbstractCommand
         this.statusId = statusId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

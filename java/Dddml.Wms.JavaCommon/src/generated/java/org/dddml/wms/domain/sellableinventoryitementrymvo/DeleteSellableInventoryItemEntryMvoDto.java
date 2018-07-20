@@ -4,6 +4,10 @@ package org.dddml.wms.domain.sellableinventoryitementrymvo;
 public class DeleteSellableInventoryItemEntryMvoDto extends AbstractSellableInventoryItemEntryMvoCommandDto
 {
 
+    public DeleteSellableInventoryItemEntryMvoDto() {
+        this.commandType = COMMAND_TYPE_DELETE;
+    }
+
     @Override
     public String getCommandType() {
         return COMMAND_TYPE_DELETE;

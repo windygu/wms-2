@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAliasMvoCommandDto
 {
+    /**
+     * Name
+     */
     private String name;
 
     public String getName()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.name = name;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.active = active;
     }
 
+    /**
+     * Attribute Attribute Name
+     */
     private String attributeAttributeName;
 
     public String getAttributeAttributeName()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeAttributeName = attributeAttributeName;
     }
 
+    /**
+     * Attribute Organization Id
+     */
     private String attributeOrganizationId;
 
     public String getAttributeOrganizationId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeOrganizationId = attributeOrganizationId;
     }
 
+    /**
+     * Attribute Description
+     */
     private String attributeDescription;
 
     public String getAttributeDescription()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeDescription = attributeDescription;
     }
 
+    /**
+     * The field must have a value for the record to be saved to the database.
+     */
     private Boolean attributeIsMandatory;
 
     public Boolean getAttributeIsMandatory()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeIsMandatory = attributeIsMandatory;
     }
 
+    /**
+     * The Attribute Value type deternines the data/validation type.
+     */
     private String attributeAttributeValueType;
 
     public String getAttributeAttributeValueType()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeAttributeValueType = attributeAttributeValueType;
     }
 
+    /**
+     * Attribute Attribute Value Length
+     */
     private Integer attributeAttributeValueLength;
 
     public Integer getAttributeAttributeValueLength()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeAttributeValueLength = attributeAttributeValueLength;
     }
 
+    /**
+     * Is the attribute values a list(enumerable).
+     */
     private Boolean attributeIsList;
 
     public Boolean getAttributeIsList()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeIsList = attributeIsList;
     }
 
+    /**
+     * The field name to save this attribute.
+     */
     private String attributeFieldName;
 
     public String getAttributeFieldName()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeFieldName = attributeFieldName;
     }
 
+    /**
+     * Attribute Reference Id
+     */
     private String attributeReferenceId;
 
     public String getAttributeReferenceId()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeReferenceId = attributeReferenceId;
     }
 
+    /**
+     * Attribute Created By
+     */
     private String attributeCreatedBy;
 
     public String getAttributeCreatedBy()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeCreatedBy = attributeCreatedBy;
     }
 
+    /**
+     * Attribute Created At
+     */
     private Date attributeCreatedAt;
 
     public Date getAttributeCreatedAt()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeCreatedAt = attributeCreatedAt;
     }
 
+    /**
+     * Attribute Updated By
+     */
     private String attributeUpdatedBy;
 
     public String getAttributeUpdatedBy()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeUpdatedBy = attributeUpdatedBy;
     }
 
+    /**
+     * Attribute Updated At
+     */
     private Date attributeUpdatedAt;
 
     public Date getAttributeUpdatedAt()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeUpdatedAt = attributeUpdatedAt;
     }
 
+    /**
+     * Attribute Active
+     */
     private Boolean attributeActive;
 
     public Boolean getAttributeActive()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeActive = attributeActive;
     }
 
+    /**
+     * Attribute Deleted
+     */
     private Boolean attributeDeleted;
 
     public Boolean getAttributeDeleted()
@@ -508,6 +562,10 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
 
     public static class CreateAttributeAliasMvoDto extends CreateOrMergePatchAttributeAliasMvoDto
     {
+        public CreateAttributeAliasMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -521,6 +579,10 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
 
     public static class MergePatchAttributeAliasMvoDto extends CreateOrMergePatchAttributeAliasMvoDto
     {
+        public MergePatchAttributeAliasMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

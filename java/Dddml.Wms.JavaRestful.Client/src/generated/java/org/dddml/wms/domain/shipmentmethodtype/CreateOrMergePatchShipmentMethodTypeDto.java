@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentMethodTypeDto extends AbstractShipmentMethodTypeCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchShipmentMethodTypeDto extends AbstractShipmentMet
         this.description = description;
     }
 
+    /**
+     * Sequence Num
+     */
     private Long sequenceNum;
 
     public Long getSequenceNum()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchShipmentMethodTypeDto extends AbstractShipmentMet
         this.sequenceNum = sequenceNum;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -79,6 +88,10 @@ public class CreateOrMergePatchShipmentMethodTypeDto extends AbstractShipmentMet
 
     public static class CreateShipmentMethodTypeDto extends CreateOrMergePatchShipmentMethodTypeDto
     {
+        public CreateShipmentMethodTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -88,6 +101,10 @@ public class CreateOrMergePatchShipmentMethodTypeDto extends AbstractShipmentMet
 
     public static class MergePatchShipmentMethodTypeDto extends CreateOrMergePatchShipmentMethodTypeDto
     {
+        public MergePatchShipmentMethodTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

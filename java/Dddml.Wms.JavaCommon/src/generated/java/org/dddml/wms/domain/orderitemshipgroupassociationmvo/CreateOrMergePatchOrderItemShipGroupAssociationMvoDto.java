@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends AbstractOrderItemShipGroupAssociationMvoCommandDto
 {
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.quantity = quantity;
     }
 
+    /**
+     * Cancel Quantity
+     */
     private java.math.BigDecimal cancelQuantity;
 
     public java.math.BigDecimal getCancelQuantity()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.cancelQuantity = cancelQuantity;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.active = active;
     }
 
+    /**
+     * Order Ship Group Shipment Method Type Id
+     */
     private String orderShipGroupShipmentMethodTypeId;
 
     public String getOrderShipGroupShipmentMethodTypeId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupShipmentMethodTypeId = orderShipGroupShipmentMethodTypeId;
     }
 
+    /**
+     * Order Ship Group Supplier Party Id
+     */
     private String orderShipGroupSupplierPartyId;
 
     public String getOrderShipGroupSupplierPartyId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupSupplierPartyId = orderShipGroupSupplierPartyId;
     }
 
+    /**
+     * For use with multi-vendor stores, order will be split so that each ship group is associated with only one vendor (only if applicable)
+     */
     private String orderShipGroupVendorPartyId;
 
     public String getOrderShipGroupVendorPartyId()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupVendorPartyId = orderShipGroupVendorPartyId;
     }
 
+    /**
+     * Order Ship Group Carrier Party Id
+     */
     private String orderShipGroupCarrierPartyId;
 
     public String getOrderShipGroupCarrierPartyId()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupCarrierPartyId = orderShipGroupCarrierPartyId;
     }
 
+    /**
+     * Order Ship Group Carrier Role Type Id
+     */
     private String orderShipGroupCarrierRoleTypeId;
 
     public String getOrderShipGroupCarrierRoleTypeId()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupCarrierRoleTypeId = orderShipGroupCarrierRoleTypeId;
     }
 
+    /**
+     * Order Ship Group Facility Id
+     */
     private String orderShipGroupFacilityId;
 
     public String getOrderShipGroupFacilityId()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupFacilityId = orderShipGroupFacilityId;
     }
 
+    /**
+     * Order Ship Group Contact Mech Id
+     */
     private String orderShipGroupContactMechId;
 
     public String getOrderShipGroupContactMechId()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupContactMechId = orderShipGroupContactMechId;
     }
 
+    /**
+     * Order Ship Group Telecom Contact Mech Id
+     */
     private String orderShipGroupTelecomContactMechId;
 
     public String getOrderShipGroupTelecomContactMechId()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupTelecomContactMechId = orderShipGroupTelecomContactMechId;
     }
 
+    /**
+     * Order Ship Group Tracking Number
+     */
     private String orderShipGroupTrackingNumber;
 
     public String getOrderShipGroupTrackingNumber()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupTrackingNumber = orderShipGroupTrackingNumber;
     }
 
+    /**
+     * Order Ship Group Shipping Instructions
+     */
     private String orderShipGroupShippingInstructions;
 
     public String getOrderShipGroupShippingInstructions()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupShippingInstructions = orderShipGroupShippingInstructions;
     }
 
+    /**
+     * Order Ship Group May Split
+     */
     private String orderShipGroupMaySplit;
 
     public String getOrderShipGroupMaySplit()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupMaySplit = orderShipGroupMaySplit;
     }
 
+    /**
+     * Order Ship Group Gift Message
+     */
     private String orderShipGroupGiftMessage;
 
     public String getOrderShipGroupGiftMessage()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupGiftMessage = orderShipGroupGiftMessage;
     }
 
+    /**
+     * Order Ship Group Is Gift
+     */
     private String orderShipGroupIsGift;
 
     public String getOrderShipGroupIsGift()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupIsGift = orderShipGroupIsGift;
     }
 
+    /**
+     * Order Ship Group Ship After Date
+     */
     private java.sql.Timestamp orderShipGroupShipAfterDate;
 
     public java.sql.Timestamp getOrderShipGroupShipAfterDate()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupShipAfterDate = orderShipGroupShipAfterDate;
     }
 
+    /**
+     * Order Ship Group Ship By Date
+     */
     private java.sql.Timestamp orderShipGroupShipByDate;
 
     public java.sql.Timestamp getOrderShipGroupShipByDate()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupShipByDate = orderShipGroupShipByDate;
     }
 
+    /**
+     * Order Ship Group Estimated Ship Date
+     */
     private java.sql.Timestamp orderShipGroupEstimatedShipDate;
 
     public java.sql.Timestamp getOrderShipGroupEstimatedShipDate()
@@ -246,6 +306,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupEstimatedShipDate = orderShipGroupEstimatedShipDate;
     }
 
+    /**
+     * Order Ship Group Estimated Delivery Date
+     */
     private java.sql.Timestamp orderShipGroupEstimatedDeliveryDate;
 
     public java.sql.Timestamp getOrderShipGroupEstimatedDeliveryDate()
@@ -258,6 +321,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupEstimatedDeliveryDate = orderShipGroupEstimatedDeliveryDate;
     }
 
+    /**
+     * Order Ship Group Pickwave Id
+     */
     private Long orderShipGroupPickwaveId;
 
     public Long getOrderShipGroupPickwaveId()
@@ -270,6 +336,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupPickwaveId = orderShipGroupPickwaveId;
     }
 
+    /**
+     * Order Ship Group Version
+     */
     private Long orderShipGroupVersion;
 
     public Long getOrderShipGroupVersion()
@@ -282,6 +351,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupVersion = orderShipGroupVersion;
     }
 
+    /**
+     * Order Ship Group Created By
+     */
     private String orderShipGroupCreatedBy;
 
     public String getOrderShipGroupCreatedBy()
@@ -294,6 +366,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupCreatedBy = orderShipGroupCreatedBy;
     }
 
+    /**
+     * Order Ship Group Created At
+     */
     private Date orderShipGroupCreatedAt;
 
     public Date getOrderShipGroupCreatedAt()
@@ -306,6 +381,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupCreatedAt = orderShipGroupCreatedAt;
     }
 
+    /**
+     * Order Ship Group Updated By
+     */
     private String orderShipGroupUpdatedBy;
 
     public String getOrderShipGroupUpdatedBy()
@@ -318,6 +396,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupUpdatedBy = orderShipGroupUpdatedBy;
     }
 
+    /**
+     * Order Ship Group Updated At
+     */
     private Date orderShipGroupUpdatedAt;
 
     public Date getOrderShipGroupUpdatedAt()
@@ -330,6 +411,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupUpdatedAt = orderShipGroupUpdatedAt;
     }
 
+    /**
+     * Order Ship Group Active
+     */
     private Boolean orderShipGroupActive;
 
     public Boolean getOrderShipGroupActive()
@@ -342,6 +426,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupActive = orderShipGroupActive;
     }
 
+    /**
+     * Order Ship Group Deleted
+     */
     private Boolean orderShipGroupDeleted;
 
     public Boolean getOrderShipGroupDeleted()
@@ -354,6 +441,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderShipGroupDeleted = orderShipGroupDeleted;
     }
 
+    /**
+     * Order Order Type Id
+     */
     private String orderOrderTypeId;
 
     public String getOrderOrderTypeId()
@@ -366,6 +456,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderOrderTypeId = orderOrderTypeId;
     }
 
+    /**
+     * Order Order Name
+     */
     private String orderOrderName;
 
     public String getOrderOrderName()
@@ -378,6 +471,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderOrderName = orderOrderName;
     }
 
+    /**
+     * Order External Id
+     */
     private String orderExternalId;
 
     public String getOrderExternalId()
@@ -390,6 +486,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderExternalId = orderExternalId;
     }
 
+    /**
+     * Order Sales Channel Enum Id
+     */
     private String orderSalesChannelEnumId;
 
     public String getOrderSalesChannelEnumId()
@@ -402,6 +501,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderSalesChannelEnumId = orderSalesChannelEnumId;
     }
 
+    /**
+     * Order Order Date
+     */
     private java.sql.Timestamp orderOrderDate;
 
     public java.sql.Timestamp getOrderOrderDate()
@@ -414,6 +516,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderOrderDate = orderOrderDate;
     }
 
+    /**
+     * Order Priority
+     */
     private String orderPriority;
 
     public String getOrderPriority()
@@ -426,6 +531,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderPriority = orderPriority;
     }
 
+    /**
+     * Order Entry Date
+     */
     private java.sql.Timestamp orderEntryDate;
 
     public java.sql.Timestamp getOrderEntryDate()
@@ -438,6 +546,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderEntryDate = orderEntryDate;
     }
 
+    /**
+     * This will be set to a date when pick sheet of the order is printed
+     */
     private java.sql.Timestamp orderPickSheetPrintedDate;
 
     public java.sql.Timestamp getOrderPickSheetPrintedDate()
@@ -450,6 +561,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderPickSheetPrintedDate = orderPickSheetPrintedDate;
     }
 
+    /**
+     * Order Status Id
+     */
     private String orderStatusId;
 
     public String getOrderStatusId()
@@ -462,6 +576,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderStatusId = orderStatusId;
     }
 
+    /**
+     * Order Currency Uom
+     */
     private String orderCurrencyUom;
 
     public String getOrderCurrencyUom()
@@ -474,6 +591,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderCurrencyUom = orderCurrencyUom;
     }
 
+    /**
+     * Order Sync Status Id
+     */
     private String orderSyncStatusId;
 
     public String getOrderSyncStatusId()
@@ -486,6 +606,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderSyncStatusId = orderSyncStatusId;
     }
 
+    /**
+     * Order Billing Account Id
+     */
     private String orderBillingAccountId;
 
     public String getOrderBillingAccountId()
@@ -498,6 +621,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderBillingAccountId = orderBillingAccountId;
     }
 
+    /**
+     * Order Origin Facility Id
+     */
     private String orderOriginFacilityId;
 
     public String getOrderOriginFacilityId()
@@ -510,6 +636,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderOriginFacilityId = orderOriginFacilityId;
     }
 
+    /**
+     * Order Web Site Id
+     */
     private String orderWebSiteId;
 
     public String getOrderWebSiteId()
@@ -522,6 +651,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderWebSiteId = orderWebSiteId;
     }
 
+    /**
+     * Order Product Store Id
+     */
     private String orderProductStoreId;
 
     public String getOrderProductStoreId()
@@ -534,6 +666,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderProductStoreId = orderProductStoreId;
     }
 
+    /**
+     * Order Terminal Id
+     */
     private String orderTerminalId;
 
     public String getOrderTerminalId()
@@ -546,6 +681,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderTerminalId = orderTerminalId;
     }
 
+    /**
+     * Order Transaction Id
+     */
     private String orderTransactionId;
 
     public String getOrderTransactionId()
@@ -558,6 +696,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderTransactionId = orderTransactionId;
     }
 
+    /**
+     * Order Auto Order Shopping List Id
+     */
     private String orderAutoOrderShoppingListId;
 
     public String getOrderAutoOrderShoppingListId()
@@ -570,6 +711,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderAutoOrderShoppingListId = orderAutoOrderShoppingListId;
     }
 
+    /**
+     * Order Needs Inventory Issuance
+     */
     private String orderNeedsInventoryIssuance;
 
     public String getOrderNeedsInventoryIssuance()
@@ -582,6 +726,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderNeedsInventoryIssuance = orderNeedsInventoryIssuance;
     }
 
+    /**
+     * Order Is Rush Order
+     */
     private String orderIsRushOrder;
 
     public String getOrderIsRushOrder()
@@ -594,6 +741,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderIsRushOrder = orderIsRushOrder;
     }
 
+    /**
+     * Order Internal Code
+     */
     private String orderInternalCode;
 
     public String getOrderInternalCode()
@@ -606,6 +756,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderInternalCode = orderInternalCode;
     }
 
+    /**
+     * Order Remaining Sub Total
+     */
     private java.math.BigDecimal orderRemainingSubTotal;
 
     public java.math.BigDecimal getOrderRemainingSubTotal()
@@ -618,6 +771,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderRemainingSubTotal = orderRemainingSubTotal;
     }
 
+    /**
+     * Order Grand Total
+     */
     private java.math.BigDecimal orderGrandTotal;
 
     public java.math.BigDecimal getOrderGrandTotal()
@@ -630,6 +786,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderGrandTotal = orderGrandTotal;
     }
 
+    /**
+     * Order Invoice Per Shipment
+     */
     private String orderInvoicePerShipment;
 
     public String getOrderInvoicePerShipment()
@@ -642,6 +801,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderInvoicePerShipment = orderInvoicePerShipment;
     }
 
+    /**
+     * Order Created By
+     */
     private String orderCreatedBy;
 
     public String getOrderCreatedBy()
@@ -654,6 +816,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderCreatedBy = orderCreatedBy;
     }
 
+    /**
+     * Order Created At
+     */
     private Date orderCreatedAt;
 
     public Date getOrderCreatedAt()
@@ -666,6 +831,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderCreatedAt = orderCreatedAt;
     }
 
+    /**
+     * Order Updated By
+     */
     private String orderUpdatedBy;
 
     public String getOrderUpdatedBy()
@@ -678,6 +846,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderUpdatedBy = orderUpdatedBy;
     }
 
+    /**
+     * Order Updated At
+     */
     private Date orderUpdatedAt;
 
     public Date getOrderUpdatedAt()
@@ -690,6 +861,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
         this.orderUpdatedAt = orderUpdatedAt;
     }
 
+    /**
+     * Order Active
+     */
     private Boolean orderActive;
 
     public Boolean getOrderActive()
@@ -1548,6 +1722,10 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
 
     public static class CreateOrderItemShipGroupAssociationMvoDto extends CreateOrMergePatchOrderItemShipGroupAssociationMvoDto
     {
+        public CreateOrderItemShipGroupAssociationMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -1561,6 +1739,10 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationMvoDto extends Abstr
 
     public static class MergePatchOrderItemShipGroupAssociationMvoDto extends CreateOrMergePatchOrderItemShipGroupAssociationMvoDto
     {
+        public MergePatchOrderItemShipGroupAssociationMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

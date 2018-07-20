@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPickwaveDto extends AbstractPickwaveCommandDto
 {
+    /**
+     * Status Id
+     */
     private String statusId;
 
     public String getStatusId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchPickwaveDto extends AbstractPickwaveCommandDto
         this.statusId = statusId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchPickwaveDto extends AbstractPickwaveCommandDto
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -79,6 +88,10 @@ public class CreateOrMergePatchPickwaveDto extends AbstractPickwaveCommandDto
 
     public static class CreatePickwaveDto extends CreateOrMergePatchPickwaveDto
     {
+        public CreatePickwaveDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -88,6 +101,10 @@ public class CreateOrMergePatchPickwaveDto extends AbstractPickwaveCommandDto
 
     public static class MergePatchPickwaveDto extends CreateOrMergePatchPickwaveDto
     {
+        public MergePatchPickwaveDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

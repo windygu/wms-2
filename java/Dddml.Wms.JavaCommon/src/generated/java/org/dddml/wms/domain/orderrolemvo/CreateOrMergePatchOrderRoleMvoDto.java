@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoCommandDto
 {
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.active = active;
     }
 
+    /**
+     * Order Order Type Id
+     */
     private String orderOrderTypeId;
 
     public String getOrderOrderTypeId()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderOrderTypeId = orderOrderTypeId;
     }
 
+    /**
+     * Order Order Name
+     */
     private String orderOrderName;
 
     public String getOrderOrderName()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderOrderName = orderOrderName;
     }
 
+    /**
+     * Order External Id
+     */
     private String orderExternalId;
 
     public String getOrderExternalId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderExternalId = orderExternalId;
     }
 
+    /**
+     * Order Sales Channel Enum Id
+     */
     private String orderSalesChannelEnumId;
 
     public String getOrderSalesChannelEnumId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderSalesChannelEnumId = orderSalesChannelEnumId;
     }
 
+    /**
+     * Order Order Date
+     */
     private java.sql.Timestamp orderOrderDate;
 
     public java.sql.Timestamp getOrderOrderDate()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderOrderDate = orderOrderDate;
     }
 
+    /**
+     * Order Priority
+     */
     private String orderPriority;
 
     public String getOrderPriority()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderPriority = orderPriority;
     }
 
+    /**
+     * Order Entry Date
+     */
     private java.sql.Timestamp orderEntryDate;
 
     public java.sql.Timestamp getOrderEntryDate()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderEntryDate = orderEntryDate;
     }
 
+    /**
+     * This will be set to a date when pick sheet of the order is printed
+     */
     private java.sql.Timestamp orderPickSheetPrintedDate;
 
     public java.sql.Timestamp getOrderPickSheetPrintedDate()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderPickSheetPrintedDate = orderPickSheetPrintedDate;
     }
 
+    /**
+     * Order Status Id
+     */
     private String orderStatusId;
 
     public String getOrderStatusId()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderStatusId = orderStatusId;
     }
 
+    /**
+     * Order Currency Uom
+     */
     private String orderCurrencyUom;
 
     public String getOrderCurrencyUom()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderCurrencyUom = orderCurrencyUom;
     }
 
+    /**
+     * Order Sync Status Id
+     */
     private String orderSyncStatusId;
 
     public String getOrderSyncStatusId()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderSyncStatusId = orderSyncStatusId;
     }
 
+    /**
+     * Order Billing Account Id
+     */
     private String orderBillingAccountId;
 
     public String getOrderBillingAccountId()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderBillingAccountId = orderBillingAccountId;
     }
 
+    /**
+     * Order Origin Facility Id
+     */
     private String orderOriginFacilityId;
 
     public String getOrderOriginFacilityId()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderOriginFacilityId = orderOriginFacilityId;
     }
 
+    /**
+     * Order Web Site Id
+     */
     private String orderWebSiteId;
 
     public String getOrderWebSiteId()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderWebSiteId = orderWebSiteId;
     }
 
+    /**
+     * Order Product Store Id
+     */
     private String orderProductStoreId;
 
     public String getOrderProductStoreId()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderProductStoreId = orderProductStoreId;
     }
 
+    /**
+     * Order Terminal Id
+     */
     private String orderTerminalId;
 
     public String getOrderTerminalId()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderTerminalId = orderTerminalId;
     }
 
+    /**
+     * Order Transaction Id
+     */
     private String orderTransactionId;
 
     public String getOrderTransactionId()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderTransactionId = orderTransactionId;
     }
 
+    /**
+     * Order Auto Order Shopping List Id
+     */
     private String orderAutoOrderShoppingListId;
 
     public String getOrderAutoOrderShoppingListId()
@@ -246,6 +306,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderAutoOrderShoppingListId = orderAutoOrderShoppingListId;
     }
 
+    /**
+     * Order Needs Inventory Issuance
+     */
     private String orderNeedsInventoryIssuance;
 
     public String getOrderNeedsInventoryIssuance()
@@ -258,6 +321,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderNeedsInventoryIssuance = orderNeedsInventoryIssuance;
     }
 
+    /**
+     * Order Is Rush Order
+     */
     private String orderIsRushOrder;
 
     public String getOrderIsRushOrder()
@@ -270,6 +336,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderIsRushOrder = orderIsRushOrder;
     }
 
+    /**
+     * Order Internal Code
+     */
     private String orderInternalCode;
 
     public String getOrderInternalCode()
@@ -282,6 +351,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderInternalCode = orderInternalCode;
     }
 
+    /**
+     * Order Remaining Sub Total
+     */
     private java.math.BigDecimal orderRemainingSubTotal;
 
     public java.math.BigDecimal getOrderRemainingSubTotal()
@@ -294,6 +366,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderRemainingSubTotal = orderRemainingSubTotal;
     }
 
+    /**
+     * Order Grand Total
+     */
     private java.math.BigDecimal orderGrandTotal;
 
     public java.math.BigDecimal getOrderGrandTotal()
@@ -306,6 +381,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderGrandTotal = orderGrandTotal;
     }
 
+    /**
+     * Order Invoice Per Shipment
+     */
     private String orderInvoicePerShipment;
 
     public String getOrderInvoicePerShipment()
@@ -318,6 +396,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderInvoicePerShipment = orderInvoicePerShipment;
     }
 
+    /**
+     * Order Created By
+     */
     private String orderCreatedBy;
 
     public String getOrderCreatedBy()
@@ -330,6 +411,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderCreatedBy = orderCreatedBy;
     }
 
+    /**
+     * Order Created At
+     */
     private Date orderCreatedAt;
 
     public Date getOrderCreatedAt()
@@ -342,6 +426,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderCreatedAt = orderCreatedAt;
     }
 
+    /**
+     * Order Updated By
+     */
     private String orderUpdatedBy;
 
     public String getOrderUpdatedBy()
@@ -354,6 +441,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderUpdatedBy = orderUpdatedBy;
     }
 
+    /**
+     * Order Updated At
+     */
     private Date orderUpdatedAt;
 
     public Date getOrderUpdatedAt()
@@ -366,6 +456,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
         this.orderUpdatedAt = orderUpdatedAt;
     }
 
+    /**
+     * Order Active
+     */
     private Boolean orderActive;
 
     public Boolean getOrderActive()
@@ -846,6 +939,10 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
 
     public static class CreateOrderRoleMvoDto extends CreateOrMergePatchOrderRoleMvoDto
     {
+        public CreateOrderRoleMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -859,6 +956,10 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
 
     public static class MergePatchOrderRoleMvoDto extends CreateOrMergePatchOrderRoleMvoDto
     {
+        public MergePatchOrderRoleMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

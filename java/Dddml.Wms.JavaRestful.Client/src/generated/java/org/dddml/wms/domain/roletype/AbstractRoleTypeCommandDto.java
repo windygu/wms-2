@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractRoleTypeCommandDto extends AbstractCommand
 {
+    /**
+     * Role Type Id
+     */
     private String roleTypeId;
 
     public String getRoleTypeId()
@@ -18,6 +21,9 @@ public abstract class AbstractRoleTypeCommandDto extends AbstractCommand
         this.roleTypeId = roleTypeId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
