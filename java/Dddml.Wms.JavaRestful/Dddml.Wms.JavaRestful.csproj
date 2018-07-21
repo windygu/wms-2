@@ -244,7 +244,6 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentPackageResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\IndexResource.java" />
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\InOutLineMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -385,7 +384,9 @@
 </LastOutputs>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\main\java\org\dddml\wms\restful\resource\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
