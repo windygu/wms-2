@@ -23,5 +23,10 @@ namespace Dddml.Wms.Domain.Movement
             Apply(e);
         }
 
+        public void AddLine(string lineNumber, string productId, string locatorIdFrom, string locatorIdTo, IDictionary<string, object> attributeSetInstance, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId)
+        {
+            //todo
+            throw new NotImplementedException();
+        }
     }
 }

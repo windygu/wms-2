@@ -58,6 +58,10 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
         update(c, ar -> ar.delete(c));
     }
 
+    public void when(MovementCommands.AddLine c) {
+        update(c, ar -> ar.addLine(c.getLineNumber(), c.getProductId(), c.getLocatorIdFrom(), c.getLocatorIdTo(), c.getAttributeSetInstance(), c.getDescription(), c.getQuantityUomId(), c.getMovementQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+    }
+
     public void when(MovementCommands.DocumentAction c) {
         update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }

@@ -118,6 +118,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((DeleteMovementDto)c);
         }
 
+        public void When(MovementCommands.AddLine c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public void When(MovementCommands.DocumentAction c)
         {
             throw new NotImplementedException();//todo

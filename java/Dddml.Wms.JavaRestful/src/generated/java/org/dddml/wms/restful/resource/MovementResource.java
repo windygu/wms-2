@@ -164,6 +164,23 @@ public class MovementResource {
     }
 
 
+    @PutMapping("{id}/_commands/AddLine")
+    public void addLine(@PathVariable("id") String id, @RequestBody MovementCommandDtos.AddLineRequestContent content) {
+        try {
+
+            MovementCommands.AddLine cmd = content.toAddLine();
+            String idObj = id;
+            if (cmd.getDocumentNumber() == null) {
+                cmd.setDocumentNumber(idObj);
+            } else if (!cmd.getDocumentNumber().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+            }
+            movementApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @PutMapping("{id}/_commands/DocumentAction")
     public void documentAction(@PathVariable("id") String id, @RequestBody MovementCommandDtos.DocumentActionRequestContent content) {
         try {

@@ -174,6 +174,58 @@ aggregates:
             ReversalLineNumber:
               type: string
         
+      # --------------------------------------------
+      # 方法
+      methods:
+      
+        # 对生成的方法进行设置
+        Patch:
+          verificationLogic:
+            Java: >
+              if (!"Drafted".equalsIgnoreCase({this}.getDocumentStatusId())) { throw new IllegalArgumentException("DocumentStatus error."); }
+              
+        # ----------------------------
+        # # 完成
+        # Complete:
+          # parameters:
+        # # 关闭
+        # Close:
+          # parameters:
+        # # 取消
+        # Void:
+          # parameters:
+        # # 反转
+        # Reverse:
+          # parameters:
+          
+    
+        # --------------------------------------
+        # 添加行项
+        AddLine:
+          parameters:
+            LineNumber:
+              type: string
+            # 产品 Id.
+            ProductId:
+              type: id-long
+            # 源货位 Id.
+            LocatorIdFrom:
+              type: string
+            # 目标货位 Id.
+            LocatorIdTo:
+              type: string
+            # --------------------------------
+            # 属性集实例。这里是一个 Map
+            AttributeSetInstance:
+              type: map
+            Description:
+              type: string
+            # 数量单位 Id.
+            QuantityUomId:
+              type: string
+            # 出入库数量.
+            MovementQuantity: 
+              type: decimal
         
       # --------------------------------------------
       metadata:

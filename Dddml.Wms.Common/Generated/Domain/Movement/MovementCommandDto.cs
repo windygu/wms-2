@@ -642,6 +642,58 @@ namespace Dddml.Wms.Domain.Movement
     public static partial class MovementCommandDtos
     {
 
+        public class AddLineRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "AddLine"; }
+            }
+
+            public string LineNumber { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string LocatorIdFrom { get; set; }
+
+            public string LocatorIdTo { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public string Description { get; set; }
+
+            public string QuantityUomId { get; set; }
+
+            public decimal MovementQuantity { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public MovementCommands.AddLine ToAddLine()
+            {
+                var cmd = new MovementCommands.AddLine();
+                cmd.LineNumber = this.LineNumber;
+                cmd.ProductId = this.ProductId;
+                cmd.LocatorIdFrom = this.LocatorIdFrom;
+                cmd.LocatorIdTo = this.LocatorIdTo;
+                cmd.AttributeSetInstance = this.AttributeSetInstance;
+                cmd.Description = this.Description;
+                cmd.QuantityUomId = this.QuantityUomId;
+                cmd.MovementQuantity = this.MovementQuantity;
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
         public class DocumentActionRequestContent : ICommandDto
         {
 

@@ -161,6 +161,25 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = MovementsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/AddLine")]
+        [HttpPut][SetRequesterId]
+        public void AddLine(string id, [FromBody]MovementCommandDtos.AddLineRequestContent content)
+        {
+          try {
+            var cmd = content.ToAddLine();
+            var idObj = id;
+            if (cmd.DocumentNumber == null)
+            {
+                cmd.DocumentNumber = idObj;
+            }
+            else if (!cmd.DocumentNumber.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.DocumentNumber);
+            }
+            _movementApplicationService.When(cmd);
+          } catch (Exception ex) { var response = MovementsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{id}/_commands/DocumentAction")]
         [HttpPut][SetRequesterId]
         public void DocumentAction(string id, [FromBody]MovementCommandDtos.DocumentActionRequestContent content)
