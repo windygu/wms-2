@@ -192,11 +192,23 @@ aggregates:
         # 出入库行项
         InOutLines:
           itemType: InOutLine
+          
+        # 图片
+        InOutImages:
+          itemType: InOutImage
         
       reservedProperties:
         noDeleted: true
                 
       entities:
+      
+        InOutImage:
+          id:
+            name: SequenceId
+            type: id-long-ne
+          properties:
+            Url:
+              type: id-vlong-ne
           
         # 入库/出库行项
         InOutLine:
@@ -273,8 +285,21 @@ aggregates:
             #user2_id numeric(10,0),
             #ad_orgtrx_id numeric(10,0),
             #m_rmaline_id numeric(10,0),
-    
-    
+            
+            InOutLineImages:
+              itemType: InOutLineImage
+            
+          entities:
+          
+            InOutLineImage:
+              id:
+                name: SequenceId
+                type: id-long-ne
+              properties:
+                Url:
+                  type: id-vlong-ne
+           
+
       # --------------------------------------------
       # 方法
       methods:

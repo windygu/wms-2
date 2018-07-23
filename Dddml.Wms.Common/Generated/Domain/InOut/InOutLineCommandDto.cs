@@ -288,6 +288,87 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
+        ICreateInOutLineImageCommands ICreateInOutLine.InOutLineImages
+        {
+            get
+            {
+                return this._inOutLineImages;
+            }
+        }
+
+        IInOutLineImageCommands IMergePatchInOutLine.InOutLineImageCommands
+        {
+            get
+            {
+                return this._inOutLineImages;
+            }
+        }
+
+        public virtual CreateInOutLineImageDto NewCreateInOutLineImage()
+        {
+            var c = new CreateInOutLineImageDto();
+            c.InOutDocumentNumber = this.InOutDocumentNumber;
+
+            c.InOutLineLineNumber = this.LineNumber;
+
+            return c;
+        }
+
+        ICreateInOutLineImage ICreateInOutLine.NewCreateInOutLineImage()
+        {
+            return this.NewCreateInOutLineImage();
+        }
+
+        ICreateInOutLineImage IMergePatchInOutLine.NewCreateInOutLineImage()
+        {
+            return this.NewCreateInOutLineImage();
+        }
+
+        public virtual MergePatchInOutLineImageDto NewMergePatchInOutLineImage()
+        {
+            var c = new MergePatchInOutLineImageDto();
+            c.InOutDocumentNumber = this.InOutDocumentNumber;
+
+            c.InOutLineLineNumber = this.LineNumber;
+
+            return c;
+        }
+
+        IMergePatchInOutLineImage IMergePatchInOutLine.NewMergePatchInOutLineImage()
+        {
+            return this.NewMergePatchInOutLineImage();
+        }
+
+        public virtual RemoveInOutLineImageDto NewRemoveInOutLineImage()
+        {
+            var c = new RemoveInOutLineImageDto();
+            c.InOutDocumentNumber = this.InOutDocumentNumber;
+
+            c.InOutLineLineNumber = this.LineNumber;
+
+            return c;
+        }
+
+        IRemoveInOutLineImage IMergePatchInOutLine.NewRemoveInOutLineImage()
+        {
+            return this.NewRemoveInOutLineImage();
+        }
+
+        private CreateOrMergePatchOrRemoveInOutLineImageDtos _inOutLineImages = new CreateOrMergePatchOrRemoveInOutLineImageDtos();
+
+        public virtual CreateOrMergePatchOrRemoveInOutLineImageDto[] InOutLineImages
+        {
+            get
+            {
+                return _inOutLineImages.ToArray();
+            }
+            set
+            {
+                _inOutLineImages.Clear();
+                _inOutLineImages.AddRange(value);
+            }
+        }
+
 
         string ICommandDto.CommandType 
         {

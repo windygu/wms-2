@@ -22,12 +22,28 @@ alter TABLE `AttributeUses` add
     (`AttributeSetId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `InOutImages` add
+  CONSTRAINT `FK_InOutImage_InOut_StateId` 
+  FOREIGN KEY 
+    (`InOutImageIdInOutDocumentNumber`) 
+  REFERENCES `InOuts` 
+    (`DocumentNumber`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `InOutLines` add
   CONSTRAINT `FK_InOutLine_InOut_StateId` 
   FOREIGN KEY 
     (`InOutLineIdInOutDocumentNumber`) 
   REFERENCES `InOuts` 
     (`DocumentNumber`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `InOutLineImages` add
+  CONSTRAINT `FK_InOutLineImage_InOutLine_StateId` 
+  FOREIGN KEY 
+    (`InOutLineImageIdInOutDocumentNumber`, `InOutLineImageIdInOutLineLineNumber`) 
+  REFERENCES `InOutLines` 
+    (`InOutLineIdInOutDocumentNumber`, `InOutLineIdLineNumber`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 alter TABLE `MovementLines` add

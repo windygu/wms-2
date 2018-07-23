@@ -272,9 +272,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\SetRequesterIdAttribute.cs" />
-    <Compile Include="Generated\Controllers\AttributeAliasMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\AttributesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -288,12 +285,6 @@
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeSetsController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\AttributeUseMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\AttributeValueMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\ContactMechesController.cs">
@@ -314,25 +305,13 @@
     <Compile Include="Generated\Controllers\FacilitiesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\GoodIdentificationMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\GoodIdentificationTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\IdServiceController.cs">
       <DependentUpon>GenerateDomainServicesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\InOutLineMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\InOutsController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\InventoryItemEntryMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\InventoryItemRequirementEntryMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\InventoryItemRequirementsController.cs">
@@ -347,9 +326,6 @@
     <Compile Include="Generated\Controllers\InventoryPRTriggeredsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\ItemIssuanceMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\LocatorsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -362,13 +338,7 @@
     <Compile Include="Generated\Controllers\LotsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\MovementConfirmationLineMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\MovementConfirmationsController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\MovementLineMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\MovementsController.cs">
@@ -377,22 +347,10 @@
     <Compile Include="Generated\Controllers\MovementTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\OrderItemMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\OrderItemShipGroupAssociationMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\OrderItemShipGrpInvReservationsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\OrderRoleMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\OrdersController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\OrderShipGroupMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\OrderShipmentsController.cs">
@@ -419,16 +377,7 @@
     <Compile Include="Generated\Controllers\PhysicalInventoriesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\PhysicalInventoryLineMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\PicklistBinsController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\PicklistItemMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\PicklistRoleMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\PicklistsController.cs">
@@ -452,25 +401,13 @@
     <Compile Include="Generated\Controllers\RoleTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\SellableInventoryItemEntryMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\SellableInventoryItemsController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\ShipmentItemMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\ShipmentMethodTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\ShipmentPackageContentMvosController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Controllers\ShipmentPackagesController.cs">
-      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Controllers\ShipmentReceiptMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\ShipmentsController.cs">
@@ -554,14 +491,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesControllers.txt</LastGenOutput>
       <LastOutputs>
-.\AttributeAliasMvosController.cs
 .\AttributesController.cs
 .\AttributeSetInstanceExtensionFieldGroupsController.cs
 .\AttributeSetInstanceExtensionFieldsController.cs
 .\AttributeSetInstancesController.cs
 .\AttributeSetsController.cs
-.\AttributeUseMvosController.cs
-.\AttributeValueMvosController.cs
 .\ContactMechesController.cs
 .\DamageHandlingMethodsController.cs
 .\DamageReasonsController.cs
@@ -569,31 +503,20 @@
 .\DocumentTypesController.cs
 .\FacilitiesController.cs
 .\GenerateAggregatesControllers.txt
-.\GoodIdentificationMvosController.cs
 .\GoodIdentificationTypesController.cs
-.\InOutLineMvosController.cs
 .\InOutsController.cs
-.\InventoryItemEntryMvosController.cs
-.\InventoryItemRequirementEntryMvosController.cs
 .\InventoryItemRequirementsController.cs
 .\InventoryItemsController.cs
 .\InventoryPostingRulesController.cs
 .\InventoryPRTriggeredsController.cs
-.\ItemIssuanceMvosController.cs
 .\LocatorsController.cs
 .\LocatorTypesController.cs
 .\LotsController.cs
-.\MovementConfirmationLineMvosController.cs
 .\MovementConfirmationsController.cs
-.\MovementLineMvosController.cs
 .\MovementsController.cs
 .\MovementTypesController.cs
-.\OrderItemMvosController.cs
-.\OrderItemShipGroupAssociationMvosController.cs
 .\OrderItemShipGrpInvReservationsController.cs
-.\OrderRoleMvosController.cs
 .\OrdersController.cs
-.\OrderShipGroupMvosController.cs
 .\OrderShipmentsController.cs
 .\OrganizationsController.cs
 .\OrganizationStructuresController.cs
@@ -601,10 +524,7 @@
 .\PartiesController.cs
 .\PartyRolesController.cs
 .\PhysicalInventoriesController.cs
-.\PhysicalInventoryLineMvosController.cs
 .\PicklistBinsController.cs
-.\PicklistItemMvosController.cs
-.\PicklistRoleMvosController.cs
 .\PicklistsController.cs
 .\PickwavesController.cs
 .\ProductCategoriesController.cs
@@ -612,13 +532,9 @@
 .\ProductsController.cs
 .\RejectionReasonsController.cs
 .\RoleTypesController.cs
-.\SellableInventoryItemEntryMvosController.cs
 .\SellableInventoryItemsController.cs
-.\ShipmentItemMvosController.cs
 .\ShipmentMethodTypesController.cs
-.\ShipmentPackageContentMvosController.cs
 .\ShipmentPackagesController.cs
-.\ShipmentReceiptMvosController.cs
 .\ShipmentsController.cs
 .\ShipmentTypesController.cs
 .\StatusItemsController.cs

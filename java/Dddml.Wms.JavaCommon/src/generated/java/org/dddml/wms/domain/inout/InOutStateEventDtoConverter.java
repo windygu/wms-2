@@ -57,6 +57,13 @@ public class InOutStateEventDtoConverter {
         dto.setRmaDocumentNumber(e.getRmaDocumentNumber());
         dto.setReversalDocumentNumber(e.getReversalDocumentNumber());
         dto.setActive(e.getActive());
+        List<InOutImageStateEventDto.InOutImageStateCreatedDto> inOutImageEvents = new ArrayList<>();
+        for (InOutImageEvent.InOutImageStateCreated ee : e.getInOutImageEvents()) {
+            InOutImageStateEventDto.InOutImageStateCreatedDto eeDto = getInOutImageStateEventDtoConverter().toInOutImageStateCreatedDto(ee);
+            inOutImageEvents.add(eeDto);
+        }
+        dto.setInOutImageEvents(inOutImageEvents.toArray(new InOutImageStateEventDto.InOutImageStateCreatedDto[0]));
+
         List<InOutLineStateEventDto.InOutLineStateCreatedDto> inOutLineEvents = new ArrayList<>();
         for (InOutLineEvent.InOutLineStateCreated ee : e.getInOutLineEvents()) {
             InOutLineStateEventDto.InOutLineStateCreatedDto eeDto = getInOutLineStateEventDtoConverter().toInOutLineStateCreatedDto(ee);
@@ -135,6 +142,13 @@ public class InOutStateEventDtoConverter {
         dto.setIsPropertyRmaDocumentNumberRemoved(e.getIsPropertyRmaDocumentNumberRemoved());
         dto.setIsPropertyReversalDocumentNumberRemoved(e.getIsPropertyReversalDocumentNumberRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
+        List<InOutImageStateEventDto> inOutImageEvents = new ArrayList<>();
+        for (InOutImageEvent ee : e.getInOutImageEvents()) {
+            InOutImageStateEventDto eeDto = getInOutImageStateEventDtoConverter().toInOutImageStateEventDto((AbstractInOutImageEvent) ee);
+            inOutImageEvents.add(eeDto);
+        }
+        dto.setInOutImageEvents(inOutImageEvents.toArray(new InOutImageStateEventDto[0]));
+
         List<InOutLineStateEventDto> inOutLineEvents = new ArrayList<>();
         for (InOutLineEvent ee : e.getInOutLineEvents()) {
             InOutLineStateEventDto eeDto = getInOutLineStateEventDtoConverter().toInOutLineStateEventDto((AbstractInOutLineEvent) ee);
@@ -145,6 +159,10 @@ public class InOutStateEventDtoConverter {
         return dto;
     }
 
+
+    protected InOutImageStateEventDtoConverter getInOutImageStateEventDtoConverter() {
+        return new InOutImageStateEventDtoConverter();
+    }
 
     protected InOutLineStateEventDtoConverter getInOutLineStateEventDtoConverter() {
         return new InOutLineStateEventDtoConverter();

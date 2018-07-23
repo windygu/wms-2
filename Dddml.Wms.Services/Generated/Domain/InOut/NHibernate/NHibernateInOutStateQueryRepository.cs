@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentStatusId", "Posted", "Processed", "Processing", "DocumentTypeId", "Description", "OrderId", "DateOrdered", "IsPrinted", "MovementTypeId", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "FreightAmount", "ShipperId", "ChargeAmount", "DatePrinted", "CreatedFrom", "SalesRepresentativeId", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "RmaDocumentNumber", "ReversalDocumentNumber", "InOutLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentStatusId", "Posted", "Processed", "Processing", "DocumentTypeId", "Description", "OrderId", "DateOrdered", "IsPrinted", "MovementTypeId", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "FreightAmount", "ShipperId", "ChargeAmount", "DatePrinted", "CreatedFrom", "SalesRepresentativeId", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "RmaDocumentNumber", "ReversalDocumentNumber", "InOutLines", "InOutImages", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -127,6 +127,24 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public virtual IInOutImageState GetInOutImage(string inOutDocumentNumber, string sequenceId)
+        {
+            var entityId = new InOutImageId(inOutDocumentNumber, sequenceId);
+            return CurrentSession.Get<InOutImageState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IInOutImageState> GetInOutImages(string inOutDocumentNumber)
+        {
+            var criteria = CurrentSession.CreateCriteria<InOutImageState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("InOutImageId.InOutDocumentNumber", inOutDocumentNumber))
+                ;
+
+            return criteria.Add(partIdCondition).List<InOutImageState>();
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, string lineNumber)
         {
             var entityId = new InOutLineId(inOutDocumentNumber, lineNumber);
@@ -142,6 +160,25 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
                 ;
 
             return criteria.Add(partIdCondition).List<InOutLineState>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IInOutLineImageState GetInOutLineImage(string inOutDocumentNumber, string inOutLineLineNumber, string sequenceId)
+        {
+            var entityId = new InOutLineImageId(inOutDocumentNumber, inOutLineLineNumber, sequenceId);
+            return CurrentSession.Get<InOutLineImageState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IInOutLineImageState> GetInOutLineImages(string inOutDocumentNumber, string inOutLineLineNumber)
+        {
+            var criteria = CurrentSession.CreateCriteria<InOutLineImageState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("InOutLineImageId.InOutDocumentNumber", inOutDocumentNumber))
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("InOutLineImageId.InOutLineLineNumber", inOutLineLineNumber))
+                ;
+
+            return criteria.Add(partIdCondition).List<InOutLineImageState>();
         }
 
 

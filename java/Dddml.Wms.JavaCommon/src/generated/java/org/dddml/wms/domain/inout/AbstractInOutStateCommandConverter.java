@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends InOutCommand.CreateInOut, TMergePatchInOut extends InOutCommand.MergePatchInOut, TDeleteInOut extends InOutCommand.DeleteInOut, TCreateInOutLine extends InOutLineCommand.CreateInOutLine, TMergePatchInOutLine extends InOutLineCommand.MergePatchInOutLine, TRemoveInOutLine extends InOutLineCommand.RemoveInOutLine>
+public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends InOutCommand.CreateInOut, TMergePatchInOut extends InOutCommand.MergePatchInOut, TDeleteInOut extends InOutCommand.DeleteInOut, TCreateInOutImage extends InOutImageCommand.CreateInOutImage, TMergePatchInOutImage extends InOutImageCommand.MergePatchInOutImage, TRemoveInOutImage extends InOutImageCommand.RemoveInOutImage, TCreateInOutLine extends InOutLineCommand.CreateInOutLine, TMergePatchInOutLine extends InOutLineCommand.MergePatchInOutLine, TRemoveInOutLine extends InOutLineCommand.RemoveInOutLine, TCreateInOutLineImage extends InOutLineImageCommand.CreateInOutLineImage, TMergePatchInOutLineImage extends InOutLineImageCommand.MergePatchInOutLineImage, TRemoveInOutLineImage extends InOutLineImageCommand.RemoveInOutLineImage>
 {
     public InOutCommand toCreateOrMergePatchInOut(InOutState state)
     {
@@ -99,6 +99,11 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         if (state.getRmaDocumentNumber() == null) { cmd.setIsPropertyRmaDocumentNumberRemoved(true); }
         if (state.getReversalDocumentNumber() == null) { cmd.setIsPropertyReversalDocumentNumberRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        for (InOutImageState d : state.getInOutImages())
+        {
+            InOutImageCommand c = getInOutImageStateCommandConverter().toCreateOrMergePatchInOutImage(d);
+            cmd.getInOutImageCommands().add(c);
+        }
         for (InOutLineState d : state.getInOutLines())
         {
             InOutLineCommand c = getInOutLineStateCommandConverter().toCreateOrMergePatchInOutLine(d);
@@ -143,6 +148,11 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         cmd.setRmaDocumentNumber(state.getRmaDocumentNumber());
         cmd.setReversalDocumentNumber(state.getReversalDocumentNumber());
         cmd.setActive(state.getActive());
+        for (InOutImageState d : state.getInOutImages())
+        {
+            InOutImageCommand.CreateInOutImage c = getInOutImageStateCommandConverter().toCreateInOutImage(d);
+            cmd.getInOutImages().add(c);
+        }
         for (InOutLineState d : state.getInOutLines())
         {
             InOutLineCommand.CreateInOutLine c = getInOutLineStateCommandConverter().toCreateInOutLine(d);
@@ -151,7 +161,10 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         return cmd;
     }
 
-    protected abstract AbstractInOutLineStateCommandConverter<TCreateInOutLine, TMergePatchInOutLine, TRemoveInOutLine>
+    protected abstract AbstractInOutImageStateCommandConverter<TCreateInOutImage, TMergePatchInOutImage, TRemoveInOutImage>
+        getInOutImageStateCommandConverter();
+
+    protected abstract AbstractInOutLineStateCommandConverter<TCreateInOutLine, TMergePatchInOutLine, TRemoveInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage, TRemoveInOutLineImage>
         getInOutLineStateCommandConverter();
 
     protected abstract TCreateInOut newCreateInOut();
@@ -160,7 +173,7 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
 
     protected abstract TDeleteInOut newDeleteInOut();
 
-    public static class SimpleInOutStateCommandConverter extends AbstractInOutStateCommandConverter<AbstractInOutCommand.SimpleCreateInOut, AbstractInOutCommand.SimpleMergePatchInOut, AbstractInOutCommand.SimpleDeleteInOut, AbstractInOutLineCommand.SimpleCreateInOutLine, AbstractInOutLineCommand.SimpleMergePatchInOutLine, AbstractInOutLineCommand.SimpleRemoveInOutLine>
+    public static class SimpleInOutStateCommandConverter extends AbstractInOutStateCommandConverter<AbstractInOutCommand.SimpleCreateInOut, AbstractInOutCommand.SimpleMergePatchInOut, AbstractInOutCommand.SimpleDeleteInOut, AbstractInOutImageCommand.SimpleCreateInOutImage, AbstractInOutImageCommand.SimpleMergePatchInOutImage, AbstractInOutImageCommand.SimpleRemoveInOutImage, AbstractInOutLineCommand.SimpleCreateInOutLine, AbstractInOutLineCommand.SimpleMergePatchInOutLine, AbstractInOutLineCommand.SimpleRemoveInOutLine, AbstractInOutLineImageCommand.SimpleCreateInOutLineImage, AbstractInOutLineImageCommand.SimpleMergePatchInOutLineImage, AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage>
     {
         @Override
         protected AbstractInOutCommand.SimpleCreateInOut newCreateInOut() {
@@ -178,7 +191,13 @@ public abstract class AbstractInOutStateCommandConverter<TCreateInOut extends In
         }
 
         @Override
-        protected AbstractInOutLineStateCommandConverter<AbstractInOutLineCommand.SimpleCreateInOutLine, AbstractInOutLineCommand.SimpleMergePatchInOutLine, AbstractInOutLineCommand.SimpleRemoveInOutLine> getInOutLineStateCommandConverter()
+        protected AbstractInOutImageStateCommandConverter<AbstractInOutImageCommand.SimpleCreateInOutImage, AbstractInOutImageCommand.SimpleMergePatchInOutImage, AbstractInOutImageCommand.SimpleRemoveInOutImage> getInOutImageStateCommandConverter()
+        {
+            return new AbstractInOutImageStateCommandConverter.SimpleInOutImageStateCommandConverter();
+        }
+
+        @Override
+        protected AbstractInOutLineStateCommandConverter<AbstractInOutLineCommand.SimpleCreateInOutLine, AbstractInOutLineCommand.SimpleMergePatchInOutLine, AbstractInOutLineCommand.SimpleRemoveInOutLine, AbstractInOutLineImageCommand.SimpleCreateInOutLineImage, AbstractInOutLineImageCommand.SimpleMergePatchInOutLineImage, AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage> getInOutLineStateCommandConverter()
         {
             return new AbstractInOutLineStateCommandConverter.SimpleInOutLineStateCommandConverter();
         }

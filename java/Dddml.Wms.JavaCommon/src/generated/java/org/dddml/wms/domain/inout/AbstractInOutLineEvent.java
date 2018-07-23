@@ -75,6 +75,49 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         this.inOutLineEventId = eventId;
     }
 
+    protected InOutLineImageEventDao getInOutLineImageEventDao() {
+        return (InOutLineImageEventDao)ApplicationContext.current.get("InOutLineImageEventDao");
+    }
+
+    protected InOutLineImageEventId newInOutLineImageEventId(String sequenceId)
+    {
+        InOutLineImageEventId eventId = new InOutLineImageEventId(this.getInOutLineEventId().getInOutDocumentNumber(), this.getInOutLineEventId().getLineNumber(), 
+            sequenceId, 
+            this.getInOutLineEventId().getInOutVersion());
+        return eventId;
+    }
+
+    protected void throwOnInconsistentEventIds(InOutLineImageEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(InOutLineEvent oe, InOutLineImageEvent e)
+    {
+        if (!oe.getInOutLineEventId().getInOutDocumentNumber().equals(e.getInOutLineImageEventId().getInOutDocumentNumber()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id InOutDocumentNumber %1$s but inner id InOutDocumentNumber %2$s", 
+                oe.getInOutLineEventId().getInOutDocumentNumber(), e.getInOutLineImageEventId().getInOutDocumentNumber());
+        }
+        if (!oe.getInOutLineEventId().getLineNumber().equals(e.getInOutLineImageEventId().getInOutLineLineNumber()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id LineNumber %1$s but inner id InOutLineLineNumber %2$s", 
+                oe.getInOutLineEventId().getLineNumber(), e.getInOutLineImageEventId().getInOutLineLineNumber());
+        }
+    }
+
+    public InOutLineImageEvent.InOutLineImageStateCreated newInOutLineImageStateCreated(String sequenceId) {
+        return new AbstractInOutLineImageEvent.SimpleInOutLineImageStateCreated(newInOutLineImageEventId(sequenceId));
+    }
+
+    public InOutLineImageEvent.InOutLineImageStateMergePatched newInOutLineImageStateMergePatched(String sequenceId) {
+        return new AbstractInOutLineImageEvent.SimpleInOutLineImageStateMergePatched(newInOutLineImageEventId(sequenceId));
+    }
+
+    public InOutLineImageEvent.InOutLineImageStateRemoved newInOutLineImageStateRemoved(String sequenceId) {
+        return new AbstractInOutLineImageEvent.SimpleInOutLineImageStateRemoved(newInOutLineImageEventId(sequenceId));
+    }
+
 
     public abstract String getEventType();
 
@@ -241,7 +284,7 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         }
     }
 
-    public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateCreated
+    public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateCreated, Saveable
     {
         public AbstractInOutLineStateCreated() {
             this(new InOutLineEventId());
@@ -255,10 +298,58 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
             return StateEventType.CREATED;
         }
 
+        private Map<InOutLineImageEventId, InOutLineImageEvent.InOutLineImageStateCreated> inOutLineImageEvents = new HashMap<InOutLineImageEventId, InOutLineImageEvent.InOutLineImageStateCreated>();
+        
+        private Iterable<InOutLineImageEvent.InOutLineImageStateCreated> readOnlyInOutLineImageEvents;
+
+        public Iterable<InOutLineImageEvent.InOutLineImageStateCreated> getInOutLineImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.inOutLineImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyInOutLineImageEvents != null) { return readOnlyInOutLineImageEvents; }
+                InOutLineImageEventDao eventDao = getInOutLineImageEventDao();
+                List<InOutLineImageEvent.InOutLineImageStateCreated> eL = new ArrayList<InOutLineImageEvent.InOutLineImageStateCreated>();
+                for (InOutLineImageEvent e : eventDao.findByInOutLineEventId(this.getInOutLineEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((InOutLineImageEvent.InOutLineImageStateCreated)e);
+                }
+                return (readOnlyInOutLineImageEvents = eL);
+            }
+        }
+
+        public void setInOutLineImageEvents(Iterable<InOutLineImageEvent.InOutLineImageStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (InOutLineImageEvent.InOutLineImageStateCreated e : es)
+                {
+                    addInOutLineImageEvent(e);
+                }
+            }
+            else { this.inOutLineImageEvents.clear(); }
+        }
+        
+        public void addInOutLineImageEvent(InOutLineImageEvent.InOutLineImageStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.inOutLineImageEvents.put(e.getInOutLineImageEventId(), e);
+        }
+
+        public void save()
+        {
+            for (InOutLineImageEvent.InOutLineImageStateCreated e : this.getInOutLineImageEvents()) {
+                getInOutLineImageEventDao().save(e);
+            }
+        }
     }
 
 
-    public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateMergePatched
+    public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateMergePatched, Saveable
     {
         public AbstractInOutLineStateMergePatched() {
             this(new InOutLineEventId());
@@ -392,10 +483,58 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
             this.isPropertyActiveRemoved = removed;
         }
 
+        private Map<InOutLineImageEventId, InOutLineImageEvent> inOutLineImageEvents = new HashMap<InOutLineImageEventId, InOutLineImageEvent>();
+        
+        private Iterable<InOutLineImageEvent> readOnlyInOutLineImageEvents;
+
+        public Iterable<InOutLineImageEvent> getInOutLineImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.inOutLineImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyInOutLineImageEvents != null) { return readOnlyInOutLineImageEvents; }
+                InOutLineImageEventDao eventDao = getInOutLineImageEventDao();
+                List<InOutLineImageEvent> eL = new ArrayList<InOutLineImageEvent>();
+                for (InOutLineImageEvent e : eventDao.findByInOutLineEventId(this.getInOutLineEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((InOutLineImageEvent)e);
+                }
+                return (readOnlyInOutLineImageEvents = eL);
+            }
+        }
+
+        public void setInOutLineImageEvents(Iterable<InOutLineImageEvent> es)
+        {
+            if (es != null)
+            {
+                for (InOutLineImageEvent e : es)
+                {
+                    addInOutLineImageEvent(e);
+                }
+            }
+            else { this.inOutLineImageEvents.clear(); }
+        }
+        
+        public void addInOutLineImageEvent(InOutLineImageEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.inOutLineImageEvents.put(e.getInOutLineImageEventId(), e);
+        }
+
+        public void save()
+        {
+            for (InOutLineImageEvent e : this.getInOutLineImageEvents()) {
+                getInOutLineImageEventDao().save(e);
+            }
+        }
     }
 
 
-    public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateRemoved
+    public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineStateEvent implements InOutLineEvent.InOutLineStateRemoved, Saveable
     {
         public AbstractInOutLineStateRemoved() {
             this(new InOutLineEventId());
@@ -409,6 +548,55 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
             return StateEventType.REMOVED;
         }
 
+		
+        private Map<InOutLineImageEventId, InOutLineImageEvent.InOutLineImageStateRemoved> inOutLineImageEvents = new HashMap<InOutLineImageEventId, InOutLineImageEvent.InOutLineImageStateRemoved>();
+        
+        private Iterable<InOutLineImageEvent.InOutLineImageStateRemoved> readOnlyInOutLineImageEvents;
+
+        public Iterable<InOutLineImageEvent.InOutLineImageStateRemoved> getInOutLineImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.inOutLineImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyInOutLineImageEvents != null) { return readOnlyInOutLineImageEvents; }
+                InOutLineImageEventDao eventDao = getInOutLineImageEventDao();
+                List<InOutLineImageEvent.InOutLineImageStateRemoved> eL = new ArrayList<InOutLineImageEvent.InOutLineImageStateRemoved>();
+                for (InOutLineImageEvent e : eventDao.findByInOutLineEventId(this.getInOutLineEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((InOutLineImageEvent.InOutLineImageStateRemoved)e);
+                }
+                return (readOnlyInOutLineImageEvents = eL);
+            }
+        }
+
+        public void setInOutLineImageEvents(Iterable<InOutLineImageEvent.InOutLineImageStateRemoved> es)
+        {
+            if (es != null)
+            {
+                for (InOutLineImageEvent.InOutLineImageStateRemoved e : es)
+                {
+                    addInOutLineImageEvent(e);
+                }
+            }
+            else { this.inOutLineImageEvents.clear(); }
+        }
+        
+        public void addInOutLineImageEvent(InOutLineImageEvent.InOutLineImageStateRemoved e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.inOutLineImageEvents.put(e.getInOutLineImageEventId(), e);
+        }
+
+        public void save()
+        {
+            for (InOutLineImageEvent.InOutLineImageStateRemoved e : this.getInOutLineImageEvents()) {
+                getInOutLineImageEventDao().save(e);
+            }
+        }
     }
     public static class SimpleInOutLineStateCreated extends AbstractInOutLineStateCreated
     {

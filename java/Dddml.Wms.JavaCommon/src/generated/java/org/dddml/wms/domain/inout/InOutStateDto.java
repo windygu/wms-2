@@ -454,6 +454,18 @@ public class InOutStateDto
         this.updatedAt = updatedAt;
     }
 
+    private InOutImageStateDto[] inOutImages;
+
+    public InOutImageStateDto[] getInOutImages()
+    {
+        return this.inOutImages;
+    }	
+
+    public void setInOutImages(InOutImageStateDto[] inOutImages)
+    {
+        this.inOutImages = inOutImages;
+    }
+
     private InOutLineStateDto[] inOutLines;
 
     public InOutLineStateDto[] getInOutLines()
@@ -469,7 +481,7 @@ public class InOutStateDto
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"InOutLines"});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"InOutImages", "InOutLines"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -602,6 +614,18 @@ public class InOutStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("InOutImages")) {
+                ArrayList<InOutImageStateDto> arrayList = new ArrayList();
+                if (state.getInOutImages() != null) {
+                    InOutImageStateDto.DtoConverter conv = new InOutImageStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "InOutImages");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (InOutImageState s : state.getInOutImages()) {
+                        arrayList.add(conv.toInOutImageStateDto(s));
+                    }
+                }
+                dto.setInOutImages(arrayList.toArray(new InOutImageStateDto[0]));
             }
             if (returnedFieldsContains("InOutLines")) {
                 ArrayList<InOutLineStateDto> arrayList = new ArrayList();

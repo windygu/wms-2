@@ -83,6 +83,33 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
+        private CreateInOutLineImageCommands _inOutLineImages = new CreateInOutLineImageCommands();
+
+        public ICreateInOutLineImageCommands InOutLineImages
+        {
+            get
+            {
+                return this._inOutLineImages;
+            }
+        }
+
+        public CreateInOutLineImage NewCreateInOutLineImage()
+        {
+            var c = new CreateInOutLineImage();
+            c.InOutDocumentNumber = this.InOutDocumentNumber;
+
+            c.InOutLineLineNumber = this.LineNumber;
+
+            return c;
+        }
+
+        ICreateInOutLineImage ICreateInOutLine.NewCreateInOutLineImage()
+        {
+            return this.NewCreateInOutLineImage();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -122,6 +149,64 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
+        private InOutLineImageCommands _inOutLineImageCommands = new InOutLineImageCommands();
+
+        public IInOutLineImageCommands InOutLineImageCommands
+        {
+            get
+            {
+                return this._inOutLineImageCommands;
+            }
+        }
+
+
+        public CreateInOutLineImage NewCreateInOutLineImage()
+        {
+            var c = new CreateInOutLineImage();
+            c.InOutDocumentNumber = this.InOutDocumentNumber;
+
+            c.InOutLineLineNumber = this.LineNumber;
+
+            return c;
+        }
+
+        ICreateInOutLineImage IMergePatchInOutLine.NewCreateInOutLineImage()
+        {
+            return this.NewCreateInOutLineImage();
+        }
+
+        public MergePatchInOutLineImage NewMergePatchInOutLineImage()
+        {
+            var c = new MergePatchInOutLineImage();
+            c.InOutDocumentNumber = this.InOutDocumentNumber;
+
+            c.InOutLineLineNumber = this.LineNumber;
+
+            return c;
+        }
+
+        IMergePatchInOutLineImage IMergePatchInOutLine.NewMergePatchInOutLineImage()
+        {
+            return this.NewMergePatchInOutLineImage();
+        }
+
+
+        public RemoveInOutLineImage NewRemoveInOutLineImage()
+        {
+            var c = new RemoveInOutLineImage();
+            c.InOutDocumentNumber = this.InOutDocumentNumber;
+
+            c.InOutLineLineNumber = this.LineNumber;
+
+            return c;
+        }
+
+        IRemoveInOutLineImage IMergePatchInOutLine.NewRemoveInOutLineImage()
+        {
+            return this.NewRemoveInOutLineImage();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -140,5 +225,68 @@ namespace Dddml.Wms.Domain.InOut
             return Dddml.Wms.Specialization.CommandType.Remove;
         }
 	}
+
+
+    public class CreateInOutLineImageCommands : ICreateInOutLineImageCommands
+    {
+        private List<ICreateInOutLineImage> _innerCommands = new List<ICreateInOutLineImage>();
+
+        public void Add(ICreateInOutLineImage c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateInOutLineImage c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateInOutLineImage> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class InOutLineImageCommands : IInOutLineImageCommands
+    {
+        private List<IInOutLineImageCommand> _innerCommands = new List<IInOutLineImageCommand>();
+
+        public void Add(IInOutLineImageCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IInOutLineImageCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IInOutLineImageCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
 }

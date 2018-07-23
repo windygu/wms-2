@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine extends InOutLineCommand.CreateInOutLine, TMergePatchInOutLine extends InOutLineCommand.MergePatchInOutLine, TRemoveInOutLine extends InOutLineCommand.RemoveInOutLine>
+public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine extends InOutLineCommand.CreateInOutLine, TMergePatchInOutLine extends InOutLineCommand.MergePatchInOutLine, TRemoveInOutLine extends InOutLineCommand.RemoveInOutLine, TCreateInOutLineImage extends InOutLineImageCommand.CreateInOutLineImage, TMergePatchInOutLineImage extends InOutLineImageCommand.MergePatchInOutLineImage, TRemoveInOutLineImage extends InOutLineImageCommand.RemoveInOutLineImage>
 {
     public InOutLineCommand toCreateOrMergePatchInOutLine(InOutLineState state)
     {
@@ -60,6 +60,11 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         if (state.getRmaLineNumber() == null) { cmd.setIsPropertyRmaLineNumberRemoved(true); }
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        for (InOutLineImageState d : state.getInOutLineImages())
+        {
+            InOutLineImageCommand c = getInOutLineImageStateCommandConverter().toCreateOrMergePatchInOutLineImage(d);
+            cmd.getInOutLineImageCommands().add(c);
+        }
         return cmd;
     }
 
@@ -81,8 +86,16 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setActive(state.getActive());
         cmd.setInOutDocumentNumber(state.getInOutDocumentNumber());
+        for (InOutLineImageState d : state.getInOutLineImages())
+        {
+            InOutLineImageCommand.CreateInOutLineImage c = getInOutLineImageStateCommandConverter().toCreateInOutLineImage(d);
+            cmd.getInOutLineImages().add(c);
+        }
         return cmd;
     }
+
+    protected abstract AbstractInOutLineImageStateCommandConverter<TCreateInOutLineImage, TMergePatchInOutLineImage, TRemoveInOutLineImage>
+        getInOutLineImageStateCommandConverter();
 
     protected abstract TCreateInOutLine newCreateInOutLine();
 
@@ -90,7 +103,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
 
     protected abstract TRemoveInOutLine newRemoveInOutLine();
 
-    public static class SimpleInOutLineStateCommandConverter extends AbstractInOutLineStateCommandConverter<AbstractInOutLineCommand.SimpleCreateInOutLine, AbstractInOutLineCommand.SimpleMergePatchInOutLine, AbstractInOutLineCommand.SimpleRemoveInOutLine>
+    public static class SimpleInOutLineStateCommandConverter extends AbstractInOutLineStateCommandConverter<AbstractInOutLineCommand.SimpleCreateInOutLine, AbstractInOutLineCommand.SimpleMergePatchInOutLine, AbstractInOutLineCommand.SimpleRemoveInOutLine, AbstractInOutLineImageCommand.SimpleCreateInOutLineImage, AbstractInOutLineImageCommand.SimpleMergePatchInOutLineImage, AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage>
     {
         @Override
         protected AbstractInOutLineCommand.SimpleCreateInOutLine newCreateInOutLine() {
@@ -105,6 +118,12 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         @Override
         protected AbstractInOutLineCommand.SimpleRemoveInOutLine newRemoveInOutLine() {
             return new AbstractInOutLineCommand.SimpleRemoveInOutLine();
+        }
+
+        @Override
+        protected AbstractInOutLineImageStateCommandConverter<AbstractInOutLineImageCommand.SimpleCreateInOutLineImage, AbstractInOutLineImageCommand.SimpleMergePatchInOutLineImage, AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage> getInOutLineImageStateCommandConverter()
+        {
+            return new AbstractInOutLineImageStateCommandConverter.SimpleInOutLineImageStateCommandConverter();
         }
 
 

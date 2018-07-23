@@ -186,6 +186,18 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchInOutLineImageDto[] inOutLineImages;
+
+    public CreateOrMergePatchInOutLineImageDto[] getInOutLineImages()
+    {
+        return this.inOutLineImages;
+    }
+
+    public void setInOutLineImages(CreateOrMergePatchInOutLineImageDto[] inOutLineImages)
+    {
+        this.inOutLineImages = inOutLineImages;
+    }
+
     private Boolean isPropertyLocatorIdRemoved;
 
     public Boolean getIsPropertyLocatorIdRemoved()

@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.InOut
 
         public static IInOutLineCommand ToCreateOrMergePatchInOutLine(this InOutLineStateDtoWrapper state)
         {
-            return state.ToCreateOrMergePatchInOutLine<CreateInOutLineDto, MergePatchInOutLineDto>();
+            return state.ToCreateOrMergePatchInOutLine<CreateInOutLineDto, MergePatchInOutLineDto, CreateInOutLineImageDto, MergePatchInOutLineImageDto>();
         }
 
         public static RemoveInOutLineDto ToRemoveInOutLine(this InOutLineStateDtoWrapper state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.InOut
 
         public static MergePatchInOutLineDto ToMergePatchInOutLine(this InOutLineStateDtoWrapper state)
         {
-            return state.ToMergePatchInOutLine<MergePatchInOutLineDto>();
+            return state.ToMergePatchInOutLine<MergePatchInOutLineDto, CreateInOutLineImageDto, MergePatchInOutLineImageDto>();
         }
 
         public static CreateInOutLineDto ToCreateInOutLine(this InOutLineStateDtoWrapper state)
         {
-            return state.ToCreateInOutLine<CreateInOutLineDto>();
+            return state.ToCreateInOutLine<CreateInOutLineDto, CreateInOutLineImageDto>();
         }
 		
 

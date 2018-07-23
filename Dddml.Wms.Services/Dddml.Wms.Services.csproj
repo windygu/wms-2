@@ -98,18 +98,6 @@
     <Compile Include="Domain\Services\NHibernate\AttributeSetService.cs" />
     <Compile Include="Domain\Shipment\NHibernate\ShipmentApplicationService.cs" />
     <Compile Include="Domain\Warehouse\WarehouseUtils.cs" />
-    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\AttributeAliasMvoApplicationService.cs">
-      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\NHibernateAttributeAliasMvoEventStore.cs">
-      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\NHibernateAttributeAliasMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\NHibernateAttributeAliasMvoStateRepository.cs">
-      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\AttributeSetInstanceExtensionFieldGroupApplicationService.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -163,30 +151,6 @@
     </Compile>
     <Compile Include="Generated\Domain\AttributeSet\NHibernate\NHibernateAttributeUseStateDao.cs">
       <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\AttributeUseMvoApplicationService.cs">
-      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\NHibernateAttributeUseMvoEventStore.cs">
-      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\NHibernateAttributeUseMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeUseMvo\NHibernate\NHibernateAttributeUseMvoStateRepository.cs">
-      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\AttributeValueMvoApplicationService.cs">
-      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\NHibernateAttributeValueMvoEventStore.cs">
-      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\NHibernateAttributeValueMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeValueMvo\NHibernate\NHibernateAttributeValueMvoStateRepository.cs">
-      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\NHibernate\AttributeApplicationService.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
@@ -275,18 +239,6 @@
     <Compile Include="Generated\Domain\Facility\NHibernate\NHibernateFacilityStateRepository.cs">
       <DependentUpon>GenerateFacilityDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\GoodIdentificationMvoApplicationService.cs">
-      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\NHibernateGoodIdentificationMvoEventStore.cs">
-      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\NHibernateGoodIdentificationMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\GoodIdentificationMvo\NHibernate\NHibernateGoodIdentificationMvoStateRepository.cs">
-      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\GoodIdentificationType\NHibernate\GoodIdentificationTypeApplicationService.cs">
       <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -299,25 +251,25 @@
     <Compile Include="Generated\Domain\GoodIdentificationType\NHibernate\NHibernateGoodIdentificationTypeStateRepository.cs">
       <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\InOutLineMvoApplicationService.cs">
-      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\NHibernateInOutLineMvoEventStore.cs">
-      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\NHibernateInOutLineMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOutLineMvo\NHibernate\NHibernateInOutLineMvoStateRepository.cs">
-      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InOut\NHibernate\InOutApplicationService.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutEventStore.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutImageEventDao.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutImageStateDao.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineEventDao.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineImageEventDao.cs">
+      <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineImageStateDao.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutLineStateDao.cs">
@@ -328,30 +280,6 @@
     </Compile>
     <Compile Include="Generated\Domain\InOut\NHibernate\NHibernateInOutStateRepository.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemEntryMvo\NHibernate\InventoryItemEntryMvoApplicationService.cs">
-      <DependentUpon>GenerateInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemEntryMvo\NHibernate\NHibernateInventoryItemEntryMvoEventStore.cs">
-      <DependentUpon>GenerateInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemEntryMvo\NHibernate\NHibernateInventoryItemEntryMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemEntryMvo\NHibernate\NHibernateInventoryItemEntryMvoStateRepository.cs">
-      <DependentUpon>GenerateInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\NHibernate\InventoryItemRequirementEntryMvoApplicationService.cs">
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\NHibernate\NHibernateInventoryItemRequirementEntryMvoEventStore.cs">
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\NHibernate\NHibernateInventoryItemRequirementEntryMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\NHibernate\NHibernateInventoryItemRequirementEntryMvoStateRepository.cs">
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItemRequirement\NHibernate\InventoryItemRequirementApplicationService.cs">
       <DependentUpon>GenerateInventoryItemRequirementDomainNHibernate.tt</DependentUpon>
@@ -404,18 +332,6 @@
     <Compile Include="Generated\Domain\InventoryPRTriggered\NHibernate\NHibernateInventoryPRTriggeredStateRepository.cs">
       <DependentUpon>GenerateInventoryPRTriggeredDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ItemIssuanceMvo\NHibernate\ItemIssuanceMvoApplicationService.cs">
-      <DependentUpon>GenerateItemIssuanceMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ItemIssuanceMvo\NHibernate\NHibernateItemIssuanceMvoEventStore.cs">
-      <DependentUpon>GenerateItemIssuanceMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ItemIssuanceMvo\NHibernate\NHibernateItemIssuanceMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateItemIssuanceMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ItemIssuanceMvo\NHibernate\NHibernateItemIssuanceMvoStateRepository.cs">
-      <DependentUpon>GenerateItemIssuanceMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\LocatorTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
     </Compile>
@@ -458,18 +374,6 @@
     <Compile Include="Generated\Domain\Lot\NHibernate\NHibernateLotStateRepository.cs">
       <DependentUpon>GenerateLotDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\MovementConfirmationLineMvoApplicationService.cs">
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\NHibernateMovementConfirmationLineMvoEventStore.cs">
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\NHibernateMovementConfirmationLineMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\NHibernateMovementConfirmationLineMvoStateRepository.cs">
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\MovementConfirmationApplicationService.cs">
       <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -487,18 +391,6 @@
     </Compile>
     <Compile Include="Generated\Domain\MovementConfirmation\NHibernate\NHibernateMovementConfirmationStateRepository.cs">
       <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementLineMvo\NHibernate\MovementLineMvoApplicationService.cs">
-      <DependentUpon>GenerateMovementLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementLineMvo\NHibernate\NHibernateMovementLineMvoEventStore.cs">
-      <DependentUpon>GenerateMovementLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementLineMvo\NHibernate\NHibernateMovementLineMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateMovementLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementLineMvo\NHibernate\NHibernateMovementLineMvoStateRepository.cs">
-      <DependentUpon>GenerateMovementLineMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\MovementType\NHibernate\MovementTypeApplicationService.cs">
       <DependentUpon>GenerateMovementTypeDomainNHibernate.tt</DependentUpon>
@@ -533,30 +425,6 @@
     <Compile Include="Generated\Domain\NHibernate\NHibernateOrganizationTreeRepository.cs">
       <DependentUpon>GenerateNHibernateTrees.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrderItemMvo\NHibernate\NHibernateOrderItemMvoEventStore.cs">
-      <DependentUpon>GenerateOrderItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemMvo\NHibernate\NHibernateOrderItemMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateOrderItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemMvo\NHibernate\NHibernateOrderItemMvoStateRepository.cs">
-      <DependentUpon>GenerateOrderItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemMvo\NHibernate\OrderItemMvoApplicationService.cs">
-      <DependentUpon>GenerateOrderItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\NHibernateOrderItemShipGroupAssociationMvoEventStore.cs">
-      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\NHibernateOrderItemShipGroupAssociationMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\NHibernateOrderItemShipGroupAssociationMvoStateRepository.cs">
-      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\OrderItemShipGroupAssociationMvoApplicationService.cs">
-      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\OrderItemShipGrpInvReservation\NHibernate\NHibernateOrderItemShipGrpInvReservationEventStore.cs">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -568,30 +436,6 @@
     </Compile>
     <Compile Include="Generated\Domain\OrderItemShipGrpInvReservation\NHibernate\OrderItemShipGrpInvReservationApplicationService.cs">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderRoleMvo\NHibernate\NHibernateOrderRoleMvoEventStore.cs">
-      <DependentUpon>GenerateOrderRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderRoleMvo\NHibernate\NHibernateOrderRoleMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateOrderRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderRoleMvo\NHibernate\NHibernateOrderRoleMvoStateRepository.cs">
-      <DependentUpon>GenerateOrderRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderRoleMvo\NHibernate\OrderRoleMvoApplicationService.cs">
-      <DependentUpon>GenerateOrderRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipGroupMvo\NHibernate\NHibernateOrderShipGroupMvoEventStore.cs">
-      <DependentUpon>GenerateOrderShipGroupMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipGroupMvo\NHibernate\NHibernateOrderShipGroupMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateOrderShipGroupMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipGroupMvo\NHibernate\NHibernateOrderShipGroupMvoStateRepository.cs">
-      <DependentUpon>GenerateOrderShipGroupMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipGroupMvo\NHibernate\OrderShipGroupMvoApplicationService.cs">
-      <DependentUpon>GenerateOrderShipGroupMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrderShipment\NHibernate\NHibernateOrderShipmentEventStore.cs">
       <DependentUpon>GenerateOrderShipmentDomainNHibernate.tt</DependentUpon>
@@ -698,18 +542,6 @@
     <Compile Include="Generated\Domain\Party\NHibernate\PartyApplicationService.cs">
       <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\NHibernatePhysicalInventoryLineMvoEventStore.cs">
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\NHibernatePhysicalInventoryLineMvoStateQueryRepository.cs">
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\NHibernatePhysicalInventoryLineMvoStateRepository.cs">
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\PhysicalInventoryLineMvoApplicationService.cs">
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\PhysicalInventory\NHibernate\NHibernatePhysicalInventoryEventStore.cs">
       <DependentUpon>GeneratePhysicalInventoryDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -745,30 +577,6 @@
     </Compile>
     <Compile Include="Generated\Domain\PicklistBin\NHibernate\PicklistBinApplicationService.cs">
       <DependentUpon>GeneratePicklistBinDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistItemMvo\NHibernate\NHibernatePicklistItemMvoEventStore.cs">
-      <DependentUpon>GeneratePicklistItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistItemMvo\NHibernate\NHibernatePicklistItemMvoStateQueryRepository.cs">
-      <DependentUpon>GeneratePicklistItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistItemMvo\NHibernate\NHibernatePicklistItemMvoStateRepository.cs">
-      <DependentUpon>GeneratePicklistItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistItemMvo\NHibernate\PicklistItemMvoApplicationService.cs">
-      <DependentUpon>GeneratePicklistItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistRoleMvo\NHibernate\NHibernatePicklistRoleMvoEventStore.cs">
-      <DependentUpon>GeneratePicklistRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistRoleMvo\NHibernate\NHibernatePicklistRoleMvoStateQueryRepository.cs">
-      <DependentUpon>GeneratePicklistRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistRoleMvo\NHibernate\NHibernatePicklistRoleMvoStateRepository.cs">
-      <DependentUpon>GeneratePicklistRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PicklistRoleMvo\NHibernate\PicklistRoleMvoApplicationService.cs">
-      <DependentUpon>GeneratePicklistRoleMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Picklist\NHibernate\NHibernatePicklistEventStore.cs">
       <DependentUpon>GeneratePicklistDomainNHibernate.tt</DependentUpon>
@@ -866,18 +674,6 @@
     <Compile Include="Generated\Domain\RoleType\NHibernate\RoleTypeApplicationService.cs">
       <DependentUpon>GenerateRoleTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\NHibernateSellableInventoryItemEntryMvoEventStore.cs">
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\NHibernateSellableInventoryItemEntryMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\NHibernateSellableInventoryItemEntryMvoStateRepository.cs">
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\SellableInventoryItemEntryMvoApplicationService.cs">
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\NHibernate\NHibernateSellableInventoryItemEntryStateDao.cs">
       <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -890,18 +686,6 @@
     <Compile Include="Generated\Domain\SellableInventoryItem\NHibernate\SellableInventoryItemApplicationService.cs">
       <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ShipmentItemMvo\NHibernate\NHibernateShipmentItemMvoEventStore.cs">
-      <DependentUpon>GenerateShipmentItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentItemMvo\NHibernate\NHibernateShipmentItemMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateShipmentItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentItemMvo\NHibernate\NHibernateShipmentItemMvoStateRepository.cs">
-      <DependentUpon>GenerateShipmentItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentItemMvo\NHibernate\ShipmentItemMvoApplicationService.cs">
-      <DependentUpon>GenerateShipmentItemMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\ShipmentMethodType\NHibernate\NHibernateShipmentMethodTypeEventStore.cs">
       <DependentUpon>GenerateShipmentMethodTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -913,18 +697,6 @@
     </Compile>
     <Compile Include="Generated\Domain\ShipmentMethodType\NHibernate\ShipmentMethodTypeApplicationService.cs">
       <DependentUpon>GenerateShipmentMethodTypeDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentPackageContentMvo\NHibernate\NHibernateShipmentPackageContentMvoEventStore.cs">
-      <DependentUpon>GenerateShipmentPackageContentMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentPackageContentMvo\NHibernate\NHibernateShipmentPackageContentMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateShipmentPackageContentMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentPackageContentMvo\NHibernate\NHibernateShipmentPackageContentMvoStateRepository.cs">
-      <DependentUpon>GenerateShipmentPackageContentMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentPackageContentMvo\NHibernate\ShipmentPackageContentMvoApplicationService.cs">
-      <DependentUpon>GenerateShipmentPackageContentMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ShipmentPackage\NHibernate\NHibernateShipmentPackageContentEventDao.cs">
       <DependentUpon>GenerateShipmentPackageDomainNHibernate.tt</DependentUpon>
@@ -943,18 +715,6 @@
     </Compile>
     <Compile Include="Generated\Domain\ShipmentPackage\NHibernate\ShipmentPackageApplicationService.cs">
       <DependentUpon>GenerateShipmentPackageDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\NHibernateShipmentReceiptMvoEventStore.cs">
-      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\NHibernateShipmentReceiptMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\NHibernateShipmentReceiptMvoStateRepository.cs">
-      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\ShipmentReceiptMvoApplicationService.cs">
-      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ShipmentType\NHibernate\NHibernateShipmentTypeStateQueryRepository.cs">
       <DependentUpon>GenerateShipmentTypeDomainNHibernate.tt</DependentUpon>
@@ -1108,11 +868,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Domain\NHibernate\Mappings\TypeDefs.hbm.xml" />
     <EmbeddedResource Include="Domain\Hello\NHibernate\Mappings\HelloState.hbm.xml" />
-    <Content Include="Generated\Domain\AttributeAliasMvo\NHibernate\GenerateAttributeAliasMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1132,16 +887,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\AttributeUseMvo\NHibernate\GenerateAttributeUseMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAttributeUseMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\AttributeValueMvo\NHibernate\GenerateAttributeValueMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAttributeValueMvoDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\Attribute\NHibernate\GenerateAttributeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1192,35 +937,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\GoodIdentificationMvo\NHibernate\GenerateGoodIdentificationMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateGoodIdentificationMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\GoodIdentificationType\NHibernate\GenerateGoodIdentificationTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\InOutLineMvo\NHibernate\GenerateInOutLineMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateInOutLineMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\InOut\NHibernate\GenerateInOutDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\InventoryItemEntryMvo\NHibernate\GenerateInventoryItemEntryMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\InventoryItemRequirementEntryMvo\NHibernate\GenerateInventoryItemRequirementEntryMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\InventoryItemRequirement\NHibernate\GenerateInventoryItemRequirementDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1242,11 +967,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryPRTriggeredDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\ItemIssuanceMvo\NHibernate\GenerateItemIssuanceMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateItemIssuanceMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\LocatorType\NHibernate\GenerateLocatorTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1262,20 +982,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateLotDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\GenerateMovementConfirmationLineMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\MovementConfirmation\NHibernate\GenerateMovementConfirmationDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementConfirmationDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\MovementLineMvo\NHibernate\GenerateMovementLineMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateMovementLineMvoDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\MovementType\NHibernate\GenerateMovementTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1301,30 +1011,10 @@
 .\NHibernateOrganizationTreeRepository.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Domain\OrderItemMvo\NHibernate\GenerateOrderItemMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrderItemMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\OrderItemShipGrpInvReservation\NHibernate\GenerateOrderItemShipGrpInvReservationDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\OrderRoleMvo\NHibernate\GenerateOrderRoleMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrderRoleMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\OrderShipGroupMvo\NHibernate\GenerateOrderShipGroupMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrderShipGroupMvoDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\OrderShipment\NHibernate\GenerateOrderShipmentDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1356,11 +1046,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\GeneratePhysicalInventoryLineMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\PhysicalInventory\NHibernate\GeneratePhysicalInventoryDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1370,16 +1055,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePicklistBinDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\PicklistItemMvo\NHibernate\GeneratePicklistItemMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GeneratePicklistItemMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\PicklistRoleMvo\NHibernate\GeneratePicklistRoleMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GeneratePicklistRoleMvoDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\Picklist\NHibernate\GeneratePicklistDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1416,40 +1091,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateRoleTypeDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\GenerateSellableInventoryItemEntryMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\SellableInventoryItem\NHibernate\GenerateSellableInventoryItemDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateSellableInventoryItemDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\ShipmentItemMvo\NHibernate\GenerateShipmentItemMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateShipmentItemMvoDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\ShipmentMethodType\NHibernate\GenerateShipmentMethodTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentMethodTypeDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\ShipmentPackageContentMvo\NHibernate\GenerateShipmentPackageContentMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateShipmentPackageContentMvoDomainNHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="Generated\Domain\ShipmentPackage\NHibernate\GenerateShipmentPackageDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentPackageDomainNHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\GenerateShipmentReceiptMvoDomainNHibernate.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\ShipmentType\NHibernate\GenerateShipmentTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1536,15 +1191,6 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeValueMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeAliasMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeUseMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1575,22 +1221,11 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeSetInstanceExtensionFieldGroupEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeValueMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeAliasMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeUseMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
 .\AttributeAliasEvent.hbm.xml
-.\AttributeAliasMvoEvent.hbm.xml
-.\AttributeAliasMvoState.hbm.xml
 .\AttributeAliasState.hbm.xml
 .\AttributeEvent.hbm.xml
 .\AttributeSetEvent.hbm.xml
@@ -1602,12 +1237,8 @@
 .\AttributeSetState.hbm.xml
 .\AttributeState.hbm.xml
 .\AttributeUseEvent.hbm.xml
-.\AttributeUseMvoEvent.hbm.xml
-.\AttributeUseMvoState.hbm.xml
 .\AttributeUseState.hbm.xml
 .\AttributeValueEvent.hbm.xml
-.\AttributeValueMvoEvent.hbm.xml
-.\AttributeValueMvoState.hbm.xml
 .\AttributeValueState.hbm.xml
 .\ContactMechEvent.hbm.xml
 .\ContactMechState.hbm.xml
@@ -1620,23 +1251,19 @@
 .\FacilityState.hbm.xml
 .\GenerateAggregatesHbm.txt
 .\GoodIdentificationEvent.hbm.xml
-.\GoodIdentificationMvoEvent.hbm.xml
-.\GoodIdentificationMvoState.hbm.xml
 .\GoodIdentificationState.hbm.xml
 .\GoodIdentificationTypeEvent.hbm.xml
 .\GoodIdentificationTypeState.hbm.xml
 .\InOutEvent.hbm.xml
+.\InOutImageEvent.hbm.xml
+.\InOutImageState.hbm.xml
 .\InOutLineEvent.hbm.xml
-.\InOutLineMvoEvent.hbm.xml
-.\InOutLineMvoState.hbm.xml
+.\InOutLineImageEvent.hbm.xml
+.\InOutLineImageState.hbm.xml
 .\InOutLineState.hbm.xml
 .\InOutState.hbm.xml
-.\InventoryItemEntryMvoEvent.hbm.xml
-.\InventoryItemEntryMvoState.hbm.xml
 .\InventoryItemEntryState.hbm.xml
 .\InventoryItemEvent.hbm.xml
-.\InventoryItemRequirementEntryMvoEvent.hbm.xml
-.\InventoryItemRequirementEntryMvoState.hbm.xml
 .\InventoryItemRequirementEntryState.hbm.xml
 .\InventoryItemRequirementState.hbm.xml
 .\InventoryItemState.hbm.xml
@@ -1644,8 +1271,6 @@
 .\InventoryPostingRuleState.hbm.xml
 .\InventoryPRTriggeredState.hbm.xml
 .\ItemIssuanceEvent.hbm.xml
-.\ItemIssuanceMvoEvent.hbm.xml
-.\ItemIssuanceMvoState.hbm.xml
 .\ItemIssuanceState.hbm.xml
 .\LocatorEvent.hbm.xml
 .\LocatorState.hbm.xml
@@ -1655,35 +1280,23 @@
 .\LotState.hbm.xml
 .\MovementConfirmationEvent.hbm.xml
 .\MovementConfirmationLineEvent.hbm.xml
-.\MovementConfirmationLineMvoEvent.hbm.xml
-.\MovementConfirmationLineMvoState.hbm.xml
 .\MovementConfirmationLineState.hbm.xml
 .\MovementConfirmationState.hbm.xml
 .\MovementEvent.hbm.xml
 .\MovementLineEvent.hbm.xml
-.\MovementLineMvoEvent.hbm.xml
-.\MovementLineMvoState.hbm.xml
 .\MovementLineState.hbm.xml
 .\MovementState.hbm.xml
 .\MovementTypeState.hbm.xml
 .\OrderEvent.hbm.xml
 .\OrderItemEvent.hbm.xml
-.\OrderItemMvoEvent.hbm.xml
-.\OrderItemMvoState.hbm.xml
 .\OrderItemShipGroupAssociationEvent.hbm.xml
-.\OrderItemShipGroupAssociationMvoEvent.hbm.xml
-.\OrderItemShipGroupAssociationMvoState.hbm.xml
 .\OrderItemShipGroupAssociationState.hbm.xml
 .\OrderItemShipGrpInvReservationEvent.hbm.xml
 .\OrderItemShipGrpInvReservationState.hbm.xml
 .\OrderItemState.hbm.xml
 .\OrderRoleEvent.hbm.xml
-.\OrderRoleMvoEvent.hbm.xml
-.\OrderRoleMvoState.hbm.xml
 .\OrderRoleState.hbm.xml
 .\OrderShipGroupEvent.hbm.xml
-.\OrderShipGroupMvoEvent.hbm.xml
-.\OrderShipGroupMvoState.hbm.xml
 .\OrderShipGroupState.hbm.xml
 .\OrderShipmentEvent.hbm.xml
 .\OrderShipmentState.hbm.xml
@@ -1698,20 +1311,14 @@
 .\PartyState.hbm.xml
 .\PhysicalInventoryEvent.hbm.xml
 .\PhysicalInventoryLineEvent.hbm.xml
-.\PhysicalInventoryLineMvoEvent.hbm.xml
-.\PhysicalInventoryLineMvoState.hbm.xml
 .\PhysicalInventoryLineState.hbm.xml
 .\PhysicalInventoryState.hbm.xml
 .\PicklistBinEvent.hbm.xml
 .\PicklistBinState.hbm.xml
 .\PicklistEvent.hbm.xml
 .\PicklistItemEvent.hbm.xml
-.\PicklistItemMvoEvent.hbm.xml
-.\PicklistItemMvoState.hbm.xml
 .\PicklistItemState.hbm.xml
 .\PicklistRoleEvent.hbm.xml
-.\PicklistRoleMvoEvent.hbm.xml
-.\PicklistRoleMvoState.hbm.xml
 .\PicklistRoleState.hbm.xml
 .\PicklistState.hbm.xml
 .\PickwaveEvent.hbm.xml
@@ -1726,26 +1333,18 @@
 .\RejectionReasonState.hbm.xml
 .\RoleTypeEvent.hbm.xml
 .\RoleTypeState.hbm.xml
-.\SellableInventoryItemEntryMvoEvent.hbm.xml
-.\SellableInventoryItemEntryMvoState.hbm.xml
 .\SellableInventoryItemEntryState.hbm.xml
 .\SellableInventoryItemState.hbm.xml
 .\ShipmentEvent.hbm.xml
 .\ShipmentItemEvent.hbm.xml
-.\ShipmentItemMvoEvent.hbm.xml
-.\ShipmentItemMvoState.hbm.xml
 .\ShipmentItemState.hbm.xml
 .\ShipmentMethodTypeEvent.hbm.xml
 .\ShipmentMethodTypeState.hbm.xml
 .\ShipmentPackageContentEvent.hbm.xml
-.\ShipmentPackageContentMvoEvent.hbm.xml
-.\ShipmentPackageContentMvoState.hbm.xml
 .\ShipmentPackageContentState.hbm.xml
 .\ShipmentPackageEvent.hbm.xml
 .\ShipmentPackageState.hbm.xml
 .\ShipmentReceiptEvent.hbm.xml
-.\ShipmentReceiptMvoEvent.hbm.xml
-.\ShipmentReceiptMvoState.hbm.xml
 .\ShipmentReceiptState.hbm.xml
 .\ShipmentState.hbm.xml
 .\ShipmentTypeState.hbm.xml
@@ -1928,54 +1527,6 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\WarehouseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\InventoryItemEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\InventoryItemRequirementEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementConfirmationLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderRoleMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderShipGroupMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\PicklistRoleMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\PicklistItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\SellableInventoryItemEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ItemIssuanceMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentPackageContentMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGrpInvReservationState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1986,9 +1537,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGroupAssociationState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGroupAssociationMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutEvent.hbm.xml">
@@ -2126,57 +1674,6 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\WarehouseEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutLineMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\InventoryItemEntryMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\InventoryItemRequirementEntryMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementLineMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\MovementConfirmationLineMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderRoleMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderShipGroupMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGroupAssociationMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryLineMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\PicklistRoleMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\PicklistItemMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\SellableInventoryItemEntryMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentItemMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ItemIssuanceMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentPackageContentMvoEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -2189,10 +1686,16 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationMvoState.hbm.xml">
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutImageState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\GoodIdentificationMvoEvent.hbm.xml">
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutImageEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutLineImageState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutLineImageEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -2263,7 +1766,11 @@
 .\GenerateInOutDomainNHibernate.txt
 .\InOutApplicationService.cs
 .\NHibernateInOutEventStore.cs
+.\NHibernateInOutImageEventDao.cs
+.\NHibernateInOutImageStateDao.cs
 .\NHibernateInOutLineEventDao.cs
+.\NHibernateInOutLineImageEventDao.cs
+.\NHibernateInOutLineImageStateDao.cs
 .\NHibernateInOutLineStateDao.cs
 .\NHibernateInOutStateQueryRepository.cs
 .\NHibernateInOutStateRepository.cs
@@ -2337,39 +1844,6 @@
 .\NHibernateAttributeSetInstanceExtensionFieldGroupStateRepository.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Domain\AttributeValueMvo\NHibernate\GenerateAttributeValueMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAttributeValueMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\AttributeValueMvoApplicationService.cs
-.\GenerateAttributeValueMvoDomainNHibernate.txt
-.\NHibernateAttributeValueMvoEventStore.cs
-.\NHibernateAttributeValueMvoStateQueryRepository.cs
-.\NHibernateAttributeValueMvoStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\AttributeUseMvo\NHibernate\GenerateAttributeUseMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAttributeUseMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\AttributeUseMvoApplicationService.cs
-.\GenerateAttributeUseMvoDomainNHibernate.txt
-.\NHibernateAttributeUseMvoEventStore.cs
-.\NHibernateAttributeUseMvoStateQueryRepository.cs
-.\NHibernateAttributeUseMvoStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\InOutLineMvo\NHibernate\GenerateInOutLineMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateInOutLineMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateInOutLineMvoDomainNHibernate.txt
-.\InOutLineMvoApplicationService.cs
-.\NHibernateInOutLineMvoEventStore.cs
-.\NHibernateInOutLineMvoStateQueryRepository.cs
-.\NHibernateInOutLineMvoStateRepository.cs
-</LastOutputs>
-    </Content>
     <Content Include="Generated\Domain\InventoryItem\NHibernate\GenerateInventoryItemDomainNHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemDomainNHibernate.txt</LastGenOutput>
@@ -2381,17 +1855,6 @@
 .\NHibernateInventoryItemEventStore.cs
 .\NHibernateInventoryItemStateQueryRepository.cs
 .\NHibernateInventoryItemStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\InventoryItemEntryMvo\NHibernate\GenerateInventoryItemEntryMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateInventoryItemEntryMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateInventoryItemEntryMvoDomainNHibernate.txt
-.\InventoryItemEntryMvoApplicationService.cs
-.\NHibernateInventoryItemEntryMvoEventStore.cs
-.\NHibernateInventoryItemEntryMvoStateQueryRepository.cs
-.\NHibernateInventoryItemEntryMvoStateRepository.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\SellableInventoryItem\NHibernate\GenerateSellableInventoryItemDomainNHibernate.tt">
@@ -2424,17 +1887,6 @@
 .\InventoryPRTriggeredApplicationService.cs
 .\NHibernateInventoryPRTriggeredStateQueryRepository.cs
 .\NHibernateInventoryPRTriggeredStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateSellableInventoryItemEntryMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateSellableInventoryItemEntryMvoDomainNHibernate.txt
-.\NHibernateSellableInventoryItemEntryMvoEventStore.cs
-.\NHibernateSellableInventoryItemEntryMvoStateQueryRepository.cs
-.\NHibernateSellableInventoryItemEntryMvoStateRepository.cs
-.\SellableInventoryItemEntryMvoApplicationService.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\DocumentType\NHibernate\GenerateDocumentTypeDomainNHibernate.tt">
@@ -2570,28 +2022,6 @@
 .\ProductCategoryMemberApplicationService.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Domain\OrderItemMvo\NHibernate\GenerateOrderItemMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrderItemMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateOrderItemMvoDomainNHibernate.txt
-.\NHibernateOrderItemMvoEventStore.cs
-.\NHibernateOrderItemMvoStateQueryRepository.cs
-.\NHibernateOrderItemMvoStateRepository.cs
-.\OrderItemMvoApplicationService.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\ShipmentItemMvo\NHibernate\GenerateShipmentItemMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateShipmentItemMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateShipmentItemMvoDomainNHibernate.txt
-.\NHibernateShipmentItemMvoEventStore.cs
-.\NHibernateShipmentItemMvoStateQueryRepository.cs
-.\NHibernateShipmentItemMvoStateRepository.cs
-.\ShipmentItemMvoApplicationService.cs
-</LastOutputs>
-    </Content>
     <Content Include="Generated\Domain\InventoryItemRequirement\NHibernate\GenerateInventoryItemRequirementDomainNHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemRequirementDomainNHibernate.txt</LastGenOutput>
@@ -2601,17 +2031,6 @@
 .\NHibernateInventoryItemRequirementEntryStateDao.cs
 .\NHibernateInventoryItemRequirementStateQueryRepository.cs
 .\NHibernateInventoryItemRequirementStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\InventoryItemRequirementEntryMvo\NHibernate\GenerateInventoryItemRequirementEntryMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateInventoryItemRequirementEntryMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateInventoryItemRequirementEntryMvoDomainNHibernate.txt
-.\InventoryItemRequirementEntryMvoApplicationService.cs
-.\NHibernateInventoryItemRequirementEntryMvoEventStore.cs
-.\NHibernateInventoryItemRequirementEntryMvoStateQueryRepository.cs
-.\NHibernateInventoryItemRequirementEntryMvoStateRepository.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Movement\NHibernate\GenerateMovementDomainNHibernate.tt">
@@ -2625,28 +2044,6 @@
 .\NHibernateMovementLineStateDao.cs
 .\NHibernateMovementStateQueryRepository.cs
 .\NHibernateMovementStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\MovementLineMvo\NHibernate\GenerateMovementLineMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateMovementLineMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateMovementLineMvoDomainNHibernate.txt
-.\MovementLineMvoApplicationService.cs
-.\NHibernateMovementLineMvoEventStore.cs
-.\NHibernateMovementLineMvoStateQueryRepository.cs
-.\NHibernateMovementLineMvoStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\GenerateMovementConfirmationLineMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateMovementConfirmationLineMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateMovementConfirmationLineMvoDomainNHibernate.txt
-.\MovementConfirmationLineMvoApplicationService.cs
-.\NHibernateMovementConfirmationLineMvoEventStore.cs
-.\NHibernateMovementConfirmationLineMvoStateQueryRepository.cs
-.\NHibernateMovementConfirmationLineMvoStateRepository.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\MovementConfirmation\NHibernate\GenerateMovementConfirmationDomainNHibernate.tt">
@@ -2675,17 +2072,6 @@
 .\PhysicalInventoryApplicationService.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\GeneratePhysicalInventoryLineMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GeneratePhysicalInventoryLineMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GeneratePhysicalInventoryLineMvoDomainNHibernate.txt
-.\NHibernatePhysicalInventoryLineMvoEventStore.cs
-.\NHibernatePhysicalInventoryLineMvoStateQueryRepository.cs
-.\NHibernatePhysicalInventoryLineMvoStateRepository.cs
-.\PhysicalInventoryLineMvoApplicationService.cs
-</LastOutputs>
-    </Content>
     <Content Include="Generated\Domain\AttributeSetInstanceExtensionField\NHibernate\GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.txt</LastGenOutput>
@@ -2695,17 +2081,6 @@
 .\NHibernateAttributeSetInstanceExtensionFieldEventStore.cs
 .\NHibernateAttributeSetInstanceExtensionFieldStateQueryRepository.cs
 .\NHibernateAttributeSetInstanceExtensionFieldStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\AttributeAliasMvo\NHibernate\GenerateAttributeAliasMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAttributeAliasMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\AttributeAliasMvoApplicationService.cs
-.\GenerateAttributeAliasMvoDomainNHibernate.txt
-.\NHibernateAttributeAliasMvoEventStore.cs
-.\NHibernateAttributeAliasMvoStateQueryRepository.cs
-.\NHibernateAttributeAliasMvoStateRepository.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Uom\NHibernate\GenerateUomDomainNHibernate.tt">
@@ -2749,17 +2124,6 @@
 .\NHibernateLotEventStore.cs
 .\NHibernateLotStateQueryRepository.cs
 .\NHibernateLotStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\GenerateShipmentReceiptMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateShipmentReceiptMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateShipmentReceiptMvoDomainNHibernate.txt
-.\NHibernateShipmentReceiptMvoEventStore.cs
-.\NHibernateShipmentReceiptMvoStateQueryRepository.cs
-.\NHibernateShipmentReceiptMvoStateRepository.cs
-.\ShipmentReceiptMvoApplicationService.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\DamageReason\NHibernate\GenerateDamageReasonDomainNHibernate.tt">
@@ -2910,72 +2274,6 @@
 .\ShipmentPackageApplicationService.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Domain\OrderRoleMvo\NHibernate\GenerateOrderRoleMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrderRoleMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateOrderRoleMvoDomainNHibernate.txt
-.\NHibernateOrderRoleMvoEventStore.cs
-.\NHibernateOrderRoleMvoStateQueryRepository.cs
-.\NHibernateOrderRoleMvoStateRepository.cs
-.\OrderRoleMvoApplicationService.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\OrderShipGroupMvo\NHibernate\GenerateOrderShipGroupMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrderShipGroupMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateOrderShipGroupMvoDomainNHibernate.txt
-.\NHibernateOrderShipGroupMvoEventStore.cs
-.\NHibernateOrderShipGroupMvoStateQueryRepository.cs
-.\NHibernateOrderShipGroupMvoStateRepository.cs
-.\OrderShipGroupMvoApplicationService.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\PicklistRoleMvo\NHibernate\GeneratePicklistRoleMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GeneratePicklistRoleMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GeneratePicklistRoleMvoDomainNHibernate.txt
-.\NHibernatePicklistRoleMvoEventStore.cs
-.\NHibernatePicklistRoleMvoStateQueryRepository.cs
-.\NHibernatePicklistRoleMvoStateRepository.cs
-.\PicklistRoleMvoApplicationService.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\PicklistItemMvo\NHibernate\GeneratePicklistItemMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GeneratePicklistItemMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GeneratePicklistItemMvoDomainNHibernate.txt
-.\NHibernatePicklistItemMvoEventStore.cs
-.\NHibernatePicklistItemMvoStateQueryRepository.cs
-.\NHibernatePicklistItemMvoStateRepository.cs
-.\PicklistItemMvoApplicationService.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\ItemIssuanceMvo\NHibernate\GenerateItemIssuanceMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateItemIssuanceMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateItemIssuanceMvoDomainNHibernate.txt
-.\ItemIssuanceMvoApplicationService.cs
-.\NHibernateItemIssuanceMvoEventStore.cs
-.\NHibernateItemIssuanceMvoStateQueryRepository.cs
-.\NHibernateItemIssuanceMvoStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\ShipmentPackageContentMvo\NHibernate\GenerateShipmentPackageContentMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateShipmentPackageContentMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateShipmentPackageContentMvoDomainNHibernate.txt
-.\NHibernateShipmentPackageContentMvoEventStore.cs
-.\NHibernateShipmentPackageContentMvoStateQueryRepository.cs
-.\NHibernateShipmentPackageContentMvoStateRepository.cs
-.\ShipmentPackageContentMvoApplicationService.cs
-</LastOutputs>
-    </Content>
     <Content Include="Generated\Domain\OrderItemShipGrpInvReservation\NHibernate\GenerateOrderItemShipGrpInvReservationDomainNHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateOrderItemShipGrpInvReservationDomainNHibernate.txt</LastGenOutput>
@@ -3009,17 +2307,6 @@
 .\PickwaveApplicationService.cs
 </LastOutputs>
     </Content>
-    <Content Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.txt
-.\NHibernateOrderItemShipGroupAssociationMvoEventStore.cs
-.\NHibernateOrderItemShipGroupAssociationMvoStateQueryRepository.cs
-.\NHibernateOrderItemShipGroupAssociationMvoStateRepository.cs
-.\OrderItemShipGroupAssociationMvoApplicationService.cs
-</LastOutputs>
-    </Content>
     <Content Include="Generated\Domain\GoodIdentificationType\NHibernate\GenerateGoodIdentificationTypeDomainNHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateGoodIdentificationTypeDomainNHibernate.txt</LastGenOutput>
@@ -3029,17 +2316,6 @@
 .\NHibernateGoodIdentificationTypeEventStore.cs
 .\NHibernateGoodIdentificationTypeStateQueryRepository.cs
 .\NHibernateGoodIdentificationTypeStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\GoodIdentificationMvo\NHibernate\GenerateGoodIdentificationMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateGoodIdentificationMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateGoodIdentificationMvoDomainNHibernate.txt
-.\GoodIdentificationMvoApplicationService.cs
-.\NHibernateGoodIdentificationMvoEventStore.cs
-.\NHibernateGoodIdentificationMvoStateQueryRepository.cs
-.\NHibernateGoodIdentificationMvoStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

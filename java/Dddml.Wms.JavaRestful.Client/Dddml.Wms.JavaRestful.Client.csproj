@@ -390,13 +390,25 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutCommandDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutImageCommandDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineCommandDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineImageCommandDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutImageDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutLineDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutLineImageDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\DeleteInOutDto.java">
@@ -413,10 +425,34 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutEventId.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageEventId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageStateDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageStateEventDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineEventId.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageEventId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageId.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageStateDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageStateEventDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateDto.java">
@@ -431,7 +467,13 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutStateEventDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\RemoveInOutImageDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\RemoveInOutLineDto.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\RemoveInOutLineImageDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementCommandDto.java">
@@ -1838,20 +1880,34 @@
       <LastGenOutput>GenerateInOutDomain.txt</LastGenOutput>
       <LastOutputs>
 .\AbstractInOutCommandDto.java
+.\AbstractInOutImageCommandDto.java
 .\AbstractInOutLineCommandDto.java
+.\AbstractInOutLineImageCommandDto.java
 .\CreateOrMergePatchInOutDto.java
+.\CreateOrMergePatchInOutImageDto.java
 .\CreateOrMergePatchInOutLineDto.java
+.\CreateOrMergePatchInOutLineImageDto.java
 .\DeleteInOutDto.java
 .\GenerateInOutDomain.txt
 .\InOutCommandDtos.java
 .\InOutEventId.java
+.\InOutImageEventId.java
+.\InOutImageId.java
+.\InOutImageStateDto.java
+.\InOutImageStateEventDto.java
 .\InOutLineEventId.java
 .\InOutLineId.java
+.\InOutLineImageEventId.java
+.\InOutLineImageId.java
+.\InOutLineImageStateDto.java
+.\InOutLineImageStateEventDto.java
 .\InOutLineStateDto.java
 .\InOutLineStateEventDto.java
 .\InOutStateDto.java
 .\InOutStateEventDto.java
+.\RemoveInOutImageDto.java
 .\RemoveInOutLineDto.java
+.\RemoveInOutLineImageDto.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\GenerateInventoryItemDomain.tt">

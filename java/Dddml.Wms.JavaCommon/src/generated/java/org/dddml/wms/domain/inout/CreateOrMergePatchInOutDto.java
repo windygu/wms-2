@@ -456,6 +456,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchInOutImageDto[] inOutImages;
+
+    public CreateOrMergePatchInOutImageDto[] getInOutImages()
+    {
+        return this.inOutImages;
+    }
+
+    public void setInOutImages(CreateOrMergePatchInOutImageDto[] inOutImages)
+    {
+        this.inOutImages = inOutImages;
+    }
+
     private CreateOrMergePatchInOutLineDto[] inOutLines;
 
     public CreateOrMergePatchInOutLineDto[] getInOutLines()
@@ -871,6 +883,11 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInOutCommand.SimpleCreateInOut command = new AbstractInOutCommand.SimpleCreateInOut();
             copyTo((AbstractInOutCommand.AbstractCreateInOut) command);
+            if (this.getInOutImages() != null) {
+                for (CreateOrMergePatchInOutImageDto cmd : this.getInOutImages()) {
+                    command.getInOutImages().add((InOutImageCommand.CreateInOutImage) cmd.toCommand());
+                }
+            }
             if (this.getInOutLines() != null) {
                 for (CreateOrMergePatchInOutLineDto cmd : this.getInOutLines()) {
                     command.getInOutLines().add((InOutLineCommand.CreateInOutLine) cmd.toCommand());
@@ -880,6 +897,11 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractInOutCommand.SimpleMergePatchInOut command = new AbstractInOutCommand.SimpleMergePatchInOut();
             copyTo((AbstractInOutCommand.SimpleMergePatchInOut) command);
+            if (this.getInOutImages() != null) {
+                for (CreateOrMergePatchInOutImageDto cmd : this.getInOutImages()) {
+                    command.getInOutImageCommands().add(cmd.toCommand());
+                }
+            }
             if (this.getInOutLines() != null) {
                 for (CreateOrMergePatchInOutLineDto cmd : this.getInOutLines()) {
                     command.getInOutLineCommands().add(cmd.toCommand());

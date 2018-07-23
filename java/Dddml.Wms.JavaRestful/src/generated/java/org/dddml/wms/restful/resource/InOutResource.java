@@ -287,6 +287,31 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @GetMapping("{inOutDocumentNumber}/InOutImages/{sequenceId}")
+    public InOutImageStateDto getInOutImage(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("sequenceId") String sequenceId) {
+        try {
+
+            InOutImageState state = inOutApplicationService.getInOutImage(inOutDocumentNumber, sequenceId);
+            if (state == null) { return null; }
+            InOutImageStateDto.DtoConverter dtoConverter = new InOutImageStateDto.DtoConverter();
+            InOutImageStateDto stateDto = dtoConverter.toInOutImageStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @GetMapping("{inOutDocumentNumber}/InOutImages/")
+    public InOutImageStateDto[] getInOutImages(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber) {
+        try {
+            Iterable<InOutImageState> states = inOutApplicationService.getInOutImages(inOutDocumentNumber);
+            if (states == null) { return null; }
+            InOutImageStateDto.DtoConverter dtoConverter = new InOutImageStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toInOutImageStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{inOutDocumentNumber}/InOutLines/{lineNumber}")
     public InOutLineStateDto getInOutLine(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
@@ -309,6 +334,31 @@ public class InOutResource {
             InOutLineStateDto.DtoConverter dtoConverter = new InOutLineStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toInOutLineStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @GetMapping("{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
+    public InOutLineImageStateDto getInOutLineImage(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber, @PathVariable("sequenceId") String sequenceId) {
+        try {
+
+            InOutLineImageState state = inOutApplicationService.getInOutLineImage(inOutDocumentNumber, inOutLineLineNumber, sequenceId);
+            if (state == null) { return null; }
+            InOutLineImageStateDto.DtoConverter dtoConverter = new InOutLineImageStateDto.DtoConverter();
+            InOutLineImageStateDto stateDto = dtoConverter.toInOutLineImageStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @GetMapping("{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/")
+    public InOutLineImageStateDto[] getInOutLineImages(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber) {
+        try {
+            Iterable<InOutLineImageState> states = inOutApplicationService.getInOutLineImages(inOutDocumentNumber, inOutLineLineNumber);
+            if (states == null) { return null; }
+            InOutLineImageStateDto.DtoConverter dtoConverter = new InOutLineImageStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toInOutLineImageStateDtoArray(states);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

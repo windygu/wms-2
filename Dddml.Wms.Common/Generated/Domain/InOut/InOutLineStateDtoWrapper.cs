@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InOut
 	public partial class InOutLineStateDtoWrapper : StateDtoWrapperBase, IInOutLineStateDto, IInOutLineState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] {  };
+        internal static IList<string> _collectionFieldNames = new string[] { "InOutLineImages" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -625,6 +625,52 @@ namespace Dddml.Wms.Domain.InOut
             get { return this.Version == InOutLineState.VersionZero; }
         }
 
+        public virtual IInOutLineImageStateDto[] InOutLineImages
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("InOutLineImages"))
+                {
+                    return null;
+                }
+                var dtos = new List<IInOutLineImageStateDto>();
+                if (this._state.InOutLineImages != null)
+                {
+                    foreach (var s in this._state.InOutLineImages)
+                    {
+                        var dto = new InOutLineImageStateDtoWrapper((InOutLineImageState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "InOutLineImages");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new InOutLineImageStateDtoWrapper[0]; }
+                var states = new List<IInOutLineImageState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToInOutLineImageState());
+                }
+                this._state.InOutLineImages = new DtoInOutLineImageStates(this._state, states);
+            }
+        }
+
+        IInOutLineImageStates IInOutLineState.InOutLineImages
+        {
+            get { return _state.InOutLineImages; }
+            set { _state.InOutLineImages = value; }
+        }
+
 		void IInOutLineState.When(IInOutLineStateCreated e)
 		{
             throw new NotSupportedException();
@@ -659,6 +705,67 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
         // //////////////////////////////////////////////////////////////
+
+        public class DtoInOutLineImageStates : IInOutLineImageStates
+        {
+
+            private IInOutLineState _outerState;
+
+            private IEnumerable<IInOutLineImageState> _innerStates;
+
+            public DtoInOutLineImageStates(IInOutLineState outerState, IEnumerable<IInOutLineImageState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IInOutLineImageState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IInOutLineImageState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IInOutLineImageState Get(string sequenceId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IInOutLineImageState Get(string sequenceId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IInOutLineImageState Get(string sequenceId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IInOutLineImageState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IInOutLineImageState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
 
 	}
 

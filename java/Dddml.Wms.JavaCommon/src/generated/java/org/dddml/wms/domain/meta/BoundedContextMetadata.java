@@ -37,7 +37,9 @@ public class BoundedContextMetadata {
         typeToAggMap.put("Facility", "Facility");
         typeToAggMap.put("GoodIdentificationType", "GoodIdentificationType");
         typeToAggMap.put("InOut", "InOut");
+        typeToAggMap.put("InOutImage", "InOut");
         typeToAggMap.put("InOutLine", "InOut");
+        typeToAggMap.put("InOutLineImage", "InOut");
         typeToAggMap.put("InventoryItem", "InventoryItem");
         typeToAggMap.put("InventoryItemEntry", "InventoryItem");
         typeToAggMap.put("InventoryItemRequirement", "InventoryItemRequirement");
@@ -96,27 +98,6 @@ public class BoundedContextMetadata {
         typeToAggMap.put("AttributeSetInstance", "AttributeSetInstance");
         typeToAggMap.put("AttributeSetInstanceExtensionField", "AttributeSetInstanceExtensionField");
         typeToAggMap.put("AttributeSetInstanceExtensionFieldGroup", "AttributeSetInstanceExtensionFieldGroup");
-        typeToAggMap.put("AttributeValueMvo", "AttributeValueMvo");
-        typeToAggMap.put("AttributeAliasMvo", "AttributeAliasMvo");
-        typeToAggMap.put("AttributeUseMvo", "AttributeUseMvo");
-        typeToAggMap.put("InOutLineMvo", "InOutLineMvo");
-        typeToAggMap.put("InventoryItemEntryMvo", "InventoryItemEntryMvo");
-        typeToAggMap.put("InventoryItemRequirementEntryMvo", "InventoryItemRequirementEntryMvo");
-        typeToAggMap.put("MovementLineMvo", "MovementLineMvo");
-        typeToAggMap.put("MovementConfirmationLineMvo", "MovementConfirmationLineMvo");
-        typeToAggMap.put("OrderRoleMvo", "OrderRoleMvo");
-        typeToAggMap.put("OrderItemMvo", "OrderItemMvo");
-        typeToAggMap.put("OrderShipGroupMvo", "OrderShipGroupMvo");
-        typeToAggMap.put("OrderItemShipGroupAssociationMvo", "OrderItemShipGroupAssociationMvo");
-        typeToAggMap.put("PhysicalInventoryLineMvo", "PhysicalInventoryLineMvo");
-        typeToAggMap.put("PicklistRoleMvo", "PicklistRoleMvo");
-        typeToAggMap.put("PicklistItemMvo", "PicklistItemMvo");
-        typeToAggMap.put("GoodIdentificationMvo", "GoodIdentificationMvo");
-        typeToAggMap.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
-        typeToAggMap.put("ShipmentItemMvo", "ShipmentItemMvo");
-        typeToAggMap.put("ShipmentReceiptMvo", "ShipmentReceiptMvo");
-        typeToAggMap.put("ItemIssuanceMvo", "ItemIssuanceMvo");
-        typeToAggMap.put("ShipmentPackageContentMvo", "ShipmentPackageContentMvo");
         TYPE_NAME_TO_AGGREGATE_NAME_MAP = typeToAggMap;
 
         Map<String, Class<?>> clsMap = new HashMap<>();

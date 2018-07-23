@@ -135,6 +135,14 @@ namespace Dddml.Wms.Domain.InOut
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
+            foreach (ICreateInOutImage innerCommand in c.InOutImages)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IInOutImageStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddInOutImageEvent(innerEvent);
+            }
+
             foreach (ICreateInOutLine innerCommand in c.InOutLines)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
@@ -221,6 +229,14 @@ namespace Dddml.Wms.Domain.InOut
 
 			var version = c.Version;
 
+            foreach (IInOutImageCommand innerCommand in c.InOutImageCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IInOutImageEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddInOutImageEvent(innerEvent);
+            }
+
             foreach (IInOutLineCommand innerCommand in c.InOutLineCommands)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
@@ -232,6 +248,28 @@ namespace Dddml.Wms.Domain.InOut
 
             return e;
         }
+
+
+        protected void ThrowOnInconsistentCommands(IInOutCommand command, IInOutImageCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteInOut;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveInOutImage;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.InOutDocumentNumber == default(string))
+            {
+                innerProperties.InOutDocumentNumber = properties.DocumentNumber;
+            }
+            else
+            {
+                var outerDocumentNumberName = "DocumentNumber";
+                var outerDocumentNumberValue = properties.DocumentNumber;
+                var innerInOutDocumentNumberName = "InOutDocumentNumber";
+                var innerInOutDocumentNumberValue = innerProperties.InOutDocumentNumber;
+                ThrowOnInconsistentIds(innerProperties, innerInOutDocumentNumberName, innerInOutDocumentNumberValue, outerDocumentNumberName, outerDocumentNumberValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
 
 
         protected void ThrowOnInconsistentCommands(IInOutCommand command, IInOutLineCommand innerCommand)
@@ -254,6 +292,116 @@ namespace Dddml.Wms.Domain.InOut
             }
 
         }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected void ThrowOnInconsistentCommands(IInOutLineCommand command, IInOutLineImageCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrRemoveInOutLine;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveInOutLineImage;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.InOutDocumentNumber == default(string))
+            {
+                innerProperties.InOutDocumentNumber = properties.InOutDocumentNumber;
+            }
+            else
+            {
+                var outerInOutDocumentNumberName = "InOutDocumentNumber";
+                var outerInOutDocumentNumberValue = properties.InOutDocumentNumber;
+                var innerInOutDocumentNumberName = "InOutDocumentNumber";
+                var innerInOutDocumentNumberValue = innerProperties.InOutDocumentNumber;
+                ThrowOnInconsistentIds(innerProperties, innerInOutDocumentNumberName, innerInOutDocumentNumberValue, outerInOutDocumentNumberName, outerInOutDocumentNumberValue);
+            }
+
+            if (innerProperties.InOutLineLineNumber == default(string))
+            {
+                innerProperties.InOutLineLineNumber = properties.LineNumber;
+            }
+            else
+            {
+                var outerLineNumberName = "LineNumber";
+                var outerLineNumberValue = properties.LineNumber;
+                var innerInOutLineLineNumberName = "InOutLineLineNumber";
+                var innerInOutLineLineNumberValue = innerProperties.InOutLineLineNumber;
+                ThrowOnInconsistentIds(innerProperties, innerInOutLineLineNumberName, innerInOutLineLineNumberValue, outerLineNumberName, outerLineNumberValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected virtual IInOutImageEvent Map(IInOutImageCommand c, IInOutCommand outerCommand, long version, IInOutState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateInOutImage) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchInOutImage) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveInOutImage) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IInOutImageStateCreated MapCreate(ICreateInOutImage c, IInOutCommand outerCommand, long version, IInOutState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new InOutImageEventId(c.InOutDocumentNumber, c.SequenceId, version);
+            IInOutImageStateCreated e = NewInOutImageStateCreated(stateEventId);
+            var s = outerState.InOutImages.Get(c.SequenceId, true);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IInOutImageStateMergePatched MapMergePatch(IMergePatchInOutImage c, IInOutCommand outerCommand, long version, IInOutState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new InOutImageEventId(c.InOutDocumentNumber, c.SequenceId, version);
+            IInOutImageStateMergePatched e = NewInOutImageStateMergePatched(stateEventId);
+            var s = outerState.InOutImages.Get(c.SequenceId);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+            e.IsPropertyUrlRemoved = c.IsPropertyUrlRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IInOutImageStateRemoved MapRemove(IRemoveInOutImage c, IInOutCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new InOutImageEventId(c.InOutDocumentNumber, c.SequenceId, version);
+            IInOutImageStateRemoved e = NewInOutImageStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
 
 
         protected virtual IInOutLineEvent Map(IInOutLineCommand c, IInOutCommand outerCommand, long version, IInOutState outerState)
@@ -301,6 +449,15 @@ namespace Dddml.Wms.Domain.InOut
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            foreach (ICreateInOutLineImage innerCommand in c.InOutLineImages)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IInOutLineImageStateCreated innerEvent = MapCreate(innerCommand, c, version, s);
+                e.AddInOutLineImageEvent(innerEvent);
+            }
+
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -341,6 +498,15 @@ namespace Dddml.Wms.Domain.InOut
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            foreach (IInOutLineImageCommand innerCommand in c.InOutLineImageCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IInOutLineImageEvent innerEvent = Map(innerCommand, c, version, s);
+                e.AddInOutLineImageEvent(innerEvent);
+            }
+
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -351,6 +517,81 @@ namespace Dddml.Wms.Domain.InOut
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new InOutLineEventId(c.InOutDocumentNumber, c.LineNumber, version);
             IInOutLineStateRemoved e = NewInOutLineStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
+
+
+        protected virtual IInOutLineImageEvent Map(IInOutLineImageCommand c, IInOutLineCommand outerCommand, long version, IInOutLineState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateInOutLineImage) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchInOutLineImage) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveInOutLineImage) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IInOutLineImageStateCreated MapCreate(ICreateInOutLineImage c, IInOutLineCommand outerCommand, long version, IInOutLineState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new InOutLineImageEventId(c.InOutDocumentNumber, c.InOutLineLineNumber, c.SequenceId, version);
+            IInOutLineImageStateCreated e = NewInOutLineImageStateCreated(stateEventId);
+            var s = outerState.InOutLineImages.Get(c.SequenceId, true);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IInOutLineImageStateMergePatched MapMergePatch(IMergePatchInOutLineImage c, IInOutLineCommand outerCommand, long version, IInOutLineState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new InOutLineImageEventId(c.InOutDocumentNumber, c.InOutLineLineNumber, c.SequenceId, version);
+            IInOutLineImageStateMergePatched e = NewInOutLineImageStateMergePatched(stateEventId);
+            var s = outerState.InOutLineImages.Get(c.SequenceId);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+            e.IsPropertyUrlRemoved = c.IsPropertyUrlRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IInOutLineImageStateRemoved MapRemove(IRemoveInOutLineImage c, IInOutLineCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new InOutLineImageEventId(c.InOutDocumentNumber, c.InOutLineLineNumber, c.SequenceId, version);
+            IInOutLineImageStateRemoved e = NewInOutLineImageStateRemoved(stateEventId);
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -414,6 +655,22 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
+		private InOutImageStateCreated NewInOutImageStateCreated(InOutImageEventId stateEventId)
+		{
+			return new InOutImageStateCreated(stateEventId);
+		}
+
+        private InOutImageStateMergePatched NewInOutImageStateMergePatched(InOutImageEventId stateEventId)
+		{
+			return new InOutImageStateMergePatched(stateEventId);
+		}
+
+        private InOutImageStateRemoved NewInOutImageStateRemoved(InOutImageEventId stateEventId)
+		{
+			return new InOutImageStateRemoved(stateEventId);
+		}
+
+
 		private InOutLineStateCreated NewInOutLineStateCreated(InOutLineEventId stateEventId)
 		{
 			return new InOutLineStateCreated(stateEventId);
@@ -427,6 +684,22 @@ namespace Dddml.Wms.Domain.InOut
         private InOutLineStateRemoved NewInOutLineStateRemoved(InOutLineEventId stateEventId)
 		{
 			return new InOutLineStateRemoved(stateEventId);
+		}
+
+
+		private InOutLineImageStateCreated NewInOutLineImageStateCreated(InOutLineImageEventId stateEventId)
+		{
+			return new InOutLineImageStateCreated(stateEventId);
+		}
+
+        private InOutLineImageStateMergePatched NewInOutLineImageStateMergePatched(InOutLineImageEventId stateEventId)
+		{
+			return new InOutLineImageStateMergePatched(stateEventId);
+		}
+
+        private InOutLineImageStateRemoved NewInOutLineImageStateRemoved(InOutLineImageEventId stateEventId)
+		{
+			return new InOutLineImageStateRemoved(stateEventId);
 		}
 
         protected void NewInOutDocumentActionCommandAndExecute(ICreateInOut c, IInOutState s, IInOutStateCreated e)

@@ -155,6 +155,12 @@ public interface InOutEvent extends Event
 
     interface InOutStateCreated extends InOutStateEvent
     {
+        Iterable<InOutImageEvent.InOutImageStateCreated> getInOutImageEvents();
+        
+        void addInOutImageEvent(InOutImageEvent.InOutImageStateCreated e);
+
+        InOutImageEvent.InOutImageStateCreated newInOutImageStateCreated(String sequenceId);
+
         Iterable<InOutLineEvent.InOutLineStateCreated> getInOutLineEvents();
         
         void addInOutLineEvent(InOutLineEvent.InOutLineStateCreated e);
@@ -290,6 +296,16 @@ public interface InOutEvent extends Event
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Iterable<InOutImageEvent> getInOutImageEvents();
+        
+        void addInOutImageEvent(InOutImageEvent e);
+
+        InOutImageEvent.InOutImageStateCreated newInOutImageStateCreated(String sequenceId);
+
+        InOutImageEvent.InOutImageStateMergePatched newInOutImageStateMergePatched(String sequenceId);
+
+        InOutImageEvent.InOutImageStateRemoved newInOutImageStateRemoved(String sequenceId);
 
         Iterable<InOutLineEvent> getInOutLineEvents();
         

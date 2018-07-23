@@ -5,37 +5,17 @@
            
             //foreach (var t in allTypes)
             //{
-                dict.Add("AttributeAliasId", "_ATTRIBUTEALIASID_");
-                dict.Add("AttributeSetAttributeUseId", "_ATTRIBUTESETATTRIBUTEUSEID_");
-                dict.Add("AttributeValueId", "_ATTRIBUTEVALUEID_");
-                dict.Add("InOutLineId", "_INOUTLINEID_");
                 dict.Add("InventoryItemEntryId", "_INVENTORYITEMENTRYID_");
                 dict.Add("InventoryItemId", "_INVENTORYITEMID_");
-                dict.Add("InventoryItemRequirementEntryId", "_INVENTORYITEMREQUIREMENTENTRYID_");
                 dict.Add("InventoryItemSourceInfo", "_INVENTORYITEMSOURCEINFO_");
                 dict.Add("InventoryPRTriggeredId", "_INVENTORYPRTRIGGEREDID_");
-                dict.Add("MovementConfirmationLineId", "_MOVEMENTCONFIRMATIONLINEID_");
-                dict.Add("MovementLineId", "_MOVEMENTLINEID_");
-                dict.Add("OrderItemId", "_ORDERITEMID_");
-                dict.Add("OrderItemShipGroupAssociationId", "_ORDERITEMSHIPGROUPASSOCIATIONID_");
                 dict.Add("OrderItemShipGrpInvResId", "_ORDERITEMSHIPGRPINVRESID_");
-                dict.Add("OrderRoleId", "_ORDERROLEID_");
-                dict.Add("OrderShipGroupId", "_ORDERSHIPGROUPID_");
                 dict.Add("OrderShipmentId", "_ORDERSHIPMENTID_");
                 dict.Add("OrganizationStructureId", "_ORGANIZATIONSTRUCTUREID_");
                 dict.Add("PartyRoleId", "_PARTYROLEID_");
-                dict.Add("PhysicalInventoryLineId", "_PHYSICALINVENTORYLINEID_");
-                dict.Add("PicklistBinPicklistItemId", "_PICKLISTBINPICKLISTITEMID_");
                 dict.Add("PicklistItemOrderShipGrpInvId", "_PICKLISTITEMORDERSHIPGRPINVID_");
-                dict.Add("PicklistRoleId", "_PICKLISTROLEID_");
                 dict.Add("ProductCategoryMemberId", "_PRODUCTCATEGORYMEMBERID_");
-                dict.Add("ProductGoodIdentificationId", "_PRODUCTGOODIDENTIFICATIONID_");
-                dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
-                dict.Add("ShipmentItemId", "_SHIPMENTITEMID_");
-                dict.Add("ShipmentItemIssuanceId", "_SHIPMENTITEMISSUANCEID_");
-                dict.Add("ShipmentPackageContentId", "_SHIPMENTPACKAGECONTENTID_");
                 dict.Add("ShipmentPackageId", "_SHIPMENTPACKAGEID_");
-                dict.Add("ShipmentReceiptId", "_SHIPMENTRECEIPTID_");
                 dict.Add("SupplierProductId", "_SUPPLIERPRODUCTID_");
                 dict.Add("UomConversionId", "_UOMCONVERSIONID_");
 // //////////////////////
@@ -61,8 +41,11 @@
                 dict.Add("id-long-ne", "_ID-LONG-NE_");
                 dict.Add("id-ne", "_ID-NE_");
                 dict.Add("id-vlong", "_ID-VLONG_");
+                dict.Add("id-vlong-ne", "_ID-VLONG-NE_");
                 dict.Add("indicator", "_INDICATOR_");
+                dict.Add("InOutImage", "_INOUTIMAGE_");
                 dict.Add("InOutLine", "_INOUTLINE_");
+                dict.Add("InOutLineImage", "_INOUTLINEIMAGE_");
                 dict.Add("int", "_INT_");
                 dict.Add("int?", "_INT__");
                 dict.Add("InventoryItemEntry", "_INVENTORYITEMENTRY_");

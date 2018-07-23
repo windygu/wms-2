@@ -14,7 +14,7 @@
 
 	var generationOptions = new GenerationOptions();
 	generationOptions.CSharp = true;
-	generationOptions.NoMViewObjects = false;
+	generationOptions.NoMViewObjects = true;
 	boundedContext.PrepareGeneration(generationOptions);
 
 	var mviewObjects = boundedContext.GetMViewObjects();

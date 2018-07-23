@@ -102,6 +102,8 @@ public interface InOutLineState
 
     boolean getForReapplying();
 
+    InOutLineImageStates getInOutLineImages();
+
 
     void mutate(Event e);
 

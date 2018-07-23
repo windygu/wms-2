@@ -80,6 +80,33 @@ namespace Dddml.Wms.Domain.InOut
             this.InOutEventId = stateEventId;
         }
 
+		protected IInOutImageEventDao InOutImageEventDao
+		{
+			get { return ApplicationContext.Current["InOutImageEventDao"] as IInOutImageEventDao; }
+		}
+
+        protected InOutImageEventId NewInOutImageEventId(string sequenceId)
+        {
+            var stateEventId = new InOutImageEventId(this.InOutEventId.DocumentNumber, sequenceId, this.InOutEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IInOutImageEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IInOutEvent oe, IInOutImageEvent e)
+		{
+			if (!oe.InOutEventId.DocumentNumber.Equals(e.InOutImageEventId.InOutDocumentNumber))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id DocumentNumber {0} but inner id InOutDocumentNumber {1}", 
+					oe.InOutEventId.DocumentNumber, e.InOutImageEventId.InOutDocumentNumber);
+			}
+		}
+
+
 		protected IInOutLineEventDao InOutLineEventDao
 		{
 			get { return ApplicationContext.Current["InOutLineEventDao"] as IInOutLineEventDao; }
@@ -202,6 +229,56 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
+		private Dictionary<InOutImageEventId, IInOutImageStateCreated> _inOutImageEvents = new Dictionary<InOutImageEventId, IInOutImageStateCreated>();
+        
+        private IEnumerable<IInOutImageStateCreated> _readOnlyInOutImageEvents;
+
+        public virtual IEnumerable<IInOutImageStateCreated> InOutImageEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._inOutImageEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyInOutImageEvents != null) { return _readOnlyInOutImageEvents; }
+                    var eventDao = InOutImageEventDao;
+                    var eL = new List<IInOutImageStateCreated>();
+                    foreach (var e in eventDao.FindByInOutEventId(this.InOutEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IInOutImageStateCreated)e);
+                    }
+                    return (_readOnlyInOutImageEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddInOutImageEvent(e);
+                    }
+                }
+                else { this._inOutImageEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddInOutImageEvent(IInOutImageStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._inOutImageEvents[e.InOutImageEventId] = e;
+		}
+
+        public virtual IInOutImageStateCreated NewInOutImageStateCreated(string sequenceId)
+        {
+            var stateEvent = new InOutImageStateCreated(NewInOutImageEventId(sequenceId));
+            return stateEvent;
+        }
+
 		private Dictionary<InOutLineEventId, IInOutLineStateCreated> _inOutLineEvents = new Dictionary<InOutLineEventId, IInOutLineStateCreated>();
         
         private IEnumerable<IInOutLineStateCreated> _readOnlyInOutLineEvents;
@@ -254,6 +331,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual void Save ()
 		{
+			foreach (IInOutImageStateCreated e in this.InOutImageEvents) {
+				InOutImageEventDao.Save(e);
+			}
 			foreach (IInOutLineStateCreated e in this.InOutLineEvents) {
 				InOutLineEventDao.Save(e);
 			}
@@ -340,6 +420,68 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
+		private Dictionary<InOutImageEventId, IInOutImageEvent> _inOutImageEvents = new Dictionary<InOutImageEventId, IInOutImageEvent>();
+
+        private IEnumerable<IInOutImageEvent> _readOnlyInOutImageEvents;
+        
+        public virtual IEnumerable<IInOutImageEvent> InOutImageEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._inOutImageEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyInOutImageEvents != null) { return _readOnlyInOutImageEvents; }
+                    var eventDao = InOutImageEventDao;
+                    var eL = new List<IInOutImageEvent>();
+                    foreach (var e in eventDao.FindByInOutEventId(this.InOutEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IInOutImageEvent)e);
+                    }
+                    return (_readOnlyInOutImageEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddInOutImageEvent(e);
+                    }
+                }
+                else { this._inOutImageEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddInOutImageEvent(IInOutImageEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._inOutImageEvents[e.InOutImageEventId] = e;
+		}
+
+        public virtual IInOutImageStateCreated NewInOutImageStateCreated(string sequenceId)
+        {
+            var stateEvent = new InOutImageStateCreated(NewInOutImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+        public virtual IInOutImageStateMergePatched NewInOutImageStateMergePatched(string sequenceId)
+        {
+            var stateEvent = new InOutImageStateMergePatched(NewInOutImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+        public virtual IInOutImageStateRemoved NewInOutImageStateRemoved(string sequenceId)
+        {
+            var stateEvent = new InOutImageStateRemoved(NewInOutImageEventId(sequenceId));
+            return stateEvent;
+        }
+
 		private Dictionary<InOutLineEventId, IInOutLineEvent> _inOutLineEvents = new Dictionary<InOutLineEventId, IInOutLineEvent>();
 
         private IEnumerable<IInOutLineEvent> _readOnlyInOutLineEvents;
@@ -404,6 +546,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual void Save ()
 		{
+			foreach (IInOutImageEvent e in this.InOutImageEvents) {
+				InOutImageEventDao.Save(e);
+			}
 			foreach (IInOutLineEvent e in this.InOutLineEvents) {
 				InOutLineEventDao.Save(e);
 			}

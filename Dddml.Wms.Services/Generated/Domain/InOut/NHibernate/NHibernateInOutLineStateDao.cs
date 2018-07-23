@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "LineNumber", "LocatorId", "ProductId", "AttributeSetInstanceId", "Description", "QuantityUomId", "MovementQuantity", "PickedQuantity", "IsInvoiced", "Processed", "RmaLineNumber", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InOutDocumentNumber" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "LineNumber", "LocatorId", "ProductId", "AttributeSetInstanceId", "Description", "QuantityUomId", "MovementQuantity", "PickedQuantity", "IsInvoiced", "Processed", "RmaLineNumber", "ReversalLineNumber", "InOutLineImages", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InOutDocumentNumber" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
             }
             if (ReadOnlyProxyGenerator != null && state != null)
             {
-                return ReadOnlyProxyGenerator.CreateProxy<IInOutLineState>(state, new Type[] {  }, _readOnlyPropertyNames);
+                return ReadOnlyProxyGenerator.CreateProxy<IInOutLineState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
             }
             return state;
         }

@@ -33,6 +33,9 @@ namespace Dddml.Wms.Domain.InOut
 		void Mutate(IEvent e);
 
 
+		IInOutLineImageStates InOutLineImages { get; set; }
+
+
         bool IsUnsaved { get; }
 
 	}

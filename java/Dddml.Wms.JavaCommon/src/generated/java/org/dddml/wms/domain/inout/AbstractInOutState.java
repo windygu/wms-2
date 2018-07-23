@@ -459,6 +459,18 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         return this.getVersion() == null;
     }
 
+    private InOutImageStates inOutImages;
+
+    public InOutImageStates getInOutImages()
+    {
+        return this.inOutImages;
+    }
+
+    public void setInOutImages(InOutImageStates inOutImages)
+    {
+        this.inOutImages = inOutImages;
+    }
+
     private InOutLineStates inOutLines;
 
     public InOutLineStates getInOutLines()
@@ -510,6 +522,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     }
     
     protected void initializeProperties() {
+        inOutImages = new SimpleInOutImageStates(this);
         inOutLines = new SimpleInOutLineStates(this);
     }
 
@@ -564,6 +577,10 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (InOutImageEvent.InOutImageStateCreated innerEvent : e.getInOutImageEvents()) {
+            InOutImageState innerState = this.getInOutImages().get(innerEvent.getInOutImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+        }
         for (InOutLineEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
             InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
@@ -919,6 +936,15 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (InOutImageEvent innerEvent : e.getInOutImageEvents()) {
+            InOutImageState innerState = this.getInOutImages().get(innerEvent.getInOutImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof InOutImageEvent.InOutImageStateRemoved)
+            {
+                //InOutImageEvent.InOutImageStateRemoved removed = (InOutImageEvent.InOutImageStateRemoved)innerEvent;
+                this.getInOutImages().remove(innerState);
+            }
+        }
         for (InOutLineEvent innerEvent : e.getInOutLineEvents()) {
             InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
@@ -932,6 +958,8 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
     public void save()
     {
+        inOutImages.save();
+
         inOutLines.save();
 
     }
@@ -971,6 +999,14 @@ public abstract class AbstractInOutState implements InOutState, Saveable
             super(events);
         }
 
+    }
+
+    static class SimpleInOutImageStates extends AbstractInOutImageStates
+    {
+        public SimpleInOutImageStates(AbstractInOutState outerState)
+        {
+            super(outerState);
+        }
     }
 
     static class SimpleInOutLineStates extends AbstractInOutLineStates

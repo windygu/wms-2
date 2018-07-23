@@ -118,6 +118,21 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
+        private IInOutImageStates _inOutImages;
+      
+        public virtual IInOutImageStates InOutImages
+        {
+            get
+            {
+                return this._inOutImages;
+            }
+            set
+            {
+                this._inOutImages = value;
+            }
+        }
+
+
         private IInOutLineStates _inOutLines;
       
         public virtual IInOutLineStates InOutLines
@@ -169,6 +184,8 @@ namespace Dddml.Wms.Domain.InOut
         public InOutState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _inOutImages = new InOutImageStates(this);
+
             _inOutLines = new InOutLineStates(this);
 
             InitializeProperties();
@@ -179,6 +196,8 @@ namespace Dddml.Wms.Domain.InOut
 
         public virtual void Save()
         {
+            _inOutImages.Save();
+
             _inOutLines.Save();
 
         }
@@ -255,6 +274,10 @@ namespace Dddml.Wms.Domain.InOut
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IInOutImageStateCreated innerEvent in e.InOutImageEvents) {
+				IInOutImageState innerState = this.InOutImages.Get(innerEvent.GlobalId.SequenceId, true);
+				innerState.Mutate (innerEvent);
+			}
 			foreach (IInOutLineStateCreated innerEvent in e.InOutLineEvents) {
 				IInOutLineState innerState = this.InOutLines.Get(innerEvent.GlobalId.LineNumber, true);
 				innerState.Mutate (innerEvent);
@@ -643,6 +666,19 @@ namespace Dddml.Wms.Domain.InOut
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
+
+			foreach (IInOutImageEvent innerEvent in e.InOutImageEvents)
+            {
+                IInOutImageState innerState = this.InOutImages.Get(innerEvent.GlobalId.SequenceId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IInOutImageStateRemoved;
+                if (removed != null)
+                {
+                    this.InOutImages.Remove(innerState);
+                }
+          
+            }
 
 			foreach (IInOutLineEvent innerEvent in e.InOutLineEvents)
             {

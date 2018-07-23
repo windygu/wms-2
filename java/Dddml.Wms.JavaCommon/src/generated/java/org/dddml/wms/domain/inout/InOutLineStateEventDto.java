@@ -298,6 +298,17 @@ public class InOutLineStateEventDto extends AbstractEvent
     }
 
 
+    private InOutLineImageStateEventDto[] inOutLineImageEvents;
+
+    public InOutLineImageStateEventDto[] getInOutLineImageEvents() {
+        return this.inOutLineImageEvents;
+    }
+
+    public void setInOutLineImageEvents(InOutLineImageStateEventDto[] events) {
+        this.inOutLineImageEvents = events;
+    }
+
+
 	public static class InOutLineStateCreatedDto extends InOutLineStateEventDto
 	{
         @Override

@@ -22,7 +22,7 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LineNumber", "LocatorId", "ProductId", "AttributeSetInstanceId", "Description", "QuantityUomId", "MovementQuantity", "PickedQuantity", "IsInvoiced", "Processed", "RmaLineNumber", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InOutDocumentNumber"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LineNumber", "LocatorId", "ProductId", "AttributeSetInstanceId", "Description", "QuantityUomId", "MovementQuantity", "PickedQuantity", "IsInvoiced", "Processed", "RmaLineNumber", "ReversalLineNumber", "InOutLineImages", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "InOutDocumentNumber"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -44,7 +44,7 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
             state.setInOutLineId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (InOutLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (InOutLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

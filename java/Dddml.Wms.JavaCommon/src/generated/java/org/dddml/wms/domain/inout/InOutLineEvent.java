@@ -83,6 +83,12 @@ public interface InOutLineEvent extends Event
 
     interface InOutLineStateCreated extends InOutLineStateEvent
     {
+        Iterable<InOutLineImageEvent.InOutLineImageStateCreated> getInOutLineImageEvents();
+        
+        void addInOutLineImageEvent(InOutLineImageEvent.InOutLineImageStateCreated e);
+
+        InOutLineImageEvent.InOutLineImageStateCreated newInOutLineImageStateCreated(String sequenceId);
+
     
     }
 
@@ -137,11 +143,27 @@ public interface InOutLineEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        Iterable<InOutLineImageEvent> getInOutLineImageEvents();
+        
+        void addInOutLineImageEvent(InOutLineImageEvent e);
+
+        InOutLineImageEvent.InOutLineImageStateCreated newInOutLineImageStateCreated(String sequenceId);
+
+        InOutLineImageEvent.InOutLineImageStateMergePatched newInOutLineImageStateMergePatched(String sequenceId);
+
+        InOutLineImageEvent.InOutLineImageStateRemoved newInOutLineImageStateRemoved(String sequenceId);
+
 
     }
 
     interface InOutLineStateRemoved extends InOutLineStateEvent
     {
+        Iterable<InOutLineImageEvent.InOutLineImageStateRemoved> getInOutLineImageEvents();
+        
+        void addInOutLineImageEvent(InOutLineImageEvent.InOutLineImageStateRemoved e);
+        
+        InOutLineImageEvent.InOutLineImageStateRemoved newInOutLineImageStateRemoved(String sequenceId);
+
     }
 
 

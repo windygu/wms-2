@@ -27,7 +27,7 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentStatusId", "Posted", "Processed", "Processing", "DocumentTypeId", "Description", "OrderId", "DateOrdered", "IsPrinted", "MovementTypeId", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "FreightAmount", "ShipperId", "ChargeAmount", "DatePrinted", "CreatedFrom", "SalesRepresentativeId", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "RmaDocumentNumber", "ReversalDocumentNumber", "InOutLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentStatusId", "Posted", "Processed", "Processing", "DocumentTypeId", "Description", "OrderId", "DateOrdered", "IsPrinted", "MovementTypeId", "MovementDate", "BusinessPartnerId", "WarehouseId", "POReference", "FreightAmount", "ShipperId", "ChargeAmount", "DatePrinted", "CreatedFrom", "SalesRepresentativeId", "NumberOfPackages", "PickDate", "ShipDate", "TrackingNumber", "DateReceived", "IsInTransit", "IsApproved", "IsInDispute", "RmaDocumentNumber", "ReversalDocumentNumber", "InOutLines", "InOutImages", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -134,6 +134,21 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
     }
 
     @Transactional(readOnly = true)
+    public InOutImageState getInOutImage(String inOutDocumentNumber, String sequenceId) {
+        InOutImageId entityId = new InOutImageId(inOutDocumentNumber, sequenceId);
+        return (InOutImageState) getCurrentSession().get(AbstractInOutImageState.SimpleInOutImageState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutImageState.SimpleInOutImageState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("inOutImageId.inOutDocumentNumber", inOutDocumentNumber))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
     public InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber) {
         InOutLineId entityId = new InOutLineId(inOutDocumentNumber, lineNumber);
         return (InOutLineState) getCurrentSession().get(AbstractInOutLineState.SimpleInOutLineState.class, entityId);
@@ -144,6 +159,22 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineState.SimpleInOutLineState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("inOutLineId.inOutDocumentNumber", inOutDocumentNumber))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public InOutLineImageState getInOutLineImage(String inOutDocumentNumber, String inOutLineLineNumber, String sequenceId) {
+        InOutLineImageId entityId = new InOutLineImageId(inOutDocumentNumber, inOutLineLineNumber, sequenceId);
+        return (InOutLineImageState) getCurrentSession().get(AbstractInOutLineImageState.SimpleInOutLineImageState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineImageState.SimpleInOutLineImageState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("inOutLineImageId.inOutDocumentNumber", inOutDocumentNumber))
+            .add(org.hibernate.criterion.Restrictions.eq("inOutLineImageId.inOutLineLineNumber", inOutLineLineNumber))
             ;
         return criteria.add(partIdCondition).list();
     }

@@ -179,6 +179,36 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.active = active;
         }
 
+        public InOutLineImageCommand.CreateInOutLineImage newCreateInOutLineImage()
+        {
+            AbstractInOutLineImageCommand.SimpleCreateInOutLineImage c = new AbstractInOutLineImageCommand.SimpleCreateInOutLineImage();
+            c.setInOutDocumentNumber(this.getInOutDocumentNumber());
+
+            c.setInOutLineLineNumber(this.getLineNumber());
+
+            return c;
+        }
+
+        public InOutLineImageCommand.MergePatchInOutLineImage newMergePatchInOutLineImage()
+        {
+            AbstractInOutLineImageCommand.SimpleMergePatchInOutLineImage c = new AbstractInOutLineImageCommand.SimpleMergePatchInOutLineImage();
+            c.setInOutDocumentNumber(this.getInOutDocumentNumber());
+
+            c.setInOutLineLineNumber(this.getLineNumber());
+
+            return c;
+        }
+
+        public InOutLineImageCommand.RemoveInOutLineImage newRemoveInOutLineImage()
+        {
+            AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage c = new AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage();
+            c.setInOutDocumentNumber(this.getInOutDocumentNumber());
+
+            c.setInOutLineLineNumber(this.getLineNumber());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateInOutLine extends AbstractCreateOrMergePatchInOutLine implements CreateInOutLine
@@ -186,6 +216,13 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        private CreateInOutLineImageCommands inOutLineImages = new SimpleCreateInOutLineImageCommands();
+
+        public CreateInOutLineImageCommands getInOutLineImages()
+        {
+            return this.inOutLineImages;
         }
 
     }
@@ -341,6 +378,13 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.isPropertyActiveRemoved = removed;
         }
 
+        private InOutLineImageCommands inOutLineImageCommands = new SimpleInOutLineImageCommands();
+
+        public InOutLineImageCommands getInOutLineImageCommands()
+        {
+            return this.inOutLineImageCommands;
+        }
+
     }
 
     public static class SimpleCreateInOutLine extends AbstractCreateInOutLine
@@ -362,6 +406,58 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
 	}
 
     
+    public static class SimpleCreateInOutLineImageCommands implements CreateInOutLineImageCommands
+    {
+        private List<InOutLineImageCommand.CreateInOutLineImage> innerCommands = new ArrayList<InOutLineImageCommand.CreateInOutLineImage>();
+
+        public void add(InOutLineImageCommand.CreateInOutLineImage c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(InOutLineImageCommand.CreateInOutLineImage c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<InOutLineImageCommand.CreateInOutLineImage> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleInOutLineImageCommands implements InOutLineImageCommands
+    {
+        private List<InOutLineImageCommand> innerCommands = new ArrayList<InOutLineImageCommand>();
+
+        public void add(InOutLineImageCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(InOutLineImageCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<InOutLineImageCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
 
 }
 

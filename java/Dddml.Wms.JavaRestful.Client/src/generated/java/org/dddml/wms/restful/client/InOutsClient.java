@@ -50,8 +50,16 @@ public interface InOutsClient {
     Call<InOutStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
+    @GET("InOuts/{inOutDocumentNumber}/InOutImages/{sequenceId}")
+    Call<InOutImageStateDto> getInOutImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("sequenceId") String sequenceId);
+ 
+    @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{lineNumber}")
     Call<InOutLineStateDto> getInOutLine(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("lineNumber") String lineNumber);
+ 
+    @Headers("Accept: application/json")
+    @GET("InOuts/{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
+    Call<InOutLineImageStateDto> getInOutLineImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
     @PUT("InOuts/{id}")

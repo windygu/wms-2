@@ -338,6 +338,115 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
+        private InOutLineImageStateCreatedOrMergePatchedOrRemovedDtos _inOutLineImageEvents = new InOutLineImageStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual InOutLineImageStateCreatedOrMergePatchedOrRemovedDto[] InOutLineImageEvents
+        {
+            get
+            {
+                return _inOutLineImageEvents.ToArray();
+            }
+            set
+            {
+                _inOutLineImageEvents.Clear();
+                _inOutLineImageEvents.AddRange(value);
+            }
+        }
+
+
+
+        private InOutLineImageEventId NewInOutLineImageEventId(string sequenceId)
+        {
+            var eId = new InOutLineImageEventId();
+            eId.InOutDocumentNumber = this.InOutLineEventId.InOutDocumentNumber;
+            eId.InOutLineLineNumber = this.InOutLineEventId.LineNumber;
+            eId.SequenceId = sequenceId;
+            eId.InOutVersion = this.InOutLineEventId.InOutVersion;
+            return eId;
+        }
+
+        public virtual InOutLineImageStateCreatedDto NewInOutLineImageStateCreated(string sequenceId)
+        {
+            var e = new InOutLineImageStateCreatedDto();
+            var eId = NewInOutLineImageEventId(sequenceId);
+            e.InOutLineImageEventId = eId;
+            return e;
+        }
+
+        public virtual InOutLineImageStateMergePatchedDto NewInOutLineImageStateMergePatched(string sequenceId)
+        {
+            var e = new InOutLineImageStateMergePatchedDto();
+            var eId = NewInOutLineImageEventId(sequenceId);
+            e.InOutLineImageEventId = eId;
+            return e;
+        }
+
+        public virtual InOutLineImageStateRemovedDto NewInOutLineImageStateRemoved(string sequenceId)
+        {
+            var e = new InOutLineImageStateRemovedDto();
+            var eId = NewInOutLineImageEventId(sequenceId);
+            e.InOutLineImageEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IInOutLineImageStateCreated> IInOutLineStateCreated.InOutLineImageEvents
+        {
+            get { return this._inOutLineImageEvents; }
+        }
+
+        void IInOutLineStateCreated.AddInOutLineImageEvent(IInOutLineImageStateCreated e)
+        {
+            this._inOutLineImageEvents.AddInOutLineImageEvent(e);
+        }
+
+        IInOutLineImageStateCreated IInOutLineStateCreated.NewInOutLineImageStateCreated(string sequenceId)
+        {
+            return NewInOutLineImageStateCreated(sequenceId);
+        }
+
+        IEnumerable<IInOutLineImageEvent> IInOutLineStateMergePatched.InOutLineImageEvents
+        {
+            get { return this._inOutLineImageEvents; }
+        }
+
+        void IInOutLineStateMergePatched.AddInOutLineImageEvent(IInOutLineImageEvent e)
+        {
+            this._inOutLineImageEvents.AddInOutLineImageEvent(e);
+        }
+
+        IInOutLineImageStateCreated IInOutLineStateMergePatched.NewInOutLineImageStateCreated(string sequenceId)
+        {
+            return NewInOutLineImageStateCreated(sequenceId);
+        }
+
+        IInOutLineImageStateMergePatched IInOutLineStateMergePatched.NewInOutLineImageStateMergePatched(string sequenceId)
+        {
+            return NewInOutLineImageStateMergePatched(sequenceId);
+        }
+
+        IInOutLineImageStateRemoved IInOutLineStateMergePatched.NewInOutLineImageStateRemoved(string sequenceId)
+        {
+            return NewInOutLineImageStateRemoved(sequenceId);
+        }
+
+
+        IEnumerable<IInOutLineImageStateRemoved> IInOutLineStateRemoved.InOutLineImageEvents
+        {
+            get { return this._inOutLineImageEvents; }
+        }
+
+        void IInOutLineStateRemoved.AddInOutLineImageEvent(IInOutLineImageStateRemoved e)
+        {
+            this._inOutLineImageEvents.AddInOutLineImageEvent(e);
+        }
+
+        IInOutLineImageStateRemoved IInOutLineStateRemoved.NewInOutLineImageStateRemoved(string sequenceId)
+        {
+            return NewInOutLineImageStateRemoved(sequenceId);
+        }
+
+
+
         InOutLineEventId IInOutLineEvent.InOutLineEventId
         {
             get { return this.InOutLineEventId; }

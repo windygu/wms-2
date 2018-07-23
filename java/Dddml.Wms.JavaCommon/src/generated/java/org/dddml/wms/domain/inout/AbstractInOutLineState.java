@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inout.InOutLineEvent.*;
 
-public abstract class AbstractInOutLineState implements InOutLineState
+public abstract class AbstractInOutLineState implements InOutLineState, Saveable
 {
 
     private InOutLineId inOutLineId = new InOutLineId();
@@ -257,6 +257,18 @@ public abstract class AbstractInOutLineState implements InOutLineState
         return this.getVersion() == null;
     }
 
+    private InOutLineImageStates inOutLineImages;
+
+    public InOutLineImageStates getInOutLineImages()
+    {
+        return this.inOutLineImages;
+    }
+
+    public void setInOutLineImages(InOutLineImageStates inOutLineImages)
+    {
+        this.inOutLineImages = inOutLineImages;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -285,6 +297,7 @@ public abstract class AbstractInOutLineState implements InOutLineState
     }
     
     protected void initializeProperties() {
+        inOutLineImages = new SimpleInOutLineImageStates(this);
     }
 
 
@@ -323,6 +336,10 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (InOutLineImageEvent.InOutLineImageStateCreated innerEvent : e.getInOutLineImageEvents()) {
+            InOutLineImageState innerState = this.getInOutLineImages().get(innerEvent.getInOutLineImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+        }
     }
 
     public void when(InOutLineStateMergePatched e)
@@ -465,6 +482,15 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (InOutLineImageEvent innerEvent : e.getInOutLineImageEvents()) {
+            InOutLineImageState innerState = this.getInOutLineImages().get(innerEvent.getInOutLineImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof InOutLineImageEvent.InOutLineImageStateRemoved)
+            {
+                //InOutLineImageEvent.InOutLineImageStateRemoved removed = (InOutLineImageEvent.InOutLineImageStateRemoved)innerEvent;
+                this.getInOutLineImages().remove(innerState);
+            }
+        }
     }
 
     public void when(InOutLineStateRemoved e)
@@ -475,10 +501,22 @@ public abstract class AbstractInOutLineState implements InOutLineState
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (InOutLineImageState innerState : this.getInOutLineImages())
+        {
+            this.getInOutLineImages().remove(innerState);
+        
+            InOutLineImageEvent.InOutLineImageStateRemoved innerE = e.newInOutLineImageStateRemoved(innerState.getSequenceId());
+            innerE.setCreatedAt(e.getCreatedAt());
+            innerE.setCreatedBy(e.getCreatedBy());
+            innerState.when(innerE);
+            //e.addInOutLineImageEvent(innerE);
+        }
     }
 
     public void save()
     {
+        inOutLineImages.save();
+
     }
 
     protected void throwOnWrongEvent(InOutLineEvent event)
@@ -525,6 +563,14 @@ public abstract class AbstractInOutLineState implements InOutLineState
             super(forReapplying);
         }
 
+    }
+
+    static class SimpleInOutLineImageStates extends AbstractInOutLineImageStates
+    {
+        public SimpleInOutLineImageStates(AbstractInOutLineState outerState)
+        {
+            super(outerState);
+        }
     }
 
 

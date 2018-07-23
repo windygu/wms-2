@@ -27,9 +27,17 @@ public interface InOutStateQueryRepository
 
     long getCount(Criterion filter);
 
+    InOutImageState getInOutImage(String inOutDocumentNumber, String sequenceId);
+
+    Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber);
+
     InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber);
 
     Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber);
+
+    InOutLineImageState getInOutLineImage(String inOutDocumentNumber, String inOutLineLineNumber, String sequenceId);
+
+    Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber);
 
 }
 

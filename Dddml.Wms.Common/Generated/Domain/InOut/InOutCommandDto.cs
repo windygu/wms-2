@@ -689,6 +689,81 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
+        ICreateInOutImageCommands ICreateInOut.InOutImages
+        {
+            get
+            {
+                return this._inOutImages;
+            }
+        }
+
+        IInOutImageCommands IMergePatchInOut.InOutImageCommands
+        {
+            get
+            {
+                return this._inOutImages;
+            }
+        }
+
+        public virtual CreateInOutImageDto NewCreateInOutImage()
+        {
+            var c = new CreateInOutImageDto();
+            c.InOutDocumentNumber = this.DocumentNumber;
+
+            return c;
+        }
+
+        ICreateInOutImage ICreateInOut.NewCreateInOutImage()
+        {
+            return this.NewCreateInOutImage();
+        }
+
+        ICreateInOutImage IMergePatchInOut.NewCreateInOutImage()
+        {
+            return this.NewCreateInOutImage();
+        }
+
+        public virtual MergePatchInOutImageDto NewMergePatchInOutImage()
+        {
+            var c = new MergePatchInOutImageDto();
+            c.InOutDocumentNumber = this.DocumentNumber;
+
+            return c;
+        }
+
+        IMergePatchInOutImage IMergePatchInOut.NewMergePatchInOutImage()
+        {
+            return this.NewMergePatchInOutImage();
+        }
+
+        public virtual RemoveInOutImageDto NewRemoveInOutImage()
+        {
+            var c = new RemoveInOutImageDto();
+            c.InOutDocumentNumber = this.DocumentNumber;
+
+            return c;
+        }
+
+        IRemoveInOutImage IMergePatchInOut.NewRemoveInOutImage()
+        {
+            return this.NewRemoveInOutImage();
+        }
+
+        private CreateOrMergePatchOrRemoveInOutImageDtos _inOutImages = new CreateOrMergePatchOrRemoveInOutImageDtos();
+
+        public virtual CreateOrMergePatchOrRemoveInOutImageDto[] InOutImages
+        {
+            get
+            {
+                return _inOutImages.ToArray();
+            }
+            set
+            {
+                _inOutImages.Clear();
+                _inOutImages.AddRange(value);
+            }
+        }
+
         ICreateInOutLineCommands ICreateInOut.InOutLines
         {
             get

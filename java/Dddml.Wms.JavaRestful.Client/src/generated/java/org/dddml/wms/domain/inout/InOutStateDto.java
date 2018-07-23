@@ -454,6 +454,18 @@ public class InOutStateDto
         this.updatedAt = updatedAt;
     }
 
+    private InOutImageStateDto[] inOutImages;
+
+    public InOutImageStateDto[] getInOutImages()
+    {
+        return this.inOutImages;
+    }	
+
+    public void setInOutImages(InOutImageStateDto[] inOutImages)
+    {
+        this.inOutImages = inOutImages;
+    }
+
     private InOutLineStateDto[] inOutLines;
 
     public InOutLineStateDto[] getInOutLines()

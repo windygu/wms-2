@@ -23,7 +23,7 @@
     // ///////////////////////////////////////////
 	var generationOptions = new GenerationOptions();
 	generationOptions.Java = true;
-	generationOptions.NoMViewObjects = false;
+	generationOptions.NoMViewObjects = true;
 	boundedContext.PrepareGeneration(generationOptions);
 
 	var mviewObjects = boundedContext.GetMViewObjects();

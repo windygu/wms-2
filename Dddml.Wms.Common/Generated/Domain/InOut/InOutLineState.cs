@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.InOut;
 namespace Dddml.Wms.Domain.InOut
 {
 
-	public partial class InOutLineState : InOutLineStateProperties, IInOutLineState
+	public partial class InOutLineState : InOutLineStateProperties, IInOutLineState, ISaveable
 	{
 
 		public virtual string CreatedBy { get; set; }
@@ -164,6 +164,21 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
+        private IInOutLineImageStates _inOutLineImages;
+      
+        public virtual IInOutLineImageStates InOutLineImages
+        {
+            get
+            {
+                return this._inOutLineImages;
+            }
+            set
+            {
+                this._inOutLineImages = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -187,8 +202,22 @@ namespace Dddml.Wms.Domain.InOut
         public InOutLineState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _inOutLineImages = new InOutLineImageStates(this);
+
             InitializeProperties();
         }
+
+
+		#region Saveable Implements
+
+        public virtual void Save()
+        {
+            _inOutLineImages.Save();
+
+        }
+
+
+		#endregion
 
 
 		public virtual void When(IInOutLineStateCreated e)
@@ -223,6 +252,10 @@ namespace Dddml.Wms.Domain.InOut
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IInOutLineImageStateCreated innerEvent in e.InOutLineImageEvents) {
+				IInOutLineImageState innerState = this.InOutLineImages.Get(innerEvent.GlobalId.SequenceId, true);
+				innerState.Mutate (innerEvent);
+			}
 
 		}
 
@@ -380,6 +413,19 @@ namespace Dddml.Wms.Domain.InOut
 			this.UpdatedAt = e.CreatedAt;
 
 
+			foreach (IInOutLineImageEvent innerEvent in e.InOutLineImageEvents)
+            {
+                IInOutLineImageState innerState = this.InOutLineImages.Get(innerEvent.GlobalId.SequenceId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IInOutLineImageStateRemoved;
+                if (removed != null)
+                {
+                    this.InOutLineImages.Remove(innerState);
+                }
+          
+            }
+
 		}
 
 		public virtual void When(IInOutLineStateRemoved e)
@@ -389,6 +435,18 @@ namespace Dddml.Wms.Domain.InOut
 			this.Deleted = true;
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
+
+            foreach (var innerState in this.InOutLineImages)
+            {
+                this.InOutLineImages.Remove(innerState);
+                
+                var innerE = e.NewInOutLineImageStateRemoved(innerState.SequenceId);
+                ((InOutLineImageEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((InOutLineImageEventBase)innerE).CreatedBy = e.CreatedBy;
+                innerState.When(innerE);
+                //e.AddInOutLineImageEvent(innerE);
+
+            }
 
 		}
 

@@ -33,10 +33,32 @@ deallocate prepare stmt;
 
 set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'InOutImages' AND
+            CONSTRAINT_NAME   = 'FK_InOutImage_InOut_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE InOutImages
+            drop foreign key FK_InOutImage_InOut_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
             TABLE_NAME        = 'InOutLines' AND
             CONSTRAINT_NAME   = 'FK_InOutLine_InOut_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE InOutLines
             drop foreign key FK_InOutLine_InOut_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'InOutLineImages' AND
+            CONSTRAINT_NAME   = 'FK_InOutLineImage_InOutLine_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE InOutLineImages
+            drop foreign key FK_InOutLineImage_InOutLine_StateId','select 1');
 
 prepare stmt from @var;
 execute stmt;

@@ -68,6 +68,14 @@ namespace Dddml.Wms.Domain.InOut
             dto.RmaDocumentNumber = e.RmaDocumentNumber;
             dto.ReversalDocumentNumber = e.ReversalDocumentNumber;
             dto.Active = e.Active;
+            var inOutImageEvents = new List<InOutImageStateCreatedDto>();
+            foreach (var ee in e.InOutImageEvents)
+            {
+                InOutImageStateCreatedDto eeDto = InOutImageStateEventDtoConverter.ToInOutImageStateCreatedDto(ee);
+                inOutImageEvents.Add(eeDto);
+            }
+            dto.InOutImageEvents = inOutImageEvents.ToArray();
+
             var inOutLineEvents = new List<InOutLineStateCreatedDto>();
             foreach (var ee in e.InOutLineEvents)
             {
@@ -148,6 +156,14 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsPropertyRmaDocumentNumberRemoved = e.IsPropertyRmaDocumentNumberRemoved;
             dto.IsPropertyReversalDocumentNumberRemoved = e.IsPropertyReversalDocumentNumberRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var inOutImageEvents = new List<InOutImageStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.InOutImageEvents)
+            {
+                InOutImageStateCreatedOrMergePatchedOrRemovedDto eeDto = InOutImageStateEventDtoConverter.ToInOutImageStateEventDto(ee);
+                inOutImageEvents.Add(eeDto);
+            }
+            dto.InOutImageEvents = inOutImageEvents.ToArray();
+
             var inOutLineEvents = new List<InOutLineStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.InOutLineEvents)
             {
@@ -160,6 +176,14 @@ namespace Dddml.Wms.Domain.InOut
             return dto;
         }
 
+
+        protected virtual InOutImageStateEventDtoConverter InOutImageStateEventDtoConverter
+        {
+            get
+            {
+                return new InOutImageStateEventDtoConverter();
+            }
+        }
 
         protected virtual InOutLineStateEventDtoConverter InOutLineStateEventDtoConverter
         {

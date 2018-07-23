@@ -741,6 +741,97 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
+        private InOutImageStateCreatedOrMergePatchedOrRemovedDtos _inOutImageEvents = new InOutImageStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual InOutImageStateCreatedOrMergePatchedOrRemovedDto[] InOutImageEvents
+        {
+            get
+            {
+                return _inOutImageEvents.ToArray();
+            }
+            set
+            {
+                _inOutImageEvents.Clear();
+                _inOutImageEvents.AddRange(value);
+            }
+        }
+
+
+
+        private InOutImageEventId NewInOutImageEventId(string sequenceId)
+        {
+            var eId = new InOutImageEventId();
+            eId.InOutDocumentNumber = this.InOutEventId.DocumentNumber;
+            eId.SequenceId = sequenceId;
+            eId.InOutVersion = this.InOutEventId.Version;
+            return eId;
+        }
+
+        public virtual InOutImageStateCreatedDto NewInOutImageStateCreated(string sequenceId)
+        {
+            var e = new InOutImageStateCreatedDto();
+            var eId = NewInOutImageEventId(sequenceId);
+            e.InOutImageEventId = eId;
+            return e;
+        }
+
+        public virtual InOutImageStateMergePatchedDto NewInOutImageStateMergePatched(string sequenceId)
+        {
+            var e = new InOutImageStateMergePatchedDto();
+            var eId = NewInOutImageEventId(sequenceId);
+            e.InOutImageEventId = eId;
+            return e;
+        }
+
+        public virtual InOutImageStateRemovedDto NewInOutImageStateRemoved(string sequenceId)
+        {
+            var e = new InOutImageStateRemovedDto();
+            var eId = NewInOutImageEventId(sequenceId);
+            e.InOutImageEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IInOutImageStateCreated> IInOutStateCreated.InOutImageEvents
+        {
+            get { return this._inOutImageEvents; }
+        }
+
+        void IInOutStateCreated.AddInOutImageEvent(IInOutImageStateCreated e)
+        {
+            this._inOutImageEvents.AddInOutImageEvent(e);
+        }
+
+        IInOutImageStateCreated IInOutStateCreated.NewInOutImageStateCreated(string sequenceId)
+        {
+            return NewInOutImageStateCreated(sequenceId);
+        }
+
+        IEnumerable<IInOutImageEvent> IInOutStateMergePatched.InOutImageEvents
+        {
+            get { return this._inOutImageEvents; }
+        }
+
+        void IInOutStateMergePatched.AddInOutImageEvent(IInOutImageEvent e)
+        {
+            this._inOutImageEvents.AddInOutImageEvent(e);
+        }
+
+        IInOutImageStateCreated IInOutStateMergePatched.NewInOutImageStateCreated(string sequenceId)
+        {
+            return NewInOutImageStateCreated(sequenceId);
+        }
+
+        IInOutImageStateMergePatched IInOutStateMergePatched.NewInOutImageStateMergePatched(string sequenceId)
+        {
+            return NewInOutImageStateMergePatched(sequenceId);
+        }
+
+        IInOutImageStateRemoved IInOutStateMergePatched.NewInOutImageStateRemoved(string sequenceId)
+        {
+            return NewInOutImageStateRemoved(sequenceId);
+        }
+
+
         private InOutLineStateCreatedOrMergePatchedOrRemovedDtos _inOutLineEvents = new InOutLineStateCreatedOrMergePatchedOrRemovedDtos();
 
         public virtual InOutLineStateCreatedOrMergePatchedOrRemovedDto[] InOutLineEvents

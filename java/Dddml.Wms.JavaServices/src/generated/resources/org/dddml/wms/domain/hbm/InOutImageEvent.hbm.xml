@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inout">
+  
+  <class name="AbstractInOutImageEvent" table="InOutImageEvents" mutable="false" abstract="true">
+
+	<composite-id name="inOutImageEventId" class="org.dddml.wms.domain.inout.InOutImageEventId">
+		<key-property name="inOutDocumentNumber" ><column name="InOutImageIdInOutDocumentNumber" length="50" /></key-property>
+		<key-property name="sequenceId" ><column name="InOutImageIdSequenceId" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="inOutVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractInOutImageEvent$AbstractInOutImageStateEvent" abstract="true">
+
+	<property name="url" ><column name="Url" sql-type="VARCHAR(250)" /></property>
+	<property name="active" ></property>
+
+    <property name="version" column="Version" not-null="true" />
+
+    <subclass name="AbstractInOutImageEvent$SimpleInOutImageStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractInOutImageEvent$SimpleInOutImageStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyUrlRemoved" column="IsPropertyUrlRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractInOutImageEvent$SimpleInOutImageStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
+
+        </subclass>
+
+  </class>
+  
+</hibernate-mapping>

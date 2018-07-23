@@ -166,6 +166,8 @@ public interface InOutState
 
     boolean getForReapplying();
 
+    InOutImageStates getInOutImages();
+
     InOutLineStates getInOutLines();
 
 

@@ -161,6 +161,10 @@ public interface InOutCommand extends Command
 
     interface CreateInOut extends CreateOrMergePatchInOut
     {
+        CreateInOutImageCommands getInOutImages();
+
+        InOutImageCommand.CreateInOutImage newCreateInOutImage();
+
         CreateInOutLineCommands getInOutLines();
 
         InOutLineCommand.CreateInOutLine newCreateInOutLine();
@@ -289,6 +293,14 @@ public interface InOutCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        InOutImageCommands getInOutImageCommands();
+
+        InOutImageCommand.CreateInOutImage newCreateInOutImage();
+
+        InOutImageCommand.MergePatchInOutImage newMergePatchInOutImage();
+
+        InOutImageCommand.RemoveInOutImage newRemoveInOutImage();
+
         InOutLineCommands getInOutLineCommands();
 
         InOutLineCommand.CreateInOutLine newCreateInOutLine();
@@ -302,6 +314,24 @@ public interface InOutCommand extends Command
 	interface DeleteInOut extends InOutCommand
 	{
 	}
+
+    interface CreateInOutImageCommands extends Iterable<InOutImageCommand.CreateInOutImage>
+    {
+        void add(InOutImageCommand.CreateInOutImage c);
+
+        void remove(InOutImageCommand.CreateInOutImage c);
+
+        void clear();
+    }
+
+    interface InOutImageCommands extends Iterable<InOutImageCommand>
+    {
+        void add(InOutImageCommand c);
+
+        void remove(InOutImageCommand c);
+
+        void clear();
+    }
 
     interface CreateInOutLineCommands extends Iterable<InOutLineCommand.CreateInOutLine>
     {

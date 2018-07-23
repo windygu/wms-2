@@ -75,6 +75,32 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         this.inOutEventId = eventId;
     }
 
+    protected InOutImageEventDao getInOutImageEventDao() {
+        return (InOutImageEventDao)ApplicationContext.current.get("InOutImageEventDao");
+    }
+
+    protected InOutImageEventId newInOutImageEventId(String sequenceId)
+    {
+        InOutImageEventId eventId = new InOutImageEventId(this.getInOutEventId().getDocumentNumber(), 
+            sequenceId, 
+            this.getInOutEventId().getVersion());
+        return eventId;
+    }
+
+    protected void throwOnInconsistentEventIds(InOutImageEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(InOutEvent oe, InOutImageEvent e)
+    {
+        if (!oe.getInOutEventId().getDocumentNumber().equals(e.getInOutImageEventId().getInOutDocumentNumber()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id DocumentNumber %1$s but inner id InOutDocumentNumber %2$s", 
+                oe.getInOutEventId().getDocumentNumber(), e.getInOutImageEventId().getInOutDocumentNumber());
+        }
+    }
+
     protected InOutLineEventDao getInOutLineEventDao() {
         return (InOutLineEventDao)ApplicationContext.current.get("InOutLineEventDao");
     }
@@ -99,6 +125,18 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
             throw DomainError.named("inconsistentEventIds", "Outer Id DocumentNumber %1$s but inner id InOutDocumentNumber %2$s", 
                 oe.getInOutEventId().getDocumentNumber(), e.getInOutLineEventId().getInOutDocumentNumber());
         }
+    }
+
+    public InOutImageEvent.InOutImageStateCreated newInOutImageStateCreated(String sequenceId) {
+        return new AbstractInOutImageEvent.SimpleInOutImageStateCreated(newInOutImageEventId(sequenceId));
+    }
+
+    public InOutImageEvent.InOutImageStateMergePatched newInOutImageStateMergePatched(String sequenceId) {
+        return new AbstractInOutImageEvent.SimpleInOutImageStateMergePatched(newInOutImageEventId(sequenceId));
+    }
+
+    public InOutImageEvent.InOutImageStateRemoved newInOutImageStateRemoved(String sequenceId) {
+        return new AbstractInOutImageEvent.SimpleInOutImageStateRemoved(newInOutImageEventId(sequenceId));
     }
 
     public InOutLineEvent.InOutLineStateCreated newInOutLineStateCreated(String lineNumber) {
@@ -509,6 +547,48 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
             return StateEventType.CREATED;
         }
 
+        private Map<InOutImageEventId, InOutImageEvent.InOutImageStateCreated> inOutImageEvents = new HashMap<InOutImageEventId, InOutImageEvent.InOutImageStateCreated>();
+        
+        private Iterable<InOutImageEvent.InOutImageStateCreated> readOnlyInOutImageEvents;
+
+        public Iterable<InOutImageEvent.InOutImageStateCreated> getInOutImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.inOutImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyInOutImageEvents != null) { return readOnlyInOutImageEvents; }
+                InOutImageEventDao eventDao = getInOutImageEventDao();
+                List<InOutImageEvent.InOutImageStateCreated> eL = new ArrayList<InOutImageEvent.InOutImageStateCreated>();
+                for (InOutImageEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((InOutImageEvent.InOutImageStateCreated)e);
+                }
+                return (readOnlyInOutImageEvents = eL);
+            }
+        }
+
+        public void setInOutImageEvents(Iterable<InOutImageEvent.InOutImageStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (InOutImageEvent.InOutImageStateCreated e : es)
+                {
+                    addInOutImageEvent(e);
+                }
+            }
+            else { this.inOutImageEvents.clear(); }
+        }
+        
+        public void addInOutImageEvent(InOutImageEvent.InOutImageStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.inOutImageEvents.put(e.getInOutImageEventId(), e);
+        }
+
         private Map<InOutLineEventId, InOutLineEvent.InOutLineStateCreated> inOutLineEvents = new HashMap<InOutLineEventId, InOutLineEvent.InOutLineStateCreated>();
         
         private Iterable<InOutLineEvent.InOutLineStateCreated> readOnlyInOutLineEvents;
@@ -553,6 +633,9 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
 
         public void save()
         {
+            for (InOutImageEvent.InOutImageStateCreated e : this.getInOutImageEvents()) {
+                getInOutImageEventDao().save(e);
+            }
             for (InOutLineEvent.InOutLineStateCreated e : this.getInOutLineEvents()) {
                 getInOutLineEventDao().save(e);
             }
@@ -884,6 +967,48 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
             this.isPropertyActiveRemoved = removed;
         }
 
+        private Map<InOutImageEventId, InOutImageEvent> inOutImageEvents = new HashMap<InOutImageEventId, InOutImageEvent>();
+        
+        private Iterable<InOutImageEvent> readOnlyInOutImageEvents;
+
+        public Iterable<InOutImageEvent> getInOutImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.inOutImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyInOutImageEvents != null) { return readOnlyInOutImageEvents; }
+                InOutImageEventDao eventDao = getInOutImageEventDao();
+                List<InOutImageEvent> eL = new ArrayList<InOutImageEvent>();
+                for (InOutImageEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((InOutImageEvent)e);
+                }
+                return (readOnlyInOutImageEvents = eL);
+            }
+        }
+
+        public void setInOutImageEvents(Iterable<InOutImageEvent> es)
+        {
+            if (es != null)
+            {
+                for (InOutImageEvent e : es)
+                {
+                    addInOutImageEvent(e);
+                }
+            }
+            else { this.inOutImageEvents.clear(); }
+        }
+        
+        public void addInOutImageEvent(InOutImageEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.inOutImageEvents.put(e.getInOutImageEventId(), e);
+        }
+
         private Map<InOutLineEventId, InOutLineEvent> inOutLineEvents = new HashMap<InOutLineEventId, InOutLineEvent>();
         
         private Iterable<InOutLineEvent> readOnlyInOutLineEvents;
@@ -928,6 +1053,9 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
 
         public void save()
         {
+            for (InOutImageEvent e : this.getInOutImageEvents()) {
+                getInOutImageEventDao().save(e);
+            }
             for (InOutLineEvent e : this.getInOutLineEvents()) {
                 getInOutLineEventDao().save(e);
             }

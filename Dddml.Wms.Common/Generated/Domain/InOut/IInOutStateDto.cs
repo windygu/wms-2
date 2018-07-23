@@ -236,6 +236,12 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        IInOutImageStateDto[] InOutImages
+        {
+            get;
+            set;
+        }
+
         IInOutLineStateDto[] InOutLines
         {
             get;

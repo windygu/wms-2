@@ -129,6 +129,18 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        public virtual InOutLineImageStateDto[] InOutLineImages
+        {
+            get;
+            set;
+        }
+
+        IInOutLineImageStateDto[] IInOutLineStateDto.InOutLineImages
+        {
+            get { return this.InOutLineImages; }
+            set { this.InOutLineImages = value.Select(e => ((InOutLineImageStateDto)e)).ToArray(); }
+        }
+
         public virtual IInOutLineState ToInOutLineState()
         {
             var state = new InOutLineState(true);
@@ -151,6 +163,7 @@ namespace Dddml.Wms.Domain.InOut
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.InOutLineImages != null) { foreach (var s in this.InOutLineImages) { state.InOutLineImages.AddToSave(s.ToInOutLineImageState()); } };
 
             return state;
         }

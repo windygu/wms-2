@@ -238,10 +238,22 @@ public class InOutLineStateDto
         this.updatedAt = updatedAt;
     }
 
+    private InOutLineImageStateDto[] inOutLineImages;
+
+    public InOutLineImageStateDto[] getInOutLineImages()
+    {
+        return this.inOutLineImages;
+    }	
+
+    public void setInOutLineImages(InOutLineImageStateDto[] inOutLineImages)
+    {
+        this.inOutLineImages = inOutLineImages;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"InOutLineImages"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -320,6 +332,18 @@ public class InOutLineStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("InOutLineImages")) {
+                ArrayList<InOutLineImageStateDto> arrayList = new ArrayList();
+                if (state.getInOutLineImages() != null) {
+                    InOutLineImageStateDto.DtoConverter conv = new InOutLineImageStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "InOutLineImages");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (InOutLineImageState s : state.getInOutLineImages()) {
+                        arrayList.add(conv.toInOutLineImageStateDto(s));
+                    }
+                }
+                dto.setInOutLineImages(arrayList.toArray(new InOutLineImageStateDto[0]));
             }
             return dto;
         }

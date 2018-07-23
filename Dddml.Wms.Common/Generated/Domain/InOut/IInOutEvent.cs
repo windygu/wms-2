@@ -87,6 +87,12 @@ namespace Dddml.Wms.Domain.InOut
    
 	public interface IInOutStateCreated : IInOutStateEvent
 	{
+		IEnumerable<IInOutImageStateCreated> InOutImageEvents { get; }
+		
+		void AddInOutImageEvent(IInOutImageStateCreated e);
+
+		IInOutImageStateCreated NewInOutImageStateCreated(string sequenceId);
+
 		IEnumerable<IInOutLineStateCreated> InOutLineEvents { get; }
 		
 		void AddInOutLineEvent(IInOutLineStateCreated e);
@@ -160,6 +166,16 @@ namespace Dddml.Wms.Domain.InOut
 		bool IsPropertyReversalDocumentNumberRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
+
+		IEnumerable<IInOutImageEvent> InOutImageEvents { get; }
+		
+		void AddInOutImageEvent(IInOutImageEvent e);
+
+		IInOutImageStateCreated NewInOutImageStateCreated(string sequenceId);
+
+		IInOutImageStateMergePatched NewInOutImageStateMergePatched(string sequenceId);
+
+		IInOutImageStateRemoved NewInOutImageStateRemoved(string sequenceId);
 
 		IEnumerable<IInOutLineEvent> InOutLineEvents { get; }
 		

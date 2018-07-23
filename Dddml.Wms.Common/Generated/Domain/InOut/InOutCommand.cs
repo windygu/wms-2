@@ -134,6 +134,31 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
+        private CreateInOutImageCommands _inOutImages = new CreateInOutImageCommands();
+
+        public ICreateInOutImageCommands InOutImages
+        {
+            get
+            {
+                return this._inOutImages;
+            }
+        }
+
+        public CreateInOutImage NewCreateInOutImage()
+        {
+            var c = new CreateInOutImage();
+            c.InOutDocumentNumber = this.DocumentNumber;
+
+            return c;
+        }
+
+        ICreateInOutImage ICreateInOut.NewCreateInOutImage()
+        {
+            return this.NewCreateInOutImage();
+        }
+
+
+
         private CreateInOutLineCommands _inOutLines = new CreateInOutLineCommands();
 
         public ICreateInOutLineCommands InOutLines
@@ -234,6 +259,58 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
+        private InOutImageCommands _inOutImageCommands = new InOutImageCommands();
+
+        public IInOutImageCommands InOutImageCommands
+        {
+            get
+            {
+                return this._inOutImageCommands;
+            }
+        }
+
+
+        public CreateInOutImage NewCreateInOutImage()
+        {
+            var c = new CreateInOutImage();
+            c.InOutDocumentNumber = this.DocumentNumber;
+
+            return c;
+        }
+
+        ICreateInOutImage IMergePatchInOut.NewCreateInOutImage()
+        {
+            return this.NewCreateInOutImage();
+        }
+
+        public MergePatchInOutImage NewMergePatchInOutImage()
+        {
+            var c = new MergePatchInOutImage();
+            c.InOutDocumentNumber = this.DocumentNumber;
+
+            return c;
+        }
+
+        IMergePatchInOutImage IMergePatchInOut.NewMergePatchInOutImage()
+        {
+            return this.NewMergePatchInOutImage();
+        }
+
+
+        public RemoveInOutImage NewRemoveInOutImage()
+        {
+            var c = new RemoveInOutImage();
+            c.InOutDocumentNumber = this.DocumentNumber;
+
+            return c;
+        }
+
+        IRemoveInOutImage IMergePatchInOut.NewRemoveInOutImage()
+        {
+            return this.NewRemoveInOutImage();
+        }
+
+
         private InOutLineCommands _inOutLineCommands = new InOutLineCommands();
 
         public IInOutLineCommands InOutLineCommands
@@ -305,6 +382,69 @@ namespace Dddml.Wms.Domain.InOut
         }
 
 	}
+
+
+    public class CreateInOutImageCommands : ICreateInOutImageCommands
+    {
+        private List<ICreateInOutImage> _innerCommands = new List<ICreateInOutImage>();
+
+        public void Add(ICreateInOutImage c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateInOutImage c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateInOutImage> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class InOutImageCommands : IInOutImageCommands
+    {
+        private List<IInOutImageCommand> _innerCommands = new List<IInOutImageCommand>();
+
+        public void Add(IInOutImageCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IInOutImageCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IInOutImageCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
 
     public class CreateInOutLineCommands : ICreateInOutLineCommands

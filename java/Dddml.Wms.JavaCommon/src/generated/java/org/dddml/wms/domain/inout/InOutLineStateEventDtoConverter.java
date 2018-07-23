@@ -42,6 +42,13 @@ public class InOutLineStateEventDtoConverter {
         dto.setRmaLineNumber(e.getRmaLineNumber());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setActive(e.getActive());
+        List<InOutLineImageStateEventDto.InOutLineImageStateCreatedDto> inOutLineImageEvents = new ArrayList<>();
+        for (InOutLineImageEvent.InOutLineImageStateCreated ee : e.getInOutLineImageEvents()) {
+            InOutLineImageStateEventDto.InOutLineImageStateCreatedDto eeDto = getInOutLineImageStateEventDtoConverter().toInOutLineImageStateCreatedDto(ee);
+            inOutLineImageEvents.add(eeDto);
+        }
+        dto.setInOutLineImageEvents(inOutLineImageEvents.toArray(new InOutLineImageStateEventDto.InOutLineImageStateCreatedDto[0]));
+
         return dto;
     }
 
@@ -76,6 +83,13 @@ public class InOutLineStateEventDtoConverter {
         dto.setIsPropertyRmaLineNumberRemoved(e.getIsPropertyRmaLineNumberRemoved());
         dto.setIsPropertyReversalLineNumberRemoved(e.getIsPropertyReversalLineNumberRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
+        List<InOutLineImageStateEventDto> inOutLineImageEvents = new ArrayList<>();
+        for (InOutLineImageEvent ee : e.getInOutLineImageEvents()) {
+            InOutLineImageStateEventDto eeDto = getInOutLineImageStateEventDtoConverter().toInOutLineImageStateEventDto((AbstractInOutLineImageEvent) ee);
+            inOutLineImageEvents.add(eeDto);
+        }
+        dto.setInOutLineImageEvents(inOutLineImageEvents.toArray(new InOutLineImageStateEventDto[0]));
+
         return dto;
     }
 
@@ -87,7 +101,18 @@ public class InOutLineStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
+        List<InOutLineImageStateEventDto.InOutLineImageStateRemovedDto> inOutLineImageEvents = new ArrayList<>();
+        for (InOutLineImageEvent.InOutLineImageStateRemoved ee : e.getInOutLineImageEvents()) {
+            InOutLineImageStateEventDto.InOutLineImageStateRemovedDto eeDto = getInOutLineImageStateEventDtoConverter().toInOutLineImageStateRemovedDto(ee);
+            inOutLineImageEvents.add(eeDto);
+        }
+        dto.setInOutLineImageEvents(inOutLineImageEvents.toArray(new InOutLineImageStateEventDto.InOutLineImageStateRemovedDto[0]));
+
         return dto;
+    }
+
+    protected InOutLineImageStateEventDtoConverter getInOutLineImageStateEventDtoConverter() {
+        return new InOutLineImageStateEventDtoConverter();
     }
 
 }

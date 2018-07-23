@@ -15,20 +15,24 @@ namespace Dddml.Wms.Domain.InOut
 	public static partial class InOutStateInterfaceExtension
 	{
 
-        public static IInOutCommand ToCreateOrMergePatchInOut<TCreateInOut, TMergePatchInOut, TCreateInOutLine, TMergePatchInOutLine>(this IInOutState state)
+        public static IInOutCommand ToCreateOrMergePatchInOut<TCreateInOut, TMergePatchInOut, TCreateInOutImage, TMergePatchInOutImage, TCreateInOutLine, TMergePatchInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage>(this IInOutState state)
             where TCreateInOut : ICreateInOut, new()
             where TMergePatchInOut : IMergePatchInOut, new()
+            where TCreateInOutImage : ICreateInOutImage, new()
+            where TMergePatchInOutImage : IMergePatchInOutImage, new()
             where TCreateInOutLine : ICreateInOutLine, new()
             where TMergePatchInOutLine : IMergePatchInOutLine, new()
+            where TCreateInOutLineImage : ICreateInOutLineImage, new()
+            where TMergePatchInOutLineImage : IMergePatchInOutLineImage, new()
         {
             bool bUnsaved = ((IInOutState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateInOut<TCreateInOut, TCreateInOutLine>();
+                return state.ToCreateInOut<TCreateInOut, TCreateInOutImage, TCreateInOutLine, TCreateInOutLineImage>();
             }
             else 
             {
-                return state.ToMergePatchInOut<TMergePatchInOut, TCreateInOutLine, TMergePatchInOutLine>();
+                return state.ToMergePatchInOut<TMergePatchInOut, TCreateInOutImage, TMergePatchInOutImage, TCreateInOutLine, TMergePatchInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage>();
             }
         }
 
@@ -42,10 +46,14 @@ namespace Dddml.Wms.Domain.InOut
             return cmd;
         }
 
-        public static TMergePatchInOut ToMergePatchInOut<TMergePatchInOut, TCreateInOutLine, TMergePatchInOutLine>(this IInOutState state)
+        public static TMergePatchInOut ToMergePatchInOut<TMergePatchInOut, TCreateInOutImage, TMergePatchInOutImage, TCreateInOutLine, TMergePatchInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage>(this IInOutState state)
             where TMergePatchInOut : IMergePatchInOut, new()
+            where TCreateInOutImage : ICreateInOutImage, new()
+            where TMergePatchInOutImage : IMergePatchInOutImage, new()
             where TCreateInOutLine : ICreateInOutLine, new()
             where TMergePatchInOutLine : IMergePatchInOutLine, new()
+            where TCreateInOutLineImage : ICreateInOutLineImage, new()
+            where TMergePatchInOutLineImage : IMergePatchInOutLineImage, new()
         {
             var cmd = new TMergePatchInOut();
 
@@ -103,17 +111,24 @@ namespace Dddml.Wms.Domain.InOut
             if (state.DateReceived == null) { cmd.IsPropertyDateReceivedRemoved = true; }
             if (state.RmaDocumentNumber == null) { cmd.IsPropertyRmaDocumentNumberRemoved = true; }
             if (state.ReversalDocumentNumber == null) { cmd.IsPropertyReversalDocumentNumberRemoved = true; }
+            foreach (var d in state.InOutImages)
+            {
+                var c = d.ToCreateOrMergePatchInOutImage<TCreateInOutImage, TMergePatchInOutImage>();
+                cmd.InOutImageCommands.Add(c);
+            }
             foreach (var d in state.InOutLines)
             {
-                var c = d.ToCreateOrMergePatchInOutLine<TCreateInOutLine, TMergePatchInOutLine>();
+                var c = d.ToCreateOrMergePatchInOutLine<TCreateInOutLine, TMergePatchInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage>();
                 cmd.InOutLineCommands.Add(c);
             }
             return cmd;
         }
 
-        public static TCreateInOut ToCreateInOut<TCreateInOut, TCreateInOutLine>(this IInOutState state)
+        public static TCreateInOut ToCreateInOut<TCreateInOut, TCreateInOutImage, TCreateInOutLine, TCreateInOutLineImage>(this IInOutState state)
             where TCreateInOut : ICreateInOut, new()
+            where TCreateInOutImage : ICreateInOutImage, new()
             where TCreateInOutLine : ICreateInOutLine, new()
+            where TCreateInOutLineImage : ICreateInOutLineImage, new()
         {
             var cmd = new TCreateInOut();
 
@@ -150,9 +165,14 @@ namespace Dddml.Wms.Domain.InOut
             cmd.RmaDocumentNumber = state.RmaDocumentNumber;
             cmd.ReversalDocumentNumber = state.ReversalDocumentNumber;
             cmd.Active = ((IInOutStateProperties)state).Active;
+            foreach (var d in state.InOutImages)
+            {
+                var c = d.ToCreateInOutImage<TCreateInOutImage>();
+                cmd.InOutImages.Add(c);
+            }
             foreach (var d in state.InOutLines)
             {
-                var c = d.ToCreateInOutLine<TCreateInOutLine>();
+                var c = d.ToCreateInOutLine<TCreateInOutLine, TCreateInOutLineImage>();
                 cmd.InOutLines.Add(c);
             }
             return cmd;

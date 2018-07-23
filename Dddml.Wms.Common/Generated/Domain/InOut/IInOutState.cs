@@ -29,6 +29,9 @@ namespace Dddml.Wms.Domain.InOut
 		void Mutate(IEvent e);
 
 
+		IInOutImageStates InOutImages { get; set; }
+
+
 		IInOutLineStates InOutLines { get; set; }
 
 

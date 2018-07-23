@@ -456,6 +456,18 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchInOutImageDto[] inOutImages;
+
+    public CreateOrMergePatchInOutImageDto[] getInOutImages()
+    {
+        return this.inOutImages;
+    }
+
+    public void setInOutImages(CreateOrMergePatchInOutImageDto[] inOutImages)
+    {
+        this.inOutImages = inOutImages;
+    }
+
     private CreateOrMergePatchInOutLineDto[] inOutLines;
 
     public CreateOrMergePatchInOutLineDto[] getInOutLines()

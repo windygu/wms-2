@@ -186,6 +186,18 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchInOutLineImageDto[] inOutLineImages;
+
+    public CreateOrMergePatchInOutLineImageDto[] getInOutLineImages()
+    {
+        return this.inOutLineImages;
+    }
+
+    public void setInOutLineImages(CreateOrMergePatchInOutLineImageDto[] inOutLineImages)
+    {
+        this.inOutLineImages = inOutLineImages;
+    }
+
     private Boolean isPropertyLocatorIdRemoved;
 
     public Boolean getIsPropertyLocatorIdRemoved()
@@ -355,10 +367,20 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInOutLineCommand.SimpleCreateInOutLine command = new AbstractInOutLineCommand.SimpleCreateInOutLine();
             copyTo((AbstractInOutLineCommand.AbstractCreateInOutLine) command);
+            if (this.getInOutLineImages() != null) {
+                for (CreateOrMergePatchInOutLineImageDto cmd : this.getInOutLineImages()) {
+                    command.getInOutLineImages().add((InOutLineImageCommand.CreateInOutLineImage) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractInOutLineCommand.SimpleMergePatchInOutLine command = new AbstractInOutLineCommand.SimpleMergePatchInOutLine();
             copyTo((AbstractInOutLineCommand.SimpleMergePatchInOutLine) command);
+            if (this.getInOutLineImages() != null) {
+                for (CreateOrMergePatchInOutLineImageDto cmd : this.getInOutLineImages()) {
+                    command.getInOutLineImageCommands().add(cmd.toCommand());
+                }
+            }
             return command;
         } 
         else if (COMMAND_TYPE_REMOVE.equals(getCommandType())) {

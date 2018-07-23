@@ -80,27 +80,6 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("AttributeSetInstance");
             _aggregateNames.Add("AttributeSetInstanceExtensionField");
             _aggregateNames.Add("AttributeSetInstanceExtensionFieldGroup");
-            _aggregateNames.Add("AttributeValueMvo");
-            _aggregateNames.Add("AttributeAliasMvo");
-            _aggregateNames.Add("AttributeUseMvo");
-            _aggregateNames.Add("InOutLineMvo");
-            _aggregateNames.Add("InventoryItemEntryMvo");
-            _aggregateNames.Add("InventoryItemRequirementEntryMvo");
-            _aggregateNames.Add("MovementLineMvo");
-            _aggregateNames.Add("MovementConfirmationLineMvo");
-            _aggregateNames.Add("OrderRoleMvo");
-            _aggregateNames.Add("OrderItemMvo");
-            _aggregateNames.Add("OrderShipGroupMvo");
-            _aggregateNames.Add("OrderItemShipGroupAssociationMvo");
-            _aggregateNames.Add("PhysicalInventoryLineMvo");
-            _aggregateNames.Add("PicklistRoleMvo");
-            _aggregateNames.Add("PicklistItemMvo");
-            _aggregateNames.Add("GoodIdentificationMvo");
-            _aggregateNames.Add("SellableInventoryItemEntryMvo");
-            _aggregateNames.Add("ShipmentItemMvo");
-            _aggregateNames.Add("ShipmentReceiptMvo");
-            _aggregateNames.Add("ItemIssuanceMvo");
-            _aggregateNames.Add("ShipmentPackageContentMvo");
 
             _aggregateNamespaces = new Dictionary<string, string>();
             _aggregateNamespaces.Add("Attribute", "Dddml.Wms.Domain.Attribute");
@@ -153,27 +132,6 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("AttributeSetInstance", "Dddml.Wms.Domain.AttributeSetInstance");
             _aggregateNamespaces.Add("AttributeSetInstanceExtensionField", "Dddml.Wms.Domain.AttributeSetInstanceExtensionField");
             _aggregateNamespaces.Add("AttributeSetInstanceExtensionFieldGroup", "Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup");
-            _aggregateNamespaces.Add("AttributeValueMvo", "Dddml.Wms.Domain.AttributeValueMvo");
-            _aggregateNamespaces.Add("AttributeAliasMvo", "Dddml.Wms.Domain.AttributeAliasMvo");
-            _aggregateNamespaces.Add("AttributeUseMvo", "Dddml.Wms.Domain.AttributeUseMvo");
-            _aggregateNamespaces.Add("InOutLineMvo", "Dddml.Wms.Domain.InOutLineMvo");
-            _aggregateNamespaces.Add("InventoryItemEntryMvo", "Dddml.Wms.Domain.InventoryItemEntryMvo");
-            _aggregateNamespaces.Add("InventoryItemRequirementEntryMvo", "Dddml.Wms.Domain.InventoryItemRequirementEntryMvo");
-            _aggregateNamespaces.Add("MovementLineMvo", "Dddml.Wms.Domain.MovementLineMvo");
-            _aggregateNamespaces.Add("MovementConfirmationLineMvo", "Dddml.Wms.Domain.MovementConfirmationLineMvo");
-            _aggregateNamespaces.Add("OrderRoleMvo", "Dddml.Wms.Domain.OrderRoleMvo");
-            _aggregateNamespaces.Add("OrderItemMvo", "Dddml.Wms.Domain.OrderItemMvo");
-            _aggregateNamespaces.Add("OrderShipGroupMvo", "Dddml.Wms.Domain.OrderShipGroupMvo");
-            _aggregateNamespaces.Add("OrderItemShipGroupAssociationMvo", "Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo");
-            _aggregateNamespaces.Add("PhysicalInventoryLineMvo", "Dddml.Wms.Domain.PhysicalInventoryLineMvo");
-            _aggregateNamespaces.Add("PicklistRoleMvo", "Dddml.Wms.Domain.PicklistRoleMvo");
-            _aggregateNamespaces.Add("PicklistItemMvo", "Dddml.Wms.Domain.PicklistItemMvo");
-            _aggregateNamespaces.Add("GoodIdentificationMvo", "Dddml.Wms.Domain.GoodIdentificationMvo");
-            _aggregateNamespaces.Add("SellableInventoryItemEntryMvo", "Dddml.Wms.Domain.SellableInventoryItemEntryMvo");
-            _aggregateNamespaces.Add("ShipmentItemMvo", "Dddml.Wms.Domain.ShipmentItemMvo");
-            _aggregateNamespaces.Add("ShipmentReceiptMvo", "Dddml.Wms.Domain.ShipmentReceiptMvo");
-            _aggregateNamespaces.Add("ItemIssuanceMvo", "Dddml.Wms.Domain.ItemIssuanceMvo");
-            _aggregateNamespaces.Add("ShipmentPackageContentMvo", "Dddml.Wms.Domain.ShipmentPackageContentMvo");
         }
 
     }

@@ -32,9 +32,17 @@ namespace Dddml.Wms.Domain.InOut
 
         long GetCount(ICriterion filter);
 
+        IInOutImageState GetInOutImage(string inOutDocumentNumber, string sequenceId);
+
+        IEnumerable<IInOutImageState> GetInOutImages(string inOutDocumentNumber);
+
         IInOutLineState GetInOutLine(string inOutDocumentNumber, string lineNumber);
 
         IEnumerable<IInOutLineState> GetInOutLines(string inOutDocumentNumber);
+
+        IInOutLineImageState GetInOutLineImage(string inOutDocumentNumber, string inOutLineLineNumber, string sequenceId);
+
+        IEnumerable<IInOutLineImageState> GetInOutLineImages(string inOutDocumentNumber, string inOutLineLineNumber);
 
 	}
 

@@ -314,6 +314,28 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(documentNumber, version).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IInOutImageState> GetInOutImageAsync(string inOutDocumentNumber, string sequenceId)
+        {
+            var uriParameters = new InOutImageUriParameters();
+            uriParameters.InOutDocumentNumber = inOutDocumentNumber;
+            uriParameters.SequenceId = sequenceId;
+
+            var req = new InOutImageGetRequest(uriParameters);
+            var resp = await _ramlClient.InOutImage.Get(req);
+            InOutProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToInOutImageState();
+        }
+
+        public virtual IInOutImageState GetInOutImage(string inOutDocumentNumber, string sequenceId)
+        {
+            return GetInOutImageAsync(inOutDocumentNumber, sequenceId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IInOutImageState> GetInOutImages(string inOutDocumentNumber)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async virtual Task<IInOutLineState> GetInOutLineAsync(string inOutDocumentNumber, string lineNumber)
         {
             var uriParameters = new InOutLineUriParameters();
@@ -332,6 +354,29 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         }
 
         public IEnumerable<IInOutLineState> GetInOutLines(string inOutDocumentNumber)
+        {
+            throw new NotImplementedException();//todo
+        }
+
+        public async virtual Task<IInOutLineImageState> GetInOutLineImageAsync(string inOutDocumentNumber, string inOutLineLineNumber, string sequenceId)
+        {
+            var uriParameters = new InOutLineImageUriParameters();
+            uriParameters.InOutDocumentNumber = inOutDocumentNumber;
+            uriParameters.InOutLineLineNumber = inOutLineLineNumber;
+            uriParameters.SequenceId = sequenceId;
+
+            var req = new InOutLineImageGetRequest(uriParameters);
+            var resp = await _ramlClient.InOutLineImage.Get(req);
+            InOutProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToInOutLineImageState();
+        }
+
+        public virtual IInOutLineImageState GetInOutLineImage(string inOutDocumentNumber, string inOutLineLineNumber, string sequenceId)
+        {
+            return GetInOutLineImageAsync(inOutDocumentNumber, inOutLineLineNumber, sequenceId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IInOutLineImageState> GetInOutLineImages(string inOutDocumentNumber, string inOutLineLineNumber)
         {
             throw new NotImplementedException();//todo
         }

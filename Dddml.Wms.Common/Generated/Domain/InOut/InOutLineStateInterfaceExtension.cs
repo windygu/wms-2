@@ -15,18 +15,20 @@ namespace Dddml.Wms.Domain.InOut
 	public static partial class InOutLineStateInterfaceExtension
 	{
 
-        public static IInOutLineCommand ToCreateOrMergePatchInOutLine<TCreateInOutLine, TMergePatchInOutLine>(this IInOutLineState state)
+        public static IInOutLineCommand ToCreateOrMergePatchInOutLine<TCreateInOutLine, TMergePatchInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage>(this IInOutLineState state)
             where TCreateInOutLine : ICreateInOutLine, new()
             where TMergePatchInOutLine : IMergePatchInOutLine, new()
+            where TCreateInOutLineImage : ICreateInOutLineImage, new()
+            where TMergePatchInOutLineImage : IMergePatchInOutLineImage, new()
         {
             bool bUnsaved = ((IInOutLineState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateInOutLine<TCreateInOutLine>();
+                return state.ToCreateInOutLine<TCreateInOutLine, TCreateInOutLineImage>();
             }
             else 
             {
-                return state.ToMergePatchInOutLine<TMergePatchInOutLine>();
+                return state.ToMergePatchInOutLine<TMergePatchInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage>();
             }
         }
 
@@ -38,8 +40,10 @@ namespace Dddml.Wms.Domain.InOut
             return cmd;
         }
 
-        public static TMergePatchInOutLine ToMergePatchInOutLine<TMergePatchInOutLine>(this IInOutLineState state)
+        public static TMergePatchInOutLine ToMergePatchInOutLine<TMergePatchInOutLine, TCreateInOutLineImage, TMergePatchInOutLineImage>(this IInOutLineState state)
             where TMergePatchInOutLine : IMergePatchInOutLine, new()
+            where TCreateInOutLineImage : ICreateInOutLineImage, new()
+            where TMergePatchInOutLineImage : IMergePatchInOutLineImage, new()
         {
             var cmd = new TMergePatchInOutLine();
 
@@ -65,11 +69,17 @@ namespace Dddml.Wms.Domain.InOut
             if (state.QuantityUomId == null) { cmd.IsPropertyQuantityUomIdRemoved = true; }
             if (state.RmaLineNumber == null) { cmd.IsPropertyRmaLineNumberRemoved = true; }
             if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
+            foreach (var d in state.InOutLineImages)
+            {
+                var c = d.ToCreateOrMergePatchInOutLineImage<TCreateInOutLineImage, TMergePatchInOutLineImage>();
+                cmd.InOutLineImageCommands.Add(c);
+            }
             return cmd;
         }
 
-        public static TCreateInOutLine ToCreateInOutLine<TCreateInOutLine>(this IInOutLineState state)
+        public static TCreateInOutLine ToCreateInOutLine<TCreateInOutLine, TCreateInOutLineImage>(this IInOutLineState state)
             where TCreateInOutLine : ICreateInOutLine, new()
+            where TCreateInOutLineImage : ICreateInOutLineImage, new()
         {
             var cmd = new TCreateInOutLine();
 
@@ -87,6 +97,11 @@ namespace Dddml.Wms.Domain.InOut
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Active = ((IInOutLineStateProperties)state).Active;
             cmd.InOutDocumentNumber = state.InOutDocumentNumber;
+            foreach (var d in state.InOutLineImages)
+            {
+                var c = d.ToCreateInOutLineImage<TCreateInOutLineImage>();
+                cmd.InOutLineImages.Add(c);
+            }
             return cmd;
         }
 		

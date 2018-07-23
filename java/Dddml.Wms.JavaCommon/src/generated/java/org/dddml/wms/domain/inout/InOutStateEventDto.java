@@ -676,6 +676,17 @@ public class InOutStateEventDto extends AbstractEvent
     }
 
 
+    private InOutImageStateEventDto[] inOutImageEvents;
+
+    public InOutImageStateEventDto[] getInOutImageEvents() {
+        return this.inOutImageEvents;
+    }
+
+    public void setInOutImageEvents(InOutImageStateEventDto[] events) {
+        this.inOutImageEvents = events;
+    }
+
+
     private InOutLineStateEventDto[] inOutLineEvents;
 
     public InOutLineStateEventDto[] getInOutLineEvents() {

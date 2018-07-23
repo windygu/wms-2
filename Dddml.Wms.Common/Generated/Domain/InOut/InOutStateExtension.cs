@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.InOut
 
         public static IInOutCommand ToCreateOrMergePatchInOut(this InOutState state)
         {
-            return state.ToCreateOrMergePatchInOut<CreateInOut, MergePatchInOut, CreateInOutLine, MergePatchInOutLine>();
+            return state.ToCreateOrMergePatchInOut<CreateInOut, MergePatchInOut, CreateInOutImage, MergePatchInOutImage, CreateInOutLine, MergePatchInOutLine, CreateInOutLineImage, MergePatchInOutLineImage>();
         }
 
         public static DeleteInOut ToDeleteInOut(this InOutState state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.InOut
 
         public static MergePatchInOut ToMergePatchInOut(this InOutState state)
         {
-            return state.ToMergePatchInOut<MergePatchInOut, CreateInOutLine, MergePatchInOutLine>();
+            return state.ToMergePatchInOut<MergePatchInOut, CreateInOutImage, MergePatchInOutImage, CreateInOutLine, MergePatchInOutLine, CreateInOutLineImage, MergePatchInOutLineImage>();
         }
 
         public static CreateInOut ToCreateInOut(this InOutState state)
         {
-            return state.ToCreateInOut<CreateInOut, CreateInOutLine>();
+            return state.ToCreateInOut<CreateInOut, CreateInOutImage, CreateInOutLine, CreateInOutLineImage>();
         }
 		
 

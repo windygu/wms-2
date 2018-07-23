@@ -94,7 +94,9 @@ namespace Dddml.Wms.CmdLineTools
             };
 
             var hibernateProjectGenerator = new DomainAggregateT4ScriptGenerator(hibernateProjectConfig);
+            hibernateProjectGenerator.IsMViewObjectDisabled = true;
             hibernateProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
+            hibernateProjectGenerator.CleanAggregatesDirectoriesAndScripts(aggregates);
         }
 
         private static void UpdateDomainProjects(IList<Aggregate> aggregates)
@@ -127,7 +129,9 @@ namespace Dddml.Wms.CmdLineTools
             };
 
             var domainProjectGenerator = new DomainAggregateT4ScriptGenerator(domainProjectConfig);
+            domainProjectGenerator.IsMViewObjectDisabled = true;
             domainProjectGenerator.CreateAggregatesDirectoriesAndScripts(aggregates);
+            domainProjectGenerator.CleanAggregatesDirectoriesAndScripts(aggregates);
         }
 
         private static IList<Aggregate> GetAggaregates()
@@ -169,7 +173,7 @@ namespace Dddml.Wms.CmdLineTools
             BoundedContext boundedContext = BoundedContextUtils.LoadFromDirectory(dddmlDir, "*.yaml", excludedFiles, additionalFiles);
 
             boundedContext.Refresh();
-            boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
+            //boundedContext.GenerateAllEntityMViewObjectsAndRefresh();
 
             return boundedContext;
         }

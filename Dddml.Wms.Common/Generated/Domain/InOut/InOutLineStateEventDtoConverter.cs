@@ -55,6 +55,14 @@ namespace Dddml.Wms.Domain.InOut
             dto.RmaLineNumber = e.RmaLineNumber;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
+            var inOutLineImageEvents = new List<InOutLineImageStateCreatedDto>();
+            foreach (var ee in e.InOutLineImageEvents)
+            {
+                InOutLineImageStateCreatedDto eeDto = InOutLineImageStateEventDtoConverter.ToInOutLineImageStateCreatedDto(ee);
+                inOutLineImageEvents.Add(eeDto);
+            }
+            dto.InOutLineImageEvents = inOutLineImageEvents.ToArray();
+
             return dto;
         }
 
@@ -90,6 +98,14 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsPropertyRmaLineNumberRemoved = e.IsPropertyRmaLineNumberRemoved;
             dto.IsPropertyReversalLineNumberRemoved = e.IsPropertyReversalLineNumberRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var inOutLineImageEvents = new List<InOutLineImageStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.InOutLineImageEvents)
+            {
+                InOutLineImageStateCreatedOrMergePatchedOrRemovedDto eeDto = InOutLineImageStateEventDtoConverter.ToInOutLineImageStateEventDto(ee);
+                inOutLineImageEvents.Add(eeDto);
+            }
+            dto.InOutLineImageEvents = inOutLineImageEvents.ToArray();
+
 
             return dto;
         }
@@ -103,8 +119,24 @@ namespace Dddml.Wms.Domain.InOut
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
+            var inOutLineImageEvents = new List<InOutLineImageStateRemovedDto>();
+            foreach (var ee in e.InOutLineImageEvents)
+            {
+                InOutLineImageStateRemovedDto eeDto = InOutLineImageStateEventDtoConverter.ToInOutLineImageStateRemovedDto(ee);
+                inOutLineImageEvents.Add(eeDto);
+            }
+            dto.InOutLineImageEvents = inOutLineImageEvents.ToArray();
+
 
             return dto;
+        }
+
+        protected virtual InOutLineImageStateEventDtoConverter InOutLineImageStateEventDtoConverter
+        {
+            get
+            {
+                return new InOutLineImageStateEventDtoConverter();
+            }
         }
 
 

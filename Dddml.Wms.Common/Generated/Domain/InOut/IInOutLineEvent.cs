@@ -54,6 +54,12 @@ namespace Dddml.Wms.Domain.InOut
    
 	public interface IInOutLineStateCreated : IInOutLineStateEvent
 	{
+		IEnumerable<IInOutLineImageStateCreated> InOutLineImageEvents { get; }
+		
+		void AddInOutLineImageEvent(IInOutLineImageStateCreated e);
+
+		IInOutLineImageStateCreated NewInOutLineImageStateCreated(string sequenceId);
+
 	
 	}
 
@@ -84,11 +90,27 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+		IEnumerable<IInOutLineImageEvent> InOutLineImageEvents { get; }
+		
+		void AddInOutLineImageEvent(IInOutLineImageEvent e);
+
+		IInOutLineImageStateCreated NewInOutLineImageStateCreated(string sequenceId);
+
+		IInOutLineImageStateMergePatched NewInOutLineImageStateMergePatched(string sequenceId);
+
+		IInOutLineImageStateRemoved NewInOutLineImageStateRemoved(string sequenceId);
+
 
 	}
 
 	public interface IInOutLineStateRemoved : IInOutLineStateEvent
 	{
+		IEnumerable<IInOutLineImageStateRemoved> InOutLineImageEvents { get; }
+		
+		void AddInOutLineImageEvent(IInOutLineImageStateRemoved e);
+		
+		IInOutLineImageStateRemoved NewInOutLineImageStateRemoved(string sequenceId);
+
 	}
 
 

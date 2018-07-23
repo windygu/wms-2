@@ -155,6 +155,13 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
+        for (InOutImageCommand.CreateInOutImage innerCommand : c.getInOutImages())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            InOutImageEvent.InOutImageStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            e.addInOutImageEvent(innerEvent);
+        }
+
         for (InOutLineCommand.CreateInOutLine innerCommand : c.getInOutLines())
         {
             throwOnInconsistentCommands(c, innerCommand);
@@ -232,6 +239,13 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
+        for (InOutImageCommand innerCommand : c.getInOutImageCommands())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            InOutImageEvent innerEvent = map(innerCommand, c, version, this.state);
+            e.addInOutImageEvent(innerEvent);
+        }
+
         for (InOutLineCommand innerCommand : c.getInOutLineCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
@@ -241,6 +255,74 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
         return e;
     }
+
+
+    protected InOutImageEvent map(InOutImageCommand c, InOutCommand outerCommand, Long version, InOutState outerState)
+    {
+        InOutImageCommand.CreateInOutImage create = (c.getCommandType().equals(CommandType.CREATE)) ? ((InOutImageCommand.CreateInOutImage)c) : null;
+        if(create != null)
+        {
+            return mapCreate(create, outerCommand, version, outerState);
+        }
+
+        InOutImageCommand.MergePatchInOutImage merge = (c.getCommandType().equals(CommandType.MERGE_PATCH)) ? ((InOutImageCommand.MergePatchInOutImage)c) : null;
+        if(merge != null)
+        {
+            return mapMergePatch(merge, outerCommand, version, outerState);
+        }
+
+        InOutImageCommand.RemoveInOutImage remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((InOutImageCommand.RemoveInOutImage)c) : null;
+        if (remove != null)
+        {
+            return mapRemove(remove, outerCommand, version);
+        }
+        throw new UnsupportedOperationException();
+    }
+
+    protected InOutImageEvent.InOutImageStateCreated mapCreate(InOutImageCommand.CreateInOutImage c, InOutCommand outerCommand, Long version, InOutState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        InOutImageEventId stateEventId = new InOutImageEventId(c.getInOutDocumentNumber(), c.getSequenceId(), version);
+        InOutImageEvent.InOutImageStateCreated e = newInOutImageStateCreated(stateEventId);
+        InOutImageState s = outerState.getInOutImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(ICreate... ////////////////////////////
+
+    protected InOutImageEvent.InOutImageStateMergePatched mapMergePatch(InOutImageCommand.MergePatchInOutImage c, InOutCommand outerCommand, Long version, InOutState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        InOutImageEventId stateEventId = new InOutImageEventId(c.getInOutDocumentNumber(), c.getSequenceId(), version);
+        InOutImageEvent.InOutImageStateMergePatched e = newInOutImageStateMergePatched(stateEventId);
+        InOutImageState s = outerState.getInOutImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setIsPropertyUrlRemoved(c.getIsPropertyUrlRemoved());
+        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(IMergePatch... ////////////////////////////
+
+    protected InOutImageEvent.InOutImageStateRemoved mapRemove(InOutImageCommand.RemoveInOutImage c, InOutCommand outerCommand, Long version)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        InOutImageEventId stateEventId = new InOutImageEventId(c.getInOutDocumentNumber(), c.getSequenceId(), version);
+        InOutImageEvent.InOutImageStateRemoved e = newInOutImageStateRemoved(stateEventId);
+
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        return e;
+
+    }// END map(IRemove... ////////////////////////////
 
 
     protected InOutLineEvent map(InOutLineCommand c, InOutCommand outerCommand, Long version, InOutState outerState)
@@ -286,6 +368,15 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        for (InOutLineImageCommand.CreateInOutLineImage innerCommand : c.getInOutLineImages())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+
+            InOutLineImageEvent.InOutLineImageStateCreated innerEvent = mapCreate(innerCommand, c, version, s);
+            e.addInOutLineImageEvent(innerEvent);
+        }
+
         return e;
 
     }// END map(ICreate... ////////////////////////////
@@ -323,6 +414,15 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        for (InOutLineImageCommand innerCommand : c.getInOutLineImageCommands())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+
+            InOutLineImageEvent innerEvent = map(innerCommand, c, version, s);
+            e.addInOutLineImageEvent(innerEvent);
+        }
+
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
@@ -340,6 +440,93 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     }// END map(IRemove... ////////////////////////////
 
+
+    protected InOutLineImageEvent map(InOutLineImageCommand c, InOutLineCommand outerCommand, Long version, InOutLineState outerState)
+    {
+        InOutLineImageCommand.CreateInOutLineImage create = (c.getCommandType().equals(CommandType.CREATE)) ? ((InOutLineImageCommand.CreateInOutLineImage)c) : null;
+        if(create != null)
+        {
+            return mapCreate(create, outerCommand, version, outerState);
+        }
+
+        InOutLineImageCommand.MergePatchInOutLineImage merge = (c.getCommandType().equals(CommandType.MERGE_PATCH)) ? ((InOutLineImageCommand.MergePatchInOutLineImage)c) : null;
+        if(merge != null)
+        {
+            return mapMergePatch(merge, outerCommand, version, outerState);
+        }
+
+        InOutLineImageCommand.RemoveInOutLineImage remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((InOutLineImageCommand.RemoveInOutLineImage)c) : null;
+        if (remove != null)
+        {
+            return mapRemove(remove, outerCommand, version);
+        }
+        throw new UnsupportedOperationException();
+    }
+
+    protected InOutLineImageEvent.InOutLineImageStateCreated mapCreate(InOutLineImageCommand.CreateInOutLineImage c, InOutLineCommand outerCommand, Long version, InOutLineState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        InOutLineImageEventId stateEventId = new InOutLineImageEventId(c.getInOutDocumentNumber(), c.getInOutLineLineNumber(), c.getSequenceId(), version);
+        InOutLineImageEvent.InOutLineImageStateCreated e = newInOutLineImageStateCreated(stateEventId);
+        InOutLineImageState s = outerState.getInOutLineImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(ICreate... ////////////////////////////
+
+    protected InOutLineImageEvent.InOutLineImageStateMergePatched mapMergePatch(InOutLineImageCommand.MergePatchInOutLineImage c, InOutLineCommand outerCommand, Long version, InOutLineState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        InOutLineImageEventId stateEventId = new InOutLineImageEventId(c.getInOutDocumentNumber(), c.getInOutLineLineNumber(), c.getSequenceId(), version);
+        InOutLineImageEvent.InOutLineImageStateMergePatched e = newInOutLineImageStateMergePatched(stateEventId);
+        InOutLineImageState s = outerState.getInOutLineImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setIsPropertyUrlRemoved(c.getIsPropertyUrlRemoved());
+        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(IMergePatch... ////////////////////////////
+
+    protected InOutLineImageEvent.InOutLineImageStateRemoved mapRemove(InOutLineImageCommand.RemoveInOutLineImage c, InOutLineCommand outerCommand, Long version)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        InOutLineImageEventId stateEventId = new InOutLineImageEventId(c.getInOutDocumentNumber(), c.getInOutLineLineNumber(), c.getSequenceId(), version);
+        InOutLineImageEvent.InOutLineImageStateRemoved e = newInOutLineImageStateRemoved(stateEventId);
+
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        return e;
+
+    }// END map(IRemove... ////////////////////////////
+
+    protected void throwOnInconsistentCommands(InOutCommand command, InOutImageCommand innerCommand)
+    {
+        AbstractInOutCommand properties = command instanceof AbstractInOutCommand ? (AbstractInOutCommand) command : null;
+        AbstractInOutImageCommand innerProperties = innerCommand instanceof AbstractInOutImageCommand ? (AbstractInOutImageCommand) innerCommand : null;
+        if (properties == null || innerProperties == null) { return; }
+        String outerDocumentNumberName = "DocumentNumber";
+        String outerDocumentNumberValue = properties.getDocumentNumber();
+        String innerInOutDocumentNumberName = "InOutDocumentNumber";
+        String innerInOutDocumentNumberValue = innerProperties.getInOutDocumentNumber();
+        if (innerInOutDocumentNumberValue == null) {
+            innerProperties.setInOutDocumentNumber(outerDocumentNumberValue);
+        }
+        else if (innerInOutDocumentNumberValue != outerDocumentNumberValue 
+            && (innerInOutDocumentNumberValue == null || innerInOutDocumentNumberValue != null && !innerInOutDocumentNumberValue.equals(outerDocumentNumberValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerDocumentNumberName, outerDocumentNumberValue, innerInOutDocumentNumberName, innerInOutDocumentNumberValue);
+        }
+    }// END throwOnInconsistentCommands /////////////////////
+
     protected void throwOnInconsistentCommands(InOutCommand command, InOutLineCommand innerCommand)
     {
         AbstractInOutCommand properties = command instanceof AbstractInOutCommand ? (AbstractInOutCommand) command : null;
@@ -356,6 +543,37 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
             && (innerInOutDocumentNumberValue == null || innerInOutDocumentNumberValue != null && !innerInOutDocumentNumberValue.equals(outerDocumentNumberValue))) 
         {
             throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerDocumentNumberName, outerDocumentNumberValue, innerInOutDocumentNumberName, innerInOutDocumentNumberValue);
+        }
+    }// END throwOnInconsistentCommands /////////////////////
+
+    protected void throwOnInconsistentCommands(InOutLineCommand command, InOutLineImageCommand innerCommand)
+    {
+        AbstractInOutLineCommand properties = command instanceof AbstractInOutLineCommand ? (AbstractInOutLineCommand) command : null;
+        AbstractInOutLineImageCommand innerProperties = innerCommand instanceof AbstractInOutLineImageCommand ? (AbstractInOutLineImageCommand) innerCommand : null;
+        if (properties == null || innerProperties == null) { return; }
+        String outerInOutDocumentNumberName = "InOutDocumentNumber";
+        String outerInOutDocumentNumberValue = properties.getInOutDocumentNumber();
+        String innerInOutDocumentNumberName = "InOutDocumentNumber";
+        String innerInOutDocumentNumberValue = innerProperties.getInOutDocumentNumber();
+        if (innerInOutDocumentNumberValue == null) {
+            innerProperties.setInOutDocumentNumber(outerInOutDocumentNumberValue);
+        }
+        else if (innerInOutDocumentNumberValue != outerInOutDocumentNumberValue 
+            && (innerInOutDocumentNumberValue == null || innerInOutDocumentNumberValue != null && !innerInOutDocumentNumberValue.equals(outerInOutDocumentNumberValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerInOutDocumentNumberName, outerInOutDocumentNumberValue, innerInOutDocumentNumberName, innerInOutDocumentNumberValue);
+        }
+        String outerLineNumberName = "LineNumber";
+        String outerLineNumberValue = properties.getLineNumber();
+        String innerInOutLineLineNumberName = "InOutLineLineNumber";
+        String innerInOutLineLineNumberValue = innerProperties.getInOutLineLineNumber();
+        if (innerInOutLineLineNumberValue == null) {
+            innerProperties.setInOutLineLineNumber(outerLineNumberValue);
+        }
+        else if (innerInOutLineLineNumberValue != outerLineNumberValue 
+            && (innerInOutLineLineNumberValue == null || innerInOutLineLineNumberValue != null && !innerInOutLineLineNumberValue.equals(outerLineNumberValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerLineNumberName, outerLineNumberValue, innerInOutLineLineNumberName, innerInOutLineLineNumberValue);
         }
     }// END throwOnInconsistentCommands /////////////////////
 
@@ -388,6 +606,19 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return new AbstractInOutEvent.SimpleInOutStateMergePatched(stateEventId);
     }
 
+    protected InOutImageEvent.InOutImageStateCreated newInOutImageStateCreated(InOutImageEventId stateEventId) {
+        return new AbstractInOutImageEvent.SimpleInOutImageStateCreated(stateEventId);
+    }
+
+    protected InOutImageEvent.InOutImageStateMergePatched newInOutImageStateMergePatched(InOutImageEventId stateEventId) {
+        return new AbstractInOutImageEvent.SimpleInOutImageStateMergePatched(stateEventId);
+    }
+
+    protected InOutImageEvent.InOutImageStateRemoved newInOutImageStateRemoved(InOutImageEventId stateEventId)
+    {
+        return new AbstractInOutImageEvent.SimpleInOutImageStateRemoved(stateEventId);
+    }
+
     protected InOutLineEvent.InOutLineStateCreated newInOutLineStateCreated(InOutLineEventId stateEventId) {
         return new AbstractInOutLineEvent.SimpleInOutLineStateCreated(stateEventId);
     }
@@ -399,6 +630,19 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutLineEvent.InOutLineStateRemoved newInOutLineStateRemoved(InOutLineEventId stateEventId)
     {
         return new AbstractInOutLineEvent.SimpleInOutLineStateRemoved(stateEventId);
+    }
+
+    protected InOutLineImageEvent.InOutLineImageStateCreated newInOutLineImageStateCreated(InOutLineImageEventId stateEventId) {
+        return new AbstractInOutLineImageEvent.SimpleInOutLineImageStateCreated(stateEventId);
+    }
+
+    protected InOutLineImageEvent.InOutLineImageStateMergePatched newInOutLineImageStateMergePatched(InOutLineImageEventId stateEventId) {
+        return new AbstractInOutLineImageEvent.SimpleInOutLineImageStateMergePatched(stateEventId);
+    }
+
+    protected InOutLineImageEvent.InOutLineImageStateRemoved newInOutLineImageStateRemoved(InOutLineImageEventId stateEventId)
+    {
+        return new AbstractInOutLineImageEvent.SimpleInOutLineImageStateRemoved(stateEventId);
     }
 
     protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutEvent.InOutStateCreated e)

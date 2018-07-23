@@ -315,6 +315,37 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{inOutDocumentNumber}/InOutImages/{sequenceId}")]
+        [HttpGet]
+        public IInOutImageStateDto GetInOutImage(string inOutDocumentNumber, string sequenceId)
+        {
+          try {
+            var state = (InOutImageState)_inOutApplicationService.GetInOutImage(inOutDocumentNumber, sequenceId);
+            if (state == null) { return null; }
+            var stateDto = new InOutImageStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{inOutDocumentNumber}/InOutImages/")]
+        [HttpGet]
+        public IEnumerable<IInOutImageStateDto> GetInOutImages(string inOutDocumentNumber)
+        {
+          try {
+            var states = _inOutApplicationService.GetInOutImages(inOutDocumentNumber);
+            if (states == null) { return null; }
+            var stateDtos = new List<IInOutImageStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is InOutImageStateDtoWrapper ? (InOutImageStateDtoWrapper)s : new InOutImageStateDtoWrapper((InOutImageState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{inOutDocumentNumber}/InOutLines/{lineNumber}")]
         [HttpGet]
         public IInOutLineStateDto GetInOutLine(string inOutDocumentNumber, string lineNumber)
@@ -339,6 +370,37 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var s in states)
             {
                 var dto = s is InOutLineStateDtoWrapper ? (InOutLineStateDtoWrapper)s : new InOutLineStateDtoWrapper((InOutLineState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")]
+        [HttpGet]
+        public IInOutLineImageStateDto GetInOutLineImage(string inOutDocumentNumber, string inOutLineLineNumber, string sequenceId)
+        {
+          try {
+            var state = (InOutLineImageState)_inOutApplicationService.GetInOutLineImage(inOutDocumentNumber, inOutLineLineNumber, sequenceId);
+            if (state == null) { return null; }
+            var stateDto = new InOutLineImageStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/")]
+        [HttpGet]
+        public IEnumerable<IInOutLineImageStateDto> GetInOutLineImages(string inOutDocumentNumber, string inOutLineLineNumber)
+        {
+          try {
+            var states = _inOutApplicationService.GetInOutLineImages(inOutDocumentNumber, inOutLineLineNumber);
+            if (states == null) { return null; }
+            var stateDtos = new List<IInOutLineImageStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is InOutLineImageStateDtoWrapper ? (InOutLineImageStateDtoWrapper)s : new InOutLineImageStateDtoWrapper((InOutLineImageState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

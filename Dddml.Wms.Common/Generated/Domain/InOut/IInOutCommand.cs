@@ -88,6 +88,10 @@ namespace Dddml.Wms.Domain.InOut
 
 	public interface ICreateInOut : ICreateOrMergePatchOrDeleteInOut
 	{
+        ICreateInOutImageCommands InOutImages { get; }
+
+        ICreateInOutImage NewCreateInOutImage();
+
         ICreateInOutLineCommands InOutLines { get; }
 
         ICreateInOutLine NewCreateInOutLine();
@@ -157,6 +161,14 @@ namespace Dddml.Wms.Domain.InOut
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+        IInOutImageCommands InOutImageCommands { get; }
+
+        ICreateInOutImage NewCreateInOutImage();
+
+        IMergePatchInOutImage NewMergePatchInOutImage();
+
+        IRemoveInOutImage NewRemoveInOutImage();
+
         IInOutLineCommands InOutLineCommands { get; }
 
         ICreateInOutLine NewCreateInOutLine();
@@ -171,6 +183,26 @@ namespace Dddml.Wms.Domain.InOut
 	public interface IDeleteInOut : ICreateOrMergePatchOrDeleteInOut
 	{
 	}
+
+    public interface ICreateInOutImageCommands : IEnumerable<ICreateInOutImage>
+    {
+        void Add(ICreateInOutImage c);
+
+        void Remove(ICreateInOutImage c);
+
+        void Clear();
+
+    }
+
+    public interface IInOutImageCommands : IEnumerable<IInOutImageCommand>
+    {
+        void Add(IInOutImageCommand c);
+
+        void Remove(IInOutImageCommand c);
+
+        void Clear();
+
+    }
 
     public interface ICreateInOutLineCommands : IEnumerable<ICreateInOutLine>
     {

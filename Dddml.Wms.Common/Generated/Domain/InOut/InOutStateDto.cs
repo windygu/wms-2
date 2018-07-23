@@ -237,6 +237,18 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        public virtual InOutImageStateDto[] InOutImages
+        {
+            get;
+            set;
+        }
+
+        IInOutImageStateDto[] IInOutStateDto.InOutImages
+        {
+            get { return this.InOutImages; }
+            set { this.InOutImages = value.Select(e => ((InOutImageStateDto)e)).ToArray(); }
+        }
+
         public virtual InOutLineStateDto[] InOutLines
         {
             get;
@@ -289,6 +301,7 @@ namespace Dddml.Wms.Domain.InOut
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.InOutImages != null) { foreach (var s in this.InOutImages) { state.InOutImages.AddToSave(s.ToInOutImageState()); } };
             if (this.InOutLines != null) { foreach (var s in this.InOutLines) { state.InOutLines.AddToSave(s.ToInOutLineState()); } };
 
             return state;

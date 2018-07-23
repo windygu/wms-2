@@ -190,6 +190,16 @@ namespace Dddml.Wms.Domain.InOut
             return new InOutState(eventStream.Events);
         }
 
+        public virtual IInOutImageState GetInOutImage(string inOutDocumentNumber, string sequenceId)
+        {
+            return StateQueryRepository.GetInOutImage(inOutDocumentNumber, sequenceId);
+        }
+
+        public IEnumerable<IInOutImageState> GetInOutImages(string inOutDocumentNumber)
+        {
+            return StateQueryRepository.GetInOutImages(inOutDocumentNumber);
+        }
+
         public virtual IInOutLineState GetInOutLine(string inOutDocumentNumber, string lineNumber)
         {
             return StateQueryRepository.GetInOutLine(inOutDocumentNumber, lineNumber);
@@ -198,6 +208,16 @@ namespace Dddml.Wms.Domain.InOut
         public IEnumerable<IInOutLineState> GetInOutLines(string inOutDocumentNumber)
         {
             return StateQueryRepository.GetInOutLines(inOutDocumentNumber);
+        }
+
+        public virtual IInOutLineImageState GetInOutLineImage(string inOutDocumentNumber, string inOutLineLineNumber, string sequenceId)
+        {
+            return StateQueryRepository.GetInOutLineImage(inOutDocumentNumber, inOutLineLineNumber, sequenceId);
+        }
+
+        public IEnumerable<IInOutLineImageState> GetInOutLineImages(string inOutDocumentNumber, string inOutLineLineNumber)
+        {
+            return StateQueryRepository.GetInOutLineImages(inOutDocumentNumber, inOutLineLineNumber);
         }
 
 

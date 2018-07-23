@@ -51,8 +51,16 @@ public interface RxInOutsClient {
     Observable<InOutStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
+    @GET("InOuts/{inOutDocumentNumber}/InOutImages/{sequenceId}")
+    Observable<InOutImageStateDto> getInOutImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("sequenceId") String sequenceId);
+ 
+    @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{lineNumber}")
     Observable<InOutLineStateDto> getInOutLine(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("lineNumber") String lineNumber);
+ 
+    @Headers("Accept: application/json")
+    @GET("InOuts/{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
+    Observable<InOutLineImageStateDto> getInOutLineImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
     @PUT("InOuts/{id}")

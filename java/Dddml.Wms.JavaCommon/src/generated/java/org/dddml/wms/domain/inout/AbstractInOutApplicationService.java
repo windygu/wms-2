@@ -123,12 +123,28 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         return new AbstractInOutState.SimpleInOutState(eventStream.getEvents());
     }
 
+    public InOutImageState getInOutImage(String inOutDocumentNumber, String sequenceId) {
+        return getStateQueryRepository().getInOutImage(inOutDocumentNumber, sequenceId);
+    }
+
+    public Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber) {
+        return getStateQueryRepository().getInOutImages(inOutDocumentNumber);
+    }
+
     public InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber) {
         return getStateQueryRepository().getInOutLine(inOutDocumentNumber, lineNumber);
     }
 
     public Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber) {
         return getStateQueryRepository().getInOutLines(inOutDocumentNumber);
+    }
+
+    public InOutLineImageState getInOutLineImage(String inOutDocumentNumber, String inOutLineLineNumber, String sequenceId) {
+        return getStateQueryRepository().getInOutLineImage(inOutDocumentNumber, inOutLineLineNumber, sequenceId);
+    }
+
+    public Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber) {
+        return getStateQueryRepository().getInOutLineImages(inOutDocumentNumber, inOutLineLineNumber);
     }
 
 
