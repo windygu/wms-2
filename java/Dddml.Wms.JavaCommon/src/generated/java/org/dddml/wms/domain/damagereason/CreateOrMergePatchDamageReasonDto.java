@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchDamageReasonDto extends AbstractDamageReasonCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchDamageReasonDto extends AbstractDamageReasonComma
         this.description = description;
     }
 
+    /**
+     * Sequence Id
+     */
     private String sequenceId;
 
     public String getSequenceId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchDamageReasonDto extends AbstractDamageReasonComma
         this.sequenceId = sequenceId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -117,6 +126,10 @@ public class CreateOrMergePatchDamageReasonDto extends AbstractDamageReasonComma
 
     public static class CreateDamageReasonDto extends CreateOrMergePatchDamageReasonDto
     {
+        public CreateDamageReasonDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -130,6 +143,10 @@ public class CreateOrMergePatchDamageReasonDto extends AbstractDamageReasonComma
 
     public static class MergePatchDamageReasonDto extends CreateOrMergePatchDamageReasonDto
     {
+        public MergePatchDamageReasonDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

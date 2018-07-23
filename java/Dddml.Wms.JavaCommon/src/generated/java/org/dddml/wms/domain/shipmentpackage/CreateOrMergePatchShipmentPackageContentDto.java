@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentPackageContentDto extends AbstractShipmentPackageContentCommandDto
 {
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchShipmentPackageContentDto extends AbstractShipmen
         this.quantity = quantity;
     }
 
+    /**
+     * Sub Product Id
+     */
     private String subProductId;
 
     public String getSubProductId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchShipmentPackageContentDto extends AbstractShipmen
         this.subProductId = subProductId;
     }
 
+    /**
+     * Sub Product Quantity
+     */
     private java.math.BigDecimal subProductQuantity;
 
     public java.math.BigDecimal getSubProductQuantity()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchShipmentPackageContentDto extends AbstractShipmen
         this.subProductQuantity = subProductQuantity;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -148,6 +160,10 @@ public class CreateOrMergePatchShipmentPackageContentDto extends AbstractShipmen
 
     public static class CreateShipmentPackageContentDto extends CreateOrMergePatchShipmentPackageContentDto
     {
+        public CreateShipmentPackageContentDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -161,6 +177,10 @@ public class CreateOrMergePatchShipmentPackageContentDto extends AbstractShipmen
 
     public static class MergePatchShipmentPackageContentDto extends CreateOrMergePatchShipmentPackageContentDto
     {
+        public MergePatchShipmentPackageContentDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

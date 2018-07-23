@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractShipmentReceiptMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Shipment Receipt Id
+     */
     private ShipmentReceiptId shipmentReceiptId;
 
     public ShipmentReceiptId getShipmentReceiptId()
@@ -19,6 +22,9 @@ public abstract class AbstractShipmentReceiptMvoCommandDto extends AbstractComma
         this.shipmentReceiptId = shipmentReceiptId;
     }
 
+    /**
+     * Shipment Version
+     */
     private Long shipmentVersion;
 
     public Long getShipmentVersion()

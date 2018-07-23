@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
 {
+    /**
+     * Product Type Id
+     */
     private String productTypeId;
 
     public String getProductTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productTypeId = productTypeId;
     }
 
+    /**
+     * The primary category ; it should be one of the productCategoryId already setup in ProductCategoryMember
+     */
     private String primaryProductCategoryId;
 
     public String getPrimaryProductCategoryId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.primaryProductCategoryId = primaryProductCategoryId;
     }
 
+    /**
+     * Manufacturer Party Id
+     */
     private String manufacturerPartyId;
 
     public String getManufacturerPartyId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.manufacturerPartyId = manufacturerPartyId;
     }
 
+    /**
+     * Facility Id
+     */
     private String facilityId;
 
     public String getFacilityId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.facilityId = facilityId;
     }
 
+    /**
+     * Introduction Date
+     */
     private java.sql.Timestamp introductionDate;
 
     public java.sql.Timestamp getIntroductionDate()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.introductionDate = introductionDate;
     }
 
+    /**
+     * Release Date
+     */
     private java.sql.Timestamp releaseDate;
 
     public java.sql.Timestamp getReleaseDate()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.releaseDate = releaseDate;
     }
 
+    /**
+     * Support Discontinuation Date
+     */
     private java.sql.Timestamp supportDiscontinuationDate;
 
     public java.sql.Timestamp getSupportDiscontinuationDate()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.supportDiscontinuationDate = supportDiscontinuationDate;
     }
 
+    /**
+     * Sales Discontinuation Date
+     */
     private java.sql.Timestamp salesDiscontinuationDate;
 
     public java.sql.Timestamp getSalesDiscontinuationDate()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.salesDiscontinuationDate = salesDiscontinuationDate;
     }
 
+    /**
+     * Sales Disc When Not Avail
+     */
     private String salesDiscWhenNotAvail;
 
     public String getSalesDiscWhenNotAvail()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.salesDiscWhenNotAvail = salesDiscWhenNotAvail;
     }
 
+    /**
+     * Internal Name
+     */
     private String internalName;
 
     public String getInternalName()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.internalName = internalName;
     }
 
+    /**
+     * Brand Name
+     */
     private String brandName;
 
     public String getBrandName()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.brandName = brandName;
     }
 
+    /**
+     * Comments
+     */
     private String comments;
 
     public String getComments()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.comments = comments;
     }
 
+    /**
+     * Product Name
+     */
     private String productName;
 
     public String getProductName()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productName = productName;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -173,6 +215,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.description = description;
     }
 
+    /**
+     * Price Detail Text
+     */
     private String priceDetailText;
 
     public String getPriceDetailText()
@@ -185,6 +230,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.priceDetailText = priceDetailText;
     }
 
+    /**
+     * Small Image Url
+     */
     private String smallImageUrl;
 
     public String getSmallImageUrl()
@@ -197,6 +245,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.smallImageUrl = smallImageUrl;
     }
 
+    /**
+     * Medium Image Url
+     */
     private String mediumImageUrl;
 
     public String getMediumImageUrl()
@@ -209,6 +260,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.mediumImageUrl = mediumImageUrl;
     }
 
+    /**
+     * Large Image Url
+     */
     private String largeImageUrl;
 
     public String getLargeImageUrl()
@@ -221,6 +275,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.largeImageUrl = largeImageUrl;
     }
 
+    /**
+     * Detail Image Url
+     */
     private String detailImageUrl;
 
     public String getDetailImageUrl()
@@ -233,6 +290,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.detailImageUrl = detailImageUrl;
     }
 
+    /**
+     * Original Image Url
+     */
     private String originalImageUrl;
 
     public String getOriginalImageUrl()
@@ -245,6 +305,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.originalImageUrl = originalImageUrl;
     }
 
+    /**
+     * Detail Screen
+     */
     private String detailScreen;
 
     public String getDetailScreen()
@@ -257,6 +320,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.detailScreen = detailScreen;
     }
 
+    /**
+     * Inventory Message
+     */
     private String inventoryMessage;
 
     public String getInventoryMessage()
@@ -269,6 +335,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.inventoryMessage = inventoryMessage;
     }
 
+    /**
+     * Inventory Item Type Id
+     */
     private String inventoryItemTypeId;
 
     public String getInventoryItemTypeId()
@@ -281,6 +350,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.inventoryItemTypeId = inventoryItemTypeId;
     }
 
+    /**
+     * Require Inventory
+     */
     private String requireInventory;
 
     public String getRequireInventory()
@@ -293,6 +365,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.requireInventory = requireInventory;
     }
 
+    /**
+     * Quantity Uom Id
+     */
     private String quantityUomId;
 
     public String getQuantityUomId()
@@ -305,6 +380,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.quantityUomId = quantityUomId;
     }
 
+    /**
+     * Quantity Included
+     */
     private java.math.BigDecimal quantityIncluded;
 
     public java.math.BigDecimal getQuantityIncluded()
@@ -317,6 +395,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.quantityIncluded = quantityIncluded;
     }
 
+    /**
+     * Pieces Included
+     */
     private Long piecesIncluded;
 
     public Long getPiecesIncluded()
@@ -329,6 +410,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.piecesIncluded = piecesIncluded;
     }
 
+    /**
+     * Require Amount
+     */
     private String requireAmount;
 
     public String getRequireAmount()
@@ -341,6 +425,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.requireAmount = requireAmount;
     }
 
+    /**
+     * Fixed Amount
+     */
     private java.math.BigDecimal fixedAmount;
 
     public java.math.BigDecimal getFixedAmount()
@@ -353,6 +440,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.fixedAmount = fixedAmount;
     }
 
+    /**
+     * Amount Uom Type Id
+     */
     private String amountUomTypeId;
 
     public String getAmountUomTypeId()
@@ -365,6 +455,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.amountUomTypeId = amountUomTypeId;
     }
 
+    /**
+     * Weight Uom Id
+     */
     private String weightUomId;
 
     public String getWeightUomId()
@@ -377,6 +470,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.weightUomId = weightUomId;
     }
 
+    /**
+     * Shipping Weight
+     */
     private java.math.BigDecimal shippingWeight;
 
     public java.math.BigDecimal getShippingWeight()
@@ -389,6 +485,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.shippingWeight = shippingWeight;
     }
 
+    /**
+     * Product Weight
+     */
     private java.math.BigDecimal productWeight;
 
     public java.math.BigDecimal getProductWeight()
@@ -401,6 +500,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productWeight = productWeight;
     }
 
+    /**
+     * Height Uom Id
+     */
     private String heightUomId;
 
     public String getHeightUomId()
@@ -413,6 +515,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.heightUomId = heightUomId;
     }
 
+    /**
+     * Product Height
+     */
     private java.math.BigDecimal productHeight;
 
     public java.math.BigDecimal getProductHeight()
@@ -425,6 +530,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productHeight = productHeight;
     }
 
+    /**
+     * Shipping Height
+     */
     private java.math.BigDecimal shippingHeight;
 
     public java.math.BigDecimal getShippingHeight()
@@ -437,6 +545,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.shippingHeight = shippingHeight;
     }
 
+    /**
+     * Width Uom Id
+     */
     private String widthUomId;
 
     public String getWidthUomId()
@@ -449,6 +560,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.widthUomId = widthUomId;
     }
 
+    /**
+     * Product Width
+     */
     private java.math.BigDecimal productWidth;
 
     public java.math.BigDecimal getProductWidth()
@@ -461,6 +575,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productWidth = productWidth;
     }
 
+    /**
+     * Shipping Width
+     */
     private java.math.BigDecimal shippingWidth;
 
     public java.math.BigDecimal getShippingWidth()
@@ -473,6 +590,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.shippingWidth = shippingWidth;
     }
 
+    /**
+     * Depth Uom Id
+     */
     private String depthUomId;
 
     public String getDepthUomId()
@@ -485,6 +605,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.depthUomId = depthUomId;
     }
 
+    /**
+     * Product Depth
+     */
     private java.math.BigDecimal productDepth;
 
     public java.math.BigDecimal getProductDepth()
@@ -497,6 +620,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productDepth = productDepth;
     }
 
+    /**
+     * Shipping Depth
+     */
     private java.math.BigDecimal shippingDepth;
 
     public java.math.BigDecimal getShippingDepth()
@@ -509,6 +635,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.shippingDepth = shippingDepth;
     }
 
+    /**
+     * Diameter Uom Id
+     */
     private String diameterUomId;
 
     public String getDiameterUomId()
@@ -521,6 +650,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.diameterUomId = diameterUomId;
     }
 
+    /**
+     * Product Diameter
+     */
     private java.math.BigDecimal productDiameter;
 
     public java.math.BigDecimal getProductDiameter()
@@ -533,6 +665,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productDiameter = productDiameter;
     }
 
+    /**
+     * Product Rating
+     */
     private java.math.BigDecimal productRating;
 
     public java.math.BigDecimal getProductRating()
@@ -545,6 +680,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.productRating = productRating;
     }
 
+    /**
+     * Rating Type Enum
+     */
     private String ratingTypeEnum;
 
     public String getRatingTypeEnum()
@@ -557,6 +695,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.ratingTypeEnum = ratingTypeEnum;
     }
 
+    /**
+     * Returnable
+     */
     private String returnable;
 
     public String getReturnable()
@@ -569,6 +710,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.returnable = returnable;
     }
 
+    /**
+     * Taxable
+     */
     private String taxable;
 
     public String getTaxable()
@@ -581,6 +725,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.taxable = taxable;
     }
 
+    /**
+     * Charge Shipping
+     */
     private String chargeShipping;
 
     public String getChargeShipping()
@@ -593,6 +740,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.chargeShipping = chargeShipping;
     }
 
+    /**
+     * Auto Create Keywords
+     */
     private String autoCreateKeywords;
 
     public String getAutoCreateKeywords()
@@ -605,6 +755,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.autoCreateKeywords = autoCreateKeywords;
     }
 
+    /**
+     * Include In Promotions
+     */
     private String includeInPromotions;
 
     public String getIncludeInPromotions()
@@ -617,6 +770,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.includeInPromotions = includeInPromotions;
     }
 
+    /**
+     * Is Virtual
+     */
     private String isVirtual;
 
     public String getIsVirtual()
@@ -629,6 +785,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isVirtual = isVirtual;
     }
 
+    /**
+     * Is Variant
+     */
     private String isVariant;
 
     public String getIsVariant()
@@ -641,6 +800,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isVariant = isVariant;
     }
 
+    /**
+     * This field defines the method of selecting a variant from the selectable features on the virtual product. Either as a variant explosion which will work to about 200 variants or as feature explosion which almost has no limits
+     */
     private String virtualVariantMethodEnum;
 
     public String getVirtualVariantMethodEnum()
@@ -653,6 +815,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.virtualVariantMethodEnum = virtualVariantMethodEnum;
     }
 
+    /**
+     * In Shipping Box
+     */
     private String inShippingBox;
 
     public String getInShippingBox()
@@ -665,6 +830,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.inShippingBox = inShippingBox;
     }
 
+    /**
+     * Default Shipment Box Type Id
+     */
     private String defaultShipmentBoxTypeId;
 
     public String getDefaultShipmentBoxTypeId()
@@ -677,6 +845,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.defaultShipmentBoxTypeId = defaultShipmentBoxTypeId;
     }
 
+    /**
+     * Is Serial Numbered
+     */
     private Boolean isSerialNumbered;
 
     public Boolean getIsSerialNumbered()
@@ -689,6 +860,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isSerialNumbered = isSerialNumbered;
     }
 
+    /**
+     * Is Managed By Lot
+     */
     private Boolean isManagedByLot;
 
     public Boolean getIsManagedByLot()
@@ -701,6 +875,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isManagedByLot = isManagedByLot;
     }
 
+    /**
+     * Attribute Set Id
+     */
     private String attributeSetId;
 
     public String getAttributeSetId()
@@ -713,6 +890,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.attributeSetId = attributeSetId;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -725,6 +905,9 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -1647,6 +1830,10 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
 
     public static class CreateProductDto extends CreateOrMergePatchProductDto
     {
+        public CreateProductDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -1660,6 +1847,10 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
 
     public static class MergePatchProductDto extends CreateOrMergePatchProductDto
     {
+        public MergePatchProductDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

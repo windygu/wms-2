@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDto
 {
+    /**
+     * Status Type Id
+     */
     private String statusTypeId;
 
     public String getStatusTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDt
         this.statusTypeId = statusTypeId;
     }
 
+    /**
+     * Status Code
+     */
     private String statusCode;
 
     public String getStatusCode()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDt
         this.statusCode = statusCode;
     }
 
+    /**
+     * Sequence Id
+     */
     private String sequenceId;
 
     public String getSequenceId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDt
         this.sequenceId = sequenceId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDt
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -127,6 +142,10 @@ public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDt
 
     public static class CreateStatusItemDto extends CreateOrMergePatchStatusItemDto
     {
+        public CreateStatusItemDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -136,6 +155,10 @@ public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDt
 
     public static class MergePatchStatusItemDto extends CreateOrMergePatchStatusItemDto
     {
+        public MergePatchStatusItemDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

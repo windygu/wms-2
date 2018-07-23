@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttributeSetInstanceCommandDto
 {
+    /**
+     * Attribute Set Id
+     */
     private String attributeSetId;
 
     public String getAttributeSetId()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.attributeSetId = attributeSetId;
     }
 
+    /**
+     * Organization Id
+     */
     private String organizationId;
 
     public String getOrganizationId()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.organizationId = organizationId;
     }
 
+    /**
+     * Reference Id
+     */
     private String referenceId;
 
     public String getReferenceId()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.referenceId = referenceId;
     }
 
+    /**
+     * Serial Number
+     */
     private String serialNumber;
 
     public String getSerialNumber()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.serialNumber = serialNumber;
     }
 
+    /**
+     * Lot Id
+     */
     private String lotId;
 
     public String getLotId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.lotId = lotId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.description = description;
     }
 
+    /**
+     * Hash
+     */
     private String hash;
 
     public String getHash()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.hash = hash;
     }
 
+    /**
+     * Width Inch
+     */
     private BigDecimal widthInch;
 
     public BigDecimal getWidthInch()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.widthInch = widthInch;
     }
 
+    /**
+     * Diameter Inch
+     */
     private BigDecimal diameterInch;
 
     public BigDecimal getDiameterInch()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.diameterInch = diameterInch;
     }
 
+    /**
+     * Weight Lbs
+     */
     private BigDecimal weightLbs;
 
     public BigDecimal getWeightLbs()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.weightLbs = weightLbs;
     }
 
+    /**
+     * Weight Kg
+     */
     private BigDecimal weightKg;
 
     public BigDecimal getWeightKg()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.weightKg = weightKg;
     }
 
+    /**
+     * Air Dry Weight Lbs
+     */
     private BigDecimal airDryWeightLbs;
 
     public BigDecimal getAirDryWeightLbs()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.airDryWeightLbs = airDryWeightLbs;
     }
 
+    /**
+     * Air Dry Weight Kg
+     */
     private BigDecimal airDryWeightKg;
 
     public BigDecimal getAirDryWeightKg()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.airDryWeightKg = airDryWeightKg;
     }
 
+    /**
+     * Air Dry Metric Ton
+     */
     private BigDecimal airDryMetricTon;
 
     public BigDecimal getAirDryMetricTon()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.airDryMetricTon = airDryMetricTon;
     }
 
+    /**
+     * Package Count
+     */
     private Integer packageCount;
 
     public Integer getPackageCount()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.packageCount = packageCount;
     }
 
+    /**
+     * Air Dry Pct
+     */
     private BigDecimal airDryPct;
 
     public BigDecimal getAirDryPct()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.airDryPct = airDryPct;
     }
 
+    /**
+     * _ F_ B_0_
+     */
     private Boolean _F_B_0_;
 
     public Boolean get_F_B_0_()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_B_0_ = _F_B_0_;
     }
 
+    /**
+     * _ F_ I_0_
+     */
     private Integer _F_I_0_;
 
     public Integer get_F_I_0_()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_I_0_ = _F_I_0_;
     }
 
+    /**
+     * _ F_ L_0_
+     */
     private Long _F_L_0_;
 
     public Long get_F_L_0_()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_L_0_ = _F_L_0_;
     }
 
+    /**
+     * _ F_D T_0_
+     */
     private Date _F_DT_0_;
 
     public Date get_F_DT_0_()
@@ -246,6 +306,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_DT_0_ = _F_DT_0_;
     }
 
+    /**
+     * _ F_ N_0_
+     */
     private BigDecimal _F_N_0_;
 
     public BigDecimal get_F_N_0_()
@@ -258,6 +321,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_N_0_ = _F_N_0_;
     }
 
+    /**
+     * _ F_ C5_0_
+     */
     private String _F_C5_0_;
 
     public String get_F_C5_0_()
@@ -270,6 +336,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C5_0_ = _F_C5_0_;
     }
 
+    /**
+     * _ F_ C10_0_
+     */
     private String _F_C10_0_;
 
     public String get_F_C10_0_()
@@ -282,6 +351,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C10_0_ = _F_C10_0_;
     }
 
+    /**
+     * _ F_ C20_0_
+     */
     private String _F_C20_0_;
 
     public String get_F_C20_0_()
@@ -294,6 +366,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C20_0_ = _F_C20_0_;
     }
 
+    /**
+     * _ F_ C50_0_
+     */
     private String _F_C50_0_;
 
     public String get_F_C50_0_()
@@ -306,6 +381,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C50_0_ = _F_C50_0_;
     }
 
+    /**
+     * _ F_ C100_0_
+     */
     private String _F_C100_0_;
 
     public String get_F_C100_0_()
@@ -318,6 +396,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C100_0_ = _F_C100_0_;
     }
 
+    /**
+     * _ F_ C200_0_
+     */
     private String _F_C200_0_;
 
     public String get_F_C200_0_()
@@ -330,6 +411,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C200_0_ = _F_C200_0_;
     }
 
+    /**
+     * _ F_ C500_0_
+     */
     private String _F_C500_0_;
 
     public String get_F_C500_0_()
@@ -342,6 +426,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C500_0_ = _F_C500_0_;
     }
 
+    /**
+     * _ F_ C1000_0_
+     */
     private String _F_C1000_0_;
 
     public String get_F_C1000_0_()
@@ -354,6 +441,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C1000_0_ = _F_C1000_0_;
     }
 
+    /**
+     * _ F_ B_1_
+     */
     private Boolean _F_B_1_;
 
     public Boolean get_F_B_1_()
@@ -366,6 +456,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_B_1_ = _F_B_1_;
     }
 
+    /**
+     * _ F_ I_1_
+     */
     private Integer _F_I_1_;
 
     public Integer get_F_I_1_()
@@ -378,6 +471,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_I_1_ = _F_I_1_;
     }
 
+    /**
+     * _ F_ L_1_
+     */
     private Long _F_L_1_;
 
     public Long get_F_L_1_()
@@ -390,6 +486,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_L_1_ = _F_L_1_;
     }
 
+    /**
+     * _ F_D T_1_
+     */
     private Date _F_DT_1_;
 
     public Date get_F_DT_1_()
@@ -402,6 +501,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_DT_1_ = _F_DT_1_;
     }
 
+    /**
+     * _ F_ N_1_
+     */
     private BigDecimal _F_N_1_;
 
     public BigDecimal get_F_N_1_()
@@ -414,6 +516,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_N_1_ = _F_N_1_;
     }
 
+    /**
+     * _ F_ C5_1_
+     */
     private String _F_C5_1_;
 
     public String get_F_C5_1_()
@@ -426,6 +531,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C5_1_ = _F_C5_1_;
     }
 
+    /**
+     * _ F_ C10_1_
+     */
     private String _F_C10_1_;
 
     public String get_F_C10_1_()
@@ -438,6 +546,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C10_1_ = _F_C10_1_;
     }
 
+    /**
+     * _ F_ C20_1_
+     */
     private String _F_C20_1_;
 
     public String get_F_C20_1_()
@@ -450,6 +561,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C20_1_ = _F_C20_1_;
     }
 
+    /**
+     * _ F_ C50_1_
+     */
     private String _F_C50_1_;
 
     public String get_F_C50_1_()
@@ -462,6 +576,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C50_1_ = _F_C50_1_;
     }
 
+    /**
+     * _ F_ C100_1_
+     */
     private String _F_C100_1_;
 
     public String get_F_C100_1_()
@@ -474,6 +591,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C100_1_ = _F_C100_1_;
     }
 
+    /**
+     * _ F_ C200_1_
+     */
     private String _F_C200_1_;
 
     public String get_F_C200_1_()
@@ -486,6 +606,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C200_1_ = _F_C200_1_;
     }
 
+    /**
+     * _ F_ B_2_
+     */
     private Boolean _F_B_2_;
 
     public Boolean get_F_B_2_()
@@ -498,6 +621,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_B_2_ = _F_B_2_;
     }
 
+    /**
+     * _ F_ I_2_
+     */
     private Integer _F_I_2_;
 
     public Integer get_F_I_2_()
@@ -510,6 +636,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_I_2_ = _F_I_2_;
     }
 
+    /**
+     * _ F_ L_2_
+     */
     private Long _F_L_2_;
 
     public Long get_F_L_2_()
@@ -522,6 +651,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_L_2_ = _F_L_2_;
     }
 
+    /**
+     * _ F_D T_2_
+     */
     private Date _F_DT_2_;
 
     public Date get_F_DT_2_()
@@ -534,6 +666,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_DT_2_ = _F_DT_2_;
     }
 
+    /**
+     * _ F_ N_2_
+     */
     private BigDecimal _F_N_2_;
 
     public BigDecimal get_F_N_2_()
@@ -546,6 +681,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_N_2_ = _F_N_2_;
     }
 
+    /**
+     * _ F_ C5_2_
+     */
     private String _F_C5_2_;
 
     public String get_F_C5_2_()
@@ -558,6 +696,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C5_2_ = _F_C5_2_;
     }
 
+    /**
+     * _ F_ C10_2_
+     */
     private String _F_C10_2_;
 
     public String get_F_C10_2_()
@@ -570,6 +711,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C10_2_ = _F_C10_2_;
     }
 
+    /**
+     * _ F_ C20_2_
+     */
     private String _F_C20_2_;
 
     public String get_F_C20_2_()
@@ -582,6 +726,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C20_2_ = _F_C20_2_;
     }
 
+    /**
+     * _ F_ C50_2_
+     */
     private String _F_C50_2_;
 
     public String get_F_C50_2_()
@@ -594,6 +741,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C50_2_ = _F_C50_2_;
     }
 
+    /**
+     * _ F_ B_3_
+     */
     private Boolean _F_B_3_;
 
     public Boolean get_F_B_3_()
@@ -606,6 +756,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_B_3_ = _F_B_3_;
     }
 
+    /**
+     * _ F_ I_3_
+     */
     private Integer _F_I_3_;
 
     public Integer get_F_I_3_()
@@ -618,6 +771,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_I_3_ = _F_I_3_;
     }
 
+    /**
+     * _ F_ L_3_
+     */
     private Long _F_L_3_;
 
     public Long get_F_L_3_()
@@ -630,6 +786,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_L_3_ = _F_L_3_;
     }
 
+    /**
+     * _ F_D T_3_
+     */
     private Date _F_DT_3_;
 
     public Date get_F_DT_3_()
@@ -642,6 +801,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_DT_3_ = _F_DT_3_;
     }
 
+    /**
+     * _ F_ N_3_
+     */
     private BigDecimal _F_N_3_;
 
     public BigDecimal get_F_N_3_()
@@ -654,6 +816,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_N_3_ = _F_N_3_;
     }
 
+    /**
+     * _ F_ C5_3_
+     */
     private String _F_C5_3_;
 
     public String get_F_C5_3_()
@@ -666,6 +831,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C5_3_ = _F_C5_3_;
     }
 
+    /**
+     * _ F_ C10_3_
+     */
     private String _F_C10_3_;
 
     public String get_F_C10_3_()
@@ -678,6 +846,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C10_3_ = _F_C10_3_;
     }
 
+    /**
+     * _ F_ C20_3_
+     */
     private String _F_C20_3_;
 
     public String get_F_C20_3_()
@@ -690,6 +861,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C20_3_ = _F_C20_3_;
     }
 
+    /**
+     * _ F_ C50_3_
+     */
     private String _F_C50_3_;
 
     public String get_F_C50_3_()
@@ -702,6 +876,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C50_3_ = _F_C50_3_;
     }
 
+    /**
+     * _ F_ B_4_
+     */
     private Boolean _F_B_4_;
 
     public Boolean get_F_B_4_()
@@ -714,6 +891,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_B_4_ = _F_B_4_;
     }
 
+    /**
+     * _ F_ I_4_
+     */
     private Integer _F_I_4_;
 
     public Integer get_F_I_4_()
@@ -726,6 +906,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_I_4_ = _F_I_4_;
     }
 
+    /**
+     * _ F_ L_4_
+     */
     private Long _F_L_4_;
 
     public Long get_F_L_4_()
@@ -738,6 +921,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_L_4_ = _F_L_4_;
     }
 
+    /**
+     * _ F_D T_4_
+     */
     private Date _F_DT_4_;
 
     public Date get_F_DT_4_()
@@ -750,6 +936,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_DT_4_ = _F_DT_4_;
     }
 
+    /**
+     * _ F_ N_4_
+     */
     private BigDecimal _F_N_4_;
 
     public BigDecimal get_F_N_4_()
@@ -762,6 +951,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_N_4_ = _F_N_4_;
     }
 
+    /**
+     * _ F_ C5_4_
+     */
     private String _F_C5_4_;
 
     public String get_F_C5_4_()
@@ -774,6 +966,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C5_4_ = _F_C5_4_;
     }
 
+    /**
+     * _ F_ C10_4_
+     */
     private String _F_C10_4_;
 
     public String get_F_C10_4_()
@@ -786,6 +981,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C10_4_ = _F_C10_4_;
     }
 
+    /**
+     * _ F_ C20_4_
+     */
     private String _F_C20_4_;
 
     public String get_F_C20_4_()
@@ -798,6 +996,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C20_4_ = _F_C20_4_;
     }
 
+    /**
+     * _ F_ C50_4_
+     */
     private String _F_C50_4_;
 
     public String get_F_C50_4_()
@@ -810,6 +1011,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this._F_C50_4_ = _F_C50_4_;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -1731,6 +1935,10 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
 
     public static class CreateAttributeSetInstanceDto extends CreateOrMergePatchAttributeSetInstanceDto
     {
+        public CreateAttributeSetInstanceDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;

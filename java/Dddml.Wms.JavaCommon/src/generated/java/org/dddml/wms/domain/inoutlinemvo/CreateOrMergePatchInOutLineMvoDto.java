@@ -7,6 +7,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoCommandDto
 {
+    /**
+     * Locator Id
+     */
     private String locatorId;
 
     public String getLocatorId()
@@ -19,6 +22,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.locatorId = locatorId;
     }
 
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -31,6 +37,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.productId = productId;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -43,6 +52,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -55,6 +67,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.description = description;
     }
 
+    /**
+     * Quantity Uom Id
+     */
     private String quantityUomId;
 
     public String getQuantityUomId()
@@ -67,6 +82,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.quantityUomId = quantityUomId;
     }
 
+    /**
+     * Movement Quantity
+     */
     private BigDecimal movementQuantity;
 
     public BigDecimal getMovementQuantity()
@@ -79,6 +97,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.movementQuantity = movementQuantity;
     }
 
+    /**
+     * Picked Quantity
+     */
     private BigDecimal pickedQuantity;
 
     public BigDecimal getPickedQuantity()
@@ -91,6 +112,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.pickedQuantity = pickedQuantity;
     }
 
+    /**
+     * Is Invoiced
+     */
     private Boolean isInvoiced;
 
     public Boolean getIsInvoiced()
@@ -103,6 +127,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isInvoiced = isInvoiced;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -115,6 +142,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.processed = processed;
     }
 
+    /**
+     * Rma Line Number
+     */
     private String rmaLineNumber;
 
     public String getRmaLineNumber()
@@ -127,6 +157,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.rmaLineNumber = rmaLineNumber;
     }
 
+    /**
+     * Reversal Line Number
+     */
     private String reversalLineNumber;
 
     public String getReversalLineNumber()
@@ -139,6 +172,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.reversalLineNumber = reversalLineNumber;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -151,6 +187,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -163,6 +202,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.active = active;
     }
 
+    /**
+     * In Out Document Status Id
+     */
     private String inOutDocumentStatusId;
 
     public String getInOutDocumentStatusId()
@@ -175,6 +217,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDocumentStatusId = inOutDocumentStatusId;
     }
 
+    /**
+     * In Out Posted
+     */
     private Boolean inOutPosted;
 
     public Boolean getInOutPosted()
@@ -187,6 +232,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutPosted = inOutPosted;
     }
 
+    /**
+     * In Out Processed
+     */
     private Boolean inOutProcessed;
 
     public Boolean getInOutProcessed()
@@ -199,6 +247,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutProcessed = inOutProcessed;
     }
 
+    /**
+     * In Out Processing
+     */
     private String inOutProcessing;
 
     public String getInOutProcessing()
@@ -211,6 +262,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutProcessing = inOutProcessing;
     }
 
+    /**
+     * In Out Document Type Id
+     */
     private String inOutDocumentTypeId;
 
     public String getInOutDocumentTypeId()
@@ -223,6 +277,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDocumentTypeId = inOutDocumentTypeId;
     }
 
+    /**
+     * In Out Description
+     */
     private String inOutDescription;
 
     public String getInOutDescription()
@@ -235,6 +292,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDescription = inOutDescription;
     }
 
+    /**
+     * In Out Order Id
+     */
     private String inOutOrderId;
 
     public String getInOutOrderId()
@@ -247,6 +307,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutOrderId = inOutOrderId;
     }
 
+    /**
+     * In Out Date Ordered
+     */
     private Date inOutDateOrdered;
 
     public Date getInOutDateOrdered()
@@ -259,6 +322,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDateOrdered = inOutDateOrdered;
     }
 
+    /**
+     * In Out Is Printed
+     */
     private Boolean inOutIsPrinted;
 
     public Boolean getInOutIsPrinted()
@@ -271,6 +337,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutIsPrinted = inOutIsPrinted;
     }
 
+    /**
+     * In Out Movement Type Id
+     */
     private String inOutMovementTypeId;
 
     public String getInOutMovementTypeId()
@@ -283,6 +352,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutMovementTypeId = inOutMovementTypeId;
     }
 
+    /**
+     * In Out Movement Date
+     */
     private Date inOutMovementDate;
 
     public Date getInOutMovementDate()
@@ -295,6 +367,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutMovementDate = inOutMovementDate;
     }
 
+    /**
+     * In Out Business Partner Id
+     */
     private String inOutBusinessPartnerId;
 
     public String getInOutBusinessPartnerId()
@@ -307,6 +382,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutBusinessPartnerId = inOutBusinessPartnerId;
     }
 
+    /**
+     * In Out Warehouse Id
+     */
     private String inOutWarehouseId;
 
     public String getInOutWarehouseId()
@@ -319,6 +397,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutWarehouseId = inOutWarehouseId;
     }
 
+    /**
+     * In Out PO Reference
+     */
     private String inOutPOReference;
 
     public String getInOutPOReference()
@@ -331,6 +412,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutPOReference = inOutPOReference;
     }
 
+    /**
+     * In Out Freight Amount
+     */
     private BigDecimal inOutFreightAmount;
 
     public BigDecimal getInOutFreightAmount()
@@ -343,6 +427,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutFreightAmount = inOutFreightAmount;
     }
 
+    /**
+     * In Out Shipper Id
+     */
     private String inOutShipperId;
 
     public String getInOutShipperId()
@@ -355,6 +442,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutShipperId = inOutShipperId;
     }
 
+    /**
+     * In Out Charge Amount
+     */
     private BigDecimal inOutChargeAmount;
 
     public BigDecimal getInOutChargeAmount()
@@ -367,6 +457,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutChargeAmount = inOutChargeAmount;
     }
 
+    /**
+     * In Out Date Printed
+     */
     private Date inOutDatePrinted;
 
     public Date getInOutDatePrinted()
@@ -379,6 +472,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDatePrinted = inOutDatePrinted;
     }
 
+    /**
+     * In Out Created From
+     */
     private String inOutCreatedFrom;
 
     public String getInOutCreatedFrom()
@@ -391,6 +487,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutCreatedFrom = inOutCreatedFrom;
     }
 
+    /**
+     * In Out Sales Representative Id
+     */
     private String inOutSalesRepresentativeId;
 
     public String getInOutSalesRepresentativeId()
@@ -403,6 +502,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutSalesRepresentativeId = inOutSalesRepresentativeId;
     }
 
+    /**
+     * In Out Number Of Packages
+     */
     private Integer inOutNumberOfPackages;
 
     public Integer getInOutNumberOfPackages()
@@ -415,6 +517,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutNumberOfPackages = inOutNumberOfPackages;
     }
 
+    /**
+     * In Out Pick Date
+     */
     private Date inOutPickDate;
 
     public Date getInOutPickDate()
@@ -427,6 +532,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutPickDate = inOutPickDate;
     }
 
+    /**
+     * In Out Ship Date
+     */
     private Date inOutShipDate;
 
     public Date getInOutShipDate()
@@ -439,6 +547,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutShipDate = inOutShipDate;
     }
 
+    /**
+     * In Out Tracking Number
+     */
     private String inOutTrackingNumber;
 
     public String getInOutTrackingNumber()
@@ -451,6 +562,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutTrackingNumber = inOutTrackingNumber;
     }
 
+    /**
+     * In Out Date Received
+     */
     private Date inOutDateReceived;
 
     public Date getInOutDateReceived()
@@ -463,6 +577,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutDateReceived = inOutDateReceived;
     }
 
+    /**
+     * In Out Is In Transit
+     */
     private Boolean inOutIsInTransit;
 
     public Boolean getInOutIsInTransit()
@@ -475,6 +592,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutIsInTransit = inOutIsInTransit;
     }
 
+    /**
+     * In Out Is Approved
+     */
     private Boolean inOutIsApproved;
 
     public Boolean getInOutIsApproved()
@@ -487,6 +607,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutIsApproved = inOutIsApproved;
     }
 
+    /**
+     * In Out Is In Dispute
+     */
     private Boolean inOutIsInDispute;
 
     public Boolean getInOutIsInDispute()
@@ -499,6 +622,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutIsInDispute = inOutIsInDispute;
     }
 
+    /**
+     * In Out Rma Document Number
+     */
     private String inOutRmaDocumentNumber;
 
     public String getInOutRmaDocumentNumber()
@@ -511,6 +637,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutRmaDocumentNumber = inOutRmaDocumentNumber;
     }
 
+    /**
+     * In Out Reversal Document Number
+     */
     private String inOutReversalDocumentNumber;
 
     public String getInOutReversalDocumentNumber()
@@ -523,6 +652,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutReversalDocumentNumber = inOutReversalDocumentNumber;
     }
 
+    /**
+     * In Out Created By
+     */
     private String inOutCreatedBy;
 
     public String getInOutCreatedBy()
@@ -535,6 +667,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutCreatedBy = inOutCreatedBy;
     }
 
+    /**
+     * In Out Created At
+     */
     private Date inOutCreatedAt;
 
     public Date getInOutCreatedAt()
@@ -547,6 +682,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutCreatedAt = inOutCreatedAt;
     }
 
+    /**
+     * In Out Updated By
+     */
     private String inOutUpdatedBy;
 
     public String getInOutUpdatedBy()
@@ -559,6 +697,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutUpdatedBy = inOutUpdatedBy;
     }
 
+    /**
+     * In Out Updated At
+     */
     private Date inOutUpdatedAt;
 
     public Date getInOutUpdatedAt()
@@ -571,6 +712,9 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutUpdatedAt = inOutUpdatedAt;
     }
 
+    /**
+     * In Out Active
+     */
     private Boolean inOutActive;
 
     public Boolean getInOutActive()
@@ -1289,6 +1433,10 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
 
     public static class CreateInOutLineMvoDto extends CreateOrMergePatchInOutLineMvoDto
     {
+        public CreateInOutLineMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -1302,6 +1450,10 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
 
     public static class MergePatchInOutLineMvoDto extends CreateOrMergePatchInOutLineMvoDto
     {
+        public MergePatchInOutLineMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

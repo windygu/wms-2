@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractLotCommandDto extends AbstractCommand
 {
+    /**
+     * Lot Id
+     */
     private String lotId;
 
     public String getLotId()
@@ -18,6 +21,9 @@ public abstract class AbstractLotCommandDto extends AbstractCommand
         this.lotId = lotId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

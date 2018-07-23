@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeAliasDto extends AbstractAttributeAliasCommandDto
 {
+    /**
+     * Name
+     */
     private String name;
 
     public String getName()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchAttributeAliasDto extends AbstractAttributeAliasC
         this.name = name;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -96,6 +102,10 @@ public class CreateOrMergePatchAttributeAliasDto extends AbstractAttributeAliasC
 
     public static class CreateAttributeAliasDto extends CreateOrMergePatchAttributeAliasDto
     {
+        public CreateAttributeAliasDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -109,6 +119,10 @@ public class CreateOrMergePatchAttributeAliasDto extends AbstractAttributeAliasC
 
     public static class MergePatchAttributeAliasDto extends CreateOrMergePatchAttributeAliasDto
     {
+        public MergePatchAttributeAliasDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

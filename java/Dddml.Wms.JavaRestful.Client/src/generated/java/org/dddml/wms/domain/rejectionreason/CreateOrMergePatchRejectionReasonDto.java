@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchRejectionReasonDto extends AbstractRejectionReasonCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchRejectionReasonDto extends AbstractRejectionReaso
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -55,6 +61,10 @@ public class CreateOrMergePatchRejectionReasonDto extends AbstractRejectionReaso
 
     public static class CreateRejectionReasonDto extends CreateOrMergePatchRejectionReasonDto
     {
+        public CreateRejectionReasonDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -64,6 +74,10 @@ public class CreateOrMergePatchRejectionReasonDto extends AbstractRejectionReaso
 
     public static class MergePatchRejectionReasonDto extends CreateOrMergePatchRejectionReasonDto
     {
+        public MergePatchRejectionReasonDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrganizationStructureCommandDto extends AbstractCommand
 {
+    /**
+     * Id
+     */
     private OrganizationStructureId id;
 
     public OrganizationStructureId getId()
@@ -18,6 +21,9 @@ public abstract class AbstractOrganizationStructureCommandDto extends AbstractCo
         this.id = id;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderCommandDto extends AbstractCommand
 {
+    /**
+     * Order Id
+     */
     private String orderId;
 
     public String getOrderId()
@@ -19,6 +22,9 @@ public abstract class AbstractOrderCommandDto extends AbstractCommand
         this.orderId = orderId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

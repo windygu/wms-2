@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommandDto
 {
+    /**
+     * Contact Mech Type Id
+     */
     private String contactMechTypeId;
 
     public String getContactMechTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.contactMechTypeId = contactMechTypeId;
     }
 
+    /**
+     * Info String
+     */
     private String infoString;
 
     public String getInfoString()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.infoString = infoString;
     }
 
+    /**
+     * To Name
+     */
     private String toName;
 
     public String getToName()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.toName = toName;
     }
 
+    /**
+     * Attn Name
+     */
     private String attnName;
 
     public String getAttnName()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.attnName = attnName;
     }
 
+    /**
+     * Address1
+     */
     private String address1;
 
     public String getAddress1()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.address1 = address1;
     }
 
+    /**
+     * Address2
+     */
     private String address2;
 
     public String getAddress2()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.address2 = address2;
     }
 
+    /**
+     * Directions
+     */
     private String directions;
 
     public String getDirections()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.directions = directions;
     }
 
+    /**
+     * City
+     */
     private String city;
 
     public String getCity()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.city = city;
     }
 
+    /**
+     * Postal Code
+     */
     private String postalCode;
 
     public String getPostalCode()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.postalCode = postalCode;
     }
 
+    /**
+     * Postal Code Ext
+     */
     private String postalCodeExt;
 
     public String getPostalCodeExt()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.postalCodeExt = postalCodeExt;
     }
 
+    /**
+     * Country Geo Id
+     */
     private String countryGeoId;
 
     public String getCountryGeoId()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.countryGeoId = countryGeoId;
     }
 
+    /**
+     * State Province Geo Id
+     */
     private String stateProvinceGeoId;
 
     public String getStateProvinceGeoId()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.stateProvinceGeoId = stateProvinceGeoId;
     }
 
+    /**
+     * County Geo Id
+     */
     private String countyGeoId;
 
     public String getCountyGeoId()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.countyGeoId = countyGeoId;
     }
 
+    /**
+     * Postal Code Geo Id
+     */
     private String postalCodeGeoId;
 
     public String getPostalCodeGeoId()
@@ -173,6 +215,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.postalCodeGeoId = postalCodeGeoId;
     }
 
+    /**
+     * Geo Point Id
+     */
     private String geoPointId;
 
     public String getGeoPointId()
@@ -185,6 +230,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.geoPointId = geoPointId;
     }
 
+    /**
+     * Country Code
+     */
     private String countryCode;
 
     public String getCountryCode()
@@ -197,6 +245,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.countryCode = countryCode;
     }
 
+    /**
+     * Area Code
+     */
     private String areaCode;
 
     public String getAreaCode()
@@ -209,6 +260,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.areaCode = areaCode;
     }
 
+    /**
+     * Contact Number
+     */
     private String contactNumber;
 
     public String getContactNumber()
@@ -221,6 +275,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.contactNumber = contactNumber;
     }
 
+    /**
+     * Ask For Name
+     */
     private String askForName;
 
     public String getAskForName()
@@ -233,6 +290,9 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
         this.askForName = askForName;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -559,6 +619,10 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
 
     public static class CreateContactMechDto extends CreateOrMergePatchContactMechDto
     {
+        public CreateContactMechDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -572,6 +636,10 @@ public class CreateOrMergePatchContactMechDto extends AbstractContactMechCommand
 
     public static class MergePatchContactMechDto extends CreateOrMergePatchContactMechDto
     {
+        public MergePatchContactMechDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

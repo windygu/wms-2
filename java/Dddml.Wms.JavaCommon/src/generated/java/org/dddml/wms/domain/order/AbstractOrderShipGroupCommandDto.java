@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderShipGroupCommandDto extends AbstractCommand
 {
+    /**
+     * Ship Group Seq Id
+     */
     private Long shipGroupSeqId;
 
     public Long getShipGroupSeqId()

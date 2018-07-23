@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
 {
+    /**
+     * Warehouse Name
+     */
     private String warehouseName;
 
     public String getWarehouseName()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         this.warehouseName = warehouseName;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         this.description = description;
     }
 
+    /**
+     * Is In Transit
+     */
     private Boolean isInTransit;
 
     public Boolean getIsInTransit()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
         this.isInTransit = isInTransit;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -103,6 +115,10 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
 
     public static class CreateWarehouseDto extends CreateOrMergePatchWarehouseDto
     {
+        public CreateWarehouseDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -112,6 +128,10 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
 
     public static class MergePatchWarehouseDto extends CreateOrMergePatchWarehouseDto
     {
+        public MergePatchWarehouseDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

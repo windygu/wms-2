@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
 {
+    /**
+     * Party Type Id
+     */
     private String partyTypeId;
 
     public String getPartyTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.partyTypeId = partyTypeId;
     }
 
+    /**
+     * Primary Role Type Id
+     */
     private String primaryRoleTypeId;
 
     public String getPrimaryRoleTypeId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.primaryRoleTypeId = primaryRoleTypeId;
     }
 
+    /**
+     * Organization Name
+     */
     private String organizationName;
 
     public String getOrganizationName()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.organizationName = organizationName;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.description = description;
     }
 
+    /**
+     * Type
+     */
     private String type;
 
     public String getType()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.type = type;
     }
 
+    /**
+     * Is Summary
+     */
     private Boolean isSummary;
 
     public Boolean getIsSummary()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.isSummary = isSummary;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -175,6 +196,10 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
 
     public static class CreatePartyDto extends CreateOrMergePatchPartyDto
     {
+        public CreatePartyDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -184,6 +209,10 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
 
     public static class MergePatchPartyDto extends CreateOrMergePatchPartyDto
     {
+        public MergePatchPartyDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

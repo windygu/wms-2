@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetCommandDto
 {
+    /**
+     * Attribute Set Name
+     */
     private String attributeSetName;
 
     public String getAttributeSetName()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.attributeSetName = attributeSetName;
     }
 
+    /**
+     * Organization Id
+     */
     private String organizationId;
 
     public String getOrganizationId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.organizationId = organizationId;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.description = description;
     }
 
+    /**
+     * Reference Id
+     */
     private String referenceId;
 
     public String getReferenceId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.referenceId = referenceId;
     }
 
+    /**
+     * Is Instance Attribute Set
+     */
     private Boolean isInstanceAttributeSet;
 
     public Boolean getIsInstanceAttributeSet()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.isInstanceAttributeSet = isInstanceAttributeSet;
     }
 
+    /**
+     * Is Mandatory
+     */
     private Boolean isMandatory;
 
     public Boolean getIsMandatory()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.isMandatory = isMandatory;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -187,6 +208,10 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
 
     public static class CreateAttributeSetDto extends CreateOrMergePatchAttributeSetDto
     {
+        public CreateAttributeSetDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -196,6 +221,10 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
 
     public static class MergePatchAttributeSetDto extends CreateOrMergePatchAttributeSetDto
     {
+        public MergePatchAttributeSetDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

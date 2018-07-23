@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractMovementTypeCommandDto extends AbstractCommand
 {
+    /**
+     * Movement Type Id
+     */
     private String movementTypeId;
 
     public String getMovementTypeId()
@@ -18,6 +21,9 @@ public abstract class AbstractMovementTypeCommandDto extends AbstractCommand
         this.movementTypeId = movementTypeId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

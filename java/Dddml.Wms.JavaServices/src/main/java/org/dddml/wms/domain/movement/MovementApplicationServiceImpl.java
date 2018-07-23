@@ -71,6 +71,23 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         }
     }
 
+    @Override
+    @Transactional
+    public void when(MovementCommands.AddLine c) {
+        MovementState inOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
+        // /////////////////
+        MovementLineCommand.CreateMovementLine createLine = null;//todo createMovementLine(c);
+        // /////////////////
+        MovementCommand.MergePatchMovement updateMov = new AbstractMovementCommand.SimpleMergePatchMovement();
+        updateMov.setDocumentNumber(c.getDocumentNumber());
+        updateMov.setVersion(inOut.getVersion());
+        updateMov.setCommandId(c.getCommandId());
+        updateMov.setRequesterId(c.getRequesterId());
+        updateMov.getMovementLineCommands().add(createLine);
+        when(updateMov);
+    }
+
+
     // ////////////////
 
     public void confirmUpdateMovement(MovementCommands.DocumentAction c) {

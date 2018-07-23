@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPicklistItemCommandDto extends AbstractCommand
 {
+    /**
+     * Picklist Item Order Ship Grp Inv Id
+     */
     private PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId;
 
     public PicklistItemOrderShipGrpInvId getPicklistItemOrderShipGrpInvId()

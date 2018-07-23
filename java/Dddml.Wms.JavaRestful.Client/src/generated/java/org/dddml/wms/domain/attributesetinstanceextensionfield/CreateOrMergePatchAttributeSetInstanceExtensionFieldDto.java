@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends AbstractAttributeSetInstanceExtensionFieldCommandDto
 {
+    /**
+     * Type
+     */
     private String type;
 
     public String getType()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         this.type = type;
     }
 
+    /**
+     * Length
+     */
     private Integer length;
 
     public Integer getLength()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         this.length = length;
     }
 
+    /**
+     * Alias
+     */
     private String alias;
 
     public String getAlias()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         this.alias = alias;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         this.description = description;
     }
 
+    /**
+     * Group Id
+     */
     private String groupId;
 
     public String getGroupId()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
         this.groupId = groupId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -151,6 +169,10 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
 
     public static class CreateAttributeSetInstanceExtensionFieldDto extends CreateOrMergePatchAttributeSetInstanceExtensionFieldDto
     {
+        public CreateAttributeSetInstanceExtensionFieldDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -160,6 +182,10 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
 
     public static class MergePatchAttributeSetInstanceExtensionFieldDto extends CreateOrMergePatchAttributeSetInstanceExtensionFieldDto
     {
+        public MergePatchAttributeSetInstanceExtensionFieldDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

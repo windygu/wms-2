@@ -34,8 +34,57 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
 
     public void mergePatch(MovementCommand.MergePatchMovement c)
     {
+        try {
+            verifyPatch(c);
+        } catch (Exception ex) {
+            throw new DomainError("VerificationFailed", ex);
+        }
         MovementEvent e = map(c);
         apply(e);
+    }
+
+    private void verifyPatch(MovementCommand.MergePatchMovement c) {
+        Date movementDate = c.getMovementDate();
+        Date MovementDate = movementDate;
+        Boolean posted = c.getPosted();
+        Boolean Posted = posted;
+        Boolean processed = c.getProcessed();
+        Boolean Processed = processed;
+        String processing = c.getProcessing();
+        String Processing = processing;
+        Date dateReceived = c.getDateReceived();
+        Date DateReceived = dateReceived;
+        String documentTypeId = c.getDocumentTypeId();
+        String DocumentTypeId = documentTypeId;
+        Boolean isInTransit = c.getIsInTransit();
+        Boolean IsInTransit = isInTransit;
+        Boolean isApproved = c.getIsApproved();
+        Boolean IsApproved = isApproved;
+        BigDecimal approvalAmount = c.getApprovalAmount();
+        BigDecimal ApprovalAmount = approvalAmount;
+        String shipperId = c.getShipperId();
+        String ShipperId = shipperId;
+        String salesRepresentativeId = c.getSalesRepresentativeId();
+        String SalesRepresentativeId = salesRepresentativeId;
+        String businessPartnerId = c.getBusinessPartnerId();
+        String BusinessPartnerId = businessPartnerId;
+        BigDecimal chargeAmount = c.getChargeAmount();
+        BigDecimal ChargeAmount = chargeAmount;
+        String createFrom = c.getCreateFrom();
+        String CreateFrom = createFrom;
+        BigDecimal freightAmount = c.getFreightAmount();
+        BigDecimal FreightAmount = freightAmount;
+        String reversalDocumentNumber = c.getReversalDocumentNumber();
+        String ReversalDocumentNumber = reversalDocumentNumber;
+        String warehouseIdFrom = c.getWarehouseIdFrom();
+        String WarehouseIdFrom = warehouseIdFrom;
+        String warehouseIdTo = c.getWarehouseIdTo();
+        String WarehouseIdTo = warehouseIdTo;
+        String description = c.getDescription();
+        String Description = description;
+
+        if (!"Drafted".equalsIgnoreCase(getState().getDocumentStatusId())) { throw new IllegalArgumentException("DocumentStatus error."); }
+
     }
 
     public void delete(MovementCommand.DeleteMovement c)
@@ -386,6 +435,11 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     {
         public SimpleMovementAggregate(MovementState state) {
             super(state);
+        }
+
+        @Override
+        public void addLine(String lineNumber, String productId, String locatorIdFrom, String locatorIdTo, java.util.Map<String, Object> attributeSetInstance, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
         }
 
         @Override

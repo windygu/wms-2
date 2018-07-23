@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPickwaveCommandDto extends AbstractCommand
 {
+    /**
+     * Pickwave Id
+     */
     private Long pickwaveId;
 
     public Long getPickwaveId()
@@ -18,6 +21,9 @@ public abstract class AbstractPickwaveCommandDto extends AbstractCommand
         this.pickwaveId = pickwaveId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

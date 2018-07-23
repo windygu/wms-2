@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractContactMechCommandDto extends AbstractCommand
 {
+    /**
+     * Contact Mech Id
+     */
     private String contactMechId;
 
     public String getContactMechId()
@@ -18,6 +21,9 @@ public abstract class AbstractContactMechCommandDto extends AbstractCommand
         this.contactMechId = contactMechId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

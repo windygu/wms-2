@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemCommandDto
 {
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         this.productId = productId;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         this.quantity = quantity;
     }
 
+    /**
+     * Shipment Content Description
+     */
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         this.shipmentContentDescription = shipmentContentDescription;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -174,6 +189,10 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
 
     public static class CreateShipmentItemDto extends CreateOrMergePatchShipmentItemDto
     {
+        public CreateShipmentItemDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -187,6 +206,10 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
 
     public static class MergePatchShipmentItemDto extends CreateOrMergePatchShipmentItemDto
     {
+        public MergePatchShipmentItemDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

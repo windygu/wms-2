@@ -70,6 +70,10 @@ public interface MovementsClient {
     Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
+    @PUT("Movements/{id}/_commands/AddLine")
+    Call<String> addLine(@Path("id") String id, @Body MovementCommandDtos.AddLineRequestContent content);
+
+    @Headers("Accept: application/json")
     @PUT("Movements/{id}/_commands/DocumentAction")
     Call<String> documentAction(@Path("id") String id, @Body MovementCommandDtos.DocumentActionRequestContent content);
 

@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -240,6 +246,10 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
 
     public static class CreateMovementTypeDto extends CreateOrMergePatchMovementTypeDto
     {
+        public CreateMovementTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -253,6 +263,10 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
 
     public static class MergePatchMovementTypeDto extends CreateOrMergePatchMovementTypeDto
     {
+        public MergePatchMovementTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractLocatorCommandDto extends AbstractCommand
 {
+    /**
+     * Locator Id
+     */
     private String locatorId;
 
     public String getLocatorId()
@@ -18,6 +21,9 @@ public abstract class AbstractLocatorCommandDto extends AbstractCommand
         this.locatorId = locatorId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

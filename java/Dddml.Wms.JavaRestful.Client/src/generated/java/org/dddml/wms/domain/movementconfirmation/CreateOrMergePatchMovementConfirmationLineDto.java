@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovementConfirmationLineCommandDto
 {
+    /**
+     * Movement Line Number
+     */
     private String movementLineNumber;
 
     public String getMovementLineNumber()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
         this.movementLineNumber = movementLineNumber;
     }
 
+    /**
+     * The Quantity which should have been received.
+     */
     private BigDecimal targetQuantity;
 
     public BigDecimal getTargetQuantity()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
         this.targetQuantity = targetQuantity;
     }
 
+    /**
+     * Confirmation of a received quantity.
+     */
     private BigDecimal confirmedQuantity;
 
     public BigDecimal getConfirmedQuantity()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
         this.confirmedQuantity = confirmedQuantity;
     }
 
+    /**
+     * If there is a difference quantity, a Physical Inventory is created for the source (from) warehouse.
+     */
     private BigDecimal differenceQuantity;
 
     public BigDecimal getDifferenceQuantity()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
         this.differenceQuantity = differenceQuantity;
     }
 
+    /**
+     * The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse.
+     */
     private BigDecimal scrappedQuantity;
 
     public BigDecimal getScrappedQuantity()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
         this.scrappedQuantity = scrappedQuantity;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
         this.description = description;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
         this.processed = processed;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -200,6 +224,10 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
 
     public static class CreateMovementConfirmationLineDto extends CreateOrMergePatchMovementConfirmationLineDto
     {
+        public CreateMovementConfirmationLineDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -209,6 +237,10 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
 
     public static class MergePatchMovementConfirmationLineDto extends CreateOrMergePatchMovementConfirmationLineDto
     {
+        public MergePatchMovementConfirmationLineDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

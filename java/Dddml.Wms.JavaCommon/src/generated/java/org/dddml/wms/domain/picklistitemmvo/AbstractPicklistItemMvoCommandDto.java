@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPicklistItemMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Picklist Bin Picklist Item Id
+     */
     private PicklistBinPicklistItemId picklistBinPicklistItemId;
 
     public PicklistBinPicklistItemId getPicklistBinPicklistItemId()
@@ -19,6 +22,9 @@ public abstract class AbstractPicklistItemMvoCommandDto extends AbstractCommand
         this.picklistBinPicklistItemId = picklistBinPicklistItemId;
     }
 
+    /**
+     * Picklist Bin Version
+     */
     private Long picklistBinVersion;
 
     public Long getPicklistBinVersion()

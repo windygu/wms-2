@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPartyRoleCommandDto extends AbstractCommand
 {
+    /**
+     * Party Role Id
+     */
     private PartyRoleId partyRoleId;
 
     public PartyRoleId getPartyRoleId()
@@ -18,6 +21,9 @@ public abstract class AbstractPartyRoleCommandDto extends AbstractCommand
         this.partyRoleId = partyRoleId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

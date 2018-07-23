@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryItemDto extends AbstractInventoryItemCommandDto
 {
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -88,6 +91,10 @@ public class CreateOrMergePatchInventoryItemDto extends AbstractInventoryItemCom
 
     public static class CreateInventoryItemDto extends CreateOrMergePatchInventoryItemDto
     {
+        public CreateInventoryItemDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -101,6 +108,10 @@ public class CreateOrMergePatchInventoryItemDto extends AbstractInventoryItemCom
 
     public static class MergePatchInventoryItemDto extends CreateOrMergePatchInventoryItemDto
     {
+        public MergePatchInventoryItemDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

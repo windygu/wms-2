@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchUomDto extends AbstractUomCommandDto
 {
+    /**
+     * Uom Type Id
+     */
     private String uomTypeId;
 
     public String getUomTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchUomDto extends AbstractUomCommandDto
         this.uomTypeId = uomTypeId;
     }
 
+    /**
+     * Abbreviation
+     */
     private String abbreviation;
 
     public String getAbbreviation()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchUomDto extends AbstractUomCommandDto
         this.abbreviation = abbreviation;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchUomDto extends AbstractUomCommandDto
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -143,6 +155,10 @@ public class CreateOrMergePatchUomDto extends AbstractUomCommandDto
 
     public static class CreateUomDto extends CreateOrMergePatchUomDto
     {
+        public CreateUomDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -156,6 +172,10 @@ public class CreateOrMergePatchUomDto extends AbstractUomCommandDto
 
     public static class MergePatchUomDto extends CreateOrMergePatchUomDto
     {
+        public MergePatchUomDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

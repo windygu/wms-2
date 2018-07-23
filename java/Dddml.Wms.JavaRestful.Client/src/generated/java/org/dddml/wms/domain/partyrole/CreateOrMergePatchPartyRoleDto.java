@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPartyRoleDto extends AbstractPartyRoleCommandDto
 {
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -31,6 +34,10 @@ public class CreateOrMergePatchPartyRoleDto extends AbstractPartyRoleCommandDto
 
     public static class CreatePartyRoleDto extends CreateOrMergePatchPartyRoleDto
     {
+        public CreatePartyRoleDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -40,6 +47,10 @@ public class CreateOrMergePatchPartyRoleDto extends AbstractPartyRoleCommandDto
 
     public static class MergePatchPartyRoleDto extends CreateOrMergePatchPartyRoleDto
     {
+        public MergePatchPartyRoleDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

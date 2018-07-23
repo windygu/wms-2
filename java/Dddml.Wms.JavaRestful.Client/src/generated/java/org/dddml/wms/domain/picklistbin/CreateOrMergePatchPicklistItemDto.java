@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPicklistItemDto extends AbstractPicklistItemCommandDto
 {
+    /**
+     * Item Status Id
+     */
     private String itemStatusId;
 
     public String getItemStatusId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchPicklistItemDto extends AbstractPicklistItemComma
         this.itemStatusId = itemStatusId;
     }
 
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchPicklistItemDto extends AbstractPicklistItemComma
         this.quantity = quantity;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -79,6 +88,10 @@ public class CreateOrMergePatchPicklistItemDto extends AbstractPicklistItemComma
 
     public static class CreatePicklistItemDto extends CreateOrMergePatchPicklistItemDto
     {
+        public CreatePicklistItemDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -88,6 +101,10 @@ public class CreateOrMergePatchPicklistItemDto extends AbstractPicklistItemComma
 
     public static class MergePatchPicklistItemDto extends CreateOrMergePatchPicklistItemDto
     {
+        public MergePatchPicklistItemDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

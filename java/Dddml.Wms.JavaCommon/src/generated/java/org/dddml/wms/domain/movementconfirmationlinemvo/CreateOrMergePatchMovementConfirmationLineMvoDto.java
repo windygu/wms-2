@@ -7,6 +7,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMovementConfirmationLineMvoCommandDto
 {
+    /**
+     * Movement Line Number
+     */
     private String movementLineNumber;
 
     public String getMovementLineNumber()
@@ -19,6 +22,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementLineNumber = movementLineNumber;
     }
 
+    /**
+     * The Quantity which should have been received.
+     */
     private BigDecimal targetQuantity;
 
     public BigDecimal getTargetQuantity()
@@ -31,6 +37,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.targetQuantity = targetQuantity;
     }
 
+    /**
+     * Confirmation of a received quantity.
+     */
     private BigDecimal confirmedQuantity;
 
     public BigDecimal getConfirmedQuantity()
@@ -43,6 +52,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.confirmedQuantity = confirmedQuantity;
     }
 
+    /**
+     * If there is a difference quantity, a Physical Inventory is created for the source (from) warehouse.
+     */
     private BigDecimal differenceQuantity;
 
     public BigDecimal getDifferenceQuantity()
@@ -55,6 +67,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.differenceQuantity = differenceQuantity;
     }
 
+    /**
+     * The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse.
+     */
     private BigDecimal scrappedQuantity;
 
     public BigDecimal getScrappedQuantity()
@@ -67,6 +82,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.scrappedQuantity = scrappedQuantity;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -79,6 +97,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.description = description;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -91,6 +112,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.processed = processed;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -103,6 +127,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -115,6 +142,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.active = active;
     }
 
+    /**
+     * Movement Confirmation Document Status Id
+     */
     private String movementConfirmationDocumentStatusId;
 
     public String getMovementConfirmationDocumentStatusId()
@@ -127,6 +157,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationDocumentStatusId = movementConfirmationDocumentStatusId;
     }
 
+    /**
+     * Movement Confirmation Movement Document Number
+     */
     private String movementConfirmationMovementDocumentNumber;
 
     public String getMovementConfirmationMovementDocumentNumber()
@@ -139,6 +172,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationMovementDocumentNumber = movementConfirmationMovementDocumentNumber;
     }
 
+    /**
+     * Movement Confirmation Is Approved
+     */
     private Boolean movementConfirmationIsApproved;
 
     public Boolean getMovementConfirmationIsApproved()
@@ -151,6 +187,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationIsApproved = movementConfirmationIsApproved;
     }
 
+    /**
+     * Movement Confirmation Approval Amount
+     */
     private BigDecimal movementConfirmationApprovalAmount;
 
     public BigDecimal getMovementConfirmationApprovalAmount()
@@ -163,6 +202,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationApprovalAmount = movementConfirmationApprovalAmount;
     }
 
+    /**
+     * Movement Confirmation Processed
+     */
     private Boolean movementConfirmationProcessed;
 
     public Boolean getMovementConfirmationProcessed()
@@ -175,6 +217,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationProcessed = movementConfirmationProcessed;
     }
 
+    /**
+     * Movement Confirmation Processing
+     */
     private String movementConfirmationProcessing;
 
     public String getMovementConfirmationProcessing()
@@ -187,6 +232,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationProcessing = movementConfirmationProcessing;
     }
 
+    /**
+     * Movement Confirmation Document Type Id
+     */
     private String movementConfirmationDocumentTypeId;
 
     public String getMovementConfirmationDocumentTypeId()
@@ -199,6 +247,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationDocumentTypeId = movementConfirmationDocumentTypeId;
     }
 
+    /**
+     * Movement Confirmation Description
+     */
     private String movementConfirmationDescription;
 
     public String getMovementConfirmationDescription()
@@ -211,6 +262,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationDescription = movementConfirmationDescription;
     }
 
+    /**
+     * Movement Confirmation Created By
+     */
     private String movementConfirmationCreatedBy;
 
     public String getMovementConfirmationCreatedBy()
@@ -223,6 +277,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationCreatedBy = movementConfirmationCreatedBy;
     }
 
+    /**
+     * Movement Confirmation Created At
+     */
     private Date movementConfirmationCreatedAt;
 
     public Date getMovementConfirmationCreatedAt()
@@ -235,6 +292,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationCreatedAt = movementConfirmationCreatedAt;
     }
 
+    /**
+     * Movement Confirmation Updated By
+     */
     private String movementConfirmationUpdatedBy;
 
     public String getMovementConfirmationUpdatedBy()
@@ -247,6 +307,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationUpdatedBy = movementConfirmationUpdatedBy;
     }
 
+    /**
+     * Movement Confirmation Updated At
+     */
     private Date movementConfirmationUpdatedAt;
 
     public Date getMovementConfirmationUpdatedAt()
@@ -259,6 +322,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationUpdatedAt = movementConfirmationUpdatedAt;
     }
 
+    /**
+     * Movement Confirmation Active
+     */
     private Boolean movementConfirmationActive;
 
     public Boolean getMovementConfirmationActive()
@@ -271,6 +337,9 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.movementConfirmationActive = movementConfirmationActive;
     }
 
+    /**
+     * Movement Confirmation Deleted
+     */
     private Boolean movementConfirmationDeleted;
 
     public Boolean getMovementConfirmationDeleted()
@@ -639,6 +708,10 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
 
     public static class CreateMovementConfirmationLineMvoDto extends CreateOrMergePatchMovementConfirmationLineMvoDto
     {
+        public CreateMovementConfirmationLineMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -652,6 +725,10 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
 
     public static class MergePatchMovementConfirmationLineMvoDto extends CreateOrMergePatchMovementConfirmationLineMvoDto
     {
+        public MergePatchMovementConfirmationLineMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

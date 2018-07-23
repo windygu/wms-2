@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderRoleMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Order Role Id
+     */
     private OrderRoleId orderRoleId;
 
     public OrderRoleId getOrderRoleId()
@@ -19,6 +22,9 @@ public abstract class AbstractOrderRoleMvoCommandDto extends AbstractCommand
         this.orderRoleId = orderRoleId;
     }
 
+    /**
+     * Order Version
+     */
     private Long orderVersion;
 
     public Long getOrderVersion()

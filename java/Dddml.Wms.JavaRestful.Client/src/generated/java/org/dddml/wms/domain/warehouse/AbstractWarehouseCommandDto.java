@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractWarehouseCommandDto extends AbstractCommand
 {
+    /**
+     * Warehouse Id
+     */
     private String warehouseId;
 
     public String getWarehouseId()
@@ -18,6 +21,9 @@ public abstract class AbstractWarehouseCommandDto extends AbstractCommand
         this.warehouseId = warehouseId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractAttributeValueMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Attribute Value Id
+     */
     private AttributeValueId attributeValueId;
 
     public AttributeValueId getAttributeValueId()
@@ -19,6 +22,9 @@ public abstract class AbstractAttributeValueMvoCommandDto extends AbstractComman
         this.attributeValueId = attributeValueId;
     }
 
+    /**
+     * Attribute Version
+     */
     private Long attributeVersion;
 
     public Long getAttributeVersion()

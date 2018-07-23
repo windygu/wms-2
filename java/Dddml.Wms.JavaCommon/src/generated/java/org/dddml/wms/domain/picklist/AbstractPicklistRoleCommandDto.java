@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPicklistRoleCommandDto extends AbstractCommand
 {
+    /**
+     * Party Role Id
+     */
     private PartyRoleId partyRoleId;
 
     public PartyRoleId getPartyRoleId()

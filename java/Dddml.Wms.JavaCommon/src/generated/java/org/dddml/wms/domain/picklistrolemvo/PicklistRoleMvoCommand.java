@@ -26,7 +26,7 @@ public interface PicklistRoleMvoCommand extends Command
             }
             throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
         }
-        if (state.getDeleted())
+        if (state.getDeleted() != null && state.getDeleted())
         {
             throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
         }

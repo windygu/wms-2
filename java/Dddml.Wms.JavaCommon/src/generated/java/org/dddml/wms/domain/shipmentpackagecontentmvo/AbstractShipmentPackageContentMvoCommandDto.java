@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractShipmentPackageContentMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Shipment Package Content Id
+     */
     private ShipmentPackageContentId shipmentPackageContentId;
 
     public ShipmentPackageContentId getShipmentPackageContentId()
@@ -19,6 +22,9 @@ public abstract class AbstractShipmentPackageContentMvoCommandDto extends Abstra
         this.shipmentPackageContentId = shipmentPackageContentId;
     }
 
+    /**
+     * Shipment Package Version
+     */
     private Long shipmentPackageVersion;
 
     public Long getShipmentPackageVersion()

@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractProductCategoryCommandDto extends AbstractCommand
 {
+    /**
+     * Product Category Id
+     */
     private String productCategoryId;
 
     public String getProductCategoryId()
@@ -18,6 +21,9 @@ public abstract class AbstractProductCategoryCommandDto extends AbstractCommand
         this.productCategoryId = productCategoryId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

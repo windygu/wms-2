@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractAttributeSetInstanceExtensionFieldCommandDto extends AbstractCommand
 {
+    /**
+     * Name
+     */
     private String name;
 
     public String getName()
@@ -18,6 +21,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldCommandDto exten
         this.name = name;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

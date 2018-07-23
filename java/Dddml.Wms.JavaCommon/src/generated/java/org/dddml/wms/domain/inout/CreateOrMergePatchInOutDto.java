@@ -932,6 +932,10 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
 
     public static class CreateInOutDto extends CreateOrMergePatchInOutDto
     {
+        public CreateInOutDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -945,6 +949,10 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
 
     public static class MergePatchInOutDto extends CreateOrMergePatchInOutDto
     {
+        public MergePatchInOutDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductCategoryMemberCommandDto
 {
+    /**
+     * Thru Date
+     */
     private java.sql.Timestamp thruDate;
 
     public java.sql.Timestamp getThruDate()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductC
         this.thruDate = thruDate;
     }
 
+    /**
+     * Comments
+     */
     private String comments;
 
     public String getComments()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductC
         this.comments = comments;
     }
 
+    /**
+     * Sequence Num
+     */
     private Long sequenceNum;
 
     public Long getSequenceNum()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductC
         this.sequenceNum = sequenceNum;
     }
 
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductC
         this.quantity = quantity;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -127,6 +142,10 @@ public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductC
 
     public static class CreateProductCategoryMemberDto extends CreateOrMergePatchProductCategoryMemberDto
     {
+        public CreateProductCategoryMemberDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -136,6 +155,10 @@ public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductC
 
     public static class MergePatchProductCategoryMemberDto extends CreateOrMergePatchProductCategoryMemberDto
     {
+        public MergePatchProductCategoryMemberDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -7,6 +7,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderItemShipGroupAssociationMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Order Item Ship Group Association Id
+     */
     private OrderItemShipGroupAssociationId orderItemShipGroupAssociationId;
 
     public OrderItemShipGroupAssociationId getOrderItemShipGroupAssociationId()
@@ -19,6 +22,9 @@ public abstract class AbstractOrderItemShipGroupAssociationMvoCommandDto extends
         this.orderItemShipGroupAssociationId = orderItemShipGroupAssociationId;
     }
 
+    /**
+     * Order Version
+     */
     private Long orderVersion;
 
     public Long getOrderVersion()

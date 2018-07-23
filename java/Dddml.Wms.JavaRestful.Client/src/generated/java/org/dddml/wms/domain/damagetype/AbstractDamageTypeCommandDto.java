@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractDamageTypeCommandDto extends AbstractCommand
 {
+    /**
+     * Damage Type Id
+     */
     private String damageTypeId;
 
     public String getDamageTypeId()
@@ -18,6 +21,9 @@ public abstract class AbstractDamageTypeCommandDto extends AbstractCommand
         this.damageTypeId = damageTypeId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

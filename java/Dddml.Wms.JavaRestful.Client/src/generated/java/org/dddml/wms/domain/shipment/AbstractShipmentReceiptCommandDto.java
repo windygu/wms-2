@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractShipmentReceiptCommandDto extends AbstractCommand
 {
+    /**
+     * Receipt Seq Id
+     */
     private String receiptSeqId;
 
     public String getReceiptSeqId()

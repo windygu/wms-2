@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
 {
+    /**
+     * Facility Type Id
+     */
     private String facilityTypeId;
 
     public String getFacilityTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.facilityTypeId = facilityTypeId;
     }
 
+    /**
+     * Parent Facility Id
+     */
     private String parentFacilityId;
 
     public String getParentFacilityId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.parentFacilityId = parentFacilityId;
     }
 
+    /**
+     * Owner Party Id
+     */
     private String ownerPartyId;
 
     public String getOwnerPartyId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.ownerPartyId = ownerPartyId;
     }
 
+    /**
+     * Default Inventory Item Type Id
+     */
     private String defaultInventoryItemTypeId;
 
     public String getDefaultInventoryItemTypeId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.defaultInventoryItemTypeId = defaultInventoryItemTypeId;
     }
 
+    /**
+     * Facility Name
+     */
     private String facilityName;
 
     public String getFacilityName()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.facilityName = facilityName;
     }
 
+    /**
+     * Primary Facility Group Id
+     */
     private String primaryFacilityGroupId;
 
     public String getPrimaryFacilityGroupId()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.primaryFacilityGroupId = primaryFacilityGroupId;
     }
 
+    /**
+     * Old Square Footage
+     */
     private Long oldSquareFootage;
 
     public Long getOldSquareFootage()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.oldSquareFootage = oldSquareFootage;
     }
 
+    /**
+     * Facility Size
+     */
     private java.math.BigDecimal facilitySize;
 
     public java.math.BigDecimal getFacilitySize()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.facilitySize = facilitySize;
     }
 
+    /**
+     * Facility Size Uom Id
+     */
     private String facilitySizeUomId;
 
     public String getFacilitySizeUomId()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.facilitySizeUomId = facilitySizeUomId;
     }
 
+    /**
+     * Product Store Id
+     */
     private String productStoreId;
 
     public String getProductStoreId()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.productStoreId = productStoreId;
     }
 
+    /**
+     * In the absence of a product specific days to ship in ProductFacility, this will be used
+     */
     private Long defaultDaysToShip;
 
     public Long getDefaultDaysToShip()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.defaultDaysToShip = defaultDaysToShip;
     }
 
+    /**
+     * Opened Date
+     */
     private java.sql.Timestamp openedDate;
 
     public java.sql.Timestamp getOpenedDate()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.openedDate = openedDate;
     }
 
+    /**
+     * Closed Date
+     */
     private java.sql.Timestamp closedDate;
 
     public java.sql.Timestamp getClosedDate()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.closedDate = closedDate;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -173,6 +215,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.description = description;
     }
 
+    /**
+     * This field store the unit of measurement of dimension (length, width and height)
+     */
     private String defaultDimensionUomId;
 
     public String getDefaultDimensionUomId()
@@ -185,6 +230,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.defaultDimensionUomId = defaultDimensionUomId;
     }
 
+    /**
+     * Default Weight Uom Id
+     */
     private String defaultWeightUomId;
 
     public String getDefaultWeightUomId()
@@ -197,6 +245,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.defaultWeightUomId = defaultWeightUomId;
     }
 
+    /**
+     * Geo Point Id
+     */
     private String geoPointId;
 
     public String getGeoPointId()
@@ -209,6 +260,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
         this.geoPointId = geoPointId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -507,6 +561,10 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
 
     public static class CreateFacilityDto extends CreateOrMergePatchFacilityDto
     {
+        public CreateFacilityDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -520,6 +578,10 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
 
     public static class MergePatchFacilityDto extends CreateOrMergePatchFacilityDto
     {
+        public MergePatchFacilityDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

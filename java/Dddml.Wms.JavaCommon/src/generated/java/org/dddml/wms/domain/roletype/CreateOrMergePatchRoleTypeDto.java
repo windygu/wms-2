@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchRoleTypeDto extends AbstractRoleTypeCommandDto
 {
+    /**
+     * Parent Type Id
+     */
     private String parentTypeId;
 
     public String getParentTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchRoleTypeDto extends AbstractRoleTypeCommandDto
         this.parentTypeId = parentTypeId;
     }
 
+    /**
+     * Has Table
+     */
     private String hasTable;
 
     public String getHasTable()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchRoleTypeDto extends AbstractRoleTypeCommandDto
         this.hasTable = hasTable;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchRoleTypeDto extends AbstractRoleTypeCommandDto
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -143,6 +155,10 @@ public class CreateOrMergePatchRoleTypeDto extends AbstractRoleTypeCommandDto
 
     public static class CreateRoleTypeDto extends CreateOrMergePatchRoleTypeDto
     {
+        public CreateRoleTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -156,6 +172,10 @@ public class CreateOrMergePatchRoleTypeDto extends AbstractRoleTypeCommandDto
 
     public static class MergePatchRoleTypeDto extends CreateOrMergePatchRoleTypeDto
     {
+        public MergePatchRoleTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

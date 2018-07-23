@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeValueMvoCommandDto
 {
+    /**
+     * Attribute Value Name
+     */
     private String attributeValueName;
 
     public String getAttributeValueName()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeValueName = attributeValueName;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.description = description;
     }
 
+    /**
+     * Reference Id
+     */
     private String referenceId;
 
     public String getReferenceId()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.referenceId = referenceId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.active = active;
     }
 
+    /**
+     * Attribute Attribute Name
+     */
     private String attributeAttributeName;
 
     public String getAttributeAttributeName()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeAttributeName = attributeAttributeName;
     }
 
+    /**
+     * Attribute Organization Id
+     */
     private String attributeOrganizationId;
 
     public String getAttributeOrganizationId()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeOrganizationId = attributeOrganizationId;
     }
 
+    /**
+     * Attribute Description
+     */
     private String attributeDescription;
 
     public String getAttributeDescription()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeDescription = attributeDescription;
     }
 
+    /**
+     * The field must have a value for the record to be saved to the database.
+     */
     private Boolean attributeIsMandatory;
 
     public Boolean getAttributeIsMandatory()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeIsMandatory = attributeIsMandatory;
     }
 
+    /**
+     * The Attribute Value type deternines the data/validation type.
+     */
     private String attributeAttributeValueType;
 
     public String getAttributeAttributeValueType()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeAttributeValueType = attributeAttributeValueType;
     }
 
+    /**
+     * Attribute Attribute Value Length
+     */
     private Integer attributeAttributeValueLength;
 
     public Integer getAttributeAttributeValueLength()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeAttributeValueLength = attributeAttributeValueLength;
     }
 
+    /**
+     * Is the attribute values a list(enumerable).
+     */
     private Boolean attributeIsList;
 
     public Boolean getAttributeIsList()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeIsList = attributeIsList;
     }
 
+    /**
+     * The field name to save this attribute.
+     */
     private String attributeFieldName;
 
     public String getAttributeFieldName()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeFieldName = attributeFieldName;
     }
 
+    /**
+     * Attribute Reference Id
+     */
     private String attributeReferenceId;
 
     public String getAttributeReferenceId()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeReferenceId = attributeReferenceId;
     }
 
+    /**
+     * Attribute Created By
+     */
     private String attributeCreatedBy;
 
     public String getAttributeCreatedBy()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeCreatedBy = attributeCreatedBy;
     }
 
+    /**
+     * Attribute Created At
+     */
     private Date attributeCreatedAt;
 
     public Date getAttributeCreatedAt()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeCreatedAt = attributeCreatedAt;
     }
 
+    /**
+     * Attribute Updated By
+     */
     private String attributeUpdatedBy;
 
     public String getAttributeUpdatedBy()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeUpdatedBy = attributeUpdatedBy;
     }
 
+    /**
+     * Attribute Updated At
+     */
     private Date attributeUpdatedAt;
 
     public Date getAttributeUpdatedAt()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeUpdatedAt = attributeUpdatedAt;
     }
 
+    /**
+     * Attribute Active
+     */
     private Boolean attributeActive;
 
     public Boolean getAttributeActive()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
         this.attributeActive = attributeActive;
     }
 
+    /**
+     * Attribute Deleted
+     */
     private Boolean attributeDeleted;
 
     public Boolean getAttributeDeleted()
@@ -560,6 +620,10 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
 
     public static class CreateAttributeValueMvoDto extends CreateOrMergePatchAttributeValueMvoDto
     {
+        public CreateAttributeValueMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -573,6 +637,10 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
 
     public static class MergePatchAttributeValueMvoDto extends CreateOrMergePatchAttributeValueMvoDto
     {
+        public MergePatchAttributeValueMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

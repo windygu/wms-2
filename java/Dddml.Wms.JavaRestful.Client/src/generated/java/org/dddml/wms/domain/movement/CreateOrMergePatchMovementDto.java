@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
 {
+    /**
+     * Movement Date
+     */
     private Date movementDate;
 
     public Date getMovementDate()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.movementDate = movementDate;
     }
 
+    /**
+     * Posted
+     */
     private Boolean posted;
 
     public Boolean getPosted()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.posted = posted;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.processed = processed;
     }
 
+    /**
+     * Processing
+     */
     private String processing;
 
     public String getProcessing()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.processing = processing;
     }
 
+    /**
+     * Date Received
+     */
     private Date dateReceived;
 
     public Date getDateReceived()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.dateReceived = dateReceived;
     }
 
+    /**
+     * Document Type Id
+     */
     private String documentTypeId;
 
     public String getDocumentTypeId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.documentTypeId = documentTypeId;
     }
 
+    /**
+     * Is In Transit
+     */
     private Boolean isInTransit;
 
     public Boolean getIsInTransit()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.isInTransit = isInTransit;
     }
 
+    /**
+     * Is Approved
+     */
     private Boolean isApproved;
 
     public Boolean getIsApproved()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.isApproved = isApproved;
     }
 
+    /**
+     * Approval Amount
+     */
     private BigDecimal approvalAmount;
 
     public BigDecimal getApprovalAmount()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.approvalAmount = approvalAmount;
     }
 
+    /**
+     * Shipper Id
+     */
     private String shipperId;
 
     public String getShipperId()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.shipperId = shipperId;
     }
 
+    /**
+     * Sales Representative Id
+     */
     private String salesRepresentativeId;
 
     public String getSalesRepresentativeId()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.salesRepresentativeId = salesRepresentativeId;
     }
 
+    /**
+     * Business Partner Id
+     */
     private String businessPartnerId;
 
     public String getBusinessPartnerId()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.businessPartnerId = businessPartnerId;
     }
 
+    /**
+     * Charge Amount
+     */
     private BigDecimal chargeAmount;
 
     public BigDecimal getChargeAmount()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.chargeAmount = chargeAmount;
     }
 
+    /**
+     * Create From
+     */
     private String createFrom;
 
     public String getCreateFrom()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.createFrom = createFrom;
     }
 
+    /**
+     * Freight Amount
+     */
     private BigDecimal freightAmount;
 
     public BigDecimal getFreightAmount()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.freightAmount = freightAmount;
     }
 
+    /**
+     * Reversal Document Number
+     */
     private String reversalDocumentNumber;
 
     public String getReversalDocumentNumber()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.reversalDocumentNumber = reversalDocumentNumber;
     }
 
+    /**
+     * Warehouse Id From
+     */
     private String warehouseIdFrom;
 
     public String getWarehouseIdFrom()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.warehouseIdFrom = warehouseIdFrom;
     }
 
+    /**
+     * Warehouse Id To
+     */
     private String warehouseIdTo;
 
     public String getWarehouseIdTo()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.warehouseIdTo = warehouseIdTo;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -500,6 +560,10 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
 
     public static class CreateMovementDto extends CreateOrMergePatchMovementDto
     {
+        public CreateMovementDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -509,6 +573,10 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
 
     public static class MergePatchMovementDto extends CreateOrMergePatchMovementDto
     {
+        public MergePatchMovementDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

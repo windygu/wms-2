@@ -8,6 +8,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPhysicalInventoryCommandDto extends AbstractCommand
 {
+    /**
+     * Document Number
+     */
     private String documentNumber;
 
     public String getDocumentNumber()
@@ -20,6 +23,9 @@ public abstract class AbstractPhysicalInventoryCommandDto extends AbstractComman
         this.documentNumber = documentNumber;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

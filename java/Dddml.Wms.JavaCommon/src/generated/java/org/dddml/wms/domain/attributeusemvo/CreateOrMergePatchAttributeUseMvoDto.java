@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMvoCommandDto
 {
+    /**
+     * Sequence Number
+     */
     private Integer sequenceNumber;
 
     public Integer getSequenceNumber()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.sequenceNumber = sequenceNumber;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.active = active;
     }
 
+    /**
+     * Attribute Set Attribute Set Name
+     */
     private String attributeSetAttributeSetName;
 
     public String getAttributeSetAttributeSetName()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetAttributeSetName = attributeSetAttributeSetName;
     }
 
+    /**
+     * Attribute Set Organization Id
+     */
     private String attributeSetOrganizationId;
 
     public String getAttributeSetOrganizationId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetOrganizationId = attributeSetOrganizationId;
     }
 
+    /**
+     * Attribute Set Description
+     */
     private String attributeSetDescription;
 
     public String getAttributeSetDescription()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetDescription = attributeSetDescription;
     }
 
+    /**
+     * Attribute Set Reference Id
+     */
     private String attributeSetReferenceId;
 
     public String getAttributeSetReferenceId()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetReferenceId = attributeSetReferenceId;
     }
 
+    /**
+     * Attribute Set Is Instance Attribute Set
+     */
     private Boolean attributeSetIsInstanceAttributeSet;
 
     public Boolean getAttributeSetIsInstanceAttributeSet()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetIsInstanceAttributeSet = attributeSetIsInstanceAttributeSet;
     }
 
+    /**
+     * Attribute Set Is Mandatory
+     */
     private Boolean attributeSetIsMandatory;
 
     public Boolean getAttributeSetIsMandatory()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetIsMandatory = attributeSetIsMandatory;
     }
 
+    /**
+     * Attribute Set Created By
+     */
     private String attributeSetCreatedBy;
 
     public String getAttributeSetCreatedBy()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetCreatedBy = attributeSetCreatedBy;
     }
 
+    /**
+     * Attribute Set Created At
+     */
     private Date attributeSetCreatedAt;
 
     public Date getAttributeSetCreatedAt()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetCreatedAt = attributeSetCreatedAt;
     }
 
+    /**
+     * Attribute Set Updated By
+     */
     private String attributeSetUpdatedBy;
 
     public String getAttributeSetUpdatedBy()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetUpdatedBy = attributeSetUpdatedBy;
     }
 
+    /**
+     * Attribute Set Updated At
+     */
     private Date attributeSetUpdatedAt;
 
     public Date getAttributeSetUpdatedAt()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetUpdatedAt = attributeSetUpdatedAt;
     }
 
+    /**
+     * Attribute Set Active
+     */
     private Boolean attributeSetActive;
 
     public Boolean getAttributeSetActive()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetActive = attributeSetActive;
     }
 
+    /**
+     * Attribute Set Deleted
+     */
     private Boolean attributeSetDeleted;
 
     public Boolean getAttributeSetDeleted()
@@ -430,6 +475,10 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
 
     public static class CreateAttributeUseMvoDto extends CreateOrMergePatchAttributeUseMvoDto
     {
+        public CreateAttributeUseMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -443,6 +492,10 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
 
     public static class MergePatchAttributeUseMvoDto extends CreateOrMergePatchAttributeUseMvoDto
     {
+        public MergePatchAttributeUseMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

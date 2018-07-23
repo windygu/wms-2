@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderItemShipGrpInvReservationCommandDto extends AbstractCommand
 {
+    /**
+     * Order Item Ship Grp Inv Res Id
+     */
     private OrderItemShipGrpInvResId orderItemShipGrpInvResId;
 
     public OrderItemShipGrpInvResId getOrderItemShipGrpInvResId()
@@ -18,6 +21,9 @@ public abstract class AbstractOrderItemShipGrpInvReservationCommandDto extends A
         this.orderItemShipGrpInvResId = orderItemShipGrpInvResId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

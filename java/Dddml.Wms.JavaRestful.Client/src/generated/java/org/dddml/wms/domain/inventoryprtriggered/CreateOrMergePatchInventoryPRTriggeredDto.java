@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryPRTriggeredDto extends AbstractInventoryPRTriggeredCommandDto
 {
+    /**
+     * Is Processed
+     */
     private Boolean isProcessed;
 
     public Boolean getIsProcessed()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchInventoryPRTriggeredDto extends AbstractInventory
         this.isProcessed = isProcessed;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -55,6 +61,10 @@ public class CreateOrMergePatchInventoryPRTriggeredDto extends AbstractInventory
 
     public static class CreateInventoryPRTriggeredDto extends CreateOrMergePatchInventoryPRTriggeredDto
     {
+        public CreateInventoryPRTriggeredDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -64,6 +74,10 @@ public class CreateOrMergePatchInventoryPRTriggeredDto extends AbstractInventory
 
     public static class MergePatchInventoryPRTriggeredDto extends CreateOrMergePatchInventoryPRTriggeredDto
     {
+        public MergePatchInventoryPRTriggeredDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

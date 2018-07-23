@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrganizationStructureTypeCommandDto
 {
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrga
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -55,6 +61,10 @@ public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrga
 
     public static class CreateOrganizationStructureTypeDto extends CreateOrMergePatchOrganizationStructureTypeDto
     {
+        public CreateOrganizationStructureTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -64,6 +74,10 @@ public class CreateOrMergePatchOrganizationStructureTypeDto extends AbstractOrga
 
     public static class MergePatchOrganizationStructureTypeDto extends CreateOrMergePatchOrganizationStructureTypeDto
     {
+        public MergePatchOrganizationStructureTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

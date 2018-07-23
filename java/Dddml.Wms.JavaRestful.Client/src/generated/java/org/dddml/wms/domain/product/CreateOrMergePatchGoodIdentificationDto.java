@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchGoodIdentificationDto extends AbstractGoodIdentificationCommandDto
 {
+    /**
+     * Id Value
+     */
     private String idValue;
 
     public String getIdValue()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchGoodIdentificationDto extends AbstractGoodIdentif
         this.idValue = idValue;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -55,6 +61,10 @@ public class CreateOrMergePatchGoodIdentificationDto extends AbstractGoodIdentif
 
     public static class CreateGoodIdentificationDto extends CreateOrMergePatchGoodIdentificationDto
     {
+        public CreateGoodIdentificationDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -64,6 +74,10 @@ public class CreateOrMergePatchGoodIdentificationDto extends AbstractGoodIdentif
 
     public static class MergePatchGoodIdentificationDto extends CreateOrMergePatchGoodIdentificationDto
     {
+        public MergePatchGoodIdentificationDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

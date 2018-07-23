@@ -8,6 +8,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends AbstractSellableInventoryItemEntryMvoCommandDto
 {
+    /**
+     * Sellable Quantity
+     */
     private BigDecimal sellableQuantity;
 
     public BigDecimal getSellableQuantity()
@@ -20,6 +23,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sellableQuantity = sellableQuantity;
     }
 
+    /**
+     * Source Event Id
+     */
     private InventoryPRTriggeredId sourceEventId;
 
     public InventoryPRTriggeredId getSourceEventId()
@@ -32,6 +38,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sourceEventId = sourceEventId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -44,6 +53,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -56,6 +68,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.active = active;
     }
 
+    /**
+     * Sellable Inventory Item Sellable Quantity
+     */
     private BigDecimal sellableInventoryItemSellableQuantity;
 
     public BigDecimal getSellableInventoryItemSellableQuantity()
@@ -68,6 +83,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sellableInventoryItemSellableQuantity = sellableInventoryItemSellableQuantity;
     }
 
+    /**
+     * Sellable Inventory Item Created By
+     */
     private String sellableInventoryItemCreatedBy;
 
     public String getSellableInventoryItemCreatedBy()
@@ -80,6 +98,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sellableInventoryItemCreatedBy = sellableInventoryItemCreatedBy;
     }
 
+    /**
+     * Sellable Inventory Item Created At
+     */
     private Date sellableInventoryItemCreatedAt;
 
     public Date getSellableInventoryItemCreatedAt()
@@ -92,6 +113,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sellableInventoryItemCreatedAt = sellableInventoryItemCreatedAt;
     }
 
+    /**
+     * Sellable Inventory Item Updated By
+     */
     private String sellableInventoryItemUpdatedBy;
 
     public String getSellableInventoryItemUpdatedBy()
@@ -104,6 +128,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sellableInventoryItemUpdatedBy = sellableInventoryItemUpdatedBy;
     }
 
+    /**
+     * Sellable Inventory Item Updated At
+     */
     private Date sellableInventoryItemUpdatedAt;
 
     public Date getSellableInventoryItemUpdatedAt()
@@ -276,6 +303,10 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
 
     public static class CreateSellableInventoryItemEntryMvoDto extends CreateOrMergePatchSellableInventoryItemEntryMvoDto
     {
+        public CreateSellableInventoryItemEntryMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -289,6 +320,10 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
 
     public static class MergePatchSellableInventoryItemEntryMvoDto extends CreateOrMergePatchSellableInventoryItemEntryMvoDto
     {
+        public MergePatchSellableInventoryItemEntryMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

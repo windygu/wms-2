@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPicklistRoleDto extends AbstractPicklistRoleCommandDto
 {
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -71,6 +74,10 @@ public class CreateOrMergePatchPicklistRoleDto extends AbstractPicklistRoleComma
 
     public static class CreatePicklistRoleDto extends CreateOrMergePatchPicklistRoleDto
     {
+        public CreatePicklistRoleDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -84,6 +91,10 @@ public class CreateOrMergePatchPicklistRoleDto extends AbstractPicklistRoleComma
 
     public static class MergePatchPicklistRoleDto extends CreateOrMergePatchPicklistRoleDto
     {
+        public MergePatchPicklistRoleDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

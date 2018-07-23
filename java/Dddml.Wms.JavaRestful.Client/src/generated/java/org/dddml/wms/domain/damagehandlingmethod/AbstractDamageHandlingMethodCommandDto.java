@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractDamageHandlingMethodCommandDto extends AbstractCommand
 {
+    /**
+     * Damage Handling Method Id
+     */
     private String damageHandlingMethodId;
 
     public String getDamageHandlingMethodId()
@@ -18,6 +21,9 @@ public abstract class AbstractDamageHandlingMethodCommandDto extends AbstractCom
         this.damageHandlingMethodId = damageHandlingMethodId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

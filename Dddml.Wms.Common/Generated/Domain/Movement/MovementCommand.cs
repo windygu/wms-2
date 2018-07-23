@@ -331,6 +331,92 @@ namespace Dddml.Wms.Domain.Movement
 
     public static partial class MovementCommands
     {
+        public class AddLine : IMovementCommand
+        {
+
+            public string CommandType
+            {
+                get { return "AddLine"; }
+            }
+
+            public string LineNumber { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string LocatorIdFrom { get; set; }
+
+            public string LocatorIdTo { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public string Description { get; set; }
+
+            public string QuantityUomId { get; set; }
+
+            public decimal MovementQuantity { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.DocumentNumber; }
+            }
+
+            string IMovementCommand.DocumentNumber
+            {
+                get { return this.DocumentNumber; }
+                set { this.DocumentNumber = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IMovementCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
         public class DocumentAction : IMovementCommand
         {
 

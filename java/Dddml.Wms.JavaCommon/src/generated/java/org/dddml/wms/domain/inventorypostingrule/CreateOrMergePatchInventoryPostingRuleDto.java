@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventoryPostingRuleCommandDto
 {
+    /**
+     * Trigger Inventory Item Id
+     */
     private InventoryItemId triggerInventoryItemId;
 
     public InventoryItemId getTriggerInventoryItemId()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
+    /**
+     * Output Inventory Item Id
+     */
     private InventoryItemId outputInventoryItemId;
 
     public InventoryItemId getOutputInventoryItemId()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.outputInventoryItemId = outputInventoryItemId;
     }
 
+    /**
+     * Trigger Account Name
+     */
     private String triggerAccountName;
 
     public String getTriggerAccountName()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.triggerAccountName = triggerAccountName;
     }
 
+    /**
+     * Output Account Name
+     */
     private String outputAccountName;
 
     public String getOutputAccountName()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.outputAccountName = outputAccountName;
     }
 
+    /**
+     * Is Output Negated
+     */
     private Boolean isOutputNegated;
 
     public Boolean getIsOutputNegated()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
         this.isOutputNegated = isOutputNegated;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -196,6 +214,10 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
 
     public static class CreateInventoryPostingRuleDto extends CreateOrMergePatchInventoryPostingRuleDto
     {
+        public CreateInventoryPostingRuleDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -209,6 +231,10 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
 
     public static class MergePatchInventoryPostingRuleDto extends CreateOrMergePatchInventoryPostingRuleDto
     {
+        public MergePatchInventoryPostingRuleDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

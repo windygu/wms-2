@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderRoleDto extends AbstractOrderRoleCommandDto
 {
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -32,6 +35,10 @@ public class CreateOrMergePatchOrderRoleDto extends AbstractOrderRoleCommandDto
 
     public static class CreateOrderRoleDto extends CreateOrMergePatchOrderRoleDto
     {
+        public CreateOrderRoleDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -41,6 +48,10 @@ public class CreateOrMergePatchOrderRoleDto extends AbstractOrderRoleCommandDto
 
     public static class MergePatchOrderRoleDto extends CreateOrMergePatchOrderRoleDto
     {
+        public MergePatchOrderRoleDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
 {
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
         this.quantity = quantity;
     }
 
+    /**
+     * Expiration Date
+     */
     private java.sql.Timestamp expirationDate;
 
     public java.sql.Timestamp getExpirationDate()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
         this.expirationDate = expirationDate;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -117,6 +126,10 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
 
     public static class CreateLotDto extends CreateOrMergePatchLotDto
     {
+        public CreateLotDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -130,6 +143,10 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
 
     public static class MergePatchLotDto extends CreateOrMergePatchLotDto
     {
+        public MergePatchLotDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

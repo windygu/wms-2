@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineCommandDto
 {
+    /**
+     * The Movement Quantity indicates the quantity of a product that has been moved.
+     */
     private BigDecimal movementQuantity;
 
     public BigDecimal getMovementQuantity()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.movementQuantity = movementQuantity;
     }
 
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.productId = productId;
     }
 
+    /**
+     * Locator Id From
+     */
     private String locatorIdFrom;
 
     public String getLocatorIdFrom()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.locatorIdFrom = locatorIdFrom;
     }
 
+    /**
+     * Locator Id To
+     */
     private String locatorIdTo;
 
     public String getLocatorIdTo()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.locatorIdTo = locatorIdTo;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Processed
+     */
     private Boolean processed;
 
     public Boolean getProcessed()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.processed = processed;
     }
 
+    /**
+     * Reversal Line Number
+     */
     private String reversalLineNumber;
 
     public String getReversalLineNumber()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
         this.reversalLineNumber = reversalLineNumber;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -200,6 +224,10 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
 
     public static class CreateMovementLineDto extends CreateOrMergePatchMovementLineDto
     {
+        public CreateMovementLineDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -209,6 +237,10 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
 
     public static class MergePatchMovementLineDto extends CreateOrMergePatchMovementLineDto
     {
+        public MergePatchMovementLineDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

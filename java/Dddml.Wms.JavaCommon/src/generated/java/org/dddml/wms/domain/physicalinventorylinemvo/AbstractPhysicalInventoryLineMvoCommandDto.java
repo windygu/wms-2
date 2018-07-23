@@ -8,6 +8,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPhysicalInventoryLineMvoCommandDto extends AbstractCommand
 {
+    /**
+     * Physical Inventory Line Id
+     */
     private PhysicalInventoryLineId physicalInventoryLineId;
 
     public PhysicalInventoryLineId getPhysicalInventoryLineId()
@@ -20,6 +23,9 @@ public abstract class AbstractPhysicalInventoryLineMvoCommandDto extends Abstrac
         this.physicalInventoryLineId = physicalInventoryLineId;
     }
 
+    /**
+     * Physical Inventory Version
+     */
     private Long physicalInventoryVersion;
 
     public Long getPhysicalInventoryVersion()

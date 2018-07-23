@@ -6,6 +6,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMvoCommandDto
 {
+    /**
+     * Order Id
+     */
     private String orderId;
 
     public String getOrderId()
@@ -18,6 +21,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.orderId = orderId;
     }
 
+    /**
+     * Order Item Seq Id
+     */
     private String orderItemSeqId;
 
     public String getOrderItemSeqId()
@@ -30,6 +36,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.orderItemSeqId = orderItemSeqId;
     }
 
+    /**
+     * Ship Group Seq Id
+     */
     private Long shipGroupSeqId;
 
     public Long getShipGroupSeqId()
@@ -42,6 +51,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipGroupSeqId = shipGroupSeqId;
     }
 
+    /**
+     * Product Id
+     */
     private String productId;
 
     public String getProductId()
@@ -54,6 +66,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.productId = productId;
     }
 
+    /**
+     * Locator Id
+     */
     private String locatorId;
 
     public String getLocatorId()
@@ -66,6 +81,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.locatorId = locatorId;
     }
 
+    /**
+     * Attribute Set Instance Id
+     */
     private String attributeSetInstanceId;
 
     public String getAttributeSetInstanceId()
@@ -78,6 +96,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    /**
+     * Shipment Item Seq Id
+     */
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -90,6 +111,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentItemSeqId = shipmentItemSeqId;
     }
 
+    /**
+     * Fixed Asset Id
+     */
     private String fixedAssetId;
 
     public String getFixedAssetId()
@@ -102,6 +126,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.fixedAssetId = fixedAssetId;
     }
 
+    /**
+     * Maint Hist Seq Id
+     */
     private String maintHistSeqId;
 
     public String getMaintHistSeqId()
@@ -114,6 +141,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.maintHistSeqId = maintHistSeqId;
     }
 
+    /**
+     * Issued Date Time
+     */
     private java.sql.Timestamp issuedDateTime;
 
     public java.sql.Timestamp getIssuedDateTime()
@@ -126,6 +156,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.issuedDateTime = issuedDateTime;
     }
 
+    /**
+     * Issued By User Login Id
+     */
     private String issuedByUserLoginId;
 
     public String getIssuedByUserLoginId()
@@ -138,6 +171,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.issuedByUserLoginId = issuedByUserLoginId;
     }
 
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -150,6 +186,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.quantity = quantity;
     }
 
+    /**
+     * Cancel Quantity
+     */
     private java.math.BigDecimal cancelQuantity;
 
     public java.math.BigDecimal getCancelQuantity()
@@ -162,6 +201,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.cancelQuantity = cancelQuantity;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()
@@ -174,6 +216,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.version = version;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -186,6 +231,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.active = active;
     }
 
+    /**
+     * Shipment Shipment Type Id
+     */
     private String shipmentShipmentTypeId;
 
     public String getShipmentShipmentTypeId()
@@ -198,6 +246,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentShipmentTypeId = shipmentShipmentTypeId;
     }
 
+    /**
+     * Shipment Status Id
+     */
     private String shipmentStatusId;
 
     public String getShipmentStatusId()
@@ -210,6 +261,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentStatusId = shipmentStatusId;
     }
 
+    /**
+     * Shipment Primary Order Id
+     */
     private String shipmentPrimaryOrderId;
 
     public String getShipmentPrimaryOrderId()
@@ -222,6 +276,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentPrimaryOrderId = shipmentPrimaryOrderId;
     }
 
+    /**
+     * Shipment Primary Return Id
+     */
     private String shipmentPrimaryReturnId;
 
     public String getShipmentPrimaryReturnId()
@@ -234,6 +291,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentPrimaryReturnId = shipmentPrimaryReturnId;
     }
 
+    /**
+     * Shipment Primary Ship Group Seq Id
+     */
     private Long shipmentPrimaryShipGroupSeqId;
 
     public Long getShipmentPrimaryShipGroupSeqId()
@@ -246,6 +306,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentPrimaryShipGroupSeqId = shipmentPrimaryShipGroupSeqId;
     }
 
+    /**
+     * Shipment Picklist Bin Id
+     */
     private String shipmentPicklistBinId;
 
     public String getShipmentPicklistBinId()
@@ -258,6 +321,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentPicklistBinId = shipmentPicklistBinId;
     }
 
+    /**
+     * Shipment Estimated Ready Date
+     */
     private java.sql.Timestamp shipmentEstimatedReadyDate;
 
     public java.sql.Timestamp getShipmentEstimatedReadyDate()
@@ -270,6 +336,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentEstimatedReadyDate = shipmentEstimatedReadyDate;
     }
 
+    /**
+     * Shipment Estimated Ship Date
+     */
     private java.sql.Timestamp shipmentEstimatedShipDate;
 
     public java.sql.Timestamp getShipmentEstimatedShipDate()
@@ -282,6 +351,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentEstimatedShipDate = shipmentEstimatedShipDate;
     }
 
+    /**
+     * Shipment Estimated Ship Work Eff Id
+     */
     private String shipmentEstimatedShipWorkEffId;
 
     public String getShipmentEstimatedShipWorkEffId()
@@ -294,6 +366,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentEstimatedShipWorkEffId = shipmentEstimatedShipWorkEffId;
     }
 
+    /**
+     * Shipment Estimated Arrival Date
+     */
     private java.sql.Timestamp shipmentEstimatedArrivalDate;
 
     public java.sql.Timestamp getShipmentEstimatedArrivalDate()
@@ -306,6 +381,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentEstimatedArrivalDate = shipmentEstimatedArrivalDate;
     }
 
+    /**
+     * Shipment Estimated Arrival Work Eff Id
+     */
     private String shipmentEstimatedArrivalWorkEffId;
 
     public String getShipmentEstimatedArrivalWorkEffId()
@@ -318,6 +396,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentEstimatedArrivalWorkEffId = shipmentEstimatedArrivalWorkEffId;
     }
 
+    /**
+     * Shipment Latest Cancel Date
+     */
     private java.sql.Timestamp shipmentLatestCancelDate;
 
     public java.sql.Timestamp getShipmentLatestCancelDate()
@@ -330,6 +411,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentLatestCancelDate = shipmentLatestCancelDate;
     }
 
+    /**
+     * Shipment Estimated Ship Cost
+     */
     private java.math.BigDecimal shipmentEstimatedShipCost;
 
     public java.math.BigDecimal getShipmentEstimatedShipCost()
@@ -342,6 +426,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentEstimatedShipCost = shipmentEstimatedShipCost;
     }
 
+    /**
+     * Shipment Currency Uom Id
+     */
     private String shipmentCurrencyUomId;
 
     public String getShipmentCurrencyUomId()
@@ -354,6 +441,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentCurrencyUomId = shipmentCurrencyUomId;
     }
 
+    /**
+     * Shipment Handling Instructions
+     */
     private String shipmentHandlingInstructions;
 
     public String getShipmentHandlingInstructions()
@@ -366,6 +456,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentHandlingInstructions = shipmentHandlingInstructions;
     }
 
+    /**
+     * Shipment Origin Facility Id
+     */
     private String shipmentOriginFacilityId;
 
     public String getShipmentOriginFacilityId()
@@ -378,6 +471,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentOriginFacilityId = shipmentOriginFacilityId;
     }
 
+    /**
+     * Shipment Destination Facility Id
+     */
     private String shipmentDestinationFacilityId;
 
     public String getShipmentDestinationFacilityId()
@@ -390,6 +486,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentDestinationFacilityId = shipmentDestinationFacilityId;
     }
 
+    /**
+     * Shipment Origin Contact Mech Id
+     */
     private String shipmentOriginContactMechId;
 
     public String getShipmentOriginContactMechId()
@@ -402,6 +501,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentOriginContactMechId = shipmentOriginContactMechId;
     }
 
+    /**
+     * Shipment Origin Telecom Number Id
+     */
     private String shipmentOriginTelecomNumberId;
 
     public String getShipmentOriginTelecomNumberId()
@@ -414,6 +516,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentOriginTelecomNumberId = shipmentOriginTelecomNumberId;
     }
 
+    /**
+     * Shipment Destination Contact Mech Id
+     */
     private String shipmentDestinationContactMechId;
 
     public String getShipmentDestinationContactMechId()
@@ -426,6 +531,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentDestinationContactMechId = shipmentDestinationContactMechId;
     }
 
+    /**
+     * Shipment Destination Telecom Number Id
+     */
     private String shipmentDestinationTelecomNumberId;
 
     public String getShipmentDestinationTelecomNumberId()
@@ -438,6 +546,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentDestinationTelecomNumberId = shipmentDestinationTelecomNumberId;
     }
 
+    /**
+     * Shipment Party Id To
+     */
     private String shipmentPartyIdTo;
 
     public String getShipmentPartyIdTo()
@@ -450,6 +561,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentPartyIdTo = shipmentPartyIdTo;
     }
 
+    /**
+     * Shipment Party Id From
+     */
     private String shipmentPartyIdFrom;
 
     public String getShipmentPartyIdFrom()
@@ -462,6 +576,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentPartyIdFrom = shipmentPartyIdFrom;
     }
 
+    /**
+     * Shipment Additional Shipping Charge
+     */
     private java.math.BigDecimal shipmentAdditionalShippingCharge;
 
     public java.math.BigDecimal getShipmentAdditionalShippingCharge()
@@ -474,6 +591,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentAdditionalShippingCharge = shipmentAdditionalShippingCharge;
     }
 
+    /**
+     * Shipment Addtl Shipping Charge Desc
+     */
     private String shipmentAddtlShippingChargeDesc;
 
     public String getShipmentAddtlShippingChargeDesc()
@@ -486,6 +606,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
+    /**
+     * Shipment Created By
+     */
     private String shipmentCreatedBy;
 
     public String getShipmentCreatedBy()
@@ -498,6 +621,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentCreatedBy = shipmentCreatedBy;
     }
 
+    /**
+     * Shipment Created At
+     */
     private Date shipmentCreatedAt;
 
     public Date getShipmentCreatedAt()
@@ -510,6 +636,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentCreatedAt = shipmentCreatedAt;
     }
 
+    /**
+     * Shipment Updated By
+     */
     private String shipmentUpdatedBy;
 
     public String getShipmentUpdatedBy()
@@ -522,6 +651,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentUpdatedBy = shipmentUpdatedBy;
     }
 
+    /**
+     * Shipment Updated At
+     */
     private Date shipmentUpdatedAt;
 
     public Date getShipmentUpdatedAt()
@@ -534,6 +666,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
         this.shipmentUpdatedAt = shipmentUpdatedAt;
     }
 
+    /**
+     * Shipment Active
+     */
     private Boolean shipmentActive;
 
     public Boolean getShipmentActive()
@@ -1210,6 +1345,10 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
 
     public static class CreateItemIssuanceMvoDto extends CreateOrMergePatchItemIssuanceMvoDto
     {
+        public CreateItemIssuanceMvoDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -1223,6 +1362,10 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
 
     public static class MergePatchItemIssuanceMvoDto extends CreateOrMergePatchItemIssuanceMvoDto
     {
+        public MergePatchItemIssuanceMvoDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

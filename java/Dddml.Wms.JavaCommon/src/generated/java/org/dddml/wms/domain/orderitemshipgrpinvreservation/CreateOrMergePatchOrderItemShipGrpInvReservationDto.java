@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends AbstractOrderItemShipGrpInvReservationCommandDto
 {
+    /**
+     * Reserve Order Enum Id
+     */
     private String reserveOrderEnumId;
 
     public String getReserveOrderEnumId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.reserveOrderEnumId = reserveOrderEnumId;
     }
 
+    /**
+     * Quantity
+     */
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.quantity = quantity;
     }
 
+    /**
+     * Quantity Not Available
+     */
     private java.math.BigDecimal quantityNotAvailable;
 
     public java.math.BigDecimal getQuantityNotAvailable()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.quantityNotAvailable = quantityNotAvailable;
     }
 
+    /**
+     * Reserved Datetime
+     */
     private java.sql.Timestamp reservedDatetime;
 
     public java.sql.Timestamp getReservedDatetime()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.reservedDatetime = reservedDatetime;
     }
 
+    /**
+     * Created Datetime
+     */
     private java.sql.Timestamp createdDatetime;
 
     public java.sql.Timestamp getCreatedDatetime()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.createdDatetime = createdDatetime;
     }
 
+    /**
+     * Promised Datetime
+     */
     private java.sql.Timestamp promisedDatetime;
 
     public java.sql.Timestamp getPromisedDatetime()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.promisedDatetime = promisedDatetime;
     }
 
+    /**
+     * Current Promised Date
+     */
     private java.sql.Timestamp currentPromisedDate;
 
     public java.sql.Timestamp getCurrentPromisedDate()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.currentPromisedDate = currentPromisedDate;
     }
 
+    /**
+     * Sets priority for Inventory Reservation
+     */
     private String priority;
 
     public String getPriority()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.priority = priority;
     }
 
+    /**
+     * Sequence Id
+     */
     private Long sequenceId;
 
     public Long getSequenceId()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.sequenceId = sequenceId;
     }
 
+    /**
+     * Old Pick Start Date
+     */
     private java.sql.Timestamp oldPickStartDate;
 
     public java.sql.Timestamp getOldPickStartDate()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
         this.oldPickStartDate = oldPickStartDate;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -325,6 +358,10 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
 
     public static class CreateOrderItemShipGrpInvReservationDto extends CreateOrMergePatchOrderItemShipGrpInvReservationDto
     {
+        public CreateOrderItemShipGrpInvReservationDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -338,6 +375,10 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
 
     public static class MergePatchOrderItemShipGrpInvReservationDto extends CreateOrMergePatchOrderItemShipGrpInvReservationDto
     {
+        public MergePatchOrderItemShipGrpInvReservationDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

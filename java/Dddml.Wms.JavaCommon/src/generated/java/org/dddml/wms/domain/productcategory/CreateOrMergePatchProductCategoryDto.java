@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategoryCommandDto
 {
+    /**
+     * Product Category Type Id
+     */
     private String productCategoryTypeId;
 
     public String getProductCategoryTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.productCategoryTypeId = productCategoryTypeId;
     }
 
+    /**
+     * Primary Parent Category Id
+     */
     private String primaryParentCategoryId;
 
     public String getPrimaryParentCategoryId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.primaryParentCategoryId = primaryParentCategoryId;
     }
 
+    /**
+     * Category Name
+     */
     private String categoryName;
 
     public String getCategoryName()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.categoryName = categoryName;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.description = description;
     }
 
+    /**
+     * Category Image Url
+     */
     private String categoryImageUrl;
 
     public String getCategoryImageUrl()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.categoryImageUrl = categoryImageUrl;
     }
 
+    /**
+     * Detail Screen
+     */
     private String detailScreen;
 
     public String getDetailScreen()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.detailScreen = detailScreen;
     }
 
+    /**
+     * Show In Select
+     */
     private Boolean showInSelect;
 
     public Boolean getShowInSelect()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.showInSelect = showInSelect;
     }
 
+    /**
+     * Attribute Set Id
+     */
     private String attributeSetId;
 
     public String getAttributeSetId()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.attributeSetId = attributeSetId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -273,6 +300,10 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
 
     public static class CreateProductCategoryDto extends CreateOrMergePatchProductCategoryDto
     {
+        public CreateProductCategoryDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -286,6 +317,10 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
 
     public static class MergePatchProductCategoryDto extends CreateOrMergePatchProductCategoryDto
     {
+        public MergePatchProductCategoryDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

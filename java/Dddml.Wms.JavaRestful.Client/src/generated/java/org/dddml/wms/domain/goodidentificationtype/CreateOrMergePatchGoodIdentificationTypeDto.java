@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchGoodIdentificationTypeDto extends AbstractGoodIdentificationTypeCommandDto
 {
+    /**
+     * Parent Type Id
+     */
     private String parentTypeId;
 
     public String getParentTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchGoodIdentificationTypeDto extends AbstractGoodIde
         this.parentTypeId = parentTypeId;
     }
 
+    /**
+     * Has Table
+     */
     private String hasTable;
 
     public String getHasTable()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchGoodIdentificationTypeDto extends AbstractGoodIde
         this.hasTable = hasTable;
     }
 
+    /**
+     * Description
+     */
     private String description;
 
     public String getDescription()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchGoodIdentificationTypeDto extends AbstractGoodIde
         this.description = description;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -103,6 +115,10 @@ public class CreateOrMergePatchGoodIdentificationTypeDto extends AbstractGoodIde
 
     public static class CreateGoodIdentificationTypeDto extends CreateOrMergePatchGoodIdentificationTypeDto
     {
+        public CreateGoodIdentificationTypeDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -112,6 +128,10 @@ public class CreateOrMergePatchGoodIdentificationTypeDto extends AbstractGoodIde
 
     public static class MergePatchGoodIdentificationTypeDto extends CreateOrMergePatchGoodIdentificationTypeDto
     {
+        public MergePatchGoodIdentificationTypeDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

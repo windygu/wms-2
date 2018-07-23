@@ -4,6 +4,10 @@ package org.dddml.wms.domain.shipmentitemmvo;
 public class DeleteShipmentItemMvoDto extends AbstractShipmentItemMvoCommandDto
 {
 
+    public DeleteShipmentItemMvoDto() {
+        this.commandType = COMMAND_TYPE_DELETE;
+    }
+
     @Override
     public String getCommandType() {
         return COMMAND_TYPE_DELETE;

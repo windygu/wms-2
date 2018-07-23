@@ -5,6 +5,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupCommandDto
 {
+    /**
+     * Shipment Method Type Id
+     */
     private String shipmentMethodTypeId;
 
     public String getShipmentMethodTypeId()
@@ -17,6 +20,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.shipmentMethodTypeId = shipmentMethodTypeId;
     }
 
+    /**
+     * Supplier Party Id
+     */
     private String supplierPartyId;
 
     public String getSupplierPartyId()
@@ -29,6 +35,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.supplierPartyId = supplierPartyId;
     }
 
+    /**
+     * For use with multi-vendor stores, order will be split so that each ship group is associated with only one vendor (only if applicable)
+     */
     private String vendorPartyId;
 
     public String getVendorPartyId()
@@ -41,6 +50,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.vendorPartyId = vendorPartyId;
     }
 
+    /**
+     * Carrier Party Id
+     */
     private String carrierPartyId;
 
     public String getCarrierPartyId()
@@ -53,6 +65,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.carrierPartyId = carrierPartyId;
     }
 
+    /**
+     * Carrier Role Type Id
+     */
     private String carrierRoleTypeId;
 
     public String getCarrierRoleTypeId()
@@ -65,6 +80,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.carrierRoleTypeId = carrierRoleTypeId;
     }
 
+    /**
+     * Facility Id
+     */
     private String facilityId;
 
     public String getFacilityId()
@@ -77,6 +95,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.facilityId = facilityId;
     }
 
+    /**
+     * Contact Mech Id
+     */
     private String contactMechId;
 
     public String getContactMechId()
@@ -89,6 +110,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.contactMechId = contactMechId;
     }
 
+    /**
+     * Telecom Contact Mech Id
+     */
     private String telecomContactMechId;
 
     public String getTelecomContactMechId()
@@ -101,6 +125,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.telecomContactMechId = telecomContactMechId;
     }
 
+    /**
+     * Tracking Number
+     */
     private String trackingNumber;
 
     public String getTrackingNumber()
@@ -113,6 +140,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.trackingNumber = trackingNumber;
     }
 
+    /**
+     * Shipping Instructions
+     */
     private String shippingInstructions;
 
     public String getShippingInstructions()
@@ -125,6 +155,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.shippingInstructions = shippingInstructions;
     }
 
+    /**
+     * May Split
+     */
     private String maySplit;
 
     public String getMaySplit()
@@ -137,6 +170,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.maySplit = maySplit;
     }
 
+    /**
+     * Gift Message
+     */
     private String giftMessage;
 
     public String getGiftMessage()
@@ -149,6 +185,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.giftMessage = giftMessage;
     }
 
+    /**
+     * Is Gift
+     */
     private String isGift;
 
     public String getIsGift()
@@ -161,6 +200,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isGift = isGift;
     }
 
+    /**
+     * Ship After Date
+     */
     private java.sql.Timestamp shipAfterDate;
 
     public java.sql.Timestamp getShipAfterDate()
@@ -173,6 +215,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.shipAfterDate = shipAfterDate;
     }
 
+    /**
+     * Ship By Date
+     */
     private java.sql.Timestamp shipByDate;
 
     public java.sql.Timestamp getShipByDate()
@@ -185,6 +230,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.shipByDate = shipByDate;
     }
 
+    /**
+     * Estimated Ship Date
+     */
     private java.sql.Timestamp estimatedShipDate;
 
     public java.sql.Timestamp getEstimatedShipDate()
@@ -197,6 +245,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.estimatedShipDate = estimatedShipDate;
     }
 
+    /**
+     * Estimated Delivery Date
+     */
     private java.sql.Timestamp estimatedDeliveryDate;
 
     public java.sql.Timestamp getEstimatedDeliveryDate()
@@ -209,6 +260,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    /**
+     * Pickwave Id
+     */
     private Long pickwaveId;
 
     public Long getPickwaveId()
@@ -221,6 +275,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.pickwaveId = pickwaveId;
     }
 
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -475,6 +532,10 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
 
     public static class CreateOrderShipGroupDto extends CreateOrMergePatchOrderShipGroupDto
     {
+        public CreateOrderShipGroupDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -484,6 +545,10 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
 
     public static class MergePatchOrderShipGroupDto extends CreateOrMergePatchOrderShipGroupDto
     {
+        public MergePatchOrderShipGroupDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

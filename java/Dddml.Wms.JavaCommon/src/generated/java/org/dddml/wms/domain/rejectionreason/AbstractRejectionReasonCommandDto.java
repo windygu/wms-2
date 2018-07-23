@@ -6,6 +6,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractRejectionReasonCommandDto extends AbstractCommand
 {
+    /**
+     * Rejection Reason Id
+     */
     private String rejectionReasonId;
 
     public String getRejectionReasonId()
@@ -18,6 +21,9 @@ public abstract class AbstractRejectionReasonCommandDto extends AbstractCommand
         this.rejectionReasonId = rejectionReasonId;
     }
 
+    /**
+     * Version
+     */
     private Long version;
 
     public Long getVersion()

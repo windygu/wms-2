@@ -8,6 +8,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInOutLineMvoCommandDto extends AbstractCommand
 {
+    /**
+     * In Out Line Id
+     */
     private InOutLineId inOutLineId;
 
     public InOutLineId getInOutLineId()
@@ -20,6 +23,9 @@ public abstract class AbstractInOutLineMvoCommandDto extends AbstractCommand
         this.inOutLineId = inOutLineId;
     }
 
+    /**
+     * In Out Version
+     */
     private Long inOutVersion;
 
     public Long getInOutVersion()

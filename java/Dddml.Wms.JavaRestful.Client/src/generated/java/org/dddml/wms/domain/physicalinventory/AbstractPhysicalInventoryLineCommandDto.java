@@ -8,6 +8,9 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPhysicalInventoryLineCommandDto extends AbstractCommand
 {
+    /**
+     * Inventory Item Id
+     */
     private InventoryItemId inventoryItemId;
 
     public InventoryItemId getInventoryItemId()

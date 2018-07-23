@@ -8,6 +8,9 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchSellableInventoryItemDto extends AbstractSellableInventoryItemCommandDto
 {
+    /**
+     * Active
+     */
     private Boolean active;
 
     public Boolean getActive()
@@ -46,6 +49,10 @@ public class CreateOrMergePatchSellableInventoryItemDto extends AbstractSellable
 
     public static class CreateSellableInventoryItemDto extends CreateOrMergePatchSellableInventoryItemDto
     {
+        public CreateSellableInventoryItemDto() {
+            this.commandType = COMMAND_TYPE_CREATE;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -55,6 +62,10 @@ public class CreateOrMergePatchSellableInventoryItemDto extends AbstractSellable
 
     public static class MergePatchSellableInventoryItemDto extends CreateOrMergePatchSellableInventoryItemDto
     {
+        public MergePatchSellableInventoryItemDto() {
+            this.commandType = COMMAND_TYPE_MERGE_PATCH;
+        }
+
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;

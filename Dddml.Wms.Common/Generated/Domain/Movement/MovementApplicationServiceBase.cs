@@ -105,6 +105,11 @@ namespace Dddml.Wms.Domain.Movement
 			Update(c, ar => ar.Delete(c));
 		}
 
+		public virtual void When(MovementCommands.AddLine c)
+		{
+			Update(c, ar => ar.AddLine(c.LineNumber, c.ProductId, c.LocatorIdFrom, c.LocatorIdTo, c.AttributeSetInstance, c.Description, c.QuantityUomId, c.MovementQuantity, c.Version, c.CommandId, c.RequesterId));
+		}
+
 		public virtual void When(MovementCommands.DocumentAction c)
 		{
 			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
