@@ -2,9 +2,17 @@ package org.dddml.wms.domain.movement;
 
 import org.dddml.wms.domain.DocumentAction;
 import org.dddml.wms.domain.DocumentStatusIds;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
+import org.dddml.wms.domain.inout.AbstractInOutLineCommand;
+import org.dddml.wms.domain.inout.InOutCommands;
+import org.dddml.wms.domain.inout.InOutLineCommand;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.movementconfirmation.*;
+import org.dddml.wms.domain.product.ProductApplicationService;
+import org.dddml.wms.domain.product.ProductState;
+import org.dddml.wms.domain.service.AttributeSetService;
 import org.dddml.wms.domain.warehouse.WarehouseUtils;
 import org.dddml.wms.specialization.ApplicationContext;
 import org.dddml.wms.specialization.EventStore;
@@ -34,11 +42,19 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
     public final void setSeqIdGenerator(IdGenerator<Long, Object, Object> value) {
         seqIdGenerator = value;
     }
-
+    ProductApplicationService getProductApplicationService() {
+        return (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
+    }
+    AttributeSetService getAttributeSetService() {
+        return (AttributeSetService) ApplicationContext.current.get("attributeSetService");
+    }
+    AttributeSetInstanceApplicationService getAttributeSetInstanceApplicationService() {
+        return (AttributeSetInstanceApplicationService) ApplicationContext.current.get("attributeSetInstanceApplicationService");
+    }
     InventoryItemApplicationService getInventoryItemApplicationService() {
         return (InventoryItemApplicationService) ApplicationContext.current.get("inventoryItemApplicationService");
     }
-
+    
     MovementConfirmationApplicationService getMovementConfirmationApplicationService() {
         return (MovementConfirmationApplicationService) ApplicationContext.current.get("movementConfirmationApplicationService");
     }
@@ -75,9 +91,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
     @Transactional
     public void when(MovementCommands.AddLine c) {
         MovementState inOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
-        // /////////////////
-        MovementLineCommand.CreateMovementLine createLine = null;//todo createMovementLine(c);
-        // /////////////////
+        MovementLineCommand.CreateMovementLine createLine = createMovementLine(c);
         MovementCommand.MergePatchMovement updateMov = new AbstractMovementCommand.SimpleMergePatchMovement();
         updateMov.setDocumentNumber(c.getDocumentNumber());
         updateMov.setVersion(inOut.getVersion());
@@ -87,9 +101,37 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         when(updateMov);
     }
 
+    private MovementLineCommand.CreateMovementLine createMovementLine(MovementCommands.AddLine d) {
+    	MovementLineCommand.CreateMovementLine line = new AbstractMovementLineCommand.SimpleCreateMovementLine();
 
-    // ////////////////
+        ProductState prdState = getProductState(d.getProductId());
 
+        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(getAttributeSetService(), getAttributeSetInstanceApplicationService(), prdState.getAttributeSetId(), d.getAttributeSetInstance());
+        //if (_log.IsDebugEnabled) {
+        //    _log.Debug("Create attribute set instance, id: " + attrSetInstId);
+        //}
+
+        line.setLineNumber(d.getLineNumber());
+        line.setProductId(prdState.getProductId());
+        line.setLocatorIdTo(d.getLocatorIdTo());
+        line.setLocatorIdFrom(d.getLocatorIdFrom());
+        line.setAttributeSetInstanceId(attrSetInstId);
+        line.setMovementQuantity(d.getMovementQuantity());
+        line.setActive(true);
+        line.setMovementDocumentNumber(d.getDocumentNumber());
+        line.setCommandId(d.getCommandId());
+        line.setCommandType(d.getCommandType());
+        line.setRequesterId(d.getRequesterId());
+        return line;
+    }
+    
+    private ProductState getProductState(String productId) {
+        ProductState prdState = getProductApplicationService().get(productId);
+        if (prdState == null) {
+            throw new IllegalArgumentException(String.format("Product NOT found. Product Id.: %1$s", productId));
+        }
+        return prdState;
+    }
     public void confirmUpdateMovement(MovementCommands.DocumentAction c) {
         update(c, ar -> ((MovementAggregate) ar).documentAction(DocumentAction.CONFIRM, c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
