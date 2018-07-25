@@ -17,6 +17,7 @@
 	<property name="locatorId" ></property>
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
+	<property name="damageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="description" ></property>
 	<property name="quantityUomId" ></property>
 	<property name="movementQuantity" ></property>

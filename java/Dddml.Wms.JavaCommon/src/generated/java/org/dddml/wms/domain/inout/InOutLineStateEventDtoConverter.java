@@ -33,6 +33,7 @@ public class InOutLineStateEventDtoConverter {
         dto.setLocatorId(e.getLocatorId());
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        dto.setDamageStatusId(e.getDamageStatusId());
         dto.setDescription(e.getDescription());
         dto.setQuantityUomId(e.getQuantityUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
@@ -62,6 +63,7 @@ public class InOutLineStateEventDtoConverter {
         dto.setLocatorId(e.getLocatorId());
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        dto.setDamageStatusId(e.getDamageStatusId());
         dto.setDescription(e.getDescription());
         dto.setQuantityUomId(e.getQuantityUomId());
         dto.setMovementQuantity(e.getMovementQuantity());
@@ -74,6 +76,7 @@ public class InOutLineStateEventDtoConverter {
         dto.setIsPropertyLocatorIdRemoved(e.getIsPropertyLocatorIdRemoved());
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
+        dto.setIsPropertyDamageStatusIdRemoved(e.getIsPropertyDamageStatusIdRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyQuantityUomIdRemoved(e.getIsPropertyQuantityUomIdRemoved());
         dto.setIsPropertyMovementQuantityRemoved(e.getIsPropertyMovementQuantityRemoved());

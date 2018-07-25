@@ -302,6 +302,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         line.setQuantityUomId(d.getQuantityUomId());
         line.setMovementQuantity(d.getMovementQuantity());
         line.setDescription(d.getDescription());
+        line.setDamageStatusId(d.getDamageStatusId());
         line.setActive(true);
         //todo More proerties???
         return line;

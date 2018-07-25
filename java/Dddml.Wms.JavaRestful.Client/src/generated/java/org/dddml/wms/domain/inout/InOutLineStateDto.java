@@ -58,6 +58,18 @@ public class InOutLineStateDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String damageStatusId;
+
+    public String getDamageStatusId()
+    {
+        return this.damageStatusId;
+    }
+
+    public void setDamageStatusId(String damageStatusId)
+    {
+        this.damageStatusId = damageStatusId;
+    }
+
     private String description;
 
     public String getDescription()

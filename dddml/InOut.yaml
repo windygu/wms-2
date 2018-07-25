@@ -232,6 +232,11 @@ aggregates:
             # 属性集实例 Id.
             AttributeSetInstanceId:
               type: string
+              
+            # 损坏状态 Id.
+            DamageStatusId:
+              type: id
+              referenceType: StatusItem
 
             Description:
               type: string
@@ -345,6 +350,12 @@ aggregates:
             # 属性集实例。这里是一个 Map
             AttributeSetInstance:
               type: map
+              
+            # 损坏状态 Id.
+            DamageStatusId:
+              type: id
+              referenceType: StatusItem
+
             Description:
               type: string
             # 数量单位 Id.

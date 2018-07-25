@@ -357,6 +357,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setLocatorId(c.getLocatorId());
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
+        e.setDamageStatusId(c.getDamageStatusId());
         e.setDescription(c.getDescription());
         e.setQuantityUomId(c.getQuantityUomId());
         e.setMovementQuantity(c.getMovementQuantity());
@@ -391,6 +392,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setLocatorId(c.getLocatorId());
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
+        e.setDamageStatusId(c.getDamageStatusId());
         e.setDescription(c.getDescription());
         e.setQuantityUomId(c.getQuantityUomId());
         e.setMovementQuantity(c.getMovementQuantity());
@@ -403,6 +405,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyLocatorIdRemoved(c.getIsPropertyLocatorIdRemoved());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
+        e.setIsPropertyDamageStatusIdRemoved(c.getIsPropertyDamageStatusIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyQuantityUomIdRemoved(c.getIsPropertyQuantityUomIdRemoved());
         e.setIsPropertyMovementQuantityRemoved(c.getIsPropertyMovementQuantityRemoved());
@@ -726,7 +729,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
 
         @Override
-        public void addLine(String lineNumber, String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId) {
+        public void addLine(String lineNumber, String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, String damageStatusId, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 

@@ -52,6 +52,21 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
     }
 
     /**
+     * Damage Status Id
+     */
+    private String damageStatusId;
+
+    public String getDamageStatusId()
+    {
+        return this.damageStatusId;
+    }
+
+    public void setDamageStatusId(String damageStatusId)
+    {
+        this.damageStatusId = damageStatusId;
+    }
+
+    /**
      * Description
      */
     private String description;
@@ -234,6 +249,18 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
+    private Boolean isPropertyDamageStatusIdRemoved;
+
+    public Boolean getIsPropertyDamageStatusIdRemoved()
+    {
+        return this.isPropertyDamageStatusIdRemoved;
+    }
+
+    public void setIsPropertyDamageStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyDamageStatusIdRemoved = removed;
+    }
+
     private Boolean isPropertyDescriptionRemoved;
 
     public Boolean getIsPropertyDescriptionRemoved()
@@ -348,6 +375,7 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         command.setLocatorId(this.getLocatorId());
         command.setProductId(this.getProductId());
         command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
+        command.setDamageStatusId(this.getDamageStatusId());
         command.setDescription(this.getDescription());
         command.setQuantityUomId(this.getQuantityUomId());
         command.setMovementQuantity(this.getMovementQuantity());
@@ -402,6 +430,7 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
         command.setIsPropertyLocatorIdRemoved(this.getIsPropertyLocatorIdRemoved());
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
         command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
+        command.setIsPropertyDamageStatusIdRemoved(this.getIsPropertyDamageStatusIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyQuantityUomIdRemoved(this.getIsPropertyQuantityUomIdRemoved());
         command.setIsPropertyMovementQuantityRemoved(this.getIsPropertyMovementQuantityRemoved());

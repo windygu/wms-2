@@ -31,6 +31,10 @@ public interface InOutLineCommand extends Command
 
         void setAttributeSetInstanceId(String attributeSetInstanceId);
 
+        String getDamageStatusId();
+
+        void setDamageStatusId(String damageStatusId);
+
         String getDescription();
 
         void setDescription(String description);
@@ -90,6 +94,10 @@ public interface InOutLineCommand extends Command
         Boolean getIsPropertyAttributeSetInstanceIdRemoved();
 
         void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamageStatusIdRemoved();
+
+        void setIsPropertyDamageStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

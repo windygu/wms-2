@@ -284,6 +284,16 @@ public class InOutCommandDtos
             this.attributeSetInstance = attributeSetInstance;
         }
 
+        private String damageStatusId;
+
+        public String getDamageStatusId() {
+            return this.damageStatusId;
+        }
+
+        public void setDamageStatusId(String damageStatusId) {
+            this.damageStatusId = damageStatusId;
+        }
+
         private String description;
 
         public String getDescription() {
@@ -360,6 +370,7 @@ public class InOutCommandDtos
             cmd.setLocatorId(this.getLocatorId());
             cmd.setProductId(this.getProductId());
             cmd.setAttributeSetInstance(this.getAttributeSetInstance());
+            cmd.setDamageStatusId(this.getDamageStatusId());
             cmd.setDescription(this.getDescription());
             cmd.setQuantityUomId(this.getQuantityUomId());
             cmd.setMovementQuantity(this.getMovementQuantity());

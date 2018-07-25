@@ -32,7 +32,7 @@ public class StatusItemIds {
     public static final String DAMAGE_CORE = "DAMAGE_CORE";
 
     /**
-     * Deformation/our of roudness.
+     * Deformation/out of roudness.
      */
     public static final String DAMAGE_DEFORMATION = "DAMAGE_DEFORMATION";
 

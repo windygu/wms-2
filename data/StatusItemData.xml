@@ -12,7 +12,7 @@
   <!-- 纸芯不良 -->
   <StatusItem description="Core Damage" sequenceId="05" statusCode="CORE_DAMAGE" statusId="DAMAGE_CORE" statusTypeId="DAMAGE_STATUS" />
   <!-- 严重变形 -->
-  <StatusItem description="Deformation/our of roudness" sequenceId="06" statusCode="DEFORMATION" statusId="DAMAGE_DEFORMATION" statusTypeId="DAMAGE_STATUS" />
+  <StatusItem description="Deformation/out of roudness" sequenceId="06" statusCode="DEFORMATION" statusId="DAMAGE_DEFORMATION" statusTypeId="DAMAGE_STATUS" />
   <!-- 水湿 -->
   <StatusItem description="Water Damage" sequenceId="07" statusCode="WATER_DAMAGE" statusId="DAMAGE_WATER" statusTypeId="DAMAGE_STATUS" />
   <!-- 脏污、异物 -->

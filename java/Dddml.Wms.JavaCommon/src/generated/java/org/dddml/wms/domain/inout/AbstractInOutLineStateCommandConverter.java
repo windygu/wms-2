@@ -37,6 +37,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setLocatorId(state.getLocatorId());
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDescription(state.getDescription());
         cmd.setQuantityUomId(state.getQuantityUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());
@@ -51,6 +52,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
         if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
+        if (state.getDamageStatusId() == null) { cmd.setIsPropertyDamageStatusIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getQuantityUomId() == null) { cmd.setIsPropertyQuantityUomIdRemoved(true); }
         if (state.getMovementQuantity() == null) { cmd.setIsPropertyMovementQuantityRemoved(true); }
@@ -76,6 +78,7 @@ public abstract class AbstractInOutLineStateCommandConverter<TCreateInOutLine ex
         cmd.setLocatorId(state.getLocatorId());
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDescription(state.getDescription());
         cmd.setQuantityUomId(state.getQuantityUomId());
         cmd.setMovementQuantity(state.getMovementQuantity());

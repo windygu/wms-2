@@ -72,6 +72,18 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String damageStatusId;
+
+    public String getDamageStatusId()
+    {
+        return this.damageStatusId;
+    }
+
+    public void setDamageStatusId(String damageStatusId)
+    {
+        this.damageStatusId = damageStatusId;
+    }
+
     private String description;
 
     public String getDescription()
@@ -321,6 +333,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         this.setLocatorId(e.getLocatorId());
         this.setProductId(e.getProductId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        this.setDamageStatusId(e.getDamageStatusId());
         this.setDescription(e.getDescription());
         this.setQuantityUomId(e.getQuantityUomId());
         this.setMovementQuantity(e.getMovementQuantity());
@@ -378,6 +391,17 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         else
         {
             this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        }
+        if (e.getDamageStatusId() == null)
+        {
+            if (e.getIsPropertyDamageStatusIdRemoved() != null && e.getIsPropertyDamageStatusIdRemoved())
+            {
+                this.setDamageStatusId(null);
+            }
+        }
+        else
+        {
+            this.setDamageStatusId(e.getDamageStatusId());
         }
         if (e.getDescription() == null)
         {

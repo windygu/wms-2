@@ -52,6 +52,21 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
     }
 
     /**
+     * Damage Status Id
+     */
+    private String damageStatusId;
+
+    public String getDamageStatusId()
+    {
+        return this.damageStatusId;
+    }
+
+    public void setDamageStatusId(String damageStatusId)
+    {
+        this.damageStatusId = damageStatusId;
+    }
+
+    /**
      * Description
      */
     private String description;
@@ -232,6 +247,18 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
     public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
     {
         this.isPropertyAttributeSetInstanceIdRemoved = removed;
+    }
+
+    private Boolean isPropertyDamageStatusIdRemoved;
+
+    public Boolean getIsPropertyDamageStatusIdRemoved()
+    {
+        return this.isPropertyDamageStatusIdRemoved;
+    }
+
+    public void setIsPropertyDamageStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyDamageStatusIdRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

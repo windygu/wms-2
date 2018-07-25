@@ -33,6 +33,10 @@ public interface InOutLineState
 
     void setAttributeSetInstanceId(String attributeSetInstanceId);
 
+    String getDamageStatusId();
+
+    void setDamageStatusId(String damageStatusId);
+
     String getDescription();
 
     void setDescription(String description);

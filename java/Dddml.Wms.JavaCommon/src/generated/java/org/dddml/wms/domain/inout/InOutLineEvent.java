@@ -43,6 +43,10 @@ public interface InOutLineEvent extends Event
 
         void setAttributeSetInstanceId(String attributeSetInstanceId);
 
+        String getDamageStatusId();
+
+        void setDamageStatusId(String damageStatusId);
+
         String getDescription();
 
         void setDescription(String description);
@@ -106,6 +110,10 @@ public interface InOutLineEvent extends Event
         Boolean getIsPropertyAttributeSetInstanceIdRemoved();
 
         void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamageStatusIdRemoved();
+
+        void setIsPropertyDamageStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyDescriptionRemoved();
 

@@ -34,6 +34,15 @@ public class InitAttributeSets {
             new String[]{"AirDryPct", "Int32"},
     };
 
+    static final String ATTR_QUALITY_STATUS_ID = "QualityStatus";
+
+    static final String[] ATTR_QUALITY_STATUS_VALUES = new String[] {
+            "单货相符，质量完好",
+            "单货相符，质量缺陷",
+            "单货不符，质量完好",
+            "单货不符，质量缺陷"
+    };
+
     static AttributeApplicationService attributeApplicationService;
 
     static AttributeSetApplicationService attributeSetApplicationService;

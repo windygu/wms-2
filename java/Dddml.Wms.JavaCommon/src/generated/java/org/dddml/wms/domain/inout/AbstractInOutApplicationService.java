@@ -71,7 +71,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public void when(InOutCommands.AddLine c) {
-        update(c, ar -> ar.addLine(c.getLineNumber(), c.getLocatorId(), c.getProductId(), c.getAttributeSetInstance(), c.getDescription(), c.getQuantityUomId(), c.getMovementQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.addLine(c.getLineNumber(), c.getLocatorId(), c.getProductId(), c.getAttributeSetInstance(), c.getDamageStatusId(), c.getDescription(), c.getQuantityUomId(), c.getMovementQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(InOutCommands.DocumentAction c) {
