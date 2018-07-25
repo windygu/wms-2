@@ -53,7 +53,7 @@ public class HibernateAttributeSetInstanceEventStore implements EventStore {
     @Transactional(readOnly = true)
     @Override
     public Event getEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AttributeSetInstanceEvent.AttributeSetInstanceStateCreated.class;
+        Class supportedEventType = AbstractAttributeSetInstanceEvent.SimpleAttributeSetInstanceStateCreated.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
@@ -64,14 +64,14 @@ public class HibernateAttributeSetInstanceEventStore implements EventStore {
     @Override
     public Event getEvent(EventStoreAggregateId eventStoreAggregateId, long version) {
         String idObj = (String) eventStoreAggregateId.getId();
-        AttributeSetInstanceState state = getCurrentSession().get(AbstractAttributeSetInstanceState.class, idObj);
+        AttributeSetInstanceState state = getCurrentSession().get(AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState.class, idObj);
         return new AbstractAttributeSetInstanceEvent.SimpleAttributeSetInstanceStateCreated(state);
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AttributeSetInstanceEvent.AttributeSetInstanceStateCreated.class;
+        Class supportedEventType = AbstractAttributeSetInstanceEvent.SimpleAttributeSetInstanceStateCreated.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }

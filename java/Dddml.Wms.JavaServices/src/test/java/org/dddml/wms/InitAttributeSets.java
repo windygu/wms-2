@@ -8,10 +8,13 @@ import org.dddml.wms.domain.attributeset.AbstractAttributeSetCommand;
 import org.dddml.wms.domain.attributeset.AttributeSetApplicationService;
 import org.dddml.wms.domain.attributeset.AttributeSetCommand;
 import org.dddml.wms.domain.attributeset.AttributeUseCommand;
+import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCommand;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
 import org.dddml.wms.specialization.ApplicationContext;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,6 +25,8 @@ public class InitAttributeSets {
     public static final String FLUFF_PULP_ATTR_SET_ID = "FluffPulpAttrSet";
 
     public static final String KRAFT_LINERBOARD_ATTR_SET_ID = "KraftLinerboardAttrSet";
+
+    public static final String KRAFT_LINERBOARD_PRODUCT_ATTR_SET_ID = "KLBProductAttrSet";
 
     static final String[][] FLUFF_PULP_ATTRS = new String[][]{
             // 序列号（卷号）。
@@ -50,26 +55,54 @@ public class InitAttributeSets {
             new String[]{"SecondaryUomQuantity", "Decimal", "false", "_F_N_0_"},// 次计量单位数量
     };
 
+    static final String KLB_SECONDARY_QTY_UOM_M_FSC_NO_ATTR_SET_INST_ID = "SecondaryQtyUom:M-FSC:NO";
+
     static AttributeApplicationService attributeApplicationService;
 
     static AttributeSetApplicationService attributeSetApplicationService;
 
+    static AttributeSetInstanceApplicationService attributeSetInstanceApplicationService;
+
     public static void createDefaultAttributeSets() {
         attributeApplicationService = (AttributeApplicationService) ApplicationContext.current.get("attributeApplicationService");
         attributeSetApplicationService = (AttributeSetApplicationService) ApplicationContext.current.get("attributeSetApplicationService");
+        attributeSetInstanceApplicationService = (AttributeSetInstanceApplicationService) ApplicationContext.current.get("attributeSetInstanceApplicationService");
 
         // create Fluff Pulp AttributeSet
         List<AttributeCommand.CreateAttribute> fpAttrs = createAttributes(FLUFF_PULP_ATTRS);
         fpAttrs.add(createQualityStatusAttribute());
-        List<AttributeSetCommand.CreateAttributeSet> fpAttrSets = Arrays.asList(createAttributeSet(FLUFF_PULP_ATTR_SET_ID, fpAttrs));
-        save(fpAttrs, fpAttrSets);
+        AttributeSetCommand.CreateAttributeSet fpAttrSet = createAttributeSet(FLUFF_PULP_ATTR_SET_ID,
+                fpAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
+        save(fpAttrs, Collections.singletonList(fpAttrSet));
 
-        //create KRAFT_LINERBOARD_ATTRS
+        //create KRAFT_LINERBOARD_ATTRS（牛卡纸库存实例属性集）
         List<AttributeCommand.CreateAttribute> klbAttrs = createAttributes(KRAFT_LINERBOARD_ATTRS);
         klbAttrs.add(createQualityStatusAttribute());
-        List<AttributeSetCommand.CreateAttributeSet> klbAttrSets = Arrays.asList(createAttributeSet(KRAFT_LINERBOARD_ATTR_SET_ID, klbAttrs));
-        save(klbAttrs, klbAttrSets);
+        AttributeSetCommand.CreateAttributeSet klbAttrSet = createAttributeSet(KRAFT_LINERBOARD_ATTR_SET_ID,
+                klbAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
+        save(klbAttrs, Collections.singletonList(klbAttrSet));
 
+        //牛卡纸产品属性集
+        String sqUomAttrId = createSecondaryQuantityUomAttribute();//次计量单位属性
+        String fscAttrId = createFscAttribute();//FSC 认证属性
+        AttributeSetCommand.CreateAttributeSet klbPrdAttrSet = createAttributeSet(KRAFT_LINERBOARD_PRODUCT_ATTR_SET_ID,
+                new String[]{sqUomAttrId, fscAttrId});
+        saveAttributeSet(klbPrdAttrSet);
+        //创建牛卡纸产品属性集实例
+        AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomMAndFscNoAttrSetInst = createSecondaryQtyUomMAndFscNoAttrSetInst();
+        attributeSetInstanceApplicationService.when(secondaryQtyUomMAndFscNoAttrSetInst);
+    }
+
+    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createSecondaryQtyUomMAndFscNoAttrSetInst() {
+        AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
+        String attributeSetInstanceId = KLB_SECONDARY_QTY_UOM_M_FSC_NO_ATTR_SET_INST_ID;
+        attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
+        attrSetInst.setAttributeSetId(KRAFT_LINERBOARD_PRODUCT_ATTR_SET_ID);
+        attrSetInst.set_F_C5_0_("M");
+        attrSetInst.set_F_C5_1_("N");
+        attrSetInst.setActive(true);
+        attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
+        return attrSetInst;
     }
 
     private static AttributeCommand.CreateAttribute createQualityStatusAttribute() {
@@ -110,20 +143,61 @@ public class InitAttributeSets {
         return attrs;
     }
 
-    private static AttributeSetCommand.CreateAttributeSet createAttributeSet(String attrSetId, List<AttributeCommand.CreateAttribute> attrs) {
+    private static AttributeSetCommand.CreateAttributeSet createAttributeSet(String attrSetId, String[] attrIds) {
         AttributeSetCommand.CreateAttributeSet attrSet = new AbstractAttributeSetCommand.SimpleCreateAttributeSet();
         attrSet.setAttributeSetId(attrSetId);
-        attrSet.setAttributeSetName(attrSet.getAttributeSetId());
+        if (attrSet.getAttributeSetName() == null) {
+            attrSet.setAttributeSetName(attrSet.getAttributeSetId());
+        }
         attrSet.setActive(true);
-        for (AttributeCommand.CreateAttribute a : attrs) {
+        for (String a : attrIds) {
             AttributeUseCommand.CreateAttributeUse attrUse = attrSet.newCreateAttributeUse();
-            attrUse.setAttributeId(a.getAttributeId());
+            attrUse.setAttributeId(a);
             attrUse.setActive(true);
             attrSet.getAttributeUses().add(attrUse);
         }
         return attrSet;
     }
 
+    private static String createSecondaryQuantityUomAttribute() {
+        AttributeCommand.CreateAttribute sqUomAttr = new AbstractAttributeCommand.SimpleCreateAttribute();
+        sqUomAttr.setAttributeId("SecondaryQuantityUom");
+        sqUomAttr.setAttributeName("Secondary Quantity Uom");
+        sqUomAttr.setAttributeValueType("string");
+        sqUomAttr.setAttributeValueLength(5);
+        sqUomAttr.setFieldName("_F_C5_0_");//占用一个扩展字段
+        sqUomAttr.setActive(true);
+        sqUomAttr.setIsMandatory(true);
+        //sqUomAttr.setIsList(false);
+        sqUomAttr.setCommandId(sqUomAttr.getAttributeId());
+        attributeApplicationService.when(sqUomAttr);
+        return sqUomAttr.getAttributeId();
+    }
+
+    private static String createFscAttribute() {
+        AttributeCommand.CreateAttribute fscAttr = new AbstractAttributeCommand.SimpleCreateAttribute();
+        fscAttr.setAttributeId("FSC");
+        fscAttr.setAttributeName("FSC");
+        fscAttr.setAttributeValueType("string");
+        fscAttr.setAttributeValueLength(5);
+        fscAttr.setFieldName("_F_C5_1_");//占用一个扩展字段
+        fscAttr.setActive(true);
+        fscAttr.setIsMandatory(true);
+        fscAttr.setIsList(true);
+        fscAttr.setCommandId(fscAttr.getAttributeId());
+        AttributeValueCommand.CreateAttributeValue y = fscAttr.newCreateAttributeValue();
+        y.setValue("Y");
+        y.setActive(true);
+        y.setAttributeValueName("Yes");
+        fscAttr.getAttributeValues().add(y);
+        AttributeValueCommand.CreateAttributeValue n = fscAttr.newCreateAttributeValue();
+        n.setValue("N");
+        n.setActive(true);
+        n.setAttributeValueName("No");
+        fscAttr.getAttributeValues().add(n);
+        attributeApplicationService.when(fscAttr);
+        return fscAttr.getAttributeId();
+    }
 
     private static void save(List<AttributeCommand.CreateAttribute> attrs, List<AttributeSetCommand.CreateAttributeSet> attrSets) {
         for (AttributeCommand.CreateAttribute a : attrs) {
@@ -136,9 +210,13 @@ public class InitAttributeSets {
             attributeApplicationService.when(a);
         }
         for (AttributeSetCommand.CreateAttributeSet attrSet : attrSets) {
-            attrSet.setCommandId(attrSet.getAttributeSetId()); // 幂等命令
-            attributeSetApplicationService.when(attrSet);
+            saveAttributeSet(attrSet);
         }
+    }
+
+    private static void saveAttributeSet(AttributeSetCommand.CreateAttributeSet attrSet) {
+        attrSet.setCommandId(attrSet.getAttributeSetId()); // 幂等命令
+        attributeSetApplicationService.when(attrSet);
     }
 
 

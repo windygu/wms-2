@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+  <!--
+	Product ID	Description	Product			Grade	GSM	OD		Width	Core	Brand	Moisture	主计量单位
+	KLB-125-VK-72	牛卡纸	Kraft Linerboard		125	1270	 900	101		VK			7.2		KG
+	KLB-115-VK-72	牛卡纸	Kraft Linerboard		115	1250	1200	101		VK			7.2		KG
+	KLB-200-WR-74	牛卡纸	Kraft Linerboard		200	1270	1200	101		WestRock	7.4		KG
+	KLB-150-WR-74	牛卡纸	Kraft Linerboard		150	1270	1800	101		WestRock	7.4		KG
+  -->
+  <Product productId="KLB-125-VK-72" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1270" productWidth="900" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="SecondaryQtyUom:M-FSC:NO" />
+  <Product productId="KLB-115-VK-72" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="115" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1250" productWidth="1200" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="SecondaryQtyUom:M-FSC:NO" />
+  <Product productId="KLB-200-WR-74" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="200" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1270" productWidth="1200" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="SecondaryQtyUom:M-FSC:NO" />
+  <Product productId="KLB-150-WR-74" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1270" productWidth="1800" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="SecondaryQtyUom:M-FSC:NO" />
+
+</entity-engine-xml>
