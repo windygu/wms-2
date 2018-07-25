@@ -276,6 +276,26 @@ public interface ProductCommand extends Command
 
         void setAttributeSetInstanceId(String attributeSetInstanceId);
 
+        String getGrade();
+
+        void setGrade(String grade);
+
+        java.math.BigDecimal getGsm();
+
+        void setGsm(java.math.BigDecimal gsm);
+
+        java.math.BigDecimal getCoreDiameter();
+
+        void setCoreDiameter(java.math.BigDecimal coreDiameter);
+
+        java.math.BigDecimal getOutsideDiameter();
+
+        void setOutsideDiameter(java.math.BigDecimal outsideDiameter);
+
+        java.math.BigDecimal getMoisturePct();
+
+        void setMoisturePct(java.math.BigDecimal moisturePct);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -531,6 +551,26 @@ public interface ProductCommand extends Command
         Boolean getIsPropertyAttributeSetInstanceIdRemoved();
 
         void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyGradeRemoved();
+
+        void setIsPropertyGradeRemoved(Boolean removed);
+
+        Boolean getIsPropertyGsmRemoved();
+
+        void setIsPropertyGsmRemoved(Boolean removed);
+
+        Boolean getIsPropertyCoreDiameterRemoved();
+
+        void setIsPropertyCoreDiameterRemoved(Boolean removed);
+
+        Boolean getIsPropertyOutsideDiameterRemoved();
+
+        void setIsPropertyOutsideDiameterRemoved(Boolean removed);
+
+        Boolean getIsPropertyMoisturePctRemoved();
+
+        void setIsPropertyMoisturePctRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

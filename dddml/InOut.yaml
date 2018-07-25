@@ -353,6 +353,8 @@ aggregates:
             # 出入库数量.
             MovementQuantity: 
               type: decimal
+            #ImageUrls:
+            #  itemType: id-vlong
                           
       # --------------------------------------------
       metadata:

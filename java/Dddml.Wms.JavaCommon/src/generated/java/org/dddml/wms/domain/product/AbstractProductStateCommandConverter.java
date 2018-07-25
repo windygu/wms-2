@@ -97,6 +97,11 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setIsManagedByLot(state.getIsManagedByLot());
         cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setGrade(state.getGrade());
+        cmd.setGsm(state.getGsm());
+        cmd.setCoreDiameter(state.getCoreDiameter());
+        cmd.setOutsideDiameter(state.getOutsideDiameter());
+        cmd.setMoisturePct(state.getMoisturePct());
         cmd.setActive(state.getActive());
             
         if (state.getProductTypeId() == null) { cmd.setIsPropertyProductTypeIdRemoved(true); }
@@ -159,6 +164,11 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         if (state.getIsManagedByLot() == null) { cmd.setIsPropertyIsManagedByLotRemoved(true); }
         if (state.getAttributeSetId() == null) { cmd.setIsPropertyAttributeSetIdRemoved(true); }
         if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
+        if (state.getGrade() == null) { cmd.setIsPropertyGradeRemoved(true); }
+        if (state.getGsm() == null) { cmd.setIsPropertyGsmRemoved(true); }
+        if (state.getCoreDiameter() == null) { cmd.setIsPropertyCoreDiameterRemoved(true); }
+        if (state.getOutsideDiameter() == null) { cmd.setIsPropertyOutsideDiameterRemoved(true); }
+        if (state.getMoisturePct() == null) { cmd.setIsPropertyMoisturePctRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (GoodIdentificationState d : state.getGoodIdentifications())
         {
@@ -234,6 +244,11 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setIsManagedByLot(state.getIsManagedByLot());
         cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setGrade(state.getGrade());
+        cmd.setGsm(state.getGsm());
+        cmd.setCoreDiameter(state.getCoreDiameter());
+        cmd.setOutsideDiameter(state.getOutsideDiameter());
+        cmd.setMoisturePct(state.getMoisturePct());
         cmd.setActive(state.getActive());
         for (GoodIdentificationState d : state.getGoodIdentifications())
         {

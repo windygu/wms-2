@@ -79,6 +79,11 @@ public final class ProductMetadata {
             "isManagedByLot",
             "attributeSetId",
             "attributeSetInstanceId",
+            "grade",
+            "gsm",
+            "coreDiameter",
+            "outsideDiameter",
+            "moisturePct",
             "version",
             "createdBy",
             "createdAt",
@@ -150,6 +155,11 @@ public final class ProductMetadata {
             "Boolean",
             "String",
             "String",
+            "String",
+            "java.math.BigDecimal",
+            "java.math.BigDecimal",
+            "java.math.BigDecimal",
+            "java.math.BigDecimal",
             "Long",
             "String",
             "Date",
@@ -293,6 +303,16 @@ public final class ProductMetadata {
         aliasMap.put("AttributeSetId", "attributeSetId");
         aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("grade", "grade");
+        aliasMap.put("Grade", "grade");
+        aliasMap.put("gsm", "gsm");
+        aliasMap.put("Gsm", "gsm");
+        aliasMap.put("coreDiameter", "coreDiameter");
+        aliasMap.put("CoreDiameter", "coreDiameter");
+        aliasMap.put("outsideDiameter", "outsideDiameter");
+        aliasMap.put("OutsideDiameter", "outsideDiameter");
+        aliasMap.put("moisturePct", "moisturePct");
+        aliasMap.put("MoisturePct", "moisturePct");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

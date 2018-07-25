@@ -906,6 +906,81 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
     }
 
     /**
+     * Grade
+     */
+    private String grade;
+
+    public String getGrade()
+    {
+        return this.grade;
+    }
+
+    public void setGrade(String grade)
+    {
+        this.grade = grade;
+    }
+
+    /**
+     * Grams per Square Meter
+     */
+    private java.math.BigDecimal gsm;
+
+    public java.math.BigDecimal getGsm()
+    {
+        return this.gsm;
+    }
+
+    public void setGsm(java.math.BigDecimal gsm)
+    {
+        this.gsm = gsm;
+    }
+
+    /**
+     * Core Diameter
+     */
+    private java.math.BigDecimal coreDiameter;
+
+    public java.math.BigDecimal getCoreDiameter()
+    {
+        return this.coreDiameter;
+    }
+
+    public void setCoreDiameter(java.math.BigDecimal coreDiameter)
+    {
+        this.coreDiameter = coreDiameter;
+    }
+
+    /**
+     * Outside Diameter
+     */
+    private java.math.BigDecimal outsideDiameter;
+
+    public java.math.BigDecimal getOutsideDiameter()
+    {
+        return this.outsideDiameter;
+    }
+
+    public void setOutsideDiameter(java.math.BigDecimal outsideDiameter)
+    {
+        this.outsideDiameter = outsideDiameter;
+    }
+
+    /**
+     * Moisture(%)
+     */
+    private java.math.BigDecimal moisturePct;
+
+    public java.math.BigDecimal getMoisturePct()
+    {
+        return this.moisturePct;
+    }
+
+    public void setMoisturePct(java.math.BigDecimal moisturePct)
+    {
+        this.moisturePct = moisturePct;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -1652,6 +1727,66 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
+    private Boolean isPropertyGradeRemoved;
+
+    public Boolean getIsPropertyGradeRemoved()
+    {
+        return this.isPropertyGradeRemoved;
+    }
+
+    public void setIsPropertyGradeRemoved(Boolean removed)
+    {
+        this.isPropertyGradeRemoved = removed;
+    }
+
+    private Boolean isPropertyGsmRemoved;
+
+    public Boolean getIsPropertyGsmRemoved()
+    {
+        return this.isPropertyGsmRemoved;
+    }
+
+    public void setIsPropertyGsmRemoved(Boolean removed)
+    {
+        this.isPropertyGsmRemoved = removed;
+    }
+
+    private Boolean isPropertyCoreDiameterRemoved;
+
+    public Boolean getIsPropertyCoreDiameterRemoved()
+    {
+        return this.isPropertyCoreDiameterRemoved;
+    }
+
+    public void setIsPropertyCoreDiameterRemoved(Boolean removed)
+    {
+        this.isPropertyCoreDiameterRemoved = removed;
+    }
+
+    private Boolean isPropertyOutsideDiameterRemoved;
+
+    public Boolean getIsPropertyOutsideDiameterRemoved()
+    {
+        return this.isPropertyOutsideDiameterRemoved;
+    }
+
+    public void setIsPropertyOutsideDiameterRemoved(Boolean removed)
+    {
+        this.isPropertyOutsideDiameterRemoved = removed;
+    }
+
+    private Boolean isPropertyMoisturePctRemoved;
+
+    public Boolean getIsPropertyMoisturePctRemoved()
+    {
+        return this.isPropertyMoisturePctRemoved;
+    }
+
+    public void setIsPropertyMoisturePctRemoved(Boolean removed)
+    {
+        this.isPropertyMoisturePctRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -1727,6 +1862,11 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setIsManagedByLot(this.getIsManagedByLot());
         command.setAttributeSetId(this.getAttributeSetId());
         command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
+        command.setGrade(this.getGrade());
+        command.setGsm(this.getGsm());
+        command.setCoreDiameter(this.getCoreDiameter());
+        command.setOutsideDiameter(this.getOutsideDiameter());
+        command.setMoisturePct(this.getMoisturePct());
         command.setActive(this.getActive());
     }
 
@@ -1825,6 +1965,11 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setIsPropertyIsManagedByLotRemoved(this.getIsPropertyIsManagedByLotRemoved());
         command.setIsPropertyAttributeSetIdRemoved(this.getIsPropertyAttributeSetIdRemoved());
         command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
+        command.setIsPropertyGradeRemoved(this.getIsPropertyGradeRemoved());
+        command.setIsPropertyGsmRemoved(this.getIsPropertyGsmRemoved());
+        command.setIsPropertyCoreDiameterRemoved(this.getIsPropertyCoreDiameterRemoved());
+        command.setIsPropertyOutsideDiameterRemoved(this.getIsPropertyOutsideDiameterRemoved());
+        command.setIsPropertyMoisturePctRemoved(this.getIsPropertyMoisturePctRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

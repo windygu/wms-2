@@ -741,6 +741,66 @@ public class ProductStateDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String grade;
+
+    public String getGrade()
+    {
+        return this.grade;
+    }
+
+    public void setGrade(String grade)
+    {
+        this.grade = grade;
+    }
+
+    private java.math.BigDecimal gsm;
+
+    public java.math.BigDecimal getGsm()
+    {
+        return this.gsm;
+    }
+
+    public void setGsm(java.math.BigDecimal gsm)
+    {
+        this.gsm = gsm;
+    }
+
+    private java.math.BigDecimal coreDiameter;
+
+    public java.math.BigDecimal getCoreDiameter()
+    {
+        return this.coreDiameter;
+    }
+
+    public void setCoreDiameter(java.math.BigDecimal coreDiameter)
+    {
+        this.coreDiameter = coreDiameter;
+    }
+
+    private java.math.BigDecimal outsideDiameter;
+
+    public java.math.BigDecimal getOutsideDiameter()
+    {
+        return this.outsideDiameter;
+    }
+
+    public void setOutsideDiameter(java.math.BigDecimal outsideDiameter)
+    {
+        this.outsideDiameter = outsideDiameter;
+    }
+
+    private java.math.BigDecimal moisturePct;
+
+    public java.math.BigDecimal getMoisturePct()
+    {
+        return this.moisturePct;
+    }
+
+    public void setMoisturePct(java.math.BigDecimal moisturePct)
+    {
+        this.moisturePct = moisturePct;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -1033,6 +1093,21 @@ public class ProductStateDto
             }
             if (returnedFieldsContains("AttributeSetInstanceId")) {
                 dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+            }
+            if (returnedFieldsContains("Grade")) {
+                dto.setGrade(state.getGrade());
+            }
+            if (returnedFieldsContains("Gsm")) {
+                dto.setGsm(state.getGsm());
+            }
+            if (returnedFieldsContains("CoreDiameter")) {
+                dto.setCoreDiameter(state.getCoreDiameter());
+            }
+            if (returnedFieldsContains("OutsideDiameter")) {
+                dto.setOutsideDiameter(state.getOutsideDiameter());
+            }
+            if (returnedFieldsContains("MoisturePct")) {
+                dto.setMoisturePct(state.getMoisturePct());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

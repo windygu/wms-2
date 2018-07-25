@@ -256,6 +256,26 @@ public interface ProductState
 
     void setAttributeSetInstanceId(String attributeSetInstanceId);
 
+    String getGrade();
+
+    void setGrade(String grade);
+
+    java.math.BigDecimal getGsm();
+
+    void setGsm(java.math.BigDecimal gsm);
+
+    java.math.BigDecimal getCoreDiameter();
+
+    void setCoreDiameter(java.math.BigDecimal coreDiameter);
+
+    java.math.BigDecimal getOutsideDiameter();
+
+    void setOutsideDiameter(java.math.BigDecimal outsideDiameter);
+
+    java.math.BigDecimal getMoisturePct();
+
+    void setMoisturePct(java.math.BigDecimal moisturePct);
+
     Long getVersion();
 
     void setVersion(Long version);

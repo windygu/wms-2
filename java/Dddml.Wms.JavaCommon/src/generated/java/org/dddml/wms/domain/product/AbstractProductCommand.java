@@ -754,6 +754,66 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             this.attributeSetInstanceId = attributeSetInstanceId;
         }
 
+        private String grade;
+
+        public String getGrade()
+        {
+            return this.grade;
+        }
+
+        public void setGrade(String grade)
+        {
+            this.grade = grade;
+        }
+
+        private java.math.BigDecimal gsm;
+
+        public java.math.BigDecimal getGsm()
+        {
+            return this.gsm;
+        }
+
+        public void setGsm(java.math.BigDecimal gsm)
+        {
+            this.gsm = gsm;
+        }
+
+        private java.math.BigDecimal coreDiameter;
+
+        public java.math.BigDecimal getCoreDiameter()
+        {
+            return this.coreDiameter;
+        }
+
+        public void setCoreDiameter(java.math.BigDecimal coreDiameter)
+        {
+            this.coreDiameter = coreDiameter;
+        }
+
+        private java.math.BigDecimal outsideDiameter;
+
+        public java.math.BigDecimal getOutsideDiameter()
+        {
+            return this.outsideDiameter;
+        }
+
+        public void setOutsideDiameter(java.math.BigDecimal outsideDiameter)
+        {
+            this.outsideDiameter = outsideDiameter;
+        }
+
+        private java.math.BigDecimal moisturePct;
+
+        public java.math.BigDecimal getMoisturePct()
+        {
+            return this.moisturePct;
+        }
+
+        public void setMoisturePct(java.math.BigDecimal moisturePct)
+        {
+            this.moisturePct = moisturePct;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -1533,6 +1593,66 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
         public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
         {
             this.isPropertyAttributeSetInstanceIdRemoved = removed;
+        }
+
+        private Boolean isPropertyGradeRemoved;
+
+        public Boolean getIsPropertyGradeRemoved()
+        {
+            return this.isPropertyGradeRemoved;
+        }
+
+        public void setIsPropertyGradeRemoved(Boolean removed)
+        {
+            this.isPropertyGradeRemoved = removed;
+        }
+
+        private Boolean isPropertyGsmRemoved;
+
+        public Boolean getIsPropertyGsmRemoved()
+        {
+            return this.isPropertyGsmRemoved;
+        }
+
+        public void setIsPropertyGsmRemoved(Boolean removed)
+        {
+            this.isPropertyGsmRemoved = removed;
+        }
+
+        private Boolean isPropertyCoreDiameterRemoved;
+
+        public Boolean getIsPropertyCoreDiameterRemoved()
+        {
+            return this.isPropertyCoreDiameterRemoved;
+        }
+
+        public void setIsPropertyCoreDiameterRemoved(Boolean removed)
+        {
+            this.isPropertyCoreDiameterRemoved = removed;
+        }
+
+        private Boolean isPropertyOutsideDiameterRemoved;
+
+        public Boolean getIsPropertyOutsideDiameterRemoved()
+        {
+            return this.isPropertyOutsideDiameterRemoved;
+        }
+
+        public void setIsPropertyOutsideDiameterRemoved(Boolean removed)
+        {
+            this.isPropertyOutsideDiameterRemoved = removed;
+        }
+
+        private Boolean isPropertyMoisturePctRemoved;
+
+        public Boolean getIsPropertyMoisturePctRemoved()
+        {
+            return this.isPropertyMoisturePctRemoved;
+        }
+
+        public void setIsPropertyMoisturePctRemoved(Boolean removed)
+        {
+            this.isPropertyMoisturePctRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

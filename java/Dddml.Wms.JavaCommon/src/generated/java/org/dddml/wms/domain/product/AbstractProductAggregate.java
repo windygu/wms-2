@@ -111,6 +111,11 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setIsManagedByLot(c.getIsManagedByLot());
         e.setAttributeSetId(c.getAttributeSetId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
+        e.setGrade(c.getGrade());
+        e.setGsm(c.getGsm());
+        e.setCoreDiameter(c.getCoreDiameter());
+        e.setOutsideDiameter(c.getOutsideDiameter());
+        e.setMoisturePct(c.getMoisturePct());
         e.setActive(c.getActive());
         ((AbstractProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -189,6 +194,11 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setIsManagedByLot(c.getIsManagedByLot());
         e.setAttributeSetId(c.getAttributeSetId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
+        e.setGrade(c.getGrade());
+        e.setGsm(c.getGsm());
+        e.setCoreDiameter(c.getCoreDiameter());
+        e.setOutsideDiameter(c.getOutsideDiameter());
+        e.setMoisturePct(c.getMoisturePct());
         e.setActive(c.getActive());
         e.setIsPropertyProductTypeIdRemoved(c.getIsPropertyProductTypeIdRemoved());
         e.setIsPropertyPrimaryProductCategoryIdRemoved(c.getIsPropertyPrimaryProductCategoryIdRemoved());
@@ -250,6 +260,11 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setIsPropertyIsManagedByLotRemoved(c.getIsPropertyIsManagedByLotRemoved());
         e.setIsPropertyAttributeSetIdRemoved(c.getIsPropertyAttributeSetIdRemoved());
         e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
+        e.setIsPropertyGradeRemoved(c.getIsPropertyGradeRemoved());
+        e.setIsPropertyGsmRemoved(c.getIsPropertyGsmRemoved());
+        e.setIsPropertyCoreDiameterRemoved(c.getIsPropertyCoreDiameterRemoved());
+        e.setIsPropertyOutsideDiameterRemoved(c.getIsPropertyOutsideDiameterRemoved());
+        e.setIsPropertyMoisturePctRemoved(c.getIsPropertyMoisturePctRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

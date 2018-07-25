@@ -110,10 +110,10 @@ aggregates:
       ProductDiameter:
         type: fixed-point
         
-      # 产品等级
+      # 评分
       ProductRating:
         type: fixed-point
-        
+      # 评分类型
       RatingTypeEnum:
         type: id
         
@@ -192,6 +192,24 @@ aggregates:
         type: string
         referenceType: AttributeSetInstance
         notNull: false
+        
+      # 等级
+      Grade:
+        type: id
+      # 克重
+      Gsm:
+        description: Grams per Square Meter
+        type: fixed-point
+      # 芯径
+      CoreDiameter:
+        type: fixed-point
+      # 外径
+      OutsideDiameter:
+        type: fixed-point
+      # 湿度（百分比）
+      MoisturePct:
+        type: fixed-point
+        displayName: Moisture(%)
         
       #----------------------------------------
       GoodIdentifications:

@@ -85,6 +85,11 @@ public class ProductStateEventDtoConverter {
         dto.setIsManagedByLot(e.getIsManagedByLot());
         dto.setAttributeSetId(e.getAttributeSetId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        dto.setGrade(e.getGrade());
+        dto.setGsm(e.getGsm());
+        dto.setCoreDiameter(e.getCoreDiameter());
+        dto.setOutsideDiameter(e.getOutsideDiameter());
+        dto.setMoisturePct(e.getMoisturePct());
         dto.setActive(e.getActive());
         List<GoodIdentificationStateEventDto.GoodIdentificationStateCreatedDto> goodIdentificationEvents = new ArrayList<>();
         for (GoodIdentificationEvent.GoodIdentificationStateCreated ee : e.getGoodIdentificationEvents()) {
@@ -162,6 +167,11 @@ public class ProductStateEventDtoConverter {
         dto.setIsManagedByLot(e.getIsManagedByLot());
         dto.setAttributeSetId(e.getAttributeSetId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        dto.setGrade(e.getGrade());
+        dto.setGsm(e.getGsm());
+        dto.setCoreDiameter(e.getCoreDiameter());
+        dto.setOutsideDiameter(e.getOutsideDiameter());
+        dto.setMoisturePct(e.getMoisturePct());
         dto.setActive(e.getActive());
         dto.setIsPropertyProductTypeIdRemoved(e.getIsPropertyProductTypeIdRemoved());
         dto.setIsPropertyPrimaryProductCategoryIdRemoved(e.getIsPropertyPrimaryProductCategoryIdRemoved());
@@ -223,6 +233,11 @@ public class ProductStateEventDtoConverter {
         dto.setIsPropertyIsManagedByLotRemoved(e.getIsPropertyIsManagedByLotRemoved());
         dto.setIsPropertyAttributeSetIdRemoved(e.getIsPropertyAttributeSetIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
+        dto.setIsPropertyGradeRemoved(e.getIsPropertyGradeRemoved());
+        dto.setIsPropertyGsmRemoved(e.getIsPropertyGsmRemoved());
+        dto.setIsPropertyCoreDiameterRemoved(e.getIsPropertyCoreDiameterRemoved());
+        dto.setIsPropertyOutsideDiameterRemoved(e.getIsPropertyOutsideDiameterRemoved());
+        dto.setIsPropertyMoisturePctRemoved(e.getIsPropertyMoisturePctRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<GoodIdentificationStateEventDto> goodIdentificationEvents = new ArrayList<>();
         for (GoodIdentificationEvent ee : e.getGoodIdentificationEvents()) {

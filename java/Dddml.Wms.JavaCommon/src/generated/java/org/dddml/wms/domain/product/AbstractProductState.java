@@ -741,6 +741,66 @@ public abstract class AbstractProductState implements ProductState, Saveable
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String grade;
+
+    public String getGrade()
+    {
+        return this.grade;
+    }
+
+    public void setGrade(String grade)
+    {
+        this.grade = grade;
+    }
+
+    private java.math.BigDecimal gsm;
+
+    public java.math.BigDecimal getGsm()
+    {
+        return this.gsm;
+    }
+
+    public void setGsm(java.math.BigDecimal gsm)
+    {
+        this.gsm = gsm;
+    }
+
+    private java.math.BigDecimal coreDiameter;
+
+    public java.math.BigDecimal getCoreDiameter()
+    {
+        return this.coreDiameter;
+    }
+
+    public void setCoreDiameter(java.math.BigDecimal coreDiameter)
+    {
+        this.coreDiameter = coreDiameter;
+    }
+
+    private java.math.BigDecimal outsideDiameter;
+
+    public java.math.BigDecimal getOutsideDiameter()
+    {
+        return this.outsideDiameter;
+    }
+
+    public void setOutsideDiameter(java.math.BigDecimal outsideDiameter)
+    {
+        this.outsideDiameter = outsideDiameter;
+    }
+
+    private java.math.BigDecimal moisturePct;
+
+    public java.math.BigDecimal getMoisturePct()
+    {
+        return this.moisturePct;
+    }
+
+    public void setMoisturePct(java.math.BigDecimal moisturePct)
+    {
+        this.moisturePct = moisturePct;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -948,6 +1008,11 @@ public abstract class AbstractProductState implements ProductState, Saveable
         this.setIsManagedByLot(e.getIsManagedByLot());
         this.setAttributeSetId(e.getAttributeSetId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        this.setGrade(e.getGrade());
+        this.setGsm(e.getGsm());
+        this.setCoreDiameter(e.getCoreDiameter());
+        this.setOutsideDiameter(e.getOutsideDiameter());
+        this.setMoisturePct(e.getMoisturePct());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -1622,6 +1687,61 @@ public abstract class AbstractProductState implements ProductState, Saveable
         else
         {
             this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        }
+        if (e.getGrade() == null)
+        {
+            if (e.getIsPropertyGradeRemoved() != null && e.getIsPropertyGradeRemoved())
+            {
+                this.setGrade(null);
+            }
+        }
+        else
+        {
+            this.setGrade(e.getGrade());
+        }
+        if (e.getGsm() == null)
+        {
+            if (e.getIsPropertyGsmRemoved() != null && e.getIsPropertyGsmRemoved())
+            {
+                this.setGsm(null);
+            }
+        }
+        else
+        {
+            this.setGsm(e.getGsm());
+        }
+        if (e.getCoreDiameter() == null)
+        {
+            if (e.getIsPropertyCoreDiameterRemoved() != null && e.getIsPropertyCoreDiameterRemoved())
+            {
+                this.setCoreDiameter(null);
+            }
+        }
+        else
+        {
+            this.setCoreDiameter(e.getCoreDiameter());
+        }
+        if (e.getOutsideDiameter() == null)
+        {
+            if (e.getIsPropertyOutsideDiameterRemoved() != null && e.getIsPropertyOutsideDiameterRemoved())
+            {
+                this.setOutsideDiameter(null);
+            }
+        }
+        else
+        {
+            this.setOutsideDiameter(e.getOutsideDiameter());
+        }
+        if (e.getMoisturePct() == null)
+        {
+            if (e.getIsPropertyMoisturePctRemoved() != null && e.getIsPropertyMoisturePctRemoved())
+            {
+                this.setMoisturePct(null);
+            }
+        }
+        else
+        {
+            this.setMoisturePct(e.getMoisturePct());
         }
         if (e.getActive() == null)
         {
