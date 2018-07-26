@@ -1,27 +1,66 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <entity-engine-xml>
 
+  <!-- <Uom abbreviation="bx" description="Box" uomId="OTH_box" uomTypeId="OTHER_MEASURE" /> -->
+  <!-- <Uom abbreviation="pk" description="Package" uomId="OTH_pk" uomTypeId="OTHER_MEASURE" /> -->
+  <Uom abbreviation="bx" description="Box" uomId="box" uomTypeId="OTHER_MEASURE" />
+  <Uom abbreviation="pk" description="Package" uomId="package" uomTypeId="OTHER_MEASURE" />
+  
+  <!-- <Uom abbreviation="cm" description="Centimeter" uomId="LEN_cm" uomTypeId="LENGTH_MEASURE" /> -->
+  <!-- <Uom abbreviation="ft" description="Foot" uomId="LEN_ft" uomTypeId="LENGTH_MEASURE" /> -->
+  <!-- <Uom abbreviation="in" description="Inch" uomId="LEN_in" uomTypeId="LENGTH_MEASURE" /> -->
+  <!-- <Uom abbreviation="km" description="Kilometer" uomId="LEN_km" uomTypeId="LENGTH_MEASURE" /> -->
+  <!-- <Uom abbreviation="m" description="Meter" uomId="LEN_m" uomTypeId="LENGTH_MEASURE" /> -->
+  <!-- <Uom abbreviation="mi" description="Mile (statute/land)" uomId="LEN_mi" uomTypeId="LENGTH_MEASURE" /> -->
+  <!-- <Uom abbreviation="mm" description="Millimeter" uomId="LEN_mm" uomTypeId="LENGTH_MEASURE" /> -->
+  <Uom abbreviation="cm" description="Centimeter" uomId="cm" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="ft" description="Foot" uomId="ft" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="in" description="Inch" uomId="in" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="km" description="Kilometer" uomId="km" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="m" description="Meter" uomId="m" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="mi" description="Mile (statute/land)" uomId="mi" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="mm" description="Millimeter" uomId="mm" uomTypeId="LENGTH_MEASURE" />
+  
+  <!-- <Uom abbreviation="cm2" description="Square Centimeter" uomId="AREA_cm2" uomTypeId="AREA_MEASURE" /> -->
+  <!-- <Uom abbreviation="ft2" description="Square Foot" uomId="AREA_ft2" uomTypeId="AREA_MEASURE" /> -->
+  <!-- <Uom abbreviation="in2" description="Square Inch" uomId="AREA_in2" uomTypeId="AREA_MEASURE" /> -->
+  <!-- <Uom abbreviation="km2" description="Square Kilometer" uomId="AREA_km2" uomTypeId="AREA_MEASURE" /> -->
+  <!-- <Uom abbreviation="m2" description="Square Meter" uomId="AREA_m2" uomTypeId="AREA_MEASURE" /> -->
+  <!-- <Uom abbreviation="mi2" description="Square Mile" uomId="AREA_mi2" uomTypeId="AREA_MEASURE" /> -->
+  <!-- <Uom abbreviation="mm2" description="Square Millimeter" uomId="AREA_mm2" uomTypeId="AREA_MEASURE" /> -->
+  <Uom abbreviation="cm2" description="Square Centimeter" uomId="cm2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="ft2" description="Square Foot" uomId="ft2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="in2" description="Square Inch" uomId="in2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="km2" description="Square Kilometer" uomId="km2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="m2" description="Square Meter" uomId="m2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="mi2" description="Square Mile" uomId="mi2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="mm2" description="Square Millimeter" uomId="mm2" uomTypeId="AREA_MEASURE" />
+  
+  <!-- <Uom abbreviation="g" description="Gram" uomId="WT_g" uomTypeId="WEIGHT_MEASURE" /> -->
+  <!-- <Uom abbreviation="kg" description="Kilogram" uomId="WT_kg" uomTypeId="WEIGHT_MEASURE" /> -->
+  <!-- <Uom abbreviation="mg" description="Milligram" uomId="WT_mg" uomTypeId="WEIGHT_MEASURE" /> -->
+  <!-- <Uom abbreviation="lb" description="Pound (avdp)" uomId="WT_lb" uomTypeId="WEIGHT_MEASURE" /> -->
+  <!-- <Uom abbreviation="mt" description="Ton (metric)" uomId="WT_mt" uomTypeId="WEIGHT_MEASURE" /> -->
+  <Uom abbreviation="g" description="Gram" uomId="g" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="kg" description="Kilogram" uomId="kg" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="mg" description="Milligram" uomId="mg" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="lb" description="Pound (avdp)" uomId="lb" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="mt" description="Ton (metric)" uomId="mt" uomTypeId="WEIGHT_MEASURE" />
+  
   <Uom abbreviation="A" description="Angstrom" uomId="LEN_A" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="cb" description="Cable" uomId="LEN_cb" uomTypeId="LENGTH_MEASURE" />
-  <Uom abbreviation="cm" description="Centimeter" uomId="LEN_cm" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="chG" description="Chain (Gunter's/surveyor's)" uomId="LEN_chG" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="chR" description="Chain (Ramden's/engineer's)" uomId="LEN_chR" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="dm" description="Decimeter" uomId="LEN_dm" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="dam" description="Dekameter" uomId="LEN_dam" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="fm" description="Fathom" uomId="LEN_fm" uomTypeId="LENGTH_MEASURE" />
-  <Uom abbreviation="ft" description="Foot" uomId="LEN_ft" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="fur" description="Furlong" uomId="LEN_fur" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="hand" description="Hand (horse's height)" uomId="LEN_hand" uomTypeId="LENGTH_MEASURE" />
-  <Uom abbreviation="in" description="Inch" uomId="LEN_in" uomTypeId="LENGTH_MEASURE" />
-  <Uom abbreviation="km" description="Kilometer" uomId="LEN_km" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="league" description="League" uomId="LEN_league" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="lnG" description="Link (Gunter's)" uomId="LEN_lnG" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="lnR" description="Link (Ramden's)" uomId="LEN_lnR" uomTypeId="LENGTH_MEASURE" />
-  <Uom abbreviation="m" description="Meter" uomId="LEN_m" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="u" description="Micrometer (Micron)" uomId="LEN_u" uomTypeId="LENGTH_MEASURE" />
-  <Uom abbreviation="mi" description="Mile (statute/land)" uomId="LEN_mi" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="nmi" description="Mile (nautical/sea)" uomId="LEN_nmi" uomTypeId="LENGTH_MEASURE" />
-  <Uom abbreviation="mm" description="Millimeter" uomId="LEN_mm" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="mil" description="Mil (Milli-inch)" uomId="LEN_mil" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="point" description="Point (type size)" uomId="LEN_point" uomTypeId="LENGTH_MEASURE" />
   <Uom abbreviation="pica" description="Pica (type size)" uomId="LEN_pica" uomTypeId="LENGTH_MEASURE" />
@@ -30,13 +69,6 @@
   <Uom abbreviation="A" description="Acre" uomId="AREA_A" uomTypeId="AREA_MEASURE" />
   <Uom abbreviation="a" description="Are" uomId="AREA_a" uomTypeId="AREA_MEASURE" />
   <Uom abbreviation="ha" description="Hectare" uomId="AREA_ha" uomTypeId="AREA_MEASURE" />
-  <Uom abbreviation="cm2" description="Square Centimeter" uomId="AREA_cm2" uomTypeId="AREA_MEASURE" />
-  <Uom abbreviation="ft2" description="Square Foot" uomId="AREA_ft2" uomTypeId="AREA_MEASURE" />
-  <Uom abbreviation="in2" description="Square Inch" uomId="AREA_in2" uomTypeId="AREA_MEASURE" />
-  <Uom abbreviation="km2" description="Square Kilometer" uomId="AREA_km2" uomTypeId="AREA_MEASURE" />
-  <Uom abbreviation="m2" description="Square Meter" uomId="AREA_m2" uomTypeId="AREA_MEASURE" />
-  <Uom abbreviation="mi2" description="Square Mile" uomId="AREA_mi2" uomTypeId="AREA_MEASURE" />
-  <Uom abbreviation="mm2" description="Square Millimeter" uomId="AREA_mm2" uomTypeId="AREA_MEASURE" />
   <Uom abbreviation="rd2" description="Square Rod" uomId="AREA_rd2" uomTypeId="AREA_MEASURE" />
   <Uom abbreviation="yd2" description="Square Yard" uomId="AREA_yd2" uomTypeId="AREA_MEASURE" />
   <Uom abbreviation="bbl" description="Barrel (US)" uomId="VLIQ_bbl" uomTypeId="VOLUME_LIQ_MEASURE" />
@@ -65,16 +97,11 @@
   <Uom abbreviation="yd3" description="Cubic yard" uomId="VDRY_yd3" uomTypeId="VOLUME_DRY_MEASURE" />
   <Uom abbreviation="dr avdp" description="Dram (avdp)" uomId="WT_dr_avdp" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="gr" description="Grain" uomId="WT_gr" uomTypeId="WEIGHT_MEASURE" />
-  <Uom abbreviation="g" description="Gram" uomId="WT_g" uomTypeId="WEIGHT_MEASURE" />
-  <Uom abbreviation="kg" description="Kilogram" uomId="WT_kg" uomTypeId="WEIGHT_MEASURE" />
-  <Uom abbreviation="mg" description="Milligram" uomId="WT_mg" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="oz" description="Ounce (avdp)" uomId="WT_oz" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="oz tr" description="Ounce (troy)" uomId="WT_oz_tr" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="dwt" description="Pennyweight" uomId="WT_dwt" uomTypeId="WEIGHT_MEASURE" />
-  <Uom abbreviation="lb" description="Pound (avdp)" uomId="WT_lb" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="st" description="Stone" uomId="WT_st" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="lt" description="Ton (long or British)" uomId="WT_lt" uomTypeId="WEIGHT_MEASURE" />
-  <Uom abbreviation="mt" description="Ton (metric)" uomId="WT_mt" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="sh t" description="Ton (short or US)" uomId="WT_sh_t" uomTypeId="WEIGHT_MEASURE" />
   <Uom abbreviation="Btu" description="British Thermal Unit" uomId="EN_Btu" uomTypeId="ENERGY_MEASURE" />
   <Uom abbreviation="cal15" description="Calorie (@15.5c)" uomId="EN_cal15" uomTypeId="ENERGY_MEASURE" />
@@ -85,9 +112,6 @@
   <Uom abbreviation="K" description="Kelvin" uomId="TEMP_K" uomTypeId="TEMP_MEASURE" />
   <Uom abbreviation="C" description="Degrees Celsius" uomId="TEMP_C" uomTypeId="TEMP_MEASURE" />
   <Uom abbreviation="F" description="Degrees Fahrenheit" uomId="TEMP_F" uomTypeId="TEMP_MEASURE" />
-  
-  <Uom abbreviation="bx" description="Box" uomId="OTH_box" uomTypeId="OTHER_MEASURE" />
-  <Uom abbreviation="pk" description="Package" uomId="OTH_pk" uomTypeId="OTHER_MEASURE" />
   
   <Uom abbreviation="A" description="Amphere - Electric current" uomId="OTH_A" uomTypeId="OTHER_MEASURE" />
   <Uom abbreviation="cd" description="Candela - Luminosity (intensity of light)" uomId="OTH_cd" uomTypeId="OTHER_MEASURE" />

@@ -12,6 +12,7 @@ import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCom
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
 import org.dddml.wms.specialization.ApplicationContext;
+import org.dddml.wms.specialization.ReflectUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +28,12 @@ public class InitAttributeSets {
     public static final String KRAFT_LINERBOARD_ATTR_SET_ID = "KraftLinerboardAttrSet";
 
     public static final String KRAFT_LINERBOARD_PRODUCT_ATTR_SET_ID = "KLBProductAttrSet";
+
+    public static final String CORRUGATED_PAPER_PRODUCT_ATTR_SET_ID = "CPProductAttrSet";
+
+    public static final String FLUFF_PULP_PRODUCT_ATTR_SET_ID ="FluffPulpProductAttrSet";
+
+
 
     static final String[][] FLUFF_PULP_ATTRS = new String[][]{
             // 序列号（卷号）。
@@ -57,6 +64,14 @@ public class InitAttributeSets {
 
     static final String KLB_SECONDARY_QTY_UOM_M_FSC_NO_ATTR_SET_INST_ID = "SecondaryQtyUom:M-FSC:NO";
 
+    static final String FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID = "SecondaryQtyUom:ADMT-FSC:NO";
+
+    public static final String FSC_FIELD_NAME = "_F_C5_1_";
+
+    public static final String SECONDARY_QUANTITY_UOM_FIELD_NAME = "_F_C5_0_";
+
+    public static final String FLUFF_PULP_PRODUCT_CATEGORY_ID ="FluffPulp";
+
     static AttributeApplicationService attributeApplicationService;
 
     static AttributeSetApplicationService attributeSetApplicationService;
@@ -82,6 +97,7 @@ public class InitAttributeSets {
                 klbAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(klbAttrs, Collections.singletonList(klbAttrSet));
 
+        // -----------------------------------------------------------
         //牛卡纸产品属性集
         String sqUomAttrId = createSecondaryQuantityUomAttribute();//次计量单位属性
         String fscAttrId = createFscAttribute();//FSC 认证属性
@@ -89,17 +105,45 @@ public class InitAttributeSets {
                 new String[]{sqUomAttrId, fscAttrId});
         saveAttributeSet(klbPrdAttrSet);
         //创建牛卡纸产品属性集实例
-        AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomMAndFscNoAttrSetInst = createSecondaryQtyUomMAndFscNoAttrSetInst();
+        AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomMAndFscNoAttrSetInst = createKlbSecondaryQtyUomMAndFscNoAttrSetInst();
         attributeSetInstanceApplicationService.when(secondaryQtyUomMAndFscNoAttrSetInst);
+
+        // -----------------------------------------------------------
+        //瓦楞纸产品属性集
+        AttributeSetCommand.CreateAttributeSet cpPrdAttrSet = createAttributeSet(CORRUGATED_PAPER_PRODUCT_ATTR_SET_ID,
+                new String[]{sqUomAttrId, fscAttrId});
+        saveAttributeSet(cpPrdAttrSet);
+
+        // -----------------------------------------------------------
+        //绒毛浆产品属性集
+        AttributeSetCommand.CreateAttributeSet fpPrdAttrSet = createAttributeSet(FLUFF_PULP_PRODUCT_ATTR_SET_ID,
+                new String[]{sqUomAttrId, fscAttrId});
+        saveAttributeSet(fpPrdAttrSet);
+        //创建绒毛浆产品属性集实例
+        AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomAdtmAndFscNoAttrSetInst = createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst();
+        attributeSetInstanceApplicationService.when(secondaryQtyUomAdtmAndFscNoAttrSetInst);
+
     }
 
-    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createSecondaryQtyUomMAndFscNoAttrSetInst() {
+    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createKlbSecondaryQtyUomMAndFscNoAttrSetInst() {
         AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
         String attributeSetInstanceId = KLB_SECONDARY_QTY_UOM_M_FSC_NO_ATTR_SET_INST_ID;
         attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
         attrSetInst.setAttributeSetId(KRAFT_LINERBOARD_PRODUCT_ATTR_SET_ID);
-        attrSetInst.set_F_C5_0_("M");
-        attrSetInst.set_F_C5_1_("N");
+        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "M");
+        ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "N");
+        attrSetInst.setActive(true);
+        attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
+        return attrSetInst;
+    }
+
+    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst() {
+        AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
+        String attributeSetInstanceId = FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID;
+        attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
+        attrSetInst.setAttributeSetId(FLUFF_PULP_PRODUCT_ATTR_SET_ID);
+        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "ADMT");
+        ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "N");
         attrSetInst.setActive(true);
         attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
         return attrSetInst;
@@ -165,7 +209,7 @@ public class InitAttributeSets {
         sqUomAttr.setAttributeName("Secondary Quantity Uom");
         sqUomAttr.setAttributeValueType("string");
         sqUomAttr.setAttributeValueLength(5);
-        sqUomAttr.setFieldName("_F_C5_0_");//占用一个扩展字段
+        sqUomAttr.setFieldName(SECONDARY_QUANTITY_UOM_FIELD_NAME);//占用一个扩展字段
         sqUomAttr.setActive(true);
         sqUomAttr.setIsMandatory(true);
         //sqUomAttr.setIsList(false);
@@ -180,7 +224,7 @@ public class InitAttributeSets {
         fscAttr.setAttributeName("FSC");
         fscAttr.setAttributeValueType("string");
         fscAttr.setAttributeValueLength(5);
-        fscAttr.setFieldName("_F_C5_1_");//占用一个扩展字段
+        fscAttr.setFieldName(FSC_FIELD_NAME);//占用一个扩展字段
         fscAttr.setActive(true);
         fscAttr.setIsMandatory(true);
         fscAttr.setIsList(true);
