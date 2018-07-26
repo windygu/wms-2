@@ -62,9 +62,9 @@ public class InitAttributeSets {
             new String[]{"SecondaryUomQuantity", "Decimal", "false", "_F_N_0_"},// 次计量单位数量
     };
 
-    static final String KLB_SECONDARY_QTY_UOM_M_FSC_NO_ATTR_SET_INST_ID = "SecondaryQtyUom:M-FSC:NO";
+    static final String KLB_SECONDARY_QTY_UOM_M_FSC_NO_ATTR_SET_INST_ID = "KLBSecondaryQtyUom:M-FSC:NO";
 
-    static final String FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID = "SecondaryQtyUom:ADMT-FSC:NO";
+    static final String FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID = "FPSecondaryQtyUom:ADMT-FSC:NO";
 
     public static final String FSC_FIELD_NAME = "_F_C5_1_";
 
