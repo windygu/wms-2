@@ -7,6 +7,111 @@ package org.dddml.wms.domain.uom;
 
 public class UomIds {
     /**
+     * Box.
+     */
+    public static final String box = "box";
+
+    /**
+     * Package.
+     */
+    public static final String _package = "package";
+
+    /**
+     * Centimeter.
+     */
+    public static final String cm = "cm";
+
+    /**
+     * Foot.
+     */
+    public static final String ft = "ft";
+
+    /**
+     * Inch.
+     */
+    public static final String in = "in";
+
+    /**
+     * Kilometer.
+     */
+    public static final String km = "km";
+
+    /**
+     * Meter.
+     */
+    public static final String m = "m";
+
+    /**
+     * Mile (statute/land).
+     */
+    public static final String mi = "mi";
+
+    /**
+     * Millimeter.
+     */
+    public static final String mm = "mm";
+
+    /**
+     * Square Centimeter.
+     */
+    public static final String cm2 = "cm2";
+
+    /**
+     * Square Foot.
+     */
+    public static final String ft2 = "ft2";
+
+    /**
+     * Square Inch.
+     */
+    public static final String in2 = "in2";
+
+    /**
+     * Square Kilometer.
+     */
+    public static final String km2 = "km2";
+
+    /**
+     * Square Meter.
+     */
+    public static final String m2 = "m2";
+
+    /**
+     * Square Mile.
+     */
+    public static final String mi2 = "mi2";
+
+    /**
+     * Square Millimeter.
+     */
+    public static final String mm2 = "mm2";
+
+    /**
+     * Gram.
+     */
+    public static final String g = "g";
+
+    /**
+     * Kilogram.
+     */
+    public static final String kg = "kg";
+
+    /**
+     * Milligram.
+     */
+    public static final String mg = "mg";
+
+    /**
+     * Pound (avdp).
+     */
+    public static final String lb = "lb";
+
+    /**
+     * Ton (metric).
+     */
+    public static final String mt = "mt";
+
+    /**
      * Angstrom.
      */
     public static final String LEN_A = "LEN_A";
@@ -15,11 +120,6 @@ public class UomIds {
      * Cable.
      */
     public static final String LEN_cb = "LEN_cb";
-
-    /**
-     * Centimeter.
-     */
-    public static final String LEN_cm = "LEN_cm";
 
     /**
      * Chain (Gunter's/surveyor's).
@@ -47,11 +147,6 @@ public class UomIds {
     public static final String LEN_fm = "LEN_fm";
 
     /**
-     * Foot.
-     */
-    public static final String LEN_ft = "LEN_ft";
-
-    /**
      * Furlong.
      */
     public static final String LEN_fur = "LEN_fur";
@@ -60,16 +155,6 @@ public class UomIds {
      * Hand (horse's height).
      */
     public static final String LEN_hand = "LEN_hand";
-
-    /**
-     * Inch.
-     */
-    public static final String LEN_in = "LEN_in";
-
-    /**
-     * Kilometer.
-     */
-    public static final String LEN_km = "LEN_km";
 
     /**
      * League.
@@ -87,29 +172,14 @@ public class UomIds {
     public static final String LEN_lnR = "LEN_lnR";
 
     /**
-     * Meter.
-     */
-    public static final String LEN_m = "LEN_m";
-
-    /**
      * Micrometer (Micron).
      */
     public static final String LEN_u = "LEN_u";
 
     /**
-     * Mile (statute/land).
-     */
-    public static final String LEN_mi = "LEN_mi";
-
-    /**
      * Mile (nautical/sea).
      */
     public static final String LEN_nmi = "LEN_nmi";
-
-    /**
-     * Millimeter.
-     */
-    public static final String LEN_mm = "LEN_mm";
 
     /**
      * Mil (Milli-inch).
@@ -150,41 +220,6 @@ public class UomIds {
      * Hectare.
      */
     public static final String AREA_ha = "AREA_ha";
-
-    /**
-     * Square Centimeter.
-     */
-    public static final String AREA_cm2 = "AREA_cm2";
-
-    /**
-     * Square Foot.
-     */
-    public static final String AREA_ft2 = "AREA_ft2";
-
-    /**
-     * Square Inch.
-     */
-    public static final String AREA_in2 = "AREA_in2";
-
-    /**
-     * Square Kilometer.
-     */
-    public static final String AREA_km2 = "AREA_km2";
-
-    /**
-     * Square Meter.
-     */
-    public static final String AREA_m2 = "AREA_m2";
-
-    /**
-     * Square Mile.
-     */
-    public static final String AREA_mi2 = "AREA_mi2";
-
-    /**
-     * Square Millimeter.
-     */
-    public static final String AREA_mm2 = "AREA_mm2";
 
     /**
      * Square Rod.
@@ -327,21 +362,6 @@ public class UomIds {
     public static final String WT_gr = "WT_gr";
 
     /**
-     * Gram.
-     */
-    public static final String WT_g = "WT_g";
-
-    /**
-     * Kilogram.
-     */
-    public static final String WT_kg = "WT_kg";
-
-    /**
-     * Milligram.
-     */
-    public static final String WT_mg = "WT_mg";
-
-    /**
      * Ounce (avdp).
      */
     public static final String WT_oz = "WT_oz";
@@ -357,11 +377,6 @@ public class UomIds {
     public static final String WT_dwt = "WT_dwt";
 
     /**
-     * Pound (avdp).
-     */
-    public static final String WT_lb = "WT_lb";
-
-    /**
      * Stone.
      */
     public static final String WT_st = "WT_st";
@@ -370,11 +385,6 @@ public class UomIds {
      * Ton (long or British).
      */
     public static final String WT_lt = "WT_lt";
-
-    /**
-     * Ton (metric).
-     */
-    public static final String WT_mt = "WT_mt";
 
     /**
      * Ton (short or US).
@@ -425,16 +435,6 @@ public class UomIds {
      * Degrees Fahrenheit.
      */
     public static final String TEMP_F = "TEMP_F";
-
-    /**
-     * Box.
-     */
-    public static final String OTH_box = "OTH_box";
-
-    /**
-     * Package.
-     */
-    public static final String OTH_pk = "OTH_pk";
 
     /**
      * Amphere - Electric current.

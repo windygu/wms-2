@@ -96,6 +96,96 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * Bill of lading
+     */
+    private String bolNumber;
+
+    public String getBolNumber()
+    {
+        return this.bolNumber;
+    }
+
+    public void setBolNumber(String bolNumber)
+    {
+        this.bolNumber = bolNumber;
+    }
+
+    /**
+     * Seal Number
+     */
+    private String sealNumber;
+
+    public String getSealNumber()
+    {
+        return this.sealNumber;
+    }
+
+    public void setSealNumber(String sealNumber)
+    {
+        this.sealNumber = sealNumber;
+    }
+
+    /**
+     * Vehicle Id
+     */
+    private String vehicleId;
+
+    public String getVehicleId()
+    {
+        return this.vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId)
+    {
+        this.vehicleId = vehicleId;
+    }
+
+    /**
+     * Po Number
+     */
+    private String poNumber;
+
+    public String getPoNumber()
+    {
+        return this.poNumber;
+    }
+
+    public void setPoNumber(String poNumber)
+    {
+        this.poNumber = poNumber;
+    }
+
+    /**
+     * Carrier
+     */
+    private String carrier;
+
+    public String getCarrier()
+    {
+        return this.carrier;
+    }
+
+    public void setCarrier(String carrier)
+    {
+        this.carrier = carrier;
+    }
+
+    /**
+     * Date Shipped
+     */
+    private java.sql.Timestamp dateShipped;
+
+    public java.sql.Timestamp getDateShipped()
+    {
+        return this.dateShipped;
+    }
+
+    public void setDateShipped(java.sql.Timestamp dateShipped)
+    {
+        this.dateShipped = dateShipped;
+    }
+
+    /**
      * Estimated Ready Date
      */
     private java.sql.Timestamp estimatedReadyDate;
@@ -141,7 +231,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
-     * Estimated Arrival Date
+     * Estimated Arrival Date(ETA)
      */
     private java.sql.Timestamp estimatedArrivalDate;
 
@@ -503,6 +593,78 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.isPropertyPicklistBinIdRemoved = removed;
     }
 
+    private Boolean isPropertyBolNumberRemoved;
+
+    public Boolean getIsPropertyBolNumberRemoved()
+    {
+        return this.isPropertyBolNumberRemoved;
+    }
+
+    public void setIsPropertyBolNumberRemoved(Boolean removed)
+    {
+        this.isPropertyBolNumberRemoved = removed;
+    }
+
+    private Boolean isPropertySealNumberRemoved;
+
+    public Boolean getIsPropertySealNumberRemoved()
+    {
+        return this.isPropertySealNumberRemoved;
+    }
+
+    public void setIsPropertySealNumberRemoved(Boolean removed)
+    {
+        this.isPropertySealNumberRemoved = removed;
+    }
+
+    private Boolean isPropertyVehicleIdRemoved;
+
+    public Boolean getIsPropertyVehicleIdRemoved()
+    {
+        return this.isPropertyVehicleIdRemoved;
+    }
+
+    public void setIsPropertyVehicleIdRemoved(Boolean removed)
+    {
+        this.isPropertyVehicleIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPoNumberRemoved;
+
+    public Boolean getIsPropertyPoNumberRemoved()
+    {
+        return this.isPropertyPoNumberRemoved;
+    }
+
+    public void setIsPropertyPoNumberRemoved(Boolean removed)
+    {
+        this.isPropertyPoNumberRemoved = removed;
+    }
+
+    private Boolean isPropertyCarrierRemoved;
+
+    public Boolean getIsPropertyCarrierRemoved()
+    {
+        return this.isPropertyCarrierRemoved;
+    }
+
+    public void setIsPropertyCarrierRemoved(Boolean removed)
+    {
+        this.isPropertyCarrierRemoved = removed;
+    }
+
+    private Boolean isPropertyDateShippedRemoved;
+
+    public Boolean getIsPropertyDateShippedRemoved()
+    {
+        return this.isPropertyDateShippedRemoved;
+    }
+
+    public void setIsPropertyDateShippedRemoved(Boolean removed)
+    {
+        this.isPropertyDateShippedRemoved = removed;
+    }
+
     private Boolean isPropertyEstimatedReadyDateRemoved;
 
     public Boolean getIsPropertyEstimatedReadyDateRemoved()
@@ -752,6 +914,12 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setPrimaryReturnId(this.getPrimaryReturnId());
         command.setPrimaryShipGroupSeqId(this.getPrimaryShipGroupSeqId());
         command.setPicklistBinId(this.getPicklistBinId());
+        command.setBolNumber(this.getBolNumber());
+        command.setSealNumber(this.getSealNumber());
+        command.setVehicleId(this.getVehicleId());
+        command.setPoNumber(this.getPoNumber());
+        command.setCarrier(this.getCarrier());
+        command.setDateShipped(this.getDateShipped());
         command.setEstimatedReadyDate(this.getEstimatedReadyDate());
         command.setEstimatedShipDate(this.getEstimatedShipDate());
         command.setEstimatedShipWorkEffId(this.getEstimatedShipWorkEffId());
@@ -835,6 +1003,12 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setIsPropertyPrimaryReturnIdRemoved(this.getIsPropertyPrimaryReturnIdRemoved());
         command.setIsPropertyPrimaryShipGroupSeqIdRemoved(this.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         command.setIsPropertyPicklistBinIdRemoved(this.getIsPropertyPicklistBinIdRemoved());
+        command.setIsPropertyBolNumberRemoved(this.getIsPropertyBolNumberRemoved());
+        command.setIsPropertySealNumberRemoved(this.getIsPropertySealNumberRemoved());
+        command.setIsPropertyVehicleIdRemoved(this.getIsPropertyVehicleIdRemoved());
+        command.setIsPropertyPoNumberRemoved(this.getIsPropertyPoNumberRemoved());
+        command.setIsPropertyCarrierRemoved(this.getIsPropertyCarrierRemoved());
+        command.setIsPropertyDateShippedRemoved(this.getIsPropertyDateShippedRemoved());
         command.setIsPropertyEstimatedReadyDateRemoved(this.getIsPropertyEstimatedReadyDateRemoved());
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
         command.setIsPropertyEstimatedShipWorkEffIdRemoved(this.getIsPropertyEstimatedShipWorkEffIdRemoved());

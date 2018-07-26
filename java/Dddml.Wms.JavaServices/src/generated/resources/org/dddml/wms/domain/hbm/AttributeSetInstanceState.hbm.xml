@@ -19,20 +19,20 @@
 	<property name="lotId" ></property>
 	<property name="description" ></property>
 	<property name="hash" ></property>
-	<property name="widthInch" ></property>
-	<property name="diameterInch" ></property>
-	<property name="weightLbs" ></property>
-	<property name="weightKg" ></property>
-	<property name="airDryWeightLbs" ></property>
-	<property name="airDryWeightKg" ></property>
-	<property name="airDryMetricTon" ></property>
+	<property name="widthInch" ><column name="WidthInch" sql-type="decimal(18,6)" /></property>
+	<property name="diameterInch" ><column name="DiameterInch" sql-type="decimal(18,6)" /></property>
+	<property name="weightLbs" ><column name="WeightLbs" sql-type="decimal(18,6)" /></property>
+	<property name="weightKg" ><column name="WeightKg" sql-type="decimal(18,6)" /></property>
+	<property name="airDryWeightLbs" ><column name="AirDryWeightLbs" sql-type="decimal(18,6)" /></property>
+	<property name="airDryWeightKg" ><column name="AirDryWeightKg" sql-type="decimal(18,6)" /></property>
+	<property name="airDryMetricTon" ><column name="AirDryMetricTon" sql-type="decimal(18,6)" /></property>
 	<property name="packageCount" ></property>
-	<property name="airDryPct" ></property>
+	<property name="airDryPct" ><column name="AirDryPct" sql-type="decimal(18,6)" /></property>
 	<property name="_F_B_0_" ></property>
 	<property name="_F_I_0_" ></property>
 	<property name="_F_L_0_" ></property>
 	<property name="_F_DT_0_" ></property>
-	<property name="_F_N_0_" ></property>
+	<property name="_F_N_0_" ><column name="_F_N_0_" sql-type="decimal(18,6)" /></property>
 	<property name="_F_C5_0_" ><column name="_F_C5_0_" length="5" /></property>
 	<property name="_F_C10_0_" ><column name="_F_C10_0_" length="10" /></property>
 	<property name="_F_C20_0_" ><column name="_F_C20_0_" length="20" /></property>
@@ -45,7 +45,7 @@
 	<property name="_F_I_1_" ></property>
 	<property name="_F_L_1_" ></property>
 	<property name="_F_DT_1_" ></property>
-	<property name="_F_N_1_" ></property>
+	<property name="_F_N_1_" ><column name="_F_N_1_" sql-type="decimal(18,6)" /></property>
 	<property name="_F_C5_1_" ><column name="_F_C5_1_" length="5" /></property>
 	<property name="_F_C10_1_" ><column name="_F_C10_1_" length="10" /></property>
 	<property name="_F_C20_1_" ><column name="_F_C20_1_" length="20" /></property>
@@ -56,7 +56,7 @@
 	<property name="_F_I_2_" ></property>
 	<property name="_F_L_2_" ></property>
 	<property name="_F_DT_2_" ></property>
-	<property name="_F_N_2_" ></property>
+	<property name="_F_N_2_" ><column name="_F_N_2_" sql-type="decimal(18,6)" /></property>
 	<property name="_F_C5_2_" ><column name="_F_C5_2_" length="5" /></property>
 	<property name="_F_C10_2_" ><column name="_F_C10_2_" length="10" /></property>
 	<property name="_F_C20_2_" ><column name="_F_C20_2_" length="20" /></property>
@@ -65,7 +65,7 @@
 	<property name="_F_I_3_" ></property>
 	<property name="_F_L_3_" ></property>
 	<property name="_F_DT_3_" ></property>
-	<property name="_F_N_3_" ></property>
+	<property name="_F_N_3_" ><column name="_F_N_3_" sql-type="decimal(18,6)" /></property>
 	<property name="_F_C5_3_" ><column name="_F_C5_3_" length="5" /></property>
 	<property name="_F_C10_3_" ><column name="_F_C10_3_" length="10" /></property>
 	<property name="_F_C20_3_" ><column name="_F_C20_3_" length="20" /></property>
@@ -74,7 +74,7 @@
 	<property name="_F_I_4_" ></property>
 	<property name="_F_L_4_" ></property>
 	<property name="_F_DT_4_" ></property>
-	<property name="_F_N_4_" ></property>
+	<property name="_F_N_4_" ><column name="_F_N_4_" sql-type="decimal(18,6)" /></property>
 	<property name="_F_C5_4_" ><column name="_F_C5_4_" length="5" /></property>
 	<property name="_F_C10_4_" ><column name="_F_C10_4_" length="10" /></property>
 	<property name="_F_C20_4_" ><column name="_F_C20_4_" length="20" /></property>

@@ -30,6 +30,12 @@
 	<property name="primaryReturnId" ><column name="PrimaryReturnId" sql-type="VARCHAR(20)" /></property>
 	<property name="primaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="picklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></property>
+	<property name="bolNumber" ><column name="BolNumber" sql-type="VARCHAR(60)" /></property>
+	<property name="sealNumber" ><column name="SealNumber" sql-type="VARCHAR(60)" /></property>
+	<property name="vehicleId" ><column name="VehicleId" sql-type="VARCHAR(60)" /></property>
+	<property name="poNumber" ><column name="PoNumber" sql-type="VARCHAR(60)" /></property>
+	<property name="carrier" ><column name="Carrier" sql-type="VARCHAR(60)" /></property>
+	<property name="dateShipped" ><column name="DateShipped" sql-type="DATETIME" /></property>
 	<property name="estimatedReadyDate" ><column name="EstimatedReadyDate" sql-type="DATETIME" /></property>
 	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
 	<property name="estimatedShipWorkEffId" ><column name="EstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>
@@ -68,6 +74,18 @@
         <property name="isPropertyPrimaryShipGroupSeqIdRemoved" column="IsPropertyPrimaryShipGroupSeqIdRemoved"/>
 
         <property name="isPropertyPicklistBinIdRemoved" column="IsPropertyPicklistBinIdRemoved"/>
+
+        <property name="isPropertyBolNumberRemoved" column="IsPropertyBolNumberRemoved"/>
+
+        <property name="isPropertySealNumberRemoved" column="IsPropertySealNumberRemoved"/>
+
+        <property name="isPropertyVehicleIdRemoved" column="IsPropertyVehicleIdRemoved"/>
+
+        <property name="isPropertyPoNumberRemoved" column="IsPropertyPoNumberRemoved"/>
+
+        <property name="isPropertyCarrierRemoved" column="IsPropertyCarrierRemoved"/>
+
+        <property name="isPropertyDateShippedRemoved" column="IsPropertyDateShippedRemoved"/>
 
         <property name="isPropertyEstimatedReadyDateRemoved" column="IsPropertyEstimatedReadyDateRemoved"/>
 

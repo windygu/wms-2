@@ -35,6 +35,26 @@ aggregates:
       # 拣货箱 Id.
       PicklistBinId:
         type: id
+
+      # -------------------------
+      # 提单号
+      BolNumber:
+        type: id-long
+        description: Bill of lading
+      # 铅封号码
+      SealNumber:
+        type: id-long
+      # 集装箱号
+      VehicleId:
+        type: id-long
+      PoNumber:
+        type: id-long
+      Carrier:
+        type: id-long
+      # DOS
+      DateShipped:
+        type: date-time
+      # -------------------------
         
       EstimatedReadyDate:
         type: date-time
@@ -42,8 +62,12 @@ aggregates:
         type: date-time
       EstimatedShipWorkEffId:
         type: id
+      
+      # ---------- ETA ----------
       EstimatedArrivalDate:
         type: date-time
+        description: Estimated Arrival Date(ETA)
+        
       EstimatedArrivalWorkEffId:
         type: id
       LatestCancelDate:
@@ -149,7 +173,7 @@ aggregates:
             
           ShipmentContentDescription:
             type: description
-            
+                        
         # references:
           # Shipment:
             # name: Shipment
@@ -345,6 +369,27 @@ aggregates:
             type: id
           PrimaryReturnId:
             type: id
+            
+          # -------------------------
+          # 提单号
+          BolNumber:
+            type: id-long
+            description: Bill of lading
+          # 集装箱号
+          VehicleId:
+            type: id-long
+          # 铅封号码
+          SealNumber:
+            type: id-long
+          PoNumber:
+            type: id-long
+          Carrier:
+            type: id-long
+          # DOS
+          DateShipped:
+            type: date-time
+          # -------------------------
+      
           EstimatedReadyDate:
             type: date-time
           EstimatedShipDate:
@@ -439,6 +484,7 @@ aggregates:
           # TargetQuantity:
             # type: fixed-point
             # description: The Quantity which should be shipped.
+          
           ShipmentContentDescription:
             type: description
           # --------------------------------

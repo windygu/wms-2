@@ -27,8 +27,8 @@
 
         <subclass name="AbstractPhysicalInventoryLineEvent$AbstractPhysicalInventoryLineStateEvent" abstract="true">
 
-	<property name="bookQuantity" ></property>
-	<property name="countedQuantity" ></property>
+	<property name="bookQuantity" ><column name="BookQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="countedQuantity" ><column name="CountedQuantity" sql-type="decimal(18,6)" /></property>
 	<property name="processed" ></property>
 	<property name="lineNumber" ><column name="LineNumber" length="50" unique-key="UniqueLineNumber" /></property>
 	<property name="reversalLineNumber" ></property>

@@ -40,6 +40,30 @@ public interface ShipmentState
 
     void setPicklistBinId(String picklistBinId);
 
+    String getBolNumber();
+
+    void setBolNumber(String bolNumber);
+
+    String getSealNumber();
+
+    void setSealNumber(String sealNumber);
+
+    String getVehicleId();
+
+    void setVehicleId(String vehicleId);
+
+    String getPoNumber();
+
+    void setPoNumber(String poNumber);
+
+    String getCarrier();
+
+    void setCarrier(String carrier);
+
+    java.sql.Timestamp getDateShipped();
+
+    void setDateShipped(java.sql.Timestamp dateShipped);
+
     java.sql.Timestamp getEstimatedReadyDate();
 
     void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);

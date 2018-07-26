@@ -14,7 +14,7 @@
 	<property name="documentStatusId" ></property>
 	<property name="movementDocumentNumber" ></property>
 	<property name="isApproved" ></property>
-	<property name="approvalAmount" ></property>
+	<property name="approvalAmount" ><column name="ApprovalAmount" sql-type="decimal(18,6)" /></property>
 	<property name="processed" ></property>
 	<property name="processing" ></property>
 	<property name="documentTypeId" ></property>

@@ -35,7 +35,7 @@
 	<property name="movementDate" ></property>
 	<property name="description" ></property>
 	<property name="isApproved" ></property>
-	<property name="approvalAmount" ></property>
+	<property name="approvalAmount" ><column name="ApprovalAmount" sql-type="decimal(18,6)" /></property>
 	<property name="isQuantityUpdated" ></property>
 	<property name="reversalDocumentNumber" ></property>
 	<property name="active" ></property>

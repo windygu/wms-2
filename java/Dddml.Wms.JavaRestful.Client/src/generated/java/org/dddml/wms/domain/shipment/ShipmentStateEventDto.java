@@ -94,6 +94,66 @@ public class ShipmentStateEventDto extends AbstractEvent
         this.picklistBinId = picklistBinId;
     }
 
+    private String bolNumber;
+
+    public String getBolNumber() {
+        return this.bolNumber;
+    }
+
+    public void setBolNumber(String bolNumber) {
+        this.bolNumber = bolNumber;
+    }
+
+    private String sealNumber;
+
+    public String getSealNumber() {
+        return this.sealNumber;
+    }
+
+    public void setSealNumber(String sealNumber) {
+        this.sealNumber = sealNumber;
+    }
+
+    private String vehicleId;
+
+    public String getVehicleId() {
+        return this.vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    private String poNumber;
+
+    public String getPoNumber() {
+        return this.poNumber;
+    }
+
+    public void setPoNumber(String poNumber) {
+        this.poNumber = poNumber;
+    }
+
+    private String carrier;
+
+    public String getCarrier() {
+        return this.carrier;
+    }
+
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
+    }
+
+    private java.sql.Timestamp dateShipped;
+
+    public java.sql.Timestamp getDateShipped() {
+        return this.dateShipped;
+    }
+
+    public void setDateShipped(java.sql.Timestamp dateShipped) {
+        this.dateShipped = dateShipped;
+    }
+
     private java.sql.Timestamp estimatedReadyDate;
 
     public java.sql.Timestamp getEstimatedReadyDate() {
@@ -372,6 +432,66 @@ public class ShipmentStateEventDto extends AbstractEvent
 
     public void setIsPropertyPicklistBinIdRemoved(Boolean removed) {
         this.isPropertyPicklistBinIdRemoved = removed;
+    }
+
+    private Boolean isPropertyBolNumberRemoved;
+
+    public Boolean getIsPropertyBolNumberRemoved() {
+        return this.isPropertyBolNumberRemoved;
+    }
+
+    public void setIsPropertyBolNumberRemoved(Boolean removed) {
+        this.isPropertyBolNumberRemoved = removed;
+    }
+
+    private Boolean isPropertySealNumberRemoved;
+
+    public Boolean getIsPropertySealNumberRemoved() {
+        return this.isPropertySealNumberRemoved;
+    }
+
+    public void setIsPropertySealNumberRemoved(Boolean removed) {
+        this.isPropertySealNumberRemoved = removed;
+    }
+
+    private Boolean isPropertyVehicleIdRemoved;
+
+    public Boolean getIsPropertyVehicleIdRemoved() {
+        return this.isPropertyVehicleIdRemoved;
+    }
+
+    public void setIsPropertyVehicleIdRemoved(Boolean removed) {
+        this.isPropertyVehicleIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPoNumberRemoved;
+
+    public Boolean getIsPropertyPoNumberRemoved() {
+        return this.isPropertyPoNumberRemoved;
+    }
+
+    public void setIsPropertyPoNumberRemoved(Boolean removed) {
+        this.isPropertyPoNumberRemoved = removed;
+    }
+
+    private Boolean isPropertyCarrierRemoved;
+
+    public Boolean getIsPropertyCarrierRemoved() {
+        return this.isPropertyCarrierRemoved;
+    }
+
+    public void setIsPropertyCarrierRemoved(Boolean removed) {
+        this.isPropertyCarrierRemoved = removed;
+    }
+
+    private Boolean isPropertyDateShippedRemoved;
+
+    public Boolean getIsPropertyDateShippedRemoved() {
+        return this.isPropertyDateShippedRemoved;
+    }
+
+    public void setIsPropertyDateShippedRemoved(Boolean removed) {
+        this.isPropertyDateShippedRemoved = removed;
     }
 
     private Boolean isPropertyEstimatedReadyDateRemoved;

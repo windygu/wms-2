@@ -45,6 +45,66 @@ public class ShipmentCommandDtos
             this.primaryReturnId = primaryReturnId;
         }
 
+        private String bolNumber;
+
+        public String getBolNumber() {
+            return this.bolNumber;
+        }
+
+        public void setBolNumber(String bolNumber) {
+            this.bolNumber = bolNumber;
+        }
+
+        private String vehicleId;
+
+        public String getVehicleId() {
+            return this.vehicleId;
+        }
+
+        public void setVehicleId(String vehicleId) {
+            this.vehicleId = vehicleId;
+        }
+
+        private String sealNumber;
+
+        public String getSealNumber() {
+            return this.sealNumber;
+        }
+
+        public void setSealNumber(String sealNumber) {
+            this.sealNumber = sealNumber;
+        }
+
+        private String poNumber;
+
+        public String getPoNumber() {
+            return this.poNumber;
+        }
+
+        public void setPoNumber(String poNumber) {
+            this.poNumber = poNumber;
+        }
+
+        private String carrier;
+
+        public String getCarrier() {
+            return this.carrier;
+        }
+
+        public void setCarrier(String carrier) {
+            this.carrier = carrier;
+        }
+
+        private java.sql.Timestamp dateShipped;
+
+        public java.sql.Timestamp getDateShipped() {
+            return this.dateShipped;
+        }
+
+        public void setDateShipped(java.sql.Timestamp dateShipped) {
+            this.dateShipped = dateShipped;
+        }
+
         private java.sql.Timestamp estimatedReadyDate;
 
         public java.sql.Timestamp getEstimatedReadyDate() {
@@ -230,6 +290,12 @@ public class ShipmentCommandDtos
             cmd.setShipmentTypeId(this.getShipmentTypeId());
             cmd.setPrimaryOrderId(this.getPrimaryOrderId());
             cmd.setPrimaryReturnId(this.getPrimaryReturnId());
+            cmd.setBolNumber(this.getBolNumber());
+            cmd.setVehicleId(this.getVehicleId());
+            cmd.setSealNumber(this.getSealNumber());
+            cmd.setPoNumber(this.getPoNumber());
+            cmd.setCarrier(this.getCarrier());
+            cmd.setDateShipped(this.getDateShipped());
             cmd.setEstimatedReadyDate(this.getEstimatedReadyDate());
             cmd.setEstimatedShipDate(this.getEstimatedShipDate());
             cmd.setEstimatedArrivalDate(this.getEstimatedArrivalDate());

@@ -31,6 +31,12 @@ public class ShipmentStateEventDtoConverter {
         dto.setPrimaryReturnId(e.getPrimaryReturnId());
         dto.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         dto.setPicklistBinId(e.getPicklistBinId());
+        dto.setBolNumber(e.getBolNumber());
+        dto.setSealNumber(e.getSealNumber());
+        dto.setVehicleId(e.getVehicleId());
+        dto.setPoNumber(e.getPoNumber());
+        dto.setCarrier(e.getCarrier());
+        dto.setDateShipped(e.getDateShipped());
         dto.setEstimatedReadyDate(e.getEstimatedReadyDate());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
         dto.setEstimatedShipWorkEffId(e.getEstimatedShipWorkEffId());
@@ -87,6 +93,12 @@ public class ShipmentStateEventDtoConverter {
         dto.setPrimaryReturnId(e.getPrimaryReturnId());
         dto.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         dto.setPicklistBinId(e.getPicklistBinId());
+        dto.setBolNumber(e.getBolNumber());
+        dto.setSealNumber(e.getSealNumber());
+        dto.setVehicleId(e.getVehicleId());
+        dto.setPoNumber(e.getPoNumber());
+        dto.setCarrier(e.getCarrier());
+        dto.setDateShipped(e.getDateShipped());
         dto.setEstimatedReadyDate(e.getEstimatedReadyDate());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
         dto.setEstimatedShipWorkEffId(e.getEstimatedShipWorkEffId());
@@ -113,6 +125,12 @@ public class ShipmentStateEventDtoConverter {
         dto.setIsPropertyPrimaryReturnIdRemoved(e.getIsPropertyPrimaryReturnIdRemoved());
         dto.setIsPropertyPrimaryShipGroupSeqIdRemoved(e.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         dto.setIsPropertyPicklistBinIdRemoved(e.getIsPropertyPicklistBinIdRemoved());
+        dto.setIsPropertyBolNumberRemoved(e.getIsPropertyBolNumberRemoved());
+        dto.setIsPropertySealNumberRemoved(e.getIsPropertySealNumberRemoved());
+        dto.setIsPropertyVehicleIdRemoved(e.getIsPropertyVehicleIdRemoved());
+        dto.setIsPropertyPoNumberRemoved(e.getIsPropertyPoNumberRemoved());
+        dto.setIsPropertyCarrierRemoved(e.getIsPropertyCarrierRemoved());
+        dto.setIsPropertyDateShippedRemoved(e.getIsPropertyDateShippedRemoved());
         dto.setIsPropertyEstimatedReadyDateRemoved(e.getIsPropertyEstimatedReadyDateRemoved());
         dto.setIsPropertyEstimatedShipDateRemoved(e.getIsPropertyEstimatedShipDateRemoved());
         dto.setIsPropertyEstimatedShipWorkEffIdRemoved(e.getIsPropertyEstimatedShipWorkEffIdRemoved());

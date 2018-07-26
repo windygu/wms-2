@@ -60,6 +60,30 @@ public interface ShipmentCommand extends Command
 
         void setPicklistBinId(String picklistBinId);
 
+        String getBolNumber();
+
+        void setBolNumber(String bolNumber);
+
+        String getSealNumber();
+
+        void setSealNumber(String sealNumber);
+
+        String getVehicleId();
+
+        void setVehicleId(String vehicleId);
+
+        String getPoNumber();
+
+        void setPoNumber(String poNumber);
+
+        String getCarrier();
+
+        void setCarrier(String carrier);
+
+        java.sql.Timestamp getDateShipped();
+
+        void setDateShipped(java.sql.Timestamp dateShipped);
+
         java.sql.Timestamp getEstimatedReadyDate();
 
         void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);
@@ -183,6 +207,30 @@ public interface ShipmentCommand extends Command
         Boolean getIsPropertyPicklistBinIdRemoved();
 
         void setIsPropertyPicklistBinIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyBolNumberRemoved();
+
+        void setIsPropertyBolNumberRemoved(Boolean removed);
+
+        Boolean getIsPropertySealNumberRemoved();
+
+        void setIsPropertySealNumberRemoved(Boolean removed);
+
+        Boolean getIsPropertyVehicleIdRemoved();
+
+        void setIsPropertyVehicleIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPoNumberRemoved();
+
+        void setIsPropertyPoNumberRemoved(Boolean removed);
+
+        Boolean getIsPropertyCarrierRemoved();
+
+        void setIsPropertyCarrierRemoved(Boolean removed);
+
+        Boolean getIsPropertyDateShippedRemoved();
+
+        void setIsPropertyDateShippedRemoved(Boolean removed);
 
         Boolean getIsPropertyEstimatedReadyDateRemoved();
 

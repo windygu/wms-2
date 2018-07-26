@@ -15,10 +15,10 @@
 	<version name="version" column="Version" type="long" />
 
 	<property name="movementLineNumber" ></property>
-	<property name="targetQuantity" ></property>
-	<property name="confirmedQuantity" ></property>
-	<property name="differenceQuantity" ></property>
-	<property name="scrappedQuantity" ></property>
+	<property name="targetQuantity" ><column name="TargetQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="confirmedQuantity" ><column name="ConfirmedQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="differenceQuantity" ><column name="DifferenceQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="scrappedQuantity" ><column name="ScrappedQuantity" sql-type="decimal(18,6)" /></property>
 	<property name="description" ></property>
 	<property name="processed" ></property>
 	<property name="createdBy" ></property>

@@ -26,11 +26,11 @@
 
         <subclass name="AbstractInventoryItemEvent$AbstractInventoryItemStateEvent" abstract="true">
 
-	<property name="onHandQuantity" ></property>
-	<property name="inTransitQuantity" ></property>
-	<property name="reservedQuantity" ></property>
-	<property name="occupiedQuantity" ></property>
-	<property name="virtualQuantity" ></property>
+	<property name="onHandQuantity" ><column name="OnHandQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="inTransitQuantity" ><column name="InTransitQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="reservedQuantity" ><column name="ReservedQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="occupiedQuantity" ><column name="OccupiedQuantity" sql-type="decimal(18,6)" /></property>
+	<property name="virtualQuantity" ><column name="VirtualQuantity" sql-type="decimal(18,6)" /></property>
 
     <subclass name="AbstractInventoryItemEvent$SimpleInventoryItemStateCreated" discriminator-value="Created">
     	

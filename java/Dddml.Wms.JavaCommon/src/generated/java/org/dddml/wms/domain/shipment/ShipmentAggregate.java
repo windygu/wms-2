@@ -16,7 +16,7 @@ public interface ShipmentAggregate
 
     void mergePatch(ShipmentCommand.MergePatchShipment c);
 
-    void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId);
+    void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, String bolNumber, String vehicleId, String sealNumber, String poNumber, String carrier, java.sql.Timestamp dateShipped, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId);
 
     void ship(Long version, String commandId, String requesterId);
 

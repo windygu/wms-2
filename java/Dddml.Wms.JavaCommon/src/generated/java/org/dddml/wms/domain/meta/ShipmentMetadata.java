@@ -25,6 +25,12 @@ public final class ShipmentMetadata {
             "primaryReturnId",
             "primaryShipGroupSeqId",
             "picklistBinId",
+            "bolNumber",
+            "sealNumber",
+            "vehicleId",
+            "poNumber",
+            "carrier",
+            "dateShipped",
             "estimatedReadyDate",
             "estimatedShipDate",
             "estimatedShipWorkEffId",
@@ -61,6 +67,12 @@ public final class ShipmentMetadata {
             "String",
             "Long",
             "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "java.sql.Timestamp",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "String",
@@ -115,6 +127,18 @@ public final class ShipmentMetadata {
         aliasMap.put("PrimaryShipGroupSeqId", "primaryShipGroupSeqId");
         aliasMap.put("picklistBinId", "picklistBinId");
         aliasMap.put("PicklistBinId", "picklistBinId");
+        aliasMap.put("bolNumber", "bolNumber");
+        aliasMap.put("BolNumber", "bolNumber");
+        aliasMap.put("sealNumber", "sealNumber");
+        aliasMap.put("SealNumber", "sealNumber");
+        aliasMap.put("vehicleId", "vehicleId");
+        aliasMap.put("VehicleId", "vehicleId");
+        aliasMap.put("poNumber", "poNumber");
+        aliasMap.put("PoNumber", "poNumber");
+        aliasMap.put("carrier", "carrier");
+        aliasMap.put("Carrier", "carrier");
+        aliasMap.put("dateShipped", "dateShipped");
+        aliasMap.put("DateShipped", "dateShipped");
         aliasMap.put("estimatedReadyDate", "estimatedReadyDate");
         aliasMap.put("EstimatedReadyDate", "estimatedReadyDate");
         aliasMap.put("estimatedShipDate", "estimatedShipDate");

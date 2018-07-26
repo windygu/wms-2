@@ -93,6 +93,78 @@ public class ShipmentStateDto
         this.picklistBinId = picklistBinId;
     }
 
+    private String bolNumber;
+
+    public String getBolNumber()
+    {
+        return this.bolNumber;
+    }
+
+    public void setBolNumber(String bolNumber)
+    {
+        this.bolNumber = bolNumber;
+    }
+
+    private String sealNumber;
+
+    public String getSealNumber()
+    {
+        return this.sealNumber;
+    }
+
+    public void setSealNumber(String sealNumber)
+    {
+        this.sealNumber = sealNumber;
+    }
+
+    private String vehicleId;
+
+    public String getVehicleId()
+    {
+        return this.vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId)
+    {
+        this.vehicleId = vehicleId;
+    }
+
+    private String poNumber;
+
+    public String getPoNumber()
+    {
+        return this.poNumber;
+    }
+
+    public void setPoNumber(String poNumber)
+    {
+        this.poNumber = poNumber;
+    }
+
+    private String carrier;
+
+    public String getCarrier()
+    {
+        return this.carrier;
+    }
+
+    public void setCarrier(String carrier)
+    {
+        this.carrier = carrier;
+    }
+
+    private java.sql.Timestamp dateShipped;
+
+    public java.sql.Timestamp getDateShipped()
+    {
+        return this.dateShipped;
+    }
+
+    public void setDateShipped(java.sql.Timestamp dateShipped)
+    {
+        this.dateShipped = dateShipped;
+    }
+
     private java.sql.Timestamp estimatedReadyDate;
 
     public java.sql.Timestamp getEstimatedReadyDate()
@@ -475,6 +547,24 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("PicklistBinId")) {
                 dto.setPicklistBinId(state.getPicklistBinId());
+            }
+            if (returnedFieldsContains("BolNumber")) {
+                dto.setBolNumber(state.getBolNumber());
+            }
+            if (returnedFieldsContains("SealNumber")) {
+                dto.setSealNumber(state.getSealNumber());
+            }
+            if (returnedFieldsContains("VehicleId")) {
+                dto.setVehicleId(state.getVehicleId());
+            }
+            if (returnedFieldsContains("PoNumber")) {
+                dto.setPoNumber(state.getPoNumber());
+            }
+            if (returnedFieldsContains("Carrier")) {
+                dto.setCarrier(state.getCarrier());
+            }
+            if (returnedFieldsContains("DateShipped")) {
+                dto.setDateShipped(state.getDateShipped());
             }
             if (returnedFieldsContains("EstimatedReadyDate")) {
                 dto.setEstimatedReadyDate(state.getEstimatedReadyDate());

@@ -93,6 +93,78 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.picklistBinId = picklistBinId;
     }
 
+    private String bolNumber;
+
+    public String getBolNumber()
+    {
+        return this.bolNumber;
+    }
+
+    public void setBolNumber(String bolNumber)
+    {
+        this.bolNumber = bolNumber;
+    }
+
+    private String sealNumber;
+
+    public String getSealNumber()
+    {
+        return this.sealNumber;
+    }
+
+    public void setSealNumber(String sealNumber)
+    {
+        this.sealNumber = sealNumber;
+    }
+
+    private String vehicleId;
+
+    public String getVehicleId()
+    {
+        return this.vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId)
+    {
+        this.vehicleId = vehicleId;
+    }
+
+    private String poNumber;
+
+    public String getPoNumber()
+    {
+        return this.poNumber;
+    }
+
+    public void setPoNumber(String poNumber)
+    {
+        this.poNumber = poNumber;
+    }
+
+    private String carrier;
+
+    public String getCarrier()
+    {
+        return this.carrier;
+    }
+
+    public void setCarrier(String carrier)
+    {
+        this.carrier = carrier;
+    }
+
+    private java.sql.Timestamp dateShipped;
+
+    public java.sql.Timestamp getDateShipped()
+    {
+        return this.dateShipped;
+    }
+
+    public void setDateShipped(java.sql.Timestamp dateShipped)
+    {
+        this.dateShipped = dateShipped;
+    }
+
     private java.sql.Timestamp estimatedReadyDate;
 
     public java.sql.Timestamp getEstimatedReadyDate()
@@ -500,6 +572,12 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setPrimaryReturnId(e.getPrimaryReturnId());
         this.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         this.setPicklistBinId(e.getPicklistBinId());
+        this.setBolNumber(e.getBolNumber());
+        this.setSealNumber(e.getSealNumber());
+        this.setVehicleId(e.getVehicleId());
+        this.setPoNumber(e.getPoNumber());
+        this.setCarrier(e.getCarrier());
+        this.setDateShipped(e.getDateShipped());
         this.setEstimatedReadyDate(e.getEstimatedReadyDate());
         this.setEstimatedShipDate(e.getEstimatedShipDate());
         this.setEstimatedShipWorkEffId(e.getEstimatedShipWorkEffId());
@@ -607,6 +685,72 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         else
         {
             this.setPicklistBinId(e.getPicklistBinId());
+        }
+        if (e.getBolNumber() == null)
+        {
+            if (e.getIsPropertyBolNumberRemoved() != null && e.getIsPropertyBolNumberRemoved())
+            {
+                this.setBolNumber(null);
+            }
+        }
+        else
+        {
+            this.setBolNumber(e.getBolNumber());
+        }
+        if (e.getSealNumber() == null)
+        {
+            if (e.getIsPropertySealNumberRemoved() != null && e.getIsPropertySealNumberRemoved())
+            {
+                this.setSealNumber(null);
+            }
+        }
+        else
+        {
+            this.setSealNumber(e.getSealNumber());
+        }
+        if (e.getVehicleId() == null)
+        {
+            if (e.getIsPropertyVehicleIdRemoved() != null && e.getIsPropertyVehicleIdRemoved())
+            {
+                this.setVehicleId(null);
+            }
+        }
+        else
+        {
+            this.setVehicleId(e.getVehicleId());
+        }
+        if (e.getPoNumber() == null)
+        {
+            if (e.getIsPropertyPoNumberRemoved() != null && e.getIsPropertyPoNumberRemoved())
+            {
+                this.setPoNumber(null);
+            }
+        }
+        else
+        {
+            this.setPoNumber(e.getPoNumber());
+        }
+        if (e.getCarrier() == null)
+        {
+            if (e.getIsPropertyCarrierRemoved() != null && e.getIsPropertyCarrierRemoved())
+            {
+                this.setCarrier(null);
+            }
+        }
+        else
+        {
+            this.setCarrier(e.getCarrier());
+        }
+        if (e.getDateShipped() == null)
+        {
+            if (e.getIsPropertyDateShippedRemoved() != null && e.getIsPropertyDateShippedRemoved())
+            {
+                this.setDateShipped(null);
+            }
+        }
+        else
+        {
+            this.setDateShipped(e.getDateShipped());
         }
         if (e.getEstimatedReadyDate() == null)
         {

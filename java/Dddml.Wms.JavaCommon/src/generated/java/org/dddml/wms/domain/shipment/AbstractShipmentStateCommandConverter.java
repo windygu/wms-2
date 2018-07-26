@@ -43,6 +43,12 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setPrimaryReturnId(state.getPrimaryReturnId());
         cmd.setPrimaryShipGroupSeqId(state.getPrimaryShipGroupSeqId());
         cmd.setPicklistBinId(state.getPicklistBinId());
+        cmd.setBolNumber(state.getBolNumber());
+        cmd.setSealNumber(state.getSealNumber());
+        cmd.setVehicleId(state.getVehicleId());
+        cmd.setPoNumber(state.getPoNumber());
+        cmd.setCarrier(state.getCarrier());
+        cmd.setDateShipped(state.getDateShipped());
         cmd.setEstimatedReadyDate(state.getEstimatedReadyDate());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
         cmd.setEstimatedShipWorkEffId(state.getEstimatedShipWorkEffId());
@@ -70,6 +76,12 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         if (state.getPrimaryReturnId() == null) { cmd.setIsPropertyPrimaryReturnIdRemoved(true); }
         if (state.getPrimaryShipGroupSeqId() == null) { cmd.setIsPropertyPrimaryShipGroupSeqIdRemoved(true); }
         if (state.getPicklistBinId() == null) { cmd.setIsPropertyPicklistBinIdRemoved(true); }
+        if (state.getBolNumber() == null) { cmd.setIsPropertyBolNumberRemoved(true); }
+        if (state.getSealNumber() == null) { cmd.setIsPropertySealNumberRemoved(true); }
+        if (state.getVehicleId() == null) { cmd.setIsPropertyVehicleIdRemoved(true); }
+        if (state.getPoNumber() == null) { cmd.setIsPropertyPoNumberRemoved(true); }
+        if (state.getCarrier() == null) { cmd.setIsPropertyCarrierRemoved(true); }
+        if (state.getDateShipped() == null) { cmd.setIsPropertyDateShippedRemoved(true); }
         if (state.getEstimatedReadyDate() == null) { cmd.setIsPropertyEstimatedReadyDateRemoved(true); }
         if (state.getEstimatedShipDate() == null) { cmd.setIsPropertyEstimatedShipDateRemoved(true); }
         if (state.getEstimatedShipWorkEffId() == null) { cmd.setIsPropertyEstimatedShipWorkEffIdRemoved(true); }
@@ -120,6 +132,12 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setPrimaryReturnId(state.getPrimaryReturnId());
         cmd.setPrimaryShipGroupSeqId(state.getPrimaryShipGroupSeqId());
         cmd.setPicklistBinId(state.getPicklistBinId());
+        cmd.setBolNumber(state.getBolNumber());
+        cmd.setSealNumber(state.getSealNumber());
+        cmd.setVehicleId(state.getVehicleId());
+        cmd.setPoNumber(state.getPoNumber());
+        cmd.setCarrier(state.getCarrier());
+        cmd.setDateShipped(state.getDateShipped());
         cmd.setEstimatedReadyDate(state.getEstimatedReadyDate());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
         cmd.setEstimatedShipWorkEffId(state.getEstimatedShipWorkEffId());

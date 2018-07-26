@@ -27,6 +27,8 @@ configuration:
     
   sqlTypes:
     DateTime: DATETIME
+    decimal: decimal(18,6)
+    decimal?: decimal(18,6)
   
   # -----------------------------------------
   accountingQuantityTypes:

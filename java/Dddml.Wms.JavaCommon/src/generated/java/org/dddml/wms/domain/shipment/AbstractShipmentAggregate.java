@@ -57,6 +57,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setPrimaryReturnId(c.getPrimaryReturnId());
         e.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
         e.setPicklistBinId(c.getPicklistBinId());
+        e.setBolNumber(c.getBolNumber());
+        e.setSealNumber(c.getSealNumber());
+        e.setVehicleId(c.getVehicleId());
+        e.setPoNumber(c.getPoNumber());
+        e.setCarrier(c.getCarrier());
+        e.setDateShipped(c.getDateShipped());
         e.setEstimatedReadyDate(c.getEstimatedReadyDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedShipWorkEffId(c.getEstimatedShipWorkEffId());
@@ -114,6 +120,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setPrimaryReturnId(c.getPrimaryReturnId());
         e.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
         e.setPicklistBinId(c.getPicklistBinId());
+        e.setBolNumber(c.getBolNumber());
+        e.setSealNumber(c.getSealNumber());
+        e.setVehicleId(c.getVehicleId());
+        e.setPoNumber(c.getPoNumber());
+        e.setCarrier(c.getCarrier());
+        e.setDateShipped(c.getDateShipped());
         e.setEstimatedReadyDate(c.getEstimatedReadyDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedShipWorkEffId(c.getEstimatedShipWorkEffId());
@@ -140,6 +152,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setIsPropertyPrimaryReturnIdRemoved(c.getIsPropertyPrimaryReturnIdRemoved());
         e.setIsPropertyPrimaryShipGroupSeqIdRemoved(c.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         e.setIsPropertyPicklistBinIdRemoved(c.getIsPropertyPicklistBinIdRemoved());
+        e.setIsPropertyBolNumberRemoved(c.getIsPropertyBolNumberRemoved());
+        e.setIsPropertySealNumberRemoved(c.getIsPropertySealNumberRemoved());
+        e.setIsPropertyVehicleIdRemoved(c.getIsPropertyVehicleIdRemoved());
+        e.setIsPropertyPoNumberRemoved(c.getIsPropertyPoNumberRemoved());
+        e.setIsPropertyCarrierRemoved(c.getIsPropertyCarrierRemoved());
+        e.setIsPropertyDateShippedRemoved(c.getIsPropertyDateShippedRemoved());
         e.setIsPropertyEstimatedReadyDateRemoved(c.getIsPropertyEstimatedReadyDateRemoved());
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedShipWorkEffIdRemoved(c.getIsPropertyEstimatedShipWorkEffIdRemoved());
@@ -574,7 +592,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
+        public void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, String bolNumber, String vehicleId, String sealNumber, String poNumber, String carrier, java.sql.Timestamp dateShipped, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
