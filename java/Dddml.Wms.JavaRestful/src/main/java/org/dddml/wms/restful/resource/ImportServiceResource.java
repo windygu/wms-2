@@ -136,7 +136,7 @@ public class ImportServiceResource {
             AttributeSetState attrSet = attributeSetApplicationService.get(prd.getAttributeSetId());
             if (attrSet != null) {
                 for (AttributeUseState attrUse : attrSet.getAttributeUses()) {
-                    if (!attrIds.contains(attrUse)) {
+                    if (!attrIds.contains(attrUse.getAttributeId())) {
                         attrIds.add(attrUse.getAttributeId());
                     }
                 }
