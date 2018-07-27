@@ -6,6 +6,7 @@ import org.dddml.wms.domain.inout.*;
 import org.dddml.wms.domain.product.AbstractProductCommand;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductCommand;
+import org.dddml.wms.domain.uom.UomIds;
 import org.dddml.wms.specialization.ApplicationContext;
 
 import java.math.BigDecimal;
@@ -93,7 +94,7 @@ public class InOutTests {
         prd_1.setAttributeSetId(InitAttributeSets.FLUFF_PULP_ATTR_SET_ID);//"FluffPulpAttrSet");
         prd_1.setAttributeSetInstanceId(InitAttributeSets.FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID);
         prd_1.setIsSerialNumbered(true);
-        //prd_1.QuantityUomId;
+        prd_1.setQuantityUomId(UomIds.kg);
         prd_1.setCommandId(UUID.randomUUID().toString());
 
         productApplicationService.when(prd_1);
