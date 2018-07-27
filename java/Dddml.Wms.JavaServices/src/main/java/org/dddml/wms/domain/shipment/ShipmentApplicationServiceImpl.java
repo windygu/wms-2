@@ -125,13 +125,31 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         } else {
             shipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
         }
-        //todo More properties...
+        // 提单号
+        shipment.setBolNumber(c.getBolNumber());
+        // 集装箱号
+        shipment.setVehicleId(c.getVehicleId());
+        // 铅封号码
+        shipment.setSealNumber(c.getSealNumber());
+        shipment.setPoNumber(c.getPoNumber());
+        shipment.setCarrier(c.getCarrier());
+        // DOS
+        shipment.setDateShipped(c.getDateShipped());
+        shipment.setEstimatedReadyDate(c.getEstimatedReadyDate());
+        shipment.setEstimatedShipDate(c.getEstimatedShipDate());
+        //shipment.setEstimatedShipWorkEffId()
+        shipment.setEstimatedArrivalDate(c.getEstimatedArrivalDate());
+        shipment.setLatestCancelDate(c.getLatestCancelDate());
+        shipment.setEstimatedShipCost(c.getEstimatedShipCost());
+        shipment.setCurrencyUomId(c.getCurrencyUomId());
+        shipment.setHandlingInstructions(c.getHandlingInstructions());
+        shipment.setAdditionalShippingCharge(c.getAdditionalShippingCharge());
+        shipment.setAddtlShippingChargeDesc(c.getAddtlShippingChargeDesc());
+        //todo More properties ???
 
-        List<ShipmentItemCommand.CreateShipmentItem> shipItems = new ArrayList<ShipmentItemCommand.CreateShipmentItem>();
         int i = 0;
         for (ImportingShipmentItem d : c.getShipmentItems()) {
             ShipmentItemCommand.CreateShipmentItem shipItem = createShipmentItem(i, d);
-
             shipment.getShipmentItems().add(shipItem);
             i++;
         }
@@ -179,6 +197,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipItem.setAttributeSetInstanceId(attrSetInstId);
         shipItem.setQuantity(d.getQuantity());
         shipItem.setActive(true);
+        shipItem.setShipmentContentDescription(d.getShipmentContentDescription());
         //todo More proerties???
         return shipItem;
     }
