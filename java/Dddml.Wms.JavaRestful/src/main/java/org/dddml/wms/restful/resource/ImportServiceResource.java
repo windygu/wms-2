@@ -56,51 +56,6 @@ public class ImportServiceResource {
             SEAL_NUMBER_COLUMN_NAME
     };
 
-    @Autowired
-    private ProductApplicationService productApplicationService;
-
-    @Autowired
-    private AttributeSetApplicationService attributeSetApplicationService;
-
-    @Autowired
-    private ShipmentApplicationService shipmentApplicationService;
-
-    //@Autowired
-    //private ImportApplicationService importApplicationService;
-
-    @GetMapping("GetShipmentItemColumnNames")
-    public List<String> getShipmentItemColumnNames(@RequestParam(value = "productIds") String productIds) {
-        String[] prdIdArray = productIds.split(",");
-        return getShipmentItemColumnNames(prdIdArray);
-    }
-
-    @GetMapping("GetShipmentImportTemplate")
-    public ResponseEntity<InputStreamResource> getShipmentImportTemplate(@RequestParam(value = "productIds") String productIds) throws IOException, WriteException {
-        String[] prdIdArray = productIds.split(",");
-        List<String> colNames = getShipmentItemColumnNames(prdIdArray);
-
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        WritableWorkbook workbook = createWritableWorkbook(os);
-
-        try {
-            WritableSheet sheet = workbook.createSheet("Sheet1", 0);
-            addSheetHead(sheet, colNames);
-        } finally {
-            workbook.write();
-            workbook.close();
-            os.flush();
-            os.close();
-        }
-        byte[] bs = os.toByteArray();
-        InputStream inputStream = new ByteArrayInputStream(bs);
-        String filename = "ShipmentImportTemplate.xls";//todo ???
-        return ResponseEntity.ok()
-                .contentLength(bs.length)
-                .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .header("Content-Disposition", "attachment; filename=" + filename)
-                .body(new InputStreamResource(inputStream));
-    }
-
     public static class ImportingShipmentHeader {
         /**
          * Ship To
@@ -231,6 +186,51 @@ public class ImportServiceResource {
             this.productMap = productMap;
         }
 
+    }
+
+    @Autowired
+    private ProductApplicationService productApplicationService;
+
+    @Autowired
+    private AttributeSetApplicationService attributeSetApplicationService;
+
+    @Autowired
+    private ShipmentApplicationService shipmentApplicationService;
+
+    //@Autowired
+    //private ImportApplicationService importApplicationService;
+
+    @GetMapping("GetShipmentItemColumnNames")
+    public List<String> getShipmentItemColumnNames(@RequestParam(value = "productIds") String productIds) {
+        String[] prdIdArray = productIds.split(",");
+        return getShipmentItemColumnNames(prdIdArray);
+    }
+
+    @GetMapping("GetShipmentImportTemplate")
+    public ResponseEntity<InputStreamResource> getShipmentImportTemplate(@RequestParam(value = "productIds") String productIds) throws IOException, WriteException {
+        String[] prdIdArray = productIds.split(",");
+        List<String> colNames = getShipmentItemColumnNames(prdIdArray);
+
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        WritableWorkbook workbook = createWritableWorkbook(os);
+
+        try {
+            WritableSheet sheet = workbook.createSheet("Sheet1", 0);
+            addSheetHead(sheet, colNames);
+        } finally {
+            workbook.write();
+            workbook.close();
+            os.flush();
+            os.close();
+        }
+        byte[] bs = os.toByteArray();
+        InputStream inputStream = new ByteArrayInputStream(bs);
+        String filename = "ShipmentImportTemplate.xls";//todo ???
+        return ResponseEntity.ok()
+                .contentLength(bs.length)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header("Content-Disposition", "attachment; filename=" + filename)
+                .body(new InputStreamResource(inputStream));
     }
 
     @PostMapping("ImportShipments")
