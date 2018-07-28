@@ -14,6 +14,9 @@ import org.dddml.wms.domain.attributeset.AttributeUseState;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.shipment.ImportingShipmentItem;
+import org.dddml.wms.domain.shipment.ShipmentApplicationService;
+import org.dddml.wms.domain.shipment.ShipmentCommands;
+import org.dddml.wms.specialization.DomainError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -24,16 +27,16 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RequestMapping(path = "ImportService", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class ImportServiceResource {
-
-    //@Autowired
-    //private ImportApplicationService importApplicationService;
 
     private static final String SHIPMENT_ID_COLUMN_NAME = "ShipmentId";
     private static final String PRODUCT_COLUMN_NAME = "Product";
@@ -58,6 +61,12 @@ public class ImportServiceResource {
 
     @Autowired
     private AttributeSetApplicationService attributeSetApplicationService;
+
+    @Autowired
+    private ShipmentApplicationService shipmentApplicationService;
+
+    //@Autowired
+    //private ImportApplicationService importApplicationService;
 
     @GetMapping("GetShipmentItemColumnNames")
     public List<String> getShipmentItemColumnNames(@RequestParam(value = "productIds") String productIds) {
@@ -92,8 +101,153 @@ public class ImportServiceResource {
                 .body(new InputStreamResource(inputStream));
     }
 
-    private void readSheet0()  throws MalformedURLException, IOException, BiffException {
-        URL url = new URL("file:///D:/test/测试.xls");
+    public static class ImportingShipmentHeader {
+        /**
+         * Ship To
+         */
+        private String shipToPartyId;
+        /**
+         * Order#
+         */
+        private String primaryOrderId;
+        /**
+         * PO#
+         */
+        private String poNumber;
+        /**
+         * Carrier
+         */
+        private String carrier;
+        /**
+         * Date Shipped
+         */
+        private java.sql.Timestamp dateShipped;
+
+        /**
+         * Estimated Arrival Date
+         */
+        private java.sql.Timestamp estimatedArrivalDate;
+
+        /**
+         * Product name->id mappings.
+         */
+        private ProductMapping[] productMap;
+
+        public static class ProductMapping {
+            /**
+             * Product name.
+             */
+            private String productName;
+
+            public String getProductName() {
+                return productName;
+            }
+
+            public void setProductName(String productName) {
+                this.productName = productName;
+            }
+
+            /**
+             * Product Id.
+             */
+            private String productId;
+
+            public String getProductId() {
+                return productId;
+            }
+
+            public void setProductId(String productId) {
+                this.productId = productId;
+            }
+
+        }
+
+        /**
+         * File(xls) url.
+         */
+        private String fileUrl;
+
+        public String getFileUrl() {
+            return fileUrl;
+        }
+
+        public void setFileUrl(String fileUrl) {
+            this.fileUrl = fileUrl;
+        }
+
+        public String getShipToPartyId() {
+            return shipToPartyId;
+        }
+
+        public void setShipToPartyId(String shipToPartyId) {
+            this.shipToPartyId = shipToPartyId;
+        }
+
+        public String getPrimaryOrderId() {
+            return primaryOrderId;
+        }
+
+        public void setPrimaryOrderId(String primaryOrderId) {
+            this.primaryOrderId = primaryOrderId;
+        }
+
+        public String getPoNumber() {
+            return poNumber;
+        }
+
+        public void setPoNumber(String poNumber) {
+            this.poNumber = poNumber;
+        }
+
+        public String getCarrier() {
+            return carrier;
+        }
+
+        public void setCarrier(String carrier) {
+            this.carrier = carrier;
+        }
+
+        public Timestamp getDateShipped() {
+            return dateShipped;
+        }
+
+        public void setDateShipped(Timestamp dateShipped) {
+            this.dateShipped = dateShipped;
+        }
+
+        public Timestamp getEstimatedArrivalDate() {
+            return estimatedArrivalDate;
+        }
+
+        public void setEstimatedArrivalDate(Timestamp estimatedArrivalDate) {
+            this.estimatedArrivalDate = estimatedArrivalDate;
+        }
+
+        public ProductMapping[] getProductMap() {
+            return productMap;
+        }
+
+        public void setProductMap(ProductMapping[] productMap) {
+            this.productMap = productMap;
+        }
+
+    }
+
+    @PostMapping("ImportShipments")
+    public void importShipments(@RequestBody ImportingShipmentHeader shipmentHeader)
+            throws MalformedURLException, IOException, BiffException {
+
+        String fileUrl = shipmentHeader.getFileUrl();
+        //"file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportExample (1).xls";
+        Map<String, String> prdNameMap = new HashMap<>();
+        //prdNameMap.put("GI SEMI-TREATED FLUFF", "1532609301202");
+        if (shipmentHeader.getProductMap() != null) {
+            for (ImportingShipmentHeader.ProductMapping pm : shipmentHeader.getProductMap()) {
+                prdNameMap.put(pm.getProductName(), pm.getProductId());
+            }
+        }
+
+        URL url = new URL(fileUrl);
         Workbook book = Workbook.getWorkbook(url.openStream());
         List<String> colNames = null;
         Integer shipment_id_column_idx = null;
@@ -121,6 +275,9 @@ public class ImportServiceResource {
                 for (int j = 0; j < columns; j++) {
                     Cell cell = sheet.getCell(j, i);
                     String c = cell.getContents();
+                    if (c != null) {
+                        c = c.trim();
+                    }
                     if (i == 0) {
                         colNames.add(c);
                         if (columnNameEquals(SHIPMENT_ID_COLUMN_NAME, c)) {
@@ -153,7 +310,109 @@ public class ImportServiceResource {
         } finally {
             book.close();
         }
+        // ////////////////////////////////
 
+        if (shipment_id_column_idx == null) {
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", SHIPMENT_ID_COLUMN_NAME);
+        }
+        if (product_column_idx == null) {
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", PRODUCT_COLUMN_NAME);
+        }
+        Map<String, ProductState> prdMap = getProductMap(prdNameMap, product_column_idx, matrix);
+        for (ProductState p : prdMap.values()) {
+            if(p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serial_number_column_idx == null) {
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", SERIAL_NUMBER_COLUMN_NAME);
+            }
+            if(p.getIsManagedByLot() != null && p.getIsManagedByLot() && lot_id_column_idx == null) {
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", LOT_ID_COLUMN_NAME);
+            }
+        }
+
+        Map<String, ShipmentCommands.Import> shipmentMap = new HashMap<>();
+        for (int i = 0; i < matrix.size(); i++) {
+            String[] line = matrix.get(i);
+            String shipmentId = line[shipment_id_column_idx];
+            if (shipmentId == null || shipmentId.isEmpty()) {
+                throw DomainError.named("emptyError", "ShipmentId is empty.");
+            }
+            ShipmentCommands.Import shipmentImport = null;
+            if (!shipmentMap.containsKey(shipmentId)) {
+                shipmentImport = new ShipmentCommands.Import();
+                shipmentImport.setShipmentId(shipmentId);
+                // --------------- set common shipment header ---------------
+                shipmentImport.setPrimaryOrderId(shipmentHeader.getPrimaryOrderId());
+                shipmentImport.setPoNumber(shipmentHeader.getPoNumber());
+                shipmentImport.setPartyIdTo(shipmentHeader.getShipToPartyId());
+                shipmentImport.setCarrier(shipmentHeader.getCarrier());
+                shipmentImport.setDateShipped(shipmentHeader.getDateShipped());
+                shipmentImport.setEstimatedArrivalDate(shipmentHeader.getEstimatedArrivalDate());
+                // -------------------------------------------------------------
+                shipmentImport.setShipmentItems(new ArrayList<>());
+                shipmentMap.put(shipmentId, shipmentImport);
+            } else {
+                shipmentImport = shipmentMap.get(shipmentId);
+            }
+            if (shipmentImport.getBolNumber() == null && bol_number_column_idx != null) {
+                shipmentImport.setBolNumber(line[bol_number_column_idx]);
+            }
+            if (shipmentImport.getVehicleId() == null && vehicle_id_column_idx!= null) {
+                shipmentImport.setVehicleId(line[vehicle_id_column_idx]);
+            }
+            if (shipmentImport.getSealNumber() == null && seal_number_column_idx != null) {
+                shipmentImport.setSealNumber(line[seal_number_column_idx]);
+            }
+            ImportingShipmentItem shipmentItem = new ImportingShipmentItem();
+            shipmentItem.setAttributeSetInstance(new HashMap<>());
+            // Item Seq Id.
+            shipmentItem.setShipmentItemSeqId(String.valueOf(i + 2));
+            // Product Id.
+            shipmentItem.setProductId(prdMap.get(line[product_column_idx]).getProductId());
+            // Serial Number
+            if (serial_number_column_idx != null && line[serial_number_column_idx] != null && !line[serial_number_column_idx].isEmpty()) {
+                shipmentItem.getAttributeSetInstance().put("serialNumber",line[serial_number_column_idx]);
+            }
+            // Lot
+            if (lot_id_column_idx != null && line[lot_id_column_idx] != null && !line[lot_id_column_idx].isEmpty()) {
+                shipmentItem.getAttributeSetInstance().put("lotId",line[lot_id_column_idx]);
+            }
+            // Quantity
+            shipmentItem.setQuantity(new BigDecimal(line[quantity_column_idx]));
+            // Other Attribute values.
+            for (Map.Entry<String, Integer> kv : attributeIdColumnIdxMap.entrySet()) {
+                String attrId = kv.getKey();
+                Integer attrColIdx = kv.getValue();
+                Object attrVal = line[attrColIdx];
+                // ////////////////////////////////////////////////////////
+                //todo 如果不在 product 的属性集中的属性，应该忽略
+                // ////////////////////////////////////////////////////////
+                shipmentItem.getAttributeSetInstance().put(attrId, attrVal);
+            }
+            shipmentImport.getShipmentItems().add(shipmentItem);
+        }
+
+        //execute import...
+        for (ShipmentCommands.Import importInfo : shipmentMap.values()) {
+            importInfo.setCommandId(importInfo.getShipmentId());
+            shipmentApplicationService.when(importInfo);
+        }
+        //return shipmentMap;
+    }
+
+    private Map<String, ProductState> getProductMap(Map<String, String> prdNameMap, final Integer product_column_idx, List<String[]> matrix) {
+        Set<String> prds = matrix.stream().map(m -> m[product_column_idx]).collect(Collectors.toSet());
+        Map<String, ProductState> prdMap = new HashMap<>();
+        for (String prd : prds) {
+            String prdId = prd;
+            if(prdNameMap.containsKey(prd)) {
+                prdId = prdNameMap.get(prd);
+            }
+            ProductState prdState = productApplicationService.get(prdId);
+            if (prdState == null) {
+                throw DomainError.named("missedProduct", "Product '%1$s' missed.", prd);
+            }
+            prdMap.put(prd, prdState);
+        }
+        return prdMap;
     }
 
     private boolean columnNameEquals(String colName, String c) {

@@ -94,6 +94,10 @@ public class ReflectUtils {
             throw new RuntimeException(new NoSuchMethodException());
         }
         try {
+            //todo m is null???
+            if (m == null) {
+                return false;
+            }
             m.invoke(obj, new Object[]{targetPropVal});
             return true;
         } catch (IllegalAccessException | InvocationTargetException e) {
