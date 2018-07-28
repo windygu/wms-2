@@ -6,5 +6,6 @@
 <#@ include file="..\..\LoadBoundedContext.tt" #>
 <#
     var generator = new BoundedContextDomainServicesGenerator(boundedContext);
+    generator.OnlyDtos = true;
     generator.Run();
 #>

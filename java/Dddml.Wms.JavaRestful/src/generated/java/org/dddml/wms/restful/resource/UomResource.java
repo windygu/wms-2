@@ -175,13 +175,13 @@ public class UomResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public UomStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public UomEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            UomStateEventDtoConverter dtoConverter = getUomStateEventDtoConverter();
-            return dtoConverter.toUomStateEventDto((AbstractUomEvent) uomApplicationService.getEvent(idObj, version));
+            //UomStateEventDtoConverter dtoConverter = getUomStateEventDtoConverter();
+            return uomApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class UomResource {
     }
 
 
-    protected  UomStateEventDtoConverter getUomStateEventDtoConverter() {
-        return new UomStateEventDtoConverter();
-    }
+    //protected  UomStateEventDtoConverter getUomStateEventDtoConverter() {
+    //    return new UomStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

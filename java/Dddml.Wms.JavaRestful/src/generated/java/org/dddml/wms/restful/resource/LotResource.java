@@ -175,13 +175,13 @@ public class LotResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public LotStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public LotEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            LotStateEventDtoConverter dtoConverter = getLotStateEventDtoConverter();
-            return dtoConverter.toLotStateEventDto((AbstractLotEvent) lotApplicationService.getEvent(idObj, version));
+            //LotStateEventDtoConverter dtoConverter = getLotStateEventDtoConverter();
+            return lotApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class LotResource {
     }
 
 
-    protected  LotStateEventDtoConverter getLotStateEventDtoConverter() {
-        return new LotStateEventDtoConverter();
-    }
+    //protected  LotStateEventDtoConverter getLotStateEventDtoConverter() {
+    //    return new LotStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

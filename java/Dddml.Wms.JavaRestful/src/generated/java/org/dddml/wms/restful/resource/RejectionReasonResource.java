@@ -175,13 +175,13 @@ public class RejectionReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public RejectionReasonStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public RejectionReasonEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            RejectionReasonStateEventDtoConverter dtoConverter = getRejectionReasonStateEventDtoConverter();
-            return dtoConverter.toRejectionReasonStateEventDto((AbstractRejectionReasonEvent) rejectionReasonApplicationService.getEvent(idObj, version));
+            //RejectionReasonStateEventDtoConverter dtoConverter = getRejectionReasonStateEventDtoConverter();
+            return rejectionReasonApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class RejectionReasonResource {
     }
 
 
-    protected  RejectionReasonStateEventDtoConverter getRejectionReasonStateEventDtoConverter() {
-        return new RejectionReasonStateEventDtoConverter();
-    }
+    //protected  RejectionReasonStateEventDtoConverter getRejectionReasonStateEventDtoConverter() {
+    //    return new RejectionReasonStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

@@ -111,13 +111,13 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public InventoryItemStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public InventoryItemEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             InventoryItemId idObj = InventoryItemResourceUtils.parseIdString(id);
-            InventoryItemStateEventDtoConverter dtoConverter = getInventoryItemStateEventDtoConverter();
-            return dtoConverter.toInventoryItemStateEventDto((AbstractInventoryItemEvent) inventoryItemApplicationService.getEvent(idObj, version));
+            //InventoryItemStateEventDtoConverter dtoConverter = getInventoryItemStateEventDtoConverter();
+            return inventoryItemApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -174,9 +174,9 @@ public class InventoryItemResource {
     }
 
 
-    protected  InventoryItemStateEventDtoConverter getInventoryItemStateEventDtoConverter() {
-        return new InventoryItemStateEventDtoConverter();
-    }
+    //protected  InventoryItemStateEventDtoConverter getInventoryItemStateEventDtoConverter() {
+    //    return new InventoryItemStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

@@ -175,13 +175,13 @@ public class FacilityResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public FacilityStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public FacilityEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            FacilityStateEventDtoConverter dtoConverter = getFacilityStateEventDtoConverter();
-            return dtoConverter.toFacilityStateEventDto((AbstractFacilityEvent) facilityApplicationService.getEvent(idObj, version));
+            //FacilityStateEventDtoConverter dtoConverter = getFacilityStateEventDtoConverter();
+            return facilityApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class FacilityResource {
     }
 
 
-    protected  FacilityStateEventDtoConverter getFacilityStateEventDtoConverter() {
-        return new FacilityStateEventDtoConverter();
-    }
+    //protected  FacilityStateEventDtoConverter getFacilityStateEventDtoConverter() {
+    //    return new FacilityStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

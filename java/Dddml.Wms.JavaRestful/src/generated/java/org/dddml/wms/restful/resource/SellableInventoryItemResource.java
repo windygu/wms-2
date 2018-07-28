@@ -196,9 +196,9 @@ public class SellableInventoryItemResource {
     }
 
 
-    protected  SellableInventoryItemStateEventDtoConverter getSellableInventoryItemStateEventDtoConverter() {
-        return new SellableInventoryItemStateEventDtoConverter();
-    }
+    //protected  SellableInventoryItemStateEventDtoConverter getSellableInventoryItemStateEventDtoConverter() {
+    //    return new SellableInventoryItemStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

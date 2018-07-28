@@ -175,13 +175,13 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public PicklistBinStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public PicklistBinEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            PicklistBinStateEventDtoConverter dtoConverter = getPicklistBinStateEventDtoConverter();
-            return dtoConverter.toPicklistBinStateEventDto((AbstractPicklistBinEvent) picklistBinApplicationService.getEvent(idObj, version));
+            //PicklistBinStateEventDtoConverter dtoConverter = getPicklistBinStateEventDtoConverter();
+            return picklistBinApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -233,9 +233,9 @@ public class PicklistBinResource {
     }
 
 
-    protected  PicklistBinStateEventDtoConverter getPicklistBinStateEventDtoConverter() {
-        return new PicklistBinStateEventDtoConverter();
-    }
+    //protected  PicklistBinStateEventDtoConverter getPicklistBinStateEventDtoConverter() {
+    //    return new PicklistBinStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

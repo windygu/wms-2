@@ -175,13 +175,13 @@ public class PartyRoleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public PartyRoleStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public PartyRoleEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(id);
-            PartyRoleStateEventDtoConverter dtoConverter = getPartyRoleStateEventDtoConverter();
-            return dtoConverter.toPartyRoleStateEventDto((AbstractPartyRoleEvent) partyRoleApplicationService.getEvent(idObj, version));
+            //PartyRoleStateEventDtoConverter dtoConverter = getPartyRoleStateEventDtoConverter();
+            return partyRoleApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class PartyRoleResource {
     }
 
 
-    protected  PartyRoleStateEventDtoConverter getPartyRoleStateEventDtoConverter() {
-        return new PartyRoleStateEventDtoConverter();
-    }
+    //protected  PartyRoleStateEventDtoConverter getPartyRoleStateEventDtoConverter() {
+    //    return new PartyRoleStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

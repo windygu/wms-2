@@ -124,8 +124,7 @@ public class ShipmentTests {
         ImportingShipmentItem shipItem_2 = newImportingShipmentItem(prdId, rollId_2);
 
         shipImport.setShipmentItems(
-                new java.util.HashSet<ImportingShipmentItem>(
-                        java.util.Arrays.asList(new ImportingShipmentItem[]{shipItem_1, shipItem_2}))
+                        java.util.Arrays.asList(new ImportingShipmentItem[]{shipItem_1, shipItem_2})
         );
 
         shipImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);

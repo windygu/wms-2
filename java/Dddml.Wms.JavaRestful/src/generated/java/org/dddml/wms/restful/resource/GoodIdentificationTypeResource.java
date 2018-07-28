@@ -175,13 +175,13 @@ public class GoodIdentificationTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public GoodIdentificationTypeStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public GoodIdentificationTypeEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            GoodIdentificationTypeStateEventDtoConverter dtoConverter = getGoodIdentificationTypeStateEventDtoConverter();
-            return dtoConverter.toGoodIdentificationTypeStateEventDto((AbstractGoodIdentificationTypeEvent) goodIdentificationTypeApplicationService.getEvent(idObj, version));
+            //GoodIdentificationTypeStateEventDtoConverter dtoConverter = getGoodIdentificationTypeStateEventDtoConverter();
+            return goodIdentificationTypeApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class GoodIdentificationTypeResource {
     }
 
 
-    protected  GoodIdentificationTypeStateEventDtoConverter getGoodIdentificationTypeStateEventDtoConverter() {
-        return new GoodIdentificationTypeStateEventDtoConverter();
-    }
+    //protected  GoodIdentificationTypeStateEventDtoConverter getGoodIdentificationTypeStateEventDtoConverter() {
+    //    return new GoodIdentificationTypeStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

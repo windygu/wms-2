@@ -196,9 +196,9 @@ public class InventoryItemRequirementResource {
     }
 
 
-    protected  InventoryItemRequirementStateEventDtoConverter getInventoryItemRequirementStateEventDtoConverter() {
-        return new InventoryItemRequirementStateEventDtoConverter();
-    }
+    //protected  InventoryItemRequirementStateEventDtoConverter getInventoryItemRequirementStateEventDtoConverter() {
+    //    return new InventoryItemRequirementStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

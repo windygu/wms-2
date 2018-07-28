@@ -175,13 +175,13 @@ public class AttributeSetInstanceExtensionFieldResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public AttributeSetInstanceExtensionFieldStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public AttributeSetInstanceExtensionFieldEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            AttributeSetInstanceExtensionFieldStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldStateEventDtoConverter();
-            return dtoConverter.toAttributeSetInstanceExtensionFieldStateEventDto((AbstractAttributeSetInstanceExtensionFieldEvent) attributeSetInstanceExtensionFieldApplicationService.getEvent(idObj, version));
+            //AttributeSetInstanceExtensionFieldStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldStateEventDtoConverter();
+            return attributeSetInstanceExtensionFieldApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class AttributeSetInstanceExtensionFieldResource {
     }
 
 
-    protected  AttributeSetInstanceExtensionFieldStateEventDtoConverter getAttributeSetInstanceExtensionFieldStateEventDtoConverter() {
-        return new AttributeSetInstanceExtensionFieldStateEventDtoConverter();
-    }
+    //protected  AttributeSetInstanceExtensionFieldStateEventDtoConverter getAttributeSetInstanceExtensionFieldStateEventDtoConverter() {
+    //    return new AttributeSetInstanceExtensionFieldStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

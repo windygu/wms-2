@@ -22,9 +22,9 @@ public class IdServiceResource {
     private IdApplicationService idApplicationService;
 
     @PostMapping("GetDocumentNumber")
-    public String getDocumentNumber(@RequestBody IdServiceCommandDtos.GetDocumentNumberDto requestContent)
+    public String getDocumentNumber(@RequestBody IdServiceCommands.GetDocumentNumber requestContent)
     {
-        return idApplicationService.when(requestContent.toGetDocumentNumber());
+        return idApplicationService.when(requestContent);
     }
 
 }

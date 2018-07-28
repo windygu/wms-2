@@ -175,13 +175,13 @@ public class OrderItemShipGrpInvReservationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public OrderItemShipGrpInvReservationStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public OrderItemShipGrpInvReservationEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(id);
-            OrderItemShipGrpInvReservationStateEventDtoConverter dtoConverter = getOrderItemShipGrpInvReservationStateEventDtoConverter();
-            return dtoConverter.toOrderItemShipGrpInvReservationStateEventDto((AbstractOrderItemShipGrpInvReservationEvent) orderItemShipGrpInvReservationApplicationService.getEvent(idObj, version));
+            //OrderItemShipGrpInvReservationStateEventDtoConverter dtoConverter = getOrderItemShipGrpInvReservationStateEventDtoConverter();
+            return orderItemShipGrpInvReservationApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class OrderItemShipGrpInvReservationResource {
     }
 
 
-    protected  OrderItemShipGrpInvReservationStateEventDtoConverter getOrderItemShipGrpInvReservationStateEventDtoConverter() {
-        return new OrderItemShipGrpInvReservationStateEventDtoConverter();
-    }
+    //protected  OrderItemShipGrpInvReservationStateEventDtoConverter getOrderItemShipGrpInvReservationStateEventDtoConverter() {
+    //    return new OrderItemShipGrpInvReservationStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

@@ -175,13 +175,13 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public PickwaveStateEventDto getStateEvent(@PathVariable("id") Long id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public PickwaveEvent getStateEvent(@PathVariable("id") Long id, @PathVariable("version") long version) {
         try {
 
             Long idObj = id;
-            PickwaveStateEventDtoConverter dtoConverter = getPickwaveStateEventDtoConverter();
-            return dtoConverter.toPickwaveStateEventDto((AbstractPickwaveEvent) pickwaveApplicationService.getEvent(idObj, version));
+            //PickwaveStateEventDtoConverter dtoConverter = getPickwaveStateEventDtoConverter();
+            return pickwaveApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class PickwaveResource {
     }
 
 
-    protected  PickwaveStateEventDtoConverter getPickwaveStateEventDtoConverter() {
-        return new PickwaveStateEventDtoConverter();
-    }
+    //protected  PickwaveStateEventDtoConverter getPickwaveStateEventDtoConverter() {
+    //    return new PickwaveStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

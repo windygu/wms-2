@@ -165,10 +165,10 @@ public class MovementConfirmationResource {
 
 
     @PutMapping("{id}/_commands/DocumentAction")
-    public void documentAction(@PathVariable("id") String id, @RequestBody MovementConfirmationCommandDtos.DocumentActionRequestContent content) {
+    public void documentAction(@PathVariable("id") String id, @RequestBody MovementConfirmationCommands.DocumentAction content) {
         try {
 
-            MovementConfirmationCommands.DocumentAction cmd = content.toDocumentAction();
+            MovementConfirmationCommands.DocumentAction cmd = content;//.toDocumentAction();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -193,13 +193,13 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public MovementConfirmationStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public MovementConfirmationEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            MovementConfirmationStateEventDtoConverter dtoConverter = getMovementConfirmationStateEventDtoConverter();
-            return dtoConverter.toMovementConfirmationStateEventDto((AbstractMovementConfirmationEvent) movementConfirmationApplicationService.getEvent(idObj, version));
+            //MovementConfirmationStateEventDtoConverter dtoConverter = getMovementConfirmationStateEventDtoConverter();
+            return movementConfirmationApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -246,9 +246,9 @@ public class MovementConfirmationResource {
     }
 
 
-    protected  MovementConfirmationStateEventDtoConverter getMovementConfirmationStateEventDtoConverter() {
-        return new MovementConfirmationStateEventDtoConverter();
-    }
+    //protected  MovementConfirmationStateEventDtoConverter getMovementConfirmationStateEventDtoConverter() {
+    //    return new MovementConfirmationStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

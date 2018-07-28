@@ -54,13 +54,6 @@ public class IdServiceCommandDtos {
             this.requesterId = requesterId;
         }
 
-        public IdServiceCommands.GetDocumentNumber toGetDocumentNumber() {
-            IdServiceCommands.GetDocumentNumber cmd = new IdServiceCommands.GetDocumentNumber();
-            cmd.setDocumentType(this.getDocumentType());
-            cmd.setCommandId(this.getCommandId());
-            cmd.setRequesterId(this.getRequesterId());
-            return cmd;
-        }
     }
 
 

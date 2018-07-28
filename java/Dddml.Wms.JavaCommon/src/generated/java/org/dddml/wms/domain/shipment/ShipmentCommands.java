@@ -1,6 +1,6 @@
 package org.dddml.wms.domain.shipment;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
@@ -239,13 +239,13 @@ public class ShipmentCommands
             this.addtlShippingChargeDesc = addtlShippingChargeDesc;
         }
 
-        private Set<ImportingShipmentItem> shipmentItems;
+        private List<ImportingShipmentItem> shipmentItems;
 
-        public Set<ImportingShipmentItem> getShipmentItems() {
+        public List<ImportingShipmentItem> getShipmentItems() {
             return this.shipmentItems;
         }
 
-        public void setShipmentItems(Set<ImportingShipmentItem> shipmentItems) {
+        public void setShipmentItems(List<ImportingShipmentItem> shipmentItems) {
             this.shipmentItems = shipmentItems;
         }
 

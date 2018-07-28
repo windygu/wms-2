@@ -186,13 +186,13 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public AttributeStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public AttributeEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            AttributeStateEventDtoConverter dtoConverter = getAttributeStateEventDtoConverter();
-            return dtoConverter.toAttributeStateEventDto((AbstractAttributeEvent) attributeApplicationService.getEvent(idObj, version));
+            //AttributeStateEventDtoConverter dtoConverter = getAttributeStateEventDtoConverter();
+            return attributeApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -264,9 +264,9 @@ public class AttributeResource {
     }
 
 
-    protected  AttributeStateEventDtoConverter getAttributeStateEventDtoConverter() {
-        return new AttributeStateEventDtoConverter();
-    }
+    //protected  AttributeStateEventDtoConverter getAttributeStateEventDtoConverter() {
+    //    return new AttributeStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

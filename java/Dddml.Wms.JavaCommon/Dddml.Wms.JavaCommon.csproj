@@ -72,9 +72,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldGroupState.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldGroupStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldGroupAggregate.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
@@ -94,12 +91,6 @@
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldGroupStateDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldGroupStateEventDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldGroupStateQueryRepository.java">
@@ -137,9 +128,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldState.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldAggregate.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
@@ -159,12 +147,6 @@
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventDtoConverter.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateQueryRepository.java">
@@ -202,9 +184,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\AbstractAttributeSetInstanceState.java">
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\AbstractAttributeSetInstanceStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\AttributeSetInstanceAggregate.java">
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
     </Content>
@@ -224,12 +203,6 @@
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\AttributeSetInstanceStateDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\AttributeSetInstanceStateEventDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\AttributeSetInstanceStateEventDtoConverter.java">
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\AttributeSetInstanceStateQueryRepository.java">
@@ -267,9 +240,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AbstractAttributeSetState.java">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AbstractAttributeSetStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AbstractAttributeUseCommand.java">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
@@ -280,9 +250,6 @@
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AbstractAttributeUseState.java">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AbstractAttributeUseStateCommandConverter.java">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AbstractAttributeUseStates.java">
@@ -312,12 +279,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeSetStateDto.java">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeSetStateEventDto.java">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeSetStateEventDtoConverter.java">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeSetStateQueryRepository.java">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
@@ -343,12 +304,6 @@
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeUseStateDto.java">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeUseStateEventDto.java">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeUseStateEventDtoConverter.java">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\AttributeUseStates.java">
@@ -386,9 +341,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasState.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeAliasStates.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
@@ -407,9 +359,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeState.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeValueCommand.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
@@ -420,9 +369,6 @@
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeValueState.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeValueStateCommandConverter.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AbstractAttributeValueStates.java">
@@ -455,12 +401,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeAliasStateDto.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventDto.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeAliasStateEventDtoConverter.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeAliasStates.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
@@ -480,12 +420,6 @@
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeStateDto.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeStateEventDto.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeStateEventDtoConverter.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeStateQueryRepository.java">
@@ -516,12 +450,6 @@
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeValueStateDto.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeValueStateEventDto.java">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeValueStateEventDtoConverter.java">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\AttributeValueStates.java">
@@ -571,9 +499,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechState.java">
       <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechStateCommandConverter.java">
-      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechAggregate.java">
       <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
     </Content>
@@ -593,12 +518,6 @@
       <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateDto.java">
-      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateEventDto.java">
-      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateEventDtoConverter.java">
       <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateQueryRepository.java">
@@ -677,9 +596,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonState.java">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonStateCommandConverter.java">
-      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\CreateOrMergePatchDamageReasonDto.java">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Content>
@@ -702,12 +618,6 @@
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\DamageReasonStateDto.java">
-      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventDto.java">
-      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventDtoConverter.java">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\DamageReasonStateQueryRepository.java">
@@ -783,9 +693,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityState.java">
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityStateCommandConverter.java">
-      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\facility\CreateOrMergePatchFacilityDto.java">
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
     </Content>
@@ -811,12 +718,6 @@
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateDto.java">
-      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateEventDto.java">
-      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateEventDtoConverter.java">
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateQueryRepository.java">
@@ -846,9 +747,6 @@
       <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeState.java">
-      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\AbstractGoodIdentificationTypeStateCommandConverter.java">
       <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\CreateOrMergePatchGoodIdentificationTypeDto.java">
@@ -881,12 +779,6 @@
       <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateDto.java">
-      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateEventDto.java">
-      <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateEventDtoConverter.java">
       <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateQueryRepository.java">
@@ -922,9 +814,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutImageState.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutImageStateCommandConverter.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutImageStates.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -949,25 +838,16 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineImageState.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineImageStateCommandConverter.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineImageStates.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineState.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineStateCommandConverter.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutLineStates.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutState.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutStateCommandConverter.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\CreateOrMergePatchInOutDto.java">
@@ -992,9 +872,6 @@
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutCommand.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutCommandDtos.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutCommands.java">
@@ -1028,12 +905,6 @@
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageStateDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageStateEventDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageStateEventDtoConverter.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutImageStates.java">
@@ -1078,12 +949,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageStateDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageStateEventDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageStateEventDtoConverter.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineImageStates.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -1096,12 +961,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateEventDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStateEventDtoConverter.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutLineStates.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -1109,12 +968,6 @@
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutStateDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutStateEventDto.java">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutStateEventDtoConverter.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutStateQueryRepository.java">
@@ -1157,9 +1010,6 @@
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemEvent.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemCommandDtos.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemCommands.java">
@@ -1221,9 +1071,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeState.java">
       <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeStateCommandConverter.java">
-      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\CreateOrMergePatchLocatorTypeDto.java">
       <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
     </Content>
@@ -1254,12 +1101,6 @@
       <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateDto.java">
-      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateEventDto.java">
-      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateEventDtoConverter.java">
       <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateQueryRepository.java">
@@ -1412,9 +1253,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationState.java">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationStateCommandConverter.java">
-      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\CreateOrMergePatchOrderItemShipGrpInvReservationDto.java">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
     </Content>
@@ -1445,12 +1283,6 @@
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateDto.java">
-      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateEventDto.java">
-      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateEventDtoConverter.java">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateQueryRepository.java">
@@ -1507,16 +1339,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderItemShipGroupAssociationState.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderItemShipGroupAssociationStateCommandConverter.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderItemShipGroupAssociationStates.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderItemState.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderItemStateCommandConverter.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderItemStates.java">
@@ -1534,9 +1360,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleState.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleStateCommandConverter.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleStates.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
@@ -1552,16 +1375,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupState.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupStateCommandConverter.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupStates.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderState.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderStateCommandConverter.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\CreateOrMergePatchOrderDto.java">
@@ -1636,12 +1453,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemShipGroupAssociationStateDto.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemShipGroupAssociationStateEventDto.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemShipGroupAssociationStateEventDtoConverter.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemShipGroupAssociationStates.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
@@ -1652,12 +1463,6 @@
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemStateDto.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemStateEventDto.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemStateEventDtoConverter.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemStates.java">
@@ -1687,12 +1492,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateDto.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateEventDto.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateEventDtoConverter.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStates.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
@@ -1720,12 +1519,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateDto.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateEventDto.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateEventDtoConverter.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStates.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
@@ -1733,12 +1526,6 @@
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderStateDto.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderStateEventDto.java">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderStateEventDtoConverter.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderStateQueryRepository.java">
@@ -1795,9 +1582,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleState.java">
       <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleStateCommandConverter.java">
-      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\CreateOrMergePatchPartyRoleDto.java">
       <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
     </Content>
@@ -1831,12 +1615,6 @@
       <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateDto.java">
-      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateEventDto.java">
-      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateEventDtoConverter.java">
       <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateQueryRepository.java">
@@ -1899,9 +1677,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinState.java">
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinStateCommandConverter.java">
-      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemCommand.java">
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
@@ -1912,9 +1687,6 @@
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemState.java">
-      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemStateCommandConverter.java">
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemStates.java">
@@ -1958,12 +1730,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateDto.java">
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateEventDto.java">
-      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateEventDtoConverter.java">
-      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateQueryRepository.java">
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
@@ -1992,12 +1758,6 @@
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateDto.java">
-      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateEventDto.java">
-      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateEventDtoConverter.java">
       <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStates.java">
@@ -2033,16 +1793,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleState.java">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleStateCommandConverter.java">
-      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleStates.java">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistState.java">
-      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistStateCommandConverter.java">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\CreateOrMergePatchPicklistDto.java">
@@ -2098,12 +1852,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateDto.java">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateEventDto.java">
-      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateEventDtoConverter.java">
-      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStates.java">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Content>
@@ -2111,12 +1859,6 @@
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateDto.java">
-      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateEventDto.java">
-      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateEventDtoConverter.java">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateQueryRepository.java">
@@ -2144,9 +1886,6 @@
       <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveState.java">
-      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveStateCommandConverter.java">
       <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\CreateOrMergePatchPickwaveDto.java">
@@ -2179,12 +1918,6 @@
       <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateDto.java">
-      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateEventDto.java">
-      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateEventDtoConverter.java">
       <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateQueryRepository.java">
@@ -2223,9 +1956,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationState.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationStateCommandConverter.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractGoodIdentificationStates.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
@@ -2245,9 +1975,6 @@
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductState.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\AbstractProductStateCommandConverter.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\CreateOrMergePatchGoodIdentificationDto.java">
@@ -2280,12 +2007,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateDto.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateEventDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStateEventDtoConverter.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\GoodIdentificationStates.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
@@ -2311,12 +2032,6 @@
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateEventDto.java">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateEventDtoConverter.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\product\ProductStateQueryRepository.java">
@@ -2355,9 +2070,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeState.java">
       <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeStateCommandConverter.java">
-      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\roletype\CreateOrMergePatchRoleTypeDto.java">
       <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
     </Content>
@@ -2388,12 +2100,6 @@
       <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateDto.java">
-      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateEventDto.java">
-      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateEventDtoConverter.java">
       <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateQueryRepository.java">
@@ -2431,9 +2137,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\service\IdApplicationService.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommandDtos.java">
-      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommands.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
@@ -2453,9 +2156,6 @@
       <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeState.java">
-      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeStateCommandConverter.java">
       <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\CreateOrMergePatchShipmentMethodTypeDto.java">
@@ -2490,12 +2190,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateDto.java">
       <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateEventDto.java">
-      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateQueryRepository.java">
       <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
     </Content>
@@ -2526,9 +2220,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentState.java">
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentStateCommandConverter.java">
-      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentStates.java">
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
@@ -2536,9 +2227,6 @@
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageState.java">
-      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageStateCommandConverter.java">
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\CreateOrMergePatchShipmentPackageContentDto.java">
@@ -2591,12 +2279,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateDto.java">
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateEventDto.java">
-      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateEventDtoConverter.java">
-      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStates.java">
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
@@ -2615,12 +2297,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateDto.java">
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateEventDto.java">
-      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateEventDtoConverter.java">
-      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateQueryRepository.java">
       <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
     </Content>
@@ -2637,9 +2313,6 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceState.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceStateCommandConverter.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceStates.java">
@@ -2676,12 +2349,6 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateDto.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateEventDto.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateEventDtoConverter.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStates.java">
@@ -2861,16 +2528,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryState.java">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryStateCommandConverter.java">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementEntryStates.java">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementState.java">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\AbstractInventoryItemRequirementStateCommandConverter.java">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\CreateOrMergePatchInventoryItemRequirementDto.java">
@@ -2911,12 +2572,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateDto.java">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventDto.java">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStateEventDtoConverter.java">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementEntryStates.java">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Content>
@@ -2924,12 +2579,6 @@
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateDto.java">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventDto.java">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateEventDtoConverter.java">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\InventoryItemRequirementStateQueryRepository.java">
@@ -2962,16 +2611,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemEntryState.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemEntryStateCommandConverter.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemEntryStates.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemState.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\AbstractInventoryItemStateCommandConverter.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\CreateOrMergePatchInventoryItemDto.java">
@@ -3012,12 +2655,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemEntryStateDto.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemEntryStateEventDto.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemEntryStateEventDtoConverter.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemEntryStates.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
@@ -3031,12 +2668,6 @@
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemStateDto.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemStateEventDto.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemStateEventDtoConverter.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemStateQueryRepository.java">
@@ -3063,9 +2694,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleState.java">
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\AbstractInventoryPostingRuleStateCommandConverter.java">
-      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\CreateOrMergePatchInventoryPostingRuleDto.java">
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Content>
@@ -3087,12 +2715,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateDto.java">
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventDto.java">
-      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateEventDtoConverter.java">
-      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleStateQueryRepository.java">
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Content>
@@ -3112,9 +2734,6 @@
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredState.java">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\AbstractInventoryPRTriggeredStateCommandConverter.java">
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\CreateOrMergePatchInventoryPRTriggeredDto.java">
@@ -3144,12 +2763,6 @@
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateDto.java">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventDto.java">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateEventDtoConverter.java">
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredStateQueryRepository.java">
@@ -3182,9 +2795,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\locator\AbstractLocatorState.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\locator\AbstractLocatorStateCommandConverter.java">
-      <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locator\CreateOrMergePatchLocatorDto.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
@@ -3211,12 +2821,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\locator\LocatorStateDto.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\locator\LocatorStateEventDto.java">
-      <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\locator\LocatorStateEventDtoConverter.java">
-      <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locator\LocatorStateQueryRepository.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
@@ -3239,9 +2843,6 @@
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\AbstractLotState.java">
-      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\lot\AbstractLotStateCommandConverter.java">
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\CreateOrMergePatchLotDto.java">
@@ -3268,12 +2869,6 @@
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\LotStateDto.java">
-      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\lot\LotStateEventDto.java">
-      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\lot\LotStateEventDtoConverter.java">
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\LotStateQueryRepository.java">
@@ -3557,16 +3152,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\AbstractMovementConfirmationLineState.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\AbstractMovementConfirmationLineStateCommandConverter.java">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\AbstractMovementConfirmationLineStates.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\AbstractMovementConfirmationState.java">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\AbstractMovementConfirmationStateCommandConverter.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\CreateOrMergePatchMovementConfirmationDto.java">
@@ -3592,9 +3181,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationCommand.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationCommandDtos.java">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationCommands.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
@@ -3613,12 +3199,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationLineStateDto.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationLineStateEventDto.java">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationLineStateEventDtoConverter.java">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationLineStates.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
@@ -3626,12 +3206,6 @@
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationStateDto.java">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationStateEventDto.java">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationStateEventDtoConverter.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationStateQueryRepository.java">
@@ -3702,16 +3276,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\AbstractMovementLineState.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\AbstractMovementLineStateCommandConverter.java">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\AbstractMovementLineStates.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\AbstractMovementState.java">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\AbstractMovementStateCommandConverter.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\CreateOrMergePatchMovementDto.java">
@@ -3737,9 +3305,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementCommand.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementCommandDtos.java">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementCommands.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
@@ -3758,12 +3323,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementLineStateDto.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementLineStateEventDto.java">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementLineStateEventDtoConverter.java">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementLineStates.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
@@ -3771,12 +3330,6 @@
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementStateDto.java">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementStateEventDto.java">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementStateEventDtoConverter.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\MovementStateQueryRepository.java">
@@ -3801,9 +3354,6 @@
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\AbstractOrderShipmentState.java">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\AbstractOrderShipmentStateCommandConverter.java">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\CreateOrMergePatchOrderShipmentDto.java">
@@ -3835,12 +3385,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\OrderShipmentStateDto.java">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\OrderShipmentStateEventDto.java">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\OrderShipmentStateEventDtoConverter.java">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\OrderShipmentStateQueryRepository.java">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Content>
@@ -3865,9 +3409,6 @@
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\AbstractOrganizationStructureTypeState.java">
-      <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\AbstractOrganizationStructureTypeStateCommandConverter.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\CreateOrMergePatchOrganizationStructureTypeDto.java">
@@ -3896,12 +3437,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\OrganizationStructureTypeStateDto.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\OrganizationStructureTypeStateEventDto.java">
-      <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\OrganizationStructureTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\OrganizationStructureTypeStateQueryRepository.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Content>
@@ -3921,9 +3456,6 @@
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\AbstractOrganizationStructureState.java">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\AbstractOrganizationStructureStateCommandConverter.java">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\CreateOrMergePatchOrganizationStructureDto.java">
@@ -3953,12 +3485,6 @@
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureStateDto.java">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureStateEventDto.java">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureStateEventDtoConverter.java">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureStateQueryRepository.java">
@@ -3997,9 +3523,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\party\AbstractPartyState.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\party\AbstractPartyStateCommandConverter.java">
-      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\party\CreateOrMergePatchPartyDto.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
@@ -4035,12 +3558,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyStateDto.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyStateEventDto.java">
-      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyStateEventDtoConverter.java">
-      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyStateQueryRepository.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
@@ -4071,16 +3588,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineState.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineStateCommandConverter.java">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryLineStates.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryState.java">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryStateCommandConverter.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\CreateOrMergePatchPhysicalInventoryDto.java">
@@ -4106,9 +3617,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryCommand.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryCommandDtos.java">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryCommands.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
@@ -4127,12 +3635,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateDto.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventDto.java">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStateEventDtoConverter.java">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineStates.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
@@ -4140,12 +3642,6 @@
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateDto.java">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventDto.java">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateEventDtoConverter.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryStateQueryRepository.java">
@@ -4170,9 +3666,6 @@
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\AbstractProductCategoryMemberState.java">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\AbstractProductCategoryMemberStateCommandConverter.java">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\CreateOrMergePatchProductCategoryMemberDto.java">
@@ -4204,12 +3697,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\ProductCategoryMemberStateDto.java">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\ProductCategoryMemberStateEventDto.java">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\ProductCategoryMemberStateEventDtoConverter.java">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\ProductCategoryMemberStateQueryRepository.java">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Content>
@@ -4229,9 +3716,6 @@
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\AbstractProductCategoryState.java">
-      <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\AbstractProductCategoryStateCommandConverter.java">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\CreateOrMergePatchProductCategoryDto.java">
@@ -4260,12 +3744,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\ProductCategoryStateDto.java">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\ProductCategoryStateEventDto.java">
-      <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\ProductCategoryStateEventDtoConverter.java">
-      <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\ProductCategoryStateQueryRepository.java">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Content>
@@ -4292,9 +3770,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonState.java">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonStateCommandConverter.java">
-      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\CreateOrMergePatchRejectionReasonDto.java">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Content>
@@ -4319,12 +3794,6 @@
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateDto.java">
-      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventDto.java">
-      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventDtoConverter.java">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateQueryRepository.java">
@@ -4354,16 +3823,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryState.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryStateCommandConverter.java">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemEntryStates.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemState.java">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemStateCommandConverter.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\CreateOrMergePatchSellableInventoryItemDto.java">
@@ -4407,12 +3870,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateDto.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventDto.java">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStateEventDtoConverter.java">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemEntryStates.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
@@ -4420,12 +3877,6 @@
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateDto.java">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventDto.java">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateEventDtoConverter.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\SellableInventoryItemStateQueryRepository.java">
@@ -4493,9 +3944,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentItemState.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentItemStateCommandConverter.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentItemStates.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
@@ -4508,16 +3956,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptState.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptStateCommandConverter.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptStates.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentState.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentStateCommandConverter.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\CreateOrMergePatchShipmentDto.java">
@@ -4555,9 +3997,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentCommand.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentCommandDtos.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentCommands.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
@@ -4574,12 +4013,6 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentItemStateDto.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentItemStateEventDto.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentItemStateEventDtoConverter.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentItemStates.java">
@@ -4600,12 +4033,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateDto.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventDto.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventDtoConverter.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptStates.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
@@ -4613,12 +4040,6 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentStateDto.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentStateEventDto.java">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentStateEventDtoConverter.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentStateQueryRepository.java">
@@ -4640,9 +4061,6 @@
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\AbstractStatusItemState.java">
-      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\AbstractStatusItemStateCommandConverter.java">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\CreateOrMergePatchStatusItemDto.java">
@@ -4679,12 +4097,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\StatusItemStateDto.java">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\StatusItemStateEventDto.java">
-      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\StatusItemStateEventDtoConverter.java">
-      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\StatusItemStateQueryRepository.java">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Content>
@@ -4704,9 +4116,6 @@
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\AbstractSupplierProductState.java">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\AbstractSupplierProductStateCommandConverter.java">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\CreateOrMergePatchSupplierProductDto.java">
@@ -4738,12 +4147,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\SupplierProductStateDto.java">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\SupplierProductStateEventDto.java">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\SupplierProductStateEventDtoConverter.java">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\SupplierProductStateQueryRepository.java">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Content>
@@ -4763,9 +4166,6 @@
       <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionState.java">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionStateCommandConverter.java">
       <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\CreateOrMergePatchUomConversionDto.java">
@@ -4795,12 +4195,6 @@
       <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\UomConversionStateDto.java">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventDto.java">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventDtoConverter.java">
       <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\UomConversionStateQueryRepository.java">
@@ -4870,9 +4264,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\uom\AbstractUomState.java">
       <DependentUpon>GenerateUomDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\uom\AbstractUomStateCommandConverter.java">
-      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uom\CreateOrMergePatchUomDto.java">
       <DependentUpon>GenerateUomDomain.tt</DependentUpon>
     </Content>
@@ -4907,12 +4298,6 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\uom\UomStateDto.java">
       <DependentUpon>GenerateUomDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\uom\UomStateEventDto.java">
-      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\uom\UomStateEventDtoConverter.java">
-      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uom\UomStateQueryRepository.java">
       <DependentUpon>GenerateUomDomain.tt</DependentUpon>
     </Content>
@@ -4932,9 +4317,6 @@
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\AbstractWarehouseState.java">
-      <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\AbstractWarehouseStateCommandConverter.java">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\CreateOrMergePatchWarehouseDto.java">
@@ -4961,12 +4343,6 @@
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\WarehouseStateDto.java">
-      <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\WarehouseStateEventDto.java">
-      <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\WarehouseStateEventDtoConverter.java">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\WarehouseStateQueryRepository.java">
@@ -5014,7 +4390,6 @@
 .\AbstractInOutImageCommandDto.java
 .\AbstractInOutImageEvent.java
 .\AbstractInOutImageState.java
-.\AbstractInOutImageStateCommandConverter.java
 .\AbstractInOutImageStates.java
 .\AbstractInOutLineCommand.java
 .\AbstractInOutLineCommandDto.java
@@ -5023,13 +4398,10 @@
 .\AbstractInOutLineImageCommandDto.java
 .\AbstractInOutLineImageEvent.java
 .\AbstractInOutLineImageState.java
-.\AbstractInOutLineImageStateCommandConverter.java
 .\AbstractInOutLineImageStates.java
 .\AbstractInOutLineState.java
-.\AbstractInOutLineStateCommandConverter.java
 .\AbstractInOutLineStates.java
 .\AbstractInOutState.java
-.\AbstractInOutStateCommandConverter.java
 .\CreateOrMergePatchInOutDto.java
 .\CreateOrMergePatchInOutImageDto.java
 .\CreateOrMergePatchInOutLineDto.java
@@ -5039,7 +4411,6 @@
 .\InOutAggregate.java
 .\InOutApplicationService.java
 .\InOutCommand.java
-.\InOutCommandDtos.java
 .\InOutCommands.java
 .\InOutEvent.java
 .\InOutEventId.java
@@ -5051,8 +4422,6 @@
 .\InOutImageState.java
 .\InOutImageStateDao.java
 .\InOutImageStateDto.java
-.\InOutImageStateEventDto.java
-.\InOutImageStateEventDtoConverter.java
 .\InOutImageStates.java
 .\InOutLineCommand.java
 .\InOutLineEvent.java
@@ -5067,19 +4436,13 @@
 .\InOutLineImageState.java
 .\InOutLineImageStateDao.java
 .\InOutLineImageStateDto.java
-.\InOutLineImageStateEventDto.java
-.\InOutLineImageStateEventDtoConverter.java
 .\InOutLineImageStates.java
 .\InOutLineState.java
 .\InOutLineStateDao.java
 .\InOutLineStateDto.java
-.\InOutLineStateEventDto.java
-.\InOutLineStateEventDtoConverter.java
 .\InOutLineStates.java
 .\InOutState.java
 .\InOutStateDto.java
-.\InOutStateEventDto.java
-.\InOutStateEventDtoConverter.java
 .\InOutStateQueryRepository.java
 .\InOutStateRepository.java
 .\RemoveInOutImageDto.java
@@ -5097,7 +4460,6 @@
 .\AbstractOrganizationStructureTypeCommandDto.java
 .\AbstractOrganizationStructureTypeEvent.java
 .\AbstractOrganizationStructureTypeState.java
-.\AbstractOrganizationStructureTypeStateCommandConverter.java
 .\CreateOrMergePatchOrganizationStructureTypeDto.java
 .\DeleteOrganizationStructureTypeDto.java
 .\GenerateOrganizationStructureTypeDomain.txt
@@ -5108,8 +4470,6 @@
 .\OrganizationStructureTypeEventId.java
 .\OrganizationStructureTypeState.java
 .\OrganizationStructureTypeStateDto.java
-.\OrganizationStructureTypeStateEventDto.java
-.\OrganizationStructureTypeStateEventDtoConverter.java
 .\OrganizationStructureTypeStateQueryRepository.java
 .\OrganizationStructureTypeStateRepository.java
 </LastOutputs>
@@ -5124,7 +4484,6 @@
 .\AbstractOrganizationStructureCommandDto.java
 .\AbstractOrganizationStructureEvent.java
 .\AbstractOrganizationStructureState.java
-.\AbstractOrganizationStructureStateCommandConverter.java
 .\CreateOrMergePatchOrganizationStructureDto.java
 .\DeleteOrganizationStructureDto.java
 .\GenerateOrganizationStructureDomain.txt
@@ -5136,8 +4495,6 @@
 .\OrganizationStructureId.java
 .\OrganizationStructureState.java
 .\OrganizationStructureStateDto.java
-.\OrganizationStructureStateEventDto.java
-.\OrganizationStructureStateEventDtoConverter.java
 .\OrganizationStructureStateQueryRepository.java
 .\OrganizationStructureStateRepository.java
 .\OrganizationTreeOrganizationStructureStateQueryRepository.java
@@ -5153,7 +4510,6 @@
 .\AbstractWarehouseCommandDto.java
 .\AbstractWarehouseEvent.java
 .\AbstractWarehouseState.java
-.\AbstractWarehouseStateCommandConverter.java
 .\CreateOrMergePatchWarehouseDto.java
 .\DeleteWarehouseDto.java
 .\GenerateWarehouseDomain.txt
@@ -5164,8 +4520,6 @@
 .\WarehouseEventId.java
 .\WarehouseState.java
 .\WarehouseStateDto.java
-.\WarehouseStateEventDto.java
-.\WarehouseStateEventDtoConverter.java
 .\WarehouseStateQueryRepository.java
 .\WarehouseStateRepository.java
 </LastOutputs>
@@ -5180,7 +4534,6 @@
 .\AbstractLocatorCommandDto.java
 .\AbstractLocatorEvent.java
 .\AbstractLocatorState.java
-.\AbstractLocatorStateCommandConverter.java
 .\CreateOrMergePatchLocatorDto.java
 .\DeleteLocatorDto.java
 .\GenerateLocatorDomain.txt
@@ -5191,8 +4544,6 @@
 .\LocatorEventId.java
 .\LocatorState.java
 .\LocatorStateDto.java
-.\LocatorStateEventDto.java
-.\LocatorStateEventDtoConverter.java
 .\LocatorStateQueryRepository.java
 .\LocatorStateRepository.java
 .\LocatorTreeLocatorStateQueryRepository.java
@@ -5208,7 +4559,6 @@
 .\AbstractAttributeSetInstanceCommandDto.java
 .\AbstractAttributeSetInstanceEvent.java
 .\AbstractAttributeSetInstanceState.java
-.\AbstractAttributeSetInstanceStateCommandConverter.java
 .\AttributeSetInstanceAggregate.java
 .\AttributeSetInstanceApplicationService.java
 .\AttributeSetInstanceCommand.java
@@ -5216,8 +4566,6 @@
 .\AttributeSetInstanceEventId.java
 .\AttributeSetInstanceState.java
 .\AttributeSetInstanceStateDto.java
-.\AttributeSetInstanceStateEventDto.java
-.\AttributeSetInstanceStateEventDtoConverter.java
 .\AttributeSetInstanceStateQueryRepository.java
 .\AttributeSetInstanceStateRepository.java
 .\CreateOrMergePatchAttributeSetInstanceDto.java
@@ -5235,7 +4583,6 @@
 .\AbstractAttributeSetInstanceExtensionFieldGroupCommandDto.java
 .\AbstractAttributeSetInstanceExtensionFieldGroupEvent.java
 .\AbstractAttributeSetInstanceExtensionFieldGroupState.java
-.\AbstractAttributeSetInstanceExtensionFieldGroupStateCommandConverter.java
 .\AttributeSetInstanceExtensionFieldGroupAggregate.java
 .\AttributeSetInstanceExtensionFieldGroupApplicationService.java
 .\AttributeSetInstanceExtensionFieldGroupCommand.java
@@ -5243,8 +4590,6 @@
 .\AttributeSetInstanceExtensionFieldGroupEventId.java
 .\AttributeSetInstanceExtensionFieldGroupState.java
 .\AttributeSetInstanceExtensionFieldGroupStateDto.java
-.\AttributeSetInstanceExtensionFieldGroupStateEventDto.java
-.\AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter.java
 .\AttributeSetInstanceExtensionFieldGroupStateQueryRepository.java
 .\AttributeSetInstanceExtensionFieldGroupStateRepository.java
 .\CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.java
@@ -5261,19 +4606,16 @@
 .\AbstractAttributeAliasCommandDto.java
 .\AbstractAttributeAliasEvent.java
 .\AbstractAttributeAliasState.java
-.\AbstractAttributeAliasStateCommandConverter.java
 .\AbstractAttributeAliasStates.java
 .\AbstractAttributeApplicationService.java
 .\AbstractAttributeCommand.java
 .\AbstractAttributeCommandDto.java
 .\AbstractAttributeEvent.java
 .\AbstractAttributeState.java
-.\AbstractAttributeStateCommandConverter.java
 .\AbstractAttributeValueCommand.java
 .\AbstractAttributeValueCommandDto.java
 .\AbstractAttributeValueEvent.java
 .\AbstractAttributeValueState.java
-.\AbstractAttributeValueStateCommandConverter.java
 .\AbstractAttributeValueStates.java
 .\AttributeAggregate.java
 .\AttributeAliasCommand.java
@@ -5284,8 +4626,6 @@
 .\AttributeAliasState.java
 .\AttributeAliasStateDao.java
 .\AttributeAliasStateDto.java
-.\AttributeAliasStateEventDto.java
-.\AttributeAliasStateEventDtoConverter.java
 .\AttributeAliasStates.java
 .\AttributeApplicationService.java
 .\AttributeCommand.java
@@ -5293,8 +4633,6 @@
 .\AttributeEventId.java
 .\AttributeState.java
 .\AttributeStateDto.java
-.\AttributeStateEventDto.java
-.\AttributeStateEventDtoConverter.java
 .\AttributeStateQueryRepository.java
 .\AttributeStateRepository.java
 .\AttributeValueCommand.java
@@ -5305,8 +4643,6 @@
 .\AttributeValueState.java
 .\AttributeValueStateDao.java
 .\AttributeValueStateDto.java
-.\AttributeValueStateEventDto.java
-.\AttributeValueStateEventDtoConverter.java
 .\AttributeValueStates.java
 .\CreateOrMergePatchAttributeAliasDto.java
 .\CreateOrMergePatchAttributeDto.java
@@ -5327,12 +4663,10 @@
 .\AbstractAttributeSetCommandDto.java
 .\AbstractAttributeSetEvent.java
 .\AbstractAttributeSetState.java
-.\AbstractAttributeSetStateCommandConverter.java
 .\AbstractAttributeUseCommand.java
 .\AbstractAttributeUseCommandDto.java
 .\AbstractAttributeUseEvent.java
 .\AbstractAttributeUseState.java
-.\AbstractAttributeUseStateCommandConverter.java
 .\AbstractAttributeUseStates.java
 .\AttributeSetAggregate.java
 .\AttributeSetApplicationService.java
@@ -5342,8 +4676,6 @@
 .\AttributeSetEventId.java
 .\AttributeSetState.java
 .\AttributeSetStateDto.java
-.\AttributeSetStateEventDto.java
-.\AttributeSetStateEventDtoConverter.java
 .\AttributeSetStateQueryRepository.java
 .\AttributeSetStateRepository.java
 .\AttributeUseCommand.java
@@ -5353,8 +4685,6 @@
 .\AttributeUseState.java
 .\AttributeUseStateDao.java
 .\AttributeUseStateDto.java
-.\AttributeUseStateEventDto.java
-.\AttributeUseStateEventDtoConverter.java
 .\AttributeUseStates.java
 .\CreateOrMergePatchAttributeSetDto.java
 .\CreateOrMergePatchAttributeUseDto.java
@@ -5375,11 +4705,9 @@
 .\AbstractInventoryItemEntryCommandDto.java
 .\AbstractInventoryItemEntryEvent.java
 .\AbstractInventoryItemEntryState.java
-.\AbstractInventoryItemEntryStateCommandConverter.java
 .\AbstractInventoryItemEntryStates.java
 .\AbstractInventoryItemEvent.java
 .\AbstractInventoryItemState.java
-.\AbstractInventoryItemStateCommandConverter.java
 .\CreateOrMergePatchInventoryItemDto.java
 .\CreateOrMergePatchInventoryItemEntryDto.java
 .\DeleteInventoryItemDto.java
@@ -5387,7 +4715,6 @@
 .\InventoryItemAggregate.java
 .\InventoryItemApplicationService.java
 .\InventoryItemCommand.java
-.\InventoryItemCommandDtos.java
 .\InventoryItemCommands.java
 .\InventoryItemEntryCommand.java
 .\InventoryItemEntryEvent.java
@@ -5397,8 +4724,6 @@
 .\InventoryItemEntryState.java
 .\InventoryItemEntryStateDao.java
 .\InventoryItemEntryStateDto.java
-.\InventoryItemEntryStateEventDto.java
-.\InventoryItemEntryStateEventDtoConverter.java
 .\InventoryItemEntryStates.java
 .\InventoryItemEvent.java
 .\InventoryItemEventId.java
@@ -5406,8 +4731,6 @@
 .\InventoryItemSourceInfo.java
 .\InventoryItemState.java
 .\InventoryItemStateDto.java
-.\InventoryItemStateEventDto.java
-.\InventoryItemStateEventDtoConverter.java
 .\InventoryItemStateQueryRepository.java
 .\InventoryItemStateRepository.java
 .\RemoveInventoryItemEntryDto.java
@@ -5425,11 +4748,9 @@
 .\AbstractSellableInventoryItemEntryCommandDto.java
 .\AbstractSellableInventoryItemEntryEvent.java
 .\AbstractSellableInventoryItemEntryState.java
-.\AbstractSellableInventoryItemEntryStateCommandConverter.java
 .\AbstractSellableInventoryItemEntryStates.java
 .\AbstractSellableInventoryItemEvent.java
 .\AbstractSellableInventoryItemState.java
-.\AbstractSellableInventoryItemStateCommandConverter.java
 .\CreateOrMergePatchSellableInventoryItemDto.java
 .\CreateOrMergePatchSellableInventoryItemEntryDto.java
 .\DeleteSellableInventoryItemDto.java
@@ -5446,15 +4767,11 @@
 .\SellableInventoryItemEntryState.java
 .\SellableInventoryItemEntryStateDao.java
 .\SellableInventoryItemEntryStateDto.java
-.\SellableInventoryItemEntryStateEventDto.java
-.\SellableInventoryItemEntryStateEventDtoConverter.java
 .\SellableInventoryItemEntryStates.java
 .\SellableInventoryItemEvent.java
 .\SellableInventoryItemEventId.java
 .\SellableInventoryItemState.java
 .\SellableInventoryItemStateDto.java
-.\SellableInventoryItemStateEventDto.java
-.\SellableInventoryItemStateEventDtoConverter.java
 .\SellableInventoryItemStateQueryRepository.java
 .\SellableInventoryItemStateRepository.java
 </LastOutputs>
@@ -5468,7 +4785,6 @@
 .\AbstractInventoryPostingRuleCommandDto.java
 .\AbstractInventoryPostingRuleEvent.java
 .\AbstractInventoryPostingRuleState.java
-.\AbstractInventoryPostingRuleStateCommandConverter.java
 .\CreateOrMergePatchInventoryPostingRuleDto.java
 .\DeleteInventoryPostingRuleDto.java
 .\GenerateInventoryPostingRuleDomain1.txt
@@ -5479,8 +4795,6 @@
 .\InventoryPostingRuleEventId.java
 .\InventoryPostingRuleState.java
 .\InventoryPostingRuleStateDto.java
-.\InventoryPostingRuleStateEventDto.java
-.\InventoryPostingRuleStateEventDtoConverter.java
 .\InventoryPostingRuleStateQueryRepository.java
 .\InventoryPostingRuleStateRepository.java
 </LastOutputs>
@@ -5496,7 +4810,6 @@
 .\AbstractInventoryPRTriggeredCommandDto.java
 .\AbstractInventoryPRTriggeredEvent.java
 .\AbstractInventoryPRTriggeredState.java
-.\AbstractInventoryPRTriggeredStateCommandConverter.java
 .\CreateOrMergePatchInventoryPRTriggeredDto.java
 .\DeleteInventoryPRTriggeredDto.java
 .\GenerateInventoryPRTriggeredDomain.txt
@@ -5508,8 +4821,6 @@
 .\InventoryPRTriggeredId.java
 .\InventoryPRTriggeredState.java
 .\InventoryPRTriggeredStateDto.java
-.\InventoryPRTriggeredStateEventDto.java
-.\InventoryPRTriggeredStateEventDtoConverter.java
 .\InventoryPRTriggeredStateQueryRepository.java
 .\InventoryPRTriggeredStateRepository.java
 </LastOutputs>
@@ -5558,7 +4869,6 @@
 .\AbstractGoodIdentificationCommandDto.java
 .\AbstractGoodIdentificationEvent.java
 .\AbstractGoodIdentificationState.java
-.\AbstractGoodIdentificationStateCommandConverter.java
 .\AbstractGoodIdentificationStates.java
 .\AbstractProductAggregate.java
 .\AbstractProductApplicationService.java
@@ -5566,7 +4876,6 @@
 .\AbstractProductCommandDto.java
 .\AbstractProductEvent.java
 .\AbstractProductState.java
-.\AbstractProductStateCommandConverter.java
 .\CreateOrMergePatchGoodIdentificationDto.java
 .\CreateOrMergePatchProductDto.java
 .\DeleteProductDto.java
@@ -5578,8 +4887,6 @@
 .\GoodIdentificationState.java
 .\GoodIdentificationStateDao.java
 .\GoodIdentificationStateDto.java
-.\GoodIdentificationStateEventDto.java
-.\GoodIdentificationStateEventDtoConverter.java
 .\GoodIdentificationStates.java
 .\ProductAggregate.java
 .\ProductApplicationService.java
@@ -5589,8 +4896,6 @@
 .\ProductGoodIdentificationId.java
 .\ProductState.java
 .\ProductStateDto.java
-.\ProductStateEventDto.java
-.\ProductStateEventDtoConverter.java
 .\ProductStateQueryRepository.java
 .\ProductStateRepository.java
 .\RemoveGoodIdentificationDto.java
@@ -5606,7 +4911,6 @@
 .\AbstractProductCategoryCommandDto.java
 .\AbstractProductCategoryEvent.java
 .\AbstractProductCategoryState.java
-.\AbstractProductCategoryStateCommandConverter.java
 .\CreateOrMergePatchProductCategoryDto.java
 .\DeleteProductCategoryDto.java
 .\GenerateProductCategoryDomain.txt
@@ -5617,8 +4921,6 @@
 .\ProductCategoryEventId.java
 .\ProductCategoryState.java
 .\ProductCategoryStateDto.java
-.\ProductCategoryStateEventDto.java
-.\ProductCategoryStateEventDtoConverter.java
 .\ProductCategoryStateQueryRepository.java
 .\ProductCategoryStateRepository.java
 </LastOutputs>
@@ -5633,7 +4935,6 @@
 .\AbstractSupplierProductCommandDto.java
 .\AbstractSupplierProductEvent.java
 .\AbstractSupplierProductState.java
-.\AbstractSupplierProductStateCommandConverter.java
 .\CreateOrMergePatchSupplierProductDto.java
 .\DeleteSupplierProductDto.java
 .\GenerateSupplierProductDomain.txt
@@ -5645,8 +4946,6 @@
 .\SupplierProductId.java
 .\SupplierProductState.java
 .\SupplierProductStateDto.java
-.\SupplierProductStateEventDto.java
-.\SupplierProductStateEventDtoConverter.java
 .\SupplierProductStateQueryRepository.java
 .\SupplierProductStateRepository.java
 </LastOutputs>
@@ -5661,7 +4960,6 @@
 .\AbstractOrderShipmentCommandDto.java
 .\AbstractOrderShipmentEvent.java
 .\AbstractOrderShipmentState.java
-.\AbstractOrderShipmentStateCommandConverter.java
 .\CreateOrMergePatchOrderShipmentDto.java
 .\DeleteOrderShipmentDto.java
 .\GenerateOrderShipmentDomain.txt
@@ -5673,8 +4971,6 @@
 .\OrderShipmentId.java
 .\OrderShipmentState.java
 .\OrderShipmentStateDto.java
-.\OrderShipmentStateEventDto.java
-.\OrderShipmentStateEventDtoConverter.java
 .\OrderShipmentStateQueryRepository.java
 .\OrderShipmentStateRepository.java
 </LastOutputs>
@@ -5687,7 +4983,6 @@
 .\AbstractItemIssuanceCommandDto.java
 .\AbstractItemIssuanceEvent.java
 .\AbstractItemIssuanceState.java
-.\AbstractItemIssuanceStateCommandConverter.java
 .\AbstractItemIssuanceStates.java
 .\AbstractShipmentAggregate.java
 .\AbstractShipmentApplicationService.java
@@ -5698,16 +4993,13 @@
 .\AbstractShipmentItemCommandDto.java
 .\AbstractShipmentItemEvent.java
 .\AbstractShipmentItemState.java
-.\AbstractShipmentItemStateCommandConverter.java
 .\AbstractShipmentItemStates.java
 .\AbstractShipmentReceiptCommand.java
 .\AbstractShipmentReceiptCommandDto.java
 .\AbstractShipmentReceiptEvent.java
 .\AbstractShipmentReceiptState.java
-.\AbstractShipmentReceiptStateCommandConverter.java
 .\AbstractShipmentReceiptStates.java
 .\AbstractShipmentState.java
-.\AbstractShipmentStateCommandConverter.java
 .\CreateOrMergePatchItemIssuanceDto.java
 .\CreateOrMergePatchShipmentDto.java
 .\CreateOrMergePatchShipmentItemDto.java
@@ -5722,8 +5014,6 @@
 .\ItemIssuanceState.java
 .\ItemIssuanceStateDao.java
 .\ItemIssuanceStateDto.java
-.\ItemIssuanceStateEventDto.java
-.\ItemIssuanceStateEventDtoConverter.java
 .\ItemIssuanceStates.java
 .\RemoveItemIssuanceDto.java
 .\RemoveShipmentItemDto.java
@@ -5731,7 +5021,6 @@
 .\ShipmentAggregate.java
 .\ShipmentApplicationService.java
 .\ShipmentCommand.java
-.\ShipmentCommandDtos.java
 .\ShipmentCommands.java
 .\ShipmentEvent.java
 .\ShipmentEventId.java
@@ -5744,8 +5033,6 @@
 .\ShipmentItemState.java
 .\ShipmentItemStateDao.java
 .\ShipmentItemStateDto.java
-.\ShipmentItemStateEventDto.java
-.\ShipmentItemStateEventDtoConverter.java
 .\ShipmentItemStates.java
 .\ShipmentReceiptCommand.java
 .\ShipmentReceiptEvent.java
@@ -5755,13 +5042,9 @@
 .\ShipmentReceiptState.java
 .\ShipmentReceiptStateDao.java
 .\ShipmentReceiptStateDto.java
-.\ShipmentReceiptStateEventDto.java
-.\ShipmentReceiptStateEventDtoConverter.java
 .\ShipmentReceiptStates.java
 .\ShipmentState.java
 .\ShipmentStateDto.java
-.\ShipmentStateEventDto.java
-.\ShipmentStateEventDtoConverter.java
 .\ShipmentStateQueryRepository.java
 .\ShipmentStateRepository.java
 </LastOutputs>
@@ -5776,7 +5059,6 @@
 .\AbstractStatusItemCommandDto.java
 .\AbstractStatusItemEvent.java
 .\AbstractStatusItemState.java
-.\AbstractStatusItemStateCommandConverter.java
 .\CreateOrMergePatchStatusItemDto.java
 .\DeleteStatusItemDto.java
 .\GenerateStatusItemDomain.txt
@@ -5787,8 +5069,6 @@
 .\StatusItemEventId.java
 .\StatusItemState.java
 .\StatusItemStateDto.java
-.\StatusItemStateEventDto.java
-.\StatusItemStateEventDtoConverter.java
 .\StatusItemStateQueryRepository.java
 .\StatusItemStateRepository.java
 </LastOutputs>
@@ -5827,25 +5107,20 @@
 .\AbstractOrderItemShipGroupAssociationCommandDto.java
 .\AbstractOrderItemShipGroupAssociationEvent.java
 .\AbstractOrderItemShipGroupAssociationState.java
-.\AbstractOrderItemShipGroupAssociationStateCommandConverter.java
 .\AbstractOrderItemShipGroupAssociationStates.java
 .\AbstractOrderItemState.java
-.\AbstractOrderItemStateCommandConverter.java
 .\AbstractOrderItemStates.java
 .\AbstractOrderRoleCommand.java
 .\AbstractOrderRoleCommandDto.java
 .\AbstractOrderRoleEvent.java
 .\AbstractOrderRoleState.java
-.\AbstractOrderRoleStateCommandConverter.java
 .\AbstractOrderRoleStates.java
 .\AbstractOrderShipGroupCommand.java
 .\AbstractOrderShipGroupCommandDto.java
 .\AbstractOrderShipGroupEvent.java
 .\AbstractOrderShipGroupState.java
-.\AbstractOrderShipGroupStateCommandConverter.java
 .\AbstractOrderShipGroupStates.java
 .\AbstractOrderState.java
-.\AbstractOrderStateCommandConverter.java
 .\CreateOrMergePatchOrderDto.java
 .\CreateOrMergePatchOrderItemDto.java
 .\CreateOrMergePatchOrderItemShipGroupAssociationDto.java
@@ -5871,14 +5146,10 @@
 .\OrderItemShipGroupAssociationState.java
 .\OrderItemShipGroupAssociationStateDao.java
 .\OrderItemShipGroupAssociationStateDto.java
-.\OrderItemShipGroupAssociationStateEventDto.java
-.\OrderItemShipGroupAssociationStateEventDtoConverter.java
 .\OrderItemShipGroupAssociationStates.java
 .\OrderItemState.java
 .\OrderItemStateDao.java
 .\OrderItemStateDto.java
-.\OrderItemStateEventDto.java
-.\OrderItemStateEventDtoConverter.java
 .\OrderItemStates.java
 .\OrderRoleCommand.java
 .\OrderRoleEvent.java
@@ -5888,8 +5159,6 @@
 .\OrderRoleState.java
 .\OrderRoleStateDao.java
 .\OrderRoleStateDto.java
-.\OrderRoleStateEventDto.java
-.\OrderRoleStateEventDtoConverter.java
 .\OrderRoleStates.java
 .\OrderShipGroupCommand.java
 .\OrderShipGroupEvent.java
@@ -5899,13 +5168,9 @@
 .\OrderShipGroupState.java
 .\OrderShipGroupStateDao.java
 .\OrderShipGroupStateDto.java
-.\OrderShipGroupStateEventDto.java
-.\OrderShipGroupStateEventDtoConverter.java
 .\OrderShipGroupStates.java
 .\OrderState.java
 .\OrderStateDto.java
-.\OrderStateEventDto.java
-.\OrderStateEventDtoConverter.java
 .\OrderStateQueryRepository.java
 .\OrderStateRepository.java
 .\RemoveOrderItemDto.java
@@ -5924,7 +5189,6 @@
 .\AbstractProductCategoryMemberCommandDto.java
 .\AbstractProductCategoryMemberEvent.java
 .\AbstractProductCategoryMemberState.java
-.\AbstractProductCategoryMemberStateCommandConverter.java
 .\CreateOrMergePatchProductCategoryMemberDto.java
 .\DeleteProductCategoryMemberDto.java
 .\GenerateProductCategoryMemberDomain.txt
@@ -5936,8 +5200,6 @@
 .\ProductCategoryMemberId.java
 .\ProductCategoryMemberState.java
 .\ProductCategoryMemberStateDto.java
-.\ProductCategoryMemberStateEventDto.java
-.\ProductCategoryMemberStateEventDtoConverter.java
 .\ProductCategoryMemberStateQueryRepository.java
 .\ProductCategoryMemberStateRepository.java
 </LastOutputs>
@@ -5954,11 +5216,9 @@
 .\AbstractInventoryItemRequirementEntryCommandDto.java
 .\AbstractInventoryItemRequirementEntryEvent.java
 .\AbstractInventoryItemRequirementEntryState.java
-.\AbstractInventoryItemRequirementEntryStateCommandConverter.java
 .\AbstractInventoryItemRequirementEntryStates.java
 .\AbstractInventoryItemRequirementEvent.java
 .\AbstractInventoryItemRequirementState.java
-.\AbstractInventoryItemRequirementStateCommandConverter.java
 .\CreateOrMergePatchInventoryItemRequirementDto.java
 .\CreateOrMergePatchInventoryItemRequirementEntryDto.java
 .\DeleteInventoryItemRequirementDto.java
@@ -5974,15 +5234,11 @@
 .\InventoryItemRequirementEntryState.java
 .\InventoryItemRequirementEntryStateDao.java
 .\InventoryItemRequirementEntryStateDto.java
-.\InventoryItemRequirementEntryStateEventDto.java
-.\InventoryItemRequirementEntryStateEventDtoConverter.java
 .\InventoryItemRequirementEntryStates.java
 .\InventoryItemRequirementEvent.java
 .\InventoryItemRequirementEventId.java
 .\InventoryItemRequirementState.java
 .\InventoryItemRequirementStateDto.java
-.\InventoryItemRequirementStateEventDto.java
-.\InventoryItemRequirementStateEventDtoConverter.java
 .\InventoryItemRequirementStateQueryRepository.java
 .\InventoryItemRequirementStateRepository.java
 .\RemoveInventoryItemRequirementEntryDto.java
@@ -6001,10 +5257,8 @@
 .\AbstractMovementLineCommandDto.java
 .\AbstractMovementLineEvent.java
 .\AbstractMovementLineState.java
-.\AbstractMovementLineStateCommandConverter.java
 .\AbstractMovementLineStates.java
 .\AbstractMovementState.java
-.\AbstractMovementStateCommandConverter.java
 .\CreateOrMergePatchMovementDto.java
 .\CreateOrMergePatchMovementLineDto.java
 .\DeleteMovementDto.java
@@ -6012,7 +5266,6 @@
 .\MovementAggregate.java
 .\MovementApplicationService.java
 .\MovementCommand.java
-.\MovementCommandDtos.java
 .\MovementCommands.java
 .\MovementEvent.java
 .\MovementEventId.java
@@ -6024,13 +5277,9 @@
 .\MovementLineState.java
 .\MovementLineStateDao.java
 .\MovementLineStateDto.java
-.\MovementLineStateEventDto.java
-.\MovementLineStateEventDtoConverter.java
 .\MovementLineStates.java
 .\MovementState.java
 .\MovementStateDto.java
-.\MovementStateEventDto.java
-.\MovementStateEventDtoConverter.java
 .\MovementStateQueryRepository.java
 .\MovementStateRepository.java
 .\RemoveMovementLineDto.java
@@ -6049,10 +5298,8 @@
 .\AbstractMovementConfirmationLineCommandDto.java
 .\AbstractMovementConfirmationLineEvent.java
 .\AbstractMovementConfirmationLineState.java
-.\AbstractMovementConfirmationLineStateCommandConverter.java
 .\AbstractMovementConfirmationLineStates.java
 .\AbstractMovementConfirmationState.java
-.\AbstractMovementConfirmationStateCommandConverter.java
 .\CreateOrMergePatchMovementConfirmationDto.java
 .\CreateOrMergePatchMovementConfirmationLineDto.java
 .\DeleteMovementConfirmationDto.java
@@ -6060,7 +5307,6 @@
 .\MovementConfirmationAggregate.java
 .\MovementConfirmationApplicationService.java
 .\MovementConfirmationCommand.java
-.\MovementConfirmationCommandDtos.java
 .\MovementConfirmationCommands.java
 .\MovementConfirmationEvent.java
 .\MovementConfirmationEventId.java
@@ -6072,13 +5318,9 @@
 .\MovementConfirmationLineState.java
 .\MovementConfirmationLineStateDao.java
 .\MovementConfirmationLineStateDto.java
-.\MovementConfirmationLineStateEventDto.java
-.\MovementConfirmationLineStateEventDtoConverter.java
 .\MovementConfirmationLineStates.java
 .\MovementConfirmationState.java
 .\MovementConfirmationStateDto.java
-.\MovementConfirmationStateEventDto.java
-.\MovementConfirmationStateEventDtoConverter.java
 .\MovementConfirmationStateQueryRepository.java
 .\MovementConfirmationStateRepository.java
 .\RemoveMovementConfirmationLineDto.java
@@ -6097,10 +5339,8 @@
 .\AbstractPhysicalInventoryLineCommandDto.java
 .\AbstractPhysicalInventoryLineEvent.java
 .\AbstractPhysicalInventoryLineState.java
-.\AbstractPhysicalInventoryLineStateCommandConverter.java
 .\AbstractPhysicalInventoryLineStates.java
 .\AbstractPhysicalInventoryState.java
-.\AbstractPhysicalInventoryStateCommandConverter.java
 .\CreateOrMergePatchPhysicalInventoryDto.java
 .\CreateOrMergePatchPhysicalInventoryLineDto.java
 .\DeletePhysicalInventoryDto.java
@@ -6108,7 +5348,6 @@
 .\PhysicalInventoryAggregate.java
 .\PhysicalInventoryApplicationService.java
 .\PhysicalInventoryCommand.java
-.\PhysicalInventoryCommandDtos.java
 .\PhysicalInventoryCommands.java
 .\PhysicalInventoryEvent.java
 .\PhysicalInventoryEventId.java
@@ -6120,13 +5359,9 @@
 .\PhysicalInventoryLineState.java
 .\PhysicalInventoryLineStateDao.java
 .\PhysicalInventoryLineStateDto.java
-.\PhysicalInventoryLineStateEventDto.java
-.\PhysicalInventoryLineStateEventDtoConverter.java
 .\PhysicalInventoryLineStates.java
 .\PhysicalInventoryState.java
 .\PhysicalInventoryStateDto.java
-.\PhysicalInventoryStateEventDto.java
-.\PhysicalInventoryStateEventDtoConverter.java
 .\PhysicalInventoryStateQueryRepository.java
 .\PhysicalInventoryStateRepository.java
 .\RemovePhysicalInventoryLineDto.java
@@ -6142,7 +5377,6 @@
 .\AbstractAttributeSetInstanceExtensionFieldCommandDto.java
 .\AbstractAttributeSetInstanceExtensionFieldEvent.java
 .\AbstractAttributeSetInstanceExtensionFieldState.java
-.\AbstractAttributeSetInstanceExtensionFieldStateCommandConverter.java
 .\AttributeSetInstanceExtensionFieldAggregate.java
 .\AttributeSetInstanceExtensionFieldApplicationService.java
 .\AttributeSetInstanceExtensionFieldCommand.java
@@ -6150,8 +5384,6 @@
 .\AttributeSetInstanceExtensionFieldEventId.java
 .\AttributeSetInstanceExtensionFieldState.java
 .\AttributeSetInstanceExtensionFieldStateDto.java
-.\AttributeSetInstanceExtensionFieldStateEventDto.java
-.\AttributeSetInstanceExtensionFieldStateEventDtoConverter.java
 .\AttributeSetInstanceExtensionFieldStateQueryRepository.java
 .\AttributeSetInstanceExtensionFieldStateRepository.java
 .\CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.java
@@ -6169,7 +5401,6 @@
 .\AbstractUomCommandDto.java
 .\AbstractUomEvent.java
 .\AbstractUomState.java
-.\AbstractUomStateCommandConverter.java
 .\CreateOrMergePatchUomDto.java
 .\DeleteUomDto.java
 .\GenerateUomDomain.txt
@@ -6180,8 +5411,6 @@
 .\UomEventId.java
 .\UomState.java
 .\UomStateDto.java
-.\UomStateEventDto.java
-.\UomStateEventDtoConverter.java
 .\UomStateQueryRepository.java
 .\UomStateRepository.java
 </LastOutputs>
@@ -6196,7 +5425,6 @@
 .\AbstractUomConversionCommandDto.java
 .\AbstractUomConversionEvent.java
 .\AbstractUomConversionState.java
-.\AbstractUomConversionStateCommandConverter.java
 .\CreateOrMergePatchUomConversionDto.java
 .\DeleteUomConversionDto.java
 .\GenerateUomConversionDomain.txt
@@ -6208,8 +5436,6 @@
 .\UomConversionId.java
 .\UomConversionState.java
 .\UomConversionStateDto.java
-.\UomConversionStateEventDto.java
-.\UomConversionStateEventDtoConverter.java
 .\UomConversionStateQueryRepository.java
 .\UomConversionStateRepository.java
 </LastOutputs>
@@ -6242,7 +5468,6 @@
 .\AbstractLotCommandDto.java
 .\AbstractLotEvent.java
 .\AbstractLotState.java
-.\AbstractLotStateCommandConverter.java
 .\CreateOrMergePatchLotDto.java
 .\DeleteLotDto.java
 .\GenerateLotDomain.txt
@@ -6253,8 +5478,6 @@
 .\LotEventId.java
 .\LotState.java
 .\LotStateDto.java
-.\LotStateEventDto.java
-.\LotStateEventDtoConverter.java
 .\LotStateQueryRepository.java
 .\LotStateRepository.java
 </LastOutputs>
@@ -6269,7 +5492,6 @@
 .\AbstractDamageReasonCommandDto.java
 .\AbstractDamageReasonEvent.java
 .\AbstractDamageReasonState.java
-.\AbstractDamageReasonStateCommandConverter.java
 .\CreateOrMergePatchDamageReasonDto.java
 .\DamageReasonAggregate.java
 .\DamageReasonApplicationService.java
@@ -6278,8 +5500,6 @@
 .\DamageReasonEventId.java
 .\DamageReasonState.java
 .\DamageReasonStateDto.java
-.\DamageReasonStateEventDto.java
-.\DamageReasonStateEventDtoConverter.java
 .\DamageReasonStateQueryRepository.java
 .\DamageReasonStateRepository.java
 .\DeleteDamageReasonDto.java
@@ -6296,7 +5516,6 @@
 .\AbstractRejectionReasonCommandDto.java
 .\AbstractRejectionReasonEvent.java
 .\AbstractRejectionReasonState.java
-.\AbstractRejectionReasonStateCommandConverter.java
 .\CreateOrMergePatchRejectionReasonDto.java
 .\DeleteRejectionReasonDto.java
 .\GenerateRejectionReasonDomain.txt
@@ -6307,8 +5526,6 @@
 .\RejectionReasonEventId.java
 .\RejectionReasonState.java
 .\RejectionReasonStateDto.java
-.\RejectionReasonStateEventDto.java
-.\RejectionReasonStateEventDtoConverter.java
 .\RejectionReasonStateQueryRepository.java
 .\RejectionReasonStateRepository.java
 </LastOutputs>
@@ -6361,7 +5578,6 @@
 .\AbstractPartyCommandDto.java
 .\AbstractPartyEvent.java
 .\AbstractPartyState.java
-.\AbstractPartyStateCommandConverter.java
 .\CreateOrMergePatchPartyDto.java
 .\DeletePartyDto.java
 .\GeneratePartyDomain.txt
@@ -6376,8 +5592,6 @@
 .\PartyEventId.java
 .\PartyState.java
 .\PartyStateDto.java
-.\PartyStateEventDto.java
-.\PartyStateEventDtoConverter.java
 .\PartyStateQueryRepository.java
 .\PartyStateRepository.java
 .\PartyTypeIds.java
@@ -6393,7 +5607,6 @@
 .\AbstractContactMechCommandDto.java
 .\AbstractContactMechEvent.java
 .\AbstractContactMechState.java
-.\AbstractContactMechStateCommandConverter.java
 .\ContactMechAggregate.java
 .\ContactMechApplicationService.java
 .\ContactMechCommand.java
@@ -6401,8 +5614,6 @@
 .\ContactMechEventId.java
 .\ContactMechState.java
 .\ContactMechStateDto.java
-.\ContactMechStateEventDto.java
-.\ContactMechStateEventDtoConverter.java
 .\ContactMechStateQueryRepository.java
 .\ContactMechStateRepository.java
 .\ContactMechTypeId.java
@@ -6421,7 +5632,6 @@
 .\AbstractFacilityCommandDto.java
 .\AbstractFacilityEvent.java
 .\AbstractFacilityState.java
-.\AbstractFacilityStateCommandConverter.java
 .\CreateOrMergePatchFacilityDto.java
 .\DeleteFacilityDto.java
 .\FacilityAggregate.java
@@ -6431,8 +5641,6 @@
 .\FacilityEventId.java
 .\FacilityState.java
 .\FacilityStateDto.java
-.\FacilityStateEventDto.java
-.\FacilityStateEventDtoConverter.java
 .\FacilityStateQueryRepository.java
 .\FacilityStateRepository.java
 .\GenerateFacilityDomain.txt
@@ -6448,7 +5656,6 @@
 .\AbstractPartyRoleCommandDto.java
 .\AbstractPartyRoleEvent.java
 .\AbstractPartyRoleState.java
-.\AbstractPartyRoleStateCommandConverter.java
 .\CreateOrMergePatchPartyRoleDto.java
 .\DeletePartyRoleDto.java
 .\GeneratePartyRoleDomain.txt
@@ -6460,8 +5667,6 @@
 .\PartyRoleId.java
 .\PartyRoleState.java
 .\PartyRoleStateDto.java
-.\PartyRoleStateEventDto.java
-.\PartyRoleStateEventDtoConverter.java
 .\PartyRoleStateQueryRepository.java
 .\PartyRoleStateRepository.java
 </LastOutputs>
@@ -6479,10 +5684,8 @@
 .\AbstractPicklistRoleCommandDto.java
 .\AbstractPicklistRoleEvent.java
 .\AbstractPicklistRoleState.java
-.\AbstractPicklistRoleStateCommandConverter.java
 .\AbstractPicklistRoleStates.java
 .\AbstractPicklistState.java
-.\AbstractPicklistStateCommandConverter.java
 .\CreateOrMergePatchPicklistDto.java
 .\CreateOrMergePatchPicklistRoleDto.java
 .\DeletePicklistDto.java
@@ -6500,13 +5703,9 @@
 .\PicklistRoleState.java
 .\PicklistRoleStateDao.java
 .\PicklistRoleStateDto.java
-.\PicklistRoleStateEventDto.java
-.\PicklistRoleStateEventDtoConverter.java
 .\PicklistRoleStates.java
 .\PicklistState.java
 .\PicklistStateDto.java
-.\PicklistStateEventDto.java
-.\PicklistStateEventDtoConverter.java
 .\PicklistStateQueryRepository.java
 .\PicklistStateRepository.java
 .\RemovePicklistRoleDto.java
@@ -6522,12 +5721,10 @@
 .\AbstractPicklistBinCommandDto.java
 .\AbstractPicklistBinEvent.java
 .\AbstractPicklistBinState.java
-.\AbstractPicklistBinStateCommandConverter.java
 .\AbstractPicklistItemCommand.java
 .\AbstractPicklistItemCommandDto.java
 .\AbstractPicklistItemEvent.java
 .\AbstractPicklistItemState.java
-.\AbstractPicklistItemStateCommandConverter.java
 .\AbstractPicklistItemStates.java
 .\CreateOrMergePatchPicklistBinDto.java
 .\CreateOrMergePatchPicklistItemDto.java
@@ -6541,8 +5738,6 @@
 .\PicklistBinPicklistItemId.java
 .\PicklistBinState.java
 .\PicklistBinStateDto.java
-.\PicklistBinStateEventDto.java
-.\PicklistBinStateEventDtoConverter.java
 .\PicklistBinStateQueryRepository.java
 .\PicklistBinStateRepository.java
 .\PicklistItemCommand.java
@@ -6553,8 +5748,6 @@
 .\PicklistItemState.java
 .\PicklistItemStateDao.java
 .\PicklistItemStateDto.java
-.\PicklistItemStateEventDto.java
-.\PicklistItemStateEventDtoConverter.java
 .\PicklistItemStates.java
 .\RemovePicklistItemDto.java
 </LastOutputs>
@@ -6569,7 +5762,6 @@
 .\AbstractRoleTypeCommandDto.java
 .\AbstractRoleTypeEvent.java
 .\AbstractRoleTypeState.java
-.\AbstractRoleTypeStateCommandConverter.java
 .\CreateOrMergePatchRoleTypeDto.java
 .\DeleteRoleTypeDto.java
 .\GenerateRoleTypeDomain.txt
@@ -6580,8 +5772,6 @@
 .\RoleTypeEventId.java
 .\RoleTypeState.java
 .\RoleTypeStateDto.java
-.\RoleTypeStateEventDto.java
-.\RoleTypeStateEventDtoConverter.java
 .\RoleTypeStateQueryRepository.java
 .\RoleTypeStateRepository.java
 </LastOutputs>
@@ -6596,7 +5786,6 @@
 .\AbstractShipmentMethodTypeCommandDto.java
 .\AbstractShipmentMethodTypeEvent.java
 .\AbstractShipmentMethodTypeState.java
-.\AbstractShipmentMethodTypeStateCommandConverter.java
 .\CreateOrMergePatchShipmentMethodTypeDto.java
 .\DeleteShipmentMethodTypeDto.java
 .\GenerateShipmentMethodTypeDomain.txt
@@ -6607,8 +5796,6 @@
 .\ShipmentMethodTypeEventId.java
 .\ShipmentMethodTypeState.java
 .\ShipmentMethodTypeStateDto.java
-.\ShipmentMethodTypeStateEventDto.java
-.\ShipmentMethodTypeStateEventDtoConverter.java
 .\ShipmentMethodTypeStateQueryRepository.java
 .\ShipmentMethodTypeStateRepository.java
 </LastOutputs>
@@ -6625,11 +5812,9 @@
 .\AbstractShipmentPackageContentCommandDto.java
 .\AbstractShipmentPackageContentEvent.java
 .\AbstractShipmentPackageContentState.java
-.\AbstractShipmentPackageContentStateCommandConverter.java
 .\AbstractShipmentPackageContentStates.java
 .\AbstractShipmentPackageEvent.java
 .\AbstractShipmentPackageState.java
-.\AbstractShipmentPackageStateCommandConverter.java
 .\CreateOrMergePatchShipmentPackageContentDto.java
 .\CreateOrMergePatchShipmentPackageDto.java
 .\DeleteShipmentPackageDto.java
@@ -6646,16 +5831,12 @@
 .\ShipmentPackageContentState.java
 .\ShipmentPackageContentStateDao.java
 .\ShipmentPackageContentStateDto.java
-.\ShipmentPackageContentStateEventDto.java
-.\ShipmentPackageContentStateEventDtoConverter.java
 .\ShipmentPackageContentStates.java
 .\ShipmentPackageEvent.java
 .\ShipmentPackageEventId.java
 .\ShipmentPackageId.java
 .\ShipmentPackageState.java
 .\ShipmentPackageStateDto.java
-.\ShipmentPackageStateEventDto.java
-.\ShipmentPackageStateEventDtoConverter.java
 .\ShipmentPackageStateQueryRepository.java
 .\ShipmentPackageStateRepository.java
 </LastOutputs>
@@ -6670,7 +5851,6 @@
 .\AbstractOrderItemShipGrpInvReservationCommandDto.java
 .\AbstractOrderItemShipGrpInvReservationEvent.java
 .\AbstractOrderItemShipGrpInvReservationState.java
-.\AbstractOrderItemShipGrpInvReservationStateCommandConverter.java
 .\CreateOrMergePatchOrderItemShipGrpInvReservationDto.java
 .\DeleteOrderItemShipGrpInvReservationDto.java
 .\GenerateOrderItemShipGrpInvReservationDomain.txt
@@ -6681,8 +5861,6 @@
 .\OrderItemShipGrpInvReservationEventId.java
 .\OrderItemShipGrpInvReservationState.java
 .\OrderItemShipGrpInvReservationStateDto.java
-.\OrderItemShipGrpInvReservationStateEventDto.java
-.\OrderItemShipGrpInvReservationStateEventDtoConverter.java
 .\OrderItemShipGrpInvReservationStateQueryRepository.java
 .\OrderItemShipGrpInvReservationStateRepository.java
 .\OrderItemShipGrpInvResId.java
@@ -6698,7 +5876,6 @@
 .\AbstractLocatorTypeCommandDto.java
 .\AbstractLocatorTypeEvent.java
 .\AbstractLocatorTypeState.java
-.\AbstractLocatorTypeStateCommandConverter.java
 .\CreateOrMergePatchLocatorTypeDto.java
 .\DeleteLocatorTypeDto.java
 .\GenerateLocatorTypeDomain.txt
@@ -6709,8 +5886,6 @@
 .\LocatorTypeEventId.java
 .\LocatorTypeState.java
 .\LocatorTypeStateDto.java
-.\LocatorTypeStateEventDto.java
-.\LocatorTypeStateEventDtoConverter.java
 .\LocatorTypeStateQueryRepository.java
 .\LocatorTypeStateRepository.java
 </LastOutputs>
@@ -6725,7 +5900,6 @@
 .\AbstractPickwaveCommandDto.java
 .\AbstractPickwaveEvent.java
 .\AbstractPickwaveState.java
-.\AbstractPickwaveStateCommandConverter.java
 .\CreateOrMergePatchPickwaveDto.java
 .\DeletePickwaveDto.java
 .\GeneratePickwaveDomain.txt
@@ -6736,8 +5910,6 @@
 .\PickwaveEventId.java
 .\PickwaveState.java
 .\PickwaveStateDto.java
-.\PickwaveStateEventDto.java
-.\PickwaveStateEventDtoConverter.java
 .\PickwaveStateQueryRepository.java
 .\PickwaveStateRepository.java
 </LastOutputs>
@@ -6752,7 +5924,6 @@
 .\AbstractGoodIdentificationTypeCommandDto.java
 .\AbstractGoodIdentificationTypeEvent.java
 .\AbstractGoodIdentificationTypeState.java
-.\AbstractGoodIdentificationTypeStateCommandConverter.java
 .\CreateOrMergePatchGoodIdentificationTypeDto.java
 .\DeleteGoodIdentificationTypeDto.java
 .\GenerateGoodIdentificationTypeDomain.txt
@@ -6763,8 +5934,6 @@
 .\GoodIdentificationTypeEventId.java
 .\GoodIdentificationTypeState.java
 .\GoodIdentificationTypeStateDto.java
-.\GoodIdentificationTypeStateEventDto.java
-.\GoodIdentificationTypeStateEventDtoConverter.java
 .\GoodIdentificationTypeStateQueryRepository.java
 .\GoodIdentificationTypeStateRepository.java
 </LastOutputs>
@@ -6781,7 +5950,6 @@
       <LastOutputs>
 .\GenerateBoundedContextDomainServices.txt
 .\IdApplicationService.java
-.\IdServiceCommandDtos.java
 .\IdServiceCommands.java
 </LastOutputs>
     </None>

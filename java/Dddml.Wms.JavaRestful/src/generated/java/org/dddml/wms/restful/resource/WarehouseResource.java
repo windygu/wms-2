@@ -175,13 +175,13 @@ public class WarehouseResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public WarehouseStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public WarehouseEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            WarehouseStateEventDtoConverter dtoConverter = getWarehouseStateEventDtoConverter();
-            return dtoConverter.toWarehouseStateEventDto((AbstractWarehouseEvent) warehouseApplicationService.getEvent(idObj, version));
+            //WarehouseStateEventDtoConverter dtoConverter = getWarehouseStateEventDtoConverter();
+            return warehouseApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class WarehouseResource {
     }
 
 
-    protected  WarehouseStateEventDtoConverter getWarehouseStateEventDtoConverter() {
-        return new WarehouseStateEventDtoConverter();
-    }
+    //protected  WarehouseStateEventDtoConverter getWarehouseStateEventDtoConverter() {
+    //    return new WarehouseStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

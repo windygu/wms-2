@@ -175,13 +175,13 @@ public class DamageReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public DamageReasonStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public DamageReasonEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            DamageReasonStateEventDtoConverter dtoConverter = getDamageReasonStateEventDtoConverter();
-            return dtoConverter.toDamageReasonStateEventDto((AbstractDamageReasonEvent) damageReasonApplicationService.getEvent(idObj, version));
+            //DamageReasonStateEventDtoConverter dtoConverter = getDamageReasonStateEventDtoConverter();
+            return damageReasonApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class DamageReasonResource {
     }
 
 
-    protected  DamageReasonStateEventDtoConverter getDamageReasonStateEventDtoConverter() {
-        return new DamageReasonStateEventDtoConverter();
-    }
+    //protected  DamageReasonStateEventDtoConverter getDamageReasonStateEventDtoConverter() {
+    //    return new DamageReasonStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

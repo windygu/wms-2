@@ -175,13 +175,13 @@ public class RoleTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public RoleTypeStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public RoleTypeEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            RoleTypeStateEventDtoConverter dtoConverter = getRoleTypeStateEventDtoConverter();
-            return dtoConverter.toRoleTypeStateEventDto((AbstractRoleTypeEvent) roleTypeApplicationService.getEvent(idObj, version));
+            //RoleTypeStateEventDtoConverter dtoConverter = getRoleTypeStateEventDtoConverter();
+            return roleTypeApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class RoleTypeResource {
     }
 
 
-    protected  RoleTypeStateEventDtoConverter getRoleTypeStateEventDtoConverter() {
-        return new RoleTypeStateEventDtoConverter();
-    }
+    //protected  RoleTypeStateEventDtoConverter getRoleTypeStateEventDtoConverter() {
+    //    return new RoleTypeStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

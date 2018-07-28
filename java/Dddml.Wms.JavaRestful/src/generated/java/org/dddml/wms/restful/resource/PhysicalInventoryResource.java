@@ -148,10 +148,10 @@ public class PhysicalInventoryResource {
 
 
     @PutMapping("{id}/_commands/CountItem")
-    public void countItem(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommandDtos.CountItemRequestContent content) {
+    public void countItem(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommands.CountItem content) {
         try {
 
-            PhysicalInventoryCommands.CountItem cmd = content.toCountItem();
+            PhysicalInventoryCommands.CountItem cmd = content;//.toCountItem();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -165,10 +165,10 @@ public class PhysicalInventoryResource {
 
 
     @PutMapping("{id}/_commands/DocumentAction")
-    public void documentAction(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommandDtos.DocumentActionRequestContent content) {
+    public void documentAction(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommands.DocumentAction content) {
         try {
 
-            PhysicalInventoryCommands.DocumentAction cmd = content.toDocumentAction();
+            PhysicalInventoryCommands.DocumentAction cmd = content;//.toDocumentAction();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -193,13 +193,13 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public PhysicalInventoryStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public PhysicalInventoryEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            PhysicalInventoryStateEventDtoConverter dtoConverter = getPhysicalInventoryStateEventDtoConverter();
-            return dtoConverter.toPhysicalInventoryStateEventDto((AbstractPhysicalInventoryEvent) physicalInventoryApplicationService.getEvent(idObj, version));
+            //PhysicalInventoryStateEventDtoConverter dtoConverter = getPhysicalInventoryStateEventDtoConverter();
+            return physicalInventoryApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -251,9 +251,9 @@ public class PhysicalInventoryResource {
     }
 
 
-    protected  PhysicalInventoryStateEventDtoConverter getPhysicalInventoryStateEventDtoConverter() {
-        return new PhysicalInventoryStateEventDtoConverter();
-    }
+    //protected  PhysicalInventoryStateEventDtoConverter getPhysicalInventoryStateEventDtoConverter() {
+    //    return new PhysicalInventoryStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

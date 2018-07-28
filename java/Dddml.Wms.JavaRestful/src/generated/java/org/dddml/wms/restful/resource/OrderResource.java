@@ -158,13 +158,13 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public OrderStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public OrderEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            OrderStateEventDtoConverter dtoConverter = getOrderStateEventDtoConverter();
-            return dtoConverter.toOrderStateEventDto((AbstractOrderEvent) orderApplicationService.getEvent(idObj, version));
+            //OrderStateEventDtoConverter dtoConverter = getOrderStateEventDtoConverter();
+            return orderApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -291,9 +291,9 @@ public class OrderResource {
     }
 
 
-    protected  OrderStateEventDtoConverter getOrderStateEventDtoConverter() {
-        return new OrderStateEventDtoConverter();
-    }
+    //protected  OrderStateEventDtoConverter getOrderStateEventDtoConverter() {
+    //    return new OrderStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

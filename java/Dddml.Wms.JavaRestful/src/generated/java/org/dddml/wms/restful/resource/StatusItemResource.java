@@ -158,9 +158,9 @@ public class StatusItemResource {
     }
 
 
-    protected  StatusItemStateEventDtoConverter getStatusItemStateEventDtoConverter() {
-        return new StatusItemStateEventDtoConverter();
-    }
+    //protected  StatusItemStateEventDtoConverter getStatusItemStateEventDtoConverter() {
+    //    return new StatusItemStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

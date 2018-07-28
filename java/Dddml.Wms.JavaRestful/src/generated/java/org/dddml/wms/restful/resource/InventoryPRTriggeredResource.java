@@ -158,9 +158,9 @@ public class InventoryPRTriggeredResource {
     }
 
 
-    protected  InventoryPRTriggeredStateEventDtoConverter getInventoryPRTriggeredStateEventDtoConverter() {
-        return new InventoryPRTriggeredStateEventDtoConverter();
-    }
+    //protected  InventoryPRTriggeredStateEventDtoConverter getInventoryPRTriggeredStateEventDtoConverter() {
+    //    return new InventoryPRTriggeredStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

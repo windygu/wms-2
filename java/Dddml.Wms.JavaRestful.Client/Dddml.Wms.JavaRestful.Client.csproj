@@ -1414,13 +1414,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdApplicationService.java">
-      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommandDtos.java">
-      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommands.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeCommandDto.java">
@@ -1750,9 +1744,7 @@
       <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateBoundedContextDomainServices.txt
-.\IdApplicationService.java
 .\IdServiceCommandDtos.java
-.\IdServiceCommands.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\GenerateAttributeDomain.tt">

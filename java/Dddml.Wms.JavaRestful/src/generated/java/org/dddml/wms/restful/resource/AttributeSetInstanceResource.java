@@ -136,13 +136,13 @@ public class AttributeSetInstanceResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public AttributeSetInstanceStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public AttributeSetInstanceEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            AttributeSetInstanceStateEventDtoConverter dtoConverter = getAttributeSetInstanceStateEventDtoConverter();
-            return dtoConverter.toAttributeSetInstanceStateEventDto((AbstractAttributeSetInstanceEvent) attributeSetInstanceApplicationService.getEvent(idObj, version));
+            //AttributeSetInstanceStateEventDtoConverter dtoConverter = getAttributeSetInstanceStateEventDtoConverter();
+            return attributeSetInstanceApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -164,9 +164,9 @@ public class AttributeSetInstanceResource {
     }
 
 
-    protected  AttributeSetInstanceStateEventDtoConverter getAttributeSetInstanceStateEventDtoConverter() {
-        return new AttributeSetInstanceStateEventDtoConverter();
-    }
+    //protected  AttributeSetInstanceStateEventDtoConverter getAttributeSetInstanceStateEventDtoConverter() {
+    //    return new AttributeSetInstanceStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

@@ -175,13 +175,13 @@ public class ContactMechResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public ContactMechStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public ContactMechEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            ContactMechStateEventDtoConverter dtoConverter = getContactMechStateEventDtoConverter();
-            return dtoConverter.toContactMechStateEventDto((AbstractContactMechEvent) contactMechApplicationService.getEvent(idObj, version));
+            //ContactMechStateEventDtoConverter dtoConverter = getContactMechStateEventDtoConverter();
+            return contactMechApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class ContactMechResource {
     }
 
 
-    protected  ContactMechStateEventDtoConverter getContactMechStateEventDtoConverter() {
-        return new ContactMechStateEventDtoConverter();
-    }
+    //protected  ContactMechStateEventDtoConverter getContactMechStateEventDtoConverter() {
+    //    return new ContactMechStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

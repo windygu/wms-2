@@ -146,10 +146,10 @@ public class ShipmentResource {
 
 
     @PutMapping("{id}/_commands/Import")
-    public void _import(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ImportRequestContent content) {
+    public void _import(@PathVariable("id") String id, @RequestBody ShipmentCommands.Import content) {
         try {
 
-            ShipmentCommands.Import cmd = content.toImport();
+            ShipmentCommands.Import cmd = content;//.toImport();
             String idObj = id;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
@@ -163,10 +163,10 @@ public class ShipmentResource {
 
 
     @PutMapping("{id}/_commands/Ship")
-    public void ship(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ShipRequestContent content) {
+    public void ship(@PathVariable("id") String id, @RequestBody ShipmentCommands.Ship content) {
         try {
 
-            ShipmentCommands.Ship cmd = content.toShip();
+            ShipmentCommands.Ship cmd = content;//.toShip();
             String idObj = id;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
@@ -180,10 +180,10 @@ public class ShipmentResource {
 
 
     @PutMapping("{id}/_commands/ReceiveItem")
-    public void receiveItem(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ReceiveItemRequestContent content) {
+    public void receiveItem(@PathVariable("id") String id, @RequestBody ShipmentCommands.ReceiveItem content) {
         try {
 
-            ShipmentCommands.ReceiveItem cmd = content.toReceiveItem();
+            ShipmentCommands.ReceiveItem cmd = content;//.toReceiveItem();
             String idObj = id;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
@@ -197,10 +197,10 @@ public class ShipmentResource {
 
 
     @PutMapping("{id}/_commands/ConfirmAllItemsReceived")
-    public void confirmAllItemsReceived(@PathVariable("id") String id, @RequestBody ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content) {
+    public void confirmAllItemsReceived(@PathVariable("id") String id, @RequestBody ShipmentCommands.ConfirmAllItemsReceived content) {
         try {
 
-            ShipmentCommands.ConfirmAllItemsReceived cmd = content.toConfirmAllItemsReceived();
+            ShipmentCommands.ConfirmAllItemsReceived cmd = content;//.toConfirmAllItemsReceived();
             String idObj = id;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
@@ -225,13 +225,13 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public ShipmentStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public ShipmentEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            ShipmentStateEventDtoConverter dtoConverter = getShipmentStateEventDtoConverter();
-            return dtoConverter.toShipmentStateEventDto((AbstractShipmentEvent) shipmentApplicationService.getEvent(idObj, version));
+            //ShipmentStateEventDtoConverter dtoConverter = getShipmentStateEventDtoConverter();
+            return shipmentApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -328,9 +328,9 @@ public class ShipmentResource {
     }
 
 
-    protected  ShipmentStateEventDtoConverter getShipmentStateEventDtoConverter() {
-        return new ShipmentStateEventDtoConverter();
-    }
+    //protected  ShipmentStateEventDtoConverter getShipmentStateEventDtoConverter() {
+    //    return new ShipmentStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

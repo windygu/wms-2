@@ -175,13 +175,13 @@ public class ProductCategoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public ProductCategoryStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public ProductCategoryEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            ProductCategoryStateEventDtoConverter dtoConverter = getProductCategoryStateEventDtoConverter();
-            return dtoConverter.toProductCategoryStateEventDto((AbstractProductCategoryEvent) productCategoryApplicationService.getEvent(idObj, version));
+            //ProductCategoryStateEventDtoConverter dtoConverter = getProductCategoryStateEventDtoConverter();
+            return productCategoryApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -216,9 +216,9 @@ public class ProductCategoryResource {
     }
 
 
-    protected  ProductCategoryStateEventDtoConverter getProductCategoryStateEventDtoConverter() {
-        return new ProductCategoryStateEventDtoConverter();
-    }
+    //protected  ProductCategoryStateEventDtoConverter getProductCategoryStateEventDtoConverter() {
+    //    return new ProductCategoryStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

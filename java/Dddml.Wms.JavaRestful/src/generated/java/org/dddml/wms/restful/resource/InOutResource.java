@@ -147,10 +147,10 @@ public class InOutResource {
 
 
     @PutMapping("{id}/_commands/Complete")
-    public void complete(@PathVariable("id") String id, @RequestBody InOutCommandDtos.CompleteRequestContent content) {
+    public void complete(@PathVariable("id") String id, @RequestBody InOutCommands.Complete content) {
         try {
 
-            InOutCommands.Complete cmd = content.toComplete();
+            InOutCommands.Complete cmd = content;//.toComplete();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -164,10 +164,10 @@ public class InOutResource {
 
 
     @PutMapping("{id}/_commands/Close")
-    public void close(@PathVariable("id") String id, @RequestBody InOutCommandDtos.CloseRequestContent content) {
+    public void close(@PathVariable("id") String id, @RequestBody InOutCommands.Close content) {
         try {
 
-            InOutCommands.Close cmd = content.toClose();
+            InOutCommands.Close cmd = content;//.toClose();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -181,10 +181,10 @@ public class InOutResource {
 
 
     @PutMapping("{id}/_commands/Void")
-    public void _void(@PathVariable("id") String id, @RequestBody InOutCommandDtos.VoidRequestContent content) {
+    public void _void(@PathVariable("id") String id, @RequestBody InOutCommands.Void content) {
         try {
 
-            InOutCommands.Void cmd = content.toVoid();
+            InOutCommands.Void cmd = content;//.toVoid();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -198,10 +198,10 @@ public class InOutResource {
 
 
     @PutMapping("{id}/_commands/Reverse")
-    public void reverse(@PathVariable("id") String id, @RequestBody InOutCommandDtos.ReverseRequestContent content) {
+    public void reverse(@PathVariable("id") String id, @RequestBody InOutCommands.Reverse content) {
         try {
 
-            InOutCommands.Reverse cmd = content.toReverse();
+            InOutCommands.Reverse cmd = content;//.toReverse();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -215,10 +215,10 @@ public class InOutResource {
 
 
     @PutMapping("{id}/_commands/AddLine")
-    public void addLine(@PathVariable("id") String id, @RequestBody InOutCommandDtos.AddLineRequestContent content) {
+    public void addLine(@PathVariable("id") String id, @RequestBody InOutCommands.AddLine content) {
         try {
 
-            InOutCommands.AddLine cmd = content.toAddLine();
+            InOutCommands.AddLine cmd = content;//.toAddLine();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -232,10 +232,10 @@ public class InOutResource {
 
 
     @PutMapping("{id}/_commands/DocumentAction")
-    public void documentAction(@PathVariable("id") String id, @RequestBody InOutCommandDtos.DocumentActionRequestContent content) {
+    public void documentAction(@PathVariable("id") String id, @RequestBody InOutCommands.DocumentAction content) {
         try {
 
-            InOutCommands.DocumentAction cmd = content.toDocumentAction();
+            InOutCommands.DocumentAction cmd = content;//.toDocumentAction();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -260,13 +260,13 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public InOutStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public InOutEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            InOutStateEventDtoConverter dtoConverter = getInOutStateEventDtoConverter();
-            return dtoConverter.toInOutStateEventDto((AbstractInOutEvent) inOutApplicationService.getEvent(idObj, version));
+            //InOutStateEventDtoConverter dtoConverter = getInOutStateEventDtoConverter();
+            return inOutApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -363,9 +363,9 @@ public class InOutResource {
     }
 
 
-    protected  InOutStateEventDtoConverter getInOutStateEventDtoConverter() {
-        return new InOutStateEventDtoConverter();
-    }
+    //protected  InOutStateEventDtoConverter getInOutStateEventDtoConverter() {
+    //    return new InOutStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

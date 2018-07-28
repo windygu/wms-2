@@ -175,13 +175,13 @@ public class LocatorResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public LocatorStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public LocatorEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            LocatorStateEventDtoConverter dtoConverter = getLocatorStateEventDtoConverter();
-            return dtoConverter.toLocatorStateEventDto((AbstractLocatorEvent) locatorApplicationService.getEvent(idObj, version));
+            //LocatorStateEventDtoConverter dtoConverter = getLocatorStateEventDtoConverter();
+            return locatorApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class LocatorResource {
     }
 
 
-    protected  LocatorStateEventDtoConverter getLocatorStateEventDtoConverter() {
-        return new LocatorStateEventDtoConverter();
-    }
+    //protected  LocatorStateEventDtoConverter getLocatorStateEventDtoConverter() {
+    //    return new LocatorStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

@@ -175,13 +175,13 @@ public class UomConversionResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public UomConversionStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public UomConversionEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             UomConversionId idObj = UomConversionResourceUtils.parseIdString(id);
-            UomConversionStateEventDtoConverter dtoConverter = getUomConversionStateEventDtoConverter();
-            return dtoConverter.toUomConversionStateEventDto((AbstractUomConversionEvent) uomConversionApplicationService.getEvent(idObj, version));
+            //UomConversionStateEventDtoConverter dtoConverter = getUomConversionStateEventDtoConverter();
+            return uomConversionApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class UomConversionResource {
     }
 
 
-    protected  UomConversionStateEventDtoConverter getUomConversionStateEventDtoConverter() {
-        return new UomConversionStateEventDtoConverter();
-    }
+    //protected  UomConversionStateEventDtoConverter getUomConversionStateEventDtoConverter() {
+    //    return new UomConversionStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

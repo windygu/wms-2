@@ -176,13 +176,13 @@ public class InventoryPostingRuleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public InventoryPostingRuleStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public InventoryPostingRuleEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            InventoryPostingRuleStateEventDtoConverter dtoConverter = getInventoryPostingRuleStateEventDtoConverter();
-            return dtoConverter.toInventoryPostingRuleStateEventDto((AbstractInventoryPostingRuleEvent) inventoryPostingRuleApplicationService.getEvent(idObj, version));
+            //InventoryPostingRuleStateEventDtoConverter dtoConverter = getInventoryPostingRuleStateEventDtoConverter();
+            return inventoryPostingRuleApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -204,9 +204,9 @@ public class InventoryPostingRuleResource {
     }
 
 
-    protected  InventoryPostingRuleStateEventDtoConverter getInventoryPostingRuleStateEventDtoConverter() {
-        return new InventoryPostingRuleStateEventDtoConverter();
-    }
+    //protected  InventoryPostingRuleStateEventDtoConverter getInventoryPostingRuleStateEventDtoConverter() {
+    //    return new InventoryPostingRuleStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

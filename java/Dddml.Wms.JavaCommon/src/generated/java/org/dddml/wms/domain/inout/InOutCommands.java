@@ -1,6 +1,6 @@
 package org.dddml.wms.domain.inout;
 
-import java.util.Set;
+import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;

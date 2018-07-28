@@ -175,13 +175,13 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public AttributeSetInstanceExtensionFieldGroupStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public AttributeSetInstanceExtensionFieldGroupEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
-            return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateEventDto((AbstractAttributeSetInstanceExtensionFieldGroupEvent) attributeSetInstanceExtensionFieldGroupApplicationService.getEvent(idObj, version));
+            //AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
+            return attributeSetInstanceExtensionFieldGroupApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -203,9 +203,9 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
     }
 
 
-    protected  AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter() {
-        return new AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
-    }
+    //protected  AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter() {
+    //    return new AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

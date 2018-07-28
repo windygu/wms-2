@@ -1,6 +1,6 @@
 package org.dddml.wms.domain.movement;
 
-import java.util.Set;
+import java.util.*;
 import java.util.Date;
 import java.math.BigDecimal;
 import org.dddml.wms.domain.*;

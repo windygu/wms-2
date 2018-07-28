@@ -175,13 +175,13 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public ShipmentPackageStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public ShipmentPackageEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(id);
-            ShipmentPackageStateEventDtoConverter dtoConverter = getShipmentPackageStateEventDtoConverter();
-            return dtoConverter.toShipmentPackageStateEventDto((AbstractShipmentPackageEvent) shipmentPackageApplicationService.getEvent(idObj, version));
+            //ShipmentPackageStateEventDtoConverter dtoConverter = getShipmentPackageStateEventDtoConverter();
+            return shipmentPackageApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -238,9 +238,9 @@ public class ShipmentPackageResource {
     }
 
 
-    protected  ShipmentPackageStateEventDtoConverter getShipmentPackageStateEventDtoConverter() {
-        return new ShipmentPackageStateEventDtoConverter();
-    }
+    //protected  ShipmentPackageStateEventDtoConverter getShipmentPackageStateEventDtoConverter() {
+    //    return new ShipmentPackageStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

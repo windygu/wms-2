@@ -165,10 +165,10 @@ public class MovementResource {
 
 
     @PutMapping("{id}/_commands/AddLine")
-    public void addLine(@PathVariable("id") String id, @RequestBody MovementCommandDtos.AddLineRequestContent content) {
+    public void addLine(@PathVariable("id") String id, @RequestBody MovementCommands.AddLine content) {
         try {
 
-            MovementCommands.AddLine cmd = content.toAddLine();
+            MovementCommands.AddLine cmd = content;//.toAddLine();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -182,10 +182,10 @@ public class MovementResource {
 
 
     @PutMapping("{id}/_commands/DocumentAction")
-    public void documentAction(@PathVariable("id") String id, @RequestBody MovementCommandDtos.DocumentActionRequestContent content) {
+    public void documentAction(@PathVariable("id") String id, @RequestBody MovementCommands.DocumentAction content) {
         try {
 
-            MovementCommands.DocumentAction cmd = content.toDocumentAction();
+            MovementCommands.DocumentAction cmd = content;//.toDocumentAction();
             String idObj = id;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
@@ -210,13 +210,13 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public MovementStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public MovementEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             String idObj = id;
-            MovementStateEventDtoConverter dtoConverter = getMovementStateEventDtoConverter();
-            return dtoConverter.toMovementStateEventDto((AbstractMovementEvent) movementApplicationService.getEvent(idObj, version));
+            //MovementStateEventDtoConverter dtoConverter = getMovementStateEventDtoConverter();
+            return movementApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -263,9 +263,9 @@ public class MovementResource {
     }
 
 
-    protected  MovementStateEventDtoConverter getMovementStateEventDtoConverter() {
-        return new MovementStateEventDtoConverter();
-    }
+    //protected  MovementStateEventDtoConverter getMovementStateEventDtoConverter() {
+    //    return new MovementStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";

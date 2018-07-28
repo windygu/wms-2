@@ -157,13 +157,13 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_stateEvents/{version}")
-    public ProductCategoryMemberStateEventDto getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{id}/_events/{version}")
+    public ProductCategoryMemberEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
         try {
 
             ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);
-            ProductCategoryMemberStateEventDtoConverter dtoConverter = getProductCategoryMemberStateEventDtoConverter();
-            return dtoConverter.toProductCategoryMemberStateEventDto((AbstractProductCategoryMemberEvent) productCategoryMemberApplicationService.getEvent(idObj, version));
+            //ProductCategoryMemberStateEventDtoConverter dtoConverter = getProductCategoryMemberStateEventDtoConverter();
+            return productCategoryMemberApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -185,9 +185,9 @@ public class ProductCategoryMemberResource {
     }
 
 
-    protected  ProductCategoryMemberStateEventDtoConverter getProductCategoryMemberStateEventDtoConverter() {
-        return new ProductCategoryMemberStateEventDtoConverter();
-    }
+    //protected  ProductCategoryMemberStateEventDtoConverter getProductCategoryMemberStateEventDtoConverter() {
+    //    return new ProductCategoryMemberStateEventDtoConverter();
+    //}
 
     protected String getQueryOrderSeparator() {
         return ",";
