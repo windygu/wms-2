@@ -173,6 +173,29 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{inventoryItemId}/InventoryItemEntries/")
+    public void postInventoryItemEntries(@PathVariable("inventoryItemId") String inventoryItemId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchInventoryItemEntryDto.CreateInventoryItemEntryDto body) {
+        try {
+            InventoryItemCommand.MergePatchInventoryItem mergePatchInventoryItem = new AbstractInventoryItemCommand.SimpleMergePatchInventoryItem();
+            mergePatchInventoryItem.setInventoryItemId((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemId)));
+            mergePatchInventoryItem.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInventoryItem.setVersion(version); }
+            mergePatchInventoryItem.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry = body.toCreateInventoryItemEntry();
+            mergePatchInventoryItem.getInventoryItemEntryCommands().add(createInventoryItemEntry);
+            inventoryItemApplicationService.when(mergePatchInventoryItem);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  InventoryItemStateEventDtoConverter getInventoryItemStateEventDtoConverter() {
     //    return new InventoryItemStateEventDtoConverter();

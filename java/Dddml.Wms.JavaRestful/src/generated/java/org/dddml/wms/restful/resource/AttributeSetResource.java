@@ -227,6 +227,24 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{attributeSetId}/AttributeUses/")
+    public void postAttributeUses(@PathVariable("attributeSetId") String attributeSetId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchAttributeUseDto.CreateAttributeUseDto body) {
+        try {
+            AttributeSetCommand.MergePatchAttributeSet mergePatchAttributeSet = new AbstractAttributeSetCommand.SimpleMergePatchAttributeSet();
+            mergePatchAttributeSet.setAttributeSetId(attributeSetId);
+            mergePatchAttributeSet.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchAttributeSet.setVersion(version); }
+            mergePatchAttributeSet.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            AttributeUseCommand.CreateAttributeUse createAttributeUse = body.toCreateAttributeUse();
+            mergePatchAttributeSet.getAttributeUseCommands().add(createAttributeUse);
+            attributeSetApplicationService.when(mergePatchAttributeSet);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  AttributeSetStateEventDtoConverter getAttributeSetStateEventDtoConverter() {
     //    return new AttributeSetStateEventDtoConverter();

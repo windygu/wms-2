@@ -312,6 +312,24 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{inOutDocumentNumber}/InOutImages/")
+    public void postInOutImages(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchInOutImageDto.CreateInOutImageDto body) {
+        try {
+            InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
+            mergePatchInOut.setDocumentNumber(inOutDocumentNumber);
+            mergePatchInOut.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInOut.setVersion(version); }
+            mergePatchInOut.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InOutImageCommand.CreateInOutImage createInOutImage = body.toCreateInOutImage();
+            mergePatchInOut.getInOutImageCommands().add(createInOutImage);
+            inOutApplicationService.when(mergePatchInOut);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{inOutDocumentNumber}/InOutLines/{lineNumber}")
     public InOutLineStateDto getInOutLine(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
@@ -337,6 +355,24 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{inOutDocumentNumber}/InOutLines/")
+    public void postInOutLines(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchInOutLineDto.CreateInOutLineDto body) {
+        try {
+            InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
+            mergePatchInOut.setDocumentNumber(inOutDocumentNumber);
+            mergePatchInOut.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInOut.setVersion(version); }
+            mergePatchInOut.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InOutLineCommand.CreateInOutLine createInOutLine = body.toCreateInOutLine();
+            mergePatchInOut.getInOutLineCommands().add(createInOutLine);
+            inOutApplicationService.when(mergePatchInOut);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
     public InOutLineImageStateDto getInOutLineImage(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber, @PathVariable("sequenceId") String sequenceId) {
         try {
@@ -359,6 +395,27 @@ public class InOutResource {
             InOutLineImageStateDto.DtoConverter dtoConverter = new InOutLineImageStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toInOutLineImageStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PostMapping("{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/")
+    public void postInOutLineImages(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchInOutLineImageDto.CreateInOutLineImageDto body) {
+        try {
+            InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
+            mergePatchInOut.setDocumentNumber(inOutDocumentNumber);
+            mergePatchInOut.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInOut.setVersion(version); }
+            mergePatchInOut.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InOutLineCommand.MergePatchInOutLine mergePatchInOutLine = new AbstractInOutLineCommand.SimpleMergePatchInOutLine();
+            mergePatchInOutLine.setLineNumber(inOutLineLineNumber);
+            mergePatchInOut.getInOutLineCommands().add(mergePatchInOutLine);
+            InOutLineImageCommand.CreateInOutLineImage createInOutLineImage = body.toCreateInOutLineImage();
+            mergePatchInOutLine.getInOutLineImageCommands().add(createInOutLineImage);
+            inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

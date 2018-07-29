@@ -277,6 +277,24 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{shipmentId}/ShipmentItems/")
+    public void postShipmentItems(@PathVariable("shipmentId") String shipmentId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentItemDto.CreateShipmentItemDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentItemCommand.CreateShipmentItem createShipmentItem = body.toCreateShipmentItem();
+            mergePatchShipment.getShipmentItemCommands().add(createShipmentItem);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     public ShipmentReceiptStateDto getShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId) {
         try {
@@ -302,6 +320,24 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{shipmentId}/ShipmentReceipts/")
+    public void postShipmentReceipts(@PathVariable("shipmentId") String shipmentId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentReceiptDto.CreateShipmentReceiptDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentReceiptCommand.CreateShipmentReceipt createShipmentReceipt = body.toCreateShipmentReceipt();
+            mergePatchShipment.getShipmentReceiptCommands().add(createShipmentReceipt);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
     public ItemIssuanceStateDto getItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId) {
         try {
@@ -324,6 +360,24 @@ public class ShipmentResource {
             ItemIssuanceStateDto.DtoConverter dtoConverter = new ItemIssuanceStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toItemIssuanceStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PostMapping("{shipmentId}/ItemIssuances/")
+    public void postItemIssuances(@PathVariable("shipmentId") String shipmentId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchItemIssuanceDto.CreateItemIssuanceDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ItemIssuanceCommand.CreateItemIssuance createItemIssuance = body.toCreateItemIssuance();
+            mergePatchShipment.getItemIssuanceCommands().add(createItemIssuance);
+            shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

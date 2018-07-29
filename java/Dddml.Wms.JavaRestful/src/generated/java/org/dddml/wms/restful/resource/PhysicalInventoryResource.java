@@ -250,6 +250,24 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/")
+    public void postPhysicalInventoryLines(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchPhysicalInventoryLineDto.CreatePhysicalInventoryLineDto body) {
+        try {
+            PhysicalInventoryCommand.MergePatchPhysicalInventory mergePatchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
+            mergePatchPhysicalInventory.setDocumentNumber(physicalInventoryDocumentNumber);
+            mergePatchPhysicalInventory.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchPhysicalInventory.setVersion(version); }
+            mergePatchPhysicalInventory.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            PhysicalInventoryLineCommand.CreatePhysicalInventoryLine createPhysicalInventoryLine = body.toCreatePhysicalInventoryLine();
+            mergePatchPhysicalInventory.getPhysicalInventoryLineCommands().add(createPhysicalInventoryLine);
+            physicalInventoryApplicationService.when(mergePatchPhysicalInventory);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  PhysicalInventoryStateEventDtoConverter getPhysicalInventoryStateEventDtoConverter() {
     //    return new PhysicalInventoryStateEventDtoConverter();

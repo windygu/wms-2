@@ -209,6 +209,24 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{productId}/GoodIdentifications/")
+    public void postGoodIdentifications(@PathVariable("productId") String productId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchGoodIdentificationDto.CreateGoodIdentificationDto body) {
+        try {
+            ProductCommand.MergePatchProduct mergePatchProduct = new AbstractProductCommand.SimpleMergePatchProduct();
+            mergePatchProduct.setProductId(productId);
+            mergePatchProduct.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchProduct.setVersion(version); }
+            mergePatchProduct.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            GoodIdentificationCommand.CreateGoodIdentification createGoodIdentification = body.toCreateGoodIdentification();
+            mergePatchProduct.getGoodIdentificationCommands().add(createGoodIdentification);
+            productApplicationService.when(mergePatchProduct);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  ProductStateEventDtoConverter getProductStateEventDtoConverter() {
     //    return new ProductStateEventDtoConverter();

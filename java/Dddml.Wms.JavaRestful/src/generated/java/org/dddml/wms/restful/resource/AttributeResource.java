@@ -238,6 +238,24 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{attributeId}/AttributeValues/")
+    public void postAttributeValues(@PathVariable("attributeId") String attributeId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchAttributeValueDto.CreateAttributeValueDto body) {
+        try {
+            AttributeCommand.MergePatchAttribute mergePatchAttribute = new AbstractAttributeCommand.SimpleMergePatchAttribute();
+            mergePatchAttribute.setAttributeId(attributeId);
+            mergePatchAttribute.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchAttribute.setVersion(version); }
+            mergePatchAttribute.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            AttributeValueCommand.CreateAttributeValue createAttributeValue = body.toCreateAttributeValue();
+            mergePatchAttribute.getAttributeValueCommands().add(createAttributeValue);
+            attributeApplicationService.when(mergePatchAttribute);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{attributeId}/AttributeAlias/{code}")
     public AttributeAliasStateDto getAttributeAlias(@PathVariable("attributeId") String attributeId, @PathVariable("code") String code) {
         try {
@@ -260,6 +278,24 @@ public class AttributeResource {
             AttributeAliasStateDto.DtoConverter dtoConverter = new AttributeAliasStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toAttributeAliasStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PostMapping("{attributeId}/AttributeAlias/")
+    public void postAttributeAlias(@PathVariable("attributeId") String attributeId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchAttributeAliasDto.CreateAttributeAliasDto body) {
+        try {
+            AttributeCommand.MergePatchAttribute mergePatchAttribute = new AbstractAttributeCommand.SimpleMergePatchAttribute();
+            mergePatchAttribute.setAttributeId(attributeId);
+            mergePatchAttribute.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchAttribute.setVersion(version); }
+            mergePatchAttribute.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            AttributeAliasCommand.CreateAttributeAlias createAttributeAlias = body.toCreateAttributeAlias();
+            mergePatchAttribute.getAttributeAliasCommands().add(createAttributeAlias);
+            attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

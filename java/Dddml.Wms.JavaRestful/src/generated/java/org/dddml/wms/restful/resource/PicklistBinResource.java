@@ -232,6 +232,24 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{picklistBinId}/PicklistItems/")
+    public void postPicklistItems(@PathVariable("picklistBinId") String picklistBinId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchPicklistItemDto.CreatePicklistItemDto body) {
+        try {
+            PicklistBinCommand.MergePatchPicklistBin mergePatchPicklistBin = new AbstractPicklistBinCommand.SimpleMergePatchPicklistBin();
+            mergePatchPicklistBin.setPicklistBinId(picklistBinId);
+            mergePatchPicklistBin.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchPicklistBin.setVersion(version); }
+            mergePatchPicklistBin.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            PicklistItemCommand.CreatePicklistItem createPicklistItem = body.toCreatePicklistItem();
+            mergePatchPicklistBin.getPicklistItemCommands().add(createPicklistItem);
+            picklistBinApplicationService.when(mergePatchPicklistBin);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  PicklistBinStateEventDtoConverter getPicklistBinStateEventDtoConverter() {
     //    return new PicklistBinStateEventDtoConverter();

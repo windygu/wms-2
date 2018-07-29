@@ -233,6 +233,24 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{picklistId}/PicklistRoles/")
+    public void postPicklistRoles(@PathVariable("picklistId") String picklistId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchPicklistRoleDto.CreatePicklistRoleDto body) {
+        try {
+            PicklistCommand.MergePatchPicklist mergePatchPicklist = new AbstractPicklistCommand.SimpleMergePatchPicklist();
+            mergePatchPicklist.setPicklistId(picklistId);
+            mergePatchPicklist.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchPicklist.setVersion(version); }
+            mergePatchPicklist.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            PicklistRoleCommand.CreatePicklistRole createPicklistRole = body.toCreatePicklistRole();
+            mergePatchPicklist.getPicklistRoleCommands().add(createPicklistRole);
+            picklistApplicationService.when(mergePatchPicklist);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  PicklistStateEventDtoConverter getPicklistStateEventDtoConverter() {
     //    return new PicklistStateEventDtoConverter();

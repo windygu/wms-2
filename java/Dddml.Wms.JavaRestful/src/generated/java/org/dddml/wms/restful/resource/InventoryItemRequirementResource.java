@@ -195,6 +195,29 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{inventoryItemRequirementId}/InventoryItemRequirementEntries/")
+    public void postInventoryItemRequirementEntries(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchInventoryItemRequirementEntryDto.CreateInventoryItemRequirementEntryDto body) {
+        try {
+            InventoryItemRequirementCommand.MergePatchInventoryItemRequirement mergePatchInventoryItemRequirement = new AbstractInventoryItemRequirementCommand.SimpleMergePatchInventoryItemRequirement();
+            mergePatchInventoryItemRequirement.setInventoryItemRequirementId((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemRequirementId)));
+            mergePatchInventoryItemRequirement.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInventoryItemRequirement.setVersion(version); }
+            mergePatchInventoryItemRequirement.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry createInventoryItemRequirementEntry = body.toCreateInventoryItemRequirementEntry();
+            mergePatchInventoryItemRequirement.getInventoryItemRequirementEntryCommands().add(createInventoryItemRequirementEntry);
+            inventoryItemRequirementApplicationService.when(mergePatchInventoryItemRequirement);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  InventoryItemRequirementStateEventDtoConverter getInventoryItemRequirementStateEventDtoConverter() {
     //    return new InventoryItemRequirementStateEventDtoConverter();

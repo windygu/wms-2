@@ -245,6 +245,24 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/")
+    public void postMovementConfirmationLines(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchMovementConfirmationLineDto.CreateMovementConfirmationLineDto body) {
+        try {
+            MovementConfirmationCommand.MergePatchMovementConfirmation mergePatchMovementConfirmation = new AbstractMovementConfirmationCommand.SimpleMergePatchMovementConfirmation();
+            mergePatchMovementConfirmation.setDocumentNumber(movementConfirmationDocumentNumber);
+            mergePatchMovementConfirmation.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchMovementConfirmation.setVersion(version); }
+            mergePatchMovementConfirmation.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            MovementConfirmationLineCommand.CreateMovementConfirmationLine createMovementConfirmationLine = body.toCreateMovementConfirmationLine();
+            mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(createMovementConfirmationLine);
+            movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  MovementConfirmationStateEventDtoConverter getMovementConfirmationStateEventDtoConverter() {
     //    return new MovementConfirmationStateEventDtoConverter();

@@ -262,6 +262,24 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("{movementDocumentNumber}/MovementLines/")
+    public void postMovementLines(@PathVariable("movementDocumentNumber") String movementDocumentNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchMovementLineDto.CreateMovementLineDto body) {
+        try {
+            MovementCommand.MergePatchMovement mergePatchMovement = new AbstractMovementCommand.SimpleMergePatchMovement();
+            mergePatchMovement.setDocumentNumber(movementDocumentNumber);
+            mergePatchMovement.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchMovement.setVersion(version); }
+            mergePatchMovement.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            MovementLineCommand.CreateMovementLine createMovementLine = body.toCreateMovementLine();
+            mergePatchMovement.getMovementLineCommands().add(createMovementLine);
+            movementApplicationService.when(mergePatchMovement);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     //protected  MovementStateEventDtoConverter getMovementStateEventDtoConverter() {
     //    return new MovementStateEventDtoConverter();
