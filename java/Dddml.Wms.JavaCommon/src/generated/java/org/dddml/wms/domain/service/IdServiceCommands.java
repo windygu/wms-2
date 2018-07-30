@@ -15,6 +15,9 @@ public class IdServiceCommands {
     
     public static class GetDocumentNumber {
 
+        /**
+         * Document Type
+         */
         private String documentType;
 
         public String getDocumentType() {
@@ -25,6 +28,9 @@ public class IdServiceCommands {
             this.documentType = documentType;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -35,6 +41,9 @@ public class IdServiceCommands {
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {

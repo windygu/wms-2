@@ -19,6 +19,9 @@ public class ShipmentCommands
             //do nothing
         }
 
+        /**
+         * Shipment Type Id
+         */
         private String shipmentTypeId;
 
         public String getShipmentTypeId() {
@@ -29,6 +32,9 @@ public class ShipmentCommands
             this.shipmentTypeId = shipmentTypeId;
         }
 
+        /**
+         * Primary Order Id
+         */
         private String primaryOrderId;
 
         public String getPrimaryOrderId() {
@@ -39,6 +45,9 @@ public class ShipmentCommands
             this.primaryOrderId = primaryOrderId;
         }
 
+        /**
+         * Primary Return Id
+         */
         private String primaryReturnId;
 
         public String getPrimaryReturnId() {
@@ -49,6 +58,9 @@ public class ShipmentCommands
             this.primaryReturnId = primaryReturnId;
         }
 
+        /**
+         * Bill of lading
+         */
         private String bolNumber;
 
         public String getBolNumber() {
@@ -59,6 +71,9 @@ public class ShipmentCommands
             this.bolNumber = bolNumber;
         }
 
+        /**
+         * Vehicle Id
+         */
         private String vehicleId;
 
         public String getVehicleId() {
@@ -69,6 +84,9 @@ public class ShipmentCommands
             this.vehicleId = vehicleId;
         }
 
+        /**
+         * Seal Number
+         */
         private String sealNumber;
 
         public String getSealNumber() {
@@ -79,6 +97,9 @@ public class ShipmentCommands
             this.sealNumber = sealNumber;
         }
 
+        /**
+         * Po Number
+         */
         private String poNumber;
 
         public String getPoNumber() {
@@ -89,6 +110,9 @@ public class ShipmentCommands
             this.poNumber = poNumber;
         }
 
+        /**
+         * Carrier
+         */
         private String carrier;
 
         public String getCarrier() {
@@ -99,6 +123,9 @@ public class ShipmentCommands
             this.carrier = carrier;
         }
 
+        /**
+         * Date Shipped
+         */
         private java.sql.Timestamp dateShipped;
 
         public java.sql.Timestamp getDateShipped() {
@@ -109,6 +136,9 @@ public class ShipmentCommands
             this.dateShipped = dateShipped;
         }
 
+        /**
+         * Estimated Ready Date
+         */
         private java.sql.Timestamp estimatedReadyDate;
 
         public java.sql.Timestamp getEstimatedReadyDate() {
@@ -119,6 +149,9 @@ public class ShipmentCommands
             this.estimatedReadyDate = estimatedReadyDate;
         }
 
+        /**
+         * Estimated Ship Date
+         */
         private java.sql.Timestamp estimatedShipDate;
 
         public java.sql.Timestamp getEstimatedShipDate() {
@@ -129,6 +162,9 @@ public class ShipmentCommands
             this.estimatedShipDate = estimatedShipDate;
         }
 
+        /**
+         * Estimated Arrival Date
+         */
         private java.sql.Timestamp estimatedArrivalDate;
 
         public java.sql.Timestamp getEstimatedArrivalDate() {
@@ -139,6 +175,9 @@ public class ShipmentCommands
             this.estimatedArrivalDate = estimatedArrivalDate;
         }
 
+        /**
+         * Latest Cancel Date
+         */
         private java.sql.Timestamp latestCancelDate;
 
         public java.sql.Timestamp getLatestCancelDate() {
@@ -149,6 +188,9 @@ public class ShipmentCommands
             this.latestCancelDate = latestCancelDate;
         }
 
+        /**
+         * Estimated Ship Cost
+         */
         private java.math.BigDecimal estimatedShipCost;
 
         public java.math.BigDecimal getEstimatedShipCost() {
@@ -159,6 +201,9 @@ public class ShipmentCommands
             this.estimatedShipCost = estimatedShipCost;
         }
 
+        /**
+         * Currency Uom Id
+         */
         private String currencyUomId;
 
         public String getCurrencyUomId() {
@@ -169,6 +214,9 @@ public class ShipmentCommands
             this.currencyUomId = currencyUomId;
         }
 
+        /**
+         * Handling Instructions
+         */
         private String handlingInstructions;
 
         public String getHandlingInstructions() {
@@ -179,6 +227,9 @@ public class ShipmentCommands
             this.handlingInstructions = handlingInstructions;
         }
 
+        /**
+         * Origin Facility Id
+         */
         private String originFacilityId;
 
         public String getOriginFacilityId() {
@@ -189,6 +240,9 @@ public class ShipmentCommands
             this.originFacilityId = originFacilityId;
         }
 
+        /**
+         * Destination Facility Id
+         */
         private String destinationFacilityId;
 
         public String getDestinationFacilityId() {
@@ -199,6 +253,9 @@ public class ShipmentCommands
             this.destinationFacilityId = destinationFacilityId;
         }
 
+        /**
+         * Party Id To
+         */
         private String partyIdTo;
 
         public String getPartyIdTo() {
@@ -209,6 +266,9 @@ public class ShipmentCommands
             this.partyIdTo = partyIdTo;
         }
 
+        /**
+         * Party Id From
+         */
         private String partyIdFrom;
 
         public String getPartyIdFrom() {
@@ -219,6 +279,9 @@ public class ShipmentCommands
             this.partyIdFrom = partyIdFrom;
         }
 
+        /**
+         * Additional Shipping Charge
+         */
         private java.math.BigDecimal additionalShippingCharge;
 
         public java.math.BigDecimal getAdditionalShippingCharge() {
@@ -229,6 +292,9 @@ public class ShipmentCommands
             this.additionalShippingCharge = additionalShippingCharge;
         }
 
+        /**
+         * Addtl Shipping Charge Desc
+         */
         private String addtlShippingChargeDesc;
 
         public String getAddtlShippingChargeDesc() {
@@ -239,6 +305,9 @@ public class ShipmentCommands
             this.addtlShippingChargeDesc = addtlShippingChargeDesc;
         }
 
+        /**
+         * Shipment Items
+         */
         private List<ImportingShipmentItem> shipmentItems;
 
         public List<ImportingShipmentItem> getShipmentItems() {
@@ -249,6 +318,9 @@ public class ShipmentCommands
             this.shipmentItems = shipmentItems;
         }
 
+        /**
+         * Shipment Id
+         */
         private String shipmentId;
 
         public String getShipmentId() {
@@ -259,6 +331,9 @@ public class ShipmentCommands
             this.shipmentId = shipmentId;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -269,6 +344,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -279,6 +357,9 @@ public class ShipmentCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -301,6 +382,9 @@ public class ShipmentCommands
             //do nothing
         }
 
+        /**
+         * Shipment Id
+         */
         private String shipmentId;
 
         public String getShipmentId() {
@@ -311,6 +395,9 @@ public class ShipmentCommands
             this.shipmentId = shipmentId;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -321,6 +408,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -331,6 +421,9 @@ public class ShipmentCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -353,6 +446,9 @@ public class ShipmentCommands
             //do nothing
         }
 
+        /**
+         * Shipment Item Seq Id
+         */
         private String shipmentItemSeqId;
 
         public String getShipmentItemSeqId() {
@@ -363,6 +459,9 @@ public class ShipmentCommands
             this.shipmentItemSeqId = shipmentItemSeqId;
         }
 
+        /**
+         * Attribute Set Instance
+         */
         private java.util.Map<String, Object> attributeSetInstance;
 
         public java.util.Map<String, Object> getAttributeSetInstance() {
@@ -373,6 +472,9 @@ public class ShipmentCommands
             this.attributeSetInstance = attributeSetInstance;
         }
 
+        /**
+         * Rejection Reason Id
+         */
         private String rejectionReasonId;
 
         public String getRejectionReasonId() {
@@ -383,6 +485,9 @@ public class ShipmentCommands
             this.rejectionReasonId = rejectionReasonId;
         }
 
+        /**
+         * Damage Status Id
+         */
         private String damageStatusId;
 
         public String getDamageStatusId() {
@@ -393,6 +498,9 @@ public class ShipmentCommands
             this.damageStatusId = damageStatusId;
         }
 
+        /**
+         * Damage Reason Id
+         */
         private String damageReasonId;
 
         public String getDamageReasonId() {
@@ -403,6 +511,9 @@ public class ShipmentCommands
             this.damageReasonId = damageReasonId;
         }
 
+        /**
+         * Accepted Quantity
+         */
         private java.math.BigDecimal acceptedQuantity;
 
         public java.math.BigDecimal getAcceptedQuantity() {
@@ -413,6 +524,9 @@ public class ShipmentCommands
             this.acceptedQuantity = acceptedQuantity;
         }
 
+        /**
+         * Rejected Quantity
+         */
         private java.math.BigDecimal rejectedQuantity;
 
         public java.math.BigDecimal getRejectedQuantity() {
@@ -423,6 +537,9 @@ public class ShipmentCommands
             this.rejectedQuantity = rejectedQuantity;
         }
 
+        /**
+         * Damaged Quantity
+         */
         private java.math.BigDecimal damagedQuantity;
 
         public java.math.BigDecimal getDamagedQuantity() {
@@ -433,6 +550,9 @@ public class ShipmentCommands
             this.damagedQuantity = damagedQuantity;
         }
 
+        /**
+         * Item Description
+         */
         private String itemDescription;
 
         public String getItemDescription() {
@@ -443,6 +563,9 @@ public class ShipmentCommands
             this.itemDescription = itemDescription;
         }
 
+        /**
+         * Shipment Id
+         */
         private String shipmentId;
 
         public String getShipmentId() {
@@ -453,6 +576,9 @@ public class ShipmentCommands
             this.shipmentId = shipmentId;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -463,6 +589,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -473,6 +602,9 @@ public class ShipmentCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -495,6 +627,9 @@ public class ShipmentCommands
             //do nothing
         }
 
+        /**
+         * Shipment Id
+         */
         private String shipmentId;
 
         public String getShipmentId() {
@@ -505,6 +640,9 @@ public class ShipmentCommands
             this.shipmentId = shipmentId;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -515,6 +653,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -525,6 +666,9 @@ public class ShipmentCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
