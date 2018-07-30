@@ -465,6 +465,18 @@ public class ShipmentStateDto
         this.updatedAt = updatedAt;
     }
 
+    private ShipmentImageStateDto[] shipmentImages;
+
+    public ShipmentImageStateDto[] getShipmentImages()
+    {
+        return this.shipmentImages;
+    }	
+
+    public void setShipmentImages(ShipmentImageStateDto[] shipmentImages)
+    {
+        this.shipmentImages = shipmentImages;
+    }
+
     private ShipmentItemStateDto[] shipmentItems;
 
     public ShipmentItemStateDto[] getShipmentItems()
@@ -504,7 +516,7 @@ public class ShipmentStateDto
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"ShipmentItems", "ShipmentReceipts", "ItemIssuances"});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"ShipmentImages", "ShipmentItems", "ShipmentReceipts", "ItemIssuances"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -643,6 +655,18 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("ShipmentImages")) {
+                ArrayList<ShipmentImageStateDto> arrayList = new ArrayList();
+                if (state.getShipmentImages() != null) {
+                    ShipmentImageStateDto.DtoConverter conv = new ShipmentImageStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "ShipmentImages");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (ShipmentImageState s : state.getShipmentImages()) {
+                        arrayList.add(conv.toShipmentImageStateDto(s));
+                    }
+                }
+                dto.setShipmentImages(arrayList.toArray(new ShipmentImageStateDto[0]));
             }
             if (returnedFieldsContains("ShipmentItems")) {
                 ArrayList<ShipmentItemStateDto> arrayList = new ArrayList();

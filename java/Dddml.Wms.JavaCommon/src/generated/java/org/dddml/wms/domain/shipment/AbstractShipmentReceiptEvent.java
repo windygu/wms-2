@@ -74,6 +74,49 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
         this.shipmentReceiptEventId = eventId;
     }
 
+    protected ShipmentReceiptImageEventDao getShipmentReceiptImageEventDao() {
+        return (ShipmentReceiptImageEventDao)ApplicationContext.current.get("ShipmentReceiptImageEventDao");
+    }
+
+    protected ShipmentReceiptImageEventId newShipmentReceiptImageEventId(String sequenceId)
+    {
+        ShipmentReceiptImageEventId eventId = new ShipmentReceiptImageEventId(this.getShipmentReceiptEventId().getShipmentId(), this.getShipmentReceiptEventId().getReceiptSeqId(), 
+            sequenceId, 
+            this.getShipmentReceiptEventId().getShipmentVersion());
+        return eventId;
+    }
+
+    protected void throwOnInconsistentEventIds(ShipmentReceiptImageEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(ShipmentReceiptEvent oe, ShipmentReceiptImageEvent e)
+    {
+        if (!oe.getShipmentReceiptEventId().getShipmentId().equals(e.getShipmentReceiptImageEventId().getShipmentId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id ShipmentId %1$s but inner id ShipmentId %2$s", 
+                oe.getShipmentReceiptEventId().getShipmentId(), e.getShipmentReceiptImageEventId().getShipmentId());
+        }
+        if (!oe.getShipmentReceiptEventId().getReceiptSeqId().equals(e.getShipmentReceiptImageEventId().getShipmentReceiptReceiptSeqId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id ReceiptSeqId %1$s but inner id ShipmentReceiptReceiptSeqId %2$s", 
+                oe.getShipmentReceiptEventId().getReceiptSeqId(), e.getShipmentReceiptImageEventId().getShipmentReceiptReceiptSeqId());
+        }
+    }
+
+    public ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated newShipmentReceiptImageStateCreated(String sequenceId) {
+        return new AbstractShipmentReceiptImageEvent.SimpleShipmentReceiptImageStateCreated(newShipmentReceiptImageEventId(sequenceId));
+    }
+
+    public ShipmentReceiptImageEvent.ShipmentReceiptImageStateMergePatched newShipmentReceiptImageStateMergePatched(String sequenceId) {
+        return new AbstractShipmentReceiptImageEvent.SimpleShipmentReceiptImageStateMergePatched(newShipmentReceiptImageEventId(sequenceId));
+    }
+
+    public ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved newShipmentReceiptImageStateRemoved(String sequenceId) {
+        return new AbstractShipmentReceiptImageEvent.SimpleShipmentReceiptImageStateRemoved(newShipmentReceiptImageEventId(sequenceId));
+    }
+
 
     public abstract String getEventType();
 
@@ -324,7 +367,7 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
         }
     }
 
-    public static abstract class AbstractShipmentReceiptStateCreated extends AbstractShipmentReceiptStateEvent implements ShipmentReceiptEvent.ShipmentReceiptStateCreated
+    public static abstract class AbstractShipmentReceiptStateCreated extends AbstractShipmentReceiptStateEvent implements ShipmentReceiptEvent.ShipmentReceiptStateCreated, Saveable
     {
         public AbstractShipmentReceiptStateCreated() {
             this(new ShipmentReceiptEventId());
@@ -338,10 +381,58 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
             return StateEventType.CREATED;
         }
 
+        private Map<ShipmentReceiptImageEventId, ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated> shipmentReceiptImageEvents = new HashMap<ShipmentReceiptImageEventId, ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated>();
+        
+        private Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated> readOnlyShipmentReceiptImageEvents;
+
+        public Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated> getShipmentReceiptImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.shipmentReceiptImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentReceiptImageEvents != null) { return readOnlyShipmentReceiptImageEvents; }
+                ShipmentReceiptImageEventDao eventDao = getShipmentReceiptImageEventDao();
+                List<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated> eL = new ArrayList<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated>();
+                for (ShipmentReceiptImageEvent e : eventDao.findByShipmentReceiptEventId(this.getShipmentReceiptEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated)e);
+                }
+                return (readOnlyShipmentReceiptImageEvents = eL);
+            }
+        }
+
+        public void setShipmentReceiptImageEvents(Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e : es)
+                {
+                    addShipmentReceiptImageEvent(e);
+                }
+            }
+            else { this.shipmentReceiptImageEvents.clear(); }
+        }
+        
+        public void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentReceiptImageEvents.put(e.getShipmentReceiptImageEventId(), e);
+        }
+
+        public void save()
+        {
+            for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e : this.getShipmentReceiptImageEvents()) {
+                getShipmentReceiptImageEventDao().save(e);
+            }
+        }
     }
 
 
-    public static abstract class AbstractShipmentReceiptStateMergePatched extends AbstractShipmentReceiptStateEvent implements ShipmentReceiptEvent.ShipmentReceiptStateMergePatched
+    public static abstract class AbstractShipmentReceiptStateMergePatched extends AbstractShipmentReceiptStateEvent implements ShipmentReceiptEvent.ShipmentReceiptStateMergePatched, Saveable
     {
         public AbstractShipmentReceiptStateMergePatched() {
             this(new ShipmentReceiptEventId());
@@ -545,6 +636,54 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
             this.isPropertyActiveRemoved = removed;
         }
 
+        private Map<ShipmentReceiptImageEventId, ShipmentReceiptImageEvent> shipmentReceiptImageEvents = new HashMap<ShipmentReceiptImageEventId, ShipmentReceiptImageEvent>();
+        
+        private Iterable<ShipmentReceiptImageEvent> readOnlyShipmentReceiptImageEvents;
+
+        public Iterable<ShipmentReceiptImageEvent> getShipmentReceiptImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.shipmentReceiptImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentReceiptImageEvents != null) { return readOnlyShipmentReceiptImageEvents; }
+                ShipmentReceiptImageEventDao eventDao = getShipmentReceiptImageEventDao();
+                List<ShipmentReceiptImageEvent> eL = new ArrayList<ShipmentReceiptImageEvent>();
+                for (ShipmentReceiptImageEvent e : eventDao.findByShipmentReceiptEventId(this.getShipmentReceiptEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((ShipmentReceiptImageEvent)e);
+                }
+                return (readOnlyShipmentReceiptImageEvents = eL);
+            }
+        }
+
+        public void setShipmentReceiptImageEvents(Iterable<ShipmentReceiptImageEvent> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentReceiptImageEvent e : es)
+                {
+                    addShipmentReceiptImageEvent(e);
+                }
+            }
+            else { this.shipmentReceiptImageEvents.clear(); }
+        }
+        
+        public void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentReceiptImageEvents.put(e.getShipmentReceiptImageEventId(), e);
+        }
+
+        public void save()
+        {
+            for (ShipmentReceiptImageEvent e : this.getShipmentReceiptImageEvents()) {
+                getShipmentReceiptImageEventDao().save(e);
+            }
+        }
     }
 
 

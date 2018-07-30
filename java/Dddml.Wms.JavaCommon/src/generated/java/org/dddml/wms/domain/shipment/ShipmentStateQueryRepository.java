@@ -26,6 +26,10 @@ public interface ShipmentStateQueryRepository
 
     long getCount(Criterion filter);
 
+    ShipmentImageState getShipmentImage(String shipmentId, String sequenceId);
+
+    Iterable<ShipmentImageState> getShipmentImages(String shipmentId);
+
     ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId);
 
     Iterable<ShipmentItemState> getShipmentItems(String shipmentId);
@@ -33,6 +37,10 @@ public interface ShipmentStateQueryRepository
     ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId);
 
     Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId);
+
+    ShipmentReceiptImageState getShipmentReceiptImage(String shipmentId, String shipmentReceiptReceiptSeqId, String sequenceId);
+
+    Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId);
 
     ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId);
 

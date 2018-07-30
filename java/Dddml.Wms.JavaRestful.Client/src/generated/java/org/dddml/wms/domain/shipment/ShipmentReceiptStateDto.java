@@ -321,5 +321,17 @@ public class ShipmentReceiptStateDto
         this.updatedAt = updatedAt;
     }
 
+    private ShipmentReceiptImageStateDto[] shipmentReceiptImages;
+
+    public ShipmentReceiptImageStateDto[] getShipmentReceiptImages()
+    {
+        return this.shipmentReceiptImages;
+    }	
+
+    public void setShipmentReceiptImages(ShipmentReceiptImageStateDto[] shipmentReceiptImages)
+    {
+        this.shipmentReceiptImages = shipmentReceiptImages;
+    }
+
 }
 

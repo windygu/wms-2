@@ -168,6 +168,10 @@ public interface ShipmentCommand extends Command
 
     interface CreateShipment extends CreateOrMergePatchShipment
     {
+        CreateShipmentImageCommands getShipmentImages();
+
+        ShipmentImageCommand.CreateShipmentImage newCreateShipmentImage();
+
         CreateShipmentItemCommands getShipmentItems();
 
         ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
@@ -312,6 +316,14 @@ public interface ShipmentCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        ShipmentImageCommands getShipmentImageCommands();
+
+        ShipmentImageCommand.CreateShipmentImage newCreateShipmentImage();
+
+        ShipmentImageCommand.MergePatchShipmentImage newMergePatchShipmentImage();
+
+        ShipmentImageCommand.RemoveShipmentImage newRemoveShipmentImage();
+
         ShipmentItemCommands getShipmentItemCommands();
 
         ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
@@ -341,6 +353,24 @@ public interface ShipmentCommand extends Command
 	interface DeleteShipment extends ShipmentCommand
 	{
 	}
+
+    interface CreateShipmentImageCommands extends Iterable<ShipmentImageCommand.CreateShipmentImage>
+    {
+        void add(ShipmentImageCommand.CreateShipmentImage c);
+
+        void remove(ShipmentImageCommand.CreateShipmentImage c);
+
+        void clear();
+    }
+
+    interface ShipmentImageCommands extends Iterable<ShipmentImageCommand>
+    {
+        void add(ShipmentImageCommand c);
+
+        void remove(ShipmentImageCommand c);
+
+        void clear();
+    }
 
     interface CreateShipmentItemCommands extends Iterable<ShipmentItemCommand.CreateShipmentItem>
     {

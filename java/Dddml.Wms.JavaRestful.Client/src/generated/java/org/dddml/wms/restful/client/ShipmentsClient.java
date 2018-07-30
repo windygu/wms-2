@@ -49,12 +49,20 @@ public interface ShipmentsClient {
     Call<ShipmentStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentImages/{sequenceId}")
+    Call<ShipmentImageStateDto> getShipmentImage(@Path("shipmentId") String shipmentId, @Path("sequenceId") String sequenceId);
+ 
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     Call<ShipmentItemStateDto> getShipmentItem(@Path("shipmentId") String shipmentId, @Path("shipmentItemSeqId") String shipmentItemSeqId);
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     Call<ShipmentReceiptStateDto> getShipmentReceipt(@Path("shipmentId") String shipmentId, @Path("receiptSeqId") String receiptSeqId);
+ 
+    @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
+    Call<ShipmentReceiptImageStateDto> getShipmentReceiptImage(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")

@@ -283,6 +283,86 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @GetMapping("{shipmentId}/ShipmentImages/{sequenceId}")
+    public ShipmentImageStateDto getShipmentImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("sequenceId") String sequenceId) {
+        try {
+
+            ShipmentImageState state = shipmentApplicationService.getShipmentImage(shipmentId, sequenceId);
+            if (state == null) { return null; }
+            ShipmentImageStateDto.DtoConverter dtoConverter = new ShipmentImageStateDto.DtoConverter();
+            ShipmentImageStateDto stateDto = dtoConverter.toShipmentImageStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PutMapping("{shipmentId}/ShipmentImages/{sequenceId}")
+    public void putShipmentImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("sequenceId") String sequenceId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentImageDto.MergePatchShipmentImageDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentImageCommand.MergePatchShipmentImage mergePatchShipmentImage = body.toMergePatchShipmentImage();
+            mergePatchShipmentImage.setSequenceId(sequenceId);
+            mergePatchShipment.getShipmentImageCommands().add(mergePatchShipmentImage);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{shipmentId}/ShipmentImages/{sequenceId}")
+    public void deleteShipmentImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("sequenceId") String sequenceId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentImageCommand.RemoveShipmentImage removeShipmentImage = new AbstractShipmentImageCommand.SimpleRemoveShipmentImage();
+            removeShipmentImage.setSequenceId(sequenceId);
+            mergePatchShipment.getShipmentImageCommands().add(removeShipmentImage);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @GetMapping("{shipmentId}/ShipmentImages/")
+    public ShipmentImageStateDto[] getShipmentImages(@PathVariable("shipmentId") String shipmentId) {
+        try {
+            Iterable<ShipmentImageState> states = shipmentApplicationService.getShipmentImages(shipmentId);
+            if (states == null) { return null; }
+            ShipmentImageStateDto.DtoConverter dtoConverter = new ShipmentImageStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toShipmentImageStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PostMapping("{shipmentId}/ShipmentImages/")
+    public void postShipmentImages(@PathVariable("shipmentId") String shipmentId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentImageDto.CreateShipmentImageDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentImageCommand.CreateShipmentImage createShipmentImage = body.toCreateShipmentImage();
+            mergePatchShipment.getShipmentImageCommands().add(createShipmentImage);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     public ShipmentItemStateDto getShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId) {
         try {
@@ -439,6 +519,95 @@ public class ShipmentResource {
             mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentReceiptCommand.CreateShipmentReceipt createShipmentReceipt = body.toCreateShipmentReceipt();
             mergePatchShipment.getShipmentReceiptCommands().add(createShipmentReceipt);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @GetMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
+    public ShipmentReceiptImageStateDto getShipmentReceiptImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @PathVariable("sequenceId") String sequenceId) {
+        try {
+
+            ShipmentReceiptImageState state = shipmentApplicationService.getShipmentReceiptImage(shipmentId, shipmentReceiptReceiptSeqId, sequenceId);
+            if (state == null) { return null; }
+            ShipmentReceiptImageStateDto.DtoConverter dtoConverter = new ShipmentReceiptImageStateDto.DtoConverter();
+            ShipmentReceiptImageStateDto stateDto = dtoConverter.toShipmentReceiptImageStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PutMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
+    public void putShipmentReceiptImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @PathVariable("sequenceId") String sequenceId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentReceiptImageDto.MergePatchShipmentReceiptImageDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentReceiptCommand.MergePatchShipmentReceipt mergePatchShipmentReceipt = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
+            mergePatchShipmentReceipt.setReceiptSeqId(shipmentReceiptReceiptSeqId);
+            mergePatchShipment.getShipmentReceiptCommands().add(mergePatchShipmentReceipt);
+            ShipmentReceiptImageCommand.MergePatchShipmentReceiptImage mergePatchShipmentReceiptImage = body.toMergePatchShipmentReceiptImage();
+            mergePatchShipmentReceiptImage.setSequenceId(sequenceId);
+            mergePatchShipmentReceipt.getShipmentReceiptImageCommands().add(mergePatchShipmentReceiptImage);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
+    public void deleteShipmentReceiptImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @PathVariable("sequenceId") String sequenceId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentReceiptCommand.MergePatchShipmentReceipt mergePatchShipmentReceipt = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
+            mergePatchShipmentReceipt.setReceiptSeqId(shipmentReceiptReceiptSeqId);
+            mergePatchShipment.getShipmentReceiptCommands().add(mergePatchShipmentReceipt);
+            ShipmentReceiptImageCommand.RemoveShipmentReceiptImage removeShipmentReceiptImage = new AbstractShipmentReceiptImageCommand.SimpleRemoveShipmentReceiptImage();
+            removeShipmentReceiptImage.setSequenceId(sequenceId);
+            mergePatchShipmentReceipt.getShipmentReceiptImageCommands().add(removeShipmentReceiptImage);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @GetMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/")
+    public ShipmentReceiptImageStateDto[] getShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId) {
+        try {
+            Iterable<ShipmentReceiptImageState> states = shipmentApplicationService.getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId);
+            if (states == null) { return null; }
+            ShipmentReceiptImageStateDto.DtoConverter dtoConverter = new ShipmentReceiptImageStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toShipmentReceiptImageStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PostMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/")
+    public void postShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentReceiptImageDto.CreateShipmentReceiptImageDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentReceiptCommand.MergePatchShipmentReceipt mergePatchShipmentReceipt = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
+            mergePatchShipmentReceipt.setReceiptSeqId(shipmentReceiptReceiptSeqId);
+            mergePatchShipment.getShipmentReceiptCommands().add(mergePatchShipmentReceipt);
+            ShipmentReceiptImageCommand.CreateShipmentReceiptImage createShipmentReceiptImage = body.toCreateShipmentReceiptImage();
+            mergePatchShipmentReceipt.getShipmentReceiptImageCommands().add(createShipmentReceiptImage);
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

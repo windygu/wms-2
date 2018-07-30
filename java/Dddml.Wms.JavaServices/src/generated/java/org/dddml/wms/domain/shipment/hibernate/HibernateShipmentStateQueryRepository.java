@@ -26,7 +26,7 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PrimaryShipGroupSeqId", "PicklistBinId", "BolNumber", "SealNumber", "VehicleId", "PoNumber", "Carrier", "DateShipped", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "ShipmentItems", "ShipmentReceipts", "ItemIssuances", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PrimaryShipGroupSeqId", "PicklistBinId", "BolNumber", "SealNumber", "VehicleId", "PoNumber", "Carrier", "DateShipped", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "ShipmentItems", "ShipmentReceipts", "ItemIssuances", "ShipmentImages", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -133,6 +133,21 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
     }
 
     @Transactional(readOnly = true)
+    public ShipmentImageState getShipmentImage(String shipmentId, String sequenceId) {
+        ShipmentImageId entityId = new ShipmentImageId(shipmentId, sequenceId);
+        return (ShipmentImageState) getCurrentSession().get(AbstractShipmentImageState.SimpleShipmentImageState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<ShipmentImageState> getShipmentImages(String shipmentId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentImageState.SimpleShipmentImageState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentImageId.shipmentId", shipmentId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
     public ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId) {
         ShipmentItemId entityId = new ShipmentItemId(shipmentId, shipmentItemSeqId);
         return (ShipmentItemState) getCurrentSession().get(AbstractShipmentItemState.SimpleShipmentItemState.class, entityId);
@@ -158,6 +173,22 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptState.SimpleShipmentReceiptState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("shipmentReceiptId.shipmentId", shipmentId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public ShipmentReceiptImageState getShipmentReceiptImage(String shipmentId, String shipmentReceiptReceiptSeqId, String sequenceId) {
+        ShipmentReceiptImageId entityId = new ShipmentReceiptImageId(shipmentId, shipmentReceiptReceiptSeqId, sequenceId);
+        return (ShipmentReceiptImageState) getCurrentSession().get(AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentReceiptImageId.shipmentId", shipmentId))
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentReceiptImageId.shipmentReceiptReceiptSeqId", shipmentReceiptReceiptSeqId))
             ;
         return criteria.add(partIdCondition).list();
     }

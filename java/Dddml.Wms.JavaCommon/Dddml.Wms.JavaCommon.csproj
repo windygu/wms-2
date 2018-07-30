@@ -1184,6 +1184,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\RoleTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentImageMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentMethodTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -1191,6 +1194,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentReceiptImageMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\AbstractMovementConfirmationEvent.java">
@@ -2321,13 +2327,49 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentEvent.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentImageCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentImageCommandDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentImageEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentImageState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentImageStates.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentItemEvent.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptEvent.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptImageCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptImageCommandDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptImageEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptImageState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptImageStates.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\CreateOrMergePatchItemIssuanceDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\CreateOrMergePatchShipmentImageDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\CreateOrMergePatchShipmentReceiptImageDto.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceCommand.java">
@@ -2357,10 +2399,43 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\RemoveItemIssuanceDto.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\RemoveShipmentImageDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\RemoveShipmentReceiptImageDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentEvent.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentEventId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageEventDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageEventId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageStateDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageStateDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentImageStates.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentItemEvent.java">
@@ -2382,6 +2457,33 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptEventId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageEventDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageEventId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageStateDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageStateDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptImageStates.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\AbstractStatusItemEvent.java">
@@ -2981,11 +3083,13 @@
 .\RoleTypeMetadata.java
 .\SellableInventoryItemEntryMetadata.java
 .\SellableInventoryItemMetadata.java
+.\ShipmentImageMetadata.java
 .\ShipmentItemMetadata.java
 .\ShipmentMetadata.java
 .\ShipmentMethodTypeMetadata.java
 .\ShipmentPackageContentMetadata.java
 .\ShipmentPackageMetadata.java
+.\ShipmentReceiptImageMetadata.java
 .\ShipmentReceiptMetadata.java
 .\ShipmentTypeMetadata.java
 .\StatusItemMetadata.java
@@ -4989,6 +5093,11 @@
 .\AbstractShipmentCommand.java
 .\AbstractShipmentCommandDto.java
 .\AbstractShipmentEvent.java
+.\AbstractShipmentImageCommand.java
+.\AbstractShipmentImageCommandDto.java
+.\AbstractShipmentImageEvent.java
+.\AbstractShipmentImageState.java
+.\AbstractShipmentImageStates.java
 .\AbstractShipmentItemCommand.java
 .\AbstractShipmentItemCommandDto.java
 .\AbstractShipmentItemEvent.java
@@ -4997,13 +5106,20 @@
 .\AbstractShipmentReceiptCommand.java
 .\AbstractShipmentReceiptCommandDto.java
 .\AbstractShipmentReceiptEvent.java
+.\AbstractShipmentReceiptImageCommand.java
+.\AbstractShipmentReceiptImageCommandDto.java
+.\AbstractShipmentReceiptImageEvent.java
+.\AbstractShipmentReceiptImageState.java
+.\AbstractShipmentReceiptImageStates.java
 .\AbstractShipmentReceiptState.java
 .\AbstractShipmentReceiptStates.java
 .\AbstractShipmentState.java
 .\CreateOrMergePatchItemIssuanceDto.java
 .\CreateOrMergePatchShipmentDto.java
+.\CreateOrMergePatchShipmentImageDto.java
 .\CreateOrMergePatchShipmentItemDto.java
 .\CreateOrMergePatchShipmentReceiptDto.java
+.\CreateOrMergePatchShipmentReceiptImageDto.java
 .\DeleteShipmentDto.java
 .\GenerateShipmentDomain.txt
 .\ImportingShipmentItem.java
@@ -5016,14 +5132,25 @@
 .\ItemIssuanceStateDto.java
 .\ItemIssuanceStates.java
 .\RemoveItemIssuanceDto.java
+.\RemoveShipmentImageDto.java
 .\RemoveShipmentItemDto.java
 .\RemoveShipmentReceiptDto.java
+.\RemoveShipmentReceiptImageDto.java
 .\ShipmentAggregate.java
 .\ShipmentApplicationService.java
 .\ShipmentCommand.java
 .\ShipmentCommands.java
 .\ShipmentEvent.java
 .\ShipmentEventId.java
+.\ShipmentImageCommand.java
+.\ShipmentImageEvent.java
+.\ShipmentImageEventDao.java
+.\ShipmentImageEventId.java
+.\ShipmentImageId.java
+.\ShipmentImageState.java
+.\ShipmentImageStateDao.java
+.\ShipmentImageStateDto.java
+.\ShipmentImageStates.java
 .\ShipmentItemCommand.java
 .\ShipmentItemEvent.java
 .\ShipmentItemEventDao.java
@@ -5039,6 +5166,15 @@
 .\ShipmentReceiptEventDao.java
 .\ShipmentReceiptEventId.java
 .\ShipmentReceiptId.java
+.\ShipmentReceiptImageCommand.java
+.\ShipmentReceiptImageEvent.java
+.\ShipmentReceiptImageEventDao.java
+.\ShipmentReceiptImageEventId.java
+.\ShipmentReceiptImageId.java
+.\ShipmentReceiptImageState.java
+.\ShipmentReceiptImageStateDao.java
+.\ShipmentReceiptImageStateDto.java
+.\ShipmentReceiptImageStates.java
 .\ShipmentReceiptState.java
 .\ShipmentReceiptStateDao.java
 .\ShipmentReceiptStateDto.java

@@ -21,7 +21,7 @@ public class HibernateShipmentReceiptStateDao implements ShipmentReceiptStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ReceiptSeqId", "ProductId", "AttributeSetInstanceId", "LocatorId", "ShipmentItemSeqId", "ShipmentPackageSeqId", "OrderId", "OrderItemSeqId", "ReturnId", "ReturnItemSeqId", "RejectionReasonId", "DamageStatusId", "DamageReasonId", "ReceivedBy", "DatetimeReceived", "ItemDescription", "AcceptedQuantity", "RejectedQuantity", "DamagedQuantity", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "ShipmentId"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ReceiptSeqId", "ProductId", "AttributeSetInstanceId", "LocatorId", "ShipmentItemSeqId", "ShipmentPackageSeqId", "OrderId", "OrderItemSeqId", "ReturnId", "ReturnItemSeqId", "RejectionReasonId", "DamageStatusId", "DamageReasonId", "ReceivedBy", "DatetimeReceived", "ItemDescription", "AcceptedQuantity", "RejectedQuantity", "DamagedQuantity", "ShipmentReceiptImages", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "ShipmentId"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -43,7 +43,7 @@ public class HibernateShipmentReceiptStateDao implements ShipmentReceiptStateDao
             state.setShipmentReceiptId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (ShipmentReceiptState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentReceiptState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (ShipmentReceiptState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentReceiptState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

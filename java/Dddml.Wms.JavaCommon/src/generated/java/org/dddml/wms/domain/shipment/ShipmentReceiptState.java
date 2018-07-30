@@ -125,6 +125,8 @@ public interface ShipmentReceiptState
 
     boolean getForReapplying();
 
+    ShipmentReceiptImageStates getShipmentReceiptImages();
+
 
     void mutate(Event e);
 

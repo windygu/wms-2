@@ -87,6 +87,13 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
+        for (ShipmentImageCommand.CreateShipmentImage innerCommand : c.getShipmentImages())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            ShipmentImageEvent.ShipmentImageStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            e.addShipmentImageEvent(innerEvent);
+        }
+
         for (ShipmentItemCommand.CreateShipmentItem innerCommand : c.getShipmentItems())
         {
             throwOnInconsistentCommands(c, innerCommand);
@@ -182,6 +189,13 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
+        for (ShipmentImageCommand innerCommand : c.getShipmentImageCommands())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+            ShipmentImageEvent innerEvent = map(innerCommand, c, version, this.state);
+            e.addShipmentImageEvent(innerEvent);
+        }
+
         for (ShipmentItemCommand innerCommand : c.getShipmentItemCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
@@ -205,6 +219,74 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
         return e;
     }
+
+
+    protected ShipmentImageEvent map(ShipmentImageCommand c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
+    {
+        ShipmentImageCommand.CreateShipmentImage create = (c.getCommandType().equals(CommandType.CREATE)) ? ((ShipmentImageCommand.CreateShipmentImage)c) : null;
+        if(create != null)
+        {
+            return mapCreate(create, outerCommand, version, outerState);
+        }
+
+        ShipmentImageCommand.MergePatchShipmentImage merge = (c.getCommandType().equals(CommandType.MERGE_PATCH)) ? ((ShipmentImageCommand.MergePatchShipmentImage)c) : null;
+        if(merge != null)
+        {
+            return mapMergePatch(merge, outerCommand, version, outerState);
+        }
+
+        ShipmentImageCommand.RemoveShipmentImage remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((ShipmentImageCommand.RemoveShipmentImage)c) : null;
+        if (remove != null)
+        {
+            return mapRemove(remove, outerCommand, version);
+        }
+        throw new UnsupportedOperationException();
+    }
+
+    protected ShipmentImageEvent.ShipmentImageStateCreated mapCreate(ShipmentImageCommand.CreateShipmentImage c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentImageEventId stateEventId = new ShipmentImageEventId(c.getShipmentId(), c.getSequenceId(), version);
+        ShipmentImageEvent.ShipmentImageStateCreated e = newShipmentImageStateCreated(stateEventId);
+        ShipmentImageState s = outerState.getShipmentImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(ICreate... ////////////////////////////
+
+    protected ShipmentImageEvent.ShipmentImageStateMergePatched mapMergePatch(ShipmentImageCommand.MergePatchShipmentImage c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentImageEventId stateEventId = new ShipmentImageEventId(c.getShipmentId(), c.getSequenceId(), version);
+        ShipmentImageEvent.ShipmentImageStateMergePatched e = newShipmentImageStateMergePatched(stateEventId);
+        ShipmentImageState s = outerState.getShipmentImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setIsPropertyUrlRemoved(c.getIsPropertyUrlRemoved());
+        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(IMergePatch... ////////////////////////////
+
+    protected ShipmentImageEvent.ShipmentImageStateRemoved mapRemove(ShipmentImageCommand.RemoveShipmentImage c, ShipmentCommand outerCommand, Long version)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentImageEventId stateEventId = new ShipmentImageEventId(c.getShipmentId(), c.getSequenceId(), version);
+        ShipmentImageEvent.ShipmentImageStateRemoved e = newShipmentImageStateRemoved(stateEventId);
+
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        return e;
+
+    }// END map(IRemove... ////////////////////////////
 
 
     protected ShipmentItemEvent map(ShipmentItemCommand c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
@@ -311,6 +393,15 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        for (ShipmentReceiptImageCommand.CreateShipmentReceiptImage innerCommand : c.getShipmentReceiptImages())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+
+            ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated innerEvent = mapCreate(innerCommand, c, version, s);
+            e.addShipmentReceiptImageEvent(innerEvent);
+        }
+
         return e;
 
     }// END map(ICreate... ////////////////////////////
@@ -362,9 +453,86 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        for (ShipmentReceiptImageCommand innerCommand : c.getShipmentReceiptImageCommands())
+        {
+            throwOnInconsistentCommands(c, innerCommand);
+
+            ShipmentReceiptImageEvent innerEvent = map(innerCommand, c, version, s);
+            e.addShipmentReceiptImageEvent(innerEvent);
+        }
+
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
+
+
+    protected ShipmentReceiptImageEvent map(ShipmentReceiptImageCommand c, ShipmentReceiptCommand outerCommand, Long version, ShipmentReceiptState outerState)
+    {
+        ShipmentReceiptImageCommand.CreateShipmentReceiptImage create = (c.getCommandType().equals(CommandType.CREATE)) ? ((ShipmentReceiptImageCommand.CreateShipmentReceiptImage)c) : null;
+        if(create != null)
+        {
+            return mapCreate(create, outerCommand, version, outerState);
+        }
+
+        ShipmentReceiptImageCommand.MergePatchShipmentReceiptImage merge = (c.getCommandType().equals(CommandType.MERGE_PATCH)) ? ((ShipmentReceiptImageCommand.MergePatchShipmentReceiptImage)c) : null;
+        if(merge != null)
+        {
+            return mapMergePatch(merge, outerCommand, version, outerState);
+        }
+
+        ShipmentReceiptImageCommand.RemoveShipmentReceiptImage remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((ShipmentReceiptImageCommand.RemoveShipmentReceiptImage)c) : null;
+        if (remove != null)
+        {
+            return mapRemove(remove, outerCommand, version);
+        }
+        throw new UnsupportedOperationException();
+    }
+
+    protected ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated mapCreate(ShipmentReceiptImageCommand.CreateShipmentReceiptImage c, ShipmentReceiptCommand outerCommand, Long version, ShipmentReceiptState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentReceiptImageEventId stateEventId = new ShipmentReceiptImageEventId(c.getShipmentId(), c.getShipmentReceiptReceiptSeqId(), c.getSequenceId(), version);
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e = newShipmentReceiptImageStateCreated(stateEventId);
+        ShipmentReceiptImageState s = outerState.getShipmentReceiptImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(ICreate... ////////////////////////////
+
+    protected ShipmentReceiptImageEvent.ShipmentReceiptImageStateMergePatched mapMergePatch(ShipmentReceiptImageCommand.MergePatchShipmentReceiptImage c, ShipmentReceiptCommand outerCommand, Long version, ShipmentReceiptState outerState)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentReceiptImageEventId stateEventId = new ShipmentReceiptImageEventId(c.getShipmentId(), c.getShipmentReceiptReceiptSeqId(), c.getSequenceId(), version);
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateMergePatched e = newShipmentReceiptImageStateMergePatched(stateEventId);
+        ShipmentReceiptImageState s = outerState.getShipmentReceiptImages().get(c.getSequenceId());
+
+        e.setUrl(c.getUrl());
+        e.setActive(c.getActive());
+        e.setIsPropertyUrlRemoved(c.getIsPropertyUrlRemoved());
+        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+
+    }// END map(IMergePatch... ////////////////////////////
+
+    protected ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved mapRemove(ShipmentReceiptImageCommand.RemoveShipmentReceiptImage c, ShipmentReceiptCommand outerCommand, Long version)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentReceiptImageEventId stateEventId = new ShipmentReceiptImageEventId(c.getShipmentId(), c.getShipmentReceiptReceiptSeqId(), c.getSequenceId(), version);
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved e = newShipmentReceiptImageStateRemoved(stateEventId);
+
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        return e;
+
+    }// END map(IRemove... ////////////////////////////
 
 
     protected ItemIssuanceEvent map(ItemIssuanceCommand c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
@@ -470,6 +638,25 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
     }// END map(IRemove... ////////////////////////////
 
+    protected void throwOnInconsistentCommands(ShipmentCommand command, ShipmentImageCommand innerCommand)
+    {
+        AbstractShipmentCommand properties = command instanceof AbstractShipmentCommand ? (AbstractShipmentCommand) command : null;
+        AbstractShipmentImageCommand innerProperties = innerCommand instanceof AbstractShipmentImageCommand ? (AbstractShipmentImageCommand) innerCommand : null;
+        if (properties == null || innerProperties == null) { return; }
+        String outerShipmentIdName = "ShipmentId";
+        String outerShipmentIdValue = properties.getShipmentId();
+        String innerShipmentIdName = "ShipmentId";
+        String innerShipmentIdValue = innerProperties.getShipmentId();
+        if (innerShipmentIdValue == null) {
+            innerProperties.setShipmentId(outerShipmentIdValue);
+        }
+        else if (innerShipmentIdValue != outerShipmentIdValue 
+            && (innerShipmentIdValue == null || innerShipmentIdValue != null && !innerShipmentIdValue.equals(outerShipmentIdValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerShipmentIdName, outerShipmentIdValue, innerShipmentIdName, innerShipmentIdValue);
+        }
+    }// END throwOnInconsistentCommands /////////////////////
+
     protected void throwOnInconsistentCommands(ShipmentCommand command, ShipmentItemCommand innerCommand)
     {
         AbstractShipmentCommand properties = command instanceof AbstractShipmentCommand ? (AbstractShipmentCommand) command : null;
@@ -505,6 +692,37 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
             && (innerShipmentIdValue == null || innerShipmentIdValue != null && !innerShipmentIdValue.equals(outerShipmentIdValue))) 
         {
             throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerShipmentIdName, outerShipmentIdValue, innerShipmentIdName, innerShipmentIdValue);
+        }
+    }// END throwOnInconsistentCommands /////////////////////
+
+    protected void throwOnInconsistentCommands(ShipmentReceiptCommand command, ShipmentReceiptImageCommand innerCommand)
+    {
+        AbstractShipmentReceiptCommand properties = command instanceof AbstractShipmentReceiptCommand ? (AbstractShipmentReceiptCommand) command : null;
+        AbstractShipmentReceiptImageCommand innerProperties = innerCommand instanceof AbstractShipmentReceiptImageCommand ? (AbstractShipmentReceiptImageCommand) innerCommand : null;
+        if (properties == null || innerProperties == null) { return; }
+        String outerShipmentIdName = "ShipmentId";
+        String outerShipmentIdValue = properties.getShipmentId();
+        String innerShipmentIdName = "ShipmentId";
+        String innerShipmentIdValue = innerProperties.getShipmentId();
+        if (innerShipmentIdValue == null) {
+            innerProperties.setShipmentId(outerShipmentIdValue);
+        }
+        else if (innerShipmentIdValue != outerShipmentIdValue 
+            && (innerShipmentIdValue == null || innerShipmentIdValue != null && !innerShipmentIdValue.equals(outerShipmentIdValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerShipmentIdName, outerShipmentIdValue, innerShipmentIdName, innerShipmentIdValue);
+        }
+        String outerReceiptSeqIdName = "ReceiptSeqId";
+        String outerReceiptSeqIdValue = properties.getReceiptSeqId();
+        String innerShipmentReceiptReceiptSeqIdName = "ShipmentReceiptReceiptSeqId";
+        String innerShipmentReceiptReceiptSeqIdValue = innerProperties.getShipmentReceiptReceiptSeqId();
+        if (innerShipmentReceiptReceiptSeqIdValue == null) {
+            innerProperties.setShipmentReceiptReceiptSeqId(outerReceiptSeqIdValue);
+        }
+        else if (innerShipmentReceiptReceiptSeqIdValue != outerReceiptSeqIdValue 
+            && (innerShipmentReceiptReceiptSeqIdValue == null || innerShipmentReceiptReceiptSeqIdValue != null && !innerShipmentReceiptReceiptSeqIdValue.equals(outerReceiptSeqIdValue))) 
+        {
+            throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerReceiptSeqIdName, outerReceiptSeqIdValue, innerShipmentReceiptReceiptSeqIdName, innerShipmentReceiptReceiptSeqIdValue);
         }
     }// END throwOnInconsistentCommands /////////////////////
 
@@ -556,6 +774,19 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         return new AbstractShipmentEvent.SimpleShipmentStateMergePatched(stateEventId);
     }
 
+    protected ShipmentImageEvent.ShipmentImageStateCreated newShipmentImageStateCreated(ShipmentImageEventId stateEventId) {
+        return new AbstractShipmentImageEvent.SimpleShipmentImageStateCreated(stateEventId);
+    }
+
+    protected ShipmentImageEvent.ShipmentImageStateMergePatched newShipmentImageStateMergePatched(ShipmentImageEventId stateEventId) {
+        return new AbstractShipmentImageEvent.SimpleShipmentImageStateMergePatched(stateEventId);
+    }
+
+    protected ShipmentImageEvent.ShipmentImageStateRemoved newShipmentImageStateRemoved(ShipmentImageEventId stateEventId)
+    {
+        return new AbstractShipmentImageEvent.SimpleShipmentImageStateRemoved(stateEventId);
+    }
+
     protected ShipmentItemEvent.ShipmentItemStateCreated newShipmentItemStateCreated(ShipmentItemEventId stateEventId) {
         return new AbstractShipmentItemEvent.SimpleShipmentItemStateCreated(stateEventId);
     }
@@ -570,6 +801,19 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
     protected ShipmentReceiptEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(ShipmentReceiptEventId stateEventId) {
         return new AbstractShipmentReceiptEvent.SimpleShipmentReceiptStateMergePatched(stateEventId);
+    }
+
+    protected ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated newShipmentReceiptImageStateCreated(ShipmentReceiptImageEventId stateEventId) {
+        return new AbstractShipmentReceiptImageEvent.SimpleShipmentReceiptImageStateCreated(stateEventId);
+    }
+
+    protected ShipmentReceiptImageEvent.ShipmentReceiptImageStateMergePatched newShipmentReceiptImageStateMergePatched(ShipmentReceiptImageEventId stateEventId) {
+        return new AbstractShipmentReceiptImageEvent.SimpleShipmentReceiptImageStateMergePatched(stateEventId);
+    }
+
+    protected ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved newShipmentReceiptImageStateRemoved(ShipmentReceiptImageEventId stateEventId)
+    {
+        return new AbstractShipmentReceiptImageEvent.SimpleShipmentReceiptImageStateRemoved(stateEventId);
     }
 
     protected ItemIssuanceEvent.ItemIssuanceStateCreated newItemIssuanceStateCreated(ItemIssuanceEventId stateEventId) {

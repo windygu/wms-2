@@ -114,6 +114,14 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         return new AbstractShipmentState.SimpleShipmentState(eventStream.getEvents());
     }
 
+    public ShipmentImageState getShipmentImage(String shipmentId, String sequenceId) {
+        return getStateQueryRepository().getShipmentImage(shipmentId, sequenceId);
+    }
+
+    public Iterable<ShipmentImageState> getShipmentImages(String shipmentId) {
+        return getStateQueryRepository().getShipmentImages(shipmentId);
+    }
+
     public ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId) {
         return getStateQueryRepository().getShipmentItem(shipmentId, shipmentItemSeqId);
     }
@@ -128,6 +136,14 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
 
     public Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId) {
         return getStateQueryRepository().getShipmentReceipts(shipmentId);
+    }
+
+    public ShipmentReceiptImageState getShipmentReceiptImage(String shipmentId, String shipmentReceiptReceiptSeqId, String sequenceId) {
+        return getStateQueryRepository().getShipmentReceiptImage(shipmentId, shipmentReceiptReceiptSeqId, sequenceId);
+    }
+
+    public Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId) {
+        return getStateQueryRepository().getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId);
     }
 
     public ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId) {

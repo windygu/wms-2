@@ -110,6 +110,12 @@ public interface ShipmentReceiptEvent extends Event
 
     interface ShipmentReceiptStateCreated extends ShipmentReceiptStateEvent
     {
+        Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated> getShipmentReceiptImageEvents();
+        
+        void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e);
+
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated newShipmentReceiptImageStateCreated(String sequenceId);
+
     
     }
 
@@ -191,6 +197,16 @@ public interface ShipmentReceiptEvent extends Event
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Iterable<ShipmentReceiptImageEvent> getShipmentReceiptImageEvents();
+        
+        void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent e);
+
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated newShipmentReceiptImageStateCreated(String sequenceId);
+
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateMergePatched newShipmentReceiptImageStateMergePatched(String sequenceId);
+
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved newShipmentReceiptImageStateRemoved(String sequenceId);
 
 
     }

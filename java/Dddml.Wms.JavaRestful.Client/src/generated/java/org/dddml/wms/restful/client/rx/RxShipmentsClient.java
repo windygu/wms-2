@@ -50,12 +50,20 @@ public interface RxShipmentsClient {
     Observable<ShipmentStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentImages/{sequenceId}")
+    Observable<ShipmentImageStateDto> getShipmentImage(@Path("shipmentId") String shipmentId, @Path("sequenceId") String sequenceId);
+ 
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     Observable<ShipmentItemStateDto> getShipmentItem(@Path("shipmentId") String shipmentId, @Path("shipmentItemSeqId") String shipmentItemSeqId);
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     Observable<ShipmentReceiptStateDto> getShipmentReceipt(@Path("shipmentId") String shipmentId, @Path("receiptSeqId") String receiptSeqId);
+ 
+    @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
+    Observable<ShipmentReceiptImageStateDto> getShipmentReceiptImage(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")

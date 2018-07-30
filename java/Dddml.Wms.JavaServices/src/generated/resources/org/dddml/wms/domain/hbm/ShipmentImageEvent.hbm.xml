@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.shipment">
+  
+  <class name="AbstractShipmentImageEvent" table="ShipmentImageEvents" mutable="false" abstract="true">
+
+	<composite-id name="shipmentImageEventId" class="org.dddml.wms.domain.shipment.ShipmentImageEventId">
+		<key-property name="shipmentId" ><column name="ShipmentImageIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="sequenceId" ><column name="ShipmentImageIdSequenceId" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="shipmentVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractShipmentImageEvent$AbstractShipmentImageStateEvent" abstract="true">
+
+	<property name="url" ><column name="Url" sql-type="VARCHAR(250)" /></property>
+	<property name="active" ></property>
+
+    <property name="version" column="Version" not-null="true" />
+
+    <subclass name="AbstractShipmentImageEvent$SimpleShipmentImageStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractShipmentImageEvent$SimpleShipmentImageStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyUrlRemoved" column="IsPropertyUrlRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractShipmentImageEvent$SimpleShipmentImageStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
+
+        </subclass>
+
+  </class>
+  
+</hibernate-mapping>

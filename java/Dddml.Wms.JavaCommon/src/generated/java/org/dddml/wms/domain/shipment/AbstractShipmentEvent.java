@@ -74,6 +74,32 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         this.shipmentEventId = eventId;
     }
 
+    protected ShipmentImageEventDao getShipmentImageEventDao() {
+        return (ShipmentImageEventDao)ApplicationContext.current.get("ShipmentImageEventDao");
+    }
+
+    protected ShipmentImageEventId newShipmentImageEventId(String sequenceId)
+    {
+        ShipmentImageEventId eventId = new ShipmentImageEventId(this.getShipmentEventId().getShipmentId(), 
+            sequenceId, 
+            this.getShipmentEventId().getVersion());
+        return eventId;
+    }
+
+    protected void throwOnInconsistentEventIds(ShipmentImageEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(ShipmentEvent oe, ShipmentImageEvent e)
+    {
+        if (!oe.getShipmentEventId().getShipmentId().equals(e.getShipmentImageEventId().getShipmentId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id ShipmentId %1$s but inner id ShipmentId %2$s", 
+                oe.getShipmentEventId().getShipmentId(), e.getShipmentImageEventId().getShipmentId());
+        }
+    }
+
     protected ShipmentItemEventDao getShipmentItemEventDao() {
         return (ShipmentItemEventDao)ApplicationContext.current.get("ShipmentItemEventDao");
     }
@@ -150,6 +176,18 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
             throw DomainError.named("inconsistentEventIds", "Outer Id ShipmentId %1$s but inner id ShipmentId %2$s", 
                 oe.getShipmentEventId().getShipmentId(), e.getItemIssuanceEventId().getShipmentId());
         }
+    }
+
+    public ShipmentImageEvent.ShipmentImageStateCreated newShipmentImageStateCreated(String sequenceId) {
+        return new AbstractShipmentImageEvent.SimpleShipmentImageStateCreated(newShipmentImageEventId(sequenceId));
+    }
+
+    public ShipmentImageEvent.ShipmentImageStateMergePatched newShipmentImageStateMergePatched(String sequenceId) {
+        return new AbstractShipmentImageEvent.SimpleShipmentImageStateMergePatched(newShipmentImageEventId(sequenceId));
+    }
+
+    public ShipmentImageEvent.ShipmentImageStateRemoved newShipmentImageStateRemoved(String sequenceId) {
+        return new AbstractShipmentImageEvent.SimpleShipmentImageStateRemoved(newShipmentImageEventId(sequenceId));
     }
 
     public ShipmentItemEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId) {
@@ -588,6 +626,48 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
             return StateEventType.CREATED;
         }
 
+        private Map<ShipmentImageEventId, ShipmentImageEvent.ShipmentImageStateCreated> shipmentImageEvents = new HashMap<ShipmentImageEventId, ShipmentImageEvent.ShipmentImageStateCreated>();
+        
+        private Iterable<ShipmentImageEvent.ShipmentImageStateCreated> readOnlyShipmentImageEvents;
+
+        public Iterable<ShipmentImageEvent.ShipmentImageStateCreated> getShipmentImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.shipmentImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentImageEvents != null) { return readOnlyShipmentImageEvents; }
+                ShipmentImageEventDao eventDao = getShipmentImageEventDao();
+                List<ShipmentImageEvent.ShipmentImageStateCreated> eL = new ArrayList<ShipmentImageEvent.ShipmentImageStateCreated>();
+                for (ShipmentImageEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((ShipmentImageEvent.ShipmentImageStateCreated)e);
+                }
+                return (readOnlyShipmentImageEvents = eL);
+            }
+        }
+
+        public void setShipmentImageEvents(Iterable<ShipmentImageEvent.ShipmentImageStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentImageEvent.ShipmentImageStateCreated e : es)
+                {
+                    addShipmentImageEvent(e);
+                }
+            }
+            else { this.shipmentImageEvents.clear(); }
+        }
+        
+        public void addShipmentImageEvent(ShipmentImageEvent.ShipmentImageStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentImageEvents.put(e.getShipmentImageEventId(), e);
+        }
+
         private Map<ShipmentItemEventId, ShipmentItemEvent.ShipmentItemStateCreated> shipmentItemEvents = new HashMap<ShipmentItemEventId, ShipmentItemEvent.ShipmentItemStateCreated>();
         
         private Iterable<ShipmentItemEvent.ShipmentItemStateCreated> readOnlyShipmentItemEvents;
@@ -716,6 +796,9 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
 
         public void save()
         {
+            for (ShipmentImageEvent.ShipmentImageStateCreated e : this.getShipmentImageEvents()) {
+                getShipmentImageEventDao().save(e);
+            }
             for (ShipmentItemEvent.ShipmentItemStateCreated e : this.getShipmentItemEvents()) {
                 getShipmentItemEventDao().save(e);
             }
@@ -1063,6 +1146,48 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
             this.isPropertyActiveRemoved = removed;
         }
 
+        private Map<ShipmentImageEventId, ShipmentImageEvent> shipmentImageEvents = new HashMap<ShipmentImageEventId, ShipmentImageEvent>();
+        
+        private Iterable<ShipmentImageEvent> readOnlyShipmentImageEvents;
+
+        public Iterable<ShipmentImageEvent> getShipmentImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.shipmentImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentImageEvents != null) { return readOnlyShipmentImageEvents; }
+                ShipmentImageEventDao eventDao = getShipmentImageEventDao();
+                List<ShipmentImageEvent> eL = new ArrayList<ShipmentImageEvent>();
+                for (ShipmentImageEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
+                {
+                    e.setEventReadOnly(true);
+                    eL.add((ShipmentImageEvent)e);
+                }
+                return (readOnlyShipmentImageEvents = eL);
+            }
+        }
+
+        public void setShipmentImageEvents(Iterable<ShipmentImageEvent> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentImageEvent e : es)
+                {
+                    addShipmentImageEvent(e);
+                }
+            }
+            else { this.shipmentImageEvents.clear(); }
+        }
+        
+        public void addShipmentImageEvent(ShipmentImageEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentImageEvents.put(e.getShipmentImageEventId(), e);
+        }
+
         private Map<ShipmentItemEventId, ShipmentItemEvent> shipmentItemEvents = new HashMap<ShipmentItemEventId, ShipmentItemEvent>();
         
         private Iterable<ShipmentItemEvent> readOnlyShipmentItemEvents;
@@ -1191,6 +1316,9 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
 
         public void save()
         {
+            for (ShipmentImageEvent e : this.getShipmentImageEvents()) {
+                getShipmentImageEventDao().save(e);
+            }
             for (ShipmentItemEvent e : this.getShipmentItemEvents()) {
                 getShipmentItemEventDao().save(e);
             }

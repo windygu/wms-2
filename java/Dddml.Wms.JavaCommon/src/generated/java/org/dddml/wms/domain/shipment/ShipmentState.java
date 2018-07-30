@@ -169,6 +169,8 @@ public interface ShipmentState
 
     boolean getForReapplying();
 
+    ShipmentImageStates getShipmentImages();
+
     ShipmentItemStates getShipmentItems();
 
     ShipmentReceiptStates getShipmentReceipts();

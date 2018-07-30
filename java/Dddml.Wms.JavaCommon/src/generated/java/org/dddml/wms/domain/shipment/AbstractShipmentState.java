@@ -470,6 +470,18 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         return this.getVersion() == null;
     }
 
+    private ShipmentImageStates shipmentImages;
+
+    public ShipmentImageStates getShipmentImages()
+    {
+        return this.shipmentImages;
+    }
+
+    public void setShipmentImages(ShipmentImageStates shipmentImages)
+    {
+        this.shipmentImages = shipmentImages;
+    }
+
     private ShipmentItemStates shipmentItems;
 
     public ShipmentItemStates getShipmentItems()
@@ -545,6 +557,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     }
     
     protected void initializeProperties() {
+        shipmentImages = new SimpleShipmentImageStates(this);
         shipmentItems = new SimpleShipmentItemStates(this);
         shipmentReceipts = new SimpleShipmentReceiptStates(this);
         itemIssuances = new SimpleItemIssuanceStates(this);
@@ -602,6 +615,10 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (ShipmentImageEvent.ShipmentImageStateCreated innerEvent : e.getShipmentImageEvents()) {
+            ShipmentImageState innerState = this.getShipmentImages().get(innerEvent.getShipmentImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+        }
         for (ShipmentItemEvent.ShipmentItemStateCreated innerEvent : e.getShipmentItemEvents()) {
             ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getShipmentItemEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
@@ -976,6 +993,15 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (ShipmentImageEvent innerEvent : e.getShipmentImageEvents()) {
+            ShipmentImageState innerState = this.getShipmentImages().get(innerEvent.getShipmentImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof ShipmentImageEvent.ShipmentImageStateRemoved)
+            {
+                //ShipmentImageEvent.ShipmentImageStateRemoved removed = (ShipmentImageEvent.ShipmentImageStateRemoved)innerEvent;
+                this.getShipmentImages().remove(innerState);
+            }
+        }
         for (ShipmentItemEvent innerEvent : e.getShipmentItemEvents()) {
             ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getShipmentItemEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
@@ -997,6 +1023,8 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
 
     public void save()
     {
+        shipmentImages.save();
+
         shipmentItems.save();
 
         shipmentReceipts.save();
@@ -1040,6 +1068,14 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
             super(events);
         }
 
+    }
+
+    static class SimpleShipmentImageStates extends AbstractShipmentImageStates
+    {
+        public SimpleShipmentImageStates(AbstractShipmentState outerState)
+        {
+            super(outerState);
+        }
     }
 
     static class SimpleShipmentItemStates extends AbstractShipmentItemStates

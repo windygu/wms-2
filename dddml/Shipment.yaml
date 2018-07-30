@@ -116,6 +116,10 @@ aggregates:
       ItemIssuances:
         itemType: ItemIssuance
         
+      # 图片
+      ShipmentImages:
+        itemType: ShipmentImage
+        
     references:
       OrderShipGroup:
         name: OrderShipGroup
@@ -144,6 +148,14 @@ aggregates:
       
     entities:
     
+      ShipmentImage:
+        id:
+          name: SequenceId
+          type: id-long-ne
+        properties:
+          Url:
+            type: id-vlong-ne
+              
       # ------------------------------------------
       # 装运项（行）
       ShipmentItem:
@@ -277,6 +289,10 @@ aggregates:
           DamagedQuantity:
             type: fixed-point
             notNull: true
+          
+          # 图片
+          ShipmentReceiptImages:
+            itemType: ShipmentReceiptImage
             
         # references: {}
         
@@ -285,6 +301,15 @@ aggregates:
           
         # metadata:
           # StateEventDatabaseTableName: SHIPMENT_RECEIPT_STATE_EVENT
+          
+        entities:  
+          ShipmentReceiptImage:
+            id:
+              name: SequenceId
+              type: id-long-ne
+            properties:
+              Url:
+                type: id-vlong-ne
 
       # ------------------------------------------
       # （装运）项目发货

@@ -485,6 +485,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchShipmentImageDto[] shipmentImages;
+
+    public CreateOrMergePatchShipmentImageDto[] getShipmentImages()
+    {
+        return this.shipmentImages;
+    }
+
+    public void setShipmentImages(CreateOrMergePatchShipmentImageDto[] shipmentImages)
+    {
+        this.shipmentImages = shipmentImages;
+    }
+
     private CreateOrMergePatchShipmentItemDto[] shipmentItems;
 
     public CreateOrMergePatchShipmentItemDto[] getShipmentItems()

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipment.ShipmentReceiptEvent.*;
 
-public abstract class AbstractShipmentReceiptState implements ShipmentReceiptState
+public abstract class AbstractShipmentReceiptState implements ShipmentReceiptState, Saveable
 {
 
     private ShipmentReceiptId shipmentReceiptId = new ShipmentReceiptId();
@@ -328,6 +328,18 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         return this.getVersion() == null;
     }
 
+    private ShipmentReceiptImageStates shipmentReceiptImages;
+
+    public ShipmentReceiptImageStates getShipmentReceiptImages()
+    {
+        return this.shipmentReceiptImages;
+    }
+
+    public void setShipmentReceiptImages(ShipmentReceiptImageStates shipmentReceiptImages)
+    {
+        this.shipmentReceiptImages = shipmentReceiptImages;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -356,6 +368,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
     }
     
     protected void initializeProperties() {
+        shipmentReceiptImages = new SimpleShipmentReceiptImageStates(this);
     }
 
 
@@ -397,6 +410,10 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated innerEvent : e.getShipmentReceiptImageEvents()) {
+            ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(innerEvent.getShipmentReceiptImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+        }
     }
 
     public void when(ShipmentReceiptStateMergePatched e)
@@ -616,10 +633,21 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (ShipmentReceiptImageEvent innerEvent : e.getShipmentReceiptImageEvents()) {
+            ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(innerEvent.getShipmentReceiptImageEventId().getSequenceId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved)
+            {
+                //ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved removed = (ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved)innerEvent;
+                this.getShipmentReceiptImages().remove(innerState);
+            }
+        }
     }
 
     public void save()
     {
+        shipmentReceiptImages.save();
+
     }
 
     protected void throwOnWrongEvent(ShipmentReceiptEvent event)
@@ -666,6 +694,14 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
             super(forReapplying);
         }
 
+    }
+
+    static class SimpleShipmentReceiptImageStates extends AbstractShipmentReceiptImageStates
+    {
+        public SimpleShipmentReceiptImageStates(AbstractShipmentReceiptState outerState)
+        {
+            super(outerState);
+        }
     }
 
 

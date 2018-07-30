@@ -695,6 +695,17 @@ public class ShipmentStateEventDto extends AbstractEvent
     }
 
 
+    private ShipmentImageStateEventDto[] shipmentImageEvents;
+
+    public ShipmentImageStateEventDto[] getShipmentImageEvents() {
+        return this.shipmentImageEvents;
+    }
+
+    public void setShipmentImageEvents(ShipmentImageStateEventDto[] events) {
+        this.shipmentImageEvents = events;
+    }
+
+
     private ShipmentItemStateEventDto[] shipmentItemEvents;
 
     public ShipmentItemStateEventDto[] getShipmentItemEvents() {

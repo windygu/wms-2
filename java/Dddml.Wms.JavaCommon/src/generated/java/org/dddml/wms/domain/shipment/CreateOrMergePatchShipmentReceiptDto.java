@@ -290,6 +290,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.active = active;
     }
 
+    private CreateOrMergePatchShipmentReceiptImageDto[] shipmentReceiptImages;
+
+    public CreateOrMergePatchShipmentReceiptImageDto[] getShipmentReceiptImages()
+    {
+        return this.shipmentReceiptImages;
+    }
+
+    public void setShipmentReceiptImages(CreateOrMergePatchShipmentReceiptImageDto[] shipmentReceiptImages)
+    {
+        this.shipmentReceiptImages = shipmentReceiptImages;
+    }
+
     private Boolean isPropertyProductIdRemoved;
 
     public Boolean getIsPropertyProductIdRemoved()
@@ -550,10 +562,20 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt command = new AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt();
             copyTo((AbstractShipmentReceiptCommand.AbstractCreateShipmentReceipt) command);
+            if (this.getShipmentReceiptImages() != null) {
+                for (CreateOrMergePatchShipmentReceiptImageDto cmd : this.getShipmentReceiptImages()) {
+                    command.getShipmentReceiptImages().add((ShipmentReceiptImageCommand.CreateShipmentReceiptImage) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt command = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
             copyTo((AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt) command);
+            if (this.getShipmentReceiptImages() != null) {
+                for (CreateOrMergePatchShipmentReceiptImageDto cmd : this.getShipmentReceiptImages()) {
+                    command.getShipmentReceiptImageCommands().add(cmd.toCommand());
+                }
+            }
             return command;
         } 
         else if (COMMAND_TYPE_REMOVE.equals(getCommandType())) {

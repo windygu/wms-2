@@ -917,6 +917,15 @@
   </bean>
 
 
+  <bean id="shipmentImageStateDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentImageStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentImageEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentImageEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
   <bean id="shipmentItemStateDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentItemStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -932,6 +941,15 @@
   </bean>
 
   <bean id="shipmentReceiptEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentReceiptEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="shipmentReceiptImageStateDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentReceiptImageStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentReceiptImageEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentReceiptImageEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 

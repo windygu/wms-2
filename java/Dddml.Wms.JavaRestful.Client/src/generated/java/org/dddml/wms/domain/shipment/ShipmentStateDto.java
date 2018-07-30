@@ -465,6 +465,18 @@ public class ShipmentStateDto
         this.updatedAt = updatedAt;
     }
 
+    private ShipmentImageStateDto[] shipmentImages;
+
+    public ShipmentImageStateDto[] getShipmentImages()
+    {
+        return this.shipmentImages;
+    }	
+
+    public void setShipmentImages(ShipmentImageStateDto[] shipmentImages)
+    {
+        this.shipmentImages = shipmentImages;
+    }
+
     private ShipmentItemStateDto[] shipmentItems;
 
     public ShipmentItemStateDto[] getShipmentItems()

@@ -126,10 +126,14 @@
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentImageState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentImageEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentReceiptState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentReceiptEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentReceiptImageState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/ShipmentReceiptImageEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ItemIssuanceState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ItemIssuanceEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentMethodTypeState.hbm.xml"/>

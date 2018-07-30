@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.shipment">
+  
+  <class name="org.dddml.wms.domain.shipment.AbstractShipmentImageState$SimpleShipmentImageState" table="ShipmentImages">
+
+	<composite-id name="shipmentImageId" class="org.dddml.wms.domain.shipment.ShipmentImageId">
+		<key-property name="shipmentId" ><column name="ShipmentImageIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="sequenceId" ><column name="ShipmentImageIdSequenceId" sql-type="VARCHAR(60)" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="url" ><column name="Url" sql-type="VARCHAR(250)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

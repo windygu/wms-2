@@ -437,6 +437,17 @@ public class ShipmentReceiptStateEventDto extends AbstractEvent
     }
 
 
+    private ShipmentReceiptImageStateEventDto[] shipmentReceiptImageEvents;
+
+    public ShipmentReceiptImageStateEventDto[] getShipmentReceiptImageEvents() {
+        return this.shipmentReceiptImageEvents;
+    }
+
+    public void setShipmentReceiptImageEvents(ShipmentReceiptImageStateEventDto[] events) {
+        this.shipmentReceiptImageEvents = events;
+    }
+
+
 	public static class ShipmentReceiptStateCreatedDto extends ShipmentReceiptStateEventDto
 	{
         @Override

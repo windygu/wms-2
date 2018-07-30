@@ -787,6 +787,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentEventStore.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentImageEventDao.java">
+      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentImageStateDao.java">
+      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemEventDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
@@ -794,6 +800,12 @@
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptEventDao.java">
+      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptImageEventDao.java">
+      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptImageStateDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateDao.java">
@@ -1289,6 +1301,18 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineImageEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentImageState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentImageEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptImageState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptImageEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\generated\resources\script\AddStateIdForeignKeyConstraints.sql">
       <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
     </Content>
@@ -1480,6 +1504,8 @@
 .\SellableInventoryItemEntryState.hbm.xml
 .\SellableInventoryItemState.hbm.xml
 .\ShipmentEvent.hbm.xml
+.\ShipmentImageEvent.hbm.xml
+.\ShipmentImageState.hbm.xml
 .\ShipmentItemEvent.hbm.xml
 .\ShipmentItemState.hbm.xml
 .\ShipmentMethodTypeEvent.hbm.xml
@@ -1489,6 +1515,8 @@
 .\ShipmentPackageEvent.hbm.xml
 .\ShipmentPackageState.hbm.xml
 .\ShipmentReceiptEvent.hbm.xml
+.\ShipmentReceiptImageEvent.hbm.xml
+.\ShipmentReceiptImageState.hbm.xml
 .\ShipmentReceiptState.hbm.xml
 .\ShipmentState.hbm.xml
 .\ShipmentTypeState.hbm.xml
@@ -1722,9 +1750,13 @@
 .\HibernateItemIssuanceEventDao.java
 .\HibernateItemIssuanceStateDao.java
 .\HibernateShipmentEventStore.java
+.\HibernateShipmentImageEventDao.java
+.\HibernateShipmentImageStateDao.java
 .\HibernateShipmentItemEventDao.java
 .\HibernateShipmentItemStateDao.java
 .\HibernateShipmentReceiptEventDao.java
+.\HibernateShipmentReceiptImageEventDao.java
+.\HibernateShipmentReceiptImageStateDao.java
 .\HibernateShipmentReceiptStateDao.java
 .\HibernateShipmentStateQueryRepository.java
 .\HibernateShipmentStateRepository.java

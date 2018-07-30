@@ -418,6 +418,30 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.active = active;
         }
 
+        public ShipmentImageCommand.CreateShipmentImage newCreateShipmentImage()
+        {
+            AbstractShipmentImageCommand.SimpleCreateShipmentImage c = new AbstractShipmentImageCommand.SimpleCreateShipmentImage();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ShipmentImageCommand.MergePatchShipmentImage newMergePatchShipmentImage()
+        {
+            AbstractShipmentImageCommand.SimpleMergePatchShipmentImage c = new AbstractShipmentImageCommand.SimpleMergePatchShipmentImage();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ShipmentImageCommand.RemoveShipmentImage newRemoveShipmentImage()
+        {
+            AbstractShipmentImageCommand.SimpleRemoveShipmentImage c = new AbstractShipmentImageCommand.SimpleRemoveShipmentImage();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
         public ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem()
         {
             AbstractShipmentItemCommand.SimpleCreateShipmentItem c = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
@@ -497,6 +521,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        private CreateShipmentImageCommands shipmentImages = new SimpleCreateShipmentImageCommands();
+
+        public CreateShipmentImageCommands getShipmentImages()
+        {
+            return this.shipmentImages;
         }
 
         private CreateShipmentItemCommands shipmentItems = new SimpleCreateShipmentItemCommands();
@@ -913,6 +944,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.isPropertyActiveRemoved = removed;
         }
 
+        private ShipmentImageCommands shipmentImageCommands = new SimpleShipmentImageCommands();
+
+        public ShipmentImageCommands getShipmentImageCommands()
+        {
+            return this.shipmentImageCommands;
+        }
+
         private ShipmentItemCommands shipmentItemCommands = new SimpleShipmentItemCommands();
 
         public ShipmentItemCommands getShipmentItemCommands()
@@ -955,6 +993,58 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
 	}
 
     
+    public static class SimpleCreateShipmentImageCommands implements CreateShipmentImageCommands
+    {
+        private List<ShipmentImageCommand.CreateShipmentImage> innerCommands = new ArrayList<ShipmentImageCommand.CreateShipmentImage>();
+
+        public void add(ShipmentImageCommand.CreateShipmentImage c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ShipmentImageCommand.CreateShipmentImage c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ShipmentImageCommand.CreateShipmentImage> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleShipmentImageCommands implements ShipmentImageCommands
+    {
+        private List<ShipmentImageCommand> innerCommands = new ArrayList<ShipmentImageCommand>();
+
+        public void add(ShipmentImageCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ShipmentImageCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ShipmentImageCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
     public static class SimpleCreateShipmentItemCommands implements CreateShipmentItemCommands
     {
         private List<ShipmentItemCommand.CreateShipmentItem> innerCommands = new ArrayList<ShipmentItemCommand.CreateShipmentItem>();

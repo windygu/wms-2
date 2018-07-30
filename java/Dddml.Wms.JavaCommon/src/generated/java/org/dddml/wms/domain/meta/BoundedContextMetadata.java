@@ -82,8 +82,10 @@ public class BoundedContextMetadata {
         typeToAggMap.put("SellableInventoryItem", "SellableInventoryItem");
         typeToAggMap.put("SellableInventoryItemEntry", "SellableInventoryItem");
         typeToAggMap.put("Shipment", "Shipment");
+        typeToAggMap.put("ShipmentImage", "Shipment");
         typeToAggMap.put("ShipmentItem", "Shipment");
         typeToAggMap.put("ShipmentReceipt", "Shipment");
+        typeToAggMap.put("ShipmentReceiptImage", "Shipment");
         typeToAggMap.put("ItemIssuance", "Shipment");
         typeToAggMap.put("ShipmentMethodType", "ShipmentMethodType");
         typeToAggMap.put("ShipmentPackage", "ShipmentPackage");

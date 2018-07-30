@@ -321,10 +321,22 @@ public class ShipmentReceiptStateDto
         this.updatedAt = updatedAt;
     }
 
+    private ShipmentReceiptImageStateDto[] shipmentReceiptImages;
+
+    public ShipmentReceiptImageStateDto[] getShipmentReceiptImages()
+    {
+        return this.shipmentReceiptImages;
+    }	
+
+    public void setShipmentReceiptImages(ShipmentReceiptImageStateDto[] shipmentReceiptImages)
+    {
+        this.shipmentReceiptImages = shipmentReceiptImages;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"ShipmentReceiptImages"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -427,6 +439,18 @@ public class ShipmentReceiptStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("ShipmentReceiptImages")) {
+                ArrayList<ShipmentReceiptImageStateDto> arrayList = new ArrayList();
+                if (state.getShipmentReceiptImages() != null) {
+                    ShipmentReceiptImageStateDto.DtoConverter conv = new ShipmentReceiptImageStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "ShipmentReceiptImages");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (ShipmentReceiptImageState s : state.getShipmentReceiptImages()) {
+                        arrayList.add(conv.toShipmentReceiptImageStateDto(s));
+                    }
+                }
+                dto.setShipmentReceiptImages(arrayList.toArray(new ShipmentReceiptImageStateDto[0]));
             }
             return dto;
         }

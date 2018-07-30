@@ -290,6 +290,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.active = active;
     }
 
+    private CreateOrMergePatchShipmentReceiptImageDto[] shipmentReceiptImages;
+
+    public CreateOrMergePatchShipmentReceiptImageDto[] getShipmentReceiptImages()
+    {
+        return this.shipmentReceiptImages;
+    }
+
+    public void setShipmentReceiptImages(CreateOrMergePatchShipmentReceiptImageDto[] shipmentReceiptImages)
+    {
+        this.shipmentReceiptImages = shipmentReceiptImages;
+    }
+
     private Boolean isPropertyProductIdRemoved;
 
     public Boolean getIsPropertyProductIdRemoved()

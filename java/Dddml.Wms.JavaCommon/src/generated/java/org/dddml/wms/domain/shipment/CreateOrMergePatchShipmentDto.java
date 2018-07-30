@@ -485,6 +485,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchShipmentImageDto[] shipmentImages;
+
+    public CreateOrMergePatchShipmentImageDto[] getShipmentImages()
+    {
+        return this.shipmentImages;
+    }
+
+    public void setShipmentImages(CreateOrMergePatchShipmentImageDto[] shipmentImages)
+    {
+        this.shipmentImages = shipmentImages;
+    }
+
     private CreateOrMergePatchShipmentItemDto[] shipmentItems;
 
     public CreateOrMergePatchShipmentItemDto[] getShipmentItems()
@@ -950,6 +962,11 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractShipmentCommand.SimpleCreateShipment command = new AbstractShipmentCommand.SimpleCreateShipment();
             copyTo((AbstractShipmentCommand.AbstractCreateShipment) command);
+            if (this.getShipmentImages() != null) {
+                for (CreateOrMergePatchShipmentImageDto cmd : this.getShipmentImages()) {
+                    command.getShipmentImages().add((ShipmentImageCommand.CreateShipmentImage) cmd.toCommand());
+                }
+            }
             if (this.getShipmentItems() != null) {
                 for (CreateOrMergePatchShipmentItemDto cmd : this.getShipmentItems()) {
                     command.getShipmentItems().add((ShipmentItemCommand.CreateShipmentItem) cmd.toCommand());
@@ -969,6 +986,11 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractShipmentCommand.SimpleMergePatchShipment command = new AbstractShipmentCommand.SimpleMergePatchShipment();
             copyTo((AbstractShipmentCommand.SimpleMergePatchShipment) command);
+            if (this.getShipmentImages() != null) {
+                for (CreateOrMergePatchShipmentImageDto cmd : this.getShipmentImages()) {
+                    command.getShipmentImageCommands().add(cmd.toCommand());
+                }
+            }
             if (this.getShipmentItems() != null) {
                 for (CreateOrMergePatchShipmentItemDto cmd : this.getShipmentItems()) {
                     command.getShipmentItemCommands().add(cmd.toCommand());
