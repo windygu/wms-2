@@ -1055,6 +1055,8 @@ namespace Dddml.Wms.Domain.InOut
 
             public IDictionary<string, object> AttributeSetInstance { get; set; }
 
+            public string DamageStatusId { get; set; }
+
             public string Description { get; set; }
 
             public string QuantityUomId { get; set; }
@@ -1076,6 +1078,7 @@ namespace Dddml.Wms.Domain.InOut
                 cmd.LocatorId = this.LocatorId;
                 cmd.ProductId = this.ProductId;
                 cmd.AttributeSetInstance = this.AttributeSetInstance;
+                cmd.DamageStatusId = this.DamageStatusId;
                 cmd.Description = this.Description;
                 cmd.QuantityUomId = this.QuantityUomId;
                 cmd.MovementQuantity = this.MovementQuantity;

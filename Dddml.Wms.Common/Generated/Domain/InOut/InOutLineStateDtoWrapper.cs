@@ -151,6 +151,34 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
+		public virtual string DamageStatusId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DamageStatusId"))
+                {
+                    return _state.DamageStatusId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DamageStatusId = value;
+            }
+        }
+
+        string IInOutLineStateProperties.DamageStatusId
+        {
+            get 
+            {
+                return (this._state as IInOutLineStateProperties).DamageStatusId;
+            }
+            set 
+            {
+                (this._state as IInOutLineStateProperties).DamageStatusId = value;
+            }
+        }
+
 		public virtual string Description
 		{
             get

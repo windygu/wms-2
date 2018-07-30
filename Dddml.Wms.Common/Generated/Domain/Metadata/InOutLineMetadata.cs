@@ -134,6 +134,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "DamageStatusId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "StatusItem",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "Description",
                     Type = typeof(string),
                     TypeName = "string",
@@ -738,6 +767,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("productId", "ProductId");
             d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
+            d.Add("DamageStatusId", "DamageStatusId");
+            d.Add("damageStatusId", "DamageStatusId");
             d.Add("Description", "Description");
             d.Add("description", "Description");
             d.Add("QuantityUomId", "QuantityUomId");

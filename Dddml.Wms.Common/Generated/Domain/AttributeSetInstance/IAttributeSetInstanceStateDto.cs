@@ -50,6 +50,18 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
+        string StatusId
+        {
+            get;
+            set;
+        }
+
+        string ImageUrl
+        {
+            get;
+            set;
+        }
+
         string Description
         {
             get;

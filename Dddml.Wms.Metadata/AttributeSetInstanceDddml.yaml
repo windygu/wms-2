@@ -34,11 +34,18 @@ aggregates:
         LotId:
           type: string
 
+        #DateTime? GuaranteeDate
+
+        StatusId:
+          referenceType: StatusItem
+
+        ImageUrl:
+          type: string
+          length: 255
+
         Description:
           type: string
 
-        #DateTime? GuaranteeDate
-        
         Hash:
           type: string
           isDerived: true

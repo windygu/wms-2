@@ -136,6 +136,26 @@ public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent im
             this.getAttributeSetInstanceState().setLotId(lotId);
         }
 
+        public String getStatusId()
+        {
+            return this.getAttributeSetInstanceState().getStatusId();
+        }
+
+        public void setStatusId(String statusId)
+        {
+            this.getAttributeSetInstanceState().setStatusId(statusId);
+        }
+
+        public String getImageUrl()
+        {
+            return this.getAttributeSetInstanceState().getImageUrl();
+        }
+
+        public void setImageUrl(String imageUrl)
+        {
+            this.getAttributeSetInstanceState().setImageUrl(imageUrl);
+        }
+
         public String getDescription()
         {
             return this.getAttributeSetInstanceState().getDescription();

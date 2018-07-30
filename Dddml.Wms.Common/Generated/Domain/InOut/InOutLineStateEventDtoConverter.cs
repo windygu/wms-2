@@ -46,6 +46,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.LocatorId = e.LocatorId;
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.DamageStatusId = e.DamageStatusId;
             dto.Description = e.Description;
             dto.QuantityUomId = e.QuantityUomId;
             dto.MovementQuantity = e.MovementQuantity;
@@ -77,6 +78,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.LocatorId = e.LocatorId;
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.DamageStatusId = e.DamageStatusId;
             dto.Description = e.Description;
             dto.QuantityUomId = e.QuantityUomId;
             dto.MovementQuantity = e.MovementQuantity;
@@ -89,6 +91,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
+            dto.IsPropertyDamageStatusIdRemoved = e.IsPropertyDamageStatusIdRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyQuantityUomIdRemoved = e.IsPropertyQuantityUomIdRemoved;
             dto.IsPropertyMovementQuantityRemoved = e.IsPropertyMovementQuantityRemoved;

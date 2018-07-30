@@ -51,6 +51,18 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
+        public virtual string StatusId
+        {
+            get;
+            set;
+        }
+
+        public virtual string ImageUrl
+        {
+            get;
+            set;
+        }
+
         public virtual string Description
         {
             get;
@@ -468,6 +480,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             state.ReferenceId = this.ReferenceId;
             state.SerialNumber = this.SerialNumber;
             state.LotId = this.LotId;
+            state.StatusId = this.StatusId;
+            state.ImageUrl = this.ImageUrl;
             state.Description = this.Description;
             state.Hash = this.Hash;
             state.WidthInch = this.WidthInch;

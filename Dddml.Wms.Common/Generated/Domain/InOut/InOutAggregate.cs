@@ -437,6 +437,7 @@ namespace Dddml.Wms.Domain.InOut
             e.LocatorId = c.LocatorId;
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.DamageStatusId = c.DamageStatusId;
             e.Description = c.Description;
             e.QuantityUomId = c.QuantityUomId;
             e.MovementQuantity = c.MovementQuantity;
@@ -474,6 +475,7 @@ namespace Dddml.Wms.Domain.InOut
             e.LocatorId = c.LocatorId;
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.DamageStatusId = c.DamageStatusId;
             e.Description = c.Description;
             e.QuantityUomId = c.QuantityUomId;
             e.MovementQuantity = c.MovementQuantity;
@@ -486,6 +488,7 @@ namespace Dddml.Wms.Domain.InOut
             e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
+            e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyQuantityUomIdRemoved = c.IsPropertyQuantityUomIdRemoved;
             e.IsPropertyMovementQuantityRemoved = c.IsPropertyMovementQuantityRemoved;

@@ -28,13 +28,13 @@
     <property name="DocumentTypeId" ></property>
     <property name="IsInTransit" ></property>
     <property name="IsApproved" ></property>
-    <property name="ApprovalAmount" ></property>
+    <property name="ApprovalAmount" ><column name="ApprovalAmount" sql-type="decimal(18,6)" /></property>
     <property name="ShipperId" ></property>
     <property name="SalesRepresentativeId" ></property>
     <property name="BusinessPartnerId" ></property>
-    <property name="ChargeAmount" ></property>
+    <property name="ChargeAmount" ><column name="ChargeAmount" sql-type="decimal(18,6)" /></property>
     <property name="CreateFrom" ></property>
-    <property name="FreightAmount" ></property>
+    <property name="FreightAmount" ><column name="FreightAmount" sql-type="decimal(18,6)" /></property>
     <property name="ReversalDocumentNumber" ></property>
     <property name="WarehouseIdFrom" ></property>
     <property name="WarehouseIdTo" ></property>

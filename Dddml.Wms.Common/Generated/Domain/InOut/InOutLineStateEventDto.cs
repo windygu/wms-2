@@ -42,6 +42,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
+		public virtual string DamageStatusId { get; set; }
+
 		public virtual string Description { get; set; }
 
 		public virtual string QuantityUomId { get; set; }
@@ -145,6 +147,25 @@ namespace Dddml.Wms.Domain.InOut
             set 
             {
                 this.IsPropertyAttributeSetInstanceIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDamageStatusIdRemoved { get; set; }
+
+        bool IInOutLineStateMergePatched.IsPropertyDamageStatusIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyDamageStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyDamageStatusIdRemoved = value;
             }
         }
 

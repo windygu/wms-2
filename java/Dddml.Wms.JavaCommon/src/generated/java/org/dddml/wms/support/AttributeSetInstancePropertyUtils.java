@@ -51,6 +51,8 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getReferenceId())).append("|");
         sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getSerialNumber())).append("|");
         sb.append("LotId").append("=").append(getSafeStringValue(instance.getLotId())).append("|");
+        sb.append("StatusId").append("=").append(getSafeStringValue(instance.getStatusId())).append("|");
+        sb.append("ImageUrl").append("=").append(getSafeStringValue(instance.getImageUrl())).append("|");
         sb.append("Description").append("=").append(getSafeStringValue(instance.getDescription())).append("|");
         sb.append("Active").append("=").append(instance.getActive()).append("|");
         sb.append("WidthInch").append("=").append(instance.getWidthInch()).append("|");
@@ -131,6 +133,8 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getReferenceId())).append("|");
         sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getSerialNumber())).append("|");
         sb.append("LotId").append("=").append(getSafeStringValue(instance.getLotId())).append("|");
+        sb.append("StatusId").append("=").append(getSafeStringValue(instance.getStatusId())).append("|");
+        sb.append("ImageUrl").append("=").append(getSafeStringValue(instance.getImageUrl())).append("|");
         sb.append("Description").append("=").append(getSafeStringValue(instance.getDescription())).append("|");
         sb.append("Active").append("=").append(instance.getActive()).append("|");
         sb.append("WidthInch").append("=").append(instance.getWidthInch()).append("|");
@@ -211,6 +215,8 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getReferenceId())).append("|");
         sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getSerialNumber())).append("|");
         sb.append("LotId").append("=").append(getSafeStringValue(instance.getLotId())).append("|");
+        sb.append("StatusId").append("=").append(getSafeStringValue(instance.getStatusId())).append("|");
+        sb.append("ImageUrl").append("=").append(getSafeStringValue(instance.getImageUrl())).append("|");
         sb.append("Description").append("=").append(getSafeStringValue(instance.getDescription())).append("|");
         sb.append("Active").append("=").append(instance.getActive()).append("|");
         sb.append("WidthInch").append("=").append(instance.getWidthInch()).append("|");
@@ -290,6 +296,8 @@ public class AttributeSetInstancePropertyUtils {
                 || !propertyEquals(instance1.getReferenceId(), instance2.getReferenceId())
                 || !propertyEquals(instance1.getSerialNumber(), instance2.getSerialNumber())
                 || !propertyEquals(instance1.getLotId(), instance2.getLotId())
+                || !propertyEquals(instance1.getStatusId(), instance2.getStatusId())
+                || !propertyEquals(instance1.getImageUrl(), instance2.getImageUrl())
                 || !propertyEquals(instance1.getDescription(), instance2.getDescription())
                 || !propertyEquals(instance1.getActive(), instance2.getActive())
                 || !propertyEquals(instance1.getWidthInch(), instance2.getWidthInch())

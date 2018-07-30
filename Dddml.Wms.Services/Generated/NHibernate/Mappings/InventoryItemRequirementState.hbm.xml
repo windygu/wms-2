@@ -13,7 +13,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="Quantity" ></property>
+    <property name="Quantity" ><column name="Quantity" sql-type="decimal(18,6)" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
 

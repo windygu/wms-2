@@ -179,6 +179,16 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
+		public virtual string Grade { get; set; }
+
+		public virtual decimal? Gsm { get; set; }
+
+		public virtual decimal? CoreDiameter { get; set; }
+
+		public virtual decimal? OutsideDiameter { get; set; }
+
+		public virtual decimal? MoisturePct { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual bool? IsPropertyProductTypeIdRemoved { get; set; }
@@ -1318,6 +1328,101 @@ namespace Dddml.Wms.Domain.Product
             set
             {
                 this.IsPropertyAttributeSetInstanceIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyGradeRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyGradeRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyGradeRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyGradeRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyGsmRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyGsmRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyGsmRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyGsmRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyCoreDiameterRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyCoreDiameterRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyCoreDiameterRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyCoreDiameterRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyOutsideDiameterRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyOutsideDiameterRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyOutsideDiameterRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyOutsideDiameterRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMoisturePctRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyMoisturePctRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMoisturePctRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMoisturePctRemoved = value;
             }
         }
 

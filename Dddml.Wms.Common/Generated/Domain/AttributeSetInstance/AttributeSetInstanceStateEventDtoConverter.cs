@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             dto.ReferenceId = e.ReferenceId;
             dto.SerialNumber = e.SerialNumber;
             dto.LotId = e.LotId;
+            dto.StatusId = e.StatusId;
+            dto.ImageUrl = e.ImageUrl;
             dto.Description = e.Description;
             dto.Hash = e.Hash;
             dto.WidthInch = e.WidthInch;

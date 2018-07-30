@@ -66,6 +66,12 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.PrimaryReturnId = state.PrimaryReturnId;
             cmd.PrimaryShipGroupSeqId = state.PrimaryShipGroupSeqId;
             cmd.PicklistBinId = state.PicklistBinId;
+            cmd.BolNumber = state.BolNumber;
+            cmd.SealNumber = state.SealNumber;
+            cmd.VehicleId = state.VehicleId;
+            cmd.PoNumber = state.PoNumber;
+            cmd.Carrier = state.Carrier;
+            cmd.DateShipped = state.DateShipped;
             cmd.EstimatedReadyDate = state.EstimatedReadyDate;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedShipWorkEffId = state.EstimatedShipWorkEffId;
@@ -93,6 +99,12 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.PrimaryReturnId == null) { cmd.IsPropertyPrimaryReturnIdRemoved = true; }
             if (state.PrimaryShipGroupSeqId == null) { cmd.IsPropertyPrimaryShipGroupSeqIdRemoved = true; }
             if (state.PicklistBinId == null) { cmd.IsPropertyPicklistBinIdRemoved = true; }
+            if (state.BolNumber == null) { cmd.IsPropertyBolNumberRemoved = true; }
+            if (state.SealNumber == null) { cmd.IsPropertySealNumberRemoved = true; }
+            if (state.VehicleId == null) { cmd.IsPropertyVehicleIdRemoved = true; }
+            if (state.PoNumber == null) { cmd.IsPropertyPoNumberRemoved = true; }
+            if (state.Carrier == null) { cmd.IsPropertyCarrierRemoved = true; }
+            if (state.DateShipped == null) { cmd.IsPropertyDateShippedRemoved = true; }
             if (state.EstimatedReadyDate == null) { cmd.IsPropertyEstimatedReadyDateRemoved = true; }
             if (state.EstimatedShipDate == null) { cmd.IsPropertyEstimatedShipDateRemoved = true; }
             if (state.EstimatedShipWorkEffId == null) { cmd.IsPropertyEstimatedShipWorkEffIdRemoved = true; }
@@ -147,6 +159,12 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.PrimaryReturnId = state.PrimaryReturnId;
             cmd.PrimaryShipGroupSeqId = state.PrimaryShipGroupSeqId;
             cmd.PicklistBinId = state.PicklistBinId;
+            cmd.BolNumber = state.BolNumber;
+            cmd.SealNumber = state.SealNumber;
+            cmd.VehicleId = state.VehicleId;
+            cmd.PoNumber = state.PoNumber;
+            cmd.Carrier = state.Carrier;
+            cmd.DateShipped = state.DateShipped;
             cmd.EstimatedReadyDate = state.EstimatedReadyDate;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedShipWorkEffId = state.EstimatedShipWorkEffId;

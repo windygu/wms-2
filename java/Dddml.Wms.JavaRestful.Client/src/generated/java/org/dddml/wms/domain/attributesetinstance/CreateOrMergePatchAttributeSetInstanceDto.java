@@ -82,6 +82,36 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
     }
 
     /**
+     * Status Id
+     */
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
+    /**
+     * Image Url
+     */
+    private String imageUrl;
+
+    public String getImageUrl()
+    {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl)
+    {
+        this.imageUrl = imageUrl;
+    }
+
+    /**
      * Description
      */
     private String description;
@@ -1084,6 +1114,30 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
     public void setIsPropertyLotIdRemoved(Boolean removed)
     {
         this.isPropertyLotIdRemoved = removed;
+    }
+
+    private Boolean isPropertyStatusIdRemoved;
+
+    public Boolean getIsPropertyStatusIdRemoved()
+    {
+        return this.isPropertyStatusIdRemoved;
+    }
+
+    public void setIsPropertyStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyStatusIdRemoved = removed;
+    }
+
+    private Boolean isPropertyImageUrlRemoved;
+
+    public Boolean getIsPropertyImageUrlRemoved()
+    {
+        return this.isPropertyImageUrlRemoved;
+    }
+
+    public void setIsPropertyImageUrlRemoved(Boolean removed)
+    {
+        this.isPropertyImageUrlRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

@@ -79,6 +79,11 @@
     <property name="IsManagedByLot" ></property>
     <property name="AttributeSetId" ></property>
     <property name="AttributeSetInstanceId" ></property>
+    <property name="Grade" ><column name="Grade" sql-type="VARCHAR(20)" /></property>
+    <property name="Gsm" ><column name="Gsm" sql-type="DECIMAL(18,6)" /></property>
+    <property name="CoreDiameter" ><column name="CoreDiameter" sql-type="DECIMAL(18,6)" /></property>
+    <property name="OutsideDiameter" ><column name="OutsideDiameter" sql-type="DECIMAL(18,6)" /></property>
+    <property name="MoisturePct" ><column name="MoisturePct" sql-type="DECIMAL(18,6)" /></property>
     <property name="Active" ></property>
     <subclass name="ProductStateCreated" discriminator-value="Created">
     	
@@ -206,6 +211,16 @@
         <property name="IsPropertyAttributeSetIdRemoved" column="IsPropertyAttributeSetIdRemoved"/>
 
         <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="IsPropertyGradeRemoved" column="IsPropertyGradeRemoved"/>
+
+        <property name="IsPropertyGsmRemoved" column="IsPropertyGsmRemoved"/>
+
+        <property name="IsPropertyCoreDiameterRemoved" column="IsPropertyCoreDiameterRemoved"/>
+
+        <property name="IsPropertyOutsideDiameterRemoved" column="IsPropertyOutsideDiameterRemoved"/>
+
+        <property name="IsPropertyMoisturePctRemoved" column="IsPropertyMoisturePctRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

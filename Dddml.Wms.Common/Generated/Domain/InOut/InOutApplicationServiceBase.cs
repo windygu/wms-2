@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual void When(InOutCommands.AddLine c)
 		{
-			Update(c, ar => ar.AddLine(c.LineNumber, c.LocatorId, c.ProductId, c.AttributeSetInstance, c.Description, c.QuantityUomId, c.MovementQuantity, c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.AddLine(c.LineNumber, c.LocatorId, c.ProductId, c.AttributeSetInstance, c.DamageStatusId, c.Description, c.QuantityUomId, c.MovementQuantity, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(InOutCommands.DocumentAction c)

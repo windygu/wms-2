@@ -35,6 +35,18 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string PicklistBinId { get; set; }
 
+		string BolNumber { get; set; }
+
+		string SealNumber { get; set; }
+
+		string VehicleId { get; set; }
+
+		string PoNumber { get; set; }
+
+		string Carrier { get; set; }
+
+		DateTime? DateShipped { get; set; }
+
 		DateTime? EstimatedReadyDate { get; set; }
 
 		DateTime? EstimatedShipDate { get; set; }
@@ -108,6 +120,18 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		bool IsPropertyPicklistBinIdRemoved { get; set; }
+
+		bool IsPropertyBolNumberRemoved { get; set; }
+
+		bool IsPropertySealNumberRemoved { get; set; }
+
+		bool IsPropertyVehicleIdRemoved { get; set; }
+
+		bool IsPropertyPoNumberRemoved { get; set; }
+
+		bool IsPropertyCarrierRemoved { get; set; }
+
+		bool IsPropertyDateShippedRemoved { get; set; }
 
 		bool IsPropertyEstimatedReadyDateRemoved { get; set; }
 

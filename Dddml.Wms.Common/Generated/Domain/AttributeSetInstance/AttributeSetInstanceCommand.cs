@@ -62,6 +62,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		public virtual string LotId { get; set; }
 
+		public virtual string StatusId { get; set; }
+
+		public virtual string ImageUrl { get; set; }
+
 		public virtual string Description { get; set; }
 
 		public virtual string Hash { get; set; }

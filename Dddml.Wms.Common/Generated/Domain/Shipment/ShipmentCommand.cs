@@ -64,6 +64,18 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PicklistBinId { get; set; }
 
+		public virtual string BolNumber { get; set; }
+
+		public virtual string SealNumber { get; set; }
+
+		public virtual string VehicleId { get; set; }
+
+		public virtual string PoNumber { get; set; }
+
+		public virtual string Carrier { get; set; }
+
+		public virtual DateTime? DateShipped { get; set; }
+
 		public virtual DateTime? EstimatedReadyDate { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }
@@ -222,6 +234,18 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPicklistBinIdRemoved { get; set; }
+
+		public virtual bool IsPropertyBolNumberRemoved { get; set; }
+
+		public virtual bool IsPropertySealNumberRemoved { get; set; }
+
+		public virtual bool IsPropertyVehicleIdRemoved { get; set; }
+
+		public virtual bool IsPropertyPoNumberRemoved { get; set; }
+
+		public virtual bool IsPropertyCarrierRemoved { get; set; }
+
+		public virtual bool IsPropertyDateShippedRemoved { get; set; }
 
 		public virtual bool IsPropertyEstimatedReadyDateRemoved { get; set; }
 
@@ -648,6 +672,18 @@ namespace Dddml.Wms.Domain.Shipment
             public string PrimaryOrderId { get; set; }
 
             public string PrimaryReturnId { get; set; }
+
+            public string BolNumber { get; set; }
+
+            public string VehicleId { get; set; }
+
+            public string SealNumber { get; set; }
+
+            public string PoNumber { get; set; }
+
+            public string Carrier { get; set; }
+
+            public DateTime? DateShipped { get; set; }
 
             public DateTime? EstimatedReadyDate { get; set; }
 

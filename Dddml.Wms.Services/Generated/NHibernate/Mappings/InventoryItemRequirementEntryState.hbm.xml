@@ -15,7 +15,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="Quantity" ></property>
+    <property name="Quantity" ><column name="Quantity" sql-type="decimal(18,6)" /></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
         <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="60" sql-type="VARCHAR(60)" /></property>
         <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>

@@ -82,6 +82,36 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
     }
 
     /**
+     * Status Id
+     */
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
+    /**
+     * Image Url
+     */
+    private String imageUrl;
+
+    public String getImageUrl()
+    {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl)
+    {
+        this.imageUrl = imageUrl;
+    }
+
+    /**
      * Description
      */
     private String description;
@@ -1086,6 +1116,30 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.isPropertyLotIdRemoved = removed;
     }
 
+    private Boolean isPropertyStatusIdRemoved;
+
+    public Boolean getIsPropertyStatusIdRemoved()
+    {
+        return this.isPropertyStatusIdRemoved;
+    }
+
+    public void setIsPropertyStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyStatusIdRemoved = removed;
+    }
+
+    private Boolean isPropertyImageUrlRemoved;
+
+    public Boolean getIsPropertyImageUrlRemoved()
+    {
+        return this.isPropertyImageUrlRemoved;
+    }
+
+    public void setIsPropertyImageUrlRemoved(Boolean removed)
+    {
+        this.isPropertyImageUrlRemoved = removed;
+    }
+
     private Boolean isPropertyDescriptionRemoved;
 
     public Boolean getIsPropertyDescriptionRemoved()
@@ -1850,6 +1904,8 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         command.setReferenceId(this.getReferenceId());
         command.setSerialNumber(this.getSerialNumber());
         command.setLotId(this.getLotId());
+        command.setStatusId(this.getStatusId());
+        command.setImageUrl(this.getImageUrl());
         command.setDescription(this.getDescription());
         command.setHash(this.getHash());
         command.setWidthInch(this.getWidthInch());

@@ -186,6 +186,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 			this.LotId = e.LotId;
 
+			this.StatusId = e.StatusId;
+
+			this.ImageUrl = e.ImageUrl;
+
 			this.Description = e.Description;
 
 			this.Hash = e.Hash;

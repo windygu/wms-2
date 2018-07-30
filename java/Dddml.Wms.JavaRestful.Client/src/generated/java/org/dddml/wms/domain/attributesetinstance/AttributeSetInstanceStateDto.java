@@ -82,6 +82,30 @@ public class AttributeSetInstanceStateDto
         this.lotId = lotId;
     }
 
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
+    }
+
+    private String imageUrl;
+
+    public String getImageUrl()
+    {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl)
+    {
+        this.imageUrl = imageUrl;
+    }
+
     private String description;
 
     public String getDescription()

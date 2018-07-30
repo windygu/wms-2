@@ -21,11 +21,11 @@
 
         <subclass name="InventoryItemStateEventBase" abstract="true">
 
-    <property name="OnHandQuantity" ></property>
-    <property name="InTransitQuantity" ></property>
-    <property name="ReservedQuantity" ></property>
-    <property name="OccupiedQuantity" ></property>
-    <property name="VirtualQuantity" ></property>
+    <property name="OnHandQuantity" ><column name="OnHandQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="InTransitQuantity" ><column name="InTransitQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="ReservedQuantity" ><column name="ReservedQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="OccupiedQuantity" ><column name="OccupiedQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="VirtualQuantity" ><column name="VirtualQuantity" sql-type="decimal(18,6)" /></property>
     <subclass name="InventoryItemStateCreated" discriminator-value="Created">
     	
     </subclass>

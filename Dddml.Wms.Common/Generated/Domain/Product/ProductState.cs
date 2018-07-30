@@ -310,6 +310,16 @@ namespace Dddml.Wms.Domain.Product
 
 			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 
+			this.Grade = e.Grade;
+
+			this.Gsm = e.Gsm;
+
+			this.CoreDiameter = e.CoreDiameter;
+
+			this.OutsideDiameter = e.OutsideDiameter;
+
+			this.MoisturePct = e.MoisturePct;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.CreatedBy = e.CreatedBy;
@@ -1045,6 +1055,66 @@ namespace Dddml.Wms.Domain.Product
 			else
 			{
 				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+			}
+
+			if (e.Grade == null)
+			{
+				if (e.IsPropertyGradeRemoved)
+				{
+					this.Grade = default(string);
+				}
+			}
+			else
+			{
+				this.Grade = e.Grade;
+			}
+
+			if (e.Gsm == null)
+			{
+				if (e.IsPropertyGsmRemoved)
+				{
+					this.Gsm = default(decimal?);
+				}
+			}
+			else
+			{
+				this.Gsm = e.Gsm;
+			}
+
+			if (e.CoreDiameter == null)
+			{
+				if (e.IsPropertyCoreDiameterRemoved)
+				{
+					this.CoreDiameter = default(decimal?);
+				}
+			}
+			else
+			{
+				this.CoreDiameter = e.CoreDiameter;
+			}
+
+			if (e.OutsideDiameter == null)
+			{
+				if (e.IsPropertyOutsideDiameterRemoved)
+				{
+					this.OutsideDiameter = default(decimal?);
+				}
+			}
+			else
+			{
+				this.OutsideDiameter = e.OutsideDiameter;
+			}
+
+			if (e.MoisturePct == null)
+			{
+				if (e.IsPropertyMoisturePctRemoved)
+				{
+					this.MoisturePct = default(decimal?);
+				}
+			}
+			else
+			{
+				this.MoisturePct = e.MoisturePct;
 			}
 
 			if (e.Active == null)

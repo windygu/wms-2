@@ -21,10 +21,10 @@
         <subclass name="MovementConfirmationLineStateEventBase" abstract="true">
 
     <property name="MovementLineNumber" ></property>
-    <property name="TargetQuantity" ></property>
-    <property name="ConfirmedQuantity" ></property>
-    <property name="DifferenceQuantity" ></property>
-    <property name="ScrappedQuantity" ></property>
+    <property name="TargetQuantity" ><column name="TargetQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="ConfirmedQuantity" ><column name="ConfirmedQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="DifferenceQuantity" ><column name="DifferenceQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="ScrappedQuantity" ><column name="ScrappedQuantity" sql-type="decimal(18,6)" /></property>
     <property name="Description" ></property>
     <property name="Processed" ></property>
     <property name="Active" ></property>

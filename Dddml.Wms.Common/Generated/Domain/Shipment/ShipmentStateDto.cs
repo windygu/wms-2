@@ -57,6 +57,42 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual string BolNumber
+        {
+            get;
+            set;
+        }
+
+        public virtual string SealNumber
+        {
+            get;
+            set;
+        }
+
+        public virtual string VehicleId
+        {
+            get;
+            set;
+        }
+
+        public virtual string PoNumber
+        {
+            get;
+            set;
+        }
+
+        public virtual string Carrier
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? DateShipped
+        {
+            get;
+            set;
+        }
+
         public virtual DateTime? EstimatedReadyDate
         {
             get;
@@ -253,6 +289,12 @@ namespace Dddml.Wms.Domain.Shipment
             state.PrimaryReturnId = this.PrimaryReturnId;
             state.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
             state.PicklistBinId = this.PicklistBinId;
+            state.BolNumber = this.BolNumber;
+            state.SealNumber = this.SealNumber;
+            state.VehicleId = this.VehicleId;
+            state.PoNumber = this.PoNumber;
+            state.Carrier = this.Carrier;
+            state.DateShipped = this.DateShipped;
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;

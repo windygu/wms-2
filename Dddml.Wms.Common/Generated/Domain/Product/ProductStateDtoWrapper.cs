@@ -1753,6 +1753,146 @@ namespace Dddml.Wms.Domain.Product
             }
         }
 
+		public virtual string Grade
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Grade"))
+                {
+                    return _state.Grade;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Grade = value;
+            }
+        }
+
+        string IProductStateProperties.Grade
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).Grade;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).Grade = value;
+            }
+        }
+
+		public virtual decimal? Gsm
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Gsm"))
+                {
+                    return _state.Gsm;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Gsm = value;
+            }
+        }
+
+        decimal? IProductStateProperties.Gsm
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).Gsm;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).Gsm = value;
+            }
+        }
+
+		public virtual decimal? CoreDiameter
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CoreDiameter"))
+                {
+                    return _state.CoreDiameter;
+                }
+                return null;
+            }
+            set
+            {
+                _state.CoreDiameter = value;
+            }
+        }
+
+        decimal? IProductStateProperties.CoreDiameter
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).CoreDiameter;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).CoreDiameter = value;
+            }
+        }
+
+		public virtual decimal? OutsideDiameter
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OutsideDiameter"))
+                {
+                    return _state.OutsideDiameter;
+                }
+                return null;
+            }
+            set
+            {
+                _state.OutsideDiameter = value;
+            }
+        }
+
+        decimal? IProductStateProperties.OutsideDiameter
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).OutsideDiameter;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).OutsideDiameter = value;
+            }
+        }
+
+		public virtual decimal? MoisturePct
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MoisturePct"))
+                {
+                    return _state.MoisturePct;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MoisturePct = value;
+            }
+        }
+
+        decimal? IProductStateProperties.MoisturePct
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).MoisturePct;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).MoisturePct = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

@@ -235,6 +235,174 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual string BolNumber
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("BolNumber"))
+                {
+                    return _state.BolNumber;
+                }
+                return null;
+            }
+            set
+            {
+                _state.BolNumber = value;
+            }
+        }
+
+        string IShipmentStateProperties.BolNumber
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).BolNumber;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).BolNumber = value;
+            }
+        }
+
+		public virtual string SealNumber
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SealNumber"))
+                {
+                    return _state.SealNumber;
+                }
+                return null;
+            }
+            set
+            {
+                _state.SealNumber = value;
+            }
+        }
+
+        string IShipmentStateProperties.SealNumber
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).SealNumber;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).SealNumber = value;
+            }
+        }
+
+		public virtual string VehicleId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("VehicleId"))
+                {
+                    return _state.VehicleId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.VehicleId = value;
+            }
+        }
+
+        string IShipmentStateProperties.VehicleId
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).VehicleId;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).VehicleId = value;
+            }
+        }
+
+		public virtual string PoNumber
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PoNumber"))
+                {
+                    return _state.PoNumber;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PoNumber = value;
+            }
+        }
+
+        string IShipmentStateProperties.PoNumber
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).PoNumber;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).PoNumber = value;
+            }
+        }
+
+		public virtual string Carrier
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Carrier"))
+                {
+                    return _state.Carrier;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Carrier = value;
+            }
+        }
+
+        string IShipmentStateProperties.Carrier
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).Carrier;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).Carrier = value;
+            }
+        }
+
+		public virtual DateTime? DateShipped
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DateShipped"))
+                {
+                    return _state.DateShipped;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DateShipped = value;
+            }
+        }
+
+        DateTime? IShipmentStateProperties.DateShipped
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).DateShipped;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).DateShipped = value;
+            }
+        }
+
 		public virtual DateTime? EstimatedReadyDate
 		{
             get

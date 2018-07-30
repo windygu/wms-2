@@ -28,6 +28,18 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PicklistBinId { get; set; }
 
+		public virtual string BolNumber { get; set; }
+
+		public virtual string SealNumber { get; set; }
+
+		public virtual string VehicleId { get; set; }
+
+		public virtual string PoNumber { get; set; }
+
+		public virtual string Carrier { get; set; }
+
+		public virtual DateTime? DateShipped { get; set; }
+
 		public virtual DateTime? EstimatedReadyDate { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }

@@ -381,6 +381,36 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        public virtual string Grade
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? Gsm
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? CoreDiameter
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? OutsideDiameter
+        {
+            get;
+            set;
+        }
+
+        public virtual decimal? MoisturePct
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -493,6 +523,11 @@ namespace Dddml.Wms.Domain.Product
             if (this.IsManagedByLot != null && this.IsManagedByLot.HasValue) { state.IsManagedByLot = this.IsManagedByLot.Value; }
             state.AttributeSetId = this.AttributeSetId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            state.Grade = this.Grade;
+            state.Gsm = this.Gsm;
+            state.CoreDiameter = this.CoreDiameter;
+            state.OutsideDiameter = this.OutsideDiameter;
+            state.MoisturePct = this.MoisturePct;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

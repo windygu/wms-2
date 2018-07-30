@@ -136,6 +136,16 @@ namespace Dddml.Wms.Domain.Product
 
 		string AttributeSetInstanceId { get; set; }
 
+		string Grade { get; set; }
+
+		decimal? Gsm { get; set; }
+
+		decimal? CoreDiameter { get; set; }
+
+		decimal? OutsideDiameter { get; set; }
+
+		decimal? MoisturePct { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

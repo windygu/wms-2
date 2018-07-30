@@ -97,6 +97,11 @@ namespace Dddml.Wms.Domain.Product
             dto.IsManagedByLot = e.IsManagedByLot;
             dto.AttributeSetId = e.AttributeSetId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.Grade = e.Grade;
+            dto.Gsm = e.Gsm;
+            dto.CoreDiameter = e.CoreDiameter;
+            dto.OutsideDiameter = e.OutsideDiameter;
+            dto.MoisturePct = e.MoisturePct;
             dto.Active = e.Active;
             var goodIdentificationEvents = new List<GoodIdentificationStateCreatedDto>();
             foreach (var ee in e.GoodIdentificationEvents)
@@ -176,6 +181,11 @@ namespace Dddml.Wms.Domain.Product
             dto.IsManagedByLot = e.IsManagedByLot;
             dto.AttributeSetId = e.AttributeSetId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.Grade = e.Grade;
+            dto.Gsm = e.Gsm;
+            dto.CoreDiameter = e.CoreDiameter;
+            dto.OutsideDiameter = e.OutsideDiameter;
+            dto.MoisturePct = e.MoisturePct;
             dto.Active = e.Active;
             dto.IsPropertyProductTypeIdRemoved = e.IsPropertyProductTypeIdRemoved;
             dto.IsPropertyPrimaryProductCategoryIdRemoved = e.IsPropertyPrimaryProductCategoryIdRemoved;
@@ -237,6 +247,11 @@ namespace Dddml.Wms.Domain.Product
             dto.IsPropertyIsManagedByLotRemoved = e.IsPropertyIsManagedByLotRemoved;
             dto.IsPropertyAttributeSetIdRemoved = e.IsPropertyAttributeSetIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
+            dto.IsPropertyGradeRemoved = e.IsPropertyGradeRemoved;
+            dto.IsPropertyGsmRemoved = e.IsPropertyGsmRemoved;
+            dto.IsPropertyCoreDiameterRemoved = e.IsPropertyCoreDiameterRemoved;
+            dto.IsPropertyOutsideDiameterRemoved = e.IsPropertyOutsideDiameterRemoved;
+            dto.IsPropertyMoisturePctRemoved = e.IsPropertyMoisturePctRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var goodIdentificationEvents = new List<GoodIdentificationStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.GoodIdentificationEvents)

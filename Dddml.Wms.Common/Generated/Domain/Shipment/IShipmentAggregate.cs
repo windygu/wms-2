@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void MergePatch (IMergePatchShipment c);
 
-		void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId);
+		void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, string bolNumber, string vehicleId, string sealNumber, string poNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId);
 
 		void Ship(long version, string commandId, string requesterId);
 

@@ -33,6 +33,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		string LotId { get; set; }
 
+		string StatusId { get; set; }
+
+		string ImageUrl { get; set; }
+
 		string Description { get; set; }
 
 		string Hash { get; set; }

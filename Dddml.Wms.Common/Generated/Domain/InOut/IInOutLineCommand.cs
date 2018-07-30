@@ -31,6 +31,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		string AttributeSetInstanceId { get; set; }
 
+		string DamageStatusId { get; set; }
+
 		string Description { get; set; }
 
 		string QuantityUomId { get; set; }
@@ -68,6 +70,8 @@ namespace Dddml.Wms.Domain.InOut
 		bool IsPropertyProductIdRemoved { get; set; }
 
 		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+		bool IsPropertyDamageStatusIdRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 

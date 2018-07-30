@@ -15,10 +15,11 @@
     <property name="LocatorId" ></property>
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
     <property name="AttributeSetInstanceId" ></property>
+    <property name="DamageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="Description" ></property>
     <property name="QuantityUomId" ></property>
-    <property name="MovementQuantity" ></property>
-    <property name="PickedQuantity" ></property>
+    <property name="MovementQuantity" ><column name="MovementQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="PickedQuantity" ><column name="PickedQuantity" sql-type="decimal(18,6)" /></property>
     <property name="IsInvoiced" ></property>
     <property name="Processed" ></property>
     <property name="RmaLineNumber" ></property>

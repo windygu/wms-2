@@ -38,6 +38,12 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        string DamageStatusId
+        {
+            get;
+            set;
+        }
+
         string Description
         {
             get;

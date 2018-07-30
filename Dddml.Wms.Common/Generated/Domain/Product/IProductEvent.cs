@@ -141,6 +141,16 @@ namespace Dddml.Wms.Domain.Product
 
 		string AttributeSetInstanceId { get; set; }
 
+		string Grade { get; set; }
+
+		decimal? Gsm { get; set; }
+
+		decimal? CoreDiameter { get; set; }
+
+		decimal? OutsideDiameter { get; set; }
+
+		decimal? MoisturePct { get; set; }
+
 		bool? Active { get; set; }
 
     }
@@ -278,6 +288,16 @@ namespace Dddml.Wms.Domain.Product
 		bool IsPropertyAttributeSetIdRemoved { get; set; }
 
 		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+		bool IsPropertyGradeRemoved { get; set; }
+
+		bool IsPropertyGsmRemoved { get; set; }
+
+		bool IsPropertyCoreDiameterRemoved { get; set; }
+
+		bool IsPropertyOutsideDiameterRemoved { get; set; }
+
+		bool IsPropertyMoisturePctRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

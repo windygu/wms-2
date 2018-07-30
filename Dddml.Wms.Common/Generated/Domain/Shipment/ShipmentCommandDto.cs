@@ -71,6 +71,18 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PicklistBinId { get; set; }
 
+		public virtual string BolNumber { get; set; }
+
+		public virtual string SealNumber { get; set; }
+
+		public virtual string VehicleId { get; set; }
+
+		public virtual string PoNumber { get; set; }
+
+		public virtual string Carrier { get; set; }
+
+		public virtual DateTime? DateShipped { get; set; }
+
 		public virtual DateTime? EstimatedReadyDate { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }
@@ -222,6 +234,120 @@ namespace Dddml.Wms.Domain.Shipment
             set
             {
                 this.IsPropertyPicklistBinIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyBolNumberRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertyBolNumberRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyBolNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyBolNumberRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertySealNumberRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertySealNumberRemoved
+        {
+            get
+            {
+                var b = this.IsPropertySealNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertySealNumberRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyVehicleIdRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertyVehicleIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyVehicleIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyVehicleIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPoNumberRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertyPoNumberRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPoNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPoNumberRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyCarrierRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertyCarrierRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyCarrierRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyCarrierRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDateShippedRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertyDateShippedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDateShippedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDateShippedRemoved = value;
             }
         }
 
@@ -932,6 +1058,18 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string PrimaryReturnId { get; set; }
 
+            public string BolNumber { get; set; }
+
+            public string VehicleId { get; set; }
+
+            public string SealNumber { get; set; }
+
+            public string PoNumber { get; set; }
+
+            public string Carrier { get; set; }
+
+            public DateTime? DateShipped { get; set; }
+
             public DateTime? EstimatedReadyDate { get; set; }
 
             public DateTime? EstimatedShipDate { get; set; }
@@ -974,6 +1112,12 @@ namespace Dddml.Wms.Domain.Shipment
                 cmd.ShipmentTypeId = this.ShipmentTypeId;
                 cmd.PrimaryOrderId = this.PrimaryOrderId;
                 cmd.PrimaryReturnId = this.PrimaryReturnId;
+                cmd.BolNumber = this.BolNumber;
+                cmd.VehicleId = this.VehicleId;
+                cmd.SealNumber = this.SealNumber;
+                cmd.PoNumber = this.PoNumber;
+                cmd.Carrier = this.Carrier;
+                cmd.DateShipped = this.DateShipped;
                 cmd.EstimatedReadyDate = this.EstimatedReadyDate;
                 cmd.EstimatedShipDate = this.EstimatedShipDate;
                 cmd.EstimatedArrivalDate = this.EstimatedArrivalDate;

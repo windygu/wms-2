@@ -240,6 +240,18 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.PicklistBinId = e.PicklistBinId;
 
+			this.BolNumber = e.BolNumber;
+
+			this.SealNumber = e.SealNumber;
+
+			this.VehicleId = e.VehicleId;
+
+			this.PoNumber = e.PoNumber;
+
+			this.Carrier = e.Carrier;
+
+			this.DateShipped = e.DateShipped;
+
 			this.EstimatedReadyDate = e.EstimatedReadyDate;
 
 			this.EstimatedShipDate = e.EstimatedShipDate;
@@ -373,6 +385,78 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.PicklistBinId = e.PicklistBinId;
+			}
+
+			if (e.BolNumber == null)
+			{
+				if (e.IsPropertyBolNumberRemoved)
+				{
+					this.BolNumber = default(string);
+				}
+			}
+			else
+			{
+				this.BolNumber = e.BolNumber;
+			}
+
+			if (e.SealNumber == null)
+			{
+				if (e.IsPropertySealNumberRemoved)
+				{
+					this.SealNumber = default(string);
+				}
+			}
+			else
+			{
+				this.SealNumber = e.SealNumber;
+			}
+
+			if (e.VehicleId == null)
+			{
+				if (e.IsPropertyVehicleIdRemoved)
+				{
+					this.VehicleId = default(string);
+				}
+			}
+			else
+			{
+				this.VehicleId = e.VehicleId;
+			}
+
+			if (e.PoNumber == null)
+			{
+				if (e.IsPropertyPoNumberRemoved)
+				{
+					this.PoNumber = default(string);
+				}
+			}
+			else
+			{
+				this.PoNumber = e.PoNumber;
+			}
+
+			if (e.Carrier == null)
+			{
+				if (e.IsPropertyCarrierRemoved)
+				{
+					this.Carrier = default(string);
+				}
+			}
+			else
+			{
+				this.Carrier = e.Carrier;
+			}
+
+			if (e.DateShipped == null)
+			{
+				if (e.IsPropertyDateShippedRemoved)
+				{
+					this.DateShipped = default(DateTime?);
+				}
+			}
+			else
+			{
+				this.DateShipped = e.DateShipped;
 			}
 
 			if (e.EstimatedReadyDate == null)

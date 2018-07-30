@@ -9,10 +9,6 @@ namespace Dddml.Wms.Domain.Shipment
 {
     public partial class ShipmentAggregate : IShipmentAggregate
     {
-        public void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId)
-        {
-            throw new NotSupportedException();
-        }
 
         public void Ship(long version, string commandId, string requesterId)
         {
@@ -65,6 +61,12 @@ namespace Dddml.Wms.Domain.Shipment
             var e = NewShipmentStateMergePatched(version, commandId, requesterId);
             e.StatusId = StatusItemIds.PurchShipReceived;
             Apply(e);
+        }
+
+
+        public void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, string bolNumber, string vehicleId, string sealNumber, string poNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

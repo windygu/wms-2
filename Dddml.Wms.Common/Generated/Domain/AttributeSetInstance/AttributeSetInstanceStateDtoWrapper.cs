@@ -207,6 +207,62 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             }
         }
 
+		public virtual string StatusId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("StatusId"))
+                {
+                    return _state.StatusId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.StatusId = value;
+            }
+        }
+
+        string IAttributeSetInstanceStateProperties.StatusId
+        {
+            get 
+            {
+                return (this._state as IAttributeSetInstanceStateProperties).StatusId;
+            }
+            set 
+            {
+                (this._state as IAttributeSetInstanceStateProperties).StatusId = value;
+            }
+        }
+
+		public virtual string ImageUrl
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ImageUrl"))
+                {
+                    return _state.ImageUrl;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ImageUrl = value;
+            }
+        }
+
+        string IAttributeSetInstanceStateProperties.ImageUrl
+        {
+            get 
+            {
+                return (this._state as IAttributeSetInstanceStateProperties).ImageUrl;
+            }
+            set 
+            {
+                (this._state as IAttributeSetInstanceStateProperties).ImageUrl = value;
+            }
+        }
+
 		public virtual string Description
 		{
             get

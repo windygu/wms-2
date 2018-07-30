@@ -22,6 +22,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		string AttributeSetInstanceId { get; set; }
 
+		string DamageStatusId { get; set; }
+
 		string Description { get; set; }
 
 		string QuantityUomId { get; set; }

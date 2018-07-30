@@ -112,6 +112,11 @@ namespace Dddml.Wms.Domain.Product
             cmd.IsManagedByLot = state.IsManagedByLot;
             cmd.AttributeSetId = state.AttributeSetId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.Grade = state.Grade;
+            cmd.Gsm = state.Gsm;
+            cmd.CoreDiameter = state.CoreDiameter;
+            cmd.OutsideDiameter = state.OutsideDiameter;
+            cmd.MoisturePct = state.MoisturePct;
             cmd.Active = ((IProductStateProperties)state).Active;
             
             if (state.ProductTypeId == null) { cmd.IsPropertyProductTypeIdRemoved = true; }
@@ -172,6 +177,11 @@ namespace Dddml.Wms.Domain.Product
             if (state.DefaultShipmentBoxTypeId == null) { cmd.IsPropertyDefaultShipmentBoxTypeIdRemoved = true; }
             if (state.AttributeSetId == null) { cmd.IsPropertyAttributeSetIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
+            if (state.Grade == null) { cmd.IsPropertyGradeRemoved = true; }
+            if (state.Gsm == null) { cmd.IsPropertyGsmRemoved = true; }
+            if (state.CoreDiameter == null) { cmd.IsPropertyCoreDiameterRemoved = true; }
+            if (state.OutsideDiameter == null) { cmd.IsPropertyOutsideDiameterRemoved = true; }
+            if (state.MoisturePct == null) { cmd.IsPropertyMoisturePctRemoved = true; }
             foreach (var d in state.GoodIdentifications)
             {
                 var c = d.ToCreateOrMergePatchGoodIdentification<TCreateGoodIdentification, TMergePatchGoodIdentification>();
@@ -249,6 +259,11 @@ namespace Dddml.Wms.Domain.Product
             cmd.IsManagedByLot = state.IsManagedByLot;
             cmd.AttributeSetId = state.AttributeSetId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.Grade = state.Grade;
+            cmd.Gsm = state.Gsm;
+            cmd.CoreDiameter = state.CoreDiameter;
+            cmd.OutsideDiameter = state.OutsideDiameter;
+            cmd.MoisturePct = state.MoisturePct;
             cmd.Active = ((IProductStateProperties)state).Active;
             foreach (var d in state.GoodIdentifications)
             {

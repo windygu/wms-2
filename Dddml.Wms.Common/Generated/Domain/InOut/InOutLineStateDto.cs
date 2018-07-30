@@ -39,6 +39,12 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        public virtual string DamageStatusId
+        {
+            get;
+            set;
+        }
+
         public virtual string Description
         {
             get;
@@ -148,6 +154,7 @@ namespace Dddml.Wms.Domain.InOut
             state.LocatorId = this.LocatorId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            state.DamageStatusId = this.DamageStatusId;
             state.Description = this.Description;
             state.QuantityUomId = this.QuantityUomId;
             if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }

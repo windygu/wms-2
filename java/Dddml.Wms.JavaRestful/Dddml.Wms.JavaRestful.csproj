@@ -163,33 +163,6 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\IdServiceResource.java">
       <DependentUpon>GenerateDomainServicesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\LocatorTypeResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderItemShipGrpInvReservationResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PartyRoleResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistBinResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PickwaveResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\RoleTypeResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentMethodTypeResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentPackageResource.java">
-      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\InOutResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -211,6 +184,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\LocatorTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\LocatorTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\LotResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -221,6 +197,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\MovementTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderItemShipGrpInvReservationResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderResource.java">
@@ -244,7 +223,19 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\PartyResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PartyRoleResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\PhysicalInventoryResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistBinResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PickwaveResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\ProductCategoryMemberResource.java">
@@ -259,7 +250,16 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\RejectionReasonResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\RoleTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\SellableInventoryItemResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentMethodTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentPackageResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentResource.java">

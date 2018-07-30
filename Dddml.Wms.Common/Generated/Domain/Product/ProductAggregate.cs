@@ -157,6 +157,11 @@ namespace Dddml.Wms.Domain.Product
             e.IsManagedByLot = c.IsManagedByLot;
             e.AttributeSetId = c.AttributeSetId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.Grade = c.Grade;
+            e.Gsm = c.Gsm;
+            e.CoreDiameter = c.CoreDiameter;
+            e.OutsideDiameter = c.OutsideDiameter;
+            e.MoisturePct = c.MoisturePct;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -242,6 +247,11 @@ namespace Dddml.Wms.Domain.Product
             e.IsManagedByLot = c.IsManagedByLot;
             e.AttributeSetId = c.AttributeSetId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.Grade = c.Grade;
+            e.Gsm = c.Gsm;
+            e.CoreDiameter = c.CoreDiameter;
+            e.OutsideDiameter = c.OutsideDiameter;
+            e.MoisturePct = c.MoisturePct;
             e.Active = c.Active;
             e.IsPropertyProductTypeIdRemoved = c.IsPropertyProductTypeIdRemoved;
             e.IsPropertyPrimaryProductCategoryIdRemoved = c.IsPropertyPrimaryProductCategoryIdRemoved;
@@ -303,6 +313,11 @@ namespace Dddml.Wms.Domain.Product
             e.IsPropertyIsManagedByLotRemoved = c.IsPropertyIsManagedByLotRemoved;
             e.IsPropertyAttributeSetIdRemoved = c.IsPropertyAttributeSetIdRemoved;
             e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
+            e.IsPropertyGradeRemoved = c.IsPropertyGradeRemoved;
+            e.IsPropertyGsmRemoved = c.IsPropertyGsmRemoved;
+            e.IsPropertyCoreDiameterRemoved = c.IsPropertyCoreDiameterRemoved;
+            e.IsPropertyOutsideDiameterRemoved = c.IsPropertyOutsideDiameterRemoved;
+            e.IsPropertyMoisturePctRemoved = c.IsPropertyMoisturePctRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

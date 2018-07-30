@@ -22,8 +22,8 @@
 
         <subclass name="PhysicalInventoryLineStateEventBase" abstract="true">
 
-    <property name="BookQuantity" ></property>
-    <property name="CountedQuantity" ></property>
+    <property name="BookQuantity" ><column name="BookQuantity" sql-type="decimal(18,6)" /></property>
+    <property name="CountedQuantity" ><column name="CountedQuantity" sql-type="decimal(18,6)" /></property>
     <property name="Processed" ></property>
     <property name="LineNumber" ><column name="LineNumber" length="50" unique-key="UniqueLineNumber" /></property>
     <property name="ReversalLineNumber" ></property>

@@ -33,9 +33,9 @@
     <property name="BusinessPartnerId" ></property>
     <property name="WarehouseId" ></property>
     <property name="POReference" ></property>
-    <property name="FreightAmount" ></property>
+    <property name="FreightAmount" ><column name="FreightAmount" sql-type="decimal(18,6)" /></property>
     <property name="ShipperId" ></property>
-    <property name="ChargeAmount" ></property>
+    <property name="ChargeAmount" ><column name="ChargeAmount" sql-type="decimal(18,6)" /></property>
     <property name="DatePrinted" ></property>
     <property name="CreatedFrom" ></property>
     <property name="SalesRepresentativeId" ></property>

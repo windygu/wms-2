@@ -42,6 +42,8 @@ namespace Dddml.Wms.Support
             sb.Append("ReferenceId").Append("=").Append(GetSafeStringValue(state.ReferenceId)).Append("|");
             sb.Append("SerialNumber").Append("=").Append(GetSafeStringValue(state.SerialNumber)).Append("|");
             sb.Append("LotId").Append("=").Append(GetSafeStringValue(state.LotId)).Append("|");
+            sb.Append("ImageUrl").Append("=").Append(GetSafeStringValue(state.ImageUrl)).Append("|");
+            sb.Append("StatusId").Append("=").Append(GetSafeStringValue(state.StatusId)).Append("|");
             sb.Append("Description").Append("=").Append(GetSafeStringValue(state.Description)).Append("|");
             sb.Append("Active").Append("=").Append(state.Active).Append("|");
             sb.Append("WidthInch").Append("=").Append(state.WidthInch).Append("|");
@@ -121,6 +123,8 @@ namespace Dddml.Wms.Support
             sb.Append("ReferenceId").Append("=").Append(GetSafeStringValue(state.ReferenceId)).Append("|");
             sb.Append("SerialNumber").Append("=").Append(GetSafeStringValue(state.SerialNumber)).Append("|");
             sb.Append("LotId").Append("=").Append(GetSafeStringValue(state.LotId)).Append("|");
+            sb.Append("ImageUrl").Append("=").Append(GetSafeStringValue(state.ImageUrl)).Append("|");
+            sb.Append("StatusId").Append("=").Append(GetSafeStringValue(state.StatusId)).Append("|");
             sb.Append("Description").Append("=").Append(GetSafeStringValue(state.Description)).Append("|");
             sb.Append("Active").Append("=").Append(state.Active).Append("|");
             sb.Append("WidthInch").Append("=").Append(state.WidthInch).Append("|");
@@ -200,6 +204,8 @@ namespace Dddml.Wms.Support
             sb.Append("ReferenceId").Append("=").Append(GetSafeStringValue(state.ReferenceId)).Append("|");
             sb.Append("SerialNumber").Append("=").Append(GetSafeStringValue(state.SerialNumber)).Append("|");
             sb.Append("LotId").Append("=").Append(GetSafeStringValue(state.LotId)).Append("|");
+            sb.Append("ImageUrl").Append("=").Append(GetSafeStringValue(state.ImageUrl)).Append("|");
+            sb.Append("StatusId").Append("=").Append(GetSafeStringValue(state.StatusId)).Append("|");
             sb.Append("Description").Append("=").Append(GetSafeStringValue(state.Description)).Append("|");
             sb.Append("Active").Append("=").Append(state.Active).Append("|");
             sb.Append("WidthInch").Append("=").Append(state.WidthInch).Append("|");
@@ -278,6 +284,8 @@ namespace Dddml.Wms.Support
                 || !SafeEquals<string>(state1.ReferenceId, state2.ReferenceId)
                 || !SafeEquals<string>(state1.SerialNumber, state2.SerialNumber)
                 || !SafeEquals<string>(state1.LotId, state2.LotId)
+                || !SafeEquals<string>(state1.StatusId, state2.StatusId)
+                || !SafeEquals<string>(state1.ImageUrl, state2.ImageUrl)
                 || !SafeEquals<string>(state1.Description, state2.Description)
                 || !SafeEquals<bool>(state1.Active, state2.Active)
                 || !SafeEquals<decimal>(state1.WidthInch, state2.WidthInch)

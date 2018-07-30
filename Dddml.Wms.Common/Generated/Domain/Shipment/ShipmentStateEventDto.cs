@@ -54,6 +54,18 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PicklistBinId { get; set; }
 
+		public virtual string BolNumber { get; set; }
+
+		public virtual string SealNumber { get; set; }
+
+		public virtual string VehicleId { get; set; }
+
+		public virtual string PoNumber { get; set; }
+
+		public virtual string Carrier { get; set; }
+
+		public virtual DateTime? DateShipped { get; set; }
+
 		public virtual DateTime? EstimatedReadyDate { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }
@@ -234,6 +246,120 @@ namespace Dddml.Wms.Domain.Shipment
             set 
             {
                 this.IsPropertyPicklistBinIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyBolNumberRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyBolNumberRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyBolNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyBolNumberRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertySealNumberRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertySealNumberRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertySealNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertySealNumberRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyVehicleIdRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyVehicleIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyVehicleIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyVehicleIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPoNumberRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyPoNumberRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPoNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPoNumberRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyCarrierRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyCarrierRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyCarrierRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyCarrierRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDateShippedRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyDateShippedRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyDateShippedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyDateShippedRemoved = value;
             }
         }
 

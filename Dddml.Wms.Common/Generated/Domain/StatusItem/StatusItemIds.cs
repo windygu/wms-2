@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.StatusItem
         public const string DamageCore = "DAMAGE_CORE";
 
         /// <summary>
-        /// Deformation/our of roudness.
+        /// Deformation/out of roudness.
         /// </summary>
         public const string DamageDeformation = "DAMAGE_DEFORMATION";
 

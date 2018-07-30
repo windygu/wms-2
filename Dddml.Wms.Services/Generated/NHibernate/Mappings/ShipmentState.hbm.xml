@@ -15,6 +15,12 @@
     <property name="PrimaryReturnId" ><column name="PrimaryReturnId" sql-type="VARCHAR(20)" /></property>
     <property name="PrimaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
     <property name="PicklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></property>
+    <property name="BolNumber" ><column name="BolNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="SealNumber" ><column name="SealNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="VehicleId" ><column name="VehicleId" sql-type="VARCHAR(60)" /></property>
+    <property name="PoNumber" ><column name="PoNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="Carrier" ><column name="Carrier" sql-type="VARCHAR(60)" /></property>
+    <property name="DateShipped" ><column name="DateShipped" sql-type="DATETIME" /></property>
     <property name="EstimatedReadyDate" ><column name="EstimatedReadyDate" sql-type="DATETIME" /></property>
     <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
     <property name="EstimatedShipWorkEffId" ><column name="EstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>

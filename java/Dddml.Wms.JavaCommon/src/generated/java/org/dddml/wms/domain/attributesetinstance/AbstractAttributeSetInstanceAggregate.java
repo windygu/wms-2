@@ -51,6 +51,8 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         e.setReferenceId(c.getReferenceId());
         e.setSerialNumber(c.getSerialNumber());
         e.setLotId(c.getLotId());
+        e.setStatusId(c.getStatusId());
+        e.setImageUrl(c.getImageUrl());
         e.setDescription(c.getDescription());
         e.setHash(c.getHash());
         e.setWidthInch(c.getWidthInch());

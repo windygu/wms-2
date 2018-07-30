@@ -172,6 +172,16 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
+		public virtual string Grade { get; set; }
+
+		public virtual decimal? Gsm { get; set; }
+
+		public virtual decimal? CoreDiameter { get; set; }
+
+		public virtual decimal? OutsideDiameter { get; set; }
+
+		public virtual decimal? MoisturePct { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 
@@ -350,6 +360,16 @@ namespace Dddml.Wms.Domain.Product
 		public virtual bool IsPropertyAttributeSetIdRemoved { get; set; }
 
 		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+		public virtual bool IsPropertyGradeRemoved { get; set; }
+
+		public virtual bool IsPropertyGsmRemoved { get; set; }
+
+		public virtual bool IsPropertyCoreDiameterRemoved { get; set; }
+
+		public virtual bool IsPropertyOutsideDiameterRemoved { get; set; }
+
+		public virtual bool IsPropertyMoisturePctRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

@@ -124,6 +124,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual string LotId { get { return AttributeSetInstanceState.LotId; } set { AttributeSetInstanceState.LotId = value; } }
 
+        public virtual string StatusId { get { return AttributeSetInstanceState.StatusId; } set { AttributeSetInstanceState.StatusId = value; } }
+
+        public virtual string ImageUrl { get { return AttributeSetInstanceState.ImageUrl; } set { AttributeSetInstanceState.ImageUrl = value; } }
+
         public virtual string Description { get { return AttributeSetInstanceState.Description; } set { AttributeSetInstanceState.Description = value; } }
 
         public virtual string Hash { get { return AttributeSetInstanceState.Hash; } set { AttributeSetInstanceState.Hash = value; } }

@@ -57,6 +57,14 @@ public interface AttributeSetInstanceCommand extends Command
 
         void setLotId(String lotId);
 
+        String getStatusId();
+
+        void setStatusId(String statusId);
+
+        String getImageUrl();
+
+        void setImageUrl(String imageUrl);
+
         String getDescription();
 
         void setDescription(String description);

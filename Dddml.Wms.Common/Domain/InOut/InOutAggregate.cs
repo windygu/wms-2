@@ -52,9 +52,10 @@ namespace Dddml.Wms.Domain.InOut
             DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Reverse, version, commandId, requesterId);
         }
 
-        public void AddLine(string lineNumber, string locatorId, string productId, IDictionary<string, object> attributeSetInstance, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId)
+
+        public void AddLine(string lineNumber, string locatorId, string productId, IDictionary<string, object> attributeSetInstance, string damageStatusId, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId)
         {
-            throw new NotSupportedException();
+            throw new NotImplementedException();
         }
     }
 }

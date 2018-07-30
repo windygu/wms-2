@@ -100,6 +100,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             e.ReferenceId = c.ReferenceId;
             e.SerialNumber = c.SerialNumber;
             e.LotId = c.LotId;
+            e.StatusId = c.StatusId;
+            e.ImageUrl = c.ImageUrl;
             e.Description = c.Description;
             e.Hash = c.Hash;
             e.WidthInch = c.WidthInch;

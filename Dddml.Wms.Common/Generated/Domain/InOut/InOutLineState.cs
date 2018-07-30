@@ -229,6 +229,8 @@ namespace Dddml.Wms.Domain.InOut
 
 			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 
+			this.DamageStatusId = e.DamageStatusId;
+
 			this.Description = e.Description;
 
 			this.QuantityUomId = e.QuantityUomId;
@@ -298,6 +300,18 @@ namespace Dddml.Wms.Domain.InOut
 			else
 			{
 				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+			}
+
+			if (e.DamageStatusId == null)
+			{
+				if (e.IsPropertyDamageStatusIdRemoved)
+				{
+					this.DamageStatusId = default(string);
+				}
+			}
+			else
+			{
+				this.DamageStatusId = e.DamageStatusId;
 			}
 
 			if (e.Description == null)

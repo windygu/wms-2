@@ -17,6 +17,8 @@
 	<property name="referenceId" ></property>
 	<property name="serialNumber" ></property>
 	<property name="lotId" ></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="imageUrl" ><column name="ImageUrl" length="255" /></property>
 	<property name="description" ></property>
 	<property name="hash" ></property>
 	<property name="widthInch" ><column name="WidthInch" sql-type="decimal(18,6)" /></property>
