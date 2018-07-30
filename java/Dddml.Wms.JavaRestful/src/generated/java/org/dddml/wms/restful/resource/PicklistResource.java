@@ -222,6 +222,30 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PutMapping("{picklistId}/PicklistRoles/{partyRoleId}")
+    public void putPicklistRole(@PathVariable("picklistId") String picklistId, @PathVariable("partyRoleId") String partyRoleId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchPicklistRoleDto.MergePatchPicklistRoleDto body) {
+        try {
+            PicklistCommand.MergePatchPicklist mergePatchPicklist = new AbstractPicklistCommand.SimpleMergePatchPicklist();
+            mergePatchPicklist.setPicklistId(picklistId);
+            mergePatchPicklist.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchPicklist.setVersion(version); }
+            mergePatchPicklist.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            PicklistRoleCommand.MergePatchPicklistRole mergePatchPicklistRole = body.toMergePatchPicklistRole();
+            mergePatchPicklistRole.setPartyRoleId((new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(partyRoleId)));
+            mergePatchPicklist.getPicklistRoleCommands().add(mergePatchPicklistRole);
+            picklistApplicationService.when(mergePatchPicklist);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{picklistId}/PicklistRoles/")
     public PicklistRoleStateDto[] getPicklistRoles(@PathVariable("picklistId") String picklistId) {
         try {

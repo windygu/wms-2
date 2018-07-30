@@ -195,29 +195,6 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @PostMapping("{sellableInventoryItemId}/SellableInventoryItemEntries/")
-    public void postSellableInventoryItemEntries(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId,
-                       @RequestParam(value = "commandId", required = false) String commandId,
-                       @RequestParam(value = "version", required = false) Long version,
-                       @RequestParam(value = "requesterId", required = false) String requesterId,
-                       @RequestBody CreateOrMergePatchSellableInventoryItemEntryDto.CreateSellableInventoryItemEntryDto body) {
-        try {
-            SellableInventoryItemCommand.MergePatchSellableInventoryItem mergePatchSellableInventoryItem = new AbstractSellableInventoryItemCommand.SimpleMergePatchSellableInventoryItem();
-            mergePatchSellableInventoryItem.setSellableInventoryItemId((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    }.parse(sellableInventoryItemId)));
-            mergePatchSellableInventoryItem.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchSellableInventoryItem.setVersion(version); }
-            mergePatchSellableInventoryItem.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
-            SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry createSellableInventoryItemEntry = body.toCreateSellableInventoryItemEntry();
-            mergePatchSellableInventoryItem.getSellableInventoryItemEntryCommands().add(createSellableInventoryItemEntry);
-            sellableInventoryItemApplicationService.when(mergePatchSellableInventoryItem);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
 
     //protected  SellableInventoryItemStateEventDtoConverter getSellableInventoryItemStateEventDtoConverter() {
     //    return new SellableInventoryItemStateEventDtoConverter();

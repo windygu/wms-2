@@ -266,6 +266,25 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PutMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
+    public void putShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentItemDto.MergePatchShipmentItemDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentItemCommand.MergePatchShipmentItem mergePatchShipmentItem = body.toMergePatchShipmentItem();
+            mergePatchShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
+            mergePatchShipment.getShipmentItemCommands().add(mergePatchShipmentItem);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentId}/ShipmentItems/")
     public ShipmentItemStateDto[] getShipmentItems(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -309,6 +328,25 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PutMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
+    public void putShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchShipmentReceiptDto.MergePatchShipmentReceiptDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentReceiptCommand.MergePatchShipmentReceipt mergePatchShipmentReceipt = body.toMergePatchShipmentReceipt();
+            mergePatchShipmentReceipt.setReceiptSeqId(receiptSeqId);
+            mergePatchShipment.getShipmentReceiptCommands().add(mergePatchShipmentReceipt);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentId}/ShipmentReceipts/")
     public ShipmentReceiptStateDto[] getShipmentReceipts(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -349,6 +387,25 @@ public class ShipmentResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @PutMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
+    public void putItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchItemIssuanceDto.MergePatchItemIssuanceDto body) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ItemIssuanceCommand.MergePatchItemIssuance mergePatchItemIssuance = body.toMergePatchItemIssuance();
+            mergePatchItemIssuance.setItemIssuanceSeqId(itemIssuanceSeqId);
+            mergePatchShipment.getItemIssuanceCommands().add(mergePatchItemIssuance);
+            shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

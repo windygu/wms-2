@@ -198,6 +198,25 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PutMapping("{productId}/GoodIdentifications/{goodIdentificationTypeId}")
+    public void putGoodIdentification(@PathVariable("productId") String productId, @PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchGoodIdentificationDto.MergePatchGoodIdentificationDto body) {
+        try {
+            ProductCommand.MergePatchProduct mergePatchProduct = new AbstractProductCommand.SimpleMergePatchProduct();
+            mergePatchProduct.setProductId(productId);
+            mergePatchProduct.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchProduct.setVersion(version); }
+            mergePatchProduct.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            GoodIdentificationCommand.MergePatchGoodIdentification mergePatchGoodIdentification = body.toMergePatchGoodIdentification();
+            mergePatchGoodIdentification.setGoodIdentificationTypeId(goodIdentificationTypeId);
+            mergePatchProduct.getGoodIdentificationCommands().add(mergePatchGoodIdentification);
+            productApplicationService.when(mergePatchProduct);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{productId}/GoodIdentifications/")
     public GoodIdentificationStateDto[] getGoodIdentifications(@PathVariable("productId") String productId) {
         try {

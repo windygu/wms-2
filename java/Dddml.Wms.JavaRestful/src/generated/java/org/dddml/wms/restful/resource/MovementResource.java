@@ -251,6 +251,25 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PutMapping("{movementDocumentNumber}/MovementLines/{lineNumber}")
+    public void putMovementLine(@PathVariable("movementDocumentNumber") String movementDocumentNumber, @PathVariable("lineNumber") String lineNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchMovementLineDto.MergePatchMovementLineDto body) {
+        try {
+            MovementCommand.MergePatchMovement mergePatchMovement = new AbstractMovementCommand.SimpleMergePatchMovement();
+            mergePatchMovement.setDocumentNumber(movementDocumentNumber);
+            mergePatchMovement.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchMovement.setVersion(version); }
+            mergePatchMovement.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            MovementLineCommand.MergePatchMovementLine mergePatchMovementLine = body.toMergePatchMovementLine();
+            mergePatchMovementLine.setLineNumber(lineNumber);
+            mergePatchMovement.getMovementLineCommands().add(mergePatchMovementLine);
+            movementApplicationService.when(mergePatchMovement);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{movementDocumentNumber}/MovementLines/")
     public MovementLineStateDto[] getMovementLines(@PathVariable("movementDocumentNumber") String movementDocumentNumber) {
         try {

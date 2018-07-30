@@ -239,6 +239,30 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PutMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
+    public void putPhysicalInventoryLine(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId,
+                       @RequestBody CreateOrMergePatchPhysicalInventoryLineDto.MergePatchPhysicalInventoryLineDto body) {
+        try {
+            PhysicalInventoryCommand.MergePatchPhysicalInventory mergePatchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
+            mergePatchPhysicalInventory.setDocumentNumber(physicalInventoryDocumentNumber);
+            mergePatchPhysicalInventory.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchPhysicalInventory.setVersion(version); }
+            mergePatchPhysicalInventory.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            PhysicalInventoryLineCommand.MergePatchPhysicalInventoryLine mergePatchPhysicalInventoryLine = body.toMergePatchPhysicalInventoryLine();
+            mergePatchPhysicalInventoryLine.setInventoryItemId((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemId)));
+            mergePatchPhysicalInventory.getPhysicalInventoryLineCommands().add(mergePatchPhysicalInventoryLine);
+            physicalInventoryApplicationService.when(mergePatchPhysicalInventory);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/")
     public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber) {
         try {
