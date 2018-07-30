@@ -217,6 +217,24 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{productId}/GoodIdentifications/{goodIdentificationTypeId}")
+    public void deleteGoodIdentification(@PathVariable("productId") String productId, @PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            ProductCommand.MergePatchProduct mergePatchProduct = new AbstractProductCommand.SimpleMergePatchProduct();
+            mergePatchProduct.setProductId(productId);
+            mergePatchProduct.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchProduct.setVersion(version); }
+            mergePatchProduct.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            GoodIdentificationCommand.RemoveGoodIdentification removeGoodIdentification = new AbstractGoodIdentificationCommand.SimpleRemoveGoodIdentification();
+            removeGoodIdentification.setGoodIdentificationTypeId(goodIdentificationTypeId);
+            mergePatchProduct.getGoodIdentificationCommands().add(removeGoodIdentification);
+            productApplicationService.when(mergePatchProduct);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{productId}/GoodIdentifications/")
     public GoodIdentificationStateDto[] getGoodIdentifications(@PathVariable("productId") String productId) {
         try {

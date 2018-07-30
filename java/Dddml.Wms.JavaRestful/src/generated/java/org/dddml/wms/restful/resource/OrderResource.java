@@ -228,6 +228,29 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{orderId}/OrderRoles/{partyRoleId}")
+    public void deleteOrderRole(@PathVariable("orderId") String orderId, @PathVariable("partyRoleId") String partyRoleId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
+            mergePatchOrder.setOrderId(orderId);
+            mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchOrder.setVersion(version); }
+            mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            OrderRoleCommand.RemoveOrderRole removeOrderRole = new AbstractOrderRoleCommand.SimpleRemoveOrderRole();
+            removeOrderRole.setPartyRoleId((new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(partyRoleId)));
+            mergePatchOrder.getOrderRoleCommands().add(removeOrderRole);
+            orderApplicationService.when(mergePatchOrder);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{orderId}/OrderRoles/")
     public OrderRoleStateDto[] getOrderRoles(@PathVariable("orderId") String orderId) {
         try {
@@ -286,6 +309,24 @@ public class OrderResource {
             OrderItemCommand.MergePatchOrderItem mergePatchOrderItem = body.toMergePatchOrderItem();
             mergePatchOrderItem.setOrderItemSeqId(orderItemSeqId);
             mergePatchOrder.getOrderItemCommands().add(mergePatchOrderItem);
+            orderApplicationService.when(mergePatchOrder);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{orderId}/OrderItems/{orderItemSeqId}")
+    public void deleteOrderItem(@PathVariable("orderId") String orderId, @PathVariable("orderItemSeqId") String orderItemSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
+            mergePatchOrder.setOrderId(orderId);
+            mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchOrder.setVersion(version); }
+            mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            OrderItemCommand.RemoveOrderItem removeOrderItem = new AbstractOrderItemCommand.SimpleRemoveOrderItem();
+            removeOrderItem.setOrderItemSeqId(orderItemSeqId);
+            mergePatchOrder.getOrderItemCommands().add(removeOrderItem);
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -352,6 +393,24 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
+    public void deleteOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
+            mergePatchOrder.setOrderId(orderId);
+            mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchOrder.setVersion(version); }
+            mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            OrderShipGroupCommand.RemoveOrderShipGroup removeOrderShipGroup = new AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup();
+            removeOrderShipGroup.setShipGroupSeqId(shipGroupSeqId);
+            mergePatchOrder.getOrderShipGroupCommands().add(removeOrderShipGroup);
+            orderApplicationService.when(mergePatchOrder);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{orderId}/OrderShipGroups/")
     public OrderShipGroupStateDto[] getOrderShipGroups(@PathVariable("orderId") String orderId) {
         try {
@@ -413,6 +472,27 @@ public class OrderResource {
             OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation mergePatchOrderItemShipGroupAssociation = body.toMergePatchOrderItemShipGroupAssociation();
             mergePatchOrderItemShipGroupAssociation.setOrderItemSeqId(orderItemSeqId);
             mergePatchOrderShipGroup.getOrderItemShipGroupAssociationCommands().add(mergePatchOrderItemShipGroupAssociation);
+            orderApplicationService.when(mergePatchOrder);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
+    public void deleteOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
+            mergePatchOrder.setOrderId(orderId);
+            mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchOrder.setVersion(version); }
+            mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            OrderShipGroupCommand.MergePatchOrderShipGroup mergePatchOrderShipGroup = new AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup();
+            mergePatchOrderShipGroup.setShipGroupSeqId(orderShipGroupShipGroupSeqId);
+            mergePatchOrder.getOrderShipGroupCommands().add(mergePatchOrderShipGroup);
+            OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation removeOrderItemShipGroupAssociation = new AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation();
+            removeOrderItemShipGroupAssociation.setOrderItemSeqId(orderItemSeqId);
+            mergePatchOrderShipGroup.getOrderItemShipGroupAssociationCommands().add(removeOrderItemShipGroupAssociation);
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

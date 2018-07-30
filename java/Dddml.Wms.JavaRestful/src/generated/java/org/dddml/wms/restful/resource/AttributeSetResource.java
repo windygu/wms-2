@@ -235,6 +235,24 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{attributeSetId}/AttributeUses/{attributeId}")
+    public void deleteAttributeUse(@PathVariable("attributeSetId") String attributeSetId, @PathVariable("attributeId") String attributeId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            AttributeSetCommand.MergePatchAttributeSet mergePatchAttributeSet = new AbstractAttributeSetCommand.SimpleMergePatchAttributeSet();
+            mergePatchAttributeSet.setAttributeSetId(attributeSetId);
+            mergePatchAttributeSet.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchAttributeSet.setVersion(version); }
+            mergePatchAttributeSet.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            AttributeUseCommand.RemoveAttributeUse removeAttributeUse = new AbstractAttributeUseCommand.SimpleRemoveAttributeUse();
+            removeAttributeUse.setAttributeId(attributeId);
+            mergePatchAttributeSet.getAttributeUseCommands().add(removeAttributeUse);
+            attributeSetApplicationService.when(mergePatchAttributeSet);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{attributeSetId}/AttributeUses/")
     public AttributeUseStateDto[] getAttributeUses(@PathVariable("attributeSetId") String attributeSetId) {
         try {

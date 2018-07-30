@@ -285,6 +285,24 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
+    public void deleteShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentItemCommand.RemoveShipmentItem removeShipmentItem = new AbstractShipmentItemCommand.SimpleRemoveShipmentItem();
+            removeShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
+            mergePatchShipment.getShipmentItemCommands().add(removeShipmentItem);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentId}/ShipmentItems/")
     public ShipmentItemStateDto[] getShipmentItems(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -347,6 +365,24 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
+    public void deleteShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentReceiptCommand.RemoveShipmentReceipt removeShipmentReceipt = new AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt();
+            removeShipmentReceipt.setReceiptSeqId(receiptSeqId);
+            mergePatchShipment.getShipmentReceiptCommands().add(removeShipmentReceipt);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentId}/ShipmentReceipts/")
     public ShipmentReceiptStateDto[] getShipmentReceipts(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -405,6 +441,24 @@ public class ShipmentResource {
             ItemIssuanceCommand.MergePatchItemIssuance mergePatchItemIssuance = body.toMergePatchItemIssuance();
             mergePatchItemIssuance.setItemIssuanceSeqId(itemIssuanceSeqId);
             mergePatchShipment.getItemIssuanceCommands().add(mergePatchItemIssuance);
+            shipmentApplicationService.when(mergePatchShipment);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
+    public void deleteItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+            mergePatchShipment.setShipmentId(shipmentId);
+            mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipment.setVersion(version); }
+            mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ItemIssuanceCommand.RemoveItemIssuance removeItemIssuance = new AbstractItemIssuanceCommand.SimpleRemoveItemIssuance();
+            removeItemIssuance.setItemIssuanceSeqId(itemIssuanceSeqId);
+            mergePatchShipment.getItemIssuanceCommands().add(removeItemIssuance);
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

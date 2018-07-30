@@ -320,6 +320,24 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{inOutDocumentNumber}/InOutImages/{sequenceId}")
+    public void deleteInOutImage(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("sequenceId") String sequenceId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
+            mergePatchInOut.setDocumentNumber(inOutDocumentNumber);
+            mergePatchInOut.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInOut.setVersion(version); }
+            mergePatchInOut.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InOutImageCommand.RemoveInOutImage removeInOutImage = new AbstractInOutImageCommand.SimpleRemoveInOutImage();
+            removeInOutImage.setSequenceId(sequenceId);
+            mergePatchInOut.getInOutImageCommands().add(removeInOutImage);
+            inOutApplicationService.when(mergePatchInOut);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{inOutDocumentNumber}/InOutImages/")
     public InOutImageStateDto[] getInOutImages(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber) {
         try {
@@ -378,6 +396,24 @@ public class InOutResource {
             InOutLineCommand.MergePatchInOutLine mergePatchInOutLine = body.toMergePatchInOutLine();
             mergePatchInOutLine.setLineNumber(lineNumber);
             mergePatchInOut.getInOutLineCommands().add(mergePatchInOutLine);
+            inOutApplicationService.when(mergePatchInOut);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{inOutDocumentNumber}/InOutLines/{lineNumber}")
+    public void deleteInOutLine(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("lineNumber") String lineNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
+            mergePatchInOut.setDocumentNumber(inOutDocumentNumber);
+            mergePatchInOut.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInOut.setVersion(version); }
+            mergePatchInOut.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InOutLineCommand.RemoveInOutLine removeInOutLine = new AbstractInOutLineCommand.SimpleRemoveInOutLine();
+            removeInOutLine.setLineNumber(lineNumber);
+            mergePatchInOut.getInOutLineCommands().add(removeInOutLine);
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -443,6 +479,27 @@ public class InOutResource {
             InOutLineImageCommand.MergePatchInOutLineImage mergePatchInOutLineImage = body.toMergePatchInOutLineImage();
             mergePatchInOutLineImage.setSequenceId(sequenceId);
             mergePatchInOutLine.getInOutLineImageCommands().add(mergePatchInOutLineImage);
+            inOutApplicationService.when(mergePatchInOut);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
+    public void deleteInOutLineImage(@PathVariable("inOutDocumentNumber") String inOutDocumentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber, @PathVariable("sequenceId") String sequenceId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
+            mergePatchInOut.setDocumentNumber(inOutDocumentNumber);
+            mergePatchInOut.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchInOut.setVersion(version); }
+            mergePatchInOut.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            InOutLineCommand.MergePatchInOutLine mergePatchInOutLine = new AbstractInOutLineCommand.SimpleMergePatchInOutLine();
+            mergePatchInOutLine.setLineNumber(inOutLineLineNumber);
+            mergePatchInOut.getInOutLineCommands().add(mergePatchInOutLine);
+            InOutLineImageCommand.RemoveInOutLineImage removeInOutLineImage = new AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage();
+            removeInOutLineImage.setSequenceId(sequenceId);
+            mergePatchInOutLine.getInOutLineImageCommands().add(removeInOutLineImage);
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

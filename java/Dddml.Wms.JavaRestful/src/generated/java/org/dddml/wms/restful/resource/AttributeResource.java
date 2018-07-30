@@ -246,6 +246,24 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{attributeId}/AttributeValues/{value}")
+    public void deleteAttributeValue(@PathVariable("attributeId") String attributeId, @PathVariable("value") String value,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            AttributeCommand.MergePatchAttribute mergePatchAttribute = new AbstractAttributeCommand.SimpleMergePatchAttribute();
+            mergePatchAttribute.setAttributeId(attributeId);
+            mergePatchAttribute.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchAttribute.setVersion(version); }
+            mergePatchAttribute.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            AttributeValueCommand.RemoveAttributeValue removeAttributeValue = new AbstractAttributeValueCommand.SimpleRemoveAttributeValue();
+            removeAttributeValue.setValue(value);
+            mergePatchAttribute.getAttributeValueCommands().add(removeAttributeValue);
+            attributeApplicationService.when(mergePatchAttribute);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{attributeId}/AttributeValues/")
     public AttributeValueStateDto[] getAttributeValues(@PathVariable("attributeId") String attributeId) {
         try {
@@ -304,6 +322,24 @@ public class AttributeResource {
             AttributeAliasCommand.MergePatchAttributeAlias mergePatchAttributeAlias = body.toMergePatchAttributeAlias();
             mergePatchAttributeAlias.setCode(code);
             mergePatchAttribute.getAttributeAliasCommands().add(mergePatchAttributeAlias);
+            attributeApplicationService.when(mergePatchAttribute);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @DeleteMapping("{attributeId}/AttributeAlias/{code}")
+    public void deleteAttributeAlias(@PathVariable("attributeId") String attributeId, @PathVariable("code") String code,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            AttributeCommand.MergePatchAttribute mergePatchAttribute = new AbstractAttributeCommand.SimpleMergePatchAttribute();
+            mergePatchAttribute.setAttributeId(attributeId);
+            mergePatchAttribute.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchAttribute.setVersion(version); }
+            mergePatchAttribute.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            AttributeAliasCommand.RemoveAttributeAlias removeAttributeAlias = new AbstractAttributeAliasCommand.SimpleRemoveAttributeAlias();
+            removeAttributeAlias.setCode(code);
+            mergePatchAttribute.getAttributeAliasCommands().add(removeAttributeAlias);
             attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

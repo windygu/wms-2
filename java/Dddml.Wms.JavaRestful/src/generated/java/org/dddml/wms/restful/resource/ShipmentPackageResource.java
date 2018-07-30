@@ -245,6 +245,29 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}")
+    public void deleteShipmentPackageContent(@PathVariable("shipmentPackageId") String shipmentPackageId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            ShipmentPackageCommand.MergePatchShipmentPackage mergePatchShipmentPackage = new AbstractShipmentPackageCommand.SimpleMergePatchShipmentPackage();
+            mergePatchShipmentPackage.setShipmentPackageId((new AbstractValueObjectTextFormatter<ShipmentPackageId>(ShipmentPackageId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(shipmentPackageId)));
+            mergePatchShipmentPackage.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchShipmentPackage.setVersion(version); }
+            mergePatchShipmentPackage.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            ShipmentPackageContentCommand.RemoveShipmentPackageContent removeShipmentPackageContent = new AbstractShipmentPackageContentCommand.SimpleRemoveShipmentPackageContent();
+            removeShipmentPackageContent.setShipmentItemSeqId(shipmentItemSeqId);
+            mergePatchShipmentPackage.getShipmentPackageContentCommands().add(removeShipmentPackageContent);
+            shipmentPackageApplicationService.when(mergePatchShipmentPackage);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{shipmentPackageId}/ShipmentPackageContents/")
     public ShipmentPackageContentStateDto[] getShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId) {
         try {

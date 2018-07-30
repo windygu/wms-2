@@ -253,6 +253,24 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @DeleteMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/{lineNumber}")
+    public void deleteMovementConfirmationLine(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber, @PathVariable("lineNumber") String lineNumber,
+                       @RequestParam(value = "commandId", required = false) String commandId,
+                       @RequestParam(value = "version", required = false) Long version,
+                       @RequestParam(value = "requesterId", required = false) String requesterId) {
+        try {
+            MovementConfirmationCommand.MergePatchMovementConfirmation mergePatchMovementConfirmation = new AbstractMovementConfirmationCommand.SimpleMergePatchMovementConfirmation();
+            mergePatchMovementConfirmation.setDocumentNumber(movementConfirmationDocumentNumber);
+            mergePatchMovementConfirmation.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
+            if (version != null) { mergePatchMovementConfirmation.setVersion(version); }
+            mergePatchMovementConfirmation.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
+            MovementConfirmationLineCommand.RemoveMovementConfirmationLine removeMovementConfirmationLine = new AbstractMovementConfirmationLineCommand.SimpleRemoveMovementConfirmationLine();
+            removeMovementConfirmationLine.setLineNumber(lineNumber);
+            mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(removeMovementConfirmationLine);
+            movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/")
     public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber) {
         try {
