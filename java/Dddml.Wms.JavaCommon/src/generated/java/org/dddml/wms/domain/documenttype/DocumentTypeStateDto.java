@@ -127,14 +127,17 @@ public class DocumentTypeStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public DocumentTypeStateDto[] toDocumentTypeStateDtoArray(Iterable<DocumentTypeState> states) 
-        {
+        public DocumentTypeStateDto[] toDocumentTypeStateDtoArray(Iterable<DocumentTypeState> states) {
+            return toDocumentTypeStateDtoList(states).toArray(new DocumentTypeStateDto[0]);
+        }
+
+        public List<DocumentTypeStateDto> toDocumentTypeStateDtoList(Iterable<DocumentTypeState> states) {
             ArrayList<DocumentTypeStateDto> stateDtos = new ArrayList();
             for (DocumentTypeState s : states) {
                 DocumentTypeStateDto dto = toDocumentTypeStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new DocumentTypeStateDto[0]);
+            return stateDtos;
         }
 
         public DocumentTypeStateDto toDocumentTypeStateDto(DocumentTypeState state)

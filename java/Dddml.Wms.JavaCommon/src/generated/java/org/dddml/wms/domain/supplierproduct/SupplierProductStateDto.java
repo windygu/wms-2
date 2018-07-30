@@ -259,14 +259,17 @@ public class SupplierProductStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public SupplierProductStateDto[] toSupplierProductStateDtoArray(Iterable<SupplierProductState> states) 
-        {
+        public SupplierProductStateDto[] toSupplierProductStateDtoArray(Iterable<SupplierProductState> states) {
+            return toSupplierProductStateDtoList(states).toArray(new SupplierProductStateDto[0]);
+        }
+
+        public List<SupplierProductStateDto> toSupplierProductStateDtoList(Iterable<SupplierProductState> states) {
             ArrayList<SupplierProductStateDto> stateDtos = new ArrayList();
             for (SupplierProductState s : states) {
                 SupplierProductStateDto dto = toSupplierProductStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new SupplierProductStateDto[0]);
+            return stateDtos;
         }
 
         public SupplierProductStateDto toSupplierProductStateDto(SupplierProductState state)

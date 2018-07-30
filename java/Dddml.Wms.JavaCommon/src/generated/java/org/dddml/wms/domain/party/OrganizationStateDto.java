@@ -19,14 +19,17 @@ public class OrganizationStateDto extends PartyStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public OrganizationStateDto[] toOrganizationStateDtoArray(Iterable<OrganizationState> states) 
-        {
+        public OrganizationStateDto[] toOrganizationStateDtoArray(Iterable<OrganizationState> states) {
+            return toOrganizationStateDtoList(states).toArray(new OrganizationStateDto[0]);
+        }
+
+        public List<OrganizationStateDto> toOrganizationStateDtoList(Iterable<OrganizationState> states) {
             ArrayList<OrganizationStateDto> stateDtos = new ArrayList();
             for (OrganizationState s : states) {
                 OrganizationStateDto dto = toOrganizationStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new OrganizationStateDto[0]);
+            return stateDtos;
         }
 
         public OrganizationStateDto toOrganizationStateDto(OrganizationState state)

@@ -163,14 +163,17 @@ public class PicklistBinStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public PicklistBinStateDto[] toPicklistBinStateDtoArray(Iterable<PicklistBinState> states) 
-        {
+        public PicklistBinStateDto[] toPicklistBinStateDtoArray(Iterable<PicklistBinState> states) {
+            return toPicklistBinStateDtoList(states).toArray(new PicklistBinStateDto[0]);
+        }
+
+        public List<PicklistBinStateDto> toPicklistBinStateDtoList(Iterable<PicklistBinState> states) {
             ArrayList<PicklistBinStateDto> stateDtos = new ArrayList();
             for (PicklistBinState s : states) {
                 PicklistBinStateDto dto = toPicklistBinStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new PicklistBinStateDto[0]);
+            return stateDtos;
         }
 
         public PicklistBinStateDto toPicklistBinStateDto(PicklistBinState state)

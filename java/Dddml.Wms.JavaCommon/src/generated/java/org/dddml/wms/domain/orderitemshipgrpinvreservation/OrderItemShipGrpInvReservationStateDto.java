@@ -223,14 +223,17 @@ public class OrderItemShipGrpInvReservationStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public OrderItemShipGrpInvReservationStateDto[] toOrderItemShipGrpInvReservationStateDtoArray(Iterable<OrderItemShipGrpInvReservationState> states) 
-        {
+        public OrderItemShipGrpInvReservationStateDto[] toOrderItemShipGrpInvReservationStateDtoArray(Iterable<OrderItemShipGrpInvReservationState> states) {
+            return toOrderItemShipGrpInvReservationStateDtoList(states).toArray(new OrderItemShipGrpInvReservationStateDto[0]);
+        }
+
+        public List<OrderItemShipGrpInvReservationStateDto> toOrderItemShipGrpInvReservationStateDtoList(Iterable<OrderItemShipGrpInvReservationState> states) {
             ArrayList<OrderItemShipGrpInvReservationStateDto> stateDtos = new ArrayList();
             for (OrderItemShipGrpInvReservationState s : states) {
                 OrderItemShipGrpInvReservationStateDto dto = toOrderItemShipGrpInvReservationStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new OrderItemShipGrpInvReservationStateDto[0]);
+            return stateDtos;
         }
 
         public OrderItemShipGrpInvReservationStateDto toOrderItemShipGrpInvReservationStateDto(OrderItemShipGrpInvReservationState state)

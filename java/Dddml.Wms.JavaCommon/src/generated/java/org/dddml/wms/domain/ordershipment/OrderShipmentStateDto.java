@@ -115,14 +115,17 @@ public class OrderShipmentStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public OrderShipmentStateDto[] toOrderShipmentStateDtoArray(Iterable<OrderShipmentState> states) 
-        {
+        public OrderShipmentStateDto[] toOrderShipmentStateDtoArray(Iterable<OrderShipmentState> states) {
+            return toOrderShipmentStateDtoList(states).toArray(new OrderShipmentStateDto[0]);
+        }
+
+        public List<OrderShipmentStateDto> toOrderShipmentStateDtoList(Iterable<OrderShipmentState> states) {
             ArrayList<OrderShipmentStateDto> stateDtos = new ArrayList();
             for (OrderShipmentState s : states) {
                 OrderShipmentStateDto dto = toOrderShipmentStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new OrderShipmentStateDto[0]);
+            return stateDtos;
         }
 
         public OrderShipmentStateDto toOrderShipmentStateDto(OrderShipmentState state)

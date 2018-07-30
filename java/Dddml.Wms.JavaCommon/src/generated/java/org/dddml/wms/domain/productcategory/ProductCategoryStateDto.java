@@ -199,14 +199,17 @@ public class ProductCategoryStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public ProductCategoryStateDto[] toProductCategoryStateDtoArray(Iterable<ProductCategoryState> states) 
-        {
+        public ProductCategoryStateDto[] toProductCategoryStateDtoArray(Iterable<ProductCategoryState> states) {
+            return toProductCategoryStateDtoList(states).toArray(new ProductCategoryStateDto[0]);
+        }
+
+        public List<ProductCategoryStateDto> toProductCategoryStateDtoList(Iterable<ProductCategoryState> states) {
             ArrayList<ProductCategoryStateDto> stateDtos = new ArrayList();
             for (ProductCategoryState s : states) {
                 ProductCategoryStateDto dto = toProductCategoryStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new ProductCategoryStateDto[0]);
+            return stateDtos;
         }
 
         public ProductCategoryStateDto toProductCategoryStateDto(ProductCategoryState state)

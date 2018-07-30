@@ -163,14 +163,17 @@ public class AttributeSetInstanceExtensionFieldStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public AttributeSetInstanceExtensionFieldStateDto[] toAttributeSetInstanceExtensionFieldStateDtoArray(Iterable<AttributeSetInstanceExtensionFieldState> states) 
-        {
+        public AttributeSetInstanceExtensionFieldStateDto[] toAttributeSetInstanceExtensionFieldStateDtoArray(Iterable<AttributeSetInstanceExtensionFieldState> states) {
+            return toAttributeSetInstanceExtensionFieldStateDtoList(states).toArray(new AttributeSetInstanceExtensionFieldStateDto[0]);
+        }
+
+        public List<AttributeSetInstanceExtensionFieldStateDto> toAttributeSetInstanceExtensionFieldStateDtoList(Iterable<AttributeSetInstanceExtensionFieldState> states) {
             ArrayList<AttributeSetInstanceExtensionFieldStateDto> stateDtos = new ArrayList();
             for (AttributeSetInstanceExtensionFieldState s : states) {
                 AttributeSetInstanceExtensionFieldStateDto dto = toAttributeSetInstanceExtensionFieldStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new AttributeSetInstanceExtensionFieldStateDto[0]);
+            return stateDtos;
         }
 
         public AttributeSetInstanceExtensionFieldStateDto toAttributeSetInstanceExtensionFieldStateDto(AttributeSetInstanceExtensionFieldState state)

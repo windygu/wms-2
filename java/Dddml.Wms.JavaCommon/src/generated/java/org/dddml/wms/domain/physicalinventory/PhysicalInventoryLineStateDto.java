@@ -177,14 +177,17 @@ public class PhysicalInventoryLineStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public PhysicalInventoryLineStateDto[] toPhysicalInventoryLineStateDtoArray(Iterable<PhysicalInventoryLineState> states) 
-        {
+        public PhysicalInventoryLineStateDto[] toPhysicalInventoryLineStateDtoArray(Iterable<PhysicalInventoryLineState> states) {
+            return toPhysicalInventoryLineStateDtoList(states).toArray(new PhysicalInventoryLineStateDto[0]);
+        }
+
+        public List<PhysicalInventoryLineStateDto> toPhysicalInventoryLineStateDtoList(Iterable<PhysicalInventoryLineState> states) {
             ArrayList<PhysicalInventoryLineStateDto> stateDtos = new ArrayList();
             for (PhysicalInventoryLineState s : states) {
                 PhysicalInventoryLineStateDto dto = toPhysicalInventoryLineStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new PhysicalInventoryLineStateDto[0]);
+            return stateDtos;
         }
 
         public PhysicalInventoryLineStateDto toPhysicalInventoryLineStateDto(PhysicalInventoryLineState state)

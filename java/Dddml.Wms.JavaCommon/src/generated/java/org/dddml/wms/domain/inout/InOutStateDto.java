@@ -488,14 +488,17 @@ public class InOutStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public InOutStateDto[] toInOutStateDtoArray(Iterable<InOutState> states) 
-        {
+        public InOutStateDto[] toInOutStateDtoArray(Iterable<InOutState> states) {
+            return toInOutStateDtoList(states).toArray(new InOutStateDto[0]);
+        }
+
+        public List<InOutStateDto> toInOutStateDtoList(Iterable<InOutState> states) {
             ArrayList<InOutStateDto> stateDtos = new ArrayList();
             for (InOutState s : states) {
                 InOutStateDto dto = toInOutStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new InOutStateDto[0]);
+            return stateDtos;
         }
 
         public InOutStateDto toInOutStateDto(InOutState state)

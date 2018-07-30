@@ -151,14 +151,17 @@ public class AttributeValueStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public AttributeValueStateDto[] toAttributeValueStateDtoArray(Iterable<AttributeValueState> states) 
-        {
+        public AttributeValueStateDto[] toAttributeValueStateDtoArray(Iterable<AttributeValueState> states) {
+            return toAttributeValueStateDtoList(states).toArray(new AttributeValueStateDto[0]);
+        }
+
+        public List<AttributeValueStateDto> toAttributeValueStateDtoList(Iterable<AttributeValueState> states) {
             ArrayList<AttributeValueStateDto> stateDtos = new ArrayList();
             for (AttributeValueState s : states) {
                 AttributeValueStateDto dto = toAttributeValueStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new AttributeValueStateDto[0]);
+            return stateDtos;
         }
 
         public AttributeValueStateDto toAttributeValueStateDto(AttributeValueState state)

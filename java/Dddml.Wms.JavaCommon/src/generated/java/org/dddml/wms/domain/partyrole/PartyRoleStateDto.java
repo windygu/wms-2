@@ -103,14 +103,17 @@ public class PartyRoleStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public PartyRoleStateDto[] toPartyRoleStateDtoArray(Iterable<PartyRoleState> states) 
-        {
+        public PartyRoleStateDto[] toPartyRoleStateDtoArray(Iterable<PartyRoleState> states) {
+            return toPartyRoleStateDtoList(states).toArray(new PartyRoleStateDto[0]);
+        }
+
+        public List<PartyRoleStateDto> toPartyRoleStateDtoList(Iterable<PartyRoleState> states) {
             ArrayList<PartyRoleStateDto> stateDtos = new ArrayList();
             for (PartyRoleState s : states) {
                 PartyRoleStateDto dto = toPartyRoleStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new PartyRoleStateDto[0]);
+            return stateDtos;
         }
 
         public PartyRoleStateDto toPartyRoleStateDto(PartyRoleState state)

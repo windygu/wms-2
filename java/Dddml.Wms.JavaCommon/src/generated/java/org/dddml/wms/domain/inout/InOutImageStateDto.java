@@ -127,14 +127,17 @@ public class InOutImageStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public InOutImageStateDto[] toInOutImageStateDtoArray(Iterable<InOutImageState> states) 
-        {
+        public InOutImageStateDto[] toInOutImageStateDtoArray(Iterable<InOutImageState> states) {
+            return toInOutImageStateDtoList(states).toArray(new InOutImageStateDto[0]);
+        }
+
+        public List<InOutImageStateDto> toInOutImageStateDtoList(Iterable<InOutImageState> states) {
             ArrayList<InOutImageStateDto> stateDtos = new ArrayList();
             for (InOutImageState s : states) {
                 InOutImageStateDto dto = toInOutImageStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new InOutImageStateDto[0]);
+            return stateDtos;
         }
 
         public InOutImageStateDto toInOutImageStateDto(InOutImageState state)

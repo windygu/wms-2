@@ -331,14 +331,17 @@ public class ContactMechStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public ContactMechStateDto[] toContactMechStateDtoArray(Iterable<ContactMechState> states) 
-        {
+        public ContactMechStateDto[] toContactMechStateDtoArray(Iterable<ContactMechState> states) {
+            return toContactMechStateDtoList(states).toArray(new ContactMechStateDto[0]);
+        }
+
+        public List<ContactMechStateDto> toContactMechStateDtoList(Iterable<ContactMechState> states) {
             ArrayList<ContactMechStateDto> stateDtos = new ArrayList();
             for (ContactMechState s : states) {
                 ContactMechStateDto dto = toContactMechStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new ContactMechStateDto[0]);
+            return stateDtos;
         }
 
         public ContactMechStateDto toContactMechStateDto(ContactMechState state)

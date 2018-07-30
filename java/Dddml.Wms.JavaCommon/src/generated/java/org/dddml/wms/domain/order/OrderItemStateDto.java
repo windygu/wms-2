@@ -535,14 +535,17 @@ public class OrderItemStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public OrderItemStateDto[] toOrderItemStateDtoArray(Iterable<OrderItemState> states) 
-        {
+        public OrderItemStateDto[] toOrderItemStateDtoArray(Iterable<OrderItemState> states) {
+            return toOrderItemStateDtoList(states).toArray(new OrderItemStateDto[0]);
+        }
+
+        public List<OrderItemStateDto> toOrderItemStateDtoList(Iterable<OrderItemState> states) {
             ArrayList<OrderItemStateDto> stateDtos = new ArrayList();
             for (OrderItemState s : states) {
                 OrderItemStateDto dto = toOrderItemStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new OrderItemStateDto[0]);
+            return stateDtos;
         }
 
         public OrderItemStateDto toOrderItemStateDto(OrderItemState state)

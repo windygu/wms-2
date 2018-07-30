@@ -139,14 +139,17 @@ public class GoodIdentificationTypeStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public GoodIdentificationTypeStateDto[] toGoodIdentificationTypeStateDtoArray(Iterable<GoodIdentificationTypeState> states) 
-        {
+        public GoodIdentificationTypeStateDto[] toGoodIdentificationTypeStateDtoArray(Iterable<GoodIdentificationTypeState> states) {
+            return toGoodIdentificationTypeStateDtoList(states).toArray(new GoodIdentificationTypeStateDto[0]);
+        }
+
+        public List<GoodIdentificationTypeStateDto> toGoodIdentificationTypeStateDtoList(Iterable<GoodIdentificationTypeState> states) {
             ArrayList<GoodIdentificationTypeStateDto> stateDtos = new ArrayList();
             for (GoodIdentificationTypeState s : states) {
                 GoodIdentificationTypeStateDto dto = toGoodIdentificationTypeStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new GoodIdentificationTypeStateDto[0]);
+            return stateDtos;
         }
 
         public GoodIdentificationTypeStateDto toGoodIdentificationTypeStateDto(GoodIdentificationTypeState state)

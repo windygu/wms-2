@@ -271,14 +271,17 @@ public class ItemIssuanceStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public ItemIssuanceStateDto[] toItemIssuanceStateDtoArray(Iterable<ItemIssuanceState> states) 
-        {
+        public ItemIssuanceStateDto[] toItemIssuanceStateDtoArray(Iterable<ItemIssuanceState> states) {
+            return toItemIssuanceStateDtoList(states).toArray(new ItemIssuanceStateDto[0]);
+        }
+
+        public List<ItemIssuanceStateDto> toItemIssuanceStateDtoList(Iterable<ItemIssuanceState> states) {
             ArrayList<ItemIssuanceStateDto> stateDtos = new ArrayList();
             for (ItemIssuanceState s : states) {
                 ItemIssuanceStateDto dto = toItemIssuanceStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new ItemIssuanceStateDto[0]);
+            return stateDtos;
         }
 
         public ItemIssuanceStateDto toItemIssuanceStateDto(ItemIssuanceState state)

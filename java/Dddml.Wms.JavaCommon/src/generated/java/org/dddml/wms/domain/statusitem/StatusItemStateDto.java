@@ -151,14 +151,17 @@ public class StatusItemStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public StatusItemStateDto[] toStatusItemStateDtoArray(Iterable<StatusItemState> states) 
-        {
+        public StatusItemStateDto[] toStatusItemStateDtoArray(Iterable<StatusItemState> states) {
+            return toStatusItemStateDtoList(states).toArray(new StatusItemStateDto[0]);
+        }
+
+        public List<StatusItemStateDto> toStatusItemStateDtoList(Iterable<StatusItemState> states) {
             ArrayList<StatusItemStateDto> stateDtos = new ArrayList();
             for (StatusItemState s : states) {
                 StatusItemStateDto dto = toStatusItemStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new StatusItemStateDto[0]);
+            return stateDtos;
         }
 
         public StatusItemStateDto toStatusItemStateDto(StatusItemState state)

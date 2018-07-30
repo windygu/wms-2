@@ -127,14 +127,17 @@ public class PickwaveStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public PickwaveStateDto[] toPickwaveStateDtoArray(Iterable<PickwaveState> states) 
-        {
+        public PickwaveStateDto[] toPickwaveStateDtoArray(Iterable<PickwaveState> states) {
+            return toPickwaveStateDtoList(states).toArray(new PickwaveStateDto[0]);
+        }
+
+        public List<PickwaveStateDto> toPickwaveStateDtoList(Iterable<PickwaveState> states) {
             ArrayList<PickwaveStateDto> stateDtos = new ArrayList();
             for (PickwaveState s : states) {
                 PickwaveStateDto dto = toPickwaveStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new PickwaveStateDto[0]);
+            return stateDtos;
         }
 
         public PickwaveStateDto toPickwaveStateDto(PickwaveState state)

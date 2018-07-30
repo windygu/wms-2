@@ -64,6 +64,37 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @GetMapping("_page")
+    public Page<MovementStateDto> getPage( HttpServletRequest request,
+                                   @RequestParam(value = "fields", required = false) String fields,
+                                   @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                   @RequestParam(value = "size", required = false) @NotNull Integer size) {
+        try {
+            List<String> sort = MovementResourceUtils.getQuerySorts(request.getParameterMap());
+            Integer firstResult = (page == null ? 0 : page) * size;
+            Integer maxResults = (size ==null ? 0 : size);
+            Iterable<MovementState> states = null; 
+            Iterable<Map.Entry<String, Object>> queryFilterMap = MovementResourceUtils.getQueryFilterMap(request.getParameterMap());
+            states = movementApplicationService.get(
+                        queryFilterMap,
+                        MovementResourceUtils.getQuerySorts(request.getParameterMap()),
+                        firstResult, maxResults);
+            long count = movementApplicationService.getCount(queryFilterMap);
+
+            MovementStateDto.DtoConverter dtoConverter = new MovementStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
+            Page.PageImpl<MovementStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toMovementStateDtoList(states), 0);//todo
+            statePage.setSize(size);
+            statePage.setNumber(page);
+            return statePage;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @GetMapping("{id}")
     public MovementStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
@@ -358,6 +389,38 @@ public class MovementResource {
                 }
             }
             return orders;
+        }
+
+        public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            List<String> sorts = new ArrayList<>();
+            if (values == null) {
+                return null;
+            }
+            if (values.length == 1
+                    && !values[0].toLowerCase().endsWith(",asc")
+                    && !values[0].toLowerCase().endsWith(",desc")) {
+                return getQueryOrders(values[0], ",");
+            }
+            Arrays.stream(values).forEach(s -> {
+                if (s.toLowerCase().endsWith(",asc")) {
+                    String f = s.substring(0, s.length() - 4).trim();
+                    if (!f.isEmpty()) {
+                        sorts.add(f);
+                    }
+                } else if (s.toLowerCase().endsWith(",desc")) {
+                    String f = s.substring(0, s.length() - 5).trim();
+                    if (!f.isEmpty()) {
+                        sorts.add("-" + f);
+                    }
+                } else {
+                    String f = s.trim();
+                    if (!f.isEmpty()) {
+                        sorts.add(f);
+                    }
+                }
+            });
+            return sorts;
         }
 
         public static void setNullIdOrThrowOnInconsistentIds(String id, MovementCommand value) {

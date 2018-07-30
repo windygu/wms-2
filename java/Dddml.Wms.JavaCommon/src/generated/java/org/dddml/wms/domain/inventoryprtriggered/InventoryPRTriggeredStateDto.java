@@ -103,14 +103,17 @@ public class InventoryPRTriggeredStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public InventoryPRTriggeredStateDto[] toInventoryPRTriggeredStateDtoArray(Iterable<InventoryPRTriggeredState> states) 
-        {
+        public InventoryPRTriggeredStateDto[] toInventoryPRTriggeredStateDtoArray(Iterable<InventoryPRTriggeredState> states) {
+            return toInventoryPRTriggeredStateDtoList(states).toArray(new InventoryPRTriggeredStateDto[0]);
+        }
+
+        public List<InventoryPRTriggeredStateDto> toInventoryPRTriggeredStateDtoList(Iterable<InventoryPRTriggeredState> states) {
             ArrayList<InventoryPRTriggeredStateDto> stateDtos = new ArrayList();
             for (InventoryPRTriggeredState s : states) {
                 InventoryPRTriggeredStateDto dto = toInventoryPRTriggeredStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new InventoryPRTriggeredStateDto[0]);
+            return stateDtos;
         }
 
         public InventoryPRTriggeredStateDto toInventoryPRTriggeredStateDto(InventoryPRTriggeredState state)

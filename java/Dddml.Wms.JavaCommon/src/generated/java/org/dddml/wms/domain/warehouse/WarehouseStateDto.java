@@ -139,14 +139,17 @@ public class WarehouseStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public WarehouseStateDto[] toWarehouseStateDtoArray(Iterable<WarehouseState> states) 
-        {
+        public WarehouseStateDto[] toWarehouseStateDtoArray(Iterable<WarehouseState> states) {
+            return toWarehouseStateDtoList(states).toArray(new WarehouseStateDto[0]);
+        }
+
+        public List<WarehouseStateDto> toWarehouseStateDtoList(Iterable<WarehouseState> states) {
             ArrayList<WarehouseStateDto> stateDtos = new ArrayList();
             for (WarehouseState s : states) {
                 WarehouseStateDto dto = toWarehouseStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new WarehouseStateDto[0]);
+            return stateDtos;
         }
 
         public WarehouseStateDto toWarehouseStateDto(WarehouseState state)

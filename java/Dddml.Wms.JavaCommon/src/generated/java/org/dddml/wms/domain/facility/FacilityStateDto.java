@@ -307,14 +307,17 @@ public class FacilityStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public FacilityStateDto[] toFacilityStateDtoArray(Iterable<FacilityState> states) 
-        {
+        public FacilityStateDto[] toFacilityStateDtoArray(Iterable<FacilityState> states) {
+            return toFacilityStateDtoList(states).toArray(new FacilityStateDto[0]);
+        }
+
+        public List<FacilityStateDto> toFacilityStateDtoList(Iterable<FacilityState> states) {
             ArrayList<FacilityStateDto> stateDtos = new ArrayList();
             for (FacilityState s : states) {
                 FacilityStateDto dto = toFacilityStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new FacilityStateDto[0]);
+            return stateDtos;
         }
 
         public FacilityStateDto toFacilityStateDto(FacilityState state)

@@ -932,14 +932,17 @@ public class AttributeSetInstanceStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public AttributeSetInstanceStateDto[] toAttributeSetInstanceStateDtoArray(Iterable<AttributeSetInstanceState> states) 
-        {
+        public AttributeSetInstanceStateDto[] toAttributeSetInstanceStateDtoArray(Iterable<AttributeSetInstanceState> states) {
+            return toAttributeSetInstanceStateDtoList(states).toArray(new AttributeSetInstanceStateDto[0]);
+        }
+
+        public List<AttributeSetInstanceStateDto> toAttributeSetInstanceStateDtoList(Iterable<AttributeSetInstanceState> states) {
             ArrayList<AttributeSetInstanceStateDto> stateDtos = new ArrayList();
             for (AttributeSetInstanceState s : states) {
                 AttributeSetInstanceStateDto dto = toAttributeSetInstanceStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new AttributeSetInstanceStateDto[0]);
+            return stateDtos;
         }
 
         public AttributeSetInstanceStateDto toAttributeSetInstanceStateDto(AttributeSetInstanceState state)

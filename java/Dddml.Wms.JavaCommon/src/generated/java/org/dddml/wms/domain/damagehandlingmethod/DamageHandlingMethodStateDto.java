@@ -127,14 +127,17 @@ public class DamageHandlingMethodStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public DamageHandlingMethodStateDto[] toDamageHandlingMethodStateDtoArray(Iterable<DamageHandlingMethodState> states) 
-        {
+        public DamageHandlingMethodStateDto[] toDamageHandlingMethodStateDtoArray(Iterable<DamageHandlingMethodState> states) {
+            return toDamageHandlingMethodStateDtoList(states).toArray(new DamageHandlingMethodStateDto[0]);
+        }
+
+        public List<DamageHandlingMethodStateDto> toDamageHandlingMethodStateDtoList(Iterable<DamageHandlingMethodState> states) {
             ArrayList<DamageHandlingMethodStateDto> stateDtos = new ArrayList();
             for (DamageHandlingMethodState s : states) {
                 DamageHandlingMethodStateDto dto = toDamageHandlingMethodStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new DamageHandlingMethodStateDto[0]);
+            return stateDtos;
         }
 
         public DamageHandlingMethodStateDto toDamageHandlingMethodStateDto(DamageHandlingMethodState state)

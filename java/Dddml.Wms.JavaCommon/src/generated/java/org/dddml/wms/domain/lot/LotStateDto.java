@@ -127,14 +127,17 @@ public class LotStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public LotStateDto[] toLotStateDtoArray(Iterable<LotState> states) 
-        {
+        public LotStateDto[] toLotStateDtoArray(Iterable<LotState> states) {
+            return toLotStateDtoList(states).toArray(new LotStateDto[0]);
+        }
+
+        public List<LotStateDto> toLotStateDtoList(Iterable<LotState> states) {
             ArrayList<LotStateDto> stateDtos = new ArrayList();
             for (LotState s : states) {
                 LotStateDto dto = toLotStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new LotStateDto[0]);
+            return stateDtos;
         }
 
         public LotStateDto toLotStateDto(LotState state)

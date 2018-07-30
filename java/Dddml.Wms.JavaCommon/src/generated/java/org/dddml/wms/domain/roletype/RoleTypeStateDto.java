@@ -139,14 +139,17 @@ public class RoleTypeStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public RoleTypeStateDto[] toRoleTypeStateDtoArray(Iterable<RoleTypeState> states) 
-        {
+        public RoleTypeStateDto[] toRoleTypeStateDtoArray(Iterable<RoleTypeState> states) {
+            return toRoleTypeStateDtoList(states).toArray(new RoleTypeStateDto[0]);
+        }
+
+        public List<RoleTypeStateDto> toRoleTypeStateDtoList(Iterable<RoleTypeState> states) {
             ArrayList<RoleTypeStateDto> stateDtos = new ArrayList();
             for (RoleTypeState s : states) {
                 RoleTypeStateDto dto = toRoleTypeStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new RoleTypeStateDto[0]);
+            return stateDtos;
         }
 
         public RoleTypeStateDto toRoleTypeStateDto(RoleTypeState state)

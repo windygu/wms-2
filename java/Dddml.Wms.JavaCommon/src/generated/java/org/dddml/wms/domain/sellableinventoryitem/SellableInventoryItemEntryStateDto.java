@@ -130,14 +130,17 @@ public class SellableInventoryItemEntryStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public SellableInventoryItemEntryStateDto[] toSellableInventoryItemEntryStateDtoArray(Iterable<SellableInventoryItemEntryState> states) 
-        {
+        public SellableInventoryItemEntryStateDto[] toSellableInventoryItemEntryStateDtoArray(Iterable<SellableInventoryItemEntryState> states) {
+            return toSellableInventoryItemEntryStateDtoList(states).toArray(new SellableInventoryItemEntryStateDto[0]);
+        }
+
+        public List<SellableInventoryItemEntryStateDto> toSellableInventoryItemEntryStateDtoList(Iterable<SellableInventoryItemEntryState> states) {
             ArrayList<SellableInventoryItemEntryStateDto> stateDtos = new ArrayList();
             for (SellableInventoryItemEntryState s : states) {
                 SellableInventoryItemEntryStateDto dto = toSellableInventoryItemEntryStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new SellableInventoryItemEntryStateDto[0]);
+            return stateDtos;
         }
 
         public SellableInventoryItemEntryStateDto toSellableInventoryItemEntryStateDto(SellableInventoryItemEntryState state)

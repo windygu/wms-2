@@ -139,14 +139,17 @@ public class UomStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public UomStateDto[] toUomStateDtoArray(Iterable<UomState> states) 
-        {
+        public UomStateDto[] toUomStateDtoArray(Iterable<UomState> states) {
+            return toUomStateDtoList(states).toArray(new UomStateDto[0]);
+        }
+
+        public List<UomStateDto> toUomStateDtoList(Iterable<UomState> states) {
             ArrayList<UomStateDto> stateDtos = new ArrayList();
             for (UomState s : states) {
                 UomStateDto dto = toUomStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new UomStateDto[0]);
+            return stateDtos;
         }
 
         public UomStateDto toUomStateDto(UomState state)

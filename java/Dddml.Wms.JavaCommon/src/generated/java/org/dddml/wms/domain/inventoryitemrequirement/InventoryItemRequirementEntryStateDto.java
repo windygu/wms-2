@@ -130,14 +130,17 @@ public class InventoryItemRequirementEntryStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public InventoryItemRequirementEntryStateDto[] toInventoryItemRequirementEntryStateDtoArray(Iterable<InventoryItemRequirementEntryState> states) 
-        {
+        public InventoryItemRequirementEntryStateDto[] toInventoryItemRequirementEntryStateDtoArray(Iterable<InventoryItemRequirementEntryState> states) {
+            return toInventoryItemRequirementEntryStateDtoList(states).toArray(new InventoryItemRequirementEntryStateDto[0]);
+        }
+
+        public List<InventoryItemRequirementEntryStateDto> toInventoryItemRequirementEntryStateDtoList(Iterable<InventoryItemRequirementEntryState> states) {
             ArrayList<InventoryItemRequirementEntryStateDto> stateDtos = new ArrayList();
             for (InventoryItemRequirementEntryState s : states) {
                 InventoryItemRequirementEntryStateDto dto = toInventoryItemRequirementEntryStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new InventoryItemRequirementEntryStateDto[0]);
+            return stateDtos;
         }
 
         public InventoryItemRequirementEntryStateDto toInventoryItemRequirementEntryStateDto(InventoryItemRequirementEntryState state)

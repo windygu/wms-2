@@ -164,14 +164,17 @@ public class InventoryPostingRuleStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public InventoryPostingRuleStateDto[] toInventoryPostingRuleStateDtoArray(Iterable<InventoryPostingRuleState> states) 
-        {
+        public InventoryPostingRuleStateDto[] toInventoryPostingRuleStateDtoArray(Iterable<InventoryPostingRuleState> states) {
+            return toInventoryPostingRuleStateDtoList(states).toArray(new InventoryPostingRuleStateDto[0]);
+        }
+
+        public List<InventoryPostingRuleStateDto> toInventoryPostingRuleStateDtoList(Iterable<InventoryPostingRuleState> states) {
             ArrayList<InventoryPostingRuleStateDto> stateDtos = new ArrayList();
             for (InventoryPostingRuleState s : states) {
                 InventoryPostingRuleStateDto dto = toInventoryPostingRuleStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new InventoryPostingRuleStateDto[0]);
+            return stateDtos;
         }
 
         public InventoryPostingRuleStateDto toInventoryPostingRuleStateDto(InventoryPostingRuleState state)

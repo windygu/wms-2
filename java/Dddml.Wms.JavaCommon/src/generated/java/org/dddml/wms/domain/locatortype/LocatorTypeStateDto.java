@@ -115,14 +115,17 @@ public class LocatorTypeStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public LocatorTypeStateDto[] toLocatorTypeStateDtoArray(Iterable<LocatorTypeState> states) 
-        {
+        public LocatorTypeStateDto[] toLocatorTypeStateDtoArray(Iterable<LocatorTypeState> states) {
+            return toLocatorTypeStateDtoList(states).toArray(new LocatorTypeStateDto[0]);
+        }
+
+        public List<LocatorTypeStateDto> toLocatorTypeStateDtoList(Iterable<LocatorTypeState> states) {
             ArrayList<LocatorTypeStateDto> stateDtos = new ArrayList();
             for (LocatorTypeState s : states) {
                 LocatorTypeStateDto dto = toLocatorTypeStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new LocatorTypeStateDto[0]);
+            return stateDtos;
         }
 
         public LocatorTypeStateDto toLocatorTypeStateDto(LocatorTypeState state)

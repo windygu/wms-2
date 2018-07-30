@@ -200,14 +200,17 @@ public class MovementConfirmationLineStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public MovementConfirmationLineStateDto[] toMovementConfirmationLineStateDtoArray(Iterable<MovementConfirmationLineState> states) 
-        {
+        public MovementConfirmationLineStateDto[] toMovementConfirmationLineStateDtoArray(Iterable<MovementConfirmationLineState> states) {
+            return toMovementConfirmationLineStateDtoList(states).toArray(new MovementConfirmationLineStateDto[0]);
+        }
+
+        public List<MovementConfirmationLineStateDto> toMovementConfirmationLineStateDtoList(Iterable<MovementConfirmationLineState> states) {
             ArrayList<MovementConfirmationLineStateDto> stateDtos = new ArrayList();
             for (MovementConfirmationLineState s : states) {
                 MovementConfirmationLineStateDto dto = toMovementConfirmationLineStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new MovementConfirmationLineStateDto[0]);
+            return stateDtos;
         }
 
         public MovementConfirmationLineStateDto toMovementConfirmationLineStateDto(MovementConfirmationLineState state)

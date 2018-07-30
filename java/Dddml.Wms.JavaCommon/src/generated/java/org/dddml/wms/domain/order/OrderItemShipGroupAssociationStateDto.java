@@ -151,14 +151,17 @@ public class OrderItemShipGroupAssociationStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public OrderItemShipGroupAssociationStateDto[] toOrderItemShipGroupAssociationStateDtoArray(Iterable<OrderItemShipGroupAssociationState> states) 
-        {
+        public OrderItemShipGroupAssociationStateDto[] toOrderItemShipGroupAssociationStateDtoArray(Iterable<OrderItemShipGroupAssociationState> states) {
+            return toOrderItemShipGroupAssociationStateDtoList(states).toArray(new OrderItemShipGroupAssociationStateDto[0]);
+        }
+
+        public List<OrderItemShipGroupAssociationStateDto> toOrderItemShipGroupAssociationStateDtoList(Iterable<OrderItemShipGroupAssociationState> states) {
             ArrayList<OrderItemShipGroupAssociationStateDto> stateDtos = new ArrayList();
             for (OrderItemShipGroupAssociationState s : states) {
                 OrderItemShipGroupAssociationStateDto dto = toOrderItemShipGroupAssociationStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new OrderItemShipGroupAssociationStateDto[0]);
+            return stateDtos;
         }
 
         public OrderItemShipGroupAssociationStateDto toOrderItemShipGroupAssociationStateDto(OrderItemShipGroupAssociationState state)

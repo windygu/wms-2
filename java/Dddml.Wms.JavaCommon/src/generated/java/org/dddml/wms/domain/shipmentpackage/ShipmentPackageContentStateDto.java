@@ -151,14 +151,17 @@ public class ShipmentPackageContentStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public ShipmentPackageContentStateDto[] toShipmentPackageContentStateDtoArray(Iterable<ShipmentPackageContentState> states) 
-        {
+        public ShipmentPackageContentStateDto[] toShipmentPackageContentStateDtoArray(Iterable<ShipmentPackageContentState> states) {
+            return toShipmentPackageContentStateDtoList(states).toArray(new ShipmentPackageContentStateDto[0]);
+        }
+
+        public List<ShipmentPackageContentStateDto> toShipmentPackageContentStateDtoList(Iterable<ShipmentPackageContentState> states) {
             ArrayList<ShipmentPackageContentStateDto> stateDtos = new ArrayList();
             for (ShipmentPackageContentState s : states) {
                 ShipmentPackageContentStateDto dto = toShipmentPackageContentStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new ShipmentPackageContentStateDto[0]);
+            return stateDtos;
         }
 
         public ShipmentPackageContentStateDto toShipmentPackageContentStateDto(ShipmentPackageContentState state)

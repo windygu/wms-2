@@ -103,14 +103,17 @@ public class OrganizationStructureStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public OrganizationStructureStateDto[] toOrganizationStructureStateDtoArray(Iterable<OrganizationStructureState> states) 
-        {
+        public OrganizationStructureStateDto[] toOrganizationStructureStateDtoArray(Iterable<OrganizationStructureState> states) {
+            return toOrganizationStructureStateDtoList(states).toArray(new OrganizationStructureStateDto[0]);
+        }
+
+        public List<OrganizationStructureStateDto> toOrganizationStructureStateDtoList(Iterable<OrganizationStructureState> states) {
             ArrayList<OrganizationStructureStateDto> stateDtos = new ArrayList();
             for (OrganizationStructureState s : states) {
                 OrganizationStructureStateDto dto = toOrganizationStructureStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new OrganizationStructureStateDto[0]);
+            return stateDtos;
         }
 
         public OrganizationStructureStateDto toOrganizationStructureStateDto(OrganizationStructureState state)

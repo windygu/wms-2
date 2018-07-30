@@ -115,14 +115,17 @@ public class RejectionReasonStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public RejectionReasonStateDto[] toRejectionReasonStateDtoArray(Iterable<RejectionReasonState> states) 
-        {
+        public RejectionReasonStateDto[] toRejectionReasonStateDtoArray(Iterable<RejectionReasonState> states) {
+            return toRejectionReasonStateDtoList(states).toArray(new RejectionReasonStateDto[0]);
+        }
+
+        public List<RejectionReasonStateDto> toRejectionReasonStateDtoList(Iterable<RejectionReasonState> states) {
             ArrayList<RejectionReasonStateDto> stateDtos = new ArrayList();
             for (RejectionReasonState s : states) {
                 RejectionReasonStateDto dto = toRejectionReasonStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new RejectionReasonStateDto[0]);
+            return stateDtos;
         }
 
         public RejectionReasonStateDto toRejectionReasonStateDto(RejectionReasonState state)

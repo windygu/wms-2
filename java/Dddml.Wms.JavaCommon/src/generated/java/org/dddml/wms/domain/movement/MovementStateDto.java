@@ -356,14 +356,17 @@ public class MovementStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public MovementStateDto[] toMovementStateDtoArray(Iterable<MovementState> states) 
-        {
+        public MovementStateDto[] toMovementStateDtoArray(Iterable<MovementState> states) {
+            return toMovementStateDtoList(states).toArray(new MovementStateDto[0]);
+        }
+
+        public List<MovementStateDto> toMovementStateDtoList(Iterable<MovementState> states) {
             ArrayList<MovementStateDto> stateDtos = new ArrayList();
             for (MovementState s : states) {
                 MovementStateDto dto = toMovementStateDto(s);
                 stateDtos.add(dto);
             }
-            return stateDtos.toArray(new MovementStateDto[0]);
+            return stateDtos;
         }
 
         public MovementStateDto toMovementStateDto(MovementState state)
