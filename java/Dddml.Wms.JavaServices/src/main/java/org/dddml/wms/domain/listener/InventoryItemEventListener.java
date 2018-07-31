@@ -103,7 +103,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
         for (InventoryItemEntryEvent.InventoryItemEntryStateCreated iie : itemEntriesCreated) {
             for (InventoryPostingRuleState pr : getPostingRules(iie.getInventoryItemEntryEventId().getInventoryItemId())) {
                 BigDecimal outputQuantity = getOutputQuantity(pr, iie);
-                if (outputQuantity == null || outputQuantity.equals(0)) {
+                if (outputQuantity == null || outputQuantity.equals(BigDecimal.ZERO)) {
                     continue;
                 }
                 InventoryPRTriggeredId tid = getOrCreateInventoryPRTriggered(pr, iie);
@@ -129,6 +129,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
 
     private void createOrUpdateSellableInventoryItem(BigDecimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId) {
+        //if(outputQuantity.equals(BigDecimal.ZERO)) { return; }
         SellableInventoryItemState itemState = getSellableInventoryItemApplicationService().get(outputItemId);
         if (itemState != null) {
             SellableInventoryItemCommand.MergePatchSellableInventoryItem updateItem = new AbstractSellableInventoryItemCommand.SimpleMergePatchSellableInventoryItem();
@@ -163,6 +164,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
     // ///////////////////////////////////
 
     private void createOrUpdateInventoryItemRequirement(BigDecimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId) {
+        //if(outputQuantity.equals(BigDecimal.ZERO)) { return; }
         InventoryItemRequirementState itemState = getInventoryItemRequirementApplicationService().get(outputItemId);
         if (itemState != null)
         {
