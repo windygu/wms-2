@@ -74,16 +74,16 @@ public class InventoryPRTriggeredResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryPRTriggeredState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = InventoryPRTriggeredResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> InventoryPRTriggeredResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n));
             states = inventoryPRTriggeredApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> InventoryPRTriggeredResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         InventoryPRTriggeredResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = inventoryPRTriggeredApplicationService.getCount(queryFilterMap);
+            long count = inventoryPRTriggeredApplicationService.getCount(criterion);
 
             InventoryPRTriggeredStateDto.DtoConverter dtoConverter = new InventoryPRTriggeredStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

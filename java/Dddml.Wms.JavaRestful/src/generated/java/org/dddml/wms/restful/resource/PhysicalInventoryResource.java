@@ -76,16 +76,16 @@ public class PhysicalInventoryResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PhysicalInventoryState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = PhysicalInventoryResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> PhysicalInventoryResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n));
             states = physicalInventoryApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> PhysicalInventoryResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         PhysicalInventoryResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = physicalInventoryApplicationService.getCount(queryFilterMap);
+            long count = physicalInventoryApplicationService.getCount(criterion);
 
             PhysicalInventoryStateDto.DtoConverter dtoConverter = new PhysicalInventoryStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

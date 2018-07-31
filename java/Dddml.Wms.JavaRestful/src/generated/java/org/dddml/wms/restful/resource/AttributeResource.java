@@ -77,16 +77,16 @@ public class AttributeResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<AttributeState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = AttributeResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> AttributeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n));
             states = attributeApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> AttributeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         AttributeResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = attributeApplicationService.getCount(queryFilterMap);
+            long count = attributeApplicationService.getCount(criterion);
 
             AttributeStateDto.DtoConverter dtoConverter = new AttributeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

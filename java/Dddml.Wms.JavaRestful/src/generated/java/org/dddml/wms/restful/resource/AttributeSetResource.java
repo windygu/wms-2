@@ -74,16 +74,16 @@ public class AttributeSetResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<AttributeSetState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = AttributeSetResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> AttributeSetResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n));
             states = attributeSetApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> AttributeSetResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         AttributeSetResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = attributeSetApplicationService.getCount(queryFilterMap);
+            long count = attributeSetApplicationService.getCount(criterion);
 
             AttributeSetStateDto.DtoConverter dtoConverter = new AttributeSetStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

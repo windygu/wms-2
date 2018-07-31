@@ -74,16 +74,16 @@ public class LocatorResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<LocatorState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = LocatorResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> LocatorResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorMetadata.aliasMap.containsKey(n) ? LocatorMetadata.aliasMap.get(n) : n));
             states = locatorApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> LocatorResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorMetadata.aliasMap.containsKey(n) ? LocatorMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         LocatorResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = locatorApplicationService.getCount(queryFilterMap);
+            long count = locatorApplicationService.getCount(criterion);
 
             LocatorStateDto.DtoConverter dtoConverter = new LocatorStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

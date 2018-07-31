@@ -75,16 +75,16 @@ public class PicklistResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PicklistState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = PicklistResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> PicklistResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistMetadata.aliasMap.containsKey(n) ? PicklistMetadata.aliasMap.get(n) : n));
             states = picklistApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> PicklistResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistMetadata.aliasMap.containsKey(n) ? PicklistMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         PicklistResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = picklistApplicationService.getCount(queryFilterMap);
+            long count = picklistApplicationService.getCount(criterion);
 
             PicklistStateDto.DtoConverter dtoConverter = new PicklistStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

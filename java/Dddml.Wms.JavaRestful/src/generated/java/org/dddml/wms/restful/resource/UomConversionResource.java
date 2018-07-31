@@ -74,16 +74,16 @@ public class UomConversionResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<UomConversionState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = UomConversionResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> UomConversionResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n));
             states = uomConversionApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> UomConversionResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         UomConversionResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = uomConversionApplicationService.getCount(queryFilterMap);
+            long count = uomConversionApplicationService.getCount(criterion);
 
             UomConversionStateDto.DtoConverter dtoConverter = new UomConversionStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

@@ -74,16 +74,16 @@ public class OrganizationStructureTypeResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<OrganizationStructureTypeState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = OrganizationStructureTypeResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> OrganizationStructureTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n));
             states = organizationStructureTypeApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> OrganizationStructureTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         OrganizationStructureTypeResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = organizationStructureTypeApplicationService.getCount(queryFilterMap);
+            long count = organizationStructureTypeApplicationService.getCount(criterion);
 
             OrganizationStructureTypeStateDto.DtoConverter dtoConverter = new OrganizationStructureTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

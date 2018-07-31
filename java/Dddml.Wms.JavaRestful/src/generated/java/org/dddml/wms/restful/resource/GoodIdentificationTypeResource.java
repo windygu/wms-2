@@ -74,16 +74,16 @@ public class GoodIdentificationTypeResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<GoodIdentificationTypeState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = GoodIdentificationTypeResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> GoodIdentificationTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n));
             states = goodIdentificationTypeApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> GoodIdentificationTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         GoodIdentificationTypeResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = goodIdentificationTypeApplicationService.getCount(queryFilterMap);
+            long count = goodIdentificationTypeApplicationService.getCount(criterion);
 
             GoodIdentificationTypeStateDto.DtoConverter dtoConverter = new GoodIdentificationTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

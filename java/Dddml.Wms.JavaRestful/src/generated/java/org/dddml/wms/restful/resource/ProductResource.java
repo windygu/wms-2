@@ -74,16 +74,16 @@ public class ProductResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<ProductState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = ProductResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> ProductResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductMetadata.aliasMap.containsKey(n) ? ProductMetadata.aliasMap.get(n) : n));
             states = productApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> ProductResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductMetadata.aliasMap.containsKey(n) ? ProductMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         ProductResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = productApplicationService.getCount(queryFilterMap);
+            long count = productApplicationService.getCount(criterion);
 
             ProductStateDto.DtoConverter dtoConverter = new ProductStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

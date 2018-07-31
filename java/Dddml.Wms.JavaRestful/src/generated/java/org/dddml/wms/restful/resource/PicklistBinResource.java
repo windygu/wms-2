@@ -74,16 +74,16 @@ public class PicklistBinResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PicklistBinState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = PicklistBinResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> PicklistBinResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistBinMetadata.aliasMap.containsKey(n) ? PicklistBinMetadata.aliasMap.get(n) : n));
             states = picklistBinApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> PicklistBinResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistBinMetadata.aliasMap.containsKey(n) ? PicklistBinMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         PicklistBinResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = picklistBinApplicationService.getCount(queryFilterMap);
+            long count = picklistBinApplicationService.getCount(criterion);
 
             PicklistBinStateDto.DtoConverter dtoConverter = new PicklistBinStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

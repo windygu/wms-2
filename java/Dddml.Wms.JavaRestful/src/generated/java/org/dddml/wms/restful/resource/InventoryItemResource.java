@@ -75,16 +75,16 @@ public class InventoryItemResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryItemState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = InventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> InventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n));
             states = inventoryItemApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> InventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         InventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = inventoryItemApplicationService.getCount(queryFilterMap);
+            long count = inventoryItemApplicationService.getCount(criterion);
 
             InventoryItemStateDto.DtoConverter dtoConverter = new InventoryItemStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

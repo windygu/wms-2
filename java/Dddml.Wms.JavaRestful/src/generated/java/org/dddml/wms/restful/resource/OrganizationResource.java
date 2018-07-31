@@ -74,16 +74,16 @@ public class OrganizationResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PartyState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> OrganizationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n));
             states = partyApplicationService.get(OrganizationState.class, 
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> OrganizationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         OrganizationResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = partyApplicationService.getCount(queryFilterMap);
+            long count = partyApplicationService.getCount(criterion);
 
             PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

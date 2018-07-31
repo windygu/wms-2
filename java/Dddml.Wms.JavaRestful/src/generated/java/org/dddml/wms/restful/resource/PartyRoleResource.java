@@ -74,16 +74,16 @@ public class PartyRoleResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PartyRoleState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = PartyRoleResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> PartyRoleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n));
             states = partyRoleApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> PartyRoleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         PartyRoleResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = partyRoleApplicationService.getCount(queryFilterMap);
+            long count = partyRoleApplicationService.getCount(criterion);
 
             PartyRoleStateDto.DtoConverter dtoConverter = new PartyRoleStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

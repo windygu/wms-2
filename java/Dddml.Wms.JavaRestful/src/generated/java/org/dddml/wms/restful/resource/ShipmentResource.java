@@ -74,16 +74,16 @@ public class ShipmentResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<ShipmentState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = ShipmentResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> ShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentMetadata.aliasMap.containsKey(n) ? ShipmentMetadata.aliasMap.get(n) : n));
             states = shipmentApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> ShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentMetadata.aliasMap.containsKey(n) ? ShipmentMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         ShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = shipmentApplicationService.getCount(queryFilterMap);
+            long count = shipmentApplicationService.getCount(criterion);
 
             ShipmentStateDto.DtoConverter dtoConverter = new ShipmentStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

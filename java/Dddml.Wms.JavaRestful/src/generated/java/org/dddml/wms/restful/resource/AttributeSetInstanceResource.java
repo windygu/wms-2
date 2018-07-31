@@ -81,16 +81,16 @@ public class AttributeSetInstanceResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<AttributeSetInstanceState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = AttributeSetInstanceResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> AttributeSetInstanceResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceMetadata.aliasMap.get(n) : n));
             states = attributeSetInstanceApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> AttributeSetInstanceResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         AttributeSetInstanceResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = attributeSetInstanceApplicationService.getCount(queryFilterMap);
+            long count = attributeSetInstanceApplicationService.getCount(criterion);
 
             List<JSONObject> dynamicArray = new ArrayList<>();
             if (states != null) {

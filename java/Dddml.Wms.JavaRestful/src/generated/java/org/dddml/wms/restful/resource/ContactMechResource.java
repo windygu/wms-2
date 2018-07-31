@@ -74,16 +74,16 @@ public class ContactMechResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<ContactMechState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = ContactMechResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> ContactMechResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ContactMechMetadata.aliasMap.containsKey(n) ? ContactMechMetadata.aliasMap.get(n) : n));
             states = contactMechApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> ContactMechResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ContactMechMetadata.aliasMap.containsKey(n) ? ContactMechMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         ContactMechResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = contactMechApplicationService.getCount(queryFilterMap);
+            long count = contactMechApplicationService.getCount(criterion);
 
             ContactMechStateDto.DtoConverter dtoConverter = new ContactMechStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

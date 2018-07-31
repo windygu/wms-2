@@ -74,16 +74,16 @@ public class DamageHandlingMethodResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<DamageHandlingMethodState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = DamageHandlingMethodResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> DamageHandlingMethodResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n));
             states = damageHandlingMethodApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> DamageHandlingMethodResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         DamageHandlingMethodResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = damageHandlingMethodApplicationService.getCount(queryFilterMap);
+            long count = damageHandlingMethodApplicationService.getCount(criterion);
 
             DamageHandlingMethodStateDto.DtoConverter dtoConverter = new DamageHandlingMethodStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

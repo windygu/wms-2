@@ -75,16 +75,16 @@ public class OrderResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<OrderState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = OrderResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> OrderResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderMetadata.aliasMap.containsKey(n) ? OrderMetadata.aliasMap.get(n) : n));
             states = orderApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> OrderResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderMetadata.aliasMap.containsKey(n) ? OrderMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         OrderResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = orderApplicationService.getCount(queryFilterMap);
+            long count = orderApplicationService.getCount(criterion);
 
             OrderStateDto.DtoConverter dtoConverter = new OrderStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

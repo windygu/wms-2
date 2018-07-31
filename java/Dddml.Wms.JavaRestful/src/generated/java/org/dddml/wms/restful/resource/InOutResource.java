@@ -75,16 +75,16 @@ public class InOutResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InOutState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = InOutResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> InOutResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n));
             states = inOutApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> InOutResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         InOutResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = inOutApplicationService.getCount(queryFilterMap);
+            long count = inOutApplicationService.getCount(criterion);
 
             InOutStateDto.DtoConverter dtoConverter = new InOutStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

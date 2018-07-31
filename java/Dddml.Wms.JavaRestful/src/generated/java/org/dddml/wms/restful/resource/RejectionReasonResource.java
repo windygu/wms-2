@@ -74,16 +74,16 @@ public class RejectionReasonResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<RejectionReasonState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = RejectionReasonResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> RejectionReasonResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n));
             states = rejectionReasonApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> RejectionReasonResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         RejectionReasonResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = rejectionReasonApplicationService.getCount(queryFilterMap);
+            long count = rejectionReasonApplicationService.getCount(criterion);
 
             RejectionReasonStateDto.DtoConverter dtoConverter = new RejectionReasonStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

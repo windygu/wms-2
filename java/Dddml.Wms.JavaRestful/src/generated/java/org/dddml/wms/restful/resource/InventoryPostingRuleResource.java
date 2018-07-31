@@ -75,16 +75,16 @@ public class InventoryPostingRuleResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryPostingRuleState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = InventoryPostingRuleResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> InventoryPostingRuleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n));
             states = inventoryPostingRuleApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> InventoryPostingRuleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         InventoryPostingRuleResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = inventoryPostingRuleApplicationService.getCount(queryFilterMap);
+            long count = inventoryPostingRuleApplicationService.getCount(criterion);
 
             InventoryPostingRuleStateDto.DtoConverter dtoConverter = new InventoryPostingRuleStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

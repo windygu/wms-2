@@ -74,16 +74,16 @@ public class FacilityResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<FacilityState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = FacilityResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> FacilityResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (FacilityMetadata.aliasMap.containsKey(n) ? FacilityMetadata.aliasMap.get(n) : n));
             states = facilityApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> FacilityResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (FacilityMetadata.aliasMap.containsKey(n) ? FacilityMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         FacilityResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = facilityApplicationService.getCount(queryFilterMap);
+            long count = facilityApplicationService.getCount(criterion);
 
             FacilityStateDto.DtoConverter dtoConverter = new FacilityStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

@@ -74,16 +74,16 @@ public class LotResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<LotState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = LotResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> LotResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LotMetadata.aliasMap.containsKey(n) ? LotMetadata.aliasMap.get(n) : n));
             states = lotApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> LotResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LotMetadata.aliasMap.containsKey(n) ? LotMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         LotResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = lotApplicationService.getCount(queryFilterMap);
+            long count = lotApplicationService.getCount(criterion);
 
             LotStateDto.DtoConverter dtoConverter = new LotStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

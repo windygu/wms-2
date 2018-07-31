@@ -74,16 +74,16 @@ public class WarehouseResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<WarehouseState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = WarehouseResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> WarehouseResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseMetadata.aliasMap.containsKey(n) ? WarehouseMetadata.aliasMap.get(n) : n));
             states = warehouseApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> WarehouseResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseMetadata.aliasMap.containsKey(n) ? WarehouseMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         WarehouseResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = warehouseApplicationService.getCount(queryFilterMap);
+            long count = warehouseApplicationService.getCount(criterion);
 
             WarehouseStateDto.DtoConverter dtoConverter = new WarehouseStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

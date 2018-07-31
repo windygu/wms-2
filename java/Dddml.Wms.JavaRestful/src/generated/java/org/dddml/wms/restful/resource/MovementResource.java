@@ -75,16 +75,16 @@ public class MovementResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<MovementState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = MovementResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> MovementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n));
             states = movementApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> MovementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         MovementResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = movementApplicationService.getCount(queryFilterMap);
+            long count = movementApplicationService.getCount(criterion);
 
             MovementStateDto.DtoConverter dtoConverter = new MovementStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

@@ -74,16 +74,16 @@ public class UomResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<UomState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = UomResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> UomResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomMetadata.aliasMap.containsKey(n) ? UomMetadata.aliasMap.get(n) : n));
             states = uomApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> UomResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomMetadata.aliasMap.containsKey(n) ? UomMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         UomResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = uomApplicationService.getCount(queryFilterMap);
+            long count = uomApplicationService.getCount(criterion);
 
             UomStateDto.DtoConverter dtoConverter = new UomStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

@@ -74,16 +74,16 @@ public class AttributeSetInstanceExtensionFieldResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<AttributeSetInstanceExtensionFieldState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = AttributeSetInstanceExtensionFieldResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> AttributeSetInstanceExtensionFieldResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n));
             states = attributeSetInstanceExtensionFieldApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> AttributeSetInstanceExtensionFieldResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         AttributeSetInstanceExtensionFieldResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = attributeSetInstanceExtensionFieldApplicationService.getCount(queryFilterMap);
+            long count = attributeSetInstanceExtensionFieldApplicationService.getCount(criterion);
 
             AttributeSetInstanceExtensionFieldStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

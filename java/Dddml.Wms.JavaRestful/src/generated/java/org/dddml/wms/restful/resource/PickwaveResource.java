@@ -74,16 +74,16 @@ public class PickwaveResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PickwaveState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = PickwaveResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> PickwaveResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PickwaveMetadata.aliasMap.containsKey(n) ? PickwaveMetadata.aliasMap.get(n) : n));
             states = pickwaveApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> PickwaveResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PickwaveMetadata.aliasMap.containsKey(n) ? PickwaveMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         PickwaveResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = pickwaveApplicationService.getCount(queryFilterMap);
+            long count = pickwaveApplicationService.getCount(criterion);
 
             PickwaveStateDto.DtoConverter dtoConverter = new PickwaveStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

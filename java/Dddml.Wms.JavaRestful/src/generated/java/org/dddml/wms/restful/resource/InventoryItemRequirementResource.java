@@ -77,16 +77,16 @@ public class InventoryItemRequirementResource {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryItemRequirementState> states = null; 
-            Iterable<Map.Entry<String, Object>> queryFilterMap = InventoryItemRequirementResourceUtils.getQueryFilterMap(request.getParameterMap());
+            Criterion criterion = CriterionDto.toSubclass(
+                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                            .filter(kv -> InventoryItemRequirementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n));
             states = inventoryItemRequirementApplicationService.get(
-                        CriterionDto.toSubclass(
-                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                                        .filter(kv -> InventoryItemRequirementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n)),
+                        criterion,
                         InventoryItemRequirementResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
-            long count = inventoryItemRequirementApplicationService.getCount(queryFilterMap);
+            long count = inventoryItemRequirementApplicationService.getCount(criterion);
 
             InventoryItemRequirementStateDto.DtoConverter dtoConverter = new InventoryItemRequirementStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
