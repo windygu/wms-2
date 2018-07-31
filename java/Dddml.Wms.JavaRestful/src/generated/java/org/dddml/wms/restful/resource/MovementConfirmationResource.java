@@ -30,11 +30,11 @@ public class MovementConfirmationResource {
 
     @GetMapping
     public MovementConfirmationStateDto[] getAll( HttpServletRequest request,
-                                   @RequestParam(value = "sort", required = false) String sort,
-                                   @RequestParam(value = "fields", required = false) String fields,
-                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
-                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
-                                   @RequestParam(value = "filter", required = false) String filter) {
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                    @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                    @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -44,14 +44,14 @@ public class MovementConfirmationResource {
             if (!StringHelper.isNullOrEmpty(filter)) {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> MovementConfirmationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (MovementConfirmationMetadata.aliasMap.containsKey(n) ? MovementConfirmationMetadata.aliasMap.get(n) : n));
             states = movementConfirmationApplicationService.get(
-                CriterionDto.toSubclass(
-                        criterion,
-                        getCriterionTypeConverter(), 
-                        getPropertyTypeResolver(), 
-                        n -> (MovementConfirmationMetadata.aliasMap.containsKey(n) ? MovementConfirmationMetadata.aliasMap.get(n) : n)),
+                c,
                 MovementConfirmationResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
 
@@ -68,25 +68,29 @@ public class MovementConfirmationResource {
 
     @GetMapping("_page")
     public Page<MovementConfirmationStateDto> getPage( HttpServletRequest request,
-                                   @RequestParam(value = "fields", required = false) String fields,
-                                   @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                   @RequestParam(value = "size", required = false) @NotNull Integer size) {
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "page", defaultValue = "0") Integer page,
+                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<MovementConfirmationState> states = null; 
-            Criterion criterion = CriterionDto.toSubclass(
-                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
                     .filter(kv -> MovementConfirmationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                getCriterionTypeConverter(), 
-                getPropertyTypeResolver(), 
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (MovementConfirmationMetadata.aliasMap.containsKey(n) ? MovementConfirmationMetadata.aliasMap.get(n) : n));
             states = movementConfirmationApplicationService.get(
-                criterion,
+                c,
                 MovementConfirmationResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
-            long count = movementConfirmationApplicationService.getCount(criterion);
+            long count = movementConfirmationApplicationService.getCount(c);
 
             MovementConfirmationStateDto.DtoConverter dtoConverter = new MovementConfirmationStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {

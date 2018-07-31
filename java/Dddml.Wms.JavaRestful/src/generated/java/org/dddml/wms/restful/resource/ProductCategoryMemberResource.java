@@ -29,11 +29,11 @@ public class ProductCategoryMemberResource {
 
     @GetMapping
     public ProductCategoryMemberStateDto[] getAll( HttpServletRequest request,
-                                   @RequestParam(value = "sort", required = false) String sort,
-                                   @RequestParam(value = "fields", required = false) String fields,
-                                   @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
-                                   @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
-                                   @RequestParam(value = "filter", required = false) String filter) {
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
+                    @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
+                    @RequestParam(value = "filter", required = false) String filter) {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
@@ -43,14 +43,14 @@ public class ProductCategoryMemberResource {
             if (!StringHelper.isNullOrEmpty(filter)) {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ProductCategoryMemberResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n));
             states = productCategoryMemberApplicationService.get(
-                CriterionDto.toSubclass(
-                        criterion,
-                        getCriterionTypeConverter(), 
-                        getPropertyTypeResolver(), 
-                        n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n)),
+                c,
                 ProductCategoryMemberResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
 
@@ -67,25 +67,29 @@ public class ProductCategoryMemberResource {
 
     @GetMapping("_page")
     public Page<ProductCategoryMemberStateDto> getPage( HttpServletRequest request,
-                                   @RequestParam(value = "fields", required = false) String fields,
-                                   @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                   @RequestParam(value = "size", required = false) @NotNull Integer size) {
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "page", defaultValue = "0") Integer page,
+                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<ProductCategoryMemberState> states = null; 
-            Criterion criterion = CriterionDto.toSubclass(
-                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
                     .filter(kv -> ProductCategoryMemberResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                getCriterionTypeConverter(), 
-                getPropertyTypeResolver(), 
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n));
             states = productCategoryMemberApplicationService.get(
-                criterion,
+                c,
                 ProductCategoryMemberResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
-            long count = productCategoryMemberApplicationService.getCount(criterion);
+            long count = productCategoryMemberApplicationService.getCount(c);
 
             ProductCategoryMemberStateDto.DtoConverter dtoConverter = new ProductCategoryMemberStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
