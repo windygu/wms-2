@@ -42,19 +42,20 @@ public class InventoryItemRequirementResource {
         try {
 
             Iterable<InventoryItemRequirementState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = inventoryItemRequirementApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n)),
-                        InventoryItemRequirementResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = inventoryItemRequirementApplicationService.get(
-                        InventoryItemRequirementResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        InventoryItemRequirementResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = inventoryItemRequirementApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n)),
+                InventoryItemRequirementResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             InventoryItemRequirementStateDto.DtoConverter dtoConverter = new InventoryItemRequirementStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -73,19 +74,20 @@ public class InventoryItemRequirementResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = InventoryItemRequirementResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryItemRequirementState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> InventoryItemRequirementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InventoryItemRequirementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n));
             states = inventoryItemRequirementApplicationService.get(
-                        criterion,
-                        InventoryItemRequirementResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                InventoryItemRequirementResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = inventoryItemRequirementApplicationService.getCount(criterion);
 
             InventoryItemRequirementStateDto.DtoConverter dtoConverter = new InventoryItemRequirementStateDto.DtoConverter();
@@ -126,12 +128,16 @@ public class InventoryItemRequirementResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = inventoryItemRequirementApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = inventoryItemRequirementApplicationService.getCount(InventoryItemRequirementResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = inventoryItemRequirementApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryItemRequirementMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -237,10 +243,6 @@ public class InventoryItemRequirementResource {
     //    return new InventoryItemRequirementStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -275,7 +277,8 @@ public class InventoryItemRequirementResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InventoryItemRequirementMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InventoryItemRequirementMetadata.aliasMap);
         }
 
         public static InventoryItemId parseIdString(String idString) {

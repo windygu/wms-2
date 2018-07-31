@@ -39,19 +39,20 @@ public class ShipmentPackageResource {
         try {
 
             Iterable<ShipmentPackageState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = shipmentPackageApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n)),
-                        ShipmentPackageResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = shipmentPackageApplicationService.get(
-                        ShipmentPackageResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        ShipmentPackageResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = shipmentPackageApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n)),
+                ShipmentPackageResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             ShipmentPackageStateDto.DtoConverter dtoConverter = new ShipmentPackageStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class ShipmentPackageResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = ShipmentPackageResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<ShipmentPackageState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> ShipmentPackageResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ShipmentPackageResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n));
             states = shipmentPackageApplicationService.get(
-                        criterion,
-                        ShipmentPackageResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                ShipmentPackageResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = shipmentPackageApplicationService.getCount(criterion);
 
             ShipmentPackageStateDto.DtoConverter dtoConverter = new ShipmentPackageStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class ShipmentPackageResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = shipmentPackageApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = shipmentPackageApplicationService.getCount(ShipmentPackageResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = shipmentPackageApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -349,10 +355,6 @@ public class ShipmentPackageResource {
     //    return new ShipmentPackageStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -387,7 +389,8 @@ public class ShipmentPackageResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, ShipmentPackageMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ShipmentPackageMetadata.aliasMap);
         }
 
         public static ShipmentPackageId parseIdString(String idString) {

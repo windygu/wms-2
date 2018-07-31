@@ -39,19 +39,20 @@ public class AttributeSetResource {
         try {
 
             Iterable<AttributeSetState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = attributeSetApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)),
-                        AttributeSetResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = attributeSetApplicationService.get(
-                        AttributeSetResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        AttributeSetResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = attributeSetApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)),
+                AttributeSetResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             AttributeSetStateDto.DtoConverter dtoConverter = new AttributeSetStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class AttributeSetResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = AttributeSetResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<AttributeSetState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> AttributeSetResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> AttributeSetResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n));
             states = attributeSetApplicationService.get(
-                        criterion,
-                        AttributeSetResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                AttributeSetResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = attributeSetApplicationService.getCount(criterion);
 
             AttributeSetStateDto.DtoConverter dtoConverter = new AttributeSetStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class AttributeSetResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = attributeSetApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = attributeSetApplicationService.getCount(AttributeSetResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = attributeSetApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -324,10 +330,6 @@ public class AttributeSetResource {
     //    return new AttributeSetStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -362,7 +364,8 @@ public class AttributeSetResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, AttributeSetMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, AttributeSetMetadata.aliasMap);
         }
 
 

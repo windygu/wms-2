@@ -39,19 +39,20 @@ public class DocumentTypeResource {
         try {
 
             Iterable<DocumentTypeState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = documentTypeApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n)),
-                        DocumentTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = documentTypeApplicationService.get(
-                        DocumentTypeResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        DocumentTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = documentTypeApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n)),
+                DocumentTypeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             DocumentTypeStateDto.DtoConverter dtoConverter = new DocumentTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class DocumentTypeResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = DocumentTypeResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<DocumentTypeState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> DocumentTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> DocumentTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n));
             states = documentTypeApplicationService.get(
-                        criterion,
-                        DocumentTypeResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                DocumentTypeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = documentTypeApplicationService.getCount(criterion);
 
             DocumentTypeStateDto.DtoConverter dtoConverter = new DocumentTypeStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class DocumentTypeResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = documentTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = documentTypeApplicationService.getCount(DocumentTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = documentTypeApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -212,10 +218,6 @@ public class DocumentTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -250,7 +252,8 @@ public class DocumentTypeResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, DocumentTypeMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, DocumentTypeMetadata.aliasMap);
         }
 
 

@@ -42,19 +42,20 @@ public class SellableInventoryItemResource {
         try {
 
             Iterable<SellableInventoryItemState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = sellableInventoryItemApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemMetadata.aliasMap.containsKey(n) ? SellableInventoryItemMetadata.aliasMap.get(n) : n)),
-                        SellableInventoryItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = sellableInventoryItemApplicationService.get(
-                        SellableInventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        SellableInventoryItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = sellableInventoryItemApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (SellableInventoryItemMetadata.aliasMap.containsKey(n) ? SellableInventoryItemMetadata.aliasMap.get(n) : n)),
+                SellableInventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             SellableInventoryItemStateDto.DtoConverter dtoConverter = new SellableInventoryItemStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -73,19 +74,20 @@ public class SellableInventoryItemResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = SellableInventoryItemResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<SellableInventoryItemState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> SellableInventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemMetadata.aliasMap.containsKey(n) ? SellableInventoryItemMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> SellableInventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (SellableInventoryItemMetadata.aliasMap.containsKey(n) ? SellableInventoryItemMetadata.aliasMap.get(n) : n));
             states = sellableInventoryItemApplicationService.get(
-                        criterion,
-                        SellableInventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                SellableInventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = sellableInventoryItemApplicationService.getCount(criterion);
 
             SellableInventoryItemStateDto.DtoConverter dtoConverter = new SellableInventoryItemStateDto.DtoConverter();
@@ -126,12 +128,16 @@ public class SellableInventoryItemResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = sellableInventoryItemApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemMetadata.aliasMap.containsKey(n) ? SellableInventoryItemMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = sellableInventoryItemApplicationService.getCount(SellableInventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = sellableInventoryItemApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (SellableInventoryItemMetadata.aliasMap.containsKey(n) ? SellableInventoryItemMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -237,10 +243,6 @@ public class SellableInventoryItemResource {
     //    return new SellableInventoryItemStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -275,7 +277,8 @@ public class SellableInventoryItemResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, SellableInventoryItemMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, SellableInventoryItemMetadata.aliasMap);
         }
 
         public static InventoryItemId parseIdString(String idString) {

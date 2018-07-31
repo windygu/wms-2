@@ -39,19 +39,20 @@ public class ProductCategoryMemberResource {
         try {
 
             Iterable<ProductCategoryMemberState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = productCategoryMemberApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n)),
-                        ProductCategoryMemberResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = productCategoryMemberApplicationService.get(
-                        ProductCategoryMemberResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        ProductCategoryMemberResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = productCategoryMemberApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n)),
+                ProductCategoryMemberResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             ProductCategoryMemberStateDto.DtoConverter dtoConverter = new ProductCategoryMemberStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class ProductCategoryMemberResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = ProductCategoryMemberResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<ProductCategoryMemberState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> ProductCategoryMemberResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ProductCategoryMemberResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n));
             states = productCategoryMemberApplicationService.get(
-                        criterion,
-                        ProductCategoryMemberResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                ProductCategoryMemberResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = productCategoryMemberApplicationService.getCount(criterion);
 
             ProductCategoryMemberStateDto.DtoConverter dtoConverter = new ProductCategoryMemberStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class ProductCategoryMemberResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = productCategoryMemberApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = productCategoryMemberApplicationService.getCount(ProductCategoryMemberResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = productCategoryMemberApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (ProductCategoryMemberMetadata.aliasMap.containsKey(n) ? ProductCategoryMemberMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -226,10 +232,6 @@ public class ProductCategoryMemberResource {
     //    return new ProductCategoryMemberStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -264,7 +266,8 @@ public class ProductCategoryMemberResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, ProductCategoryMemberMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ProductCategoryMemberMetadata.aliasMap);
         }
 
         public static ProductCategoryMemberId parseIdString(String idString) {

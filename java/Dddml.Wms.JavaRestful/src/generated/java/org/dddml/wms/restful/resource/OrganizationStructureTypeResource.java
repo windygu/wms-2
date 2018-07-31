@@ -39,19 +39,20 @@ public class OrganizationStructureTypeResource {
         try {
 
             Iterable<OrganizationStructureTypeState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = organizationStructureTypeApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n)),
-                        OrganizationStructureTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = organizationStructureTypeApplicationService.get(
-                        OrganizationStructureTypeResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        OrganizationStructureTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = organizationStructureTypeApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n)),
+                OrganizationStructureTypeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             OrganizationStructureTypeStateDto.DtoConverter dtoConverter = new OrganizationStructureTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class OrganizationStructureTypeResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = OrganizationStructureTypeResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<OrganizationStructureTypeState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> OrganizationStructureTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrganizationStructureTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n));
             states = organizationStructureTypeApplicationService.get(
-                        criterion,
-                        OrganizationStructureTypeResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                OrganizationStructureTypeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = organizationStructureTypeApplicationService.getCount(criterion);
 
             OrganizationStructureTypeStateDto.DtoConverter dtoConverter = new OrganizationStructureTypeStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class OrganizationStructureTypeResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = organizationStructureTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = organizationStructureTypeApplicationService.getCount(OrganizationStructureTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = organizationStructureTypeApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -244,10 +250,6 @@ public class OrganizationStructureTypeResource {
     //    return new OrganizationStructureTypeStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -282,7 +284,8 @@ public class OrganizationStructureTypeResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, OrganizationStructureTypeMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, OrganizationStructureTypeMetadata.aliasMap);
         }
 
 

@@ -39,19 +39,20 @@ public class RejectionReasonResource {
         try {
 
             Iterable<RejectionReasonState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = rejectionReasonApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)),
-                        RejectionReasonResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = rejectionReasonApplicationService.get(
-                        RejectionReasonResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        RejectionReasonResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = rejectionReasonApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)),
+                RejectionReasonResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             RejectionReasonStateDto.DtoConverter dtoConverter = new RejectionReasonStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class RejectionReasonResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = RejectionReasonResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<RejectionReasonState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> RejectionReasonResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> RejectionReasonResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n));
             states = rejectionReasonApplicationService.get(
-                        criterion,
-                        RejectionReasonResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                RejectionReasonResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = rejectionReasonApplicationService.getCount(criterion);
 
             RejectionReasonStateDto.DtoConverter dtoConverter = new RejectionReasonStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class RejectionReasonResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = rejectionReasonApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = rejectionReasonApplicationService.getCount(RejectionReasonResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = rejectionReasonApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -244,10 +250,6 @@ public class RejectionReasonResource {
     //    return new RejectionReasonStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -282,7 +284,8 @@ public class RejectionReasonResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, RejectionReasonMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, RejectionReasonMetadata.aliasMap);
         }
 
 

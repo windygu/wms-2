@@ -39,19 +39,20 @@ public class DamageHandlingMethodResource {
         try {
 
             Iterable<DamageHandlingMethodState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = damageHandlingMethodApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n)),
-                        DamageHandlingMethodResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = damageHandlingMethodApplicationService.get(
-                        DamageHandlingMethodResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        DamageHandlingMethodResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = damageHandlingMethodApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n)),
+                DamageHandlingMethodResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             DamageHandlingMethodStateDto.DtoConverter dtoConverter = new DamageHandlingMethodStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class DamageHandlingMethodResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = DamageHandlingMethodResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<DamageHandlingMethodState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> DamageHandlingMethodResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> DamageHandlingMethodResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n));
             states = damageHandlingMethodApplicationService.get(
-                        criterion,
-                        DamageHandlingMethodResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                DamageHandlingMethodResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = damageHandlingMethodApplicationService.getCount(criterion);
 
             DamageHandlingMethodStateDto.DtoConverter dtoConverter = new DamageHandlingMethodStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class DamageHandlingMethodResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = damageHandlingMethodApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = damageHandlingMethodApplicationService.getCount(DamageHandlingMethodResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = damageHandlingMethodApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -212,10 +218,6 @@ public class DamageHandlingMethodResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -250,7 +252,8 @@ public class DamageHandlingMethodResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, DamageHandlingMethodMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, DamageHandlingMethodMetadata.aliasMap);
         }
 
 

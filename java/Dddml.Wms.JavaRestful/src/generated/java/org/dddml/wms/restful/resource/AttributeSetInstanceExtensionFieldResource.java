@@ -39,19 +39,20 @@ public class AttributeSetInstanceExtensionFieldResource {
         try {
 
             Iterable<AttributeSetInstanceExtensionFieldState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = attributeSetInstanceExtensionFieldApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)),
-                        AttributeSetInstanceExtensionFieldResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = attributeSetInstanceExtensionFieldApplicationService.get(
-                        AttributeSetInstanceExtensionFieldResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        AttributeSetInstanceExtensionFieldResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = attributeSetInstanceExtensionFieldApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)),
+                AttributeSetInstanceExtensionFieldResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             AttributeSetInstanceExtensionFieldStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class AttributeSetInstanceExtensionFieldResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = AttributeSetInstanceExtensionFieldResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<AttributeSetInstanceExtensionFieldState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> AttributeSetInstanceExtensionFieldResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> AttributeSetInstanceExtensionFieldResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n));
             states = attributeSetInstanceExtensionFieldApplicationService.get(
-                        criterion,
-                        AttributeSetInstanceExtensionFieldResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                AttributeSetInstanceExtensionFieldResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = attributeSetInstanceExtensionFieldApplicationService.getCount(criterion);
 
             AttributeSetInstanceExtensionFieldStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class AttributeSetInstanceExtensionFieldResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = attributeSetInstanceExtensionFieldApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = attributeSetInstanceExtensionFieldApplicationService.getCount(AttributeSetInstanceExtensionFieldResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = attributeSetInstanceExtensionFieldApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -244,10 +250,6 @@ public class AttributeSetInstanceExtensionFieldResource {
     //    return new AttributeSetInstanceExtensionFieldStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -282,7 +284,8 @@ public class AttributeSetInstanceExtensionFieldResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, AttributeSetInstanceExtensionFieldMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, AttributeSetInstanceExtensionFieldMetadata.aliasMap);
         }
 
 

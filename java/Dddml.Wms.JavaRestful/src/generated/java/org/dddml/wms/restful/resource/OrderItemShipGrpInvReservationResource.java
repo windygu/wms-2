@@ -39,19 +39,20 @@ public class OrderItemShipGrpInvReservationResource {
         try {
 
             Iterable<OrderItemShipGrpInvReservationState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = orderItemShipGrpInvReservationApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n)),
-                        OrderItemShipGrpInvReservationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = orderItemShipGrpInvReservationApplicationService.get(
-                        OrderItemShipGrpInvReservationResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        OrderItemShipGrpInvReservationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = orderItemShipGrpInvReservationApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n)),
+                OrderItemShipGrpInvReservationResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             OrderItemShipGrpInvReservationStateDto.DtoConverter dtoConverter = new OrderItemShipGrpInvReservationStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class OrderItemShipGrpInvReservationResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = OrderItemShipGrpInvReservationResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<OrderItemShipGrpInvReservationState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> OrderItemShipGrpInvReservationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrderItemShipGrpInvReservationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n));
             states = orderItemShipGrpInvReservationApplicationService.get(
-                        criterion,
-                        OrderItemShipGrpInvReservationResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                OrderItemShipGrpInvReservationResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = orderItemShipGrpInvReservationApplicationService.getCount(criterion);
 
             OrderItemShipGrpInvReservationStateDto.DtoConverter dtoConverter = new OrderItemShipGrpInvReservationStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class OrderItemShipGrpInvReservationResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = orderItemShipGrpInvReservationApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = orderItemShipGrpInvReservationApplicationService.getCount(OrderItemShipGrpInvReservationResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = orderItemShipGrpInvReservationApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -244,10 +250,6 @@ public class OrderItemShipGrpInvReservationResource {
     //    return new OrderItemShipGrpInvReservationStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -282,7 +284,8 @@ public class OrderItemShipGrpInvReservationResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, OrderItemShipGrpInvReservationMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, OrderItemShipGrpInvReservationMetadata.aliasMap);
         }
 
         public static OrderItemShipGrpInvResId parseIdString(String idString) {

@@ -40,19 +40,20 @@ public class MovementResource {
         try {
 
             Iterable<MovementState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = movementApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)),
-                        MovementResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = movementApplicationService.get(
-                        MovementResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        MovementResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = movementApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)),
+                MovementResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             MovementStateDto.DtoConverter dtoConverter = new MovementStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -71,19 +72,20 @@ public class MovementResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = MovementResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<MovementState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> MovementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> MovementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n));
             states = movementApplicationService.get(
-                        criterion,
-                        MovementResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                MovementResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = movementApplicationService.getCount(criterion);
 
             MovementStateDto.DtoConverter dtoConverter = new MovementStateDto.DtoConverter();
@@ -124,12 +126,16 @@ public class MovementResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = movementApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = movementApplicationService.getCount(MovementResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = movementApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -359,10 +365,6 @@ public class MovementResource {
     //    return new MovementStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -397,7 +399,8 @@ public class MovementResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, MovementMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, MovementMetadata.aliasMap);
         }
 
 

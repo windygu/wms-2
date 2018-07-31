@@ -39,19 +39,20 @@ public class PartyRoleResource {
         try {
 
             Iterable<PartyRoleState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = partyRoleApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n)),
-                        PartyRoleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = partyRoleApplicationService.get(
-                        PartyRoleResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        PartyRoleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = partyRoleApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n)),
+                PartyRoleResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             PartyRoleStateDto.DtoConverter dtoConverter = new PartyRoleStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class PartyRoleResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = PartyRoleResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PartyRoleState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> PartyRoleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> PartyRoleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n));
             states = partyRoleApplicationService.get(
-                        criterion,
-                        PartyRoleResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                PartyRoleResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = partyRoleApplicationService.getCount(criterion);
 
             PartyRoleStateDto.DtoConverter dtoConverter = new PartyRoleStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class PartyRoleResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = partyRoleApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = partyRoleApplicationService.getCount(PartyRoleResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = partyRoleApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -244,10 +250,6 @@ public class PartyRoleResource {
     //    return new PartyRoleStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -282,7 +284,8 @@ public class PartyRoleResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, PartyRoleMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, PartyRoleMetadata.aliasMap);
         }
 
         public static PartyRoleId parseIdString(String idString) {

@@ -39,19 +39,20 @@ public class OrganizationResource {
         try {
 
             Iterable<PartyState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = partyApplicationService.get(OrganizationState.class, 
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n)),
-                        OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = partyApplicationService.get(OrganizationState.class, 
-                        OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = partyApplicationService.get(OrganizationState.class, 
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n)),
+                OrganizationResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class OrganizationResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = OrganizationResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PartyState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> OrganizationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrganizationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n));
             states = partyApplicationService.get(OrganizationState.class, 
-                        criterion,
-                        OrganizationResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                OrganizationResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = partyApplicationService.getCount(criterion);
 
             PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
@@ -126,12 +128,16 @@ public class OrganizationResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = partyApplicationService.getCount(OrganizationState.class, CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = partyApplicationService.getCount(OrganizationState.class, OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = partyApplicationService.getCount(OrganizationState.class, CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -251,10 +257,6 @@ public class OrganizationResource {
     //    return new PartyStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -289,7 +291,8 @@ public class OrganizationResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, PartyMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, PartyMetadata.aliasMap);
         }
 
 

@@ -42,19 +42,20 @@ public class AttributeResource {
         try {
 
             Iterable<AttributeState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = attributeApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)),
-                        AttributeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = attributeApplicationService.get(
-                        AttributeResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        AttributeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = attributeApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)),
+                AttributeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             AttributeStateDto.DtoConverter dtoConverter = new AttributeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -73,19 +74,20 @@ public class AttributeResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = AttributeResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<AttributeState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> AttributeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> AttributeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n));
             states = attributeApplicationService.get(
-                        criterion,
-                        AttributeResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                AttributeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = attributeApplicationService.getCount(criterion);
 
             AttributeStateDto.DtoConverter dtoConverter = new AttributeStateDto.DtoConverter();
@@ -134,12 +136,16 @@ public class AttributeResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = attributeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = attributeApplicationService.getCount(AttributeResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = attributeApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -415,10 +421,6 @@ public class AttributeResource {
     //    return new AttributeStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -453,7 +455,8 @@ public class AttributeResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, AttributeMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, AttributeMetadata.aliasMap);
         }
 
 

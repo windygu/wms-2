@@ -41,19 +41,20 @@ public class PhysicalInventoryResource {
         try {
 
             Iterable<PhysicalInventoryState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = physicalInventoryApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n)),
-                        PhysicalInventoryResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = physicalInventoryApplicationService.get(
-                        PhysicalInventoryResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        PhysicalInventoryResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = physicalInventoryApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n)),
+                PhysicalInventoryResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             PhysicalInventoryStateDto.DtoConverter dtoConverter = new PhysicalInventoryStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -72,19 +73,20 @@ public class PhysicalInventoryResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = PhysicalInventoryResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<PhysicalInventoryState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> PhysicalInventoryResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> PhysicalInventoryResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n));
             states = physicalInventoryApplicationService.get(
-                        criterion,
-                        PhysicalInventoryResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                PhysicalInventoryResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = physicalInventoryApplicationService.getCount(criterion);
 
             PhysicalInventoryStateDto.DtoConverter dtoConverter = new PhysicalInventoryStateDto.DtoConverter();
@@ -125,12 +127,16 @@ public class PhysicalInventoryResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = physicalInventoryApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = physicalInventoryApplicationService.getCount(PhysicalInventoryResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = physicalInventoryApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -357,10 +363,6 @@ public class PhysicalInventoryResource {
     //    return new PhysicalInventoryStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -395,7 +397,8 @@ public class PhysicalInventoryResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, PhysicalInventoryMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, PhysicalInventoryMetadata.aliasMap);
         }
 
 

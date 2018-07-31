@@ -39,19 +39,20 @@ public class OrderShipmentResource {
         try {
 
             Iterable<OrderShipmentState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = orderShipmentApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n)),
-                        OrderShipmentResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = orderShipmentApplicationService.get(
-                        OrderShipmentResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        OrderShipmentResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = orderShipmentApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n)),
+                OrderShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             OrderShipmentStateDto.DtoConverter dtoConverter = new OrderShipmentStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class OrderShipmentResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = OrderShipmentResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<OrderShipmentState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> OrderShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrderShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n));
             states = orderShipmentApplicationService.get(
-                        criterion,
-                        OrderShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                OrderShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = orderShipmentApplicationService.getCount(criterion);
 
             OrderShipmentStateDto.DtoConverter dtoConverter = new OrderShipmentStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class OrderShipmentResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = orderShipmentApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = orderShipmentApplicationService.getCount(OrderShipmentResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = orderShipmentApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -226,10 +232,6 @@ public class OrderShipmentResource {
     //    return new OrderShipmentStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -264,7 +266,8 @@ public class OrderShipmentResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, OrderShipmentMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, OrderShipmentMetadata.aliasMap);
         }
 
         public static OrderShipmentId parseIdString(String idString) {

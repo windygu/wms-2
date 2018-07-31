@@ -40,19 +40,20 @@ public class InOutResource {
         try {
 
             Iterable<InOutState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = inOutApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n)),
-                        InOutResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = inOutApplicationService.get(
-                        InOutResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        InOutResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = inOutApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n)),
+                InOutResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             InOutStateDto.DtoConverter dtoConverter = new InOutStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -71,19 +72,20 @@ public class InOutResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = InOutResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InOutState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> InOutResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InOutResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n));
             states = inOutApplicationService.get(
-                        criterion,
-                        InOutResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                InOutResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = inOutApplicationService.getCount(criterion);
 
             InOutStateDto.DtoConverter dtoConverter = new InOutStateDto.DtoConverter();
@@ -124,12 +126,16 @@ public class InOutResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = inOutApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = inOutApplicationService.getCount(InOutResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = inOutApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -578,10 +584,6 @@ public class InOutResource {
     //    return new InOutStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -616,7 +618,8 @@ public class InOutResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InOutMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InOutMetadata.aliasMap);
         }
 
 

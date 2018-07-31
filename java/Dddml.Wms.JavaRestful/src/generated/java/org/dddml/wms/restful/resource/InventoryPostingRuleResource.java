@@ -40,19 +40,20 @@ public class InventoryPostingRuleResource {
         try {
 
             Iterable<InventoryPostingRuleState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = inventoryPostingRuleApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)),
-                        InventoryPostingRuleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = inventoryPostingRuleApplicationService.get(
-                        InventoryPostingRuleResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        InventoryPostingRuleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = inventoryPostingRuleApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)),
+                InventoryPostingRuleResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             InventoryPostingRuleStateDto.DtoConverter dtoConverter = new InventoryPostingRuleStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -71,19 +72,20 @@ public class InventoryPostingRuleResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = InventoryPostingRuleResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryPostingRuleState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> InventoryPostingRuleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InventoryPostingRuleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n));
             states = inventoryPostingRuleApplicationService.get(
-                        criterion,
-                        InventoryPostingRuleResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                InventoryPostingRuleResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = inventoryPostingRuleApplicationService.getCount(criterion);
 
             InventoryPostingRuleStateDto.DtoConverter dtoConverter = new InventoryPostingRuleStateDto.DtoConverter();
@@ -124,12 +126,16 @@ public class InventoryPostingRuleResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = inventoryPostingRuleApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = inventoryPostingRuleApplicationService.getCount(InventoryPostingRuleResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = inventoryPostingRuleApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -245,10 +251,6 @@ public class InventoryPostingRuleResource {
     //    return new InventoryPostingRuleStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -283,7 +285,8 @@ public class InventoryPostingRuleResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InventoryPostingRuleMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InventoryPostingRuleMetadata.aliasMap);
         }
 
 

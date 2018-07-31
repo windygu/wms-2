@@ -39,19 +39,20 @@ public class GoodIdentificationTypeResource {
         try {
 
             Iterable<GoodIdentificationTypeState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = goodIdentificationTypeApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n)),
-                        GoodIdentificationTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = goodIdentificationTypeApplicationService.get(
-                        GoodIdentificationTypeResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        GoodIdentificationTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = goodIdentificationTypeApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n)),
+                GoodIdentificationTypeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             GoodIdentificationTypeStateDto.DtoConverter dtoConverter = new GoodIdentificationTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class GoodIdentificationTypeResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = GoodIdentificationTypeResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<GoodIdentificationTypeState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> GoodIdentificationTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> GoodIdentificationTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n));
             states = goodIdentificationTypeApplicationService.get(
-                        criterion,
-                        GoodIdentificationTypeResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                GoodIdentificationTypeResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = goodIdentificationTypeApplicationService.getCount(criterion);
 
             GoodIdentificationTypeStateDto.DtoConverter dtoConverter = new GoodIdentificationTypeStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class GoodIdentificationTypeResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = goodIdentificationTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = goodIdentificationTypeApplicationService.getCount(GoodIdentificationTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = goodIdentificationTypeApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (GoodIdentificationTypeMetadata.aliasMap.containsKey(n) ? GoodIdentificationTypeMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -244,10 +250,6 @@ public class GoodIdentificationTypeResource {
     //    return new GoodIdentificationTypeStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -282,7 +284,8 @@ public class GoodIdentificationTypeResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, GoodIdentificationTypeMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, GoodIdentificationTypeMetadata.aliasMap);
         }
 
 

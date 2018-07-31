@@ -39,19 +39,20 @@ public class SupplierProductResource {
         try {
 
             Iterable<SupplierProductState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = supplierProductApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SupplierProductMetadata.aliasMap.containsKey(n) ? SupplierProductMetadata.aliasMap.get(n) : n)),
-                        SupplierProductResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = supplierProductApplicationService.get(
-                        SupplierProductResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        SupplierProductResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = supplierProductApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (SupplierProductMetadata.aliasMap.containsKey(n) ? SupplierProductMetadata.aliasMap.get(n) : n)),
+                SupplierProductResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             SupplierProductStateDto.DtoConverter dtoConverter = new SupplierProductStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class SupplierProductResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = SupplierProductResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<SupplierProductState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> SupplierProductResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SupplierProductMetadata.aliasMap.containsKey(n) ? SupplierProductMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> SupplierProductResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (SupplierProductMetadata.aliasMap.containsKey(n) ? SupplierProductMetadata.aliasMap.get(n) : n));
             states = supplierProductApplicationService.get(
-                        criterion,
-                        SupplierProductResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                SupplierProductResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = supplierProductApplicationService.getCount(criterion);
 
             SupplierProductStateDto.DtoConverter dtoConverter = new SupplierProductStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class SupplierProductResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = supplierProductApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SupplierProductMetadata.aliasMap.containsKey(n) ? SupplierProductMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = supplierProductApplicationService.getCount(SupplierProductResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = supplierProductApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (SupplierProductMetadata.aliasMap.containsKey(n) ? SupplierProductMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -226,10 +232,6 @@ public class SupplierProductResource {
     //    return new SupplierProductStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -264,7 +266,8 @@ public class SupplierProductResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, SupplierProductMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, SupplierProductMetadata.aliasMap);
         }
 
         public static SupplierProductId parseIdString(String idString) {

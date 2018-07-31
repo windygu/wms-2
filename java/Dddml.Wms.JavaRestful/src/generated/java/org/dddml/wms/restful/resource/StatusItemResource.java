@@ -39,19 +39,20 @@ public class StatusItemResource {
         try {
 
             Iterable<StatusItemState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = statusItemApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n)),
-                        StatusItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = statusItemApplicationService.get(
-                        StatusItemResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        StatusItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = statusItemApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n)),
+                StatusItemResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             StatusItemStateDto.DtoConverter dtoConverter = new StatusItemStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class StatusItemResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = StatusItemResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<StatusItemState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> StatusItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> StatusItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n));
             states = statusItemApplicationService.get(
-                        criterion,
-                        StatusItemResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                StatusItemResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = statusItemApplicationService.getCount(criterion);
 
             StatusItemStateDto.DtoConverter dtoConverter = new StatusItemStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class StatusItemResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = statusItemApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = statusItemApplicationService.getCount(StatusItemResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = statusItemApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -199,10 +205,6 @@ public class StatusItemResource {
     //    return new StatusItemStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -237,7 +239,8 @@ public class StatusItemResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, StatusItemMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, StatusItemMetadata.aliasMap);
         }
 
 

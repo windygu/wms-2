@@ -39,19 +39,20 @@ public class InventoryPRTriggeredResource {
         try {
 
             Iterable<InventoryPRTriggeredState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = inventoryPRTriggeredApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)),
-                        InventoryPRTriggeredResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = inventoryPRTriggeredApplicationService.get(
-                        InventoryPRTriggeredResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        InventoryPRTriggeredResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = inventoryPRTriggeredApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)),
+                InventoryPRTriggeredResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             InventoryPRTriggeredStateDto.DtoConverter dtoConverter = new InventoryPRTriggeredStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class InventoryPRTriggeredResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = InventoryPRTriggeredResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryPRTriggeredState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> InventoryPRTriggeredResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InventoryPRTriggeredResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n));
             states = inventoryPRTriggeredApplicationService.get(
-                        criterion,
-                        InventoryPRTriggeredResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                InventoryPRTriggeredResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = inventoryPRTriggeredApplicationService.getCount(criterion);
 
             InventoryPRTriggeredStateDto.DtoConverter dtoConverter = new InventoryPRTriggeredStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class InventoryPRTriggeredResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = inventoryPRTriggeredApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = inventoryPRTriggeredApplicationService.getCount(InventoryPRTriggeredResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = inventoryPRTriggeredApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -199,10 +205,6 @@ public class InventoryPRTriggeredResource {
     //    return new InventoryPRTriggeredStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -237,7 +239,8 @@ public class InventoryPRTriggeredResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InventoryPRTriggeredMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InventoryPRTriggeredMetadata.aliasMap);
         }
 
         public static InventoryPRTriggeredId parseIdString(String idString) {

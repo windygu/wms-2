@@ -90,6 +90,10 @@ public class QueryParamUtils {
 
     public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs, Map<String, String> nameMap) {
         String[] values = queryNameValuePairs.get("sort");
+        return getQuerySorts(values, nameMap);
+    }
+
+    public static List<String> getQuerySorts(String[] values, Map<String, String> nameMap) {
         List<String> sorts = new ArrayList<>();
         if (values == null) {
             return null;

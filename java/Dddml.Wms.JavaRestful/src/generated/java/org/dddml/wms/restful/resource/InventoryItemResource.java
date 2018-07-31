@@ -40,19 +40,20 @@ public class InventoryItemResource {
         try {
 
             Iterable<InventoryItemState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = inventoryItemApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)),
-                        InventoryItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = inventoryItemApplicationService.get(
-                        InventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        InventoryItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = inventoryItemApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)),
+                InventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             InventoryItemStateDto.DtoConverter dtoConverter = new InventoryItemStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -71,19 +72,20 @@ public class InventoryItemResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = InventoryItemResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<InventoryItemState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> InventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n));
             states = inventoryItemApplicationService.get(
-                        criterion,
-                        InventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                InventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = inventoryItemApplicationService.getCount(criterion);
 
             InventoryItemStateDto.DtoConverter dtoConverter = new InventoryItemStateDto.DtoConverter();
@@ -124,12 +126,16 @@ public class InventoryItemResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = inventoryItemApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = inventoryItemApplicationService.getCount(InventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = inventoryItemApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -215,10 +221,6 @@ public class InventoryItemResource {
     //    return new InventoryItemStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -253,7 +255,8 @@ public class InventoryItemResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InventoryItemMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InventoryItemMetadata.aliasMap);
         }
 
         public static InventoryItemId parseIdString(String idString) {

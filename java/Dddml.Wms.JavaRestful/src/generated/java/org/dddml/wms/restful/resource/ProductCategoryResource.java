@@ -39,19 +39,20 @@ public class ProductCategoryResource {
         try {
 
             Iterable<ProductCategoryState> states = null; 
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = productCategoryApplicationService.get(
-                        CriterionDto.toSubclass(
-                                JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n)),
-                        ProductCategoryResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
-                states = productCategoryApplicationService.get(
-                        ProductCategoryResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                        ProductCategoryResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
-                        firstResult, maxResults);
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            states = productCategoryApplicationService.get(
+                CriterionDto.toSubclass(
+                        criterion,
+                        getCriterionTypeConverter(), 
+                        getPropertyTypeResolver(), 
+                        n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n)),
+                ProductCategoryResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
 
             ProductCategoryStateDto.DtoConverter dtoConverter = new ProductCategoryStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -70,19 +71,20 @@ public class ProductCategoryResource {
                                    @RequestParam(value = "page", defaultValue = "0") Integer page,
                                    @RequestParam(value = "size", required = false) @NotNull Integer size) {
         try {
-            List<String> sort = ProductCategoryResourceUtils.getQuerySorts(request.getParameterMap());
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
             Iterable<ProductCategoryState> states = null; 
             Criterion criterion = CriterionDto.toSubclass(
-                    QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                            .filter(kv -> ProductCategoryResourceUtils.getFilterPropertyName(kv.getKey()) != null)
-                            .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
-                            getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n));
+                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ProductCategoryResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n));
             states = productCategoryApplicationService.get(
-                        criterion,
-                        ProductCategoryResourceUtils.getQuerySorts(request.getParameterMap()),
-                        firstResult, maxResults);
+                criterion,
+                ProductCategoryResourceUtils.getQuerySorts(request.getParameterMap()),
+                firstResult, maxResults);
             long count = productCategoryApplicationService.getCount(criterion);
 
             ProductCategoryStateDto.DtoConverter dtoConverter = new ProductCategoryStateDto.DtoConverter();
@@ -123,12 +125,16 @@ public class ProductCategoryResource {
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
+            CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = productCategoryApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n)));
+                criterion = JSONObject.parseObject(filter, CriterionDto.class);
             } else {
-                count = productCategoryApplicationService.getCount(ProductCategoryResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
+            count = productCategoryApplicationService.getCount(CriterionDto.toSubclass(criterion,
+                getCriterionTypeConverter(), 
+                getPropertyTypeResolver(), 
+                n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n)));
             return count;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -257,10 +263,6 @@ public class ProductCategoryResource {
     //    return new ProductCategoryStateEventDtoConverter();
     //}
 
-    protected String getQueryOrderSeparator() {
-        return ",";
-    }
-
     protected TypeConverter getCriterionTypeConverter() {
         return new DefaultTypeConverter();
     }
@@ -295,7 +297,8 @@ public class ProductCategoryResource {
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs, ProductCategoryMetadata.aliasMap);
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ProductCategoryMetadata.aliasMap);
         }
 
 
