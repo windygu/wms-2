@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class PicklistBinResource {
             Iterable<PicklistBinState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = PicklistBinResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = picklistBinApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> PicklistBinResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistBinMetadata.aliasMap.containsKey(n) ? PicklistBinMetadata.aliasMap.get(n) : n)),
                         PicklistBinResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = picklistBinApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class PicklistBinResource {
             Page.PageImpl<PicklistBinStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toPicklistBinStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -367,11 +373,11 @@ public class PicklistBinResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, PicklistBinMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, PicklistBinMetadata.aliasMap);
         }
 
 

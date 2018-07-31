@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -82,7 +83,11 @@ public class AttributeSetInstanceResource {
             Iterable<AttributeSetInstanceState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = AttributeSetInstanceResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = attributeSetInstanceApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> AttributeSetInstanceResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceMetadata.aliasMap.get(n) : n)),
                         AttributeSetInstanceResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = attributeSetInstanceApplicationService.getCount(queryFilterMap);
@@ -233,11 +238,11 @@ public class AttributeSetInstanceResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, AttributeSetInstanceMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, AttributeSetInstanceMetadata.aliasMap);
         }
 
 

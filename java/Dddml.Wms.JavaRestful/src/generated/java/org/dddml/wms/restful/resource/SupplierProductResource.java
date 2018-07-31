@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class SupplierProductResource {
             Iterable<SupplierProductState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = SupplierProductResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = supplierProductApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> SupplierProductResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SupplierProductMetadata.aliasMap.containsKey(n) ? SupplierProductMetadata.aliasMap.get(n) : n)),
                         SupplierProductResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = supplierProductApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class SupplierProductResource {
             Page.PageImpl<SupplierProductStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toSupplierProductStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -254,11 +260,11 @@ public class SupplierProductResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, SupplierProductMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, SupplierProductMetadata.aliasMap);
         }
 
         public static SupplierProductId parseIdString(String idString) {

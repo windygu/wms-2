@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class ShipmentMethodTypeResource {
             Iterable<ShipmentMethodTypeState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = ShipmentMethodTypeResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = shipmentMethodTypeApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> ShipmentMethodTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentMethodTypeMetadata.aliasMap.containsKey(n) ? ShipmentMethodTypeMetadata.aliasMap.get(n) : n)),
                         ShipmentMethodTypeResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = shipmentMethodTypeApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class ShipmentMethodTypeResource {
             Page.PageImpl<ShipmentMethodTypeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toShipmentMethodTypeStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -272,11 +278,11 @@ public class ShipmentMethodTypeResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, ShipmentMethodTypeMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, ShipmentMethodTypeMetadata.aliasMap);
         }
 
 

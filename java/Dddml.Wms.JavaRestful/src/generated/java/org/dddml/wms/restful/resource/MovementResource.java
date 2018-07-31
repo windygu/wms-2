@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -76,7 +77,11 @@ public class MovementResource {
             Iterable<MovementState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = MovementResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = movementApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> MovementResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)),
                         MovementResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = movementApplicationService.getCount(queryFilterMap);
@@ -90,6 +95,7 @@ public class MovementResource {
             Page.PageImpl<MovementStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toMovementStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -387,11 +393,11 @@ public class MovementResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, MovementMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, MovementMetadata.aliasMap);
         }
 
 

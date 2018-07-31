@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class DamageTypeResource {
             Iterable<DamageTypeState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = DamageTypeResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = damageTypeApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> DamageTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageTypeMetadata.aliasMap.containsKey(n) ? DamageTypeMetadata.aliasMap.get(n) : n)),
                         DamageTypeResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = damageTypeApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class DamageTypeResource {
             Page.PageImpl<DamageTypeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toDamageTypeStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -240,11 +246,11 @@ public class DamageTypeResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, DamageTypeMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, DamageTypeMetadata.aliasMap);
         }
 
 

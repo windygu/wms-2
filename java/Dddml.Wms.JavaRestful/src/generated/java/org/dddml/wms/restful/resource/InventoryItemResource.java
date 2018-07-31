@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -76,7 +77,11 @@ public class InventoryItemResource {
             Iterable<InventoryItemState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = InventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = inventoryItemApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> InventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)),
                         InventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = inventoryItemApplicationService.getCount(queryFilterMap);
@@ -90,6 +95,7 @@ public class InventoryItemResource {
             Page.PageImpl<InventoryItemStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toInventoryItemStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -243,11 +249,11 @@ public class InventoryItemResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, InventoryItemMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InventoryItemMetadata.aliasMap);
         }
 
         public static InventoryItemId parseIdString(String idString) {

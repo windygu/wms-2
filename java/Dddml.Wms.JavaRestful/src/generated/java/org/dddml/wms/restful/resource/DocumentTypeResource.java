@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class DocumentTypeResource {
             Iterable<DocumentTypeState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = DocumentTypeResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = documentTypeApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> DocumentTypeResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n)),
                         DocumentTypeResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = documentTypeApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class DocumentTypeResource {
             Page.PageImpl<DocumentTypeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toDocumentTypeStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -240,11 +246,11 @@ public class DocumentTypeResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, DocumentTypeMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, DocumentTypeMetadata.aliasMap);
         }
 
 

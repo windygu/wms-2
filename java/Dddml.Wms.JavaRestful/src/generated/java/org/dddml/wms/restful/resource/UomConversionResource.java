@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class UomConversionResource {
             Iterable<UomConversionState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = UomConversionResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = uomConversionApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> UomConversionResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n)),
                         UomConversionResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = uomConversionApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class UomConversionResource {
             Page.PageImpl<UomConversionStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toUomConversionStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -272,11 +278,11 @@ public class UomConversionResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, UomConversionMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, UomConversionMetadata.aliasMap);
         }
 
         public static UomConversionId parseIdString(String idString) {

@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class AttributeSetInstanceExtensionFieldResource {
             Iterable<AttributeSetInstanceExtensionFieldState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = AttributeSetInstanceExtensionFieldResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = attributeSetInstanceExtensionFieldApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> AttributeSetInstanceExtensionFieldResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)),
                         AttributeSetInstanceExtensionFieldResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = attributeSetInstanceExtensionFieldApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class AttributeSetInstanceExtensionFieldResource {
             Page.PageImpl<AttributeSetInstanceExtensionFieldStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toAttributeSetInstanceExtensionFieldStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -272,11 +278,11 @@ public class AttributeSetInstanceExtensionFieldResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, AttributeSetInstanceExtensionFieldMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, AttributeSetInstanceExtensionFieldMetadata.aliasMap);
         }
 
 

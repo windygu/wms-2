@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -78,7 +79,11 @@ public class SellableInventoryItemResource {
             Iterable<SellableInventoryItemState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = SellableInventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = sellableInventoryItemApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> SellableInventoryItemResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemMetadata.aliasMap.containsKey(n) ? SellableInventoryItemMetadata.aliasMap.get(n) : n)),
                         SellableInventoryItemResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = sellableInventoryItemApplicationService.getCount(queryFilterMap);
@@ -92,6 +97,7 @@ public class SellableInventoryItemResource {
             Page.PageImpl<SellableInventoryItemStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toSellableInventoryItemStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -265,11 +271,11 @@ public class SellableInventoryItemResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, SellableInventoryItemMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, SellableInventoryItemMetadata.aliasMap);
         }
 
         public static InventoryItemId parseIdString(String idString) {

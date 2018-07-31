@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -76,7 +77,11 @@ public class OrderResource {
             Iterable<OrderState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = OrderResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = orderApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> OrderResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderMetadata.aliasMap.containsKey(n) ? OrderMetadata.aliasMap.get(n) : n)),
                         OrderResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = orderApplicationService.getCount(queryFilterMap);
@@ -90,6 +95,7 @@ public class OrderResource {
             Page.PageImpl<OrderStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toOrderStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -599,11 +605,11 @@ public class OrderResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, OrderMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, OrderMetadata.aliasMap);
         }
 
 

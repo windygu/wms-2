@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -76,7 +77,11 @@ public class InOutResource {
             Iterable<InOutState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = InOutResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = inOutApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> InOutResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n)),
                         InOutResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = inOutApplicationService.getCount(queryFilterMap);
@@ -90,6 +95,7 @@ public class InOutResource {
             Page.PageImpl<InOutStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toInOutStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -606,11 +612,11 @@ public class InOutResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, InOutMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InOutMetadata.aliasMap);
         }
 
 

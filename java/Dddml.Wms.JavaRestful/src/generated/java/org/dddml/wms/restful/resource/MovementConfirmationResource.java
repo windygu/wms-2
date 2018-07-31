@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -76,7 +77,11 @@ public class MovementConfirmationResource {
             Iterable<MovementConfirmationState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = MovementConfirmationResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = movementConfirmationApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> MovementConfirmationResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementConfirmationMetadata.aliasMap.containsKey(n) ? MovementConfirmationMetadata.aliasMap.get(n) : n)),
                         MovementConfirmationResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = movementConfirmationApplicationService.getCount(queryFilterMap);
@@ -90,6 +95,7 @@ public class MovementConfirmationResource {
             Page.PageImpl<MovementConfirmationStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toMovementConfirmationStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -370,11 +376,11 @@ public class MovementConfirmationResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, MovementConfirmationMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, MovementConfirmationMetadata.aliasMap);
         }
 
 

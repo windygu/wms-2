@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class RejectionReasonResource {
             Iterable<RejectionReasonState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = RejectionReasonResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = rejectionReasonApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> RejectionReasonResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)),
                         RejectionReasonResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = rejectionReasonApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class RejectionReasonResource {
             Page.PageImpl<RejectionReasonStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toRejectionReasonStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -272,11 +278,11 @@ public class RejectionReasonResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, RejectionReasonMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, RejectionReasonMetadata.aliasMap);
         }
 
 

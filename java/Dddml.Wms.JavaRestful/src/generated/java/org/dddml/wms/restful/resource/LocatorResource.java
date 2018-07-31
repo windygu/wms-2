@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class LocatorResource {
             Iterable<LocatorState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = LocatorResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = locatorApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> LocatorResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorMetadata.aliasMap.containsKey(n) ? LocatorMetadata.aliasMap.get(n) : n)),
                         LocatorResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = locatorApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class LocatorResource {
             Page.PageImpl<LocatorStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toLocatorStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -272,11 +278,11 @@ public class LocatorResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, LocatorMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, LocatorMetadata.aliasMap);
         }
 
 

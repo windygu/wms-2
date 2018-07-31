@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -76,7 +77,11 @@ public class InventoryPostingRuleResource {
             Iterable<InventoryPostingRuleState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = InventoryPostingRuleResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = inventoryPostingRuleApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> InventoryPostingRuleResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)),
                         InventoryPostingRuleResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = inventoryPostingRuleApplicationService.getCount(queryFilterMap);
@@ -90,6 +95,7 @@ public class InventoryPostingRuleResource {
             Page.PageImpl<InventoryPostingRuleStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toInventoryPostingRuleStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -273,11 +279,11 @@ public class InventoryPostingRuleResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, InventoryPostingRuleMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InventoryPostingRuleMetadata.aliasMap);
         }
 
 

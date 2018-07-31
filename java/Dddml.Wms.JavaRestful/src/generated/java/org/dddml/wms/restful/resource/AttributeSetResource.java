@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class AttributeSetResource {
             Iterable<AttributeSetState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = AttributeSetResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = attributeSetApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> AttributeSetResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)),
                         AttributeSetResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = attributeSetApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class AttributeSetResource {
             Page.PageImpl<AttributeSetStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toAttributeSetStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -352,11 +358,11 @@ public class AttributeSetResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, AttributeSetMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, AttributeSetMetadata.aliasMap);
         }
 
 

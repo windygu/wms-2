@@ -1,6 +1,7 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
@@ -75,7 +76,11 @@ public class InventoryPRTriggeredResource {
             Iterable<InventoryPRTriggeredState> states = null; 
             Iterable<Map.Entry<String, Object>> queryFilterMap = InventoryPRTriggeredResourceUtils.getQueryFilterMap(request.getParameterMap());
             states = inventoryPRTriggeredApplicationService.get(
-                        queryFilterMap,
+                        CriterionDto.toSubclass(
+                                QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                                        .filter(kv -> InventoryPRTriggeredResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                                        .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue()))),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)),
                         InventoryPRTriggeredResourceUtils.getQuerySorts(request.getParameterMap()),
                         firstResult, maxResults);
             long count = inventoryPRTriggeredApplicationService.getCount(queryFilterMap);
@@ -89,6 +94,7 @@ public class InventoryPRTriggeredResource {
             Page.PageImpl<InventoryPRTriggeredStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toInventoryPRTriggeredStateDtoList(states), 0);//todo
             statePage.setSize(size);
             statePage.setNumber(page);
+            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -227,11 +233,11 @@ public class InventoryPRTriggeredResource {
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator);
+            return QueryParamUtils.getQueryOrders(str, separator, InventoryPRTriggeredMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
-            return QueryParamUtils.getQuerySorts(queryNameValuePairs);
+            return QueryParamUtils.getQuerySorts(queryNameValuePairs, InventoryPRTriggeredMetadata.aliasMap);
         }
 
         public static InventoryPRTriggeredId parseIdString(String idString) {
