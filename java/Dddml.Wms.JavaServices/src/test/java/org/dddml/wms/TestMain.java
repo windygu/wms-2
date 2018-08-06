@@ -38,9 +38,8 @@ public class TestMain {
 
         // //////////////////  initialize database data /////////////////
         if(true) { // if need to initialize, switch to true, else to false.
-            InitEntityXmlData.createEntityXmlData();
             try {
-                InitInventoryPostingRules.createDefaultInventoryPostingRules();
+                InitAttributeSets.createDefaultAttributeSets();
             } catch (Exception ex) {
                 if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
                     ex.printStackTrace();
@@ -49,8 +48,10 @@ public class TestMain {
                     throw new RuntimeException(ex);
                 }
             }
+
+            InitEntityXmlData.createEntityXmlData();
             try {
-                InitAttributeSets.createDefaultAttributeSets();
+                InitInventoryPostingRules.createDefaultInventoryPostingRules();
             } catch (Exception ex) {
                 if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
                     ex.printStackTrace();

@@ -23,9 +23,19 @@ import java.util.List;
  */
 public class InitAttributeSets {
 
+    public static final String FLUFF_PULP_PRODUCT_CATEGORY_ID ="FluffPulp";
+
+    public static final String FSC_FIELD_NAME = "_F_C5_1_";
+
+    public static final String SECONDARY_QUANTITY_UOM_FIELD_NAME = "_F_C5_0_";
+
+    // ----------------- 属性集（产品的属性集、库存单元的属性集的 Id） ---------------------------
+
     public static final String FLUFF_PULP_ATTR_SET_ID = "FluffPulpAttrSet";
 
     public static final String KRAFT_LINERBOARD_ATTR_SET_ID = "KraftLinerboardAttrSet";
+
+    public static final String CORRUGATED_PAPER_ATTR_SET_ID = "CorrugatedPaperAttrSet";
 
     public static final String KRAFT_LINERBOARD_PRODUCT_ATTR_SET_ID = "KLBProductAttrSet";
 
@@ -34,6 +44,7 @@ public class InitAttributeSets {
     public static final String FLUFF_PULP_PRODUCT_ATTR_SET_ID ="FluffPulpProductAttrSet";
 
 
+    // ------------------------- 库存单元属性集的属性 -----------------------------
 
     static final String[][] FLUFF_PULP_ATTRS = new String[][]{
             // 序列号（卷号）。
@@ -49,6 +60,14 @@ public class InitAttributeSets {
             new String[]{"airDryPct", "Int32"},
     };
 
+    static final String[][] KRAFT_LINERBOARD_ATTRS = new String[][]{
+            new String[]{"SecondaryUomQuantity", "Decimal", "false", "_F_N_0_"},// 次计量单位数量
+    };
+
+    static final String[][] CORRUGATED_PAPER_ATTRS = new String[][]{
+            new String[]{"SecondaryUomQuantity", "Decimal", "false", "_F_N_0_"},// 次计量单位数量
+    };
+
     static final String ATTR_QUALITY_STATUS_ID = "QualityStatus";
 
     static final String[][] ATTR_QUALITY_STATUS_VALUES = new String[][] {
@@ -58,19 +77,16 @@ public class InitAttributeSets {
             new String[]{"UM-NG", "单货不符，质量缺陷"}
     };
 
-    static final String[][] KRAFT_LINERBOARD_ATTRS = new String[][]{
-            new String[]{"SecondaryUomQuantity", "Decimal", "false", "_F_N_0_"},// 次计量单位数量
-    };
+    // ---------------------------- 产品的属性集实例的 Id --------------------------
 
     static final String KLB_SECONDARY_QTY_UOM_M_FSC_NO_ATTR_SET_INST_ID = "KLBSecondaryQtyUom:M-FSC:NO";
 
-    static final String FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID = "FPSecondaryQtyUom:ADMT-FSC:NO";
+    static final String CP_SECONDARY_QTY_UOM_M_FSC_YES_ATTR_SET_INST_ID = "CPSecondaryQtyUom:M-FSC:YES";
 
-    public static final String FSC_FIELD_NAME = "_F_C5_1_";
+    //static final String FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID = "FPSecondaryQtyUom:ADMT-FSC:NO";
+    static final String FP_SECONDARY_QTY_UOM_ADMT_ATTR_SET_INST_ID = "FPSecondaryQtyUom:ADMT";
 
-    public static final String SECONDARY_QUANTITY_UOM_FIELD_NAME = "_F_C5_0_";
 
-    public static final String FLUFF_PULP_PRODUCT_CATEGORY_ID ="FluffPulp";
 
     static AttributeApplicationService attributeApplicationService;
 
@@ -83,6 +99,21 @@ public class InitAttributeSets {
         attributeSetApplicationService = (AttributeSetApplicationService) ApplicationContext.current.get("attributeSetApplicationService");
         attributeSetInstanceApplicationService = (AttributeSetInstanceApplicationService) ApplicationContext.current.get("attributeSetInstanceApplicationService");
 
+        // 牛卡纸库存单元属性集
+        List<AttributeCommand.CreateAttribute> klbAttrs = createAttributes(KRAFT_LINERBOARD_ATTRS);
+        klbAttrs.add(createQualityStatusAttribute());
+        AttributeSetCommand.CreateAttributeSet klbAttrSet = createAttributeSet(KRAFT_LINERBOARD_ATTR_SET_ID,
+                klbAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
+        save(klbAttrs, Collections.singletonList(klbAttrSet));
+
+        // 瓦楞纸库存单元属性集
+        List<AttributeCommand.CreateAttribute> cpAttrs = createAttributes(CORRUGATED_PAPER_ATTRS);
+        cpAttrs.add(createQualityStatusAttribute());
+        AttributeSetCommand.CreateAttributeSet cpAttrSet = createAttributeSet(CORRUGATED_PAPER_ATTR_SET_ID,
+                cpAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
+        save(cpAttrs, Collections.singletonList(cpAttrSet));
+
+        // 绒毛浆库存单元属性集
         // create Fluff Pulp AttributeSet
         List<AttributeCommand.CreateAttribute> fpAttrs = createAttributes(FLUFF_PULP_ATTRS);
         fpAttrs.add(createQualityStatusAttribute());
@@ -90,14 +121,8 @@ public class InitAttributeSets {
                 fpAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(fpAttrs, Collections.singletonList(fpAttrSet));
 
-        //create KRAFT_LINERBOARD_ATTRS（牛卡纸库存实例属性集）
-        List<AttributeCommand.CreateAttribute> klbAttrs = createAttributes(KRAFT_LINERBOARD_ATTRS);
-        klbAttrs.add(createQualityStatusAttribute());
-        AttributeSetCommand.CreateAttributeSet klbAttrSet = createAttributeSet(KRAFT_LINERBOARD_ATTR_SET_ID,
-                klbAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
-        save(klbAttrs, Collections.singletonList(klbAttrSet));
 
-        // -----------------------------------------------------------
+        // ------------------------------产品属性集以及相关实例 -----------------------------
         //牛卡纸产品属性集
         String sqUomAttrId = createSecondaryQuantityUomAttribute();//次计量单位属性
         String fscAttrId = createFscAttribute();//FSC 认证属性
@@ -113,15 +138,22 @@ public class InitAttributeSets {
         AttributeSetCommand.CreateAttributeSet cpPrdAttrSet = createAttributeSet(CORRUGATED_PAPER_PRODUCT_ATTR_SET_ID,
                 new String[]{sqUomAttrId, fscAttrId});
         saveAttributeSet(cpPrdAttrSet);
+        //创建瓦楞纸产品属性集实例
+        AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomMAndFscYesAttrSetInst = createCpSecondaryQtyUomMAndFscYesAttrSetInst();
+        attributeSetInstanceApplicationService.when(secondaryQtyUomMAndFscYesAttrSetInst);
 
         // -----------------------------------------------------------
         //绒毛浆产品属性集
+        //AttributeSetCommand.CreateAttributeSet fpPrdAttrSet = createAttributeSet(FLUFF_PULP_PRODUCT_ATTR_SET_ID,
+        //        new String[]{sqUomAttrId, fscAttrId});
         AttributeSetCommand.CreateAttributeSet fpPrdAttrSet = createAttributeSet(FLUFF_PULP_PRODUCT_ATTR_SET_ID,
-                new String[]{sqUomAttrId, fscAttrId});
+                new String[]{sqUomAttrId});
         saveAttributeSet(fpPrdAttrSet);
         //创建绒毛浆产品属性集实例
-        AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomAdtmAndFscNoAttrSetInst = createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst();
-        attributeSetInstanceApplicationService.when(secondaryQtyUomAdtmAndFscNoAttrSetInst);
+        //AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomAdtmAndFscNoAttrSetInst = createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst();
+        //attributeSetInstanceApplicationService.when(secondaryQtyUomAdtmAndFscNoAttrSetInst);
+        AttributeSetInstanceCommand.CreateAttributeSetInstance secondaryQtyUomAdtmAttrSetInst = createFpSecondaryQtyUomAdtmAttrSetInst();
+        attributeSetInstanceApplicationService.when(secondaryQtyUomAdtmAttrSetInst);
 
     }
 
@@ -137,17 +169,41 @@ public class InitAttributeSets {
         return attrSetInst;
     }
 
-    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst() {
+    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createCpSecondaryQtyUomMAndFscYesAttrSetInst() {
         AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
-        String attributeSetInstanceId = FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID;
+        String attributeSetInstanceId = CP_SECONDARY_QTY_UOM_M_FSC_YES_ATTR_SET_INST_ID;
         attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
-        attrSetInst.setAttributeSetId(FLUFF_PULP_PRODUCT_ATTR_SET_ID);
-        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "ADMT");
-        ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "N");
+        attrSetInst.setAttributeSetId(CORRUGATED_PAPER_PRODUCT_ATTR_SET_ID);
+        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "M");
+        ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "Y");
         attrSetInst.setActive(true);
         attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
         return attrSetInst;
     }
+
+    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createFpSecondaryQtyUomAdtmAttrSetInst() {
+        AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
+        String attributeSetInstanceId = FP_SECONDARY_QTY_UOM_ADMT_ATTR_SET_INST_ID;
+        attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
+        attrSetInst.setAttributeSetId(FLUFF_PULP_PRODUCT_ATTR_SET_ID);
+        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "ADMT");
+        //ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "N");
+        attrSetInst.setActive(true);
+        attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
+        return attrSetInst;
+    }
+
+//    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst() {
+//        AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
+//        String attributeSetInstanceId = FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID;
+//        attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
+//        attrSetInst.setAttributeSetId(FLUFF_PULP_PRODUCT_ATTR_SET_ID);
+//        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "ADMT");
+//        ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "N");
+//        attrSetInst.setActive(true);
+//        attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
+//        return attrSetInst;
+//    }
 
     private static AttributeCommand.CreateAttribute createQualityStatusAttribute() {
         AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();

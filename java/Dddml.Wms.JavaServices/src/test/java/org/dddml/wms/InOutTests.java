@@ -92,7 +92,7 @@ public class InOutTests {
         prd_1.setProductName("Test_" + prd_1.getProductId());
         prd_1.setPrimaryProductCategoryId(InitAttributeSets.FLUFF_PULP_PRODUCT_CATEGORY_ID);
         prd_1.setAttributeSetId(InitAttributeSets.FLUFF_PULP_ATTR_SET_ID);//"FluffPulpAttrSet");
-        prd_1.setAttributeSetInstanceId(InitAttributeSets.FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID);
+        prd_1.setAttributeSetInstanceId(InitAttributeSets.FP_SECONDARY_QTY_UOM_ADMT_ATTR_SET_INST_ID);
         prd_1.setIsSerialNumbered(true);
         prd_1.setQuantityUomId(UomIds.kg);
         prd_1.setCommandId(UUID.randomUUID().toString());

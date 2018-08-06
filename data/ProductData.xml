@@ -5,20 +5,65 @@
   <ProductCategory productCategoryId="KLB" categoryName="Kraft Linerboard" attributeSetId="KLBProductAttrSet" />
   <ProductCategory productCategoryId="CP" categoryName="Corrugated Paper" attributeSetId="CPProductAttrSet" />
   
+	
+  <!--
+	Product ID	产品名称	Product					Grade#	OD		Width	Roll Cnt	Brand	主计量单位	次计量单位
+	f1	全处理绒毛浆	FULLY TREATED FLUFF PULP	4723	1219	406		2 or 3		GI		KG			ADMT
+	f2	半处理绒毛浆	SEMI TREATED FLUFF PULP		4725	1219	483		2			GI		KG			ADMT
+	f3	半处理绒毛浆	SEMI TREATED FLUFF PULP		4725	1219	406		2			GI		KG			ADMT
+	f4	未处理绒毛浆	SOFTCEL FLUFF PULP			4872	1219	457		2			GI		KG			ADMT
+	f5	未处理绒毛浆	CO FLUFF PULP				4865	1219	451		2			GI		KG			ADMT
+	f6	未处理绒毛浆	CO FLUFF PULP				4865	1219	483		2			GI		KG			ADMT
+	f7	绒毛浆乱码	 	UTILITY ROLLS				4807	TBC		TBC		2			GI		KG			ADMT
+  -->
+  <Product productId="f1" primaryProductCategoryId="FluffPulp" description="全处理绒毛浆" productName="FULLY TREATED FLUFF PULP" grade="4723" outsideDiameter="1219" productWidth="406" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
+  <Product productId="f2" primaryProductCategoryId="FluffPulp" description="半处理绒毛浆" productName="SEMI TREATED FLUFF PULP" grade="4725" outsideDiameter="1219" productWidth="483" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
+  <Product productId="f3" primaryProductCategoryId="FluffPulp" description="半处理绒毛浆" productName="SEMI TREATED FLUFF PULP" grade="4725" outsideDiameter="1219" productWidth="406" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
+  <Product productId="f4" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="SOFTCEL FLUFF PULP" grade="4872" outsideDiameter="1219" productWidth="457" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
+  <Product productId="f5" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="CO FLUFF PULP" grade="4865" outsideDiameter="1219" productWidth="451" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
+  <Product productId="f6" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="CO FLUFF PULP" grade="4865" outsideDiameter="1219" productWidth="483" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
+  <Product productId="f7" primaryProductCategoryId="FluffPulp" description="绒毛浆乱码" productName="UTILITY ROLLS" grade="4807" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
+
   <!--
 	Product ID	Description	Product			Grade	GSM	OD		Width	Core	Brand	Moisture	主计量单位
-	KLB-125-VK-72	牛卡纸	Kraft Linerboard		125	1270	 900	101		VK			7.2		KG
-	KLB-115-VK-72	牛卡纸	Kraft Linerboard		115	1250	1200	101		VK			7.2		KG
-	KLB-200-WR-74	牛卡纸	Kraft Linerboard		200	1270	1200	101		WestRock	7.4		KG
-	KLB-150-WR-74	牛卡纸	Kraft Linerboard		150	1270	1800	101		WestRock	7.4		KG
+	k1			牛卡纸		Kraft Linerboard		125	1270	 900	101		VK			7.2		KG
+	k2			牛卡纸		Kraft Linerboard		115	1250	1200	101		VK			7.2		KG
+	k3			牛卡纸		Kraft Linerboard		200	1270	1200	101		WestRock	7.4		KG
+	k4			牛卡纸		Kraft Linerboard		150	1270	1800	101		WestRock	7.4		KG
   -->
-  <Product productId="KLB-125-VK-72" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+  <Product productId="k1" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
 	outsideDiameter="1270" productWidth="900" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-  <Product productId="KLB-115-VK-72" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="115" diameterUomId="mm" widthUomId="mm" 
+  <Product productId="k2" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="115" diameterUomId="mm" widthUomId="mm" 
 	outsideDiameter="1250" productWidth="1200" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-  <Product productId="KLB-200-WR-74" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="200" diameterUomId="mm" widthUomId="mm" 
+  <Product productId="k3" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="200" diameterUomId="mm" widthUomId="mm" 
 	outsideDiameter="1270" productWidth="1200" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-  <Product productId="KLB-150-WR-74" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+  <Product productId="k4" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
 	outsideDiameter="1270" productWidth="1800" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-
+	
+  <!--	
+	Product ID	产品名称	Product			Grade	GSM	OD		Width	Core	Brand	主计量单位	次计量单位	FSC
+	c1			瓦楞纸		Corrugated Paper		90	1230	1800	76.2	Fajar	KG			M			Y
+	c2			瓦楞纸		Corrugated Paper		90	1250	1800	76.2	Fajar	KG			M			Y
+	c3			瓦楞纸		Corrugated Paper		90	1280	1800	76.2	Fajar	KG			M			Y
+	c4			瓦楞纸		Corrugated Paper		90	1240	1450	76.2	Fajar	KG			M			Y
+	c5			瓦楞纸		Corrugated Paper		100	1270	1200	76.2	Fajar	KG			M			Y
+  -->
+  <Product productId="c1" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1230" productWidth="1800" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="c2" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1250" productWidth="1800" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="c3" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1280" productWidth="1800" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="c4" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1240" productWidth="1450" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="c5" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="100" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1270" productWidth="1200" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  
 </entity-engine-xml>
