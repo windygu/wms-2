@@ -16,6 +16,7 @@ import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.shipment.ImportingShipmentItem;
 import org.dddml.wms.domain.shipment.ShipmentApplicationService;
 import org.dddml.wms.domain.shipment.ShipmentCommands;
+import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.specialization.DomainError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -346,6 +347,7 @@ public class ImportServiceResource {
                 shipmentImport.setCarrier(shipmentHeader.getCarrier());
                 shipmentImport.setDateShipped(shipmentHeader.getDateShipped());
                 shipmentImport.setEstimatedArrivalDate(shipmentHeader.getEstimatedArrivalDate());
+                shipmentImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);
                 // -------------------------------------------------------------
                 shipmentImport.setShipmentItems(new ArrayList<>());
                 shipmentMap.put(shipmentId, shipmentImport);
