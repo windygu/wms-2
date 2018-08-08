@@ -176,6 +176,10 @@ public class OrderShipmentResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 OrderShipment
+     */
     @PutMapping("{orderShipmentId}")
     public void put(@PathVariable("orderShipmentId") String orderShipmentId, @RequestBody CreateOrMergePatchOrderShipmentDto value) {
         try {
@@ -196,6 +200,10 @@ public class OrderShipmentResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 OrderShipment
+     */
     @PatchMapping("{orderShipmentId}")
     public void patch(@PathVariable("orderShipmentId") String orderShipmentId, @RequestBody CreateOrMergePatchOrderShipmentDto.MergePatchOrderShipmentDto value) {
         try {

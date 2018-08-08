@@ -176,6 +176,10 @@ public class LocatorResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Locator
+     */
     @PutMapping("{locatorId}")
     public void put(@PathVariable("locatorId") String locatorId, @RequestBody CreateOrMergePatchLocatorDto value) {
         try {
@@ -196,6 +200,10 @@ public class LocatorResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Locator
+     */
     @PatchMapping("{locatorId}")
     public void patch(@PathVariable("locatorId") String locatorId, @RequestBody CreateOrMergePatchLocatorDto.MergePatchLocatorDto value) {
         try {
@@ -207,6 +215,10 @@ public class LocatorResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Locator
+     */
     @DeleteMapping("{locatorId}")
     public void delete(@PathVariable("locatorId") String locatorId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

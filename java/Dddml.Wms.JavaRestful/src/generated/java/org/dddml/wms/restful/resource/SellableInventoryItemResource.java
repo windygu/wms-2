@@ -179,6 +179,10 @@ public class SellableInventoryItemResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 SellableInventoryItem
+     */
     @PutMapping("{sellableInventoryItemId}")
     public void put(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId, @RequestBody CreateOrMergePatchSellableInventoryItemDto value) {
         try {
@@ -199,6 +203,10 @@ public class SellableInventoryItemResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 SellableInventoryItem
+     */
     @PatchMapping("{sellableInventoryItemId}")
     public void patch(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId, @RequestBody CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value) {
         try {

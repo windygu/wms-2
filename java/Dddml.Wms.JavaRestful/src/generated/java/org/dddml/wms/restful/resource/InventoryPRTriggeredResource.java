@@ -176,6 +176,10 @@ public class InventoryPRTriggeredResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 InventoryPRTriggered
+     */
     @PutMapping("{inventoryPRTriggeredId}")
     public void put(@PathVariable("inventoryPRTriggeredId") String inventoryPRTriggeredId, @RequestBody CreateOrMergePatchInventoryPRTriggeredDto value) {
         try {
@@ -196,6 +200,10 @@ public class InventoryPRTriggeredResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 InventoryPRTriggered
+     */
     @PatchMapping("{inventoryPRTriggeredId}")
     public void patch(@PathVariable("inventoryPRTriggeredId") String inventoryPRTriggeredId, @RequestBody CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value) {
         try {

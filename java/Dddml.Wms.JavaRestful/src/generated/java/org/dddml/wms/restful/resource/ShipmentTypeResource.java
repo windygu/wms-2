@@ -176,6 +176,10 @@ public class ShipmentTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentType
+     */
     @PutMapping("{shipmentTypeId}")
     public void put(@PathVariable("shipmentTypeId") String shipmentTypeId, @RequestBody CreateOrMergePatchShipmentTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class ShipmentTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 ShipmentType
+     */
     @PatchMapping("{shipmentTypeId}")
     public void patch(@PathVariable("shipmentTypeId") String shipmentTypeId, @RequestBody CreateOrMergePatchShipmentTypeDto.MergePatchShipmentTypeDto value) {
         try {

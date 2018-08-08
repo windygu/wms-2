@@ -176,6 +176,10 @@ public class MovementTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 MovementType
+     */
     @PutMapping("{movementTypeId}")
     public void put(@PathVariable("movementTypeId") String movementTypeId, @RequestBody CreateOrMergePatchMovementTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class MovementTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 MovementType
+     */
     @PatchMapping("{movementTypeId}")
     public void patch(@PathVariable("movementTypeId") String movementTypeId, @RequestBody CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class MovementTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 MovementType
+     */
     @DeleteMapping("{movementTypeId}")
     public void delete(@PathVariable("movementTypeId") String movementTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

@@ -176,6 +176,10 @@ public class StatusItemResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 StatusItem
+     */
     @PutMapping("{statusId}")
     public void put(@PathVariable("statusId") String statusId, @RequestBody CreateOrMergePatchStatusItemDto value) {
         try {
@@ -196,6 +200,10 @@ public class StatusItemResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 StatusItem
+     */
     @PatchMapping("{statusId}")
     public void patch(@PathVariable("statusId") String statusId, @RequestBody CreateOrMergePatchStatusItemDto.MergePatchStatusItemDto value) {
         try {

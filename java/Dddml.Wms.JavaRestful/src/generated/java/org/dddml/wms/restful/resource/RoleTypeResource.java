@@ -176,6 +176,10 @@ public class RoleTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 RoleType
+     */
     @PutMapping("{roleTypeId}")
     public void put(@PathVariable("roleTypeId") String roleTypeId, @RequestBody CreateOrMergePatchRoleTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class RoleTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 RoleType
+     */
     @PatchMapping("{roleTypeId}")
     public void patch(@PathVariable("roleTypeId") String roleTypeId, @RequestBody CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class RoleTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 RoleType
+     */
     @DeleteMapping("{roleTypeId}")
     public void delete(@PathVariable("roleTypeId") String roleTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

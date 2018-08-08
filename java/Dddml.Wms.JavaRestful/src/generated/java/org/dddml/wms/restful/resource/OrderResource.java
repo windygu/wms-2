@@ -177,6 +177,10 @@ public class OrderResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Order
+     */
     @PutMapping("{orderId}")
     public void put(@PathVariable("orderId") String orderId, @RequestBody CreateOrMergePatchOrderDto value) {
         try {
@@ -197,6 +201,10 @@ public class OrderResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Order
+     */
     @PatchMapping("{orderId}")
     public void patch(@PathVariable("orderId") String orderId, @RequestBody CreateOrMergePatchOrderDto.MergePatchOrderDto value) {
         try {
@@ -271,6 +279,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 OrderRole
+     */
     @PutMapping("{orderId}/OrderRoles/{partyRoleId}")
     public void putOrderRole(@PathVariable("orderId") String orderId, @PathVariable("partyRoleId") String partyRoleId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -295,6 +307,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 OrderRole
+     */
     @DeleteMapping("{orderId}/OrderRoles/{partyRoleId}")
     public void deleteOrderRole(@PathVariable("orderId") String orderId, @PathVariable("partyRoleId") String partyRoleId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -372,6 +388,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 OrderItem
+     */
     @PutMapping("{orderId}/OrderItems/{orderItemSeqId}")
     public void putOrderItem(@PathVariable("orderId") String orderId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -391,6 +411,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 OrderItem
+     */
     @DeleteMapping("{orderId}/OrderItems/{orderItemSeqId}")
     public void deleteOrderItem(@PathVariable("orderId") String orderId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -463,6 +487,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 OrderShipGroup
+     */
     @PutMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
     public void putOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -482,6 +510,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 OrderShipGroup
+     */
     @DeleteMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
     public void deleteOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -554,6 +586,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 OrderItemShipGroupAssociation
+     */
     @PutMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
     public void putOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -576,6 +612,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 OrderItemShipGroupAssociation
+     */
     @DeleteMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
     public void deleteOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,

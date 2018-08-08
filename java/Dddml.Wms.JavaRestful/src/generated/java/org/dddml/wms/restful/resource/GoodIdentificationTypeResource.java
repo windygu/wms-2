@@ -176,6 +176,10 @@ public class GoodIdentificationTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 GoodIdentificationType
+     */
     @PutMapping("{goodIdentificationTypeId}")
     public void put(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId, @RequestBody CreateOrMergePatchGoodIdentificationTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class GoodIdentificationTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 GoodIdentificationType
+     */
     @PatchMapping("{goodIdentificationTypeId}")
     public void patch(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId, @RequestBody CreateOrMergePatchGoodIdentificationTypeDto.MergePatchGoodIdentificationTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class GoodIdentificationTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 GoodIdentificationType
+     */
     @DeleteMapping("{goodIdentificationTypeId}")
     public void delete(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

@@ -177,6 +177,10 @@ public class InOutResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 InOut
+     */
     @PutMapping("{documentNumber}")
     public void put(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchInOutDto value) {
         try {
@@ -197,6 +201,10 @@ public class InOutResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 InOut
+     */
     @PatchMapping("{documentNumber}")
     public void patch(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchInOutDto.MergePatchInOutDto value) {
         try {
@@ -368,6 +376,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 InOutImage
+     */
     @PutMapping("{documentNumber}/InOutImages/{sequenceId}")
     public void putInOutImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -387,6 +399,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 InOutImage
+     */
     @DeleteMapping("{documentNumber}/InOutImages/{sequenceId}")
     public void deleteInOutImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -459,6 +475,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 InOutLine
+     */
     @PutMapping("{documentNumber}/InOutLines/{lineNumber}")
     public void putInOutLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -478,6 +498,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 InOutLine
+     */
     @DeleteMapping("{documentNumber}/InOutLines/{lineNumber}")
     public void deleteInOutLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -550,6 +574,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 InOutLineImage
+     */
     @PutMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
     public void putInOutLineImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -572,6 +600,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 InOutLineImage
+     */
     @DeleteMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
     public void deleteInOutLineImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,

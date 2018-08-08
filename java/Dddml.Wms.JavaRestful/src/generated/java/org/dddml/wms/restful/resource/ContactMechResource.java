@@ -176,6 +176,10 @@ public class ContactMechResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ContactMech
+     */
     @PutMapping("{contactMechId}")
     public void put(@PathVariable("contactMechId") String contactMechId, @RequestBody CreateOrMergePatchContactMechDto value) {
         try {
@@ -196,6 +200,10 @@ public class ContactMechResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 ContactMech
+     */
     @PatchMapping("{contactMechId}")
     public void patch(@PathVariable("contactMechId") String contactMechId, @RequestBody CreateOrMergePatchContactMechDto.MergePatchContactMechDto value) {
         try {
@@ -207,6 +215,10 @@ public class ContactMechResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 ContactMech
+     */
     @DeleteMapping("{contactMechId}")
     public void delete(@PathVariable("contactMechId") String contactMechId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

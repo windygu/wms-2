@@ -177,6 +177,10 @@ public class MovementResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Movement
+     */
     @PutMapping("{documentNumber}")
     public void put(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementDto value) {
         try {
@@ -197,6 +201,10 @@ public class MovementResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Movement
+     */
     @PatchMapping("{documentNumber}")
     public void patch(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementDto.MergePatchMovementDto value) {
         try {
@@ -208,6 +216,10 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Movement
+     */
     @DeleteMapping("{documentNumber}")
     public void delete(@PathVariable("documentNumber") String documentNumber,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
@@ -318,6 +330,10 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 MovementLine
+     */
     @PutMapping("{documentNumber}/MovementLines/{lineNumber}")
     public void putMovementLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -337,6 +353,10 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 MovementLine
+     */
     @DeleteMapping("{documentNumber}/MovementLines/{lineNumber}")
     public void deleteMovementLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,

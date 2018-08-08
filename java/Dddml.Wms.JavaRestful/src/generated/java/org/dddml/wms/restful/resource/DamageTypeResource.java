@@ -176,6 +176,10 @@ public class DamageTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 DamageType
+     */
     @PutMapping("{damageTypeId}")
     public void put(@PathVariable("damageTypeId") String damageTypeId, @RequestBody CreateOrMergePatchDamageTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class DamageTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 DamageType
+     */
     @PatchMapping("{damageTypeId}")
     public void patch(@PathVariable("damageTypeId") String damageTypeId, @RequestBody CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class DamageTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 DamageType
+     */
     @DeleteMapping("{damageTypeId}")
     public void delete(@PathVariable("damageTypeId") String damageTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

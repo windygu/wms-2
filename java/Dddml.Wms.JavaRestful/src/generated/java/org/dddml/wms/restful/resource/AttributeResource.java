@@ -187,6 +187,10 @@ public class AttributeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Attribute
+     */
     @PutMapping("{attributeId}")
     public void put(@PathVariable("attributeId") String attributeId, @RequestBody CreateOrMergePatchAttributeDto value) {
         try {
@@ -207,6 +211,10 @@ public class AttributeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Attribute
+     */
     @PatchMapping("{attributeId}")
     public void patch(@PathVariable("attributeId") String attributeId, @RequestBody CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
         try {
@@ -218,6 +226,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Attribute
+     */
     @DeleteMapping("{attributeId}")
     public void delete(@PathVariable("attributeId") String attributeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
@@ -294,6 +306,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 AttributeValue
+     */
     @PutMapping("{attributeId}/AttributeValues/{value}")
     public void putAttributeValue(@PathVariable("attributeId") String attributeId, @PathVariable("value") String value,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -313,6 +329,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 AttributeValue
+     */
     @DeleteMapping("{attributeId}/AttributeValues/{value}")
     public void deleteAttributeValue(@PathVariable("attributeId") String attributeId, @PathVariable("value") String value,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -385,6 +405,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 AttributeAlias
+     */
     @PutMapping("{attributeId}/AttributeAlias/{code}")
     public void putAttributeAlias(@PathVariable("attributeId") String attributeId, @PathVariable("code") String code,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -404,6 +428,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 AttributeAlias
+     */
     @DeleteMapping("{attributeId}/AttributeAlias/{code}")
     public void deleteAttributeAlias(@PathVariable("attributeId") String attributeId, @PathVariable("code") String code,
                        @RequestParam(value = "commandId", required = false) String commandId,

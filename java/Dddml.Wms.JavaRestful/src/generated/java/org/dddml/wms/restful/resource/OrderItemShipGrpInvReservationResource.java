@@ -176,6 +176,10 @@ public class OrderItemShipGrpInvReservationResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 OrderItemShipGrpInvReservation
+     */
     @PutMapping("{orderItemShipGrpInvResId}")
     public void put(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @RequestBody CreateOrMergePatchOrderItemShipGrpInvReservationDto value) {
         try {
@@ -196,6 +200,10 @@ public class OrderItemShipGrpInvReservationResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 OrderItemShipGrpInvReservation
+     */
     @PatchMapping("{orderItemShipGrpInvResId}")
     public void patch(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @RequestBody CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value) {
         try {
@@ -207,6 +215,10 @@ public class OrderItemShipGrpInvReservationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 OrderItemShipGrpInvReservation
+     */
     @DeleteMapping("{orderItemShipGrpInvResId}")
     public void delete(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

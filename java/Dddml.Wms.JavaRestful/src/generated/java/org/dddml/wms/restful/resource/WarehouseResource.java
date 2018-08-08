@@ -176,6 +176,10 @@ public class WarehouseResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Warehouse
+     */
     @PutMapping("{warehouseId}")
     public void put(@PathVariable("warehouseId") String warehouseId, @RequestBody CreateOrMergePatchWarehouseDto value) {
         try {
@@ -196,6 +200,10 @@ public class WarehouseResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Warehouse
+     */
     @PatchMapping("{warehouseId}")
     public void patch(@PathVariable("warehouseId") String warehouseId, @RequestBody CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value) {
         try {
@@ -207,6 +215,10 @@ public class WarehouseResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Warehouse
+     */
     @DeleteMapping("{warehouseId}")
     public void delete(@PathVariable("warehouseId") String warehouseId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

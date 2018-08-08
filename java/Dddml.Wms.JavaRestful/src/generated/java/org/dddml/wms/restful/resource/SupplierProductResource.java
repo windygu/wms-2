@@ -176,6 +176,10 @@ public class SupplierProductResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 SupplierProduct
+     */
     @PutMapping("{supplierProductId}")
     public void put(@PathVariable("supplierProductId") String supplierProductId, @RequestBody CreateOrMergePatchSupplierProductDto value) {
         try {
@@ -196,6 +200,10 @@ public class SupplierProductResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 SupplierProduct
+     */
     @PatchMapping("{supplierProductId}")
     public void patch(@PathVariable("supplierProductId") String supplierProductId, @RequestBody CreateOrMergePatchSupplierProductDto.MergePatchSupplierProductDto value) {
         try {

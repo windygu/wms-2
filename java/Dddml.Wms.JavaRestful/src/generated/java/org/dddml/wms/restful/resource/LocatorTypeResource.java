@@ -176,6 +176,10 @@ public class LocatorTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 LocatorType
+     */
     @PutMapping("{locatorTypeId}")
     public void put(@PathVariable("locatorTypeId") String locatorTypeId, @RequestBody CreateOrMergePatchLocatorTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class LocatorTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 LocatorType
+     */
     @PatchMapping("{locatorTypeId}")
     public void patch(@PathVariable("locatorTypeId") String locatorTypeId, @RequestBody CreateOrMergePatchLocatorTypeDto.MergePatchLocatorTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class LocatorTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 LocatorType
+     */
     @DeleteMapping("{locatorTypeId}")
     public void delete(@PathVariable("locatorTypeId") String locatorTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

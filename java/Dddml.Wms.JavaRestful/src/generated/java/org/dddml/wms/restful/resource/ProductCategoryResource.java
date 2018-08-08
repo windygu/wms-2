@@ -176,6 +176,10 @@ public class ProductCategoryResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ProductCategory
+     */
     @PutMapping("{productCategoryId}")
     public void put(@PathVariable("productCategoryId") String productCategoryId, @RequestBody CreateOrMergePatchProductCategoryDto value) {
         try {
@@ -196,6 +200,10 @@ public class ProductCategoryResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 ProductCategory
+     */
     @PatchMapping("{productCategoryId}")
     public void patch(@PathVariable("productCategoryId") String productCategoryId, @RequestBody CreateOrMergePatchProductCategoryDto.MergePatchProductCategoryDto value) {
         try {
@@ -207,6 +215,10 @@ public class ProductCategoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 ProductCategory
+     */
     @DeleteMapping("{productCategoryId}")
     public void delete(@PathVariable("productCategoryId") String productCategoryId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

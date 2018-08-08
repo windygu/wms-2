@@ -176,6 +176,10 @@ public class RejectionReasonResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 RejectionReason
+     */
     @PutMapping("{rejectionReasonId}")
     public void put(@PathVariable("rejectionReasonId") String rejectionReasonId, @RequestBody CreateOrMergePatchRejectionReasonDto value) {
         try {
@@ -196,6 +200,10 @@ public class RejectionReasonResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 RejectionReason
+     */
     @PatchMapping("{rejectionReasonId}")
     public void patch(@PathVariable("rejectionReasonId") String rejectionReasonId, @RequestBody CreateOrMergePatchRejectionReasonDto.MergePatchRejectionReasonDto value) {
         try {
@@ -207,6 +215,10 @@ public class RejectionReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 RejectionReason
+     */
     @DeleteMapping("{rejectionReasonId}")
     public void delete(@PathVariable("rejectionReasonId") String rejectionReasonId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

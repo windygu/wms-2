@@ -176,6 +176,10 @@ public class FacilityResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Facility
+     */
     @PutMapping("{facilityId}")
     public void put(@PathVariable("facilityId") String facilityId, @RequestBody CreateOrMergePatchFacilityDto value) {
         try {
@@ -196,6 +200,10 @@ public class FacilityResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Facility
+     */
     @PatchMapping("{facilityId}")
     public void patch(@PathVariable("facilityId") String facilityId, @RequestBody CreateOrMergePatchFacilityDto.MergePatchFacilityDto value) {
         try {
@@ -207,6 +215,10 @@ public class FacilityResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Facility
+     */
     @DeleteMapping("{facilityId}")
     public void delete(@PathVariable("facilityId") String facilityId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

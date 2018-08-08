@@ -176,6 +176,10 @@ public class ShipmentMethodTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentMethodType
+     */
     @PutMapping("{shipmentMethodTypeId}")
     public void put(@PathVariable("shipmentMethodTypeId") String shipmentMethodTypeId, @RequestBody CreateOrMergePatchShipmentMethodTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class ShipmentMethodTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 ShipmentMethodType
+     */
     @PatchMapping("{shipmentMethodTypeId}")
     public void patch(@PathVariable("shipmentMethodTypeId") String shipmentMethodTypeId, @RequestBody CreateOrMergePatchShipmentMethodTypeDto.MergePatchShipmentMethodTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class ShipmentMethodTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 ShipmentMethodType
+     */
     @DeleteMapping("{shipmentMethodTypeId}")
     public void delete(@PathVariable("shipmentMethodTypeId") String shipmentMethodTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

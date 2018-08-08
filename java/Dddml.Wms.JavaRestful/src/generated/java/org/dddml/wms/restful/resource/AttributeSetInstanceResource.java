@@ -173,6 +173,10 @@ public class AttributeSetInstanceResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 AttributeSetInstance
+     */
     @PutMapping("{attributeSetInstanceId}")
     public void put(@PathVariable("attributeSetInstanceId") String attributeSetInstanceId, @RequestBody JSONObject dynamicObject) {
         try {

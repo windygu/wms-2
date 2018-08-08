@@ -177,6 +177,10 @@ public class PicklistResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Picklist
+     */
     @PutMapping("{picklistId}")
     public void put(@PathVariable("picklistId") String picklistId, @RequestBody CreateOrMergePatchPicklistDto value) {
         try {
@@ -197,6 +201,10 @@ public class PicklistResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Picklist
+     */
     @PatchMapping("{picklistId}")
     public void patch(@PathVariable("picklistId") String picklistId, @RequestBody CreateOrMergePatchPicklistDto.MergePatchPicklistDto value) {
         try {
@@ -208,6 +216,10 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Picklist
+     */
     @DeleteMapping("{picklistId}")
     public void delete(@PathVariable("picklistId") String picklistId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
@@ -289,6 +301,10 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 PicklistRole
+     */
     @PutMapping("{picklistId}/PicklistRoles/{partyRoleId}")
     public void putPicklistRole(@PathVariable("picklistId") String picklistId, @PathVariable("partyRoleId") String partyRoleId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -313,6 +329,10 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 PicklistRole
+     */
     @DeleteMapping("{picklistId}/PicklistRoles/{partyRoleId}")
     public void deletePicklistRole(@PathVariable("picklistId") String picklistId, @PathVariable("partyRoleId") String partyRoleId,
                        @RequestParam(value = "commandId", required = false) String commandId,

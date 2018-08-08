@@ -176,6 +176,10 @@ public class ProductResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Product
+     */
     @PutMapping("{productId}")
     public void put(@PathVariable("productId") String productId, @RequestBody CreateOrMergePatchProductDto value) {
         try {
@@ -196,6 +200,10 @@ public class ProductResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Product
+     */
     @PatchMapping("{productId}")
     public void patch(@PathVariable("productId") String productId, @RequestBody CreateOrMergePatchProductDto.MergePatchProductDto value) {
         try {
@@ -265,6 +273,10 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 GoodIdentification
+     */
     @PutMapping("{productId}/GoodIdentifications/{goodIdentificationTypeId}")
     public void putGoodIdentification(@PathVariable("productId") String productId, @PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -284,6 +296,10 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 GoodIdentification
+     */
     @DeleteMapping("{productId}/GoodIdentifications/{goodIdentificationTypeId}")
     public void deleteGoodIdentification(@PathVariable("productId") String productId, @PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId,
                        @RequestParam(value = "commandId", required = false) String commandId,

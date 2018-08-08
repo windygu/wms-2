@@ -176,6 +176,10 @@ public class OrganizationStructureTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 OrganizationStructureType
+     */
     @PutMapping("{id}")
     public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrganizationStructureTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class OrganizationStructureTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 OrganizationStructureType
+     */
     @PatchMapping("{id}")
     public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrganizationStructureTypeDto.MergePatchOrganizationStructureTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class OrganizationStructureTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 OrganizationStructureType
+     */
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") String id,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

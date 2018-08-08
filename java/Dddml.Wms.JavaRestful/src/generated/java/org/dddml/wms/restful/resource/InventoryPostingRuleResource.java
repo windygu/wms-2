@@ -177,6 +177,10 @@ public class InventoryPostingRuleResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 InventoryPostingRule
+     */
     @PutMapping("{inventoryPostingRuleId}")
     public void put(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId, @RequestBody CreateOrMergePatchInventoryPostingRuleDto value) {
         try {
@@ -197,6 +201,10 @@ public class InventoryPostingRuleResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 InventoryPostingRule
+     */
     @PatchMapping("{inventoryPostingRuleId}")
     public void patch(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId, @RequestBody CreateOrMergePatchInventoryPostingRuleDto.MergePatchInventoryPostingRuleDto value) {
         try {
@@ -208,6 +216,10 @@ public class InventoryPostingRuleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 InventoryPostingRule
+     */
     @DeleteMapping("{inventoryPostingRuleId}")
     public void delete(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

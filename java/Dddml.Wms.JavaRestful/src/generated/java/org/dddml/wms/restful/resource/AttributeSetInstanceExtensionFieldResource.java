@@ -176,6 +176,10 @@ public class AttributeSetInstanceExtensionFieldResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 AttributeSetInstanceExtensionField
+     */
     @PutMapping("{name}")
     public void put(@PathVariable("name") String name, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldDto value) {
         try {
@@ -196,6 +200,10 @@ public class AttributeSetInstanceExtensionFieldResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 AttributeSetInstanceExtensionField
+     */
     @PatchMapping("{name}")
     public void patch(@PathVariable("name") String name, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.MergePatchAttributeSetInstanceExtensionFieldDto value) {
         try {
@@ -207,6 +215,10 @@ public class AttributeSetInstanceExtensionFieldResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 AttributeSetInstanceExtensionField
+     */
     @DeleteMapping("{name}")
     public void delete(@PathVariable("name") String name,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

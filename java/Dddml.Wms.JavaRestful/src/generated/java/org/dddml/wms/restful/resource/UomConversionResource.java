@@ -176,6 +176,10 @@ public class UomConversionResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 UomConversion
+     */
     @PutMapping("{uomConversionId}")
     public void put(@PathVariable("uomConversionId") String uomConversionId, @RequestBody CreateOrMergePatchUomConversionDto value) {
         try {
@@ -196,6 +200,10 @@ public class UomConversionResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 UomConversion
+     */
     @PatchMapping("{uomConversionId}")
     public void patch(@PathVariable("uomConversionId") String uomConversionId, @RequestBody CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value) {
         try {
@@ -207,6 +215,10 @@ public class UomConversionResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 UomConversion
+     */
     @DeleteMapping("{uomConversionId}")
     public void delete(@PathVariable("uomConversionId") String uomConversionId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

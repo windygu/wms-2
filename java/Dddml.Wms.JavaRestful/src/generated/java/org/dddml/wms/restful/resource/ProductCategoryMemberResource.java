@@ -176,6 +176,10 @@ public class ProductCategoryMemberResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ProductCategoryMember
+     */
     @PutMapping("{productCategoryMemberId}")
     public void put(@PathVariable("productCategoryMemberId") String productCategoryMemberId, @RequestBody CreateOrMergePatchProductCategoryMemberDto value) {
         try {
@@ -196,6 +200,10 @@ public class ProductCategoryMemberResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 ProductCategoryMember
+     */
     @PatchMapping("{productCategoryMemberId}")
     public void patch(@PathVariable("productCategoryMemberId") String productCategoryMemberId, @RequestBody CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value) {
         try {

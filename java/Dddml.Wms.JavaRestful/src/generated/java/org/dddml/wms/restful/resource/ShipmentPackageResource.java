@@ -176,6 +176,10 @@ public class ShipmentPackageResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentPackage
+     */
     @PutMapping("{shipmentPackageId}")
     public void put(@PathVariable("shipmentPackageId") String shipmentPackageId, @RequestBody CreateOrMergePatchShipmentPackageDto value) {
         try {
@@ -196,6 +200,10 @@ public class ShipmentPackageResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 ShipmentPackage
+     */
     @PatchMapping("{shipmentPackageId}")
     public void patch(@PathVariable("shipmentPackageId") String shipmentPackageId, @RequestBody CreateOrMergePatchShipmentPackageDto.MergePatchShipmentPackageDto value) {
         try {
@@ -207,6 +215,10 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 ShipmentPackage
+     */
     @DeleteMapping("{shipmentPackageId}")
     public void delete(@PathVariable("shipmentPackageId") String shipmentPackageId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
@@ -288,6 +300,10 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentPackageContent
+     */
     @PutMapping("{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}")
     public void putShipmentPackageContent(@PathVariable("shipmentPackageId") String shipmentPackageId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -312,6 +328,10 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 ShipmentPackageContent
+     */
     @DeleteMapping("{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}")
     public void deleteShipmentPackageContent(@PathVariable("shipmentPackageId") String shipmentPackageId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,

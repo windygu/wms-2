@@ -176,6 +176,10 @@ public class DocumentTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 DocumentType
+     */
     @PutMapping("{documentTypeId}")
     public void put(@PathVariable("documentTypeId") String documentTypeId, @RequestBody CreateOrMergePatchDocumentTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class DocumentTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 DocumentType
+     */
     @PatchMapping("{documentTypeId}")
     public void patch(@PathVariable("documentTypeId") String documentTypeId, @RequestBody CreateOrMergePatchDocumentTypeDto.MergePatchDocumentTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class DocumentTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 DocumentType
+     */
     @DeleteMapping("{documentTypeId}")
     public void delete(@PathVariable("documentTypeId") String documentTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

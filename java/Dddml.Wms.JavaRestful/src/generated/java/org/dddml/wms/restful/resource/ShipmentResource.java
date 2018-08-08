@@ -176,6 +176,10 @@ public class ShipmentResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Shipment
+     */
     @PutMapping("{shipmentId}")
     public void put(@PathVariable("shipmentId") String shipmentId, @RequestBody CreateOrMergePatchShipmentDto value) {
         try {
@@ -196,6 +200,10 @@ public class ShipmentResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Shipment
+     */
     @PatchMapping("{shipmentId}")
     public void patch(@PathVariable("shipmentId") String shipmentId, @RequestBody CreateOrMergePatchShipmentDto.MergePatchShipmentDto value) {
         try {
@@ -333,6 +341,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentImage
+     */
     @PutMapping("{shipmentId}/ShipmentImages/{sequenceId}")
     public void putShipmentImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -352,6 +364,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 ShipmentImage
+     */
     @DeleteMapping("{shipmentId}/ShipmentImages/{sequenceId}")
     public void deleteShipmentImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -424,6 +440,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentItem
+     */
     @PutMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     public void putShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -443,6 +463,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 ShipmentItem
+     */
     @DeleteMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     public void deleteShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -515,6 +539,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentReceipt
+     */
     @PutMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     public void putShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -534,6 +562,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 ShipmentReceipt
+     */
     @DeleteMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     public void deleteShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -606,6 +638,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ShipmentReceiptImage
+     */
     @PutMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
     public void putShipmentReceiptImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -628,6 +664,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 ShipmentReceiptImage
+     */
     @DeleteMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
     public void deleteShipmentReceiptImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -706,6 +746,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 ItemIssuance
+     */
     @PutMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
     public void putItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -725,6 +769,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 ItemIssuance
+     */
     @DeleteMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
     public void deleteItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,

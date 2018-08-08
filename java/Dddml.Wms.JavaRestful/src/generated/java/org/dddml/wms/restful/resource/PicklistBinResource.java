@@ -176,6 +176,10 @@ public class PicklistBinResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 PicklistBin
+     */
     @PutMapping("{picklistBinId}")
     public void put(@PathVariable("picklistBinId") String picklistBinId, @RequestBody CreateOrMergePatchPicklistBinDto value) {
         try {
@@ -196,6 +200,10 @@ public class PicklistBinResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 PicklistBin
+     */
     @PatchMapping("{picklistBinId}")
     public void patch(@PathVariable("picklistBinId") String picklistBinId, @RequestBody CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value) {
         try {
@@ -207,6 +215,10 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 PicklistBin
+     */
     @DeleteMapping("{picklistBinId}")
     public void delete(@PathVariable("picklistBinId") String picklistBinId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
@@ -288,6 +300,10 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 PicklistItem
+     */
     @PutMapping("{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
     public void putPicklistItem(@PathVariable("picklistBinId") String picklistBinId, @PathVariable("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -312,6 +328,10 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 PicklistItem
+     */
     @DeleteMapping("{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
     public void deletePicklistItem(@PathVariable("picklistBinId") String picklistBinId, @PathVariable("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId,
                        @RequestParam(value = "commandId", required = false) String commandId,

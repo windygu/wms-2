@@ -177,6 +177,10 @@ public class MovementConfirmationResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 MovementConfirmation
+     */
     @PutMapping("{documentNumber}")
     public void put(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementConfirmationDto value) {
         try {
@@ -197,6 +201,10 @@ public class MovementConfirmationResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 MovementConfirmation
+     */
     @PatchMapping("{documentNumber}")
     public void patch(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value) {
         try {
@@ -208,6 +216,10 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 MovementConfirmation
+     */
     @DeleteMapping("{documentNumber}")
     public void delete(@PathVariable("documentNumber") String documentNumber,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
@@ -301,6 +313,10 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 MovementConfirmationLine
+     */
     @PutMapping("{documentNumber}/MovementConfirmationLines/{lineNumber}")
     public void putMovementConfirmationLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -320,6 +336,10 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 MovementConfirmationLine
+     */
     @DeleteMapping("{documentNumber}/MovementConfirmationLines/{lineNumber}")
     public void deleteMovementConfirmationLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,

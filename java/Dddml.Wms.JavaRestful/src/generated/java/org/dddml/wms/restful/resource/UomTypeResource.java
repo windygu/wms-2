@@ -176,6 +176,10 @@ public class UomTypeResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 UomType
+     */
     @PutMapping("{uomTypeId}")
     public void put(@PathVariable("uomTypeId") String uomTypeId, @RequestBody CreateOrMergePatchUomTypeDto value) {
         try {
@@ -196,6 +200,10 @@ public class UomTypeResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 UomType
+     */
     @PatchMapping("{uomTypeId}")
     public void patch(@PathVariable("uomTypeId") String uomTypeId, @RequestBody CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value) {
         try {
@@ -207,6 +215,10 @@ public class UomTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 UomType
+     */
     @DeleteMapping("{uomTypeId}")
     public void delete(@PathVariable("uomTypeId") String uomTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

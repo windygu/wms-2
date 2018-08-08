@@ -178,6 +178,10 @@ public class PhysicalInventoryResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 PhysicalInventory
+     */
     @PutMapping("{documentNumber}")
     public void put(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchPhysicalInventoryDto value) {
         try {
@@ -198,6 +202,10 @@ public class PhysicalInventoryResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 PhysicalInventory
+     */
     @PatchMapping("{documentNumber}")
     public void patch(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value) {
         try {
@@ -306,6 +314,10 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 PhysicalInventoryLine
+     */
     @PutMapping("{documentNumber}/PhysicalInventoryLines/{inventoryItemId}")
     public void putPhysicalInventoryLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -330,6 +342,10 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 PhysicalInventoryLine
+     */
     @DeleteMapping("{documentNumber}/PhysicalInventoryLines/{inventoryItemId}")
     public void deletePhysicalInventoryLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
                        @RequestParam(value = "commandId", required = false) String commandId,

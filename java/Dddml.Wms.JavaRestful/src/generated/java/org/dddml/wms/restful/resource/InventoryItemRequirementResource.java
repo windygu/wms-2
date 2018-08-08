@@ -179,6 +179,10 @@ public class InventoryItemRequirementResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 InventoryItemRequirement
+     */
     @PutMapping("{inventoryItemRequirementId}")
     public void put(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId, @RequestBody CreateOrMergePatchInventoryItemRequirementDto value) {
         try {
@@ -199,6 +203,10 @@ public class InventoryItemRequirementResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 InventoryItemRequirement
+     */
     @PatchMapping("{inventoryItemRequirementId}")
     public void patch(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId, @RequestBody CreateOrMergePatchInventoryItemRequirementDto.MergePatchInventoryItemRequirementDto value) {
         try {

@@ -176,6 +176,10 @@ public class PartyRoleResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 PartyRole
+     */
     @PutMapping("{partyRoleId}")
     public void put(@PathVariable("partyRoleId") String partyRoleId, @RequestBody CreateOrMergePatchPartyRoleDto value) {
         try {
@@ -196,6 +200,10 @@ public class PartyRoleResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 PartyRole
+     */
     @PatchMapping("{partyRoleId}")
     public void patch(@PathVariable("partyRoleId") String partyRoleId, @RequestBody CreateOrMergePatchPartyRoleDto.MergePatchPartyRoleDto value) {
         try {
@@ -207,6 +215,10 @@ public class PartyRoleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 PartyRole
+     */
     @DeleteMapping("{partyRoleId}")
     public void delete(@PathVariable("partyRoleId") String partyRoleId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

@@ -176,6 +176,10 @@ public class PickwaveResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Pickwave
+     */
     @PutMapping("{pickwaveId}")
     public void put(@PathVariable("pickwaveId") Long pickwaveId, @RequestBody CreateOrMergePatchPickwaveDto value) {
         try {
@@ -196,6 +200,10 @@ public class PickwaveResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Pickwave
+     */
     @PatchMapping("{pickwaveId}")
     public void patch(@PathVariable("pickwaveId") Long pickwaveId, @RequestBody CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value) {
         try {
@@ -207,6 +215,10 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Pickwave
+     */
     @DeleteMapping("{pickwaveId}")
     public void delete(@PathVariable("pickwaveId") Long pickwaveId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

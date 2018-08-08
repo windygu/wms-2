@@ -176,6 +176,10 @@ public class LotResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 Lot
+     */
     @PutMapping("{lotId}")
     public void put(@PathVariable("lotId") String lotId, @RequestBody CreateOrMergePatchLotDto value) {
         try {
@@ -196,6 +200,10 @@ public class LotResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 Lot
+     */
     @PatchMapping("{lotId}")
     public void patch(@PathVariable("lotId") String lotId, @RequestBody CreateOrMergePatchLotDto.MergePatchLotDto value) {
         try {
@@ -207,6 +215,10 @@ public class LotResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 Lot
+     */
     @DeleteMapping("{lotId}")
     public void delete(@PathVariable("lotId") String lotId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,

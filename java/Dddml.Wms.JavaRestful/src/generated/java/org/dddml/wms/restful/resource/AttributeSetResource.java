@@ -176,6 +176,10 @@ public class AttributeSetResource {
     }
 
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 AttributeSet
+     */
     @PutMapping("{attributeSetId}")
     public void put(@PathVariable("attributeSetId") String attributeSetId, @RequestBody CreateOrMergePatchAttributeSetDto value) {
         try {
@@ -196,6 +200,10 @@ public class AttributeSetResource {
     }
 
 
+    /**
+     * 修改.
+     * 修改 AttributeSet
+     */
     @PatchMapping("{attributeSetId}")
     public void patch(@PathVariable("attributeSetId") String attributeSetId, @RequestBody CreateOrMergePatchAttributeSetDto.MergePatchAttributeSetDto value) {
         try {
@@ -207,6 +215,10 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 删除.
+     * 删除 AttributeSet
+     */
     @DeleteMapping("{attributeSetId}")
     public void delete(@PathVariable("attributeSetId") String attributeSetId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
@@ -283,6 +295,10 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 创建 or 修改.
+     * 创建 or 修改 AttributeUse
+     */
     @PutMapping("{attributeSetId}/AttributeUses/{attributeId}")
     public void putAttributeUse(@PathVariable("attributeSetId") String attributeSetId, @PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -302,6 +318,10 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 移除.
+     * 移除 AttributeUse
+     */
     @DeleteMapping("{attributeSetId}/AttributeUses/{attributeId}")
     public void deleteAttributeUse(@PathVariable("attributeSetId") String attributeSetId, @PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
