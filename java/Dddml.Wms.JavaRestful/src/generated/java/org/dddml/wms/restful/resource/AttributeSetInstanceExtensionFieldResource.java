@@ -27,6 +27,10 @@ public class AttributeSetInstanceExtensionFieldResource {
     private AttributeSetInstanceExtensionFieldApplicationService attributeSetInstanceExtensionFieldApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 AttributeSetInstanceExtensionFields
+     */
     @GetMapping
     public AttributeSetInstanceExtensionFieldStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class AttributeSetInstanceExtensionFieldResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 AttributeSetInstanceExtensionFields
+     */
     @GetMapping("_page")
     public Page<AttributeSetInstanceExtensionFieldStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class AttributeSetInstanceExtensionFieldResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public AttributeSetInstanceExtensionFieldStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 AttributeSetInstanceExtensionField
+     */
+    @GetMapping("{name}")
+    public AttributeSetInstanceExtensionFieldStateDto get(@PathVariable("name") String name, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = name;
             AttributeSetInstanceExtensionFieldState state = attributeSetInstanceExtensionFieldApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class AttributeSetInstanceExtensionFieldResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldDto value) {
+    @PutMapping("{name}")
+    public void put(@PathVariable("name") String name, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField cmd = (AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField) value.toCommand();
-                AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, cmd);
                 attributeSetInstanceExtensionFieldApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField cmd = (AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField) value.toCommand();
-            AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, cmd);
             attributeSetInstanceExtensionFieldApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.MergePatchAttributeSetInstanceExtensionFieldDto value) {
+    @PatchMapping("{name}")
+    public void patch(@PathVariable("name") String name, @RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.MergePatchAttributeSetInstanceExtensionFieldDto value) {
         try {
 
             AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField cmd = value.toMergePatchAttributeSetInstanceExtensionField();
-            AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, cmd);
             attributeSetInstanceExtensionFieldApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{name}")
+    public void delete(@PathVariable("name") String name,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class AttributeSetInstanceExtensionFieldResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, deleteCmd);
             attributeSetInstanceExtensionFieldApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class AttributeSetInstanceExtensionFieldResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public AttributeSetInstanceExtensionFieldEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{name}/_events/{version}")
+    public AttributeSetInstanceExtensionFieldEvent getStateEvent(@PathVariable("name") String name, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = name;
             //AttributeSetInstanceExtensionFieldStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldStateEventDtoConverter();
             return attributeSetInstanceExtensionFieldApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public AttributeSetInstanceExtensionFieldStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{name}/_historyStates/{version}")
+    public AttributeSetInstanceExtensionFieldStateDto getHistoryState(@PathVariable("name") String name, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = name;
             AttributeSetInstanceExtensionFieldStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class AttributeSetInstanceExtensionFieldResource {
  
     public static class AttributeSetInstanceExtensionFieldResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceExtensionFieldCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String name, AttributeSetInstanceExtensionFieldCommand value) {
+            String idObj = name;
             if (value.getName() == null) {
                 value.setName(idObj);
             } else if (!value.getName().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getName());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", name, value.getName());
             }
         }
     
@@ -334,9 +346,9 @@ public class AttributeSetInstanceExtensionFieldResource {
 
         public static AttributeSetInstanceExtensionFieldStateDto[] toAttributeSetInstanceExtensionFieldStateDtoArray(Iterable<String> ids) {
             List<AttributeSetInstanceExtensionFieldStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 AttributeSetInstanceExtensionFieldStateDto dto = new AttributeSetInstanceExtensionFieldStateDto();
-                dto.setName(id);
+                dto.setName(i);
                 states.add(dto);
             });
             return states.toArray(new AttributeSetInstanceExtensionFieldStateDto[0]);

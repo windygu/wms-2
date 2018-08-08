@@ -30,6 +30,10 @@ public class SellableInventoryItemResource {
     private SellableInventoryItemApplicationService sellableInventoryItemApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 SellableInventoryItems
+     */
     @GetMapping
     public SellableInventoryItemStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -68,11 +72,15 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 SellableInventoryItems
+     */
     @GetMapping("_page")
     public Page<SellableInventoryItemStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -109,10 +117,14 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public SellableInventoryItemStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 SellableInventoryItem
+     */
+    @GetMapping("{sellableInventoryItemId}")
+    public SellableInventoryItemStateDto get(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            InventoryItemId idObj = SellableInventoryItemResourceUtils.parseIdString(id);
+            InventoryItemId idObj = SellableInventoryItemResourceUtils.parseIdString(sellableInventoryItemId);
             SellableInventoryItemState state = sellableInventoryItemApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -163,32 +175,32 @@ public class SellableInventoryItemResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchSellableInventoryItemDto value) {
+    @PutMapping("{sellableInventoryItemId}")
+    public void put(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId, @RequestBody CreateOrMergePatchSellableInventoryItemDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 SellableInventoryItemCommand.MergePatchSellableInventoryItem cmd = (SellableInventoryItemCommand.MergePatchSellableInventoryItem) value.toCommand();
-                SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(sellableInventoryItemId, cmd);
                 sellableInventoryItemApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             SellableInventoryItemCommand.CreateSellableInventoryItem cmd = (SellableInventoryItemCommand.CreateSellableInventoryItem) value.toCommand();
-            SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(sellableInventoryItemId, cmd);
             sellableInventoryItemApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value) {
+    @PatchMapping("{sellableInventoryItemId}")
+    public void patch(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId, @RequestBody CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value) {
         try {
 
             SellableInventoryItemCommand.MergePatchSellableInventoryItem cmd = value.toMergePatchSellableInventoryItem();
-            SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(sellableInventoryItemId, cmd);
             sellableInventoryItemApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -267,12 +279,12 @@ public class SellableInventoryItemResource {
  
     public static class SellableInventoryItemResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, SellableInventoryItemCommand value) {
-            InventoryItemId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String sellableInventoryItemId, SellableInventoryItemCommand value) {
+            InventoryItemId idObj = parseIdString(sellableInventoryItemId);
             if (value.getSellableInventoryItemId() == null) {
                 value.setSellableInventoryItemId(idObj);
             } else if (!value.getSellableInventoryItemId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getSellableInventoryItemId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", sellableInventoryItemId, value.getSellableInventoryItemId());
             }
         }
     
@@ -338,9 +350,9 @@ public class SellableInventoryItemResource {
 
         public static SellableInventoryItemStateDto[] toSellableInventoryItemStateDtoArray(Iterable<InventoryItemId> ids) {
             List<SellableInventoryItemStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 SellableInventoryItemStateDto dto = new SellableInventoryItemStateDto();
-                dto.setSellableInventoryItemId(id);
+                dto.setSellableInventoryItemId(i);
                 states.add(dto);
             });
             return states.toArray(new SellableInventoryItemStateDto[0]);

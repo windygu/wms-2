@@ -34,6 +34,10 @@ public class AttributeSetInstanceResource {
     private AttributeSetInstanceApplicationService attributeSetInstanceApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 AttributeSetInstances
+     */
     @GetMapping
     public JSONArray getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -72,11 +76,15 @@ public class AttributeSetInstanceResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 AttributeSetInstances
+     */
     @GetMapping("_page")
     public Page<JSONObject> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -112,10 +120,14 @@ public class AttributeSetInstanceResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public JSONObject get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 AttributeSetInstance
+     */
+    @GetMapping("{attributeSetInstanceId}")
+    public JSONObject get(@PathVariable("attributeSetInstanceId") String attributeSetInstanceId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = attributeSetInstanceId;
             AttributeSetInstanceState state = attributeSetInstanceApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -157,12 +169,12 @@ public class AttributeSetInstanceResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody JSONObject dynamicObject) {
+    @PutMapping("{attributeSetInstanceId}")
+    public void put(@PathVariable("attributeSetInstanceId") String attributeSetInstanceId, @RequestBody JSONObject dynamicObject) {
         try {
 
             AttributeSetInstanceCommand.CreateAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeSetInstanceId, cmd);
             attributeSetInstanceApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -182,22 +194,22 @@ public class AttributeSetInstanceResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public AttributeSetInstanceEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{attributeSetInstanceId}/_events/{version}")
+    public AttributeSetInstanceEvent getStateEvent(@PathVariable("attributeSetInstanceId") String attributeSetInstanceId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = attributeSetInstanceId;
             //AttributeSetInstanceStateEventDtoConverter dtoConverter = getAttributeSetInstanceStateEventDtoConverter();
             return attributeSetInstanceApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public AttributeSetInstanceStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{attributeSetInstanceId}/_historyStates/{version}")
+    public AttributeSetInstanceStateDto getHistoryState(@PathVariable("attributeSetInstanceId") String attributeSetInstanceId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = attributeSetInstanceId;
             AttributeSetInstanceStateDto.DtoConverter dtoConverter = new AttributeSetInstanceStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -234,12 +246,12 @@ public class AttributeSetInstanceResource {
  
     public static class AttributeSetInstanceResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeSetInstanceCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String attributeSetInstanceId, AttributeSetInstanceCommand value) {
+            String idObj = attributeSetInstanceId;
             if (value.getAttributeSetInstanceId() == null) {
                 value.setAttributeSetInstanceId(idObj);
             } else if (!value.getAttributeSetInstanceId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getAttributeSetInstanceId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", attributeSetInstanceId, value.getAttributeSetInstanceId());
             }
         }
     
@@ -294,9 +306,9 @@ public class AttributeSetInstanceResource {
 
         public static AttributeSetInstanceStateDto[] toAttributeSetInstanceStateDtoArray(Iterable<String> ids) {
             List<AttributeSetInstanceStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 AttributeSetInstanceStateDto dto = new AttributeSetInstanceStateDto();
-                dto.setAttributeSetInstanceId(id);
+                dto.setAttributeSetInstanceId(i);
                 states.add(dto);
             });
             return states.toArray(new AttributeSetInstanceStateDto[0]);

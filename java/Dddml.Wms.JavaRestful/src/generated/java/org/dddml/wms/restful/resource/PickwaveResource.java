@@ -27,6 +27,10 @@ public class PickwaveResource {
     private PickwaveApplicationService pickwaveApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Pickwaves
+     */
     @GetMapping
     public PickwaveStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Pickwaves
+     */
     @GetMapping("_page")
     public Page<PickwaveStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public PickwaveStateDto get(@PathVariable("id") Long id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Pickwave
+     */
+    @GetMapping("{pickwaveId}")
+    public PickwaveStateDto get(@PathVariable("pickwaveId") Long pickwaveId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            Long idObj = id;
+            Long idObj = pickwaveId;
             PickwaveState state = pickwaveApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class PickwaveResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") Long id, @RequestBody CreateOrMergePatchPickwaveDto value) {
+    @PutMapping("{pickwaveId}")
+    public void put(@PathVariable("pickwaveId") Long pickwaveId, @RequestBody CreateOrMergePatchPickwaveDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PickwaveCommand.MergePatchPickwave cmd = (PickwaveCommand.MergePatchPickwave) value.toCommand();
-                PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, cmd);
                 pickwaveApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PickwaveCommand.CreatePickwave cmd = (PickwaveCommand.CreatePickwave) value.toCommand();
-            PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, cmd);
             pickwaveApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") Long id, @RequestBody CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value) {
+    @PatchMapping("{pickwaveId}")
+    public void patch(@PathVariable("pickwaveId") Long pickwaveId, @RequestBody CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value) {
         try {
 
             PickwaveCommand.MergePatchPickwave cmd = value.toMergePatchPickwave();
-            PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, cmd);
             pickwaveApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") Long id,
+    @DeleteMapping("{pickwaveId}")
+    public void delete(@PathVariable("pickwaveId") Long pickwaveId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class PickwaveResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, deleteCmd);
             pickwaveApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class PickwaveResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public PickwaveEvent getStateEvent(@PathVariable("id") Long id, @PathVariable("version") long version) {
+    @GetMapping("{pickwaveId}/_events/{version}")
+    public PickwaveEvent getStateEvent(@PathVariable("pickwaveId") Long pickwaveId, @PathVariable("version") long version) {
         try {
 
-            Long idObj = id;
+            Long idObj = pickwaveId;
             //PickwaveStateEventDtoConverter dtoConverter = getPickwaveStateEventDtoConverter();
             return pickwaveApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public PickwaveStateDto getHistoryState(@PathVariable("id") Long id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{pickwaveId}/_historyStates/{version}")
+    public PickwaveStateDto getHistoryState(@PathVariable("pickwaveId") Long pickwaveId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            Long idObj = id;
+            Long idObj = pickwaveId;
             PickwaveStateDto.DtoConverter dtoConverter = new PickwaveStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class PickwaveResource {
  
     public static class PickwaveResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(Long id, PickwaveCommand value) {
-            Long idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(Long pickwaveId, PickwaveCommand value) {
+            Long idObj = pickwaveId;
             if (value.getPickwaveId() == null) {
                 value.setPickwaveId(idObj);
             } else if (!value.getPickwaveId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getPickwaveId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", pickwaveId, value.getPickwaveId());
             }
         }
     
@@ -334,9 +346,9 @@ public class PickwaveResource {
 
         public static PickwaveStateDto[] toPickwaveStateDtoArray(Iterable<Long> ids) {
             List<PickwaveStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 PickwaveStateDto dto = new PickwaveStateDto();
-                dto.setPickwaveId(id);
+                dto.setPickwaveId(i);
                 states.add(dto);
             });
             return states.toArray(new PickwaveStateDto[0]);

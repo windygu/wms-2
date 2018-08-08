@@ -27,6 +27,10 @@ public class PartyRoleResource {
     private PartyRoleApplicationService partyRoleApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 PartyRoles
+     */
     @GetMapping
     public PartyRoleStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class PartyRoleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 PartyRoles
+     */
     @GetMapping("_page")
     public Page<PartyRoleStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class PartyRoleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public PartyRoleStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 PartyRole
+     */
+    @GetMapping("{partyRoleId}")
+    public PartyRoleStateDto get(@PathVariable("partyRoleId") String partyRoleId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(id);
+            PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(partyRoleId);
             PartyRoleState state = partyRoleApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class PartyRoleResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPartyRoleDto value) {
+    @PutMapping("{partyRoleId}")
+    public void put(@PathVariable("partyRoleId") String partyRoleId, @RequestBody CreateOrMergePatchPartyRoleDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PartyRoleCommand.MergePatchPartyRole cmd = (PartyRoleCommand.MergePatchPartyRole) value.toCommand();
-                PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, cmd);
                 partyRoleApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PartyRoleCommand.CreatePartyRole cmd = (PartyRoleCommand.CreatePartyRole) value.toCommand();
-            PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, cmd);
             partyRoleApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPartyRoleDto.MergePatchPartyRoleDto value) {
+    @PatchMapping("{partyRoleId}")
+    public void patch(@PathVariable("partyRoleId") String partyRoleId, @RequestBody CreateOrMergePatchPartyRoleDto.MergePatchPartyRoleDto value) {
         try {
 
             PartyRoleCommand.MergePatchPartyRole cmd = value.toMergePatchPartyRole();
-            PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, cmd);
             partyRoleApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{partyRoleId}")
+    public void delete(@PathVariable("partyRoleId") String partyRoleId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class PartyRoleResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, deleteCmd);
             partyRoleApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class PartyRoleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public PartyRoleEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{partyRoleId}/_events/{version}")
+    public PartyRoleEvent getStateEvent(@PathVariable("partyRoleId") String partyRoleId, @PathVariable("version") long version) {
         try {
 
-            PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(id);
+            PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(partyRoleId);
             //PartyRoleStateEventDtoConverter dtoConverter = getPartyRoleStateEventDtoConverter();
             return partyRoleApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public PartyRoleStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{partyRoleId}/_historyStates/{version}")
+    public PartyRoleStateDto getHistoryState(@PathVariable("partyRoleId") String partyRoleId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(id);
+            PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(partyRoleId);
             PartyRoleStateDto.DtoConverter dtoConverter = new PartyRoleStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class PartyRoleResource {
  
     public static class PartyRoleResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, PartyRoleCommand value) {
-            PartyRoleId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String partyRoleId, PartyRoleCommand value) {
+            PartyRoleId idObj = parseIdString(partyRoleId);
             if (value.getPartyRoleId() == null) {
                 value.setPartyRoleId(idObj);
             } else if (!value.getPartyRoleId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getPartyRoleId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", partyRoleId, value.getPartyRoleId());
             }
         }
     
@@ -345,9 +357,9 @@ public class PartyRoleResource {
 
         public static PartyRoleStateDto[] toPartyRoleStateDtoArray(Iterable<PartyRoleId> ids) {
             List<PartyRoleStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 PartyRoleStateDto dto = new PartyRoleStateDto();
-                dto.setPartyRoleId(id);
+                dto.setPartyRoleId(i);
                 states.add(dto);
             });
             return states.toArray(new PartyRoleStateDto[0]);

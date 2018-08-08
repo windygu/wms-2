@@ -27,6 +27,10 @@ public class RejectionReasonResource {
     private RejectionReasonApplicationService rejectionReasonApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 RejectionReasons
+     */
     @GetMapping
     public RejectionReasonStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class RejectionReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 RejectionReasons
+     */
     @GetMapping("_page")
     public Page<RejectionReasonStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class RejectionReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public RejectionReasonStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 RejectionReason
+     */
+    @GetMapping("{rejectionReasonId}")
+    public RejectionReasonStateDto get(@PathVariable("rejectionReasonId") String rejectionReasonId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = rejectionReasonId;
             RejectionReasonState state = rejectionReasonApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class RejectionReasonResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchRejectionReasonDto value) {
+    @PutMapping("{rejectionReasonId}")
+    public void put(@PathVariable("rejectionReasonId") String rejectionReasonId, @RequestBody CreateOrMergePatchRejectionReasonDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 RejectionReasonCommand.MergePatchRejectionReason cmd = (RejectionReasonCommand.MergePatchRejectionReason) value.toCommand();
-                RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, cmd);
                 rejectionReasonApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             RejectionReasonCommand.CreateRejectionReason cmd = (RejectionReasonCommand.CreateRejectionReason) value.toCommand();
-            RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, cmd);
             rejectionReasonApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchRejectionReasonDto.MergePatchRejectionReasonDto value) {
+    @PatchMapping("{rejectionReasonId}")
+    public void patch(@PathVariable("rejectionReasonId") String rejectionReasonId, @RequestBody CreateOrMergePatchRejectionReasonDto.MergePatchRejectionReasonDto value) {
         try {
 
             RejectionReasonCommand.MergePatchRejectionReason cmd = value.toMergePatchRejectionReason();
-            RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, cmd);
             rejectionReasonApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{rejectionReasonId}")
+    public void delete(@PathVariable("rejectionReasonId") String rejectionReasonId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class RejectionReasonResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, deleteCmd);
             rejectionReasonApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class RejectionReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public RejectionReasonEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{rejectionReasonId}/_events/{version}")
+    public RejectionReasonEvent getStateEvent(@PathVariable("rejectionReasonId") String rejectionReasonId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = rejectionReasonId;
             //RejectionReasonStateEventDtoConverter dtoConverter = getRejectionReasonStateEventDtoConverter();
             return rejectionReasonApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public RejectionReasonStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{rejectionReasonId}/_historyStates/{version}")
+    public RejectionReasonStateDto getHistoryState(@PathVariable("rejectionReasonId") String rejectionReasonId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = rejectionReasonId;
             RejectionReasonStateDto.DtoConverter dtoConverter = new RejectionReasonStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class RejectionReasonResource {
  
     public static class RejectionReasonResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, RejectionReasonCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String rejectionReasonId, RejectionReasonCommand value) {
+            String idObj = rejectionReasonId;
             if (value.getRejectionReasonId() == null) {
                 value.setRejectionReasonId(idObj);
             } else if (!value.getRejectionReasonId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getRejectionReasonId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", rejectionReasonId, value.getRejectionReasonId());
             }
         }
     
@@ -334,9 +346,9 @@ public class RejectionReasonResource {
 
         public static RejectionReasonStateDto[] toRejectionReasonStateDtoArray(Iterable<String> ids) {
             List<RejectionReasonStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 RejectionReasonStateDto dto = new RejectionReasonStateDto();
-                dto.setRejectionReasonId(id);
+                dto.setRejectionReasonId(i);
                 states.add(dto);
             });
             return states.toArray(new RejectionReasonStateDto[0]);

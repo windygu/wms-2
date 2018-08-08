@@ -27,6 +27,10 @@ public class OrderShipmentResource {
     private OrderShipmentApplicationService orderShipmentApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 OrderShipments
+     */
     @GetMapping
     public OrderShipmentStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 OrderShipments
+     */
     @GetMapping("_page")
     public Page<OrderShipmentStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public OrderShipmentStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 OrderShipment
+     */
+    @GetMapping("{orderShipmentId}")
+    public OrderShipmentStateDto get(@PathVariable("orderShipmentId") String orderShipmentId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(id);
+            OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(orderShipmentId);
             OrderShipmentState state = orderShipmentApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,32 +172,32 @@ public class OrderShipmentResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderShipmentDto value) {
+    @PutMapping("{orderShipmentId}")
+    public void put(@PathVariable("orderShipmentId") String orderShipmentId, @RequestBody CreateOrMergePatchOrderShipmentDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 OrderShipmentCommand.MergePatchOrderShipment cmd = (OrderShipmentCommand.MergePatchOrderShipment) value.toCommand();
-                OrderShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                OrderShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(orderShipmentId, cmd);
                 orderShipmentApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             OrderShipmentCommand.CreateOrderShipment cmd = (OrderShipmentCommand.CreateOrderShipment) value.toCommand();
-            OrderShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            OrderShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(orderShipmentId, cmd);
             orderShipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderShipmentDto.MergePatchOrderShipmentDto value) {
+    @PatchMapping("{orderShipmentId}")
+    public void patch(@PathVariable("orderShipmentId") String orderShipmentId, @RequestBody CreateOrMergePatchOrderShipmentDto.MergePatchOrderShipmentDto value) {
         try {
 
             OrderShipmentCommand.MergePatchOrderShipment cmd = value.toMergePatchOrderShipment();
-            OrderShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            OrderShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(orderShipmentId, cmd);
             orderShipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -204,22 +216,22 @@ public class OrderShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public OrderShipmentEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{orderShipmentId}/_events/{version}")
+    public OrderShipmentEvent getStateEvent(@PathVariable("orderShipmentId") String orderShipmentId, @PathVariable("version") long version) {
         try {
 
-            OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(id);
+            OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(orderShipmentId);
             //OrderShipmentStateEventDtoConverter dtoConverter = getOrderShipmentStateEventDtoConverter();
             return orderShipmentApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public OrderShipmentStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{orderShipmentId}/_historyStates/{version}")
+    public OrderShipmentStateDto getHistoryState(@PathVariable("orderShipmentId") String orderShipmentId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(id);
+            OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(orderShipmentId);
             OrderShipmentStateDto.DtoConverter dtoConverter = new OrderShipmentStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -256,12 +268,12 @@ public class OrderShipmentResource {
  
     public static class OrderShipmentResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, OrderShipmentCommand value) {
-            OrderShipmentId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String orderShipmentId, OrderShipmentCommand value) {
+            OrderShipmentId idObj = parseIdString(orderShipmentId);
             if (value.getOrderShipmentId() == null) {
                 value.setOrderShipmentId(idObj);
             } else if (!value.getOrderShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getOrderShipmentId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", orderShipmentId, value.getOrderShipmentId());
             }
         }
     
@@ -327,9 +339,9 @@ public class OrderShipmentResource {
 
         public static OrderShipmentStateDto[] toOrderShipmentStateDtoArray(Iterable<OrderShipmentId> ids) {
             List<OrderShipmentStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 OrderShipmentStateDto dto = new OrderShipmentStateDto();
-                dto.setOrderShipmentId(id);
+                dto.setOrderShipmentId(i);
                 states.add(dto);
             });
             return states.toArray(new OrderShipmentStateDto[0]);

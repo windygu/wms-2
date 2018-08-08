@@ -27,6 +27,10 @@ public class InventoryPRTriggeredResource {
     private InventoryPRTriggeredApplicationService inventoryPRTriggeredApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 InventoryPRTriggereds
+     */
     @GetMapping
     public InventoryPRTriggeredStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class InventoryPRTriggeredResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 InventoryPRTriggereds
+     */
     @GetMapping("_page")
     public Page<InventoryPRTriggeredStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class InventoryPRTriggeredResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public InventoryPRTriggeredStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 InventoryPRTriggered
+     */
+    @GetMapping("{inventoryPRTriggeredId}")
+    public InventoryPRTriggeredStateDto get(@PathVariable("inventoryPRTriggeredId") String inventoryPRTriggeredId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            InventoryPRTriggeredId idObj = InventoryPRTriggeredResourceUtils.parseIdString(id);
+            InventoryPRTriggeredId idObj = InventoryPRTriggeredResourceUtils.parseIdString(inventoryPRTriggeredId);
             InventoryPRTriggeredState state = inventoryPRTriggeredApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,32 +172,32 @@ public class InventoryPRTriggeredResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryPRTriggeredDto value) {
+    @PutMapping("{inventoryPRTriggeredId}")
+    public void put(@PathVariable("inventoryPRTriggeredId") String inventoryPRTriggeredId, @RequestBody CreateOrMergePatchInventoryPRTriggeredDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered cmd = (InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered) value.toCommand();
-                InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPRTriggeredId, cmd);
                 inventoryPRTriggeredApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             InventoryPRTriggeredCommand.CreateInventoryPRTriggered cmd = (InventoryPRTriggeredCommand.CreateInventoryPRTriggered) value.toCommand();
-            InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPRTriggeredId, cmd);
             inventoryPRTriggeredApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value) {
+    @PatchMapping("{inventoryPRTriggeredId}")
+    public void patch(@PathVariable("inventoryPRTriggeredId") String inventoryPRTriggeredId, @RequestBody CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value) {
         try {
 
             InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered cmd = value.toMergePatchInventoryPRTriggered();
-            InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPRTriggeredId, cmd);
             inventoryPRTriggeredApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -229,12 +241,12 @@ public class InventoryPRTriggeredResource {
  
     public static class InventoryPRTriggeredResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, InventoryPRTriggeredCommand value) {
-            InventoryPRTriggeredId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String inventoryPRTriggeredId, InventoryPRTriggeredCommand value) {
+            InventoryPRTriggeredId idObj = parseIdString(inventoryPRTriggeredId);
             if (value.getInventoryPRTriggeredId() == null) {
                 value.setInventoryPRTriggeredId(idObj);
             } else if (!value.getInventoryPRTriggeredId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getInventoryPRTriggeredId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", inventoryPRTriggeredId, value.getInventoryPRTriggeredId());
             }
         }
     
@@ -300,9 +312,9 @@ public class InventoryPRTriggeredResource {
 
         public static InventoryPRTriggeredStateDto[] toInventoryPRTriggeredStateDtoArray(Iterable<InventoryPRTriggeredId> ids) {
             List<InventoryPRTriggeredStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 InventoryPRTriggeredStateDto dto = new InventoryPRTriggeredStateDto();
-                dto.setInventoryPRTriggeredId(id);
+                dto.setInventoryPRTriggeredId(i);
                 states.add(dto);
             });
             return states.toArray(new InventoryPRTriggeredStateDto[0]);

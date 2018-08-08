@@ -27,6 +27,10 @@ public class GoodIdentificationTypeResource {
     private GoodIdentificationTypeApplicationService goodIdentificationTypeApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 GoodIdentificationTypes
+     */
     @GetMapping
     public GoodIdentificationTypeStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class GoodIdentificationTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 GoodIdentificationTypes
+     */
     @GetMapping("_page")
     public Page<GoodIdentificationTypeStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class GoodIdentificationTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public GoodIdentificationTypeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 GoodIdentificationType
+     */
+    @GetMapping("{goodIdentificationTypeId}")
+    public GoodIdentificationTypeStateDto get(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = goodIdentificationTypeId;
             GoodIdentificationTypeState state = goodIdentificationTypeApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class GoodIdentificationTypeResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchGoodIdentificationTypeDto value) {
+    @PutMapping("{goodIdentificationTypeId}")
+    public void put(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId, @RequestBody CreateOrMergePatchGoodIdentificationTypeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 GoodIdentificationTypeCommand.MergePatchGoodIdentificationType cmd = (GoodIdentificationTypeCommand.MergePatchGoodIdentificationType) value.toCommand();
-                GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, cmd);
                 goodIdentificationTypeApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             GoodIdentificationTypeCommand.CreateGoodIdentificationType cmd = (GoodIdentificationTypeCommand.CreateGoodIdentificationType) value.toCommand();
-            GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, cmd);
             goodIdentificationTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchGoodIdentificationTypeDto.MergePatchGoodIdentificationTypeDto value) {
+    @PatchMapping("{goodIdentificationTypeId}")
+    public void patch(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId, @RequestBody CreateOrMergePatchGoodIdentificationTypeDto.MergePatchGoodIdentificationTypeDto value) {
         try {
 
             GoodIdentificationTypeCommand.MergePatchGoodIdentificationType cmd = value.toMergePatchGoodIdentificationType();
-            GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, cmd);
             goodIdentificationTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{goodIdentificationTypeId}")
+    public void delete(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class GoodIdentificationTypeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, deleteCmd);
             goodIdentificationTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class GoodIdentificationTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public GoodIdentificationTypeEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{goodIdentificationTypeId}/_events/{version}")
+    public GoodIdentificationTypeEvent getStateEvent(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = goodIdentificationTypeId;
             //GoodIdentificationTypeStateEventDtoConverter dtoConverter = getGoodIdentificationTypeStateEventDtoConverter();
             return goodIdentificationTypeApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public GoodIdentificationTypeStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{goodIdentificationTypeId}/_historyStates/{version}")
+    public GoodIdentificationTypeStateDto getHistoryState(@PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = goodIdentificationTypeId;
             GoodIdentificationTypeStateDto.DtoConverter dtoConverter = new GoodIdentificationTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class GoodIdentificationTypeResource {
  
     public static class GoodIdentificationTypeResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, GoodIdentificationTypeCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String goodIdentificationTypeId, GoodIdentificationTypeCommand value) {
+            String idObj = goodIdentificationTypeId;
             if (value.getGoodIdentificationTypeId() == null) {
                 value.setGoodIdentificationTypeId(idObj);
             } else if (!value.getGoodIdentificationTypeId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getGoodIdentificationTypeId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", goodIdentificationTypeId, value.getGoodIdentificationTypeId());
             }
         }
     
@@ -334,9 +346,9 @@ public class GoodIdentificationTypeResource {
 
         public static GoodIdentificationTypeStateDto[] toGoodIdentificationTypeStateDtoArray(Iterable<String> ids) {
             List<GoodIdentificationTypeStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 GoodIdentificationTypeStateDto dto = new GoodIdentificationTypeStateDto();
-                dto.setGoodIdentificationTypeId(id);
+                dto.setGoodIdentificationTypeId(i);
                 states.add(dto);
             });
             return states.toArray(new GoodIdentificationTypeStateDto[0]);

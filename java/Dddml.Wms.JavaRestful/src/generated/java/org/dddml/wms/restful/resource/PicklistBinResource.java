@@ -27,6 +27,10 @@ public class PicklistBinResource {
     private PicklistBinApplicationService picklistBinApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 PicklistBins
+     */
     @GetMapping
     public PicklistBinStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 PicklistBins
+     */
     @GetMapping("_page")
     public Page<PicklistBinStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public PicklistBinStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 PicklistBin
+     */
+    @GetMapping("{picklistBinId}")
+    public PicklistBinStateDto get(@PathVariable("picklistBinId") String picklistBinId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = picklistBinId;
             PicklistBinState state = picklistBinApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class PicklistBinResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPicklistBinDto value) {
+    @PutMapping("{picklistBinId}")
+    public void put(@PathVariable("picklistBinId") String picklistBinId, @RequestBody CreateOrMergePatchPicklistBinDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PicklistBinCommand.MergePatchPicklistBin cmd = (PicklistBinCommand.MergePatchPicklistBin) value.toCommand();
-                PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistBinId, cmd);
                 picklistBinApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PicklistBinCommand.CreatePicklistBin cmd = (PicklistBinCommand.CreatePicklistBin) value.toCommand();
-            PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistBinId, cmd);
             picklistBinApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value) {
+    @PatchMapping("{picklistBinId}")
+    public void patch(@PathVariable("picklistBinId") String picklistBinId, @RequestBody CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value) {
         try {
 
             PicklistBinCommand.MergePatchPicklistBin cmd = value.toMergePatchPicklistBin();
-            PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistBinId, cmd);
             picklistBinApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{picklistBinId}")
+    public void delete(@PathVariable("picklistBinId") String picklistBinId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class PicklistBinResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistBinId, deleteCmd);
             picklistBinApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public PicklistBinEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{picklistBinId}/_events/{version}")
+    public PicklistBinEvent getStateEvent(@PathVariable("picklistBinId") String picklistBinId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = picklistBinId;
             //PicklistBinStateEventDtoConverter dtoConverter = getPicklistBinStateEventDtoConverter();
             return picklistBinApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public PicklistBinStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{picklistBinId}/_historyStates/{version}")
+    public PicklistBinStateDto getHistoryState(@PathVariable("picklistBinId") String picklistBinId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = picklistBinId;
             PicklistBinStateDto.DtoConverter dtoConverter = new PicklistBinStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -369,12 +381,12 @@ public class PicklistBinResource {
  
     public static class PicklistBinResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, PicklistBinCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String picklistBinId, PicklistBinCommand value) {
+            String idObj = picklistBinId;
             if (value.getPicklistBinId() == null) {
                 value.setPicklistBinId(idObj);
             } else if (!value.getPicklistBinId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getPicklistBinId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", picklistBinId, value.getPicklistBinId());
             }
         }
     
@@ -429,9 +441,9 @@ public class PicklistBinResource {
 
         public static PicklistBinStateDto[] toPicklistBinStateDtoArray(Iterable<String> ids) {
             List<PicklistBinStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 PicklistBinStateDto dto = new PicklistBinStateDto();
-                dto.setPicklistBinId(id);
+                dto.setPicklistBinId(i);
                 states.add(dto);
             });
             return states.toArray(new PicklistBinStateDto[0]);

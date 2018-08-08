@@ -27,6 +27,10 @@ public class ShipmentResource {
     private ShipmentApplicationService shipmentApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Shipments
+     */
     @GetMapping
     public ShipmentStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Shipments
+     */
     @GetMapping("_page")
     public Page<ShipmentStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public ShipmentStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Shipment
+     */
+    @GetMapping("{shipmentId}")
+    public ShipmentStateDto get(@PathVariable("shipmentId") String shipmentId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = shipmentId;
             ShipmentState state = shipmentApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,48 +172,48 @@ public class ShipmentResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchShipmentDto value) {
+    @PutMapping("{shipmentId}")
+    public void put(@PathVariable("shipmentId") String shipmentId, @RequestBody CreateOrMergePatchShipmentDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ShipmentCommand.MergePatchShipment cmd = (ShipmentCommand.MergePatchShipment) value.toCommand();
-                ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
                 shipmentApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ShipmentCommand.CreateShipment cmd = (ShipmentCommand.CreateShipment) value.toCommand();
-            ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchShipmentDto.MergePatchShipmentDto value) {
+    @PatchMapping("{shipmentId}")
+    public void patch(@PathVariable("shipmentId") String shipmentId, @RequestBody CreateOrMergePatchShipmentDto.MergePatchShipmentDto value) {
         try {
 
             ShipmentCommand.MergePatchShipment cmd = value.toMergePatchShipment();
-            ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PutMapping("{id}/_commands/Import")
-    public void _import(@PathVariable("id") String id, @RequestBody ShipmentCommands.Import content) {
+    @PutMapping("{shipmentId}/_commands/Import")
+    public void _import(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.Import content) {
         try {
 
             ShipmentCommands.Import cmd = content;//.toImport();
-            String idObj = id;
+            String idObj = shipmentId;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
             } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getShipmentId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
             shipmentApplicationService.when(cmd);
 
@@ -209,16 +221,16 @@ public class ShipmentResource {
     }
 
 
-    @PutMapping("{id}/_commands/Ship")
-    public void ship(@PathVariable("id") String id, @RequestBody ShipmentCommands.Ship content) {
+    @PutMapping("{shipmentId}/_commands/Ship")
+    public void ship(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.Ship content) {
         try {
 
             ShipmentCommands.Ship cmd = content;//.toShip();
-            String idObj = id;
+            String idObj = shipmentId;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
             } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getShipmentId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
             shipmentApplicationService.when(cmd);
 
@@ -226,16 +238,16 @@ public class ShipmentResource {
     }
 
 
-    @PutMapping("{id}/_commands/ReceiveItem")
-    public void receiveItem(@PathVariable("id") String id, @RequestBody ShipmentCommands.ReceiveItem content) {
+    @PutMapping("{shipmentId}/_commands/ReceiveItem")
+    public void receiveItem(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ReceiveItem content) {
         try {
 
             ShipmentCommands.ReceiveItem cmd = content;//.toReceiveItem();
-            String idObj = id;
+            String idObj = shipmentId;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
             } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getShipmentId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
             shipmentApplicationService.when(cmd);
 
@@ -243,16 +255,16 @@ public class ShipmentResource {
     }
 
 
-    @PutMapping("{id}/_commands/ConfirmAllItemsReceived")
-    public void confirmAllItemsReceived(@PathVariable("id") String id, @RequestBody ShipmentCommands.ConfirmAllItemsReceived content) {
+    @PutMapping("{shipmentId}/_commands/ConfirmAllItemsReceived")
+    public void confirmAllItemsReceived(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ConfirmAllItemsReceived content) {
         try {
 
             ShipmentCommands.ConfirmAllItemsReceived cmd = content;//.toConfirmAllItemsReceived();
-            String idObj = id;
+            String idObj = shipmentId;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
             } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getShipmentId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
             shipmentApplicationService.when(cmd);
 
@@ -272,22 +284,22 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public ShipmentEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{shipmentId}/_events/{version}")
+    public ShipmentEvent getStateEvent(@PathVariable("shipmentId") String shipmentId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = shipmentId;
             //ShipmentStateEventDtoConverter dtoConverter = getShipmentStateEventDtoConverter();
             return shipmentApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public ShipmentStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{shipmentId}/_historyStates/{version}")
+    public ShipmentStateDto getHistoryState(@PathVariable("shipmentId") String shipmentId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = shipmentId;
             ShipmentStateDto.DtoConverter dtoConverter = new ShipmentStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -733,12 +745,12 @@ public class ShipmentResource {
  
     public static class ShipmentResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, ShipmentCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String shipmentId, ShipmentCommand value) {
+            String idObj = shipmentId;
             if (value.getShipmentId() == null) {
                 value.setShipmentId(idObj);
             } else if (!value.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getShipmentId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, value.getShipmentId());
             }
         }
     
@@ -793,9 +805,9 @@ public class ShipmentResource {
 
         public static ShipmentStateDto[] toShipmentStateDtoArray(Iterable<String> ids) {
             List<ShipmentStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 ShipmentStateDto dto = new ShipmentStateDto();
-                dto.setShipmentId(id);
+                dto.setShipmentId(i);
                 states.add(dto);
             });
             return states.toArray(new ShipmentStateDto[0]);

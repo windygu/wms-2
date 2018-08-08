@@ -27,6 +27,10 @@ public class LotResource {
     private LotApplicationService lotApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Lots
+     */
     @GetMapping
     public LotStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class LotResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Lots
+     */
     @GetMapping("_page")
     public Page<LotStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class LotResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public LotStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Lot
+     */
+    @GetMapping("{lotId}")
+    public LotStateDto get(@PathVariable("lotId") String lotId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = lotId;
             LotState state = lotApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class LotResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchLotDto value) {
+    @PutMapping("{lotId}")
+    public void put(@PathVariable("lotId") String lotId, @RequestBody CreateOrMergePatchLotDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 LotCommand.MergePatchLot cmd = (LotCommand.MergePatchLot) value.toCommand();
-                LotResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, cmd);
                 lotApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             LotCommand.CreateLot cmd = (LotCommand.CreateLot) value.toCommand();
-            LotResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, cmd);
             lotApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchLotDto.MergePatchLotDto value) {
+    @PatchMapping("{lotId}")
+    public void patch(@PathVariable("lotId") String lotId, @RequestBody CreateOrMergePatchLotDto.MergePatchLotDto value) {
         try {
 
             LotCommand.MergePatchLot cmd = value.toMergePatchLot();
-            LotResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, cmd);
             lotApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{lotId}")
+    public void delete(@PathVariable("lotId") String lotId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class LotResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            LotResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, deleteCmd);
             lotApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class LotResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public LotEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{lotId}/_events/{version}")
+    public LotEvent getStateEvent(@PathVariable("lotId") String lotId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = lotId;
             //LotStateEventDtoConverter dtoConverter = getLotStateEventDtoConverter();
             return lotApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public LotStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{lotId}/_historyStates/{version}")
+    public LotStateDto getHistoryState(@PathVariable("lotId") String lotId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = lotId;
             LotStateDto.DtoConverter dtoConverter = new LotStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class LotResource {
  
     public static class LotResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, LotCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String lotId, LotCommand value) {
+            String idObj = lotId;
             if (value.getLotId() == null) {
                 value.setLotId(idObj);
             } else if (!value.getLotId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getLotId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", lotId, value.getLotId());
             }
         }
     
@@ -334,9 +346,9 @@ public class LotResource {
 
         public static LotStateDto[] toLotStateDtoArray(Iterable<String> ids) {
             List<LotStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 LotStateDto dto = new LotStateDto();
-                dto.setLotId(id);
+                dto.setLotId(i);
                 states.add(dto);
             });
             return states.toArray(new LotStateDto[0]);

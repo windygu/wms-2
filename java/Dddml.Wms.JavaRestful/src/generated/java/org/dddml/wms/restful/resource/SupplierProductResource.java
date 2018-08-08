@@ -27,6 +27,10 @@ public class SupplierProductResource {
     private SupplierProductApplicationService supplierProductApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 SupplierProducts
+     */
     @GetMapping
     public SupplierProductStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class SupplierProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 SupplierProducts
+     */
     @GetMapping("_page")
     public Page<SupplierProductStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class SupplierProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public SupplierProductStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 SupplierProduct
+     */
+    @GetMapping("{supplierProductId}")
+    public SupplierProductStateDto get(@PathVariable("supplierProductId") String supplierProductId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            SupplierProductId idObj = SupplierProductResourceUtils.parseIdString(id);
+            SupplierProductId idObj = SupplierProductResourceUtils.parseIdString(supplierProductId);
             SupplierProductState state = supplierProductApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,32 +172,32 @@ public class SupplierProductResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchSupplierProductDto value) {
+    @PutMapping("{supplierProductId}")
+    public void put(@PathVariable("supplierProductId") String supplierProductId, @RequestBody CreateOrMergePatchSupplierProductDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 SupplierProductCommand.MergePatchSupplierProduct cmd = (SupplierProductCommand.MergePatchSupplierProduct) value.toCommand();
-                SupplierProductResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                SupplierProductResourceUtils.setNullIdOrThrowOnInconsistentIds(supplierProductId, cmd);
                 supplierProductApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             SupplierProductCommand.CreateSupplierProduct cmd = (SupplierProductCommand.CreateSupplierProduct) value.toCommand();
-            SupplierProductResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            SupplierProductResourceUtils.setNullIdOrThrowOnInconsistentIds(supplierProductId, cmd);
             supplierProductApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchSupplierProductDto.MergePatchSupplierProductDto value) {
+    @PatchMapping("{supplierProductId}")
+    public void patch(@PathVariable("supplierProductId") String supplierProductId, @RequestBody CreateOrMergePatchSupplierProductDto.MergePatchSupplierProductDto value) {
         try {
 
             SupplierProductCommand.MergePatchSupplierProduct cmd = value.toMergePatchSupplierProduct();
-            SupplierProductResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            SupplierProductResourceUtils.setNullIdOrThrowOnInconsistentIds(supplierProductId, cmd);
             supplierProductApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -204,22 +216,22 @@ public class SupplierProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public SupplierProductEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{supplierProductId}/_events/{version}")
+    public SupplierProductEvent getStateEvent(@PathVariable("supplierProductId") String supplierProductId, @PathVariable("version") long version) {
         try {
 
-            SupplierProductId idObj = SupplierProductResourceUtils.parseIdString(id);
+            SupplierProductId idObj = SupplierProductResourceUtils.parseIdString(supplierProductId);
             //SupplierProductStateEventDtoConverter dtoConverter = getSupplierProductStateEventDtoConverter();
             return supplierProductApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public SupplierProductStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{supplierProductId}/_historyStates/{version}")
+    public SupplierProductStateDto getHistoryState(@PathVariable("supplierProductId") String supplierProductId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            SupplierProductId idObj = SupplierProductResourceUtils.parseIdString(id);
+            SupplierProductId idObj = SupplierProductResourceUtils.parseIdString(supplierProductId);
             SupplierProductStateDto.DtoConverter dtoConverter = new SupplierProductStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -256,12 +268,12 @@ public class SupplierProductResource {
  
     public static class SupplierProductResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, SupplierProductCommand value) {
-            SupplierProductId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String supplierProductId, SupplierProductCommand value) {
+            SupplierProductId idObj = parseIdString(supplierProductId);
             if (value.getSupplierProductId() == null) {
                 value.setSupplierProductId(idObj);
             } else if (!value.getSupplierProductId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getSupplierProductId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", supplierProductId, value.getSupplierProductId());
             }
         }
     
@@ -327,9 +339,9 @@ public class SupplierProductResource {
 
         public static SupplierProductStateDto[] toSupplierProductStateDtoArray(Iterable<SupplierProductId> ids) {
             List<SupplierProductStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 SupplierProductStateDto dto = new SupplierProductStateDto();
-                dto.setSupplierProductId(id);
+                dto.setSupplierProductId(i);
                 states.add(dto);
             });
             return states.toArray(new SupplierProductStateDto[0]);

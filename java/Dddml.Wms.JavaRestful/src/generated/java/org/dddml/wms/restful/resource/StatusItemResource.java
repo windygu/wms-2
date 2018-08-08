@@ -27,6 +27,10 @@ public class StatusItemResource {
     private StatusItemApplicationService statusItemApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 StatusItems
+     */
     @GetMapping
     public StatusItemStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class StatusItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 StatusItems
+     */
     @GetMapping("_page")
     public Page<StatusItemStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class StatusItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public StatusItemStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 StatusItem
+     */
+    @GetMapping("{statusId}")
+    public StatusItemStateDto get(@PathVariable("statusId") String statusId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = statusId;
             StatusItemState state = statusItemApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,32 +172,32 @@ public class StatusItemResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchStatusItemDto value) {
+    @PutMapping("{statusId}")
+    public void put(@PathVariable("statusId") String statusId, @RequestBody CreateOrMergePatchStatusItemDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 StatusItemCommand.MergePatchStatusItem cmd = (StatusItemCommand.MergePatchStatusItem) value.toCommand();
-                StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(statusId, cmd);
                 statusItemApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             StatusItemCommand.CreateStatusItem cmd = (StatusItemCommand.CreateStatusItem) value.toCommand();
-            StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(statusId, cmd);
             statusItemApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchStatusItemDto.MergePatchStatusItemDto value) {
+    @PatchMapping("{statusId}")
+    public void patch(@PathVariable("statusId") String statusId, @RequestBody CreateOrMergePatchStatusItemDto.MergePatchStatusItemDto value) {
         try {
 
             StatusItemCommand.MergePatchStatusItem cmd = value.toMergePatchStatusItem();
-            StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(statusId, cmd);
             statusItemApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -229,12 +241,12 @@ public class StatusItemResource {
  
     public static class StatusItemResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, StatusItemCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String statusId, StatusItemCommand value) {
+            String idObj = statusId;
             if (value.getStatusId() == null) {
                 value.setStatusId(idObj);
             } else if (!value.getStatusId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getStatusId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", statusId, value.getStatusId());
             }
         }
     
@@ -289,9 +301,9 @@ public class StatusItemResource {
 
         public static StatusItemStateDto[] toStatusItemStateDtoArray(Iterable<String> ids) {
             List<StatusItemStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 StatusItemStateDto dto = new StatusItemStateDto();
-                dto.setStatusId(id);
+                dto.setStatusId(i);
                 states.add(dto);
             });
             return states.toArray(new StatusItemStateDto[0]);

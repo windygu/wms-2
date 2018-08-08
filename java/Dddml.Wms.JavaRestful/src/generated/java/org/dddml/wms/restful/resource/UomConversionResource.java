@@ -27,6 +27,10 @@ public class UomConversionResource {
     private UomConversionApplicationService uomConversionApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 UomConversions
+     */
     @GetMapping
     public UomConversionStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class UomConversionResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 UomConversions
+     */
     @GetMapping("_page")
     public Page<UomConversionStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class UomConversionResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public UomConversionStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 UomConversion
+     */
+    @GetMapping("{uomConversionId}")
+    public UomConversionStateDto get(@PathVariable("uomConversionId") String uomConversionId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            UomConversionId idObj = UomConversionResourceUtils.parseIdString(id);
+            UomConversionId idObj = UomConversionResourceUtils.parseIdString(uomConversionId);
             UomConversionState state = uomConversionApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class UomConversionResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchUomConversionDto value) {
+    @PutMapping("{uomConversionId}")
+    public void put(@PathVariable("uomConversionId") String uomConversionId, @RequestBody CreateOrMergePatchUomConversionDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 UomConversionCommand.MergePatchUomConversion cmd = (UomConversionCommand.MergePatchUomConversion) value.toCommand();
-                UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
                 uomConversionApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             UomConversionCommand.CreateUomConversion cmd = (UomConversionCommand.CreateUomConversion) value.toCommand();
-            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
             uomConversionApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value) {
+    @PatchMapping("{uomConversionId}")
+    public void patch(@PathVariable("uomConversionId") String uomConversionId, @RequestBody CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value) {
         try {
 
             UomConversionCommand.MergePatchUomConversion cmd = value.toMergePatchUomConversion();
-            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
             uomConversionApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{uomConversionId}")
+    public void delete(@PathVariable("uomConversionId") String uomConversionId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class UomConversionResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, deleteCmd);
             uomConversionApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class UomConversionResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public UomConversionEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{uomConversionId}/_events/{version}")
+    public UomConversionEvent getStateEvent(@PathVariable("uomConversionId") String uomConversionId, @PathVariable("version") long version) {
         try {
 
-            UomConversionId idObj = UomConversionResourceUtils.parseIdString(id);
+            UomConversionId idObj = UomConversionResourceUtils.parseIdString(uomConversionId);
             //UomConversionStateEventDtoConverter dtoConverter = getUomConversionStateEventDtoConverter();
             return uomConversionApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public UomConversionStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{uomConversionId}/_historyStates/{version}")
+    public UomConversionStateDto getHistoryState(@PathVariable("uomConversionId") String uomConversionId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            UomConversionId idObj = UomConversionResourceUtils.parseIdString(id);
+            UomConversionId idObj = UomConversionResourceUtils.parseIdString(uomConversionId);
             UomConversionStateDto.DtoConverter dtoConverter = new UomConversionStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class UomConversionResource {
  
     public static class UomConversionResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, UomConversionCommand value) {
-            UomConversionId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String uomConversionId, UomConversionCommand value) {
+            UomConversionId idObj = parseIdString(uomConversionId);
             if (value.getUomConversionId() == null) {
                 value.setUomConversionId(idObj);
             } else if (!value.getUomConversionId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getUomConversionId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", uomConversionId, value.getUomConversionId());
             }
         }
     
@@ -345,9 +357,9 @@ public class UomConversionResource {
 
         public static UomConversionStateDto[] toUomConversionStateDtoArray(Iterable<UomConversionId> ids) {
             List<UomConversionStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 UomConversionStateDto dto = new UomConversionStateDto();
-                dto.setUomConversionId(id);
+                dto.setUomConversionId(i);
                 states.add(dto);
             });
             return states.toArray(new UomConversionStateDto[0]);

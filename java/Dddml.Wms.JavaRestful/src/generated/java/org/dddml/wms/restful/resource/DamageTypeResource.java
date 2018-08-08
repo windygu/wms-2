@@ -27,6 +27,10 @@ public class DamageTypeResource {
     private DamageTypeApplicationService damageTypeApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 DamageTypes
+     */
     @GetMapping
     public DamageTypeStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class DamageTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 DamageTypes
+     */
     @GetMapping("_page")
     public Page<DamageTypeStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class DamageTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public DamageTypeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 DamageType
+     */
+    @GetMapping("{damageTypeId}")
+    public DamageTypeStateDto get(@PathVariable("damageTypeId") String damageTypeId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = damageTypeId;
             DamageTypeState state = damageTypeApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class DamageTypeResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageTypeDto value) {
+    @PutMapping("{damageTypeId}")
+    public void put(@PathVariable("damageTypeId") String damageTypeId, @RequestBody CreateOrMergePatchDamageTypeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 DamageTypeCommand.MergePatchDamageType cmd = (DamageTypeCommand.MergePatchDamageType) value.toCommand();
-                DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(damageTypeId, cmd);
                 damageTypeApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             DamageTypeCommand.CreateDamageType cmd = (DamageTypeCommand.CreateDamageType) value.toCommand();
-            DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(damageTypeId, cmd);
             damageTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value) {
+    @PatchMapping("{damageTypeId}")
+    public void patch(@PathVariable("damageTypeId") String damageTypeId, @RequestBody CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value) {
         try {
 
             DamageTypeCommand.MergePatchDamageType cmd = value.toMergePatchDamageType();
-            DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(damageTypeId, cmd);
             damageTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{damageTypeId}")
+    public void delete(@PathVariable("damageTypeId") String damageTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class DamageTypeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(damageTypeId, deleteCmd);
             damageTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -242,12 +254,12 @@ public class DamageTypeResource {
  
     public static class DamageTypeResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, DamageTypeCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String damageTypeId, DamageTypeCommand value) {
+            String idObj = damageTypeId;
             if (value.getDamageTypeId() == null) {
                 value.setDamageTypeId(idObj);
             } else if (!value.getDamageTypeId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDamageTypeId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", damageTypeId, value.getDamageTypeId());
             }
         }
     
@@ -302,9 +314,9 @@ public class DamageTypeResource {
 
         public static DamageTypeStateDto[] toDamageTypeStateDtoArray(Iterable<String> ids) {
             List<DamageTypeStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 DamageTypeStateDto dto = new DamageTypeStateDto();
-                dto.setDamageTypeId(id);
+                dto.setDamageTypeId(i);
                 states.add(dto);
             });
             return states.toArray(new DamageTypeStateDto[0]);

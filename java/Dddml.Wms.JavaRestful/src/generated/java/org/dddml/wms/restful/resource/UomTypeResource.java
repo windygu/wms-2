@@ -27,6 +27,10 @@ public class UomTypeResource {
     private UomTypeApplicationService uomTypeApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 UomTypes
+     */
     @GetMapping
     public UomTypeStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class UomTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 UomTypes
+     */
     @GetMapping("_page")
     public Page<UomTypeStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class UomTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public UomTypeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 UomType
+     */
+    @GetMapping("{uomTypeId}")
+    public UomTypeStateDto get(@PathVariable("uomTypeId") String uomTypeId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = uomTypeId;
             UomTypeState state = uomTypeApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class UomTypeResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchUomTypeDto value) {
+    @PutMapping("{uomTypeId}")
+    public void put(@PathVariable("uomTypeId") String uomTypeId, @RequestBody CreateOrMergePatchUomTypeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 UomTypeCommand.MergePatchUomType cmd = (UomTypeCommand.MergePatchUomType) value.toCommand();
-                UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, cmd);
                 uomTypeApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             UomTypeCommand.CreateUomType cmd = (UomTypeCommand.CreateUomType) value.toCommand();
-            UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, cmd);
             uomTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value) {
+    @PatchMapping("{uomTypeId}")
+    public void patch(@PathVariable("uomTypeId") String uomTypeId, @RequestBody CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value) {
         try {
 
             UomTypeCommand.MergePatchUomType cmd = value.toMergePatchUomType();
-            UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, cmd);
             uomTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{uomTypeId}")
+    public void delete(@PathVariable("uomTypeId") String uomTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class UomTypeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, deleteCmd);
             uomTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -242,12 +254,12 @@ public class UomTypeResource {
  
     public static class UomTypeResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, UomTypeCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String uomTypeId, UomTypeCommand value) {
+            String idObj = uomTypeId;
             if (value.getUomTypeId() == null) {
                 value.setUomTypeId(idObj);
             } else if (!value.getUomTypeId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getUomTypeId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", uomTypeId, value.getUomTypeId());
             }
         }
     
@@ -302,9 +314,9 @@ public class UomTypeResource {
 
         public static UomTypeStateDto[] toUomTypeStateDtoArray(Iterable<String> ids) {
             List<UomTypeStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 UomTypeStateDto dto = new UomTypeStateDto();
-                dto.setUomTypeId(id);
+                dto.setUomTypeId(i);
                 states.add(dto);
             });
             return states.toArray(new UomTypeStateDto[0]);

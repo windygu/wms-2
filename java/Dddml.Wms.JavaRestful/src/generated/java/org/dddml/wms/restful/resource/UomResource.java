@@ -27,6 +27,10 @@ public class UomResource {
     private UomApplicationService uomApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Uoms
+     */
     @GetMapping
     public UomStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class UomResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Uoms
+     */
     @GetMapping("_page")
     public Page<UomStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class UomResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public UomStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Uom
+     */
+    @GetMapping("{uomId}")
+    public UomStateDto get(@PathVariable("uomId") String uomId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = uomId;
             UomState state = uomApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class UomResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchUomDto value) {
+    @PutMapping("{uomId}")
+    public void put(@PathVariable("uomId") String uomId, @RequestBody CreateOrMergePatchUomDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 UomCommand.MergePatchUom cmd = (UomCommand.MergePatchUom) value.toCommand();
-                UomResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, cmd);
                 uomApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             UomCommand.CreateUom cmd = (UomCommand.CreateUom) value.toCommand();
-            UomResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, cmd);
             uomApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchUomDto.MergePatchUomDto value) {
+    @PatchMapping("{uomId}")
+    public void patch(@PathVariable("uomId") String uomId, @RequestBody CreateOrMergePatchUomDto.MergePatchUomDto value) {
         try {
 
             UomCommand.MergePatchUom cmd = value.toMergePatchUom();
-            UomResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, cmd);
             uomApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{uomId}")
+    public void delete(@PathVariable("uomId") String uomId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class UomResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            UomResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, deleteCmd);
             uomApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class UomResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public UomEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{uomId}/_events/{version}")
+    public UomEvent getStateEvent(@PathVariable("uomId") String uomId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = uomId;
             //UomStateEventDtoConverter dtoConverter = getUomStateEventDtoConverter();
             return uomApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public UomStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{uomId}/_historyStates/{version}")
+    public UomStateDto getHistoryState(@PathVariable("uomId") String uomId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = uomId;
             UomStateDto.DtoConverter dtoConverter = new UomStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class UomResource {
  
     public static class UomResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, UomCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String uomId, UomCommand value) {
+            String idObj = uomId;
             if (value.getUomId() == null) {
                 value.setUomId(idObj);
             } else if (!value.getUomId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getUomId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", uomId, value.getUomId());
             }
         }
     
@@ -334,9 +346,9 @@ public class UomResource {
 
         public static UomStateDto[] toUomStateDtoArray(Iterable<String> ids) {
             List<UomStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 UomStateDto dto = new UomStateDto();
-                dto.setUomId(id);
+                dto.setUomId(i);
                 states.add(dto);
             });
             return states.toArray(new UomStateDto[0]);

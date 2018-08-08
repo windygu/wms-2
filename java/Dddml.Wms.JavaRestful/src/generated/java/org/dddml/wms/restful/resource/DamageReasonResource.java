@@ -27,6 +27,10 @@ public class DamageReasonResource {
     private DamageReasonApplicationService damageReasonApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 DamageReasons
+     */
     @GetMapping
     public DamageReasonStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class DamageReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 DamageReasons
+     */
     @GetMapping("_page")
     public Page<DamageReasonStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class DamageReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public DamageReasonStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 DamageReason
+     */
+    @GetMapping("{damageReasonId}")
+    public DamageReasonStateDto get(@PathVariable("damageReasonId") String damageReasonId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = damageReasonId;
             DamageReasonState state = damageReasonApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class DamageReasonResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageReasonDto value) {
+    @PutMapping("{damageReasonId}")
+    public void put(@PathVariable("damageReasonId") String damageReasonId, @RequestBody CreateOrMergePatchDamageReasonDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 DamageReasonCommand.MergePatchDamageReason cmd = (DamageReasonCommand.MergePatchDamageReason) value.toCommand();
-                DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(damageReasonId, cmd);
                 damageReasonApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             DamageReasonCommand.CreateDamageReason cmd = (DamageReasonCommand.CreateDamageReason) value.toCommand();
-            DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(damageReasonId, cmd);
             damageReasonApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageReasonDto.MergePatchDamageReasonDto value) {
+    @PatchMapping("{damageReasonId}")
+    public void patch(@PathVariable("damageReasonId") String damageReasonId, @RequestBody CreateOrMergePatchDamageReasonDto.MergePatchDamageReasonDto value) {
         try {
 
             DamageReasonCommand.MergePatchDamageReason cmd = value.toMergePatchDamageReason();
-            DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(damageReasonId, cmd);
             damageReasonApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{damageReasonId}")
+    public void delete(@PathVariable("damageReasonId") String damageReasonId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class DamageReasonResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(damageReasonId, deleteCmd);
             damageReasonApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class DamageReasonResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public DamageReasonEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{damageReasonId}/_events/{version}")
+    public DamageReasonEvent getStateEvent(@PathVariable("damageReasonId") String damageReasonId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = damageReasonId;
             //DamageReasonStateEventDtoConverter dtoConverter = getDamageReasonStateEventDtoConverter();
             return damageReasonApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public DamageReasonStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{damageReasonId}/_historyStates/{version}")
+    public DamageReasonStateDto getHistoryState(@PathVariable("damageReasonId") String damageReasonId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = damageReasonId;
             DamageReasonStateDto.DtoConverter dtoConverter = new DamageReasonStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class DamageReasonResource {
  
     public static class DamageReasonResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, DamageReasonCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String damageReasonId, DamageReasonCommand value) {
+            String idObj = damageReasonId;
             if (value.getDamageReasonId() == null) {
                 value.setDamageReasonId(idObj);
             } else if (!value.getDamageReasonId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDamageReasonId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", damageReasonId, value.getDamageReasonId());
             }
         }
     
@@ -334,9 +346,9 @@ public class DamageReasonResource {
 
         public static DamageReasonStateDto[] toDamageReasonStateDtoArray(Iterable<String> ids) {
             List<DamageReasonStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 DamageReasonStateDto dto = new DamageReasonStateDto();
-                dto.setDamageReasonId(id);
+                dto.setDamageReasonId(i);
                 states.add(dto);
             });
             return states.toArray(new DamageReasonStateDto[0]);

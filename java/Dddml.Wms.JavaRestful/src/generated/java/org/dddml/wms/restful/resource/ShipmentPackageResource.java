@@ -27,6 +27,10 @@ public class ShipmentPackageResource {
     private ShipmentPackageApplicationService shipmentPackageApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 ShipmentPackages
+     */
     @GetMapping
     public ShipmentPackageStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 ShipmentPackages
+     */
     @GetMapping("_page")
     public Page<ShipmentPackageStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public ShipmentPackageStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 ShipmentPackage
+     */
+    @GetMapping("{shipmentPackageId}")
+    public ShipmentPackageStateDto get(@PathVariable("shipmentPackageId") String shipmentPackageId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(id);
+            ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(shipmentPackageId);
             ShipmentPackageState state = shipmentPackageApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class ShipmentPackageResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchShipmentPackageDto value) {
+    @PutMapping("{shipmentPackageId}")
+    public void put(@PathVariable("shipmentPackageId") String shipmentPackageId, @RequestBody CreateOrMergePatchShipmentPackageDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ShipmentPackageCommand.MergePatchShipmentPackage cmd = (ShipmentPackageCommand.MergePatchShipmentPackage) value.toCommand();
-                ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
                 shipmentPackageApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ShipmentPackageCommand.CreateShipmentPackage cmd = (ShipmentPackageCommand.CreateShipmentPackage) value.toCommand();
-            ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
             shipmentPackageApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchShipmentPackageDto.MergePatchShipmentPackageDto value) {
+    @PatchMapping("{shipmentPackageId}")
+    public void patch(@PathVariable("shipmentPackageId") String shipmentPackageId, @RequestBody CreateOrMergePatchShipmentPackageDto.MergePatchShipmentPackageDto value) {
         try {
 
             ShipmentPackageCommand.MergePatchShipmentPackage cmd = value.toMergePatchShipmentPackage();
-            ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
             shipmentPackageApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{shipmentPackageId}")
+    public void delete(@PathVariable("shipmentPackageId") String shipmentPackageId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class ShipmentPackageResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, deleteCmd);
             shipmentPackageApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public ShipmentPackageEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{shipmentPackageId}/_events/{version}")
+    public ShipmentPackageEvent getStateEvent(@PathVariable("shipmentPackageId") String shipmentPackageId, @PathVariable("version") long version) {
         try {
 
-            ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(id);
+            ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(shipmentPackageId);
             //ShipmentPackageStateEventDtoConverter dtoConverter = getShipmentPackageStateEventDtoConverter();
             return shipmentPackageApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public ShipmentPackageStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{shipmentPackageId}/_historyStates/{version}")
+    public ShipmentPackageStateDto getHistoryState(@PathVariable("shipmentPackageId") String shipmentPackageId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(id);
+            ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(shipmentPackageId);
             ShipmentPackageStateDto.DtoConverter dtoConverter = new ShipmentPackageStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -379,12 +391,12 @@ public class ShipmentPackageResource {
  
     public static class ShipmentPackageResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, ShipmentPackageCommand value) {
-            ShipmentPackageId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String shipmentPackageId, ShipmentPackageCommand value) {
+            ShipmentPackageId idObj = parseIdString(shipmentPackageId);
             if (value.getShipmentPackageId() == null) {
                 value.setShipmentPackageId(idObj);
             } else if (!value.getShipmentPackageId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getShipmentPackageId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentPackageId, value.getShipmentPackageId());
             }
         }
     
@@ -450,9 +462,9 @@ public class ShipmentPackageResource {
 
         public static ShipmentPackageStateDto[] toShipmentPackageStateDtoArray(Iterable<ShipmentPackageId> ids) {
             List<ShipmentPackageStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 ShipmentPackageStateDto dto = new ShipmentPackageStateDto();
-                dto.setShipmentPackageId(id);
+                dto.setShipmentPackageId(i);
                 states.add(dto);
             });
             return states.toArray(new ShipmentPackageStateDto[0]);

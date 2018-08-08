@@ -27,6 +27,10 @@ public class OrderItemShipGrpInvReservationResource {
     private OrderItemShipGrpInvReservationApplicationService orderItemShipGrpInvReservationApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 OrderItemShipGrpInvReservations
+     */
     @GetMapping
     public OrderItemShipGrpInvReservationStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class OrderItemShipGrpInvReservationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 OrderItemShipGrpInvReservations
+     */
     @GetMapping("_page")
     public Page<OrderItemShipGrpInvReservationStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class OrderItemShipGrpInvReservationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public OrderItemShipGrpInvReservationStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 OrderItemShipGrpInvReservation
+     */
+    @GetMapping("{orderItemShipGrpInvResId}")
+    public OrderItemShipGrpInvReservationStateDto get(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(id);
+            OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(orderItemShipGrpInvResId);
             OrderItemShipGrpInvReservationState state = orderItemShipGrpInvReservationApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class OrderItemShipGrpInvReservationResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderItemShipGrpInvReservationDto value) {
+    @PutMapping("{orderItemShipGrpInvResId}")
+    public void put(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @RequestBody CreateOrMergePatchOrderItemShipGrpInvReservationDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation cmd = (OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation) value.toCommand();
-                OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, cmd);
                 orderItemShipGrpInvReservationApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation cmd = (OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation) value.toCommand();
-            OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, cmd);
             orderItemShipGrpInvReservationApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value) {
+    @PatchMapping("{orderItemShipGrpInvResId}")
+    public void patch(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @RequestBody CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value) {
         try {
 
             OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation cmd = value.toMergePatchOrderItemShipGrpInvReservation();
-            OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, cmd);
             orderItemShipGrpInvReservationApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{orderItemShipGrpInvResId}")
+    public void delete(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class OrderItemShipGrpInvReservationResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, deleteCmd);
             orderItemShipGrpInvReservationApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class OrderItemShipGrpInvReservationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public OrderItemShipGrpInvReservationEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{orderItemShipGrpInvResId}/_events/{version}")
+    public OrderItemShipGrpInvReservationEvent getStateEvent(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @PathVariable("version") long version) {
         try {
 
-            OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(id);
+            OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(orderItemShipGrpInvResId);
             //OrderItemShipGrpInvReservationStateEventDtoConverter dtoConverter = getOrderItemShipGrpInvReservationStateEventDtoConverter();
             return orderItemShipGrpInvReservationApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public OrderItemShipGrpInvReservationStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{orderItemShipGrpInvResId}/_historyStates/{version}")
+    public OrderItemShipGrpInvReservationStateDto getHistoryState(@PathVariable("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(id);
+            OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(orderItemShipGrpInvResId);
             OrderItemShipGrpInvReservationStateDto.DtoConverter dtoConverter = new OrderItemShipGrpInvReservationStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class OrderItemShipGrpInvReservationResource {
  
     public static class OrderItemShipGrpInvReservationResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, OrderItemShipGrpInvReservationCommand value) {
-            OrderItemShipGrpInvResId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String orderItemShipGrpInvResId, OrderItemShipGrpInvReservationCommand value) {
+            OrderItemShipGrpInvResId idObj = parseIdString(orderItemShipGrpInvResId);
             if (value.getOrderItemShipGrpInvResId() == null) {
                 value.setOrderItemShipGrpInvResId(idObj);
             } else if (!value.getOrderItemShipGrpInvResId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getOrderItemShipGrpInvResId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", orderItemShipGrpInvResId, value.getOrderItemShipGrpInvResId());
             }
         }
     
@@ -345,9 +357,9 @@ public class OrderItemShipGrpInvReservationResource {
 
         public static OrderItemShipGrpInvReservationStateDto[] toOrderItemShipGrpInvReservationStateDtoArray(Iterable<OrderItemShipGrpInvResId> ids) {
             List<OrderItemShipGrpInvReservationStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 OrderItemShipGrpInvReservationStateDto dto = new OrderItemShipGrpInvReservationStateDto();
-                dto.setOrderItemShipGrpInvResId(id);
+                dto.setOrderItemShipGrpInvResId(i);
                 states.add(dto);
             });
             return states.toArray(new OrderItemShipGrpInvReservationStateDto[0]);

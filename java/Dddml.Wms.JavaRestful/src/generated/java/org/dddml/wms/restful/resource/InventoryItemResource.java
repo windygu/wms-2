@@ -28,6 +28,10 @@ public class InventoryItemResource {
     private InventoryItemApplicationService inventoryItemApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 InventoryItems
+     */
     @GetMapping
     public InventoryItemStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -66,11 +70,15 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 InventoryItems
+     */
     @GetMapping("_page")
     public Page<InventoryItemStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -107,10 +115,14 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public InventoryItemStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 InventoryItem
+     */
+    @GetMapping("{inventoryItemId}")
+    public InventoryItemStateDto get(@PathVariable("inventoryItemId") String inventoryItemId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            InventoryItemId idObj = InventoryItemResourceUtils.parseIdString(id);
+            InventoryItemId idObj = InventoryItemResourceUtils.parseIdString(inventoryItemId);
             InventoryItemState state = inventoryItemApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -158,22 +170,22 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public InventoryItemEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{inventoryItemId}/_events/{version}")
+    public InventoryItemEvent getStateEvent(@PathVariable("inventoryItemId") String inventoryItemId, @PathVariable("version") long version) {
         try {
 
-            InventoryItemId idObj = InventoryItemResourceUtils.parseIdString(id);
+            InventoryItemId idObj = InventoryItemResourceUtils.parseIdString(inventoryItemId);
             //InventoryItemStateEventDtoConverter dtoConverter = getInventoryItemStateEventDtoConverter();
             return inventoryItemApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public InventoryItemStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{inventoryItemId}/_historyStates/{version}")
+    public InventoryItemStateDto getHistoryState(@PathVariable("inventoryItemId") String inventoryItemId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            InventoryItemId idObj = InventoryItemResourceUtils.parseIdString(id);
+            InventoryItemId idObj = InventoryItemResourceUtils.parseIdString(inventoryItemId);
             InventoryItemStateDto.DtoConverter dtoConverter = new InventoryItemStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -245,12 +257,12 @@ public class InventoryItemResource {
  
     public static class InventoryItemResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, InventoryItemCommand value) {
-            InventoryItemId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String inventoryItemId, InventoryItemCommand value) {
+            InventoryItemId idObj = parseIdString(inventoryItemId);
             if (value.getInventoryItemId() == null) {
                 value.setInventoryItemId(idObj);
             } else if (!value.getInventoryItemId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getInventoryItemId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", inventoryItemId, value.getInventoryItemId());
             }
         }
     
@@ -316,9 +328,9 @@ public class InventoryItemResource {
 
         public static InventoryItemStateDto[] toInventoryItemStateDtoArray(Iterable<InventoryItemId> ids) {
             List<InventoryItemStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 InventoryItemStateDto dto = new InventoryItemStateDto();
-                dto.setInventoryItemId(id);
+                dto.setInventoryItemId(i);
                 states.add(dto);
             });
             return states.toArray(new InventoryItemStateDto[0]);

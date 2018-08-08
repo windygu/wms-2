@@ -29,6 +29,10 @@ public class PhysicalInventoryResource {
     private PhysicalInventoryApplicationService physicalInventoryApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 PhysicalInventories
+     */
     @GetMapping
     public PhysicalInventoryStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -67,11 +71,15 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 PhysicalInventories
+     */
     @GetMapping("_page")
     public Page<PhysicalInventoryStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -108,10 +116,14 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public PhysicalInventoryStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 PhysicalInventory
+     */
+    @GetMapping("{documentNumber}")
+    public PhysicalInventoryStateDto get(@PathVariable("documentNumber") String documentNumber, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = documentNumber;
             PhysicalInventoryState state = physicalInventoryApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -162,48 +174,48 @@ public class PhysicalInventoryResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPhysicalInventoryDto value) {
+    @PutMapping("{documentNumber}")
+    public void put(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchPhysicalInventoryDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PhysicalInventoryCommand.MergePatchPhysicalInventory cmd = (PhysicalInventoryCommand.MergePatchPhysicalInventory) value.toCommand();
-                PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
                 physicalInventoryApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PhysicalInventoryCommand.CreatePhysicalInventory cmd = (PhysicalInventoryCommand.CreatePhysicalInventory) value.toCommand();
-            PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             physicalInventoryApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value) {
+    @PatchMapping("{documentNumber}")
+    public void patch(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value) {
         try {
 
             PhysicalInventoryCommand.MergePatchPhysicalInventory cmd = value.toMergePatchPhysicalInventory();
-            PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             physicalInventoryApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PutMapping("{id}/_commands/CountItem")
-    public void countItem(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommands.CountItem content) {
+    @PutMapping("{documentNumber}/_commands/CountItem")
+    public void countItem(@PathVariable("documentNumber") String documentNumber, @RequestBody PhysicalInventoryCommands.CountItem content) {
         try {
 
             PhysicalInventoryCommands.CountItem cmd = content;//.toCountItem();
-            String idObj = id;
+            String idObj = documentNumber;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
             physicalInventoryApplicationService.when(cmd);
 
@@ -211,16 +223,16 @@ public class PhysicalInventoryResource {
     }
 
 
-    @PutMapping("{id}/_commands/DocumentAction")
-    public void documentAction(@PathVariable("id") String id, @RequestBody PhysicalInventoryCommands.DocumentAction content) {
+    @PutMapping("{documentNumber}/_commands/DocumentAction")
+    public void documentAction(@PathVariable("documentNumber") String documentNumber, @RequestBody PhysicalInventoryCommands.DocumentAction content) {
         try {
 
             PhysicalInventoryCommands.DocumentAction cmd = content;//.toDocumentAction();
-            String idObj = id;
+            String idObj = documentNumber;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
             physicalInventoryApplicationService.when(cmd);
 
@@ -240,22 +252,22 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public PhysicalInventoryEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{documentNumber}/_events/{version}")
+    public PhysicalInventoryEvent getStateEvent(@PathVariable("documentNumber") String documentNumber, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = documentNumber;
             //PhysicalInventoryStateEventDtoConverter dtoConverter = getPhysicalInventoryStateEventDtoConverter();
             return physicalInventoryApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public PhysicalInventoryStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{documentNumber}/_historyStates/{version}")
+    public PhysicalInventoryStateDto getHistoryState(@PathVariable("documentNumber") String documentNumber, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = documentNumber;
             PhysicalInventoryStateDto.DtoConverter dtoConverter = new PhysicalInventoryStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -267,11 +279,11 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
-    public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathVariable("inventoryItemId") String inventoryItemId) {
+    @GetMapping("{documentNumber}/PhysicalInventoryLines/{inventoryItemId}")
+    public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("inventoryItemId") String inventoryItemId) {
         try {
 
-            PhysicalInventoryLineState state = physicalInventoryApplicationService.getPhysicalInventoryLine(physicalInventoryDocumentNumber, (new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+            PhysicalInventoryLineState state = physicalInventoryApplicationService.getPhysicalInventoryLine(documentNumber, (new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
                         @Override
                         protected Class<?> getClassByTypeName(String type) {
                             return BoundedContextMetadata.CLASS_MAP.get(type);
@@ -286,15 +298,15 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @PutMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
-    public void putPhysicalInventoryLine(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
+    @PutMapping("{documentNumber}/PhysicalInventoryLines/{inventoryItemId}")
+    public void putPhysicalInventoryLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
                        @RequestBody CreateOrMergePatchPhysicalInventoryLineDto.MergePatchPhysicalInventoryLineDto body) {
         try {
             PhysicalInventoryCommand.MergePatchPhysicalInventory mergePatchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
-            mergePatchPhysicalInventory.setDocumentNumber(physicalInventoryDocumentNumber);
+            mergePatchPhysicalInventory.setDocumentNumber(documentNumber);
             mergePatchPhysicalInventory.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchPhysicalInventory.setVersion(version); }
             mergePatchPhysicalInventory.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -310,14 +322,14 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
-    public void deletePhysicalInventoryLine(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
+    @DeleteMapping("{documentNumber}/PhysicalInventoryLines/{inventoryItemId}")
+    public void deletePhysicalInventoryLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
             PhysicalInventoryCommand.MergePatchPhysicalInventory mergePatchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
-            mergePatchPhysicalInventory.setDocumentNumber(physicalInventoryDocumentNumber);
+            mergePatchPhysicalInventory.setDocumentNumber(documentNumber);
             mergePatchPhysicalInventory.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchPhysicalInventory.setVersion(version); }
             mergePatchPhysicalInventory.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -333,10 +345,10 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/")
-    public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber) {
+    @GetMapping("{documentNumber}/PhysicalInventoryLines/")
+    public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathVariable("documentNumber") String documentNumber) {
         try {
-            Iterable<PhysicalInventoryLineState> states = physicalInventoryApplicationService.getPhysicalInventoryLines(physicalInventoryDocumentNumber);
+            Iterable<PhysicalInventoryLineState> states = physicalInventoryApplicationService.getPhysicalInventoryLines(documentNumber);
             if (states == null) { return null; }
             PhysicalInventoryLineStateDto.DtoConverter dtoConverter = new PhysicalInventoryLineStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
@@ -344,15 +356,15 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @PostMapping("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/")
-    public void postPhysicalInventoryLines(@PathVariable("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber,
+    @PostMapping("{documentNumber}/PhysicalInventoryLines/")
+    public void postPhysicalInventoryLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
                        @RequestBody CreateOrMergePatchPhysicalInventoryLineDto.CreatePhysicalInventoryLineDto body) {
         try {
             PhysicalInventoryCommand.MergePatchPhysicalInventory mergePatchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
-            mergePatchPhysicalInventory.setDocumentNumber(physicalInventoryDocumentNumber);
+            mergePatchPhysicalInventory.setDocumentNumber(documentNumber);
             mergePatchPhysicalInventory.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchPhysicalInventory.setVersion(version); }
             mergePatchPhysicalInventory.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -387,12 +399,12 @@ public class PhysicalInventoryResource {
  
     public static class PhysicalInventoryResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, PhysicalInventoryCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String documentNumber, PhysicalInventoryCommand value) {
+            String idObj = documentNumber;
             if (value.getDocumentNumber() == null) {
                 value.setDocumentNumber(idObj);
             } else if (!value.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, value.getDocumentNumber());
             }
         }
     
@@ -447,9 +459,9 @@ public class PhysicalInventoryResource {
 
         public static PhysicalInventoryStateDto[] toPhysicalInventoryStateDtoArray(Iterable<String> ids) {
             List<PhysicalInventoryStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 PhysicalInventoryStateDto dto = new PhysicalInventoryStateDto();
-                dto.setDocumentNumber(id);
+                dto.setDocumentNumber(i);
                 states.add(dto);
             });
             return states.toArray(new PhysicalInventoryStateDto[0]);

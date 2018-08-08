@@ -28,6 +28,10 @@ public class PicklistResource {
     private PicklistApplicationService picklistApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Picklists
+     */
     @GetMapping
     public PicklistStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -66,11 +70,15 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Picklists
+     */
     @GetMapping("_page")
     public Page<PicklistStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -107,10 +115,14 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public PicklistStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Picklist
+     */
+    @GetMapping("{picklistId}")
+    public PicklistStateDto get(@PathVariable("picklistId") String picklistId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = picklistId;
             PicklistState state = picklistApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -161,39 +173,39 @@ public class PicklistResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPicklistDto value) {
+    @PutMapping("{picklistId}")
+    public void put(@PathVariable("picklistId") String picklistId, @RequestBody CreateOrMergePatchPicklistDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PicklistCommand.MergePatchPicklist cmd = (PicklistCommand.MergePatchPicklist) value.toCommand();
-                PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, cmd);
                 picklistApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PicklistCommand.CreatePicklist cmd = (PicklistCommand.CreatePicklist) value.toCommand();
-            PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, cmd);
             picklistApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPicklistDto.MergePatchPicklistDto value) {
+    @PatchMapping("{picklistId}")
+    public void patch(@PathVariable("picklistId") String picklistId, @RequestBody CreateOrMergePatchPicklistDto.MergePatchPicklistDto value) {
         try {
 
             PicklistCommand.MergePatchPicklist cmd = value.toMergePatchPicklist();
-            PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, cmd);
             picklistApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{picklistId}")
+    public void delete(@PathVariable("picklistId") String picklistId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -204,7 +216,7 @@ public class PicklistResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, deleteCmd);
             picklistApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -223,22 +235,22 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public PicklistEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{picklistId}/_events/{version}")
+    public PicklistEvent getStateEvent(@PathVariable("picklistId") String picklistId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = picklistId;
             //PicklistStateEventDtoConverter dtoConverter = getPicklistStateEventDtoConverter();
             return picklistApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public PicklistStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{picklistId}/_historyStates/{version}")
+    public PicklistStateDto getHistoryState(@PathVariable("picklistId") String picklistId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = picklistId;
             PicklistStateDto.DtoConverter dtoConverter = new PicklistStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -370,12 +382,12 @@ public class PicklistResource {
  
     public static class PicklistResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, PicklistCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String picklistId, PicklistCommand value) {
+            String idObj = picklistId;
             if (value.getPicklistId() == null) {
                 value.setPicklistId(idObj);
             } else if (!value.getPicklistId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getPicklistId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", picklistId, value.getPicklistId());
             }
         }
     
@@ -430,9 +442,9 @@ public class PicklistResource {
 
         public static PicklistStateDto[] toPicklistStateDtoArray(Iterable<String> ids) {
             List<PicklistStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 PicklistStateDto dto = new PicklistStateDto();
-                dto.setPicklistId(id);
+                dto.setPicklistId(i);
                 states.add(dto);
             });
             return states.toArray(new PicklistStateDto[0]);

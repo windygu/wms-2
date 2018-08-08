@@ -27,6 +27,10 @@ public class ProductCategoryMemberResource {
     private ProductCategoryMemberApplicationService productCategoryMemberApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 ProductCategoryMembers
+     */
     @GetMapping
     public ProductCategoryMemberStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 ProductCategoryMembers
+     */
     @GetMapping("_page")
     public Page<ProductCategoryMemberStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public ProductCategoryMemberStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 ProductCategoryMember
+     */
+    @GetMapping("{productCategoryMemberId}")
+    public ProductCategoryMemberStateDto get(@PathVariable("productCategoryMemberId") String productCategoryMemberId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);
+            ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(productCategoryMemberId);
             ProductCategoryMemberState state = productCategoryMemberApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,32 +172,32 @@ public class ProductCategoryMemberResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchProductCategoryMemberDto value) {
+    @PutMapping("{productCategoryMemberId}")
+    public void put(@PathVariable("productCategoryMemberId") String productCategoryMemberId, @RequestBody CreateOrMergePatchProductCategoryMemberDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ProductCategoryMemberCommand.MergePatchProductCategoryMember cmd = (ProductCategoryMemberCommand.MergePatchProductCategoryMember) value.toCommand();
-                ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryMemberId, cmd);
                 productCategoryMemberApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ProductCategoryMemberCommand.CreateProductCategoryMember cmd = (ProductCategoryMemberCommand.CreateProductCategoryMember) value.toCommand();
-            ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryMemberId, cmd);
             productCategoryMemberApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value) {
+    @PatchMapping("{productCategoryMemberId}")
+    public void patch(@PathVariable("productCategoryMemberId") String productCategoryMemberId, @RequestBody CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value) {
         try {
 
             ProductCategoryMemberCommand.MergePatchProductCategoryMember cmd = value.toMergePatchProductCategoryMember();
-            ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryMemberId, cmd);
             productCategoryMemberApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -204,22 +216,22 @@ public class ProductCategoryMemberResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public ProductCategoryMemberEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{productCategoryMemberId}/_events/{version}")
+    public ProductCategoryMemberEvent getStateEvent(@PathVariable("productCategoryMemberId") String productCategoryMemberId, @PathVariable("version") long version) {
         try {
 
-            ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);
+            ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(productCategoryMemberId);
             //ProductCategoryMemberStateEventDtoConverter dtoConverter = getProductCategoryMemberStateEventDtoConverter();
             return productCategoryMemberApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public ProductCategoryMemberStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{productCategoryMemberId}/_historyStates/{version}")
+    public ProductCategoryMemberStateDto getHistoryState(@PathVariable("productCategoryMemberId") String productCategoryMemberId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);
+            ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(productCategoryMemberId);
             ProductCategoryMemberStateDto.DtoConverter dtoConverter = new ProductCategoryMemberStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -256,12 +268,12 @@ public class ProductCategoryMemberResource {
  
     public static class ProductCategoryMemberResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, ProductCategoryMemberCommand value) {
-            ProductCategoryMemberId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String productCategoryMemberId, ProductCategoryMemberCommand value) {
+            ProductCategoryMemberId idObj = parseIdString(productCategoryMemberId);
             if (value.getProductCategoryMemberId() == null) {
                 value.setProductCategoryMemberId(idObj);
             } else if (!value.getProductCategoryMemberId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getProductCategoryMemberId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", productCategoryMemberId, value.getProductCategoryMemberId());
             }
         }
     
@@ -327,9 +339,9 @@ public class ProductCategoryMemberResource {
 
         public static ProductCategoryMemberStateDto[] toProductCategoryMemberStateDtoArray(Iterable<ProductCategoryMemberId> ids) {
             List<ProductCategoryMemberStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 ProductCategoryMemberStateDto dto = new ProductCategoryMemberStateDto();
-                dto.setProductCategoryMemberId(id);
+                dto.setProductCategoryMemberId(i);
                 states.add(dto);
             });
             return states.toArray(new ProductCategoryMemberStateDto[0]);

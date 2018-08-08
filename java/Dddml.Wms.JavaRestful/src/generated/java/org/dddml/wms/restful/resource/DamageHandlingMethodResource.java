@@ -27,6 +27,10 @@ public class DamageHandlingMethodResource {
     private DamageHandlingMethodApplicationService damageHandlingMethodApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 DamageHandlingMethods
+     */
     @GetMapping
     public DamageHandlingMethodStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class DamageHandlingMethodResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 DamageHandlingMethods
+     */
     @GetMapping("_page")
     public Page<DamageHandlingMethodStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class DamageHandlingMethodResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public DamageHandlingMethodStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 DamageHandlingMethod
+     */
+    @GetMapping("{damageHandlingMethodId}")
+    public DamageHandlingMethodStateDto get(@PathVariable("damageHandlingMethodId") String damageHandlingMethodId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = damageHandlingMethodId;
             DamageHandlingMethodState state = damageHandlingMethodApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class DamageHandlingMethodResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageHandlingMethodDto value) {
+    @PutMapping("{damageHandlingMethodId}")
+    public void put(@PathVariable("damageHandlingMethodId") String damageHandlingMethodId, @RequestBody CreateOrMergePatchDamageHandlingMethodDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 DamageHandlingMethodCommand.MergePatchDamageHandlingMethod cmd = (DamageHandlingMethodCommand.MergePatchDamageHandlingMethod) value.toCommand();
-                DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, cmd);
                 damageHandlingMethodApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             DamageHandlingMethodCommand.CreateDamageHandlingMethod cmd = (DamageHandlingMethodCommand.CreateDamageHandlingMethod) value.toCommand();
-            DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, cmd);
             damageHandlingMethodApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value) {
+    @PatchMapping("{damageHandlingMethodId}")
+    public void patch(@PathVariable("damageHandlingMethodId") String damageHandlingMethodId, @RequestBody CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value) {
         try {
 
             DamageHandlingMethodCommand.MergePatchDamageHandlingMethod cmd = value.toMergePatchDamageHandlingMethod();
-            DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, cmd);
             damageHandlingMethodApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{damageHandlingMethodId}")
+    public void delete(@PathVariable("damageHandlingMethodId") String damageHandlingMethodId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class DamageHandlingMethodResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, deleteCmd);
             damageHandlingMethodApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -242,12 +254,12 @@ public class DamageHandlingMethodResource {
  
     public static class DamageHandlingMethodResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, DamageHandlingMethodCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String damageHandlingMethodId, DamageHandlingMethodCommand value) {
+            String idObj = damageHandlingMethodId;
             if (value.getDamageHandlingMethodId() == null) {
                 value.setDamageHandlingMethodId(idObj);
             } else if (!value.getDamageHandlingMethodId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDamageHandlingMethodId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", damageHandlingMethodId, value.getDamageHandlingMethodId());
             }
         }
     
@@ -302,9 +314,9 @@ public class DamageHandlingMethodResource {
 
         public static DamageHandlingMethodStateDto[] toDamageHandlingMethodStateDtoArray(Iterable<String> ids) {
             List<DamageHandlingMethodStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 DamageHandlingMethodStateDto dto = new DamageHandlingMethodStateDto();
-                dto.setDamageHandlingMethodId(id);
+                dto.setDamageHandlingMethodId(i);
                 states.add(dto);
             });
             return states.toArray(new DamageHandlingMethodStateDto[0]);

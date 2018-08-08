@@ -27,6 +27,10 @@ public class DocumentTypeResource {
     private DocumentTypeApplicationService documentTypeApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 DocumentTypes
+     */
     @GetMapping
     public DocumentTypeStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class DocumentTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 DocumentTypes
+     */
     @GetMapping("_page")
     public Page<DocumentTypeStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class DocumentTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public DocumentTypeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 DocumentType
+     */
+    @GetMapping("{documentTypeId}")
+    public DocumentTypeStateDto get(@PathVariable("documentTypeId") String documentTypeId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = documentTypeId;
             DocumentTypeState state = documentTypeApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class DocumentTypeResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDocumentTypeDto value) {
+    @PutMapping("{documentTypeId}")
+    public void put(@PathVariable("documentTypeId") String documentTypeId, @RequestBody CreateOrMergePatchDocumentTypeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 DocumentTypeCommand.MergePatchDocumentType cmd = (DocumentTypeCommand.MergePatchDocumentType) value.toCommand();
-                DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, cmd);
                 documentTypeApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             DocumentTypeCommand.CreateDocumentType cmd = (DocumentTypeCommand.CreateDocumentType) value.toCommand();
-            DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, cmd);
             documentTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchDocumentTypeDto.MergePatchDocumentTypeDto value) {
+    @PatchMapping("{documentTypeId}")
+    public void patch(@PathVariable("documentTypeId") String documentTypeId, @RequestBody CreateOrMergePatchDocumentTypeDto.MergePatchDocumentTypeDto value) {
         try {
 
             DocumentTypeCommand.MergePatchDocumentType cmd = value.toMergePatchDocumentType();
-            DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, cmd);
             documentTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{documentTypeId}")
+    public void delete(@PathVariable("documentTypeId") String documentTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class DocumentTypeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, deleteCmd);
             documentTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -242,12 +254,12 @@ public class DocumentTypeResource {
  
     public static class DocumentTypeResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, DocumentTypeCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String documentTypeId, DocumentTypeCommand value) {
+            String idObj = documentTypeId;
             if (value.getDocumentTypeId() == null) {
                 value.setDocumentTypeId(idObj);
             } else if (!value.getDocumentTypeId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDocumentTypeId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentTypeId, value.getDocumentTypeId());
             }
         }
     
@@ -302,9 +314,9 @@ public class DocumentTypeResource {
 
         public static DocumentTypeStateDto[] toDocumentTypeStateDtoArray(Iterable<String> ids) {
             List<DocumentTypeStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 DocumentTypeStateDto dto = new DocumentTypeStateDto();
-                dto.setDocumentTypeId(id);
+                dto.setDocumentTypeId(i);
                 states.add(dto);
             });
             return states.toArray(new DocumentTypeStateDto[0]);

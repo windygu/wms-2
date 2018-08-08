@@ -27,6 +27,10 @@ public class OrganizationStructureResource {
     private OrganizationStructureApplicationService organizationStructureApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 OrganizationStructures
+     */
     @GetMapping
     public OrganizationStructureStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class OrganizationStructureResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 OrganizationStructures
+     */
     @GetMapping("_page")
     public Page<OrganizationStructureStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,6 +114,10 @@ public class OrganizationStructureResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 通过 Id 获取单个 OrganizationStructure
+     */
     @GetMapping("{id}")
     public OrganizationStructureStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
         try {
@@ -345,9 +357,9 @@ public class OrganizationStructureResource {
 
         public static OrganizationStructureStateDto[] toOrganizationStructureStateDtoArray(Iterable<OrganizationStructureId> ids) {
             List<OrganizationStructureStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 OrganizationStructureStateDto dto = new OrganizationStructureStateDto();
-                dto.setId(id);
+                dto.setId(i);
                 states.add(dto);
             });
             return states.toArray(new OrganizationStructureStateDto[0]);

@@ -30,6 +30,10 @@ public class AttributeResource {
     private AttributeApplicationService attributeApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Attributes
+     */
     @GetMapping
     public AttributeStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -68,11 +72,15 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Attributes
+     */
     @GetMapping("_page")
     public Page<AttributeStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -109,10 +117,14 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public AttributeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Attribute
+     */
+    @GetMapping("{attributeId}")
+    public AttributeStateDto get(@PathVariable("attributeId") String attributeId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = attributeId;
             AttributeState state = attributeApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -171,39 +183,39 @@ public class AttributeResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeDto value) {
+    @PutMapping("{attributeId}")
+    public void put(@PathVariable("attributeId") String attributeId, @RequestBody CreateOrMergePatchAttributeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 AttributeCommand.MergePatchAttribute cmd = (AttributeCommand.MergePatchAttribute) value.toCommand();
-                AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
                 attributeApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             AttributeCommand.CreateAttribute cmd = (AttributeCommand.CreateAttribute) value.toCommand();
-            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
             attributeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
+    @PatchMapping("{attributeId}")
+    public void patch(@PathVariable("attributeId") String attributeId, @RequestBody CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
         try {
 
             AttributeCommand.MergePatchAttribute cmd = value.toMergePatchAttribute();
-            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
             attributeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{attributeId}")
+    public void delete(@PathVariable("attributeId") String attributeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -214,7 +226,7 @@ public class AttributeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, deleteCmd);
             attributeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -233,22 +245,22 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public AttributeEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{attributeId}/_events/{version}")
+    public AttributeEvent getStateEvent(@PathVariable("attributeId") String attributeId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = attributeId;
             //AttributeStateEventDtoConverter dtoConverter = getAttributeStateEventDtoConverter();
             return attributeApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public AttributeStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{attributeId}/_historyStates/{version}")
+    public AttributeStateDto getHistoryState(@PathVariable("attributeId") String attributeId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = attributeId;
             AttributeStateDto.DtoConverter dtoConverter = new AttributeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -445,12 +457,12 @@ public class AttributeResource {
  
     public static class AttributeResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, AttributeCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String attributeId, AttributeCommand value) {
+            String idObj = attributeId;
             if (value.getAttributeId() == null) {
                 value.setAttributeId(idObj);
             } else if (!value.getAttributeId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getAttributeId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", attributeId, value.getAttributeId());
             }
         }
     
@@ -505,9 +517,9 @@ public class AttributeResource {
 
         public static AttributeStateDto[] toAttributeStateDtoArray(Iterable<String> ids) {
             List<AttributeStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 AttributeStateDto dto = new AttributeStateDto();
-                dto.setAttributeId(id);
+                dto.setAttributeId(i);
                 states.add(dto);
             });
             return states.toArray(new AttributeStateDto[0]);

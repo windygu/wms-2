@@ -28,6 +28,10 @@ public class MovementConfirmationResource {
     private MovementConfirmationApplicationService movementConfirmationApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 MovementConfirmations
+     */
     @GetMapping
     public MovementConfirmationStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -66,11 +70,15 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 MovementConfirmations
+     */
     @GetMapping("_page")
     public Page<MovementConfirmationStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -107,10 +115,14 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public MovementConfirmationStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 MovementConfirmation
+     */
+    @GetMapping("{documentNumber}")
+    public MovementConfirmationStateDto get(@PathVariable("documentNumber") String documentNumber, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = documentNumber;
             MovementConfirmationState state = movementConfirmationApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -161,39 +173,39 @@ public class MovementConfirmationResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchMovementConfirmationDto value) {
+    @PutMapping("{documentNumber}")
+    public void put(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementConfirmationDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 MovementConfirmationCommand.MergePatchMovementConfirmation cmd = (MovementConfirmationCommand.MergePatchMovementConfirmation) value.toCommand();
-                MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
                 movementConfirmationApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             MovementConfirmationCommand.CreateMovementConfirmation cmd = (MovementConfirmationCommand.CreateMovementConfirmation) value.toCommand();
-            MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             movementConfirmationApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value) {
+    @PatchMapping("{documentNumber}")
+    public void patch(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value) {
         try {
 
             MovementConfirmationCommand.MergePatchMovementConfirmation cmd = value.toMergePatchMovementConfirmation();
-            MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             movementConfirmationApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{documentNumber}")
+    public void delete(@PathVariable("documentNumber") String documentNumber,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -204,23 +216,23 @@ public class MovementConfirmationResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, deleteCmd);
             movementConfirmationApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PutMapping("{id}/_commands/DocumentAction")
-    public void documentAction(@PathVariable("id") String id, @RequestBody MovementConfirmationCommands.DocumentAction content) {
+    @PutMapping("{documentNumber}/_commands/DocumentAction")
+    public void documentAction(@PathVariable("documentNumber") String documentNumber, @RequestBody MovementConfirmationCommands.DocumentAction content) {
         try {
 
             MovementConfirmationCommands.DocumentAction cmd = content;//.toDocumentAction();
-            String idObj = id;
+            String idObj = documentNumber;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
             movementConfirmationApplicationService.when(cmd);
 
@@ -240,22 +252,22 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public MovementConfirmationEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{documentNumber}/_events/{version}")
+    public MovementConfirmationEvent getStateEvent(@PathVariable("documentNumber") String documentNumber, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = documentNumber;
             //MovementConfirmationStateEventDtoConverter dtoConverter = getMovementConfirmationStateEventDtoConverter();
             return movementConfirmationApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public MovementConfirmationStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{documentNumber}/_historyStates/{version}")
+    public MovementConfirmationStateDto getHistoryState(@PathVariable("documentNumber") String documentNumber, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = documentNumber;
             MovementConfirmationStateDto.DtoConverter dtoConverter = new MovementConfirmationStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -267,11 +279,11 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/{lineNumber}")
-    public MovementConfirmationLineStateDto getMovementConfirmationLine(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber, @PathVariable("lineNumber") String lineNumber) {
+    @GetMapping("{documentNumber}/MovementConfirmationLines/{lineNumber}")
+    public MovementConfirmationLineStateDto getMovementConfirmationLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
 
-            MovementConfirmationLineState state = movementConfirmationApplicationService.getMovementConfirmationLine(movementConfirmationDocumentNumber, lineNumber);
+            MovementConfirmationLineState state = movementConfirmationApplicationService.getMovementConfirmationLine(documentNumber, lineNumber);
             if (state == null) { return null; }
             MovementConfirmationLineStateDto.DtoConverter dtoConverter = new MovementConfirmationLineStateDto.DtoConverter();
             MovementConfirmationLineStateDto stateDto = dtoConverter.toMovementConfirmationLineStateDto(state);
@@ -281,15 +293,15 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @PutMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/{lineNumber}")
-    public void putMovementConfirmationLine(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber, @PathVariable("lineNumber") String lineNumber,
+    @PutMapping("{documentNumber}/MovementConfirmationLines/{lineNumber}")
+    public void putMovementConfirmationLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
                        @RequestBody CreateOrMergePatchMovementConfirmationLineDto.MergePatchMovementConfirmationLineDto body) {
         try {
             MovementConfirmationCommand.MergePatchMovementConfirmation mergePatchMovementConfirmation = new AbstractMovementConfirmationCommand.SimpleMergePatchMovementConfirmation();
-            mergePatchMovementConfirmation.setDocumentNumber(movementConfirmationDocumentNumber);
+            mergePatchMovementConfirmation.setDocumentNumber(documentNumber);
             mergePatchMovementConfirmation.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchMovementConfirmation.setVersion(version); }
             mergePatchMovementConfirmation.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -300,14 +312,14 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/{lineNumber}")
-    public void deleteMovementConfirmationLine(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber, @PathVariable("lineNumber") String lineNumber,
+    @DeleteMapping("{documentNumber}/MovementConfirmationLines/{lineNumber}")
+    public void deleteMovementConfirmationLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
             MovementConfirmationCommand.MergePatchMovementConfirmation mergePatchMovementConfirmation = new AbstractMovementConfirmationCommand.SimpleMergePatchMovementConfirmation();
-            mergePatchMovementConfirmation.setDocumentNumber(movementConfirmationDocumentNumber);
+            mergePatchMovementConfirmation.setDocumentNumber(documentNumber);
             mergePatchMovementConfirmation.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchMovementConfirmation.setVersion(version); }
             mergePatchMovementConfirmation.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -318,10 +330,10 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/")
-    public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber) {
+    @GetMapping("{documentNumber}/MovementConfirmationLines/")
+    public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber) {
         try {
-            Iterable<MovementConfirmationLineState> states = movementConfirmationApplicationService.getMovementConfirmationLines(movementConfirmationDocumentNumber);
+            Iterable<MovementConfirmationLineState> states = movementConfirmationApplicationService.getMovementConfirmationLines(documentNumber);
             if (states == null) { return null; }
             MovementConfirmationLineStateDto.DtoConverter dtoConverter = new MovementConfirmationLineStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
@@ -329,15 +341,15 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @PostMapping("{movementConfirmationDocumentNumber}/MovementConfirmationLines/")
-    public void postMovementConfirmationLines(@PathVariable("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber,
+    @PostMapping("{documentNumber}/MovementConfirmationLines/")
+    public void postMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
                        @RequestBody CreateOrMergePatchMovementConfirmationLineDto.CreateMovementConfirmationLineDto body) {
         try {
             MovementConfirmationCommand.MergePatchMovementConfirmation mergePatchMovementConfirmation = new AbstractMovementConfirmationCommand.SimpleMergePatchMovementConfirmation();
-            mergePatchMovementConfirmation.setDocumentNumber(movementConfirmationDocumentNumber);
+            mergePatchMovementConfirmation.setDocumentNumber(documentNumber);
             mergePatchMovementConfirmation.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchMovementConfirmation.setVersion(version); }
             mergePatchMovementConfirmation.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -372,12 +384,12 @@ public class MovementConfirmationResource {
  
     public static class MovementConfirmationResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, MovementConfirmationCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String documentNumber, MovementConfirmationCommand value) {
+            String idObj = documentNumber;
             if (value.getDocumentNumber() == null) {
                 value.setDocumentNumber(idObj);
             } else if (!value.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, value.getDocumentNumber());
             }
         }
     
@@ -432,9 +444,9 @@ public class MovementConfirmationResource {
 
         public static MovementConfirmationStateDto[] toMovementConfirmationStateDtoArray(Iterable<String> ids) {
             List<MovementConfirmationStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 MovementConfirmationStateDto dto = new MovementConfirmationStateDto();
-                dto.setDocumentNumber(id);
+                dto.setDocumentNumber(i);
                 states.add(dto);
             });
             return states.toArray(new MovementConfirmationStateDto[0]);

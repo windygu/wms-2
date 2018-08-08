@@ -28,6 +28,10 @@ public class MovementResource {
     private MovementApplicationService movementApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Movements
+     */
     @GetMapping
     public MovementStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -66,11 +70,15 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Movements
+     */
     @GetMapping("_page")
     public Page<MovementStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -107,10 +115,14 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public MovementStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Movement
+     */
+    @GetMapping("{documentNumber}")
+    public MovementStateDto get(@PathVariable("documentNumber") String documentNumber, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = documentNumber;
             MovementState state = movementApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -161,39 +173,39 @@ public class MovementResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchMovementDto value) {
+    @PutMapping("{documentNumber}")
+    public void put(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 MovementCommand.MergePatchMovement cmd = (MovementCommand.MergePatchMovement) value.toCommand();
-                MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
                 movementApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             MovementCommand.CreateMovement cmd = (MovementCommand.CreateMovement) value.toCommand();
-            MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             movementApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchMovementDto.MergePatchMovementDto value) {
+    @PatchMapping("{documentNumber}")
+    public void patch(@PathVariable("documentNumber") String documentNumber, @RequestBody CreateOrMergePatchMovementDto.MergePatchMovementDto value) {
         try {
 
             MovementCommand.MergePatchMovement cmd = value.toMergePatchMovement();
-            MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             movementApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{documentNumber}")
+    public void delete(@PathVariable("documentNumber") String documentNumber,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -204,23 +216,23 @@ public class MovementResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            MovementResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, deleteCmd);
             movementApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PutMapping("{id}/_commands/AddLine")
-    public void addLine(@PathVariable("id") String id, @RequestBody MovementCommands.AddLine content) {
+    @PutMapping("{documentNumber}/_commands/AddLine")
+    public void addLine(@PathVariable("documentNumber") String documentNumber, @RequestBody MovementCommands.AddLine content) {
         try {
 
             MovementCommands.AddLine cmd = content;//.toAddLine();
-            String idObj = id;
+            String idObj = documentNumber;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
             movementApplicationService.when(cmd);
 
@@ -228,16 +240,16 @@ public class MovementResource {
     }
 
 
-    @PutMapping("{id}/_commands/DocumentAction")
-    public void documentAction(@PathVariable("id") String id, @RequestBody MovementCommands.DocumentAction content) {
+    @PutMapping("{documentNumber}/_commands/DocumentAction")
+    public void documentAction(@PathVariable("documentNumber") String documentNumber, @RequestBody MovementCommands.DocumentAction content) {
         try {
 
             MovementCommands.DocumentAction cmd = content;//.toDocumentAction();
-            String idObj = id;
+            String idObj = documentNumber;
             if (cmd.getDocumentNumber() == null) {
                 cmd.setDocumentNumber(idObj);
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
             movementApplicationService.when(cmd);
 
@@ -257,22 +269,22 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public MovementEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{documentNumber}/_events/{version}")
+    public MovementEvent getStateEvent(@PathVariable("documentNumber") String documentNumber, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = documentNumber;
             //MovementStateEventDtoConverter dtoConverter = getMovementStateEventDtoConverter();
             return movementApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public MovementStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{documentNumber}/_historyStates/{version}")
+    public MovementStateDto getHistoryState(@PathVariable("documentNumber") String documentNumber, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = documentNumber;
             MovementStateDto.DtoConverter dtoConverter = new MovementStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -284,11 +296,11 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{movementDocumentNumber}/MovementLines/{lineNumber}")
-    public MovementLineStateDto getMovementLine(@PathVariable("movementDocumentNumber") String movementDocumentNumber, @PathVariable("lineNumber") String lineNumber) {
+    @GetMapping("{documentNumber}/MovementLines/{lineNumber}")
+    public MovementLineStateDto getMovementLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
 
-            MovementLineState state = movementApplicationService.getMovementLine(movementDocumentNumber, lineNumber);
+            MovementLineState state = movementApplicationService.getMovementLine(documentNumber, lineNumber);
             if (state == null) { return null; }
             MovementLineStateDto.DtoConverter dtoConverter = new MovementLineStateDto.DtoConverter();
             MovementLineStateDto stateDto = dtoConverter.toMovementLineStateDto(state);
@@ -298,15 +310,15 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @PutMapping("{movementDocumentNumber}/MovementLines/{lineNumber}")
-    public void putMovementLine(@PathVariable("movementDocumentNumber") String movementDocumentNumber, @PathVariable("lineNumber") String lineNumber,
+    @PutMapping("{documentNumber}/MovementLines/{lineNumber}")
+    public void putMovementLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
                        @RequestBody CreateOrMergePatchMovementLineDto.MergePatchMovementLineDto body) {
         try {
             MovementCommand.MergePatchMovement mergePatchMovement = new AbstractMovementCommand.SimpleMergePatchMovement();
-            mergePatchMovement.setDocumentNumber(movementDocumentNumber);
+            mergePatchMovement.setDocumentNumber(documentNumber);
             mergePatchMovement.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchMovement.setVersion(version); }
             mergePatchMovement.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -317,14 +329,14 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{movementDocumentNumber}/MovementLines/{lineNumber}")
-    public void deleteMovementLine(@PathVariable("movementDocumentNumber") String movementDocumentNumber, @PathVariable("lineNumber") String lineNumber,
+    @DeleteMapping("{documentNumber}/MovementLines/{lineNumber}")
+    public void deleteMovementLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
             MovementCommand.MergePatchMovement mergePatchMovement = new AbstractMovementCommand.SimpleMergePatchMovement();
-            mergePatchMovement.setDocumentNumber(movementDocumentNumber);
+            mergePatchMovement.setDocumentNumber(documentNumber);
             mergePatchMovement.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchMovement.setVersion(version); }
             mergePatchMovement.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -335,10 +347,10 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{movementDocumentNumber}/MovementLines/")
-    public MovementLineStateDto[] getMovementLines(@PathVariable("movementDocumentNumber") String movementDocumentNumber) {
+    @GetMapping("{documentNumber}/MovementLines/")
+    public MovementLineStateDto[] getMovementLines(@PathVariable("documentNumber") String documentNumber) {
         try {
-            Iterable<MovementLineState> states = movementApplicationService.getMovementLines(movementDocumentNumber);
+            Iterable<MovementLineState> states = movementApplicationService.getMovementLines(documentNumber);
             if (states == null) { return null; }
             MovementLineStateDto.DtoConverter dtoConverter = new MovementLineStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
@@ -346,15 +358,15 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @PostMapping("{movementDocumentNumber}/MovementLines/")
-    public void postMovementLines(@PathVariable("movementDocumentNumber") String movementDocumentNumber,
+    @PostMapping("{documentNumber}/MovementLines/")
+    public void postMovementLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
                        @RequestBody CreateOrMergePatchMovementLineDto.CreateMovementLineDto body) {
         try {
             MovementCommand.MergePatchMovement mergePatchMovement = new AbstractMovementCommand.SimpleMergePatchMovement();
-            mergePatchMovement.setDocumentNumber(movementDocumentNumber);
+            mergePatchMovement.setDocumentNumber(documentNumber);
             mergePatchMovement.setCommandId(commandId != null && !commandId.isEmpty() ? commandId : body.getCommandId());
             if (version != null) { mergePatchMovement.setVersion(version); }
             mergePatchMovement.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
@@ -389,12 +401,12 @@ public class MovementResource {
  
     public static class MovementResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, MovementCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String documentNumber, MovementCommand value) {
+            String idObj = documentNumber;
             if (value.getDocumentNumber() == null) {
                 value.setDocumentNumber(idObj);
             } else if (!value.getDocumentNumber().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDocumentNumber());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, value.getDocumentNumber());
             }
         }
     
@@ -449,9 +461,9 @@ public class MovementResource {
 
         public static MovementStateDto[] toMovementStateDtoArray(Iterable<String> ids) {
             List<MovementStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 MovementStateDto dto = new MovementStateDto();
-                dto.setDocumentNumber(id);
+                dto.setDocumentNumber(i);
                 states.add(dto);
             });
             return states.toArray(new MovementStateDto[0]);

@@ -28,6 +28,10 @@ public class OrderResource {
     private OrderApplicationService orderApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Orders
+     */
     @GetMapping
     public OrderStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -66,11 +70,15 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Orders
+     */
     @GetMapping("_page")
     public Page<OrderStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -107,10 +115,14 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public OrderStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Order
+     */
+    @GetMapping("{orderId}")
+    public OrderStateDto get(@PathVariable("orderId") String orderId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = orderId;
             OrderState state = orderApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -161,32 +173,32 @@ public class OrderResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderDto value) {
+    @PutMapping("{orderId}")
+    public void put(@PathVariable("orderId") String orderId, @RequestBody CreateOrMergePatchOrderDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 OrderCommand.MergePatchOrder cmd = (OrderCommand.MergePatchOrder) value.toCommand();
-                OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(orderId, cmd);
                 orderApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             OrderCommand.CreateOrder cmd = (OrderCommand.CreateOrder) value.toCommand();
-            OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(orderId, cmd);
             orderApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchOrderDto.MergePatchOrderDto value) {
+    @PatchMapping("{orderId}")
+    public void patch(@PathVariable("orderId") String orderId, @RequestBody CreateOrMergePatchOrderDto.MergePatchOrderDto value) {
         try {
 
             OrderCommand.MergePatchOrder cmd = value.toMergePatchOrder();
-            OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(orderId, cmd);
             orderApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -205,22 +217,22 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public OrderEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{orderId}/_events/{version}")
+    public OrderEvent getStateEvent(@PathVariable("orderId") String orderId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = orderId;
             //OrderStateEventDtoConverter dtoConverter = getOrderStateEventDtoConverter();
             return orderApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public OrderStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{orderId}/_historyStates/{version}")
+    public OrderStateDto getHistoryState(@PathVariable("orderId") String orderId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = orderId;
             OrderStateDto.DtoConverter dtoConverter = new OrderStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -601,12 +613,12 @@ public class OrderResource {
  
     public static class OrderResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, OrderCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String orderId, OrderCommand value) {
+            String idObj = orderId;
             if (value.getOrderId() == null) {
                 value.setOrderId(idObj);
             } else if (!value.getOrderId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getOrderId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", orderId, value.getOrderId());
             }
         }
     
@@ -661,9 +673,9 @@ public class OrderResource {
 
         public static OrderStateDto[] toOrderStateDtoArray(Iterable<String> ids) {
             List<OrderStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 OrderStateDto dto = new OrderStateDto();
-                dto.setOrderId(id);
+                dto.setOrderId(i);
                 states.add(dto);
             });
             return states.toArray(new OrderStateDto[0]);

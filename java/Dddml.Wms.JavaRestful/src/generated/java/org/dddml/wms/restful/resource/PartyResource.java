@@ -27,6 +27,10 @@ public class PartyResource {
     private PartyApplicationService partyApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Parties
+     */
     @GetMapping
     public PartyStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class PartyResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Parties
+     */
     @GetMapping("_page")
     public Page<PartyStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class PartyResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public PartyStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Party
+     */
+    @GetMapping("{partyId}")
+    public PartyStateDto get(@PathVariable("partyId") String partyId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = partyId;
             PartyState state = partyApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class PartyResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPartyDto value) {
+    @PutMapping("{partyId}")
+    public void put(@PathVariable("partyId") String partyId, @RequestBody CreateOrMergePatchPartyDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PartyCommand.MergePatchParty cmd = (PartyCommand.MergePatchParty) value.toCommand();
-                PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
                 partyApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PartyCommand.CreateParty cmd = (PartyCommand.CreateParty) value.toCommand();
-            PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
             partyApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchPartyDto.MergePatchPartyDto value) {
+    @PatchMapping("{partyId}")
+    public void patch(@PathVariable("partyId") String partyId, @RequestBody CreateOrMergePatchPartyDto.MergePatchPartyDto value) {
         try {
 
             PartyCommand.MergePatchParty cmd = value.toMergePatchParty();
-            PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
             partyApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{partyId}")
+    public void delete(@PathVariable("partyId") String partyId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class PartyResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, deleteCmd);
             partyApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class PartyResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public PartyEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{partyId}/_events/{version}")
+    public PartyEvent getStateEvent(@PathVariable("partyId") String partyId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = partyId;
             //PartyStateEventDtoConverter dtoConverter = getPartyStateEventDtoConverter();
             return partyApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public PartyStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{partyId}/_historyStates/{version}")
+    public PartyStateDto getHistoryState(@PathVariable("partyId") String partyId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = partyId;
             PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class PartyResource {
  
     public static class PartyResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, PartyCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String partyId, PartyCommand value) {
+            String idObj = partyId;
             if (value.getPartyId() == null) {
                 value.setPartyId(idObj);
             } else if (!value.getPartyId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getPartyId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", partyId, value.getPartyId());
             }
         }
     
@@ -334,9 +346,9 @@ public class PartyResource {
 
         public static PartyStateDto[] toPartyStateDtoArray(Iterable<String> ids) {
             List<PartyStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 PartyStateDto dto = new PartyStateDto();
-                dto.setPartyId(id);
+                dto.setPartyId(i);
                 states.add(dto);
             });
             return states.toArray(new PartyStateDto[0]);

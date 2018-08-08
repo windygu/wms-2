@@ -28,6 +28,10 @@ public class InventoryPostingRuleResource {
     private InventoryPostingRuleApplicationService inventoryPostingRuleApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 InventoryPostingRules
+     */
     @GetMapping
     public InventoryPostingRuleStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -66,11 +70,15 @@ public class InventoryPostingRuleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 InventoryPostingRules
+     */
     @GetMapping("_page")
     public Page<InventoryPostingRuleStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -107,10 +115,14 @@ public class InventoryPostingRuleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public InventoryPostingRuleStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 InventoryPostingRule
+     */
+    @GetMapping("{inventoryPostingRuleId}")
+    public InventoryPostingRuleStateDto get(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = inventoryPostingRuleId;
             InventoryPostingRuleState state = inventoryPostingRuleApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -161,39 +173,39 @@ public class InventoryPostingRuleResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryPostingRuleDto value) {
+    @PutMapping("{inventoryPostingRuleId}")
+    public void put(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId, @RequestBody CreateOrMergePatchInventoryPostingRuleDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 InventoryPostingRuleCommand.MergePatchInventoryPostingRule cmd = (InventoryPostingRuleCommand.MergePatchInventoryPostingRule) value.toCommand();
-                InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, cmd);
                 inventoryPostingRuleApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             InventoryPostingRuleCommand.CreateInventoryPostingRule cmd = (InventoryPostingRuleCommand.CreateInventoryPostingRule) value.toCommand();
-            InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, cmd);
             inventoryPostingRuleApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryPostingRuleDto.MergePatchInventoryPostingRuleDto value) {
+    @PatchMapping("{inventoryPostingRuleId}")
+    public void patch(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId, @RequestBody CreateOrMergePatchInventoryPostingRuleDto.MergePatchInventoryPostingRuleDto value) {
         try {
 
             InventoryPostingRuleCommand.MergePatchInventoryPostingRule cmd = value.toMergePatchInventoryPostingRule();
-            InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, cmd);
             inventoryPostingRuleApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{inventoryPostingRuleId}")
+    public void delete(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -204,7 +216,7 @@ public class InventoryPostingRuleResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, deleteCmd);
             inventoryPostingRuleApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -223,22 +235,22 @@ public class InventoryPostingRuleResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public InventoryPostingRuleEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{inventoryPostingRuleId}/_events/{version}")
+    public InventoryPostingRuleEvent getStateEvent(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = inventoryPostingRuleId;
             //InventoryPostingRuleStateEventDtoConverter dtoConverter = getInventoryPostingRuleStateEventDtoConverter();
             return inventoryPostingRuleApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public InventoryPostingRuleStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{inventoryPostingRuleId}/_historyStates/{version}")
+    public InventoryPostingRuleStateDto getHistoryState(@PathVariable("inventoryPostingRuleId") String inventoryPostingRuleId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = inventoryPostingRuleId;
             InventoryPostingRuleStateDto.DtoConverter dtoConverter = new InventoryPostingRuleStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -275,12 +287,12 @@ public class InventoryPostingRuleResource {
  
     public static class InventoryPostingRuleResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, InventoryPostingRuleCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String inventoryPostingRuleId, InventoryPostingRuleCommand value) {
+            String idObj = inventoryPostingRuleId;
             if (value.getInventoryPostingRuleId() == null) {
                 value.setInventoryPostingRuleId(idObj);
             } else if (!value.getInventoryPostingRuleId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getInventoryPostingRuleId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", inventoryPostingRuleId, value.getInventoryPostingRuleId());
             }
         }
     
@@ -335,9 +347,9 @@ public class InventoryPostingRuleResource {
 
         public static InventoryPostingRuleStateDto[] toInventoryPostingRuleStateDtoArray(Iterable<String> ids) {
             List<InventoryPostingRuleStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 InventoryPostingRuleStateDto dto = new InventoryPostingRuleStateDto();
-                dto.setInventoryPostingRuleId(id);
+                dto.setInventoryPostingRuleId(i);
                 states.add(dto);
             });
             return states.toArray(new InventoryPostingRuleStateDto[0]);

@@ -27,6 +27,10 @@ public class RoleTypeResource {
     private RoleTypeApplicationService roleTypeApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 RoleTypes
+     */
     @GetMapping
     public RoleTypeStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class RoleTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 RoleTypes
+     */
     @GetMapping("_page")
     public Page<RoleTypeStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class RoleTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public RoleTypeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 RoleType
+     */
+    @GetMapping("{roleTypeId}")
+    public RoleTypeStateDto get(@PathVariable("roleTypeId") String roleTypeId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = roleTypeId;
             RoleTypeState state = roleTypeApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class RoleTypeResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchRoleTypeDto value) {
+    @PutMapping("{roleTypeId}")
+    public void put(@PathVariable("roleTypeId") String roleTypeId, @RequestBody CreateOrMergePatchRoleTypeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 RoleTypeCommand.MergePatchRoleType cmd = (RoleTypeCommand.MergePatchRoleType) value.toCommand();
-                RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, cmd);
                 roleTypeApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             RoleTypeCommand.CreateRoleType cmd = (RoleTypeCommand.CreateRoleType) value.toCommand();
-            RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, cmd);
             roleTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value) {
+    @PatchMapping("{roleTypeId}")
+    public void patch(@PathVariable("roleTypeId") String roleTypeId, @RequestBody CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value) {
         try {
 
             RoleTypeCommand.MergePatchRoleType cmd = value.toMergePatchRoleType();
-            RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, cmd);
             roleTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{roleTypeId}")
+    public void delete(@PathVariable("roleTypeId") String roleTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class RoleTypeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, deleteCmd);
             roleTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class RoleTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public RoleTypeEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{roleTypeId}/_events/{version}")
+    public RoleTypeEvent getStateEvent(@PathVariable("roleTypeId") String roleTypeId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = roleTypeId;
             //RoleTypeStateEventDtoConverter dtoConverter = getRoleTypeStateEventDtoConverter();
             return roleTypeApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public RoleTypeStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{roleTypeId}/_historyStates/{version}")
+    public RoleTypeStateDto getHistoryState(@PathVariable("roleTypeId") String roleTypeId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = roleTypeId;
             RoleTypeStateDto.DtoConverter dtoConverter = new RoleTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class RoleTypeResource {
  
     public static class RoleTypeResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, RoleTypeCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String roleTypeId, RoleTypeCommand value) {
+            String idObj = roleTypeId;
             if (value.getRoleTypeId() == null) {
                 value.setRoleTypeId(idObj);
             } else if (!value.getRoleTypeId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getRoleTypeId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", roleTypeId, value.getRoleTypeId());
             }
         }
     
@@ -334,9 +346,9 @@ public class RoleTypeResource {
 
         public static RoleTypeStateDto[] toRoleTypeStateDtoArray(Iterable<String> ids) {
             List<RoleTypeStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 RoleTypeStateDto dto = new RoleTypeStateDto();
-                dto.setRoleTypeId(id);
+                dto.setRoleTypeId(i);
                 states.add(dto);
             });
             return states.toArray(new RoleTypeStateDto[0]);

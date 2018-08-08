@@ -27,6 +27,10 @@ public class MovementTypeResource {
     private MovementTypeApplicationService movementTypeApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 MovementTypes
+     */
     @GetMapping
     public MovementTypeStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class MovementTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 MovementTypes
+     */
     @GetMapping("_page")
     public Page<MovementTypeStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class MovementTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public MovementTypeStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 MovementType
+     */
+    @GetMapping("{movementTypeId}")
+    public MovementTypeStateDto get(@PathVariable("movementTypeId") String movementTypeId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = movementTypeId;
             MovementTypeState state = movementTypeApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class MovementTypeResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchMovementTypeDto value) {
+    @PutMapping("{movementTypeId}")
+    public void put(@PathVariable("movementTypeId") String movementTypeId, @RequestBody CreateOrMergePatchMovementTypeDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 MovementTypeCommand.MergePatchMovementType cmd = (MovementTypeCommand.MergePatchMovementType) value.toCommand();
-                MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, cmd);
                 movementTypeApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             MovementTypeCommand.CreateMovementType cmd = (MovementTypeCommand.CreateMovementType) value.toCommand();
-            MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, cmd);
             movementTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value) {
+    @PatchMapping("{movementTypeId}")
+    public void patch(@PathVariable("movementTypeId") String movementTypeId, @RequestBody CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value) {
         try {
 
             MovementTypeCommand.MergePatchMovementType cmd = value.toMergePatchMovementType();
-            MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, cmd);
             movementTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{movementTypeId}")
+    public void delete(@PathVariable("movementTypeId") String movementTypeId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class MovementTypeResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, deleteCmd);
             movementTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -242,12 +254,12 @@ public class MovementTypeResource {
  
     public static class MovementTypeResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, MovementTypeCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String movementTypeId, MovementTypeCommand value) {
+            String idObj = movementTypeId;
             if (value.getMovementTypeId() == null) {
                 value.setMovementTypeId(idObj);
             } else if (!value.getMovementTypeId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getMovementTypeId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", movementTypeId, value.getMovementTypeId());
             }
         }
     
@@ -302,9 +314,9 @@ public class MovementTypeResource {
 
         public static MovementTypeStateDto[] toMovementTypeStateDtoArray(Iterable<String> ids) {
             List<MovementTypeStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 MovementTypeStateDto dto = new MovementTypeStateDto();
-                dto.setMovementTypeId(id);
+                dto.setMovementTypeId(i);
                 states.add(dto);
             });
             return states.toArray(new MovementTypeStateDto[0]);

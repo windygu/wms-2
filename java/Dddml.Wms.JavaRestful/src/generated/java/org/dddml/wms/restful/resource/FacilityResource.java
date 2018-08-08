@@ -27,6 +27,10 @@ public class FacilityResource {
     private FacilityApplicationService facilityApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Facilities
+     */
     @GetMapping
     public FacilityStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class FacilityResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Facilities
+     */
     @GetMapping("_page")
     public Page<FacilityStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class FacilityResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public FacilityStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Facility
+     */
+    @GetMapping("{facilityId}")
+    public FacilityStateDto get(@PathVariable("facilityId") String facilityId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = facilityId;
             FacilityState state = facilityApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class FacilityResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchFacilityDto value) {
+    @PutMapping("{facilityId}")
+    public void put(@PathVariable("facilityId") String facilityId, @RequestBody CreateOrMergePatchFacilityDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 FacilityCommand.MergePatchFacility cmd = (FacilityCommand.MergePatchFacility) value.toCommand();
-                FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, cmd);
                 facilityApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             FacilityCommand.CreateFacility cmd = (FacilityCommand.CreateFacility) value.toCommand();
-            FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, cmd);
             facilityApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchFacilityDto.MergePatchFacilityDto value) {
+    @PatchMapping("{facilityId}")
+    public void patch(@PathVariable("facilityId") String facilityId, @RequestBody CreateOrMergePatchFacilityDto.MergePatchFacilityDto value) {
         try {
 
             FacilityCommand.MergePatchFacility cmd = value.toMergePatchFacility();
-            FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, cmd);
             facilityApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{facilityId}")
+    public void delete(@PathVariable("facilityId") String facilityId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class FacilityResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, deleteCmd);
             facilityApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class FacilityResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public FacilityEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{facilityId}/_events/{version}")
+    public FacilityEvent getStateEvent(@PathVariable("facilityId") String facilityId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = facilityId;
             //FacilityStateEventDtoConverter dtoConverter = getFacilityStateEventDtoConverter();
             return facilityApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public FacilityStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{facilityId}/_historyStates/{version}")
+    public FacilityStateDto getHistoryState(@PathVariable("facilityId") String facilityId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = facilityId;
             FacilityStateDto.DtoConverter dtoConverter = new FacilityStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class FacilityResource {
  
     public static class FacilityResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, FacilityCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String facilityId, FacilityCommand value) {
+            String idObj = facilityId;
             if (value.getFacilityId() == null) {
                 value.setFacilityId(idObj);
             } else if (!value.getFacilityId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getFacilityId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", facilityId, value.getFacilityId());
             }
         }
     
@@ -334,9 +346,9 @@ public class FacilityResource {
 
         public static FacilityStateDto[] toFacilityStateDtoArray(Iterable<String> ids) {
             List<FacilityStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 FacilityStateDto dto = new FacilityStateDto();
-                dto.setFacilityId(id);
+                dto.setFacilityId(i);
                 states.add(dto);
             });
             return states.toArray(new FacilityStateDto[0]);

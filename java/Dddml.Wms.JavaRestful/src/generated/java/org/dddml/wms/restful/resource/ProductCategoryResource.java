@@ -27,6 +27,10 @@ public class ProductCategoryResource {
     private ProductCategoryApplicationService productCategoryApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 ProductCategories
+     */
     @GetMapping
     public ProductCategoryStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class ProductCategoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 ProductCategories
+     */
     @GetMapping("_page")
     public Page<ProductCategoryStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class ProductCategoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public ProductCategoryStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 ProductCategory
+     */
+    @GetMapping("{productCategoryId}")
+    public ProductCategoryStateDto get(@PathVariable("productCategoryId") String productCategoryId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = productCategoryId;
             ProductCategoryState state = productCategoryApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class ProductCategoryResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchProductCategoryDto value) {
+    @PutMapping("{productCategoryId}")
+    public void put(@PathVariable("productCategoryId") String productCategoryId, @RequestBody CreateOrMergePatchProductCategoryDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ProductCategoryCommand.MergePatchProductCategory cmd = (ProductCategoryCommand.MergePatchProductCategory) value.toCommand();
-                ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, cmd);
                 productCategoryApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ProductCategoryCommand.CreateProductCategory cmd = (ProductCategoryCommand.CreateProductCategory) value.toCommand();
-            ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, cmd);
             productCategoryApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchProductCategoryDto.MergePatchProductCategoryDto value) {
+    @PatchMapping("{productCategoryId}")
+    public void patch(@PathVariable("productCategoryId") String productCategoryId, @RequestBody CreateOrMergePatchProductCategoryDto.MergePatchProductCategoryDto value) {
         try {
 
             ProductCategoryCommand.MergePatchProductCategory cmd = value.toMergePatchProductCategory();
-            ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, cmd);
             productCategoryApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{productCategoryId}")
+    public void delete(@PathVariable("productCategoryId") String productCategoryId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class ProductCategoryResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, deleteCmd);
             productCategoryApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class ProductCategoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public ProductCategoryEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{productCategoryId}/_events/{version}")
+    public ProductCategoryEvent getStateEvent(@PathVariable("productCategoryId") String productCategoryId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = productCategoryId;
             //ProductCategoryStateEventDtoConverter dtoConverter = getProductCategoryStateEventDtoConverter();
             return productCategoryApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public ProductCategoryStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{productCategoryId}/_historyStates/{version}")
+    public ProductCategoryStateDto getHistoryState(@PathVariable("productCategoryId") String productCategoryId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = productCategoryId;
             ProductCategoryStateDto.DtoConverter dtoConverter = new ProductCategoryStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -249,11 +261,11 @@ public class ProductCategoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/ChildProductCategories")
-    public ProductCategoryStateDto[] getChildProductCategories(String id)
+    @GetMapping("{productCategoryId}/ChildProductCategories")
+    public ProductCategoryStateDto[] getChildProductCategories(String productCategoryId)
     {
         try {
-            String idObj = id;
+            String idObj = productCategoryId;
             Iterable<ProductCategoryState> states = productCategoryApplicationService.getChildProductCategories(idObj);
             if (states == null) { return null; }
             ProductCategoryStateDto.DtoConverter dtoConverter = new ProductCategoryStateDto.DtoConverter();
@@ -287,12 +299,12 @@ public class ProductCategoryResource {
  
     public static class ProductCategoryResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, ProductCategoryCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String productCategoryId, ProductCategoryCommand value) {
+            String idObj = productCategoryId;
             if (value.getProductCategoryId() == null) {
                 value.setProductCategoryId(idObj);
             } else if (!value.getProductCategoryId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getProductCategoryId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", productCategoryId, value.getProductCategoryId());
             }
         }
     
@@ -347,9 +359,9 @@ public class ProductCategoryResource {
 
         public static ProductCategoryStateDto[] toProductCategoryStateDtoArray(Iterable<String> ids) {
             List<ProductCategoryStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 ProductCategoryStateDto dto = new ProductCategoryStateDto();
-                dto.setProductCategoryId(id);
+                dto.setProductCategoryId(i);
                 states.add(dto);
             });
             return states.toArray(new ProductCategoryStateDto[0]);

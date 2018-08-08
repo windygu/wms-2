@@ -30,6 +30,10 @@ public class InventoryItemRequirementResource {
     private InventoryItemRequirementApplicationService inventoryItemRequirementApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 InventoryItemRequirements
+     */
     @GetMapping
     public InventoryItemRequirementStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -68,11 +72,15 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 InventoryItemRequirements
+     */
     @GetMapping("_page")
     public Page<InventoryItemRequirementStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -109,10 +117,14 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public InventoryItemRequirementStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 InventoryItemRequirement
+     */
+    @GetMapping("{inventoryItemRequirementId}")
+    public InventoryItemRequirementStateDto get(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            InventoryItemId idObj = InventoryItemRequirementResourceUtils.parseIdString(id);
+            InventoryItemId idObj = InventoryItemRequirementResourceUtils.parseIdString(inventoryItemRequirementId);
             InventoryItemRequirementState state = inventoryItemRequirementApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -163,32 +175,32 @@ public class InventoryItemRequirementResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryItemRequirementDto value) {
+    @PutMapping("{inventoryItemRequirementId}")
+    public void put(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId, @RequestBody CreateOrMergePatchInventoryItemRequirementDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 InventoryItemRequirementCommand.MergePatchInventoryItemRequirement cmd = (InventoryItemRequirementCommand.MergePatchInventoryItemRequirement) value.toCommand();
-                InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryItemRequirementId, cmd);
                 inventoryItemRequirementApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             InventoryItemRequirementCommand.CreateInventoryItemRequirement cmd = (InventoryItemRequirementCommand.CreateInventoryItemRequirement) value.toCommand();
-            InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryItemRequirementId, cmd);
             inventoryItemRequirementApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchInventoryItemRequirementDto.MergePatchInventoryItemRequirementDto value) {
+    @PatchMapping("{inventoryItemRequirementId}")
+    public void patch(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId, @RequestBody CreateOrMergePatchInventoryItemRequirementDto.MergePatchInventoryItemRequirementDto value) {
         try {
 
             InventoryItemRequirementCommand.MergePatchInventoryItemRequirement cmd = value.toMergePatchInventoryItemRequirement();
-            InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryItemRequirementId, cmd);
             inventoryItemRequirementApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -267,12 +279,12 @@ public class InventoryItemRequirementResource {
  
     public static class InventoryItemRequirementResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, InventoryItemRequirementCommand value) {
-            InventoryItemId idObj = parseIdString(id);
+        public static void setNullIdOrThrowOnInconsistentIds(String inventoryItemRequirementId, InventoryItemRequirementCommand value) {
+            InventoryItemId idObj = parseIdString(inventoryItemRequirementId);
             if (value.getInventoryItemRequirementId() == null) {
                 value.setInventoryItemRequirementId(idObj);
             } else if (!value.getInventoryItemRequirementId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getInventoryItemRequirementId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", inventoryItemRequirementId, value.getInventoryItemRequirementId());
             }
         }
     
@@ -338,9 +350,9 @@ public class InventoryItemRequirementResource {
 
         public static InventoryItemRequirementStateDto[] toInventoryItemRequirementStateDtoArray(Iterable<InventoryItemId> ids) {
             List<InventoryItemRequirementStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 InventoryItemRequirementStateDto dto = new InventoryItemRequirementStateDto();
-                dto.setInventoryItemRequirementId(id);
+                dto.setInventoryItemRequirementId(i);
                 states.add(dto);
             });
             return states.toArray(new InventoryItemRequirementStateDto[0]);

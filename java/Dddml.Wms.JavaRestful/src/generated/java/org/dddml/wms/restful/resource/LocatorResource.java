@@ -27,6 +27,10 @@ public class LocatorResource {
     private LocatorApplicationService locatorApplicationService;
 
 
+    /**
+     * 查询.
+     * 查询 Locators
+     */
     @GetMapping
     public LocatorStateDto[] getAll( HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
@@ -65,11 +69,15 @@ public class LocatorResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查询.
+     * 分页查询 Locators
+     */
     @GetMapping("_page")
     public Page<LocatorStateDto> getPage( HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
-                    @RequestParam(value = "size", required = false) @NotNull Integer size,
+                    @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
@@ -106,10 +114,14 @@ public class LocatorResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}")
-    public LocatorStateDto get(@PathVariable("id") String id, @RequestParam(value = "fields", required = false) String fields) {
+    /**
+     * 查看.
+     * 通过 Id 获取单个 Locator
+     */
+    @GetMapping("{locatorId}")
+    public LocatorStateDto get(@PathVariable("locatorId") String locatorId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            String idObj = id;
+            String idObj = locatorId;
             LocatorState state = locatorApplicationService.get(idObj);
             if (state == null) { return null; }
 
@@ -160,39 +172,39 @@ public class LocatorResource {
     }
 
 
-    @PutMapping("{id}")
-    public void put(@PathVariable("id") String id, @RequestBody CreateOrMergePatchLocatorDto value) {
+    @PutMapping("{locatorId}")
+    public void put(@PathVariable("locatorId") String locatorId, @RequestBody CreateOrMergePatchLocatorDto value) {
         try {
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 LocatorCommand.MergePatchLocator cmd = (LocatorCommand.MergePatchLocator) value.toCommand();
-                LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorId, cmd);
                 locatorApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             LocatorCommand.CreateLocator cmd = (LocatorCommand.CreateLocator) value.toCommand();
-            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorId, cmd);
             locatorApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @PatchMapping("{id}")
-    public void patch(@PathVariable("id") String id, @RequestBody CreateOrMergePatchLocatorDto.MergePatchLocatorDto value) {
+    @PatchMapping("{locatorId}")
+    public void patch(@PathVariable("locatorId") String locatorId, @RequestBody CreateOrMergePatchLocatorDto.MergePatchLocatorDto value) {
         try {
 
             LocatorCommand.MergePatchLocator cmd = value.toMergePatchLocator();
-            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorId, cmd);
             locatorApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id,
+    @DeleteMapping("{locatorId}")
+    public void delete(@PathVariable("locatorId") String locatorId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -203,7 +215,7 @@ public class LocatorResource {
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            LocatorResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorId, deleteCmd);
             locatorApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
@@ -222,22 +234,22 @@ public class LocatorResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_events/{version}")
-    public LocatorEvent getStateEvent(@PathVariable("id") String id, @PathVariable("version") long version) {
+    @GetMapping("{locatorId}/_events/{version}")
+    public LocatorEvent getStateEvent(@PathVariable("locatorId") String locatorId, @PathVariable("version") long version) {
         try {
 
-            String idObj = id;
+            String idObj = locatorId;
             //LocatorStateEventDtoConverter dtoConverter = getLocatorStateEventDtoConverter();
             return locatorApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @GetMapping("{id}/_historyStates/{version}")
-    public LocatorStateDto getHistoryState(@PathVariable("id") String id, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{locatorId}/_historyStates/{version}")
+    public LocatorStateDto getHistoryState(@PathVariable("locatorId") String locatorId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            String idObj = id;
+            String idObj = locatorId;
             LocatorStateDto.DtoConverter dtoConverter = new LocatorStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -274,12 +286,12 @@ public class LocatorResource {
  
     public static class LocatorResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, LocatorCommand value) {
-            String idObj = id;
+        public static void setNullIdOrThrowOnInconsistentIds(String locatorId, LocatorCommand value) {
+            String idObj = locatorId;
             if (value.getLocatorId() == null) {
                 value.setLocatorId(idObj);
             } else if (!value.getLocatorId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getLocatorId());
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", locatorId, value.getLocatorId());
             }
         }
     
@@ -334,9 +346,9 @@ public class LocatorResource {
 
         public static LocatorStateDto[] toLocatorStateDtoArray(Iterable<String> ids) {
             List<LocatorStateDto> states = new ArrayList<>();
-            ids.forEach(id -> {
+            ids.forEach(i -> {
                 LocatorStateDto dto = new LocatorStateDto();
-                dto.setLocatorId(id);
+                dto.setLocatorId(i);
                 states.add(dto);
             });
             return states.toArray(new LocatorStateDto[0]);
