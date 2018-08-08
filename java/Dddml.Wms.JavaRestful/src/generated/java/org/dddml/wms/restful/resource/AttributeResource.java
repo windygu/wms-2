@@ -168,6 +168,10 @@ public class AttributeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Attribute
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchAttributeDto.CreateAttributeDto value,  HttpServletResponse response) {
         try {
@@ -272,6 +276,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 Value 的 AttributeValue
+     */
     @GetMapping("{attributeId}/AttributeValues/{value}")
     public AttributeValueStateDto getAttributeValue(@PathVariable("attributeId") String attributeId, @PathVariable("value") String value) {
         try {
@@ -323,6 +331,9 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * AttributeValue List
+     */
     @GetMapping("{attributeId}/AttributeValues/")
     public AttributeValueStateDto[] getAttributeValues(@PathVariable("attributeId") String attributeId) {
         try {
@@ -334,6 +345,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 AttributeValue
+     */
     @PostMapping("{attributeId}/AttributeValues/")
     public void postAttributeValues(@PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -352,6 +367,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 Code 的 AttributeAlias
+     */
     @GetMapping("{attributeId}/AttributeAlias/{code}")
     public AttributeAliasStateDto getAttributeAlias(@PathVariable("attributeId") String attributeId, @PathVariable("code") String code) {
         try {
@@ -403,6 +422,9 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * AttributeAlias List
+     */
     @GetMapping("{attributeId}/AttributeAlias/")
     public AttributeAliasStateDto[] getAttributeAlias(@PathVariable("attributeId") String attributeId) {
         try {
@@ -414,6 +436,10 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 AttributeAlias
+     */
     @PostMapping("{attributeId}/AttributeAlias/")
     public void postAttributeAlias(@PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
