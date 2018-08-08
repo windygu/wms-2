@@ -157,6 +157,10 @@ public class SupplierProductResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 SupplierProduct
+     */
     @PostMapping
     public SupplierProductId post(@RequestBody CreateOrMergePatchSupplierProductDto.CreateSupplierProductDto value,  HttpServletResponse response) {
         try {

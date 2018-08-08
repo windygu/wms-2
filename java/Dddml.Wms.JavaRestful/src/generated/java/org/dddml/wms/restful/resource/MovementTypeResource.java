@@ -157,6 +157,10 @@ public class MovementTypeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 MovementType
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value,  HttpServletResponse response) {
         try {

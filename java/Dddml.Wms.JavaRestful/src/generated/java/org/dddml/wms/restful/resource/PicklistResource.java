@@ -158,6 +158,10 @@ public class PicklistResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Picklist
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchPicklistDto.CreatePicklistDto value,  HttpServletResponse response) {
         try {
@@ -262,6 +266,10 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 PartyRoleId 的 PicklistRole
+     */
     @GetMapping("{picklistId}/PicklistRoles/{partyRoleId}")
     public PicklistRoleStateDto getPicklistRole(@PathVariable("picklistId") String picklistId, @PathVariable("partyRoleId") String partyRoleId) {
         try {
@@ -328,6 +336,9 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * PicklistRole List
+     */
     @GetMapping("{picklistId}/PicklistRoles/")
     public PicklistRoleStateDto[] getPicklistRoles(@PathVariable("picklistId") String picklistId) {
         try {
@@ -339,6 +350,10 @@ public class PicklistResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 PicklistRole
+     */
     @PostMapping("{picklistId}/PicklistRoles/")
     public void postPicklistRoles(@PathVariable("picklistId") String picklistId,
                        @RequestParam(value = "commandId", required = false) String commandId,

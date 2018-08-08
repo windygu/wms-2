@@ -157,6 +157,10 @@ public class DocumentTypeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 DocumentType
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value,  HttpServletResponse response) {
         try {

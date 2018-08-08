@@ -157,6 +157,10 @@ public class PicklistBinResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 PicklistBin
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value,  HttpServletResponse response) {
         try {
@@ -261,6 +265,10 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 PicklistItemOrderShipGrpInvId 的 PicklistItem
+     */
     @GetMapping("{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
     public PicklistItemStateDto getPicklistItem(@PathVariable("picklistBinId") String picklistBinId, @PathVariable("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId) {
         try {
@@ -327,6 +335,9 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * PicklistItem List
+     */
     @GetMapping("{picklistBinId}/PicklistItems/")
     public PicklistItemStateDto[] getPicklistItems(@PathVariable("picklistBinId") String picklistBinId) {
         try {
@@ -338,6 +349,10 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 PicklistItem
+     */
     @PostMapping("{picklistBinId}/PicklistItems/")
     public void postPicklistItems(@PathVariable("picklistBinId") String picklistBinId,
                        @RequestParam(value = "commandId", required = false) String commandId,

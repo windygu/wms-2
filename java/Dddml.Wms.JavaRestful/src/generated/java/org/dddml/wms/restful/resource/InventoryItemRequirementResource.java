@@ -160,6 +160,10 @@ public class InventoryItemRequirementResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 InventoryItemRequirement
+     */
     @PostMapping
     public InventoryItemId post(@RequestBody CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto value,  HttpServletResponse response) {
         try {
@@ -219,6 +223,10 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 EntrySeqId 的 InventoryItemRequirementEntry
+     */
     @GetMapping("{inventoryItemRequirementId}/InventoryItemRequirementEntries/{entrySeqId}")
     public InventoryItemRequirementEntryStateDto getInventoryItemRequirementEntry(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId, @PathVariable("entrySeqId") Long entrySeqId) {
         try {
@@ -238,6 +246,9 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * InventoryItemRequirementEntry List
+     */
     @GetMapping("{inventoryItemRequirementId}/InventoryItemRequirementEntries/")
     public InventoryItemRequirementEntryStateDto[] getInventoryItemRequirementEntries(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId) {
         try {

@@ -157,6 +157,10 @@ public class OrderShipmentResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 OrderShipment
+     */
     @PostMapping
     public OrderShipmentId post(@RequestBody CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto value,  HttpServletResponse response) {
         try {

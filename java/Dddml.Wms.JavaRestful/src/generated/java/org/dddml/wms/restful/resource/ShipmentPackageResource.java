@@ -157,6 +157,10 @@ public class ShipmentPackageResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 ShipmentPackage
+     */
     @PostMapping
     public ShipmentPackageId post(@RequestBody CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value,  HttpServletResponse response) {
         try {
@@ -261,6 +265,10 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 ShipmentItemSeqId 的 ShipmentPackageContent
+     */
     @GetMapping("{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}")
     public ShipmentPackageContentStateDto getShipmentPackageContent(@PathVariable("shipmentPackageId") String shipmentPackageId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId) {
         try {
@@ -327,6 +335,9 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * ShipmentPackageContent List
+     */
     @GetMapping("{shipmentPackageId}/ShipmentPackageContents/")
     public ShipmentPackageContentStateDto[] getShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId) {
         try {
@@ -343,6 +354,10 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 ShipmentPackageContent
+     */
     @PostMapping("{shipmentPackageId}/ShipmentPackageContents/")
     public void postShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId,
                        @RequestParam(value = "commandId", required = false) String commandId,

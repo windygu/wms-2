@@ -158,6 +158,10 @@ public class InOutResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 InOut
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchInOutDto.CreateInOutDto value,  HttpServletResponse response) {
         try {
@@ -346,6 +350,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 SequenceId 的 InOutImage
+     */
     @GetMapping("{documentNumber}/InOutImages/{sequenceId}")
     public InOutImageStateDto getInOutImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("sequenceId") String sequenceId) {
         try {
@@ -397,6 +405,9 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * InOutImage List
+     */
     @GetMapping("{documentNumber}/InOutImages/")
     public InOutImageStateDto[] getInOutImages(@PathVariable("documentNumber") String documentNumber) {
         try {
@@ -408,6 +419,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 InOutImage
+     */
     @PostMapping("{documentNumber}/InOutImages/")
     public void postInOutImages(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -426,6 +441,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 LineNumber 的 InOutLine
+     */
     @GetMapping("{documentNumber}/InOutLines/{lineNumber}")
     public InOutLineStateDto getInOutLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
@@ -477,6 +496,9 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * InOutLine List
+     */
     @GetMapping("{documentNumber}/InOutLines/")
     public InOutLineStateDto[] getInOutLines(@PathVariable("documentNumber") String documentNumber) {
         try {
@@ -488,6 +510,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 InOutLine
+     */
     @PostMapping("{documentNumber}/InOutLines/")
     public void postInOutLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -506,6 +532,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 SequenceId 的 InOutLineImage
+     */
     @GetMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
     public InOutLineImageStateDto getInOutLineImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber, @PathVariable("sequenceId") String sequenceId) {
         try {
@@ -563,6 +593,9 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * InOutLineImage List
+     */
     @GetMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/")
     public InOutLineImageStateDto[] getInOutLineImages(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber) {
         try {
@@ -574,6 +607,10 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 InOutLineImage
+     */
     @PostMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/")
     public void postInOutLineImages(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,

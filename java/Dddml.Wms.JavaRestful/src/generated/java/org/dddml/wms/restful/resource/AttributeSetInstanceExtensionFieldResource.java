@@ -157,6 +157,10 @@ public class AttributeSetInstanceExtensionFieldResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 AttributeSetInstanceExtensionField
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto value,  HttpServletResponse response) {
         try {

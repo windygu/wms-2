@@ -160,6 +160,10 @@ public class OrganizationResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Party
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchPartyDto.CreatePartyDto value,  HttpServletResponse response) {
         try {

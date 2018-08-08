@@ -157,6 +157,10 @@ public class StatusItemResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 StatusItem
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchStatusItemDto.CreateStatusItemDto value,  HttpServletResponse response) {
         try {

@@ -157,6 +157,10 @@ public class AttributeSetInstanceResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 AttributeSetInstance
+     */
     @PostMapping
     public String post(@RequestBody JSONObject dynamicObject,  HttpServletResponse response) {
         try {

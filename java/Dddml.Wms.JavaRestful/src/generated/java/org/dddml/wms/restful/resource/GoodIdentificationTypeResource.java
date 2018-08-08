@@ -157,6 +157,10 @@ public class GoodIdentificationTypeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 GoodIdentificationType
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto value,  HttpServletResponse response) {
         try {

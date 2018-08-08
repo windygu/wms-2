@@ -159,6 +159,10 @@ public class PhysicalInventoryResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 PhysicalInventory
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value,  HttpServletResponse response) {
         try {
@@ -279,6 +283,10 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 InventoryItemId 的 PhysicalInventoryLine
+     */
     @GetMapping("{documentNumber}/PhysicalInventoryLines/{inventoryItemId}")
     public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("inventoryItemId") String inventoryItemId) {
         try {
@@ -345,6 +353,9 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * PhysicalInventoryLine List
+     */
     @GetMapping("{documentNumber}/PhysicalInventoryLines/")
     public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathVariable("documentNumber") String documentNumber) {
         try {
@@ -356,6 +367,10 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 PhysicalInventoryLine
+     */
     @PostMapping("{documentNumber}/PhysicalInventoryLines/")
     public void postPhysicalInventoryLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,

@@ -157,6 +157,10 @@ public class InventoryPRTriggeredResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 InventoryPRTriggered
+     */
     @PostMapping
     public InventoryPRTriggeredId post(@RequestBody CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value,  HttpServletResponse response) {
         try {

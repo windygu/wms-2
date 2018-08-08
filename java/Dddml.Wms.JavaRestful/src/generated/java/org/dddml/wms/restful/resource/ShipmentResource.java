@@ -157,6 +157,10 @@ public class ShipmentResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Shipment
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchShipmentDto.CreateShipmentDto value,  HttpServletResponse response) {
         try {
@@ -311,6 +315,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 SequenceId 的 ShipmentImage
+     */
     @GetMapping("{shipmentId}/ShipmentImages/{sequenceId}")
     public ShipmentImageStateDto getShipmentImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("sequenceId") String sequenceId) {
         try {
@@ -362,6 +370,9 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * ShipmentImage List
+     */
     @GetMapping("{shipmentId}/ShipmentImages/")
     public ShipmentImageStateDto[] getShipmentImages(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -373,6 +384,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 ShipmentImage
+     */
     @PostMapping("{shipmentId}/ShipmentImages/")
     public void postShipmentImages(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -391,6 +406,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 ShipmentItemSeqId 的 ShipmentItem
+     */
     @GetMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     public ShipmentItemStateDto getShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId) {
         try {
@@ -442,6 +461,9 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * ShipmentItem List
+     */
     @GetMapping("{shipmentId}/ShipmentItems/")
     public ShipmentItemStateDto[] getShipmentItems(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -453,6 +475,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 ShipmentItem
+     */
     @PostMapping("{shipmentId}/ShipmentItems/")
     public void postShipmentItems(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -471,6 +497,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 ReceiptSeqId 的 ShipmentReceipt
+     */
     @GetMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     public ShipmentReceiptStateDto getShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId) {
         try {
@@ -522,6 +552,9 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * ShipmentReceipt List
+     */
     @GetMapping("{shipmentId}/ShipmentReceipts/")
     public ShipmentReceiptStateDto[] getShipmentReceipts(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -533,6 +566,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 ShipmentReceipt
+     */
     @PostMapping("{shipmentId}/ShipmentReceipts/")
     public void postShipmentReceipts(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -551,6 +588,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 SequenceId 的 ShipmentReceiptImage
+     */
     @GetMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
     public ShipmentReceiptImageStateDto getShipmentReceiptImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @PathVariable("sequenceId") String sequenceId) {
         try {
@@ -608,6 +649,9 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * ShipmentReceiptImage List
+     */
     @GetMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/")
     public ShipmentReceiptImageStateDto[] getShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId) {
         try {
@@ -619,6 +663,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 ShipmentReceiptImage
+     */
     @PostMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/")
     public void postShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -640,6 +688,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 ItemIssuanceSeqId 的 ItemIssuance
+     */
     @GetMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
     public ItemIssuanceStateDto getItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId) {
         try {
@@ -691,6 +743,9 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * ItemIssuance List
+     */
     @GetMapping("{shipmentId}/ItemIssuances/")
     public ItemIssuanceStateDto[] getItemIssuances(@PathVariable("shipmentId") String shipmentId) {
         try {
@@ -702,6 +757,10 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 ItemIssuance
+     */
     @PostMapping("{shipmentId}/ItemIssuances/")
     public void postItemIssuances(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,

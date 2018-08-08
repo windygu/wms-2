@@ -157,6 +157,10 @@ public class AttributeSetResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 AttributeSet
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value,  HttpServletResponse response) {
         try {
@@ -261,6 +265,10 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 AttributeId 的 AttributeUse
+     */
     @GetMapping("{attributeSetId}/AttributeUses/{attributeId}")
     public AttributeUseStateDto getAttributeUse(@PathVariable("attributeSetId") String attributeSetId, @PathVariable("attributeId") String attributeId) {
         try {
@@ -312,6 +320,9 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * AttributeUse List
+     */
     @GetMapping("{attributeSetId}/AttributeUses/")
     public AttributeUseStateDto[] getAttributeUses(@PathVariable("attributeSetId") String attributeSetId) {
         try {
@@ -323,6 +334,10 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 AttributeUse
+     */
     @PostMapping("{attributeSetId}/AttributeUses/")
     public void postAttributeUses(@PathVariable("attributeSetId") String attributeSetId,
                        @RequestParam(value = "commandId", required = false) String commandId,

@@ -158,6 +158,10 @@ public class MovementConfirmationResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 MovementConfirmation
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value,  HttpServletResponse response) {
         try {
@@ -279,6 +283,10 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 LineNumber 的 MovementConfirmationLine
+     */
     @GetMapping("{documentNumber}/MovementConfirmationLines/{lineNumber}")
     public MovementConfirmationLineStateDto getMovementConfirmationLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
@@ -330,6 +338,9 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * MovementConfirmationLine List
+     */
     @GetMapping("{documentNumber}/MovementConfirmationLines/")
     public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber) {
         try {
@@ -341,6 +352,10 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 MovementConfirmationLine
+     */
     @PostMapping("{documentNumber}/MovementConfirmationLines/")
     public void postMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,

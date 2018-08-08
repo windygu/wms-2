@@ -157,6 +157,10 @@ public class UomTypeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 UomType
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchUomTypeDto.CreateUomTypeDto value,  HttpServletResponse response) {
         try {

@@ -158,6 +158,10 @@ public class InventoryPostingRuleResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 InventoryPostingRule
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value,  HttpServletResponse response) {
         try {

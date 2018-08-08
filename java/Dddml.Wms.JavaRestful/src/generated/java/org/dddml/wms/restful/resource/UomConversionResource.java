@@ -157,6 +157,10 @@ public class UomConversionResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 UomConversion
+     */
     @PostMapping
     public UomConversionId post(@RequestBody CreateOrMergePatchUomConversionDto.CreateUomConversionDto value,  HttpServletResponse response) {
         try {

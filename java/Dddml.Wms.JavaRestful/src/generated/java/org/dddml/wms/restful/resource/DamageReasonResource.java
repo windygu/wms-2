@@ -157,6 +157,10 @@ public class DamageReasonResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 DamageReason
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value,  HttpServletResponse response) {
         try {

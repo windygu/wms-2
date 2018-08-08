@@ -157,6 +157,10 @@ public class OrganizationStructureResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 OrganizationStructure
+     */
     @PostMapping
     public OrganizationStructureId post(@RequestBody CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto value,  HttpServletResponse response) {
         try {

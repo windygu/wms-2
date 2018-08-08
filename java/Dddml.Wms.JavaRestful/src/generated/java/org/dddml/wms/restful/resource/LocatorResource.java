@@ -157,6 +157,10 @@ public class LocatorResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Locator
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchLocatorDto.CreateLocatorDto value,  HttpServletResponse response) {
         try {

@@ -157,6 +157,10 @@ public class WarehouseResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Warehouse
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchWarehouseDto.CreateWarehouseDto value,  HttpServletResponse response) {
         try {

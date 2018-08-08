@@ -158,6 +158,10 @@ public class OrderResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Order
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchOrderDto.CreateOrderDto value,  HttpServletResponse response) {
         try {
@@ -244,6 +248,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 PartyRoleId 的 OrderRole
+     */
     @GetMapping("{orderId}/OrderRoles/{partyRoleId}")
     public OrderRoleStateDto getOrderRole(@PathVariable("orderId") String orderId, @PathVariable("partyRoleId") String partyRoleId) {
         try {
@@ -310,6 +318,9 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * OrderRole List
+     */
     @GetMapping("{orderId}/OrderRoles/")
     public OrderRoleStateDto[] getOrderRoles(@PathVariable("orderId") String orderId) {
         try {
@@ -321,6 +332,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 OrderRole
+     */
     @PostMapping("{orderId}/OrderRoles/")
     public void postOrderRoles(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -339,6 +354,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 OrderItemSeqId 的 OrderItem
+     */
     @GetMapping("{orderId}/OrderItems/{orderItemSeqId}")
     public OrderItemStateDto getOrderItem(@PathVariable("orderId") String orderId, @PathVariable("orderItemSeqId") String orderItemSeqId) {
         try {
@@ -390,6 +409,9 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * OrderItem List
+     */
     @GetMapping("{orderId}/OrderItems/")
     public OrderItemStateDto[] getOrderItems(@PathVariable("orderId") String orderId) {
         try {
@@ -401,6 +423,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 OrderItem
+     */
     @PostMapping("{orderId}/OrderItems/")
     public void postOrderItems(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -419,6 +445,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 ShipGroupSeqId 的 OrderShipGroup
+     */
     @GetMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
     public OrderShipGroupStateDto getOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId) {
         try {
@@ -470,6 +500,9 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * OrderShipGroup List
+     */
     @GetMapping("{orderId}/OrderShipGroups/")
     public OrderShipGroupStateDto[] getOrderShipGroups(@PathVariable("orderId") String orderId) {
         try {
@@ -481,6 +514,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 OrderShipGroup
+     */
     @PostMapping("{orderId}/OrderShipGroups/")
     public void postOrderShipGroups(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
@@ -499,6 +536,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 OrderItemSeqId 的 OrderItemShipGroupAssociation
+     */
     @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
     public OrderItemShipGroupAssociationStateDto getOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId) {
         try {
@@ -556,6 +597,9 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * OrderItemShipGroupAssociation List
+     */
     @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/")
     public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId) {
         try {
@@ -567,6 +611,10 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 OrderItemShipGroupAssociation
+     */
     @PostMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/")
     public void postOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,

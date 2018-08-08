@@ -157,6 +157,10 @@ public class DamageHandlingMethodResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 DamageHandlingMethod
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value,  HttpServletResponse response) {
         try {

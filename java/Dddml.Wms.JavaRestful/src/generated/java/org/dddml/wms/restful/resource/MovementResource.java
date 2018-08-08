@@ -158,6 +158,10 @@ public class MovementResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Movement
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchMovementDto.CreateMovementDto value,  HttpServletResponse response) {
         try {
@@ -296,6 +300,10 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 LineNumber 的 MovementLine
+     */
     @GetMapping("{documentNumber}/MovementLines/{lineNumber}")
     public MovementLineStateDto getMovementLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber) {
         try {
@@ -347,6 +355,9 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * MovementLine List
+     */
     @GetMapping("{documentNumber}/MovementLines/")
     public MovementLineStateDto[] getMovementLines(@PathVariable("documentNumber") String documentNumber) {
         try {
@@ -358,6 +369,10 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 MovementLine
+     */
     @PostMapping("{documentNumber}/MovementLines/")
     public void postMovementLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,

@@ -157,6 +157,10 @@ public class ProductCategoryMemberResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 ProductCategoryMember
+     */
     @PostMapping
     public ProductCategoryMemberId post(@RequestBody CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value,  HttpServletResponse response) {
         try {

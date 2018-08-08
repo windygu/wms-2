@@ -157,6 +157,10 @@ public class RoleTypeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 RoleType
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value,  HttpServletResponse response) {
         try {

@@ -157,6 +157,10 @@ public class PartyRoleResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 PartyRole
+     */
     @PostMapping
     public PartyRoleId post(@RequestBody CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value,  HttpServletResponse response) {
         try {

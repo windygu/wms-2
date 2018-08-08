@@ -157,6 +157,10 @@ public class ShipmentMethodTypeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 ShipmentMethodType
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto value,  HttpServletResponse response) {
         try {

@@ -157,6 +157,10 @@ public class LotResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Lot
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchLotDto.CreateLotDto value,  HttpServletResponse response) {
         try {

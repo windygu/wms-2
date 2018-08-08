@@ -157,6 +157,10 @@ public class ContactMechResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 ContactMech
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchContactMechDto.CreateContactMechDto value,  HttpServletResponse response) {
         try {

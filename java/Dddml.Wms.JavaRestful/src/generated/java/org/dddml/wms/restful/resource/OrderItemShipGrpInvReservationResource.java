@@ -157,6 +157,10 @@ public class OrderItemShipGrpInvReservationResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 OrderItemShipGrpInvReservation
+     */
     @PostMapping
     public OrderItemShipGrpInvResId post(@RequestBody CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value,  HttpServletResponse response) {
         try {

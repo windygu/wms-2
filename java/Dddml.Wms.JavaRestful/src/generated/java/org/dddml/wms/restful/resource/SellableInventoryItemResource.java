@@ -160,6 +160,10 @@ public class SellableInventoryItemResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 SellableInventoryItem
+     */
     @PostMapping
     public InventoryItemId post(@RequestBody CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value,  HttpServletResponse response) {
         try {
@@ -219,6 +223,10 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 EntrySeqId 的 SellableInventoryItemEntry
+     */
     @GetMapping("{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}")
     public SellableInventoryItemEntryStateDto getSellableInventoryItemEntry(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId, @PathVariable("entrySeqId") Long entrySeqId) {
         try {
@@ -238,6 +246,9 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * SellableInventoryItemEntry List
+     */
     @GetMapping("{sellableInventoryItemId}/SellableInventoryItemEntries/")
     public SellableInventoryItemEntryStateDto[] getSellableInventoryItemEntries(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId) {
         try {

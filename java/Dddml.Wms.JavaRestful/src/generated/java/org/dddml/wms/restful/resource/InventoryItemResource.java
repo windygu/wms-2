@@ -197,6 +197,10 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 EntrySeqId 的 InventoryItemEntry
+     */
     @GetMapping("{inventoryItemId}/InventoryItemEntries/{entrySeqId}")
     public InventoryItemEntryStateDto getInventoryItemEntry(@PathVariable("inventoryItemId") String inventoryItemId, @PathVariable("entrySeqId") Long entrySeqId) {
         try {
@@ -216,6 +220,9 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * InventoryItemEntry List
+     */
     @GetMapping("{inventoryItemId}/InventoryItemEntries/")
     public InventoryItemEntryStateDto[] getInventoryItemEntries(@PathVariable("inventoryItemId") String inventoryItemId) {
         try {

@@ -157,6 +157,10 @@ public class PickwaveResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Pickwave
+     */
     @PostMapping
     public Long post(@RequestBody CreateOrMergePatchPickwaveDto.CreatePickwaveDto value,  HttpServletResponse response) {
         try {

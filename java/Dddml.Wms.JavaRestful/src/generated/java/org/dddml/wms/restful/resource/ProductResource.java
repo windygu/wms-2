@@ -157,6 +157,10 @@ public class ProductResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Product
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchProductDto.CreateProductDto value,  HttpServletResponse response) {
         try {
@@ -243,6 +247,10 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 查看.
+     * 获取指定 GoodIdentificationTypeId 的 GoodIdentification
+     */
     @GetMapping("{productId}/GoodIdentifications/{goodIdentificationTypeId}")
     public GoodIdentificationStateDto getGoodIdentification(@PathVariable("productId") String productId, @PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId) {
         try {
@@ -294,6 +302,9 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * GoodIdentification List
+     */
     @GetMapping("{productId}/GoodIdentifications/")
     public GoodIdentificationStateDto[] getGoodIdentifications(@PathVariable("productId") String productId) {
         try {
@@ -305,6 +316,10 @@ public class ProductResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    /**
+     * 新建.
+     * 新建 GoodIdentification
+     */
     @PostMapping("{productId}/GoodIdentifications/")
     public void postGoodIdentifications(@PathVariable("productId") String productId,
                        @RequestParam(value = "commandId", required = false) String commandId,

@@ -157,6 +157,10 @@ public class ShipmentTypeResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 ShipmentType
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value,  HttpServletResponse response) {
         try {

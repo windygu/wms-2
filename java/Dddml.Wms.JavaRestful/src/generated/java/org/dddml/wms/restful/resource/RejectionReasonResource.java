@@ -157,6 +157,10 @@ public class RejectionReasonResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 RejectionReason
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value,  HttpServletResponse response) {
         try {

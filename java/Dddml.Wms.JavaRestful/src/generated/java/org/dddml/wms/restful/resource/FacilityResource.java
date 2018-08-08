@@ -157,6 +157,10 @@ public class FacilityResource {
     }
 
 
+    /**
+     * 新建.
+     * 新建 Facility
+     */
     @PostMapping
     public String post(@RequestBody CreateOrMergePatchFacilityDto.CreateFacilityDto value,  HttpServletResponse response) {
         try {
