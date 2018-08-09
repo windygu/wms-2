@@ -101,9 +101,16 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                     "CANNOT get shipment item. ShipmentItemSeqId: %1$s", c.getShipmentItemSeqId()));
         }
         assertReceiptQuantities(shipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity());
-
         // ////////////////////////////////////////////////////
-        ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(c, shipment, shipmentItem);
+        ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(
+                c, shipment,
+                c.getShipmentItemSeqId(),
+                shipmentItem.getProductId(),
+                c.getAttributeSetInstance(),
+                c.getAcceptedQuantity(),
+                c.getRejectedQuantity(),
+                c.getDamagedQuantity(), c.getDamageStatusId(), c.getDamageReasonId()
+                );
         // ////////////////////////////////////////////////////
         updateShipment(c, updateReceipt);
     }
@@ -111,29 +118,57 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Override
     @Transactional
     public void when(ShipmentCommands.AddItemAndReceipt c) {
-        //todo
+        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
+        String shipmentItemSeqId = c.getReceiptSeqId();
+        ShipmentItemCommand.CreateShipmentItem createShipmentItem = createShipmentItem(c, shipmentItemSeqId);
+        assertReceiptQuantities(createShipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity());
+        // ////////////////////////////////////////////////////
+        ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(
+                c, shipment,
+                shipmentItemSeqId,
+                c.getProductId(),
+                c.getAttributeSetInstance(),
+                c.getAcceptedQuantity(),
+                c.getRejectedQuantity(),
+                c.getDamagedQuantity(), c.getDamageStatusId(), c.getDamageReasonId()
+                );
+        // ////////////////////////////////////////////////////
+        updateShipment(c, updateReceipt, createShipmentItem);
+    }
+
+    private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndReceipt c,
+                                                                      String shipmentItemSeqId) {
+        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
+        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
+        createShipmentItem.setProductId(c.getProductId());
+        createShipmentItem.setQuantity(BigDecimal.ZERO);//???
+        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
+        createShipmentItem.setActive(true);
+        return createShipmentItem;
     }
 
     private static void assertReceiptQuantities(BigDecimal shipmentItemQuantity, BigDecimal acceptedQuantity, BigDecimal rejectedQuantity) {
-        if(shipmentItemQuantity.equals(acceptedQuantity) && rejectedQuantity == null) {
+        if (shipmentItemQuantity.equals(acceptedQuantity) && rejectedQuantity == null) {
             return;
         }
         // ////////////////////////////////////////
         // todo Is this OK?
-        if(shipmentItemQuantity.compareTo(BigDecimal.ZERO) > 0 && acceptedQuantity.equals(BigDecimal.ZERO)
+        if (shipmentItemQuantity.compareTo(BigDecimal.ZERO) > 0 && acceptedQuantity.equals(BigDecimal.ZERO)
                 && (rejectedQuantity == null || rejectedQuantity.equals(BigDecimal.ZERO))) {
             return;
         }
-        if(shipmentItemQuantity.equals(BigDecimal.ZERO) && acceptedQuantity.compareTo(BigDecimal.ZERO) > 0
+        if (shipmentItemQuantity.equals(BigDecimal.ZERO) && acceptedQuantity.compareTo(BigDecimal.ZERO) > 0
                 && (rejectedQuantity == null || rejectedQuantity.equals(BigDecimal.ZERO))) {
             return;
         }
         // ////////////////////////////////////////
-        if (!shipmentItemQuantity.equals(acceptedQuantity.add(rejectedQuantity))) {
-            throw new IllegalArgumentException(String.format(
-                    "shipmentItem.Quantity != acceptedQuantity + rejectedQuantity. %1$s != %2$s + %3$s",
-                    shipmentItemQuantity, acceptedQuantity, rejectedQuantity));
+        if (shipmentItemQuantity.equals(acceptedQuantity.add(rejectedQuantity))) {
+            return;
         }
+
+        throw new IllegalArgumentException(String.format(
+                "shipmentItem.Quantity != acceptedQuantity + rejectedQuantity. %1$s != %2$s + %3$s",
+                shipmentItemQuantity, acceptedQuantity, rejectedQuantity));
     }
 
     @Override
@@ -230,9 +265,21 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         return shipItem;
     }
 
-    private void updateShipment(ShipmentCommands.ReceiveItem c, ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt) {
+    private void updateShipment(ShipmentCommand c,
+                                ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt) {
+        updateShipment(c, updateReceipt, null);
+    }
+
+    private void updateShipment(ShipmentCommand c,
+                                ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt,
+                                ShipmentItemCommand.CreateOrMergePatchShipmentItem updateItem) {
         ShipmentCommand.MergePatchShipment updateShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+        // //////////////////////////////////////////////////////
+        if (updateItem != null) {
+            updateShipment.getShipmentItemCommands().add(updateItem);
+        }
         updateShipment.getShipmentReceiptCommands().add(updateReceipt);
+        // /////////////////////////////////////////////////////
         updateShipment.setShipmentId(c.getShipmentId());
         updateShipment.setVersion(c.getVersion());
         updateShipment.setCommandId(c.getCommandId());
@@ -240,9 +287,18 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         when(updateShipment);
     }
 
-    private ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt createOrUpdateShipmentReceipt(ShipmentCommands.ReceiveItem c, ShipmentState shipment, ShipmentItemState shipmentItem) {
+    private ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt createOrUpdateShipmentReceipt(
+            ShipmentCommand c,
+            ShipmentState shipment,
+            String shipmentItemSeqId,
+            String productId,
+            Map<String, Object> attributeSetInstance,
+            BigDecimal acceptedQuantity,
+            BigDecimal rejectedQuantity,
+            BigDecimal damagedQuantity, String damageStatusId, String damageReasonId
+            ) {
         ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = null;
-        String receiptSeqId = c.getShipmentItemSeqId();
+        String receiptSeqId = shipmentItemSeqId;
         ShipmentReceiptState receipt = shipment.getShipmentReceipts().get(receiptSeqId, false, true);
         if (receipt == null) {
             updateReceipt = new AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt();
@@ -250,24 +306,23 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             updateReceipt = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
         }
 
-        ProductState prdState = getProductState(shipmentItem.getProductId());
+        ProductState prdState = getProductState(productId);
 
         String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
                 getAttributeSetService(), getAttributeSetInstanceApplicationService(),
-                prdState.getAttributeSetId(), c.getAttributeSetInstance());
+                prdState.getAttributeSetId(), attributeSetInstance);
         //        if (_log.IsDebugEnabled) {
         //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //        }
-
         updateReceipt.setAttributeSetInstanceId(attrSetInstId);
         updateReceipt.setReceiptSeqId(receiptSeqId);
-        updateReceipt.setShipmentItemSeqId(shipmentItem.getShipmentItemSeqId());
-        updateReceipt.setProductId(shipmentItem.getProductId());
-        updateReceipt.setAcceptedQuantity(c.getAcceptedQuantity());
-        updateReceipt.setRejectedQuantity(c.getRejectedQuantity());
-        updateReceipt.setDamagedQuantity(c.getDamagedQuantity());
-        updateReceipt.setDamageStatusId(c.getDamageStatusId());
-        updateReceipt.setDamageReasonId(c.getDamageReasonId());
+        updateReceipt.setShipmentItemSeqId(shipmentItemSeqId);
+        updateReceipt.setProductId(productId);
+        updateReceipt.setAcceptedQuantity(acceptedQuantity);
+        updateReceipt.setRejectedQuantity(rejectedQuantity);
+        updateReceipt.setDamagedQuantity(damagedQuantity);
+        updateReceipt.setDamageStatusId(damageStatusId);
+        updateReceipt.setDamageReasonId(damageReasonId);
         updateReceipt.setReceivedBy(c.getRequesterId());
         return updateReceipt;
     }
