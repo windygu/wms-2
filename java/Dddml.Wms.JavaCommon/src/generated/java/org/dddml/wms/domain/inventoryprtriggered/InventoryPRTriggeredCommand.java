@@ -31,7 +31,7 @@ public interface InventoryPRTriggeredCommand extends Command
 
     static boolean isCommandCreate(InventoryPRTriggeredCommand c) {
         return ((c instanceof InventoryPRTriggeredCommand.CreateInventoryPRTriggered) 
-            && c.getVersion().equals(InventoryPRTriggeredState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(InventoryPRTriggeredState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchInventoryPRTriggered extends InventoryPRTriggeredCommand

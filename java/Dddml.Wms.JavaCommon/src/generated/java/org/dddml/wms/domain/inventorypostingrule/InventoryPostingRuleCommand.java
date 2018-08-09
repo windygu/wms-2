@@ -36,7 +36,7 @@ public interface InventoryPostingRuleCommand extends Command
 
     static boolean isCommandCreate(InventoryPostingRuleCommand c) {
         return ((c instanceof InventoryPostingRuleCommand.CreateInventoryPostingRule) 
-            && c.getVersion().equals(InventoryPostingRuleState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(InventoryPostingRuleState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchInventoryPostingRule extends InventoryPostingRuleCommand

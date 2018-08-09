@@ -35,7 +35,7 @@ public interface GoodIdentificationTypeCommand extends Command
 
     static boolean isCommandCreate(GoodIdentificationTypeCommand c) {
         return ((c instanceof GoodIdentificationTypeCommand.CreateGoodIdentificationType) 
-            && c.getVersion().equals(GoodIdentificationTypeState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(GoodIdentificationTypeState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchGoodIdentificationType extends GoodIdentificationTypeCommand

@@ -35,7 +35,7 @@ public interface ContactMechCommand extends Command
 
     static boolean isCommandCreate(ContactMechCommand c) {
         return ((c instanceof ContactMechCommand.CreateContactMech) 
-            && c.getVersion().equals(ContactMechState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(ContactMechState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchContactMech extends ContactMechCommand

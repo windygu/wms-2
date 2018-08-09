@@ -36,7 +36,7 @@ public interface MovementCommand extends Command
 
     static boolean isCommandCreate(MovementCommand c) {
         return ((c instanceof MovementCommand.CreateMovement) 
-            && c.getVersion().equals(MovementState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(MovementState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchMovement extends MovementCommand

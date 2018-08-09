@@ -36,7 +36,7 @@ public interface PicklistCommand extends Command
 
     static boolean isCommandCreate(PicklistCommand c) {
         return ((c instanceof PicklistCommand.CreatePicklist) 
-            && c.getVersion().equals(PicklistState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(PicklistState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchPicklist extends PicklistCommand

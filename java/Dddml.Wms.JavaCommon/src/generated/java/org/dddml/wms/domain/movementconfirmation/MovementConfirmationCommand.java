@@ -36,7 +36,7 @@ public interface MovementConfirmationCommand extends Command
 
     static boolean isCommandCreate(MovementConfirmationCommand c) {
         return ((c instanceof MovementConfirmationCommand.CreateMovementConfirmation) 
-            && c.getVersion().equals(MovementConfirmationState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(MovementConfirmationState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchMovementConfirmation extends MovementConfirmationCommand

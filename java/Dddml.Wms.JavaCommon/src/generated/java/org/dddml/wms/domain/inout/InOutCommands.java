@@ -20,6 +20,9 @@ public class InOutCommands
             //do nothing
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -30,6 +33,9 @@ public class InOutCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -40,6 +46,9 @@ public class InOutCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -50,6 +59,9 @@ public class InOutCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -72,6 +84,9 @@ public class InOutCommands
             //do nothing
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -82,6 +97,9 @@ public class InOutCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -92,6 +110,9 @@ public class InOutCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -102,6 +123,9 @@ public class InOutCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -124,6 +148,9 @@ public class InOutCommands
             //do nothing
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -134,6 +161,9 @@ public class InOutCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -144,6 +174,9 @@ public class InOutCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -154,6 +187,9 @@ public class InOutCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -176,6 +212,9 @@ public class InOutCommands
             //do nothing
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -186,6 +225,9 @@ public class InOutCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -196,6 +238,9 @@ public class InOutCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -206,6 +251,9 @@ public class InOutCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -228,6 +276,9 @@ public class InOutCommands
             //do nothing
         }
 
+        /**
+         * Line Number
+         */
         private String lineNumber;
 
         public String getLineNumber() {
@@ -238,6 +289,9 @@ public class InOutCommands
             this.lineNumber = lineNumber;
         }
 
+        /**
+         * Locator Id
+         */
         private String locatorId;
 
         public String getLocatorId() {
@@ -248,6 +302,9 @@ public class InOutCommands
             this.locatorId = locatorId;
         }
 
+        /**
+         * Product Id
+         */
         private String productId;
 
         public String getProductId() {
@@ -258,6 +315,9 @@ public class InOutCommands
             this.productId = productId;
         }
 
+        /**
+         * Attribute Set Instance
+         */
         private java.util.Map<String, Object> attributeSetInstance;
 
         public java.util.Map<String, Object> getAttributeSetInstance() {
@@ -268,6 +328,9 @@ public class InOutCommands
             this.attributeSetInstance = attributeSetInstance;
         }
 
+        /**
+         * Damage Status Id
+         */
         private String damageStatusId;
 
         public String getDamageStatusId() {
@@ -278,6 +341,9 @@ public class InOutCommands
             this.damageStatusId = damageStatusId;
         }
 
+        /**
+         * Description
+         */
         private String description;
 
         public String getDescription() {
@@ -288,6 +354,9 @@ public class InOutCommands
             this.description = description;
         }
 
+        /**
+         * Quantity Uom Id
+         */
         private String quantityUomId;
 
         public String getQuantityUomId() {
@@ -298,6 +367,9 @@ public class InOutCommands
             this.quantityUomId = quantityUomId;
         }
 
+        /**
+         * Movement Quantity
+         */
         private BigDecimal movementQuantity;
 
         public BigDecimal getMovementQuantity() {
@@ -308,6 +380,9 @@ public class InOutCommands
             this.movementQuantity = movementQuantity;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -318,6 +393,9 @@ public class InOutCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -328,6 +406,9 @@ public class InOutCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -338,6 +419,9 @@ public class InOutCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -360,6 +444,9 @@ public class InOutCommands
             //do nothing
         }
 
+        /**
+         * Value
+         */
         private String value;
 
         public String getValue() {
@@ -370,6 +457,9 @@ public class InOutCommands
             this.value = value;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -380,6 +470,9 @@ public class InOutCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -390,6 +483,9 @@ public class InOutCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -400,6 +496,9 @@ public class InOutCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {

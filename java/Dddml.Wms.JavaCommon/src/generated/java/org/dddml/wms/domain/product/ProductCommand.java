@@ -31,7 +31,7 @@ public interface ProductCommand extends Command
 
     static boolean isCommandCreate(ProductCommand c) {
         return ((c instanceof ProductCommand.CreateProduct) 
-            && c.getVersion().equals(ProductState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(ProductState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchProduct extends ProductCommand

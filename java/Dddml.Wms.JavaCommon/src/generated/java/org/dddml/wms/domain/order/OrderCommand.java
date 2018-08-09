@@ -32,7 +32,7 @@ public interface OrderCommand extends Command
 
     static boolean isCommandCreate(OrderCommand c) {
         return ((c instanceof OrderCommand.CreateOrder) 
-            && c.getVersion().equals(OrderState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(OrderState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchOrder extends OrderCommand

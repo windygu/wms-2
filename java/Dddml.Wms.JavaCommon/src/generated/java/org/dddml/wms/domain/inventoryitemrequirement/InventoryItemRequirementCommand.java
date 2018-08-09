@@ -34,7 +34,7 @@ public interface InventoryItemRequirementCommand extends Command
 
     static boolean isCommandCreate(InventoryItemRequirementCommand c) {
         return ((c instanceof InventoryItemRequirementCommand.CreateInventoryItemRequirement) 
-            && c.getVersion().equals(InventoryItemRequirementState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(InventoryItemRequirementState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchInventoryItemRequirement extends InventoryItemRequirementCommand

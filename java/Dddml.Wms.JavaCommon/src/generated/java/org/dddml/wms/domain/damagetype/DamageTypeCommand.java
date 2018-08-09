@@ -35,7 +35,7 @@ public interface DamageTypeCommand extends Command
 
     static boolean isCommandCreate(DamageTypeCommand c) {
         return ((c instanceof DamageTypeCommand.CreateDamageType) 
-            && c.getVersion().equals(DamageTypeState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(DamageTypeState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchDamageType extends DamageTypeCommand

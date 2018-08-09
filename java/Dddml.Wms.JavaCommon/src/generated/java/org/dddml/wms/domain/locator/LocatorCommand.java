@@ -35,7 +35,7 @@ public interface LocatorCommand extends Command
 
     static boolean isCommandCreate(LocatorCommand c) {
         return ((c instanceof LocatorCommand.CreateLocator) 
-            && c.getVersion().equals(LocatorState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(LocatorState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchLocator extends LocatorCommand

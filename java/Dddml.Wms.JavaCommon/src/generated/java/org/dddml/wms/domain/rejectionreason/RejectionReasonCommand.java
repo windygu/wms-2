@@ -35,7 +35,7 @@ public interface RejectionReasonCommand extends Command
 
     static boolean isCommandCreate(RejectionReasonCommand c) {
         return ((c instanceof RejectionReasonCommand.CreateRejectionReason) 
-            && c.getVersion().equals(RejectionReasonState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(RejectionReasonState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchRejectionReason extends RejectionReasonCommand

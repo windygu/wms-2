@@ -35,7 +35,7 @@ public interface WarehouseCommand extends Command
 
     static boolean isCommandCreate(WarehouseCommand c) {
         return ((c instanceof WarehouseCommand.CreateWarehouse) 
-            && c.getVersion().equals(WarehouseState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(WarehouseState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchWarehouse extends WarehouseCommand

@@ -22,6 +22,8 @@ public interface ShipmentAggregate
 
     void receiveItem(String shipmentItemSeqId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, String damageStatusId, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId);
 
+    void addItemAndReceipt(String receiptSeqId, String productId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, String damageStatusId, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId);
+
     void confirmAllItemsReceived(Long version, String commandId, String requesterId);
 
     void throwOnInvalidStateTransition(Command c);

@@ -35,7 +35,7 @@ public interface UomTypeCommand extends Command
 
     static boolean isCommandCreate(UomTypeCommand c) {
         return ((c instanceof UomTypeCommand.CreateUomType) 
-            && c.getVersion().equals(UomTypeState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(UomTypeState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchUomType extends UomTypeCommand

@@ -35,7 +35,7 @@ public interface ProductCategoryCommand extends Command
 
     static boolean isCommandCreate(ProductCategoryCommand c) {
         return ((c instanceof ProductCategoryCommand.CreateProductCategory) 
-            && c.getVersion().equals(ProductCategoryState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(ProductCategoryState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchProductCategory extends ProductCategoryCommand

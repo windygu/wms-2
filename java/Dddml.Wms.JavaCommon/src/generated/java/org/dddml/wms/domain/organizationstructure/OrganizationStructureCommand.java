@@ -35,7 +35,7 @@ public interface OrganizationStructureCommand extends Command
 
     static boolean isCommandCreate(OrganizationStructureCommand c) {
         return ((c instanceof OrganizationStructureCommand.CreateOrganizationStructure) 
-            && c.getVersion().equals(OrganizationStructureState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(OrganizationStructureState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchOrganizationStructure extends OrganizationStructureCommand

@@ -21,6 +21,9 @@ public class PhysicalInventoryCommands
             //do nothing
         }
 
+        /**
+         * Locator Id
+         */
         private String locatorId;
 
         public String getLocatorId() {
@@ -31,6 +34,9 @@ public class PhysicalInventoryCommands
             this.locatorId = locatorId;
         }
 
+        /**
+         * Product Id
+         */
         private String productId;
 
         public String getProductId() {
@@ -41,6 +47,9 @@ public class PhysicalInventoryCommands
             this.productId = productId;
         }
 
+        /**
+         * Attribute Set Instance
+         */
         private java.util.Map<String, Object> attributeSetInstance;
 
         public java.util.Map<String, Object> getAttributeSetInstance() {
@@ -51,6 +60,9 @@ public class PhysicalInventoryCommands
             this.attributeSetInstance = attributeSetInstance;
         }
 
+        /**
+         * Counted Quantity
+         */
         private BigDecimal countedQuantity;
 
         public BigDecimal getCountedQuantity() {
@@ -61,6 +73,9 @@ public class PhysicalInventoryCommands
             this.countedQuantity = countedQuantity;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -71,6 +86,9 @@ public class PhysicalInventoryCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -81,6 +99,9 @@ public class PhysicalInventoryCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -91,6 +112,9 @@ public class PhysicalInventoryCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -113,6 +137,9 @@ public class PhysicalInventoryCommands
             //do nothing
         }
 
+        /**
+         * Value
+         */
         private String value;
 
         public String getValue() {
@@ -123,6 +150,9 @@ public class PhysicalInventoryCommands
             this.value = value;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -133,6 +163,9 @@ public class PhysicalInventoryCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -143,6 +176,9 @@ public class PhysicalInventoryCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -153,6 +189,9 @@ public class PhysicalInventoryCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {

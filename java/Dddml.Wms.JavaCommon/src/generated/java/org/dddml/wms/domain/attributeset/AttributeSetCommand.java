@@ -35,7 +35,7 @@ public interface AttributeSetCommand extends Command
 
     static boolean isCommandCreate(AttributeSetCommand c) {
         return ((c instanceof AttributeSetCommand.CreateAttributeSet) 
-            && c.getVersion().equals(AttributeSetState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(AttributeSetState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchAttributeSet extends AttributeSetCommand

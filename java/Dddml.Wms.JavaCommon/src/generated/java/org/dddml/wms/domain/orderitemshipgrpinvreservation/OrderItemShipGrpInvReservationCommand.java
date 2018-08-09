@@ -35,7 +35,7 @@ public interface OrderItemShipGrpInvReservationCommand extends Command
 
     static boolean isCommandCreate(OrderItemShipGrpInvReservationCommand c) {
         return ((c instanceof OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation) 
-            && c.getVersion().equals(OrderItemShipGrpInvReservationState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(OrderItemShipGrpInvReservationState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchOrderItemShipGrpInvReservation extends OrderItemShipGrpInvReservationCommand

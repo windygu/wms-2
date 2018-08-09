@@ -35,7 +35,7 @@ public interface AttributeSetInstanceExtensionFieldGroupCommand extends Command
 
     static boolean isCommandCreate(AttributeSetInstanceExtensionFieldGroupCommand c) {
         return ((c instanceof AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup) 
-            && c.getVersion().equals(AttributeSetInstanceExtensionFieldGroupState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(AttributeSetInstanceExtensionFieldGroupState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand

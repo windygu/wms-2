@@ -617,6 +617,200 @@ public class ShipmentCommands
 
     }
 
+    public static class AddItemAndReceipt implements ShipmentCommand {
+
+        public String getCommandType() {
+            return "AddItemAndReceipt";
+        }
+
+        public void setCommandType(String commandType) {
+            //do nothing
+        }
+
+        /**
+         * Receipt Seq Id
+         */
+        private String receiptSeqId;
+
+        public String getReceiptSeqId() {
+            return this.receiptSeqId;
+        }
+
+        public void setReceiptSeqId(String receiptSeqId) {
+            this.receiptSeqId = receiptSeqId;
+        }
+
+        /**
+         * Product Id
+         */
+        private String productId;
+
+        public String getProductId() {
+            return this.productId;
+        }
+
+        public void setProductId(String productId) {
+            this.productId = productId;
+        }
+
+        /**
+         * Attribute Set Instance
+         */
+        private java.util.Map<String, Object> attributeSetInstance;
+
+        public java.util.Map<String, Object> getAttributeSetInstance() {
+            return this.attributeSetInstance;
+        }
+
+        public void setAttributeSetInstance(java.util.Map<String, Object> attributeSetInstance) {
+            this.attributeSetInstance = attributeSetInstance;
+        }
+
+        /**
+         * Rejection Reason Id
+         */
+        private String rejectionReasonId;
+
+        public String getRejectionReasonId() {
+            return this.rejectionReasonId;
+        }
+
+        public void setRejectionReasonId(String rejectionReasonId) {
+            this.rejectionReasonId = rejectionReasonId;
+        }
+
+        /**
+         * Damage Status Id
+         */
+        private String damageStatusId;
+
+        public String getDamageStatusId() {
+            return this.damageStatusId;
+        }
+
+        public void setDamageStatusId(String damageStatusId) {
+            this.damageStatusId = damageStatusId;
+        }
+
+        /**
+         * Damage Reason Id
+         */
+        private String damageReasonId;
+
+        public String getDamageReasonId() {
+            return this.damageReasonId;
+        }
+
+        public void setDamageReasonId(String damageReasonId) {
+            this.damageReasonId = damageReasonId;
+        }
+
+        /**
+         * Accepted Quantity
+         */
+        private java.math.BigDecimal acceptedQuantity;
+
+        public java.math.BigDecimal getAcceptedQuantity() {
+            return this.acceptedQuantity;
+        }
+
+        public void setAcceptedQuantity(java.math.BigDecimal acceptedQuantity) {
+            this.acceptedQuantity = acceptedQuantity;
+        }
+
+        /**
+         * Rejected Quantity
+         */
+        private java.math.BigDecimal rejectedQuantity;
+
+        public java.math.BigDecimal getRejectedQuantity() {
+            return this.rejectedQuantity;
+        }
+
+        public void setRejectedQuantity(java.math.BigDecimal rejectedQuantity) {
+            this.rejectedQuantity = rejectedQuantity;
+        }
+
+        /**
+         * Damaged Quantity
+         */
+        private java.math.BigDecimal damagedQuantity;
+
+        public java.math.BigDecimal getDamagedQuantity() {
+            return this.damagedQuantity;
+        }
+
+        public void setDamagedQuantity(java.math.BigDecimal damagedQuantity) {
+            this.damagedQuantity = damagedQuantity;
+        }
+
+        /**
+         * Item Description
+         */
+        private String itemDescription;
+
+        public String getItemDescription() {
+            return this.itemDescription;
+        }
+
+        public void setItemDescription(String itemDescription) {
+            this.itemDescription = itemDescription;
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Version
+         */
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
     public static class ConfirmAllItemsReceived implements ShipmentCommand {
 
         public String getCommandType() {

@@ -35,7 +35,7 @@ public interface MovementTypeCommand extends Command
 
     static boolean isCommandCreate(MovementTypeCommand c) {
         return ((c instanceof MovementTypeCommand.CreateMovementType) 
-            && c.getVersion().equals(MovementTypeState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(MovementTypeState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchMovementType extends MovementTypeCommand

@@ -33,7 +33,7 @@ public interface PhysicalInventoryCommand extends Command
 
     static boolean isCommandCreate(PhysicalInventoryCommand c) {
         return ((c instanceof PhysicalInventoryCommand.CreatePhysicalInventory) 
-            && c.getVersion().equals(PhysicalInventoryState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(PhysicalInventoryState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchPhysicalInventory extends PhysicalInventoryCommand

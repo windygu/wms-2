@@ -34,7 +34,7 @@ public interface SellableInventoryItemCommand extends Command
 
     static boolean isCommandCreate(SellableInventoryItemCommand c) {
         return ((c instanceof SellableInventoryItemCommand.CreateSellableInventoryItem) 
-            && c.getVersion().equals(SellableInventoryItemState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(SellableInventoryItemState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchSellableInventoryItem extends SellableInventoryItemCommand

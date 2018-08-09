@@ -35,7 +35,7 @@ public interface PickwaveCommand extends Command
 
     static boolean isCommandCreate(PickwaveCommand c) {
         return ((c instanceof PickwaveCommand.CreatePickwave) 
-            && c.getVersion().equals(PickwaveState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(PickwaveState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchPickwave extends PickwaveCommand

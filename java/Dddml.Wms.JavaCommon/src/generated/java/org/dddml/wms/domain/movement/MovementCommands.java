@@ -20,6 +20,9 @@ public class MovementCommands
             //do nothing
         }
 
+        /**
+         * Line Number
+         */
         private String lineNumber;
 
         public String getLineNumber() {
@@ -30,6 +33,9 @@ public class MovementCommands
             this.lineNumber = lineNumber;
         }
 
+        /**
+         * Product Id
+         */
         private String productId;
 
         public String getProductId() {
@@ -40,6 +46,9 @@ public class MovementCommands
             this.productId = productId;
         }
 
+        /**
+         * Locator Id From
+         */
         private String locatorIdFrom;
 
         public String getLocatorIdFrom() {
@@ -50,6 +59,9 @@ public class MovementCommands
             this.locatorIdFrom = locatorIdFrom;
         }
 
+        /**
+         * Locator Id To
+         */
         private String locatorIdTo;
 
         public String getLocatorIdTo() {
@@ -60,6 +72,9 @@ public class MovementCommands
             this.locatorIdTo = locatorIdTo;
         }
 
+        /**
+         * Attribute Set Instance
+         */
         private java.util.Map<String, Object> attributeSetInstance;
 
         public java.util.Map<String, Object> getAttributeSetInstance() {
@@ -70,6 +85,9 @@ public class MovementCommands
             this.attributeSetInstance = attributeSetInstance;
         }
 
+        /**
+         * Description
+         */
         private String description;
 
         public String getDescription() {
@@ -80,6 +98,9 @@ public class MovementCommands
             this.description = description;
         }
 
+        /**
+         * Quantity Uom Id
+         */
         private String quantityUomId;
 
         public String getQuantityUomId() {
@@ -90,6 +111,9 @@ public class MovementCommands
             this.quantityUomId = quantityUomId;
         }
 
+        /**
+         * Movement Quantity
+         */
         private BigDecimal movementQuantity;
 
         public BigDecimal getMovementQuantity() {
@@ -100,6 +124,9 @@ public class MovementCommands
             this.movementQuantity = movementQuantity;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -110,6 +137,9 @@ public class MovementCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -120,6 +150,9 @@ public class MovementCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -130,6 +163,9 @@ public class MovementCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -152,6 +188,9 @@ public class MovementCommands
             //do nothing
         }
 
+        /**
+         * Value
+         */
         private String value;
 
         public String getValue() {
@@ -162,6 +201,9 @@ public class MovementCommands
             this.value = value;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -172,6 +214,9 @@ public class MovementCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -182,6 +227,9 @@ public class MovementCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -192,6 +240,9 @@ public class MovementCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {

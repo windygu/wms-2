@@ -35,7 +35,7 @@ public interface RoleTypeCommand extends Command
 
     static boolean isCommandCreate(RoleTypeCommand c) {
         return ((c instanceof RoleTypeCommand.CreateRoleType) 
-            && c.getVersion().equals(RoleTypeState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(RoleTypeState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchRoleType extends RoleTypeCommand

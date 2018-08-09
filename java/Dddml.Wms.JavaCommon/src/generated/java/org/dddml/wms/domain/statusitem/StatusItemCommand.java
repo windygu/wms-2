@@ -31,7 +31,7 @@ public interface StatusItemCommand extends Command
 
     static boolean isCommandCreate(StatusItemCommand c) {
         return ((c instanceof StatusItemCommand.CreateStatusItem) 
-            && c.getVersion().equals(StatusItemState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(StatusItemState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchStatusItem extends StatusItemCommand

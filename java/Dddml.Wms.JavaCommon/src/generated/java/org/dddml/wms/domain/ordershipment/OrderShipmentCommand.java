@@ -31,7 +31,7 @@ public interface OrderShipmentCommand extends Command
 
     static boolean isCommandCreate(OrderShipmentCommand c) {
         return ((c instanceof OrderShipmentCommand.CreateOrderShipment) 
-            && c.getVersion().equals(OrderShipmentState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(OrderShipmentState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchOrderShipment extends OrderShipmentCommand

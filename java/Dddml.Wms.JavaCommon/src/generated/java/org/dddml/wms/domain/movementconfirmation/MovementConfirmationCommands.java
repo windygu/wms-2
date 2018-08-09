@@ -20,6 +20,9 @@ public class MovementConfirmationCommands
             //do nothing
         }
 
+        /**
+         * Value
+         */
         private String value;
 
         public String getValue() {
@@ -30,6 +33,9 @@ public class MovementConfirmationCommands
             this.value = value;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -40,6 +46,9 @@ public class MovementConfirmationCommands
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -50,6 +59,9 @@ public class MovementConfirmationCommands
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -60,6 +72,9 @@ public class MovementConfirmationCommands
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {

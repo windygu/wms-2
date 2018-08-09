@@ -32,7 +32,7 @@ public interface InOutCommand extends Command
 
     static boolean isCommandCreate(InOutCommand c) {
         return ((c instanceof InOutCommand.CreateInOut) 
-            && c.getVersion().equals(InOutState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(InOutState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchInOut extends InOutCommand

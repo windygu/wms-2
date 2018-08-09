@@ -478,6 +478,7 @@ aggregates:
           DamageReasonId:
             type: id
             referenceType: DamageReason
+          # -----------------------------------
           AcceptedQuantity:
             type: fixed-point
           RejectedQuantity:
@@ -488,6 +489,41 @@ aggregates:
           ItemDescription:
             type: description
       
+      # --------------------------------------
+      # 增加一个接收项以及对应的装运项
+      AddItemAndReceipt:
+        parameters:
+          # 接收项目的 Sequence Id.
+          ReceiptSeqId:
+            type: id
+          # 产品 Id.
+          ProductId:
+            type: id-long
+          # AttributeSetInstanceId:
+            # type: string
+          # 属性集信息
+          AttributeSetInstance:
+            type: map
+          RejectionReasonId:
+            type: id
+            referenceType: RejectionReason
+          DamageStatusId:
+            type: id
+            referenceType: StatusItem
+          DamageReasonId:
+            type: id
+            referenceType: DamageReason 
+          # -----------------------------------
+          AcceptedQuantity:
+            type: fixed-point
+          RejectedQuantity:
+            type: fixed-point
+          DamagedQuantity:
+            type: fixed-point
+          # -----------------------------------
+          ItemDescription:
+            type: description
+            
       # --------------------------------------
       # 确认所有装运项已接收
       ConfirmAllItemsReceived:

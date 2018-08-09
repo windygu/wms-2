@@ -35,7 +35,7 @@ public interface UomConversionCommand extends Command
 
     static boolean isCommandCreate(UomConversionCommand c) {
         return ((c instanceof UomConversionCommand.CreateUomConversion) 
-            && c.getVersion().equals(UomConversionState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(UomConversionState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchUomConversion extends UomConversionCommand

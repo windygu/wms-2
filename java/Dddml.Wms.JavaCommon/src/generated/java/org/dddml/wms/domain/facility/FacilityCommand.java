@@ -35,7 +35,7 @@ public interface FacilityCommand extends Command
 
     static boolean isCommandCreate(FacilityCommand c) {
         return ((c instanceof FacilityCommand.CreateFacility) 
-            && c.getVersion().equals(FacilityState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(FacilityState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchFacility extends FacilityCommand

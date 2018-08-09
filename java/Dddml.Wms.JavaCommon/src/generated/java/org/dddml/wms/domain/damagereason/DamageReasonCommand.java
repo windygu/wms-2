@@ -35,7 +35,7 @@ public interface DamageReasonCommand extends Command
 
     static boolean isCommandCreate(DamageReasonCommand c) {
         return ((c instanceof DamageReasonCommand.CreateDamageReason) 
-            && c.getVersion().equals(DamageReasonState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(DamageReasonState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchDamageReason extends DamageReasonCommand

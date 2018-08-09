@@ -35,7 +35,7 @@ public interface AttributeSetInstanceExtensionFieldCommand extends Command
 
     static boolean isCommandCreate(AttributeSetInstanceExtensionFieldCommand c) {
         return ((c instanceof AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField) 
-            && c.getVersion().equals(AttributeSetInstanceExtensionFieldState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(AttributeSetInstanceExtensionFieldState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchAttributeSetInstanceExtensionField extends AttributeSetInstanceExtensionFieldCommand

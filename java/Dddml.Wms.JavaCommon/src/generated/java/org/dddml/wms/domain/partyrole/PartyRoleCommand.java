@@ -35,7 +35,7 @@ public interface PartyRoleCommand extends Command
 
     static boolean isCommandCreate(PartyRoleCommand c) {
         return ((c instanceof PartyRoleCommand.CreatePartyRole) 
-            && c.getVersion().equals(PartyRoleState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(PartyRoleState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchPartyRole extends PartyRoleCommand

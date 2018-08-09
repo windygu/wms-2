@@ -35,7 +35,7 @@ public interface LotCommand extends Command
 
     static boolean isCommandCreate(LotCommand c) {
         return ((c instanceof LotCommand.CreateLot) 
-            && c.getVersion().equals(LotState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(LotState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchLot extends LotCommand

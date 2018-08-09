@@ -16,6 +16,9 @@ public class MovementConfirmationCommandDtos
             return "DocumentAction";
         }
 
+        /**
+         * Value
+         */
         private String value;
 
         public String getValue() {
@@ -26,6 +29,9 @@ public class MovementConfirmationCommandDtos
             this.value = value;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -36,6 +42,9 @@ public class MovementConfirmationCommandDtos
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -46,6 +55,9 @@ public class MovementConfirmationCommandDtos
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -56,6 +68,9 @@ public class MovementConfirmationCommandDtos
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {

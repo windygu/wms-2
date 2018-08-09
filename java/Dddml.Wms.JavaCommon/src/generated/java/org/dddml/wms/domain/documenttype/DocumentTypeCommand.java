@@ -35,7 +35,7 @@ public interface DocumentTypeCommand extends Command
 
     static boolean isCommandCreate(DocumentTypeCommand c) {
         return ((c instanceof DocumentTypeCommand.CreateDocumentType) 
-            && c.getVersion().equals(DocumentTypeState.VERSION_NULL));
+            && (COMMAND_TYPE_CREATE.equals(c.getCommandType()) || c.getVersion().equals(DocumentTypeState.VERSION_NULL)));
     }
 
     interface CreateOrMergePatchDocumentType extends DocumentTypeCommand

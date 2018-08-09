@@ -16,6 +16,9 @@ public class MovementCommandDtos
             return "AddLine";
         }
 
+        /**
+         * Line Number
+         */
         private String lineNumber;
 
         public String getLineNumber() {
@@ -26,6 +29,9 @@ public class MovementCommandDtos
             this.lineNumber = lineNumber;
         }
 
+        /**
+         * Product Id
+         */
         private String productId;
 
         public String getProductId() {
@@ -36,6 +42,9 @@ public class MovementCommandDtos
             this.productId = productId;
         }
 
+        /**
+         * Locator Id From
+         */
         private String locatorIdFrom;
 
         public String getLocatorIdFrom() {
@@ -46,6 +55,9 @@ public class MovementCommandDtos
             this.locatorIdFrom = locatorIdFrom;
         }
 
+        /**
+         * Locator Id To
+         */
         private String locatorIdTo;
 
         public String getLocatorIdTo() {
@@ -56,6 +68,9 @@ public class MovementCommandDtos
             this.locatorIdTo = locatorIdTo;
         }
 
+        /**
+         * Attribute Set Instance
+         */
         private java.util.Map<String, Object> attributeSetInstance;
 
         public java.util.Map<String, Object> getAttributeSetInstance() {
@@ -66,6 +81,9 @@ public class MovementCommandDtos
             this.attributeSetInstance = attributeSetInstance;
         }
 
+        /**
+         * Description
+         */
         private String description;
 
         public String getDescription() {
@@ -76,6 +94,9 @@ public class MovementCommandDtos
             this.description = description;
         }
 
+        /**
+         * Quantity Uom Id
+         */
         private String quantityUomId;
 
         public String getQuantityUomId() {
@@ -86,6 +107,9 @@ public class MovementCommandDtos
             this.quantityUomId = quantityUomId;
         }
 
+        /**
+         * Movement Quantity
+         */
         private BigDecimal movementQuantity;
 
         public BigDecimal getMovementQuantity() {
@@ -96,6 +120,9 @@ public class MovementCommandDtos
             this.movementQuantity = movementQuantity;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -106,6 +133,9 @@ public class MovementCommandDtos
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -116,6 +146,9 @@ public class MovementCommandDtos
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -126,6 +159,9 @@ public class MovementCommandDtos
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
@@ -144,6 +180,9 @@ public class MovementCommandDtos
             return "DocumentAction";
         }
 
+        /**
+         * Value
+         */
         private String value;
 
         public String getValue() {
@@ -154,6 +193,9 @@ public class MovementCommandDtos
             this.value = value;
         }
 
+        /**
+         * Document Number
+         */
         private String documentNumber;
 
         public String getDocumentNumber() {
@@ -164,6 +206,9 @@ public class MovementCommandDtos
             this.documentNumber = documentNumber;
         }
 
+        /**
+         * Version
+         */
         private Long version;
 
         public Long getVersion() {
@@ -174,6 +219,9 @@ public class MovementCommandDtos
             this.version = version;
         }
 
+        /**
+         * Command Id
+         */
         private String commandId;
 
         public String getCommandId() {
@@ -184,6 +232,9 @@ public class MovementCommandDtos
             this.commandId = commandId;
         }
 
+        /**
+         * Requester Id
+         */
         private String requesterId;
 
         public String getRequesterId() {
