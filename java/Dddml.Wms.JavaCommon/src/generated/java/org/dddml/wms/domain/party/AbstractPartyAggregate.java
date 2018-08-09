@@ -55,10 +55,10 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyEvent map(PartyCommand.CreateParty c) {
-        if(c.getPartyTypeId().equals(PartyTypeIds.PARTY)) {
+        if(PartyTypeIds.PARTY.equals(c.getPartyTypeId())) {
             return mapToPartyEvent(c);
         }
-        if(c.getPartyTypeId().equals(PartyTypeIds.ORGANIZATION)) {
+        if(PartyTypeIds.ORGANIZATION.equals(c.getPartyTypeId())) {
             return mapToOrganizationEvent(c);
         }
         return mapToPartyEvent(c);
