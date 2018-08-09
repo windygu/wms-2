@@ -140,7 +140,7 @@ public class AttributeResource {
     }
 
 
-    @GetMapping(value = "_nextId", produces = "plain/text")
+    @GetMapping(value = "_nextId", produces = MediaType.TEXT_PLAIN_VALUE)
     public String getNextId() {
         try {
             return attributeIdGenerator.getNextId();
