@@ -70,7 +70,7 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
     }
 
     public void when(ShipmentCommands.ConfirmAllItemsReceived c) {
-        update(c, ar -> ar.confirmAllItemsReceived(c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.confirmAllItemsReceived(c.getDestinationLocatorId(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public ShipmentState get(String id) {

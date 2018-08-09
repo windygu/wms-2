@@ -2,6 +2,8 @@ package org.dddml.wms;
 
 import org.dddml.wms.tool.hibernate.SchemaTool;
 
+import java.math.BigDecimal;
+
 /**
  * Created by yangjiefeng on 2018/2/4.
  */

@@ -528,6 +528,9 @@ aggregates:
       # 确认所有装运项已接收
       ConfirmAllItemsReceived:
         parameters:
+          # 目标货位
+          DestinationLocatorId:
+            type: string
       
       
     # ---------------------------------

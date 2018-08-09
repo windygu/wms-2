@@ -802,6 +802,19 @@ public class ShipmentCommandDtos
         }
 
         /**
+         * Destination Locator Id
+         */
+        private String destinationLocatorId;
+
+        public String getDestinationLocatorId() {
+            return this.destinationLocatorId;
+        }
+
+        public void setDestinationLocatorId(String destinationLocatorId) {
+            this.destinationLocatorId = destinationLocatorId;
+        }
+
+        /**
          * Shipment Id
          */
         private String shipmentId;

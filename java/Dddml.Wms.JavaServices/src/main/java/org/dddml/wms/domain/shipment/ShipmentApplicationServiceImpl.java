@@ -17,6 +17,7 @@ import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -83,7 +84,8 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             throw new IllegalArgumentException(String.format("Shipment receipt has unknown ShipmentItemSeqId.: %1$s", receiptUnknown.get().getShipmentItemSeqId()));
         }
 
-        List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptDict.values());
+        List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries =
+                confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptDict.values(), c.getDestinationLocatorId());
         InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
 
         super.when(c);
@@ -98,15 +100,40 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             throw new IllegalArgumentException(String.format(
                     "CANNOT get shipment item. ShipmentItemSeqId: %1$s", c.getShipmentItemSeqId()));
         }
-        if (!shipmentItem.getQuantity().equals(c.getAcceptedQuantity().add(c.getRejectedQuantity()))) {
-            throw new IllegalArgumentException(String.format(
-                    "shipmentItem.Quantity != c.AcceptedQuantity + c.RejectedQuantity. %1$s != %2$s + %3$s",
-                    shipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity()));
-        }
+        assertReceiptQuantities(shipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity());
+
         // ////////////////////////////////////////////////////
         ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(c, shipment, shipmentItem);
         // ////////////////////////////////////////////////////
         updateShipment(c, updateReceipt);
+    }
+
+    @Override
+    @Transactional
+    public void when(ShipmentCommands.AddItemAndReceipt c) {
+        //todo
+    }
+
+    private static void assertReceiptQuantities(BigDecimal shipmentItemQuantity, BigDecimal acceptedQuantity, BigDecimal rejectedQuantity) {
+        if(shipmentItemQuantity.equals(acceptedQuantity) && rejectedQuantity == null) {
+            return;
+        }
+        // ////////////////////////////////////////
+        // todo Is this OK?
+        if(shipmentItemQuantity.compareTo(BigDecimal.ZERO) > 0 && acceptedQuantity.equals(BigDecimal.ZERO)
+                && (rejectedQuantity == null || rejectedQuantity.equals(BigDecimal.ZERO))) {
+            return;
+        }
+        if(shipmentItemQuantity.equals(BigDecimal.ZERO) && acceptedQuantity.compareTo(BigDecimal.ZERO) > 0
+                && (rejectedQuantity == null || rejectedQuantity.equals(BigDecimal.ZERO))) {
+            return;
+        }
+        // ////////////////////////////////////////
+        if (!shipmentItemQuantity.equals(acceptedQuantity.add(rejectedQuantity))) {
+            throw new IllegalArgumentException(String.format(
+                    "shipmentItem.Quantity != acceptedQuantity + rejectedQuantity. %1$s != %2$s + %3$s",
+                    shipmentItemQuantity, acceptedQuantity, rejectedQuantity));
+        }
     }
 
     @Override
@@ -157,23 +184,24 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     }
 
 
-    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsReceivedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ShipmentReceiptState> receipts) {
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsReceivedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ShipmentReceiptState> receipts, String destinationLocatorId) {
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (ShipmentReceiptState d : receipts) {
-            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d);
+            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d, destinationLocatorId);
             entries.add(e);
         }
         return entries;
     }
 
-    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ShipmentReceiptState lineReceipt) {
-        String targetLocatorId = WarehouseUtils.getReceivingLocatorId(shipment.getDestinationFacilityId());
+    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ShipmentReceiptState lineReceipt, String destinationLocatorId) {
+        //String targetLocatorId = WarehouseUtils.getReceivingLocatorId();//shipment.getDestinationFacilityId()?
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
         String attrSetInstId = lineReceipt.getAttributeSetInstanceId();
         if(attrSetInstId == null || attrSetInstId.isEmpty()) {
             attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
         }
-        entry.setInventoryItemId(new InventoryItemId(lineReceipt.getProductId(), targetLocatorId, attrSetInstId));
+        //entry.setInventoryItemId(new InventoryItemId(lineReceipt.getProductId(), targetLocatorId, attrSetInstId));
+        entry.setInventoryItemId(new InventoryItemId(lineReceipt.getProductId(), destinationLocatorId, attrSetInstId));
         entry.setEntrySeqId(getSeqIdGenerator().getNextId()); //DateTime.Now.Ticks;
         entry.setOnHandQuantity(lineReceipt.getAcceptedQuantity()); // *signum;
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.SHIPMENT, shipment.getShipmentId(),
@@ -301,7 +329,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
 
         @Override
-        public void confirmAllItemsReceived(Long version, String commandId, String requesterId) {
+        public void confirmAllItemsReceived(String destinationLocatorId, Long version, String commandId, String requesterId) {
             boolean isStatusOk = false;
             if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_SHIPPED.toLowerCase())) {
                 isStatusOk = true;

@@ -140,7 +140,7 @@ public class AttributeResource {
     }
 
 
-    @GetMapping("_nextId")
+    @GetMapping(value = "_nextId", produces = "plain/text")
     public String getNextId() {
         try {
             return attributeIdGenerator.getNextId();
