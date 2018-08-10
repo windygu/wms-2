@@ -148,21 +148,21 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     }
 
     private static void assertReceiptQuantities(BigDecimal shipmentItemQuantity, BigDecimal acceptedQuantity, BigDecimal rejectedQuantity) {
-        if (shipmentItemQuantity.equals(acceptedQuantity) && rejectedQuantity == null) {
+        if (shipmentItemQuantity.compareTo(acceptedQuantity) == 0 && rejectedQuantity == null) {
             return;
         }
         // ////////////////////////////////////////
         // todo Is this OK?
-        if (shipmentItemQuantity.compareTo(BigDecimal.ZERO) > 0 && acceptedQuantity.equals(BigDecimal.ZERO)
-                && (rejectedQuantity == null || rejectedQuantity.equals(BigDecimal.ZERO))) {
+        if (shipmentItemQuantity.compareTo(BigDecimal.ZERO) > 0 && acceptedQuantity.compareTo(BigDecimal.ZERO) == 0
+                && (rejectedQuantity == null || rejectedQuantity.compareTo(BigDecimal.ZERO) == 0)) {
             return;
         }
-        if (shipmentItemQuantity.equals(BigDecimal.ZERO) && acceptedQuantity.compareTo(BigDecimal.ZERO) > 0
-                && (rejectedQuantity == null || rejectedQuantity.equals(BigDecimal.ZERO))) {
+        if (shipmentItemQuantity.compareTo(BigDecimal.ZERO) == 0 && acceptedQuantity.compareTo(BigDecimal.ZERO) > 0
+                && (rejectedQuantity == null || rejectedQuantity.compareTo(BigDecimal.ZERO) == 0)) {
             return;
         }
         // ////////////////////////////////////////
-        if (shipmentItemQuantity.equals(acceptedQuantity.add(rejectedQuantity))) {
+        if (shipmentItemQuantity.compareTo(acceptedQuantity.add(rejectedQuantity)) == 0) {
             return;
         }
 
@@ -220,6 +220,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
 
 
     protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsReceivedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ShipmentReceiptState> receipts, String destinationLocatorId) {
+        if (destinationLocatorId == null || destinationLocatorId.isEmpty()) {
+            throw new IllegalArgumentException("Null destinationLocatorId.");
+        }
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (ShipmentReceiptState d : receipts) {
             InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d, destinationLocatorId);

@@ -53,6 +53,7 @@ public class ShipmentTests {
         //var updateShipment = new MergePatchShipment();
         ShipmentCommands.ConfirmAllItemsReceived updateShipment = new ShipmentCommands.ConfirmAllItemsReceived();
         updateShipment.setShipmentId(shipmentId);
+        updateShipment.setDestinationLocatorId(InOutTests.TEST_LOCATOR_ID_1_RECEIVING_AREA);
         updateShipment.setCommandId(UUID.randomUUID().toString());
         //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
         updateShipment.setVersion(3L); //todo???
