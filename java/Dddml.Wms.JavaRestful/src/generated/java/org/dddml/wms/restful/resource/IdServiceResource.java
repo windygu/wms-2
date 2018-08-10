@@ -14,7 +14,7 @@ import org.dddml.wms.domain.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-@RequestMapping(path = "IdService", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "IdService", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class IdServiceResource {
 

@@ -18,7 +18,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "AttributeSetInstanceExtensionFieldGroups", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "AttributeSetInstanceExtensionFieldGroups", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class AttributeSetInstanceExtensionFieldGroupResource {
 
