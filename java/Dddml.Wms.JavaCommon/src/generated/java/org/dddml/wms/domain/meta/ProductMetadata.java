@@ -84,6 +84,7 @@ public final class ProductMetadata {
             "coreDiameter",
             "outsideDiameter",
             "moisturePct",
+            "rollCnt",
             "version",
             "createdBy",
             "createdAt",
@@ -160,6 +161,7 @@ public final class ProductMetadata {
             "java.math.BigDecimal",
             "java.math.BigDecimal",
             "java.math.BigDecimal",
+            "String",
             "Long",
             "String",
             "Date",
@@ -313,6 +315,8 @@ public final class ProductMetadata {
         aliasMap.put("OutsideDiameter", "outsideDiameter");
         aliasMap.put("moisturePct", "moisturePct");
         aliasMap.put("MoisturePct", "moisturePct");
+        aliasMap.put("rollCnt", "rollCnt");
+        aliasMap.put("RollCnt", "rollCnt");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

@@ -101,9 +101,9 @@ public interface AttributeSetInstanceCommand extends Command
 
         void setAirDryMetricTon(BigDecimal airDryMetricTon);
 
-        Integer getPackageCount();
+        Integer getRollCnt();
 
-        void setPackageCount(Integer packageCount);
+        void setRollCnt(Integer rollCnt);
 
         BigDecimal getAirDryPct();
 

@@ -195,14 +195,14 @@ public class AttributeSetInstanceStateEventDto extends AbstractEvent
         this.airDryMetricTon = airDryMetricTon;
     }
 
-    private Integer packageCount;
+    private Integer rollCnt;
 
-    public Integer getPackageCount() {
-        return this.packageCount;
+    public Integer getRollCnt() {
+        return this.rollCnt;
     }
 
-    public void setPackageCount(Integer packageCount) {
-        this.packageCount = packageCount;
+    public void setRollCnt(Integer rollCnt) {
+        this.rollCnt = rollCnt;
     }
 
     private BigDecimal airDryPct;
@@ -915,14 +915,14 @@ public class AttributeSetInstanceStateEventDto extends AbstractEvent
         this.isPropertyAirDryMetricTonRemoved = removed;
     }
 
-    private Boolean isPropertyPackageCountRemoved;
+    private Boolean isPropertyRollCntRemoved;
 
-    public Boolean getIsPropertyPackageCountRemoved() {
-        return this.isPropertyPackageCountRemoved;
+    public Boolean getIsPropertyRollCntRemoved() {
+        return this.isPropertyRollCntRemoved;
     }
 
-    public void setIsPropertyPackageCountRemoved(Boolean removed) {
-        this.isPropertyPackageCountRemoved = removed;
+    public void setIsPropertyRollCntRemoved(Boolean removed) {
+        this.isPropertyRollCntRemoved = removed;
     }
 
     private Boolean isPropertyAirDryPctRemoved;

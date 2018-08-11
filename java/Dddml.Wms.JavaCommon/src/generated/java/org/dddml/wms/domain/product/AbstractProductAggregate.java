@@ -116,6 +116,7 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setCoreDiameter(c.getCoreDiameter());
         e.setOutsideDiameter(c.getOutsideDiameter());
         e.setMoisturePct(c.getMoisturePct());
+        e.setRollCnt(c.getRollCnt());
         e.setActive(c.getActive());
         ((AbstractProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -199,6 +200,7 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setCoreDiameter(c.getCoreDiameter());
         e.setOutsideDiameter(c.getOutsideDiameter());
         e.setMoisturePct(c.getMoisturePct());
+        e.setRollCnt(c.getRollCnt());
         e.setActive(c.getActive());
         e.setIsPropertyProductTypeIdRemoved(c.getIsPropertyProductTypeIdRemoved());
         e.setIsPropertyPrimaryProductCategoryIdRemoved(c.getIsPropertyPrimaryProductCategoryIdRemoved());
@@ -265,6 +267,7 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setIsPropertyCoreDiameterRemoved(c.getIsPropertyCoreDiameterRemoved());
         e.setIsPropertyOutsideDiameterRemoved(c.getIsPropertyOutsideDiameterRemoved());
         e.setIsPropertyMoisturePctRemoved(c.getIsPropertyMoisturePctRemoved());
+        e.setIsPropertyRollCntRemoved(c.getIsPropertyRollCntRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

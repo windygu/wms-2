@@ -981,6 +981,21 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
     }
 
     /**
+     * Roll Cnt
+     */
+    private String rollCnt;
+
+    public String getRollCnt()
+    {
+        return this.rollCnt;
+    }
+
+    public void setRollCnt(String rollCnt)
+    {
+        this.rollCnt = rollCnt;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -1787,6 +1802,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isPropertyMoisturePctRemoved = removed;
     }
 
+    private Boolean isPropertyRollCntRemoved;
+
+    public Boolean getIsPropertyRollCntRemoved()
+    {
+        return this.isPropertyRollCntRemoved;
+    }
+
+    public void setIsPropertyRollCntRemoved(Boolean removed)
+    {
+        this.isPropertyRollCntRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -1867,6 +1894,7 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setCoreDiameter(this.getCoreDiameter());
         command.setOutsideDiameter(this.getOutsideDiameter());
         command.setMoisturePct(this.getMoisturePct());
+        command.setRollCnt(this.getRollCnt());
         command.setActive(this.getActive());
     }
 
@@ -1970,6 +1998,7 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setIsPropertyCoreDiameterRemoved(this.getIsPropertyCoreDiameterRemoved());
         command.setIsPropertyOutsideDiameterRemoved(this.getIsPropertyOutsideDiameterRemoved());
         command.setIsPropertyMoisturePctRemoved(this.getIsPropertyMoisturePctRemoved());
+        command.setIsPropertyRollCntRemoved(this.getIsPropertyRollCntRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

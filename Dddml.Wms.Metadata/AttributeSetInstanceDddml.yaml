@@ -79,7 +79,7 @@ aggregates:
           type: decimal?
           
 
-        PackageCount:
+        RollCnt:
           type: int?
           
 

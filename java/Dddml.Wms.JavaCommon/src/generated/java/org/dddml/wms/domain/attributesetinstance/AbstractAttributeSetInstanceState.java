@@ -214,16 +214,16 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.airDryMetricTon = airDryMetricTon;
     }
 
-    private Integer packageCount;
+    private Integer rollCnt;
 
-    public Integer getPackageCount()
+    public Integer getRollCnt()
     {
-        return this.packageCount;
+        return this.rollCnt;
     }
 
-    public void setPackageCount(Integer packageCount)
+    public void setRollCnt(Integer rollCnt)
     {
-        this.packageCount = packageCount;
+        this.rollCnt = rollCnt;
     }
 
     private BigDecimal airDryPct;
@@ -1008,7 +1008,7 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.setAirDryWeightLbs(e.getAirDryWeightLbs());
         this.setAirDryWeightKg(e.getAirDryWeightKg());
         this.setAirDryMetricTon(e.getAirDryMetricTon());
-        this.setPackageCount(e.getPackageCount());
+        this.setRollCnt(e.getRollCnt());
         this.setAirDryPct(e.getAirDryPct());
         this.set_F_B_0_(e.get_F_B_0_());
         this.set_F_I_0_(e.get_F_I_0_());

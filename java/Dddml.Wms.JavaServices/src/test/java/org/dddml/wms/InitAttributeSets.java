@@ -56,7 +56,7 @@ public class InitAttributeSets {
             new String[]{"airDryWeightLbs", "Decimal"},
             new String[]{"airDryWeightKg", "Decimal"},
             new String[]{"airDryMetricTon", "Decimal"},
-            new String[]{"packageCount", "Decimal"},
+            new String[]{"rollCnt", "Decimal"},
             new String[]{"airDryPct", "Int32"},
     };
 

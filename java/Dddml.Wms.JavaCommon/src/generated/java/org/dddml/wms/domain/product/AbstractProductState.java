@@ -801,6 +801,18 @@ public abstract class AbstractProductState implements ProductState, Saveable
         this.moisturePct = moisturePct;
     }
 
+    private String rollCnt;
+
+    public String getRollCnt()
+    {
+        return this.rollCnt;
+    }
+
+    public void setRollCnt(String rollCnt)
+    {
+        this.rollCnt = rollCnt;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -1013,6 +1025,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
         this.setCoreDiameter(e.getCoreDiameter());
         this.setOutsideDiameter(e.getOutsideDiameter());
         this.setMoisturePct(e.getMoisturePct());
+        this.setRollCnt(e.getRollCnt());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -1742,6 +1755,17 @@ public abstract class AbstractProductState implements ProductState, Saveable
         else
         {
             this.setMoisturePct(e.getMoisturePct());
+        }
+        if (e.getRollCnt() == null)
+        {
+            if (e.getIsPropertyRollCntRemoved() != null && e.getIsPropertyRollCntRemoved())
+            {
+                this.setRollCnt(null);
+            }
+        }
+        else
+        {
+            this.setRollCnt(e.getRollCnt());
         }
         if (e.getActive() == null)
         {

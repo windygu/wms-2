@@ -801,6 +801,18 @@ public class ProductStateDto
         this.moisturePct = moisturePct;
     }
 
+    private String rollCnt;
+
+    public String getRollCnt()
+    {
+        return this.rollCnt;
+    }
+
+    public void setRollCnt(String rollCnt)
+    {
+        this.rollCnt = rollCnt;
+    }
+
     private Boolean active;
 
     public Boolean getActive()

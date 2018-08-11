@@ -981,6 +981,21 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
     }
 
     /**
+     * Roll Cnt
+     */
+    private String rollCnt;
+
+    public String getRollCnt()
+    {
+        return this.rollCnt;
+    }
+
+    public void setRollCnt(String rollCnt)
+    {
+        this.rollCnt = rollCnt;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -1785,6 +1800,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
     public void setIsPropertyMoisturePctRemoved(Boolean removed)
     {
         this.isPropertyMoisturePctRemoved = removed;
+    }
+
+    private Boolean isPropertyRollCntRemoved;
+
+    public Boolean getIsPropertyRollCntRemoved()
+    {
+        return this.isPropertyRollCntRemoved;
+    }
+
+    public void setIsPropertyRollCntRemoved(Boolean removed)
+    {
+        this.isPropertyRollCntRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

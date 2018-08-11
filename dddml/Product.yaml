@@ -210,6 +210,11 @@ aggregates:
       MoisturePct:
         type: fixed-point
         displayName: Moisture(%)
+      # 卷数（描述文本）
+      RollCnt:
+        type: string
+        length: 10
+        displayName: Roll Cnt
         
       #----------------------------------------
       GoodIdentifications:

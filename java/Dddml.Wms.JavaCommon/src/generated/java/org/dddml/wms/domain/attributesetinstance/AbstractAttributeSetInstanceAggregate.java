@@ -62,7 +62,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         e.setAirDryWeightLbs(c.getAirDryWeightLbs());
         e.setAirDryWeightKg(c.getAirDryWeightKg());
         e.setAirDryMetricTon(c.getAirDryMetricTon());
-        e.setPackageCount(c.getPackageCount());
+        e.setRollCnt(c.getRollCnt());
         e.setAirDryPct(c.getAirDryPct());
         e.set_F_B_0_(c.get_F_B_0_());
         e.set_F_I_0_(c.get_F_I_0_());

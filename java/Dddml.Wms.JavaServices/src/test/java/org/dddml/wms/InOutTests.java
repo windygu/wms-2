@@ -77,7 +77,7 @@ public class InOutTests {
         //attrSetInst_1.Add("AirDryWeightLbs", (decimal)1705.682);
         //attrSetInst_1.Add("AirDryWeightKg", (decimal)773.684);
         //attrSetInst_1.Add("AirDryMetricTon", (decimal)0.774);
-        //attrSetInst_1.Add("PackageCount", 2);
+        //attrSetInst_1.Add("RollCnt", 2);
         //attrSetInst_1.Add("AirDryPct", (decimal)101.650);
         // //////////////////////////////////
         addLine.setAttributeSetInstance(attrSetInst_1);

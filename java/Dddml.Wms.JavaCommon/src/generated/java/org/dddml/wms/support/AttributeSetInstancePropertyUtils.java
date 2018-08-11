@@ -62,7 +62,7 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("AirDryWeightLbs").append("=").append(instance.getAirDryWeightLbs()).append("|");
         sb.append("AirDryWeightKg").append("=").append(instance.getAirDryWeightKg()).append("|");
         sb.append("AirDryMetricTon").append("=").append(instance.getAirDryMetricTon()).append("|");
-        sb.append("PackageCount").append("=").append(instance.getPackageCount()).append("|");
+        sb.append("RollCnt").append("=").append(instance.getRollCnt()).append("|");
         sb.append("AirDryPct").append("=").append(instance.getAirDryPct()).append("|");
         sb.append("_F_B_0_").append("=").append(instance.get_F_B_0_()).append("|");
         sb.append("_F_I_0_").append("=").append(instance.get_F_I_0_()).append("|");
@@ -144,7 +144,7 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("AirDryWeightLbs").append("=").append(instance.getAirDryWeightLbs()).append("|");
         sb.append("AirDryWeightKg").append("=").append(instance.getAirDryWeightKg()).append("|");
         sb.append("AirDryMetricTon").append("=").append(instance.getAirDryMetricTon()).append("|");
-        sb.append("PackageCount").append("=").append(instance.getPackageCount()).append("|");
+        sb.append("RollCnt").append("=").append(instance.getRollCnt()).append("|");
         sb.append("AirDryPct").append("=").append(instance.getAirDryPct()).append("|");
         sb.append("_F_B_0_").append("=").append(instance.get_F_B_0_()).append("|");
         sb.append("_F_I_0_").append("=").append(instance.get_F_I_0_()).append("|");
@@ -226,7 +226,7 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("AirDryWeightLbs").append("=").append(instance.getAirDryWeightLbs()).append("|");
         sb.append("AirDryWeightKg").append("=").append(instance.getAirDryWeightKg()).append("|");
         sb.append("AirDryMetricTon").append("=").append(instance.getAirDryMetricTon()).append("|");
-        sb.append("PackageCount").append("=").append(instance.getPackageCount()).append("|");
+        sb.append("RollCnt").append("=").append(instance.getRollCnt()).append("|");
         sb.append("AirDryPct").append("=").append(instance.getAirDryPct()).append("|");
         sb.append("_F_B_0_").append("=").append(instance.get_F_B_0_()).append("|");
         sb.append("_F_I_0_").append("=").append(instance.get_F_I_0_()).append("|");
@@ -307,7 +307,7 @@ public class AttributeSetInstancePropertyUtils {
                 || !propertyEquals(instance1.getAirDryWeightLbs(), instance2.getAirDryWeightLbs())
                 || !propertyEquals(instance1.getAirDryWeightKg(), instance2.getAirDryWeightKg())
                 || !propertyEquals(instance1.getAirDryMetricTon(), instance2.getAirDryMetricTon())
-                || !propertyEquals(instance1.getPackageCount(), instance2.getPackageCount())
+                || !propertyEquals(instance1.getRollCnt(), instance2.getRollCnt())
                 || !propertyEquals(instance1.getAirDryPct(), instance2.getAirDryPct())
                 || !propertyEquals(instance1.get_F_B_0_(), instance2.get_F_B_0_())
                 || !propertyEquals(instance1.get_F_I_0_(), instance2.get_F_I_0_())

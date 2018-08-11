@@ -68,7 +68,7 @@ new ExtensionFieldMetadata("WeightKg", "decimal?", null),
 new ExtensionFieldMetadata("AirDryWeightLbs", "decimal?", null),
 new ExtensionFieldMetadata("AirDryWeightKg", "decimal?", null),
 new ExtensionFieldMetadata("AirDryMetricTon", "decimal?", null),
-new ExtensionFieldMetadata("PackageCount", "int?", null),
+new ExtensionFieldMetadata("RollCnt", "int?", null),
 new ExtensionFieldMetadata("AirDryPct", "decimal?", null),
                 // ////////////////////////////////////
             });

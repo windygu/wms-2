@@ -801,6 +801,18 @@ public class ProductStateDto
         this.moisturePct = moisturePct;
     }
 
+    private String rollCnt;
+
+    public String getRollCnt()
+    {
+        return this.rollCnt;
+    }
+
+    public void setRollCnt(String rollCnt)
+    {
+        this.rollCnt = rollCnt;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -1111,6 +1123,9 @@ public class ProductStateDto
             }
             if (returnedFieldsContains("MoisturePct")) {
                 dto.setMoisturePct(state.getMoisturePct());
+            }
+            if (returnedFieldsContains("RollCnt")) {
+                dto.setRollCnt(state.getRollCnt());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

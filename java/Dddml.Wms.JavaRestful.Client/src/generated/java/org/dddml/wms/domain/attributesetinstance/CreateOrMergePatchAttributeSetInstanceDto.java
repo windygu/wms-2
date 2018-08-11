@@ -247,18 +247,18 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
     }
 
     /**
-     * Package Count
+     * Roll Cnt
      */
-    private Integer packageCount;
+    private Integer rollCnt;
 
-    public Integer getPackageCount()
+    public Integer getRollCnt()
     {
-        return this.packageCount;
+        return this.rollCnt;
     }
 
-    public void setPackageCount(Integer packageCount)
+    public void setRollCnt(Integer rollCnt)
     {
-        this.packageCount = packageCount;
+        this.rollCnt = rollCnt;
     }
 
     /**
@@ -1248,16 +1248,16 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.isPropertyAirDryMetricTonRemoved = removed;
     }
 
-    private Boolean isPropertyPackageCountRemoved;
+    private Boolean isPropertyRollCntRemoved;
 
-    public Boolean getIsPropertyPackageCountRemoved()
+    public Boolean getIsPropertyRollCntRemoved()
     {
-        return this.isPropertyPackageCountRemoved;
+        return this.isPropertyRollCntRemoved;
     }
 
-    public void setIsPropertyPackageCountRemoved(Boolean removed)
+    public void setIsPropertyRollCntRemoved(Boolean removed)
     {
-        this.isPropertyPackageCountRemoved = removed;
+        this.isPropertyRollCntRemoved = removed;
     }
 
     private Boolean isPropertyAirDryPctRemoved;

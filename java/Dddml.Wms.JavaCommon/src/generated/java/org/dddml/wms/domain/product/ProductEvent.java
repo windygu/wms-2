@@ -286,6 +286,10 @@ public interface ProductEvent extends Event
 
         void setMoisturePct(java.math.BigDecimal moisturePct);
 
+        String getRollCnt();
+
+        void setRollCnt(String rollCnt);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -565,6 +569,10 @@ public interface ProductEvent extends Event
         Boolean getIsPropertyMoisturePctRemoved();
 
         void setIsPropertyMoisturePctRemoved(Boolean removed);
+
+        Boolean getIsPropertyRollCntRemoved();
+
+        void setIsPropertyRollCntRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

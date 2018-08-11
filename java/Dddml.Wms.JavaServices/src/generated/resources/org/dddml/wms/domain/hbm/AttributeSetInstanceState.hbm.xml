@@ -28,7 +28,7 @@
 	<property name="airDryWeightLbs" ><column name="AirDryWeightLbs" sql-type="decimal(18,6)" /></property>
 	<property name="airDryWeightKg" ><column name="AirDryWeightKg" sql-type="decimal(18,6)" /></property>
 	<property name="airDryMetricTon" ><column name="AirDryMetricTon" sql-type="decimal(18,6)" /></property>
-	<property name="packageCount" ></property>
+	<property name="rollCnt" ></property>
 	<property name="airDryPct" ><column name="AirDryPct" sql-type="decimal(18,6)" /></property>
 	<property name="_F_B_0_" ></property>
 	<property name="_F_I_0_" ></property>

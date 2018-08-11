@@ -246,14 +246,14 @@ public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent im
             this.getAttributeSetInstanceState().setAirDryMetricTon(airDryMetricTon);
         }
 
-        public Integer getPackageCount()
+        public Integer getRollCnt()
         {
-            return this.getAttributeSetInstanceState().getPackageCount();
+            return this.getAttributeSetInstanceState().getRollCnt();
         }
 
-        public void setPackageCount(Integer packageCount)
+        public void setRollCnt(Integer rollCnt)
         {
-            this.getAttributeSetInstanceState().setPackageCount(packageCount);
+            this.getAttributeSetInstanceState().setRollCnt(rollCnt);
         }
 
         public BigDecimal getAirDryPct()

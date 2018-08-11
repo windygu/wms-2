@@ -296,6 +296,10 @@ public interface ProductCommand extends Command
 
         void setMoisturePct(java.math.BigDecimal moisturePct);
 
+        String getRollCnt();
+
+        void setRollCnt(String rollCnt);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -571,6 +575,10 @@ public interface ProductCommand extends Command
         Boolean getIsPropertyMoisturePctRemoved();
 
         void setIsPropertyMoisturePctRemoved(Boolean removed);
+
+        Boolean getIsPropertyRollCntRemoved();
+
+        void setIsPropertyRollCntRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

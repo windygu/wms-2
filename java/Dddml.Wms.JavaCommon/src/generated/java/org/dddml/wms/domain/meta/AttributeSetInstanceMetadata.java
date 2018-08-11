@@ -34,7 +34,7 @@ public final class AttributeSetInstanceMetadata {
             "airDryWeightLbs",
             "airDryWeightKg",
             "airDryMetricTon",
-            "packageCount",
+            "rollCnt",
             "airDryPct",
             "_F_B_0_",
             "_F_I_0_",
@@ -219,8 +219,8 @@ public final class AttributeSetInstanceMetadata {
         aliasMap.put("AirDryWeightKg", "airDryWeightKg");
         aliasMap.put("airDryMetricTon", "airDryMetricTon");
         aliasMap.put("AirDryMetricTon", "airDryMetricTon");
-        aliasMap.put("packageCount", "packageCount");
-        aliasMap.put("PackageCount", "packageCount");
+        aliasMap.put("rollCnt", "rollCnt");
+        aliasMap.put("RollCnt", "rollCnt");
         aliasMap.put("airDryPct", "airDryPct");
         aliasMap.put("AirDryPct", "airDryPct");
         aliasMap.put("_F_B_0_", "_F_B_0_");

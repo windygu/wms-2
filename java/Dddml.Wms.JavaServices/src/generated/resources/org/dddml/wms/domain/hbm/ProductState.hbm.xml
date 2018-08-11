@@ -76,6 +76,7 @@
 	<property name="coreDiameter" ><column name="CoreDiameter" sql-type="DECIMAL(18,6)" /></property>
 	<property name="outsideDiameter" ><column name="OutsideDiameter" sql-type="DECIMAL(18,6)" /></property>
 	<property name="moisturePct" ><column name="MoisturePct" sql-type="DECIMAL(18,6)" /></property>
+	<property name="rollCnt" ><column name="RollCnt" length="10" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

@@ -214,16 +214,16 @@ public class AttributeSetInstanceStateDto
         this.airDryMetricTon = airDryMetricTon;
     }
 
-    private Integer packageCount;
+    private Integer rollCnt;
 
-    public Integer getPackageCount()
+    public Integer getRollCnt()
     {
-        return this.packageCount;
+        return this.rollCnt;
     }
 
-    public void setPackageCount(Integer packageCount)
+    public void setRollCnt(Integer rollCnt)
     {
-        this.packageCount = packageCount;
+        this.rollCnt = rollCnt;
     }
 
     private BigDecimal airDryPct;
@@ -1002,8 +1002,8 @@ public class AttributeSetInstanceStateDto
             if (returnedFieldsContains("AirDryMetricTon")) {
                 dto.setAirDryMetricTon(state.getAirDryMetricTon());
             }
-            if (returnedFieldsContains("PackageCount")) {
-                dto.setPackageCount(state.getPackageCount());
+            if (returnedFieldsContains("RollCnt")) {
+                dto.setRollCnt(state.getRollCnt());
             }
             if (returnedFieldsContains("AirDryPct")) {
                 dto.setAirDryPct(state.getAirDryPct());

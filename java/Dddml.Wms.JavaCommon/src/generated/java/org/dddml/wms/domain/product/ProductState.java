@@ -276,6 +276,10 @@ public interface ProductState
 
     void setMoisturePct(java.math.BigDecimal moisturePct);
 
+    String getRollCnt();
+
+    void setRollCnt(String rollCnt);
+
     Long getVersion();
 
     void setVersion(Long version);

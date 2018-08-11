@@ -86,7 +86,7 @@ public class ShipmentTests {
                 //attrSetInst_1.Add("AirDryWeightLbs", (decimal)1705.682);
                 //attrSetInst_1.Add("AirDryWeightKg", (decimal)773.684);
                 //attrSetInst_1.Add("AirDryMetricTon", (decimal)0.774);
-                //attrSetInst_1.Add("PackageCount", 2);
+                //attrSetInst_1.Add("RollCnt", 2);
                 //attrSetInst_1.Add("AirDryPct", (decimal)101.650);
                 // //////////////////////////////////
                 receiveItem.setAttributeSetInstance(attrSetInst_1);
@@ -150,7 +150,7 @@ public class ShipmentTests {
         attrSetInst_1.put("AirDryWeightLbs", java.math.BigDecimal.valueOf(1705.682));
         attrSetInst_1.put("AirDryWeightKg", java.math.BigDecimal.valueOf(773.684));
         attrSetInst_1.put("AirDryMetricTon", java.math.BigDecimal.valueOf(0.774));
-        attrSetInst_1.put("PackageCount", 2);
+        attrSetInst_1.put("RollCnt", 2);
         attrSetInst_1.put("AirDryPct", java.math.BigDecimal.valueOf(101.650));
         // //////////////////////////////////
 

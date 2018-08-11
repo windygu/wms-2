@@ -897,6 +897,18 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
             this.moisturePct = moisturePct;
         }
 
+        private String rollCnt;
+
+        public String getRollCnt()
+        {
+            return this.rollCnt;
+        }
+
+        public void setRollCnt(String rollCnt)
+        {
+            this.rollCnt = rollCnt;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -1641,6 +1653,16 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
 
         public void setIsPropertyMoisturePctRemoved(Boolean removed) {
             this.isPropertyMoisturePctRemoved = removed;
+        }
+
+        private Boolean isPropertyRollCntRemoved;
+
+        public Boolean getIsPropertyRollCntRemoved() {
+            return this.isPropertyRollCntRemoved;
+        }
+
+        public void setIsPropertyRollCntRemoved(Boolean removed) {
+            this.isPropertyRollCntRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

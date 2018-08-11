@@ -247,18 +247,18 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
     }
 
     /**
-     * Package Count
+     * Roll Cnt
      */
-    private Integer packageCount;
+    private Integer rollCnt;
 
-    public Integer getPackageCount()
+    public Integer getRollCnt()
     {
-        return this.packageCount;
+        return this.rollCnt;
     }
 
-    public void setPackageCount(Integer packageCount)
+    public void setRollCnt(Integer rollCnt)
     {
-        this.packageCount = packageCount;
+        this.rollCnt = rollCnt;
     }
 
     /**
@@ -1248,16 +1248,16 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.isPropertyAirDryMetricTonRemoved = removed;
     }
 
-    private Boolean isPropertyPackageCountRemoved;
+    private Boolean isPropertyRollCntRemoved;
 
-    public Boolean getIsPropertyPackageCountRemoved()
+    public Boolean getIsPropertyRollCntRemoved()
     {
-        return this.isPropertyPackageCountRemoved;
+        return this.isPropertyRollCntRemoved;
     }
 
-    public void setIsPropertyPackageCountRemoved(Boolean removed)
+    public void setIsPropertyRollCntRemoved(Boolean removed)
     {
-        this.isPropertyPackageCountRemoved = removed;
+        this.isPropertyRollCntRemoved = removed;
     }
 
     private Boolean isPropertyAirDryPctRemoved;
@@ -1915,7 +1915,7 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         command.setAirDryWeightLbs(this.getAirDryWeightLbs());
         command.setAirDryWeightKg(this.getAirDryWeightKg());
         command.setAirDryMetricTon(this.getAirDryMetricTon());
-        command.setPackageCount(this.getPackageCount());
+        command.setRollCnt(this.getRollCnt());
         command.setAirDryPct(this.getAirDryPct());
         command.set_F_B_0_(this.get_F_B_0_());
         command.set_F_I_0_(this.get_F_I_0_());
