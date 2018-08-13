@@ -406,7 +406,7 @@ public class ShipmentResource {
     /**
      * ShipmentImage List
      */
-    @GetMapping("{shipmentId}/ShipmentImages/")
+    @GetMapping("/{shipmentId}/ShipmentImages")
     public ShipmentImageStateDto[] getShipmentImages(@PathVariable("shipmentId") String shipmentId) {
         try {
             Iterable<ShipmentImageState> states = shipmentApplicationService.getShipmentImages(shipmentId);
@@ -421,7 +421,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentImage
      */
-    @PostMapping("{shipmentId}/ShipmentImages/")
+    @PostMapping("/{shipmentId}/ShipmentImages")
     public void postShipmentImages(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -505,7 +505,7 @@ public class ShipmentResource {
     /**
      * ShipmentItem List
      */
-    @GetMapping("{shipmentId}/ShipmentItems/")
+    @GetMapping("/{shipmentId}/ShipmentItems")
     public ShipmentItemStateDto[] getShipmentItems(@PathVariable("shipmentId") String shipmentId) {
         try {
             Iterable<ShipmentItemState> states = shipmentApplicationService.getShipmentItems(shipmentId);
@@ -520,7 +520,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentItem
      */
-    @PostMapping("{shipmentId}/ShipmentItems/")
+    @PostMapping("/{shipmentId}/ShipmentItems")
     public void postShipmentItems(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -604,7 +604,7 @@ public class ShipmentResource {
     /**
      * ShipmentReceipt List
      */
-    @GetMapping("{shipmentId}/ShipmentReceipts/")
+    @GetMapping("/{shipmentId}/ShipmentReceipts")
     public ShipmentReceiptStateDto[] getShipmentReceipts(@PathVariable("shipmentId") String shipmentId) {
         try {
             Iterable<ShipmentReceiptState> states = shipmentApplicationService.getShipmentReceipts(shipmentId);
@@ -619,7 +619,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentReceipt
      */
-    @PostMapping("{shipmentId}/ShipmentReceipts/")
+    @PostMapping("/{shipmentId}/ShipmentReceipts")
     public void postShipmentReceipts(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -709,7 +709,7 @@ public class ShipmentResource {
     /**
      * ShipmentReceiptImage List
      */
-    @GetMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/")
+    @GetMapping("/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
     public ShipmentReceiptImageStateDto[] getShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId) {
         try {
             Iterable<ShipmentReceiptImageState> states = shipmentApplicationService.getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId);
@@ -724,7 +724,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentReceiptImage
      */
-    @PostMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/")
+    @PostMapping("/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
     public void postShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -811,7 +811,7 @@ public class ShipmentResource {
     /**
      * ItemIssuance List
      */
-    @GetMapping("{shipmentId}/ItemIssuances/")
+    @GetMapping("/{shipmentId}/ItemIssuances")
     public ItemIssuanceStateDto[] getItemIssuances(@PathVariable("shipmentId") String shipmentId) {
         try {
             Iterable<ItemIssuanceState> states = shipmentApplicationService.getItemIssuances(shipmentId);
@@ -826,7 +826,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ItemIssuance
      */
-    @PostMapping("{shipmentId}/ItemIssuances/")
+    @PostMapping("/{shipmentId}/ItemIssuances")
     public void postItemIssuances(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

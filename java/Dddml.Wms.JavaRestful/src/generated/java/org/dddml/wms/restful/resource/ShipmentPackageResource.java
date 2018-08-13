@@ -358,7 +358,7 @@ public class ShipmentPackageResource {
     /**
      * ShipmentPackageContent List
      */
-    @GetMapping("{shipmentPackageId}/ShipmentPackageContents/")
+    @GetMapping("/{shipmentPackageId}/ShipmentPackageContents")
     public ShipmentPackageContentStateDto[] getShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId) {
         try {
             Iterable<ShipmentPackageContentState> states = shipmentPackageApplicationService.getShipmentPackageContents((new AbstractValueObjectTextFormatter<ShipmentPackageId>(ShipmentPackageId.class, ",") {
@@ -378,7 +378,7 @@ public class ShipmentPackageResource {
      * 新建.
      * 新建 ShipmentPackageContent
      */
-    @PostMapping("{shipmentPackageId}/ShipmentPackageContents/")
+    @PostMapping("/{shipmentPackageId}/ShipmentPackageContents")
     public void postShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

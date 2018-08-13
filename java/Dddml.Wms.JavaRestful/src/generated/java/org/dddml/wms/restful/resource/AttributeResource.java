@@ -354,7 +354,7 @@ public class AttributeResource {
     /**
      * AttributeValue List
      */
-    @GetMapping("{attributeId}/AttributeValues/")
+    @GetMapping("/{attributeId}/AttributeValues")
     public AttributeValueStateDto[] getAttributeValues(@PathVariable("attributeId") String attributeId) {
         try {
             Iterable<AttributeValueState> states = attributeApplicationService.getAttributeValues(attributeId);
@@ -369,7 +369,7 @@ public class AttributeResource {
      * 新建.
      * 新建 AttributeValue
      */
-    @PostMapping("{attributeId}/AttributeValues/")
+    @PostMapping("/{attributeId}/AttributeValues")
     public void postAttributeValues(@PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -453,7 +453,7 @@ public class AttributeResource {
     /**
      * AttributeAlias List
      */
-    @GetMapping("{attributeId}/AttributeAlias/")
+    @GetMapping("/{attributeId}/AttributeAlias")
     public AttributeAliasStateDto[] getAttributeAlias(@PathVariable("attributeId") String attributeId) {
         try {
             Iterable<AttributeAliasState> states = attributeApplicationService.getAttributeAlias(attributeId);
@@ -468,7 +468,7 @@ public class AttributeResource {
      * 新建.
      * 新建 AttributeAlias
      */
-    @PostMapping("{attributeId}/AttributeAlias/")
+    @PostMapping("/{attributeId}/AttributeAlias")
     public void postAttributeAlias(@PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

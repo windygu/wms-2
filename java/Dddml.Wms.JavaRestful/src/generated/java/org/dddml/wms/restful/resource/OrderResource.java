@@ -337,7 +337,7 @@ public class OrderResource {
     /**
      * OrderRole List
      */
-    @GetMapping("{orderId}/OrderRoles/")
+    @GetMapping("/{orderId}/OrderRoles")
     public OrderRoleStateDto[] getOrderRoles(@PathVariable("orderId") String orderId) {
         try {
             Iterable<OrderRoleState> states = orderApplicationService.getOrderRoles(orderId);
@@ -352,7 +352,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderRole
      */
-    @PostMapping("{orderId}/OrderRoles/")
+    @PostMapping("/{orderId}/OrderRoles")
     public void postOrderRoles(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -436,7 +436,7 @@ public class OrderResource {
     /**
      * OrderItem List
      */
-    @GetMapping("{orderId}/OrderItems/")
+    @GetMapping("/{orderId}/OrderItems")
     public OrderItemStateDto[] getOrderItems(@PathVariable("orderId") String orderId) {
         try {
             Iterable<OrderItemState> states = orderApplicationService.getOrderItems(orderId);
@@ -451,7 +451,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderItem
      */
-    @PostMapping("{orderId}/OrderItems/")
+    @PostMapping("/{orderId}/OrderItems")
     public void postOrderItems(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -535,7 +535,7 @@ public class OrderResource {
     /**
      * OrderShipGroup List
      */
-    @GetMapping("{orderId}/OrderShipGroups/")
+    @GetMapping("/{orderId}/OrderShipGroups")
     public OrderShipGroupStateDto[] getOrderShipGroups(@PathVariable("orderId") String orderId) {
         try {
             Iterable<OrderShipGroupState> states = orderApplicationService.getOrderShipGroups(orderId);
@@ -550,7 +550,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderShipGroup
      */
-    @PostMapping("{orderId}/OrderShipGroups/")
+    @PostMapping("/{orderId}/OrderShipGroups")
     public void postOrderShipGroups(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -640,7 +640,7 @@ public class OrderResource {
     /**
      * OrderItemShipGroupAssociation List
      */
-    @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/")
+    @GetMapping("/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
     public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId) {
         try {
             Iterable<OrderItemShipGroupAssociationState> states = orderApplicationService.getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
@@ -655,7 +655,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderItemShipGroupAssociation
      */
-    @PostMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/")
+    @PostMapping("/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
     public void postOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

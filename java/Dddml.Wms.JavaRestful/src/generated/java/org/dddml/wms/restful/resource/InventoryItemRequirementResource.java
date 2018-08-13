@@ -257,7 +257,7 @@ public class InventoryItemRequirementResource {
     /**
      * InventoryItemRequirementEntry List
      */
-    @GetMapping("{inventoryItemRequirementId}/InventoryItemRequirementEntries/")
+    @GetMapping("/{inventoryItemRequirementId}/InventoryItemRequirementEntries")
     public InventoryItemRequirementEntryStateDto[] getInventoryItemRequirementEntries(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId) {
         try {
             Iterable<InventoryItemRequirementEntryState> states = inventoryItemRequirementApplicationService.getInventoryItemRequirementEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {

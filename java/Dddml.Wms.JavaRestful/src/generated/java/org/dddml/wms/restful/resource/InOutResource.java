@@ -424,7 +424,7 @@ public class InOutResource {
     /**
      * InOutImage List
      */
-    @GetMapping("{documentNumber}/InOutImages/")
+    @GetMapping("/{documentNumber}/InOutImages")
     public InOutImageStateDto[] getInOutImages(@PathVariable("documentNumber") String documentNumber) {
         try {
             Iterable<InOutImageState> states = inOutApplicationService.getInOutImages(documentNumber);
@@ -439,7 +439,7 @@ public class InOutResource {
      * 新建.
      * 新建 InOutImage
      */
-    @PostMapping("{documentNumber}/InOutImages/")
+    @PostMapping("/{documentNumber}/InOutImages")
     public void postInOutImages(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -523,7 +523,7 @@ public class InOutResource {
     /**
      * InOutLine List
      */
-    @GetMapping("{documentNumber}/InOutLines/")
+    @GetMapping("/{documentNumber}/InOutLines")
     public InOutLineStateDto[] getInOutLines(@PathVariable("documentNumber") String documentNumber) {
         try {
             Iterable<InOutLineState> states = inOutApplicationService.getInOutLines(documentNumber);
@@ -538,7 +538,7 @@ public class InOutResource {
      * 新建.
      * 新建 InOutLine
      */
-    @PostMapping("{documentNumber}/InOutLines/")
+    @PostMapping("/{documentNumber}/InOutLines")
     public void postInOutLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -628,7 +628,7 @@ public class InOutResource {
     /**
      * InOutLineImage List
      */
-    @GetMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/")
+    @GetMapping("/{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages")
     public InOutLineImageStateDto[] getInOutLineImages(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber) {
         try {
             Iterable<InOutLineImageState> states = inOutApplicationService.getInOutLineImages(documentNumber, inOutLineLineNumber);
@@ -643,7 +643,7 @@ public class InOutResource {
      * 新建.
      * 新建 InOutLineImage
      */
-    @PostMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/")
+    @PostMapping("/{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages")
     public void postInOutLineImages(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

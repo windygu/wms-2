@@ -372,7 +372,7 @@ public class PhysicalInventoryResource {
     /**
      * PhysicalInventoryLine List
      */
-    @GetMapping("{documentNumber}/PhysicalInventoryLines/")
+    @GetMapping("/{documentNumber}/PhysicalInventoryLines")
     public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathVariable("documentNumber") String documentNumber) {
         try {
             Iterable<PhysicalInventoryLineState> states = physicalInventoryApplicationService.getPhysicalInventoryLines(documentNumber);
@@ -387,7 +387,7 @@ public class PhysicalInventoryResource {
      * 新建.
      * 新建 PhysicalInventoryLine
      */
-    @PostMapping("{documentNumber}/PhysicalInventoryLines/")
+    @PostMapping("/{documentNumber}/PhysicalInventoryLines")
     public void postPhysicalInventoryLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

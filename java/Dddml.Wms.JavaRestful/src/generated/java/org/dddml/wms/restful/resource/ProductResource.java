@@ -321,7 +321,7 @@ public class ProductResource {
     /**
      * GoodIdentification List
      */
-    @GetMapping("{productId}/GoodIdentifications/")
+    @GetMapping("/{productId}/GoodIdentifications")
     public GoodIdentificationStateDto[] getGoodIdentifications(@PathVariable("productId") String productId) {
         try {
             Iterable<GoodIdentificationState> states = productApplicationService.getGoodIdentifications(productId);
@@ -336,7 +336,7 @@ public class ProductResource {
      * 新建.
      * 新建 GoodIdentification
      */
-    @PostMapping("{productId}/GoodIdentifications/")
+    @PostMapping("/{productId}/GoodIdentifications")
     public void postGoodIdentifications(@PathVariable("productId") String productId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

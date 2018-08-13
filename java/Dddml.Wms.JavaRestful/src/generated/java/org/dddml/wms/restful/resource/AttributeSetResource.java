@@ -343,7 +343,7 @@ public class AttributeSetResource {
     /**
      * AttributeUse List
      */
-    @GetMapping("{attributeSetId}/AttributeUses/")
+    @GetMapping("/{attributeSetId}/AttributeUses")
     public AttributeUseStateDto[] getAttributeUses(@PathVariable("attributeSetId") String attributeSetId) {
         try {
             Iterable<AttributeUseState> states = attributeSetApplicationService.getAttributeUses(attributeSetId);
@@ -358,7 +358,7 @@ public class AttributeSetResource {
      * 新建.
      * 新建 AttributeUse
      */
-    @PostMapping("{attributeSetId}/AttributeUses/")
+    @PostMapping("/{attributeSetId}/AttributeUses")
     public void postAttributeUses(@PathVariable("attributeSetId") String attributeSetId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

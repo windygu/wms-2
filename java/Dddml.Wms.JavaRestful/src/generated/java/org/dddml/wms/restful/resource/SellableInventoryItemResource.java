@@ -257,7 +257,7 @@ public class SellableInventoryItemResource {
     /**
      * SellableInventoryItemEntry List
      */
-    @GetMapping("{sellableInventoryItemId}/SellableInventoryItemEntries/")
+    @GetMapping("/{sellableInventoryItemId}/SellableInventoryItemEntries")
     public SellableInventoryItemEntryStateDto[] getSellableInventoryItemEntries(@PathVariable("sellableInventoryItemId") String sellableInventoryItemId) {
         try {
             Iterable<SellableInventoryItemEntryState> states = sellableInventoryItemApplicationService.getSellableInventoryItemEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
