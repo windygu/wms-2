@@ -223,7 +223,7 @@ public class InventoryItemResource {
     /**
      * InventoryItemEntry List
      */
-    @GetMapping("/{inventoryItemId}/InventoryItemEntries")
+    @GetMapping("{inventoryItemId}/InventoryItemEntries")
     public InventoryItemEntryStateDto[] getInventoryItemEntries(@PathVariable("inventoryItemId") String inventoryItemId) {
         try {
             Iterable<InventoryItemEntryState> states = inventoryItemApplicationService.getInventoryItemEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {

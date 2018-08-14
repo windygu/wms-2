@@ -361,7 +361,7 @@ public class MovementConfirmationResource {
     /**
      * MovementConfirmationLine List
      */
-    @GetMapping("/{documentNumber}/MovementConfirmationLines")
+    @GetMapping("{documentNumber}/MovementConfirmationLines")
     public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber) {
         try {
             Iterable<MovementConfirmationLineState> states = movementConfirmationApplicationService.getMovementConfirmationLines(documentNumber);
@@ -376,7 +376,7 @@ public class MovementConfirmationResource {
      * 新建.
      * 新建 MovementConfirmationLine
      */
-    @PostMapping("/{documentNumber}/MovementConfirmationLines")
+    @PostMapping("{documentNumber}/MovementConfirmationLines")
     public void postMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

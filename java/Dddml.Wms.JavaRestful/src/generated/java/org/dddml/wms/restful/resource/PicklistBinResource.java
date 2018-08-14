@@ -358,7 +358,7 @@ public class PicklistBinResource {
     /**
      * PicklistItem List
      */
-    @GetMapping("/{picklistBinId}/PicklistItems")
+    @GetMapping("{picklistBinId}/PicklistItems")
     public PicklistItemStateDto[] getPicklistItems(@PathVariable("picklistBinId") String picklistBinId) {
         try {
             Iterable<PicklistItemState> states = picklistBinApplicationService.getPicklistItems(picklistBinId);
@@ -373,7 +373,7 @@ public class PicklistBinResource {
      * 新建.
      * 新建 PicklistItem
      */
-    @PostMapping("/{picklistBinId}/PicklistItems")
+    @PostMapping("{picklistBinId}/PicklistItems")
     public void postPicklistItems(@PathVariable("picklistBinId") String picklistBinId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

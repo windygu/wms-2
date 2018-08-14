@@ -378,7 +378,7 @@ public class MovementResource {
     /**
      * MovementLine List
      */
-    @GetMapping("/{documentNumber}/MovementLines")
+    @GetMapping("{documentNumber}/MovementLines")
     public MovementLineStateDto[] getMovementLines(@PathVariable("documentNumber") String documentNumber) {
         try {
             Iterable<MovementLineState> states = movementApplicationService.getMovementLines(documentNumber);
@@ -393,7 +393,7 @@ public class MovementResource {
      * 新建.
      * 新建 MovementLine
      */
-    @PostMapping("/{documentNumber}/MovementLines")
+    @PostMapping("{documentNumber}/MovementLines")
     public void postMovementLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

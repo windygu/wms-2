@@ -359,7 +359,7 @@ public class PicklistResource {
     /**
      * PicklistRole List
      */
-    @GetMapping("/{picklistId}/PicklistRoles")
+    @GetMapping("{picklistId}/PicklistRoles")
     public PicklistRoleStateDto[] getPicklistRoles(@PathVariable("picklistId") String picklistId) {
         try {
             Iterable<PicklistRoleState> states = picklistApplicationService.getPicklistRoles(picklistId);
@@ -374,7 +374,7 @@ public class PicklistResource {
      * 新建.
      * 新建 PicklistRole
      */
-    @PostMapping("/{picklistId}/PicklistRoles")
+    @PostMapping("{picklistId}/PicklistRoles")
     public void postPicklistRoles(@PathVariable("picklistId") String picklistId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
