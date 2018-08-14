@@ -126,16 +126,6 @@ public class ShipmentReceiptStateEventDto extends AbstractEvent
         this.rejectionReasonId = rejectionReasonId;
     }
 
-    private String damageStatusId;
-
-    public String getDamageStatusId() {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId) {
-        this.damageStatusId = damageStatusId;
-    }
-
     private String damageReasonId;
 
     public String getDamageReasonId() {
@@ -246,6 +236,16 @@ public class ShipmentReceiptStateEventDto extends AbstractEvent
         this.version = version;
     }
 
+    private String[] damageStatusIds;
+
+    public String[] getDamageStatusIds() {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(String[] damageStatusIds) {
+        this.damageStatusIds = damageStatusIds;
+    }
+
     private Boolean isPropertyProductIdRemoved;
 
     public Boolean getIsPropertyProductIdRemoved() {
@@ -346,14 +346,14 @@ public class ShipmentReceiptStateEventDto extends AbstractEvent
         this.isPropertyRejectionReasonIdRemoved = removed;
     }
 
-    private Boolean isPropertyDamageStatusIdRemoved;
+    private Boolean isPropertyDamageStatusIdsRemoved;
 
-    public Boolean getIsPropertyDamageStatusIdRemoved() {
-        return this.isPropertyDamageStatusIdRemoved;
+    public Boolean getIsPropertyDamageStatusIdsRemoved() {
+        return this.isPropertyDamageStatusIdsRemoved;
     }
 
-    public void setIsPropertyDamageStatusIdRemoved(Boolean removed) {
-        this.isPropertyDamageStatusIdRemoved = removed;
+    public void setIsPropertyDamageStatusIdsRemoved(Boolean removed) {
+        this.isPropertyDamageStatusIdsRemoved = removed;
     }
 
     private Boolean isPropertyDamageReasonIdRemoved;

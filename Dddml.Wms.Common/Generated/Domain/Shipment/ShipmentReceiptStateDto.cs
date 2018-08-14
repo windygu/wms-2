@@ -81,12 +81,6 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        public virtual string DamageStatusId
-        {
-            get;
-            set;
-        }
-
         public virtual string DamageReasonId
         {
             get;
@@ -171,6 +165,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual string[] DamageStatusIds
+        {
+            get;
+            set;
+        }
+
         public virtual ShipmentReceiptImageStateDto[] ShipmentReceiptImages
         {
             get;
@@ -197,7 +197,6 @@ namespace Dddml.Wms.Domain.Shipment
             state.ReturnId = this.ReturnId;
             state.ReturnItemSeqId = this.ReturnItemSeqId;
             state.RejectionReasonId = this.RejectionReasonId;
-            state.DamageStatusId = this.DamageStatusId;
             state.DamageReasonId = this.DamageReasonId;
             state.ReceivedBy = this.ReceivedBy;
             state.DatetimeReceived = this.DatetimeReceived;
@@ -212,6 +211,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.DamageStatusIds != null) { state.DamageStatusIds = new HashSet<string>(this.DamageStatusIds); }
             if (this.ShipmentReceiptImages != null) { foreach (var s in this.ShipmentReceiptImages) { state.ShipmentReceiptImages.AddToSave(s.ToShipmentReceiptImageState()); } };
 
             return state;

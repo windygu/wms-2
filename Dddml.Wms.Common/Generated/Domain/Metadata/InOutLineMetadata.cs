@@ -134,18 +134,14 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "DamageStatusId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
+                    Name = "DamageStatusIds",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
                     GenericTypeName = "",
-                    ReferenceTypeName = "StatusItem",
+                    ReferenceTypeName = "",
                     ReferenceName = "",
-                    ItemTypeName = "",
+                    ItemTypeName = "id",
                     InverseOf = "",
                     IsHoisted = false,
                     IsId = false,
@@ -160,7 +156,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyCreatedAt = false,
                     IsReservedPropertyUpdatedBy = false,
                     IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
+                    IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
                     Name = "Description",
@@ -767,8 +763,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("productId", "ProductId");
             d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
-            d.Add("DamageStatusId", "DamageStatusId");
-            d.Add("damageStatusId", "DamageStatusId");
             d.Add("Description", "Description");
             d.Add("description", "Description");
             d.Add("QuantityUomId", "QuantityUomId");

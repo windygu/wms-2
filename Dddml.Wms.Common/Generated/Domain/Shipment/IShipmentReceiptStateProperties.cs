@@ -36,8 +36,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string RejectionReasonId { get; set; }
 
-		string DamageStatusId { get; set; }
-
 		string DamageReasonId { get; set; }
 
 		string ReceivedBy { get; set; }
@@ -59,6 +57,8 @@ namespace Dddml.Wms.Domain.Shipment
 		// Outer Id:
 
 		string ShipmentId { get; set; }
+
+		ISet<string> DamageStatusIds { get; set; }
 
 	}
 

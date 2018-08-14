@@ -40,8 +40,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
-		public virtual string DamageStatusId { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual string QuantityUomId { get; set; }
@@ -61,6 +59,36 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual bool? Active { get; set; }
 
 		public virtual string InOutDocumentNumber { get; set; }
+
+        public virtual string[] DamageStatusIds { get; set; }
+
+        ISet<string> ICreateOrMergePatchOrRemoveInOutLine.DamageStatusIds 
+        {
+            get
+            {
+                if (this.DamageStatusIds != null)
+                {
+                    var set = new HashSet<string>();
+                    foreach (var i in this.DamageStatusIds)
+                    {
+                        set.Add(i);
+                    }
+                    return set;
+                } else { return null; }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    var list = new List<string>();
+                    foreach (var i in value)
+                    {
+                        list.Add(i);
+                    }
+                    this.DamageStatusIds = list.ToArray();
+                } else { this.DamageStatusIds = null; }
+            }
+        }
 
 		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
 
@@ -119,13 +147,13 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual bool? IsPropertyDamageStatusIdRemoved { get; set; }
+		public virtual bool? IsPropertyDamageStatusIdsRemoved { get; set; }
 
-        bool IMergePatchInOutLine.IsPropertyDamageStatusIdRemoved
+        bool IMergePatchInOutLine.IsPropertyDamageStatusIdsRemoved
         {
             get
             {
-                var b = this.IsPropertyDamageStatusIdRemoved;
+                var b = this.IsPropertyDamageStatusIdsRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -134,7 +162,7 @@ namespace Dddml.Wms.Domain.InOut
             }
             set
             {
-                this.IsPropertyDamageStatusIdRemoved = value;
+                this.IsPropertyDamageStatusIdsRemoved = value;
             }
         }
 

@@ -141,18 +141,6 @@ public class ShipmentReceiptStateDto
         this.rejectionReasonId = rejectionReasonId;
     }
 
-    private String damageStatusId;
-
-    public String getDamageStatusId()
-    {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId)
-    {
-        this.damageStatusId = damageStatusId;
-    }
-
     private String damageReasonId;
 
     public String getDamageReasonId()
@@ -331,6 +319,16 @@ public class ShipmentReceiptStateDto
     public void setShipmentReceiptImages(ShipmentReceiptImageStateDto[] shipmentReceiptImages)
     {
         this.shipmentReceiptImages = shipmentReceiptImages;
+    }
+
+    private String[] damageStatusIds;
+
+    public String[] getDamageStatusIds() {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(String[] damageStatusIds) {
+        this.damageStatusIds = damageStatusIds;
     }
 
 }

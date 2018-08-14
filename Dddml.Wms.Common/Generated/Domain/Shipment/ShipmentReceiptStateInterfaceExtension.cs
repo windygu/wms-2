@@ -58,7 +58,6 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ReturnId = state.ReturnId;
             cmd.ReturnItemSeqId = state.ReturnItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
-            cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
             cmd.ReceivedBy = state.ReceivedBy;
             cmd.DatetimeReceived = state.DatetimeReceived;
@@ -79,7 +78,6 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.ReturnId == null) { cmd.IsPropertyReturnIdRemoved = true; }
             if (state.ReturnItemSeqId == null) { cmd.IsPropertyReturnItemSeqIdRemoved = true; }
             if (state.RejectionReasonId == null) { cmd.IsPropertyRejectionReasonIdRemoved = true; }
-            if (state.DamageStatusId == null) { cmd.IsPropertyDamageStatusIdRemoved = true; }
             if (state.DamageReasonId == null) { cmd.IsPropertyDamageReasonIdRemoved = true; }
             if (state.ReceivedBy == null) { cmd.IsPropertyReceivedByRemoved = true; }
             if (state.DatetimeReceived == null) { cmd.IsPropertyDatetimeReceivedRemoved = true; }
@@ -112,7 +110,6 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ReturnId = state.ReturnId;
             cmd.ReturnItemSeqId = state.ReturnItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
-            cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
             cmd.ReceivedBy = state.ReceivedBy;
             cmd.DatetimeReceived = state.DatetimeReceived;

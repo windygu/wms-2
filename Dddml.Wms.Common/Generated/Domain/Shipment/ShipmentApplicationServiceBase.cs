@@ -112,12 +112,12 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual void When(ShipmentCommands.ReceiveItem c)
 		{
-			Update(c, ar => ar.ReceiveItem(c.ShipmentItemSeqId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusId, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.ReceiveItem(c.ShipmentItemSeqId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusIds, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(ShipmentCommands.AddItemAndReceipt c)
 		{
-			Update(c, ar => ar.AddItemAndReceipt(c.ReceiptSeqId, c.ProductId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusId, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.AddItemAndReceipt(c.ReceiptSeqId, c.ProductId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusIds, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(ShipmentCommands.ConfirmAllItemsReceived c)

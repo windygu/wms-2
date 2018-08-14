@@ -154,18 +154,6 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
             this.rejectionReasonId = rejectionReasonId;
         }
 
-        private String damageStatusId;
-
-        public String getDamageStatusId()
-        {
-            return this.damageStatusId;
-        }
-
-        public void setDamageStatusId(String damageStatusId)
-        {
-            this.damageStatusId = damageStatusId;
-        }
-
         private String damageReasonId;
 
         public String getDamageReasonId()
@@ -261,6 +249,18 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
         {
             this.active = active;
         }
+
+    private Set<String> damageStatusIds;
+
+    public Set<String> getDamageStatusIds()
+    {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(Set<String> damageStatusIds)
+    {
+        this.damageStatusIds = damageStatusIds;
+    }
 
         public ShipmentReceiptImageCommand.CreateShipmentReceiptImage newCreateShipmentReceiptImage()
         {
@@ -437,16 +437,16 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
             this.isPropertyRejectionReasonIdRemoved = removed;
         }
 
-        private Boolean isPropertyDamageStatusIdRemoved;
+        private Boolean isPropertyDamageStatusIdsRemoved;
 
-        public Boolean getIsPropertyDamageStatusIdRemoved()
+        public Boolean getIsPropertyDamageStatusIdsRemoved()
         {
-            return this.isPropertyDamageStatusIdRemoved;
+            return this.isPropertyDamageStatusIdsRemoved;
         }
 
-        public void setIsPropertyDamageStatusIdRemoved(Boolean removed)
+        public void setIsPropertyDamageStatusIdsRemoved(Boolean removed)
         {
-            this.isPropertyDamageStatusIdRemoved = removed;
+            this.isPropertyDamageStatusIdsRemoved = removed;
         }
 
         private Boolean isPropertyDamageReasonIdRemoved;

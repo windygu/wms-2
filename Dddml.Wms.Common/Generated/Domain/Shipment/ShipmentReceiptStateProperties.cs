@@ -36,8 +36,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string RejectionReasonId { get; set; }
 
-		public virtual string DamageStatusId { get; set; }
-
 		public virtual string DamageReasonId { get; set; }
 
 		public virtual string ReceivedBy { get; set; }
@@ -59,6 +57,8 @@ namespace Dddml.Wms.Domain.Shipment
 		// Outer Id:
 
 		public virtual string ShipmentId { get; set; }
+
+		public virtual ISet<string> DamageStatusIds { get; set; }
 
         protected virtual void InitializeProperties()
         { 

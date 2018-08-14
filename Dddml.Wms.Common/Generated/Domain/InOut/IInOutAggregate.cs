@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		void Reverse(long version, string commandId, string requesterId);
 
-		void AddLine(string lineNumber, string locatorId, string productId, IDictionary<string, object> attributeSetInstance, string damageStatusId, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId);
+		void AddLine(string lineNumber, string locatorId, string productId, IDictionary<string, object> attributeSetInstance, IEnumerable<string> damageStatusIds, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId);
 
 		void DocumentAction(string value, long version, string commandId, string requesterId);
 

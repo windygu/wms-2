@@ -58,18 +58,6 @@ public class InOutLineStateDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
-    private String damageStatusId;
-
-    public String getDamageStatusId()
-    {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId)
-    {
-        this.damageStatusId = damageStatusId;
-    }
-
     private String description;
 
     public String getDescription()
@@ -260,6 +248,16 @@ public class InOutLineStateDto
     public void setInOutLineImages(InOutLineImageStateDto[] inOutLineImages)
     {
         this.inOutLineImages = inOutLineImages;
+    }
+
+    private String[] damageStatusIds;
+
+    public String[] getDamageStatusIds() {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(String[] damageStatusIds) {
+        this.damageStatusIds = damageStatusIds;
     }
 
 }

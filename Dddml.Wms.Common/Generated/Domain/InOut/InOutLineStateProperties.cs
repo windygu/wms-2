@@ -22,8 +22,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
-		public virtual string DamageStatusId { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual string QuantityUomId { get; set; }
@@ -47,6 +45,8 @@ namespace Dddml.Wms.Domain.InOut
 		// Outer Id:
 
 		public virtual string InOutDocumentNumber { get; set; }
+
+		public virtual ISet<string> DamageStatusIds { get; set; }
 
         protected virtual void InitializeProperties()
         { 

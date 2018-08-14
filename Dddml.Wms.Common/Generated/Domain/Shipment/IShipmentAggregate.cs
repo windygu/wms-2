@@ -28,9 +28,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void Ship(long version, string commandId, string requesterId);
 
-		void ReceiveItem(string shipmentItemSeqId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, string damageStatusId, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId);
+		void ReceiveItem(string shipmentItemSeqId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId);
 
-		void AddItemAndReceipt(string receiptSeqId, string productId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, string damageStatusId, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId);
+		void AddItemAndReceipt(string receiptSeqId, string productId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId);
 
 		void ConfirmAllItemsReceived(string destinationLocatorId, long version, string commandId, string requesterId);
 

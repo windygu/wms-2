@@ -1258,7 +1258,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string RejectionReasonId { get; set; }
 
-            public string DamageStatusId { get; set; }
+            public string[] DamageStatusIds { get; set; }
 
             public string DamageReasonId { get; set; }
 
@@ -1284,7 +1284,7 @@ namespace Dddml.Wms.Domain.Shipment
                 cmd.ShipmentItemSeqId = this.ShipmentItemSeqId;
                 cmd.AttributeSetInstance = this.AttributeSetInstance;
                 cmd.RejectionReasonId = this.RejectionReasonId;
-                cmd.DamageStatusId = this.DamageStatusId;
+                cmd.DamageStatusIds = this.DamageStatusIds == null ? null : new HashSet<string>(this.DamageStatusIds);
                 cmd.DamageReasonId = this.DamageReasonId;
                 cmd.AcceptedQuantity = this.AcceptedQuantity;
                 cmd.RejectedQuantity = this.RejectedQuantity;
@@ -1315,7 +1315,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string RejectionReasonId { get; set; }
 
-            public string DamageStatusId { get; set; }
+            public string[] DamageStatusIds { get; set; }
 
             public string DamageReasonId { get; set; }
 
@@ -1342,7 +1342,7 @@ namespace Dddml.Wms.Domain.Shipment
                 cmd.ProductId = this.ProductId;
                 cmd.AttributeSetInstance = this.AttributeSetInstance;
                 cmd.RejectionReasonId = this.RejectionReasonId;
-                cmd.DamageStatusId = this.DamageStatusId;
+                cmd.DamageStatusIds = this.DamageStatusIds == null ? null : new HashSet<string>(this.DamageStatusIds);
                 cmd.DamageReasonId = this.DamageReasonId;
                 cmd.AcceptedQuantity = this.AcceptedQuantity;
                 cmd.RejectedQuantity = this.RejectedQuantity;

@@ -58,10 +58,6 @@ public interface ShipmentReceiptCommand extends Command
 
         void setRejectionReasonId(String rejectionReasonId);
 
-        String getDamageStatusId();
-
-        void setDamageStatusId(String damageStatusId);
-
         String getDamageReasonId();
 
         void setDamageReasonId(String damageReasonId);
@@ -93,6 +89,10 @@ public interface ShipmentReceiptCommand extends Command
         Boolean getActive();
 
         void setActive(Boolean active);
+
+        Set<String> getDamageStatusIds();
+
+        void setDamageStatusIds(Set<String> damageStatusIds);
 
     }
 
@@ -146,9 +146,9 @@ public interface ShipmentReceiptCommand extends Command
 
         void setIsPropertyRejectionReasonIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyDamageStatusIdRemoved();
+        Boolean getIsPropertyDamageStatusIdsRemoved();
 
-        void setIsPropertyDamageStatusIdRemoved(Boolean removed);
+        void setIsPropertyDamageStatusIdsRemoved(Boolean removed);
 
         Boolean getIsPropertyDamageReasonIdRemoved();
 

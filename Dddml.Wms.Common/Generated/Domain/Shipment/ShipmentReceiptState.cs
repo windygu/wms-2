@@ -230,7 +230,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.RejectionReasonId = e.RejectionReasonId;
 
-			this.DamageStatusId = e.DamageStatusId;
+			this.DamageStatusIds = e.DamageStatusIds;
 
 			this.DamageReasonId = e.DamageReasonId;
 
@@ -383,16 +383,16 @@ namespace Dddml.Wms.Domain.Shipment
 				this.RejectionReasonId = e.RejectionReasonId;
 			}
 
-			if (e.DamageStatusId == null)
+			if (e.DamageStatusIds == null)
 			{
-				if (e.IsPropertyDamageStatusIdRemoved)
+				if (e.IsPropertyDamageStatusIdsRemoved)
 				{
-					this.DamageStatusId = default(string);
+					this.DamageStatusIds = null;
 				}
 			}
 			else
 			{
-				this.DamageStatusId = e.DamageStatusId;
+				this.DamageStatusIds = e.DamageStatusIds;
 			}
 
 			if (e.DamageReasonId == null)

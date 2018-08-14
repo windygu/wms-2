@@ -151,34 +151,6 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual string DamageStatusId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DamageStatusId"))
-                {
-                    return _state.DamageStatusId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.DamageStatusId = value;
-            }
-        }
-
-        string IInOutLineStateProperties.DamageStatusId
-        {
-            get 
-            {
-                return (this._state as IInOutLineStateProperties).DamageStatusId;
-            }
-            set 
-            {
-                (this._state as IInOutLineStateProperties).DamageStatusId = value;
-            }
-        }
-
 		public virtual string Description
 		{
             get
@@ -651,6 +623,43 @@ namespace Dddml.Wms.Domain.InOut
         bool IInOutLineState.IsUnsaved
         {
             get { return this.Version == InOutLineState.VersionZero; }
+        }
+
+        public virtual string[] DamageStatusIds
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("DamageStatusIds"))
+                {
+                    return null;
+                }
+                var dtos = new List<string>();
+                if (this._state.DamageStatusIds != null)
+                {
+                    foreach (var s in this._state.DamageStatusIds)
+                    {
+                        var dto = s;
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new string[0]; }
+                var states = new HashSet<string>();
+                foreach (var s in value)
+                {
+                    states.Add(s);
+                }
+                this._state.DamageStatusIds = states;
+            }
+        }
+
+        ISet<string> IInOutLineStateProperties.DamageStatusIds 
+        {
+            get { return _state.DamageStatusIds; }
+            set { _state.DamageStatusIds = value; }
         }
 
         public virtual IInOutLineImageStateDto[] InOutLineImages

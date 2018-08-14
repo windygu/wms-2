@@ -15,9 +15,7 @@ import org.dddml.wms.specialization.IdGenerator;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by yangjiefeng on 2018/1/15.
@@ -302,7 +300,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         line.setQuantityUomId(d.getQuantityUomId());
         line.setMovementQuantity(d.getMovementQuantity());
         line.setDescription(d.getDescription());
-        line.setDamageStatusId(d.getDamageStatusId());
+        line.setDamageStatusIds(d.getDamageStatusIds() == null ? null : new HashSet<>(d.getDamageStatusIds()));
         line.setActive(true);
         //todo More proerties???
         return line;

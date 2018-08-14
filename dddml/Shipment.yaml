@@ -257,9 +257,9 @@ aggregates:
             referenceType: RejectionReason
           
           # 损坏状态 Id.
-          DamageStatusId:
-            type: id
-            referenceType: StatusItem
+          DamageStatusIds:
+            itemType: id
+            #referenceType: StatusItem
           
           # 损坏原因 Id.
           DamageReasonId:
@@ -472,9 +472,9 @@ aggregates:
           RejectionReasonId:
             type: id
             referenceType: RejectionReason
-          DamageStatusId:
-            type: id
-            referenceType: StatusItem
+          DamageStatusIds:
+            itemType: id
+            #referenceType: StatusItem
           DamageReasonId:
             type: id
             referenceType: DamageReason
@@ -507,9 +507,9 @@ aggregates:
           RejectionReasonId:
             type: id
             referenceType: RejectionReason
-          DamageStatusId:
-            type: id
-            referenceType: StatusItem
+          DamageStatusIds:
+            itemType: id
+            #referenceType: StatusItem
           DamageReasonId:
             type: id
             referenceType: DamageReason 

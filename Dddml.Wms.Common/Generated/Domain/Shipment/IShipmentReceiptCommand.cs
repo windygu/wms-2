@@ -45,8 +45,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string RejectionReasonId { get; set; }
 
-		string DamageStatusId { get; set; }
-
 		string DamageReasonId { get; set; }
 
 		string ReceivedBy { get; set; }
@@ -62,6 +60,8 @@ namespace Dddml.Wms.Domain.Shipment
 		decimal? DamagedQuantity { get; set; }
 
 		bool? Active { get; set; }
+
+		ISet<string> DamageStatusIds { get; set; }
 
 
 	}
@@ -97,7 +97,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool IsPropertyRejectionReasonIdRemoved { get; set; }
 
-		bool IsPropertyDamageStatusIdRemoved { get; set; }
+		bool IsPropertyDamageStatusIdsRemoved { get; set; }
 
 		bool IsPropertyDamageReasonIdRemoved { get; set; }
 

@@ -60,10 +60,6 @@ public interface ShipmentReceiptState
 
     void setRejectionReasonId(String rejectionReasonId);
 
-    String getDamageStatusId();
-
-    void setDamageStatusId(String damageStatusId);
-
     String getDamageReasonId();
 
     void setDamageReasonId(String damageReasonId);
@@ -119,6 +115,10 @@ public interface ShipmentReceiptState
     String getShipmentId();
 
     void setShipmentId(String shipmentId);
+
+    Set<String> getDamageStatusIds();
+
+    void setDamageStatusIds(Set<String> damageStatusIds);
 
 
     boolean isStateUnsaved();

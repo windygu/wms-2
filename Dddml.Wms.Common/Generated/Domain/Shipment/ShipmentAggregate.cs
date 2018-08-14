@@ -585,7 +585,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.ReturnId = c.ReturnId;
             e.ReturnItemSeqId = c.ReturnItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
-            e.DamageStatusId = c.DamageStatusId;
+            e.DamageStatusIds = c.DamageStatusIds;
             e.DamageReasonId = c.DamageReasonId;
             e.ReceivedBy = c.ReceivedBy;
             e.DatetimeReceived = c.DatetimeReceived;
@@ -629,7 +629,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.ReturnId = c.ReturnId;
             e.ReturnItemSeqId = c.ReturnItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
-            e.DamageStatusId = c.DamageStatusId;
+            e.DamageStatusIds = c.DamageStatusIds;
             e.DamageReasonId = c.DamageReasonId;
             e.ReceivedBy = c.ReceivedBy;
             e.DatetimeReceived = c.DatetimeReceived;
@@ -648,7 +648,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyReturnIdRemoved = c.IsPropertyReturnIdRemoved;
             e.IsPropertyReturnItemSeqIdRemoved = c.IsPropertyReturnItemSeqIdRemoved;
             e.IsPropertyRejectionReasonIdRemoved = c.IsPropertyRejectionReasonIdRemoved;
-            e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;
+            e.IsPropertyDamageStatusIdsRemoved = c.IsPropertyDamageStatusIdsRemoved;
             e.IsPropertyDamageReasonIdRemoved = c.IsPropertyDamageReasonIdRemoved;
             e.IsPropertyReceivedByRemoved = c.IsPropertyReceivedByRemoved;
             e.IsPropertyDatetimeReceivedRemoved = c.IsPropertyDatetimeReceivedRemoved;

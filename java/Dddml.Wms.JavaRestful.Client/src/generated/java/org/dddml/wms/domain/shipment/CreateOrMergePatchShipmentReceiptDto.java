@@ -156,21 +156,6 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
     }
 
     /**
-     * Damage Status Id
-     */
-    private String damageStatusId;
-
-    public String getDamageStatusId()
-    {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId)
-    {
-        this.damageStatusId = damageStatusId;
-    }
-
-    /**
      * Damage Reason Id
      */
     private String damageReasonId;
@@ -288,6 +273,19 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
     public void setActive(Boolean active)
     {
         this.active = active;
+    }
+
+    /**
+     * Damage Status Ids
+     */
+    private String[] damageStatusIds;
+
+    public String[] getDamageStatusIds() {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(String[] damageStatusIds) {
+        this.damageStatusIds = damageStatusIds;
     }
 
     private CreateOrMergePatchShipmentReceiptImageDto[] shipmentReceiptImages;
@@ -422,16 +420,16 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.isPropertyRejectionReasonIdRemoved = removed;
     }
 
-    private Boolean isPropertyDamageStatusIdRemoved;
+    private Boolean isPropertyDamageStatusIdsRemoved;
 
-    public Boolean getIsPropertyDamageStatusIdRemoved()
+    public Boolean getIsPropertyDamageStatusIdsRemoved()
     {
-        return this.isPropertyDamageStatusIdRemoved;
+        return this.isPropertyDamageStatusIdsRemoved;
     }
 
-    public void setIsPropertyDamageStatusIdRemoved(Boolean removed)
+    public void setIsPropertyDamageStatusIdsRemoved(Boolean removed)
     {
-        this.isPropertyDamageStatusIdRemoved = removed;
+        this.isPropertyDamageStatusIdsRemoved = removed;
     }
 
     private Boolean isPropertyDamageReasonIdRemoved;

@@ -72,18 +72,6 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
-    private String damageStatusId;
-
-    public String getDamageStatusId()
-    {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId)
-    {
-        this.damageStatusId = damageStatusId;
-    }
-
     private String description;
 
     public String getDescription()
@@ -264,6 +252,18 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         this.deleted = deleted;
     }
 
+    private Set<String> damageStatusIds;
+
+    public Set<String> getDamageStatusIds()
+    {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(Set<String> damageStatusIds)
+    {
+        this.damageStatusIds = damageStatusIds;
+    }
+
     public boolean isStateUnsaved() 
     {
         return this.getVersion() == null;
@@ -333,7 +333,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         this.setLocatorId(e.getLocatorId());
         this.setProductId(e.getProductId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
-        this.setDamageStatusId(e.getDamageStatusId());
+        this.setDamageStatusIds(e.getDamageStatusIds());
         this.setDescription(e.getDescription());
         this.setQuantityUomId(e.getQuantityUomId());
         this.setMovementQuantity(e.getMovementQuantity());
@@ -392,16 +392,16 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         {
             this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         }
-        if (e.getDamageStatusId() == null)
+        if (e.getDamageStatusIds() == null)
         {
-            if (e.getIsPropertyDamageStatusIdRemoved() != null && e.getIsPropertyDamageStatusIdRemoved())
+            if (e.getIsPropertyDamageStatusIdsRemoved() != null && e.getIsPropertyDamageStatusIdsRemoved())
             {
-                this.setDamageStatusId(null);
+                this.setDamageStatusIds(null);
             }
         }
         else
         {
-            this.setDamageStatusId(e.getDamageStatusId());
+            this.setDamageStatusIds(e.getDamageStatusIds());
         }
         if (e.getDescription() == null)
         {

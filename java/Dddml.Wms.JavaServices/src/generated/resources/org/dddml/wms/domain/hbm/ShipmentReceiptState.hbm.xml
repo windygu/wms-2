@@ -24,7 +24,6 @@
 	<property name="returnId" ><column name="ReturnId" sql-type="VARCHAR(20)" /></property>
 	<property name="returnItemSeqId" ><column name="ReturnItemSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></property>
-	<property name="damageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="damageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(60)" /></property>
 	<property name="receivedBy" ><column name="ReceivedBy" sql-type="VARCHAR(250)" /></property>
 	<property name="datetimeReceived" ><column name="DatetimeReceived" sql-type="DATETIME" /></property>
@@ -40,6 +39,17 @@
 
     <property name="updatedAt" column="UpdatedAt" />
 
+      <set name="damageStatusIds" table="ShipmentReceiptDamageStatusIds" lazy="false">
+<key>
+
+<column name="ShipmentReceiptIdShipmentId" />
+<column name="ShipmentReceiptIdReceiptSeqId" />
+</key>				
+<element column="DamageStatusIdsItem" type="string" not-null="true" />
+
+      </set>
+
+            
 
   </class>
   

@@ -39,12 +39,6 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        public virtual string DamageStatusId
-        {
-            get;
-            set;
-        }
-
         public virtual string Description
         {
             get;
@@ -135,6 +129,12 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
+        public virtual string[] DamageStatusIds
+        {
+            get;
+            set;
+        }
+
         public virtual InOutLineImageStateDto[] InOutLineImages
         {
             get;
@@ -154,7 +154,6 @@ namespace Dddml.Wms.Domain.InOut
             state.LocatorId = this.LocatorId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
-            state.DamageStatusId = this.DamageStatusId;
             state.Description = this.Description;
             state.QuantityUomId = this.QuantityUomId;
             if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }
@@ -170,6 +169,7 @@ namespace Dddml.Wms.Domain.InOut
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.DamageStatusIds != null) { state.DamageStatusIds = new HashSet<string>(this.DamageStatusIds); }
             if (this.InOutLineImages != null) { foreach (var s in this.InOutLineImages) { state.InOutLineImages.AddToSave(s.ToInOutLineImageState()); } };
 
             return state;

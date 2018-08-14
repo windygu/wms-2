@@ -29,7 +29,6 @@ public final class ShipmentReceiptMetadata {
             "returnId",
             "returnItemSeqId",
             "rejectionReasonId",
-            "damageStatusId",
             "damageReasonId",
             "receivedBy",
             "datetimeReceived",
@@ -50,7 +49,6 @@ public final class ShipmentReceiptMetadata {
     };
 
     public static final String[] propertyTypes = new String[] {
-            "String",
             "String",
             "String",
             "String",
@@ -115,8 +113,6 @@ public final class ShipmentReceiptMetadata {
         aliasMap.put("ReturnItemSeqId", "returnItemSeqId");
         aliasMap.put("rejectionReasonId", "rejectionReasonId");
         aliasMap.put("RejectionReasonId", "rejectionReasonId");
-        aliasMap.put("damageStatusId", "damageStatusId");
-        aliasMap.put("DamageStatusId", "damageStatusId");
         aliasMap.put("damageReasonId", "damageReasonId");
         aliasMap.put("DamageReasonId", "damageReasonId");
         aliasMap.put("receivedBy", "receivedBy");

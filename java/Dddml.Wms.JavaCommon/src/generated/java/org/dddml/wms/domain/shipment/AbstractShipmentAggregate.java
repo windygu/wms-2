@@ -382,7 +382,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setReturnId(c.getReturnId());
         e.setReturnItemSeqId(c.getReturnItemSeqId());
         e.setRejectionReasonId(c.getRejectionReasonId());
-        e.setDamageStatusId(c.getDamageStatusId());
+        e.setDamageStatusIds(c.getDamageStatusIds());
         e.setDamageReasonId(c.getDamageReasonId());
         e.setReceivedBy(c.getReceivedBy());
         e.setDatetimeReceived(c.getDatetimeReceived());
@@ -423,7 +423,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setReturnId(c.getReturnId());
         e.setReturnItemSeqId(c.getReturnItemSeqId());
         e.setRejectionReasonId(c.getRejectionReasonId());
-        e.setDamageStatusId(c.getDamageStatusId());
+        e.setDamageStatusIds(c.getDamageStatusIds());
         e.setDamageReasonId(c.getDamageReasonId());
         e.setReceivedBy(c.getReceivedBy());
         e.setDatetimeReceived(c.getDatetimeReceived());
@@ -442,7 +442,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setIsPropertyReturnIdRemoved(c.getIsPropertyReturnIdRemoved());
         e.setIsPropertyReturnItemSeqIdRemoved(c.getIsPropertyReturnItemSeqIdRemoved());
         e.setIsPropertyRejectionReasonIdRemoved(c.getIsPropertyRejectionReasonIdRemoved());
-        e.setIsPropertyDamageStatusIdRemoved(c.getIsPropertyDamageStatusIdRemoved());
+        e.setIsPropertyDamageStatusIdsRemoved(c.getIsPropertyDamageStatusIdsRemoved());
         e.setIsPropertyDamageReasonIdRemoved(c.getIsPropertyDamageReasonIdRemoved());
         e.setIsPropertyReceivedByRemoved(c.getIsPropertyReceivedByRemoved());
         e.setIsPropertyDatetimeReceivedRemoved(c.getIsPropertyDatetimeReceivedRemoved());
@@ -846,12 +846,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void receiveItem(String shipmentItemSeqId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, String damageStatusId, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId) {
+        public void receiveItem(String shipmentItemSeqId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, Iterable<String> damageStatusIds, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void addItemAndReceipt(String receiptSeqId, String productId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, String damageStatusId, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId) {
+        public void addItemAndReceipt(String receiptSeqId, String productId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, Iterable<String> damageStatusIds, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 

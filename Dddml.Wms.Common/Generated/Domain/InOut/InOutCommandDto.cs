@@ -1055,7 +1055,7 @@ namespace Dddml.Wms.Domain.InOut
 
             public IDictionary<string, object> AttributeSetInstance { get; set; }
 
-            public string DamageStatusId { get; set; }
+            public string[] DamageStatusIds { get; set; }
 
             public string Description { get; set; }
 
@@ -1078,7 +1078,7 @@ namespace Dddml.Wms.Domain.InOut
                 cmd.LocatorId = this.LocatorId;
                 cmd.ProductId = this.ProductId;
                 cmd.AttributeSetInstance = this.AttributeSetInstance;
-                cmd.DamageStatusId = this.DamageStatusId;
+                cmd.DamageStatusIds = this.DamageStatusIds == null ? null : new HashSet<string>(this.DamageStatusIds);
                 cmd.Description = this.Description;
                 cmd.QuantityUomId = this.QuantityUomId;
                 cmd.MovementQuantity = this.MovementQuantity;

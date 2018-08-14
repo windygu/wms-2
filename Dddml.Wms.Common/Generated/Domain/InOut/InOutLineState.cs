@@ -229,7 +229,7 @@ namespace Dddml.Wms.Domain.InOut
 
 			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 
-			this.DamageStatusId = e.DamageStatusId;
+			this.DamageStatusIds = e.DamageStatusIds;
 
 			this.Description = e.Description;
 
@@ -302,16 +302,16 @@ namespace Dddml.Wms.Domain.InOut
 				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 			}
 
-			if (e.DamageStatusId == null)
+			if (e.DamageStatusIds == null)
 			{
-				if (e.IsPropertyDamageStatusIdRemoved)
+				if (e.IsPropertyDamageStatusIdsRemoved)
 				{
-					this.DamageStatusId = default(string);
+					this.DamageStatusIds = null;
 				}
 			}
 			else
 			{
-				this.DamageStatusId = e.DamageStatusId;
+				this.DamageStatusIds = e.DamageStatusIds;
 			}
 
 			if (e.Description == null)

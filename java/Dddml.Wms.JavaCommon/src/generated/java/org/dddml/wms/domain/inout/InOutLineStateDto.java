@@ -58,18 +58,6 @@ public class InOutLineStateDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
-    private String damageStatusId;
-
-    public String getDamageStatusId()
-    {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId)
-    {
-        this.damageStatusId = damageStatusId;
-    }
-
     private String description;
 
     public String getDescription()
@@ -262,6 +250,16 @@ public class InOutLineStateDto
         this.inOutLineImages = inOutLineImages;
     }
 
+    private String[] damageStatusIds;
+
+    public String[] getDamageStatusIds() {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(String[] damageStatusIds) {
+        this.damageStatusIds = damageStatusIds;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
@@ -302,9 +300,6 @@ public class InOutLineStateDto
             }
             if (returnedFieldsContains("AttributeSetInstanceId")) {
                 dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
-            }
-            if (returnedFieldsContains("DamageStatusId")) {
-                dto.setDamageStatusId(state.getDamageStatusId());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
@@ -350,6 +345,15 @@ public class InOutLineStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("DamageStatusIds")) {
+                ArrayList<String> arrayList = new ArrayList();
+                if (state.getDamageStatusIds() != null) {
+                    for (String s : state.getDamageStatusIds()) {
+                        arrayList.add(s);
+                    }
+                }
+                dto.setDamageStatusIds(arrayList.toArray(new String[0]));
             }
             if (returnedFieldsContains("InOutLineImages")) {
                 ArrayList<InOutLineImageStateDto> arrayList = new ArrayList();

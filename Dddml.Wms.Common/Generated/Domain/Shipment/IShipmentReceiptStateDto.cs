@@ -80,12 +80,6 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        string DamageStatusId
-        {
-            get;
-            set;
-        }
-
         string DamageReasonId
         {
             get;
@@ -165,6 +159,12 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
         DateTime? UpdatedAt
+        {
+            get;
+            set;
+        }
+
+        string[] DamageStatusIds
         {
             get;
             set;

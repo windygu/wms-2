@@ -109,7 +109,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 c.getAttributeSetInstance(),
                 c.getAcceptedQuantity(),
                 c.getRejectedQuantity(),
-                c.getDamagedQuantity(), c.getDamageStatusId(), c.getDamageReasonId()
+                c.getDamagedQuantity(), c.getDamageStatusIds(), c.getDamageReasonId()
                 );
         // ////////////////////////////////////////////////////
         updateShipment(c, updateReceipt);
@@ -130,7 +130,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 c.getAttributeSetInstance(),
                 c.getAcceptedQuantity(),
                 c.getRejectedQuantity(),
-                c.getDamagedQuantity(), c.getDamageStatusId(), c.getDamageReasonId()
+                c.getDamagedQuantity(), c.getDamageStatusIds(), c.getDamageReasonId()
                 );
         // ////////////////////////////////////////////////////
         updateShipment(c, updateReceipt, createShipmentItem);
@@ -298,7 +298,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             Map<String, Object> attributeSetInstance,
             BigDecimal acceptedQuantity,
             BigDecimal rejectedQuantity,
-            BigDecimal damagedQuantity, String damageStatusId, String damageReasonId
+            BigDecimal damagedQuantity, List<String> damageStatusIds, String damageReasonId
             ) {
         ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = null;
         String receiptSeqId = shipmentItemSeqId;
@@ -324,7 +324,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         updateReceipt.setAcceptedQuantity(acceptedQuantity);
         updateReceipt.setRejectedQuantity(rejectedQuantity);
         updateReceipt.setDamagedQuantity(damagedQuantity);
-        updateReceipt.setDamageStatusId(damageStatusId);
+        updateReceipt.setDamageStatusIds(damageStatusIds == null ? null : new HashSet<>(damageStatusIds));
         updateReceipt.setDamageReasonId(damageReasonId);
         updateReceipt.setReceivedBy(c.getRequesterId());
         return updateReceipt;

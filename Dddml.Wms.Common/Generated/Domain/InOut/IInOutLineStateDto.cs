@@ -38,12 +38,6 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        string DamageStatusId
-        {
-            get;
-            set;
-        }
-
         string Description
         {
             get;
@@ -129,6 +123,12 @@ namespace Dddml.Wms.Domain.InOut
         }
 
         DateTime? UpdatedAt
+        {
+            get;
+            set;
+        }
+
+        string[] DamageStatusIds
         {
             get;
             set;

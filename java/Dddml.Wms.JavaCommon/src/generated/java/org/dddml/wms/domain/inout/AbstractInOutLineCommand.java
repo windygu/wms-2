@@ -71,18 +71,6 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.attributeSetInstanceId = attributeSetInstanceId;
         }
 
-        private String damageStatusId;
-
-        public String getDamageStatusId()
-        {
-            return this.damageStatusId;
-        }
-
-        public void setDamageStatusId(String damageStatusId)
-        {
-            this.damageStatusId = damageStatusId;
-        }
-
         private String description;
 
         public String getDescription()
@@ -191,6 +179,18 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.active = active;
         }
 
+    private Set<String> damageStatusIds;
+
+    public Set<String> getDamageStatusIds()
+    {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(Set<String> damageStatusIds)
+    {
+        this.damageStatusIds = damageStatusIds;
+    }
+
         public InOutLineImageCommand.CreateInOutLineImage newCreateInOutLineImage()
         {
             AbstractInOutLineImageCommand.SimpleCreateInOutLineImage c = new AbstractInOutLineImageCommand.SimpleCreateInOutLineImage();
@@ -282,16 +282,16 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.isPropertyAttributeSetInstanceIdRemoved = removed;
         }
 
-        private Boolean isPropertyDamageStatusIdRemoved;
+        private Boolean isPropertyDamageStatusIdsRemoved;
 
-        public Boolean getIsPropertyDamageStatusIdRemoved()
+        public Boolean getIsPropertyDamageStatusIdsRemoved()
         {
-            return this.isPropertyDamageStatusIdRemoved;
+            return this.isPropertyDamageStatusIdsRemoved;
         }
 
-        public void setIsPropertyDamageStatusIdRemoved(Boolean removed)
+        public void setIsPropertyDamageStatusIdsRemoved(Boolean removed)
         {
-            this.isPropertyDamageStatusIdRemoved = removed;
+            this.isPropertyDamageStatusIdsRemoved = removed;
         }
 
         private Boolean isPropertyDescriptionRemoved;

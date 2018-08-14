@@ -53,8 +53,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string RejectionReasonId { get; set; }
 
-		public virtual string DamageStatusId { get; set; }
-
 		public virtual string DamageReasonId { get; set; }
 
 		public virtual string ReceivedBy { get; set; }
@@ -70,6 +68,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual decimal? DamagedQuantity { get; set; }
 
 		public virtual bool? Active { get; set; }
+
+		public virtual ISet<string> DamageStatusIds { get; set; }
 
 		// Outer Id:
 
@@ -154,7 +154,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual bool IsPropertyRejectionReasonIdRemoved { get; set; }
 
-		public virtual bool IsPropertyDamageStatusIdRemoved { get; set; }
+		public virtual bool IsPropertyDamageStatusIdsRemoved { get; set; }
 
 		public virtual bool IsPropertyDamageReasonIdRemoved { get; set; }
 

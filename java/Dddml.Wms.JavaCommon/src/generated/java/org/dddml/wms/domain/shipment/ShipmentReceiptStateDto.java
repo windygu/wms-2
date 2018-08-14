@@ -141,18 +141,6 @@ public class ShipmentReceiptStateDto
         this.rejectionReasonId = rejectionReasonId;
     }
 
-    private String damageStatusId;
-
-    public String getDamageStatusId()
-    {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId)
-    {
-        this.damageStatusId = damageStatusId;
-    }
-
     private String damageReasonId;
 
     public String getDamageReasonId()
@@ -333,6 +321,16 @@ public class ShipmentReceiptStateDto
         this.shipmentReceiptImages = shipmentReceiptImages;
     }
 
+    private String[] damageStatusIds;
+
+    public String[] getDamageStatusIds() {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(String[] damageStatusIds) {
+        this.damageStatusIds = damageStatusIds;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
@@ -395,9 +393,6 @@ public class ShipmentReceiptStateDto
             if (returnedFieldsContains("RejectionReasonId")) {
                 dto.setRejectionReasonId(state.getRejectionReasonId());
             }
-            if (returnedFieldsContains("DamageStatusId")) {
-                dto.setDamageStatusId(state.getDamageStatusId());
-            }
             if (returnedFieldsContains("DamageReasonId")) {
                 dto.setDamageReasonId(state.getDamageReasonId());
             }
@@ -439,6 +434,15 @@ public class ShipmentReceiptStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("DamageStatusIds")) {
+                ArrayList<String> arrayList = new ArrayList();
+                if (state.getDamageStatusIds() != null) {
+                    for (String s : state.getDamageStatusIds()) {
+                        arrayList.add(s);
+                    }
+                }
+                dto.setDamageStatusIds(arrayList.toArray(new String[0]));
             }
             if (returnedFieldsContains("ShipmentReceiptImages")) {
                 ArrayList<ShipmentReceiptImageStateDto> arrayList = new ArrayList();

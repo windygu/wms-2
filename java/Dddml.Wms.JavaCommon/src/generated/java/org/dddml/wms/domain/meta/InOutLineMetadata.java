@@ -22,7 +22,6 @@ public final class InOutLineMetadata {
             "locatorId",
             "productId",
             "attributeSetInstanceId",
-            "damageStatusId",
             "description",
             "quantityUomId",
             "movementQuantity",
@@ -44,7 +43,6 @@ public final class InOutLineMetadata {
     };
 
     public static final String[] propertyTypes = new String[] {
-            "String",
             "String",
             "String",
             "String",
@@ -89,8 +87,6 @@ public final class InOutLineMetadata {
         aliasMap.put("ProductId", "productId");
         aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
-        aliasMap.put("damageStatusId", "damageStatusId");
-        aliasMap.put("DamageStatusId", "damageStatusId");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
         aliasMap.put("quantityUomId", "quantityUomId");

@@ -46,7 +46,6 @@ namespace Dddml.Wms.Domain.InOut
             dto.LocatorId = e.LocatorId;
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
-            dto.DamageStatusId = e.DamageStatusId;
             dto.Description = e.Description;
             dto.QuantityUomId = e.QuantityUomId;
             dto.MovementQuantity = e.MovementQuantity;
@@ -56,6 +55,7 @@ namespace Dddml.Wms.Domain.InOut
             dto.RmaLineNumber = e.RmaLineNumber;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
+            dto.DamageStatusIds = e.DamageStatusIds.ToArray();
             var inOutLineImageEvents = new List<InOutLineImageStateCreatedDto>();
             foreach (var ee in e.InOutLineImageEvents)
             {
@@ -78,7 +78,6 @@ namespace Dddml.Wms.Domain.InOut
             dto.LocatorId = e.LocatorId;
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
-            dto.DamageStatusId = e.DamageStatusId;
             dto.Description = e.Description;
             dto.QuantityUomId = e.QuantityUomId;
             dto.MovementQuantity = e.MovementQuantity;
@@ -88,10 +87,11 @@ namespace Dddml.Wms.Domain.InOut
             dto.RmaLineNumber = e.RmaLineNumber;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
+            dto.DamageStatusIds = e.DamageStatusIds.ToArray();
             dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
-            dto.IsPropertyDamageStatusIdRemoved = e.IsPropertyDamageStatusIdRemoved;
+            dto.IsPropertyDamageStatusIdsRemoved = e.IsPropertyDamageStatusIdsRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyQuantityUomIdRemoved = e.IsPropertyQuantityUomIdRemoved;
             dto.IsPropertyMovementQuantityRemoved = e.IsPropertyMovementQuantityRemoved;

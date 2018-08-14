@@ -474,16 +474,16 @@ public class ShipmentCommandDtos
         }
 
         /**
-         * Damage Status Id
+         * Damage Status Ids
          */
-        private String damageStatusId;
+        private String[] damageStatusIds;
 
-        public String getDamageStatusId() {
-            return this.damageStatusId;
+        public String[] getDamageStatusIds() {
+            return this.damageStatusIds;
         }
 
-        public void setDamageStatusId(String damageStatusId) {
-            this.damageStatusId = damageStatusId;
+        public void setDamageStatusIds(String[] damageStatusIds) {
+            this.damageStatusIds = damageStatusIds;
         }
 
         /**
@@ -664,16 +664,16 @@ public class ShipmentCommandDtos
         }
 
         /**
-         * Damage Status Id
+         * Damage Status Ids
          */
-        private String damageStatusId;
+        private String[] damageStatusIds;
 
-        public String getDamageStatusId() {
-            return this.damageStatusId;
+        public String[] getDamageStatusIds() {
+            return this.damageStatusIds;
         }
 
-        public void setDamageStatusId(String damageStatusId) {
-            this.damageStatusId = damageStatusId;
+        public void setDamageStatusIds(String[] damageStatusIds) {
+            this.damageStatusIds = damageStatusIds;
         }
 
         /**

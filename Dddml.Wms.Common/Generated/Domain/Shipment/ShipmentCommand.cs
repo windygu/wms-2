@@ -999,7 +999,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string RejectionReasonId { get; set; }
 
-            public string DamageStatusId { get; set; }
+            public ISet<string> DamageStatusIds { get; set; }
 
             public string DamageReasonId { get; set; }
 
@@ -1089,7 +1089,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string RejectionReasonId { get; set; }
 
-            public string DamageStatusId { get; set; }
+            public ISet<string> DamageStatusIds { get; set; }
 
             public string DamageReasonId { get; set; }
 

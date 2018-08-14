@@ -807,7 +807,7 @@ namespace Dddml.Wms.Domain.InOut
 
             public IDictionary<string, object> AttributeSetInstance { get; set; }
 
-            public string DamageStatusId { get; set; }
+            public ISet<string> DamageStatusIds { get; set; }
 
             public string Description { get; set; }
 

@@ -33,10 +33,6 @@ public interface InOutLineState
 
     void setAttributeSetInstanceId(String attributeSetInstanceId);
 
-    String getDamageStatusId();
-
-    void setDamageStatusId(String damageStatusId);
-
     String getDescription();
 
     void setDescription(String description);
@@ -100,6 +96,10 @@ public interface InOutLineState
     String getInOutDocumentNumber();
 
     void setInOutDocumentNumber(String inOutDocumentNumber);
+
+    Set<String> getDamageStatusIds();
+
+    void setDamageStatusIds(Set<String> damageStatusIds);
 
 
     boolean isStateUnsaved();

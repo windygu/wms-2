@@ -48,7 +48,6 @@ namespace Dddml.Wms.Domain.Shipment
             dto.ReturnId = e.ReturnId;
             dto.ReturnItemSeqId = e.ReturnItemSeqId;
             dto.RejectionReasonId = e.RejectionReasonId;
-            dto.DamageStatusId = e.DamageStatusId;
             dto.DamageReasonId = e.DamageReasonId;
             dto.ReceivedBy = e.ReceivedBy;
             dto.DatetimeReceived = e.DatetimeReceived;
@@ -57,6 +56,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.RejectedQuantity = e.RejectedQuantity;
             dto.DamagedQuantity = e.DamagedQuantity;
             dto.Active = e.Active;
+            dto.DamageStatusIds = e.DamageStatusIds.ToArray();
             var shipmentReceiptImageEvents = new List<ShipmentReceiptImageStateCreatedDto>();
             foreach (var ee in e.ShipmentReceiptImageEvents)
             {
@@ -86,7 +86,6 @@ namespace Dddml.Wms.Domain.Shipment
             dto.ReturnId = e.ReturnId;
             dto.ReturnItemSeqId = e.ReturnItemSeqId;
             dto.RejectionReasonId = e.RejectionReasonId;
-            dto.DamageStatusId = e.DamageStatusId;
             dto.DamageReasonId = e.DamageReasonId;
             dto.ReceivedBy = e.ReceivedBy;
             dto.DatetimeReceived = e.DatetimeReceived;
@@ -95,6 +94,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.RejectedQuantity = e.RejectedQuantity;
             dto.DamagedQuantity = e.DamagedQuantity;
             dto.Active = e.Active;
+            dto.DamageStatusIds = e.DamageStatusIds.ToArray();
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyReturnIdRemoved = e.IsPropertyReturnIdRemoved;
             dto.IsPropertyReturnItemSeqIdRemoved = e.IsPropertyReturnItemSeqIdRemoved;
             dto.IsPropertyRejectionReasonIdRemoved = e.IsPropertyRejectionReasonIdRemoved;
-            dto.IsPropertyDamageStatusIdRemoved = e.IsPropertyDamageStatusIdRemoved;
+            dto.IsPropertyDamageStatusIdsRemoved = e.IsPropertyDamageStatusIdsRemoved;
             dto.IsPropertyDamageReasonIdRemoved = e.IsPropertyDamageReasonIdRemoved;
             dto.IsPropertyReceivedByRemoved = e.IsPropertyReceivedByRemoved;
             dto.IsPropertyDatetimeReceivedRemoved = e.IsPropertyDatetimeReceivedRemoved;

@@ -28,7 +28,6 @@
 	<property name="locatorId" ></property>
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
-	<property name="damageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="description" ></property>
 	<property name="quantityUomId" ></property>
 	<property name="movementQuantity" ><column name="MovementQuantity" sql-type="decimal(18,6)" /></property>
@@ -38,6 +37,18 @@
 	<property name="rmaLineNumber" ></property>
 	<property name="reversalLineNumber" ></property>
 	<property name="active" ></property>
+
+      <set name="damageStatusIds" table="InOutLineStateEventDamageStatusIds" lazy="false">
+        <key>
+
+<column name="InOutLineIdInOutDocumentNumber" />
+<column name="InOutLineIdLineNumber" />
+<column name="InOutVersion" />
+</key>
+				
+<element column="DamageStatusIdsItem" type="string" not-null="true" />
+
+      </set>
 
     <property name="version" column="Version" not-null="true" />
 
@@ -52,8 +63,6 @@
         <property name="isPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
 
         <property name="isPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
-
-        <property name="isPropertyDamageStatusIdRemoved" column="IsPropertyDamageStatusIdRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 

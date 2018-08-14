@@ -57,16 +57,6 @@ public class InOutLineStateEventDto extends AbstractEvent
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
-    private String damageStatusId;
-
-    public String getDamageStatusId() {
-        return this.damageStatusId;
-    }
-
-    public void setDamageStatusId(String damageStatusId) {
-        this.damageStatusId = damageStatusId;
-    }
-
     private String description;
 
     public String getDescription() {
@@ -187,6 +177,16 @@ public class InOutLineStateEventDto extends AbstractEvent
         this.version = version;
     }
 
+    private String[] damageStatusIds;
+
+    public String[] getDamageStatusIds() {
+        return this.damageStatusIds;
+    }
+
+    public void setDamageStatusIds(String[] damageStatusIds) {
+        this.damageStatusIds = damageStatusIds;
+    }
+
     private Boolean isPropertyLocatorIdRemoved;
 
     public Boolean getIsPropertyLocatorIdRemoved() {
@@ -217,14 +217,14 @@ public class InOutLineStateEventDto extends AbstractEvent
         this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
-    private Boolean isPropertyDamageStatusIdRemoved;
+    private Boolean isPropertyDamageStatusIdsRemoved;
 
-    public Boolean getIsPropertyDamageStatusIdRemoved() {
-        return this.isPropertyDamageStatusIdRemoved;
+    public Boolean getIsPropertyDamageStatusIdsRemoved() {
+        return this.isPropertyDamageStatusIdsRemoved;
     }
 
-    public void setIsPropertyDamageStatusIdRemoved(Boolean removed) {
-        this.isPropertyDamageStatusIdRemoved = removed;
+    public void setIsPropertyDamageStatusIdsRemoved(Boolean removed) {
+        this.isPropertyDamageStatusIdsRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

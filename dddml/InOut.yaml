@@ -234,9 +234,9 @@ aggregates:
               type: string
               
             # 损坏状态 Id.
-            DamageStatusId:
-              type: id
-              referenceType: StatusItem
+            DamageStatusIds:
+              itemType: id
+              #referenceType: StatusItem
 
             Description:
               type: string
@@ -352,9 +352,9 @@ aggregates:
               type: map
               
             # 损坏状态 Id.
-            DamageStatusId:
-              type: id
-              referenceType: StatusItem
+            DamageStatusIds:
+              itemType: id
+              #referenceType: StatusItem
 
             Description:
               type: string

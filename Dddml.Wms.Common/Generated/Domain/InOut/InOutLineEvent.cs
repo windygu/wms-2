@@ -133,8 +133,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
-		public virtual string DamageStatusId { get; set; }
-
 		public virtual string Description { get; set; }
 
 		public virtual string QuantityUomId { get; set; }
@@ -152,6 +150,8 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual string ReversalLineNumber { get; set; }
 
 		public virtual bool? Active { get; set; }
+
+		public virtual ISet<string> DamageStatusIds { get; set; }
 
         protected InOutLineStateEventBase() : base()
         {
@@ -246,7 +246,7 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
-		public virtual bool IsPropertyDamageStatusIdRemoved { get; set; }
+		public virtual bool IsPropertyDamageStatusIdsRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
