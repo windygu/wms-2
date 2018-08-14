@@ -19,7 +19,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "Orders", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "Orders", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class OrderResource {
 
@@ -283,7 +283,7 @@ public class OrderResource {
      * 创建 or 修改.
      * 创建 or 修改 OrderRole
      */
-    @PutMapping("{orderId}/OrderRoles/{partyRoleId}")
+    @PutMapping(path = "{orderId}/OrderRoles/{partyRoleId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putOrderRole(@PathVariable("orderId") String orderId, @PathVariable("partyRoleId") String partyRoleId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -352,7 +352,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderRole
      */
-    @PostMapping("{orderId}/OrderRoles")
+    @PostMapping(path = "{orderId}/OrderRoles", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postOrderRoles(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -392,7 +392,7 @@ public class OrderResource {
      * 创建 or 修改.
      * 创建 or 修改 OrderItem
      */
-    @PutMapping("{orderId}/OrderItems/{orderItemSeqId}")
+    @PutMapping(path = "{orderId}/OrderItems/{orderItemSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putOrderItem(@PathVariable("orderId") String orderId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -451,7 +451,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderItem
      */
-    @PostMapping("{orderId}/OrderItems")
+    @PostMapping(path = "{orderId}/OrderItems", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postOrderItems(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -491,7 +491,7 @@ public class OrderResource {
      * 创建 or 修改.
      * 创建 or 修改 OrderShipGroup
      */
-    @PutMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
+    @PutMapping(path = "{orderId}/OrderShipGroups/{shipGroupSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -550,7 +550,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderShipGroup
      */
-    @PostMapping("{orderId}/OrderShipGroups")
+    @PostMapping(path = "{orderId}/OrderShipGroups", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postOrderShipGroups(@PathVariable("orderId") String orderId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -590,7 +590,7 @@ public class OrderResource {
      * 创建 or 修改.
      * 创建 or 修改 OrderItemShipGroupAssociation
      */
-    @PutMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
+    @PutMapping(path = "{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -655,7 +655,7 @@ public class OrderResource {
      * 新建.
      * 新建 OrderItemShipGroupAssociation
      */
-    @PostMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
+    @PostMapping(path = "{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

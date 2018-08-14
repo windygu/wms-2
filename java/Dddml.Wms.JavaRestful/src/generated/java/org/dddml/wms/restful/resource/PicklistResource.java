@@ -19,7 +19,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "Picklists", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "Picklists", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class PicklistResource {
 
@@ -305,7 +305,7 @@ public class PicklistResource {
      * 创建 or 修改.
      * 创建 or 修改 PicklistRole
      */
-    @PutMapping("{picklistId}/PicklistRoles/{partyRoleId}")
+    @PutMapping(path = "{picklistId}/PicklistRoles/{partyRoleId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putPicklistRole(@PathVariable("picklistId") String picklistId, @PathVariable("partyRoleId") String partyRoleId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -374,7 +374,7 @@ public class PicklistResource {
      * 新建.
      * 新建 PicklistRole
      */
-    @PostMapping("{picklistId}/PicklistRoles")
+    @PostMapping(path = "{picklistId}/PicklistRoles", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postPicklistRoles(@PathVariable("picklistId") String picklistId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

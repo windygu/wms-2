@@ -19,7 +19,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "MovementConfirmations", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "MovementConfirmations", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class MovementConfirmationResource {
 
@@ -317,7 +317,7 @@ public class MovementConfirmationResource {
      * 创建 or 修改.
      * 创建 or 修改 MovementConfirmationLine
      */
-    @PutMapping("{documentNumber}/MovementConfirmationLines/{lineNumber}")
+    @PutMapping(path = "{documentNumber}/MovementConfirmationLines/{lineNumber}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putMovementConfirmationLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -376,7 +376,7 @@ public class MovementConfirmationResource {
      * 新建.
      * 新建 MovementConfirmationLine
      */
-    @PostMapping("{documentNumber}/MovementConfirmationLines")
+    @PostMapping(path = "{documentNumber}/MovementConfirmationLines", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

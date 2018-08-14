@@ -18,7 +18,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "Products", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "Products", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class ProductResource {
 
@@ -277,7 +277,7 @@ public class ProductResource {
      * 创建 or 修改.
      * 创建 or 修改 GoodIdentification
      */
-    @PutMapping("{productId}/GoodIdentifications/{goodIdentificationTypeId}")
+    @PutMapping(path = "{productId}/GoodIdentifications/{goodIdentificationTypeId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putGoodIdentification(@PathVariable("productId") String productId, @PathVariable("goodIdentificationTypeId") String goodIdentificationTypeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -336,7 +336,7 @@ public class ProductResource {
      * 新建.
      * 新建 GoodIdentification
      */
-    @PostMapping("{productId}/GoodIdentifications")
+    @PostMapping(path = "{productId}/GoodIdentifications", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postGoodIdentifications(@PathVariable("productId") String productId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

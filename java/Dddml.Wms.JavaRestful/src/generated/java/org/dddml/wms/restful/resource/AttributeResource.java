@@ -18,7 +18,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "Attributes", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "Attributes", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class AttributeResource {
 
@@ -310,7 +310,7 @@ public class AttributeResource {
      * 创建 or 修改.
      * 创建 or 修改 AttributeValue
      */
-    @PutMapping("{attributeId}/AttributeValues/{value}")
+    @PutMapping(path = "{attributeId}/AttributeValues/{value}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putAttributeValue(@PathVariable("attributeId") String attributeId, @PathVariable("value") String value,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -369,7 +369,7 @@ public class AttributeResource {
      * 新建.
      * 新建 AttributeValue
      */
-    @PostMapping("{attributeId}/AttributeValues")
+    @PostMapping(path = "{attributeId}/AttributeValues", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postAttributeValues(@PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -409,7 +409,7 @@ public class AttributeResource {
      * 创建 or 修改.
      * 创建 or 修改 AttributeAlias
      */
-    @PutMapping("{attributeId}/AttributeAlias/{code}")
+    @PutMapping(path = "{attributeId}/AttributeAlias/{code}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putAttributeAlias(@PathVariable("attributeId") String attributeId, @PathVariable("code") String code,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -468,7 +468,7 @@ public class AttributeResource {
      * 新建.
      * 新建 AttributeAlias
      */
-    @PostMapping("{attributeId}/AttributeAlias")
+    @PostMapping(path = "{attributeId}/AttributeAlias", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postAttributeAlias(@PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

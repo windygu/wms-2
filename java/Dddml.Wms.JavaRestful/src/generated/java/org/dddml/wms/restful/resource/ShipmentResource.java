@@ -18,7 +18,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "Shipments", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "Shipments", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class ShipmentResource {
 
@@ -362,7 +362,7 @@ public class ShipmentResource {
      * 创建 or 修改.
      * 创建 or 修改 ShipmentImage
      */
-    @PutMapping("{shipmentId}/ShipmentImages/{sequenceId}")
+    @PutMapping(path = "{shipmentId}/ShipmentImages/{sequenceId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putShipmentImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -421,7 +421,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentImage
      */
-    @PostMapping("{shipmentId}/ShipmentImages")
+    @PostMapping(path = "{shipmentId}/ShipmentImages", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postShipmentImages(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -461,7 +461,7 @@ public class ShipmentResource {
      * 创建 or 修改.
      * 创建 or 修改 ShipmentItem
      */
-    @PutMapping("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
+    @PutMapping(path = "{shipmentId}/ShipmentItems/{shipmentItemSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putShipmentItem(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -520,7 +520,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentItem
      */
-    @PostMapping("{shipmentId}/ShipmentItems")
+    @PostMapping(path = "{shipmentId}/ShipmentItems", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postShipmentItems(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -560,7 +560,7 @@ public class ShipmentResource {
      * 创建 or 修改.
      * 创建 or 修改 ShipmentReceipt
      */
-    @PutMapping("{shipmentId}/ShipmentReceipts/{receiptSeqId}")
+    @PutMapping(path = "{shipmentId}/ShipmentReceipts/{receiptSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putShipmentReceipt(@PathVariable("shipmentId") String shipmentId, @PathVariable("receiptSeqId") String receiptSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -619,7 +619,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentReceipt
      */
-    @PostMapping("{shipmentId}/ShipmentReceipts")
+    @PostMapping(path = "{shipmentId}/ShipmentReceipts", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postShipmentReceipts(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -659,7 +659,7 @@ public class ShipmentResource {
      * 创建 or 修改.
      * 创建 or 修改 ShipmentReceiptImage
      */
-    @PutMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
+    @PutMapping(path = "{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putShipmentReceiptImage(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -724,7 +724,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ShipmentReceiptImage
      */
-    @PostMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
+    @PostMapping(path = "{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -767,7 +767,7 @@ public class ShipmentResource {
      * 创建 or 修改.
      * 创建 or 修改 ItemIssuance
      */
-    @PutMapping("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
+    @PutMapping(path = "{shipmentId}/ItemIssuances/{itemIssuanceSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putItemIssuance(@PathVariable("shipmentId") String shipmentId, @PathVariable("itemIssuanceSeqId") String itemIssuanceSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -826,7 +826,7 @@ public class ShipmentResource {
      * 新建.
      * 新建 ItemIssuance
      */
-    @PostMapping("{shipmentId}/ItemIssuances")
+    @PostMapping(path = "{shipmentId}/ItemIssuances", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postItemIssuances(@PathVariable("shipmentId") String shipmentId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

@@ -19,7 +19,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "Movements", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "Movements", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class MovementResource {
 
@@ -334,7 +334,7 @@ public class MovementResource {
      * 创建 or 修改.
      * 创建 or 修改 MovementLine
      */
-    @PutMapping("{documentNumber}/MovementLines/{lineNumber}")
+    @PutMapping(path = "{documentNumber}/MovementLines/{lineNumber}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putMovementLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -393,7 +393,7 @@ public class MovementResource {
      * 新建.
      * 新建 MovementLine
      */
-    @PostMapping("{documentNumber}/MovementLines")
+    @PostMapping(path = "{documentNumber}/MovementLines", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postMovementLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

@@ -18,7 +18,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "AttributeSets", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "AttributeSets", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class AttributeSetResource {
 
@@ -299,7 +299,7 @@ public class AttributeSetResource {
      * 创建 or 修改.
      * 创建 or 修改 AttributeUse
      */
-    @PutMapping("{attributeSetId}/AttributeUses/{attributeId}")
+    @PutMapping(path = "{attributeSetId}/AttributeUses/{attributeId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putAttributeUse(@PathVariable("attributeSetId") String attributeSetId, @PathVariable("attributeId") String attributeId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -358,7 +358,7 @@ public class AttributeSetResource {
      * 新建.
      * 新建 AttributeUse
      */
-    @PostMapping("{attributeSetId}/AttributeUses")
+    @PostMapping(path = "{attributeSetId}/AttributeUses", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postAttributeUses(@PathVariable("attributeSetId") String attributeSetId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

@@ -20,7 +20,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "PhysicalInventories", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "PhysicalInventories", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class PhysicalInventoryResource {
 
@@ -318,7 +318,7 @@ public class PhysicalInventoryResource {
      * 创建 or 修改.
      * 创建 or 修改 PhysicalInventoryLine
      */
-    @PutMapping("{documentNumber}/PhysicalInventoryLines/{inventoryItemId}")
+    @PutMapping(path = "{documentNumber}/PhysicalInventoryLines/{inventoryItemId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putPhysicalInventoryLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("inventoryItemId") String inventoryItemId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -387,7 +387,7 @@ public class PhysicalInventoryResource {
      * 新建.
      * 新建 PhysicalInventoryLine
      */
-    @PostMapping("{documentNumber}/PhysicalInventoryLines")
+    @PostMapping(path = "{documentNumber}/PhysicalInventoryLines", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postPhysicalInventoryLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

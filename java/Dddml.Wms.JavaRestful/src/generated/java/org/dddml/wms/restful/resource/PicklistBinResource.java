@@ -18,7 +18,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "PicklistBins", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "PicklistBins", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class PicklistBinResource {
 
@@ -304,7 +304,7 @@ public class PicklistBinResource {
      * 创建 or 修改.
      * 创建 or 修改 PicklistItem
      */
-    @PutMapping("{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
+    @PutMapping(path = "{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putPicklistItem(@PathVariable("picklistBinId") String picklistBinId, @PathVariable("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -373,7 +373,7 @@ public class PicklistBinResource {
      * 新建.
      * 新建 PicklistItem
      */
-    @PostMapping("{picklistBinId}/PicklistItems")
+    @PostMapping(path = "{picklistBinId}/PicklistItems", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postPicklistItems(@PathVariable("picklistBinId") String picklistBinId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

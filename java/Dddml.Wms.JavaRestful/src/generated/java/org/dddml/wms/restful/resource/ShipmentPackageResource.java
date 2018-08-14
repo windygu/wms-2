@@ -18,7 +18,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "ShipmentPackages", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "ShipmentPackages", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class ShipmentPackageResource {
 
@@ -304,7 +304,7 @@ public class ShipmentPackageResource {
      * 创建 or 修改.
      * 创建 or 修改 ShipmentPackageContent
      */
-    @PutMapping("{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}")
+    @PutMapping(path = "{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putShipmentPackageContent(@PathVariable("shipmentPackageId") String shipmentPackageId, @PathVariable("shipmentItemSeqId") String shipmentItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -378,7 +378,7 @@ public class ShipmentPackageResource {
      * 新建.
      * 新建 ShipmentPackageContent
      */
-    @PostMapping("{shipmentPackageId}/ShipmentPackageContents")
+    @PostMapping(path = "{shipmentPackageId}/ShipmentPackageContents", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,

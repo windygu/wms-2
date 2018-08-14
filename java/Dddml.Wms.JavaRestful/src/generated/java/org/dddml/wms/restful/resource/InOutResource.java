@@ -19,7 +19,7 @@ import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
 
-@RequestMapping(path = "InOuts", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "InOuts", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class InOutResource {
 
@@ -380,7 +380,7 @@ public class InOutResource {
      * 创建 or 修改.
      * 创建 or 修改 InOutImage
      */
-    @PutMapping("{documentNumber}/InOutImages/{sequenceId}")
+    @PutMapping(path = "{documentNumber}/InOutImages/{sequenceId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putInOutImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -439,7 +439,7 @@ public class InOutResource {
      * 新建.
      * 新建 InOutImage
      */
-    @PostMapping("{documentNumber}/InOutImages")
+    @PostMapping(path = "{documentNumber}/InOutImages", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postInOutImages(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -479,7 +479,7 @@ public class InOutResource {
      * 创建 or 修改.
      * 创建 or 修改 InOutLine
      */
-    @PutMapping("{documentNumber}/InOutLines/{lineNumber}")
+    @PutMapping(path = "{documentNumber}/InOutLines/{lineNumber}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putInOutLine(@PathVariable("documentNumber") String documentNumber, @PathVariable("lineNumber") String lineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -538,7 +538,7 @@ public class InOutResource {
      * 新建.
      * 新建 InOutLine
      */
-    @PostMapping("{documentNumber}/InOutLines")
+    @PostMapping(path = "{documentNumber}/InOutLines", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postInOutLines(@PathVariable("documentNumber") String documentNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -578,7 +578,7 @@ public class InOutResource {
      * 创建 or 修改.
      * 创建 or 修改 InOutLineImage
      */
-    @PutMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
+    @PutMapping(path = "{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putInOutLineImage(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber, @PathVariable("sequenceId") String sequenceId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
@@ -643,7 +643,7 @@ public class InOutResource {
      * 新建.
      * 新建 InOutLineImage
      */
-    @PostMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages")
+    @PostMapping(path = "{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void postInOutLineImages(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
