@@ -209,6 +209,17 @@ deallocate prepare stmt;
 
 set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'ShipmentImages' AND
+            CONSTRAINT_NAME   = 'FK_ShipmentImage_Shipment_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentImages
+            drop foreign key FK_ShipmentImage_Shipment_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
             TABLE_NAME        = 'ShipmentItems' AND
             CONSTRAINT_NAME   = 'FK_ShipmentItem_Shipment_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentItems
@@ -224,6 +235,17 @@ set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_NAME   = 'FK_ShipmentReceipt_Shipment_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentReceipts
             drop foreign key FK_ShipmentReceipt_Shipment_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'ShipmentReceiptImages' AND
+            CONSTRAINT_NAME   = 'FK_ShipmentReceiptImage_ShipmentReceipt_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentReceiptImages
+            drop foreign key FK_ShipmentReceiptImage_ShipmentReceipt_StateId','select 1');
 
 prepare stmt from @var;
 execute stmt;

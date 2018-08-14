@@ -485,6 +485,98 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private ShipmentReceiptImageStateCreatedOrMergePatchedOrRemovedDtos _shipmentReceiptImageEvents = new ShipmentReceiptImageStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual ShipmentReceiptImageStateCreatedOrMergePatchedOrRemovedDto[] ShipmentReceiptImageEvents
+        {
+            get
+            {
+                return _shipmentReceiptImageEvents.ToArray();
+            }
+            set
+            {
+                _shipmentReceiptImageEvents.Clear();
+                _shipmentReceiptImageEvents.AddRange(value);
+            }
+        }
+
+
+
+        private ShipmentReceiptImageEventId NewShipmentReceiptImageEventId(string sequenceId)
+        {
+            var eId = new ShipmentReceiptImageEventId();
+            eId.ShipmentId = this.ShipmentReceiptEventId.ShipmentId;
+            eId.ShipmentReceiptReceiptSeqId = this.ShipmentReceiptEventId.ReceiptSeqId;
+            eId.SequenceId = sequenceId;
+            eId.ShipmentVersion = this.ShipmentReceiptEventId.ShipmentVersion;
+            return eId;
+        }
+
+        public virtual ShipmentReceiptImageStateCreatedDto NewShipmentReceiptImageStateCreated(string sequenceId)
+        {
+            var e = new ShipmentReceiptImageStateCreatedDto();
+            var eId = NewShipmentReceiptImageEventId(sequenceId);
+            e.ShipmentReceiptImageEventId = eId;
+            return e;
+        }
+
+        public virtual ShipmentReceiptImageStateMergePatchedDto NewShipmentReceiptImageStateMergePatched(string sequenceId)
+        {
+            var e = new ShipmentReceiptImageStateMergePatchedDto();
+            var eId = NewShipmentReceiptImageEventId(sequenceId);
+            e.ShipmentReceiptImageEventId = eId;
+            return e;
+        }
+
+        public virtual ShipmentReceiptImageStateRemovedDto NewShipmentReceiptImageStateRemoved(string sequenceId)
+        {
+            var e = new ShipmentReceiptImageStateRemovedDto();
+            var eId = NewShipmentReceiptImageEventId(sequenceId);
+            e.ShipmentReceiptImageEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IShipmentReceiptImageStateCreated> IShipmentReceiptStateCreated.ShipmentReceiptImageEvents
+        {
+            get { return this._shipmentReceiptImageEvents; }
+        }
+
+        void IShipmentReceiptStateCreated.AddShipmentReceiptImageEvent(IShipmentReceiptImageStateCreated e)
+        {
+            this._shipmentReceiptImageEvents.AddShipmentReceiptImageEvent(e);
+        }
+
+        IShipmentReceiptImageStateCreated IShipmentReceiptStateCreated.NewShipmentReceiptImageStateCreated(string sequenceId)
+        {
+            return NewShipmentReceiptImageStateCreated(sequenceId);
+        }
+
+        IEnumerable<IShipmentReceiptImageEvent> IShipmentReceiptStateMergePatched.ShipmentReceiptImageEvents
+        {
+            get { return this._shipmentReceiptImageEvents; }
+        }
+
+        void IShipmentReceiptStateMergePatched.AddShipmentReceiptImageEvent(IShipmentReceiptImageEvent e)
+        {
+            this._shipmentReceiptImageEvents.AddShipmentReceiptImageEvent(e);
+        }
+
+        IShipmentReceiptImageStateCreated IShipmentReceiptStateMergePatched.NewShipmentReceiptImageStateCreated(string sequenceId)
+        {
+            return NewShipmentReceiptImageStateCreated(sequenceId);
+        }
+
+        IShipmentReceiptImageStateMergePatched IShipmentReceiptStateMergePatched.NewShipmentReceiptImageStateMergePatched(string sequenceId)
+        {
+            return NewShipmentReceiptImageStateMergePatched(sequenceId);
+        }
+
+        IShipmentReceiptImageStateRemoved IShipmentReceiptStateMergePatched.NewShipmentReceiptImageStateRemoved(string sequenceId)
+        {
+            return NewShipmentReceiptImageStateRemoved(sequenceId);
+        }
+
+
         ShipmentReceiptEventId IShipmentReceiptEvent.ShipmentReceiptEventId
         {
             get { return this.ShipmentReceiptEventId; }

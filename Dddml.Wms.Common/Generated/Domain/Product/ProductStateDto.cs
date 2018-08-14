@@ -411,6 +411,12 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        public virtual string RollCnt
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -528,6 +534,7 @@ namespace Dddml.Wms.Domain.Product
             state.CoreDiameter = this.CoreDiameter;
             state.OutsideDiameter = this.OutsideDiameter;
             state.MoisturePct = this.MoisturePct;
+            state.RollCnt = this.RollCnt;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

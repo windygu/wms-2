@@ -89,6 +89,12 @@ namespace Dddml.Wms.Domain.Shipment
    
 	public interface IShipmentStateCreated : IShipmentStateEvent
 	{
+		IEnumerable<IShipmentImageStateCreated> ShipmentImageEvents { get; }
+		
+		void AddShipmentImageEvent(IShipmentImageStateCreated e);
+
+		IShipmentImageStateCreated NewShipmentImageStateCreated(string sequenceId);
+
 		IEnumerable<IShipmentItemStateCreated> ShipmentItemEvents { get; }
 		
 		void AddShipmentItemEvent(IShipmentItemStateCreated e);
@@ -176,6 +182,16 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyAddtlShippingChargeDescRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
+
+		IEnumerable<IShipmentImageEvent> ShipmentImageEvents { get; }
+		
+		void AddShipmentImageEvent(IShipmentImageEvent e);
+
+		IShipmentImageStateCreated NewShipmentImageStateCreated(string sequenceId);
+
+		IShipmentImageStateMergePatched NewShipmentImageStateMergePatched(string sequenceId);
+
+		IShipmentImageStateRemoved NewShipmentImageStateRemoved(string sequenceId);
 
 		IEnumerable<IShipmentItemEvent> ShipmentItemEvents { get; }
 		

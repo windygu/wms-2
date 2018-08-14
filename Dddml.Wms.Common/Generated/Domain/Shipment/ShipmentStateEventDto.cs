@@ -762,6 +762,97 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private ShipmentImageStateCreatedOrMergePatchedOrRemovedDtos _shipmentImageEvents = new ShipmentImageStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual ShipmentImageStateCreatedOrMergePatchedOrRemovedDto[] ShipmentImageEvents
+        {
+            get
+            {
+                return _shipmentImageEvents.ToArray();
+            }
+            set
+            {
+                _shipmentImageEvents.Clear();
+                _shipmentImageEvents.AddRange(value);
+            }
+        }
+
+
+
+        private ShipmentImageEventId NewShipmentImageEventId(string sequenceId)
+        {
+            var eId = new ShipmentImageEventId();
+            eId.ShipmentId = this.ShipmentEventId.ShipmentId;
+            eId.SequenceId = sequenceId;
+            eId.ShipmentVersion = this.ShipmentEventId.Version;
+            return eId;
+        }
+
+        public virtual ShipmentImageStateCreatedDto NewShipmentImageStateCreated(string sequenceId)
+        {
+            var e = new ShipmentImageStateCreatedDto();
+            var eId = NewShipmentImageEventId(sequenceId);
+            e.ShipmentImageEventId = eId;
+            return e;
+        }
+
+        public virtual ShipmentImageStateMergePatchedDto NewShipmentImageStateMergePatched(string sequenceId)
+        {
+            var e = new ShipmentImageStateMergePatchedDto();
+            var eId = NewShipmentImageEventId(sequenceId);
+            e.ShipmentImageEventId = eId;
+            return e;
+        }
+
+        public virtual ShipmentImageStateRemovedDto NewShipmentImageStateRemoved(string sequenceId)
+        {
+            var e = new ShipmentImageStateRemovedDto();
+            var eId = NewShipmentImageEventId(sequenceId);
+            e.ShipmentImageEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IShipmentImageStateCreated> IShipmentStateCreated.ShipmentImageEvents
+        {
+            get { return this._shipmentImageEvents; }
+        }
+
+        void IShipmentStateCreated.AddShipmentImageEvent(IShipmentImageStateCreated e)
+        {
+            this._shipmentImageEvents.AddShipmentImageEvent(e);
+        }
+
+        IShipmentImageStateCreated IShipmentStateCreated.NewShipmentImageStateCreated(string sequenceId)
+        {
+            return NewShipmentImageStateCreated(sequenceId);
+        }
+
+        IEnumerable<IShipmentImageEvent> IShipmentStateMergePatched.ShipmentImageEvents
+        {
+            get { return this._shipmentImageEvents; }
+        }
+
+        void IShipmentStateMergePatched.AddShipmentImageEvent(IShipmentImageEvent e)
+        {
+            this._shipmentImageEvents.AddShipmentImageEvent(e);
+        }
+
+        IShipmentImageStateCreated IShipmentStateMergePatched.NewShipmentImageStateCreated(string sequenceId)
+        {
+            return NewShipmentImageStateCreated(sequenceId);
+        }
+
+        IShipmentImageStateMergePatched IShipmentStateMergePatched.NewShipmentImageStateMergePatched(string sequenceId)
+        {
+            return NewShipmentImageStateMergePatched(sequenceId);
+        }
+
+        IShipmentImageStateRemoved IShipmentStateMergePatched.NewShipmentImageStateRemoved(string sequenceId)
+        {
+            return NewShipmentImageStateRemoved(sequenceId);
+        }
+
+
         private ShipmentItemStateCreatedOrMergePatchedOrRemovedDtos _shipmentItemEvents = new ShipmentItemStateCreatedOrMergePatchedOrRemovedDtos();
 
         public virtual ShipmentItemStateCreatedOrMergePatchedOrRemovedDto[] ShipmentItemEvents

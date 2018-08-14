@@ -57,10 +57,6 @@ public interface AttributeSetInstanceCommand extends Command
 
         void setLotId(String lotId);
 
-        String getStatusId();
-
-        void setStatusId(String statusId);
-
         String getImageUrl();
 
         void setImageUrl(String imageUrl);
@@ -316,6 +312,10 @@ public interface AttributeSetInstanceCommand extends Command
         Boolean getActive();
 
         void setActive(Boolean active);
+
+        Set<String> getStatusIds();
+
+        void setStatusIds(Set<String> statusIds);
 
     }
 

@@ -69,6 +69,14 @@ namespace Dddml.Wms.Domain.Shipment
             dto.AdditionalShippingCharge = e.AdditionalShippingCharge;
             dto.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
             dto.Active = e.Active;
+            var shipmentImageEvents = new List<ShipmentImageStateCreatedDto>();
+            foreach (var ee in e.ShipmentImageEvents)
+            {
+                ShipmentImageStateCreatedDto eeDto = ShipmentImageStateEventDtoConverter.ToShipmentImageStateCreatedDto(ee);
+                shipmentImageEvents.Add(eeDto);
+            }
+            dto.ShipmentImageEvents = shipmentImageEvents.ToArray();
+
             var shipmentItemEvents = new List<ShipmentItemStateCreatedDto>();
             foreach (var ee in e.ShipmentItemEvents)
             {
@@ -167,6 +175,14 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyAdditionalShippingChargeRemoved = e.IsPropertyAdditionalShippingChargeRemoved;
             dto.IsPropertyAddtlShippingChargeDescRemoved = e.IsPropertyAddtlShippingChargeDescRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var shipmentImageEvents = new List<ShipmentImageStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.ShipmentImageEvents)
+            {
+                ShipmentImageStateCreatedOrMergePatchedOrRemovedDto eeDto = ShipmentImageStateEventDtoConverter.ToShipmentImageStateEventDto(ee);
+                shipmentImageEvents.Add(eeDto);
+            }
+            dto.ShipmentImageEvents = shipmentImageEvents.ToArray();
+
             var shipmentItemEvents = new List<ShipmentItemStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.ShipmentItemEvents)
             {
@@ -195,6 +211,14 @@ namespace Dddml.Wms.Domain.Shipment
             return dto;
         }
 
+
+        protected virtual ShipmentImageStateEventDtoConverter ShipmentImageStateEventDtoConverter
+        {
+            get
+            {
+                return new ShipmentImageStateEventDtoConverter();
+            }
+        }
 
         protected virtual ShipmentItemStateEventDtoConverter ShipmentItemStateEventDtoConverter
         {

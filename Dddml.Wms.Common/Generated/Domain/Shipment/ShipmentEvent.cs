@@ -80,6 +80,33 @@ namespace Dddml.Wms.Domain.Shipment
             this.ShipmentEventId = stateEventId;
         }
 
+		protected IShipmentImageEventDao ShipmentImageEventDao
+		{
+			get { return ApplicationContext.Current["ShipmentImageEventDao"] as IShipmentImageEventDao; }
+		}
+
+        protected ShipmentImageEventId NewShipmentImageEventId(string sequenceId)
+        {
+            var stateEventId = new ShipmentImageEventId(this.ShipmentEventId.ShipmentId, sequenceId, this.ShipmentEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IShipmentImageEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IShipmentEvent oe, IShipmentImageEvent e)
+		{
+			if (!oe.ShipmentEventId.ShipmentId.Equals(e.ShipmentImageEventId.ShipmentId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
+					oe.ShipmentEventId.ShipmentId, e.ShipmentImageEventId.ShipmentId);
+			}
+		}
+
+
 		protected IShipmentItemEventDao ShipmentItemEventDao
 		{
 			get { return ApplicationContext.Current["ShipmentItemEventDao"] as IShipmentItemEventDao; }
@@ -258,6 +285,56 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
+		private Dictionary<ShipmentImageEventId, IShipmentImageStateCreated> _shipmentImageEvents = new Dictionary<ShipmentImageEventId, IShipmentImageStateCreated>();
+        
+        private IEnumerable<IShipmentImageStateCreated> _readOnlyShipmentImageEvents;
+
+        public virtual IEnumerable<IShipmentImageStateCreated> ShipmentImageEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._shipmentImageEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentImageEvents != null) { return _readOnlyShipmentImageEvents; }
+                    var eventDao = ShipmentImageEventDao;
+                    var eL = new List<IShipmentImageStateCreated>();
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentImageStateCreated)e);
+                    }
+                    return (_readOnlyShipmentImageEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentImageEvent(e);
+                    }
+                }
+                else { this._shipmentImageEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddShipmentImageEvent(IShipmentImageStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentImageEvents[e.ShipmentImageEventId] = e;
+		}
+
+        public virtual IShipmentImageStateCreated NewShipmentImageStateCreated(string sequenceId)
+        {
+            var stateEvent = new ShipmentImageStateCreated(NewShipmentImageEventId(sequenceId));
+            return stateEvent;
+        }
+
 		private Dictionary<ShipmentItemEventId, IShipmentItemStateCreated> _shipmentItemEvents = new Dictionary<ShipmentItemEventId, IShipmentItemStateCreated>();
         
         private IEnumerable<IShipmentItemStateCreated> _readOnlyShipmentItemEvents;
@@ -410,6 +487,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual void Save ()
 		{
+			foreach (IShipmentImageStateCreated e in this.ShipmentImageEvents) {
+				ShipmentImageEventDao.Save(e);
+			}
 			foreach (IShipmentItemStateCreated e in this.ShipmentItemEvents) {
 				ShipmentItemEventDao.Save(e);
 			}
@@ -503,6 +583,68 @@ namespace Dddml.Wms.Domain.Shipment
 		public ShipmentStateMergePatched (ShipmentEventId stateEventId) : base(stateEventId)
 		{
 		}
+
+		private Dictionary<ShipmentImageEventId, IShipmentImageEvent> _shipmentImageEvents = new Dictionary<ShipmentImageEventId, IShipmentImageEvent>();
+
+        private IEnumerable<IShipmentImageEvent> _readOnlyShipmentImageEvents;
+        
+        public virtual IEnumerable<IShipmentImageEvent> ShipmentImageEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._shipmentImageEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentImageEvents != null) { return _readOnlyShipmentImageEvents; }
+                    var eventDao = ShipmentImageEventDao;
+                    var eL = new List<IShipmentImageEvent>();
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentImageEvent)e);
+                    }
+                    return (_readOnlyShipmentImageEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentImageEvent(e);
+                    }
+                }
+                else { this._shipmentImageEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddShipmentImageEvent(IShipmentImageEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentImageEvents[e.ShipmentImageEventId] = e;
+		}
+
+        public virtual IShipmentImageStateCreated NewShipmentImageStateCreated(string sequenceId)
+        {
+            var stateEvent = new ShipmentImageStateCreated(NewShipmentImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+        public virtual IShipmentImageStateMergePatched NewShipmentImageStateMergePatched(string sequenceId)
+        {
+            var stateEvent = new ShipmentImageStateMergePatched(NewShipmentImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+        public virtual IShipmentImageStateRemoved NewShipmentImageStateRemoved(string sequenceId)
+        {
+            var stateEvent = new ShipmentImageStateRemoved(NewShipmentImageEventId(sequenceId));
+            return stateEvent;
+        }
 
 		private Dictionary<ShipmentItemEventId, IShipmentItemEvent> _shipmentItemEvents = new Dictionary<ShipmentItemEventId, IShipmentItemEvent>();
 
@@ -680,6 +822,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual void Save ()
 		{
+			foreach (IShipmentImageEvent e in this.ShipmentImageEvents) {
+				ShipmentImageEventDao.Save(e);
+			}
 			foreach (IShipmentItemEvent e in this.ShipmentItemEvents) {
 				ShipmentItemEventDao.Save(e);
 			}

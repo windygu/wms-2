@@ -151,6 +151,8 @@ namespace Dddml.Wms.Domain.Product
 
 		decimal? MoisturePct { get; set; }
 
+		string RollCnt { get; set; }
+
 		bool? Active { get; set; }
 
     }
@@ -298,6 +300,8 @@ namespace Dddml.Wms.Domain.Product
 		bool IsPropertyOutsideDiameterRemoved { get; set; }
 
 		bool IsPropertyMoisturePctRemoved { get; set; }
+
+		bool IsPropertyRollCntRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

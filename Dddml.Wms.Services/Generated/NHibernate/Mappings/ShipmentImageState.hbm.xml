@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.Shipment">
+  
+  <class name="Dddml.Wms.Domain.Shipment.ShipmentImageState" table="ShipmentImages">
+
+    <composite-id name="ShipmentImageId" class="Dddml.Wms.Domain.Shipment.ShipmentImageId">
+        <key-property name="ShipmentId" ><column name="ShipmentImageIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="SequenceId" ><column name="ShipmentImageIdSequenceId" sql-type="VARCHAR(60)" /></key-property>
+    </composite-id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="Url" ><column name="Url" sql-type="VARCHAR(250)" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

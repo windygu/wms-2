@@ -17,7 +17,6 @@
 	<property name="referenceId" ></property>
 	<property name="serialNumber" ></property>
 	<property name="lotId" ></property>
-	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="imageUrl" ><column name="ImageUrl" length="255" /></property>
 	<property name="description" ></property>
 	<property name="hash" ></property>
@@ -92,6 +91,13 @@
     <property name="commandId" column="CommandId"/>
 
 
+      <set name="statusIds" table="AttributeSetInstanceStatusIds" lazy="false">
+        <key column="AttributeSetInstanceId" />
+				<element column="StatusIdsItem" type="string" not-null="true" />
+
+      </set>
+
+            
 
   </class>
   

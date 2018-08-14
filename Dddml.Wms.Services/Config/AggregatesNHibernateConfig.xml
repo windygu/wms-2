@@ -950,6 +950,15 @@
   </object>
 
 
+  <object id="shipmentImageStateDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentImageStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentImageEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentImageEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
   <object id="shipmentItemStateDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentItemStateDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
@@ -965,6 +974,15 @@
   </object>
 
   <object id="shipmentReceiptEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentReceiptEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="shipmentReceiptImageStateDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentReceiptImageStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentReceiptImageEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentReceiptImageEventDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 

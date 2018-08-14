@@ -146,6 +146,8 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual decimal? MoisturePct { get; set; }
 
+		public virtual string RollCnt { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }

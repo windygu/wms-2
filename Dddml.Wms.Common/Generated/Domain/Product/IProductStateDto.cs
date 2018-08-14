@@ -410,6 +410,12 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        string RollCnt
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

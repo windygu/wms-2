@@ -207,34 +207,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             }
         }
 
-		public virtual string StatusId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("StatusId"))
-                {
-                    return _state.StatusId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.StatusId = value;
-            }
-        }
-
-        string IAttributeSetInstanceStateProperties.StatusId
-        {
-            get 
-            {
-                return (this._state as IAttributeSetInstanceStateProperties).StatusId;
-            }
-            set 
-            {
-                (this._state as IAttributeSetInstanceStateProperties).StatusId = value;
-            }
-        }
-
 		public virtual string ImageUrl
 		{
             get
@@ -515,31 +487,31 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             }
         }
 
-		public virtual int? PackageCount
+		public virtual int? RollCnt
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PackageCount"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("RollCnt"))
                 {
-                    return _state.PackageCount;
+                    return _state.RollCnt;
                 }
                 return null;
             }
             set
             {
-                _state.PackageCount = value;
+                _state.RollCnt = value;
             }
         }
 
-        int? IAttributeSetInstanceStateProperties.PackageCount
+        int? IAttributeSetInstanceStateProperties.RollCnt
         {
             get 
             {
-                return (this._state as IAttributeSetInstanceStateProperties).PackageCount;
+                return (this._state as IAttributeSetInstanceStateProperties).RollCnt;
             }
             set 
             {
-                (this._state as IAttributeSetInstanceStateProperties).PackageCount = value;
+                (this._state as IAttributeSetInstanceStateProperties).RollCnt = value;
             }
         }
 
@@ -2202,6 +2174,43 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         bool IAttributeSetInstanceState.IsUnsaved
         {
             get { return this.Version == AttributeSetInstanceState.VersionZero; }
+        }
+
+        public virtual string[] StatusIds
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("StatusIds"))
+                {
+                    return null;
+                }
+                var dtos = new List<string>();
+                if (this._state.StatusIds != null)
+                {
+                    foreach (var s in this._state.StatusIds)
+                    {
+                        var dto = s;
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new string[0]; }
+                var states = new HashSet<string>();
+                foreach (var s in value)
+                {
+                    states.Add(s);
+                }
+                this._state.StatusIds = states;
+            }
+        }
+
+        ISet<string> IAttributeSetInstanceStateProperties.StatusIds 
+        {
+            get { return _state.StatusIds; }
+            set { _state.StatusIds = value; }
         }
 
 		void IAttributeSetInstanceState.When(IAttributeSetInstanceStateCreated e)

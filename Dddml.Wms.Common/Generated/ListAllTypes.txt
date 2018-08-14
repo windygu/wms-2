@@ -68,9 +68,11 @@
                 dict.Add("PicklistRole", "_PICKLISTROLE_");
                 dict.Add("ProductCategory", "_PRODUCTCATEGORY_");
                 dict.Add("SellableInventoryItemEntry", "_SELLABLEINVENTORYITEMENTRY_");
+                dict.Add("ShipmentImage", "_SHIPMENTIMAGE_");
                 dict.Add("ShipmentItem", "_SHIPMENTITEM_");
                 dict.Add("ShipmentPackageContent", "_SHIPMENTPACKAGECONTENT_");
                 dict.Add("ShipmentReceipt", "_SHIPMENTRECEIPT_");
+                dict.Add("ShipmentReceiptImage", "_SHIPMENTRECEIPTIMAGE_");
                 dict.Add("short-varchar", "_SHORT-VARCHAR_");
                 dict.Add("string", "_STRING_");
                 dict.Add("url", "_URL_");

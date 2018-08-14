@@ -2403,6 +2403,9 @@
     <Compile Include="Generated\Domain\Metadata\SellableInventoryItemMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\ShipmentImageMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\ShipmentItemMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -2416,6 +2419,9 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\ShipmentPackageMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\ShipmentReceiptImageMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\ShipmentReceiptMetadata.cs">
@@ -5154,6 +5160,30 @@
     <Compile Include="Generated\Domain\Shipment\IShipmentEvent.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageEventDao.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageStateDao.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentImageStates.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\IShipmentItemCommand.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
@@ -5185,6 +5215,30 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\IShipmentReceiptEventDao.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageEventDao.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageStateDao.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptImageStates.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\IShipmentReceiptState.cs">
@@ -5280,6 +5334,51 @@
     <Compile Include="Generated\Domain\Shipment\ShipmentEventId.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageCommandDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageEventId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateDtoExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateEventDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateEventDtoConverter.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateInterfaceExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentImageStates.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentItemCommand.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
@@ -5341,6 +5440,51 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentReceiptId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageCommandDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageEventId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateDtoExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateEventDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateEventDtoConverter.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateInterfaceExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptImageStates.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentReceiptState.cs">
@@ -6299,11 +6443,13 @@
 .\RoleTypeMetadata.cs
 .\SellableInventoryItemEntryMetadata.cs
 .\SellableInventoryItemMetadata.cs
+.\ShipmentImageMetadata.cs
 .\ShipmentItemMetadata.cs
 .\ShipmentMetadata.cs
 .\ShipmentMethodTypeMetadata.cs
 .\ShipmentPackageContentMetadata.cs
 .\ShipmentPackageMetadata.cs
+.\ShipmentReceiptImageMetadata.cs
 .\ShipmentReceiptMetadata.cs
 .\ShipmentTypeMetadata.cs
 .\StatusItemMetadata.cs
@@ -7201,6 +7347,14 @@
 .\IShipmentApplicationServiceFactory.cs
 .\IShipmentCommand.cs
 .\IShipmentEvent.cs
+.\IShipmentImageCommand.cs
+.\IShipmentImageEvent.cs
+.\IShipmentImageEventDao.cs
+.\IShipmentImageState.cs
+.\IShipmentImageStateDao.cs
+.\IShipmentImageStateDto.cs
+.\IShipmentImageStateProperties.cs
+.\IShipmentImageStates.cs
 .\IShipmentItemCommand.cs
 .\IShipmentItemEvent.cs
 .\IShipmentItemEventDao.cs
@@ -7212,6 +7366,14 @@
 .\IShipmentReceiptCommand.cs
 .\IShipmentReceiptEvent.cs
 .\IShipmentReceiptEventDao.cs
+.\IShipmentReceiptImageCommand.cs
+.\IShipmentReceiptImageEvent.cs
+.\IShipmentReceiptImageEventDao.cs
+.\IShipmentReceiptImageState.cs
+.\IShipmentReceiptImageStateDao.cs
+.\IShipmentReceiptImageStateDto.cs
+.\IShipmentReceiptImageStateProperties.cs
+.\IShipmentReceiptImageStates.cs
 .\IShipmentReceiptState.cs
 .\IShipmentReceiptStateDao.cs
 .\IShipmentReceiptStateDto.cs
@@ -7243,6 +7405,21 @@
 .\ShipmentCommandDto.cs
 .\ShipmentEvent.cs
 .\ShipmentEventId.cs
+.\ShipmentImageCommand.cs
+.\ShipmentImageCommandDto.cs
+.\ShipmentImageEvent.cs
+.\ShipmentImageEventId.cs
+.\ShipmentImageId.cs
+.\ShipmentImageState.cs
+.\ShipmentImageStateDto.cs
+.\ShipmentImageStateDtoExtension.cs
+.\ShipmentImageStateDtoWrapper.cs
+.\ShipmentImageStateEventDto.cs
+.\ShipmentImageStateEventDtoConverter.cs
+.\ShipmentImageStateExtension.cs
+.\ShipmentImageStateInterfaceExtension.cs
+.\ShipmentImageStateProperties.cs
+.\ShipmentImageStates.cs
 .\ShipmentItemCommand.cs
 .\ShipmentItemCommandDto.cs
 .\ShipmentItemEvent.cs
@@ -7264,6 +7441,21 @@
 .\ShipmentReceiptEvent.cs
 .\ShipmentReceiptEventId.cs
 .\ShipmentReceiptId.cs
+.\ShipmentReceiptImageCommand.cs
+.\ShipmentReceiptImageCommandDto.cs
+.\ShipmentReceiptImageEvent.cs
+.\ShipmentReceiptImageEventId.cs
+.\ShipmentReceiptImageId.cs
+.\ShipmentReceiptImageState.cs
+.\ShipmentReceiptImageStateDto.cs
+.\ShipmentReceiptImageStateDtoExtension.cs
+.\ShipmentReceiptImageStateDtoWrapper.cs
+.\ShipmentReceiptImageStateEventDto.cs
+.\ShipmentReceiptImageStateEventDtoConverter.cs
+.\ShipmentReceiptImageStateExtension.cs
+.\ShipmentReceiptImageStateInterfaceExtension.cs
+.\ShipmentReceiptImageStateProperties.cs
+.\ShipmentReceiptImageStates.cs
 .\ShipmentReceiptState.cs
 .\ShipmentReceiptStateDto.cs
 .\ShipmentReceiptStateDtoExtension.cs

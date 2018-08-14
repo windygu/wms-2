@@ -138,6 +138,31 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private CreateShipmentImageCommands _shipmentImages = new CreateShipmentImageCommands();
+
+        public ICreateShipmentImageCommands ShipmentImages
+        {
+            get
+            {
+                return this._shipmentImages;
+            }
+        }
+
+        public CreateShipmentImage NewCreateShipmentImage()
+        {
+            var c = new CreateShipmentImage();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentImage ICreateShipment.NewCreateShipmentImage()
+        {
+            return this.NewCreateShipmentImage();
+        }
+
+
+
         private CreateShipmentItemCommands _shipmentItems = new CreateShipmentItemCommands();
 
         public ICreateShipmentItemCommands ShipmentItems
@@ -291,6 +316,58 @@ namespace Dddml.Wms.Domain.Shipment
 		public MergePatchShipment ()
 		{
 		}
+
+        private ShipmentImageCommands _shipmentImageCommands = new ShipmentImageCommands();
+
+        public IShipmentImageCommands ShipmentImageCommands
+        {
+            get
+            {
+                return this._shipmentImageCommands;
+            }
+        }
+
+
+        public CreateShipmentImage NewCreateShipmentImage()
+        {
+            var c = new CreateShipmentImage();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentImage IMergePatchShipment.NewCreateShipmentImage()
+        {
+            return this.NewCreateShipmentImage();
+        }
+
+        public MergePatchShipmentImage NewMergePatchShipmentImage()
+        {
+            var c = new MergePatchShipmentImage();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IMergePatchShipmentImage IMergePatchShipment.NewMergePatchShipmentImage()
+        {
+            return this.NewMergePatchShipmentImage();
+        }
+
+
+        public RemoveShipmentImage NewRemoveShipmentImage()
+        {
+            var c = new RemoveShipmentImage();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IRemoveShipmentImage IMergePatchShipment.NewRemoveShipmentImage()
+        {
+            return this.NewRemoveShipmentImage();
+        }
+
 
         private ShipmentItemCommands _shipmentItemCommands = new ShipmentItemCommands();
 
@@ -467,6 +544,69 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
 	}
+
+
+    public class CreateShipmentImageCommands : ICreateShipmentImageCommands
+    {
+        private List<ICreateShipmentImage> _innerCommands = new List<ICreateShipmentImage>();
+
+        public void Add(ICreateShipmentImage c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateShipmentImage c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateShipmentImage> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class ShipmentImageCommands : IShipmentImageCommands
+    {
+        private List<IShipmentImageCommand> _innerCommands = new List<IShipmentImageCommand>();
+
+        public void Add(IShipmentImageCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IShipmentImageCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IShipmentImageCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
 
     public class CreateShipmentItemCommands : ICreateShipmentItemCommands
@@ -933,6 +1073,96 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
+        public class AddItemAndReceipt : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "AddItemAndReceipt"; }
+            }
+
+            public string ReceiptSeqId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public string RejectionReasonId { get; set; }
+
+            public string DamageStatusId { get; set; }
+
+            public string DamageReasonId { get; set; }
+
+            public decimal? AcceptedQuantity { get; set; }
+
+            public decimal? RejectedQuantity { get; set; }
+
+            public decimal? DamagedQuantity { get; set; }
+
+            public string ItemDescription { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
         public class ConfirmAllItemsReceived : IShipmentCommand
         {
 
@@ -940,6 +1170,8 @@ namespace Dddml.Wms.Domain.Shipment
             {
                 get { return "ConfirmAllItemsReceived"; }
             }
+
+            public string DestinationLocatorId { get; set; }
 
             public string ShipmentId { get; set; }
 

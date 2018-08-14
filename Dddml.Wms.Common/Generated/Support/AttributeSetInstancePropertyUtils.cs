@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.AttributeSetInstance;
 
@@ -20,6 +21,15 @@ namespace Dddml.Wms.Support
         {
             if (str == null) { return "[null]"; }
             return str;
+        }
+
+        private static string GetSafeStringsValue(ISet<string> strs)
+        {
+            if (strs == null) { return "[null]"; } 
+            var strList = strs.ToList();
+            strList.Sort((s1, s2) => s1.CompareTo(s2));
+            var res = strList.Aggregate("", (a, s) => a + "\n" + s);
+            return res;
         }
 
         private static string GetMD5HashString(MD5 md5Hash, string input)
@@ -43,7 +53,7 @@ namespace Dddml.Wms.Support
             sb.Append("SerialNumber").Append("=").Append(GetSafeStringValue(state.SerialNumber)).Append("|");
             sb.Append("LotId").Append("=").Append(GetSafeStringValue(state.LotId)).Append("|");
             sb.Append("ImageUrl").Append("=").Append(GetSafeStringValue(state.ImageUrl)).Append("|");
-            sb.Append("StatusId").Append("=").Append(GetSafeStringValue(state.StatusId)).Append("|");
+            sb.Append("StatusIds").Append("=").Append(GetSafeStringsValue(state.StatusIds)).Append("|");
             sb.Append("Description").Append("=").Append(GetSafeStringValue(state.Description)).Append("|");
             sb.Append("Active").Append("=").Append(state.Active).Append("|");
             sb.Append("WidthInch").Append("=").Append(state.WidthInch).Append("|");
@@ -53,7 +63,7 @@ namespace Dddml.Wms.Support
             sb.Append("AirDryWeightLbs").Append("=").Append(state.AirDryWeightLbs).Append("|");
             sb.Append("AirDryWeightKg").Append("=").Append(state.AirDryWeightKg).Append("|");
             sb.Append("AirDryMetricTon").Append("=").Append(state.AirDryMetricTon).Append("|");
-            sb.Append("PackageCount").Append("=").Append(state.PackageCount).Append("|");
+            sb.Append("RollCnt").Append("=").Append(state.RollCnt).Append("|");
             sb.Append("AirDryPct").Append("=").Append(state.AirDryPct).Append("|");
             sb.Append("_F_B_0_").Append("=").Append(state._F_B_0_).Append("|");
             sb.Append("_F_I_0_").Append("=").Append(state._F_I_0_).Append("|");
@@ -124,7 +134,7 @@ namespace Dddml.Wms.Support
             sb.Append("SerialNumber").Append("=").Append(GetSafeStringValue(state.SerialNumber)).Append("|");
             sb.Append("LotId").Append("=").Append(GetSafeStringValue(state.LotId)).Append("|");
             sb.Append("ImageUrl").Append("=").Append(GetSafeStringValue(state.ImageUrl)).Append("|");
-            sb.Append("StatusId").Append("=").Append(GetSafeStringValue(state.StatusId)).Append("|");
+            sb.Append("StatusIds").Append("=").Append(GetSafeStringsValue(state.StatusIds)).Append("|");
             sb.Append("Description").Append("=").Append(GetSafeStringValue(state.Description)).Append("|");
             sb.Append("Active").Append("=").Append(state.Active).Append("|");
             sb.Append("WidthInch").Append("=").Append(state.WidthInch).Append("|");
@@ -134,7 +144,7 @@ namespace Dddml.Wms.Support
             sb.Append("AirDryWeightLbs").Append("=").Append(state.AirDryWeightLbs).Append("|");
             sb.Append("AirDryWeightKg").Append("=").Append(state.AirDryWeightKg).Append("|");
             sb.Append("AirDryMetricTon").Append("=").Append(state.AirDryMetricTon).Append("|");
-            sb.Append("PackageCount").Append("=").Append(state.PackageCount).Append("|");
+            sb.Append("RollCnt").Append("=").Append(state.RollCnt).Append("|");
             sb.Append("AirDryPct").Append("=").Append(state.AirDryPct).Append("|");
             sb.Append("_F_B_0_").Append("=").Append(state._F_B_0_).Append("|");
             sb.Append("_F_I_0_").Append("=").Append(state._F_I_0_).Append("|");
@@ -205,7 +215,7 @@ namespace Dddml.Wms.Support
             sb.Append("SerialNumber").Append("=").Append(GetSafeStringValue(state.SerialNumber)).Append("|");
             sb.Append("LotId").Append("=").Append(GetSafeStringValue(state.LotId)).Append("|");
             sb.Append("ImageUrl").Append("=").Append(GetSafeStringValue(state.ImageUrl)).Append("|");
-            sb.Append("StatusId").Append("=").Append(GetSafeStringValue(state.StatusId)).Append("|");
+            sb.Append("StatusIds").Append("=").Append(GetSafeStringsValue(state.StatusIds)).Append("|");
             sb.Append("Description").Append("=").Append(GetSafeStringValue(state.Description)).Append("|");
             sb.Append("Active").Append("=").Append(state.Active).Append("|");
             sb.Append("WidthInch").Append("=").Append(state.WidthInch).Append("|");
@@ -215,7 +225,7 @@ namespace Dddml.Wms.Support
             sb.Append("AirDryWeightLbs").Append("=").Append(state.AirDryWeightLbs).Append("|");
             sb.Append("AirDryWeightKg").Append("=").Append(state.AirDryWeightKg).Append("|");
             sb.Append("AirDryMetricTon").Append("=").Append(state.AirDryMetricTon).Append("|");
-            sb.Append("PackageCount").Append("=").Append(state.PackageCount).Append("|");
+            sb.Append("RollCnt").Append("=").Append(state.RollCnt).Append("|");
             sb.Append("AirDryPct").Append("=").Append(state.AirDryPct).Append("|");
             sb.Append("_F_B_0_").Append("=").Append(state._F_B_0_).Append("|");
             sb.Append("_F_I_0_").Append("=").Append(state._F_I_0_).Append("|");
@@ -284,7 +294,7 @@ namespace Dddml.Wms.Support
                 || !SafeEquals<string>(state1.ReferenceId, state2.ReferenceId)
                 || !SafeEquals<string>(state1.SerialNumber, state2.SerialNumber)
                 || !SafeEquals<string>(state1.LotId, state2.LotId)
-                || !SafeEquals<string>(state1.StatusId, state2.StatusId)
+                || !SafeEquals(state1.StatusIds, state2.StatusIds)
                 || !SafeEquals<string>(state1.ImageUrl, state2.ImageUrl)
                 || !SafeEquals<string>(state1.Description, state2.Description)
                 || !SafeEquals<bool>(state1.Active, state2.Active)
@@ -295,7 +305,7 @@ namespace Dddml.Wms.Support
                 || !SafeEquals<decimal>(state1.AirDryWeightLbs, state2.AirDryWeightLbs)
                 || !SafeEquals<decimal>(state1.AirDryWeightKg, state2.AirDryWeightKg)
                 || !SafeEquals<decimal>(state1.AirDryMetricTon, state2.AirDryMetricTon)
-                || !SafeEquals<int>(state1.PackageCount, state2.PackageCount)
+                || !SafeEquals<int>(state1.RollCnt, state2.RollCnt)
                 || !SafeEquals<decimal>(state1.AirDryPct, state2.AirDryPct)
                 || !SafeEquals<bool>(state1._F_B_0_, state2._F_B_0_)
                 || !SafeEquals<int>(state1._F_I_0_, state2._F_I_0_)
@@ -358,6 +368,18 @@ namespace Dddml.Wms.Support
         private static bool SafeEquals<T>(object obj1, object obj2)
         {
             return Object.Equals((obj1 == null ? default(T) : obj1), obj2 == null ? default(T) : obj2);
+        }
+
+        private static bool SafeEquals(ISet<string> strs1, ISet<string> strs2)
+        {
+            if (Object.Equals(strs1, strs2)) { return true; }
+            if (strs1 == null || strs2 == null) { return false; }
+            if (strs1.Count != strs2.Count) { return false; }
+            foreach (var s in strs1)
+            {
+                if (!strs2.Contains(s)) { return false; }
+            }
+            return true;
         }
 
     }

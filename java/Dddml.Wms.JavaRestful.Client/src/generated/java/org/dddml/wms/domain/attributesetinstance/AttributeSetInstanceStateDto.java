@@ -82,18 +82,6 @@ public class AttributeSetInstanceStateDto
         this.lotId = lotId;
     }
 
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
     private String imageUrl;
 
     public String getImageUrl()
@@ -920,6 +908,16 @@ public class AttributeSetInstanceStateDto
     public void setUpdatedAt(Date updatedAt)
     {
         this.updatedAt = updatedAt;
+    }
+
+    private String[] statusIds;
+
+    public String[] getStatusIds() {
+        return this.statusIds;
+    }
+
+    public void setStatusIds(String[] statusIds) {
+        this.statusIds = statusIds;
     }
 
 }

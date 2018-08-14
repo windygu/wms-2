@@ -37,10 +37,6 @@ public interface AttributeSetInstanceState
 
     void setLotId(String lotId);
 
-    String getStatusId();
-
-    void setStatusId(String statusId);
-
     String getImageUrl();
 
     void setImageUrl(String imageUrl);
@@ -316,6 +312,10 @@ public interface AttributeSetInstanceState
     Boolean getActive();
 
     void setActive(Boolean active);
+
+    Set<String> getStatusIds();
+
+    void setStatusIds(Set<String> statusIds);
 
 
     boolean isStateUnsaved();

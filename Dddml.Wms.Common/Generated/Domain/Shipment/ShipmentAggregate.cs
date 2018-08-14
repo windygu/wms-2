@@ -136,6 +136,14 @@ namespace Dddml.Wms.Domain.Shipment
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
+            foreach (ICreateShipmentImage innerCommand in c.ShipmentImages)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentImageStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddShipmentImageEvent(innerEvent);
+            }
+
             foreach (ICreateShipmentItem innerCommand in c.ShipmentItems)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
@@ -242,6 +250,14 @@ namespace Dddml.Wms.Domain.Shipment
 
 			var version = c.Version;
 
+            foreach (IShipmentImageCommand innerCommand in c.ShipmentImageCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentImageEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddShipmentImageEvent(innerEvent);
+            }
+
             foreach (IShipmentItemCommand innerCommand in c.ShipmentItemCommands)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
@@ -269,6 +285,28 @@ namespace Dddml.Wms.Domain.Shipment
 
             return e;
         }
+
+
+        protected void ThrowOnInconsistentCommands(IShipmentCommand command, IShipmentImageCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteShipment;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveShipmentImage;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.ShipmentId == default(string))
+            {
+                innerProperties.ShipmentId = properties.ShipmentId;
+            }
+            else
+            {
+                var outerShipmentIdName = "ShipmentId";
+                var outerShipmentIdValue = properties.ShipmentId;
+                var innerShipmentIdName = "ShipmentId";
+                var innerShipmentIdValue = innerProperties.ShipmentId;
+                ThrowOnInconsistentIds(innerProperties, innerShipmentIdName, innerShipmentIdValue, outerShipmentIdName, outerShipmentIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
 
 
         protected void ThrowOnInconsistentCommands(IShipmentCommand command, IShipmentItemCommand innerCommand)
@@ -315,6 +353,41 @@ namespace Dddml.Wms.Domain.Shipment
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
+        protected void ThrowOnInconsistentCommands(IShipmentReceiptCommand command, IShipmentReceiptImageCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrRemoveShipmentReceipt;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveShipmentReceiptImage;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.ShipmentId == default(string))
+            {
+                innerProperties.ShipmentId = properties.ShipmentId;
+            }
+            else
+            {
+                var outerShipmentIdName = "ShipmentId";
+                var outerShipmentIdValue = properties.ShipmentId;
+                var innerShipmentIdName = "ShipmentId";
+                var innerShipmentIdValue = innerProperties.ShipmentId;
+                ThrowOnInconsistentIds(innerProperties, innerShipmentIdName, innerShipmentIdValue, outerShipmentIdName, outerShipmentIdValue);
+            }
+
+            if (innerProperties.ShipmentReceiptReceiptSeqId == default(string))
+            {
+                innerProperties.ShipmentReceiptReceiptSeqId = properties.ReceiptSeqId;
+            }
+            else
+            {
+                var outerReceiptSeqIdName = "ReceiptSeqId";
+                var outerReceiptSeqIdValue = properties.ReceiptSeqId;
+                var innerShipmentReceiptReceiptSeqIdName = "ShipmentReceiptReceiptSeqId";
+                var innerShipmentReceiptReceiptSeqIdValue = innerProperties.ShipmentReceiptReceiptSeqId;
+                ThrowOnInconsistentIds(innerProperties, innerShipmentReceiptReceiptSeqIdName, innerShipmentReceiptReceiptSeqIdValue, outerReceiptSeqIdName, outerReceiptSeqIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
         protected void ThrowOnInconsistentCommands(IShipmentCommand command, IItemIssuanceCommand innerCommand)
         {
 
@@ -335,6 +408,81 @@ namespace Dddml.Wms.Domain.Shipment
             }
 
         }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected virtual IShipmentImageEvent Map(IShipmentImageCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentImage) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchShipmentImage) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveShipmentImage) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IShipmentImageStateCreated MapCreate(ICreateShipmentImage c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentImageEventId(c.ShipmentId, c.SequenceId, version);
+            IShipmentImageStateCreated e = NewShipmentImageStateCreated(stateEventId);
+            var s = outerState.ShipmentImages.Get(c.SequenceId, true);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IShipmentImageStateMergePatched MapMergePatch(IMergePatchShipmentImage c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentImageEventId(c.ShipmentId, c.SequenceId, version);
+            IShipmentImageStateMergePatched e = NewShipmentImageStateMergePatched(stateEventId);
+            var s = outerState.ShipmentImages.Get(c.SequenceId);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+            e.IsPropertyUrlRemoved = c.IsPropertyUrlRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IShipmentImageStateRemoved MapRemove(IRemoveShipmentImage c, IShipmentCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentImageEventId(c.ShipmentId, c.SequenceId, version);
+            IShipmentImageStateRemoved e = NewShipmentImageStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
 
 
         protected virtual IShipmentItemEvent Map(IShipmentItemCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
@@ -449,6 +597,15 @@ namespace Dddml.Wms.Domain.Shipment
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            foreach (ICreateShipmentReceiptImage innerCommand in c.ShipmentReceiptImages)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentReceiptImageStateCreated innerEvent = MapCreate(innerCommand, c, version, s);
+                e.AddShipmentReceiptImageEvent(innerEvent);
+            }
+
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -503,10 +660,94 @@ namespace Dddml.Wms.Domain.Shipment
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            foreach (IShipmentReceiptImageCommand innerCommand in c.ShipmentReceiptImageCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentReceiptImageEvent innerEvent = Map(innerCommand, c, version, s);
+                e.AddShipmentReceiptImageEvent(innerEvent);
+            }
+
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
 
+
+
+        protected virtual IShipmentReceiptImageEvent Map(IShipmentReceiptImageCommand c, IShipmentReceiptCommand outerCommand, long version, IShipmentReceiptState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentReceiptImage) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchShipmentReceiptImage) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveShipmentReceiptImage) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IShipmentReceiptImageStateCreated MapCreate(ICreateShipmentReceiptImage c, IShipmentReceiptCommand outerCommand, long version, IShipmentReceiptState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentReceiptImageEventId(c.ShipmentId, c.ShipmentReceiptReceiptSeqId, c.SequenceId, version);
+            IShipmentReceiptImageStateCreated e = NewShipmentReceiptImageStateCreated(stateEventId);
+            var s = outerState.ShipmentReceiptImages.Get(c.SequenceId, true);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IShipmentReceiptImageStateMergePatched MapMergePatch(IMergePatchShipmentReceiptImage c, IShipmentReceiptCommand outerCommand, long version, IShipmentReceiptState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentReceiptImageEventId(c.ShipmentId, c.ShipmentReceiptReceiptSeqId, c.SequenceId, version);
+            IShipmentReceiptImageStateMergePatched e = NewShipmentReceiptImageStateMergePatched(stateEventId);
+            var s = outerState.ShipmentReceiptImages.Get(c.SequenceId);
+
+            e.Url = c.Url;
+            e.Active = c.Active;
+            e.IsPropertyUrlRemoved = c.IsPropertyUrlRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IShipmentReceiptImageStateRemoved MapRemove(IRemoveShipmentReceiptImage c, IShipmentReceiptCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentReceiptImageEventId(c.ShipmentId, c.ShipmentReceiptReceiptSeqId, c.SequenceId, version);
+            IShipmentReceiptImageStateRemoved e = NewShipmentReceiptImageStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
 
 
         protected virtual IItemIssuanceEvent Map(IItemIssuanceCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
@@ -673,6 +914,22 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+		private ShipmentImageStateCreated NewShipmentImageStateCreated(ShipmentImageEventId stateEventId)
+		{
+			return new ShipmentImageStateCreated(stateEventId);
+		}
+
+        private ShipmentImageStateMergePatched NewShipmentImageStateMergePatched(ShipmentImageEventId stateEventId)
+		{
+			return new ShipmentImageStateMergePatched(stateEventId);
+		}
+
+        private ShipmentImageStateRemoved NewShipmentImageStateRemoved(ShipmentImageEventId stateEventId)
+		{
+			return new ShipmentImageStateRemoved(stateEventId);
+		}
+
+
 		private ShipmentItemStateCreated NewShipmentItemStateCreated(ShipmentItemEventId stateEventId)
 		{
 			return new ShipmentItemStateCreated(stateEventId);
@@ -692,6 +949,22 @@ namespace Dddml.Wms.Domain.Shipment
         private ShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(ShipmentReceiptEventId stateEventId)
 		{
 			return new ShipmentReceiptStateMergePatched(stateEventId);
+		}
+
+
+		private ShipmentReceiptImageStateCreated NewShipmentReceiptImageStateCreated(ShipmentReceiptImageEventId stateEventId)
+		{
+			return new ShipmentReceiptImageStateCreated(stateEventId);
+		}
+
+        private ShipmentReceiptImageStateMergePatched NewShipmentReceiptImageStateMergePatched(ShipmentReceiptImageEventId stateEventId)
+		{
+			return new ShipmentReceiptImageStateMergePatched(stateEventId);
+		}
+
+        private ShipmentReceiptImageStateRemoved NewShipmentReceiptImageStateRemoved(ShipmentReceiptImageEventId stateEventId)
+		{
+			return new ShipmentReceiptImageStateRemoved(stateEventId);
 		}
 
 

@@ -734,6 +734,12 @@
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentEventStore.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentImageEventDao.cs">
+      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentImageStateDao.cs">
+      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentItemEventDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -741,6 +747,12 @@
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptEventDao.cs">
+      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptImageEventDao.cs">
+      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptImageStateDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptStateDao.cs">
@@ -1336,6 +1348,8 @@
 .\SellableInventoryItemEntryState.hbm.xml
 .\SellableInventoryItemState.hbm.xml
 .\ShipmentEvent.hbm.xml
+.\ShipmentImageEvent.hbm.xml
+.\ShipmentImageState.hbm.xml
 .\ShipmentItemEvent.hbm.xml
 .\ShipmentItemState.hbm.xml
 .\ShipmentMethodTypeEvent.hbm.xml
@@ -1345,6 +1359,8 @@
 .\ShipmentPackageEvent.hbm.xml
 .\ShipmentPackageState.hbm.xml
 .\ShipmentReceiptEvent.hbm.xml
+.\ShipmentReceiptImageEvent.hbm.xml
+.\ShipmentReceiptImageState.hbm.xml
 .\ShipmentReceiptState.hbm.xml
 .\ShipmentState.hbm.xml
 .\ShipmentTypeState.hbm.xml
@@ -1698,6 +1714,18 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutLineImageEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentImageState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentImageEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptImageState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptImageEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
@@ -1963,9 +1991,13 @@
 .\NHibernateItemIssuanceEventDao.cs
 .\NHibernateItemIssuanceStateDao.cs
 .\NHibernateShipmentEventStore.cs
+.\NHibernateShipmentImageEventDao.cs
+.\NHibernateShipmentImageStateDao.cs
 .\NHibernateShipmentItemEventDao.cs
 .\NHibernateShipmentItemStateDao.cs
 .\NHibernateShipmentReceiptEventDao.cs
+.\NHibernateShipmentReceiptImageEventDao.cs
+.\NHibernateShipmentReceiptImageStateDao.cs
 .\NHibernateShipmentReceiptStateDao.cs
 .\NHibernateShipmentStateQueryRepository.cs
 .\NHibernateShipmentStateRepository.cs

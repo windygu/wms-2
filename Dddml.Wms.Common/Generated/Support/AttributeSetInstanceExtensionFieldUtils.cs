@@ -78,7 +78,7 @@ namespace Dddml.Wms.Support
                 },
                 new CreateAttributeSetInstanceExtensionField
                 {
-                    Name = "PackageCount",
+                    Name = "RollCnt",
                     Type = "int?",
                     Length = null,
                     GroupId = null,

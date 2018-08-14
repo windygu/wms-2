@@ -85,16 +85,6 @@ public class AttributeSetInstanceStateEventDto extends AbstractEvent
         this.lotId = lotId;
     }
 
-    private String statusId;
-
-    public String getStatusId() {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId) {
-        this.statusId = statusId;
-    }
-
     private String imageUrl;
 
     public String getImageUrl() {
@@ -755,6 +745,16 @@ public class AttributeSetInstanceStateEventDto extends AbstractEvent
         this.createdAt = createdAt;
     }
 
+    private String[] statusIds;
+
+    public String[] getStatusIds() {
+        return this.statusIds;
+    }
+
+    public void setStatusIds(String[] statusIds) {
+        this.statusIds = statusIds;
+    }
+
     private Boolean isPropertyAttributeSetIdRemoved;
 
     public Boolean getIsPropertyAttributeSetIdRemoved() {
@@ -805,14 +805,14 @@ public class AttributeSetInstanceStateEventDto extends AbstractEvent
         this.isPropertyLotIdRemoved = removed;
     }
 
-    private Boolean isPropertyStatusIdRemoved;
+    private Boolean isPropertyStatusIdsRemoved;
 
-    public Boolean getIsPropertyStatusIdRemoved() {
-        return this.isPropertyStatusIdRemoved;
+    public Boolean getIsPropertyStatusIdsRemoved() {
+        return this.isPropertyStatusIdsRemoved;
     }
 
-    public void setIsPropertyStatusIdRemoved(Boolean removed) {
-        this.isPropertyStatusIdRemoved = removed;
+    public void setIsPropertyStatusIdsRemoved(Boolean removed) {
+        this.isPropertyStatusIdsRemoved = removed;
     }
 
     private Boolean isPropertyImageUrlRemoved;

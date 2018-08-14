@@ -32,6 +32,10 @@ namespace Dddml.Wms.Domain.Shipment
 
         long GetCount(ICriterion filter);
 
+        IShipmentImageState GetShipmentImage(string shipmentId, string sequenceId);
+
+        IEnumerable<IShipmentImageState> GetShipmentImages(string shipmentId);
+
         IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId);
 
         IEnumerable<IShipmentItemState> GetShipmentItems(string shipmentId);
@@ -39,6 +43,10 @@ namespace Dddml.Wms.Domain.Shipment
         IShipmentReceiptState GetShipmentReceipt(string shipmentId, string receiptSeqId);
 
         IEnumerable<IShipmentReceiptState> GetShipmentReceipts(string shipmentId);
+
+        IShipmentReceiptImageState GetShipmentReceiptImage(string shipmentId, string shipmentReceiptReceiptSeqId, string sequenceId);
+
+        IEnumerable<IShipmentReceiptImageState> GetShipmentReceiptImages(string shipmentId, string shipmentReceiptReceiptSeqId);
 
         IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId);
 

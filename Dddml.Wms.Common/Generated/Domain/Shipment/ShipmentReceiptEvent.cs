@@ -82,6 +82,38 @@ namespace Dddml.Wms.Domain.Shipment
             this.ShipmentReceiptEventId = stateEventId;
         }
 
+		protected IShipmentReceiptImageEventDao ShipmentReceiptImageEventDao
+		{
+			get { return ApplicationContext.Current["ShipmentReceiptImageEventDao"] as IShipmentReceiptImageEventDao; }
+		}
+
+        protected ShipmentReceiptImageEventId NewShipmentReceiptImageEventId(string sequenceId)
+        {
+            var stateEventId = new ShipmentReceiptImageEventId(this.ShipmentReceiptEventId.ShipmentId, this.ShipmentReceiptEventId.ReceiptSeqId, sequenceId, this.ShipmentReceiptEventId.ShipmentVersion);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IShipmentReceiptImageEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IShipmentReceiptEvent oe, IShipmentReceiptImageEvent e)
+		{
+			if (!oe.ShipmentReceiptEventId.ShipmentId.Equals(e.ShipmentReceiptImageEventId.ShipmentId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
+					oe.ShipmentReceiptEventId.ShipmentId, e.ShipmentReceiptImageEventId.ShipmentId);
+			}
+			if (!oe.ShipmentReceiptEventId.ReceiptSeqId.Equals(e.ShipmentReceiptImageEventId.ShipmentReceiptReceiptSeqId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id ReceiptSeqId {0} but inner id ShipmentReceiptReceiptSeqId {1}", 
+					oe.ShipmentReceiptEventId.ReceiptSeqId, e.ShipmentReceiptImageEventId.ShipmentReceiptReceiptSeqId);
+			}
+		}
+
+
 
         string IEventDto.EventType
         {
@@ -143,7 +175,7 @@ namespace Dddml.Wms.Domain.Shipment
 
     }
 
-	public class ShipmentReceiptStateCreated : ShipmentReceiptStateEventBase, IShipmentReceiptStateCreated
+	public class ShipmentReceiptStateCreated : ShipmentReceiptStateEventBase, IShipmentReceiptStateCreated, ISaveable
 	{
 		public ShipmentReceiptStateCreated () : this(new ShipmentReceiptEventId())
 		{
@@ -153,6 +185,62 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
+		private Dictionary<ShipmentReceiptImageEventId, IShipmentReceiptImageStateCreated> _shipmentReceiptImageEvents = new Dictionary<ShipmentReceiptImageEventId, IShipmentReceiptImageStateCreated>();
+        
+        private IEnumerable<IShipmentReceiptImageStateCreated> _readOnlyShipmentReceiptImageEvents;
+
+        public virtual IEnumerable<IShipmentReceiptImageStateCreated> ShipmentReceiptImageEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._shipmentReceiptImageEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentReceiptImageEvents != null) { return _readOnlyShipmentReceiptImageEvents; }
+                    var eventDao = ShipmentReceiptImageEventDao;
+                    var eL = new List<IShipmentReceiptImageStateCreated>();
+                    foreach (var e in eventDao.FindByShipmentReceiptEventId(this.ShipmentReceiptEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentReceiptImageStateCreated)e);
+                    }
+                    return (_readOnlyShipmentReceiptImageEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentReceiptImageEvent(e);
+                    }
+                }
+                else { this._shipmentReceiptImageEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddShipmentReceiptImageEvent(IShipmentReceiptImageStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentReceiptImageEvents[e.ShipmentReceiptImageEventId] = e;
+		}
+
+        public virtual IShipmentReceiptImageStateCreated NewShipmentReceiptImageStateCreated(string sequenceId)
+        {
+            var stateEvent = new ShipmentReceiptImageStateCreated(NewShipmentReceiptImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+		public virtual void Save ()
+		{
+			foreach (IShipmentReceiptImageStateCreated e in this.ShipmentReceiptImageEvents) {
+				ShipmentReceiptImageEventDao.Save(e);
+			}
+		}
 
         protected override string GetEventType()
         {
@@ -162,7 +250,7 @@ namespace Dddml.Wms.Domain.Shipment
 	}
 
 
-	public class ShipmentReceiptStateMergePatched : ShipmentReceiptStateEventBase, IShipmentReceiptStateMergePatched
+	public class ShipmentReceiptStateMergePatched : ShipmentReceiptStateEventBase, IShipmentReceiptStateMergePatched, ISaveable
 	{
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
 
@@ -211,6 +299,74 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
+		private Dictionary<ShipmentReceiptImageEventId, IShipmentReceiptImageEvent> _shipmentReceiptImageEvents = new Dictionary<ShipmentReceiptImageEventId, IShipmentReceiptImageEvent>();
+
+        private IEnumerable<IShipmentReceiptImageEvent> _readOnlyShipmentReceiptImageEvents;
+        
+        public virtual IEnumerable<IShipmentReceiptImageEvent> ShipmentReceiptImageEvents
+        {
+            get
+            {
+                if (!EventReadOnly)
+                {
+                    return this._shipmentReceiptImageEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentReceiptImageEvents != null) { return _readOnlyShipmentReceiptImageEvents; }
+                    var eventDao = ShipmentReceiptImageEventDao;
+                    var eL = new List<IShipmentReceiptImageEvent>();
+                    foreach (var e in eventDao.FindByShipmentReceiptEventId(this.ShipmentReceiptEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentReceiptImageEvent)e);
+                    }
+                    return (_readOnlyShipmentReceiptImageEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentReceiptImageEvent(e);
+                    }
+                }
+                else { this._shipmentReceiptImageEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddShipmentReceiptImageEvent(IShipmentReceiptImageEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentReceiptImageEvents[e.ShipmentReceiptImageEventId] = e;
+		}
+
+        public virtual IShipmentReceiptImageStateCreated NewShipmentReceiptImageStateCreated(string sequenceId)
+        {
+            var stateEvent = new ShipmentReceiptImageStateCreated(NewShipmentReceiptImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+        public virtual IShipmentReceiptImageStateMergePatched NewShipmentReceiptImageStateMergePatched(string sequenceId)
+        {
+            var stateEvent = new ShipmentReceiptImageStateMergePatched(NewShipmentReceiptImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+        public virtual IShipmentReceiptImageStateRemoved NewShipmentReceiptImageStateRemoved(string sequenceId)
+        {
+            var stateEvent = new ShipmentReceiptImageStateRemoved(NewShipmentReceiptImageEventId(sequenceId));
+            return stateEvent;
+        }
+
+		public virtual void Save ()
+		{
+			foreach (IShipmentReceiptImageEvent e in this.ShipmentReceiptImageEvents) {
+				ShipmentReceiptImageEventDao.Save(e);
+			}
+		}
 
         protected override string GetEventType()
         {

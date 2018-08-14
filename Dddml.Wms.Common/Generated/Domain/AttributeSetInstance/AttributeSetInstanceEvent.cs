@@ -124,8 +124,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual string LotId { get { return AttributeSetInstanceState.LotId; } set { AttributeSetInstanceState.LotId = value; } }
 
-        public virtual string StatusId { get { return AttributeSetInstanceState.StatusId; } set { AttributeSetInstanceState.StatusId = value; } }
-
         public virtual string ImageUrl { get { return AttributeSetInstanceState.ImageUrl; } set { AttributeSetInstanceState.ImageUrl = value; } }
 
         public virtual string Description { get { return AttributeSetInstanceState.Description; } set { AttributeSetInstanceState.Description = value; } }
@@ -146,7 +144,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual decimal? AirDryMetricTon { get { return AttributeSetInstanceState.AirDryMetricTon; } set { AttributeSetInstanceState.AirDryMetricTon = value; } }
 
-        public virtual int? PackageCount { get { return AttributeSetInstanceState.PackageCount; } set { AttributeSetInstanceState.PackageCount = value; } }
+        public virtual int? RollCnt { get { return AttributeSetInstanceState.RollCnt; } set { AttributeSetInstanceState.RollCnt = value; } }
 
         public virtual decimal? AirDryPct { get { return AttributeSetInstanceState.AirDryPct; } set { AttributeSetInstanceState.AirDryPct = value; } }
 
@@ -253,6 +251,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         public virtual string _F_C50_4_ { get { return AttributeSetInstanceState._F_C50_4_; } set { AttributeSetInstanceState._F_C50_4_ = value; } }
 
         public virtual bool? Active { get { return AttributeSetInstanceState.Active; } set { AttributeSetInstanceState.Active = (value != null && value.HasValue) ? value.Value : default(bool); } }
+
+		public virtual ISet<string> StatusIds { get { return AttributeSetInstanceState.StatusIds; } set { AttributeSetInstanceState.StatusIds = value; } }
 
         protected AttributeSetInstanceStateEventBase() : base()
         {

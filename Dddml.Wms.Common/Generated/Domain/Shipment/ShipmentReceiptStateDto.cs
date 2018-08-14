@@ -171,6 +171,18 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual ShipmentReceiptImageStateDto[] ShipmentReceiptImages
+        {
+            get;
+            set;
+        }
+
+        IShipmentReceiptImageStateDto[] IShipmentReceiptStateDto.ShipmentReceiptImages
+        {
+            get { return this.ShipmentReceiptImages; }
+            set { this.ShipmentReceiptImages = value.Select(e => ((ShipmentReceiptImageStateDto)e)).ToArray(); }
+        }
+
         public virtual IShipmentReceiptState ToShipmentReceiptState()
         {
             var state = new ShipmentReceiptState(true);
@@ -200,6 +212,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.ShipmentReceiptImages != null) { foreach (var s in this.ShipmentReceiptImages) { state.ShipmentReceiptImages.AddToSave(s.ToShipmentReceiptImageState()); } };
 
             return state;
         }

@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 			this.LotId = e.LotId;
 
-			this.StatusId = e.StatusId;
+			this.StatusIds = e.StatusIds;
 
 			this.ImageUrl = e.ImageUrl;
 
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 			this.AirDryMetricTon = e.AirDryMetricTon;
 
-			this.PackageCount = e.PackageCount;
+			this.RollCnt = e.RollCnt;
 
 			this.AirDryPct = e.AirDryPct;
 

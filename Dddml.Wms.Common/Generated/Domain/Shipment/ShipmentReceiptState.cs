@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.Shipment;
 namespace Dddml.Wms.Domain.Shipment
 {
 
-	public partial class ShipmentReceiptState : ShipmentReceiptStateProperties, IShipmentReceiptState
+	public partial class ShipmentReceiptState : ShipmentReceiptStateProperties, IShipmentReceiptState, ISaveable
 	{
 
 		public virtual string CreatedBy { get; set; }
@@ -151,6 +151,21 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private IShipmentReceiptImageStates _shipmentReceiptImages;
+      
+        public virtual IShipmentReceiptImageStates ShipmentReceiptImages
+        {
+            get
+            {
+                return this._shipmentReceiptImages;
+            }
+            set
+            {
+                this._shipmentReceiptImages = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -174,8 +189,22 @@ namespace Dddml.Wms.Domain.Shipment
         public ShipmentReceiptState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _shipmentReceiptImages = new ShipmentReceiptImageStates(this);
+
             InitializeProperties();
         }
+
+
+		#region Saveable Implements
+
+        public virtual void Save()
+        {
+            _shipmentReceiptImages.Save();
+
+        }
+
+
+		#endregion
 
 
 		public virtual void When(IShipmentReceiptStateCreated e)
@@ -222,6 +251,10 @@ namespace Dddml.Wms.Domain.Shipment
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IShipmentReceiptImageStateCreated innerEvent in e.ShipmentReceiptImageEvents) {
+				IShipmentReceiptImageState innerState = this.ShipmentReceiptImages.Get(innerEvent.GlobalId.SequenceId, true);
+				innerState.Mutate (innerEvent);
+			}
 
 		}
 
@@ -462,6 +495,19 @@ namespace Dddml.Wms.Domain.Shipment
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
+
+			foreach (IShipmentReceiptImageEvent innerEvent in e.ShipmentReceiptImageEvents)
+            {
+                IShipmentReceiptImageState innerState = this.ShipmentReceiptImages.Get(innerEvent.GlobalId.SequenceId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IShipmentReceiptImageStateRemoved;
+                if (removed != null)
+                {
+                    this.ShipmentReceiptImages.Remove(innerState);
+                }
+          
+            }
 
 		}
 

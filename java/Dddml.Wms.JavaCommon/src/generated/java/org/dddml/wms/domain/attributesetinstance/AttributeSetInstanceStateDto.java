@@ -82,18 +82,6 @@ public class AttributeSetInstanceStateDto
         this.lotId = lotId;
     }
 
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
     private String imageUrl;
 
     public String getImageUrl()
@@ -922,6 +910,16 @@ public class AttributeSetInstanceStateDto
         this.updatedAt = updatedAt;
     }
 
+    private String[] statusIds;
+
+    public String[] getStatusIds() {
+        return this.statusIds;
+    }
+
+    public void setStatusIds(String[] statusIds) {
+        this.statusIds = statusIds;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
@@ -968,9 +966,6 @@ public class AttributeSetInstanceStateDto
             }
             if (returnedFieldsContains("LotId")) {
                 dto.setLotId(state.getLotId());
-            }
-            if (returnedFieldsContains("StatusId")) {
-                dto.setStatusId(state.getStatusId());
             }
             if (returnedFieldsContains("ImageUrl")) {
                 dto.setImageUrl(state.getImageUrl());
@@ -1178,6 +1173,15 @@ public class AttributeSetInstanceStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("StatusIds")) {
+                ArrayList<String> arrayList = new ArrayList();
+                if (state.getStatusIds() != null) {
+                    for (String s : state.getStatusIds()) {
+                        arrayList.add(s);
+                    }
+                }
+                dto.setStatusIds(arrayList.toArray(new String[0]));
             }
             return dto;
         }

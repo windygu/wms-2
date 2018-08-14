@@ -68,6 +68,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 	public interface ICreateShipmentReceipt : ICreateOrMergePatchOrRemoveShipmentReceipt
 	{
+        ICreateShipmentReceiptImageCommands ShipmentReceiptImages { get; }
+
+        ICreateShipmentReceiptImage NewCreateShipmentReceiptImage();
+
 	}
 
 	public interface IMergePatchShipmentReceipt : ICreateOrMergePatchOrRemoveShipmentReceipt
@@ -111,12 +115,40 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+        IShipmentReceiptImageCommands ShipmentReceiptImageCommands { get; }
+
+        ICreateShipmentReceiptImage NewCreateShipmentReceiptImage();
+
+        IMergePatchShipmentReceiptImage NewMergePatchShipmentReceiptImage();
+
+        IRemoveShipmentReceiptImage NewRemoveShipmentReceiptImage();
+
 
 	}
 
 	public interface IRemoveShipmentReceipt : ICreateOrMergePatchOrRemoveShipmentReceipt
 	{
 	}
+
+    public interface ICreateShipmentReceiptImageCommands : IEnumerable<ICreateShipmentReceiptImage>
+    {
+        void Add(ICreateShipmentReceiptImage c);
+
+        void Remove(ICreateShipmentReceiptImage c);
+
+        void Clear();
+
+    }
+
+    public interface IShipmentReceiptImageCommands : IEnumerable<IShipmentReceiptImageCommand>
+    {
+        void Add(IShipmentReceiptImageCommand c);
+
+        void Remove(IShipmentReceiptImageCommand c);
+
+        void Clear();
+
+    }
 
 
 }

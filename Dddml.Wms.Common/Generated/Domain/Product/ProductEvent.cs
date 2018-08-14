@@ -250,6 +250,8 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual decimal? MoisturePct { get; set; }
 
+		public virtual string RollCnt { get; set; }
+
 		public virtual bool? Active { get; set; }
 
         protected ProductStateEventBase() : base()
@@ -468,6 +470,8 @@ namespace Dddml.Wms.Domain.Product
 		public virtual bool IsPropertyOutsideDiameterRemoved { get; set; }
 
 		public virtual bool IsPropertyMoisturePctRemoved { get; set; }
+
+		public virtual bool IsPropertyRollCntRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

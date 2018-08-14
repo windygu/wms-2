@@ -68,5 +68,16 @@ namespace Dddml.Wms.Domain.Shipment
         {
             throw new NotImplementedException();
         }
+
+
+        public void AddItemAndReceipt(string receiptSeqId, string productId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, string damageStatusId, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ConfirmAllItemsReceived(string destinationLocatorId, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

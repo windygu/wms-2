@@ -435,6 +435,87 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+        ICreateShipmentReceiptImageCommands ICreateShipmentReceipt.ShipmentReceiptImages
+        {
+            get
+            {
+                return this._shipmentReceiptImages;
+            }
+        }
+
+        IShipmentReceiptImageCommands IMergePatchShipmentReceipt.ShipmentReceiptImageCommands
+        {
+            get
+            {
+                return this._shipmentReceiptImages;
+            }
+        }
+
+        public virtual CreateShipmentReceiptImageDto NewCreateShipmentReceiptImage()
+        {
+            var c = new CreateShipmentReceiptImageDto();
+            c.ShipmentId = this.ShipmentId;
+
+            c.ShipmentReceiptReceiptSeqId = this.ReceiptSeqId;
+
+            return c;
+        }
+
+        ICreateShipmentReceiptImage ICreateShipmentReceipt.NewCreateShipmentReceiptImage()
+        {
+            return this.NewCreateShipmentReceiptImage();
+        }
+
+        ICreateShipmentReceiptImage IMergePatchShipmentReceipt.NewCreateShipmentReceiptImage()
+        {
+            return this.NewCreateShipmentReceiptImage();
+        }
+
+        public virtual MergePatchShipmentReceiptImageDto NewMergePatchShipmentReceiptImage()
+        {
+            var c = new MergePatchShipmentReceiptImageDto();
+            c.ShipmentId = this.ShipmentId;
+
+            c.ShipmentReceiptReceiptSeqId = this.ReceiptSeqId;
+
+            return c;
+        }
+
+        IMergePatchShipmentReceiptImage IMergePatchShipmentReceipt.NewMergePatchShipmentReceiptImage()
+        {
+            return this.NewMergePatchShipmentReceiptImage();
+        }
+
+        public virtual RemoveShipmentReceiptImageDto NewRemoveShipmentReceiptImage()
+        {
+            var c = new RemoveShipmentReceiptImageDto();
+            c.ShipmentId = this.ShipmentId;
+
+            c.ShipmentReceiptReceiptSeqId = this.ReceiptSeqId;
+
+            return c;
+        }
+
+        IRemoveShipmentReceiptImage IMergePatchShipmentReceipt.NewRemoveShipmentReceiptImage()
+        {
+            return this.NewRemoveShipmentReceiptImage();
+        }
+
+        private CreateOrMergePatchOrRemoveShipmentReceiptImageDtos _shipmentReceiptImages = new CreateOrMergePatchOrRemoveShipmentReceiptImageDtos();
+
+        public virtual CreateOrMergePatchOrRemoveShipmentReceiptImageDto[] ShipmentReceiptImages
+        {
+            get
+            {
+                return _shipmentReceiptImages.ToArray();
+            }
+            set
+            {
+                _shipmentReceiptImages.Clear();
+                _shipmentReceiptImages.AddRange(value);
+            }
+        }
+
 
         string ICommandDto.CommandType 
         {

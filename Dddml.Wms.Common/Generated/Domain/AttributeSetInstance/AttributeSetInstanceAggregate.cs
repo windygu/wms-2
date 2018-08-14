@@ -100,7 +100,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             e.ReferenceId = c.ReferenceId;
             e.SerialNumber = c.SerialNumber;
             e.LotId = c.LotId;
-            e.StatusId = c.StatusId;
+            e.StatusIds = c.StatusIds;
             e.ImageUrl = c.ImageUrl;
             e.Description = c.Description;
             e.Hash = c.Hash;
@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             e.AirDryWeightLbs = c.AirDryWeightLbs;
             e.AirDryWeightKg = c.AirDryWeightKg;
             e.AirDryMetricTon = c.AirDryMetricTon;
-            e.PackageCount = c.PackageCount;
+            e.RollCnt = c.RollCnt;
             e.AirDryPct = c.AirDryPct;
             e._F_B_0_ = c._F_B_0_;
             e._F_I_0_ = c._F_I_0_;

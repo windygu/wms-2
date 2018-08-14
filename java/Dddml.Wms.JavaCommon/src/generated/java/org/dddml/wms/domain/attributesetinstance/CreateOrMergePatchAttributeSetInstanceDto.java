@@ -82,21 +82,6 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
     }
 
     /**
-     * Status Id
-     */
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
-    /**
      * Image Url
      */
     private String imageUrl;
@@ -1056,6 +1041,19 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.active = active;
     }
 
+    /**
+     * Status Ids
+     */
+    private String[] statusIds;
+
+    public String[] getStatusIds() {
+        return this.statusIds;
+    }
+
+    public void setStatusIds(String[] statusIds) {
+        this.statusIds = statusIds;
+    }
+
     private Boolean isPropertyAttributeSetIdRemoved;
 
     public Boolean getIsPropertyAttributeSetIdRemoved()
@@ -1116,16 +1114,16 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.isPropertyLotIdRemoved = removed;
     }
 
-    private Boolean isPropertyStatusIdRemoved;
+    private Boolean isPropertyStatusIdsRemoved;
 
-    public Boolean getIsPropertyStatusIdRemoved()
+    public Boolean getIsPropertyStatusIdsRemoved()
     {
-        return this.isPropertyStatusIdRemoved;
+        return this.isPropertyStatusIdsRemoved;
     }
 
-    public void setIsPropertyStatusIdRemoved(Boolean removed)
+    public void setIsPropertyStatusIdsRemoved(Boolean removed)
     {
-        this.isPropertyStatusIdRemoved = removed;
+        this.isPropertyStatusIdsRemoved = removed;
     }
 
     private Boolean isPropertyImageUrlRemoved;
@@ -1904,7 +1902,6 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         command.setReferenceId(this.getReferenceId());
         command.setSerialNumber(this.getSerialNumber());
         command.setLotId(this.getLotId());
-        command.setStatusId(this.getStatusId());
         command.setImageUrl(this.getImageUrl());
         command.setDescription(this.getDescription());
         command.setHash(this.getHash());
@@ -1969,6 +1966,7 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         command.set_F_C20_4_(this.get_F_C20_4_());
         command.set_F_C50_4_(this.get_F_C50_4_());
         command.setActive(this.getActive());
+        command.setStatusIds(this.getStatusIds() == null ? null : java.util.Collections.unmodifiableSet(new java.util.HashSet<String>(java.util.Arrays.asList(this.getStatusIds()))));
     }
 
     public AttributeSetInstanceCommand toCommand()

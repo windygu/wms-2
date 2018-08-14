@@ -205,6 +205,25 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/AddItemAndReceipt")]
+        [HttpPut][SetRequesterId]
+        public void AddItemAndReceipt(string id, [FromBody]ShipmentCommandDtos.AddItemAndReceiptRequestContent content)
+        {
+          try {
+            var cmd = content.ToAddItemAndReceipt();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{id}/_commands/ConfirmAllItemsReceived")]
         [HttpPut][SetRequesterId]
         public void ConfirmAllItemsReceived(string id, [FromBody]ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content)
@@ -277,6 +296,37 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{shipmentId}/ShipmentImages/{sequenceId}")]
+        [HttpGet]
+        public IShipmentImageStateDto GetShipmentImage(string shipmentId, string sequenceId)
+        {
+          try {
+            var state = (ShipmentImageState)_shipmentApplicationService.GetShipmentImage(shipmentId, sequenceId);
+            if (state == null) { return null; }
+            var stateDto = new ShipmentImageStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{shipmentId}/ShipmentImages/")]
+        [HttpGet]
+        public IEnumerable<IShipmentImageStateDto> GetShipmentImages(string shipmentId)
+        {
+          try {
+            var states = _shipmentApplicationService.GetShipmentImages(shipmentId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IShipmentImageStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is ShipmentImageStateDtoWrapper ? (ShipmentImageStateDtoWrapper)s : new ShipmentImageStateDtoWrapper((ShipmentImageState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{shipmentId}/ShipmentItems/{shipmentItemSeqId}")]
         [HttpGet]
         public IShipmentItemStateDto GetShipmentItem(string shipmentId, string shipmentItemSeqId)
@@ -332,6 +382,37 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var s in states)
             {
                 var dto = s is ShipmentReceiptStateDtoWrapper ? (ShipmentReceiptStateDtoWrapper)s : new ShipmentReceiptStateDtoWrapper((ShipmentReceiptState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")]
+        [HttpGet]
+        public IShipmentReceiptImageStateDto GetShipmentReceiptImage(string shipmentId, string shipmentReceiptReceiptSeqId, string sequenceId)
+        {
+          try {
+            var state = (ShipmentReceiptImageState)_shipmentApplicationService.GetShipmentReceiptImage(shipmentId, shipmentReceiptReceiptSeqId, sequenceId);
+            if (state == null) { return null; }
+            var stateDto = new ShipmentReceiptImageStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/")]
+        [HttpGet]
+        public IEnumerable<IShipmentReceiptImageStateDto> GetShipmentReceiptImages(string shipmentId, string shipmentReceiptReceiptSeqId)
+        {
+          try {
+            var states = _shipmentApplicationService.GetShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IShipmentReceiptImageStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is ShipmentReceiptImageStateDtoWrapper ? (ShipmentReceiptImageStateDtoWrapper)s : new ShipmentReceiptImageStateDtoWrapper((ShipmentReceiptImageState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

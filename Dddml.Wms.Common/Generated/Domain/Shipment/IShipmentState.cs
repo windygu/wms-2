@@ -29,6 +29,9 @@ namespace Dddml.Wms.Domain.Shipment
 		void Mutate(IEvent e);
 
 
+		IShipmentImageStates ShipmentImages { get; set; }
+
+
 		IShipmentItemStates ShipmentItems { get; set; }
 
 

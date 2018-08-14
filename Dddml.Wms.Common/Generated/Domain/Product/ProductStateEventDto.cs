@@ -172,6 +172,8 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual decimal? MoisturePct { get; set; }
 
+		public virtual string RollCnt { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -1435,6 +1437,25 @@ namespace Dddml.Wms.Domain.Product
             set 
             {
                 this.IsPropertyMoisturePctRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyRollCntRemoved { get; set; }
+
+        bool IProductStateMergePatched.IsPropertyRollCntRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyRollCntRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyRollCntRemoved = value;
             }
         }
 

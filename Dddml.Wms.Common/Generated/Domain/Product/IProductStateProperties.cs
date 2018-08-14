@@ -146,6 +146,8 @@ namespace Dddml.Wms.Domain.Product
 
 		decimal? MoisturePct { get; set; }
 
+		string RollCnt { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

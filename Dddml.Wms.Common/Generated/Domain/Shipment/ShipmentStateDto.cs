@@ -243,6 +243,18 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual ShipmentImageStateDto[] ShipmentImages
+        {
+            get;
+            set;
+        }
+
+        IShipmentImageStateDto[] IShipmentStateDto.ShipmentImages
+        {
+            get { return this.ShipmentImages; }
+            set { this.ShipmentImages = value.Select(e => ((ShipmentImageStateDto)e)).ToArray(); }
+        }
+
         public virtual ShipmentItemStateDto[] ShipmentItems
         {
             get;
@@ -320,6 +332,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.ShipmentImages != null) { foreach (var s in this.ShipmentImages) { state.ShipmentImages.AddToSave(s.ToShipmentImageState()); } };
             if (this.ShipmentItems != null) { foreach (var s in this.ShipmentItems) { state.ShipmentItems.AddToSave(s.ToShipmentItemState()); } };
             if (this.ShipmentReceipts != null) { foreach (var s in this.ShipmentReceipts) { state.ShipmentReceipts.AddToSave(s.ToShipmentReceiptState()); } };
             if (this.ItemIssuances != null) { foreach (var s in this.ItemIssuances) { state.ItemIssuances.AddToSave(s.ToItemIssuanceState()); } };

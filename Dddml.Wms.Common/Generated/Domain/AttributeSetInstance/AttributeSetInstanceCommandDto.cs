@@ -69,8 +69,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		public virtual string LotId { get; set; }
 
-		public virtual string StatusId { get; set; }
-
 		public virtual string ImageUrl { get; set; }
 
 		public virtual string Description { get; set; }
@@ -91,7 +89,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		public virtual decimal? AirDryMetricTon { get; set; }
 
-		public virtual int? PackageCount { get; set; }
+		public virtual int? RollCnt { get; set; }
 
 		public virtual decimal? AirDryPct { get; set; }
 
@@ -198,6 +196,36 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 		public virtual string _F_C50_4_ { get; set; }
 
 		public virtual bool? Active { get; set; }
+
+        public virtual string[] StatusIds { get; set; }
+
+        ISet<string> ICreateOrMergePatchOrDeleteAttributeSetInstance.StatusIds 
+        {
+            get
+            {
+                if (this.StatusIds != null)
+                {
+                    var set = new HashSet<string>();
+                    foreach (var i in this.StatusIds)
+                    {
+                        set.Add(i);
+                    }
+                    return set;
+                } else { return null; }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    var list = new List<string>();
+                    foreach (var i in value)
+                    {
+                        list.Add(i);
+                    }
+                    this.StatusIds = list.ToArray();
+                } else { this.StatusIds = null; }
+            }
+        }
 
 
         string ICommandDto.CommandType 

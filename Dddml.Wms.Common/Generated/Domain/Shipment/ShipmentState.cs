@@ -118,6 +118,21 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private IShipmentImageStates _shipmentImages;
+      
+        public virtual IShipmentImageStates ShipmentImages
+        {
+            get
+            {
+                return this._shipmentImages;
+            }
+            set
+            {
+                this._shipmentImages = value;
+            }
+        }
+
+
         private IShipmentItemStates _shipmentItems;
       
         public virtual IShipmentItemStates ShipmentItems
@@ -199,6 +214,8 @@ namespace Dddml.Wms.Domain.Shipment
         public ShipmentState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _shipmentImages = new ShipmentImageStates(this);
+
             _shipmentItems = new ShipmentItemStates(this);
 
             _shipmentReceipts = new ShipmentReceiptStates(this);
@@ -213,6 +230,8 @@ namespace Dddml.Wms.Domain.Shipment
 
         public virtual void Save()
         {
+            _shipmentImages.Save();
+
             _shipmentItems.Save();
 
             _shipmentReceipts.Save();
@@ -295,6 +314,10 @@ namespace Dddml.Wms.Domain.Shipment
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IShipmentImageStateCreated innerEvent in e.ShipmentImageEvents) {
+				IShipmentImageState innerState = this.ShipmentImages.Get(innerEvent.GlobalId.SequenceId, true);
+				innerState.Mutate (innerEvent);
+			}
 			foreach (IShipmentItemStateCreated innerEvent in e.ShipmentItemEvents) {
 				IShipmentItemState innerState = this.ShipmentItems.Get(innerEvent.GlobalId.ShipmentItemSeqId, true);
 				innerState.Mutate (innerEvent);
@@ -703,6 +726,19 @@ namespace Dddml.Wms.Domain.Shipment
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
+
+			foreach (IShipmentImageEvent innerEvent in e.ShipmentImageEvents)
+            {
+                IShipmentImageState innerState = this.ShipmentImages.Get(innerEvent.GlobalId.SequenceId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IShipmentImageStateRemoved;
+                if (removed != null)
+                {
+                    this.ShipmentImages.Remove(innerState);
+                }
+          
+            }
 
 			foreach (IShipmentItemEvent innerEvent in e.ShipmentItemEvents)
             {

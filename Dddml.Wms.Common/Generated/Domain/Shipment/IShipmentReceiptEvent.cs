@@ -68,6 +68,12 @@ namespace Dddml.Wms.Domain.Shipment
    
 	public interface IShipmentReceiptStateCreated : IShipmentReceiptStateEvent
 	{
+		IEnumerable<IShipmentReceiptImageStateCreated> ShipmentReceiptImageEvents { get; }
+		
+		void AddShipmentReceiptImageEvent(IShipmentReceiptImageStateCreated e);
+
+		IShipmentReceiptImageStateCreated NewShipmentReceiptImageStateCreated(string sequenceId);
+
 	
 	}
 
@@ -111,6 +117,16 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyDamagedQuantityRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
+
+		IEnumerable<IShipmentReceiptImageEvent> ShipmentReceiptImageEvents { get; }
+		
+		void AddShipmentReceiptImageEvent(IShipmentReceiptImageEvent e);
+
+		IShipmentReceiptImageStateCreated NewShipmentReceiptImageStateCreated(string sequenceId);
+
+		IShipmentReceiptImageStateMergePatched NewShipmentReceiptImageStateMergePatched(string sequenceId);
+
+		IShipmentReceiptImageStateRemoved NewShipmentReceiptImageStateRemoved(string sequenceId);
 
 
 	}

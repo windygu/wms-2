@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Shipment
 	public partial class ShipmentReceiptStateDtoWrapper : StateDtoWrapperBase, IShipmentReceiptStateDto, IShipmentReceiptState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] {  };
+        internal static IList<string> _collectionFieldNames = new string[] { "ShipmentReceiptImages" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -800,6 +800,52 @@ namespace Dddml.Wms.Domain.Shipment
             get { return this.Version == ShipmentReceiptState.VersionZero; }
         }
 
+        public virtual IShipmentReceiptImageStateDto[] ShipmentReceiptImages
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentReceiptImages"))
+                {
+                    return null;
+                }
+                var dtos = new List<IShipmentReceiptImageStateDto>();
+                if (this._state.ShipmentReceiptImages != null)
+                {
+                    foreach (var s in this._state.ShipmentReceiptImages)
+                    {
+                        var dto = new ShipmentReceiptImageStateDtoWrapper((ShipmentReceiptImageState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "ShipmentReceiptImages");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new ShipmentReceiptImageStateDtoWrapper[0]; }
+                var states = new List<IShipmentReceiptImageState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToShipmentReceiptImageState());
+                }
+                this._state.ShipmentReceiptImages = new DtoShipmentReceiptImageStates(this._state, states);
+            }
+        }
+
+        IShipmentReceiptImageStates IShipmentReceiptState.ShipmentReceiptImages
+        {
+            get { return _state.ShipmentReceiptImages; }
+            set { _state.ShipmentReceiptImages = value; }
+        }
+
 		void IShipmentReceiptState.When(IShipmentReceiptStateCreated e)
 		{
             throw new NotSupportedException();
@@ -829,6 +875,67 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
         // //////////////////////////////////////////////////////////////
+
+        public class DtoShipmentReceiptImageStates : IShipmentReceiptImageStates
+        {
+
+            private IShipmentReceiptState _outerState;
+
+            private IEnumerable<IShipmentReceiptImageState> _innerStates;
+
+            public DtoShipmentReceiptImageStates(IShipmentReceiptState outerState, IEnumerable<IShipmentReceiptImageState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IShipmentReceiptImageState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IShipmentReceiptImageState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IShipmentReceiptImageState Get(string sequenceId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IShipmentReceiptImageState Get(string sequenceId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IShipmentReceiptImageState Get(string sequenceId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IShipmentReceiptImageState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IShipmentReceiptImageState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
 
 	}
 

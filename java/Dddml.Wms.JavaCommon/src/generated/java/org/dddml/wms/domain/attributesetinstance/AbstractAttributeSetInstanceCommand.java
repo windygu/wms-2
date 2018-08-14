@@ -95,18 +95,6 @@ public abstract class AbstractAttributeSetInstanceCommand extends AbstractComman
             this.lotId = lotId;
         }
 
-        private String statusId;
-
-        public String getStatusId()
-        {
-            return this.statusId;
-        }
-
-        public void setStatusId(String statusId)
-        {
-            this.statusId = statusId;
-        }
-
         private String imageUrl;
 
         public String getImageUrl()
@@ -874,6 +862,18 @@ public abstract class AbstractAttributeSetInstanceCommand extends AbstractComman
         {
             this.active = active;
         }
+
+    private Set<String> statusIds;
+
+    public Set<String> getStatusIds()
+    {
+        return this.statusIds;
+    }
+
+    public void setStatusIds(Set<String> statusIds)
+    {
+        this.statusIds = statusIds;
+    }
 
     }
 

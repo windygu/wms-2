@@ -36,8 +36,11 @@ aggregates:
 
         #DateTime? GuaranteeDate
 
-        StatusId:
-          referenceType: StatusItem
+        #StatusId:
+        #  referenceType: StatusItem
+
+        StatusIds:
+          itemType: string
 
         ImageUrl:
           type: string

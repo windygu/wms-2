@@ -162,6 +162,7 @@ namespace Dddml.Wms.Domain.Product
             e.CoreDiameter = c.CoreDiameter;
             e.OutsideDiameter = c.OutsideDiameter;
             e.MoisturePct = c.MoisturePct;
+            e.RollCnt = c.RollCnt;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -252,6 +253,7 @@ namespace Dddml.Wms.Domain.Product
             e.CoreDiameter = c.CoreDiameter;
             e.OutsideDiameter = c.OutsideDiameter;
             e.MoisturePct = c.MoisturePct;
+            e.RollCnt = c.RollCnt;
             e.Active = c.Active;
             e.IsPropertyProductTypeIdRemoved = c.IsPropertyProductTypeIdRemoved;
             e.IsPropertyPrimaryProductCategoryIdRemoved = c.IsPropertyPrimaryProductCategoryIdRemoved;
@@ -318,6 +320,7 @@ namespace Dddml.Wms.Domain.Product
             e.IsPropertyCoreDiameterRemoved = c.IsPropertyCoreDiameterRemoved;
             e.IsPropertyOutsideDiameterRemoved = c.IsPropertyOutsideDiameterRemoved;
             e.IsPropertyMoisturePctRemoved = c.IsPropertyMoisturePctRemoved;
+            e.IsPropertyRollCntRemoved = c.IsPropertyRollCntRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

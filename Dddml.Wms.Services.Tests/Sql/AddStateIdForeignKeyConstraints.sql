@@ -126,6 +126,14 @@ alter TABLE `GoodIdentifications` add
     (`ProductId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `ShipmentImages` add
+  CONSTRAINT `FK_ShipmentImage_Shipment_StateId` 
+  FOREIGN KEY 
+    (`ShipmentImageIdShipmentId`) 
+  REFERENCES `Shipments` 
+    (`ShipmentId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `ShipmentItems` add
   CONSTRAINT `FK_ShipmentItem_Shipment_StateId` 
   FOREIGN KEY 
@@ -140,6 +148,14 @@ alter TABLE `ShipmentReceipts` add
     (`ShipmentReceiptIdShipmentId`) 
   REFERENCES `Shipments` 
     (`ShipmentId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `ShipmentReceiptImages` add
+  CONSTRAINT `FK_ShipmentReceiptImage_ShipmentReceipt_StateId` 
+  FOREIGN KEY 
+    (`ShipmentReceiptImageIdShipmentId`, `ShipmentReceiptImageIdShipmentReceiptReceiptSeqId`) 
+  REFERENCES `ShipmentReceipts` 
+    (`ShipmentReceiptIdShipmentId`, `ShipmentReceiptIdReceiptSeqId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 alter TABLE `ItemIssuances` add

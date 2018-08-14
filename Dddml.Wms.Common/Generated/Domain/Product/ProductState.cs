@@ -320,6 +320,8 @@ namespace Dddml.Wms.Domain.Product
 
 			this.MoisturePct = e.MoisturePct;
 
+			this.RollCnt = e.RollCnt;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.CreatedBy = e.CreatedBy;
@@ -1115,6 +1117,18 @@ namespace Dddml.Wms.Domain.Product
 			else
 			{
 				this.MoisturePct = e.MoisturePct;
+			}
+
+			if (e.RollCnt == null)
+			{
+				if (e.IsPropertyRollCntRemoved)
+				{
+					this.RollCnt = default(string);
+				}
+			}
+			else
+			{
+				this.RollCnt = e.RollCnt;
 			}
 
 			if (e.Active == null)

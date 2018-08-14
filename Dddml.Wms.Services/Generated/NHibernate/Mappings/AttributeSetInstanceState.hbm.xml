@@ -15,7 +15,6 @@
     <property name="ReferenceId" ></property>
     <property name="SerialNumber" ></property>
     <property name="LotId" ></property>
-    <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
     <property name="ImageUrl" ><column name="ImageUrl" length="255" /></property>
     <property name="Description" ></property>
     <property name="Hash" ></property>
@@ -26,7 +25,7 @@
     <property name="AirDryWeightLbs" ><column name="AirDryWeightLbs" sql-type="decimal(18,6)" /></property>
     <property name="AirDryWeightKg" ><column name="AirDryWeightKg" sql-type="decimal(18,6)" /></property>
     <property name="AirDryMetricTon" ><column name="AirDryMetricTon" sql-type="decimal(18,6)" /></property>
-    <property name="PackageCount" ></property>
+    <property name="RollCnt" ></property>
     <property name="AirDryPct" ><column name="AirDryPct" sql-type="decimal(18,6)" /></property>
     <property name="_F_B_0_" ></property>
     <property name="_F_I_0_" ></property>
@@ -88,6 +87,10 @@
 
     <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
     <property name="CommandId" column="CommandId"/>
+      <set name="StatusIds" table="AttributeSetInstanceStatusIds" lazy="false">
+        <key column="AttributeSetInstanceId" />
+				<element column="StatusIdsItem" type="string" not-null="true" />
+      </set>
 
 
   </class>

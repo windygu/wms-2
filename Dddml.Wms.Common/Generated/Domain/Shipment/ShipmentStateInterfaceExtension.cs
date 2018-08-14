@@ -15,24 +15,28 @@ namespace Dddml.Wms.Domain.Shipment
 	public static partial class ShipmentStateInterfaceExtension
 	{
 
-        public static IShipmentCommand ToCreateOrMergePatchShipment<TCreateShipment, TMergePatchShipment, TCreateShipmentItem, TMergePatchShipmentItem, TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateItemIssuance, TMergePatchItemIssuance>(this IShipmentState state)
+        public static IShipmentCommand ToCreateOrMergePatchShipment<TCreateShipment, TMergePatchShipment, TCreateShipmentImage, TMergePatchShipmentImage, TCreateShipmentItem, TMergePatchShipmentItem, TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage, TCreateItemIssuance, TMergePatchItemIssuance>(this IShipmentState state)
             where TCreateShipment : ICreateShipment, new()
             where TMergePatchShipment : IMergePatchShipment, new()
+            where TCreateShipmentImage : ICreateShipmentImage, new()
+            where TMergePatchShipmentImage : IMergePatchShipmentImage, new()
             where TCreateShipmentItem : ICreateShipmentItem, new()
             where TMergePatchShipmentItem : IMergePatchShipmentItem, new()
             where TCreateShipmentReceipt : ICreateShipmentReceipt, new()
             where TMergePatchShipmentReceipt : IMergePatchShipmentReceipt, new()
+            where TCreateShipmentReceiptImage : ICreateShipmentReceiptImage, new()
+            where TMergePatchShipmentReceiptImage : IMergePatchShipmentReceiptImage, new()
             where TCreateItemIssuance : ICreateItemIssuance, new()
             where TMergePatchItemIssuance : IMergePatchItemIssuance, new()
         {
             bool bUnsaved = ((IShipmentState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateShipment<TCreateShipment, TCreateShipmentItem, TCreateShipmentReceipt, TCreateItemIssuance>();
+                return state.ToCreateShipment<TCreateShipment, TCreateShipmentImage, TCreateShipmentItem, TCreateShipmentReceipt, TCreateShipmentReceiptImage, TCreateItemIssuance>();
             }
             else 
             {
-                return state.ToMergePatchShipment<TMergePatchShipment, TCreateShipmentItem, TMergePatchShipmentItem, TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateItemIssuance, TMergePatchItemIssuance>();
+                return state.ToMergePatchShipment<TMergePatchShipment, TCreateShipmentImage, TMergePatchShipmentImage, TCreateShipmentItem, TMergePatchShipmentItem, TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage, TCreateItemIssuance, TMergePatchItemIssuance>();
             }
         }
 
@@ -46,12 +50,16 @@ namespace Dddml.Wms.Domain.Shipment
             return cmd;
         }
 
-        public static TMergePatchShipment ToMergePatchShipment<TMergePatchShipment, TCreateShipmentItem, TMergePatchShipmentItem, TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateItemIssuance, TMergePatchItemIssuance>(this IShipmentState state)
+        public static TMergePatchShipment ToMergePatchShipment<TMergePatchShipment, TCreateShipmentImage, TMergePatchShipmentImage, TCreateShipmentItem, TMergePatchShipmentItem, TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage, TCreateItemIssuance, TMergePatchItemIssuance>(this IShipmentState state)
             where TMergePatchShipment : IMergePatchShipment, new()
+            where TCreateShipmentImage : ICreateShipmentImage, new()
+            where TMergePatchShipmentImage : IMergePatchShipmentImage, new()
             where TCreateShipmentItem : ICreateShipmentItem, new()
             where TMergePatchShipmentItem : IMergePatchShipmentItem, new()
             where TCreateShipmentReceipt : ICreateShipmentReceipt, new()
             where TMergePatchShipmentReceipt : IMergePatchShipmentReceipt, new()
+            where TCreateShipmentReceiptImage : ICreateShipmentReceiptImage, new()
+            where TMergePatchShipmentReceiptImage : IMergePatchShipmentReceiptImage, new()
             where TCreateItemIssuance : ICreateItemIssuance, new()
             where TMergePatchItemIssuance : IMergePatchItemIssuance, new()
         {
@@ -124,6 +132,11 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.PartyIdFrom == null) { cmd.IsPropertyPartyIdFromRemoved = true; }
             if (state.AdditionalShippingCharge == null) { cmd.IsPropertyAdditionalShippingChargeRemoved = true; }
             if (state.AddtlShippingChargeDesc == null) { cmd.IsPropertyAddtlShippingChargeDescRemoved = true; }
+            foreach (var d in state.ShipmentImages)
+            {
+                var c = d.ToCreateOrMergePatchShipmentImage<TCreateShipmentImage, TMergePatchShipmentImage>();
+                cmd.ShipmentImageCommands.Add(c);
+            }
             foreach (var d in state.ShipmentItems)
             {
                 var c = d.ToCreateOrMergePatchShipmentItem<TCreateShipmentItem, TMergePatchShipmentItem>();
@@ -131,7 +144,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
             foreach (var d in state.ShipmentReceipts)
             {
-                var c = d.ToCreateOrMergePatchShipmentReceipt<TCreateShipmentReceipt, TMergePatchShipmentReceipt>();
+                var c = d.ToCreateOrMergePatchShipmentReceipt<TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage>();
                 cmd.ShipmentReceiptCommands.Add(c);
             }
             foreach (var d in state.ItemIssuances)
@@ -142,10 +155,12 @@ namespace Dddml.Wms.Domain.Shipment
             return cmd;
         }
 
-        public static TCreateShipment ToCreateShipment<TCreateShipment, TCreateShipmentItem, TCreateShipmentReceipt, TCreateItemIssuance>(this IShipmentState state)
+        public static TCreateShipment ToCreateShipment<TCreateShipment, TCreateShipmentImage, TCreateShipmentItem, TCreateShipmentReceipt, TCreateShipmentReceiptImage, TCreateItemIssuance>(this IShipmentState state)
             where TCreateShipment : ICreateShipment, new()
+            where TCreateShipmentImage : ICreateShipmentImage, new()
             where TCreateShipmentItem : ICreateShipmentItem, new()
             where TCreateShipmentReceipt : ICreateShipmentReceipt, new()
+            where TCreateShipmentReceiptImage : ICreateShipmentReceiptImage, new()
             where TCreateItemIssuance : ICreateItemIssuance, new()
         {
             var cmd = new TCreateShipment();
@@ -185,6 +200,11 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.AdditionalShippingCharge = state.AdditionalShippingCharge;
             cmd.AddtlShippingChargeDesc = state.AddtlShippingChargeDesc;
             cmd.Active = ((IShipmentStateProperties)state).Active;
+            foreach (var d in state.ShipmentImages)
+            {
+                var c = d.ToCreateShipmentImage<TCreateShipmentImage>();
+                cmd.ShipmentImages.Add(c);
+            }
             foreach (var d in state.ShipmentItems)
             {
                 var c = d.ToCreateShipmentItem<TCreateShipmentItem>();
@@ -192,7 +212,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
             foreach (var d in state.ShipmentReceipts)
             {
-                var c = d.ToCreateShipmentReceipt<TCreateShipmentReceipt>();
+                var c = d.ToCreateShipmentReceipt<TCreateShipmentReceipt, TCreateShipmentReceiptImage>();
                 cmd.ShipmentReceipts.Add(c);
             }
             foreach (var d in state.ItemIssuances)

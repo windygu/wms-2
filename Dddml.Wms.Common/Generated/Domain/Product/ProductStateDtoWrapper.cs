@@ -1893,6 +1893,34 @@ namespace Dddml.Wms.Domain.Product
             }
         }
 
+		public virtual string RollCnt
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("RollCnt"))
+                {
+                    return _state.RollCnt;
+                }
+                return null;
+            }
+            set
+            {
+                _state.RollCnt = value;
+            }
+        }
+
+        string IProductStateProperties.RollCnt
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).RollCnt;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).RollCnt = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

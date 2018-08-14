@@ -51,12 +51,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
-        public virtual string StatusId
-        {
-            get;
-            set;
-        }
-
         public virtual string ImageUrl
         {
             get;
@@ -117,7 +111,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
-        public virtual int? PackageCount
+        public virtual int? RollCnt
         {
             get;
             set;
@@ -471,6 +465,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
+        public virtual string[] StatusIds
+        {
+            get;
+            set;
+        }
+
         public virtual IAttributeSetInstanceState ToAttributeSetInstanceState()
         {
             var state = new AttributeSetInstanceState(true);
@@ -480,7 +480,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             state.ReferenceId = this.ReferenceId;
             state.SerialNumber = this.SerialNumber;
             state.LotId = this.LotId;
-            state.StatusId = this.StatusId;
             state.ImageUrl = this.ImageUrl;
             state.Description = this.Description;
             state.Hash = this.Hash;
@@ -491,7 +490,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             state.AirDryWeightLbs = this.AirDryWeightLbs;
             state.AirDryWeightKg = this.AirDryWeightKg;
             state.AirDryMetricTon = this.AirDryMetricTon;
-            state.PackageCount = this.PackageCount;
+            state.RollCnt = this.RollCnt;
             state.AirDryPct = this.AirDryPct;
             state._F_B_0_ = this._F_B_0_;
             state._F_I_0_ = this._F_I_0_;
@@ -550,6 +549,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.StatusIds != null) { state.StatusIds = new HashSet<string>(this.StatusIds); }
 
             return state;
         }

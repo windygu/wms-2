@@ -24,7 +24,6 @@ public final class AttributeSetInstanceMetadata {
             "referenceId",
             "serialNumber",
             "lotId",
-            "statusId",
             "imageUrl",
             "description",
             "widthInch",
@@ -97,7 +96,6 @@ public final class AttributeSetInstanceMetadata {
     };
 
     public static final String[] propertyTypes = new String[] {
-            "String",
             "String",
             "String",
             "String",
@@ -199,8 +197,6 @@ public final class AttributeSetInstanceMetadata {
         aliasMap.put("SerialNumber", "serialNumber");
         aliasMap.put("lotId", "lotId");
         aliasMap.put("LotId", "lotId");
-        aliasMap.put("statusId", "statusId");
-        aliasMap.put("StatusId", "statusId");
         aliasMap.put("imageUrl", "imageUrl");
         aliasMap.put("ImageUrl", "imageUrl");
         aliasMap.put("description", "description");

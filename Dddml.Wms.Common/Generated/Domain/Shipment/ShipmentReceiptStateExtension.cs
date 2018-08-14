@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         public static IShipmentReceiptCommand ToCreateOrMergePatchShipmentReceipt(this ShipmentReceiptState state)
         {
-            return state.ToCreateOrMergePatchShipmentReceipt<CreateShipmentReceipt, MergePatchShipmentReceipt>();
+            return state.ToCreateOrMergePatchShipmentReceipt<CreateShipmentReceipt, MergePatchShipmentReceipt, CreateShipmentReceiptImage, MergePatchShipmentReceiptImage>();
         }
 
         public static RemoveShipmentReceipt ToRemoveShipmentReceipt(this ShipmentReceiptState state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.Shipment
 
         public static MergePatchShipmentReceipt ToMergePatchShipmentReceipt(this ShipmentReceiptState state)
         {
-            return state.ToMergePatchShipmentReceipt<MergePatchShipmentReceipt>();
+            return state.ToMergePatchShipmentReceipt<MergePatchShipmentReceipt, CreateShipmentReceiptImage, MergePatchShipmentReceiptImage>();
         }
 
         public static CreateShipmentReceipt ToCreateShipmentReceipt(this ShipmentReceiptState state)
         {
-            return state.ToCreateShipmentReceipt<CreateShipmentReceipt>();
+            return state.ToCreateShipmentReceipt<CreateShipmentReceipt, CreateShipmentReceiptImage>();
         }
 		
 

@@ -57,6 +57,14 @@ namespace Dddml.Wms.Domain.Shipment
             dto.RejectedQuantity = e.RejectedQuantity;
             dto.DamagedQuantity = e.DamagedQuantity;
             dto.Active = e.Active;
+            var shipmentReceiptImageEvents = new List<ShipmentReceiptImageStateCreatedDto>();
+            foreach (var ee in e.ShipmentReceiptImageEvents)
+            {
+                ShipmentReceiptImageStateCreatedDto eeDto = ShipmentReceiptImageStateEventDtoConverter.ToShipmentReceiptImageStateCreatedDto(ee);
+                shipmentReceiptImageEvents.Add(eeDto);
+            }
+            dto.ShipmentReceiptImageEvents = shipmentReceiptImageEvents.ToArray();
+
             return dto;
         }
 
@@ -106,10 +114,26 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyRejectedQuantityRemoved = e.IsPropertyRejectedQuantityRemoved;
             dto.IsPropertyDamagedQuantityRemoved = e.IsPropertyDamagedQuantityRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var shipmentReceiptImageEvents = new List<ShipmentReceiptImageStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.ShipmentReceiptImageEvents)
+            {
+                ShipmentReceiptImageStateCreatedOrMergePatchedOrRemovedDto eeDto = ShipmentReceiptImageStateEventDtoConverter.ToShipmentReceiptImageStateEventDto(ee);
+                shipmentReceiptImageEvents.Add(eeDto);
+            }
+            dto.ShipmentReceiptImageEvents = shipmentReceiptImageEvents.ToArray();
+
 
             return dto;
         }
 
+
+        protected virtual ShipmentReceiptImageStateEventDtoConverter ShipmentReceiptImageStateEventDtoConverter
+        {
+            get
+            {
+                return new ShipmentReceiptImageStateEventDtoConverter();
+            }
+        }
 
 
     }

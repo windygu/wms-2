@@ -102,6 +102,7 @@ namespace Dddml.Wms.Domain.Product
             dto.CoreDiameter = e.CoreDiameter;
             dto.OutsideDiameter = e.OutsideDiameter;
             dto.MoisturePct = e.MoisturePct;
+            dto.RollCnt = e.RollCnt;
             dto.Active = e.Active;
             var goodIdentificationEvents = new List<GoodIdentificationStateCreatedDto>();
             foreach (var ee in e.GoodIdentificationEvents)
@@ -186,6 +187,7 @@ namespace Dddml.Wms.Domain.Product
             dto.CoreDiameter = e.CoreDiameter;
             dto.OutsideDiameter = e.OutsideDiameter;
             dto.MoisturePct = e.MoisturePct;
+            dto.RollCnt = e.RollCnt;
             dto.Active = e.Active;
             dto.IsPropertyProductTypeIdRemoved = e.IsPropertyProductTypeIdRemoved;
             dto.IsPropertyPrimaryProductCategoryIdRemoved = e.IsPropertyPrimaryProductCategoryIdRemoved;
@@ -252,6 +254,7 @@ namespace Dddml.Wms.Domain.Product
             dto.IsPropertyCoreDiameterRemoved = e.IsPropertyCoreDiameterRemoved;
             dto.IsPropertyOutsideDiameterRemoved = e.IsPropertyOutsideDiameterRemoved;
             dto.IsPropertyMoisturePctRemoved = e.IsPropertyMoisturePctRemoved;
+            dto.IsPropertyRollCntRemoved = e.IsPropertyRollCntRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var goodIdentificationEvents = new List<GoodIdentificationStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.GoodIdentificationEvents)

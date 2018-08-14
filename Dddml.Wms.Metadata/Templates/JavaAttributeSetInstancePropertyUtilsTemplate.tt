@@ -23,6 +23,7 @@ package org.dddml.wms.support;
 
 import org.dddml.wms.domain.*;
 
+import java.util.*;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -40,6 +41,15 @@ public class AttributeSetInstancePropertyUtils {
         return str;
     }
 
+    private static String getSafeStringsValue(Set<String> strs) {
+        if (strs == null) {
+            return "[null]";
+        }
+        List<String> strList = new ArrayList<>(strs);
+        strList.sort((s1, s2) -> s1.compareTo(s2));
+        String res = strList.stream().reduce((a, s) -> (a + "\n" + s)).get();
+        return res;
+    }
 
     private static String getMD5HashString(MessageDigest md5Hash, String input) {
         try {
@@ -72,7 +82,7 @@ public class AttributeSetInstancePropertyUtils {
         sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getReferenceId())).append("|");
         sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getSerialNumber())).append("|");
         sb.append("LotId").append("=").append(getSafeStringValue(instance.getLotId())).append("|");
-        sb.append("StatusId").append("=").append(getSafeStringValue(instance.getStatusId())).append("|");
+        sb.append("StatusIds").append("=").append(getSafeStringsValue(instance.getStatusIds())).append("|");
         sb.append("ImageUrl").append("=").append(getSafeStringValue(instance.getImageUrl())).append("|");
         sb.append("Description").append("=").append(getSafeStringValue(instance.getDescription())).append("|");
         sb.append("Active").append("=").append(instance.getActive()).append("|");
@@ -111,7 +121,7 @@ public class AttributeSetInstancePropertyUtils {
                 || !propertyEquals(instance1.getReferenceId(), instance2.getReferenceId())
                 || !propertyEquals(instance1.getSerialNumber(), instance2.getSerialNumber())
                 || !propertyEquals(instance1.getLotId(), instance2.getLotId())
-                || !propertyEquals(instance1.getStatusId(), instance2.getStatusId())
+                || !propertyEquals(instance1.getStatusIds(), instance2.getStatusIds())
                 || !propertyEquals(instance1.getImageUrl(), instance2.getImageUrl())
                 || !propertyEquals(instance1.getDescription(), instance2.getDescription())
                 || !propertyEquals(instance1.getActive(), instance2.getActive())
@@ -138,6 +148,20 @@ public class AttributeSetInstancePropertyUtils {
             return false;
         }
         return p1.equals(p2);
+    }
+
+    private static boolean propertyEquals(Set<String> strs1, Set<String> strs2) {
+        if (Objects.equals(strs1, strs2)) { return true; }
+        if (strs1 == null || strs2 == null) { return false; }
+        if (strs1.size() != strs2.size()) {
+            return false;
+        }
+        for (String s : strs1) {
+            if (!strs2.contains(s)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

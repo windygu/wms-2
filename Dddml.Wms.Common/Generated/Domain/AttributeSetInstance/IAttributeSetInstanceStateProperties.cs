@@ -26,8 +26,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		string LotId { get; set; }
 
-		string StatusId { get; set; }
-
 		string ImageUrl { get; set; }
 
 		string Description { get; set; }
@@ -48,7 +46,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		decimal? AirDryMetricTon { get; set; }
 
-		int? PackageCount { get; set; }
+		int? RollCnt { get; set; }
 
 		decimal? AirDryPct { get; set; }
 
@@ -157,6 +155,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 		long Version { get; set; }
 
 		bool Active { get; set; }
+
+		ISet<string> StatusIds { get; set; }
 
 	}
 

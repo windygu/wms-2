@@ -17529,6 +17529,68 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
+    public partial class ShipmentImage
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ShipmentImage(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ShipmentImageGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ShipmentImageGetResponse> Get(Models.ShipmentImageGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "Shipments/{shipmentId}/ShipmentImages/{sequenceId}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.ShipmentId == null)
+				throw new InvalidOperationException("Uri Parameter ShipmentId cannot be null");
+
+            url = url.Replace("{shipmentId}", request.UriParameters.ShipmentId.ToString());
+
+			if(request.UriParameters.SequenceId == null)
+				throw new InvalidOperationException("Uri Parameter SequenceId cannot be null");
+
+            url = url.Replace("{sequenceId}", request.UriParameters.SequenceId.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ShipmentImageGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
     public partial class ShipmentItem
     {
         private readonly DddmlWmsRamlClient proxy;
@@ -17641,6 +17703,73 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.ShipmentReceiptGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class ShipmentReceiptImage
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal ShipmentReceiptImage(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.ShipmentReceiptImageGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.ShipmentReceiptImageGetResponse> Get(Models.ShipmentReceiptImageGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.ShipmentId == null)
+				throw new InvalidOperationException("Uri Parameter ShipmentId cannot be null");
+
+            url = url.Replace("{shipmentId}", request.UriParameters.ShipmentId.ToString());
+
+			if(request.UriParameters.ShipmentReceiptReceiptSeqId == null)
+				throw new InvalidOperationException("Uri Parameter ShipmentReceiptReceiptSeqId cannot be null");
+
+            url = url.Replace("{shipmentReceiptReceiptSeqId}", request.UriParameters.ShipmentReceiptReceiptSeqId.ToString());
+
+			if(request.UriParameters.SequenceId == null)
+				throw new InvalidOperationException("Uri Parameter SequenceId cannot be null");
+
+            url = url.Replace("{sequenceId}", request.UriParameters.SequenceId.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.ShipmentReceiptImageGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -24779,6 +24908,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual ShipmentImage ShipmentImage
+        {
+            get { return new ShipmentImage(this); }
+        }
+                
+
         public virtual ShipmentItem ShipmentItem
         {
             get { return new ShipmentItem(this); }
@@ -24788,6 +24923,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ShipmentReceipt ShipmentReceipt
         {
             get { return new ShipmentReceipt(this); }
+        }
+                
+
+        public virtual ShipmentReceiptImage ShipmentReceiptImage
+        {
+            get { return new ShipmentReceiptImage(this); }
         }
                 
 
@@ -29448,6 +29589,20 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Uri Parameters for resource /Shipments/{shipmentId}/ShipmentImages/{sequenceId}
+    /// </summary>
+    public partial class  ShipmentImageUriParameters 
+    {
+		[JsonProperty("shipmentId")]
+        public string ShipmentId { get; set; }
+
+		[JsonProperty("sequenceId")]
+        public string SequenceId { get; set; }
+
+
+    } // end class
+
+    /// <summary>
     /// Uri Parameters for resource /Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}
     /// </summary>
     public partial class  ShipmentItemUriParameters 
@@ -29471,6 +29626,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
 		[JsonProperty("receiptSeqId")]
         public string ReceiptSeqId { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}
+    /// </summary>
+    public partial class  ShipmentReceiptImageUriParameters 
+    {
+		[JsonProperty("shipmentId")]
+        public string ShipmentId { get; set; }
+
+		[JsonProperty("shipmentReceiptReceiptSeqId")]
+        public string ShipmentReceiptReceiptSeqId { get; set; }
+
+		[JsonProperty("sequenceId")]
+        public string SequenceId { get; set; }
 
 
     } // end class
@@ -36603,6 +36775,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Request object for method Get of class ShipmentImage
+    /// </summary>
+    public partial class ShipmentImageGetRequest : ApiRequest
+    {
+        public ShipmentImageGetRequest(ShipmentImageUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentImageUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
     /// Request object for method Get of class ShipmentItem
     /// </summary>
     public partial class ShipmentItemGetRequest : ApiRequest
@@ -36633,6 +36822,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public ShipmentReceiptUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class ShipmentReceiptImage
+    /// </summary>
+    public partial class ShipmentReceiptImageGetRequest : ApiRequest
+    {
+        public ShipmentReceiptImageGetRequest(ShipmentReceiptImageUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public ShipmentReceiptImageUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -47098,6 +47304,55 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Response object for method Get of class ShipmentImage
+    /// </summary>
+
+    public partial class ShipmentImageGetResponse : ApiResponse
+    {
+
+
+	    private ShipmentImageStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ShipmentImageStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ShipmentImageStateDto)new XmlSerializer(typeof(ShipmentImageStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ShipmentImageStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ShipmentImageStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
     /// Response object for method Get of class ShipmentItem
     /// </summary>
 
@@ -47182,6 +47437,55 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<ShipmentReceiptStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<ShipmentReceiptStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class ShipmentReceiptImage
+    /// </summary>
+
+    public partial class ShipmentReceiptImageGetResponse : ApiResponse
+    {
+
+
+	    private ShipmentReceiptImageStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public ShipmentReceiptImageStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (ShipmentReceiptImageStateDto)new XmlSerializer(typeof(ShipmentReceiptImageStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<ShipmentReceiptImageStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<ShipmentReceiptImageStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }

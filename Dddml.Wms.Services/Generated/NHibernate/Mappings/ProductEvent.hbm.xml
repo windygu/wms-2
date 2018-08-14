@@ -84,6 +84,7 @@
     <property name="CoreDiameter" ><column name="CoreDiameter" sql-type="DECIMAL(18,6)" /></property>
     <property name="OutsideDiameter" ><column name="OutsideDiameter" sql-type="DECIMAL(18,6)" /></property>
     <property name="MoisturePct" ><column name="MoisturePct" sql-type="DECIMAL(18,6)" /></property>
+    <property name="RollCnt" ><column name="RollCnt" length="10" /></property>
     <property name="Active" ></property>
     <subclass name="ProductStateCreated" discriminator-value="Created">
     	
@@ -221,6 +222,8 @@
         <property name="IsPropertyOutsideDiameterRemoved" column="IsPropertyOutsideDiameterRemoved"/>
 
         <property name="IsPropertyMoisturePctRemoved" column="IsPropertyMoisturePctRemoved"/>
+
+        <property name="IsPropertyRollCntRemoved" column="IsPropertyRollCntRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

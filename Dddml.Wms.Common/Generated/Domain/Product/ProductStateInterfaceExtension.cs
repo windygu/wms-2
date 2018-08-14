@@ -117,6 +117,7 @@ namespace Dddml.Wms.Domain.Product
             cmd.CoreDiameter = state.CoreDiameter;
             cmd.OutsideDiameter = state.OutsideDiameter;
             cmd.MoisturePct = state.MoisturePct;
+            cmd.RollCnt = state.RollCnt;
             cmd.Active = ((IProductStateProperties)state).Active;
             
             if (state.ProductTypeId == null) { cmd.IsPropertyProductTypeIdRemoved = true; }
@@ -182,6 +183,7 @@ namespace Dddml.Wms.Domain.Product
             if (state.CoreDiameter == null) { cmd.IsPropertyCoreDiameterRemoved = true; }
             if (state.OutsideDiameter == null) { cmd.IsPropertyOutsideDiameterRemoved = true; }
             if (state.MoisturePct == null) { cmd.IsPropertyMoisturePctRemoved = true; }
+            if (state.RollCnt == null) { cmd.IsPropertyRollCntRemoved = true; }
             foreach (var d in state.GoodIdentifications)
             {
                 var c = d.ToCreateOrMergePatchGoodIdentification<TCreateGoodIdentification, TMergePatchGoodIdentification>();
@@ -264,6 +266,7 @@ namespace Dddml.Wms.Domain.Product
             cmd.CoreDiameter = state.CoreDiameter;
             cmd.OutsideDiameter = state.OutsideDiameter;
             cmd.MoisturePct = state.MoisturePct;
+            cmd.RollCnt = state.RollCnt;
             cmd.Active = ((IProductStateProperties)state).Active;
             foreach (var d in state.GoodIdentifications)
             {

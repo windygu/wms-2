@@ -115,9 +115,14 @@ namespace Dddml.Wms.Domain.Shipment
 			Update(c, ar => ar.ReceiveItem(c.ShipmentItemSeqId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusId, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
 		}
 
+		public virtual void When(ShipmentCommands.AddItemAndReceipt c)
+		{
+			Update(c, ar => ar.AddItemAndReceipt(c.ReceiptSeqId, c.ProductId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusId, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
+		}
+
 		public virtual void When(ShipmentCommands.ConfirmAllItemsReceived c)
 		{
-			Update(c, ar => ar.ConfirmAllItemsReceived(c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.ConfirmAllItemsReceived(c.DestinationLocatorId, c.Version, c.CommandId, c.RequesterId));
 		}
 
         public virtual IShipmentState Get(string shipmentId)
@@ -180,6 +185,16 @@ namespace Dddml.Wms.Domain.Shipment
             return new ShipmentState(eventStream.Events);
         }
 
+        public virtual IShipmentImageState GetShipmentImage(string shipmentId, string sequenceId)
+        {
+            return StateQueryRepository.GetShipmentImage(shipmentId, sequenceId);
+        }
+
+        public IEnumerable<IShipmentImageState> GetShipmentImages(string shipmentId)
+        {
+            return StateQueryRepository.GetShipmentImages(shipmentId);
+        }
+
         public virtual IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId)
         {
             return StateQueryRepository.GetShipmentItem(shipmentId, shipmentItemSeqId);
@@ -198,6 +213,16 @@ namespace Dddml.Wms.Domain.Shipment
         public IEnumerable<IShipmentReceiptState> GetShipmentReceipts(string shipmentId)
         {
             return StateQueryRepository.GetShipmentReceipts(shipmentId);
+        }
+
+        public virtual IShipmentReceiptImageState GetShipmentReceiptImage(string shipmentId, string shipmentReceiptReceiptSeqId, string sequenceId)
+        {
+            return StateQueryRepository.GetShipmentReceiptImage(shipmentId, shipmentReceiptReceiptSeqId, sequenceId);
+        }
+
+        public IEnumerable<IShipmentReceiptImageState> GetShipmentReceiptImages(string shipmentId, string shipmentReceiptReceiptSeqId)
+        {
+            return StateQueryRepository.GetShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId);
         }
 
         public virtual IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId)

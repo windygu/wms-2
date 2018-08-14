@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PrimaryShipGroupSeqId", "PicklistBinId", "BolNumber", "SealNumber", "VehicleId", "PoNumber", "Carrier", "DateShipped", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "ShipmentItems", "ShipmentReceipts", "ItemIssuances", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ShipmentId", "ShipmentTypeId", "StatusId", "PrimaryOrderId", "PrimaryReturnId", "PrimaryShipGroupSeqId", "PicklistBinId", "BolNumber", "SealNumber", "VehicleId", "PoNumber", "Carrier", "DateShipped", "EstimatedReadyDate", "EstimatedShipDate", "EstimatedShipWorkEffId", "EstimatedArrivalDate", "EstimatedArrivalWorkEffId", "LatestCancelDate", "EstimatedShipCost", "CurrencyUomId", "HandlingInstructions", "OriginFacilityId", "DestinationFacilityId", "OriginContactMechId", "OriginTelecomNumberId", "DestinationContactMechId", "DestinationTelecomNumberId", "PartyIdTo", "PartyIdFrom", "AdditionalShippingCharge", "AddtlShippingChargeDesc", "ShipmentItems", "ShipmentReceipts", "ItemIssuances", "ShipmentImages", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -127,6 +127,24 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public virtual IShipmentImageState GetShipmentImage(string shipmentId, string sequenceId)
+        {
+            var entityId = new ShipmentImageId(shipmentId, sequenceId);
+            return CurrentSession.Get<ShipmentImageState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IShipmentImageState> GetShipmentImages(string shipmentId)
+        {
+            var criteria = CurrentSession.CreateCriteria<ShipmentImageState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentImageId.ShipmentId", shipmentId))
+                ;
+
+            return criteria.Add(partIdCondition).List<ShipmentImageState>();
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId)
         {
             var entityId = new ShipmentItemId(shipmentId, shipmentItemSeqId);
@@ -160,6 +178,25 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
                 ;
 
             return criteria.Add(partIdCondition).List<ShipmentReceiptState>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IShipmentReceiptImageState GetShipmentReceiptImage(string shipmentId, string shipmentReceiptReceiptSeqId, string sequenceId)
+        {
+            var entityId = new ShipmentReceiptImageId(shipmentId, shipmentReceiptReceiptSeqId, sequenceId);
+            return CurrentSession.Get<ShipmentReceiptImageState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IShipmentReceiptImageState> GetShipmentReceiptImages(string shipmentId, string shipmentReceiptReceiptSeqId)
+        {
+            var criteria = CurrentSession.CreateCriteria<ShipmentReceiptImageState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentReceiptImageId.ShipmentId", shipmentId))
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentReceiptImageId.ShipmentReceiptReceiptSeqId", shipmentReceiptReceiptSeqId))
+                ;
+
+            return criteria.Add(partIdCondition).List<ShipmentReceiptImageState>();
         }
 
         [Transaction(ReadOnly = true)]

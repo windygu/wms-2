@@ -97,6 +97,33 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+        private CreateShipmentReceiptImageCommands _shipmentReceiptImages = new CreateShipmentReceiptImageCommands();
+
+        public ICreateShipmentReceiptImageCommands ShipmentReceiptImages
+        {
+            get
+            {
+                return this._shipmentReceiptImages;
+            }
+        }
+
+        public CreateShipmentReceiptImage NewCreateShipmentReceiptImage()
+        {
+            var c = new CreateShipmentReceiptImage();
+            c.ShipmentId = this.ShipmentId;
+
+            c.ShipmentReceiptReceiptSeqId = this.ReceiptSeqId;
+
+            return c;
+        }
+
+        ICreateShipmentReceiptImage ICreateShipmentReceipt.NewCreateShipmentReceiptImage()
+        {
+            return this.NewCreateShipmentReceiptImage();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -150,6 +177,64 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
+        private ShipmentReceiptImageCommands _shipmentReceiptImageCommands = new ShipmentReceiptImageCommands();
+
+        public IShipmentReceiptImageCommands ShipmentReceiptImageCommands
+        {
+            get
+            {
+                return this._shipmentReceiptImageCommands;
+            }
+        }
+
+
+        public CreateShipmentReceiptImage NewCreateShipmentReceiptImage()
+        {
+            var c = new CreateShipmentReceiptImage();
+            c.ShipmentId = this.ShipmentId;
+
+            c.ShipmentReceiptReceiptSeqId = this.ReceiptSeqId;
+
+            return c;
+        }
+
+        ICreateShipmentReceiptImage IMergePatchShipmentReceipt.NewCreateShipmentReceiptImage()
+        {
+            return this.NewCreateShipmentReceiptImage();
+        }
+
+        public MergePatchShipmentReceiptImage NewMergePatchShipmentReceiptImage()
+        {
+            var c = new MergePatchShipmentReceiptImage();
+            c.ShipmentId = this.ShipmentId;
+
+            c.ShipmentReceiptReceiptSeqId = this.ReceiptSeqId;
+
+            return c;
+        }
+
+        IMergePatchShipmentReceiptImage IMergePatchShipmentReceipt.NewMergePatchShipmentReceiptImage()
+        {
+            return this.NewMergePatchShipmentReceiptImage();
+        }
+
+
+        public RemoveShipmentReceiptImage NewRemoveShipmentReceiptImage()
+        {
+            var c = new RemoveShipmentReceiptImage();
+            c.ShipmentId = this.ShipmentId;
+
+            c.ShipmentReceiptReceiptSeqId = this.ReceiptSeqId;
+
+            return c;
+        }
+
+        IRemoveShipmentReceiptImage IMergePatchShipmentReceipt.NewRemoveShipmentReceiptImage()
+        {
+            return this.NewRemoveShipmentReceiptImage();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -168,5 +253,68 @@ namespace Dddml.Wms.Domain.Shipment
             return Dddml.Wms.Specialization.CommandType.Remove;
         }
 	}
+
+
+    public class CreateShipmentReceiptImageCommands : ICreateShipmentReceiptImageCommands
+    {
+        private List<ICreateShipmentReceiptImage> _innerCommands = new List<ICreateShipmentReceiptImage>();
+
+        public void Add(ICreateShipmentReceiptImage c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateShipmentReceiptImage c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateShipmentReceiptImage> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class ShipmentReceiptImageCommands : IShipmentReceiptImageCommands
+    {
+        private List<IShipmentReceiptImageCommand> _innerCommands = new List<IShipmentReceiptImageCommand>();
+
+        public void Add(IShipmentReceiptImageCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IShipmentReceiptImageCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IShipmentReceiptImageCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
 }

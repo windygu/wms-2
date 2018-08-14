@@ -50,12 +50,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
-        string StatusId
-        {
-            get;
-            set;
-        }
-
         string ImageUrl
         {
             get;
@@ -116,7 +110,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
-        int? PackageCount
+        int? RollCnt
         {
             get;
             set;
@@ -465,6 +459,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         }
 
         DateTime? UpdatedAt
+        {
+            get;
+            set;
+        }
+
+        string[] StatusIds
         {
             get;
             set;

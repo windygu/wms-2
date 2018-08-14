@@ -190,18 +190,14 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "StatusId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
+                    Name = "StatusIds",
                     DisplayName = "",
                     Description = "",
                     Length = 0,
                     GenericTypeName = "",
-                    ReferenceTypeName = "StatusItem",
+                    ReferenceTypeName = "",
                     ReferenceName = "",
-                    ItemTypeName = "",
+                    ItemTypeName = "string",
                     InverseOf = "",
                     IsHoisted = false,
                     IsId = false,
@@ -216,7 +212,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyCreatedAt = false,
                     IsReservedPropertyUpdatedBy = false,
                     IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
+                    IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
                     Name = "ImageUrl",
@@ -509,7 +505,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "PackageCount",
+                    Name = "RollCnt",
                     Type = typeof(int),
                     TypeName = "int",
                     IsSimpleValueObjectType = true,
@@ -2275,8 +2271,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("serialNumber", "SerialNumber");
             d.Add("LotId", "LotId");
             d.Add("lotId", "LotId");
-            d.Add("StatusId", "StatusId");
-            d.Add("statusId", "StatusId");
             d.Add("ImageUrl", "ImageUrl");
             d.Add("imageUrl", "ImageUrl");
             d.Add("Description", "Description");
@@ -2295,8 +2289,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("airDryWeightKg", "AirDryWeightKg");
             d.Add("AirDryMetricTon", "AirDryMetricTon");
             d.Add("airDryMetricTon", "AirDryMetricTon");
-            d.Add("PackageCount", "PackageCount");
-            d.Add("packageCount", "PackageCount");
+            d.Add("RollCnt", "RollCnt");
+            d.Add("rollCnt", "RollCnt");
             d.Add("AirDryPct", "AirDryPct");
             d.Add("airDryPct", "AirDryPct");
             d.Add("_F_B_0_", "_F_B_0_");

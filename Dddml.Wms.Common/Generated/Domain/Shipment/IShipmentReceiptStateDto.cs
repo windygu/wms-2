@@ -170,6 +170,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        IShipmentReceiptImageStateDto[] ShipmentReceiptImages
+        {
+            get;
+            set;
+        }
+
         IShipmentReceiptState ToShipmentReceiptState();
 
     }

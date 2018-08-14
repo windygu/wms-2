@@ -128,6 +128,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             throw new NotImplementedException();//todo
         }
 
+        public void When(ShipmentCommands.AddItemAndReceipt c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public void When(ShipmentCommands.ConfirmAllItemsReceived c)
         {
             throw new NotImplementedException();//todo
@@ -304,6 +309,28 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(shipmentId, version).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IShipmentImageState> GetShipmentImageAsync(string shipmentId, string sequenceId)
+        {
+            var uriParameters = new ShipmentImageUriParameters();
+            uriParameters.ShipmentId = shipmentId;
+            uriParameters.SequenceId = sequenceId;
+
+            var req = new ShipmentImageGetRequest(uriParameters);
+            var resp = await _ramlClient.ShipmentImage.Get(req);
+            ShipmentProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToShipmentImageState();
+        }
+
+        public virtual IShipmentImageState GetShipmentImage(string shipmentId, string sequenceId)
+        {
+            return GetShipmentImageAsync(shipmentId, sequenceId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IShipmentImageState> GetShipmentImages(string shipmentId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async virtual Task<IShipmentItemState> GetShipmentItemAsync(string shipmentId, string shipmentItemSeqId)
         {
             var uriParameters = new ShipmentItemUriParameters();
@@ -344,6 +371,29 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         }
 
         public IEnumerable<IShipmentReceiptState> GetShipmentReceipts(string shipmentId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
+        public async virtual Task<IShipmentReceiptImageState> GetShipmentReceiptImageAsync(string shipmentId, string shipmentReceiptReceiptSeqId, string sequenceId)
+        {
+            var uriParameters = new ShipmentReceiptImageUriParameters();
+            uriParameters.ShipmentId = shipmentId;
+            uriParameters.ShipmentReceiptReceiptSeqId = shipmentReceiptReceiptSeqId;
+            uriParameters.SequenceId = sequenceId;
+
+            var req = new ShipmentReceiptImageGetRequest(uriParameters);
+            var resp = await _ramlClient.ShipmentReceiptImage.Get(req);
+            ShipmentProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToShipmentReceiptImageState();
+        }
+
+        public virtual IShipmentReceiptImageState GetShipmentReceiptImage(string shipmentId, string shipmentReceiptReceiptSeqId, string sequenceId)
+        {
+            return GetShipmentReceiptImageAsync(shipmentId, shipmentReceiptReceiptSeqId, sequenceId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IShipmentReceiptImageState> GetShipmentReceiptImages(string shipmentId, string shipmentReceiptReceiptSeqId)
         {
             throw new NotImplementedException();//todo
         }

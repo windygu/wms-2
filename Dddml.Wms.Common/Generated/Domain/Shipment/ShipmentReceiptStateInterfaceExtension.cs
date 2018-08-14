@@ -15,18 +15,20 @@ namespace Dddml.Wms.Domain.Shipment
 	public static partial class ShipmentReceiptStateInterfaceExtension
 	{
 
-        public static IShipmentReceiptCommand ToCreateOrMergePatchShipmentReceipt<TCreateShipmentReceipt, TMergePatchShipmentReceipt>(this IShipmentReceiptState state)
+        public static IShipmentReceiptCommand ToCreateOrMergePatchShipmentReceipt<TCreateShipmentReceipt, TMergePatchShipmentReceipt, TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage>(this IShipmentReceiptState state)
             where TCreateShipmentReceipt : ICreateShipmentReceipt, new()
             where TMergePatchShipmentReceipt : IMergePatchShipmentReceipt, new()
+            where TCreateShipmentReceiptImage : ICreateShipmentReceiptImage, new()
+            where TMergePatchShipmentReceiptImage : IMergePatchShipmentReceiptImage, new()
         {
             bool bUnsaved = ((IShipmentReceiptState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateShipmentReceipt<TCreateShipmentReceipt>();
+                return state.ToCreateShipmentReceipt<TCreateShipmentReceipt, TCreateShipmentReceiptImage>();
             }
             else 
             {
-                return state.ToMergePatchShipmentReceipt<TMergePatchShipmentReceipt>();
+                return state.ToMergePatchShipmentReceipt<TMergePatchShipmentReceipt, TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage>();
             }
         }
 
@@ -38,8 +40,10 @@ namespace Dddml.Wms.Domain.Shipment
             return cmd;
         }
 
-        public static TMergePatchShipmentReceipt ToMergePatchShipmentReceipt<TMergePatchShipmentReceipt>(this IShipmentReceiptState state)
+        public static TMergePatchShipmentReceipt ToMergePatchShipmentReceipt<TMergePatchShipmentReceipt, TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage>(this IShipmentReceiptState state)
             where TMergePatchShipmentReceipt : IMergePatchShipmentReceipt, new()
+            where TCreateShipmentReceiptImage : ICreateShipmentReceiptImage, new()
+            where TMergePatchShipmentReceiptImage : IMergePatchShipmentReceiptImage, new()
         {
             var cmd = new TMergePatchShipmentReceipt();
 
@@ -83,11 +87,17 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.AcceptedQuantity == null) { cmd.IsPropertyAcceptedQuantityRemoved = true; }
             if (state.RejectedQuantity == null) { cmd.IsPropertyRejectedQuantityRemoved = true; }
             if (state.DamagedQuantity == null) { cmd.IsPropertyDamagedQuantityRemoved = true; }
+            foreach (var d in state.ShipmentReceiptImages)
+            {
+                var c = d.ToCreateOrMergePatchShipmentReceiptImage<TCreateShipmentReceiptImage, TMergePatchShipmentReceiptImage>();
+                cmd.ShipmentReceiptImageCommands.Add(c);
+            }
             return cmd;
         }
 
-        public static TCreateShipmentReceipt ToCreateShipmentReceipt<TCreateShipmentReceipt>(this IShipmentReceiptState state)
+        public static TCreateShipmentReceipt ToCreateShipmentReceipt<TCreateShipmentReceipt, TCreateShipmentReceiptImage>(this IShipmentReceiptState state)
             where TCreateShipmentReceipt : ICreateShipmentReceipt, new()
+            where TCreateShipmentReceiptImage : ICreateShipmentReceiptImage, new()
         {
             var cmd = new TCreateShipmentReceipt();
 
@@ -112,6 +122,11 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.DamagedQuantity = state.DamagedQuantity;
             cmd.Active = ((IShipmentReceiptStateProperties)state).Active;
             cmd.ShipmentId = state.ShipmentId;
+            foreach (var d in state.ShipmentReceiptImages)
+            {
+                var c = d.ToCreateShipmentReceiptImage<TCreateShipmentReceiptImage>();
+                cmd.ShipmentReceiptImages.Add(c);
+            }
             return cmd;
         }
 		

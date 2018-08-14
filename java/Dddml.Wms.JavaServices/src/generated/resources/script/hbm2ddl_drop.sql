@@ -8,6 +8,7 @@ drop table if exists AttributeSetInstanceExtensionFieldGroupEvents;
 drop table if exists AttributeSetInstanceExtensionFieldGroups;
 drop table if exists AttributeSetInstanceExtensionFields;
 drop table if exists AttributeSetInstances;
+drop table if exists AttributeSetInstanceStatusIds;
 drop table if exists AttributeSets;
 drop table if exists AttributeUseEvents;
 drop table if exists AttributeUses;

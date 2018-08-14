@@ -242,6 +242,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        IShipmentImageStateDto[] ShipmentImages
+        {
+            get;
+            set;
+        }
+
         IShipmentItemStateDto[] ShipmentItems
         {
             get;

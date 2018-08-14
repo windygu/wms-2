@@ -37,7 +37,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             dto.ReferenceId = e.ReferenceId;
             dto.SerialNumber = e.SerialNumber;
             dto.LotId = e.LotId;
-            dto.StatusId = e.StatusId;
             dto.ImageUrl = e.ImageUrl;
             dto.Description = e.Description;
             dto.Hash = e.Hash;
@@ -48,7 +47,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             dto.AirDryWeightLbs = e.AirDryWeightLbs;
             dto.AirDryWeightKg = e.AirDryWeightKg;
             dto.AirDryMetricTon = e.AirDryMetricTon;
-            dto.PackageCount = e.PackageCount;
+            dto.RollCnt = e.RollCnt;
             dto.AirDryPct = e.AirDryPct;
             dto._F_B_0_ = e._F_B_0_;
             dto._F_I_0_ = e._F_I_0_;
@@ -102,6 +101,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             dto._F_C20_4_ = e._F_C20_4_;
             dto._F_C50_4_ = e._F_C50_4_;
             dto.Active = e.Active;
+            dto.StatusIds = e.StatusIds.ToArray();
             return dto;
         }
 

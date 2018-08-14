@@ -82,18 +82,6 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.lotId = lotId;
     }
 
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
     private String imageUrl;
 
     public String getImageUrl()
@@ -922,6 +910,18 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.active = active;
     }
 
+    private Set<String> statusIds;
+
+    public Set<String> getStatusIds()
+    {
+        return this.statusIds;
+    }
+
+    public void setStatusIds(Set<String> statusIds)
+    {
+        this.statusIds = statusIds;
+    }
+
     public boolean isStateUnsaved() 
     {
         return this.getVersion() == null;
@@ -997,7 +997,7 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.setReferenceId(e.getReferenceId());
         this.setSerialNumber(e.getSerialNumber());
         this.setLotId(e.getLotId());
-        this.setStatusId(e.getStatusId());
+        this.setStatusIds(e.getStatusIds());
         this.setImageUrl(e.getImageUrl());
         this.setDescription(e.getDescription());
         this.setHash(e.getHash());
