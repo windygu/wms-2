@@ -21,6 +21,7 @@ import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -349,6 +350,11 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         entry.setSource(
                 new InventoryItemSourceInfo(DocumentTypeIds.MOVEMENT, movement.getDocumentNumber(), movementLine.getLineNumber(), lineSubSeqId)
         );
+        if (movement.getMovementDate() != null) {
+            entry.setOccuredAt(new Timestamp(movement.getMovementDate().getTime()));
+        } else {
+            entry.setOccuredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
+        }
         return entry;
     }
 

@@ -55,6 +55,10 @@ public interface InventoryItemEntryEvent extends Event
 
         void setSource(InventoryItemSourceInfo source);
 
+        java.sql.Timestamp getOccuredAt();
+
+        void setOccuredAt(java.sql.Timestamp occuredAt);
+
     }
 
     interface InventoryItemEntryStateCreated extends InventoryItemEntryStateEvent

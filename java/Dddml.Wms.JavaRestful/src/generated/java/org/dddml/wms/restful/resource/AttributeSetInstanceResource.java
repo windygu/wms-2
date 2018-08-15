@@ -168,7 +168,7 @@ public class AttributeSetInstanceResource {
             String idObj = attributeSetInstanceApplicationService.createWithoutId(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getAttributeSetInstanceId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

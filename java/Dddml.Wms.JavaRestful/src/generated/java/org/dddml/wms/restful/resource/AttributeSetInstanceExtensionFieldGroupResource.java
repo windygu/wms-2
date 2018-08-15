@@ -168,10 +168,11 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             if (cmd.getId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeSetInstanceExtensionFieldGroup");
             }
+            String idObj = cmd.getId();
             attributeSetInstanceExtensionFieldGroupApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

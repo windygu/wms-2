@@ -97,6 +97,21 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
     }
 
     /**
+     * Occured At
+     */
+    private java.sql.Timestamp occuredAt;
+
+    public java.sql.Timestamp getOccuredAt()
+    {
+        return this.occuredAt;
+    }
+
+    public void setOccuredAt(java.sql.Timestamp occuredAt)
+    {
+        this.occuredAt = occuredAt;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -183,6 +198,18 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.isPropertySourceRemoved = removed;
     }
 
+    private Boolean isPropertyOccuredAtRemoved;
+
+    public Boolean getIsPropertyOccuredAtRemoved()
+    {
+        return this.isPropertyOccuredAtRemoved;
+    }
+
+    public void setIsPropertyOccuredAtRemoved(Boolean removed)
+    {
+        this.isPropertyOccuredAtRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -204,6 +231,7 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         command.setOccupiedQuantity(this.getOccupiedQuantity());
         command.setVirtualQuantity(this.getVirtualQuantity());
         command.setSource(this.getSource());
+        command.setOccuredAt(this.getOccuredAt());
         command.setActive(this.getActive());
     }
 

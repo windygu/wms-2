@@ -15,6 +15,7 @@ import org.dddml.wms.specialization.IdGenerator;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 /**
@@ -221,13 +222,19 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
     protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(InOutState inOut, InOutLineState inOutLine) {
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
         String attrSetInstId = inOutLine.getAttributeSetInstanceId();
-        if(attrSetInstId == null || attrSetInstId.isEmpty()) {
+        if (attrSetInstId == null || attrSetInstId.isEmpty()) {
             attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
         }
         entry.setInventoryItemId(new InventoryItemId(inOutLine.getProductId(), inOutLine.getLocatorId(), attrSetInstId));
         entry.setEntrySeqId(getSeqIdGenerator().getNextId());//DateTime.Now.Ticks;
         entry.setOnHandQuantity(inOutLine.getMovementQuantity());// *signum;
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.IN_OUT, inOut.getDocumentNumber(), inOutLine.getLineNumber(), 0));
+        if (inOut.getMovementDate() != null) {
+            entry.setOccuredAt(new Timestamp(inOut.getMovementDate().getTime()));
+        } else {
+            entry.setOccuredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
+        }
+
         return entry;
     }
 

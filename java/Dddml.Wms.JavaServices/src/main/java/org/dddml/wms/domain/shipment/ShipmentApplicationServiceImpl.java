@@ -18,6 +18,7 @@ import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -244,6 +245,11 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         entry.setOnHandQuantity(lineReceipt.getAcceptedQuantity()); // *signum;
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.SHIPMENT, shipment.getShipmentId(),
                 lineReceipt.getReceiptSeqId(), 0));
+        if (lineReceipt.getDatetimeReceived() != null) {
+            entry.setOccuredAt(new Timestamp(lineReceipt.getDatetimeReceived().getTime()));
+        } else {
+            entry.setOccuredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
+        }
         return entry;
     }
 

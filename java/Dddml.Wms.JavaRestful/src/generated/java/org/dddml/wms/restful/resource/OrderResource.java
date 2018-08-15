@@ -169,10 +169,11 @@ public class OrderResource {
             if (cmd.getOrderId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Order");
             }
+            String idObj = cmd.getOrderId();
             orderApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getOrderId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

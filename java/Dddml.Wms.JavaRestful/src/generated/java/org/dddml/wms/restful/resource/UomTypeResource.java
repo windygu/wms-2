@@ -168,10 +168,11 @@ public class UomTypeResource {
             if (cmd.getUomTypeId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "UomType");
             }
+            String idObj = cmd.getUomTypeId();
             uomTypeApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getUomTypeId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

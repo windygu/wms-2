@@ -45,6 +45,10 @@ public interface InventoryItemEntryState
 
     void setSource(InventoryItemSourceInfo source);
 
+    java.sql.Timestamp getOccuredAt();
+
+    void setOccuredAt(java.sql.Timestamp occuredAt);
+
     Long getVersion();
 
     void setVersion(Long version);

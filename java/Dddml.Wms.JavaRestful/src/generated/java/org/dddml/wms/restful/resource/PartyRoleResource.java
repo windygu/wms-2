@@ -168,10 +168,11 @@ public class PartyRoleResource {
             if (cmd.getPartyRoleId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PartyRole");
             }
+            PartyRoleId idObj = cmd.getPartyRoleId();
             partyRoleApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getPartyRoleId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

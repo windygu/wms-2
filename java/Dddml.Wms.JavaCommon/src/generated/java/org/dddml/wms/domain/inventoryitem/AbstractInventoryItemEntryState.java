@@ -108,6 +108,18 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         this.source = source;
     }
 
+    private java.sql.Timestamp occuredAt;
+
+    public java.sql.Timestamp getOccuredAt()
+    {
+        return this.occuredAt;
+    }
+
+    public void setOccuredAt(java.sql.Timestamp occuredAt)
+    {
+        this.occuredAt = occuredAt;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -233,6 +245,7 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         this.setOccupiedQuantity(e.getOccupiedQuantity());
         this.setVirtualQuantity(e.getVirtualQuantity());
         this.setSource(e.getSource());
+        this.setOccuredAt(e.getOccuredAt());
 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());

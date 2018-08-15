@@ -168,10 +168,11 @@ public class ContactMechResource {
             if (cmd.getContactMechId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ContactMech");
             }
+            String idObj = cmd.getContactMechId();
             contactMechApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getContactMechId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

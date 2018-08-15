@@ -168,10 +168,11 @@ public class InventoryPRTriggeredResource {
             if (cmd.getInventoryPRTriggeredId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryPRTriggered");
             }
+            InventoryPRTriggeredId idObj = cmd.getInventoryPRTriggeredId();
             inventoryPRTriggeredApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getInventoryPRTriggeredId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

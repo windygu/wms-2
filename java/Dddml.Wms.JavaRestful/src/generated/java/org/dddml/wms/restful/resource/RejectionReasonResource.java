@@ -168,10 +168,11 @@ public class RejectionReasonResource {
             if (cmd.getRejectionReasonId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "RejectionReason");
             }
+            String idObj = cmd.getRejectionReasonId();
             rejectionReasonApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getRejectionReasonId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

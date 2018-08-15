@@ -169,10 +169,11 @@ public class InventoryPostingRuleResource {
             if (cmd.getInventoryPostingRuleId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryPostingRule");
             }
+            String idObj = cmd.getInventoryPostingRuleId();
             inventoryPostingRuleApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getInventoryPostingRuleId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

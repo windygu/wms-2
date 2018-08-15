@@ -171,10 +171,11 @@ public class InventoryItemRequirementResource {
             if (cmd.getInventoryItemRequirementId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryItemRequirement");
             }
+            InventoryItemId idObj = cmd.getInventoryItemRequirementId();
             inventoryItemRequirementApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getInventoryItemRequirementId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

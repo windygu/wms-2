@@ -24,6 +24,7 @@ public final class InventoryItemEntryMetadata {
             "reservedQuantity",
             "occupiedQuantity",
             "virtualQuantity",
+            "occuredAt",
             "version",
             "createdBy",
             "createdAt",
@@ -51,6 +52,7 @@ public final class InventoryItemEntryMetadata {
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
+            "java.sql.Timestamp",
             "Long",
             "String",
             "Date",
@@ -95,6 +97,8 @@ public final class InventoryItemEntryMetadata {
         aliasMap.put("OccupiedQuantity", "occupiedQuantity");
         aliasMap.put("virtualQuantity", "virtualQuantity");
         aliasMap.put("VirtualQuantity", "virtualQuantity");
+        aliasMap.put("occuredAt", "occuredAt");
+        aliasMap.put("OccuredAt", "occuredAt");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

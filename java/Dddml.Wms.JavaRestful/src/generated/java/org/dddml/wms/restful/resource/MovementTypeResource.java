@@ -168,10 +168,11 @@ public class MovementTypeResource {
             if (cmd.getMovementTypeId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementType");
             }
+            String idObj = cmd.getMovementTypeId();
             movementTypeApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getMovementTypeId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

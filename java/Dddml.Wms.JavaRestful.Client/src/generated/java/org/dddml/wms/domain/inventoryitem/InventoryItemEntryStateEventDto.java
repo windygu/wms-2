@@ -87,6 +87,16 @@ public class InventoryItemEntryStateEventDto extends AbstractEvent
         this.source = source;
     }
 
+    private java.sql.Timestamp occuredAt;
+
+    public java.sql.Timestamp getOccuredAt() {
+        return this.occuredAt;
+    }
+
+    public void setOccuredAt(java.sql.Timestamp occuredAt) {
+        this.occuredAt = occuredAt;
+    }
+
     private String createdBy;
 
     public String getCreatedBy() {
@@ -175,6 +185,16 @@ public class InventoryItemEntryStateEventDto extends AbstractEvent
 
     public void setIsPropertySourceRemoved(Boolean removed) {
         this.isPropertySourceRemoved = removed;
+    }
+
+    private Boolean isPropertyOccuredAtRemoved;
+
+    public Boolean getIsPropertyOccuredAtRemoved() {
+        return this.isPropertyOccuredAtRemoved;
+    }
+
+    public void setIsPropertyOccuredAtRemoved(Boolean removed) {
+        this.isPropertyOccuredAtRemoved = removed;
     }
 
 

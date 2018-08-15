@@ -168,10 +168,11 @@ public class ShipmentPackageResource {
             if (cmd.getShipmentPackageId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentPackage");
             }
+            ShipmentPackageId idObj = cmd.getShipmentPackageId();
             shipmentPackageApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getShipmentPackageId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

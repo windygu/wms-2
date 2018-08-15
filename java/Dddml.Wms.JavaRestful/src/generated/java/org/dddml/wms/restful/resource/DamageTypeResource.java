@@ -168,10 +168,11 @@ public class DamageTypeResource {
             if (cmd.getDamageTypeId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "DamageType");
             }
+            String idObj = cmd.getDamageTypeId();
             damageTypeApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getDamageTypeId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

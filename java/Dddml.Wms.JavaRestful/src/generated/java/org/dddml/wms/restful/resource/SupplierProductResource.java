@@ -168,10 +168,11 @@ public class SupplierProductResource {
             if (cmd.getSupplierProductId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "SupplierProduct");
             }
+            SupplierProductId idObj = cmd.getSupplierProductId();
             supplierProductApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getSupplierProductId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

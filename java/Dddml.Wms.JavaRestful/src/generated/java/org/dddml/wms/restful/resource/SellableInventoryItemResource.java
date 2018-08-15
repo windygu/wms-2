@@ -171,10 +171,11 @@ public class SellableInventoryItemResource {
             if (cmd.getSellableInventoryItemId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "SellableInventoryItem");
             }
+            InventoryItemId idObj = cmd.getSellableInventoryItemId();
             sellableInventoryItemApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getSellableInventoryItemId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

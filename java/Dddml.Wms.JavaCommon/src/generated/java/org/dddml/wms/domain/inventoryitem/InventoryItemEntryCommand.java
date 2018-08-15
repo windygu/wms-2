@@ -43,6 +43,10 @@ public interface InventoryItemEntryCommand extends Command
 
         void setSource(InventoryItemSourceInfo source);
 
+        java.sql.Timestamp getOccuredAt();
+
+        void setOccuredAt(java.sql.Timestamp occuredAt);
+
         Boolean getActive();
 
         void setActive(Boolean active);

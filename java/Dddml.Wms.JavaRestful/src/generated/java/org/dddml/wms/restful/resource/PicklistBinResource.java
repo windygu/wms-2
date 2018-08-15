@@ -168,10 +168,11 @@ public class PicklistBinResource {
             if (cmd.getPicklistBinId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PicklistBin");
             }
+            String idObj = cmd.getPicklistBinId();
             picklistBinApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getPicklistBinId();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

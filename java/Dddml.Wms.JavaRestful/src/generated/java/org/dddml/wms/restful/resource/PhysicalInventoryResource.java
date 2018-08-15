@@ -170,10 +170,11 @@ public class PhysicalInventoryResource {
             if (cmd.getDocumentNumber() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PhysicalInventory");
             }
+            String idObj = cmd.getDocumentNumber();
             physicalInventoryApplicationService.when(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getDocumentNumber();
+            return idObj;
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

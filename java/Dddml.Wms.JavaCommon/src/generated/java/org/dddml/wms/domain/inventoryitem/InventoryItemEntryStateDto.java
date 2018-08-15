@@ -94,6 +94,18 @@ public class InventoryItemEntryStateDto
         this.source = source;
     }
 
+    private java.sql.Timestamp occuredAt;
+
+    public java.sql.Timestamp getOccuredAt()
+    {
+        return this.occuredAt;
+    }
+
+    public void setOccuredAt(java.sql.Timestamp occuredAt)
+    {
+        this.occuredAt = occuredAt;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -215,6 +227,9 @@ public class InventoryItemEntryStateDto
             }
             if (returnedFieldsContains("Source")) {
                 dto.setSource(state.getSource());
+            }
+            if (returnedFieldsContains("OccuredAt")) {
+                dto.setOccuredAt(state.getOccuredAt());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

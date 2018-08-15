@@ -71,6 +71,12 @@ aggregates:
               type: InventoryItemSourceInfo
               notNull: true
               
+            # ----------------------------------
+            # 库存事务（交易）的发生时间
+            OccuredAt:
+              type: date-time
+              notNull: true
+              
           reservedProperties:
             noActive: true
             
