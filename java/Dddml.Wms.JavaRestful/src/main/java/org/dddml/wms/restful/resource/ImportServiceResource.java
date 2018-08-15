@@ -188,7 +188,147 @@ public class ImportServiceResource {
         }
     }
 
-    
+    /**
+     * 初始化库存设置。
+     */
+    public static class InitializingInventoryItemSettings {
+        /**
+         * 重量（LBS）列名.
+         */
+        private String weightLbsColumnName = "Weight (lbs)";
+        /**
+         * 风干重量（LBS）列名。
+         */
+        private String airDryWeightLbsColumnName = "AD (lbs)";
+        /**
+         * 数量（主计量单位）列名。
+         */
+        private String quantityColumnName = "Weight (kg)";
+        /**
+         * 风干系数列名。
+         */
+        private String airDryPctColumnName = "Air dry";
+        /**
+         * 风干重量（公斤）列名。
+         */
+        private String airDryWeightKgColumnName = "Weight (Adkg)";
+        /**
+         * 风干重量（ADMT）列名。
+         */
+        private String airDryMetricTonColumnName = "ADMT";
+        /**
+         * 卷数列名。
+         */
+        private String rollCntColumnName = "Roll Cnt";
+        /**
+         * 序列号（包装 Id）列名。
+         */
+        private String serialNumberColumnName = "Package";
+        /**
+         * 批次号列名。
+         */
+        private String lotIdColumnName = "PO#";
+
+        /**
+         * 入库时间列名。
+         */
+        private String entryDateColumnName = "Entry Date";
+
+        public String getEntryDateColumnName() {
+            return entryDateColumnName;
+        }
+
+        public void setEntryDateColumnName(String entryDateColumnName) {
+            this.entryDateColumnName = entryDateColumnName;
+        }
+
+        /**
+         * Product name->id mappings.
+         */
+        private ProductMapping[] productMap;
+
+
+        public String getWeightLbsColumnName() {
+            return weightLbsColumnName;
+        }
+
+        public void setWeightLbsColumnName(String weightLbsColumnName) {
+            this.weightLbsColumnName = weightLbsColumnName;
+        }
+
+        public String getAirDryWeightLbsColumnName() {
+            return airDryWeightLbsColumnName;
+        }
+
+        public void setAirDryWeightLbsColumnName(String airDryWeightLbsColumnName) {
+            this.airDryWeightLbsColumnName = airDryWeightLbsColumnName;
+        }
+
+        public String getQuantityColumnName() {
+            return quantityColumnName;
+        }
+
+        public void setQuantityColumnName(String quantityColumnName) {
+            this.quantityColumnName = quantityColumnName;
+        }
+
+        public String getAirDryPctColumnName() {
+            return airDryPctColumnName;
+        }
+
+        public void setAirDryPctColumnName(String airDryPctColumnName) {
+            this.airDryPctColumnName = airDryPctColumnName;
+        }
+
+        public String getAirDryWeightKgColumnName() {
+            return airDryWeightKgColumnName;
+        }
+
+        public void setAirDryWeightKgColumnName(String airDryWeightKgColumnName) {
+            this.airDryWeightKgColumnName = airDryWeightKgColumnName;
+        }
+
+        public String getAirDryMetricTonColumnName() {
+            return airDryMetricTonColumnName;
+        }
+
+        public void setAirDryMetricTonColumnName(String airDryMetricTonColumnName) {
+            this.airDryMetricTonColumnName = airDryMetricTonColumnName;
+        }
+
+        public String getRollCntColumnName() {
+            return rollCntColumnName;
+        }
+
+        public void setRollCntColumnName(String rollCntColumnName) {
+            this.rollCntColumnName = rollCntColumnName;
+        }
+
+        public String getSerialNumberColumnName() {
+            return serialNumberColumnName;
+        }
+
+        public void setSerialNumberColumnName(String serialNumberColumnName) {
+            this.serialNumberColumnName = serialNumberColumnName;
+        }
+
+        public String getLotIdColumnName() {
+            return lotIdColumnName;
+        }
+
+        public void setLotIdColumnName(String lotIdColumnName) {
+            this.lotIdColumnName = lotIdColumnName;
+        }
+
+        public ProductMapping[] getProductMap() {
+            return productMap;
+        }
+
+        public void setProductMap(ProductMapping[] productMap) {
+            this.productMap = productMap;
+        }
+
+    }
 
     @Autowired
     private ProductApplicationService productApplicationService;
