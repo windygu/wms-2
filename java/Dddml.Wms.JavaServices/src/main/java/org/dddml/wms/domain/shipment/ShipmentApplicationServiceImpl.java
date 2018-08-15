@@ -1,9 +1,6 @@
 package org.dddml.wms.domain.shipment;
 
-import org.apache.commons.beanutils.ConvertUtils;
-import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCommand;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
-import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
 import org.dddml.wms.domain.inventoryitem.*;
@@ -12,7 +9,6 @@ import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.service.AttributeSetService;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.domain.statusitem.StatusItemIds;
-import org.dddml.wms.domain.warehouse.WarehouseUtils;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
@@ -246,9 +242,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.SHIPMENT, shipment.getShipmentId(),
                 lineReceipt.getReceiptSeqId(), 0));
         if (lineReceipt.getDatetimeReceived() != null) {
-            entry.setOccuredAt(new Timestamp(lineReceipt.getDatetimeReceived().getTime()));
+            entry.setOccurredAt(new Timestamp(lineReceipt.getDatetimeReceived().getTime()));
         } else {
-            entry.setOccuredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
+            entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
         return entry;
     }

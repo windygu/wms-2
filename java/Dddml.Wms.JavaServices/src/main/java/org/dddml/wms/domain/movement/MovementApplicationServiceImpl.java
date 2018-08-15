@@ -5,9 +5,6 @@ import org.dddml.wms.domain.DocumentStatusIds;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
-import org.dddml.wms.domain.inout.AbstractInOutLineCommand;
-import org.dddml.wms.domain.inout.InOutCommands;
-import org.dddml.wms.domain.inout.InOutLineCommand;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.movementconfirmation.*;
 import org.dddml.wms.domain.product.ProductApplicationService;
@@ -351,9 +348,9 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
                 new InventoryItemSourceInfo(DocumentTypeIds.MOVEMENT, movement.getDocumentNumber(), movementLine.getLineNumber(), lineSubSeqId)
         );
         if (movement.getMovementDate() != null) {
-            entry.setOccuredAt(new Timestamp(movement.getMovementDate().getTime()));
+            entry.setOccurredAt(new Timestamp(movement.getMovementDate().getTime()));
         } else {
-            entry.setOccuredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
+            entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
         return entry;
     }

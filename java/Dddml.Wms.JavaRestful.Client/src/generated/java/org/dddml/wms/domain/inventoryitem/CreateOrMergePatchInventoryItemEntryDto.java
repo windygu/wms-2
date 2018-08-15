@@ -97,18 +97,18 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
     }
 
     /**
-     * Occured At
+     * Occurred At
      */
-    private java.sql.Timestamp occuredAt;
+    private java.sql.Timestamp occurredAt;
 
-    public java.sql.Timestamp getOccuredAt()
+    public java.sql.Timestamp getOccurredAt()
     {
-        return this.occuredAt;
+        return this.occurredAt;
     }
 
-    public void setOccuredAt(java.sql.Timestamp occuredAt)
+    public void setOccurredAt(java.sql.Timestamp occurredAt)
     {
-        this.occuredAt = occuredAt;
+        this.occurredAt = occurredAt;
     }
 
     /**
@@ -198,16 +198,16 @@ public class CreateOrMergePatchInventoryItemEntryDto extends AbstractInventoryIt
         this.isPropertySourceRemoved = removed;
     }
 
-    private Boolean isPropertyOccuredAtRemoved;
+    private Boolean isPropertyOccurredAtRemoved;
 
-    public Boolean getIsPropertyOccuredAtRemoved()
+    public Boolean getIsPropertyOccurredAtRemoved()
     {
-        return this.isPropertyOccuredAtRemoved;
+        return this.isPropertyOccurredAtRemoved;
     }
 
-    public void setIsPropertyOccuredAtRemoved(Boolean removed)
+    public void setIsPropertyOccurredAtRemoved(Boolean removed)
     {
-        this.isPropertyOccuredAtRemoved = removed;
+        this.isPropertyOccurredAtRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

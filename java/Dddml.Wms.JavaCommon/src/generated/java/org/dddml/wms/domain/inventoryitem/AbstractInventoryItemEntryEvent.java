@@ -157,14 +157,14 @@ public abstract class AbstractInventoryItemEntryEvent extends AbstractEvent impl
             this.getInventoryItemEntryState().setSource(source);
         }
 
-        public java.sql.Timestamp getOccuredAt()
+        public java.sql.Timestamp getOccurredAt()
         {
-            return this.getInventoryItemEntryState().getOccuredAt();
+            return this.getInventoryItemEntryState().getOccurredAt();
         }
 
-        public void setOccuredAt(java.sql.Timestamp occuredAt)
+        public void setOccurredAt(java.sql.Timestamp occurredAt)
         {
-            this.getInventoryItemEntryState().setOccuredAt(occuredAt);
+            this.getInventoryItemEntryState().setOccurredAt(occurredAt);
         }
 
         protected AbstractInventoryItemEntryStateEvent(InventoryItemEntryEventId eventId) {

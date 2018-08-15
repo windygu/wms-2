@@ -230,9 +230,9 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         entry.setOnHandQuantity(inOutLine.getMovementQuantity());// *signum;
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.IN_OUT, inOut.getDocumentNumber(), inOutLine.getLineNumber(), 0));
         if (inOut.getMovementDate() != null) {
-            entry.setOccuredAt(new Timestamp(inOut.getMovementDate().getTime()));
+            entry.setOccurredAt(new Timestamp(inOut.getMovementDate().getTime()));
         } else {
-            entry.setOccuredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
+            entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
 
         return entry;

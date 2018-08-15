@@ -107,16 +107,16 @@ public abstract class AbstractInventoryItemEntryCommand extends AbstractCommand 
             this.source = source;
         }
 
-        private java.sql.Timestamp occuredAt;
+        private java.sql.Timestamp occurredAt;
 
-        public java.sql.Timestamp getOccuredAt()
+        public java.sql.Timestamp getOccurredAt()
         {
-            return this.occuredAt;
+            return this.occurredAt;
         }
 
-        public void setOccuredAt(java.sql.Timestamp occuredAt)
+        public void setOccurredAt(java.sql.Timestamp occurredAt)
         {
-            this.occuredAt = occuredAt;
+            this.occurredAt = occurredAt;
         }
 
         private Boolean active;
