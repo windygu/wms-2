@@ -443,11 +443,28 @@ public class ImportServiceResource {
     @GetMapping("TestImportShipments")
     public void testImportShipments() throws MalformedURLException, IOException, BiffException {
         ImportingShipmentHeader shipmentHeader = new ImportingShipmentHeader();
+        //运单“头”信息
+        shipmentHeader.setShipToPartyId("XXX-XXX");//发送给谁（业务实体/单位/个人）
+        shipmentHeader.setPrimaryOrderId("test-order-no.");//Order#
+        shipmentHeader.setPoNumber("test-po-no.");//PO#
+        shipmentHeader.setCarrier("test_carrier_1");//
+        shipmentHeader.setDateShipped(new Timestamp(new Date().getTime()));//发运日期
+        shipmentHeader.setEstimatedArrivalDate(new Timestamp(new Date().getTime()));//预计到达日期
+
+        // ////////////////  产品名称到 产品 Id 的映射关系 //////////////////
+        // 一般来说，Excel 中有多少种产品，就需要添加多少个“品名映射”
+        ProductMapping prdMapping1 = new ProductMapping();
+        prdMapping1.setProductName("GOLDEN ISLES CO FLUFF PULP");//在 Excel 中出现的产品名称
+        prdMapping1.setProductId("f6");//在系统中的产品 Id（Product Id）
+        shipmentHeader.setProductMap(new ProductMapping[]{prdMapping1});
+
+        // ////////////////  导入库存文件的 URL ////////////////////////
+        // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
         String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportExample (1).xls";
         shipmentHeader.setFileUrl(fileUrl);
-        // ...
-    }
 
+        importShipments(shipmentHeader);
+    }
      */
 
     @PostMapping("ImportShipments")
@@ -535,7 +552,6 @@ public class ImportServiceResource {
         initializeInventoryItems(settings);
         //（现在只是生成若干入库单，执行掉这些入库单，库存就初始化好了）
     }
-
      */
 
     @PostMapping("InitializeInventoryItems")
