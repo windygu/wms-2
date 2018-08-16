@@ -347,7 +347,16 @@ public class ShipmentPackageResource {
                         }
                     }.parse(shipmentPackageId)));
             mergePatchShipmentPackage.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchShipmentPackage.setVersion(version); }
+            if (version != null) { 
+                mergePatchShipmentPackage.setVersion(version); 
+            } else {
+                mergePatchShipmentPackage.setVersion(shipmentPackageApplicationService.get((new AbstractValueObjectTextFormatter<ShipmentPackageId>(ShipmentPackageId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(shipmentPackageId))).getVersion());
+            }
             mergePatchShipmentPackage.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentPackageContentCommand.RemoveShipmentPackageContent removeShipmentPackageContent = new AbstractShipmentPackageContentCommand.SimpleRemoveShipmentPackageContent();
             removeShipmentPackageContent.setShipmentItemSeqId(shipmentItemSeqId);

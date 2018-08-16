@@ -395,7 +395,11 @@ public class ShipmentResource {
             ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
             mergePatchShipment.setShipmentId(shipmentId);
             mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchShipment.setVersion(version); }
+            if (version != null) { 
+                mergePatchShipment.setVersion(version); 
+            } else {
+                mergePatchShipment.setVersion(shipmentApplicationService.get(shipmentId).getVersion());
+            }
             mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentImageCommand.RemoveShipmentImage removeShipmentImage = new AbstractShipmentImageCommand.SimpleRemoveShipmentImage();
             removeShipmentImage.setSequenceId(sequenceId);
@@ -494,7 +498,11 @@ public class ShipmentResource {
             ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
             mergePatchShipment.setShipmentId(shipmentId);
             mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchShipment.setVersion(version); }
+            if (version != null) { 
+                mergePatchShipment.setVersion(version); 
+            } else {
+                mergePatchShipment.setVersion(shipmentApplicationService.get(shipmentId).getVersion());
+            }
             mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentItemCommand.RemoveShipmentItem removeShipmentItem = new AbstractShipmentItemCommand.SimpleRemoveShipmentItem();
             removeShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
@@ -593,7 +601,11 @@ public class ShipmentResource {
             ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
             mergePatchShipment.setShipmentId(shipmentId);
             mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchShipment.setVersion(version); }
+            if (version != null) { 
+                mergePatchShipment.setVersion(version); 
+            } else {
+                mergePatchShipment.setVersion(shipmentApplicationService.get(shipmentId).getVersion());
+            }
             mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentReceiptCommand.RemoveShipmentReceipt removeShipmentReceipt = new AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt();
             removeShipmentReceipt.setReceiptSeqId(receiptSeqId);
@@ -695,7 +707,11 @@ public class ShipmentResource {
             ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
             mergePatchShipment.setShipmentId(shipmentId);
             mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchShipment.setVersion(version); }
+            if (version != null) { 
+                mergePatchShipment.setVersion(version); 
+            } else {
+                mergePatchShipment.setVersion(shipmentApplicationService.get(shipmentId).getVersion());
+            }
             mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentReceiptCommand.MergePatchShipmentReceipt mergePatchShipmentReceipt = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
             mergePatchShipmentReceipt.setReceiptSeqId(shipmentReceiptReceiptSeqId);
@@ -800,7 +816,11 @@ public class ShipmentResource {
             ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
             mergePatchShipment.setShipmentId(shipmentId);
             mergePatchShipment.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchShipment.setVersion(version); }
+            if (version != null) { 
+                mergePatchShipment.setVersion(version); 
+            } else {
+                mergePatchShipment.setVersion(shipmentApplicationService.get(shipmentId).getVersion());
+            }
             mergePatchShipment.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ItemIssuanceCommand.RemoveItemIssuance removeItemIssuance = new AbstractItemIssuanceCommand.SimpleRemoveItemIssuance();
             removeItemIssuance.setItemIssuanceSeqId(itemIssuanceSeqId);

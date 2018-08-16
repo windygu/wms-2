@@ -321,7 +321,11 @@ public class OrderResource {
             OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
             mergePatchOrder.setOrderId(orderId);
             mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchOrder.setVersion(version); }
+            if (version != null) { 
+                mergePatchOrder.setVersion(version); 
+            } else {
+                mergePatchOrder.setVersion(orderApplicationService.get(orderId).getVersion());
+            }
             mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             OrderRoleCommand.RemoveOrderRole removeOrderRole = new AbstractOrderRoleCommand.SimpleRemoveOrderRole();
             removeOrderRole.setPartyRoleId((new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class, ",") {
@@ -425,7 +429,11 @@ public class OrderResource {
             OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
             mergePatchOrder.setOrderId(orderId);
             mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchOrder.setVersion(version); }
+            if (version != null) { 
+                mergePatchOrder.setVersion(version); 
+            } else {
+                mergePatchOrder.setVersion(orderApplicationService.get(orderId).getVersion());
+            }
             mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             OrderItemCommand.RemoveOrderItem removeOrderItem = new AbstractOrderItemCommand.SimpleRemoveOrderItem();
             removeOrderItem.setOrderItemSeqId(orderItemSeqId);
@@ -524,7 +532,11 @@ public class OrderResource {
             OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
             mergePatchOrder.setOrderId(orderId);
             mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchOrder.setVersion(version); }
+            if (version != null) { 
+                mergePatchOrder.setVersion(version); 
+            } else {
+                mergePatchOrder.setVersion(orderApplicationService.get(orderId).getVersion());
+            }
             mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             OrderShipGroupCommand.RemoveOrderShipGroup removeOrderShipGroup = new AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup();
             removeOrderShipGroup.setShipGroupSeqId(shipGroupSeqId);
@@ -626,7 +638,11 @@ public class OrderResource {
             OrderCommand.MergePatchOrder mergePatchOrder = new AbstractOrderCommand.SimpleMergePatchOrder();
             mergePatchOrder.setOrderId(orderId);
             mergePatchOrder.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchOrder.setVersion(version); }
+            if (version != null) { 
+                mergePatchOrder.setVersion(version); 
+            } else {
+                mergePatchOrder.setVersion(orderApplicationService.get(orderId).getVersion());
+            }
             mergePatchOrder.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             OrderShipGroupCommand.MergePatchOrderShipGroup mergePatchOrderShipGroup = new AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup();
             mergePatchOrderShipGroup.setShipGroupSeqId(orderShipGroupShipGroupSeqId);

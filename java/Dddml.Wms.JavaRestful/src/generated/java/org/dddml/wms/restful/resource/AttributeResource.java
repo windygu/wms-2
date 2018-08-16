@@ -343,7 +343,11 @@ public class AttributeResource {
             AttributeCommand.MergePatchAttribute mergePatchAttribute = new AbstractAttributeCommand.SimpleMergePatchAttribute();
             mergePatchAttribute.setAttributeId(attributeId);
             mergePatchAttribute.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchAttribute.setVersion(version); }
+            if (version != null) { 
+                mergePatchAttribute.setVersion(version); 
+            } else {
+                mergePatchAttribute.setVersion(attributeApplicationService.get(attributeId).getVersion());
+            }
             mergePatchAttribute.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             AttributeValueCommand.RemoveAttributeValue removeAttributeValue = new AbstractAttributeValueCommand.SimpleRemoveAttributeValue();
             removeAttributeValue.setValue(value);
@@ -442,7 +446,11 @@ public class AttributeResource {
             AttributeCommand.MergePatchAttribute mergePatchAttribute = new AbstractAttributeCommand.SimpleMergePatchAttribute();
             mergePatchAttribute.setAttributeId(attributeId);
             mergePatchAttribute.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchAttribute.setVersion(version); }
+            if (version != null) { 
+                mergePatchAttribute.setVersion(version); 
+            } else {
+                mergePatchAttribute.setVersion(attributeApplicationService.get(attributeId).getVersion());
+            }
             mergePatchAttribute.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             AttributeAliasCommand.RemoveAttributeAlias removeAttributeAlias = new AbstractAttributeAliasCommand.SimpleRemoveAttributeAlias();
             removeAttributeAlias.setCode(code);

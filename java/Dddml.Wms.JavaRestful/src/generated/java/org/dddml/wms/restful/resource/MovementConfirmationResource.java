@@ -350,7 +350,11 @@ public class MovementConfirmationResource {
             MovementConfirmationCommand.MergePatchMovementConfirmation mergePatchMovementConfirmation = new AbstractMovementConfirmationCommand.SimpleMergePatchMovementConfirmation();
             mergePatchMovementConfirmation.setDocumentNumber(documentNumber);
             mergePatchMovementConfirmation.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchMovementConfirmation.setVersion(version); }
+            if (version != null) { 
+                mergePatchMovementConfirmation.setVersion(version); 
+            } else {
+                mergePatchMovementConfirmation.setVersion(movementConfirmationApplicationService.get(documentNumber).getVersion());
+            }
             mergePatchMovementConfirmation.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             MovementConfirmationLineCommand.RemoveMovementConfirmationLine removeMovementConfirmationLine = new AbstractMovementConfirmationLineCommand.SimpleRemoveMovementConfirmationLine();
             removeMovementConfirmationLine.setLineNumber(lineNumber);

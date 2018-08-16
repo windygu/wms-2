@@ -356,7 +356,11 @@ public class PhysicalInventoryResource {
             PhysicalInventoryCommand.MergePatchPhysicalInventory mergePatchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
             mergePatchPhysicalInventory.setDocumentNumber(documentNumber);
             mergePatchPhysicalInventory.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchPhysicalInventory.setVersion(version); }
+            if (version != null) { 
+                mergePatchPhysicalInventory.setVersion(version); 
+            } else {
+                mergePatchPhysicalInventory.setVersion(physicalInventoryApplicationService.get(documentNumber).getVersion());
+            }
             mergePatchPhysicalInventory.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             PhysicalInventoryLineCommand.RemovePhysicalInventoryLine removePhysicalInventoryLine = new AbstractPhysicalInventoryLineCommand.SimpleRemovePhysicalInventoryLine();
             removePhysicalInventoryLine.setInventoryItemId((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {

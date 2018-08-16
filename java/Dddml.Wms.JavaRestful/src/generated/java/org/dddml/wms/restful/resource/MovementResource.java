@@ -367,7 +367,11 @@ public class MovementResource {
             MovementCommand.MergePatchMovement mergePatchMovement = new AbstractMovementCommand.SimpleMergePatchMovement();
             mergePatchMovement.setDocumentNumber(documentNumber);
             mergePatchMovement.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchMovement.setVersion(version); }
+            if (version != null) { 
+                mergePatchMovement.setVersion(version); 
+            } else {
+                mergePatchMovement.setVersion(movementApplicationService.get(documentNumber).getVersion());
+            }
             mergePatchMovement.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             MovementLineCommand.RemoveMovementLine removeMovementLine = new AbstractMovementLineCommand.SimpleRemoveMovementLine();
             removeMovementLine.setLineNumber(lineNumber);

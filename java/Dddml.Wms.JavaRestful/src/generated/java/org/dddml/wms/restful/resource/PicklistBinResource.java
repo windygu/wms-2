@@ -342,7 +342,11 @@ public class PicklistBinResource {
             PicklistBinCommand.MergePatchPicklistBin mergePatchPicklistBin = new AbstractPicklistBinCommand.SimpleMergePatchPicklistBin();
             mergePatchPicklistBin.setPicklistBinId(picklistBinId);
             mergePatchPicklistBin.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchPicklistBin.setVersion(version); }
+            if (version != null) { 
+                mergePatchPicklistBin.setVersion(version); 
+            } else {
+                mergePatchPicklistBin.setVersion(picklistBinApplicationService.get(picklistBinId).getVersion());
+            }
             mergePatchPicklistBin.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             PicklistItemCommand.RemovePicklistItem removePicklistItem = new AbstractPicklistItemCommand.SimpleRemovePicklistItem();
             removePicklistItem.setPicklistItemOrderShipGrpInvId((new AbstractValueObjectTextFormatter<PicklistItemOrderShipGrpInvId>(PicklistItemOrderShipGrpInvId.class, ",") {

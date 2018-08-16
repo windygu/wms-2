@@ -343,7 +343,11 @@ public class PicklistResource {
             PicklistCommand.MergePatchPicklist mergePatchPicklist = new AbstractPicklistCommand.SimpleMergePatchPicklist();
             mergePatchPicklist.setPicklistId(picklistId);
             mergePatchPicklist.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchPicklist.setVersion(version); }
+            if (version != null) { 
+                mergePatchPicklist.setVersion(version); 
+            } else {
+                mergePatchPicklist.setVersion(picklistApplicationService.get(picklistId).getVersion());
+            }
             mergePatchPicklist.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             PicklistRoleCommand.RemovePicklistRole removePicklistRole = new AbstractPicklistRoleCommand.SimpleRemovePicklistRole();
             removePicklistRole.setPartyRoleId((new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class, ",") {

@@ -430,7 +430,11 @@ public class InOutResource {
             InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
             mergePatchInOut.setDocumentNumber(documentNumber);
             mergePatchInOut.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchInOut.setVersion(version); }
+            if (version != null) { 
+                mergePatchInOut.setVersion(version); 
+            } else {
+                mergePatchInOut.setVersion(inOutApplicationService.get(documentNumber).getVersion());
+            }
             mergePatchInOut.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             InOutImageCommand.RemoveInOutImage removeInOutImage = new AbstractInOutImageCommand.SimpleRemoveInOutImage();
             removeInOutImage.setSequenceId(sequenceId);
@@ -529,7 +533,11 @@ public class InOutResource {
             InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
             mergePatchInOut.setDocumentNumber(documentNumber);
             mergePatchInOut.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchInOut.setVersion(version); }
+            if (version != null) { 
+                mergePatchInOut.setVersion(version); 
+            } else {
+                mergePatchInOut.setVersion(inOutApplicationService.get(documentNumber).getVersion());
+            }
             mergePatchInOut.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             InOutLineCommand.RemoveInOutLine removeInOutLine = new AbstractInOutLineCommand.SimpleRemoveInOutLine();
             removeInOutLine.setLineNumber(lineNumber);
@@ -631,7 +639,11 @@ public class InOutResource {
             InOutCommand.MergePatchInOut mergePatchInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
             mergePatchInOut.setDocumentNumber(documentNumber);
             mergePatchInOut.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchInOut.setVersion(version); }
+            if (version != null) { 
+                mergePatchInOut.setVersion(version); 
+            } else {
+                mergePatchInOut.setVersion(inOutApplicationService.get(documentNumber).getVersion());
+            }
             mergePatchInOut.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             InOutLineCommand.MergePatchInOutLine mergePatchInOutLine = new AbstractInOutLineCommand.SimpleMergePatchInOutLine();
             mergePatchInOutLine.setLineNumber(inOutLineLineNumber);

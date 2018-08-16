@@ -310,7 +310,11 @@ public class ProductResource {
             ProductCommand.MergePatchProduct mergePatchProduct = new AbstractProductCommand.SimpleMergePatchProduct();
             mergePatchProduct.setProductId(productId);
             mergePatchProduct.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchProduct.setVersion(version); }
+            if (version != null) { 
+                mergePatchProduct.setVersion(version); 
+            } else {
+                mergePatchProduct.setVersion(productApplicationService.get(productId).getVersion());
+            }
             mergePatchProduct.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             GoodIdentificationCommand.RemoveGoodIdentification removeGoodIdentification = new AbstractGoodIdentificationCommand.SimpleRemoveGoodIdentification();
             removeGoodIdentification.setGoodIdentificationTypeId(goodIdentificationTypeId);

@@ -332,7 +332,11 @@ public class AttributeSetResource {
             AttributeSetCommand.MergePatchAttributeSet mergePatchAttributeSet = new AbstractAttributeSetCommand.SimpleMergePatchAttributeSet();
             mergePatchAttributeSet.setAttributeSetId(attributeSetId);
             mergePatchAttributeSet.setCommandId(commandId);// != null && !commandId.isEmpty() ? commandId : body.getCommandId());
-            if (version != null) { mergePatchAttributeSet.setVersion(version); }
+            if (version != null) { 
+                mergePatchAttributeSet.setVersion(version); 
+            } else {
+                mergePatchAttributeSet.setVersion(attributeSetApplicationService.get(attributeSetId).getVersion());
+            }
             mergePatchAttributeSet.setRequesterId(requesterId);// != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             AttributeUseCommand.RemoveAttributeUse removeAttributeUse = new AbstractAttributeUseCommand.SimpleRemoveAttributeUse();
             removeAttributeUse.setAttributeId(attributeId);
