@@ -109,10 +109,9 @@ public class MovementResource {
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<MovementStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toMovementStateDtoList(states), 0);//todo
+            Page.PageImpl<MovementStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toMovementStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
-            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

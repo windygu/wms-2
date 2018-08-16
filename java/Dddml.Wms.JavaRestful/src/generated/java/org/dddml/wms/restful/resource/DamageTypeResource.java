@@ -108,10 +108,9 @@ public class DamageTypeResource {
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<DamageTypeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toDamageTypeStateDtoList(states), 0);//todo
+            Page.PageImpl<DamageTypeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toDamageTypeStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
-            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

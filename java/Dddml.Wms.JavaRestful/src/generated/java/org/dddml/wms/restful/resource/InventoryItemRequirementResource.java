@@ -111,10 +111,9 @@ public class InventoryItemRequirementResource {
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<InventoryItemRequirementStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toInventoryItemRequirementStateDtoList(states), 0);//todo
+            Page.PageImpl<InventoryItemRequirementStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toInventoryItemRequirementStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
-            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

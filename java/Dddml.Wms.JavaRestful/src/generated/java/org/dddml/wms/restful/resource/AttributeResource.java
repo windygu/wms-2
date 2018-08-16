@@ -111,10 +111,9 @@ public class AttributeResource {
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<AttributeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toAttributeStateDtoList(states), 0);//todo
+            Page.PageImpl<AttributeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toAttributeStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
-            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

@@ -108,10 +108,9 @@ public class RoleTypeResource {
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<RoleTypeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toRoleTypeStateDtoList(states), 0);//todo
+            Page.PageImpl<RoleTypeStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toRoleTypeStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
-            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

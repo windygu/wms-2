@@ -108,10 +108,9 @@ public class PartyRoleResource {
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<PartyRoleStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toPartyRoleStateDtoList(states), 0);//todo
+            Page.PageImpl<PartyRoleStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toPartyRoleStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
-            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

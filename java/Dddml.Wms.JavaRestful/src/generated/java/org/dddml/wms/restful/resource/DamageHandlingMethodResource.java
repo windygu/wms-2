@@ -108,10 +108,9 @@ public class DamageHandlingMethodResource {
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<DamageHandlingMethodStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toDamageHandlingMethodStateDtoList(states), 0);//todo
+            Page.PageImpl<DamageHandlingMethodStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toDamageHandlingMethodStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
-            statePage.setTotalElements(count);
             return statePage;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
