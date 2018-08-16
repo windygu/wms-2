@@ -11,6 +11,7 @@ import jxl.write.biff.RowsExceededException;
 import org.dddml.wms.domain.attributeset.AttributeSetApplicationService;
 import org.dddml.wms.domain.attributeset.AttributeSetState;
 import org.dddml.wms.domain.attributeset.AttributeUseState;
+import org.dddml.wms.domain.inout.InOutCommands;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.shipment.ImportingShipmentItem;
@@ -441,36 +442,39 @@ public class ImportServiceResource {
         InputStream inputStream = url.openStream();
 
         // ////////////////////////////////
-        ImportingShipmentBookReader readImportingShipmentBook = new ImportingShipmentBookReader(inputStream).readSheet0();
-        Integer shipment_id_column_idx = readImportingShipmentBook.getShipmentIdColumnIdx();
-        Integer product_column_idx = readImportingShipmentBook.getProductColumnIdx();
-        List<String[]> matrix = readImportingShipmentBook.getMatrix();
-        Integer serial_number_column_idx = readImportingShipmentBook.getSerialNumberColumnIdx();
-        Integer lot_id_column_idx = readImportingShipmentBook.getLotIdColumnIdx();
-        Integer bol_number_column_idx = readImportingShipmentBook.getBolNumberColumnIdx();
-        Integer vehicle_id_column_idx = readImportingShipmentBook.getVehicleIdColumnIdx();
-        Integer seal_number_column_idx = readImportingShipmentBook.getSealNumberColumnIdx();
-        Integer quantity_column_idx = readImportingShipmentBook.getQuantityColumnIdx();
-        Map<String, Integer> attributeIdColumnIdxMap = readImportingShipmentBook.getAttributeIdColumnIdxMap();
+        ImportingShipmentBookReader reader = new ImportingShipmentBookReader(inputStream).readSheet0();
+        Integer shipmentIdColumnIdx = reader.getShipmentIdColumnIdx();
+        Integer productColumnIdx = reader.getProductColumnIdx();
+        Integer serialNumberColumnIdx = reader.getSerialNumberColumnIdx();
+        Integer lotIdColumnIdx = reader.getLotIdColumnIdx();
+        Integer bolNumberColumnIdx = reader.getBolNumberColumnIdx();
+        Integer vehicleIdColumnIdx = reader.getVehicleIdColumnIdx();
+        Integer sealNumberColumnIdx = reader.getSealNumberColumnIdx();
+        Integer quantityColumnIdx = reader.getQuantityColumnIdx();
+        Map<String, Integer> attributeIdColumnIdxMap = reader.getAttributeIdColumnIdxMap();
+        List<String[]> matrix = reader.getMatrix();
 
         // ////////////////////////////////
-        if (shipment_id_column_idx == null) {
+        if (shipmentIdColumnIdx == null) {
             throw DomainError.named("missedColumn", "Column '%1$s' missed.", SHIPMENT_ID_COLUMN_NAME);
         }
-        if (product_column_idx == null) {
+        if (productColumnIdx == null) {
             throw DomainError.named("missedColumn", "Column '%1$s' missed.", PRODUCT_COLUMN_NAME);
         }
-        Map<String, ProductState> prdMap = getProductMap(prdNameMap, product_column_idx, matrix);
+        Map<String, ProductState> prdMap = getProductMap(prdNameMap, productColumnIdx, matrix);
         for (ProductState p : prdMap.values()) {
-            if(p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serial_number_column_idx == null) {
+            if(p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serialNumberColumnIdx == null) {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", SERIAL_NUMBER_COLUMN_NAME);
             }
-            if(p.getIsManagedByLot() != null && p.getIsManagedByLot() && lot_id_column_idx == null) {
+            if(p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", LOT_ID_COLUMN_NAME);
             }
         }
 
-        Map<String, ShipmentCommands.Import> shipmentMap = getImportingShipmentMap(shipmentHeader, shipment_id_column_idx, product_column_idx, serial_number_column_idx, lot_id_column_idx, quantity_column_idx, vehicle_id_column_idx, bol_number_column_idx, seal_number_column_idx, attributeIdColumnIdxMap, prdMap, matrix);
+        Map<String, ShipmentCommands.Import> shipmentMap = getImportingShipmentMap(
+                shipmentHeader,
+                shipmentIdColumnIdx, productColumnIdx, serialNumberColumnIdx, lotIdColumnIdx, quantityColumnIdx,
+                vehicleIdColumnIdx, bolNumberColumnIdx, sealNumberColumnIdx, attributeIdColumnIdxMap, prdMap, matrix);
 
         //execute import...
         for (ShipmentCommands.Import importInfo : shipmentMap.values()) {
@@ -499,57 +503,57 @@ public class ImportServiceResource {
         //"file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportExample (1).xls";
         URL url = new URL(fileUrl);
         InputStream inputStream = url.openStream();
-        //todo
-        Integer productColumnIdx = null;
-        Integer serialNumberColumnIdx = null;
-        Integer lotIdColumnIdx = null;
-        Integer quantityColumnIdx = null;
-        Map<String, Integer> attributeIdColumnIdxMap = new HashMap<>();
-        List<String[]> matrix = new ArrayList<>();
-        Workbook book = Workbook.getWorkbook(inputStream);
-        List<String> colNames = null;
-        try {
-            Sheet sheet = book.getSheet(0);
-            int rows = sheet.getRows();
-            int columns = sheet.getColumns();
-            // 遍历每行每列的单元格
-            for (int i = 0; i < rows; i++) {
-                String[] mr = null;
-                if (i == 0) {
-                    colNames = new ArrayList<>();
-                } else {
-                    mr = new String[columns];
-                }
-                for (int j = 0; j < columns; j++) {
-                    Cell cell = sheet.getCell(j, i);
-                    String c = cell.getContents();
-                    if (c != null) {
-                        c = c.trim();
-                    }
-                    if (i == 0) {
-                        colNames.add(c);
-                        if (columnNameEquals(settings.getProductColumnName(), c)) {
-                            productColumnIdx = j;
-                        } else if (columnNameEquals(settings.getSerialNumberColumnName(), c)) {
-                            serialNumberColumnIdx = j;
-                        } else if (columnNameEquals(settings.getLotIdColumnName(), c)) {
-                            lotIdColumnIdx = j;
-                        } else if (columnNameEquals(settings.getQuantityColumnName(), c)) {
-                            quantityColumnIdx = j;
-                        } else {
-                            attributeIdColumnIdxMap.put(c, j);
-                        }
-                    } else {
-                        mr[j] = c;
-                    }
-                }
-                if (i > 0) {
-                    matrix.add(mr);
-                }
-            }
-        } finally {
-            book.close();
+        InitializingInventoryItemBookReader reader = new InitializingInventoryItemBookReader(settings, inputStream).readSheet0();
+        Integer productColumnIdx = reader.getProductColumnIdx();
+        Integer entryDateColumnIdx = reader.getEntryDateColumnIdx();
+        Integer locatorIdColumnIdx = reader.getLocatorIdColumnIdx();
+        Integer quantityColumnIdx = reader.getQuantityColumnIdx();
+        Integer serialNumberColumnIdx = reader.getSerialNumberColumnIdx();
+        Integer lotIdColumnIdx = reader.getLotIdColumnIdx();
+        Integer weightLbsColumnIdx = reader.getWeightLbsColumnIdx();
+        Integer airDryWeightLbsColumnIdx = reader.getAirDryWeightLbsColumnIdx();
+        Integer airDryPctColumnIdx = reader.getAirDryPctColumnIdx();
+        Integer airDryMetricTonColumnIdx = reader.getAirDryMetricTonColumnIdx();
+        Integer airDryWeightKgColumnIdx = reader.getAirDryWeightKgColumnIdx();
+        Integer rollCntColumnIdx = reader.getRollCntColumnIdx();
+        Integer poReferenceColumnIdx = reader.getPoReferenceColumnIdx();
+        Map<String, Integer> attributeIdColumnIdxMap = reader.getAttributeIdColumnIdxMap();
+        List<String[]> matrix = reader.getMatrix();
+
+        if (productColumnIdx == null) {
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getProductColumnName());
         }
+        if (entryDateColumnIdx == null) {
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getEntryDateColumnName());
+        }
+        if (locatorIdColumnIdx == null) {
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getLotIdColumnName());
+        }
+        if (quantityColumnIdx == null) {
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getQuantityColumnName());
+        }
+        Map<String, ProductState> prdMap = getProductMap(prdNameMap, productColumnIdx, matrix);
+        for (ProductState p : prdMap.values()) {
+            if(p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serialNumberColumnIdx == null) {
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getSerialNumberColumnName());
+            }
+            if(p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getLotIdColumnName());
+            }
+        }
+//        System.out.println(weightLbsColumnIdx);
+//        System.out.println(airDryWeightLbsColumnIdx);
+//        System.out.println(airDryPctColumnIdx);
+//        System.out.println(airDryMetricTonColumnIdx);
+//        System.out.println(airDryWeightKgColumnIdx);
+//        System.out.println(rollCntColumnIdx);
+//        System.out.println(poReferenceColumnIdx);
+//        System.out.println(attributeIdColumnIdxMap);
+//        System.out.println(matrix);
+
+        //todo
+        Map<String, InOutCommands.Import> inOutMap = new HashMap<>();
+
     }
 
     private Map<String, ShipmentCommands.Import> getImportingShipmentMap(ImportingShipmentHeader shipmentHeader,
@@ -841,6 +845,172 @@ public class ImportServiceResource {
                                 vehicleIdColumnIdx = j;
                             } else if (columnNameEquals(SEAL_NUMBER_COLUMN_NAME, c)) {
                                 sealNumberColumnIdx = j;
+                            } else {
+                                attributeIdColumnIdxMap.put(c, j);
+                            }
+                        } else {
+                            mr[j] = c;
+                        }
+                    }
+                    if (i > 0) {
+                        matrix.add(mr);
+                    }
+                }
+            } finally {
+                book.close();
+            }
+            return this;
+        }
+    }
+
+    private class InitializingInventoryItemBookReader {
+        private InitializingInventoryItemSettings settings;
+        private InputStream inputStream;
+        private Integer productColumnIdx;
+        private Integer serialNumberColumnIdx;
+        private Integer lotIdColumnIdx;
+        private Integer quantityColumnIdx;
+        private Integer weightLbsColumnIdx;
+        private Integer airDryWeightLbsColumnIdx;
+        private Integer airDryPctColumnIdx;
+        private Integer airDryWeightKgColumnIdx;
+        private Integer airDryMetricTonColumnIdx;
+        private Integer rollCntColumnIdx;
+        private Integer locatorIdColumnIdx;
+        private Integer poReferenceColumnIdx;
+        private Integer entryDateColumnIdx;
+        private Map<String, Integer> attributeIdColumnIdxMap;
+        private List<String[]> matrix;
+
+        public InitializingInventoryItemBookReader(InitializingInventoryItemSettings settings, InputStream inputStream) {
+            this.settings = settings;
+            this.inputStream = inputStream;
+        }
+
+        public Integer getProductColumnIdx() {
+            return productColumnIdx;
+        }
+
+        public Integer getSerialNumberColumnIdx() {
+            return serialNumberColumnIdx;
+        }
+
+        public Integer getLotIdColumnIdx() {
+            return lotIdColumnIdx;
+        }
+
+        public Integer getQuantityColumnIdx() {
+            return quantityColumnIdx;
+        }
+
+        public Integer getWeightLbsColumnIdx() {
+            return weightLbsColumnIdx;
+        }
+
+        public Integer getAirDryWeightLbsColumnIdx() {
+            return airDryWeightLbsColumnIdx;
+        }
+
+        public Integer getAirDryPctColumnIdx() {
+            return airDryPctColumnIdx;
+        }
+
+        public Integer getAirDryWeightKgColumnIdx() {
+            return airDryWeightKgColumnIdx;
+        }
+
+        public Integer getAirDryMetricTonColumnIdx() {
+            return airDryMetricTonColumnIdx;
+        }
+
+        public Integer getRollCntColumnIdx() {
+            return rollCntColumnIdx;
+        }
+
+        public Integer getLocatorIdColumnIdx() {
+            return locatorIdColumnIdx;
+        }
+
+        public Integer getPoReferenceColumnIdx() {
+            return poReferenceColumnIdx;
+        }
+
+        public Integer getEntryDateColumnIdx() {
+            return entryDateColumnIdx;
+        }
+
+        public Map<String, Integer> getAttributeIdColumnIdxMap() {
+            return attributeIdColumnIdxMap;
+        }
+
+        public List<String[]> getMatrix() {
+            return matrix;
+        }
+
+        public InitializingInventoryItemBookReader readSheet0() throws IOException, BiffException {
+            productColumnIdx = null;
+            serialNumberColumnIdx = null;
+            lotIdColumnIdx = null;
+            quantityColumnIdx = null;
+            weightLbsColumnIdx = null;
+            airDryWeightLbsColumnIdx = null;
+            airDryPctColumnIdx = null;
+            airDryWeightKgColumnIdx = null;
+            airDryMetricTonColumnIdx = null;
+            rollCntColumnIdx = null;
+            locatorIdColumnIdx = null;
+            poReferenceColumnIdx = null;
+            entryDateColumnIdx = null;
+            attributeIdColumnIdxMap = new HashMap<>();
+            matrix = new ArrayList<>();
+            Workbook book = Workbook.getWorkbook(inputStream);
+            List<String> colNames = null;
+            try {
+                Sheet sheet = book.getSheet(0);
+                int rows = sheet.getRows();
+                int columns = sheet.getColumns();
+                // 遍历每行每列的单元格
+                for (int i = 0; i < rows; i++) {
+                    String[] mr = null;
+                    if (i == 0) {
+                        colNames = new ArrayList<>();
+                    } else {
+                        mr = new String[columns];
+                    }
+                    for (int j = 0; j < columns; j++) {
+                        Cell cell = sheet.getCell(j, i);
+                        String c = cell.getContents();
+                        if (c != null) {
+                            c = c.trim();
+                        }
+                        if (i == 0) {
+                            colNames.add(c);
+                            if (columnNameEquals(settings.getProductColumnName(), c)) {
+                                productColumnIdx = j;
+                            } else if (columnNameEquals(settings.getSerialNumberColumnName(), c)) {
+                                serialNumberColumnIdx = j;
+                            } else if (columnNameEquals(settings.getLotIdColumnName(), c)) {
+                                lotIdColumnIdx = j;
+                            } else if (columnNameEquals(settings.getQuantityColumnName(), c)) {
+                                quantityColumnIdx = j;
+                            } else if (columnNameEquals(settings.getWeightLbsColumnName(), c)) {
+                                weightLbsColumnIdx = j;//"Weight (lbs)";
+                            } else if (columnNameEquals(settings.getAirDryWeightLbsColumnName(), c)) {
+                                airDryWeightLbsColumnIdx = j;//"AD (lbs)";
+                            } else if (columnNameEquals(settings.getAirDryPctColumnName(), c)) {
+                                airDryPctColumnIdx = j;//"Air dry";
+                            } else if (columnNameEquals(settings.getAirDryWeightKgColumnName(), c)) {
+                                airDryWeightKgColumnIdx = j;//"Weight (Adkg)";
+                            } else if (columnNameEquals(settings.getAirDryMetricTonColumnName(), c)) {
+                                airDryMetricTonColumnIdx = j;//"ADMT";
+                            } else if (columnNameEquals(settings.getRollCntColumnName(), c)) {
+                                rollCntColumnIdx = j;//"Roll Cnt";
+                            } else if (columnNameEquals(settings.getLocatorIdColumnName(), c)) {
+                                locatorIdColumnIdx = j;//"Locator Id";
+                            } else if (columnNameEquals(settings.getPoReferenceColumnName(), c)) {
+                                poReferenceColumnIdx = j;//"PO#";
+                            } else if (columnNameEquals(settings.getEntryDateColumnName(), c)) {
+                                entryDateColumnIdx = j;//"Entry Date";
                             } else {
                                 attributeIdColumnIdxMap.put(c, j);
                             }
