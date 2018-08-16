@@ -15,6 +15,7 @@ import org.dddml.wms.specialization.IdGenerator;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -289,27 +290,81 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         when(updateInOut);
     }
 
+    @Override
+    @Transactional
+    public void when(InOutCommands.Import c) {
+        InOutCommand.CreateInOut createInOut = new AbstractInOutCommand.SimpleCreateInOut();
+        createInOut.setDocumentNumber(c.getDocumentNumber());
+        createInOut.setCommandId(c.getCommandId());
+        createInOut.setDocumentTypeId(c.getDocumentTypeId());
+        createInOut.setMovementTypeId(c.getMovementTypeId());
+        createInOut.setOrderId(c.getOrderId());
+        createInOut.setDateOrdered(c.getDateOrdered());
+        createInOut.setMovementDate(c.getMovementDate());
+        createInOut.setWarehouseId(c.getWarehouseId());
+        createInOut.setPOReference(c.getPOReference());
+        createInOut.setShipperId(c.getShipperId());
+        createInOut.setActive(true);
+        createInOut.setDescription(c.getDescription());
+
+        //List<InOutLineCommand.CreateInOutLine> lines = new ArrayList<>();
+        if(c.getInOutLines() != null) {
+            for (ImportingInOutLine i : c.getInOutLines()) {
+                InOutLineCommand.CreateInOutLine createLine = createInOutLine(i.getLineNumber(),
+                        i.getProductId(),
+                        i.getLocatorId(),
+                        i.getAttributeSetInstance(),
+                        i.getQuantityUomId(),
+                        i.getMovementQuantity(),
+                        i.getDescription(),
+                        null
+                        );
+                //lines.add(createLine);
+                createInOut.getInOutLines().add(createLine);
+            }
+        }
+        when(createInOut);
+    }
 
     private InOutLineCommand.CreateInOutLine createInOutLine(InOutCommands.AddLine d) {
-        InOutLineCommand.CreateInOutLine line = new AbstractInOutLineCommand.SimpleCreateInOutLine();
+        String productId = d.getProductId();
+        Map<String, Object> attrSetInstMap = d.getAttributeSetInstance();
+        String lineNumber = d.getLineNumber();
+        String locatorId = d.getLocatorId();
+        String quantityUomId = d.getQuantityUomId();
+        BigDecimal movementQty = d.getMovementQuantity();
+        String description = d.getDescription();
+        List<String> damageStatusIds = d.getDamageStatusIds();
+        InOutLineCommand.CreateInOutLine line = createInOutLine(lineNumber, productId, locatorId, attrSetInstMap, quantityUomId, movementQty, description, damageStatusIds);
+        //todo More proerties???
+        return line;
+    }
 
-        ProductState prdState = getProductState(d.getProductId());
-
-        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(getAttributeSetService(), getAttributeSetInstanceApplicationService(), prdState.getAttributeSetId(), d.getAttributeSetInstance());
+    private InOutLineCommand.CreateInOutLine createInOutLine(String lineNumber,
+                                                             String productId,
+                                                             String locatorId,
+                                                             Map<String, Object> attrSetInstMap,
+                                                             String quantityUomId,
+                                                             BigDecimal movementQty,
+                                                             String description,
+                                                             List<String> damageStatusIds) {
+        ProductState productState = getProductState(productId);
+        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
+                getAttributeSetService(), getAttributeSetInstanceApplicationService(),
+                productState.getAttributeSetId(), attrSetInstMap);
         //if (_log.IsDebugEnabled) {
         //    _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //}
-
-        line.setLineNumber(d.getLineNumber());
-        line.setProductId(prdState.getProductId());
-        line.setLocatorId(d.getLocatorId());
+        InOutLineCommand.CreateInOutLine line = new AbstractInOutLineCommand.SimpleCreateInOutLine();
+        line.setLineNumber(lineNumber);
+        line.setProductId(productState.getProductId());
+        line.setLocatorId(locatorId);
         line.setAttributeSetInstanceId(attrSetInstId);
-        line.setQuantityUomId(d.getQuantityUomId());
-        line.setMovementQuantity(d.getMovementQuantity());
-        line.setDescription(d.getDescription());
-        line.setDamageStatusIds(d.getDamageStatusIds() == null ? null : new HashSet<>(d.getDamageStatusIds()));
+        line.setQuantityUomId(quantityUomId);
+        line.setMovementQuantity(movementQty);
+        line.setDescription(description);
+        line.setDamageStatusIds(damageStatusIds == null ? null : new HashSet<>(damageStatusIds));
         line.setActive(true);
-        //todo More proerties???
         return line;
     }
 

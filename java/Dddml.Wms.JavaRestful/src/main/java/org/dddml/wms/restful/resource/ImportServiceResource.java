@@ -11,7 +11,11 @@ import jxl.write.biff.RowsExceededException;
 import org.dddml.wms.domain.attributeset.AttributeSetApplicationService;
 import org.dddml.wms.domain.attributeset.AttributeSetState;
 import org.dddml.wms.domain.attributeset.AttributeUseState;
+import org.dddml.wms.domain.documenttype.DocumentTypeIds;
+import org.dddml.wms.domain.inout.ImportingInOutLine;
+import org.dddml.wms.domain.inout.InOutApplicationService;
 import org.dddml.wms.domain.inout.InOutCommands;
+import org.dddml.wms.domain.movementtype.MovementTypeIds;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.shipment.ImportingShipmentItem;
@@ -33,6 +37,7 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.text.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -397,6 +402,9 @@ public class ImportServiceResource {
     //@Autowired
     //private ImportApplicationService importApplicationService;
 
+    @Autowired
+    private InOutApplicationService inOutApplicationService;
+
     @GetMapping("GetShipmentItemColumnNames")
     public List<String> getShipmentItemColumnNames(@RequestParam(value = "productIds") String productIds) {
         String[] prdIdArray = productIds.split(",");
@@ -495,8 +503,45 @@ public class ImportServiceResource {
         return prdNameMap;
     }
 
+    /*
+
+    @GetMapping("TestInitializeInventoryItems")
+    public void initializeInventoryItems() throws IOException, BiffException, ParseException {
+        InitializingInventoryItemSettings settings = new InitializingInventoryItemSettings();
+
+        // ////////////////// 导入文件的列名设置 ////////////////////////
+        settings.setEntryDateColumnName("入库时间");// 入库时间
+        settings.setLocatorIdColumnName("Locator Id");// 货位 Id
+        settings.setSerialNumberColumnName("Package");// 序列号即包装 Id
+        settings.setAirDryMetricTonColumnName("ADMT");
+        //settings.setQuantityColumnName("重量（公斤）"); // （以主计量单位计算的）数量的列名
+        // 如果 Excel 中的列名没有使用默认值，就需要设置！！！
+        //...
+
+        // ////////////////  产品名称到 产品 Id 的映射关系 //////////////////
+        // 一般来说，Excel 中有多少种产品，就需要添加多少个“品名映射”
+        ProductMapping prdMapping1 = new ProductMapping();
+        prdMapping1.setProductName("GOLDEN ISLES CO FLUFF PULP");//在 Excel 中出现的产品名称
+        prdMapping1.setProductId("f6");//在系统中的产品 Id（Product Id）
+        settings.setProductMap(new ProductMapping[]{prdMapping1});
+
+        // ////////////////  导入库存文件的 URL ////////////////////////
+        // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
+        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\初始化库存示例.xls";
+        settings.setFileUrl(fileUrl);
+
+        // ////////////////////////////////////////
+        // 初始化库存
+        initializeInventoryItems(settings);
+        //（现在只是生成若干入库单，执行掉这些入库单，库存就初始化好了）
+    }
+
+     */
+
     @PostMapping("InitializeInventoryItems")
-    public void initializeInventoryItems(@RequestBody InitializingInventoryItemSettings settings) throws IOException, BiffException {
+    public void initializeInventoryItems(@RequestBody InitializingInventoryItemSettings settings)
+            throws IOException, BiffException, ParseException {
+
         Map<String, String> prdNameMap = getProductNameMap(settings.getProductMap());
 
         String fileUrl = settings.getFileUrl();
@@ -534,45 +579,152 @@ public class ImportServiceResource {
         }
         Map<String, ProductState> prdMap = getProductMap(prdNameMap, productColumnIdx, matrix);
         for (ProductState p : prdMap.values()) {
-            if(p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serialNumberColumnIdx == null) {
+            if (p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serialNumberColumnIdx == null) {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getSerialNumberColumnName());
             }
-            if(p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
+            if (p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getLotIdColumnName());
             }
         }
-//        System.out.println(weightLbsColumnIdx);
-//        System.out.println(airDryWeightLbsColumnIdx);
-//        System.out.println(airDryPctColumnIdx);
-//        System.out.println(airDryMetricTonColumnIdx);
-//        System.out.println(airDryWeightKgColumnIdx);
-//        System.out.println(rollCntColumnIdx);
-//        System.out.println(poReferenceColumnIdx);
-//        System.out.println(attributeIdColumnIdxMap);
-//        System.out.println(matrix);
+        //        System.out.println(weightLbsColumnIdx);
+        //        System.out.println(airDryWeightLbsColumnIdx);
+        //        System.out.println(airDryPctColumnIdx);
+        //        System.out.println(airDryMetricTonColumnIdx);
+        //        System.out.println(airDryWeightKgColumnIdx);
+        //        System.out.println(rollCntColumnIdx);
+        //        System.out.println(poReferenceColumnIdx);
+        //        System.out.println(attributeIdColumnIdxMap);
+        //        System.out.println(matrix);
 
-        //todo
+        Map<String, InOutCommands.Import> inOutMap = getImportingInOutMap(entryDateColumnIdx,
+                productColumnIdx, locatorIdColumnIdx,
+                serialNumberColumnIdx, lotIdColumnIdx,
+                quantityColumnIdx,
+                weightLbsColumnIdx,
+                airDryPctColumnIdx, airDryMetricTonColumnIdx, airDryWeightKgColumnIdx, airDryWeightLbsColumnIdx,
+                rollCntColumnIdx,
+                poReferenceColumnIdx,
+                prdMap, matrix);
+
+        //execute import...
+        for (InOutCommands.Import importInfo : inOutMap.values()) {
+            importInfo.setCommandId(importInfo.getDocumentNumber());
+            inOutApplicationService.when(importInfo);
+        }
+    }
+
+    private Map<String, InOutCommands.Import> getImportingInOutMap(Integer entryDateColumnIdx,
+                                                                   Integer productColumnIdx,
+                                                                   Integer locatorIdColumnIdx,
+                                                                   Integer serialNumberColumnIdx,
+                                                                   Integer lotIdColumnIdx,
+                                                                   Integer quantityColumnIdx,
+                                                                   Integer weightLbsColumnIdx,
+                                                                   Integer airDryPctColumnIdx,
+                                                                   Integer airDryMetricTonColumnIdx,
+                                                                   Integer airDryWeightKgColumnIdx,
+                                                                   Integer airDryWeightLbsColumnIdx,
+                                                                   Integer rollCntColumnIdx,
+                                                                   Integer poReferenceColumnIdx,
+                                                                   Map<String, ProductState> prdMap, List<String[]> matrix)
+            throws ParseException {
         Map<String, InOutCommands.Import> inOutMap = new HashMap<>();
+        for (int i = 0; i < matrix.size(); i++ ) {
+            String[] row = matrix.get(i);
+            Date entryDate = parseEntryDate(row[entryDateColumnIdx]);
+            //if (entryDate == null) {
+            //    throw new ParseException("Parse entry date error.");
+            //}
+            java.text.DateFormat dateFormat3 = new SimpleDateFormat("yyyy-MM-dd");
+            //使用日期作为单号
+            String documentNumber = "IX" + dateFormat3.format(entryDate);
+            InOutCommands.Import inOut = null;
+            if (!inOutMap.containsKey(documentNumber)) {
+                inOut = new InOutCommands.Import();
+                inOut.setDocumentNumber(documentNumber);
+                inOut.setMovementDate(entryDate);
+                inOut.setDocumentTypeId(DocumentTypeIds.IN);
+                inOut.setMovementTypeId(MovementTypeIds.MISCELLANEOUS_IN);
+                // //////////////////////////////
+                if (poReferenceColumnIdx != null) {
+                    inOut.setPOReference(row[poReferenceColumnIdx]);
+                }
+                // //////////////////////////////
+                inOut.setInOutLines(new ArrayList<>());
+                inOutMap.put(documentNumber, inOut);
+            } else {
+                inOut = inOutMap.get(documentNumber);
+            }
+            //if (productColumnIdx != null)
+            ProductState productState = prdMap.get(row[productColumnIdx]);
+            ImportingInOutLine inOutLine = new ImportingInOutLine();
+            inOutLine.setLineNumber("" + i);
+            inOutLine.setProductId(productState.getProductId());
+            //locatorIdColumnIdx != null;
+            inOutLine.setLocatorId(row[locatorIdColumnIdx]);
+            //quantityColumnIdx != null;
+            inOutLine.setMovementQuantity(new BigDecimal(row[quantityColumnIdx]));
+            //locatorIdColumnIdx != null;
+            inOutLine.setAttributeSetInstance(new HashMap<>());
+            if (serialNumberColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("serialNumber", row[serialNumberColumnIdx]);
+            }
+            if (lotIdColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("lotId", row[lotIdColumnIdx]);
+            }
+            if (weightLbsColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("weightLbs", row[weightLbsColumnIdx]);
+            }
+            if (airDryWeightLbsColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("airDryWeightLbs", row[airDryWeightLbsColumnIdx]);
+            }
+            if (airDryPctColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("airDryPct", row[airDryPctColumnIdx]);
+            }
+            if (airDryWeightKgColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("airDryWeightKg", row[airDryWeightKgColumnIdx]);
+            }
+            if (airDryMetricTonColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("airDryMetricTon", row[airDryMetricTonColumnIdx]);
+            }
+            if (rollCntColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("rollCnt", row[rollCntColumnIdx]);
+            }
+            inOut.getInOutLines().add(inOutLine);
+        }
+        return inOutMap;
+    }
 
+    private Date parseEntryDate(String source) throws ParseException {
+        java.text.DateFormat dateFormat1 = new SimpleDateFormat("dd-MMM-yy");
+        java.text.DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+        Date entryDate = null;
+        try {
+            entryDate = dateFormat2.parse(source);
+        } catch (ParseException e) {
+            //e.printStackTrace();
+            entryDate = dateFormat1.parse(source);
+        }
+        return entryDate;
     }
 
     private Map<String, ShipmentCommands.Import> getImportingShipmentMap(ImportingShipmentHeader shipmentHeader,
-                                                                         Integer shipment_id_column_idx,
-                                                                         Integer product_column_idx,
-                                                                         Integer serial_number_column_idx,
-                                                                         Integer lot_id_column_idx,
-                                                                         Integer quantity_column_idx,
-                                                                         Integer vehicle_id_column_idx,
-                                                                         Integer bol_number_column_idx,
-                                                                         Integer seal_number_column_idx,
+                                                                         Integer shipmentIdColumnIdx,
+                                                                         Integer productColumnIdx,
+                                                                         Integer serialNumberColumnIdx,
+                                                                         Integer lotIdColumnIdx,
+                                                                         Integer quantityColumnIdx,
+                                                                         Integer vehicleIdColumnIdx,
+                                                                         Integer bolNumberColumnIdx,
+                                                                         Integer sealNumberColumnIdx,
                                                                          Map<String, Integer> attributeIdColumnIdxMap,
                                                                          Map<String, ProductState> prdMap,
                                                                          List<String[]> matrix) {
 
         Map<String, ShipmentCommands.Import> shipmentMap = new HashMap<>();
         for (int i = 0; i < matrix.size(); i++) {
-            String[] line = matrix.get(i);
-            String shipmentId = line[shipment_id_column_idx];
+            String[] row = matrix.get(i);
+            String shipmentId = row[shipmentIdColumnIdx];
             if (shipmentId == null || shipmentId.isEmpty()) {
                 throw DomainError.named("emptyError", "ShipmentId is empty.");
             }
@@ -594,36 +746,36 @@ public class ImportServiceResource {
             } else {
                 shipmentImport = shipmentMap.get(shipmentId);
             }
-            if (shipmentImport.getBolNumber() == null && bol_number_column_idx != null) {
-                shipmentImport.setBolNumber(line[bol_number_column_idx]);
+            if (shipmentImport.getBolNumber() == null && bolNumberColumnIdx != null) {
+                shipmentImport.setBolNumber(row[bolNumberColumnIdx]);
             }
-            if (shipmentImport.getVehicleId() == null && vehicle_id_column_idx!= null) {
-                shipmentImport.setVehicleId(line[vehicle_id_column_idx]);
+            if (shipmentImport.getVehicleId() == null && vehicleIdColumnIdx!= null) {
+                shipmentImport.setVehicleId(row[vehicleIdColumnIdx]);
             }
-            if (shipmentImport.getSealNumber() == null && seal_number_column_idx != null) {
-                shipmentImport.setSealNumber(line[seal_number_column_idx]);
+            if (shipmentImport.getSealNumber() == null && sealNumberColumnIdx != null) {
+                shipmentImport.setSealNumber(row[sealNumberColumnIdx]);
             }
             ImportingShipmentItem shipmentItem = new ImportingShipmentItem();
             shipmentItem.setAttributeSetInstance(new HashMap<>());
             // Item Seq Id.
             shipmentItem.setShipmentItemSeqId(String.valueOf(i + 2));
             // Product Id.
-            shipmentItem.setProductId(prdMap.get(line[product_column_idx]).getProductId());
+            shipmentItem.setProductId(prdMap.get(row[productColumnIdx]).getProductId());
             // Serial Number
-            if (serial_number_column_idx != null && line[serial_number_column_idx] != null && !line[serial_number_column_idx].isEmpty()) {
-                shipmentItem.getAttributeSetInstance().put("serialNumber",line[serial_number_column_idx]);
+            if (serialNumberColumnIdx != null && row[serialNumberColumnIdx] != null && !row[serialNumberColumnIdx].isEmpty()) {
+                shipmentItem.getAttributeSetInstance().put("serialNumber",row[serialNumberColumnIdx]);
             }
             // Lot
-            if (lot_id_column_idx != null && line[lot_id_column_idx] != null && !line[lot_id_column_idx].isEmpty()) {
-                shipmentItem.getAttributeSetInstance().put("lotId",line[lot_id_column_idx]);
+            if (lotIdColumnIdx != null && row[lotIdColumnIdx] != null && !row[lotIdColumnIdx].isEmpty()) {
+                shipmentItem.getAttributeSetInstance().put("lotId",row[lotIdColumnIdx]);
             }
             // Quantity
-            shipmentItem.setQuantity(new BigDecimal(line[quantity_column_idx]));
+            shipmentItem.setQuantity(new BigDecimal(row[quantityColumnIdx]));
             // Other Attribute values.
             for (Map.Entry<String, Integer> kv : attributeIdColumnIdxMap.entrySet()) {
                 String attrId = kv.getKey();
                 Integer attrColIdx = kv.getValue();
-                Object attrVal = line[attrColIdx];
+                Object attrVal = row[attrColIdx];
                 // ////////////////////////////////////////////////////////
                 //todo 如果不在 product 的属性集中的属性，应该忽略
                 // ////////////////////////////////////////////////////////
@@ -863,7 +1015,7 @@ public class ImportServiceResource {
         }
     }
 
-    private class InitializingInventoryItemBookReader {
+    private static class InitializingInventoryItemBookReader {
         private InitializingInventoryItemSettings settings;
         private InputStream inputStream;
         private Integer productColumnIdx;
@@ -1007,13 +1159,16 @@ public class ImportServiceResource {
                                 rollCntColumnIdx = j;//"Roll Cnt";
                             } else if (columnNameEquals(settings.getLocatorIdColumnName(), c)) {
                                 locatorIdColumnIdx = j;//"Locator Id";
-                            } else if (columnNameEquals(settings.getPoReferenceColumnName(), c)) {
-                                poReferenceColumnIdx = j;//"PO#";
                             } else if (columnNameEquals(settings.getEntryDateColumnName(), c)) {
                                 entryDateColumnIdx = j;//"Entry Date";
                             } else {
                                 attributeIdColumnIdxMap.put(c, j);
                             }
+                            // ////////////////////////////////////////////
+                            if (columnNameEquals(settings.getPoReferenceColumnName(), c)) {
+                                poReferenceColumnIdx = j;//"PO#";
+                            }
+                            // ////////////////////////////////////////////
                         } else {
                             mr[j] = c;
                         }
