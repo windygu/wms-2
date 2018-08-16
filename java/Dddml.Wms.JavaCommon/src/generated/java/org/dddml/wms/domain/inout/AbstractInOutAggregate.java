@@ -734,6 +734,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
 
         @Override
+        public void _import(String documentTypeId, String description, String orderId, Date dateOrdered, String movementTypeId, Date movementDate, String warehouseId, String POReference, String shipperId, Iterable<ImportingInOutLine> inOutLines, Long version, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
             InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
             doDocumentAction(value, s -> e.setDocumentStatusId(s));

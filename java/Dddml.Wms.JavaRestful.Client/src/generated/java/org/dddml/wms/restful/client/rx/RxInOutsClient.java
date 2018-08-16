@@ -99,6 +99,10 @@ public interface RxInOutsClient {
     Observable<String> addLine(@Path("id") String id, @Body InOutCommandDtos.AddLineRequestContent content);
 
     @Headers("Accept: application/json")
+    @PUT("InOuts/{id}/_commands/Import")
+    Observable<String> _import(@Path("id") String id, @Body InOutCommandDtos.ImportRequestContent content);
+
+    @Headers("Accept: application/json")
     @PUT("InOuts/{id}/_commands/DocumentAction")
     Observable<String> documentAction(@Path("id") String id, @Body InOutCommandDtos.DocumentActionRequestContent content);
 

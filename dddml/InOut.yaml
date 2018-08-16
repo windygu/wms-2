@@ -366,6 +366,76 @@ aggregates:
               type: decimal
             #ImageUrls:
             #  itemType: id-vlong
+            
+        # --------------------------------------
+        # 导入出入库单
+        Import:
+          parameters:
+            # 单据类型
+            DocumentTypeId:
+              referenceType: DocumentType
+            # 描述
+            Description:
+              type: string
+            # 订单 Id.
+            OrderId:
+              type: string
+            DateOrdered:
+              type: DateTime?
+            # 出入库类型
+            MovementTypeId:
+              type: string
+              referenceType: MovementType
+            # 出入库时间
+            MovementDate:  
+              type: DateTime?
+            # 仓库 Id.
+            WarehouseId:
+              type: string
+            POReference:
+              type: string
+            # 运输商 Id.
+            ShipperId:
+              type: string
+            # ------------------------
+            # 导入的出入库单行项
+            InOutLines:
+              itemType: ImportingInOutLine
+              
+      # ---------------------------------
+      valueObjects:
+        # ---------------------------------
+        # 导入的出入库单行项信息
+        ImportingInOutLine:
+          properties:
+            LineNumber:
+              type: string
+            # 货位 Id.
+            LocatorId:
+              type: string
+            # 产品 Id.
+            ProductId:
+              type: id-long
+            # --------------------------------
+            # 属性集实例。这里是一个 Map
+            AttributeSetInstance:
+              type: map
+            # 行项的描述
+            Description:
+              type: string
+            # 数量单位 Id.
+            QuantityUomId:
+              type: string
+            # 出入库数量.
+            MovementQuantity: 
+              type: decimal
+            #----------------------------
+            # TODO: support itemType(collection)???
+            #ImageUrls:
+            #  itemType: id-vlong
+            # 损坏状态 Id.
+            #DamageStatusIds:
+            #  itemType: id
                           
       # --------------------------------------------
       metadata:

@@ -27,6 +27,8 @@ public interface InOutAggregate
 
     void addLine(String lineNumber, String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, Iterable<String> damageStatusIds, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId);
 
+    void _import(String documentTypeId, String description, String orderId, Date dateOrdered, String movementTypeId, Date movementDate, String warehouseId, String POReference, String shipperId, Iterable<ImportingInOutLine> inOutLines, Long version, String commandId, String requesterId);
+
     void documentAction(String value, Long version, String commandId, String requesterId);
 
     void throwOnInvalidStateTransition(Command c);

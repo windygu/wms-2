@@ -419,6 +419,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\ImportingInOutLine.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutCommandDtos.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -1923,6 +1926,7 @@
 .\CreateOrMergePatchInOutLineImageDto.java
 .\DeleteInOutDto.java
 .\GenerateInOutDomain.txt
+.\ImportingInOutLine.java
 .\InOutCommandDtos.java
 .\InOutEventId.java
 .\InOutImageEventId.java

@@ -303,6 +303,23 @@ public class InOutResource {
     }
 
 
+    @PutMapping("{documentNumber}/_commands/Import")
+    public void _import(@PathVariable("documentNumber") String documentNumber, @RequestBody InOutCommands.Import content) {
+        try {
+
+            InOutCommands.Import cmd = content;//.toImport();
+            String idObj = documentNumber;
+            if (cmd.getDocumentNumber() == null) {
+                cmd.setDocumentNumber(idObj);
+            } else if (!cmd.getDocumentNumber().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
+            }
+            inOutApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @PutMapping("{documentNumber}/_commands/DocumentAction")
     public void documentAction(@PathVariable("documentNumber") String documentNumber, @RequestBody InOutCommands.DocumentAction content) {
         try {

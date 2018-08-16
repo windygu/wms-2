@@ -414,6 +414,196 @@ public class InOutCommandDtos
 
     }
 
+    public static class ImportRequestContent {
+
+        public String getCommandType() {
+            return "Import";
+        }
+
+        /**
+         * Document Type Id
+         */
+        private String documentTypeId;
+
+        public String getDocumentTypeId() {
+            return this.documentTypeId;
+        }
+
+        public void setDocumentTypeId(String documentTypeId) {
+            this.documentTypeId = documentTypeId;
+        }
+
+        /**
+         * Description
+         */
+        private String description;
+
+        public String getDescription() {
+            return this.description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        /**
+         * Order Id
+         */
+        private String orderId;
+
+        public String getOrderId() {
+            return this.orderId;
+        }
+
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
+
+        /**
+         * Date Ordered
+         */
+        private Date dateOrdered;
+
+        public Date getDateOrdered() {
+            return this.dateOrdered;
+        }
+
+        public void setDateOrdered(Date dateOrdered) {
+            this.dateOrdered = dateOrdered;
+        }
+
+        /**
+         * Movement Type Id
+         */
+        private String movementTypeId;
+
+        public String getMovementTypeId() {
+            return this.movementTypeId;
+        }
+
+        public void setMovementTypeId(String movementTypeId) {
+            this.movementTypeId = movementTypeId;
+        }
+
+        /**
+         * Movement Date
+         */
+        private Date movementDate;
+
+        public Date getMovementDate() {
+            return this.movementDate;
+        }
+
+        public void setMovementDate(Date movementDate) {
+            this.movementDate = movementDate;
+        }
+
+        /**
+         * Warehouse Id
+         */
+        private String warehouseId;
+
+        public String getWarehouseId() {
+            return this.warehouseId;
+        }
+
+        public void setWarehouseId(String warehouseId) {
+            this.warehouseId = warehouseId;
+        }
+
+        /**
+         * PO Reference
+         */
+        private String POReference;
+
+        public String getPOReference() {
+            return this.POReference;
+        }
+
+        public void setPOReference(String POReference) {
+            this.POReference = POReference;
+        }
+
+        /**
+         * Shipper Id
+         */
+        private String shipperId;
+
+        public String getShipperId() {
+            return this.shipperId;
+        }
+
+        public void setShipperId(String shipperId) {
+            this.shipperId = shipperId;
+        }
+
+        /**
+         * In Out Lines
+         */
+        private ImportingInOutLine[] inOutLines;
+
+        public ImportingInOutLine[] getInOutLines() {
+            return this.inOutLines;
+        }
+
+        public void setInOutLines(ImportingInOutLine[] inOutLines) {
+            this.inOutLines = inOutLines;
+        }
+
+        /**
+         * Document Number
+         */
+        private String documentNumber;
+
+        public String getDocumentNumber() {
+            return this.documentNumber;
+        }
+
+        public void setDocumentNumber(String documentNumber) {
+            this.documentNumber = documentNumber;
+        }
+
+        /**
+         * Version
+         */
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
     public static class DocumentActionRequestContent {
 
         public String getCommandType() {

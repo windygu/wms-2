@@ -865,6 +865,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\DeleteInOutDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\ImportingInOutLine.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\InOutAggregate.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -4512,6 +4515,7 @@
 .\CreateOrMergePatchInOutLineImageDto.java
 .\DeleteInOutDto.java
 .\GenerateInOutDomain.txt
+.\ImportingInOutLine.java
 .\InOutAggregate.java
 .\InOutApplicationService.java
 .\InOutCommand.java

@@ -98,6 +98,10 @@ public interface InOutsClient {
     Call<String> addLine(@Path("id") String id, @Body InOutCommandDtos.AddLineRequestContent content);
 
     @Headers("Accept: application/json")
+    @PUT("InOuts/{id}/_commands/Import")
+    Call<String> _import(@Path("id") String id, @Body InOutCommandDtos.ImportRequestContent content);
+
+    @Headers("Accept: application/json")
     @PUT("InOuts/{id}/_commands/DocumentAction")
     Call<String> documentAction(@Path("id") String id, @Body InOutCommandDtos.DocumentActionRequestContent content);
 

@@ -25,6 +25,8 @@ public interface InOutApplicationService
 
     void when(InOutCommands.AddLine c);
 
+    void when(InOutCommands.Import c);
+
     void when(InOutCommands.DocumentAction c);
 
     InOutState get(String id);
