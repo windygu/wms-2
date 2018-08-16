@@ -438,6 +438,18 @@ public class ImportServiceResource {
                 .body(new InputStreamResource(inputStream));
     }
 
+    /*
+
+    @GetMapping("TestImportShipments")
+    public void testImportShipments() throws MalformedURLException, IOException, BiffException {
+        ImportingShipmentHeader shipmentHeader = new ImportingShipmentHeader();
+        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportExample (1).xls";
+        shipmentHeader.setFileUrl(fileUrl);
+        // ...
+    }
+
+     */
+
     @PostMapping("ImportShipments")
     public void importShipments(@RequestBody ImportingShipmentHeader shipmentHeader)
             throws MalformedURLException, IOException, BiffException {
@@ -445,7 +457,6 @@ public class ImportServiceResource {
         Map<String, String> prdNameMap = getProductNameMap(shipmentHeader.getProductMap());
 
         String fileUrl = shipmentHeader.getFileUrl();
-        //"file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportExample (1).xls";
         URL url = new URL(fileUrl);
         InputStream inputStream = url.openStream();
 
@@ -471,10 +482,10 @@ public class ImportServiceResource {
         }
         Map<String, ProductState> prdMap = getProductMap(prdNameMap, productColumnIdx, matrix);
         for (ProductState p : prdMap.values()) {
-            if(p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serialNumberColumnIdx == null) {
+            if (p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serialNumberColumnIdx == null) {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", SERIAL_NUMBER_COLUMN_NAME);
             }
-            if(p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
+            if (p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", LOT_ID_COLUMN_NAME);
             }
         }
@@ -492,21 +503,10 @@ public class ImportServiceResource {
         //return shipmentMap;
     }
 
-    private Map<String, String> getProductNameMap(ProductMapping[] productMappings) {
-        Map<String, String> prdNameMap = new HashMap<>();
-        //prdNameMap.put("GI SEMI-TREATED FLUFF", "1532609301202");
-        if (productMappings != null) {
-            for (ProductMapping pm : productMappings) {
-                prdNameMap.put(pm.getProductName(), pm.getProductId());
-            }
-        }
-        return prdNameMap;
-    }
-
     /*
 
     @GetMapping("TestInitializeInventoryItems")
-    public void initializeInventoryItems() throws IOException, BiffException, ParseException {
+    public void testInitializeInventoryItems() throws IOException, BiffException, ParseException {
         InitializingInventoryItemSettings settings = new InitializingInventoryItemSettings();
 
         // ////////////////// 导入文件的列名设置 ////////////////////////
@@ -545,7 +545,6 @@ public class ImportServiceResource {
         Map<String, String> prdNameMap = getProductNameMap(settings.getProductMap());
 
         String fileUrl = settings.getFileUrl();
-        //"file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportExample (1).xls";
         URL url = new URL(fileUrl);
         InputStream inputStream = url.openStream();
         InitializingInventoryItemBookReader reader = new InitializingInventoryItemBookReader(settings, inputStream).readSheet0();
@@ -611,6 +610,17 @@ public class ImportServiceResource {
             importInfo.setCommandId(importInfo.getDocumentNumber());
             inOutApplicationService.when(importInfo);
         }
+    }
+
+    private Map<String, String> getProductNameMap(ProductMapping[] productMappings) {
+        Map<String, String> prdNameMap = new HashMap<>();
+        //prdNameMap.put("GI SEMI-TREATED FLUFF", "1532609301202");
+        if (productMappings != null) {
+            for (ProductMapping pm : productMappings) {
+                prdNameMap.put(pm.getProductName(), pm.getProductId());
+            }
+        }
+        return prdNameMap;
     }
 
     private Map<String, InOutCommands.Import> getImportingInOutMap(Integer entryDateColumnIdx,
