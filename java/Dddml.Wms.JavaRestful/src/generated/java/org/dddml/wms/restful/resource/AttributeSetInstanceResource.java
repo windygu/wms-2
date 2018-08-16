@@ -18,10 +18,13 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequestMapping(path = "AttributeSetInstances", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class AttributeSetInstanceResource {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private AbstractDynamicObjectMapper<JSONObject,
@@ -73,7 +76,7 @@ public class AttributeSetInstanceResource {
             }
             return dynamicArray;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -117,7 +120,7 @@ public class AttributeSetInstanceResource {
             statePage.setNumber(page);
             return statePage;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -133,7 +136,7 @@ public class AttributeSetInstanceResource {
 
             return attributeSetInstanceDynamicObjectMapper.mapState(state, fields);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_count")
@@ -153,7 +156,7 @@ public class AttributeSetInstanceResource {
                 n -> (AttributeSetInstanceMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceMetadata.aliasMap.get(n) : n)));
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -169,7 +172,7 @@ public class AttributeSetInstanceResource {
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -185,7 +188,7 @@ public class AttributeSetInstanceResource {
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeSetInstanceId, cmd);
             attributeSetInstanceApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -199,7 +202,7 @@ public class AttributeSetInstanceResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{attributeSetInstanceId}/_events/{version}")
@@ -210,7 +213,7 @@ public class AttributeSetInstanceResource {
             //AttributeSetInstanceStateEventDtoConverter dtoConverter = getAttributeSetInstanceStateEventDtoConverter();
             return attributeSetInstanceApplicationService.getEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{attributeSetInstanceId}/_historyStates/{version}")
@@ -226,7 +229,7 @@ public class AttributeSetInstanceResource {
             }
             return dtoConverter.toAttributeSetInstanceStateDto(attributeSetInstanceApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 

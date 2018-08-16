@@ -17,10 +17,13 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequestMapping(path = "ShipmentPackages", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class ShipmentPackageResource {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @Autowired
@@ -66,7 +69,7 @@ public class ShipmentPackageResource {
             }
             return dtoConverter.toShipmentPackageStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -111,7 +114,7 @@ public class ShipmentPackageResource {
             statePage.setTotalElements(count);
             return statePage;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -133,7 +136,7 @@ public class ShipmentPackageResource {
             }
             return dtoConverter.toShipmentPackageStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_count")
@@ -153,7 +156,7 @@ public class ShipmentPackageResource {
                 n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n)));
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -173,7 +176,7 @@ public class ShipmentPackageResource {
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -197,7 +200,7 @@ public class ShipmentPackageResource {
             ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
             shipmentPackageApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -213,7 +216,7 @@ public class ShipmentPackageResource {
             ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
             shipmentPackageApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -235,7 +238,7 @@ public class ShipmentPackageResource {
             ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, deleteCmd);
             shipmentPackageApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_metadata/filteringFields")
@@ -248,7 +251,7 @@ public class ShipmentPackageResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{shipmentPackageId}/_events/{version}")
@@ -259,7 +262,7 @@ public class ShipmentPackageResource {
             //ShipmentPackageStateEventDtoConverter dtoConverter = getShipmentPackageStateEventDtoConverter();
             return shipmentPackageApplicationService.getEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{shipmentPackageId}/_historyStates/{version}")
@@ -275,7 +278,7 @@ public class ShipmentPackageResource {
             }
             return dtoConverter.toShipmentPackageStateDto(shipmentPackageApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -298,7 +301,7 @@ public class ShipmentPackageResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -326,7 +329,7 @@ public class ShipmentPackageResource {
             mergePatchShipmentPackageContent.setShipmentItemSeqId(shipmentItemSeqId);
             mergePatchShipmentPackage.getShipmentPackageContentCommands().add(mergePatchShipmentPackageContent);
             shipmentPackageApplicationService.when(mergePatchShipmentPackage);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -362,7 +365,7 @@ public class ShipmentPackageResource {
             removeShipmentPackageContent.setShipmentItemSeqId(shipmentItemSeqId);
             mergePatchShipmentPackage.getShipmentPackageContentCommands().add(removeShipmentPackageContent);
             shipmentPackageApplicationService.when(mergePatchShipmentPackage);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -381,7 +384,7 @@ public class ShipmentPackageResource {
             ShipmentPackageContentStateDto.DtoConverter dtoConverter = new ShipmentPackageContentStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toShipmentPackageContentStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -408,7 +411,7 @@ public class ShipmentPackageResource {
             ShipmentPackageContentCommand.CreateShipmentPackageContent createShipmentPackageContent = body.toCreateShipmentPackageContent();
             mergePatchShipmentPackage.getShipmentPackageContentCommands().add(createShipmentPackageContent);
             shipmentPackageApplicationService.when(mergePatchShipmentPackage);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 

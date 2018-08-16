@@ -18,10 +18,13 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequestMapping(path = "InOuts", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class InOutResource {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @Autowired
@@ -67,7 +70,7 @@ public class InOutResource {
             }
             return dtoConverter.toInOutStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -112,7 +115,7 @@ public class InOutResource {
             statePage.setTotalElements(count);
             return statePage;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -134,7 +137,7 @@ public class InOutResource {
             }
             return dtoConverter.toInOutStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_count")
@@ -154,7 +157,7 @@ public class InOutResource {
                 n -> (InOutMetadata.aliasMap.containsKey(n) ? InOutMetadata.aliasMap.get(n) : n)));
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -174,7 +177,7 @@ public class InOutResource {
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -198,7 +201,7 @@ public class InOutResource {
             InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -214,7 +217,7 @@ public class InOutResource {
             InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -231,7 +234,7 @@ public class InOutResource {
             }
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -248,7 +251,7 @@ public class InOutResource {
             }
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -265,7 +268,7 @@ public class InOutResource {
             }
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -282,7 +285,7 @@ public class InOutResource {
             }
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -299,7 +302,7 @@ public class InOutResource {
             }
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -316,7 +319,7 @@ public class InOutResource {
             }
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -333,7 +336,7 @@ public class InOutResource {
             }
             inOutApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_metadata/filteringFields")
@@ -346,7 +349,7 @@ public class InOutResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{documentNumber}/_events/{version}")
@@ -357,7 +360,7 @@ public class InOutResource {
             //InOutStateEventDtoConverter dtoConverter = getInOutStateEventDtoConverter();
             return inOutApplicationService.getEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{documentNumber}/_historyStates/{version}")
@@ -373,7 +376,7 @@ public class InOutResource {
             }
             return dtoConverter.toInOutStateDto(inOutApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -391,7 +394,7 @@ public class InOutResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -414,7 +417,7 @@ public class InOutResource {
             mergePatchInOutImage.setSequenceId(sequenceId);
             mergePatchInOut.getInOutImageCommands().add(mergePatchInOutImage);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -440,7 +443,7 @@ public class InOutResource {
             removeInOutImage.setSequenceId(sequenceId);
             mergePatchInOut.getInOutImageCommands().add(removeInOutImage);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -454,7 +457,7 @@ public class InOutResource {
             InOutImageStateDto.DtoConverter dtoConverter = new InOutImageStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toInOutImageStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -476,7 +479,7 @@ public class InOutResource {
             InOutImageCommand.CreateInOutImage createInOutImage = body.toCreateInOutImage();
             mergePatchInOut.getInOutImageCommands().add(createInOutImage);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -494,7 +497,7 @@ public class InOutResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -517,7 +520,7 @@ public class InOutResource {
             mergePatchInOutLine.setLineNumber(lineNumber);
             mergePatchInOut.getInOutLineCommands().add(mergePatchInOutLine);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -543,7 +546,7 @@ public class InOutResource {
             removeInOutLine.setLineNumber(lineNumber);
             mergePatchInOut.getInOutLineCommands().add(removeInOutLine);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -557,7 +560,7 @@ public class InOutResource {
             InOutLineStateDto.DtoConverter dtoConverter = new InOutLineStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toInOutLineStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -579,7 +582,7 @@ public class InOutResource {
             InOutLineCommand.CreateInOutLine createInOutLine = body.toCreateInOutLine();
             mergePatchInOut.getInOutLineCommands().add(createInOutLine);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -597,7 +600,7 @@ public class InOutResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -623,7 +626,7 @@ public class InOutResource {
             mergePatchInOutLineImage.setSequenceId(sequenceId);
             mergePatchInOutLine.getInOutLineImageCommands().add(mergePatchInOutLineImage);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -652,7 +655,7 @@ public class InOutResource {
             removeInOutLineImage.setSequenceId(sequenceId);
             mergePatchInOutLine.getInOutLineImageCommands().add(removeInOutLineImage);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -666,7 +669,7 @@ public class InOutResource {
             InOutLineImageStateDto.DtoConverter dtoConverter = new InOutLineImageStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toInOutLineImageStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -691,7 +694,7 @@ public class InOutResource {
             InOutLineImageCommand.CreateInOutLineImage createInOutLineImage = body.toCreateInOutLineImage();
             mergePatchInOutLine.getInOutLineImageCommands().add(createInOutLineImage);
             inOutApplicationService.when(mergePatchInOut);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 

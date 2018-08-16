@@ -17,10 +17,13 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequestMapping(path = "Attributes", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class AttributeResource {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private IdGenerator<String, ?, ?> attributeIdGenerator;
@@ -69,7 +72,7 @@ public class AttributeResource {
             }
             return dtoConverter.toAttributeStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -114,7 +117,7 @@ public class AttributeResource {
             statePage.setTotalElements(count);
             return statePage;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -136,7 +139,7 @@ public class AttributeResource {
             }
             return dtoConverter.toAttributeStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -144,7 +147,7 @@ public class AttributeResource {
     public String getNextId() {
         try {
             return attributeIdGenerator.getNextId();
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_count")
@@ -164,7 +167,7 @@ public class AttributeResource {
                 n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)));
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -184,7 +187,7 @@ public class AttributeResource {
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -208,7 +211,7 @@ public class AttributeResource {
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
             attributeApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -224,7 +227,7 @@ public class AttributeResource {
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
             attributeApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -246,7 +249,7 @@ public class AttributeResource {
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, deleteCmd);
             attributeApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_metadata/filteringFields")
@@ -259,7 +262,7 @@ public class AttributeResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{attributeId}/_events/{version}")
@@ -270,7 +273,7 @@ public class AttributeResource {
             //AttributeStateEventDtoConverter dtoConverter = getAttributeStateEventDtoConverter();
             return attributeApplicationService.getEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{attributeId}/_historyStates/{version}")
@@ -286,7 +289,7 @@ public class AttributeResource {
             }
             return dtoConverter.toAttributeStateDto(attributeApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -304,7 +307,7 @@ public class AttributeResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -327,7 +330,7 @@ public class AttributeResource {
             mergePatchAttributeValue.setValue(value);
             mergePatchAttribute.getAttributeValueCommands().add(mergePatchAttributeValue);
             attributeApplicationService.when(mergePatchAttribute);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -353,7 +356,7 @@ public class AttributeResource {
             removeAttributeValue.setValue(value);
             mergePatchAttribute.getAttributeValueCommands().add(removeAttributeValue);
             attributeApplicationService.when(mergePatchAttribute);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -367,7 +370,7 @@ public class AttributeResource {
             AttributeValueStateDto.DtoConverter dtoConverter = new AttributeValueStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toAttributeValueStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -389,7 +392,7 @@ public class AttributeResource {
             AttributeValueCommand.CreateAttributeValue createAttributeValue = body.toCreateAttributeValue();
             mergePatchAttribute.getAttributeValueCommands().add(createAttributeValue);
             attributeApplicationService.when(mergePatchAttribute);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -407,7 +410,7 @@ public class AttributeResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -430,7 +433,7 @@ public class AttributeResource {
             mergePatchAttributeAlias.setCode(code);
             mergePatchAttribute.getAttributeAliasCommands().add(mergePatchAttributeAlias);
             attributeApplicationService.when(mergePatchAttribute);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -456,7 +459,7 @@ public class AttributeResource {
             removeAttributeAlias.setCode(code);
             mergePatchAttribute.getAttributeAliasCommands().add(removeAttributeAlias);
             attributeApplicationService.when(mergePatchAttribute);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -470,7 +473,7 @@ public class AttributeResource {
             AttributeAliasStateDto.DtoConverter dtoConverter = new AttributeAliasStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toAttributeAliasStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -492,7 +495,7 @@ public class AttributeResource {
             AttributeAliasCommand.CreateAttributeAlias createAttributeAlias = body.toCreateAttributeAlias();
             mergePatchAttribute.getAttributeAliasCommands().add(createAttributeAlias);
             attributeApplicationService.when(mergePatchAttribute);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 

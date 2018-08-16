@@ -18,10 +18,13 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequestMapping(path = "MovementConfirmations", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class MovementConfirmationResource {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @Autowired
@@ -67,7 +70,7 @@ public class MovementConfirmationResource {
             }
             return dtoConverter.toMovementConfirmationStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -112,7 +115,7 @@ public class MovementConfirmationResource {
             statePage.setTotalElements(count);
             return statePage;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -134,7 +137,7 @@ public class MovementConfirmationResource {
             }
             return dtoConverter.toMovementConfirmationStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_count")
@@ -154,7 +157,7 @@ public class MovementConfirmationResource {
                 n -> (MovementConfirmationMetadata.aliasMap.containsKey(n) ? MovementConfirmationMetadata.aliasMap.get(n) : n)));
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -174,7 +177,7 @@ public class MovementConfirmationResource {
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -198,7 +201,7 @@ public class MovementConfirmationResource {
             MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             movementConfirmationApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -214,7 +217,7 @@ public class MovementConfirmationResource {
             MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
             movementConfirmationApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -236,7 +239,7 @@ public class MovementConfirmationResource {
             MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, deleteCmd);
             movementConfirmationApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -253,7 +256,7 @@ public class MovementConfirmationResource {
             }
             movementConfirmationApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_metadata/filteringFields")
@@ -266,7 +269,7 @@ public class MovementConfirmationResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{documentNumber}/_events/{version}")
@@ -277,7 +280,7 @@ public class MovementConfirmationResource {
             //MovementConfirmationStateEventDtoConverter dtoConverter = getMovementConfirmationStateEventDtoConverter();
             return movementConfirmationApplicationService.getEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{documentNumber}/_historyStates/{version}")
@@ -293,7 +296,7 @@ public class MovementConfirmationResource {
             }
             return dtoConverter.toMovementConfirmationStateDto(movementConfirmationApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -311,7 +314,7 @@ public class MovementConfirmationResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -334,7 +337,7 @@ public class MovementConfirmationResource {
             mergePatchMovementConfirmationLine.setLineNumber(lineNumber);
             mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(mergePatchMovementConfirmationLine);
             movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -360,7 +363,7 @@ public class MovementConfirmationResource {
             removeMovementConfirmationLine.setLineNumber(lineNumber);
             mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(removeMovementConfirmationLine);
             movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -374,7 +377,7 @@ public class MovementConfirmationResource {
             MovementConfirmationLineStateDto.DtoConverter dtoConverter = new MovementConfirmationLineStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toMovementConfirmationLineStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -396,7 +399,7 @@ public class MovementConfirmationResource {
             MovementConfirmationLineCommand.CreateMovementConfirmationLine createMovementConfirmationLine = body.toCreateMovementConfirmationLine();
             mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(createMovementConfirmationLine);
             movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 

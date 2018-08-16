@@ -17,10 +17,13 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequestMapping(path = "PicklistBins", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class PicklistBinResource {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @Autowired
@@ -66,7 +69,7 @@ public class PicklistBinResource {
             }
             return dtoConverter.toPicklistBinStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -111,7 +114,7 @@ public class PicklistBinResource {
             statePage.setTotalElements(count);
             return statePage;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -133,7 +136,7 @@ public class PicklistBinResource {
             }
             return dtoConverter.toPicklistBinStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_count")
@@ -153,7 +156,7 @@ public class PicklistBinResource {
                 n -> (PicklistBinMetadata.aliasMap.containsKey(n) ? PicklistBinMetadata.aliasMap.get(n) : n)));
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -173,7 +176,7 @@ public class PicklistBinResource {
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -197,7 +200,7 @@ public class PicklistBinResource {
             PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistBinId, cmd);
             picklistBinApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 
@@ -213,7 +216,7 @@ public class PicklistBinResource {
             PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistBinId, cmd);
             picklistBinApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -235,7 +238,7 @@ public class PicklistBinResource {
             PicklistBinResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistBinId, deleteCmd);
             picklistBinApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("_metadata/filteringFields")
@@ -248,7 +251,7 @@ public class PicklistBinResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{picklistBinId}/_events/{version}")
@@ -259,7 +262,7 @@ public class PicklistBinResource {
             //PicklistBinStateEventDtoConverter dtoConverter = getPicklistBinStateEventDtoConverter();
             return picklistBinApplicationService.getEvent(idObj, version);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     @GetMapping("{picklistBinId}/_historyStates/{version}")
@@ -275,7 +278,7 @@ public class PicklistBinResource {
             }
             return dtoConverter.toPicklistBinStateDto(picklistBinApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -298,7 +301,7 @@ public class PicklistBinResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -326,7 +329,7 @@ public class PicklistBinResource {
                     }.parse(picklistItemOrderShipGrpInvId)));
             mergePatchPicklistBin.getPicklistItemCommands().add(mergePatchPicklistItem);
             picklistBinApplicationService.when(mergePatchPicklistBin);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -357,7 +360,7 @@ public class PicklistBinResource {
                     }.parse(picklistItemOrderShipGrpInvId)));
             mergePatchPicklistBin.getPicklistItemCommands().add(removePicklistItem);
             picklistBinApplicationService.when(mergePatchPicklistBin);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -371,7 +374,7 @@ public class PicklistBinResource {
             PicklistItemStateDto.DtoConverter dtoConverter = new PicklistItemStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);
             return dtoConverter.toPicklistItemStateDtoArray(states);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
     /**
@@ -393,7 +396,7 @@ public class PicklistBinResource {
             PicklistItemCommand.CreatePicklistItem createPicklistItem = body.toCreatePicklistItem();
             mergePatchPicklistBin.getPicklistItemCommands().add(createPicklistItem);
             picklistBinApplicationService.when(mergePatchPicklistBin);
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 

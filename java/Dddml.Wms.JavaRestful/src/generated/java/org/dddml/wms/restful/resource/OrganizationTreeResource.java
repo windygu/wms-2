@@ -16,10 +16,13 @@ import org.dddml.wms.domain.meta.*;
 import com.alibaba.fastjson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RequestMapping(path = "OrganizationTrees", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class OrganizationTreeResource {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     OrganizationTreeApplicationService organizationTreeApplicationService;
@@ -127,8 +130,7 @@ public class OrganizationTreeResource {
             return dtoConverter.toOrganizationStateDtoArray(states);
 
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }    }
 
 
     @GetMapping("_metadata/filteringFields")
@@ -141,7 +143,7 @@ public class OrganizationTreeResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
 		// /////////////////////////////////////////////////
