@@ -5,6 +5,7 @@ import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
@@ -163,7 +164,7 @@ public class OrganizationStructureResource {
      * 新建.
      * 新建 OrganizationStructure
      */
-    @PostMapping
+    @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE) @ResponseStatus(HttpStatus.CREATED)
     public OrganizationStructureId post(@RequestBody CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto value,  HttpServletResponse response) {
         try {
             OrganizationStructureCommand.CreateOrganizationStructure cmd = value.toCreateOrganizationStructure();
@@ -173,7 +174,6 @@ public class OrganizationStructureResource {
             OrganizationStructureId idObj = cmd.getId();
             organizationStructureApplicationService.when(cmd);
 
-            response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

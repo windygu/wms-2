@@ -184,6 +184,8 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         } else {
             shipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
         }
+        // 主订单 Id
+        shipment.setPrimaryOrderId(c.getPrimaryOrderId());
         // 提单号
         shipment.setBolNumber(c.getBolNumber());
         // 集装箱号

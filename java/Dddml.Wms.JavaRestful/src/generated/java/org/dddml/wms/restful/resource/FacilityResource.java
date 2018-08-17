@@ -5,6 +5,7 @@ import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
@@ -163,7 +164,7 @@ public class FacilityResource {
      * 新建.
      * 新建 Facility
      */
-    @PostMapping
+    @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE) @ResponseStatus(HttpStatus.CREATED)
     public String post(@RequestBody CreateOrMergePatchFacilityDto.CreateFacilityDto value,  HttpServletResponse response) {
         try {
             FacilityCommand.CreateFacility cmd = value.toCreateFacility();
@@ -173,7 +174,6 @@ public class FacilityResource {
             String idObj = cmd.getFacilityId();
             facilityApplicationService.when(cmd);
 
-            response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

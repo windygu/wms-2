@@ -5,6 +5,7 @@ import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
@@ -166,7 +167,7 @@ public class SellableInventoryItemResource {
      * 新建.
      * 新建 SellableInventoryItem
      */
-    @PostMapping
+    @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE) @ResponseStatus(HttpStatus.CREATED)
     public InventoryItemId post(@RequestBody CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value,  HttpServletResponse response) {
         try {
             SellableInventoryItemCommand.CreateSellableInventoryItem cmd = value.toCreateSellableInventoryItem();
@@ -176,7 +177,6 @@ public class SellableInventoryItemResource {
             InventoryItemId idObj = cmd.getSellableInventoryItemId();
             sellableInventoryItemApplicationService.when(cmd);
 
-            response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

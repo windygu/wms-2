@@ -5,6 +5,7 @@ import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
@@ -163,7 +164,7 @@ public class ShipmentTypeResource {
      * 新建.
      * 新建 ShipmentType
      */
-    @PostMapping
+    @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE) @ResponseStatus(HttpStatus.CREATED)
     public String post(@RequestBody CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value,  HttpServletResponse response) {
         try {
             ShipmentTypeCommand.CreateShipmentType cmd = value.toCreateShipmentType();
@@ -173,7 +174,6 @@ public class ShipmentTypeResource {
             String idObj = cmd.getShipmentTypeId();
             shipmentTypeApplicationService.when(cmd);
 
-            response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

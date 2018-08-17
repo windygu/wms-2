@@ -5,6 +5,7 @@ import java.util.stream.*;
 import javax.servlet.http.*;
 import javax.validation.constraints.*;
 import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.dddml.support.criterion.*;
@@ -163,7 +164,7 @@ public class InventoryPRTriggeredResource {
      * 新建.
      * 新建 InventoryPRTriggered
      */
-    @PostMapping
+    @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE) @ResponseStatus(HttpStatus.CREATED)
     public InventoryPRTriggeredId post(@RequestBody CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value,  HttpServletResponse response) {
         try {
             InventoryPRTriggeredCommand.CreateInventoryPRTriggered cmd = value.toCreateInventoryPRTriggered();
@@ -173,7 +174,6 @@ public class InventoryPRTriggeredResource {
             InventoryPRTriggeredId idObj = cmd.getInventoryPRTriggeredId();
             inventoryPRTriggeredApplicationService.when(cmd);
 
-            response.setStatus(HttpServletResponse.SC_CREATED);
             return idObj;
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
