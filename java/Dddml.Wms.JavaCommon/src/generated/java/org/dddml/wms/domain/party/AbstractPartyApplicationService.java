@@ -186,6 +186,18 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
         persist(eventStoreAggregateId, stateCreated.getPartyEventId().getVersion(), aggregate, state);
     }
 
+    public void initialize(PersonEvent.PersonStateCreated stateCreated) {
+        String aggregateId = stateCreated.getPartyEventId().getPartyId();
+        PersonState state = new AbstractPersonState.SimplePersonState();
+        state.setPartyId(aggregateId);
+
+        PartyAggregate aggregate = getPartyAggregate(state);
+        ((AbstractPartyAggregate) aggregate).apply(stateCreated);
+
+        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
+        persist(eventStoreAggregateId, stateCreated.getPartyEventId().getVersion(), aggregate, state);
+    }
+
     protected Class<? extends PartyState> getStateType(PartyCommand c) {
         Class<? extends PartyState> clazz = PartyState.class;
         String discriminatorVal = null;
@@ -201,6 +213,9 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
                     break;
                 case PartyTypeIds.ORGANIZATION:
                     clazz = OrganizationState.class;
+                    break;
+                case PartyTypeIds.PERSON:
+                    clazz = PersonState.class;
                     break;
             }
         }

@@ -639,6 +639,11 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
+  <bean id="personStateQueryRepository" class="org.dddml.wms.domain.party.hibernate.HibernatePersonStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
   <bean id="partyEventStore" class="org.dddml.wms.domain.party.hibernate.HibernatePartyEventStore">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>

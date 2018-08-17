@@ -564,6 +564,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\HibernatePartyStateRepository.java">
       <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\HibernatePersonStateQueryRepository.java">
+      <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\GeneratePhysicalInventoryDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1950,6 +1953,7 @@
 .\HibernatePartyEventStore.java
 .\HibernatePartyStateQueryRepository.java
 .\HibernatePartyStateRepository.java
+.\HibernatePersonStateQueryRepository.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\hibernate\GenerateContactMechDomainHibernate.tt">

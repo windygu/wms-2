@@ -61,6 +61,9 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         if(PartyTypeIds.ORGANIZATION.equals(c.getPartyTypeId())) {
             return mapToOrganizationEvent(c);
         }
+        if(PartyTypeIds.PERSON.equals(c.getPartyTypeId())) {
+            return mapToPersonEvent(c);
+        }
         return mapToPartyEvent(c);
     }
 
@@ -69,6 +72,9 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         PartyEvent.PartyStateCreated e = newPartyStateCreated(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
+        e.setExternalId(c.getExternalId());
+        e.setPreferredCurrencyUomId(c.getPreferredCurrencyUomId());
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -81,11 +87,34 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         OrganizationEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
+        e.setExternalId(c.getExternalId());
+        e.setPreferredCurrencyUomId(c.getPreferredCurrencyUomId());
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setOrganizationName(c.getOrganizationName());
-        e.setDescription(c.getDescription());
-        e.setType(c.getType());
         e.setIsSummary(c.getIsSummary());
+        ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+    }
+
+    protected PersonEvent mapToPersonEvent(PartyCommand.CreateParty c) {
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
+        PersonEvent.PersonStateCreated e = newPersonStateCreated(stateEventId);
+        e.setPartyTypeId(c.getPartyTypeId());
+        e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
+        e.setExternalId(c.getExternalId());
+        e.setPreferredCurrencyUomId(c.getPreferredCurrencyUomId());
+        e.setDescription(c.getDescription());
+        e.setActive(c.getActive());
+        e.setSalutation(c.getSalutation());
+        e.setFirstName(c.getFirstName());
+        e.setMiddleName(c.getMiddleName());
+        e.setLastName(c.getLastName());
+        e.setPersonalTitle(c.getPersonalTitle());
+        e.setNickname(c.getNickname());
+        e.setCardId(c.getCardId());
         ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -99,6 +128,9 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         if(c.getPartyTypeId().equals(PartyTypeIds.ORGANIZATION)) {
             return mapToOrganizationEvent(c);
         }
+        if(c.getPartyTypeId().equals(PartyTypeIds.PERSON)) {
+            return mapToPersonEvent(c);
+        }
         return mapToPartyEvent(c);
     }
 
@@ -107,9 +139,15 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         PartyEvent.PartyStateMergePatched e = newPartyStateMergePatched(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
+        e.setExternalId(c.getExternalId());
+        e.setPreferredCurrencyUomId(c.getPreferredCurrencyUomId());
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setIsPropertyPartyTypeIdRemoved(c.getIsPropertyPartyTypeIdRemoved());
         e.setIsPropertyPrimaryRoleTypeIdRemoved(c.getIsPropertyPrimaryRoleTypeIdRemoved());
+        e.setIsPropertyExternalIdRemoved(c.getIsPropertyExternalIdRemoved());
+        e.setIsPropertyPreferredCurrencyUomIdRemoved(c.getIsPropertyPreferredCurrencyUomIdRemoved());
+        e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -122,17 +160,54 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         OrganizationEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
+        e.setExternalId(c.getExternalId());
+        e.setPreferredCurrencyUomId(c.getPreferredCurrencyUomId());
+        e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setOrganizationName(c.getOrganizationName());
-        e.setDescription(c.getDescription());
-        e.setType(c.getType());
         e.setIsSummary(c.getIsSummary());
         e.setIsPropertyOrganizationNameRemoved(c.getIsPropertyOrganizationNameRemoved());
-        e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
-        e.setIsPropertyTypeRemoved(c.getIsPropertyTypeRemoved());
         e.setIsPropertyIsSummaryRemoved(c.getIsPropertyIsSummaryRemoved());
         e.setIsPropertyPartyTypeIdRemoved(c.getIsPropertyPartyTypeIdRemoved());
         e.setIsPropertyPrimaryRoleTypeIdRemoved(c.getIsPropertyPrimaryRoleTypeIdRemoved());
+        e.setIsPropertyExternalIdRemoved(c.getIsPropertyExternalIdRemoved());
+        e.setIsPropertyPreferredCurrencyUomIdRemoved(c.getIsPropertyPreferredCurrencyUomIdRemoved());
+        e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
+        e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+    }
+
+    protected PersonEvent mapToPersonEvent(PartyCommand.MergePatchParty c) {
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
+        PersonEvent.PersonStateMergePatched e = newPersonStateMergePatched(stateEventId);
+        e.setPartyTypeId(c.getPartyTypeId());
+        e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
+        e.setExternalId(c.getExternalId());
+        e.setPreferredCurrencyUomId(c.getPreferredCurrencyUomId());
+        e.setDescription(c.getDescription());
+        e.setActive(c.getActive());
+        e.setSalutation(c.getSalutation());
+        e.setFirstName(c.getFirstName());
+        e.setMiddleName(c.getMiddleName());
+        e.setLastName(c.getLastName());
+        e.setPersonalTitle(c.getPersonalTitle());
+        e.setNickname(c.getNickname());
+        e.setCardId(c.getCardId());
+        e.setIsPropertySalutationRemoved(c.getIsPropertySalutationRemoved());
+        e.setIsPropertyFirstNameRemoved(c.getIsPropertyFirstNameRemoved());
+        e.setIsPropertyMiddleNameRemoved(c.getIsPropertyMiddleNameRemoved());
+        e.setIsPropertyLastNameRemoved(c.getIsPropertyLastNameRemoved());
+        e.setIsPropertyPersonalTitleRemoved(c.getIsPropertyPersonalTitleRemoved());
+        e.setIsPropertyNicknameRemoved(c.getIsPropertyNicknameRemoved());
+        e.setIsPropertyCardIdRemoved(c.getIsPropertyCardIdRemoved());
+        e.setIsPropertyPartyTypeIdRemoved(c.getIsPropertyPartyTypeIdRemoved());
+        e.setIsPropertyPrimaryRoleTypeIdRemoved(c.getIsPropertyPrimaryRoleTypeIdRemoved());
+        e.setIsPropertyExternalIdRemoved(c.getIsPropertyExternalIdRemoved());
+        e.setIsPropertyPreferredCurrencyUomIdRemoved(c.getIsPropertyPreferredCurrencyUomIdRemoved());
+        e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -146,6 +221,9 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         }
         if(c.getPartyTypeId().equals(PartyTypeIds.ORGANIZATION)) {
             return mapToOrganizationEvent(c);
+        }
+        if(c.getPartyTypeId().equals(PartyTypeIds.PERSON)) {
+            return mapToPersonEvent(c);
         }
         return mapToPartyEvent(c);
     }
@@ -162,6 +240,15 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     protected OrganizationEvent mapToOrganizationEvent(PartyCommand.DeleteParty c) {
         PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         OrganizationEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
+        ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        return e;
+    }
+
+    protected PersonEvent mapToPersonEvent(PartyCommand.DeleteParty c) {
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
+        PersonEvent.PersonStateDeleted e = newPersonStateDeleted(stateEventId);
         ((AbstractPartyEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -214,6 +301,14 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         return new AbstractOrganizationEvent.SimpleOrganizationStateMergePatched(stateEventId);
     }
 
+    protected PersonEvent.PersonStateCreated newPersonStateCreated(PartyEventId stateEventId) {
+        return new AbstractPersonEvent.SimplePersonStateCreated(stateEventId);
+    }
+
+    protected PersonEvent.PersonStateMergePatched newPersonStateMergePatched(PartyEventId stateEventId) {
+        return new AbstractPersonEvent.SimplePersonStateMergePatched(stateEventId);
+    }
+
     protected PartyEvent.PartyStateDeleted newPartyStateDeleted(PartyEventId stateEventId)
     {
         return new AbstractPartyEvent.SimplePartyStateDeleted(stateEventId);
@@ -222,6 +317,11 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     protected OrganizationEvent.OrganizationStateDeleted newOrganizationStateDeleted(PartyEventId stateEventId)
     {
         return new AbstractOrganizationEvent.SimpleOrganizationStateDeleted(stateEventId);
+    }
+
+    protected PersonEvent.PersonStateDeleted newPersonStateDeleted(PartyEventId stateEventId)
+    {
+        return new AbstractPersonEvent.SimplePersonStateDeleted(stateEventId);
     }
 
     public static class SimplePartyAggregate extends AbstractPartyAggregate

@@ -15,5 +15,8 @@ public class PartyTypeIds
 		
     public static final String ORGANIZATION = "Organization";
 
+		
+    public static final String PERSON = "Person";
+
 }
 

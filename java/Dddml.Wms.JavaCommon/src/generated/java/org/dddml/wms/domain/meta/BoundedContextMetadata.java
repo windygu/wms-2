@@ -65,6 +65,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("OrganizationStructureType", "OrganizationStructureType");
         typeToAggMap.put("Party", "Party");
         typeToAggMap.put("Organization", "Party");
+        typeToAggMap.put("Person", "Party");
         typeToAggMap.put("PartyRole", "PartyRole");
         typeToAggMap.put("PhysicalInventory", "PhysicalInventory");
         typeToAggMap.put("PhysicalInventoryLine", "PhysicalInventory");

@@ -24,6 +24,18 @@ public interface PartyState
 
     void setPrimaryRoleTypeId(String primaryRoleTypeId);
 
+    String getExternalId();
+
+    void setExternalId(String externalId);
+
+    String getPreferredCurrencyUomId();
+
+    void setPreferredCurrencyUomId(String preferredCurrencyUomId);
+
+    String getDescription();
+
+    void setDescription(String description);
+
     Long getVersion();
 
     void setVersion(Long version);

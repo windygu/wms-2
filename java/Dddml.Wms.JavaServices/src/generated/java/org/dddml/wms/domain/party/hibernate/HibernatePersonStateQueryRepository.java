@@ -14,7 +14,7 @@ import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.*;
 import org.springframework.transaction.annotation.Transactional;
 
-public class HibernateOrganizationStateQueryRepository implements OrganizationStateQueryRepository
+public class HibernatePersonStateQueryRepository implements PersonStateQueryRepository
 {
     private SessionFactory sessionFactory;
 
@@ -39,16 +39,16 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     }
 
     @Transactional(readOnly = true)
-    public OrganizationState get(String id) {
+    public PersonState get(String id) {
 
-        OrganizationState state = (OrganizationState)getCurrentSession().get(AbstractOrganizationState.SimpleOrganizationState.class, id);
+        PersonState state = (PersonState)getCurrentSession().get(AbstractPersonState.SimplePersonState.class, id);
         return state;
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationState> getAll(Integer firstResult, Integer maxResults)
+    public Iterable<PersonState> getAll(Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationState.class);
+        Criteria criteria = getCurrentSession().createCriteria(PersonState.class);
         if (firstResult != null) { criteria.setFirstResult(firstResult); }
         if (maxResults != null) { criteria.setMaxResults(maxResults); }
          addNotDeletedRestriction(criteria);
@@ -56,9 +56,9 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<PersonState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationState.class);
+        Criteria criteria = getCurrentSession().createCriteria(PersonState.class);
 
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         addNotDeletedRestriction(criteria);
@@ -66,9 +66,9 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationState> get(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<PersonState> get(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationState.class);
+        Criteria criteria = getCurrentSession().createCriteria(PersonState.class);
 
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         addNotDeletedRestriction(criteria);
@@ -76,9 +76,9 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     }
 
     @Transactional(readOnly = true)
-    public OrganizationState getFirst(Iterable<Map.Entry<String, Object>> filter, List<String> orders)
+    public PersonState getFirst(Iterable<Map.Entry<String, Object>> filter, List<String> orders)
     {
-        List<OrganizationState> list = (List<OrganizationState>)get(filter, orders, 0, 1);
+        List<PersonState> list = (List<PersonState>)get(filter, orders, 0, 1);
         if (list == null || list.size() <= 0)
         {
             return null;
@@ -87,7 +87,7 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     }
 
     @Transactional(readOnly = true)
-    public OrganizationState getFirst(Map.Entry<String, Object> keyValue, List<String> orders)
+    public PersonState getFirst(Map.Entry<String, Object> keyValue, List<String> orders)
     {
         List<Map.Entry<String, Object>> filter = new ArrayList<>();
         filter.add(keyValue);
@@ -95,7 +95,7 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults)
+    public Iterable<PersonState> getByProperty(String propertyName, Object propertyValue, List<String> orders, Integer firstResult, Integer maxResults)
     {
         Map.Entry<String, Object> keyValue = new java.util.AbstractMap.SimpleEntry<String, Object> (propertyName, propertyValue);
         List<Map.Entry<String, Object>> filter = new ArrayList<Map.Entry<String, Object>>();
@@ -106,7 +106,7 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     @Transactional(readOnly = true)
     public long getCount(Iterable<Map.Entry<String, Object>> filter)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationState.class);
+        Criteria criteria = getCurrentSession().createCriteria(PersonState.class);
         criteria.setProjection(Projections.rowCount());
         if (filter != null) {
             HibernateUtils.criteriaAddFilter(criteria, filter);
@@ -118,7 +118,7 @@ public class HibernateOrganizationStateQueryRepository implements OrganizationSt
     @Transactional(readOnly = true)
     public long getCount(org.dddml.support.criterion.Criterion filter)
     {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationState.class);
+        Criteria criteria = getCurrentSession().createCriteria(PersonState.class);
         criteria.setProjection(Projections.rowCount());
         if (filter != null)
         {

@@ -111,6 +111,7 @@
 .\OrganizationStructureTypeResource.java
 .\PartyResource.java
 .\PartyRoleResource.java
+.\PersonResource.java
 .\PhysicalInventoryResource.java
 .\PicklistBinResource.java
 .\PicklistResource.java
@@ -224,6 +225,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\PartyRoleResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PersonResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\PhysicalInventoryResource.java">

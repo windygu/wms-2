@@ -34,6 +34,18 @@ public interface PartyEvent extends Event
 
         void setPrimaryRoleTypeId(String primaryRoleTypeId);
 
+        String getExternalId();
+
+        void setExternalId(String externalId);
+
+        String getPreferredCurrencyUomId();
+
+        void setPreferredCurrencyUomId(String preferredCurrencyUomId);
+
+        String getDescription();
+
+        void setDescription(String description);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -55,6 +67,18 @@ public interface PartyEvent extends Event
         Boolean getIsPropertyPrimaryRoleTypeIdRemoved();
 
         void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyExternalIdRemoved();
+
+        void setIsPropertyExternalIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPreferredCurrencyUomIdRemoved();
+
+        void setIsPropertyPreferredCurrencyUomIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

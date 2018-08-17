@@ -103,6 +103,42 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
             this.primaryRoleTypeId = primaryRoleTypeId;
         }
 
+        private String externalId;
+
+        public String getExternalId()
+        {
+            return this.externalId;
+        }
+
+        public void setExternalId(String externalId)
+        {
+            this.externalId = externalId;
+        }
+
+        private String preferredCurrencyUomId;
+
+        public String getPreferredCurrencyUomId()
+        {
+            return this.preferredCurrencyUomId;
+        }
+
+        public void setPreferredCurrencyUomId(String preferredCurrencyUomId)
+        {
+            this.preferredCurrencyUomId = preferredCurrencyUomId;
+        }
+
+        private String description;
+
+        public String getDescription()
+        {
+            return this.description;
+        }
+
+        public void setDescription(String description)
+        {
+            this.description = description;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -169,6 +205,36 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
 
         public void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed) {
             this.isPropertyPrimaryRoleTypeIdRemoved = removed;
+        }
+
+        private Boolean isPropertyExternalIdRemoved;
+
+        public Boolean getIsPropertyExternalIdRemoved() {
+            return this.isPropertyExternalIdRemoved;
+        }
+
+        public void setIsPropertyExternalIdRemoved(Boolean removed) {
+            this.isPropertyExternalIdRemoved = removed;
+        }
+
+        private Boolean isPropertyPreferredCurrencyUomIdRemoved;
+
+        public Boolean getIsPropertyPreferredCurrencyUomIdRemoved() {
+            return this.isPropertyPreferredCurrencyUomIdRemoved;
+        }
+
+        public void setIsPropertyPreferredCurrencyUomIdRemoved(Boolean removed) {
+            this.isPropertyPreferredCurrencyUomIdRemoved = removed;
+        }
+
+        private Boolean isPropertyDescriptionRemoved;
+
+        public Boolean getIsPropertyDescriptionRemoved() {
+            return this.isPropertyDescriptionRemoved;
+        }
+
+        public void setIsPropertyDescriptionRemoved(Boolean removed) {
+            this.isPropertyDescriptionRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

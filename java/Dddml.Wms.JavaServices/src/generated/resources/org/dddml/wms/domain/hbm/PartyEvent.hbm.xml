@@ -26,6 +26,9 @@
 
 	<property name="partyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="primaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="externalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
+	<property name="preferredCurrencyUomId" ><column name="PreferredCurrencyUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="description" ><column name="Description" sql-type="LONGTEXT" /></property>
 	<property name="active" ></property>
 
     <subclass name="AbstractPartyEvent$SimplePartyStateCreated" discriminator-value="Created">
@@ -37,6 +40,12 @@
         <property name="isPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
 
         <property name="isPropertyPrimaryRoleTypeIdRemoved" column="IsPropertyPrimaryRoleTypeIdRemoved"/>
+
+        <property name="isPropertyExternalIdRemoved" column="IsPropertyExternalIdRemoved"/>
+
+        <property name="isPropertyPreferredCurrencyUomIdRemoved" column="IsPropertyPreferredCurrencyUomIdRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
@@ -50,8 +59,6 @@
   <subclass name="AbstractOrganizationEvent$AbstractOrganizationStateEvent" abstract="true">
 
 	<property name="organizationName" ></property>
-	<property name="description" ></property>
-	<property name="type" ></property>
 	<property name="isSummary" ></property>
 
     <subclass name="AbstractOrganizationEvent$SimpleOrganizationStateCreated" discriminator-value="OrganizationCreated">
@@ -62,15 +69,17 @@
 
         <property name="isPropertyOrganizationNameRemoved" column="IsPropertyOrganizationNameRemoved"/>
 
-        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
-
-        <property name="isPropertyTypeRemoved" column="IsPropertyTypeRemoved"/>
-
         <property name="isPropertyIsSummaryRemoved" column="IsPropertyIsSummaryRemoved"/>
 
         <property name="isPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
 
         <property name="isPropertyPrimaryRoleTypeIdRemoved" column="IsPropertyPrimaryRoleTypeIdRemoved"/>
+
+        <property name="isPropertyExternalIdRemoved" column="IsPropertyExternalIdRemoved"/>
+
+        <property name="isPropertyPreferredCurrencyUomIdRemoved" column="IsPropertyPreferredCurrencyUomIdRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
@@ -78,6 +87,57 @@
     </subclass>
 
     <subclass name="AbstractOrganizationEvent$SimpleOrganizationStateDeleted" discriminator-value="OrganizationDeleted">
+
+    </subclass>
+
+  </subclass>
+
+  <subclass name="AbstractPersonEvent$AbstractPersonStateEvent" abstract="true">
+
+	<property name="salutation" ><column name="Salutation" sql-type="VARCHAR(100)" /></property>
+	<property name="firstName" ><column name="FirstName" sql-type="VARCHAR(100)" /></property>
+	<property name="middleName" ><column name="MiddleName" sql-type="VARCHAR(100)" /></property>
+	<property name="lastName" ><column name="LastName" sql-type="VARCHAR(100)" /></property>
+	<property name="personalTitle" ><column name="PersonalTitle" sql-type="VARCHAR(100)" /></property>
+	<property name="nickname" ><column name="Nickname" sql-type="VARCHAR(100)" /></property>
+	<property name="cardId" ><column name="CardId" sql-type="VARCHAR(60)" /></property>
+
+    <subclass name="AbstractPersonEvent$SimplePersonStateCreated" discriminator-value="PersonCreated">
+    	
+    </subclass>
+
+    <subclass name="AbstractPersonEvent$SimplePersonStateMergePatched" discriminator-value="PersonMergePatched">
+
+        <property name="isPropertySalutationRemoved" column="IsPropertySalutationRemoved"/>
+
+        <property name="isPropertyFirstNameRemoved" column="IsPropertyFirstNameRemoved"/>
+
+        <property name="isPropertyMiddleNameRemoved" column="IsPropertyMiddleNameRemoved"/>
+
+        <property name="isPropertyLastNameRemoved" column="IsPropertyLastNameRemoved"/>
+
+        <property name="isPropertyPersonalTitleRemoved" column="IsPropertyPersonalTitleRemoved"/>
+
+        <property name="isPropertyNicknameRemoved" column="IsPropertyNicknameRemoved"/>
+
+        <property name="isPropertyCardIdRemoved" column="IsPropertyCardIdRemoved"/>
+
+        <property name="isPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
+
+        <property name="isPropertyPrimaryRoleTypeIdRemoved" column="IsPropertyPrimaryRoleTypeIdRemoved"/>
+
+        <property name="isPropertyExternalIdRemoved" column="IsPropertyExternalIdRemoved"/>
+
+        <property name="isPropertyPreferredCurrencyUomIdRemoved" column="IsPropertyPreferredCurrencyUomIdRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractPersonEvent$SimplePersonStateDeleted" discriminator-value="PersonDeleted">
 
     </subclass>
 

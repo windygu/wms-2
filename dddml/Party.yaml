@@ -6,7 +6,7 @@
 aggregates:
 
   # --------------- aggregate ---------------
-  # 业务实体（团体）
+  # 业务实体（单位或个人）
   Party:
     id:
       name: PartyId
@@ -19,6 +19,14 @@ aggregates:
 
       PrimaryRoleTypeId:
         referenceType: RoleType
+        
+      # 外部 Id.
+      ExternalId:
+        type: id
+      PreferredCurrencyUomId:
+        type: id
+      Description:
+        type: very-long
         
     discriminator: PartyTypeId
     # ---------------------
@@ -36,22 +44,158 @@ aggregates:
       # 组织
       Organization:
         # inheritedFrom: Party
-        id:
-          name: PartyId
-          type: string
+        # ---------------------------------
+        # id:
+          # name: PartyId
+          # type: string
           
         discriminatorValue: "Organization"
 
         properties:
           OrganizationName:
             type: string
-          Description:
-            type: string
-          Type:
-            type: string
+          #Type:
+          #  type: string
           IsSummary:
             type: bool
           # ad_replicationstrategy_id numeric,
 
           
+      # --------------------------------
+      # 个人（业务实体的子类型）
+      Person:
+        #inheritedFrom: Party
+        # ---------------------------------
+        
+        discriminatorValue: "Person"
+        # -----------------------------          
+        # id:
+          # name: PartyId
+          # columnName: PARTY_ID
+          # type: id-ne
+        properties:
+          # 称谓（称呼）
+          Salutation:
+            type: name
+          # 姓
+          FirstName:
+            type: name
+          MiddleName:
+            type: name
+          # 名
+          LastName:
+            type: name
+          # 个人头衔（比如“博士”）
+          PersonalTitle:
+            type: name
+          # Suffix:
+            # type: name
+          # 昵称
+          Nickname:
+            type: name
+          # 身份证号
+          CardId:
+            type: id-long
+            
+          # FirstNameLocal:
+            # type: name
+          # MiddleNameLocal:
+            # type: name
+          # LastNameLocal:
+            # type: name
+          # OtherLocal:
+            # type: name
+            
+          # # 会员 Id
+          # MemberId:
+            # type: id
+            
+          # # 性别
+          # Gender:
+            # type: indicator
+            
+          # # 生日
+          # BirthDate:
+            # type: date
+            
+          # DeceasedDate:
+            # type: date
+            
+          # # 身高
+          # Height:
+            # type: floating-point
+            
+          # # 体重
+          # Weight:
+            # type: floating-point
+            
+          # #MothersMaidenName:
+            # #type: long-varchar
+            
+          # # 婚姻状况
+          # MaritalStatus:
+            # type: indicator
+            
+          # # 社会保险号
+          # SocialSecurityNumber:
+            # type: long-varchar
+            
+          # # 护照号
+          # PassportNumber:
+            # type: long-varchar
+          # # 护照过期日期
+          # PassportExpireDate:
+            # type: date
+            
+          # # 工作经验（年）
+          # TotalYearsWorkExperience:
+            # type: floating-point
+            
+          # # 备注
+          # Comments:
+            # type: comment
+            
+          # EmploymentStatusEnumId:
+            # type: id
+          # ResidenceStatusEnumId:
+            # type: id
+            
+          # # 民族
+          # EthnicGroup:
+            # type: name
+            
+          # # 职业
+          # Occupation:
+            # type: name
           
+          # # 学历
+          # EducationalBackground:
+            # type: long-varchar
+            
+          # # YearsWithEmployer:
+            # # type: numeric
+          # # MonthsWithEmployer:
+            # # type: numeric
+          # ExistingCustomer:
+            # type: indicator
+            
+          # # -------------------------------
+          # # 兴趣爱好
+          # Hobbies:
+            # type: long-varchar
+            
+          # # 家庭情况
+          # AboutFamily:
+            # type: comment
+            
+        # references:
+          # Party:
+            # name: Party
+            # displayName: Party
+            # type: Party
+            # properties:
+            # - PartyId
+            # foreignKeyName: PERSON_PARTY
+        
+        
+        

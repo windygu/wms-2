@@ -45,16 +45,28 @@ public class PartyStateDto
         this.primaryRoleTypeId = primaryRoleTypeId;
     }
 
-    private String organizationName;
+    private String externalId;
 
-    public String getOrganizationName()
+    public String getExternalId()
     {
-        return this.organizationName;
+        return this.externalId;
     }
 
-    public void setOrganizationName(String organizationName)
+    public void setExternalId(String externalId)
     {
-        this.organizationName = organizationName;
+        this.externalId = externalId;
+    }
+
+    private String preferredCurrencyUomId;
+
+    public String getPreferredCurrencyUomId()
+    {
+        return this.preferredCurrencyUomId;
+    }
+
+    public void setPreferredCurrencyUomId(String preferredCurrencyUomId)
+    {
+        this.preferredCurrencyUomId = preferredCurrencyUomId;
     }
 
     private String description;
@@ -69,16 +81,16 @@ public class PartyStateDto
         this.description = description;
     }
 
-    private String type;
+    private String organizationName;
 
-    public String getType()
+    public String getOrganizationName()
     {
-        return this.type;
+        return this.organizationName;
     }
 
-    public void setType(String type)
+    public void setOrganizationName(String organizationName)
     {
-        this.type = type;
+        this.organizationName = organizationName;
     }
 
     private Boolean isSummary;
@@ -91,6 +103,90 @@ public class PartyStateDto
     public void setIsSummary(Boolean isSummary)
     {
         this.isSummary = isSummary;
+    }
+
+    private String salutation;
+
+    public String getSalutation()
+    {
+        return this.salutation;
+    }
+
+    public void setSalutation(String salutation)
+    {
+        this.salutation = salutation;
+    }
+
+    private String firstName;
+
+    public String getFirstName()
+    {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+    private String middleName;
+
+    public String getMiddleName()
+    {
+        return this.middleName;
+    }
+
+    public void setMiddleName(String middleName)
+    {
+        this.middleName = middleName;
+    }
+
+    private String lastName;
+
+    public String getLastName()
+    {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+
+    private String personalTitle;
+
+    public String getPersonalTitle()
+    {
+        return this.personalTitle;
+    }
+
+    public void setPersonalTitle(String personalTitle)
+    {
+        this.personalTitle = personalTitle;
+    }
+
+    private String nickname;
+
+    public String getNickname()
+    {
+        return this.nickname;
+    }
+
+    public void setNickname(String nickname)
+    {
+        this.nickname = nickname;
+    }
+
+    private String cardId;
+
+    public String getCardId()
+    {
+        return this.cardId;
+    }
+
+    public void setCardId(String cardId)
+    {
+        this.cardId = cardId;
     }
 
     private Boolean active;

@@ -45,6 +45,42 @@ public abstract class AbstractPartyState implements PartyState
         this.primaryRoleTypeId = primaryRoleTypeId;
     }
 
+    private String externalId;
+
+    public String getExternalId()
+    {
+        return this.externalId;
+    }
+
+    public void setExternalId(String externalId)
+    {
+        this.externalId = externalId;
+    }
+
+    private String preferredCurrencyUomId;
+
+    public String getPreferredCurrencyUomId()
+    {
+        return this.preferredCurrencyUomId;
+    }
+
+    public void setPreferredCurrencyUomId(String preferredCurrencyUomId)
+    {
+        this.preferredCurrencyUomId = preferredCurrencyUomId;
+    }
+
+    private String description;
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -195,6 +231,9 @@ public abstract class AbstractPartyState implements PartyState
 
         this.setPartyTypeId(e.getPartyTypeId());
         this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
+        this.setExternalId(e.getExternalId());
+        this.setPreferredCurrencyUomId(e.getPreferredCurrencyUomId());
+        this.setDescription(e.getDescription());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -229,6 +268,39 @@ public abstract class AbstractPartyState implements PartyState
         else
         {
             this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
+        }
+        if (e.getExternalId() == null)
+        {
+            if (e.getIsPropertyExternalIdRemoved() != null && e.getIsPropertyExternalIdRemoved())
+            {
+                this.setExternalId(null);
+            }
+        }
+        else
+        {
+            this.setExternalId(e.getExternalId());
+        }
+        if (e.getPreferredCurrencyUomId() == null)
+        {
+            if (e.getIsPropertyPreferredCurrencyUomIdRemoved() != null && e.getIsPropertyPreferredCurrencyUomIdRemoved())
+            {
+                this.setPreferredCurrencyUomId(null);
+            }
+        }
+        else
+        {
+            this.setPreferredCurrencyUomId(e.getPreferredCurrencyUomId());
+        }
+        if (e.getDescription() == null)
+        {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
+            {
+                this.setDescription(null);
+            }
+        }
+        else
+        {
+            this.setDescription(e.getDescription());
         }
         if (e.getActive() == null)
         {

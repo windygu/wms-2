@@ -12,14 +12,6 @@ public interface OrganizationEvent extends PartyEvent
 
         void setOrganizationName(String organizationName);
 
-        String getDescription();
-
-        void setDescription(String description);
-
-        String getType();
-
-        void setType(String type);
-
         Boolean getIsSummary();
 
         void setIsSummary(Boolean isSummary);
@@ -38,14 +30,6 @@ public interface OrganizationEvent extends PartyEvent
 
         void setIsPropertyOrganizationNameRemoved(Boolean removed);
 
-        Boolean getIsPropertyDescriptionRemoved();
-
-        void setIsPropertyDescriptionRemoved(Boolean removed);
-
-        Boolean getIsPropertyTypeRemoved();
-
-        void setIsPropertyTypeRemoved(Boolean removed);
-
         Boolean getIsPropertyIsSummaryRemoved();
 
         void setIsPropertyIsSummaryRemoved(Boolean removed);
@@ -57,6 +41,18 @@ public interface OrganizationEvent extends PartyEvent
         Boolean getIsPropertyPrimaryRoleTypeIdRemoved();
 
         void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyExternalIdRemoved();
+
+        void setIsPropertyExternalIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPreferredCurrencyUomIdRemoved();
+
+        void setIsPropertyPreferredCurrencyUomIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDescriptionRemoved();
+
+        void setIsPropertyDescriptionRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

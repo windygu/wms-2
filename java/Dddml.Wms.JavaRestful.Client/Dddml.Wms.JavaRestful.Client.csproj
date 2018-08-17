@@ -1068,6 +1068,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyTypeIds.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\PersonStateDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryCommandDto.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
@@ -2219,6 +2222,7 @@
 .\PartyStateDto.java
 .\PartyStateEventDto.java
 .\PartyTypeIds.java
+.\PersonStateDto.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\GeneratePartyRoleDomain.tt">

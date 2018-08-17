@@ -29,30 +29,6 @@ public abstract class AbstractOrganizationEvent extends AbstractPartyEvent imple
             this.organizationName = organizationName;
         }
 
-        private String description;
-
-        public String getDescription()
-        {
-            return this.description;
-        }
-
-        public void setDescription(String description)
-        {
-            this.description = description;
-        }
-
-        private String type;
-
-        public String getType()
-        {
-            return this.type;
-        }
-
-        public void setType(String type)
-        {
-            this.type = type;
-        }
-
         private Boolean isSummary;
 
         public Boolean getIsSummary()
@@ -111,26 +87,6 @@ public abstract class AbstractOrganizationEvent extends AbstractPartyEvent imple
             this.isPropertyOrganizationNameRemoved = removed;
         }
 
-        private Boolean isPropertyDescriptionRemoved;
-
-        public Boolean getIsPropertyDescriptionRemoved() {
-            return this.isPropertyDescriptionRemoved;
-        }
-
-        public void setIsPropertyDescriptionRemoved(Boolean removed) {
-            this.isPropertyDescriptionRemoved = removed;
-        }
-
-        private Boolean isPropertyTypeRemoved;
-
-        public Boolean getIsPropertyTypeRemoved() {
-            return this.isPropertyTypeRemoved;
-        }
-
-        public void setIsPropertyTypeRemoved(Boolean removed) {
-            this.isPropertyTypeRemoved = removed;
-        }
-
         private Boolean isPropertyIsSummaryRemoved;
 
         public Boolean getIsPropertyIsSummaryRemoved() {
@@ -159,6 +115,36 @@ public abstract class AbstractOrganizationEvent extends AbstractPartyEvent imple
 
         public void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed) {
             this.isPropertyPrimaryRoleTypeIdRemoved = removed;
+        }
+
+        private Boolean isPropertyExternalIdRemoved;
+
+        public Boolean getIsPropertyExternalIdRemoved() {
+            return this.isPropertyExternalIdRemoved;
+        }
+
+        public void setIsPropertyExternalIdRemoved(Boolean removed) {
+            this.isPropertyExternalIdRemoved = removed;
+        }
+
+        private Boolean isPropertyPreferredCurrencyUomIdRemoved;
+
+        public Boolean getIsPropertyPreferredCurrencyUomIdRemoved() {
+            return this.isPropertyPreferredCurrencyUomIdRemoved;
+        }
+
+        public void setIsPropertyPreferredCurrencyUomIdRemoved(Boolean removed) {
+            this.isPropertyPreferredCurrencyUomIdRemoved = removed;
+        }
+
+        private Boolean isPropertyDescriptionRemoved;
+
+        public Boolean getIsPropertyDescriptionRemoved() {
+            return this.isPropertyDescriptionRemoved;
+        }
+
+        public void setIsPropertyDescriptionRemoved(Boolean removed) {
+            this.isPropertyDescriptionRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

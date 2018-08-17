@@ -12,14 +12,6 @@ public interface OrganizationState extends PartyState
 
     void setOrganizationName(String organizationName);
 
-    String getDescription();
-
-    void setDescription(String description);
-
-    String getType();
-
-    void setType(String type);
-
     Boolean getIsSummary();
 
     void setIsSummary(Boolean isSummary);

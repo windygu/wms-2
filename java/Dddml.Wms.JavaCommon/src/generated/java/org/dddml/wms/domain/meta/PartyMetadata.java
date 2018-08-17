@@ -21,10 +21,18 @@ public final class PartyMetadata {
             "partyId",
             "partyTypeId",
             "primaryRoleTypeId",
-            "organizationName",
+            "externalId",
+            "preferredCurrencyUomId",
             "description",
-            "type",
+            "organizationName",
             "isSummary",
+            "salutation",
+            "firstName",
+            "middleName",
+            "lastName",
+            "personalTitle",
+            "nickname",
+            "cardId",
             "version",
             "createdBy",
             "createdAt",
@@ -41,7 +49,15 @@ public final class PartyMetadata {
             "String",
             "String",
             "String",
+            "String",
             "Boolean",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
             "Long",
             "String",
             "Date",
@@ -69,14 +85,30 @@ public final class PartyMetadata {
         aliasMap.put("PartyTypeId", "partyTypeId");
         aliasMap.put("primaryRoleTypeId", "primaryRoleTypeId");
         aliasMap.put("PrimaryRoleTypeId", "primaryRoleTypeId");
-        aliasMap.put("organizationName", "organizationName");
-        aliasMap.put("OrganizationName", "organizationName");
+        aliasMap.put("externalId", "externalId");
+        aliasMap.put("ExternalId", "externalId");
+        aliasMap.put("preferredCurrencyUomId", "preferredCurrencyUomId");
+        aliasMap.put("PreferredCurrencyUomId", "preferredCurrencyUomId");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
-        aliasMap.put("type", "type");
-        aliasMap.put("Type", "type");
+        aliasMap.put("organizationName", "organizationName");
+        aliasMap.put("OrganizationName", "organizationName");
         aliasMap.put("isSummary", "isSummary");
         aliasMap.put("IsSummary", "isSummary");
+        aliasMap.put("salutation", "salutation");
+        aliasMap.put("Salutation", "salutation");
+        aliasMap.put("firstName", "firstName");
+        aliasMap.put("FirstName", "firstName");
+        aliasMap.put("middleName", "middleName");
+        aliasMap.put("MiddleName", "middleName");
+        aliasMap.put("lastName", "lastName");
+        aliasMap.put("LastName", "lastName");
+        aliasMap.put("personalTitle", "personalTitle");
+        aliasMap.put("PersonalTitle", "personalTitle");
+        aliasMap.put("nickname", "nickname");
+        aliasMap.put("Nickname", "nickname");
+        aliasMap.put("cardId", "cardId");
+        aliasMap.put("CardId", "cardId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

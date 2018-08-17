@@ -21,30 +21,6 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
         this.organizationName = organizationName;
     }
 
-    private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    private String type;
-
-    public String getType()
-    {
-        return this.type;
-    }
-
-    public void setType(String type)
-    {
-        this.type = type;
-    }
-
     private Boolean isSummary;
 
     public Boolean getIsSummary()
@@ -105,10 +81,11 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
 
         this.setPartyTypeId(e.getPartyTypeId());
         this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
+        this.setExternalId(e.getExternalId());
+        this.setPreferredCurrencyUomId(e.getPreferredCurrencyUomId());
+        this.setDescription(e.getDescription());
         this.setActive(e.getActive());
         this.setOrganizationName(e.getOrganizationName());
-        this.setDescription(e.getDescription());
-        this.setType(e.getType());
         this.setIsSummary(e.getIsSummary());
 
         this.setDeleted(false);
@@ -144,6 +121,39 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
         {
             this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         }
+        if (e.getExternalId() == null)
+        {
+            if (e.getIsPropertyExternalIdRemoved() != null && e.getIsPropertyExternalIdRemoved())
+            {
+                this.setExternalId(null);
+            }
+        }
+        else
+        {
+            this.setExternalId(e.getExternalId());
+        }
+        if (e.getPreferredCurrencyUomId() == null)
+        {
+            if (e.getIsPropertyPreferredCurrencyUomIdRemoved() != null && e.getIsPropertyPreferredCurrencyUomIdRemoved())
+            {
+                this.setPreferredCurrencyUomId(null);
+            }
+        }
+        else
+        {
+            this.setPreferredCurrencyUomId(e.getPreferredCurrencyUomId());
+        }
+        if (e.getDescription() == null)
+        {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
+            {
+                this.setDescription(null);
+            }
+        }
+        else
+        {
+            this.setDescription(e.getDescription());
+        }
         if (e.getActive() == null)
         {
             if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
@@ -165,28 +175,6 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
         else
         {
             this.setOrganizationName(e.getOrganizationName());
-        }
-        if (e.getDescription() == null)
-        {
-            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
-            {
-                this.setDescription(null);
-            }
-        }
-        else
-        {
-            this.setDescription(e.getDescription());
-        }
-        if (e.getType() == null)
-        {
-            if (e.getIsPropertyTypeRemoved() != null && e.getIsPropertyTypeRemoved())
-            {
-                this.setType(null);
-            }
-        }
-        else
-        {
-            this.setType(e.getType());
         }
         if (e.getIsSummary() == null)
         {

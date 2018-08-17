@@ -36,18 +36,33 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
     }
 
     /**
-     * Organization Name
+     * External Id
      */
-    private String organizationName;
+    private String externalId;
 
-    public String getOrganizationName()
+    public String getExternalId()
     {
-        return this.organizationName;
+        return this.externalId;
     }
 
-    public void setOrganizationName(String organizationName)
+    public void setExternalId(String externalId)
     {
-        this.organizationName = organizationName;
+        this.externalId = externalId;
+    }
+
+    /**
+     * Preferred Currency Uom Id
+     */
+    private String preferredCurrencyUomId;
+
+    public String getPreferredCurrencyUomId()
+    {
+        return this.preferredCurrencyUomId;
+    }
+
+    public void setPreferredCurrencyUomId(String preferredCurrencyUomId)
+    {
+        this.preferredCurrencyUomId = preferredCurrencyUomId;
     }
 
     /**
@@ -66,18 +81,18 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
     }
 
     /**
-     * Type
+     * Organization Name
      */
-    private String type;
+    private String organizationName;
 
-    public String getType()
+    public String getOrganizationName()
     {
-        return this.type;
+        return this.organizationName;
     }
 
-    public void setType(String type)
+    public void setOrganizationName(String organizationName)
     {
-        this.type = type;
+        this.organizationName = organizationName;
     }
 
     /**
@@ -93,6 +108,111 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
     public void setIsSummary(Boolean isSummary)
     {
         this.isSummary = isSummary;
+    }
+
+    /**
+     * Salutation
+     */
+    private String salutation;
+
+    public String getSalutation()
+    {
+        return this.salutation;
+    }
+
+    public void setSalutation(String salutation)
+    {
+        this.salutation = salutation;
+    }
+
+    /**
+     * First Name
+     */
+    private String firstName;
+
+    public String getFirstName()
+    {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+    /**
+     * Middle Name
+     */
+    private String middleName;
+
+    public String getMiddleName()
+    {
+        return this.middleName;
+    }
+
+    public void setMiddleName(String middleName)
+    {
+        this.middleName = middleName;
+    }
+
+    /**
+     * Last Name
+     */
+    private String lastName;
+
+    public String getLastName()
+    {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+
+    /**
+     * Personal Title
+     */
+    private String personalTitle;
+
+    public String getPersonalTitle()
+    {
+        return this.personalTitle;
+    }
+
+    public void setPersonalTitle(String personalTitle)
+    {
+        this.personalTitle = personalTitle;
+    }
+
+    /**
+     * Nickname
+     */
+    private String nickname;
+
+    public String getNickname()
+    {
+        return this.nickname;
+    }
+
+    public void setNickname(String nickname)
+    {
+        this.nickname = nickname;
+    }
+
+    /**
+     * Card Id
+     */
+    private String cardId;
+
+    public String getCardId()
+    {
+        return this.cardId;
+    }
+
+    public void setCardId(String cardId)
+    {
+        this.cardId = cardId;
     }
 
     /**
@@ -134,16 +254,28 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.isPropertyPrimaryRoleTypeIdRemoved = removed;
     }
 
-    private Boolean isPropertyOrganizationNameRemoved;
+    private Boolean isPropertyExternalIdRemoved;
 
-    public Boolean getIsPropertyOrganizationNameRemoved()
+    public Boolean getIsPropertyExternalIdRemoved()
     {
-        return this.isPropertyOrganizationNameRemoved;
+        return this.isPropertyExternalIdRemoved;
     }
 
-    public void setIsPropertyOrganizationNameRemoved(Boolean removed)
+    public void setIsPropertyExternalIdRemoved(Boolean removed)
     {
-        this.isPropertyOrganizationNameRemoved = removed;
+        this.isPropertyExternalIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPreferredCurrencyUomIdRemoved;
+
+    public Boolean getIsPropertyPreferredCurrencyUomIdRemoved()
+    {
+        return this.isPropertyPreferredCurrencyUomIdRemoved;
+    }
+
+    public void setIsPropertyPreferredCurrencyUomIdRemoved(Boolean removed)
+    {
+        this.isPropertyPreferredCurrencyUomIdRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -158,16 +290,16 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.isPropertyDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyTypeRemoved;
+    private Boolean isPropertyOrganizationNameRemoved;
 
-    public Boolean getIsPropertyTypeRemoved()
+    public Boolean getIsPropertyOrganizationNameRemoved()
     {
-        return this.isPropertyTypeRemoved;
+        return this.isPropertyOrganizationNameRemoved;
     }
 
-    public void setIsPropertyTypeRemoved(Boolean removed)
+    public void setIsPropertyOrganizationNameRemoved(Boolean removed)
     {
-        this.isPropertyTypeRemoved = removed;
+        this.isPropertyOrganizationNameRemoved = removed;
     }
 
     private Boolean isPropertyIsSummaryRemoved;
@@ -180,6 +312,90 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
     public void setIsPropertyIsSummaryRemoved(Boolean removed)
     {
         this.isPropertyIsSummaryRemoved = removed;
+    }
+
+    private Boolean isPropertySalutationRemoved;
+
+    public Boolean getIsPropertySalutationRemoved()
+    {
+        return this.isPropertySalutationRemoved;
+    }
+
+    public void setIsPropertySalutationRemoved(Boolean removed)
+    {
+        this.isPropertySalutationRemoved = removed;
+    }
+
+    private Boolean isPropertyFirstNameRemoved;
+
+    public Boolean getIsPropertyFirstNameRemoved()
+    {
+        return this.isPropertyFirstNameRemoved;
+    }
+
+    public void setIsPropertyFirstNameRemoved(Boolean removed)
+    {
+        this.isPropertyFirstNameRemoved = removed;
+    }
+
+    private Boolean isPropertyMiddleNameRemoved;
+
+    public Boolean getIsPropertyMiddleNameRemoved()
+    {
+        return this.isPropertyMiddleNameRemoved;
+    }
+
+    public void setIsPropertyMiddleNameRemoved(Boolean removed)
+    {
+        this.isPropertyMiddleNameRemoved = removed;
+    }
+
+    private Boolean isPropertyLastNameRemoved;
+
+    public Boolean getIsPropertyLastNameRemoved()
+    {
+        return this.isPropertyLastNameRemoved;
+    }
+
+    public void setIsPropertyLastNameRemoved(Boolean removed)
+    {
+        this.isPropertyLastNameRemoved = removed;
+    }
+
+    private Boolean isPropertyPersonalTitleRemoved;
+
+    public Boolean getIsPropertyPersonalTitleRemoved()
+    {
+        return this.isPropertyPersonalTitleRemoved;
+    }
+
+    public void setIsPropertyPersonalTitleRemoved(Boolean removed)
+    {
+        this.isPropertyPersonalTitleRemoved = removed;
+    }
+
+    private Boolean isPropertyNicknameRemoved;
+
+    public Boolean getIsPropertyNicknameRemoved()
+    {
+        return this.isPropertyNicknameRemoved;
+    }
+
+    public void setIsPropertyNicknameRemoved(Boolean removed)
+    {
+        this.isPropertyNicknameRemoved = removed;
+    }
+
+    private Boolean isPropertyCardIdRemoved;
+
+    public Boolean getIsPropertyCardIdRemoved()
+    {
+        return this.isPropertyCardIdRemoved;
+    }
+
+    public void setIsPropertyCardIdRemoved(Boolean removed)
+    {
+        this.isPropertyCardIdRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

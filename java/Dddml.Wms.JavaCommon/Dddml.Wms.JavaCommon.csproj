@@ -1638,6 +1638,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\party\AbstractPartyEvent.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\AbstractPersonEvent.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\AbstractPersonState.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\party\OrganizationEvent.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
@@ -1645,6 +1651,18 @@
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyEventId.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\PersonEvent.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\PersonState.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\PersonStateDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\PersonStateQueryRepository.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\AbstractPhysicalInventoryEvent.java">
@@ -5718,6 +5736,8 @@
 .\AbstractPartyCommandDto.java
 .\AbstractPartyEvent.java
 .\AbstractPartyState.java
+.\AbstractPersonEvent.java
+.\AbstractPersonState.java
 .\CreateOrMergePatchPartyDto.java
 .\DeletePartyDto.java
 .\GeneratePartyDomain.txt
@@ -5735,6 +5755,10 @@
 .\PartyStateQueryRepository.java
 .\PartyStateRepository.java
 .\PartyTypeIds.java
+.\PersonEvent.java
+.\PersonState.java
+.\PersonStateDto.java
+.\PersonStateQueryRepository.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\GenerateContactMechDomain.tt">

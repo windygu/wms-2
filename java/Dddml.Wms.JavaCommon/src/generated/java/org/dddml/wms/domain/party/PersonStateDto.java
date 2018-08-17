@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
 
-public class OrganizationStateDto extends PartyStateDto
+public class PersonStateDto extends PartyStateDto
 {
 
 
@@ -19,25 +19,25 @@ public class OrganizationStateDto extends PartyStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public OrganizationStateDto[] toOrganizationStateDtoArray(Iterable<OrganizationState> states) {
-            return toOrganizationStateDtoList(states).toArray(new OrganizationStateDto[0]);
+        public PersonStateDto[] toPersonStateDtoArray(Iterable<PersonState> states) {
+            return toPersonStateDtoList(states).toArray(new PersonStateDto[0]);
         }
 
-        public List<OrganizationStateDto> toOrganizationStateDtoList(Iterable<OrganizationState> states) {
-            ArrayList<OrganizationStateDto> stateDtos = new ArrayList();
-            for (OrganizationState s : states) {
-                OrganizationStateDto dto = toOrganizationStateDto(s);
+        public List<PersonStateDto> toPersonStateDtoList(Iterable<PersonState> states) {
+            ArrayList<PersonStateDto> stateDtos = new ArrayList();
+            for (PersonState s : states) {
+                PersonStateDto dto = toPersonStateDto(s);
                 stateDtos.add(dto);
             }
             return stateDtos;
         }
 
-        public OrganizationStateDto toOrganizationStateDto(OrganizationState state)
+        public PersonStateDto toPersonStateDto(PersonState state)
         {
             if(state == null) {
                 return null;
             }
-            OrganizationStateDto dto = new OrganizationStateDto();
+            PersonStateDto dto = new PersonStateDto();
             if (returnedFieldsContains("PartyId")) {
                 dto.setPartyId(state.getPartyId());
             }
