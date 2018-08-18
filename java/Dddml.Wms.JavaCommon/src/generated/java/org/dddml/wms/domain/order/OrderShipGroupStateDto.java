@@ -117,6 +117,18 @@ public class OrderShipGroupStateDto
         this.telecomContactMechId = telecomContactMechId;
     }
 
+    private String contactPartyId;
+
+    public String getContactPartyId()
+    {
+        return this.contactPartyId;
+    }
+
+    public void setContactPartyId(String contactPartyId)
+    {
+        this.contactPartyId = contactPartyId;
+    }
+
     private String trackingNumber;
 
     public String getTrackingNumber()
@@ -235,6 +247,54 @@ public class OrderShipGroupStateDto
     public void setPickwaveId(Long pickwaveId)
     {
         this.pickwaveId = pickwaveId;
+    }
+
+    private Integer numberOfPackages;
+
+    public Integer getNumberOfPackages()
+    {
+        return this.numberOfPackages;
+    }
+
+    public void setNumberOfPackages(Integer numberOfPackages)
+    {
+        this.numberOfPackages = numberOfPackages;
+    }
+
+    private Integer numberOfContainers;
+
+    public Integer getNumberOfContainers()
+    {
+        return this.numberOfContainers;
+    }
+
+    public void setNumberOfContainers(Integer numberOfContainers)
+    {
+        this.numberOfContainers = numberOfContainers;
+    }
+
+    private Integer numberOfPakagesPerContainer;
+
+    public Integer getNumberOfPakagesPerContainer()
+    {
+        return this.numberOfPakagesPerContainer;
+    }
+
+    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
+    {
+        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
+    }
+
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
     }
 
     private Boolean active;
@@ -389,6 +449,9 @@ public class OrderShipGroupStateDto
             if (returnedFieldsContains("TelecomContactMechId")) {
                 dto.setTelecomContactMechId(state.getTelecomContactMechId());
             }
+            if (returnedFieldsContains("ContactPartyId")) {
+                dto.setContactPartyId(state.getContactPartyId());
+            }
             if (returnedFieldsContains("TrackingNumber")) {
                 dto.setTrackingNumber(state.getTrackingNumber());
             }
@@ -418,6 +481,18 @@ public class OrderShipGroupStateDto
             }
             if (returnedFieldsContains("PickwaveId")) {
                 dto.setPickwaveId(state.getPickwaveId());
+            }
+            if (returnedFieldsContains("NumberOfPackages")) {
+                dto.setNumberOfPackages(state.getNumberOfPackages());
+            }
+            if (returnedFieldsContains("NumberOfContainers")) {
+                dto.setNumberOfContainers(state.getNumberOfContainers());
+            }
+            if (returnedFieldsContains("NumberOfPakagesPerContainer")) {
+                dto.setNumberOfPakagesPerContainer(state.getNumberOfPakagesPerContainer());
+            }
+            if (returnedFieldsContains("StatusId")) {
+                dto.setStatusId(state.getStatusId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

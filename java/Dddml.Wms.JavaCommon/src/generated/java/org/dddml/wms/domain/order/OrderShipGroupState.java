@@ -52,6 +52,10 @@ public interface OrderShipGroupState
 
     void setTelecomContactMechId(String telecomContactMechId);
 
+    String getContactPartyId();
+
+    void setContactPartyId(String contactPartyId);
+
     String getTrackingNumber();
 
     void setTrackingNumber(String trackingNumber);
@@ -91,6 +95,22 @@ public interface OrderShipGroupState
     Long getPickwaveId();
 
     void setPickwaveId(Long pickwaveId);
+
+    Integer getNumberOfPackages();
+
+    void setNumberOfPackages(Integer numberOfPackages);
+
+    Integer getNumberOfContainers();
+
+    void setNumberOfContainers(Integer numberOfContainers);
+
+    Integer getNumberOfPakagesPerContainer();
+
+    void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
+
+    String getStatusId();
+
+    void setStatusId(String statusId);
 
     Long getVersion();
 

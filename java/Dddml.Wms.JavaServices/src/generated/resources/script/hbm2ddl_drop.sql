@@ -87,6 +87,7 @@ drop table if exists Parties;
 drop table if exists PartyEvents;
 drop table if exists PartyRoleEvents;
 drop table if exists PartyRoles;
+drop table if exists People;
 drop table if exists PhysicalInventories;
 drop table if exists PhysicalInventoryEvents;
 drop table if exists PhysicalInventoryLineEvents;

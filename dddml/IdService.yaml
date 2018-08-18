@@ -8,21 +8,22 @@ services:
   # ---------------------------------------
   # 线索跟进服务
   IdService:
-  
     
     # ------------------------------------
     # 方法
     methods:
       
       # ------------------------------------
-      # 跟进后更新
+      # 获取一个可用的单号
       GetDocumentNumber:
       
         parameters:
-        
+          # 单据类型
           DocumentType:
             type: string
             
+        # 返回结果
         result:
-            type: string
+          type: string
+            
             

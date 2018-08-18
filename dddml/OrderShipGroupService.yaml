@@ -1,0 +1,61 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+services:
+
+  # ---------------------------------------
+  # 订单装运组服务（入库出库通知）
+  OrderShipGroupService:
+  
+    
+    # ------------------------------------
+    # 方法
+    methods:
+      
+      # ------------------------------------
+      # 创建装运组（入库通知单）
+      CreatePOShipGroup:
+      
+        parameters:
+          # 订单 Id（合同号）
+          OrderId:
+            type: id
+          #---------------------------------
+          # 订单装运组序号（通知单号）
+          ShipGroupSeqId:
+            type: numeric
+          # -------------------------
+          # 件数（包裹数量）
+          NumberOfPackages:
+            type: int
+          # 柜数（集装箱数量）
+          NumberOfContainers:
+            type: int
+          # 每集装箱件数
+          NumberOfPakagesPerContainer:
+            type: int
+          # 产品 Id
+          ProductId:
+            type: id-long
+          # 数量（以产品主计量单位计算）
+          Quantity:
+            type: fixed-point
+          # 预计交付时间（入库时间）
+          EstimatedDeliveryDate:
+            type: date-time
+          # 联系人
+          ContactPartyId:
+            type: string
+            referenceType: Party
+          # 联系电话
+          TelecomContactMechId:
+            type: id
+          # 追踪（物流）单号
+          TrackingNumber:
+            type: short-varchar
+            
+
+            
+            

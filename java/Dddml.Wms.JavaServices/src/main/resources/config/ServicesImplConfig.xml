@@ -16,5 +16,8 @@
 
     <bean id="idApplicationService" class="org.dddml.wms.domain.service.IdApplicationServiceImpl" />
 
+    <bean id="orderShipGroupApplicationService" class="org.dddml.wms.domain.service.OrderShipGroupApplicationServiceImpl">
+    </bean>
+
 </beans>
 

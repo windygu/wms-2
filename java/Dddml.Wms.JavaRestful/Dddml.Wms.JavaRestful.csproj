@@ -206,6 +206,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderShipGroupServiceResource.java">
+      <DependentUpon>GenerateDomainServicesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderShipmentResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -301,6 +304,7 @@
       <LastOutputs>
 .\GenerateDomainServicesResources.txt
 .\IdServiceResource.java
+.\OrderShipGroupServiceResource.java
 </LastOutputs>
     </None>
   </ItemGroup>

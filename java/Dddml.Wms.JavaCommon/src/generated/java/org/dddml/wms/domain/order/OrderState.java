@@ -53,9 +53,9 @@ public interface OrderState
 
     void setStatusId(String statusId);
 
-    String getCurrencyUom();
+    String getCurrencyUomId();
 
-    void setCurrencyUom(String currencyUom);
+    void setCurrencyUomId(String currencyUomId);
 
     String getSyncStatusId();
 

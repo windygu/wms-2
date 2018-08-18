@@ -130,16 +130,16 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.statusId = statusId;
     }
 
-    private String currencyUom;
+    private String currencyUomId;
 
-    public String getCurrencyUom()
+    public String getCurrencyUomId()
     {
-        return this.currencyUom;
+        return this.currencyUomId;
     }
 
-    public void setCurrencyUom(String currencyUom)
+    public void setCurrencyUomId(String currencyUomId)
     {
-        this.currencyUom = currencyUom;
+        this.currencyUomId = currencyUomId;
     }
 
     private String syncStatusId;
@@ -492,7 +492,7 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.setEntryDate(e.getEntryDate());
         this.setPickSheetPrintedDate(e.getPickSheetPrintedDate());
         this.setStatusId(e.getStatusId());
-        this.setCurrencyUom(e.getCurrencyUom());
+        this.setCurrencyUomId(e.getCurrencyUomId());
         this.setSyncStatusId(e.getSyncStatusId());
         this.setBillingAccountId(e.getBillingAccountId());
         this.setOriginFacilityId(e.getOriginFacilityId());
@@ -629,16 +629,16 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         {
             this.setStatusId(e.getStatusId());
         }
-        if (e.getCurrencyUom() == null)
+        if (e.getCurrencyUomId() == null)
         {
-            if (e.getIsPropertyCurrencyUomRemoved() != null && e.getIsPropertyCurrencyUomRemoved())
+            if (e.getIsPropertyCurrencyUomIdRemoved() != null && e.getIsPropertyCurrencyUomIdRemoved())
             {
-                this.setCurrencyUom(null);
+                this.setCurrencyUomId(null);
             }
         }
         else
         {
-            this.setCurrencyUom(e.getCurrencyUom());
+            this.setCurrencyUomId(e.getCurrencyUomId());
         }
         if (e.getSyncStatusId() == null)
         {

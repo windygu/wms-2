@@ -97,6 +97,56 @@ public class StatusItemIds {
     public static final String ORDER_CANCELLED = "ORDER_CANCELLED";
 
     /**
+     * Created.
+     */
+    public static final String ITEM_CREATED = "ITEM_CREATED";
+
+    /**
+     * Approved.
+     */
+    public static final String ITEM_APPROVED = "ITEM_APPROVED";
+
+    /**
+     * Completed.
+     */
+    public static final String ITEM_COMPLETED = "ITEM_COMPLETED";
+
+    /**
+     * Rejected.
+     */
+    public static final String ITEM_REJECTED = "ITEM_REJECTED";
+
+    /**
+     * Cancelled.
+     */
+    public static final String ITEM_CANCELLED = "ITEM_CANCELLED";
+
+    /**
+     * Created.
+     */
+    public static final String SHIP_GRP_CREATED = "SHIP_GRP_CREATED";
+
+    /**
+     * Approved.
+     */
+    public static final String SHIP_GRP_APPROVED = "SHIP_GRP_APPROVED";
+
+    /**
+     * Completed.
+     */
+    public static final String SHIP_GRP_COMPLETED = "SHIP_GRP_COMPLETED";
+
+    /**
+     * Rejected.
+     */
+    public static final String SHIP_GRP_REJECTED = "SHIP_GRP_REJECTED";
+
+    /**
+     * Cancelled.
+     */
+    public static final String SHIP_GRP_CANCELLED = "SHIP_GRP_CANCELLED";
+
+    /**
      * Proposed.
      */
     public static final String REQ_PROPOSED = "REQ_PROPOSED";

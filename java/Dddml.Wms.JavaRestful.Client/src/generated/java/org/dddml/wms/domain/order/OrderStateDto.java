@@ -130,16 +130,16 @@ public class OrderStateDto
         this.statusId = statusId;
     }
 
-    private String currencyUom;
+    private String currencyUomId;
 
-    public String getCurrencyUom()
+    public String getCurrencyUomId()
     {
-        return this.currencyUom;
+        return this.currencyUomId;
     }
 
-    public void setCurrencyUom(String currencyUom)
+    public void setCurrencyUomId(String currencyUomId)
     {
-        this.currencyUom = currencyUom;
+        this.currencyUomId = currencyUomId;
     }
 
     private String syncStatusId;

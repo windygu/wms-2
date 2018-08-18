@@ -50,6 +50,10 @@ public interface OrderShipGroupCommand extends Command
 
         void setTelecomContactMechId(String telecomContactMechId);
 
+        String getContactPartyId();
+
+        void setContactPartyId(String contactPartyId);
+
         String getTrackingNumber();
 
         void setTrackingNumber(String trackingNumber);
@@ -89,6 +93,22 @@ public interface OrderShipGroupCommand extends Command
         Long getPickwaveId();
 
         void setPickwaveId(Long pickwaveId);
+
+        Integer getNumberOfPackages();
+
+        void setNumberOfPackages(Integer numberOfPackages);
+
+        Integer getNumberOfContainers();
+
+        void setNumberOfContainers(Integer numberOfContainers);
+
+        Integer getNumberOfPakagesPerContainer();
+
+        void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
+
+        String getStatusId();
+
+        void setStatusId(String statusId);
 
         Boolean getActive();
 
@@ -138,6 +158,10 @@ public interface OrderShipGroupCommand extends Command
 
         void setIsPropertyTelecomContactMechIdRemoved(Boolean removed);
 
+        Boolean getIsPropertyContactPartyIdRemoved();
+
+        void setIsPropertyContactPartyIdRemoved(Boolean removed);
+
         Boolean getIsPropertyTrackingNumberRemoved();
 
         void setIsPropertyTrackingNumberRemoved(Boolean removed);
@@ -177,6 +201,22 @@ public interface OrderShipGroupCommand extends Command
         Boolean getIsPropertyPickwaveIdRemoved();
 
         void setIsPropertyPickwaveIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyNumberOfPackagesRemoved();
+
+        void setIsPropertyNumberOfPackagesRemoved(Boolean removed);
+
+        Boolean getIsPropertyNumberOfContainersRemoved();
+
+        void setIsPropertyNumberOfContainersRemoved(Boolean removed);
+
+        Boolean getIsPropertyNumberOfPakagesPerContainerRemoved();
+
+        void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed);
+
+        Boolean getIsPropertyStatusIdRemoved();
+
+        void setIsPropertyStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

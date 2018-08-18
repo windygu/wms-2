@@ -1423,6 +1423,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommandDtos.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderShipGroupServiceCommandDtos.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeCommandDto.java">
       <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
     </Content>
@@ -1793,6 +1796,7 @@
       <LastOutputs>
 .\GenerateBoundedContextDomainServices.txt
 .\IdServiceCommandDtos.java
+.\OrderShipGroupServiceCommandDtos.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\GenerateAttributeDomain.tt">
@@ -2736,6 +2740,7 @@
       <LastOutputs>
 .\GenerateDomainServicesInterfaces.txt
 .\IdServiceClient.java
+.\OrderShipGroupServiceClient.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\GenerateDomainServicesInterfaces.txt">
@@ -2804,6 +2809,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrdersClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderShipGroupServiceClient.java">
+      <DependentUpon>GenerateDomainServicesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderShipmentsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
@@ -2918,6 +2926,7 @@
       <LastOutputs>
 .\GenerateDomainServicesRxInterfaces.txt
 .\RxIdServiceClient.java
+.\RxOrderShipGroupServiceClient.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\GenerateDomainServicesRxInterfaces.txt">
@@ -3019,6 +3028,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrdersClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderShipGroupServiceClient.java">
+      <DependentUpon>GenerateDomainServicesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderShipmentsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>

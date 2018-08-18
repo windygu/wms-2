@@ -2167,6 +2167,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommands.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderShipGroupApplicationService.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderShipGroupServiceCommands.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeAggregate.java">
       <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
     </Content>
@@ -6115,6 +6121,8 @@
 .\GenerateBoundedContextDomainServices.txt
 .\IdApplicationService.java
 .\IdServiceCommands.java
+.\OrderShipGroupApplicationService.java
+.\OrderShipGroupServiceCommands.java
 </LastOutputs>
     </None>
     <None Include="src\generated\java\org\dddml\wms\domain\statusitem\GenerateStatusItemOfbizDataConstObjects.tt">

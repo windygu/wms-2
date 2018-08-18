@@ -130,6 +130,18 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.telecomContactMechId = telecomContactMechId;
         }
 
+        private String contactPartyId;
+
+        public String getContactPartyId()
+        {
+            return this.contactPartyId;
+        }
+
+        public void setContactPartyId(String contactPartyId)
+        {
+            this.contactPartyId = contactPartyId;
+        }
+
         private String trackingNumber;
 
         public String getTrackingNumber()
@@ -248,6 +260,54 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setPickwaveId(Long pickwaveId)
         {
             this.pickwaveId = pickwaveId;
+        }
+
+        private Integer numberOfPackages;
+
+        public Integer getNumberOfPackages()
+        {
+            return this.numberOfPackages;
+        }
+
+        public void setNumberOfPackages(Integer numberOfPackages)
+        {
+            this.numberOfPackages = numberOfPackages;
+        }
+
+        private Integer numberOfContainers;
+
+        public Integer getNumberOfContainers()
+        {
+            return this.numberOfContainers;
+        }
+
+        public void setNumberOfContainers(Integer numberOfContainers)
+        {
+            this.numberOfContainers = numberOfContainers;
+        }
+
+        private Integer numberOfPakagesPerContainer;
+
+        public Integer getNumberOfPakagesPerContainer()
+        {
+            return this.numberOfPakagesPerContainer;
+        }
+
+        public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
+        {
+            this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
+        }
+
+        private String statusId;
+
+        public String getStatusId()
+        {
+            return this.statusId;
+        }
+
+        public void setStatusId(String statusId)
+        {
+            this.statusId = statusId;
         }
 
         private Boolean active;
@@ -413,6 +473,18 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.isPropertyTelecomContactMechIdRemoved = removed;
         }
 
+        private Boolean isPropertyContactPartyIdRemoved;
+
+        public Boolean getIsPropertyContactPartyIdRemoved()
+        {
+            return this.isPropertyContactPartyIdRemoved;
+        }
+
+        public void setIsPropertyContactPartyIdRemoved(Boolean removed)
+        {
+            this.isPropertyContactPartyIdRemoved = removed;
+        }
+
         private Boolean isPropertyTrackingNumberRemoved;
 
         public Boolean getIsPropertyTrackingNumberRemoved()
@@ -531,6 +603,54 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setIsPropertyPickwaveIdRemoved(Boolean removed)
         {
             this.isPropertyPickwaveIdRemoved = removed;
+        }
+
+        private Boolean isPropertyNumberOfPackagesRemoved;
+
+        public Boolean getIsPropertyNumberOfPackagesRemoved()
+        {
+            return this.isPropertyNumberOfPackagesRemoved;
+        }
+
+        public void setIsPropertyNumberOfPackagesRemoved(Boolean removed)
+        {
+            this.isPropertyNumberOfPackagesRemoved = removed;
+        }
+
+        private Boolean isPropertyNumberOfContainersRemoved;
+
+        public Boolean getIsPropertyNumberOfContainersRemoved()
+        {
+            return this.isPropertyNumberOfContainersRemoved;
+        }
+
+        public void setIsPropertyNumberOfContainersRemoved(Boolean removed)
+        {
+            this.isPropertyNumberOfContainersRemoved = removed;
+        }
+
+        private Boolean isPropertyNumberOfPakagesPerContainerRemoved;
+
+        public Boolean getIsPropertyNumberOfPakagesPerContainerRemoved()
+        {
+            return this.isPropertyNumberOfPakagesPerContainerRemoved;
+        }
+
+        public void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed)
+        {
+            this.isPropertyNumberOfPakagesPerContainerRemoved = removed;
+        }
+
+        private Boolean isPropertyStatusIdRemoved;
+
+        public Boolean getIsPropertyStatusIdRemoved()
+        {
+            return this.isPropertyStatusIdRemoved;
+        }
+
+        public void setIsPropertyStatusIdRemoved(Boolean removed)
+        {
+            this.isPropertyStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

@@ -22,6 +22,7 @@
 	<property name="facilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
 	<property name="contactMechId" ><column name="ContactMechId" sql-type="VARCHAR(20)" /></property>
 	<property name="telecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
+	<property name="contactPartyId" ></property>
 	<property name="trackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
 	<property name="shippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
 	<property name="maySplit" ><column name="MaySplit" sql-type="CHAR(1)" /></property>
@@ -32,6 +33,10 @@
 	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
 	<property name="estimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
 	<property name="pickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="numberOfPackages" ></property>
+	<property name="numberOfContainers" ></property>
+	<property name="numberOfPakagesPerContainer" ></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

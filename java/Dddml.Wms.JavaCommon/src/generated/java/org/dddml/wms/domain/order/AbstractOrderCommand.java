@@ -143,16 +143,16 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             this.statusId = statusId;
         }
 
-        private String currencyUom;
+        private String currencyUomId;
 
-        public String getCurrencyUom()
+        public String getCurrencyUomId()
         {
-            return this.currencyUom;
+            return this.currencyUomId;
         }
 
-        public void setCurrencyUom(String currencyUom)
+        public void setCurrencyUomId(String currencyUomId)
         {
-            this.currencyUom = currencyUom;
+            this.currencyUomId = currencyUomId;
         }
 
         private String syncStatusId;
@@ -554,16 +554,16 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             this.isPropertyStatusIdRemoved = removed;
         }
 
-        private Boolean isPropertyCurrencyUomRemoved;
+        private Boolean isPropertyCurrencyUomIdRemoved;
 
-        public Boolean getIsPropertyCurrencyUomRemoved()
+        public Boolean getIsPropertyCurrencyUomIdRemoved()
         {
-            return this.isPropertyCurrencyUomRemoved;
+            return this.isPropertyCurrencyUomIdRemoved;
         }
 
-        public void setIsPropertyCurrencyUomRemoved(Boolean removed)
+        public void setIsPropertyCurrencyUomIdRemoved(Boolean removed)
         {
-            this.isPropertyCurrencyUomRemoved = removed;
+            this.isPropertyCurrencyUomIdRemoved = removed;
         }
 
         private Boolean isPropertySyncStatusIdRemoved;

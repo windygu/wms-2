@@ -27,6 +27,7 @@ public final class OrderShipGroupMetadata {
             "facilityId",
             "contactMechId",
             "telecomContactMechId",
+            "contactPartyId",
             "trackingNumber",
             "shippingInstructions",
             "maySplit",
@@ -37,6 +38,10 @@ public final class OrderShipGroupMetadata {
             "estimatedShipDate",
             "estimatedDeliveryDate",
             "pickwaveId",
+            "numberOfPackages",
+            "numberOfContainers",
+            "numberOfPakagesPerContainer",
+            "statusId",
             "version",
             "createdBy",
             "createdAt",
@@ -64,11 +69,16 @@ public final class OrderShipGroupMetadata {
             "String",
             "String",
             "String",
+            "String",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "Long",
+            "Integer",
+            "Integer",
+            "Integer",
+            "String",
             "Long",
             "String",
             "Date",
@@ -111,6 +121,8 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("ContactMechId", "contactMechId");
         aliasMap.put("telecomContactMechId", "telecomContactMechId");
         aliasMap.put("TelecomContactMechId", "telecomContactMechId");
+        aliasMap.put("contactPartyId", "contactPartyId");
+        aliasMap.put("ContactPartyId", "contactPartyId");
         aliasMap.put("trackingNumber", "trackingNumber");
         aliasMap.put("TrackingNumber", "trackingNumber");
         aliasMap.put("shippingInstructions", "shippingInstructions");
@@ -131,6 +143,14 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("EstimatedDeliveryDate", "estimatedDeliveryDate");
         aliasMap.put("pickwaveId", "pickwaveId");
         aliasMap.put("PickwaveId", "pickwaveId");
+        aliasMap.put("numberOfPackages", "numberOfPackages");
+        aliasMap.put("NumberOfPackages", "numberOfPackages");
+        aliasMap.put("numberOfContainers", "numberOfContainers");
+        aliasMap.put("NumberOfContainers", "numberOfContainers");
+        aliasMap.put("numberOfPakagesPerContainer", "numberOfPakagesPerContainer");
+        aliasMap.put("NumberOfPakagesPerContainer", "numberOfPakagesPerContainer");
+        aliasMap.put("statusId", "statusId");
+        aliasMap.put("StatusId", "statusId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

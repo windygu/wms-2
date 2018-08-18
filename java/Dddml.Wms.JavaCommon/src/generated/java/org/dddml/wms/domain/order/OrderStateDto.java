@@ -130,16 +130,16 @@ public class OrderStateDto
         this.statusId = statusId;
     }
 
-    private String currencyUom;
+    private String currencyUomId;
 
-    public String getCurrencyUom()
+    public String getCurrencyUomId()
     {
-        return this.currencyUom;
+        return this.currencyUomId;
     }
 
-    public void setCurrencyUom(String currencyUom)
+    public void setCurrencyUomId(String currencyUomId)
     {
-        this.currencyUom = currencyUom;
+        this.currencyUomId = currencyUomId;
     }
 
     private String syncStatusId;
@@ -477,8 +477,8 @@ public class OrderStateDto
             if (returnedFieldsContains("StatusId")) {
                 dto.setStatusId(state.getStatusId());
             }
-            if (returnedFieldsContains("CurrencyUom")) {
-                dto.setCurrencyUom(state.getCurrencyUom());
+            if (returnedFieldsContains("CurrencyUomId")) {
+                dto.setCurrencyUomId(state.getCurrencyUomId());
             }
             if (returnedFieldsContains("SyncStatusId")) {
                 dto.setSyncStatusId(state.getSyncStatusId());

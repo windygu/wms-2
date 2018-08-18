@@ -131,6 +131,18 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.telecomContactMechId = telecomContactMechId;
     }
 
+    private String contactPartyId;
+
+    public String getContactPartyId()
+    {
+        return this.contactPartyId;
+    }
+
+    public void setContactPartyId(String contactPartyId)
+    {
+        this.contactPartyId = contactPartyId;
+    }
+
     private String trackingNumber;
 
     public String getTrackingNumber()
@@ -249,6 +261,54 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
     public void setPickwaveId(Long pickwaveId)
     {
         this.pickwaveId = pickwaveId;
+    }
+
+    private Integer numberOfPackages;
+
+    public Integer getNumberOfPackages()
+    {
+        return this.numberOfPackages;
+    }
+
+    public void setNumberOfPackages(Integer numberOfPackages)
+    {
+        this.numberOfPackages = numberOfPackages;
+    }
+
+    private Integer numberOfContainers;
+
+    public Integer getNumberOfContainers()
+    {
+        return this.numberOfContainers;
+    }
+
+    public void setNumberOfContainers(Integer numberOfContainers)
+    {
+        this.numberOfContainers = numberOfContainers;
+    }
+
+    private Integer numberOfPakagesPerContainer;
+
+    public Integer getNumberOfPakagesPerContainer()
+    {
+        return this.numberOfPakagesPerContainer;
+    }
+
+    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
+    {
+        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
+    }
+
+    private String statusId;
+
+    public String getStatusId()
+    {
+        return this.statusId;
+    }
+
+    public void setStatusId(String statusId)
+    {
+        this.statusId = statusId;
     }
 
     private Long version;
@@ -409,6 +469,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setFacilityId(e.getFacilityId());
         this.setContactMechId(e.getContactMechId());
         this.setTelecomContactMechId(e.getTelecomContactMechId());
+        this.setContactPartyId(e.getContactPartyId());
         this.setTrackingNumber(e.getTrackingNumber());
         this.setShippingInstructions(e.getShippingInstructions());
         this.setMaySplit(e.getMaySplit());
@@ -419,6 +480,10 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setEstimatedShipDate(e.getEstimatedShipDate());
         this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
         this.setPickwaveId(e.getPickwaveId());
+        this.setNumberOfPackages(e.getNumberOfPackages());
+        this.setNumberOfContainers(e.getNumberOfContainers());
+        this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
+        this.setStatusId(e.getStatusId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -523,6 +588,17 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         else
         {
             this.setTelecomContactMechId(e.getTelecomContactMechId());
+        }
+        if (e.getContactPartyId() == null)
+        {
+            if (e.getIsPropertyContactPartyIdRemoved() != null && e.getIsPropertyContactPartyIdRemoved())
+            {
+                this.setContactPartyId(null);
+            }
+        }
+        else
+        {
+            this.setContactPartyId(e.getContactPartyId());
         }
         if (e.getTrackingNumber() == null)
         {
@@ -633,6 +709,50 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         else
         {
             this.setPickwaveId(e.getPickwaveId());
+        }
+        if (e.getNumberOfPackages() == null)
+        {
+            if (e.getIsPropertyNumberOfPackagesRemoved() != null && e.getIsPropertyNumberOfPackagesRemoved())
+            {
+                this.setNumberOfPackages(null);
+            }
+        }
+        else
+        {
+            this.setNumberOfPackages(e.getNumberOfPackages());
+        }
+        if (e.getNumberOfContainers() == null)
+        {
+            if (e.getIsPropertyNumberOfContainersRemoved() != null && e.getIsPropertyNumberOfContainersRemoved())
+            {
+                this.setNumberOfContainers(null);
+            }
+        }
+        else
+        {
+            this.setNumberOfContainers(e.getNumberOfContainers());
+        }
+        if (e.getNumberOfPakagesPerContainer() == null)
+        {
+            if (e.getIsPropertyNumberOfPakagesPerContainerRemoved() != null && e.getIsPropertyNumberOfPakagesPerContainerRemoved())
+            {
+                this.setNumberOfPakagesPerContainer(null);
+            }
+        }
+        else
+        {
+            this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
+        }
+        if (e.getStatusId() == null)
+        {
+            if (e.getIsPropertyStatusIdRemoved() != null && e.getIsPropertyStatusIdRemoved())
+            {
+                this.setStatusId(null);
+            }
+        }
+        else
+        {
+            this.setStatusId(e.getStatusId());
         }
         if (e.getActive() == null)
         {

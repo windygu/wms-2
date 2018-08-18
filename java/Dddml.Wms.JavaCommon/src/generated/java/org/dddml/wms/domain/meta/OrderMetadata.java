@@ -28,7 +28,7 @@ public final class OrderMetadata {
             "entryDate",
             "pickSheetPrintedDate",
             "statusId",
-            "currencyUom",
+            "currencyUomId",
             "syncStatusId",
             "billingAccountId",
             "originFacilityId",
@@ -119,8 +119,8 @@ public final class OrderMetadata {
         aliasMap.put("PickSheetPrintedDate", "pickSheetPrintedDate");
         aliasMap.put("statusId", "statusId");
         aliasMap.put("StatusId", "statusId");
-        aliasMap.put("currencyUom", "currencyUom");
-        aliasMap.put("CurrencyUom", "currencyUom");
+        aliasMap.put("currencyUomId", "currencyUomId");
+        aliasMap.put("CurrencyUomId", "currencyUomId");
         aliasMap.put("syncStatusId", "syncStatusId");
         aliasMap.put("SyncStatusId", "syncStatusId");
         aliasMap.put("billingAccountId", "billingAccountId");

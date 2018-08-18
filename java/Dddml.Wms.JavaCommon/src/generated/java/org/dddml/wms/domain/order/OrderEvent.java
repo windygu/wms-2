@@ -63,9 +63,9 @@ public interface OrderEvent extends Event
 
         void setStatusId(String statusId);
 
-        String getCurrencyUom();
+        String getCurrencyUomId();
 
-        void setCurrencyUom(String currencyUom);
+        void setCurrencyUomId(String currencyUomId);
 
         String getSyncStatusId();
 
@@ -191,9 +191,9 @@ public interface OrderEvent extends Event
 
         void setIsPropertyStatusIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyCurrencyUomRemoved();
+        Boolean getIsPropertyCurrencyUomIdRemoved();
 
-        void setIsPropertyCurrencyUomRemoved(Boolean removed);
+        void setIsPropertyCurrencyUomIdRemoved(Boolean removed);
 
         Boolean getIsPropertySyncStatusIdRemoved();
 

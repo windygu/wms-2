@@ -41,7 +41,7 @@ aggregates:
       # FirstAttemptOrderId:
         # type: id
         
-      CurrencyUom:
+      CurrencyUomId:
         type: id
       SyncStatusId:
         type: id
@@ -310,11 +310,14 @@ aggregates:
             
           FacilityId:
             type: id
+            
           ContactMechId:
             type: id
-            
           TelecomContactMechId:
             type: id
+          # 联系人 Id
+          ContactPartyId:
+            referenceType: Party
             
           TrackingNumber:
             type: short-varchar
@@ -347,6 +350,20 @@ aggregates:
           PickwaveId:
             referenceType: Pickwave
           # -------------------------
+          # 件数（包裹数量）
+          NumberOfPackages:
+            type: int
+          # 柜数（集装箱数量）
+          NumberOfContainers:
+            type: int
+          # 每集装箱件数
+          NumberOfPakagesPerContainer:
+            type: int
+          # -------------------------
+          # 订单装运组的状态
+          StatusId:
+            type: id
+            referenceType: StatusItem
           
           OrderItemShipGroupAssociations:
             itemType: OrderItemShipGroupAssociation
