@@ -102,8 +102,16 @@ public interface RxShipmentsClient {
     Observable<String> addItemAndReceipt(@Path("id") String id, @Body ShipmentCommandDtos.AddItemAndReceiptRequestContent content);
 
     @Headers("Accept: application/json")
+    @PUT("Shipments/{id}/_commands/AddItemAndIssuance")
+    Observable<String> addItemAndIssuance(@Path("id") String id, @Body ShipmentCommandDtos.AddItemAndIssuanceRequestContent content);
+
+    @Headers("Accept: application/json")
     @PUT("Shipments/{id}/_commands/ConfirmAllItemsReceived")
     Observable<String> confirmAllItemsReceived(@Path("id") String id, @Body ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content);
+
+    @Headers("Accept: application/json")
+    @PUT("Shipments/{id}/_commands/ConfirmAllItemsIssued")
+    Observable<String> confirmAllItemsIssued(@Path("id") String id, @Body ShipmentCommandDtos.ConfirmAllItemsIssuedRequestContent content);
 
 }
 

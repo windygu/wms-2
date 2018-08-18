@@ -22,7 +22,11 @@ public interface ShipmentApplicationService
 
     void when(ShipmentCommands.AddItemAndReceipt c);
 
+    void when(ShipmentCommands.AddItemAndIssuance c);
+
     void when(ShipmentCommands.ConfirmAllItemsReceived c);
+
+    void when(ShipmentCommands.ConfirmAllItemsIssued c);
 
     ShipmentState get(String id);
 

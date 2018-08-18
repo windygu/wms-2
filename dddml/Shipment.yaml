@@ -493,7 +493,7 @@ aggregates:
       # 增加一个接收项以及对应的装运项
       AddItemAndReceipt:
         parameters:
-          # 接收项目的 Sequence Id.
+          # 接收项的 Sequence Id.
           ReceiptSeqId:
             type: id
           # 产品 Id.
@@ -523,7 +523,49 @@ aggregates:
           # -----------------------------------
           ItemDescription:
             type: description
+
+      # --------------------------------------
+      # 增加一个发货项以及对应的装运项
+      AddItemAndIssuance:
+        parameters:
+          # 订单 Id
+          OrderId:
+            type: id-ne
+          # 订单项目序列号
+          OrderItemSeqId:
+            type: id-ne
+          # 订单装运组的 Seq Id.（通知单号)
+          ShipGroupSeqId:
+            type: numeric
+          # 发货项的 Seq Id.
+          ItemIssuanceSeqId:
+            type: id
+          # -----------------------------
+          # # 装运单项目序列号
+          # ShipmentItemSeqId:
+          #   type: id-ne
+          # -----------------------------
+          # 产品 Id
+          ProductId:
+            type: id-long
+          # 货位 Id.
+          LocatorId: 
+            type: string
+          # 属性集信息
+          AttributeSetInstance:
+            type: map
+          Quantity:
+            type: fixed-point
+          CancelQuantity:
+            type: fixed-point
+          # # 数量单位 Id.
+          # QuantityUomId:
+          #   type: string
+          # -----------------------------------
+          ItemDescription:
+            type: description
             
+          
       # --------------------------------------
       # 确认所有装运项已接收
       ConfirmAllItemsReceived:
@@ -531,7 +573,15 @@ aggregates:
           # 目标货位
           DestinationLocatorId:
             type: string
-      
+
+      # --------------------------------------
+      # 确认所有装运项已发货
+      ConfirmAllItemsIssued:
+        parameters:
+          # # 源货位？
+          # SourceLocatorId:
+          #   type: string
+            
       
     # ---------------------------------
     valueObjects:

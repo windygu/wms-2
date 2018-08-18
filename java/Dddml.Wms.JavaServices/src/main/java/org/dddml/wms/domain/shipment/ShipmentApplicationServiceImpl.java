@@ -57,7 +57,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Override
     @Transactional
     public void when(ShipmentCommands.ConfirmAllItemsReceived c) {
-
+        // /////////////////////////////////////////////////////////////////
+        // 目前要确认收货，必须把单据置到“采购装运已发货”的状态
+        // /////////////////////////////////////////////////////////////////
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
 
         Map<Object, ShipmentReceiptState> shipmentReceiptDict = StreamSupport.stream(
@@ -131,6 +133,21 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 );
         // ////////////////////////////////////////////////////
         updateShipment(c, updateReceipt, createShipmentItem);
+    }
+
+    @Override
+    @Transactional
+    public void when(ShipmentCommands.ConfirmAllItemsIssued c) {
+        //todo
+        // /////////////////////////////////////////////////////////////////
+        // 目前要确认发货，装运单的类型是？状态是？
+        // /////////////////////////////////////////////////////////////////
+    }
+
+    @Override
+    @Transactional
+    public void when(ShipmentCommands.AddItemAndIssuance c) {
+        //todo
     }
 
     private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndReceipt c,
@@ -358,6 +375,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     public ShipmentAggregate getShipmentAggregate(ShipmentState state) {
         return new ShipmentAggregateImpl(state);
     }
+
     public static class ShipmentAggregateImpl extends AbstractShipmentAggregate.SimpleShipmentAggregate{
 
         public ShipmentAggregateImpl(ShipmentState state) {

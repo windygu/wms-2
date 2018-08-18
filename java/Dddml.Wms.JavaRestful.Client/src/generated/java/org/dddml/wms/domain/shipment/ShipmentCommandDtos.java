@@ -795,6 +795,196 @@ public class ShipmentCommandDtos
 
     }
 
+    public static class AddItemAndIssuanceRequestContent {
+
+        public String getCommandType() {
+            return "AddItemAndIssuance";
+        }
+
+        /**
+         * Order Id
+         */
+        private String orderId;
+
+        public String getOrderId() {
+            return this.orderId;
+        }
+
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
+
+        /**
+         * Order Item Seq Id
+         */
+        private String orderItemSeqId;
+
+        public String getOrderItemSeqId() {
+            return this.orderItemSeqId;
+        }
+
+        public void setOrderItemSeqId(String orderItemSeqId) {
+            this.orderItemSeqId = orderItemSeqId;
+        }
+
+        /**
+         * Ship Group Seq Id
+         */
+        private Long shipGroupSeqId;
+
+        public Long getShipGroupSeqId() {
+            return this.shipGroupSeqId;
+        }
+
+        public void setShipGroupSeqId(Long shipGroupSeqId) {
+            this.shipGroupSeqId = shipGroupSeqId;
+        }
+
+        /**
+         * Item Issuance Seq Id
+         */
+        private String itemIssuanceSeqId;
+
+        public String getItemIssuanceSeqId() {
+            return this.itemIssuanceSeqId;
+        }
+
+        public void setItemIssuanceSeqId(String itemIssuanceSeqId) {
+            this.itemIssuanceSeqId = itemIssuanceSeqId;
+        }
+
+        /**
+         * Product Id
+         */
+        private String productId;
+
+        public String getProductId() {
+            return this.productId;
+        }
+
+        public void setProductId(String productId) {
+            this.productId = productId;
+        }
+
+        /**
+         * Locator Id
+         */
+        private String locatorId;
+
+        public String getLocatorId() {
+            return this.locatorId;
+        }
+
+        public void setLocatorId(String locatorId) {
+            this.locatorId = locatorId;
+        }
+
+        /**
+         * Attribute Set Instance
+         */
+        private java.util.Map<String, Object> attributeSetInstance;
+
+        public java.util.Map<String, Object> getAttributeSetInstance() {
+            return this.attributeSetInstance;
+        }
+
+        public void setAttributeSetInstance(java.util.Map<String, Object> attributeSetInstance) {
+            this.attributeSetInstance = attributeSetInstance;
+        }
+
+        /**
+         * Quantity
+         */
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity() {
+            return this.quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity) {
+            this.quantity = quantity;
+        }
+
+        /**
+         * Cancel Quantity
+         */
+        private java.math.BigDecimal cancelQuantity;
+
+        public java.math.BigDecimal getCancelQuantity() {
+            return this.cancelQuantity;
+        }
+
+        public void setCancelQuantity(java.math.BigDecimal cancelQuantity) {
+            this.cancelQuantity = cancelQuantity;
+        }
+
+        /**
+         * Item Description
+         */
+        private String itemDescription;
+
+        public String getItemDescription() {
+            return this.itemDescription;
+        }
+
+        public void setItemDescription(String itemDescription) {
+            this.itemDescription = itemDescription;
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Version
+         */
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
     public static class ConfirmAllItemsReceivedRequestContent {
 
         public String getCommandType() {
@@ -812,6 +1002,66 @@ public class ShipmentCommandDtos
 
         public void setDestinationLocatorId(String destinationLocatorId) {
             this.destinationLocatorId = destinationLocatorId;
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Version
+         */
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
+    public static class ConfirmAllItemsIssuedRequestContent {
+
+        public String getCommandType() {
+            return "ConfirmAllItemsIssued";
         }
 
         /**

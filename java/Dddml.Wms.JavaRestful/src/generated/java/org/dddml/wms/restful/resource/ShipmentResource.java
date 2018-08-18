@@ -287,11 +287,45 @@ public class ShipmentResource {
     }
 
 
+    @PutMapping("{shipmentId}/_commands/AddItemAndIssuance")
+    public void addItemAndIssuance(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.AddItemAndIssuance content) {
+        try {
+
+            ShipmentCommands.AddItemAndIssuance cmd = content;//.toAddItemAndIssuance();
+            String idObj = shipmentId;
+            if (cmd.getShipmentId() == null) {
+                cmd.setShipmentId(idObj);
+            } else if (!cmd.getShipmentId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
+            }
+            shipmentApplicationService.when(cmd);
+
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @PutMapping("{shipmentId}/_commands/ConfirmAllItemsReceived")
     public void confirmAllItemsReceived(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ConfirmAllItemsReceived content) {
         try {
 
             ShipmentCommands.ConfirmAllItemsReceived cmd = content;//.toConfirmAllItemsReceived();
+            String idObj = shipmentId;
+            if (cmd.getShipmentId() == null) {
+                cmd.setShipmentId(idObj);
+            } else if (!cmd.getShipmentId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
+            }
+            shipmentApplicationService.when(cmd);
+
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    @PutMapping("{shipmentId}/_commands/ConfirmAllItemsIssued")
+    public void confirmAllItemsIssued(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ConfirmAllItemsIssued content) {
+        try {
+
+            ShipmentCommands.ConfirmAllItemsIssued cmd = content;//.toConfirmAllItemsIssued();
             String idObj = shipmentId;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);
