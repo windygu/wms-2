@@ -39,7 +39,7 @@ public class OrderShipGroupTests {
         //订单 Id（合同号）
         createPOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createPOShipGroup.setShipGroupSeqId(Long.parseLong(new SimpleDateFormat("yyyyMMdd").format(new Date()) + "01"));
+        createPOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
         //（预计）入库时间
         createPOShipGroup.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
         //件数
@@ -49,7 +49,7 @@ public class OrderShipGroupTests {
         //每柜件数
         createPOShipGroup.setNumberOfPakagesPerContainer(40);
         //产品 Id
-        createPOShipGroup.setProductId("f1");
+        createPOShipGroup.setProductId(getTestSerialNumberedProductId());
         //数量（以产品的主计量单位计算）
         createPOShipGroup.setQuantity(BigDecimal.valueOf(100000));
         //跟踪单号
@@ -71,7 +71,7 @@ public class OrderShipGroupTests {
         //订单 Id（合同号）
         createPOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createPOShipGroup.setShipGroupSeqId(Long.parseLong(new SimpleDateFormat("yyyyMMdd").format(new Date()) + "01"));
+        createPOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
         //（预计）入库时间
         createPOShipGroup.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
         //件数
@@ -110,7 +110,7 @@ public class OrderShipGroupTests {
         //订单 Id（合同号）
         createSOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createSOShipGroup.setShipGroupSeqId(Long.parseLong(new SimpleDateFormat("yyyyMMdd").format(new Date()) + "01"));
+        createSOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
         //（预计）入库时间
         createSOShipGroup.setEstimatedShipDate(new Timestamp(new Date().getTime()));
         //件数
@@ -120,7 +120,7 @@ public class OrderShipGroupTests {
         //每柜件数
         createSOShipGroup.setNumberOfPakagesPerContainer(40);
         //产品 Id
-        createSOShipGroup.setProductId("f1");
+        createSOShipGroup.setProductId(getTestSerialNumberedProductId());
         //数量（以产品的主计量单位计算）
         createSOShipGroup.setQuantity(BigDecimal.valueOf(100000));
         //跟踪单号
@@ -147,6 +147,17 @@ public class OrderShipGroupTests {
         createPerson.setActive(true);
         partyApplicationService.when(createPerson);
         return partyId;
+    }
+
+    private String getTestShipGroupSeqId() {
+        String randStr = ("000000" + UUID.randomUUID().toString().hashCode());
+        String seqId = new SimpleDateFormat("yyyyMMdd").format(new Date())
+                + randStr.substring(randStr.length() - 6);
+        return seqId;
+    }
+
+    private String getTestSerialNumberedProductId() {
+        return "f1";//todo 如果这个产品不存在，需要创建它。
     }
 
     private ProductCommand.CreateProduct createProduct_1() {
