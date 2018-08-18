@@ -441,8 +441,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setFacilityId(c.getFacilityId());
         e.setContactMechId(c.getContactMechId());
         e.setTelecomContactMechId(c.getTelecomContactMechId());
-        e.setContactPartyId(c.getContactPartyId());
         e.setTrackingNumber(c.getTrackingNumber());
+        e.setContactPartyId(c.getContactPartyId());
+        e.setVehiclePlateNumber(c.getVehiclePlateNumber());
         e.setShippingInstructions(c.getShippingInstructions());
         e.setMaySplit(c.getMaySplit());
         e.setGiftMessage(c.getGiftMessage());
@@ -487,8 +488,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setFacilityId(c.getFacilityId());
         e.setContactMechId(c.getContactMechId());
         e.setTelecomContactMechId(c.getTelecomContactMechId());
-        e.setContactPartyId(c.getContactPartyId());
         e.setTrackingNumber(c.getTrackingNumber());
+        e.setContactPartyId(c.getContactPartyId());
+        e.setVehiclePlateNumber(c.getVehiclePlateNumber());
         e.setShippingInstructions(c.getShippingInstructions());
         e.setMaySplit(c.getMaySplit());
         e.setGiftMessage(c.getGiftMessage());
@@ -511,8 +513,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyFacilityIdRemoved(c.getIsPropertyFacilityIdRemoved());
         e.setIsPropertyContactMechIdRemoved(c.getIsPropertyContactMechIdRemoved());
         e.setIsPropertyTelecomContactMechIdRemoved(c.getIsPropertyTelecomContactMechIdRemoved());
-        e.setIsPropertyContactPartyIdRemoved(c.getIsPropertyContactPartyIdRemoved());
         e.setIsPropertyTrackingNumberRemoved(c.getIsPropertyTrackingNumberRemoved());
+        e.setIsPropertyContactPartyIdRemoved(c.getIsPropertyContactPartyIdRemoved());
+        e.setIsPropertyVehiclePlateNumberRemoved(c.getIsPropertyVehiclePlateNumberRemoved());
         e.setIsPropertyShippingInstructionsRemoved(c.getIsPropertyShippingInstructionsRemoved());
         e.setIsPropertyMaySplitRemoved(c.getIsPropertyMaySplitRemoved());
         e.setIsPropertyGiftMessageRemoved(c.getIsPropertyGiftMessageRemoved());

@@ -25,6 +25,10 @@ public interface OrderShipGroupServiceClient {
     Call<String> createPOShipGroup(@Body OrderShipGroupServiceCommandDtos.CreatePOShipGroupDto requestContent);
 
     @Headers("Accept: application/json")
+    @POST("OrderShipGroupService/CreateSOShipGroup")
+    Call<String> createSOShipGroup(@Body OrderShipGroupServiceCommandDtos.CreateSOShipGroupDto requestContent);
+
+    @Headers("Accept: application/json")
     @POST("OrderShipGroupService/CreatePOShipment")
     Call<String> createPOShipment(@Body OrderShipGroupServiceCommandDtos.CreatePOShipmentDto requestContent);
 

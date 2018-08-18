@@ -126,6 +126,21 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
+     * Tracking Number
+     */
+    private String trackingNumber;
+
+    public String getTrackingNumber()
+    {
+        return this.trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber)
+    {
+        this.trackingNumber = trackingNumber;
+    }
+
+    /**
      * Contact Party Id
      */
     private String contactPartyId;
@@ -141,18 +156,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
-     * Tracking Number
+     * Vehicle Plate Number
      */
-    private String trackingNumber;
+    private String vehiclePlateNumber;
 
-    public String getTrackingNumber()
+    public String getVehiclePlateNumber()
     {
-        return this.trackingNumber;
+        return this.vehiclePlateNumber;
     }
 
-    public void setTrackingNumber(String trackingNumber)
+    public void setVehiclePlateNumber(String vehiclePlateNumber)
     {
-        this.trackingNumber = trackingNumber;
+        this.vehiclePlateNumber = vehiclePlateNumber;
     }
 
     /**
@@ -473,6 +488,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyTelecomContactMechIdRemoved = removed;
     }
 
+    private Boolean isPropertyTrackingNumberRemoved;
+
+    public Boolean getIsPropertyTrackingNumberRemoved()
+    {
+        return this.isPropertyTrackingNumberRemoved;
+    }
+
+    public void setIsPropertyTrackingNumberRemoved(Boolean removed)
+    {
+        this.isPropertyTrackingNumberRemoved = removed;
+    }
+
     private Boolean isPropertyContactPartyIdRemoved;
 
     public Boolean getIsPropertyContactPartyIdRemoved()
@@ -485,16 +512,16 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyContactPartyIdRemoved = removed;
     }
 
-    private Boolean isPropertyTrackingNumberRemoved;
+    private Boolean isPropertyVehiclePlateNumberRemoved;
 
-    public Boolean getIsPropertyTrackingNumberRemoved()
+    public Boolean getIsPropertyVehiclePlateNumberRemoved()
     {
-        return this.isPropertyTrackingNumberRemoved;
+        return this.isPropertyVehiclePlateNumberRemoved;
     }
 
-    public void setIsPropertyTrackingNumberRemoved(Boolean removed)
+    public void setIsPropertyVehiclePlateNumberRemoved(Boolean removed)
     {
-        this.isPropertyTrackingNumberRemoved = removed;
+        this.isPropertyVehiclePlateNumberRemoved = removed;
     }
 
     private Boolean isPropertyShippingInstructionsRemoved;
@@ -676,8 +703,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setFacilityId(this.getFacilityId());
         command.setContactMechId(this.getContactMechId());
         command.setTelecomContactMechId(this.getTelecomContactMechId());
-        command.setContactPartyId(this.getContactPartyId());
         command.setTrackingNumber(this.getTrackingNumber());
+        command.setContactPartyId(this.getContactPartyId());
+        command.setVehiclePlateNumber(this.getVehiclePlateNumber());
         command.setShippingInstructions(this.getShippingInstructions());
         command.setMaySplit(this.getMaySplit());
         command.setGiftMessage(this.getGiftMessage());
@@ -742,8 +770,9 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setIsPropertyFacilityIdRemoved(this.getIsPropertyFacilityIdRemoved());
         command.setIsPropertyContactMechIdRemoved(this.getIsPropertyContactMechIdRemoved());
         command.setIsPropertyTelecomContactMechIdRemoved(this.getIsPropertyTelecomContactMechIdRemoved());
-        command.setIsPropertyContactPartyIdRemoved(this.getIsPropertyContactPartyIdRemoved());
         command.setIsPropertyTrackingNumberRemoved(this.getIsPropertyTrackingNumberRemoved());
+        command.setIsPropertyContactPartyIdRemoved(this.getIsPropertyContactPartyIdRemoved());
+        command.setIsPropertyVehiclePlateNumberRemoved(this.getIsPropertyVehiclePlateNumberRemoved());
         command.setIsPropertyShippingInstructionsRemoved(this.getIsPropertyShippingInstructionsRemoved());
         command.setIsPropertyMaySplitRemoved(this.getIsPropertyMaySplitRemoved());
         command.setIsPropertyGiftMessageRemoved(this.getIsPropertyGiftMessageRemoved());

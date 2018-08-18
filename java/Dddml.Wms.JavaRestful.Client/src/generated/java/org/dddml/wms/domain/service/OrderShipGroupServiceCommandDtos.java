@@ -186,6 +186,192 @@ public class OrderShipGroupServiceCommandDtos {
 
     }
 
+    public static class CreateSOShipGroupDto {
+
+        /**
+         * Order Id
+         */
+        private String orderId;
+
+        public String getOrderId() {
+            return orderId;
+        }
+
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
+
+        /**
+         * Ship Group Seq Id
+         */
+        private Long shipGroupSeqId;
+
+        public Long getShipGroupSeqId() {
+            return shipGroupSeqId;
+        }
+
+        public void setShipGroupSeqId(Long shipGroupSeqId) {
+            this.shipGroupSeqId = shipGroupSeqId;
+        }
+
+        /**
+         * Number Of Packages
+         */
+        private Integer numberOfPackages;
+
+        public Integer getNumberOfPackages() {
+            return numberOfPackages;
+        }
+
+        public void setNumberOfPackages(Integer numberOfPackages) {
+            this.numberOfPackages = numberOfPackages;
+        }
+
+        /**
+         * Number Of Containers
+         */
+        private Integer numberOfContainers;
+
+        public Integer getNumberOfContainers() {
+            return numberOfContainers;
+        }
+
+        public void setNumberOfContainers(Integer numberOfContainers) {
+            this.numberOfContainers = numberOfContainers;
+        }
+
+        /**
+         * Number Of Pakages Per Container
+         */
+        private Integer numberOfPakagesPerContainer;
+
+        public Integer getNumberOfPakagesPerContainer() {
+            return numberOfPakagesPerContainer;
+        }
+
+        public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer) {
+            this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
+        }
+
+        /**
+         * Product Id
+         */
+        private String productId;
+
+        public String getProductId() {
+            return productId;
+        }
+
+        public void setProductId(String productId) {
+            this.productId = productId;
+        }
+
+        /**
+         * Quantity
+         */
+        private java.math.BigDecimal quantity;
+
+        public java.math.BigDecimal getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(java.math.BigDecimal quantity) {
+            this.quantity = quantity;
+        }
+
+        /**
+         * Estimated Ship Date
+         */
+        private java.sql.Timestamp estimatedShipDate;
+
+        public java.sql.Timestamp getEstimatedShipDate() {
+            return estimatedShipDate;
+        }
+
+        public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate) {
+            this.estimatedShipDate = estimatedShipDate;
+        }
+
+        /**
+         * Contact Party Id
+         */
+        private String contactPartyId;
+
+        public String getContactPartyId() {
+            return contactPartyId;
+        }
+
+        public void setContactPartyId(String contactPartyId) {
+            this.contactPartyId = contactPartyId;
+        }
+
+        /**
+         * Telecom Contact Mech Id
+         */
+        private String telecomContactMechId;
+
+        public String getTelecomContactMechId() {
+            return telecomContactMechId;
+        }
+
+        public void setTelecomContactMechId(String telecomContactMechId) {
+            this.telecomContactMechId = telecomContactMechId;
+        }
+
+        /**
+         * Tracking Number
+         */
+        private String trackingNumber;
+
+        public String getTrackingNumber() {
+            return trackingNumber;
+        }
+
+        public void setTrackingNumber(String trackingNumber) {
+            this.trackingNumber = trackingNumber;
+        }
+
+        /**
+         * Vehicle Plate Number
+         */
+        private String vehiclePlateNumber;
+
+        public String getVehiclePlateNumber() {
+            return vehiclePlateNumber;
+        }
+
+        public void setVehiclePlateNumber(String vehiclePlateNumber) {
+            this.vehiclePlateNumber = vehiclePlateNumber;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
     public static class CreatePOShipmentDto {
 
         /**

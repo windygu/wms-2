@@ -33,8 +33,9 @@
 	<property name="facilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
 	<property name="contactMechId" ><column name="ContactMechId" sql-type="VARCHAR(20)" /></property>
 	<property name="telecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
-	<property name="contactPartyId" ></property>
 	<property name="trackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
+	<property name="contactPartyId" ></property>
+	<property name="vehiclePlateNumber" ><column name="VehiclePlateNumber" sql-type="VARCHAR(255)" /></property>
 	<property name="shippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
 	<property name="maySplit" ><column name="MaySplit" sql-type="CHAR(1)" /></property>
 	<property name="giftMessage" ><column name="GiftMessage" sql-type="VARCHAR(255)" /></property>
@@ -74,9 +75,11 @@
 
         <property name="isPropertyTelecomContactMechIdRemoved" column="IsPropertyTelecomContactMechIdRemoved"/>
 
+        <property name="isPropertyTrackingNumberRemoved" column="IsPropertyTrackingNumberRemoved"/>
+
         <property name="isPropertyContactPartyIdRemoved" column="IsPropertyContactPartyIdRemoved"/>
 
-        <property name="isPropertyTrackingNumberRemoved" column="IsPropertyTrackingNumberRemoved"/>
+        <property name="isPropertyVehiclePlateNumberRemoved" column="IsPropertyVehiclePlateNumberRemoved"/>
 
         <property name="isPropertyShippingInstructionsRemoved" column="IsPropertyShippingInstructionsRemoved"/>
 

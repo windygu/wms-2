@@ -315,13 +315,22 @@ aggregates:
             type: id
           TelecomContactMechId:
             type: id
-          # 联系人 Id
-          ContactPartyId:
-            referenceType: Party
             
+          # 跟踪单号
           TrackingNumber:
             type: short-varchar
             
+          # ------------------------------
+          # 联系人 / 司机 Id
+          ContactPartyId:
+            referenceType: Party
+          
+          # 车牌号
+          VehiclePlateNumber:
+            type: long-varchar
+          # ------------------------------
+          
+          # 发货指示 / 客户名称 / 备注等  
           ShippingInstructions:
             type: long-varchar
             
@@ -340,9 +349,10 @@ aggregates:
           ShipByDate:
             type: date-time
             
+          # 预计（发货）日期
           EstimatedShipDate:
             type: date-time
-            
+          # 预计交付（入库）日期  
           EstimatedDeliveryDate:
             type: date-time
 

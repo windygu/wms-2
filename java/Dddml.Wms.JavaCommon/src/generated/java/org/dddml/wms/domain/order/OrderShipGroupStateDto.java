@@ -117,6 +117,18 @@ public class OrderShipGroupStateDto
         this.telecomContactMechId = telecomContactMechId;
     }
 
+    private String trackingNumber;
+
+    public String getTrackingNumber()
+    {
+        return this.trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber)
+    {
+        this.trackingNumber = trackingNumber;
+    }
+
     private String contactPartyId;
 
     public String getContactPartyId()
@@ -129,16 +141,16 @@ public class OrderShipGroupStateDto
         this.contactPartyId = contactPartyId;
     }
 
-    private String trackingNumber;
+    private String vehiclePlateNumber;
 
-    public String getTrackingNumber()
+    public String getVehiclePlateNumber()
     {
-        return this.trackingNumber;
+        return this.vehiclePlateNumber;
     }
 
-    public void setTrackingNumber(String trackingNumber)
+    public void setVehiclePlateNumber(String vehiclePlateNumber)
     {
-        this.trackingNumber = trackingNumber;
+        this.vehiclePlateNumber = vehiclePlateNumber;
     }
 
     private String shippingInstructions;
@@ -449,11 +461,14 @@ public class OrderShipGroupStateDto
             if (returnedFieldsContains("TelecomContactMechId")) {
                 dto.setTelecomContactMechId(state.getTelecomContactMechId());
             }
+            if (returnedFieldsContains("TrackingNumber")) {
+                dto.setTrackingNumber(state.getTrackingNumber());
+            }
             if (returnedFieldsContains("ContactPartyId")) {
                 dto.setContactPartyId(state.getContactPartyId());
             }
-            if (returnedFieldsContains("TrackingNumber")) {
-                dto.setTrackingNumber(state.getTrackingNumber());
+            if (returnedFieldsContains("VehiclePlateNumber")) {
+                dto.setVehiclePlateNumber(state.getVehiclePlateNumber());
             }
             if (returnedFieldsContains("ShippingInstructions")) {
                 dto.setShippingInstructions(state.getShippingInstructions());

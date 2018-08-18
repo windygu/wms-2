@@ -62,13 +62,17 @@ public interface OrderShipGroupEvent extends Event
 
         void setTelecomContactMechId(String telecomContactMechId);
 
+        String getTrackingNumber();
+
+        void setTrackingNumber(String trackingNumber);
+
         String getContactPartyId();
 
         void setContactPartyId(String contactPartyId);
 
-        String getTrackingNumber();
+        String getVehiclePlateNumber();
 
-        void setTrackingNumber(String trackingNumber);
+        void setVehiclePlateNumber(String vehiclePlateNumber);
 
         String getShippingInstructions();
 
@@ -174,13 +178,17 @@ public interface OrderShipGroupEvent extends Event
 
         void setIsPropertyTelecomContactMechIdRemoved(Boolean removed);
 
+        Boolean getIsPropertyTrackingNumberRemoved();
+
+        void setIsPropertyTrackingNumberRemoved(Boolean removed);
+
         Boolean getIsPropertyContactPartyIdRemoved();
 
         void setIsPropertyContactPartyIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyTrackingNumberRemoved();
+        Boolean getIsPropertyVehiclePlateNumberRemoved();
 
-        void setIsPropertyTrackingNumberRemoved(Boolean removed);
+        void setIsPropertyVehiclePlateNumberRemoved(Boolean removed);
 
         Boolean getIsPropertyShippingInstructionsRemoved();
 

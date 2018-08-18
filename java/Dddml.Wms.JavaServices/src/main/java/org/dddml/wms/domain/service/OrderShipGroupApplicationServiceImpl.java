@@ -46,12 +46,13 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         createOrder.setCommandId(c.getCommandId());
         createOrder.setRequesterId(c.getRequesterId());
 
-        String orderItemSeqId = "1";//只有一行
+        // /////////// 只有一行 /////////////
+        String orderItemSeqId = "1";
+
         OrderItemCommand.CreateOrderItem orderItem = createOrder.newCreateOrderItem();
         orderItem.setOrderItemSeqId(orderItemSeqId);
-        // 确认 Product 存在
         String productId = c.getProductId();
-        ProductState productState = assertProductId(productId);
+        ProductState productState = assertProductId(productId); // 确认 Product 存在
         orderItem.setProductId(productState.getProductId());
         orderItem.setQuantity(c.getQuantity());//数量
         orderItem.setActive(true);
@@ -59,8 +60,9 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
         OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = createOrder.newCreateOrderShipGroup();
         orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
-        orderShipGroup.setContactPartyId(c.getContactPartyId());
         orderShipGroup.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
+        orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//电话号码
+        orderShipGroup.setContactPartyId(c.getContactPartyId());
         orderShipGroup.setTrackingNumber(c.getTrackingNumber());
         orderShipGroup.setNumberOfPackages(c.getNumberOfPackages());//件数
         orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
@@ -78,12 +80,52 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         getOrderApplicationService().when(createOrder);
     }
 
-    private ProductState assertProductId(String productId) {
-        ProductState productState = getProductApplicationService().get(productId);
-        if (productState == null) {
-            throw new IllegalArgumentException(String.format("Product Id '%1$s' error.", productId));
-        }
-        return productState;
+    @Transactional
+    @Override
+    public void when(OrderShipGroupServiceCommands.CreateSOShipGroup c) {
+        OrderCommand.CreateOrder createOrder = new AbstractOrderCommand.SimpleCreateOrder();
+
+        createOrder.setOrderId(c.getOrderId());
+        createOrder.setOrderTypeId(OrderTypeIds.SALES_ORDER);//出库，先写死订单类型
+        createOrder.setActive(true);
+        createOrder.setCommandId(c.getCommandId());
+        createOrder.setRequesterId(c.getRequesterId());
+
+        // /////////// 只有一行 /////////////
+        String orderItemSeqId = "1";
+
+        OrderItemCommand.CreateOrderItem orderItem = createOrder.newCreateOrderItem();
+        orderItem.setOrderItemSeqId(orderItemSeqId);
+        String productId = c.getProductId();// 确认 Product 存在
+        ProductState productState = assertProductId(productId);
+        orderItem.setProductId(productState.getProductId());
+        orderItem.setQuantity(c.getQuantity());//数量
+        orderItem.setActive(true);
+        createOrder.getOrderItems().add(orderItem);
+
+        OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = createOrder.newCreateOrderShipGroup();
+        orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
+        orderShipGroup.setEstimatedShipDate(c.getEstimatedShipDate());//预计发货日期
+        orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//司机 / 联系人电话
+        orderShipGroup.setContactPartyId(c.getContactPartyId());//司机 / 联系人
+        orderShipGroup.setTrackingNumber(c.getTrackingNumber());
+        //---------------------
+        orderShipGroup.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
+        //---------------------
+        orderShipGroup.setNumberOfPackages(c.getNumberOfPackages());//件数
+        orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
+        orderShipGroup.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());//每柜件数
+        orderShipGroup.setActive(true);
+        createOrder.getOrderShipGroups().add(orderShipGroup);
+
+        OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation orderItemShipGroupAssociation
+                = orderShipGroup.newCreateOrderItemShipGroupAssociation();
+        orderItemShipGroupAssociation.setOrderItemSeqId(orderItem.getOrderItemSeqId());
+        orderItemShipGroupAssociation.setQuantity(orderItem.getQuantity());
+        orderItemShipGroupAssociation.setActive(true);
+        orderShipGroup.getOrderItemShipGroupAssociations().add(orderItemShipGroupAssociation);
+
+        getOrderApplicationService().when(createOrder);
     }
 
     @Transactional
@@ -134,4 +176,11 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         return shipmentId;
     }
 
+    private ProductState assertProductId(String productId) {
+        ProductState productState = getProductApplicationService().get(productId);
+        if (productState == null) {
+            throw new IllegalArgumentException(String.format("Product Id '%1$s' error.", productId));
+        }
+        return productState;
+    }
 }

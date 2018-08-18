@@ -126,6 +126,21 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
+     * Tracking Number
+     */
+    private String trackingNumber;
+
+    public String getTrackingNumber()
+    {
+        return this.trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber)
+    {
+        this.trackingNumber = trackingNumber;
+    }
+
+    /**
      * Contact Party Id
      */
     private String contactPartyId;
@@ -141,18 +156,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
-     * Tracking Number
+     * Vehicle Plate Number
      */
-    private String trackingNumber;
+    private String vehiclePlateNumber;
 
-    public String getTrackingNumber()
+    public String getVehiclePlateNumber()
     {
-        return this.trackingNumber;
+        return this.vehiclePlateNumber;
     }
 
-    public void setTrackingNumber(String trackingNumber)
+    public void setVehiclePlateNumber(String vehiclePlateNumber)
     {
-        this.trackingNumber = trackingNumber;
+        this.vehiclePlateNumber = vehiclePlateNumber;
     }
 
     /**
@@ -473,6 +488,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyTelecomContactMechIdRemoved = removed;
     }
 
+    private Boolean isPropertyTrackingNumberRemoved;
+
+    public Boolean getIsPropertyTrackingNumberRemoved()
+    {
+        return this.isPropertyTrackingNumberRemoved;
+    }
+
+    public void setIsPropertyTrackingNumberRemoved(Boolean removed)
+    {
+        this.isPropertyTrackingNumberRemoved = removed;
+    }
+
     private Boolean isPropertyContactPartyIdRemoved;
 
     public Boolean getIsPropertyContactPartyIdRemoved()
@@ -485,16 +512,16 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyContactPartyIdRemoved = removed;
     }
 
-    private Boolean isPropertyTrackingNumberRemoved;
+    private Boolean isPropertyVehiclePlateNumberRemoved;
 
-    public Boolean getIsPropertyTrackingNumberRemoved()
+    public Boolean getIsPropertyVehiclePlateNumberRemoved()
     {
-        return this.isPropertyTrackingNumberRemoved;
+        return this.isPropertyVehiclePlateNumberRemoved;
     }
 
-    public void setIsPropertyTrackingNumberRemoved(Boolean removed)
+    public void setIsPropertyVehiclePlateNumberRemoved(Boolean removed)
     {
-        this.isPropertyTrackingNumberRemoved = removed;
+        this.isPropertyVehiclePlateNumberRemoved = removed;
     }
 
     private Boolean isPropertyShippingInstructionsRemoved;

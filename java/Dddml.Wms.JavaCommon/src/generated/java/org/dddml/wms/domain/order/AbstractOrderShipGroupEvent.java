@@ -230,6 +230,18 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
             this.telecomContactMechId = telecomContactMechId;
         }
 
+        private String trackingNumber;
+
+        public String getTrackingNumber()
+        {
+            return this.trackingNumber;
+        }
+
+        public void setTrackingNumber(String trackingNumber)
+        {
+            this.trackingNumber = trackingNumber;
+        }
+
         private String contactPartyId;
 
         public String getContactPartyId()
@@ -242,16 +254,16 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
             this.contactPartyId = contactPartyId;
         }
 
-        private String trackingNumber;
+        private String vehiclePlateNumber;
 
-        public String getTrackingNumber()
+        public String getVehiclePlateNumber()
         {
-            return this.trackingNumber;
+            return this.vehiclePlateNumber;
         }
 
-        public void setTrackingNumber(String trackingNumber)
+        public void setVehiclePlateNumber(String vehiclePlateNumber)
         {
-            this.trackingNumber = trackingNumber;
+            this.vehiclePlateNumber = vehiclePlateNumber;
         }
 
         private String shippingInstructions;
@@ -586,6 +598,16 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
             this.isPropertyTelecomContactMechIdRemoved = removed;
         }
 
+        private Boolean isPropertyTrackingNumberRemoved;
+
+        public Boolean getIsPropertyTrackingNumberRemoved() {
+            return this.isPropertyTrackingNumberRemoved;
+        }
+
+        public void setIsPropertyTrackingNumberRemoved(Boolean removed) {
+            this.isPropertyTrackingNumberRemoved = removed;
+        }
+
         private Boolean isPropertyContactPartyIdRemoved;
 
         public Boolean getIsPropertyContactPartyIdRemoved() {
@@ -596,14 +618,14 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
             this.isPropertyContactPartyIdRemoved = removed;
         }
 
-        private Boolean isPropertyTrackingNumberRemoved;
+        private Boolean isPropertyVehiclePlateNumberRemoved;
 
-        public Boolean getIsPropertyTrackingNumberRemoved() {
-            return this.isPropertyTrackingNumberRemoved;
+        public Boolean getIsPropertyVehiclePlateNumberRemoved() {
+            return this.isPropertyVehiclePlateNumberRemoved;
         }
 
-        public void setIsPropertyTrackingNumberRemoved(Boolean removed) {
-            this.isPropertyTrackingNumberRemoved = removed;
+        public void setIsPropertyVehiclePlateNumberRemoved(Boolean removed) {
+            this.isPropertyVehiclePlateNumberRemoved = removed;
         }
 
         private Boolean isPropertyShippingInstructionsRemoved;

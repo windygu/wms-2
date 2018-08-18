@@ -52,13 +52,17 @@ public interface OrderShipGroupState
 
     void setTelecomContactMechId(String telecomContactMechId);
 
+    String getTrackingNumber();
+
+    void setTrackingNumber(String trackingNumber);
+
     String getContactPartyId();
 
     void setContactPartyId(String contactPartyId);
 
-    String getTrackingNumber();
+    String getVehiclePlateNumber();
 
-    void setTrackingNumber(String trackingNumber);
+    void setVehiclePlateNumber(String vehiclePlateNumber);
 
     String getShippingInstructions();
 

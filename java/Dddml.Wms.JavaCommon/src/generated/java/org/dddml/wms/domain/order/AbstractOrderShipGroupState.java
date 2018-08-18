@@ -131,6 +131,18 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.telecomContactMechId = telecomContactMechId;
     }
 
+    private String trackingNumber;
+
+    public String getTrackingNumber()
+    {
+        return this.trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber)
+    {
+        this.trackingNumber = trackingNumber;
+    }
+
     private String contactPartyId;
 
     public String getContactPartyId()
@@ -143,16 +155,16 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.contactPartyId = contactPartyId;
     }
 
-    private String trackingNumber;
+    private String vehiclePlateNumber;
 
-    public String getTrackingNumber()
+    public String getVehiclePlateNumber()
     {
-        return this.trackingNumber;
+        return this.vehiclePlateNumber;
     }
 
-    public void setTrackingNumber(String trackingNumber)
+    public void setVehiclePlateNumber(String vehiclePlateNumber)
     {
-        this.trackingNumber = trackingNumber;
+        this.vehiclePlateNumber = vehiclePlateNumber;
     }
 
     private String shippingInstructions;
@@ -469,8 +481,9 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setFacilityId(e.getFacilityId());
         this.setContactMechId(e.getContactMechId());
         this.setTelecomContactMechId(e.getTelecomContactMechId());
-        this.setContactPartyId(e.getContactPartyId());
         this.setTrackingNumber(e.getTrackingNumber());
+        this.setContactPartyId(e.getContactPartyId());
+        this.setVehiclePlateNumber(e.getVehiclePlateNumber());
         this.setShippingInstructions(e.getShippingInstructions());
         this.setMaySplit(e.getMaySplit());
         this.setGiftMessage(e.getGiftMessage());
@@ -589,6 +602,17 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         {
             this.setTelecomContactMechId(e.getTelecomContactMechId());
         }
+        if (e.getTrackingNumber() == null)
+        {
+            if (e.getIsPropertyTrackingNumberRemoved() != null && e.getIsPropertyTrackingNumberRemoved())
+            {
+                this.setTrackingNumber(null);
+            }
+        }
+        else
+        {
+            this.setTrackingNumber(e.getTrackingNumber());
+        }
         if (e.getContactPartyId() == null)
         {
             if (e.getIsPropertyContactPartyIdRemoved() != null && e.getIsPropertyContactPartyIdRemoved())
@@ -600,16 +624,16 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         {
             this.setContactPartyId(e.getContactPartyId());
         }
-        if (e.getTrackingNumber() == null)
+        if (e.getVehiclePlateNumber() == null)
         {
-            if (e.getIsPropertyTrackingNumberRemoved() != null && e.getIsPropertyTrackingNumberRemoved())
+            if (e.getIsPropertyVehiclePlateNumberRemoved() != null && e.getIsPropertyVehiclePlateNumberRemoved())
             {
-                this.setTrackingNumber(null);
+                this.setVehiclePlateNumber(null);
             }
         }
         else
         {
-            this.setTrackingNumber(e.getTrackingNumber());
+            this.setVehiclePlateNumber(e.getVehiclePlateNumber());
         }
         if (e.getShippingInstructions() == null)
         {
