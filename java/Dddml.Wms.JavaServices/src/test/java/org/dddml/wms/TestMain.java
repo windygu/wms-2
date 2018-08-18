@@ -77,6 +77,8 @@ public class TestMain {
         OrderShipGroupTests orderShipGroupTests = new OrderShipGroupTests();
         orderShipGroupTests.setUp();
         orderShipGroupTests.testCreatePOShipGroup1();
+        orderShipGroupTests.testCreatePOShipGroupAndShipment2();
+        //if (true) return;
 
         ProductTests productTests = new ProductTests();
         productTests.setUp();
