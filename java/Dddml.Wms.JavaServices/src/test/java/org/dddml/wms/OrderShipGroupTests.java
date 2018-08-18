@@ -102,6 +102,42 @@ public class OrderShipGroupTests {
         orderShipGroupApplicationService.when(createPOShipment);
     }
 
+
+    public void testCreateSOShipGroup1() {
+        String partyId = createTestPersonParty();
+
+        OrderShipGroupServiceCommands.CreateSOShipGroup createSOShipGroup = new OrderShipGroupServiceCommands.CreateSOShipGroup();
+        //订单 Id（合同号）
+        createSOShipGroup.setOrderId("" + new Date().getTime());
+        //装运组序号（通知单号），长整数
+        createSOShipGroup.setShipGroupSeqId(Long.parseLong(new SimpleDateFormat("yyyyMMdd").format(new Date()) + "01"));
+        //（预计）入库时间
+        createSOShipGroup.setEstimatedShipDate(new Timestamp(new Date().getTime()));
+        //件数
+        createSOShipGroup.setNumberOfPackages(400);
+        //柜数
+        createSOShipGroup.setNumberOfContainers(10);
+        //每柜件数
+        createSOShipGroup.setNumberOfPakagesPerContainer(40);
+        //产品 Id
+        createSOShipGroup.setProductId("f1");
+        //数量（以产品的主计量单位计算）
+        createSOShipGroup.setQuantity(BigDecimal.valueOf(100000));
+        //跟踪单号
+        createSOShipGroup.setTrackingNumber("" + new Date().getTime());
+        //
+        createSOShipGroup.setCommandId(createSOShipGroup.getOrderId());
+
+        //联系人 Id
+        createSOShipGroup.setContactPartyId(partyId);
+        //车牌号
+        createSOShipGroup.setVehiclePlateNumber("LU" + new Date().getTime());
+        //发货指示 / 备注等
+        createSOShipGroup.setShippingInstructions("Customer Name:" + UUID.randomUUID().toString());
+
+        orderShipGroupApplicationService.when(createSOShipGroup);
+    }
+
     private String createTestPersonParty() {
         PartyCommand.CreateParty createPerson = new AbstractPartyCommand.SimpleCreatePerson();
         String partyId = "" + new Date().getTime();

@@ -60,7 +60,6 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
         OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = createOrder.newCreateOrderShipGroup();
         orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
-        orderShipGroup.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//电话号码
         orderShipGroup.setContactPartyId(c.getContactPartyId());
         orderShipGroup.setTrackingNumber(c.getTrackingNumber());
@@ -68,6 +67,9 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
         orderShipGroup.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());//每柜件数
         orderShipGroup.setActive(true);
+        //---------------------
+        orderShipGroup.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());//预计收货日期
+        //---------------------
         createOrder.getOrderShipGroups().add(orderShipGroup);
 
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation orderItemShipGroupAssociation
@@ -105,17 +107,18 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
         OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = createOrder.newCreateOrderShipGroup();
         orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
-        orderShipGroup.setEstimatedShipDate(c.getEstimatedShipDate());//预计发货日期
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//司机 / 联系人电话
         orderShipGroup.setContactPartyId(c.getContactPartyId());//司机 / 联系人
         orderShipGroup.setTrackingNumber(c.getTrackingNumber());
-        //---------------------
-        orderShipGroup.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
-        //---------------------
         orderShipGroup.setNumberOfPackages(c.getNumberOfPackages());//件数
         orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
         orderShipGroup.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());//每柜件数
         orderShipGroup.setActive(true);
+        //---------------------
+        orderShipGroup.setEstimatedShipDate(c.getEstimatedShipDate());//预计发货日期
+        orderShipGroup.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
+        orderShipGroup.setShippingInstructions(c.getShippingInstructions());//发货指示
+        //---------------------
         createOrder.getOrderShipGroups().add(orderShipGroup);
 
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation orderItemShipGroupAssociation

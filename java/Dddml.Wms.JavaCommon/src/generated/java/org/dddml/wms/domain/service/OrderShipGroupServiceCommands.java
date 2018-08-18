@@ -345,6 +345,19 @@ public class OrderShipGroupServiceCommands {
         }
 
         /**
+         * Shipping Instructions
+         */
+        private String shippingInstructions;
+
+        public String getShippingInstructions() {
+            return shippingInstructions;
+        }
+
+        public void setShippingInstructions(String shippingInstructions) {
+            this.shippingInstructions = shippingInstructions;
+        }
+
+        /**
          * Command Id
          */
         private String commandId;

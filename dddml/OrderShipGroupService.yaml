@@ -105,6 +105,9 @@ services:
           # 车牌号
           VehiclePlateNumber:
             type: long-varchar
+          # 发货指示 / 客户名称 / 备注等  
+          ShippingInstructions:
+            type: long-varchar
           # ------------------------------
             
 
