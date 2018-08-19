@@ -37,7 +37,7 @@ public class TestMain {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
         // //////////////////  initialize database data /////////////////
-        if(true) { // if need to initialize, switch to true, else to false.
+        if (true) { // if need to initialize, switch to true, else to false.
             try {
                 InitAttributeSets.createDefaultAttributeSets();
             } catch (Exception ex) {
@@ -74,6 +74,12 @@ public class TestMain {
             }
         }
 
+        InOutTests inOutTests = new InOutTests();
+        inOutTests.setUp();
+        inOutTests.testInThenOut();//测试入库后马上出库，该产品的库存应该为 0
+        //if (true) return;
+        inOutTests.testCreateAndCompleteAndReverseInOut();
+
         OrderShipGroupTests orderShipGroupTests = new OrderShipGroupTests();
         orderShipGroupTests.setUp();
         orderShipGroupTests.testCreatePOShipGroup1();
@@ -92,9 +98,6 @@ public class TestMain {
         //testInventoryItemApplicationService();
         //if(true) return;
 
-        InOutTests inOutTests = new InOutTests();
-        inOutTests.setUp();
-        inOutTests.testCreateAndCompleteAndReverseInOut();
 
         MovementTests movementTests = new MovementTests();
         movementTests.setUp();

@@ -280,7 +280,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
     @Transactional
     public void when(InOutCommands.AddLine c) {
         InOutState inOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
-        InOutLineCommand.CreateInOutLine createLine = createInOutLine(c);
+        InOutLineCommand.CreateInOutLine createLine = createInOutLine(inOut, c);
         InOutCommand.MergePatchInOut updateInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
         updateInOut.setDocumentNumber(c.getDocumentNumber());
         updateInOut.setVersion(inOut.getVersion());
@@ -326,13 +326,18 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         when(createInOut);
     }
 
-    private InOutLineCommand.CreateInOutLine createInOutLine(InOutCommands.AddLine d) {
+    private InOutLineCommand.CreateInOutLine createInOutLine(InOutState inOutState, InOutCommands.AddLine d) {
         String productId = d.getProductId();
         Map<String, Object> attrSetInstMap = d.getAttributeSetInstance();
         String lineNumber = d.getLineNumber();
         String locatorId = d.getLocatorId();
         String quantityUomId = d.getQuantityUomId();
         BigDecimal movementQty = d.getMovementQuantity();
+        if (DocumentTypeIds.OUT.equalsIgnoreCase(inOutState.getDocumentTypeId())) {
+            if (BigDecimal.ZERO.compareTo(movementQty) > 0) {
+                throw new IllegalArgumentException("Movement quantity must be negative.");
+            }
+        }
         String description = d.getDescription();
         List<String> damageStatusIds = d.getDamageStatusIds();
         InOutLineCommand.CreateInOutLine line = createInOutLine(lineNumber, productId, locatorId, attrSetInstMap, quantityUomId, movementQty, description, damageStatusIds);

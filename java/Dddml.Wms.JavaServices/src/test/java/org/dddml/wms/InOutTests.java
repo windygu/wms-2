@@ -34,6 +34,28 @@ public class InOutTests {
         inOutApplicationService = (InOutApplicationService) ApplicationContext.current.get("inOutApplicationService");
     }
 
+    public void testInThenOut() {
+        String prdId = getTestProductId2();
+        String inDocumentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.IN, prdId, BigDecimal.valueOf(123));
+        InOutState in_1 = inOutApplicationService.get(inDocumentNumber);
+        InOutCommands.Complete complete_1 = new InOutCommands.Complete();
+        complete_1.setDocumentNumber(inDocumentNumber);
+        complete_1.setVersion(in_1.getVersion());
+        complete_1.setCommandId(UUID.randomUUID().toString());
+        inOutApplicationService.when(complete_1);
+        testInThenOut_Out(prdId);
+    }
+
+    private void testInThenOut_Out(String prdId) {
+        String outDocumentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.OUT, prdId, BigDecimal.valueOf(-123));
+        InOutState out_1 = inOutApplicationService.get(outDocumentNumber);
+        InOutCommands.Complete complete_2 = new InOutCommands.Complete();
+        complete_2.setDocumentNumber(outDocumentNumber);
+        complete_2.setVersion(out_1.getVersion());
+        complete_2.setCommandId(UUID.randomUUID().toString());
+        inOutApplicationService.when(complete_2);
+    }
+
     public void testCreateAndCompleteAndReverseInOut() {
         String documentNumber_1 = testCreateAndComplateInOut_0();
         testReverseInOut(documentNumber_1);
@@ -51,11 +73,12 @@ public class InOutTests {
     }
 
     private String testCreateInOutAndAddLine_0() {
-        String documentNumber = createInOutForTest(inOutApplicationService);
+        String documentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.IN_OUT, getTestProductId2(), BigDecimal.valueOf(123));
 
         InOutState inOut_1 = inOutApplicationService.get(documentNumber);
 
-        ProductCommand.CreateProduct prd_1 = createProduct_1();
+        String prdId = new java.util.Date().getTime() + "";
+        ProductCommand.CreateProduct prd_1 = createFPProduct_1(prdId);
 
         InOutCommands.AddLine addLine = new InOutCommands.AddLine();
         addLine.setDocumentNumber(documentNumber);
@@ -65,7 +88,7 @@ public class InOutTests {
         addLine.setProductId(prd_1.getProductId());
         addLine.setLocatorId(TEST_LOCATOR_ID_1);
         //addLine.setQuantityUomId();
-        addLine.setMovementQuantity(BigDecimal.valueOf(112));
+        addLine.setMovementQuantity(BigDecimal.valueOf(773.233));
         // /////////////////////////////////////
         java.util.HashMap<String, Object> attrSetInst_1 = new java.util.HashMap<String, Object>();
         // //////////////////////////////////
@@ -73,9 +96,9 @@ public class InOutTests {
         //attrSetInst_1.Add("WidthInch", (decimal)17.75);
         //attrSetInst_1.Add("DiameterInch", 48.00);
         //attrSetInst_1.Add("WeightLbs", (decimal)1678);
-        attrSetInst_1.put("WeightKg", BigDecimal.valueOf(773.233));
+        //attrSetInst_1.put("WeightKg", BigDecimal.valueOf(773.233));
         //attrSetInst_1.Add("AirDryWeightLbs", (decimal)1705.682);
-        //attrSetInst_1.Add("AirDryWeightKg", (decimal)773.684);
+        attrSetInst_1.put("airDryWeightKg", BigDecimal.valueOf(773.684));
         //attrSetInst_1.Add("AirDryMetricTon", (decimal)0.774);
         //attrSetInst_1.Add("RollCnt", 2);
         //attrSetInst_1.Add("AirDryPct", (decimal)101.650);
@@ -86,9 +109,9 @@ public class InOutTests {
         return documentNumber;
     }
 
-    private ProductCommand.CreateProduct createProduct_1() {
+    private ProductCommand.CreateProduct createFPProduct_1(String productId) {
         ProductCommand.CreateProduct prd_1 = new AbstractProductCommand.SimpleCreateProduct();
-        prd_1.setProductId(new java.util.Date().getTime() + ""); //Guid.NewGuid().ToString();
+        prd_1.setProductId(productId); //Guid.NewGuid().ToString();
         prd_1.setProductName("Test_" + prd_1.getProductId());
         prd_1.setPrimaryProductCategoryId(InitAttributeSets.FLUFF_PULP_PRODUCT_CATEGORY_ID);
         prd_1.setAttributeSetId(InitAttributeSets.FLUFF_PULP_ATTR_SET_ID);//"FluffPulpAttrSet");
@@ -101,19 +124,14 @@ public class InOutTests {
         return prd_1;
     }
 
-    private static String testCreateAndComplateInOut_0() {
-        InOutApplicationService inOutApplicationService = (InOutApplicationService)ApplicationContext.current.get("inOutApplicationService");
-
-        String documentNumber = createInOutForTest(inOutApplicationService);
-
+    private String testCreateAndComplateInOut_0() {
+        String documentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.IN_OUT, getTestProductId2(), BigDecimal.valueOf(123));
         InOutState inOut_1 = inOutApplicationService.get(documentNumber);
-
         InOutCommands.Complete complete = new InOutCommands.Complete();
         complete.setDocumentNumber(documentNumber);
         complete.setVersion(inOut_1.getVersion());
         complete.setCommandId(UUID.randomUUID().toString());
         inOutApplicationService.when(complete);
-
         return documentNumber;
         //
         //            MergePatchInOut patchInOut = new MergePatchInOut();
@@ -130,10 +148,10 @@ public class InOutTests {
         //            //Console.WriteLine(inOutResult.ChargeAmount);
         //            //Assert.AreEqual(inOut.ChargeAmount, inOutResult.ChargeAmount);
         //
-
     }
 
-    private static String createInOutForTest(InOutApplicationService inOutApplicationService) {
+    private String createInOutForTest(InOutApplicationService inOutApplicationService, String documentTypeId,
+                                      String productId, BigDecimal movementQuantity) {
         String documentNumber = UUID.randomUUID().toString();
 
         InOutCommand.CreateInOut inOut = new AbstractInOutCommand.SimpleCreateInOut();
@@ -142,19 +160,23 @@ public class InOutTests {
         //inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
         //inOut.ChargeAmount = new Money(10000, "CNY");
         //inOut.FreightAmount = new Money(400, "CNY");
-        inOut.setMovementTypeId(DocumentTypeIds.IN_OUT);
+        inOut.setMovementTypeId(documentTypeId);
         inOut.setMovementDate(new java.util.Date());
 
         InOutLineCommand.CreateInOutLine line_1 = inOut.newCreateInOutLine();
         line_1.setLineNumber(String.valueOf(new java.util.Date().getTime()));
-        line_1.setProductId("TEST_" + new java.util.Date().getTime());
+        line_1.setProductId(productId);
         line_1.setLocatorId(TEST_LOCATOR_ID_2);//("TEST_" + new java.util.Date().getTime());
         line_1.setAttributeSetInstanceId("EMPTY");
-        line_1.setMovementQuantity(BigDecimal.valueOf(123));
+        line_1.setMovementQuantity(movementQuantity);
         inOut.getInOutLines().add(line_1);
 
         inOutApplicationService.when(inOut);
         return documentNumber;
+    }
+
+    private String getTestProductId2() {
+        return "TEST_" + new java.util.Date().getTime();//todo???
     }
 
 }
