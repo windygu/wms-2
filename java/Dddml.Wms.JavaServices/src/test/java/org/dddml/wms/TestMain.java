@@ -80,7 +80,7 @@ public class TestMain {
         //orderShipGroupTests.testCreatePOShipGroupAndShipment2();
         orderShipGroupTests.testCreateSOShipGroup1();
         orderShipGroupTests.testCreateSOShipGroupAndShipment2();
-        if (true) return;
+        //if (true) return;
 
         InOutTests inOutTests = new InOutTests();
         inOutTests.setUp();

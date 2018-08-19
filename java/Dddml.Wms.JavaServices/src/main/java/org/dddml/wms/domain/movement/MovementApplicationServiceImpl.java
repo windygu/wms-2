@@ -102,15 +102,16 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
     private MovementLineCommand.CreateMovementLine createMovementLine(MovementCommands.AddLine d) {
     	MovementLineCommand.CreateMovementLine line = new AbstractMovementLineCommand.SimpleCreateMovementLine();
 
-        ProductState prdState = getProductState(d.getProductId());
-
-        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(getAttributeSetService(), getAttributeSetInstanceApplicationService(), prdState.getAttributeSetId(), d.getAttributeSetInstance());
+        ProductState productState = getProductState(d.getProductId());
+        //todo 应该对 AttributeSetInstancd 做检查？
+        // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
+        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(getAttributeSetService(), getAttributeSetInstanceApplicationService(), productState.getAttributeSetId(), d.getAttributeSetInstance());
         //if (_log.IsDebugEnabled) {
         //    _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //}
 
         line.setLineNumber(d.getLineNumber());
-        line.setProductId(prdState.getProductId());
+        line.setProductId(productState.getProductId());
         line.setLocatorIdTo(d.getLocatorIdTo());
         line.setLocatorIdFrom(d.getLocatorIdFrom());
         line.setAttributeSetInstanceId(attrSetInstId);

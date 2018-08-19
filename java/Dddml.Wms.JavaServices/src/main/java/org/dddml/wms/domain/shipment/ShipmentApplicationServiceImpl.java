@@ -397,17 +397,18 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
 
     private ShipmentItemCommand.CreateShipmentItem createShipmentItem(int i, ImportingShipmentItem d) {
         ShipmentItemCommand.CreateShipmentItem shipItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
-        ProductState prdState = getProductState(d.getProductId());
-
+        ProductState productState = getProductState(d.getProductId());
+        //todo 应该对 AttributeSetInstancd 做检查？
+        // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
         String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
                 getAttributeSetService(), getAttributeSetInstanceApplicationService(),
-                prdState.getAttributeSetId(), d.getAttributeSetInstance());
+                productState.getAttributeSetId(), d.getAttributeSetInstance());
         //        if (_log.IsDebugEnabled) {
         //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //        }
 
         shipItem.setShipmentItemSeqId((new Integer(i)).toString());
-        shipItem.setProductId(prdState.getProductId());
+        shipItem.setProductId(productState.getProductId());
         shipItem.setAttributeSetInstanceId(attrSetInstId);
         shipItem.setQuantity(d.getQuantity());
         shipItem.setActive(true);
@@ -479,11 +480,12 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             updateReceipt = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
         }
 
-        ProductState prdState = getProductState(productId);
-
+        ProductState productState = getProductState(productId);
+        //todo 应该对 AttributeSetInstancd 做检查？
+        // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
         String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
                 getAttributeSetService(), getAttributeSetInstanceApplicationService(),
-                prdState.getAttributeSetId(), attributeSetInstance);
+                productState.getAttributeSetId(), attributeSetInstance);
         //        if (_log.IsDebugEnabled) {
         //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //        }
@@ -522,11 +524,12 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             udpateItemIssuance = new AbstractItemIssuanceCommand.SimpleMergePatchItemIssuance();
         }
 
-        ProductState prdState = getProductState(productId);
-
+        ProductState productState = getProductState(productId);
+        //todo 应该对 AttributeSetInstancd 做检查？
+        // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
         String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
                 getAttributeSetService(), getAttributeSetInstanceApplicationService(),
-                prdState.getAttributeSetId(), attributeSetInstance);
+                productState.getAttributeSetId(), attributeSetInstance);
         //        if (_log.IsDebugEnabled) {
         //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //        }

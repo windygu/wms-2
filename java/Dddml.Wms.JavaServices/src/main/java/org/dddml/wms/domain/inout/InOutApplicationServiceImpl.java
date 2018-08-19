@@ -354,6 +354,8 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
                                                              String description,
                                                              List<String> damageStatusIds) {
         ProductState productState = getProductState(productId);
+        //todo 应该对 AttributeSetInstancd 做检查？
+        // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
         String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
                 getAttributeSetService(), getAttributeSetInstanceApplicationService(),
                 productState.getAttributeSetId(), attrSetInstMap);
