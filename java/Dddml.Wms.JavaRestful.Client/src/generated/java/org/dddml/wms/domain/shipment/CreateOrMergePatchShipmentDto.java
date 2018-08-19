@@ -141,18 +141,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
-     * Po Number
+     * External Order Number
      */
-    private String poNumber;
+    private String externalOrderNumber;
 
-    public String getPoNumber()
+    public String getExternalOrderNumber()
     {
-        return this.poNumber;
+        return this.externalOrderNumber;
     }
 
-    public void setPoNumber(String poNumber)
+    public void setExternalOrderNumber(String externalOrderNumber)
     {
-        this.poNumber = poNumber;
+        this.externalOrderNumber = externalOrderNumber;
     }
 
     /**
@@ -641,16 +641,16 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.isPropertyVehicleIdRemoved = removed;
     }
 
-    private Boolean isPropertyPoNumberRemoved;
+    private Boolean isPropertyExternalOrderNumberRemoved;
 
-    public Boolean getIsPropertyPoNumberRemoved()
+    public Boolean getIsPropertyExternalOrderNumberRemoved()
     {
-        return this.isPropertyPoNumberRemoved;
+        return this.isPropertyExternalOrderNumberRemoved;
     }
 
-    public void setIsPropertyPoNumberRemoved(Boolean removed)
+    public void setIsPropertyExternalOrderNumberRemoved(Boolean removed)
     {
-        this.isPropertyPoNumberRemoved = removed;
+        this.isPropertyExternalOrderNumberRemoved = removed;
     }
 
     private Boolean isPropertyCarrierRemoved;

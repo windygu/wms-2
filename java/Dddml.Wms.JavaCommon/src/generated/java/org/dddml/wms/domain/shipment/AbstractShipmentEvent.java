@@ -331,16 +331,16 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
             this.vehicleId = vehicleId;
         }
 
-        private String poNumber;
+        private String externalOrderNumber;
 
-        public String getPoNumber()
+        public String getExternalOrderNumber()
         {
-            return this.poNumber;
+            return this.externalOrderNumber;
         }
 
-        public void setPoNumber(String poNumber)
+        public void setExternalOrderNumber(String externalOrderNumber)
         {
-            this.poNumber = poNumber;
+            this.externalOrderNumber = externalOrderNumber;
         }
 
         private String carrier;
@@ -916,14 +916,14 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
             this.isPropertyVehicleIdRemoved = removed;
         }
 
-        private Boolean isPropertyPoNumberRemoved;
+        private Boolean isPropertyExternalOrderNumberRemoved;
 
-        public Boolean getIsPropertyPoNumberRemoved() {
-            return this.isPropertyPoNumberRemoved;
+        public Boolean getIsPropertyExternalOrderNumberRemoved() {
+            return this.isPropertyExternalOrderNumberRemoved;
         }
 
-        public void setIsPropertyPoNumberRemoved(Boolean removed) {
-            this.isPropertyPoNumberRemoved = removed;
+        public void setIsPropertyExternalOrderNumberRemoved(Boolean removed) {
+            this.isPropertyExternalOrderNumberRemoved = removed;
         }
 
         private Boolean isPropertyCarrierRemoved;

@@ -28,7 +28,7 @@ public final class ShipmentMetadata {
             "bolNumber",
             "sealNumber",
             "vehicleId",
-            "poNumber",
+            "externalOrderNumber",
             "carrier",
             "dateShipped",
             "estimatedReadyDate",
@@ -133,8 +133,8 @@ public final class ShipmentMetadata {
         aliasMap.put("SealNumber", "sealNumber");
         aliasMap.put("vehicleId", "vehicleId");
         aliasMap.put("VehicleId", "vehicleId");
-        aliasMap.put("poNumber", "poNumber");
-        aliasMap.put("PoNumber", "poNumber");
+        aliasMap.put("externalOrderNumber", "externalOrderNumber");
+        aliasMap.put("ExternalOrderNumber", "externalOrderNumber");
         aliasMap.put("carrier", "carrier");
         aliasMap.put("Carrier", "carrier");
         aliasMap.put("dateShipped", "dateShipped");

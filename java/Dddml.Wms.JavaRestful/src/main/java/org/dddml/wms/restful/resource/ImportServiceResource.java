@@ -103,15 +103,15 @@ public class ImportServiceResource {
          */
         private String shipToPartyId;
         /**
-         * Order#
+         * PO#（合同号）
          */
-        private String primaryOrderId;
+        private String purchaseOrderId;
         /**
-         * PO#
+         * Order#（参考订单号）
          */
-        private String poNumber;
+        private String externalOrderNumber;
         /**
-         * Carrier
+         * Carrier（运输商）
          */
         private String carrier;
         /**
@@ -150,20 +150,20 @@ public class ImportServiceResource {
             this.shipToPartyId = shipToPartyId;
         }
 
-        public String getPrimaryOrderId() {
-            return primaryOrderId;
+        public String getPurchaseOrderId() {
+            return purchaseOrderId;
         }
 
-        public void setPrimaryOrderId(String primaryOrderId) {
-            this.primaryOrderId = primaryOrderId;
+        public void setPurchaseOrderId(String purchaseOrderId) {
+            this.purchaseOrderId = purchaseOrderId;
         }
 
-        public String getPoNumber() {
-            return poNumber;
+        public String getExternalOrderNumber() {
+            return externalOrderNumber;
         }
 
-        public void setPoNumber(String poNumber) {
-            this.poNumber = poNumber;
+        public void setExternalOrderNumber(String externalOrderNumber) {
+            this.externalOrderNumber = externalOrderNumber;
         }
 
         public String getCarrier() {
@@ -450,8 +450,8 @@ public class ImportServiceResource {
         ImportingShipmentHeader shipmentHeader = new ImportingShipmentHeader();
         //运单“头”信息
         shipmentHeader.setShipToPartyId("XXX-XXX");//发送给谁（业务实体/单位/个人）
-        shipmentHeader.setPrimaryOrderId("test-order-no.");//Order#
-        shipmentHeader.setPoNumber("test-po-no.");//PO#
+        shipmentHeader.setPurchaseOrderId("test-po-no.");//PO#
+        shipmentHeader.setExternalOrderNumber("test-order-no.");//Order#
         shipmentHeader.setCarrier("test_carrier_1");//
         shipmentHeader.setDateShipped(new Timestamp(new Date().getTime()));//发运日期
         shipmentHeader.setEstimatedArrivalDate(new Timestamp(new Date().getTime()));//预计到达日期
@@ -764,8 +764,8 @@ public class ImportServiceResource {
                 shipmentImport = new ShipmentCommands.Import();
                 shipmentImport.setShipmentId(shipmentId);
                 // --------------- set common shipment header ---------------
-                shipmentImport.setPrimaryOrderId(shipmentHeader.getPrimaryOrderId());
-                shipmentImport.setPoNumber(shipmentHeader.getPoNumber());
+                shipmentImport.setPrimaryOrderId(shipmentHeader.getPurchaseOrderId());//PO#
+                shipmentImport.setExternalOrderNumber(shipmentHeader.getExternalOrderNumber());//Order#
                 shipmentImport.setPartyIdTo(shipmentHeader.getShipToPartyId());
                 shipmentImport.setCarrier(shipmentHeader.getCarrier());
                 shipmentImport.setDateShipped(shipmentHeader.getDateShipped());

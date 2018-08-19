@@ -129,16 +129,16 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.vehicleId = vehicleId;
     }
 
-    private String poNumber;
+    private String externalOrderNumber;
 
-    public String getPoNumber()
+    public String getExternalOrderNumber()
     {
-        return this.poNumber;
+        return this.externalOrderNumber;
     }
 
-    public void setPoNumber(String poNumber)
+    public void setExternalOrderNumber(String externalOrderNumber)
     {
-        this.poNumber = poNumber;
+        this.externalOrderNumber = externalOrderNumber;
     }
 
     private String carrier;
@@ -588,7 +588,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setBolNumber(e.getBolNumber());
         this.setSealNumber(e.getSealNumber());
         this.setVehicleId(e.getVehicleId());
-        this.setPoNumber(e.getPoNumber());
+        this.setExternalOrderNumber(e.getExternalOrderNumber());
         this.setCarrier(e.getCarrier());
         this.setDateShipped(e.getDateShipped());
         this.setEstimatedReadyDate(e.getEstimatedReadyDate());
@@ -736,16 +736,16 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         {
             this.setVehicleId(e.getVehicleId());
         }
-        if (e.getPoNumber() == null)
+        if (e.getExternalOrderNumber() == null)
         {
-            if (e.getIsPropertyPoNumberRemoved() != null && e.getIsPropertyPoNumberRemoved())
+            if (e.getIsPropertyExternalOrderNumberRemoved() != null && e.getIsPropertyExternalOrderNumberRemoved())
             {
-                this.setPoNumber(null);
+                this.setExternalOrderNumber(null);
             }
         }
         else
         {
-            this.setPoNumber(e.getPoNumber());
+            this.setExternalOrderNumber(e.getExternalOrderNumber());
         }
         if (e.getCarrier() == null)
         {

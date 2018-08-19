@@ -62,9 +62,9 @@ public interface ShipmentEvent extends Event
 
         void setVehicleId(String vehicleId);
 
-        String getPoNumber();
+        String getExternalOrderNumber();
 
-        void setPoNumber(String poNumber);
+        void setExternalOrderNumber(String externalOrderNumber);
 
         String getCarrier();
 
@@ -224,9 +224,9 @@ public interface ShipmentEvent extends Event
 
         void setIsPropertyVehicleIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyPoNumberRemoved();
+        Boolean getIsPropertyExternalOrderNumberRemoved();
 
-        void setIsPropertyPoNumberRemoved(Boolean removed);
+        void setIsPropertyExternalOrderNumberRemoved(Boolean removed);
 
         Boolean getIsPropertyCarrierRemoved();
 

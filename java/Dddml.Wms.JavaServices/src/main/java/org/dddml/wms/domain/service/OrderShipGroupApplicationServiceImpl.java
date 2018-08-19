@@ -179,6 +179,12 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         return shipmentId;
     }
 
+    @Override
+    public String when(OrderShipGroupServiceCommands.CreateSOShipment c) {
+        //todo
+        return null;
+    }
+
     private ProductState assertProductId(String productId) {
         ProductState productState = getProductApplicationService().get(productId);
         if (productState == null) {

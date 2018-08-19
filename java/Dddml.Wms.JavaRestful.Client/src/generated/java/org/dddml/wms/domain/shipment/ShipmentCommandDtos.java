@@ -94,16 +94,16 @@ public class ShipmentCommandDtos
         }
 
         /**
-         * Po Number
+         * External Order Number
          */
-        private String poNumber;
+        private String externalOrderNumber;
 
-        public String getPoNumber() {
-            return this.poNumber;
+        public String getExternalOrderNumber() {
+            return this.externalOrderNumber;
         }
 
-        public void setPoNumber(String poNumber) {
-            this.poNumber = poNumber;
+        public void setExternalOrderNumber(String externalOrderNumber) {
+            this.externalOrderNumber = externalOrderNumber;
         }
 
         /**

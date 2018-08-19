@@ -48,5 +48,13 @@ public class OrderShipGroupServiceResource {
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PostMapping("CreateSOShipment")
+    public String createSOShipment(@RequestBody OrderShipGroupServiceCommands.CreateSOShipment requestContent)
+    {
+        try {
+        return orderShipGroupApplicationService.when(requestContent);
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+    }
+
 }
 

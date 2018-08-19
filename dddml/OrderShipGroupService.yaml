@@ -132,6 +132,26 @@ services:
         result:
           type: string
             
+      # ---------------------------------------
+      # 从装运组（出库通知单）创建装运单
+      CreateSOShipment:
+      
+        parameters:
+          
+          # 订单 Id（合同号）
+          OrderId:
+            type: id
+          #---------------------------------
+          # 订单装运组序号（通知单号）
+          ShipGroupSeqId:
+            type: numeric
+          # 装运单 Id，可以为空
+          ShipmentId:
+            type: id
+        
+        # 返回结果，装运单 Id
+        result:
+          type: string
         
         
         

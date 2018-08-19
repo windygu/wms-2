@@ -141,18 +141,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
-     * Po Number
+     * External Order Number
      */
-    private String poNumber;
+    private String externalOrderNumber;
 
-    public String getPoNumber()
+    public String getExternalOrderNumber()
     {
-        return this.poNumber;
+        return this.externalOrderNumber;
     }
 
-    public void setPoNumber(String poNumber)
+    public void setExternalOrderNumber(String externalOrderNumber)
     {
-        this.poNumber = poNumber;
+        this.externalOrderNumber = externalOrderNumber;
     }
 
     /**
@@ -641,16 +641,16 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.isPropertyVehicleIdRemoved = removed;
     }
 
-    private Boolean isPropertyPoNumberRemoved;
+    private Boolean isPropertyExternalOrderNumberRemoved;
 
-    public Boolean getIsPropertyPoNumberRemoved()
+    public Boolean getIsPropertyExternalOrderNumberRemoved()
     {
-        return this.isPropertyPoNumberRemoved;
+        return this.isPropertyExternalOrderNumberRemoved;
     }
 
-    public void setIsPropertyPoNumberRemoved(Boolean removed)
+    public void setIsPropertyExternalOrderNumberRemoved(Boolean removed)
     {
-        this.isPropertyPoNumberRemoved = removed;
+        this.isPropertyExternalOrderNumberRemoved = removed;
     }
 
     private Boolean isPropertyCarrierRemoved;
@@ -929,7 +929,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setBolNumber(this.getBolNumber());
         command.setSealNumber(this.getSealNumber());
         command.setVehicleId(this.getVehicleId());
-        command.setPoNumber(this.getPoNumber());
+        command.setExternalOrderNumber(this.getExternalOrderNumber());
         command.setCarrier(this.getCarrier());
         command.setDateShipped(this.getDateShipped());
         command.setEstimatedReadyDate(this.getEstimatedReadyDate());
@@ -1028,7 +1028,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setIsPropertyBolNumberRemoved(this.getIsPropertyBolNumberRemoved());
         command.setIsPropertySealNumberRemoved(this.getIsPropertySealNumberRemoved());
         command.setIsPropertyVehicleIdRemoved(this.getIsPropertyVehicleIdRemoved());
-        command.setIsPropertyPoNumberRemoved(this.getIsPropertyPoNumberRemoved());
+        command.setIsPropertyExternalOrderNumberRemoved(this.getIsPropertyExternalOrderNumberRemoved());
         command.setIsPropertyCarrierRemoved(this.getIsPropertyCarrierRemoved());
         command.setIsPropertyDateShippedRemoved(this.getIsPropertyDateShippedRemoved());
         command.setIsPropertyEstimatedReadyDateRemoved(this.getIsPropertyEstimatedReadyDateRemoved());

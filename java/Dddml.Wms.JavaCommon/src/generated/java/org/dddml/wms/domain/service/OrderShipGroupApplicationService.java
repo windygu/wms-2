@@ -15,6 +15,8 @@ public interface OrderShipGroupApplicationService {
 
     String when(OrderShipGroupServiceCommands.CreatePOShipment c);
 
+    String when(OrderShipGroupServiceCommands.CreateSOShipment c);
+
 
 }
 

@@ -33,5 +33,9 @@ public interface RxOrderShipGroupServiceClient {
     @POST("OrderShipGroupService/CreatePOShipment")
     Observable<String> createPOShipment(@Body OrderShipGroupServiceCommandDtos.CreatePOShipmentDto requestContent);
 
+    @Headers("Accept: application/json")
+    @POST("OrderShipGroupService/CreateSOShipment")
+    Observable<String> createSOShipment(@Body OrderShipGroupServiceCommandDtos.CreateSOShipmentDto requestContent);
+
 }
 

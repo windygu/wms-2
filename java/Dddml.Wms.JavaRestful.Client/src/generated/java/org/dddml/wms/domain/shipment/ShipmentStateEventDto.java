@@ -124,14 +124,14 @@ public class ShipmentStateEventDto extends AbstractEvent
         this.vehicleId = vehicleId;
     }
 
-    private String poNumber;
+    private String externalOrderNumber;
 
-    public String getPoNumber() {
-        return this.poNumber;
+    public String getExternalOrderNumber() {
+        return this.externalOrderNumber;
     }
 
-    public void setPoNumber(String poNumber) {
-        this.poNumber = poNumber;
+    public void setExternalOrderNumber(String externalOrderNumber) {
+        this.externalOrderNumber = externalOrderNumber;
     }
 
     private String carrier;
@@ -464,14 +464,14 @@ public class ShipmentStateEventDto extends AbstractEvent
         this.isPropertyVehicleIdRemoved = removed;
     }
 
-    private Boolean isPropertyPoNumberRemoved;
+    private Boolean isPropertyExternalOrderNumberRemoved;
 
-    public Boolean getIsPropertyPoNumberRemoved() {
-        return this.isPropertyPoNumberRemoved;
+    public Boolean getIsPropertyExternalOrderNumberRemoved() {
+        return this.isPropertyExternalOrderNumberRemoved;
     }
 
-    public void setIsPropertyPoNumberRemoved(Boolean removed) {
-        this.isPropertyPoNumberRemoved = removed;
+    public void setIsPropertyExternalOrderNumberRemoved(Boolean removed) {
+        this.isPropertyExternalOrderNumberRemoved = removed;
     }
 
     private Boolean isPropertyCarrierRemoved;

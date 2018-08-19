@@ -52,9 +52,9 @@ public interface ShipmentState
 
     void setVehicleId(String vehicleId);
 
-    String getPoNumber();
+    String getExternalOrderNumber();
 
-    void setPoNumber(String poNumber);
+    void setExternalOrderNumber(String externalOrderNumber);
 
     String getCarrier();
 

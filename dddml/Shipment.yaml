@@ -47,8 +47,9 @@ aggregates:
       # 集装箱号
       VehicleId:
         type: id-long
-      PoNumber:
+      ExternalOrderNumber:
         type: id-long
+      # 运输商（描述）
       Carrier:
         type: id-long
       # DOS
@@ -406,7 +407,8 @@ aggregates:
           # 铅封号码
           SealNumber:
             type: id-long
-          PoNumber:
+          # 外部订单号
+          ExternalOrderNumber:
             type: id-long
           Carrier:
             type: id-long

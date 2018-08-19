@@ -129,16 +129,16 @@ public class ShipmentStateDto
         this.vehicleId = vehicleId;
     }
 
-    private String poNumber;
+    private String externalOrderNumber;
 
-    public String getPoNumber()
+    public String getExternalOrderNumber()
     {
-        return this.poNumber;
+        return this.externalOrderNumber;
     }
 
-    public void setPoNumber(String poNumber)
+    public void setExternalOrderNumber(String externalOrderNumber)
     {
-        this.poNumber = poNumber;
+        this.externalOrderNumber = externalOrderNumber;
     }
 
     private String carrier;

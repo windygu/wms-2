@@ -454,6 +454,75 @@ public class OrderShipGroupServiceCommands {
 
     }
 
+    public static class CreateSOShipment {
+
+        /**
+         * Order Id
+         */
+        private String orderId;
+
+        public String getOrderId() {
+            return orderId;
+        }
+
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
+
+        /**
+         * Ship Group Seq Id
+         */
+        private Long shipGroupSeqId;
+
+        public Long getShipGroupSeqId() {
+            return shipGroupSeqId;
+        }
+
+        public void setShipGroupSeqId(Long shipGroupSeqId) {
+            this.shipGroupSeqId = shipGroupSeqId;
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
 
 }
 

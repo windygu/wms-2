@@ -209,7 +209,8 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipment.setVehicleId(c.getVehicleId());
         // 铅封号码
         shipment.setSealNumber(c.getSealNumber());
-        shipment.setPoNumber(c.getPoNumber());
+        // 外部订单号
+        shipment.setExternalOrderNumber(c.getExternalOrderNumber());
         shipment.setCarrier(c.getCarrier());
         // DOS
         shipment.setDateShipped(c.getDateShipped());
