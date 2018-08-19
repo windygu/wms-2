@@ -45,23 +45,28 @@ import java.util.stream.Collectors;
 @RestController
 public class ImportServiceResource {
 
-    private static final String SHIPMENT_ID_COLUMN_NAME = "ShipmentId";
-    private static final String PRODUCT_COLUMN_NAME = "Product";
-    private static final String[] SHIPMENT_ITEM_PREFIX_COLUMN_NAMES = new String[]{
-            SHIPMENT_ID_COLUMN_NAME,
-            PRODUCT_COLUMN_NAME
-    };
-    private static final String SERIAL_NUMBER_COLUMN_NAME = "SerialNumber";
-    private static final String LOT_ID_COLUMN_NAME = "LotId";
-    private static final String QUANTITY_COLUMN_NAME = "Quantity";
-    private static final String BOL_NUMBER_COLUMN_NAME = "BOL#";
-    private static final String VEHICLE_ID_COLUMN_NAME = "VehicleId";
-    private static final String SEAL_NUMBER_COLUMN_NAME = "Seal#";
-    private static final String[] SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES = new String[] {
-            BOL_NUMBER_COLUMN_NAME,
-            VEHICLE_ID_COLUMN_NAME ,
-            SEAL_NUMBER_COLUMN_NAME
-    };
+    /**
+     * 装运单导入文件使用的常量。
+     */
+    private static class ShipmentSheetConstants {
+        private static final String SHIPMENT_ID_COLUMN_NAME = "ShipmentId";
+        private static final String PRODUCT_COLUMN_NAME = "Product";
+        private static final String[] SHIPMENT_ITEM_PREFIX_COLUMN_NAMES = new String[]{
+                SHIPMENT_ID_COLUMN_NAME,
+                PRODUCT_COLUMN_NAME
+        };
+        private static final String SERIAL_NUMBER_COLUMN_NAME = "SerialNumber";
+        private static final String LOT_ID_COLUMN_NAME = "LotId";
+        private static final String QUANTITY_COLUMN_NAME = "Quantity";
+        private static final String BOL_NUMBER_COLUMN_NAME = "BOL#";
+        private static final String VEHICLE_ID_COLUMN_NAME = "VehicleId";
+        private static final String SEAL_NUMBER_COLUMN_NAME = "Seal#";
+        private static final String[] SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES = new String[]{
+                BOL_NUMBER_COLUMN_NAME,
+                VEHICLE_ID_COLUMN_NAME,
+                SEAL_NUMBER_COLUMN_NAME
+        };
+    }
 
     public static class ProductMapping {
         /**
@@ -492,18 +497,18 @@ public class ImportServiceResource {
 
         // ////////////////////////////////
         if (shipmentIdColumnIdx == null) {
-            throw DomainError.named("missedColumn", "Column '%1$s' missed.", SHIPMENT_ID_COLUMN_NAME);
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", ShipmentSheetConstants.SHIPMENT_ID_COLUMN_NAME);
         }
         if (productColumnIdx == null) {
-            throw DomainError.named("missedColumn", "Column '%1$s' missed.", PRODUCT_COLUMN_NAME);
+            throw DomainError.named("missedColumn", "Column '%1$s' missed.", ShipmentSheetConstants.PRODUCT_COLUMN_NAME);
         }
         Map<String, ProductState> prdMap = getProductMap(prdNameMap, productColumnIdx, matrix);
         for (ProductState p : prdMap.values()) {
             if (p.getIsSerialNumbered() != null && p.getIsSerialNumbered() && serialNumberColumnIdx == null) {
-                throw DomainError.named("missedColumn", "Column '%1$s' missed.", SERIAL_NUMBER_COLUMN_NAME);
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", ShipmentSheetConstants.SERIAL_NUMBER_COLUMN_NAME);
             }
             if (p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
-                throw DomainError.named("missedColumn", "Column '%1$s' missed.", LOT_ID_COLUMN_NAME);
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", ShipmentSheetConstants.LOT_ID_COLUMN_NAME);
             }
         }
 
@@ -899,21 +904,21 @@ public class ImportServiceResource {
                 }
             }
         }
-        colNames.addAll(Arrays.asList(SHIPMENT_ITEM_PREFIX_COLUMN_NAMES));
+        colNames.addAll(Arrays.asList(ShipmentSheetConstants.SHIPMENT_ITEM_PREFIX_COLUMN_NAMES));
         if (isSerialNumbered) {
-            colNames.add(SERIAL_NUMBER_COLUMN_NAME + "(PackageId)");
+            colNames.add(ShipmentSheetConstants.SERIAL_NUMBER_COLUMN_NAME + "(PackageId)");
         }
         if (isManagedByLot) {
-            colNames.add(LOT_ID_COLUMN_NAME);
+            colNames.add(ShipmentSheetConstants.LOT_ID_COLUMN_NAME);
         }
         if (qtyUomIds.size() > 0) {
-            colNames.add(QUANTITY_COLUMN_NAME + "("
+            colNames.add(ShipmentSheetConstants.QUANTITY_COLUMN_NAME + "("
                     + qtyUomIds.stream().reduce("", (a, b) -> a.equals("") ? b : a + "," + b)
                     + ")"
             );
         }
         colNames.addAll(attrIds);
-        colNames.addAll(Arrays.asList(SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES));
+        colNames.addAll(Arrays.asList(ShipmentSheetConstants.SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES));
         return colNames;
     }
 
@@ -1007,21 +1012,21 @@ public class ImportServiceResource {
                         }
                         if (i == 0) {
                             colNames.add(c);
-                            if (columnNameEquals(SHIPMENT_ID_COLUMN_NAME, c)) {
+                            if (columnNameEquals(ShipmentSheetConstants.SHIPMENT_ID_COLUMN_NAME, c)) {
                                 shipmentIdColumnIdx = j;
-                            } else if (columnNameEquals(PRODUCT_COLUMN_NAME, c)) {
+                            } else if (columnNameEquals(ShipmentSheetConstants.PRODUCT_COLUMN_NAME, c)) {
                                 productColumnIdx = j;
-                            } else if (columnNameEquals(SERIAL_NUMBER_COLUMN_NAME, c)) {
+                            } else if (columnNameEquals(ShipmentSheetConstants.SERIAL_NUMBER_COLUMN_NAME, c)) {
                                 serialNumberColumnIdx = j;
-                            } else if (columnNameEquals(LOT_ID_COLUMN_NAME, c)) {
+                            } else if (columnNameEquals(ShipmentSheetConstants.LOT_ID_COLUMN_NAME, c)) {
                                 lotIdColumnIdx = j;
-                            } else if (columnNameEquals(QUANTITY_COLUMN_NAME, c)) {
+                            } else if (columnNameEquals(ShipmentSheetConstants.QUANTITY_COLUMN_NAME, c)) {
                                 quantityColumnIdx = j;
-                            } else if (columnNameEquals(BOL_NUMBER_COLUMN_NAME, c)) {
+                            } else if (columnNameEquals(ShipmentSheetConstants.BOL_NUMBER_COLUMN_NAME, c)) {
                                 bolNumberColumnIdx = j;
-                            } else if (columnNameEquals(VEHICLE_ID_COLUMN_NAME, c)) {
+                            } else if (columnNameEquals(ShipmentSheetConstants.VEHICLE_ID_COLUMN_NAME, c)) {
                                 vehicleIdColumnIdx = j;
-                            } else if (columnNameEquals(SEAL_NUMBER_COLUMN_NAME, c)) {
+                            } else if (columnNameEquals(ShipmentSheetConstants.SEAL_NUMBER_COLUMN_NAME, c)) {
                                 sealNumberColumnIdx = j;
                             } else {
                                 attributeIdColumnIdxMap.put(c, j);
