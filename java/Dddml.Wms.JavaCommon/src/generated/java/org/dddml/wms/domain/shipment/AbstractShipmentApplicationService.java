@@ -69,6 +69,10 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         update(c, ar -> ar.addItemAndReceipt(c.getReceiptSeqId(), c.getProductId(), c.getAttributeSetInstance(), c.getRejectionReasonId(), c.getDamageStatusIds(), c.getDamageReasonId(), c.getAcceptedQuantity(), c.getRejectedQuantity(), c.getDamagedQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
+    public void when(ShipmentCommands.IssueItem c) {
+        update(c, ar -> ar.issueItem(c.getShipmentItemSeqId(), c.getOrderId(), c.getOrderItemSeqId(), c.getShipGroupSeqId(), c.getProductId(), c.getLocatorId(), c.getAttributeSetInstance(), c.getQuantity(), c.getCancelQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+    }
+
     public void when(ShipmentCommands.AddItemAndIssuance c) {
         update(c, ar -> ar.addItemAndIssuance(c.getOrderId(), c.getOrderItemSeqId(), c.getShipGroupSeqId(), c.getItemIssuanceSeqId(), c.getProductId(), c.getLocatorId(), c.getAttributeSetInstance(), c.getQuantity(), c.getCancelQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }

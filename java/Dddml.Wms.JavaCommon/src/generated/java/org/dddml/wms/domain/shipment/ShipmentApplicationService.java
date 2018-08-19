@@ -22,6 +22,8 @@ public interface ShipmentApplicationService
 
     void when(ShipmentCommands.AddItemAndReceipt c);
 
+    void when(ShipmentCommands.IssueItem c);
+
     void when(ShipmentCommands.AddItemAndIssuance c);
 
     void when(ShipmentCommands.ConfirmAllItemsReceived c);

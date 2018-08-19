@@ -101,6 +101,10 @@ public interface ShipmentsClient {
     Call<String> addItemAndReceipt(@Path("id") String id, @Body ShipmentCommandDtos.AddItemAndReceiptRequestContent content);
 
     @Headers("Accept: application/json")
+    @PUT("Shipments/{id}/_commands/IssueItem")
+    Call<String> issueItem(@Path("id") String id, @Body ShipmentCommandDtos.IssueItemRequestContent content);
+
+    @Headers("Accept: application/json")
     @PUT("Shipments/{id}/_commands/AddItemAndIssuance")
     Call<String> addItemAndIssuance(@Path("id") String id, @Body ShipmentCommandDtos.AddItemAndIssuanceRequestContent content);
 

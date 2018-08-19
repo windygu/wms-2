@@ -146,8 +146,46 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
 
     @Override
     @Transactional
+    public void when(ShipmentCommands.IssueItem c) {
+        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
+        ShipmentItemState shipmentItem = shipment.getShipmentItems().get(c.getShipmentItemSeqId());
+        if (shipmentItem == null) {
+            throw new IllegalArgumentException(String.format(
+                    "CANNOT get shipment item. ShipmentItemSeqId: %1$s", c.getShipmentItemSeqId()));
+        }
+        assertIssuanceQuantities(shipmentItem.getQuantity(), c.getQuantity(), c.getCancelQuantity());
+        // ////////////////////////////////////////////////////
+        ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateItemIssuance = createOrUpdateItemIssuance(
+                c, shipment,
+                c.getShipmentItemSeqId(),
+                shipmentItem.getProductId(),
+                c.getAttributeSetInstance(),
+                c.getQuantity(),
+                c.getCancelQuantity()
+        );
+        // ////////////////////////////////////////////////////
+
+        updateShipment(c, updateItemIssuance);
+    }
+
+    @Override
+    @Transactional
     public void when(ShipmentCommands.AddItemAndIssuance c) {
-        //todo
+        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
+        String shipmentItemSeqId = c.getItemIssuanceSeqId();
+        ShipmentItemCommand.CreateShipmentItem createShipmentItem = createShipmentItem(c, shipmentItemSeqId);
+        assertIssuanceQuantities(createShipmentItem.getQuantity(), c.getQuantity(), c.getCancelQuantity());
+        // ////////////////////////////////////////////////////
+        ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateReceipt = createOrUpdateItemIssuance(
+                c, shipment,
+                shipmentItemSeqId,
+                c.getProductId(),
+                c.getAttributeSetInstance(),
+                c.getQuantity(),
+                c.getCancelQuantity()
+        );
+        // ////////////////////////////////////////////////////
+        updateShipment(c, updateReceipt, createShipmentItem);
     }
 
     private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndReceipt c,
@@ -155,7 +193,18 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
         createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
         createShipmentItem.setProductId(c.getProductId());
-        createShipmentItem.setQuantity(BigDecimal.ZERO);//???
+        createShipmentItem.setQuantity(BigDecimal.ZERO);//todo ???
+        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
+        createShipmentItem.setActive(true);
+        return createShipmentItem;
+    }
+
+    private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndIssuance c,
+                                                                      String shipmentItemSeqId) {
+        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
+        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
+        createShipmentItem.setProductId(c.getProductId());
+        createShipmentItem.setQuantity(c.getQuantity());//todo ???
         createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
         createShipmentItem.setActive(true);
         return createShipmentItem;
@@ -183,6 +232,18 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         throw new IllegalArgumentException(String.format(
                 "shipmentItem.Quantity != acceptedQuantity + rejectedQuantity. %1$s != %2$s + %3$s",
                 shipmentItemQuantity, acceptedQuantity, rejectedQuantity));
+    }
+
+    private static void assertIssuanceQuantities(BigDecimal shipmentItemQuantity, BigDecimal quantity, BigDecimal cancelledQuantity ) {
+        if (shipmentItemQuantity.compareTo(quantity) == 0 && cancelledQuantity == null) {
+            return;
+        }
+        if (shipmentItemQuantity.compareTo(quantity.add(cancelledQuantity)) == 0) {
+            return;
+        }
+        throw new IllegalArgumentException(String.format(
+                "shipmentItem.Quantity != quantity + cancelledQuantity. %1$s != %2$s + %3$s",
+                shipmentItemQuantity, quantity, cancelledQuantity));
     }
 
     @Override
@@ -312,6 +373,28 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         when(updateShipment);
     }
 
+    private void updateShipment(ShipmentCommand c,
+                                ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateItemIssuance) {
+        updateShipment(c, updateItemIssuance, null);
+    }
+
+    private void updateShipment(ShipmentCommand c,
+                                ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateItemIssuance,
+                                ShipmentItemCommand.CreateOrMergePatchShipmentItem updateItem) {
+        ShipmentCommand.MergePatchShipment updateShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+        // //////////////////////////////////////////////////////
+        if (updateItem != null) {
+            updateShipment.getShipmentItemCommands().add(updateItem);
+        }
+        updateShipment.getItemIssuanceCommands().add(updateItemIssuance);
+        // /////////////////////////////////////////////////////
+        updateShipment.setShipmentId(c.getShipmentId());
+        updateShipment.setVersion(c.getVersion());
+        updateShipment.setCommandId(c.getCommandId());
+        updateShipment.setRequesterId(c.getRequesterId());
+        when(updateShipment);
+    }
+
     private ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt createOrUpdateShipmentReceipt(
             ShipmentCommand c,
             ShipmentState shipment,
@@ -350,6 +433,46 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         updateReceipt.setDamageReasonId(damageReasonId);
         updateReceipt.setReceivedBy(c.getRequesterId());
         return updateReceipt;
+    }
+
+    private ItemIssuanceCommand.CreateOrMergePatchItemIssuance createOrUpdateItemIssuance(
+            ShipmentCommand c,
+            ShipmentState shipment,
+            String shipmentItemSeqId,
+            String productId,
+            Map<String, Object> attributeSetInstance,
+            BigDecimal quantity,
+            BigDecimal cancelledQuantity
+    ) {
+
+        ItemIssuanceCommand.CreateOrMergePatchItemIssuance udpateItemIssuance = null;
+        String itemIssuanceSeqId = shipmentItemSeqId;
+        ItemIssuanceState itemIssuanceState = shipment.getItemIssuances().get(itemIssuanceSeqId, false, true);
+        if (itemIssuanceState == null) {
+            udpateItemIssuance = new AbstractItemIssuanceCommand.SimpleCreateItemIssuance();
+        } else {
+            udpateItemIssuance = new AbstractItemIssuanceCommand.SimpleMergePatchItemIssuance();
+        }
+
+        ProductState prdState = getProductState(productId);
+
+        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
+                getAttributeSetService(), getAttributeSetInstanceApplicationService(),
+                prdState.getAttributeSetId(), attributeSetInstance);
+        //        if (_log.IsDebugEnabled) {
+        //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
+        //        }
+        udpateItemIssuance.setAttributeSetInstanceId(attrSetInstId);
+        udpateItemIssuance.setItemIssuanceSeqId(itemIssuanceSeqId);
+        udpateItemIssuance.setShipmentItemSeqId(shipmentItemSeqId);
+        udpateItemIssuance.setProductId(productId);
+        udpateItemIssuance.setQuantity(quantity);
+        udpateItemIssuance.setCancelQuantity(cancelledQuantity);
+        // todo ???
+        //udpateItemIssuance.setOrderId();
+        //udpateItemIssuance.setOrderItemSeqId();
+        //udpateItemIssuance.setShipGroupSeqId();
+        return udpateItemIssuance;
     }
 
     private ProductState getProductState(String productId) {

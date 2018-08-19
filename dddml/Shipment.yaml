@@ -527,6 +527,47 @@ aggregates:
             type: description
 
       # --------------------------------------
+      # 发出一个装运项
+      IssueItem:
+        parameters:
+          # -----------------------------
+          # 装运单项目序列号
+          # -----------------------------
+          ShipmentItemSeqId:
+            type: id
+          # 订单 Id
+          OrderId:
+            type: id-ne
+          # 订单项目序列号
+          OrderItemSeqId:
+            type: id-ne
+          # 订单装运组的 Seq Id.（通知单号)
+          ShipGroupSeqId:
+            type: numeric
+          # # 发货项的 Seq Id.
+          # ItemIssuanceSeqId:
+          #  type: id
+          # 产品 Id
+          ProductId:
+            type: id-long
+          # 货位 Id.
+          LocatorId: 
+            type: string
+          # 属性集信息
+          AttributeSetInstance:
+            type: map
+          Quantity:
+            type: fixed-point
+          CancelQuantity:
+            type: fixed-point
+          # # 数量单位 Id.
+          # QuantityUomId:
+          #   type: string
+          # -----------------------------------
+          ItemDescription:
+            type: description
+            
+      # --------------------------------------
       # 增加一个发货项以及对应的装运项
       AddItemAndIssuance:
         parameters:
