@@ -7,6 +7,10 @@ import org.dddml.wms.domain.product.AbstractProductCommand;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductCommand;
 import org.dddml.wms.domain.service.OrderShipGroupServiceCommands;
+import org.dddml.wms.domain.shipment.ShipmentApplicationService;
+import org.dddml.wms.domain.shipment.ShipmentCommands;
+import org.dddml.wms.domain.shipment.ShipmentItemState;
+import org.dddml.wms.domain.shipment.ShipmentState;
 import org.dddml.wms.specialization.ApplicationContext;
 import org.dddml.wms.domain.service.OrderShipGroupApplicationService;
 
@@ -14,6 +18,8 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -26,10 +32,13 @@ public class OrderShipGroupTests {
 
     private ProductApplicationService productApplicationService;
 
+    private ShipmentApplicationService shipmentApplicationService;
+
     public final void setUp() {
         orderShipGroupApplicationService = (OrderShipGroupApplicationService) ApplicationContext.current.get("orderShipGroupApplicationService");
         partyApplicationService = (PartyApplicationService) ApplicationContext.current.get("partyApplicationService");
         productApplicationService = (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
+        shipmentApplicationService = (ShipmentApplicationService) ApplicationContext.current.get("shipmentApplicationService");
     }
 
     public void testCreatePOShipGroup1() {
@@ -179,7 +188,44 @@ public class OrderShipGroupTests {
         createSOShipment.setOrderId(createSOShipGroup.getOrderId());
         createSOShipment.setShipGroupSeqId(createSOShipGroup.getShipGroupSeqId());
         createSOShipment.setCommandId(createSOShipGroup.getShipGroupSeqId() + "");
-        orderShipGroupApplicationService.when(createSOShipment);
+        String shipmentId = orderShipGroupApplicationService.when(createSOShipment);
+
+        Map<String, Object> attributeSetInstance = new HashMap<>();
+
+        ShipmentState shipmentState = shipmentApplicationService.get(shipmentId);
+        Long shipmentVersion = shipmentState.getVersion();
+        for (ShipmentItemState i : shipmentState.getShipmentItems()) {
+            ShipmentCommands.IssueItem issueItem = new ShipmentCommands.IssueItem();
+            issueItem.setShipmentId(shipmentId);
+            issueItem.setShipmentItemSeqId(i.getShipmentItemSeqId());
+            issueItem.setQuantity(i.getQuantity());
+            issueItem.setProductId(i.getProductId());
+            issueItem.setLocatorId(InOutTests.TEST_LOCATOR_ID_1);
+            issueItem.setAttributeSetInstance(attributeSetInstance);
+            issueItem.setVersion(shipmentVersion);
+            issueItem.setCommandId(UUID.randomUUID().toString());
+            shipmentApplicationService.when(issueItem);
+            shipmentVersion++;
+        }
+
+        ShipmentCommands.AddItemAndIssuance addItemAndIssuance = new ShipmentCommands.AddItemAndIssuance();
+        addItemAndIssuance.setShipmentId(shipmentId);
+        addItemAndIssuance.setItemIssuanceSeqId(getRandomSeqId());
+        addItemAndIssuance.setProductId(createProduct.getProductId());
+        addItemAndIssuance.setLocatorId(InOutTests.TEST_LOCATOR_ID_1);
+        addItemAndIssuance.setQuantity(BigDecimal.valueOf(5000));
+        addItemAndIssuance.setAttributeSetInstance(attributeSetInstance);
+        addItemAndIssuance.setCommandId(UUID.randomUUID().toString());
+        addItemAndIssuance.setVersion(shipmentVersion);
+        shipmentApplicationService.when(addItemAndIssuance);
+        shipmentVersion++;
+
+        ShipmentCommands.ConfirmAllItemsIssued confirmAllItemsIssued = new ShipmentCommands.ConfirmAllItemsIssued();
+        confirmAllItemsIssued.setShipmentId(shipmentId);
+        confirmAllItemsIssued.setCommandId(UUID.randomUUID().toString());
+        confirmAllItemsIssued.setVersion(shipmentVersion);
+        shipmentApplicationService.when(confirmAllItemsIssued);
+
     }
 
     private String createTestPersonParty() {
@@ -194,6 +240,10 @@ public class OrderShipGroupTests {
     }
 
     private String getTestShipGroupSeqId() {
+        return getRandomSeqId();
+    }
+
+    private String getRandomSeqId() {
         String randStr = ("000000" + UUID.randomUUID().toString().hashCode());
         String seqId = new SimpleDateFormat("yyyyMMdd").format(new Date())
                 + randStr.substring(randStr.length() - 6);

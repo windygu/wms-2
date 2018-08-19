@@ -138,15 +138,44 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Override
     @Transactional
     public void when(ShipmentCommands.ConfirmAllItemsIssued c) {
-        //todo
         // /////////////////////////////////////////////////////////////////
-        // 目前要确认发货，装运单的类型是？状态是？
+        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
         // /////////////////////////////////////////////////////////////////
+
+        Map<Object, ItemIssuanceState> itemIssuanceMap = StreamSupport.stream(
+                shipment.getItemIssuances().spliterator(), false)
+                .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
+
+        Map<Object, ShipmentItemState> shipmentItemDict = StreamSupport.stream(
+                shipment.getShipmentItems().spliterator(), false)
+                .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
+
+
+        Optional<Object> itemIdNotFound = shipmentItemDict.keySet().stream()
+                .filter((i -> !itemIssuanceMap.containsKey((String) i))).findFirst();
+        if (itemIdNotFound.isPresent()) {
+            throw new IllegalArgumentException(String.format("Shipment item NOT issued. ShipmentItemSeqId.: %1$s", itemIdNotFound.get()));
+        }
+        // /////////////////////////////
+        Optional<ItemIssuanceState> itemIssuanceUnknown = itemIssuanceMap.values().stream()
+                .filter(i -> !shipmentItemDict.containsKey(((ItemIssuanceState) i).getShipmentItemSeqId())).findFirst();
+        if (itemIssuanceUnknown.isPresent()) {
+            throw new IllegalArgumentException(String.format("Item issuance has unknown ShipmentItemSeqId.: %1$s", itemIssuanceUnknown.get().getShipmentItemSeqId()));
+        }
+
+        List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries =
+                confirmAllItemsIssuedCreateInventoryItemEntries(shipment, itemIssuanceMap.values());
+        InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
+
+        super.when(c);
     }
 
     @Override
     @Transactional
     public void when(ShipmentCommands.IssueItem c) {
+        if (c.getLocatorId() == null) {
+            throw new IllegalArgumentException("locatorId is null.");
+        }
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
         ShipmentItemState shipmentItem = shipment.getShipmentItems().get(c.getShipmentItemSeqId());
         if (shipmentItem == null) {
@@ -159,6 +188,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 c, shipment,
                 c.getShipmentItemSeqId(),
                 shipmentItem.getProductId(),
+                c.getLocatorId(),
                 c.getAttributeSetInstance(),
                 c.getQuantity(),
                 c.getCancelQuantity()
@@ -171,21 +201,25 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Override
     @Transactional
     public void when(ShipmentCommands.AddItemAndIssuance c) {
-        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
+        if (c.getLocatorId() == null) {
+            throw new IllegalArgumentException("locatorId is null.");
+        }
+        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
         String shipmentItemSeqId = c.getItemIssuanceSeqId();
         ShipmentItemCommand.CreateShipmentItem createShipmentItem = createShipmentItem(c, shipmentItemSeqId);
         assertIssuanceQuantities(createShipmentItem.getQuantity(), c.getQuantity(), c.getCancelQuantity());
         // ////////////////////////////////////////////////////
-        ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateReceipt = createOrUpdateItemIssuance(
+        ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateItemIssuance = createOrUpdateItemIssuance(
                 c, shipment,
                 shipmentItemSeqId,
                 c.getProductId(),
+                c.getLocatorId(),
                 c.getAttributeSetInstance(),
                 c.getQuantity(),
                 c.getCancelQuantity()
         );
         // ////////////////////////////////////////////////////
-        updateShipment(c, updateReceipt, createShipmentItem);
+        updateShipment(c, updateItemIssuance, createShipmentItem);
     }
 
     private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndReceipt c,
@@ -296,7 +330,6 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         when(shipment);
     }
 
-
     protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsReceivedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ShipmentReceiptState> receipts, String destinationLocatorId) {
         if (destinationLocatorId == null || destinationLocatorId.isEmpty()) {
             throw new IllegalArgumentException("Null destinationLocatorId.");
@@ -304,6 +337,15 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (ShipmentReceiptState d : receipts) {
             InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d, destinationLocatorId);
+            entries.add(e);
+        }
+        return entries;
+    }
+
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsIssuedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ItemIssuanceState> itemIssuances) {
+        List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
+        for (ItemIssuanceState d : itemIssuances) {
+            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d);
             entries.add(e);
         }
         return entries;
@@ -321,9 +363,32 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         entry.setEntrySeqId(getSeqIdGenerator().getNextId()); //DateTime.Now.Ticks;
         entry.setOnHandQuantity(lineReceipt.getAcceptedQuantity()); // *signum;
         entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.SHIPMENT, shipment.getShipmentId(),
-                lineReceipt.getReceiptSeqId(), 0));
+                lineReceipt.getReceiptSeqId(), -1));
         if (lineReceipt.getDatetimeReceived() != null) {
             entry.setOccurredAt(new Timestamp(lineReceipt.getDatetimeReceived().getTime()));
+        } else {
+            entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
+        }
+        return entry;
+    }
+
+    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ItemIssuanceState itemIssuance) {
+        //String targetLocatorId = WarehouseUtils.getReceivingLocatorId();//shipment.getDestinationFacilityId()?
+        InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
+        String attrSetInstId = itemIssuance.getAttributeSetInstanceId();
+        if (attrSetInstId == null || attrSetInstId.isEmpty()) {
+            attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
+        }
+        //entry.setInventoryItemId(new InventoryItemId(lineReceipt.getProductId(), targetLocatorId, attrSetInstId));
+        entry.setInventoryItemId(new InventoryItemId(itemIssuance.getProductId(), itemIssuance.getLocatorId(), attrSetInstId));
+        entry.setEntrySeqId(getSeqIdGenerator().getNextId()); //DateTime.Now.Ticks;
+        // //////////////////////////////////////////////////////////////////////////
+        entry.setOnHandQuantity(itemIssuance.getQuantity().negate()); // *signum;
+        // //////////////////////////////////////////////////////////////////////////
+        entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.SHIPMENT, shipment.getShipmentId(),
+                itemIssuance.getItemIssuanceSeqId(), 0));
+        if (itemIssuance.getIssuedDateTime() != null) {
+            entry.setOccurredAt(new Timestamp(itemIssuance.getIssuedDateTime().getTime()));
         } else {
             entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
@@ -404,7 +469,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             BigDecimal acceptedQuantity,
             BigDecimal rejectedQuantity,
             BigDecimal damagedQuantity, List<String> damageStatusIds, String damageReasonId
-            ) {
+    ) {
         ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = null;
         String receiptSeqId = shipmentItemSeqId;
         ShipmentReceiptState receipt = shipment.getShipmentReceipts().get(receiptSeqId, false, true);
@@ -440,11 +505,14 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             ShipmentState shipment,
             String shipmentItemSeqId,
             String productId,
+            String locatorId,
             Map<String, Object> attributeSetInstance,
             BigDecimal quantity,
             BigDecimal cancelledQuantity
     ) {
-
+        if (locatorId == null) {
+            throw new IllegalArgumentException("locatorId is null.");
+        }
         ItemIssuanceCommand.CreateOrMergePatchItemIssuance udpateItemIssuance = null;
         String itemIssuanceSeqId = shipmentItemSeqId;
         ItemIssuanceState itemIssuanceState = shipment.getItemIssuances().get(itemIssuanceSeqId, false, true);
@@ -468,6 +536,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         udpateItemIssuance.setProductId(productId);
         udpateItemIssuance.setQuantity(quantity);
         udpateItemIssuance.setCancelQuantity(cancelledQuantity);
+        udpateItemIssuance.setLocatorId(locatorId);
         // todo ???
         //udpateItemIssuance.setOrderId();
         //udpateItemIssuance.setOrderItemSeqId();
@@ -543,6 +612,26 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             }
             ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
             e.setStatusId(StatusItemIds.PURCH_SHIP_RECEIVED);
+            apply(e);
+        }
+
+        @Override
+        public void confirmAllItemsIssued(Long version, String commandId, String requesterId) {
+            boolean isStatusOk = false;
+            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_INPUT.toLowerCase())) {
+                isStatusOk = true;
+            }
+            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PICKED.toLowerCase())) {
+                isStatusOk = true;
+            }
+            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PACKED.toLowerCase())) {
+                isStatusOk = true;
+            }
+            if (!isStatusOk) {
+                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
+            }
+            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
             apply(e);
         }
 

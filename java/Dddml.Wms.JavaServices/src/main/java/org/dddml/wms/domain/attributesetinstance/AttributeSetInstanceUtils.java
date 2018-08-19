@@ -16,7 +16,10 @@ public class AttributeSetInstanceUtils {
 
     public static String createAttributeSetInstance(
             AttributeSetService attributeSetService, AttributeSetInstanceApplicationService attrSetInstApplicationService,
-                                                    String attrSetId, Map<String, Object> attrSetInstDict) {
+                                                    String attrSetId, Map<String, Object> attributeSetIntanceMap) {
+        if (attributeSetIntanceMap == null) {
+            throw new IllegalArgumentException("attributeSetInstanceMap is null.");
+        }
         Map<String, String> nameDict = null;
         if (attrSetId == null) {
             nameDict = new HashMap<>();
@@ -25,7 +28,7 @@ public class AttributeSetInstanceUtils {
         }
         AttributeSetInstanceCommand.CreateAttributeSetInstance createAttrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
         createAttrSetInst.setAttributeSetId(attrSetId == null ? "*" : attrSetId);
-        for (Map.Entry<String, Object> kv : attrSetInstDict.entrySet()) {
+        for (Map.Entry<String, Object> kv : attributeSetIntanceMap.entrySet()) {
             String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
             // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
             boolean b = ReflectUtils.trySetPropertyValue(fname, createAttrSetInst, kv.getValue(),

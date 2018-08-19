@@ -74,19 +74,19 @@ public class TestMain {
             }
         }
 
-        InOutTests inOutTests = new InOutTests();
-        inOutTests.setUp();
-        inOutTests.testInThenOut();//测试入库后马上出库，该产品的库存应该为 0
-        //if (true) return;
-        inOutTests.testCreateAndCompleteAndReverseInOut();
-
         OrderShipGroupTests orderShipGroupTests = new OrderShipGroupTests();
         orderShipGroupTests.setUp();
         //orderShipGroupTests.testCreatePOShipGroup1();
         //orderShipGroupTests.testCreatePOShipGroupAndShipment2();
         orderShipGroupTests.testCreateSOShipGroup1();
         orderShipGroupTests.testCreateSOShipGroupAndShipment2();
+        if (true) return;
+
+        InOutTests inOutTests = new InOutTests();
+        inOutTests.setUp();
+        inOutTests.testInThenOut();//测试入库后马上出库，该产品的库存应该为 0
         //if (true) return;
+        inOutTests.testCreateAndCompleteAndReverseInOut();
 
         ProductTests productTests = new ProductTests();
         productTests.setUp();

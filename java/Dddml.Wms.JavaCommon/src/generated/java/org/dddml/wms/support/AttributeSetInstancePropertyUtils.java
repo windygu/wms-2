@@ -389,6 +389,8 @@ public class AttributeSetInstancePropertyUtils {
 
     private static boolean propertyEquals(Set<String> strs1, Set<String> strs2) {
         if (Objects.equals(strs1, strs2)) { return true; }
+        if (strs1 == null && strs2.size() == 0) { return true; }
+        if (strs2 == null && strs1.size() == 0) { return true; }
         if (strs1 == null || strs2 == null) { return false; }
         if (strs1.size() != strs2.size()) {
             return false;
