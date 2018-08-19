@@ -81,7 +81,7 @@ public class OrderShipGroupTests {
         //每柜件数
         createPOShipGroup.setNumberOfPakagesPerContainer(40);
         //产品 Id
-        ProductCommand.CreateProduct createProduct = createProduct_1();
+        ProductCommand.CreateProduct createProduct = createNotSerialNumberedProduct_1();
         createPOShipGroup.setProductId(createProduct.getProductId());
         //数量（以产品的主计量单位计算）
         createPOShipGroup.setQuantity(BigDecimal.valueOf(100000));
@@ -111,7 +111,7 @@ public class OrderShipGroupTests {
         createSOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
         createSOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
-        //（预计）入库时间
+        //（预计）出库时间
         createSOShipGroup.setEstimatedShipDate(new Timestamp(new Date().getTime()));
         //件数
         createSOShipGroup.setNumberOfPackages(400);
@@ -138,6 +138,50 @@ public class OrderShipGroupTests {
         orderShipGroupApplicationService.when(createSOShipGroup);
     }
 
+
+
+    public void testCreateSOShipGroupAndShipment2() {
+        String partyId = createTestPersonParty();
+
+        OrderShipGroupServiceCommands.CreateSOShipGroup createSOShipGroup = new OrderShipGroupServiceCommands.CreateSOShipGroup();
+        //订单 Id（合同号）
+        createSOShipGroup.setOrderId("" + new Date().getTime());
+        //装运组序号（通知单号），长整数
+        createSOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
+        //（预计）出库时间
+        createSOShipGroup.setEstimatedShipDate(new Timestamp(new Date().getTime()));
+        //件数
+        createSOShipGroup.setNumberOfPackages(400);
+        //柜数
+        createSOShipGroup.setNumberOfContainers(10);
+        //每柜件数
+        createSOShipGroup.setNumberOfPakagesPerContainer(40);
+        //产品 Id
+        ProductCommand.CreateProduct createProduct = createNotSerialNumberedProduct_1();
+        createSOShipGroup.setProductId(createProduct.getProductId());
+        //数量（以产品的主计量单位计算）
+        createSOShipGroup.setQuantity(BigDecimal.valueOf(100000));
+        //跟踪单号
+        createSOShipGroup.setTrackingNumber("" + new Date().getTime());
+        //
+        createSOShipGroup.setCommandId(createSOShipGroup.getOrderId());
+
+        //联系人 Id
+        createSOShipGroup.setContactPartyId(partyId);
+        //车牌号
+        createSOShipGroup.setVehiclePlateNumber("LU" + new Date().getTime());
+        //发货指示 / 备注等
+        createSOShipGroup.setShippingInstructions("Customer Name:" + UUID.randomUUID().toString());
+
+        orderShipGroupApplicationService.when(createSOShipGroup);
+
+        OrderShipGroupServiceCommands.CreateSOShipment  createSOShipment = new OrderShipGroupServiceCommands.CreateSOShipment();
+        createSOShipment.setOrderId(createSOShipGroup.getOrderId());
+        createSOShipment.setShipGroupSeqId(createSOShipGroup.getShipGroupSeqId());
+        createSOShipment.setCommandId(createSOShipGroup.getShipGroupSeqId() + "");
+        orderShipGroupApplicationService.when(createSOShipment);
+    }
+
     private String createTestPersonParty() {
         PartyCommand.CreateParty createPerson = new AbstractPartyCommand.SimpleCreatePerson();
         String partyId = "" + new Date().getTime();
@@ -160,7 +204,7 @@ public class OrderShipGroupTests {
         return "f1";//todo 如果这个产品不存在，需要创建它。
     }
 
-    private ProductCommand.CreateProduct createProduct_1() {
+    private ProductCommand.CreateProduct createNotSerialNumberedProduct_1() {
         ProductCommand.CreateProduct prd_1 = new AbstractProductCommand.SimpleCreateProduct();
         prd_1.setProductId("MineralWater" + new java.util.Date().getTime() + ""); //Guid.NewGuid().ToString();
         prd_1.setProductName("Test_" + prd_1.getProductId());

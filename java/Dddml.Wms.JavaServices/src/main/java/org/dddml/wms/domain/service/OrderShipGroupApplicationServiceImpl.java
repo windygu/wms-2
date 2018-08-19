@@ -136,27 +136,56 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     public String when(OrderShipGroupServiceCommands.CreatePOShipment c) {
         String orderId = c.getOrderId();
         Long shipGroupSeqId = c.getShipGroupSeqId();
-        OrderState orderState = getOrderApplicationService().get(orderId);
-        if (orderState == null) {
-            throw new IllegalArgumentException(String.format("Order Id '%1$s' error.", orderId));
+        OrderState orderState = assertOrderId(orderId);
+        if (!OrderTypeIds.PURCHASE_ORDER.equalsIgnoreCase(orderState.getOrderTypeId())) {
+            throw new IllegalArgumentException("Order type error.");
         }
-        OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, false, true);
-        if (orderShipGroupState == null) {
-            throw new IllegalArgumentException(String.format("ShipGroupSeqId Id '%1$s' error.", shipGroupSeqId));
-        }
+        OrderShipGroupState orderShipGroupState = assertShipGroupSeqId(orderState, shipGroupSeqId);
         String shipmentId = c.getShipmentId();
         if (shipmentId == null || shipmentId.trim().isEmpty()) {
             shipmentId = "S" + seqIdGenerator.getNextId();
         }
-        ShipmentCommand.CreateShipment createShipment = new AbstractShipmentCommand.SimpleCreateShipment();
-        createShipment.setShipmentId(shipmentId);
-        createShipment.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);
-        createShipment.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
-        createShipment.setPrimaryOrderId(orderId);
-        createShipment.setPrimaryShipGroupSeqId(shipGroupSeqId);
-        createShipment.setActive(true);
+        String shipmentTypeId = ShipmentTypeIds.PURCHASE_SHIPMENT;
+        String shipmentStatusId = StatusItemIds.PURCH_SHIP_SHIPPED;
+        // //////////////////////////////////////////////
+        ShipmentCommand.CreateShipment createShipment =
+                createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
         createShipment.setCommandId(c.getCommandId());
+        // //////////////////////////////////////////////
+        createShipmentItems(orderState, orderShipGroupState, createShipment);
 
+        getShipmentApplicationService().when(createShipment);
+        return shipmentId;
+    }
+
+    @Transactional
+    @Override
+    public String when(OrderShipGroupServiceCommands.CreateSOShipment c) {
+        String orderId = c.getOrderId();
+        Long shipGroupSeqId = c.getShipGroupSeqId();
+        OrderState orderState = assertOrderId(orderId);
+        if (!OrderTypeIds.SALES_ORDER.equalsIgnoreCase(orderState.getOrderTypeId())) {
+            throw new IllegalArgumentException("Order type error.");
+        }
+        OrderShipGroupState orderShipGroupState = assertShipGroupSeqId(orderState, shipGroupSeqId);
+        String shipmentId = c.getShipmentId();
+        if (shipmentId == null || shipmentId.trim().isEmpty()) {
+            shipmentId = "S" + seqIdGenerator.getNextId();
+        }
+        String shipmentTypeId = ShipmentTypeIds.SALES_SHIPMENT;
+        String shipmentStatusId = StatusItemIds.SHIPMENT_INPUT;
+        // //////////////////////////////////////////////
+        ShipmentCommand.CreateShipment createShipment =
+                createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
+        createShipment.setCommandId(c.getCommandId());
+        // //////////////////////////////////////////////
+        createShipmentItems(orderState, orderShipGroupState, createShipment);
+
+        getShipmentApplicationService().when(createShipment);
+        return shipmentId;
+    }
+
+    private void createShipmentItems(OrderState orderState, OrderShipGroupState orderShipGroupState, ShipmentCommand.CreateShipment createShipment) {
         for (OrderItemShipGroupAssociationState assc :  orderShipGroupState.getOrderItemShipGroupAssociations()) {
             String orderItemSeqId = assc.getOrderItemSeqId();
             OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, false, true);
@@ -174,15 +203,33 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
                 }
             }
         }
-
-        getShipmentApplicationService().when(createShipment);
-        return shipmentId;
     }
 
-    @Override
-    public String when(OrderShipGroupServiceCommands.CreateSOShipment c) {
-        //todo
-        return null;
+    private ShipmentCommand.CreateShipment createShipment(String orderId, Long shipGroupSeqId, String shipmentId, String shipmentTypeId, String shipmentStatusId) {
+        ShipmentCommand.CreateShipment createShipment = new AbstractShipmentCommand.SimpleCreateShipment();
+        createShipment.setShipmentId(shipmentId);
+        createShipment.setShipmentTypeId(shipmentTypeId);
+        createShipment.setStatusId(shipmentStatusId);
+        createShipment.setPrimaryOrderId(orderId);
+        createShipment.setPrimaryShipGroupSeqId(shipGroupSeqId);
+        createShipment.setActive(true);
+        return createShipment;
+    }
+
+    private OrderShipGroupState assertShipGroupSeqId(OrderState orderState, Long shipGroupSeqId) {
+        OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, false, true);
+        if (orderShipGroupState == null) {
+            throw new IllegalArgumentException(String.format("ShipGroupSeqId Id '%1$s' error.", shipGroupSeqId));
+        }
+        return orderShipGroupState;
+    }
+
+    private OrderState assertOrderId(String orderId) {
+        OrderState orderState = getOrderApplicationService().get(orderId);
+        if (orderState == null) {
+            throw new IllegalArgumentException(String.format("Order Id '%1$s' error.", orderId));
+        }
+        return orderState;
     }
 
     private ProductState assertProductId(String productId) {
