@@ -854,16 +854,18 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         @Override
         public void orderShipGroupAction(Long shipGroupSeqId, String value, Long version, String commandId, String requesterId) {
             OrderEvent.OrderStateMergePatched aggE = newOrderStateMergePatched(version, commandId, requesterId);
-            OrderShipGroupEvent.OrderShipGroupStateMergePatched e = null;//todo !!! newOrderShipGroupStateMergePatched();
-            doOrderShipGroupAction(value, s -> e.setOrderShipGroupStatusId(s));
+            //...
+            OrderShipGroupEvent.OrderShipGroupStateMergePatched e = newOrderShipGroupStateMergePatched(new OrderShipGroupEventId(this.getState().getOrderId(), shipGroupSeqId, version));
+            aggE.addOrderShipGroupEvent(e);            
+            doOrderShipGroupAction(shipGroupSeqId, value, s -> e.setOrderShipGroupStatusId(s));
             apply(e);
         }
 
-        protected  void doOrderShipGroupAction(String value, java.util.function.Consumer<String> setOrderShipGroupStatusId) {
+        protected  void doOrderShipGroupAction(Long shipGroupSeqId, String value, java.util.function.Consumer<String> setOrderShipGroupStatusId) {
             PropertyCommandHandler<String, String> pCommandHandler = this.getOrderShipGroupOrderShipGroupActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);
-            //todo !!!
+            pCmd.setStateGetter(() -> this.getState().getOrderShipGroups().get(shipGroupSeqId).getOrderShipGroupStatusId());
             pCmd.setStateSetter(setOrderShipGroupStatusId);
             pCmd.setOuterCommandType("OrderShipGroupAction");
             pCmd.setContext(getState());
