@@ -470,7 +470,19 @@ aggregates:
                 type: fixed-point
               CancelQuantity:
                 type: fixed-point
-                
+              # TestStautsId:
+                # type: id
+                # referenceType: StatusItem
+                # commandType: OrderShipGroupAction
+                # commandName: OrderItemShipGroupAssociationAction
+                # # -------------------------------------
+                # stateMachine:
+                  # transitions:
+                  # - sourceState: null
+                    # trigger: null
+                    # targetState: "SHIP_GRP_CREATED"
+                # # -------------------------------------
+              
             # references: {}
             # reservedProperties: {}
             
