@@ -15,6 +15,8 @@ public interface OrderApplicationService
 
     void when(OrderCommand.MergePatchOrder c);
 
+    void when(OrderCommands.OrderShipGroupAction c);
+
     OrderState get(String id);
 
     Iterable<OrderState> getAll(Integer firstResult, Integer maxResults);

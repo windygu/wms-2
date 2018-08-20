@@ -297,16 +297,16 @@ public class OrderShipGroupStateDto
         this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
     }
 
-    private String statusId;
+    private String orderShipGroupStatusId;
 
-    public String getStatusId()
+    public String getOrderShipGroupStatusId()
     {
-        return this.statusId;
+        return this.orderShipGroupStatusId;
     }
 
-    public void setStatusId(String statusId)
+    public void setOrderShipGroupStatusId(String orderShipGroupStatusId)
     {
-        this.statusId = statusId;
+        this.orderShipGroupStatusId = orderShipGroupStatusId;
     }
 
     private Boolean active;

@@ -54,6 +54,10 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         update(c, ar -> ar.mergePatch(c));
     }
 
+    public void when(OrderCommands.OrderShipGroupAction c) {
+        update(c, ar -> ar.orderShipGroupAction(c.getOrderShipGroupId().getShipGroupSeqId(), c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+    }
+
     public OrderState get(String id) {
         OrderState state = getStateRepository().get(id, true);
         return state;

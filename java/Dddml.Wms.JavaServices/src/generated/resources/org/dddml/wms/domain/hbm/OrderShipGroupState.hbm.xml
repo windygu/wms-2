@@ -37,7 +37,7 @@
 	<property name="numberOfPackages" ></property>
 	<property name="numberOfContainers" ></property>
 	<property name="numberOfPakagesPerContainer" ></property>
-	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderShipGroupStatusId" ><column name="OrderShipGroupStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

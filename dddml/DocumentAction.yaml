@@ -30,3 +30,25 @@ enumObjects:
           description: Confirm
           
             
+    # 订单装运组操作
+    OrderShipGroupAction:
+      baseType: string
+      
+      values:
+        # 起草
+        # Draft:
+        #   description: Draft
+        # 完成
+        Complete:
+          description: Complete
+        # 作废
+        Cancel:
+          description: Cancel
+        # Reject
+        Reject:
+          description: Reject
+        # Approve
+        Approve:
+          description: Approve
+          
+            

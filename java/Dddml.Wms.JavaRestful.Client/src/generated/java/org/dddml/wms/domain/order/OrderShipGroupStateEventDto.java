@@ -256,14 +256,14 @@ public class OrderShipGroupStateEventDto extends AbstractEvent
         this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
     }
 
-    private String statusId;
+    private String orderShipGroupStatusId;
 
-    public String getStatusId() {
-        return this.statusId;
+    public String getOrderShipGroupStatusId() {
+        return this.orderShipGroupStatusId;
     }
 
-    public void setStatusId(String statusId) {
-        this.statusId = statusId;
+    public void setOrderShipGroupStatusId(String orderShipGroupStatusId) {
+        this.orderShipGroupStatusId = orderShipGroupStatusId;
     }
 
     private Boolean active;
@@ -536,14 +536,14 @@ public class OrderShipGroupStateEventDto extends AbstractEvent
         this.isPropertyNumberOfPakagesPerContainerRemoved = removed;
     }
 
-    private Boolean isPropertyStatusIdRemoved;
+    private Boolean isPropertyOrderShipGroupStatusIdRemoved;
 
-    public Boolean getIsPropertyStatusIdRemoved() {
-        return this.isPropertyStatusIdRemoved;
+    public Boolean getIsPropertyOrderShipGroupStatusIdRemoved() {
+        return this.isPropertyOrderShipGroupStatusIdRemoved;
     }
 
-    public void setIsPropertyStatusIdRemoved(Boolean removed) {
-        this.isPropertyStatusIdRemoved = removed;
+    public void setIsPropertyOrderShipGroupStatusIdRemoved(Boolean removed) {
+        this.isPropertyOrderShipGroupStatusIdRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

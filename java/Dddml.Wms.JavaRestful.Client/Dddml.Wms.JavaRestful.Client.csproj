@@ -831,6 +831,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvResId.java">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\OrderShipGroupAction.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\AbstractOrderShipmentCommandDto.java">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Content>
@@ -2637,6 +2640,7 @@
 .\Command.java
 .\DocumentAction.java
 .\GenerateBoundedContextDomain.txt
+.\OrderShipGroupAction.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributesClient.java">
@@ -2703,10 +2707,12 @@
 .\OrderItemShipGrpInvReservationsClient.java
 .\OrdersClient.java
 .\OrderShipmentsClient.java
+.\OrganizationsClient.java
 .\OrganizationStructuresClient.java
 .\OrganizationStructureTypesClient.java
 .\PartiesClient.java
 .\PartyRolesClient.java
+.\PeopleClient.java
 .\PhysicalInventoriesClient.java
 .\PicklistBinsClient.java
 .\PicklistsClient.java
@@ -2816,6 +2822,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrderShipmentsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\OrganizationsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\OrganizationStructuresClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
@@ -2829,6 +2838,9 @@
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\PartyRolesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PeopleClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\PhysicalInventoriesClient.java">
@@ -2889,10 +2901,12 @@
 .\RxOrderItemShipGrpInvReservationsClient.java
 .\RxOrdersClient.java
 .\RxOrderShipmentsClient.java
+.\RxOrganizationsClient.java
 .\RxOrganizationStructuresClient.java
 .\RxOrganizationStructureTypesClient.java
 .\RxPartiesClient.java
 .\RxPartyRolesClient.java
+.\RxPeopleClient.java
 .\RxPhysicalInventoriesClient.java
 .\RxPicklistBinsClient.java
 .\RxPicklistsClient.java
@@ -3035,6 +3049,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrderShipmentsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrganizationsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxOrganizationStructuresClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
@@ -3048,6 +3065,9 @@
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPartyRolesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPeopleClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPhysicalInventoriesClient.java">

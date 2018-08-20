@@ -81,5 +81,9 @@ public interface OrdersClient {
     @DELETE("Orders/{id}")
     Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
+    @Headers("Accept: application/json")
+    @PUT("Orders/{id}/_commands/OrderShipGroupAction")
+    Call<String> orderShipGroupAction(@Path("id") String id, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
+
 }
 

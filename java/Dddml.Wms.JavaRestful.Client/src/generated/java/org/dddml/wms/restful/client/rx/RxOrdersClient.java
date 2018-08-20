@@ -82,5 +82,9 @@ public interface RxOrdersClient {
     @DELETE("Orders/{id}")
     Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
+    @Headers("Accept: application/json")
+    @PUT("Orders/{id}/_commands/OrderShipGroupAction")
+    Observable<String> orderShipGroupAction(@Path("id") String id, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
+
 }
 

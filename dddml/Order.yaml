@@ -371,10 +371,41 @@ aggregates:
             type: int
           # -------------------------
           # 订单装运组的状态
-          StatusId:
+          OrderShipGroupStatusId:
             type: id
             referenceType: StatusItem
+            commandType: OrderShipGroupAction
+            commandName: OrderShipGroupAction
           
+            # -------------------------------------
+            # 单据状态的状态机
+            stateMachine:
+              # 转换
+              transitions:
+            
+              - sourceState: null
+                trigger: null
+                targetState: "SHIP_GRP_CREATED"
+              
+              - sourceState: "SHIP_GRP_CREATED"
+                trigger: "Approve"
+                targetState: "SHIP_GRP_APPROVED"
+              
+              - sourceState: "SHIP_GRP_APPROVED"
+                trigger: "Complete"
+                targetState: "SHIP_GRP_COMPLETED"
+              
+              - sourceState: "SHIP_GRP_CREATED"
+                trigger: "Reject"
+                targetState: "SHIP_GRP_REJECTED"
+              
+              - sourceState: "SHIP_GRP_CREATED"
+                trigger: "Cancel"
+                targetState: "SHIP_GRP_CANCELLED"
+              
+            # -------------------------------------
+
+            
           OrderItemShipGroupAssociations:
             itemType: OrderItemShipGroupAssociation
             

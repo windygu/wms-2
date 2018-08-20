@@ -583,6 +583,23 @@ public class OrderResource {
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @PutMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction")
+    public void orderShipGroupAction(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId, @RequestBody OrderCommands.OrderShipGroupAction content) {
+        try {
+
+            OrderCommands.OrderShipGroupAction cmd = content;//.toOrderShipGroupAction();
+            OrderShipGroupId idObj = new OrderShipGroupId(orderId, shipGroupSeqId);
+            if (cmd.getOrderShipGroupId() == null) {
+                cmd.setOrderShipGroupId(idObj);
+            }
+            else if (!cmd.getOrderShipGroupId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", idObj, cmd.getOrderShipGroupId());
+            }
+            orderApplicationService.when(cmd);
+
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+    }
+
     /**
      * 查看.
      * 获取指定 OrderItemSeqId 的 OrderItemShipGroupAssociation

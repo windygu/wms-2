@@ -112,9 +112,9 @@ public interface OrderShipGroupState
 
     void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
 
-    String getStatusId();
+    String getOrderShipGroupStatusId();
 
-    void setStatusId(String statusId);
+    void setOrderShipGroupStatusId(String orderShipGroupStatusId);
 
     Long getVersion();
 

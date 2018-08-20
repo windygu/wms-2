@@ -48,7 +48,7 @@
 	<property name="numberOfPackages" ></property>
 	<property name="numberOfContainers" ></property>
 	<property name="numberOfPakagesPerContainer" ></property>
-	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderShipGroupStatusId" ><column name="OrderShipGroupStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="active" ></property>
 
     <property name="version" column="Version" not-null="true" />
@@ -105,7 +105,7 @@
 
         <property name="isPropertyNumberOfPakagesPerContainerRemoved" column="IsPropertyNumberOfPakagesPerContainerRemoved"/>
 
-        <property name="isPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
+        <property name="isPropertyOrderShipGroupStatusIdRemoved" column="IsPropertyOrderShipGroupStatusIdRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

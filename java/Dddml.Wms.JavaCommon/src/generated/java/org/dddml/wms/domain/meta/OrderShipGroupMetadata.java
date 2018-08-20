@@ -42,7 +42,7 @@ public final class OrderShipGroupMetadata {
             "numberOfPackages",
             "numberOfContainers",
             "numberOfPakagesPerContainer",
-            "statusId",
+            "orderShipGroupStatusId",
             "version",
             "createdBy",
             "createdAt",
@@ -153,8 +153,8 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("NumberOfContainers", "numberOfContainers");
         aliasMap.put("numberOfPakagesPerContainer", "numberOfPakagesPerContainer");
         aliasMap.put("NumberOfPakagesPerContainer", "numberOfPakagesPerContainer");
-        aliasMap.put("statusId", "statusId");
-        aliasMap.put("StatusId", "statusId");
+        aliasMap.put("orderShipGroupStatusId", "orderShipGroupStatusId");
+        aliasMap.put("OrderShipGroupStatusId", "orderShipGroupStatusId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

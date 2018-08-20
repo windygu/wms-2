@@ -21,7 +21,7 @@ public class HibernateOrderShipGroupStateDao implements OrderShipGroupStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "ContactMechId", "TelecomContactMechId", "TrackingNumber", "ContactPartyId", "VehiclePlateNumber", "ShippingInstructions", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "EstimatedShipDate", "EstimatedDeliveryDate", "PickwaveId", "NumberOfPackages", "NumberOfContainers", "NumberOfPakagesPerContainer", "StatusId", "OrderItemShipGroupAssociations", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "ContactMechId", "TelecomContactMechId", "TrackingNumber", "ContactPartyId", "VehiclePlateNumber", "ShippingInstructions", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "EstimatedShipDate", "EstimatedDeliveryDate", "PickwaveId", "NumberOfPackages", "NumberOfContainers", "NumberOfPakagesPerContainer", "OrderShipGroupStatusId", "OrderItemShipGroupAssociations", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

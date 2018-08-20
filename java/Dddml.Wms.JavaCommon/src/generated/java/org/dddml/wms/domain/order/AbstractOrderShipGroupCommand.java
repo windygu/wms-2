@@ -310,18 +310,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
         }
 
-        private String statusId;
-
-        public String getStatusId()
-        {
-            return this.statusId;
-        }
-
-        public void setStatusId(String statusId)
-        {
-            this.statusId = statusId;
-        }
-
         private Boolean active;
 
         public Boolean getActive()
@@ -663,18 +651,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed)
         {
             this.isPropertyNumberOfPakagesPerContainerRemoved = removed;
-        }
-
-        private Boolean isPropertyStatusIdRemoved;
-
-        public Boolean getIsPropertyStatusIdRemoved()
-        {
-            return this.isPropertyStatusIdRemoved;
-        }
-
-        public void setIsPropertyStatusIdRemoved(Boolean removed)
-        {
-            this.isPropertyStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

@@ -351,21 +351,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
-     * Status Id
-     */
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
-    /**
      * Active
      */
     private Boolean active;
@@ -668,18 +653,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyNumberOfPakagesPerContainerRemoved = removed;
     }
 
-    private Boolean isPropertyStatusIdRemoved;
-
-    public Boolean getIsPropertyStatusIdRemoved()
-    {
-        return this.isPropertyStatusIdRemoved;
-    }
-
-    public void setIsPropertyStatusIdRemoved(Boolean removed)
-    {
-        this.isPropertyStatusIdRemoved = removed;
-    }
-
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -718,7 +691,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setNumberOfPackages(this.getNumberOfPackages());
         command.setNumberOfContainers(this.getNumberOfContainers());
         command.setNumberOfPakagesPerContainer(this.getNumberOfPakagesPerContainer());
-        command.setStatusId(this.getStatusId());
         command.setActive(this.getActive());
     }
 
@@ -785,7 +757,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setIsPropertyNumberOfPackagesRemoved(this.getIsPropertyNumberOfPackagesRemoved());
         command.setIsPropertyNumberOfContainersRemoved(this.getIsPropertyNumberOfContainersRemoved());
         command.setIsPropertyNumberOfPakagesPerContainerRemoved(this.getIsPropertyNumberOfPakagesPerContainerRemoved());
-        command.setIsPropertyStatusIdRemoved(this.getIsPropertyStatusIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

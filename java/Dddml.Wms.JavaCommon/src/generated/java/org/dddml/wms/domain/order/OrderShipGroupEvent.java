@@ -122,9 +122,9 @@ public interface OrderShipGroupEvent extends Event
 
         void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
 
-        String getStatusId();
+        String getOrderShipGroupStatusId();
 
-        void setStatusId(String statusId);
+        void setOrderShipGroupStatusId(String orderShipGroupStatusId);
 
         Boolean getActive();
 
@@ -238,9 +238,9 @@ public interface OrderShipGroupEvent extends Event
 
         void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed);
 
-        Boolean getIsPropertyStatusIdRemoved();
+        Boolean getIsPropertyOrderShipGroupStatusIdRemoved();
 
-        void setIsPropertyStatusIdRemoved(Boolean removed);
+        void setIsPropertyOrderShipGroupStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

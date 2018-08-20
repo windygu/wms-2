@@ -456,7 +456,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setNumberOfPackages(c.getNumberOfPackages());
         e.setNumberOfContainers(c.getNumberOfContainers());
         e.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());
-        e.setStatusId(c.getStatusId());
+        newOrderShipGroupOrderShipGroupActionCommandAndExecute(c, s, e);
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -503,7 +503,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setNumberOfPackages(c.getNumberOfPackages());
         e.setNumberOfContainers(c.getNumberOfContainers());
         e.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());
-        e.setStatusId(c.getStatusId());
         e.setActive(c.getActive());
         e.setIsPropertyShipmentMethodTypeIdRemoved(c.getIsPropertyShipmentMethodTypeIdRemoved());
         e.setIsPropertySupplierPartyIdRemoved(c.getIsPropertySupplierPartyIdRemoved());
@@ -528,7 +527,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyNumberOfPackagesRemoved(c.getIsPropertyNumberOfPackagesRemoved());
         e.setIsPropertyNumberOfContainersRemoved(c.getIsPropertyNumberOfContainersRemoved());
         e.setIsPropertyNumberOfPakagesPerContainerRemoved(c.getIsPropertyNumberOfPakagesPerContainerRemoved());
-        e.setIsPropertyStatusIdRemoved(c.getIsPropertyStatusIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -793,10 +791,83 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         return new AbstractOrderItemShipGroupAssociationEvent.SimpleOrderItemShipGroupAssociationStateRemoved(stateEventId);
     }
 
+    protected void newOrderShipGroupOrderShipGroupActionCommandAndExecute(OrderShipGroupCommand.CreateOrderShipGroup c, OrderShipGroupState s, OrderShipGroupEvent.OrderShipGroupStateCreated e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getOrderShipGroupOrderShipGroupActionCommandHandler();
+        String pCmdContent = null;
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getOrderShipGroupStatusId());
+        pCmd.setStateSetter(p -> e.setOrderShipGroupStatusId(p));
+        pCmd.setOuterCommandType(CommandType.CREATE);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
+    public class SimpleOrderShipGroupOrderShipGroupActionCommandHandler implements PropertyCommandHandler<String, String> {
+
+        public void execute(PropertyCommand<String, String> command) {
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+                command.getStateSetter().accept("SHIP_GRP_CREATED");
+                return;
+            }
+            if (Objects.equals("SHIP_GRP_CREATED", command.getStateGetter().get()) && Objects.equals("Approve", command.getContent())) {
+                command.getStateSetter().accept("SHIP_GRP_APPROVED");
+                return;
+            }
+            if (Objects.equals("SHIP_GRP_APPROVED", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent())) {
+                command.getStateSetter().accept("SHIP_GRP_COMPLETED");
+                return;
+            }
+            if (Objects.equals("SHIP_GRP_CREATED", command.getStateGetter().get()) && Objects.equals("Reject", command.getContent())) {
+                command.getStateSetter().accept("SHIP_GRP_REJECTED");
+                return;
+            }
+            if (Objects.equals("SHIP_GRP_CREATED", command.getStateGetter().get()) && Objects.equals("Cancel", command.getContent())) {
+                command.getStateSetter().accept("SHIP_GRP_CANCELLED");
+                return;
+            }
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+        }
+    }
+
+    private PropertyCommandHandler<String, String> orderShipGroupOrderShipGroupActionCommandHandler = new SimpleOrderShipGroupOrderShipGroupActionCommandHandler();
+
+    public void setOrderShipGroupOrderShipGroupActionCommandHandler(PropertyCommandHandler<String, String> h) {
+        this.orderShipGroupOrderShipGroupActionCommandHandler = h;
+    }
+
+    protected PropertyCommandHandler<String, String> getOrderShipGroupOrderShipGroupActionCommandHandler() {
+        Object h = ApplicationContext.current.get("OrderShipGroupOrderShipGroupActionCommandHandler");
+        if (h instanceof PropertyCommandHandler) {
+            return (PropertyCommandHandler<String, String>) h;
+        }
+        return this.orderShipGroupOrderShipGroupActionCommandHandler;
+    }
+
     public static class SimpleOrderAggregate extends AbstractOrderAggregate
     {
         public SimpleOrderAggregate(OrderState state) {
             super(state);
+        }
+
+        @Override
+        public void orderShipGroupAction(Long shipGroupSeqId, String value, Long version, String commandId, String requesterId) {
+            OrderEvent.OrderStateMergePatched aggE = newOrderStateMergePatched(version, commandId, requesterId);
+            OrderShipGroupEvent.OrderShipGroupStateMergePatched e = null;//todo !!! newOrderShipGroupStateMergePatched();
+            doOrderShipGroupAction(value, s -> e.setOrderShipGroupStatusId(s));
+            apply(e);
+        }
+
+        protected  void doOrderShipGroupAction(String value, java.util.function.Consumer<String> setOrderShipGroupStatusId) {
+            PropertyCommandHandler<String, String> pCommandHandler = this.getOrderShipGroupOrderShipGroupActionCommandHandler();
+            PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
+            pCmd.setContent(value);
+            //todo !!!
+            pCmd.setStateSetter(setOrderShipGroupStatusId);
+            pCmd.setOuterCommandType("OrderShipGroupAction");
+            pCmd.setContext(getState());
+            pCommandHandler.execute(pCmd);
         }
 
     }

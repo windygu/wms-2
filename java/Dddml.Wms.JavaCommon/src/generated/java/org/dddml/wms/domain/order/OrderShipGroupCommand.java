@@ -110,10 +110,6 @@ public interface OrderShipGroupCommand extends Command
 
         void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
 
-        String getStatusId();
-
-        void setStatusId(String statusId);
-
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -221,10 +217,6 @@ public interface OrderShipGroupCommand extends Command
         Boolean getIsPropertyNumberOfPakagesPerContainerRemoved();
 
         void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed);
-
-        Boolean getIsPropertyStatusIdRemoved();
-
-        void setIsPropertyStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

@@ -311,16 +311,16 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
     }
 
-    private String statusId;
+    private String orderShipGroupStatusId;
 
-    public String getStatusId()
+    public String getOrderShipGroupStatusId()
     {
-        return this.statusId;
+        return this.orderShipGroupStatusId;
     }
 
-    public void setStatusId(String statusId)
+    public void setOrderShipGroupStatusId(String orderShipGroupStatusId)
     {
-        this.statusId = statusId;
+        this.orderShipGroupStatusId = orderShipGroupStatusId;
     }
 
     private Long version;
@@ -496,7 +496,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setNumberOfPackages(e.getNumberOfPackages());
         this.setNumberOfContainers(e.getNumberOfContainers());
         this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
-        this.setStatusId(e.getStatusId());
+        this.setOrderShipGroupStatusId(e.getOrderShipGroupStatusId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -767,16 +767,16 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         {
             this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
         }
-        if (e.getStatusId() == null)
+        if (e.getOrderShipGroupStatusId() == null)
         {
-            if (e.getIsPropertyStatusIdRemoved() != null && e.getIsPropertyStatusIdRemoved())
+            if (e.getIsPropertyOrderShipGroupStatusIdRemoved() != null && e.getIsPropertyOrderShipGroupStatusIdRemoved())
             {
-                this.setStatusId(null);
+                this.setOrderShipGroupStatusId(null);
             }
         }
         else
         {
-            this.setStatusId(e.getStatusId());
+            this.setOrderShipGroupStatusId(e.getOrderShipGroupStatusId());
         }
         if (e.getActive() == null)
         {

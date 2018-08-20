@@ -1303,6 +1303,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvResId.java">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\OrderShipGroupAction.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\AbstractOrderShipmentEvent.java">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Content>
@@ -1415,6 +1418,9 @@
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderCommand.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderCommands.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderEvent.java">
@@ -2611,6 +2617,7 @@
 .\LocatorTreeApplicationService.java
 .\LocatorTreeNode.java
 .\LocatorTreeRepository.java
+.\OrderShipGroupAction.java
 .\OrganizationTreeApplicationService.java
 .\OrganizationTreeNode.java
 .\OrganizationTreeRepository.java
@@ -5295,6 +5302,7 @@
 .\OrderAggregate.java
 .\OrderApplicationService.java
 .\OrderCommand.java
+.\OrderCommands.java
 .\OrderEvent.java
 .\OrderEventId.java
 .\OrderItemCommand.java
