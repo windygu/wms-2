@@ -17,7 +17,10 @@ public class RamlResource {
 
     @GetMapping(path = "api.json", produces = MediaType.APPLICATION_JSON_VALUE)
     public Raml getRamlJson() {
-        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("dddml-wms-restful.raml");
+        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(
+                //"dddml-wms-restful.raml"
+                "dddml-wms-restful-full.raml"
+        );
         return RamlParser.parse(in);
     }
 
