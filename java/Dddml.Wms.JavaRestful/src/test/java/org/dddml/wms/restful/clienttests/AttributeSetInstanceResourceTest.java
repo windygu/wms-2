@@ -1,16 +1,14 @@
-package org.dddml.wms.restful.resource;
+package org.dddml.wms.restful.clienttests;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceStateDto;
 import org.junit.Assert;
 import org.junit.Test;
 

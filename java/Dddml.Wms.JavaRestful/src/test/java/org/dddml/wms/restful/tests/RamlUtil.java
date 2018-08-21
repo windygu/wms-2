@@ -20,14 +20,12 @@ public class RamlUtil {
                 new PartialRaml(getRaml0(), "api"),
                 new PartialRaml(getRaml1(), "queries")
         };
+        Raml fullRaml = combine(ramls);
 
         File fullFile = new File(
                 "C:\\Users\\yangjiefeng\\Documents\\GitHub\\wms\\java\\Dddml.Wms.JavaRestful\\"
                         + "src\\main\\resources\\dddml-wms-restful-full.raml"
         );
-
-        Raml fullRaml = combine(ramls);
-
         RamlEmitter ramlEmitter = new RamlEmitter();
         ramlEmitter.dump(fullRaml, fullFile);
         System.out.println("Dump full raml file Ok.");

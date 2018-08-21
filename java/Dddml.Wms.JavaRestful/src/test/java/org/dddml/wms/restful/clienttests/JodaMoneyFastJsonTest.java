@@ -1,4 +1,4 @@
-package org.dddml.wms.restful.resource;
+package org.dddml.wms.restful.clienttests;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.ParserConfig;

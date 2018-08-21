@@ -1,4 +1,4 @@
-package org.dddml.wms.restful.resource;
+package org.dddml.wms.restful.clienttests;
 
 import java.util.HashMap;
 import java.util.Map;

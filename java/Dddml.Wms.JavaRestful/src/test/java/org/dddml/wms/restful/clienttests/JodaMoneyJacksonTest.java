@@ -1,4 +1,4 @@
-package org.dddml.wms.restful.resource;
+package org.dddml.wms.restful.clienttests;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

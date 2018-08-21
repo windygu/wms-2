@@ -1,4 +1,4 @@
-package org.dddml.wms.restful.resource;
+package org.dddml.wms.restful.clienttests;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;

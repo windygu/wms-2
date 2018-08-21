@@ -1,27 +1,4 @@
-package org.dddml.wms.restful.resource;
-
-import com.alibaba.fastjson.JSON;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPatch;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.dddml.support.criterion.*;
-import org.dddml.wms.domain.*;
-import org.dddml.wms.specialization.PropertyMetadataDto;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.*;
-
-import static com.alibaba.fastjson.serializer.SerializerFeature.DisableCircularReferenceDetect;
-import static com.alibaba.fastjson.serializer.SerializerFeature.PrettyFormat;
-import static com.alibaba.fastjson.serializer.SerializerFeature.UseISO8601DateFormat;
+package org.dddml.wms.restful.clienttests;
 
 /**
  * Created by Li Yongchun on 2016/9/5.
