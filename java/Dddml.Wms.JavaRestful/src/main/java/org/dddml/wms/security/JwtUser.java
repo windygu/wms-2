@@ -12,7 +12,7 @@ public class JwtUser implements UserDetails {
     }
 
     public JwtUser(
-            String id,
+            //String id,
             String username,
             String firstname,
             String lastname,
@@ -22,7 +22,7 @@ public class JwtUser implements UserDetails {
             Date lastPasswordResetDate
     ) {
 
-        this.id = id;
+        //this.id = id;
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -35,7 +35,7 @@ public class JwtUser implements UserDetails {
 
     // //////////////////////////////////
 
-    private String id;
+    // private String id;
 
     private String username;
 
@@ -57,9 +57,48 @@ public class JwtUser implements UserDetails {
 
     // //////////////////////////////////
 
-    public void setId(String id) {
-        this.id = id;
+    @Override
+    public String getUsername() {
+        return username;
     }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    //    public void setId(String id) {
+    //        this.id = id;
+    //    }
+
+    //    public String getId() {
+    //        return id;
+    //    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -101,10 +140,6 @@ public class JwtUser implements UserDetails {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
-    public String getId() {
-        return id;
-    }
-
     public String getFirstname() {
         return firstname;
     }
@@ -119,41 +154,6 @@ public class JwtUser implements UserDetails {
 
     public Date getLastPasswordResetDate() {
         return lastPasswordResetDate;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
     }
 
 

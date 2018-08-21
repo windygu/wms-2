@@ -23,12 +23,12 @@ public class JwtTests {
     public static void main(String[] args) {
         JwtUser u = new JwtUser();
         u.setUsername("yang");
-        u.setId("yangjf");
         u.setRole("admin,inoutop");
+        //u.setId("yangjf");
 
         Claims claims = Jwts.claims().setSubject(u.getUsername());
-        claims.put("userId", u.getId());
         claims.put("role", u.getRole());
+        //claims.put("userId", u.getId());
 
         String secret = "mySecret";
         String token = Jwts.builder()

@@ -28,8 +28,8 @@ public class JwtUtil {
      * @return the User object extracted from specified token or null if a token is invalid.
      */
     public JwtUser parseToken(String token) {
-
         try {
+
             Claims body = Jwts.parser()
                     .setSigningKey(secret)
                     .parseClaimsJws(token)
@@ -37,15 +37,15 @@ public class JwtUtil {
 
             JwtUser u = new JwtUser();
             u.setUsername(body.getSubject());
-            u.setId((String) body.get("userId"));
+            //u.setId((String) body.get("userId"));
             u.setRole((String) body.get("role"));
             List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(u.getRole());
             u.setAuthorities(authorityList);
             return u;
+
         } catch (JwtException | ClassCastException e) {
             return null;
         }
-
     }
 
     /**
@@ -57,15 +57,13 @@ public class JwtUtil {
      * @return the JWT token
      */
     public String generateToken(JwtUser u) {
-
         Claims claims = Jwts.claims().setSubject(u.getUsername());
-        claims.put("userId", u.getId());
+        //claims.put("userId", u.getId());
         claims.put("role", u.getRole());
 
         return Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
-
     }
 }
