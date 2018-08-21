@@ -150,6 +150,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
+        createShipment.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);
+        createShipment.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         createShipmentItems(orderState, orderShipGroupState, createShipment);
@@ -177,6 +179,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
+        createShipment.setShipmentTypeId(ShipmentTypeIds.SALES_SHIPMENT);
+        createShipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         createShipmentItems(orderState, orderShipGroupState, createShipment);

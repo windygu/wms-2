@@ -37,8 +37,7 @@ public class RamlUtil {
     }
 
     private static Raml getRaml1() {
-        String queryRamlPath = "C:\\Users\\yangjiefeng\\Documents\\coding.net\\wms\\wms-query\\"
-                + "src\\main\\resources\\dddml-wms-query.raml";
+        String queryRamlPath = "C:\\Users\\yangjiefeng\\Documents\\coding.net\\wms\\wms-query\\src\\main\\resources\\dddml-wms-query.raml";
         File f = new File(queryRamlPath);
         InputStream in = null;
         try {
