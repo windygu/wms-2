@@ -26,6 +26,7 @@
         <property name="LineNumber" ><column name="SourceLineNumber" /></property>
         <property name="LineSubSeqId" ><column name="SourceLineSeqId" /></property>
     </component>
+    <property name="OccurredAt" ><column name="OccurredAt" not-null="true" sql-type="DATETIME" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Deleted" ></property>

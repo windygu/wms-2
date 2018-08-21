@@ -22,8 +22,8 @@ using Dddml.Support.Criterion;
 namespace Dddml.Wms.HttpServices.ApiControllers
 {
 
-    [RoutePrefix("api/Organizations")]
-    public partial class OrganizationsController : ApiController
+    [RoutePrefix("api/People")]
+    public partial class PeopleController : ApiController
     {
 
         IPartyApplicationService _partyApplicationService = ApplicationContext.Current["PartyApplicationService"] as IPartyApplicationService;
@@ -36,14 +36,14 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IPartyState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _partyApplicationService.Get<OrganizationState>(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _partyApplicationService.Get<PersonState>(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (PartyMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? PartyMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
-                    , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                    , PeopleControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
             {
-                states = _partyApplicationService.Get<OrganizationState>(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                    , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                states = _partyApplicationService.Get<PersonState>(PeopleControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                    , PeopleControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             var stateDtos = new List<IPartyStateDto>();
             foreach (var s in states)
@@ -60,7 +60,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpGet]
@@ -70,7 +70,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = id;
             var state = _partyApplicationService.Get(idObj);
             if (state == null) { return null; }
-            if (state != null && !typeof(IOrganizationState).IsAssignableFrom(state.GetType())) 
+            if (state != null && !typeof(IPersonState).IsAssignableFrom(state.GetType())) 
             {
                 return null;
             }
@@ -84,7 +84,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDto.ReturnedFieldsString = fields;
             }
             return stateDto;
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -97,15 +97,15 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _partyApplicationService.GetCount<OrganizationState>(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _partyApplicationService.GetCount<PersonState>(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (PartyMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? PartyMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
-                count = _partyApplicationService.GetCount<OrganizationState>(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
+                count = _partyApplicationService.GetCount<PersonState>(PeopleControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
             }
             return count;
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route(Order = 1)]
@@ -113,7 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreatePartyDto value)
         {
           try {
-            value.PartyTypeId = PartyTypeIds.Organization;
+            value.PartyTypeId = PartyTypeIds.Person;
             if (value.PartyId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Party");
@@ -122,37 +122,37 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = value.PartyId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateOrMergePatchOrDeletePartyDto value)
         {
           try {
-            value.PartyTypeId = PartyTypeIds.Organization;
+            value.PartyTypeId = PartyTypeIds.Person;
               // ///////////////////////////////
               if (value.Version != default(long))
               {
                   value.CommandType = CommandType.MergePatch;
-                  OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
                   _partyApplicationService.When(value as IMergePatchParty);
                   return;
               }
               // ///////////////////////////////
 
-            OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+            PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _partyApplicationService.When(value as ICreateParty);
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPatch][SetRequesterId]
         public void Patch(string id, [FromBody]MergePatchPartyDto value)
         {
           try {
-            value.PartyTypeId = PartyTypeIds.Organization;
-            OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+            value.PartyTypeId = PartyTypeIds.Person;
+            PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _partyApplicationService.When(value as IMergePatchParty);
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpDelete][SetRequesterId]
@@ -160,13 +160,13 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var value = new DeletePartyDto();
-            value.PartyTypeId = PartyTypeIds.Organization;
+            value.PartyTypeId = PartyTypeIds.Person;
             value.CommandId = commandId;
             value.RequesterId = requesterId;
             value.Version = (long)Convert.ChangeType(version, typeof(long));
-            OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+            PeopleControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _partyApplicationService.When(value as IDeleteParty);
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("_metadata/filteringFields")]
@@ -186,7 +186,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 }
             }
             return filtering;
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{id}/_stateEvents/{version}")]
@@ -198,7 +198,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var conv = new PartyStateEventDtoConverter();
             var se = _partyApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToPartyStateEventDto(se);
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{id}/_historyStates/{version}")]
@@ -219,7 +219,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDto.ReturnedFieldsString = fields;
             }
             return stateDto;
-          } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = PeopleControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -265,7 +265,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
             public Type ResolveTypeByPropertyName(string propertyName)
             {
-                return OrganizationsControllerUtils.GetFilterPropertyType(propertyName);
+                return PeopleControllerUtils.GetFilterPropertyType(propertyName);
             }
         }
 
@@ -273,7 +273,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
 
     
-    public static class OrganizationsControllerUtils
+    public static class PeopleControllerUtils
     {
 
         public static HttpResponseMessage GetErrorHttpResponseMessage(Exception ex)

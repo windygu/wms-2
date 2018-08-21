@@ -237,7 +237,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeUseStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeUseStateDtoWrapper ? (AttributeUseStateDtoWrapper)s : new AttributeUseStateDtoWrapper((AttributeUseState)s);
+                var dto = s is AttributeUseStateDtoWrapper ? (AttributeUseStateDtoWrapper)s : new AttributeUseStateDtoWrapper((IAttributeUseState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

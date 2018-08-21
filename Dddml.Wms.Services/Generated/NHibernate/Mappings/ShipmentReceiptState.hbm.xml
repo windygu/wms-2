@@ -22,7 +22,6 @@
     <property name="ReturnId" ><column name="ReturnId" sql-type="VARCHAR(20)" /></property>
     <property name="ReturnItemSeqId" ><column name="ReturnItemSeqId" sql-type="VARCHAR(20)" /></property>
     <property name="RejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></property>
-    <property name="DamageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="DamageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(60)" /></property>
     <property name="ReceivedBy" ><column name="ReceivedBy" sql-type="VARCHAR(250)" /></property>
     <property name="DatetimeReceived" ><column name="DatetimeReceived" sql-type="DATETIME" /></property>
@@ -37,6 +36,14 @@
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 
     <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+      <set name="DamageStatusIds" table="ShipmentReceiptDamageStatusIds" lazy="false">
+<key>
+
+<column name="ShipmentReceiptIdShipmentId" />
+<column name="ShipmentReceiptIdReceiptSeqId" />
+</key>				
+<element column="DamageStatusIdsItem" type="string" not-null="true" />
+      </set>
 
 
   </class>

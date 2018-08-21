@@ -275,7 +275,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IMovementLineStateDto>();
             foreach (var s in states)
             {
-                var dto = s is MovementLineStateDtoWrapper ? (MovementLineStateDtoWrapper)s : new MovementLineStateDtoWrapper((MovementLineState)s);
+                var dto = s is MovementLineStateDtoWrapper ? (MovementLineStateDtoWrapper)s : new MovementLineStateDtoWrapper((IMovementLineState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

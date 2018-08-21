@@ -1,4 +1,24 @@
 
+    
+alter table AttributeSetInstanceStatusIds  drop foreign key FK6CFC352E46B90463
+;
+
+    
+alter table InOutLineDamageStatusIds  drop foreign key FK9F1B674E77BC4BCB
+;
+
+    
+alter table ShipmentReceiptDamageStatusIds  drop foreign key FKB9FCE6E151B2BEEA
+;
+
+    
+alter table InOutLineStateEventDamageStatusIds  drop foreign key FK5BAF3ED4782FA244
+;
+
+    
+alter table ShipmentReceiptStateEventDamageStatusIds  drop foreign key FK4AE85BEE4BB9F015
+;
+
     drop table if exists Hello;
 
     drop table if exists Attributes;
@@ -25,15 +45,11 @@
 
     drop table if exists AttributeSetInstances;
 
+    drop table if exists AttributeSetInstanceStatusIds;
+
     drop table if exists AttributeSetInstanceExtensionFields;
 
     drop table if exists AttributeSetInstanceExtensionFieldGroups;
-
-    drop table if exists AttributeValue_RV;
-
-    drop table if exists AttributeAlias_RV;
-
-    drop table if exists AttributeUse_RV;
 
     drop table if exists AttributeEvents;
 
@@ -55,15 +71,11 @@
 
     drop table if exists AttributeSetInstanceExtensionFieldGroupEvents;
 
-    drop table if exists AttributeValueMvoEvents;
-
-    drop table if exists AttributeAliasMvoEvents;
-
-    drop table if exists AttributeUseMvoEvents;
-
     drop table if exists InOuts;
 
     drop table if exists InOutLines;
+
+    drop table if exists InOutLineDamageStatusIds;
 
     drop table if exists InventoryItems;
 
@@ -102,6 +114,8 @@
     drop table if exists Parties;
 
     drop table if exists Organizations;
+
+    drop table if exists People;
 
     drop table if exists PhysicalInventories;
 
@@ -143,6 +157,8 @@
 
     drop table if exists ShipmentReceipts;
 
+    drop table if exists ShipmentReceiptDamageStatusIds;
+
     drop table if exists ItemIssuances;
 
     drop table if exists ShipmentMethodTypes;
@@ -165,38 +181,6 @@
 
     drop table if exists Warehouses;
 
-    drop table if exists InOutLine_RV;
-
-    drop table if exists InventoryItemEntry_RV;
-
-    drop table if exists InventoryItemRequirementEntry_RV;
-
-    drop table if exists MovementLine_RV;
-
-    drop table if exists MovementConfirmationLine_RV;
-
-    drop table if exists OrderRole_RV;
-
-    drop table if exists OrderItem_RV;
-
-    drop table if exists OrderShipGroup_RV;
-
-    drop table if exists PhysicalInventoryLine_RV;
-
-    drop table if exists PicklistRole_RV;
-
-    drop table if exists PicklistItem_RV;
-
-    drop table if exists SellableInventoryItemEntry_RV;
-
-    drop table if exists ShipmentItem_RV;
-
-    drop table if exists ShipmentReceipt_RV;
-
-    drop table if exists ItemIssuance_RV;
-
-    drop table if exists ShipmentPackageContent_RV;
-
     drop table if exists OrderItemShipGrpInvReservations;
 
     drop table if exists LocatorTypes;
@@ -205,11 +189,11 @@
 
     drop table if exists OrderItemShipGroupAssociations;
 
-    drop table if exists OrderItemShipGroupAssociation_RV;
-
     drop table if exists InOutEvents;
 
     drop table if exists InOutLineEvents;
+
+    drop table if exists InOutLineStateEventDamageStatusIds;
 
     drop table if exists InventoryItemEvents;
 
@@ -281,6 +265,8 @@
 
     drop table if exists ShipmentReceiptEvents;
 
+    drop table if exists ShipmentReceiptStateEventDamageStatusIds;
+
     drop table if exists ItemIssuanceEvents;
 
     drop table if exists ShipmentMethodTypeEvents;
@@ -297,40 +283,6 @@
 
     drop table if exists WarehouseEvents;
 
-    drop table if exists InOutLineMvoEvents;
-
-    drop table if exists InventoryItemEntryMvoEvents;
-
-    drop table if exists InventoryItemRequirementEntryMvoEvents;
-
-    drop table if exists MovementLineMvoEvents;
-
-    drop table if exists MovementConfirmationLineMvoEvents;
-
-    drop table if exists OrderRoleMvoEvents;
-
-    drop table if exists OrderItemMvoEvents;
-
-    drop table if exists OrderShipGroupMvoEvents;
-
-    drop table if exists OrderItemShipGroupAssociationMvoEvents;
-
-    drop table if exists PhysicalInventoryLineMvoEvents;
-
-    drop table if exists PicklistRoleMvoEvents;
-
-    drop table if exists PicklistItemMvoEvents;
-
-    drop table if exists SellableInventoryItemEntryMvoEvents;
-
-    drop table if exists ShipmentItemMvoEvents;
-
-    drop table if exists ShipmentReceiptMvoEvents;
-
-    drop table if exists ItemIssuanceMvoEvents;
-
-    drop table if exists ShipmentPackageContentMvoEvents;
-
     drop table if exists GoodIdentificationTypes;
 
     drop table if exists GoodIdentificationTypeEvents;
@@ -339,8 +291,20 @@
 
     drop table if exists GoodIdentificationEvents;
 
-    drop table if exists GoodIdentification_RV;
+    drop table if exists InOutImages;
 
-    drop table if exists GoodIdentificationMvoEvents;
+    drop table if exists InOutImageEvents;
+
+    drop table if exists InOutLineImages;
+
+    drop table if exists InOutLineImageEvents;
+
+    drop table if exists ShipmentImages;
+
+    drop table if exists ShipmentImageEvents;
+
+    drop table if exists ShipmentReceiptImages;
+
+    drop table if exists ShipmentReceiptImageEvents;
 
     drop table if exists nhibernate_hilo_table;

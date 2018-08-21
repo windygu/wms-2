@@ -30,7 +30,6 @@
     <property name="ReturnId" ><column name="ReturnId" sql-type="VARCHAR(20)" /></property>
     <property name="ReturnItemSeqId" ><column name="ReturnItemSeqId" sql-type="VARCHAR(20)" /></property>
     <property name="RejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></property>
-    <property name="DamageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="DamageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(60)" /></property>
     <property name="ReceivedBy" ><column name="ReceivedBy" sql-type="VARCHAR(250)" /></property>
     <property name="DatetimeReceived" ><column name="DatetimeReceived" sql-type="DATETIME" /></property>
@@ -39,6 +38,18 @@
     <property name="RejectedQuantity" ><column name="RejectedQuantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="DamagedQuantity" ><column name="DamagedQuantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="Active" ></property>
+
+      <set name="DamageStatusIds" table="ShipmentReceiptStateEventDamageStatusIds" lazy="false">
+        <key>
+
+<column name="ShipmentReceiptIdShipmentId" />
+<column name="ShipmentReceiptIdReceiptSeqId" />
+<column name="ShipmentVersion" />
+</key>
+				
+<element column="DamageStatusIdsItem" type="string" not-null="true" />
+
+      </set>
     <property name="Version" column="Version" not-null="true" />
 
     <subclass name="ShipmentReceiptStateCreated" discriminator-value="Created">
@@ -67,8 +78,6 @@
         <property name="IsPropertyReturnItemSeqIdRemoved" column="IsPropertyReturnItemSeqIdRemoved"/>
 
         <property name="IsPropertyRejectionReasonIdRemoved" column="IsPropertyRejectionReasonIdRemoved"/>
-
-        <property name="IsPropertyDamageStatusIdRemoved" column="IsPropertyDamageStatusIdRemoved"/>
 
         <property name="IsPropertyDamageReasonIdRemoved" column="IsPropertyDamageReasonIdRemoved"/>
 

@@ -89,7 +89,8 @@
     <property name="CommandId" column="CommandId"/>
       <set name="StatusIds" table="AttributeSetInstanceStatusIds" lazy="false">
         <key column="AttributeSetInstanceId" />
-				<element column="StatusIdsItem" type="string" not-null="true" />
+				
+<element column="StatusIdsItem" type="string" not-null="true" />
       </set>
 
 

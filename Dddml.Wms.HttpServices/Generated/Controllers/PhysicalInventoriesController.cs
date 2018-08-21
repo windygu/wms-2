@@ -263,7 +263,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IPhysicalInventoryLineStateDto>();
             foreach (var s in states)
             {
-                var dto = s is PhysicalInventoryLineStateDtoWrapper ? (PhysicalInventoryLineStateDtoWrapper)s : new PhysicalInventoryLineStateDtoWrapper((PhysicalInventoryLineState)s);
+                var dto = s is PhysicalInventoryLineStateDtoWrapper ? (PhysicalInventoryLineStateDtoWrapper)s : new PhysicalInventoryLineStateDtoWrapper((IPhysicalInventoryLineState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

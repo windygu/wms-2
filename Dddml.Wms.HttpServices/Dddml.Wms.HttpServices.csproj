@@ -353,6 +353,9 @@
     <Compile Include="Generated\Controllers\OrdersController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\OrderShipGroupServiceController.cs">
+      <DependentUpon>GenerateDomainServicesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\OrderShipmentsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -372,6 +375,9 @@
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\PartyRolesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\PeopleController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\PhysicalInventoriesController.cs">
@@ -470,6 +476,7 @@
       <LastOutputs>
 .\GenerateDomainServicesControllers.txt
 .\IdServiceController.cs
+.\OrderShipGroupServiceController.cs
 </LastOutputs>
       <LastGenOutput>GenerateDomainServicesControllers.txt</LastGenOutput>
     </Content>
@@ -523,6 +530,7 @@
 .\OrganizationStructureTypesController.cs
 .\PartiesController.cs
 .\PartyRolesController.cs
+.\PeopleController.cs
 .\PhysicalInventoriesController.cs
 .\PicklistBinsController.cs
 .\PicklistsController.cs

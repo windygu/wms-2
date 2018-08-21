@@ -224,7 +224,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IGoodIdentificationStateDto>();
             foreach (var s in states)
             {
-                var dto = s is GoodIdentificationStateDtoWrapper ? (GoodIdentificationStateDtoWrapper)s : new GoodIdentificationStateDtoWrapper((GoodIdentificationState)s);
+                var dto = s is GoodIdentificationStateDtoWrapper ? (GoodIdentificationStateDtoWrapper)s : new GoodIdentificationStateDtoWrapper((IGoodIdentificationState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

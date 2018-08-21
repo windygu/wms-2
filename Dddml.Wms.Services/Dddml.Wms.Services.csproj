@@ -539,6 +539,9 @@
     <Compile Include="Generated\Domain\Party\NHibernate\NHibernatePartyStateRepository.cs">
       <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Party\NHibernate\NHibernatePersonStateQueryRepository.cs">
+      <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Party\NHibernate\PartyApplicationService.cs">
       <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -2209,6 +2212,7 @@
 .\NHibernatePartyEventStore.cs
 .\NHibernatePartyStateQueryRepository.cs
 .\NHibernatePartyStateRepository.cs
+.\NHibernatePersonStateQueryRepository.cs
 .\PartyApplicationService.cs
 </LastOutputs>
     </Content>

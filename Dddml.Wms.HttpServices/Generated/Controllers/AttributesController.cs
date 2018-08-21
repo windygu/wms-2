@@ -248,7 +248,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeValueStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeValueStateDtoWrapper ? (AttributeValueStateDtoWrapper)s : new AttributeValueStateDtoWrapper((AttributeValueState)s);
+                var dto = s is AttributeValueStateDtoWrapper ? (AttributeValueStateDtoWrapper)s : new AttributeValueStateDtoWrapper((IAttributeValueState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -279,7 +279,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IAttributeAliasStateDto>();
             foreach (var s in states)
             {
-                var dto = s is AttributeAliasStateDtoWrapper ? (AttributeAliasStateDtoWrapper)s : new AttributeAliasStateDtoWrapper((AttributeAliasState)s);
+                var dto = s is AttributeAliasStateDtoWrapper ? (AttributeAliasStateDtoWrapper)s : new AttributeAliasStateDtoWrapper((IAttributeAliasState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

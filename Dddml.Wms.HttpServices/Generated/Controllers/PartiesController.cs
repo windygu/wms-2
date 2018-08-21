@@ -412,6 +412,30 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return states;
         }
 
+        public static IEnumerable<IPersonStateDto> ToPersonStateDtoCollection(IEnumerable<string> ids)
+        {
+            var states = new List<IPersonStateDto>();
+            foreach (var id in ids)
+            {
+                var dto = new PersonStateDtoWrapper();
+                dto.PartyId = id;
+                states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IPersonState> ToPersonStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<PersonState>();
+            foreach (var id in ids)
+            {
+                var s = new PersonState();
+                s.PartyId = id;
+                states.Add(s);
+            }
+            return states;
+        }
+
     }
 
 }

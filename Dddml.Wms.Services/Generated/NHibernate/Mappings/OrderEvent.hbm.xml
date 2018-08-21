@@ -28,7 +28,7 @@
     <property name="EntryDate" ><column name="EntryDate" sql-type="DATETIME" /></property>
     <property name="PickSheetPrintedDate" ><column name="PickSheetPrintedDate" sql-type="DATETIME" /></property>
     <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
-    <property name="CurrencyUom" ><column name="CurrencyUom" sql-type="VARCHAR(20)" /></property>
+    <property name="CurrencyUomId" ><column name="CurrencyUomId" sql-type="VARCHAR(20)" /></property>
     <property name="SyncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="BillingAccountId" ><column name="BillingAccountId" sql-type="VARCHAR(20)" /></property>
     <property name="OriginFacilityId" ><column name="OriginFacilityId" sql-type="VARCHAR(20)" /></property>
@@ -69,7 +69,7 @@
 
         <property name="IsPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
 
-        <property name="IsPropertyCurrencyUomRemoved" column="IsPropertyCurrencyUomRemoved"/>
+        <property name="IsPropertyCurrencyUomIdRemoved" column="IsPropertyCurrencyUomIdRemoved"/>
 
         <property name="IsPropertySyncStatusIdRemoved" column="IsPropertySyncStatusIdRemoved"/>
 

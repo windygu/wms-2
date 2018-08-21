@@ -115,7 +115,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IProductCategoryStateDto>();
             foreach (var s in states)
             {
-                var dto = s is ProductCategoryStateDtoWrapper ? (ProductCategoryStateDtoWrapper)s : new ProductCategoryStateDtoWrapper((ProductCategoryState)s);
+                var dto = s is ProductCategoryStateDtoWrapper ? (ProductCategoryStateDtoWrapper)s : new ProductCategoryStateDtoWrapper((IProductCategoryState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

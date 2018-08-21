@@ -21,10 +21,18 @@
 
     <property name="PartyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="PrimaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="ExternalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
+    <property name="PreferredCurrencyUomId" ><column name="PreferredCurrencyUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="Description" ><column name="Description" sql-type="LONGTEXT" /></property>
     <property name="OrganizationName" ></property>
-    <property name="Description" ></property>
-    <property name="Type" ></property>
     <property name="IsSummary" ></property>
+    <property name="Salutation" ><column name="Salutation" sql-type="VARCHAR(100)" /></property>
+    <property name="FirstName" ><column name="FirstName" sql-type="VARCHAR(100)" /></property>
+    <property name="MiddleName" ><column name="MiddleName" sql-type="VARCHAR(100)" /></property>
+    <property name="LastName" ><column name="LastName" sql-type="VARCHAR(100)" /></property>
+    <property name="PersonalTitle" ><column name="PersonalTitle" sql-type="VARCHAR(100)" /></property>
+    <property name="Nickname" ><column name="Nickname" sql-type="VARCHAR(100)" /></property>
+    <property name="CardId" ><column name="CardId" sql-type="VARCHAR(60)" /></property>
     <property name="Active" ></property>
     <subclass name="PartyStateCreated" discriminator-value="Created">
     	
@@ -37,13 +45,29 @@
 
         <property name="IsPropertyPrimaryRoleTypeIdRemoved" column="IsPropertyPrimaryRoleTypeIdRemoved"/>
 
-        <property name="IsPropertyOrganizationNameRemoved" column="IsPropertyOrganizationNameRemoved"/>
+        <property name="IsPropertyExternalIdRemoved" column="IsPropertyExternalIdRemoved"/>
+
+        <property name="IsPropertyPreferredCurrencyUomIdRemoved" column="IsPropertyPreferredCurrencyUomIdRemoved"/>
 
         <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
-        <property name="IsPropertyTypeRemoved" column="IsPropertyTypeRemoved"/>
+        <property name="IsPropertyOrganizationNameRemoved" column="IsPropertyOrganizationNameRemoved"/>
 
         <property name="IsPropertyIsSummaryRemoved" column="IsPropertyIsSummaryRemoved"/>
+
+        <property name="IsPropertySalutationRemoved" column="IsPropertySalutationRemoved"/>
+
+        <property name="IsPropertyFirstNameRemoved" column="IsPropertyFirstNameRemoved"/>
+
+        <property name="IsPropertyMiddleNameRemoved" column="IsPropertyMiddleNameRemoved"/>
+
+        <property name="IsPropertyLastNameRemoved" column="IsPropertyLastNameRemoved"/>
+
+        <property name="IsPropertyPersonalTitleRemoved" column="IsPropertyPersonalTitleRemoved"/>
+
+        <property name="IsPropertyNicknameRemoved" column="IsPropertyNicknameRemoved"/>
+
+        <property name="IsPropertyCardIdRemoved" column="IsPropertyCardIdRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

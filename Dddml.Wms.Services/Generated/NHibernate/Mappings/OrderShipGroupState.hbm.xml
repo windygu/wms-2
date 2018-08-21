@@ -21,6 +21,8 @@
     <property name="ContactMechId" ><column name="ContactMechId" sql-type="VARCHAR(20)" /></property>
     <property name="TelecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
     <property name="TrackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="ContactPartyId" ></property>
+    <property name="VehiclePlateNumber" ><column name="VehiclePlateNumber" sql-type="VARCHAR(255)" /></property>
     <property name="ShippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
     <property name="MaySplit" ><column name="MaySplit" sql-type="CHAR(1)" /></property>
     <property name="GiftMessage" ><column name="GiftMessage" sql-type="VARCHAR(255)" /></property>
@@ -30,6 +32,10 @@
     <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
     <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
     <property name="PickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="NumberOfPackages" ></property>
+    <property name="NumberOfContainers" ></property>
+    <property name="NumberOfPakagesPerContainer" ></property>
+    <property name="OrderShipGroupStatusId" ><column name="OrderShipGroupStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

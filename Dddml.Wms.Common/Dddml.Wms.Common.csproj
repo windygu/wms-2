@@ -3625,6 +3625,9 @@
     <Compile Include="Generated\Domain\Party\IPartyStateRepository.cs">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Party\IPersonStateQueryRepository.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Party\OrganizationStateDtoWrapper.cs">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
@@ -3677,6 +3680,9 @@
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Party\PartyTypeIds.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Party\PersonStateDtoWrapper.cs">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventory\IPhysicalInventoryAggregate.cs">
@@ -4817,6 +4823,15 @@
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Services\IIdApplicationService.cs">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Services\IOrderShipGroupApplicationService.cs">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Services\OrderShipGroupServiceCommandDtos.cs">
+      <DependentUpon>GenerateDomainServicesDtos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Services\OrderShipGroupServiceCommands.cs">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ShipmentMethodType\IShipmentMethodTypeAggregate.cs">
@@ -6259,6 +6274,9 @@
 .\IdServiceCommandDtos.cs
 .\IdServiceCommands.cs
 .\IIdApplicationService.cs
+.\IOrderShipGroupApplicationService.cs
+.\OrderShipGroupServiceCommandDtos.cs
+.\OrderShipGroupServiceCommands.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Services\GenerateBoundedContextDomainServices.txt">
@@ -6272,6 +6290,7 @@
       <LastOutputs>
 .\GenerateDomainServicesDtos.txt
 .\IdServiceCommandDtos.cs
+.\OrderShipGroupServiceCommandDtos.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Services\GenerateDomainServicesDtos.txt">
@@ -8248,6 +8267,7 @@
 .\IPartyStateProperties.cs
 .\IPartyStateQueryRepository.cs
 .\IPartyStateRepository.cs
+.\IPersonStateQueryRepository.cs
 .\OrganizationStateDtoWrapper.cs
 .\PartyAggregate.cs
 .\PartyApplicationServiceBase.cs
@@ -8266,6 +8286,7 @@
 .\PartyStateInterfaceExtension.cs
 .\PartyStateProperties.cs
 .\PartyTypeIds.cs
+.\PersonStateDtoWrapper.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\ContactMech\GenerateContactMechDomain.tt">

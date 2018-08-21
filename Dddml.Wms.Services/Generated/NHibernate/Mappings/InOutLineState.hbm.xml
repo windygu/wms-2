@@ -15,7 +15,6 @@
     <property name="LocatorId" ></property>
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
     <property name="AttributeSetInstanceId" ></property>
-    <property name="DamageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="Description" ></property>
     <property name="QuantityUomId" ></property>
     <property name="MovementQuantity" ><column name="MovementQuantity" sql-type="decimal(18,6)" /></property>
@@ -32,6 +31,14 @@
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 
     <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+      <set name="DamageStatusIds" table="InOutLineDamageStatusIds" lazy="false">
+<key>
+
+<column name="InOutLineIdInOutDocumentNumber" />
+<column name="InOutLineIdLineNumber" />
+</key>				
+<element column="DamageStatusIdsItem" type="string" not-null="true" />
+      </set>
 
 
   </class>

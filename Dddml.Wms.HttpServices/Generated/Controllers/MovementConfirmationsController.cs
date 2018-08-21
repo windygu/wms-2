@@ -256,7 +256,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IMovementConfirmationLineStateDto>();
             foreach (var s in states)
             {
-                var dto = s is MovementConfirmationLineStateDtoWrapper ? (MovementConfirmationLineStateDtoWrapper)s : new MovementConfirmationLineStateDtoWrapper((MovementConfirmationLineState)s);
+                var dto = s is MovementConfirmationLineStateDtoWrapper ? (MovementConfirmationLineStateDtoWrapper)s : new MovementConfirmationLineStateDtoWrapper((IMovementConfirmationLineState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

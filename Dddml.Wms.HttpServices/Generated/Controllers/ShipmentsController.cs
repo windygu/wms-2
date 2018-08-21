@@ -224,12 +224,69 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/IssueItem")]
+        [HttpPut][SetRequesterId]
+        public void IssueItem(string id, [FromBody]ShipmentCommandDtos.IssueItemRequestContent content)
+        {
+          try {
+            var cmd = content.ToIssueItem();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{id}/_commands/AddItemAndIssuance")]
+        [HttpPut][SetRequesterId]
+        public void AddItemAndIssuance(string id, [FromBody]ShipmentCommandDtos.AddItemAndIssuanceRequestContent content)
+        {
+          try {
+            var cmd = content.ToAddItemAndIssuance();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{id}/_commands/ConfirmAllItemsReceived")]
         [HttpPut][SetRequesterId]
         public void ConfirmAllItemsReceived(string id, [FromBody]ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content)
         {
           try {
             var cmd = content.ToConfirmAllItemsReceived();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{id}/_commands/ConfirmAllItemsIssued")]
+        [HttpPut][SetRequesterId]
+        public void ConfirmAllItemsIssued(string id, [FromBody]ShipmentCommandDtos.ConfirmAllItemsIssuedRequestContent content)
+        {
+          try {
+            var cmd = content.ToConfirmAllItemsIssued();
             var idObj = id;
             if (cmd.ShipmentId == null)
             {
@@ -319,7 +376,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IShipmentImageStateDto>();
             foreach (var s in states)
             {
-                var dto = s is ShipmentImageStateDtoWrapper ? (ShipmentImageStateDtoWrapper)s : new ShipmentImageStateDtoWrapper((ShipmentImageState)s);
+                var dto = s is ShipmentImageStateDtoWrapper ? (ShipmentImageStateDtoWrapper)s : new ShipmentImageStateDtoWrapper((IShipmentImageState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -350,7 +407,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IShipmentItemStateDto>();
             foreach (var s in states)
             {
-                var dto = s is ShipmentItemStateDtoWrapper ? (ShipmentItemStateDtoWrapper)s : new ShipmentItemStateDtoWrapper((ShipmentItemState)s);
+                var dto = s is ShipmentItemStateDtoWrapper ? (ShipmentItemStateDtoWrapper)s : new ShipmentItemStateDtoWrapper((IShipmentItemState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -381,7 +438,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IShipmentReceiptStateDto>();
             foreach (var s in states)
             {
-                var dto = s is ShipmentReceiptStateDtoWrapper ? (ShipmentReceiptStateDtoWrapper)s : new ShipmentReceiptStateDtoWrapper((ShipmentReceiptState)s);
+                var dto = s is ShipmentReceiptStateDtoWrapper ? (ShipmentReceiptStateDtoWrapper)s : new ShipmentReceiptStateDtoWrapper((IShipmentReceiptState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -412,7 +469,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IShipmentReceiptImageStateDto>();
             foreach (var s in states)
             {
-                var dto = s is ShipmentReceiptImageStateDtoWrapper ? (ShipmentReceiptImageStateDtoWrapper)s : new ShipmentReceiptImageStateDtoWrapper((ShipmentReceiptImageState)s);
+                var dto = s is ShipmentReceiptImageStateDtoWrapper ? (ShipmentReceiptImageStateDtoWrapper)s : new ShipmentReceiptImageStateDtoWrapper((IShipmentReceiptImageState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -443,7 +500,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IItemIssuanceStateDto>();
             foreach (var s in states)
             {
-                var dto = s is ItemIssuanceStateDtoWrapper ? (ItemIssuanceStateDtoWrapper)s : new ItemIssuanceStateDtoWrapper((ItemIssuanceState)s);
+                var dto = s is ItemIssuanceStateDtoWrapper ? (ItemIssuanceStateDtoWrapper)s : new ItemIssuanceStateDtoWrapper((IItemIssuanceState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

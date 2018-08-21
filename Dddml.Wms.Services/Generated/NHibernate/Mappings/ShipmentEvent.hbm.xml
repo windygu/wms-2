@@ -28,7 +28,7 @@
     <property name="BolNumber" ><column name="BolNumber" sql-type="VARCHAR(60)" /></property>
     <property name="SealNumber" ><column name="SealNumber" sql-type="VARCHAR(60)" /></property>
     <property name="VehicleId" ><column name="VehicleId" sql-type="VARCHAR(60)" /></property>
-    <property name="PoNumber" ><column name="PoNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="ExternalOrderNumber" ><column name="ExternalOrderNumber" sql-type="VARCHAR(60)" /></property>
     <property name="Carrier" ><column name="Carrier" sql-type="VARCHAR(60)" /></property>
     <property name="DateShipped" ><column name="DateShipped" sql-type="DATETIME" /></property>
     <property name="EstimatedReadyDate" ><column name="EstimatedReadyDate" sql-type="DATETIME" /></property>
@@ -76,7 +76,7 @@
 
         <property name="IsPropertyVehicleIdRemoved" column="IsPropertyVehicleIdRemoved"/>
 
-        <property name="IsPropertyPoNumberRemoved" column="IsPropertyPoNumberRemoved"/>
+        <property name="IsPropertyExternalOrderNumberRemoved" column="IsPropertyExternalOrderNumberRemoved"/>
 
         <property name="IsPropertyCarrierRemoved" column="IsPropertyCarrierRemoved"/>
 

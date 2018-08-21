@@ -237,7 +237,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IShipmentPackageContentStateDto>();
             foreach (var s in states)
             {
-                var dto = s is ShipmentPackageContentStateDtoWrapper ? (ShipmentPackageContentStateDtoWrapper)s : new ShipmentPackageContentStateDtoWrapper((ShipmentPackageContentState)s);
+                var dto = s is ShipmentPackageContentStateDtoWrapper ? (ShipmentPackageContentStateDtoWrapper)s : new ShipmentPackageContentStateDtoWrapper((IShipmentPackageContentState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

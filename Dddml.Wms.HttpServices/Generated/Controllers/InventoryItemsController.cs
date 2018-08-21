@@ -180,7 +180,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IInventoryItemEntryStateDto>();
             foreach (var s in states)
             {
-                var dto = s is InventoryItemEntryStateDtoWrapper ? (InventoryItemEntryStateDtoWrapper)s : new InventoryItemEntryStateDtoWrapper((InventoryItemEntryState)s);
+                var dto = s is InventoryItemEntryStateDtoWrapper ? (InventoryItemEntryStateDtoWrapper)s : new InventoryItemEntryStateDtoWrapper((IInventoryItemEntryState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

@@ -10,6 +10,9 @@
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
     <property name="PrimaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="ExternalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
+    <property name="PreferredCurrencyUomId" ><column name="PreferredCurrencyUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="Description" ><column name="Description" sql-type="LONGTEXT" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
@@ -21,9 +24,18 @@
   <union-subclass name="Dddml.Wms.Domain.Party.OrganizationState" table="Organizations" abstract="false">
 
     <property name="OrganizationName" ></property>
-    <property name="Description" ></property>
-    <property name="Type" ></property>
     <property name="IsSummary" ></property>
+  </union-subclass>
+
+  <union-subclass name="Dddml.Wms.Domain.Party.PersonState" table="People" abstract="false">
+
+    <property name="Salutation" ><column name="Salutation" sql-type="VARCHAR(100)" /></property>
+    <property name="FirstName" ><column name="FirstName" sql-type="VARCHAR(100)" /></property>
+    <property name="MiddleName" ><column name="MiddleName" sql-type="VARCHAR(100)" /></property>
+    <property name="LastName" ><column name="LastName" sql-type="VARCHAR(100)" /></property>
+    <property name="PersonalTitle" ><column name="PersonalTitle" sql-type="VARCHAR(100)" /></property>
+    <property name="Nickname" ><column name="Nickname" sql-type="VARCHAR(100)" /></property>
+    <property name="CardId" ><column name="CardId" sql-type="VARCHAR(60)" /></property>
   </union-subclass>
 
 

@@ -243,6 +243,25 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/Import")]
+        [HttpPut][SetRequesterId]
+        public void Import(string id, [FromBody]InOutCommandDtos.ImportRequestContent content)
+        {
+          try {
+            var cmd = content.ToImport();
+            var idObj = id;
+            if (cmd.DocumentNumber == null)
+            {
+                cmd.DocumentNumber = idObj;
+            }
+            else if (!cmd.DocumentNumber.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.DocumentNumber);
+            }
+            _inOutApplicationService.When(cmd);
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{id}/_commands/DocumentAction")]
         [HttpPut][SetRequesterId]
         public void DocumentAction(string id, [FromBody]InOutCommandDtos.DocumentActionRequestContent content)
@@ -338,7 +357,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IInOutImageStateDto>();
             foreach (var s in states)
             {
-                var dto = s is InOutImageStateDtoWrapper ? (InOutImageStateDtoWrapper)s : new InOutImageStateDtoWrapper((InOutImageState)s);
+                var dto = s is InOutImageStateDtoWrapper ? (InOutImageStateDtoWrapper)s : new InOutImageStateDtoWrapper((IInOutImageState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -369,7 +388,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IInOutLineStateDto>();
             foreach (var s in states)
             {
-                var dto = s is InOutLineStateDtoWrapper ? (InOutLineStateDtoWrapper)s : new InOutLineStateDtoWrapper((InOutLineState)s);
+                var dto = s is InOutLineStateDtoWrapper ? (InOutLineStateDtoWrapper)s : new InOutLineStateDtoWrapper((IInOutLineState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -400,7 +419,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IInOutLineImageStateDto>();
             foreach (var s in states)
             {
-                var dto = s is InOutLineImageStateDtoWrapper ? (InOutLineImageStateDtoWrapper)s : new InOutLineImageStateDtoWrapper((InOutLineImageState)s);
+                var dto = s is InOutLineImageStateDtoWrapper ? (InOutLineImageStateDtoWrapper)s : new InOutLineImageStateDtoWrapper((IInOutLineImageState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

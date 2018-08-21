@@ -225,7 +225,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrderRoleStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrderRoleStateDtoWrapper ? (OrderRoleStateDtoWrapper)s : new OrderRoleStateDtoWrapper((OrderRoleState)s);
+                var dto = s is OrderRoleStateDtoWrapper ? (OrderRoleStateDtoWrapper)s : new OrderRoleStateDtoWrapper((IOrderRoleState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -256,7 +256,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrderItemStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrderItemStateDtoWrapper ? (OrderItemStateDtoWrapper)s : new OrderItemStateDtoWrapper((OrderItemState)s);
+                var dto = s is OrderItemStateDtoWrapper ? (OrderItemStateDtoWrapper)s : new OrderItemStateDtoWrapper((IOrderItemState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
@@ -287,11 +287,30 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrderShipGroupStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrderShipGroupStateDtoWrapper ? (OrderShipGroupStateDtoWrapper)s : new OrderShipGroupStateDtoWrapper((OrderShipGroupState)s);
+                var dto = s is OrderShipGroupStateDtoWrapper ? (OrderShipGroupStateDtoWrapper)s : new OrderShipGroupStateDtoWrapper((IOrderShipGroupState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
             return stateDtos;
+          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction")]
+        [HttpPut][SetRequesterId]
+        public void OrderShipGroupAction(string orderId, long? shipGroupSeqId, [FromBody]OrderCommandDtos.OrderShipGroupActionRequestContent content)
+        {
+          try {
+            var cmd = content.ToOrderShipGroupAction();
+            var idObj = new OrderShipGroupId(orderId, shipGroupSeqId);
+            if (cmd.OrderShipGroupId == null)
+            {
+                cmd.OrderShipGroupId = idObj;
+            }
+            else if (!cmd.OrderShipGroupId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", idObj, cmd.OrderShipGroupId);
+            }
+            _orderApplicationService.When(cmd);
           } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
@@ -318,7 +337,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrderItemShipGroupAssociationStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrderItemShipGroupAssociationStateDtoWrapper ? (OrderItemShipGroupAssociationStateDtoWrapper)s : new OrderItemShipGroupAssociationStateDtoWrapper((OrderItemShipGroupAssociationState)s);
+                var dto = s is OrderItemShipGroupAssociationStateDtoWrapper ? (OrderItemShipGroupAssociationStateDtoWrapper)s : new OrderItemShipGroupAssociationStateDtoWrapper((IOrderItemShipGroupAssociationState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

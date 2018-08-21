@@ -104,7 +104,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IOrganizationStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrganizationStateDtoWrapper ? (OrganizationStateDtoWrapper)s : new OrganizationStateDtoWrapper((OrganizationState)s);
+                var dto = s is OrganizationStateDtoWrapper ? (OrganizationStateDtoWrapper)s : new OrganizationStateDtoWrapper((IOrganizationState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;

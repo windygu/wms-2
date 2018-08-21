@@ -104,7 +104,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<ILocatorStateDto>();
             foreach (var s in states)
             {
-                var dto = s is LocatorStateDtoWrapper ? (LocatorStateDtoWrapper)s : new LocatorStateDtoWrapper((LocatorState)s);
+                var dto = s is LocatorStateDtoWrapper ? (LocatorStateDtoWrapper)s : new LocatorStateDtoWrapper((ILocatorState)s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;

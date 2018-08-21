@@ -238,7 +238,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IPicklistRoleStateDto>();
             foreach (var s in states)
             {
-                var dto = s is PicklistRoleStateDtoWrapper ? (PicklistRoleStateDtoWrapper)s : new PicklistRoleStateDtoWrapper((PicklistRoleState)s);
+                var dto = s is PicklistRoleStateDtoWrapper ? (PicklistRoleStateDtoWrapper)s : new PicklistRoleStateDtoWrapper((IPicklistRoleState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }

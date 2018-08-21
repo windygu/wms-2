@@ -6,12 +6,15 @@
 <#@ include file="..\..\..\LoadBoundedContext.tt" #>
 <#
 
-
+    //return String.Empty;
+    //int i = 0;
 	foreach (var aggregate in boundedContext.Aggregates.Values)
 	{
 	    var generator = new AggregateHbmGenerator(aggregate);
 
 	    generator.Run();
+        //i++;
+        //if (i >= 20) { return String.Empty; }
 	}
 
 #>

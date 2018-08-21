@@ -193,7 +193,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDtos = new List<IInventoryItemRequirementEntryStateDto>();
             foreach (var s in states)
             {
-                var dto = s is InventoryItemRequirementEntryStateDtoWrapper ? (InventoryItemRequirementEntryStateDtoWrapper)s : new InventoryItemRequirementEntryStateDtoWrapper((InventoryItemRequirementEntryState)s);
+                var dto = s is InventoryItemRequirementEntryStateDtoWrapper ? (InventoryItemRequirementEntryStateDtoWrapper)s : new InventoryItemRequirementEntryStateDtoWrapper((IInventoryItemRequirementEntryState)s);
                 dto.AllFieldsReturned = true;
                 stateDtos.Add(dto);
             }
