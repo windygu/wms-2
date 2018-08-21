@@ -12,7 +12,7 @@ public class JwtUser implements UserDetails {
     }
 
     public JwtUser(
-            Long id,
+            String id,
             String username,
             String firstname,
             String lastname,
@@ -35,7 +35,7 @@ public class JwtUser implements UserDetails {
 
     // //////////////////////////////////
 
-    private Long id;
+    private String id;
 
     private String username;
 
@@ -57,7 +57,7 @@ public class JwtUser implements UserDetails {
 
     // //////////////////////////////////
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -101,7 +101,7 @@ public class JwtUser implements UserDetails {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

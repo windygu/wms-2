@@ -6,11 +6,14 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class JwtUtil {
 
     @Value("${jwt.secret}")
@@ -34,7 +37,7 @@ public class JwtUtil {
 
             JwtUser u = new JwtUser();
             u.setUsername(body.getSubject());
-            u.setId(Long.parseLong((String) body.get("userId")));
+            u.setId((String) body.get("userId"));
             u.setRole((String) body.get("role"));
             List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(u.getRole());
             u.setAuthorities(authorityList);
@@ -42,6 +45,7 @@ public class JwtUtil {
         } catch (JwtException | ClassCastException e) {
             return null;
         }
+
     }
 
     /**
@@ -53,13 +57,15 @@ public class JwtUtil {
      * @return the JWT token
      */
     public String generateToken(JwtUser u) {
+
         Claims claims = Jwts.claims().setSubject(u.getUsername());
-        claims.put("userId", u.getId() + "");
+        claims.put("userId", u.getId());
         claims.put("role", u.getRole());
 
         return Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
+
     }
 }
