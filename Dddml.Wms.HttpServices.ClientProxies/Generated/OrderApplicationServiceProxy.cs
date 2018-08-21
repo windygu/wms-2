@@ -114,6 +114,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((MergePatchOrderDto)c);
         }
 
+        public void When(OrderCommands.OrderShipGroupAction c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IOrderState> GetAsync(string orderId)
         {
             IOrderState state = null;

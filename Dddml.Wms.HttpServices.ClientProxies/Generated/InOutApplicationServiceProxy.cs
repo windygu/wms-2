@@ -138,6 +138,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             throw new NotImplementedException();//todo
         }
 
+        public void When(InOutCommands.Import c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public void When(InOutCommands.DocumentAction c)
         {
             throw new NotImplementedException();//todo
