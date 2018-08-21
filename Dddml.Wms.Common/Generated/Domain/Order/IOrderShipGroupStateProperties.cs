@@ -35,6 +35,10 @@ namespace Dddml.Wms.Domain.Order
 
 		string TrackingNumber { get; set; }
 
+		string ContactPartyId { get; set; }
+
+		string VehiclePlateNumber { get; set; }
+
 		string ShippingInstructions { get; set; }
 
 		string MaySplit { get; set; }
@@ -52,6 +56,14 @@ namespace Dddml.Wms.Domain.Order
 		DateTime? EstimatedDeliveryDate { get; set; }
 
 		long? PickwaveId { get; set; }
+
+		int NumberOfPackages { get; set; }
+
+		int NumberOfContainers { get; set; }
+
+		int NumberOfPakagesPerContainer { get; set; }
+
+		string OrderShipGroupStatusId { get; set; }
 
 		long Version { get; set; }
 

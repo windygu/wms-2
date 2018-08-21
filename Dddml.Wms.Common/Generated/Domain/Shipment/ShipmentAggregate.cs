@@ -106,7 +106,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.BolNumber = c.BolNumber;
             e.SealNumber = c.SealNumber;
             e.VehicleId = c.VehicleId;
-            e.PoNumber = c.PoNumber;
+            e.ExternalOrderNumber = c.ExternalOrderNumber;
             e.Carrier = c.Carrier;
             e.DateShipped = c.DateShipped;
             e.EstimatedReadyDate = c.EstimatedReadyDate;
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.BolNumber = c.BolNumber;
             e.SealNumber = c.SealNumber;
             e.VehicleId = c.VehicleId;
-            e.PoNumber = c.PoNumber;
+            e.ExternalOrderNumber = c.ExternalOrderNumber;
             e.Carrier = c.Carrier;
             e.DateShipped = c.DateShipped;
             e.EstimatedReadyDate = c.EstimatedReadyDate;
@@ -218,7 +218,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyBolNumberRemoved = c.IsPropertyBolNumberRemoved;
             e.IsPropertySealNumberRemoved = c.IsPropertySealNumberRemoved;
             e.IsPropertyVehicleIdRemoved = c.IsPropertyVehicleIdRemoved;
-            e.IsPropertyPoNumberRemoved = c.IsPropertyPoNumberRemoved;
+            e.IsPropertyExternalOrderNumberRemoved = c.IsPropertyExternalOrderNumberRemoved;
             e.IsPropertyCarrierRemoved = c.IsPropertyCarrierRemoved;
             e.IsPropertyDateShippedRemoved = c.IsPropertyDateShippedRemoved;
             e.IsPropertyEstimatedReadyDateRemoved = c.IsPropertyEstimatedReadyDateRemoved;

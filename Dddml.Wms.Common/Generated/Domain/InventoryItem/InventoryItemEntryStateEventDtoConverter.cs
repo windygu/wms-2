@@ -39,6 +39,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.OccupiedQuantity = e.OccupiedQuantity;
             dto.VirtualQuantity = e.VirtualQuantity;
             dto.Source = e.Source;
+            dto.OccurredAt = e.OccurredAt;
             return dto;
         }
 

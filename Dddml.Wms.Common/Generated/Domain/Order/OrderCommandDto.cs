@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string StatusId { get; set; }
 
-		public virtual string CurrencyUom { get; set; }
+		public virtual string CurrencyUomId { get; set; }
 
 		public virtual string SyncStatusId { get; set; }
 
@@ -281,13 +281,13 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-		public virtual bool? IsPropertyCurrencyUomRemoved { get; set; }
+		public virtual bool? IsPropertyCurrencyUomIdRemoved { get; set; }
 
-        bool IMergePatchOrder.IsPropertyCurrencyUomRemoved
+        bool IMergePatchOrder.IsPropertyCurrencyUomIdRemoved
         {
             get
             {
-                var b = this.IsPropertyCurrencyUomRemoved;
+                var b = this.IsPropertyCurrencyUomIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -296,7 +296,7 @@ namespace Dddml.Wms.Domain.Order
             }
             set
             {
-                this.IsPropertyCurrencyUomRemoved = value;
+                this.IsPropertyCurrencyUomIdRemoved = value;
             }
         }
 
@@ -897,6 +897,37 @@ namespace Dddml.Wms.Domain.Order
 
     public static partial class OrderCommandDtos
     {
+
+        public class OrderShipGroupActionRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "OrderShipGroupAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public OrderShipGroupId OrderShipGroupId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public OrderCommands.OrderShipGroupAction ToOrderShipGroupAction()
+            {
+                var cmd = new OrderCommands.OrderShipGroupAction();
+                cmd.Value = this.Value;
+                cmd.OrderShipGroupId = this.OrderShipGroupId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
 
     }
 

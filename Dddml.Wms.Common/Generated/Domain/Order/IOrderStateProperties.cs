@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Order
 
 		string StatusId { get; set; }
 
-		string CurrencyUom { get; set; }
+		string CurrencyUomId { get; set; }
 
 		string SyncStatusId { get; set; }
 

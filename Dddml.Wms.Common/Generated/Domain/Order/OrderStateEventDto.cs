@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string StatusId { get; set; }
 
-		public virtual string CurrencyUom { get; set; }
+		public virtual string CurrencyUomId { get; set; }
 
 		public virtual string SyncStatusId { get; set; }
 
@@ -293,13 +293,13 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-		public virtual bool? IsPropertyCurrencyUomRemoved { get; set; }
+		public virtual bool? IsPropertyCurrencyUomIdRemoved { get; set; }
 
-        bool IOrderStateMergePatched.IsPropertyCurrencyUomRemoved
+        bool IOrderStateMergePatched.IsPropertyCurrencyUomIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyCurrencyUomRemoved;
+                var b = this.IsPropertyCurrencyUomIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -308,7 +308,7 @@ namespace Dddml.Wms.Domain.Order
             }
             set 
             {
-                this.IsPropertyCurrencyUomRemoved = value;
+                this.IsPropertyCurrencyUomIdRemoved = value;
             }
         }
 

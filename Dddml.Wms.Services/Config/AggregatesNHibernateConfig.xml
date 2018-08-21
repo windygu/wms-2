@@ -661,6 +661,11 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
+  <object id="personStateQueryRepository" type="Dddml.Wms.Domain.Party.NHibernate.NHibernatePersonStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
   <object id="partyEventStore" type="Dddml.Wms.Domain.Party.NHibernate.NHibernatePartyEventStore, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>

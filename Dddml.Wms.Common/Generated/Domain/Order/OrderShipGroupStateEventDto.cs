@@ -55,6 +55,10 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string TrackingNumber { get; set; }
 
+		public virtual string ContactPartyId { get; set; }
+
+		public virtual string VehiclePlateNumber { get; set; }
+
 		public virtual string ShippingInstructions { get; set; }
 
 		public virtual string MaySplit { get; set; }
@@ -72,6 +76,14 @@ namespace Dddml.Wms.Domain.Order
 		public virtual DateTime? EstimatedDeliveryDate { get; set; }
 
 		public virtual long? PickwaveId { get; set; }
+
+		public virtual int? NumberOfPackages { get; set; }
+
+		public virtual int? NumberOfContainers { get; set; }
+
+		public virtual int? NumberOfPakagesPerContainer { get; set; }
+
+		public virtual string OrderShipGroupStatusId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -277,6 +289,44 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
+		public virtual bool? IsPropertyContactPartyIdRemoved { get; set; }
+
+        bool IOrderShipGroupStateMergePatched.IsPropertyContactPartyIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyContactPartyIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyContactPartyIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyVehiclePlateNumberRemoved { get; set; }
+
+        bool IOrderShipGroupStateMergePatched.IsPropertyVehiclePlateNumberRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyVehiclePlateNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyVehiclePlateNumberRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyShippingInstructionsRemoved { get; set; }
 
         bool IOrderShipGroupStateMergePatched.IsPropertyShippingInstructionsRemoved
@@ -445,6 +495,82 @@ namespace Dddml.Wms.Domain.Order
             set 
             {
                 this.IsPropertyPickwaveIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyNumberOfPackagesRemoved { get; set; }
+
+        bool IOrderShipGroupStateMergePatched.IsPropertyNumberOfPackagesRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyNumberOfPackagesRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyNumberOfPackagesRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyNumberOfContainersRemoved { get; set; }
+
+        bool IOrderShipGroupStateMergePatched.IsPropertyNumberOfContainersRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyNumberOfContainersRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyNumberOfContainersRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyNumberOfPakagesPerContainerRemoved { get; set; }
+
+        bool IOrderShipGroupStateMergePatched.IsPropertyNumberOfPakagesPerContainerRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyNumberOfPakagesPerContainerRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyNumberOfPakagesPerContainerRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyOrderShipGroupStatusIdRemoved { get; set; }
+
+        bool IOrderShipGroupStateMergePatched.IsPropertyOrderShipGroupStatusIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyOrderShipGroupStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyOrderShipGroupStatusIdRemoved = value;
             }
         }
 

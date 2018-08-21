@@ -48,6 +48,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual InventoryItemSourceInfo Source { get; set; }
 
+		public virtual DateTime? OccurredAt { get; set; }
+
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }

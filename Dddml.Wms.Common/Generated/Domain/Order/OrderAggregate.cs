@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.Order
             e.EntryDate = c.EntryDate;
             e.PickSheetPrintedDate = c.PickSheetPrintedDate;
             e.StatusId = c.StatusId;
-            e.CurrencyUom = c.CurrencyUom;
+            e.CurrencyUomId = c.CurrencyUomId;
             e.SyncStatusId = c.SyncStatusId;
             e.BillingAccountId = c.BillingAccountId;
             e.OriginFacilityId = c.OriginFacilityId;
@@ -172,7 +172,7 @@ namespace Dddml.Wms.Domain.Order
             e.EntryDate = c.EntryDate;
             e.PickSheetPrintedDate = c.PickSheetPrintedDate;
             e.StatusId = c.StatusId;
-            e.CurrencyUom = c.CurrencyUom;
+            e.CurrencyUomId = c.CurrencyUomId;
             e.SyncStatusId = c.SyncStatusId;
             e.BillingAccountId = c.BillingAccountId;
             e.OriginFacilityId = c.OriginFacilityId;
@@ -197,7 +197,7 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyEntryDateRemoved = c.IsPropertyEntryDateRemoved;
             e.IsPropertyPickSheetPrintedDateRemoved = c.IsPropertyPickSheetPrintedDateRemoved;
             e.IsPropertyStatusIdRemoved = c.IsPropertyStatusIdRemoved;
-            e.IsPropertyCurrencyUomRemoved = c.IsPropertyCurrencyUomRemoved;
+            e.IsPropertyCurrencyUomIdRemoved = c.IsPropertyCurrencyUomIdRemoved;
             e.IsPropertySyncStatusIdRemoved = c.IsPropertySyncStatusIdRemoved;
             e.IsPropertyBillingAccountIdRemoved = c.IsPropertyBillingAccountIdRemoved;
             e.IsPropertyOriginFacilityIdRemoved = c.IsPropertyOriginFacilityIdRemoved;
@@ -621,6 +621,8 @@ namespace Dddml.Wms.Domain.Order
             e.ContactMechId = c.ContactMechId;
             e.TelecomContactMechId = c.TelecomContactMechId;
             e.TrackingNumber = c.TrackingNumber;
+            e.ContactPartyId = c.ContactPartyId;
+            e.VehiclePlateNumber = c.VehiclePlateNumber;
             e.ShippingInstructions = c.ShippingInstructions;
             e.MaySplit = c.MaySplit;
             e.GiftMessage = c.GiftMessage;
@@ -630,6 +632,10 @@ namespace Dddml.Wms.Domain.Order
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
             e.PickwaveId = c.PickwaveId;
+            e.NumberOfPackages = c.NumberOfPackages;
+            e.NumberOfContainers = c.NumberOfContainers;
+            e.NumberOfPakagesPerContainer = c.NumberOfPakagesPerContainer;
+            NewOrderShipGroupOrderShipGroupActionCommandAndExecute(c, s, e);
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -665,6 +671,8 @@ namespace Dddml.Wms.Domain.Order
             e.ContactMechId = c.ContactMechId;
             e.TelecomContactMechId = c.TelecomContactMechId;
             e.TrackingNumber = c.TrackingNumber;
+            e.ContactPartyId = c.ContactPartyId;
+            e.VehiclePlateNumber = c.VehiclePlateNumber;
             e.ShippingInstructions = c.ShippingInstructions;
             e.MaySplit = c.MaySplit;
             e.GiftMessage = c.GiftMessage;
@@ -674,6 +682,9 @@ namespace Dddml.Wms.Domain.Order
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
             e.PickwaveId = c.PickwaveId;
+            e.NumberOfPackages = c.NumberOfPackages;
+            e.NumberOfContainers = c.NumberOfContainers;
+            e.NumberOfPakagesPerContainer = c.NumberOfPakagesPerContainer;
             e.Active = c.Active;
             e.IsPropertyShipmentMethodTypeIdRemoved = c.IsPropertyShipmentMethodTypeIdRemoved;
             e.IsPropertySupplierPartyIdRemoved = c.IsPropertySupplierPartyIdRemoved;
@@ -684,6 +695,8 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyContactMechIdRemoved = c.IsPropertyContactMechIdRemoved;
             e.IsPropertyTelecomContactMechIdRemoved = c.IsPropertyTelecomContactMechIdRemoved;
             e.IsPropertyTrackingNumberRemoved = c.IsPropertyTrackingNumberRemoved;
+            e.IsPropertyContactPartyIdRemoved = c.IsPropertyContactPartyIdRemoved;
+            e.IsPropertyVehiclePlateNumberRemoved = c.IsPropertyVehiclePlateNumberRemoved;
             e.IsPropertyShippingInstructionsRemoved = c.IsPropertyShippingInstructionsRemoved;
             e.IsPropertyMaySplitRemoved = c.IsPropertyMaySplitRemoved;
             e.IsPropertyGiftMessageRemoved = c.IsPropertyGiftMessageRemoved;
@@ -693,6 +706,9 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
             e.IsPropertyEstimatedDeliveryDateRemoved = c.IsPropertyEstimatedDeliveryDateRemoved;
             e.IsPropertyPickwaveIdRemoved = c.IsPropertyPickwaveIdRemoved;
+            e.IsPropertyNumberOfPackagesRemoved = c.IsPropertyNumberOfPackagesRemoved;
+            e.IsPropertyNumberOfContainersRemoved = c.IsPropertyNumberOfContainersRemoved;
+            e.IsPropertyNumberOfPakagesPerContainerRemoved = c.IsPropertyNumberOfPakagesPerContainerRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -914,6 +930,74 @@ namespace Dddml.Wms.Domain.Order
 		{
 			return new OrderItemShipGroupAssociationStateRemoved(stateEventId);
 		}
+
+        protected void NewOrderShipGroupOrderShipGroupActionCommandAndExecute(ICreateOrderShipGroup c, IOrderShipGroupState s, IOrderShipGroupStateCreated e)
+        {
+            var pCommandHandler = this.OrderShipGroupOrderShipGroupActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.OrderShipGroupStatusId, SetState = p => e.OrderShipGroupStatusId = p, OuterCommandType = CommandType.Create };
+            pCmd.Context = this.State;
+            pCommandHandler.Execute(pCmd);
+        }
+
+        public class SimpleOrderShipGroupOrderShipGroupActionCommandHandler : IPropertyCommandHandler<string, string>
+        {
+            public virtual void Execute(IPropertyCommand<string, string> command)
+            {
+                if (null == command.GetState() && null == command.Content)
+                {
+                    command.SetState("SHIP_GRP_CREATED");
+                    return;
+                }
+                if ("SHIP_GRP_CREATED" == command.GetState() && "Approve" == command.Content)
+                {
+                    command.SetState("SHIP_GRP_APPROVED");
+                    return;
+                }
+                if ("SHIP_GRP_APPROVED" == command.GetState() && "Complete" == command.Content)
+                {
+                    command.SetState("SHIP_GRP_COMPLETED");
+                    return;
+                }
+                if ("SHIP_GRP_CREATED" == command.GetState() && "Reject" == command.Content)
+                {
+                    command.SetState("SHIP_GRP_REJECTED");
+                    return;
+                }
+                if ("SHIP_GRP_CREATED" == command.GetState() && "Cancel" == command.Content)
+                {
+                    command.SetState("SHIP_GRP_CANCELLED");
+                    return;
+                }
+                throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
+        private IPropertyCommandHandler<string, string> _orderShipGroupOrderShipGroupActionCommandHandler = new SimpleOrderShipGroupOrderShipGroupActionCommandHandler();
+
+        protected IPropertyCommandHandler<string, string> OrderShipGroupOrderShipGroupActionCommandHandler
+        {
+            get
+            {
+                var h = ApplicationContext.Current["OrderShipGroupOrderShipGroupActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                if (h != null)
+                { return h; }
+                return this._orderShipGroupOrderShipGroupActionCommandHandler;
+            }
+            set
+            {
+                this._orderShipGroupOrderShipGroupActionCommandHandler = value;
+            }
+        }
+
+        protected virtual void DoOrderShipGroupAction(long? shipGroupSeqId, string value, Action<string> setOrderShipGroupStatusId)
+        {
+            var pCommandHandler = this.OrderShipGroupOrderShipGroupActionCommandHandler;
+            var pCmdContent = value;
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.OrderShipGroups.Get(shipGroupSeqId).OrderShipGroupStatusId, SetState = setOrderShipGroupStatusId, OuterCommandType = "OrderShipGroupAction" };
+            pCmd.Context = this.State;
+            pCommandHandler.Execute(pCmd);
+        }
 
     }
 

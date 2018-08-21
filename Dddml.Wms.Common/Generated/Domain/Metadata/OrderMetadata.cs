@@ -307,7 +307,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "CurrencyUom",
+                    Name = "CurrencyUomId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1054,8 +1054,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("pickSheetPrintedDate", "PickSheetPrintedDate");
             d.Add("StatusId", "StatusId");
             d.Add("statusId", "StatusId");
-            d.Add("CurrencyUom", "CurrencyUom");
-            d.Add("currencyUom", "CurrencyUom");
+            d.Add("CurrencyUomId", "CurrencyUomId");
+            d.Add("currencyUomId", "CurrencyUomId");
             d.Add("SyncStatusId", "SyncStatusId");
             d.Add("syncStatusId", "SyncStatusId");
             d.Add("BillingAccountId", "BillingAccountId");

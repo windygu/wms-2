@@ -1091,6 +1091,64 @@ namespace Dddml.Wms.Domain.InOut
 
         }
 
+        public class ImportRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "Import"; }
+            }
+
+            public string DocumentTypeId { get; set; }
+
+            public string Description { get; set; }
+
+            public string OrderId { get; set; }
+
+            public DateTime? DateOrdered { get; set; }
+
+            public string MovementTypeId { get; set; }
+
+            public DateTime? MovementDate { get; set; }
+
+            public string WarehouseId { get; set; }
+
+            public string POReference { get; set; }
+
+            public string ShipperId { get; set; }
+
+            public ImportingInOutLine[] InOutLines { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public InOutCommands.Import ToImport()
+            {
+                var cmd = new InOutCommands.Import();
+                cmd.DocumentTypeId = this.DocumentTypeId;
+                cmd.Description = this.Description;
+                cmd.OrderId = this.OrderId;
+                cmd.DateOrdered = this.DateOrdered;
+                cmd.MovementTypeId = this.MovementTypeId;
+                cmd.MovementDate = this.MovementDate;
+                cmd.WarehouseId = this.WarehouseId;
+                cmd.POReference = this.POReference;
+                cmd.ShipperId = this.ShipperId;
+                cmd.InOutLines = this.InOutLines == null ? null : new HashSet<ImportingInOutLine>(this.InOutLines);
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
         public class DocumentActionRequestContent : ICommandDto
         {
 

@@ -20,13 +20,29 @@ namespace Dddml.Wms.Domain.Party
 
 		public virtual string PrimaryRoleTypeId { get; set; }
 
-		public virtual string OrganizationName { get; set; }
+		public virtual string ExternalId { get; set; }
+
+		public virtual string PreferredCurrencyUomId { get; set; }
 
 		public virtual string Description { get; set; }
 
-		public virtual string Type { get; set; }
+		public virtual string OrganizationName { get; set; }
 
 		public virtual bool IsSummary { get; set; }
+
+		public virtual string Salutation { get; set; }
+
+		public virtual string FirstName { get; set; }
+
+		public virtual string MiddleName { get; set; }
+
+		public virtual string LastName { get; set; }
+
+		public virtual string PersonalTitle { get; set; }
+
+		public virtual string Nickname { get; set; }
+
+		public virtual string CardId { get; set; }
 
 		public virtual long Version { get; set; }
 

@@ -89,6 +89,9 @@ namespace Dddml.Wms.Domain.Party
                     case PartyTypeIds.Organization:
                         clazz = typeof(OrganizationState);
                         break;
+                    case PartyTypeIds.Person:
+                        clazz = typeof(PersonState);
+                        break;
                 }
             }
             if (clazz == null)

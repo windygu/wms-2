@@ -129,6 +129,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual InventoryItemSourceInfo Source { get { return InventoryItemEntryState.Source; } set { InventoryItemEntryState.Source = value; } }
 
+        public virtual DateTime? OccurredAt { get { return InventoryItemEntryState.OccurredAt; } set { InventoryItemEntryState.OccurredAt = value; } }
+
         protected InventoryItemEntryStateEventBase() : base()
         {
         }

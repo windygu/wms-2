@@ -125,6 +125,11 @@ namespace Dddml.Wms.Domain.InOut
 			Update(c, ar => ar.AddLine(c.LineNumber, c.LocatorId, c.ProductId, c.AttributeSetInstance, c.DamageStatusIds, c.Description, c.QuantityUomId, c.MovementQuantity, c.Version, c.CommandId, c.RequesterId));
 		}
 
+		public virtual void When(InOutCommands.Import c)
+		{
+			Update(c, ar => ar.Import(c.DocumentTypeId, c.Description, c.OrderId, c.DateOrdered, c.MovementTypeId, c.MovementDate, c.WarehouseId, c.POReference, c.ShipperId, c.InOutLines, c.Version, c.CommandId, c.RequesterId));
+		}
+
 		public virtual void When(InOutCommands.DocumentAction c)
 		{
 			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));

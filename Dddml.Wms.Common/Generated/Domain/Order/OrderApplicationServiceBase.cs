@@ -101,6 +101,11 @@ namespace Dddml.Wms.Domain.Order
 			Update(c, ar => ar.MergePatch(c));
 		}
 
+		public virtual void When(OrderCommands.OrderShipGroupAction c)
+		{
+			Update(c, ar => ar.OrderShipGroupAction(c.OrderShipGroupId.ShipGroupSeqId, c.Value, c.Version, c.CommandId, c.RequesterId));
+		}
+
         public virtual IOrderState Get(string orderId)
         {
             var state = StateRepository.Get(orderId, true);

@@ -253,6 +253,34 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
         }
 
+		public virtual DateTime? OccurredAt
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OccurredAt"))
+                {
+                    return _state.OccurredAt;
+                }
+                return null;
+            }
+            set
+            {
+                _state.OccurredAt = value;
+            }
+        }
+
+        DateTime? IInventoryItemEntryStateProperties.OccurredAt
+        {
+            get 
+            {
+                return (this._state as IInventoryItemEntryStateProperties).OccurredAt;
+            }
+            set 
+            {
+                (this._state as IInventoryItemEntryStateProperties).OccurredAt = value;
+            }
+        }
+
 		public virtual long? Version
         {
             get

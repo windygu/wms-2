@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string VehicleId { get; set; }
 
-		string PoNumber { get; set; }
+		string ExternalOrderNumber { get; set; }
 
 		string Carrier { get; set; }
 
@@ -137,7 +137,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool IsPropertyVehicleIdRemoved { get; set; }
 
-		bool IsPropertyPoNumberRemoved { get; set; }
+		bool IsPropertyExternalOrderNumberRemoved { get; set; }
 
 		bool IsPropertyCarrierRemoved { get; set; }
 

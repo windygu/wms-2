@@ -242,6 +242,10 @@ namespace Dddml.Wms.Domain.Order
 
 			this.TrackingNumber = e.TrackingNumber;
 
+			this.ContactPartyId = e.ContactPartyId;
+
+			this.VehiclePlateNumber = e.VehiclePlateNumber;
+
 			this.ShippingInstructions = e.ShippingInstructions;
 
 			this.MaySplit = e.MaySplit;
@@ -259,6 +263,14 @@ namespace Dddml.Wms.Domain.Order
 			this.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
 
 			this.PickwaveId = e.PickwaveId;
+
+            this.NumberOfPackages = (e.NumberOfPackages != null && e.NumberOfPackages.HasValue) ? e.NumberOfPackages.Value : default(int);
+
+            this.NumberOfContainers = (e.NumberOfContainers != null && e.NumberOfContainers.HasValue) ? e.NumberOfContainers.Value : default(int);
+
+            this.NumberOfPakagesPerContainer = (e.NumberOfPakagesPerContainer != null && e.NumberOfPakagesPerContainer.HasValue) ? e.NumberOfPakagesPerContainer.Value : default(int);
+
+			this.OrderShipGroupStatusId = e.OrderShipGroupStatusId;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
@@ -387,6 +399,30 @@ namespace Dddml.Wms.Domain.Order
 				this.TrackingNumber = e.TrackingNumber;
 			}
 
+			if (e.ContactPartyId == null)
+			{
+				if (e.IsPropertyContactPartyIdRemoved)
+				{
+					this.ContactPartyId = default(string);
+				}
+			}
+			else
+			{
+				this.ContactPartyId = e.ContactPartyId;
+			}
+
+			if (e.VehiclePlateNumber == null)
+			{
+				if (e.IsPropertyVehiclePlateNumberRemoved)
+				{
+					this.VehiclePlateNumber = default(string);
+				}
+			}
+			else
+			{
+				this.VehiclePlateNumber = e.VehiclePlateNumber;
+			}
+
 			if (e.ShippingInstructions == null)
 			{
 				if (e.IsPropertyShippingInstructionsRemoved)
@@ -493,6 +529,54 @@ namespace Dddml.Wms.Domain.Order
 			else
 			{
 				this.PickwaveId = e.PickwaveId;
+			}
+
+			if (e.NumberOfPackages == null)
+			{
+				if (e.IsPropertyNumberOfPackagesRemoved)
+				{
+					this.NumberOfPackages = default(int);
+				}
+			}
+			else
+			{
+				this.NumberOfPackages = (e.NumberOfPackages != null && e.NumberOfPackages.HasValue) ? e.NumberOfPackages.Value : default(int);
+			}
+
+			if (e.NumberOfContainers == null)
+			{
+				if (e.IsPropertyNumberOfContainersRemoved)
+				{
+					this.NumberOfContainers = default(int);
+				}
+			}
+			else
+			{
+				this.NumberOfContainers = (e.NumberOfContainers != null && e.NumberOfContainers.HasValue) ? e.NumberOfContainers.Value : default(int);
+			}
+
+			if (e.NumberOfPakagesPerContainer == null)
+			{
+				if (e.IsPropertyNumberOfPakagesPerContainerRemoved)
+				{
+					this.NumberOfPakagesPerContainer = default(int);
+				}
+			}
+			else
+			{
+				this.NumberOfPakagesPerContainer = (e.NumberOfPakagesPerContainer != null && e.NumberOfPakagesPerContainer.HasValue) ? e.NumberOfPakagesPerContainer.Value : default(int);
+			}
+
+			if (e.OrderShipGroupStatusId == null)
+			{
+				if (e.IsPropertyOrderShipGroupStatusIdRemoved)
+				{
+					this.OrderShipGroupStatusId = default(string);
+				}
+			}
+			else
+			{
+				this.OrderShipGroupStatusId = e.OrderShipGroupStatusId;
 			}
 
 			if (e.Active == null)

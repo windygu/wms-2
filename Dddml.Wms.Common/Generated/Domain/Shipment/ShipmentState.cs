@@ -265,7 +265,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.VehicleId = e.VehicleId;
 
-			this.PoNumber = e.PoNumber;
+			this.ExternalOrderNumber = e.ExternalOrderNumber;
 
 			this.Carrier = e.Carrier;
 
@@ -446,16 +446,16 @@ namespace Dddml.Wms.Domain.Shipment
 				this.VehicleId = e.VehicleId;
 			}
 
-			if (e.PoNumber == null)
+			if (e.ExternalOrderNumber == null)
 			{
-				if (e.IsPropertyPoNumberRemoved)
+				if (e.IsPropertyExternalOrderNumberRemoved)
 				{
-					this.PoNumber = default(string);
+					this.ExternalOrderNumber = default(string);
 				}
 			}
 			else
 			{
-				this.PoNumber = e.PoNumber;
+				this.ExternalOrderNumber = e.ExternalOrderNumber;
 			}
 
 			if (e.Carrier == null)

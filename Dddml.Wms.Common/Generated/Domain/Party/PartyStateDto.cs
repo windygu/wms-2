@@ -33,7 +33,13 @@ namespace Dddml.Wms.Domain.Party
             set;
         }
 
-        public virtual string OrganizationName
+        public virtual string ExternalId
+        {
+            get;
+            set;
+        }
+
+        public virtual string PreferredCurrencyUomId
         {
             get;
             set;
@@ -45,13 +51,55 @@ namespace Dddml.Wms.Domain.Party
             set;
         }
 
-        public virtual string Type
+        public virtual string OrganizationName
         {
             get;
             set;
         }
 
         public virtual bool? IsSummary
+        {
+            get;
+            set;
+        }
+
+        public virtual string Salutation
+        {
+            get;
+            set;
+        }
+
+        public virtual string FirstName
+        {
+            get;
+            set;
+        }
+
+        public virtual string MiddleName
+        {
+            get;
+            set;
+        }
+
+        public virtual string LastName
+        {
+            get;
+            set;
+        }
+
+        public virtual string PersonalTitle
+        {
+            get;
+            set;
+        }
+
+        public virtual string Nickname
+        {
+            get;
+            set;
+        }
+
+        public virtual string CardId
         {
             get;
             set;
@@ -99,10 +147,18 @@ namespace Dddml.Wms.Domain.Party
             state.PartyId = this.PartyId;
             state.PartyTypeId = this.PartyTypeId;
             state.PrimaryRoleTypeId = this.PrimaryRoleTypeId;
-            state.OrganizationName = this.OrganizationName;
+            state.ExternalId = this.ExternalId;
+            state.PreferredCurrencyUomId = this.PreferredCurrencyUomId;
             state.Description = this.Description;
-            state.Type = this.Type;
+            state.OrganizationName = this.OrganizationName;
             if (this.IsSummary != null && this.IsSummary.HasValue) { state.IsSummary = this.IsSummary.Value; }
+            state.Salutation = this.Salutation;
+            state.FirstName = this.FirstName;
+            state.MiddleName = this.MiddleName;
+            state.LastName = this.LastName;
+            state.PersonalTitle = this.PersonalTitle;
+            state.Nickname = this.Nickname;
+            state.CardId = this.CardId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;
@@ -119,10 +175,46 @@ namespace Dddml.Wms.Domain.Party
             state.PartyId = this.PartyId;
             state.PartyTypeId = this.PartyTypeId;
             state.PrimaryRoleTypeId = this.PrimaryRoleTypeId;
-            state.OrganizationName = this.OrganizationName;
+            state.ExternalId = this.ExternalId;
+            state.PreferredCurrencyUomId = this.PreferredCurrencyUomId;
             state.Description = this.Description;
-            state.Type = this.Type;
+            state.OrganizationName = this.OrganizationName;
             if (this.IsSummary != null && this.IsSummary.HasValue) { state.IsSummary = this.IsSummary.Value; }
+            state.Salutation = this.Salutation;
+            state.FirstName = this.FirstName;
+            state.MiddleName = this.MiddleName;
+            state.LastName = this.LastName;
+            state.PersonalTitle = this.PersonalTitle;
+            state.Nickname = this.Nickname;
+            state.CardId = this.CardId;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+
+            return state;
+        }
+
+        public virtual IPersonState ToPersonState()
+        {
+            var state = new PersonState(true);
+            state.PartyId = this.PartyId;
+            state.PartyTypeId = this.PartyTypeId;
+            state.PrimaryRoleTypeId = this.PrimaryRoleTypeId;
+            state.ExternalId = this.ExternalId;
+            state.PreferredCurrencyUomId = this.PreferredCurrencyUomId;
+            state.Description = this.Description;
+            state.OrganizationName = this.OrganizationName;
+            if (this.IsSummary != null && this.IsSummary.HasValue) { state.IsSummary = this.IsSummary.Value; }
+            state.Salutation = this.Salutation;
+            state.FirstName = this.FirstName;
+            state.MiddleName = this.MiddleName;
+            state.LastName = this.LastName;
+            state.PersonalTitle = this.PersonalTitle;
+            state.Nickname = this.Nickname;
+            state.CardId = this.CardId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;
@@ -136,6 +228,10 @@ namespace Dddml.Wms.Domain.Party
     }
 
     public class OrganizationStateDto  : PartyStateDto, IPartyStateDto
+    {
+    }
+
+    public class PersonStateDto  : PartyStateDto, IPartyStateDto
     {
     }
 

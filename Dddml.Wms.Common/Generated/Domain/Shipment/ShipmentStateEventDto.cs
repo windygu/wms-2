@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string VehicleId { get; set; }
 
-		public virtual string PoNumber { get; set; }
+		public virtual string ExternalOrderNumber { get; set; }
 
 		public virtual string Carrier { get; set; }
 
@@ -306,13 +306,13 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual bool? IsPropertyPoNumberRemoved { get; set; }
+		public virtual bool? IsPropertyExternalOrderNumberRemoved { get; set; }
 
-        bool IShipmentStateMergePatched.IsPropertyPoNumberRemoved
+        bool IShipmentStateMergePatched.IsPropertyExternalOrderNumberRemoved
         {
             get 
             {
-                var b = this.IsPropertyPoNumberRemoved;
+                var b = this.IsPropertyExternalOrderNumberRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -321,7 +321,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
             set 
             {
-                this.IsPropertyPoNumberRemoved = value;
+                this.IsPropertyExternalOrderNumberRemoved = value;
             }
         }
 

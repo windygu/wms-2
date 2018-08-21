@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        public virtual string PoNumber
+        public virtual string ExternalOrderNumber
         {
             get;
             set;
@@ -304,7 +304,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.BolNumber = this.BolNumber;
             state.SealNumber = this.SealNumber;
             state.VehicleId = this.VehicleId;
-            state.PoNumber = this.PoNumber;
+            state.ExternalOrderNumber = this.ExternalOrderNumber;
             state.Carrier = this.Carrier;
             state.DateShipped = this.DateShipped;
             state.EstimatedReadyDate = this.EstimatedReadyDate;

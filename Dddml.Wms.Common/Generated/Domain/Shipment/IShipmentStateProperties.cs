@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string VehicleId { get; set; }
 
-		string PoNumber { get; set; }
+		string ExternalOrderNumber { get; set; }
 
 		string Carrier { get; set; }
 

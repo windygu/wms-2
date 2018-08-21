@@ -877,6 +877,96 @@ namespace Dddml.Wms.Domain.InOut
 
         }
 
+        public class Import : IInOutCommand
+        {
+
+            public string CommandType
+            {
+                get { return "Import"; }
+            }
+
+            public string DocumentTypeId { get; set; }
+
+            public string Description { get; set; }
+
+            public string OrderId { get; set; }
+
+            public DateTime? DateOrdered { get; set; }
+
+            public string MovementTypeId { get; set; }
+
+            public DateTime? MovementDate { get; set; }
+
+            public string WarehouseId { get; set; }
+
+            public string POReference { get; set; }
+
+            public string ShipperId { get; set; }
+
+            public ISet<ImportingInOutLine> InOutLines { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.DocumentNumber; }
+            }
+
+            string IInOutCommand.DocumentNumber
+            {
+                get { return this.DocumentNumber; }
+                set { this.DocumentNumber = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IInOutCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
         public class DocumentAction : IInOutCommand
         {
 

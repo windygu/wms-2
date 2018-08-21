@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        string PoNumber
+        string ExternalOrderNumber
         {
             get;
             set;

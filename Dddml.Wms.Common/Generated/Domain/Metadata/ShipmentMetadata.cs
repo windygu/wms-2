@@ -306,7 +306,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "PoNumber",
+                    Name = "ExternalOrderNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1281,8 +1281,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("sealNumber", "SealNumber");
             d.Add("VehicleId", "VehicleId");
             d.Add("vehicleId", "VehicleId");
-            d.Add("PoNumber", "PoNumber");
-            d.Add("poNumber", "PoNumber");
+            d.Add("ExternalOrderNumber", "ExternalOrderNumber");
+            d.Add("externalOrderNumber", "ExternalOrderNumber");
             d.Add("Carrier", "Carrier");
             d.Add("carrier", "Carrier");
             d.Add("DateShipped", "DateShipped");

@@ -109,10 +109,18 @@ namespace Dddml.Wms.Domain.Party
 		
             e.PartyTypeId = c.PartyTypeId;
             e.PrimaryRoleTypeId = c.PrimaryRoleTypeId;
-            e.OrganizationName = c.OrganizationName;
+            e.ExternalId = c.ExternalId;
+            e.PreferredCurrencyUomId = c.PreferredCurrencyUomId;
             e.Description = c.Description;
-            e.Type = c.Type;
+            e.OrganizationName = c.OrganizationName;
             e.IsSummary = c.IsSummary;
+            e.Salutation = c.Salutation;
+            e.FirstName = c.FirstName;
+            e.MiddleName = c.MiddleName;
+            e.LastName = c.LastName;
+            e.PersonalTitle = c.PersonalTitle;
+            e.Nickname = c.Nickname;
+            e.CardId = c.CardId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -132,17 +140,33 @@ namespace Dddml.Wms.Domain.Party
 
             e.PartyTypeId = c.PartyTypeId;
             e.PrimaryRoleTypeId = c.PrimaryRoleTypeId;
-            e.OrganizationName = c.OrganizationName;
+            e.ExternalId = c.ExternalId;
+            e.PreferredCurrencyUomId = c.PreferredCurrencyUomId;
             e.Description = c.Description;
-            e.Type = c.Type;
+            e.OrganizationName = c.OrganizationName;
             e.IsSummary = c.IsSummary;
+            e.Salutation = c.Salutation;
+            e.FirstName = c.FirstName;
+            e.MiddleName = c.MiddleName;
+            e.LastName = c.LastName;
+            e.PersonalTitle = c.PersonalTitle;
+            e.Nickname = c.Nickname;
+            e.CardId = c.CardId;
             e.Active = c.Active;
             e.IsPropertyPartyTypeIdRemoved = c.IsPropertyPartyTypeIdRemoved;
             e.IsPropertyPrimaryRoleTypeIdRemoved = c.IsPropertyPrimaryRoleTypeIdRemoved;
-            e.IsPropertyOrganizationNameRemoved = c.IsPropertyOrganizationNameRemoved;
+            e.IsPropertyExternalIdRemoved = c.IsPropertyExternalIdRemoved;
+            e.IsPropertyPreferredCurrencyUomIdRemoved = c.IsPropertyPreferredCurrencyUomIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
-            e.IsPropertyTypeRemoved = c.IsPropertyTypeRemoved;
+            e.IsPropertyOrganizationNameRemoved = c.IsPropertyOrganizationNameRemoved;
             e.IsPropertyIsSummaryRemoved = c.IsPropertyIsSummaryRemoved;
+            e.IsPropertySalutationRemoved = c.IsPropertySalutationRemoved;
+            e.IsPropertyFirstNameRemoved = c.IsPropertyFirstNameRemoved;
+            e.IsPropertyMiddleNameRemoved = c.IsPropertyMiddleNameRemoved;
+            e.IsPropertyLastNameRemoved = c.IsPropertyLastNameRemoved;
+            e.IsPropertyPersonalTitleRemoved = c.IsPropertyPersonalTitleRemoved;
+            e.IsPropertyNicknameRemoved = c.IsPropertyNicknameRemoved;
+            e.IsPropertyCardIdRemoved = c.IsPropertyCardIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

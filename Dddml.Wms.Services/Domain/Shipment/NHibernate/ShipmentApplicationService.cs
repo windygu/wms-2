@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             updateReceipt.AcceptedQuantity = c.AcceptedQuantity;
             updateReceipt.RejectedQuantity = c.RejectedQuantity;
             updateReceipt.DamagedQuantity = c.DamagedQuantity;
-            updateReceipt.DamageStatusId = c.DamageStatusId;
+            updateReceipt.DamageStatusIds = c.DamageStatusIds;
             updateReceipt.DamageReasonId = c.DamageReasonId;
             updateReceipt.ReceivedBy = c.RequesterId;
             return updateReceipt;

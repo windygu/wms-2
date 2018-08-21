@@ -32,7 +32,13 @@ namespace Dddml.Wms.Domain.Party
             set;
         }
 
-        string OrganizationName
+        string ExternalId
+        {
+            get;
+            set;
+        }
+
+        string PreferredCurrencyUomId
         {
             get;
             set;
@@ -44,13 +50,55 @@ namespace Dddml.Wms.Domain.Party
             set;
         }
 
-        string Type
+        string OrganizationName
         {
             get;
             set;
         }
 
         bool? IsSummary
+        {
+            get;
+            set;
+        }
+
+        string Salutation
+        {
+            get;
+            set;
+        }
+
+        string FirstName
+        {
+            get;
+            set;
+        }
+
+        string MiddleName
+        {
+            get;
+            set;
+        }
+
+        string LastName
+        {
+            get;
+            set;
+        }
+
+        string PersonalTitle
+        {
+            get;
+            set;
+        }
+
+        string Nickname
+        {
+            get;
+            set;
+        }
+
+        string CardId
         {
             get;
             set;
@@ -97,6 +145,10 @@ namespace Dddml.Wms.Domain.Party
     }
 
     public interface IOrganizationStateDto : IPartyStateDto
+    {
+    }
+
+    public interface IPersonStateDto : IPartyStateDto
     {
     }
 

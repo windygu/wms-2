@@ -123,31 +123,59 @@ namespace Dddml.Wms.Domain.Party
             }
         }
 
-		public virtual string OrganizationName
+		public virtual string ExternalId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrganizationName"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ExternalId"))
                 {
-                    return _state.OrganizationName;
+                    return _state.ExternalId;
                 }
                 return null;
             }
             set
             {
-                _state.OrganizationName = value;
+                _state.ExternalId = value;
             }
         }
 
-        string IPartyStateProperties.OrganizationName
+        string IPartyStateProperties.ExternalId
         {
             get 
             {
-                return (this._state as IPartyStateProperties).OrganizationName;
+                return (this._state as IPartyStateProperties).ExternalId;
             }
             set 
             {
-                (this._state as IPartyStateProperties).OrganizationName = value;
+                (this._state as IPartyStateProperties).ExternalId = value;
+            }
+        }
+
+		public virtual string PreferredCurrencyUomId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PreferredCurrencyUomId"))
+                {
+                    return _state.PreferredCurrencyUomId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PreferredCurrencyUomId = value;
+            }
+        }
+
+        string IPartyStateProperties.PreferredCurrencyUomId
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).PreferredCurrencyUomId;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).PreferredCurrencyUomId = value;
             }
         }
 
@@ -179,31 +207,31 @@ namespace Dddml.Wms.Domain.Party
             }
         }
 
-		public virtual string Type
+		public virtual string OrganizationName
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Type"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrganizationName"))
                 {
-                    return _state.Type;
+                    return _state.OrganizationName;
                 }
                 return null;
             }
             set
             {
-                _state.Type = value;
+                _state.OrganizationName = value;
             }
         }
 
-        string IPartyStateProperties.Type
+        string IPartyStateProperties.OrganizationName
         {
             get 
             {
-                return (this._state as IPartyStateProperties).Type;
+                return (this._state as IPartyStateProperties).OrganizationName;
             }
             set 
             {
-                (this._state as IPartyStateProperties).Type = value;
+                (this._state as IPartyStateProperties).OrganizationName = value;
             }
         }
 
@@ -235,6 +263,202 @@ namespace Dddml.Wms.Domain.Party
             set 
             {
                 (this._state as IPartyStateProperties).IsSummary = value;
+            }
+        }
+
+		public virtual string Salutation
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Salutation"))
+                {
+                    return _state.Salutation;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Salutation = value;
+            }
+        }
+
+        string IPartyStateProperties.Salutation
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).Salutation;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).Salutation = value;
+            }
+        }
+
+		public virtual string FirstName
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("FirstName"))
+                {
+                    return _state.FirstName;
+                }
+                return null;
+            }
+            set
+            {
+                _state.FirstName = value;
+            }
+        }
+
+        string IPartyStateProperties.FirstName
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).FirstName;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).FirstName = value;
+            }
+        }
+
+		public virtual string MiddleName
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("MiddleName"))
+                {
+                    return _state.MiddleName;
+                }
+                return null;
+            }
+            set
+            {
+                _state.MiddleName = value;
+            }
+        }
+
+        string IPartyStateProperties.MiddleName
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).MiddleName;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).MiddleName = value;
+            }
+        }
+
+		public virtual string LastName
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LastName"))
+                {
+                    return _state.LastName;
+                }
+                return null;
+            }
+            set
+            {
+                _state.LastName = value;
+            }
+        }
+
+        string IPartyStateProperties.LastName
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).LastName;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).LastName = value;
+            }
+        }
+
+		public virtual string PersonalTitle
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PersonalTitle"))
+                {
+                    return _state.PersonalTitle;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PersonalTitle = value;
+            }
+        }
+
+        string IPartyStateProperties.PersonalTitle
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).PersonalTitle;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).PersonalTitle = value;
+            }
+        }
+
+		public virtual string Nickname
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Nickname"))
+                {
+                    return _state.Nickname;
+                }
+                return null;
+            }
+            set
+            {
+                _state.Nickname = value;
+            }
+        }
+
+        string IPartyStateProperties.Nickname
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).Nickname;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).Nickname = value;
+            }
+        }
+
+		public virtual string CardId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CardId"))
+                {
+                    return _state.CardId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.CardId = value;
+            }
+        }
+
+        string IPartyStateProperties.CardId
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).CardId;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).CardId = value;
             }
         }
 

@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		void AddLine(string lineNumber, string locatorId, string productId, IDictionary<string, object> attributeSetInstance, IEnumerable<string> damageStatusIds, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId);
 
+		void Import(string documentTypeId, string description, string orderId, DateTime? dateOrdered, string movementTypeId, DateTime? movementDate, string warehouseId, string pOReference, string shipperId, IEnumerable<ImportingInOutLine> inOutLines, long version, string commandId, string requesterId);
+
 		void DocumentAction(string value, long version, string commandId, string requesterId);
 
 

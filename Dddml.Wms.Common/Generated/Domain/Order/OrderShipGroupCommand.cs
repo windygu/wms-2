@@ -52,6 +52,10 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string TrackingNumber { get; set; }
 
+		public virtual string ContactPartyId { get; set; }
+
+		public virtual string VehiclePlateNumber { get; set; }
+
 		public virtual string ShippingInstructions { get; set; }
 
 		public virtual string MaySplit { get; set; }
@@ -69,6 +73,12 @@ namespace Dddml.Wms.Domain.Order
 		public virtual DateTime? EstimatedDeliveryDate { get; set; }
 
 		public virtual long? PickwaveId { get; set; }
+
+		public virtual int? NumberOfPackages { get; set; }
+
+		public virtual int? NumberOfContainers { get; set; }
+
+		public virtual int? NumberOfPakagesPerContainer { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -153,6 +163,10 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual bool IsPropertyTrackingNumberRemoved { get; set; }
 
+		public virtual bool IsPropertyContactPartyIdRemoved { get; set; }
+
+		public virtual bool IsPropertyVehiclePlateNumberRemoved { get; set; }
+
 		public virtual bool IsPropertyShippingInstructionsRemoved { get; set; }
 
 		public virtual bool IsPropertyMaySplitRemoved { get; set; }
@@ -170,6 +184,12 @@ namespace Dddml.Wms.Domain.Order
 		public virtual bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
 
 		public virtual bool IsPropertyPickwaveIdRemoved { get; set; }
+
+		public virtual bool IsPropertyNumberOfPackagesRemoved { get; set; }
+
+		public virtual bool IsPropertyNumberOfContainersRemoved { get; set; }
+
+		public virtual bool IsPropertyNumberOfPakagesPerContainerRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

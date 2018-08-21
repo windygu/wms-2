@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.Order
             dto.EntryDate = e.EntryDate;
             dto.PickSheetPrintedDate = e.PickSheetPrintedDate;
             dto.StatusId = e.StatusId;
-            dto.CurrencyUom = e.CurrencyUom;
+            dto.CurrencyUomId = e.CurrencyUomId;
             dto.SyncStatusId = e.SyncStatusId;
             dto.BillingAccountId = e.BillingAccountId;
             dto.OriginFacilityId = e.OriginFacilityId;
@@ -106,7 +106,7 @@ namespace Dddml.Wms.Domain.Order
             dto.EntryDate = e.EntryDate;
             dto.PickSheetPrintedDate = e.PickSheetPrintedDate;
             dto.StatusId = e.StatusId;
-            dto.CurrencyUom = e.CurrencyUom;
+            dto.CurrencyUomId = e.CurrencyUomId;
             dto.SyncStatusId = e.SyncStatusId;
             dto.BillingAccountId = e.BillingAccountId;
             dto.OriginFacilityId = e.OriginFacilityId;
@@ -131,7 +131,7 @@ namespace Dddml.Wms.Domain.Order
             dto.IsPropertyEntryDateRemoved = e.IsPropertyEntryDateRemoved;
             dto.IsPropertyPickSheetPrintedDateRemoved = e.IsPropertyPickSheetPrintedDateRemoved;
             dto.IsPropertyStatusIdRemoved = e.IsPropertyStatusIdRemoved;
-            dto.IsPropertyCurrencyUomRemoved = e.IsPropertyCurrencyUomRemoved;
+            dto.IsPropertyCurrencyUomIdRemoved = e.IsPropertyCurrencyUomIdRemoved;
             dto.IsPropertySyncStatusIdRemoved = e.IsPropertySyncStatusIdRemoved;
             dto.IsPropertyBillingAccountIdRemoved = e.IsPropertyBillingAccountIdRemoved;
             dto.IsPropertyOriginFacilityIdRemoved = e.IsPropertyOriginFacilityIdRemoved;

@@ -76,6 +76,18 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        public virtual string ContactPartyId
+        {
+            get;
+            set;
+        }
+
+        public virtual string VehiclePlateNumber
+        {
+            get;
+            set;
+        }
+
         public virtual string ShippingInstructions
         {
             get;
@@ -125,6 +137,30 @@ namespace Dddml.Wms.Domain.Order
         }
 
         public virtual long? PickwaveId
+        {
+            get;
+            set;
+        }
+
+        public virtual int? NumberOfPackages
+        {
+            get;
+            set;
+        }
+
+        public virtual int? NumberOfContainers
+        {
+            get;
+            set;
+        }
+
+        public virtual int? NumberOfPakagesPerContainer
+        {
+            get;
+            set;
+        }
+
+        public virtual string OrderShipGroupStatusId
         {
             get;
             set;
@@ -197,6 +233,8 @@ namespace Dddml.Wms.Domain.Order
             state.ContactMechId = this.ContactMechId;
             state.TelecomContactMechId = this.TelecomContactMechId;
             state.TrackingNumber = this.TrackingNumber;
+            state.ContactPartyId = this.ContactPartyId;
+            state.VehiclePlateNumber = this.VehiclePlateNumber;
             state.ShippingInstructions = this.ShippingInstructions;
             state.MaySplit = this.MaySplit;
             state.GiftMessage = this.GiftMessage;
@@ -206,6 +244,10 @@ namespace Dddml.Wms.Domain.Order
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedDeliveryDate = this.EstimatedDeliveryDate;
             state.PickwaveId = this.PickwaveId;
+            if (this.NumberOfPackages != null && this.NumberOfPackages.HasValue) { state.NumberOfPackages = this.NumberOfPackages.Value; }
+            if (this.NumberOfContainers != null && this.NumberOfContainers.HasValue) { state.NumberOfContainers = this.NumberOfContainers.Value; }
+            if (this.NumberOfPakagesPerContainer != null && this.NumberOfPakagesPerContainer.HasValue) { state.NumberOfPakagesPerContainer = this.NumberOfPakagesPerContainer.Value; }
+            state.OrderShipGroupStatusId = this.OrderShipGroupStatusId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.OrderId = this.OrderId;

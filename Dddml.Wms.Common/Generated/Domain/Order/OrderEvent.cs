@@ -193,7 +193,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string StatusId { get; set; }
 
-		public virtual string CurrencyUom { get; set; }
+		public virtual string CurrencyUomId { get; set; }
 
 		public virtual string SyncStatusId { get; set; }
 
@@ -436,7 +436,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual bool IsPropertyStatusIdRemoved { get; set; }
 
-		public virtual bool IsPropertyCurrencyUomRemoved { get; set; }
+		public virtual bool IsPropertyCurrencyUomIdRemoved { get; set; }
 
 		public virtual bool IsPropertySyncStatusIdRemoved { get; set; }
 

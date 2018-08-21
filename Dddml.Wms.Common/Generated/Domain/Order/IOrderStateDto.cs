@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
-        string CurrencyUom
+        string CurrencyUomId
         {
             get;
             set;

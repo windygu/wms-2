@@ -46,13 +46,29 @@ namespace Dddml.Wms.Domain.Party
 
 		public virtual string PrimaryRoleTypeId { get; set; }
 
-		public virtual string OrganizationName { get; set; }
+		public virtual string ExternalId { get; set; }
+
+		public virtual string PreferredCurrencyUomId { get; set; }
 
 		public virtual string Description { get; set; }
 
-		public virtual string Type { get; set; }
+		public virtual string OrganizationName { get; set; }
 
 		public virtual bool? IsSummary { get; set; }
+
+		public virtual string Salutation { get; set; }
+
+		public virtual string FirstName { get; set; }
+
+		public virtual string MiddleName { get; set; }
+
+		public virtual string LastName { get; set; }
+
+		public virtual string PersonalTitle { get; set; }
+
+		public virtual string Nickname { get; set; }
+
+		public virtual string CardId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -123,13 +139,13 @@ namespace Dddml.Wms.Domain.Party
             }
         }
 
-		public virtual bool? IsPropertyOrganizationNameRemoved { get; set; }
+		public virtual bool? IsPropertyExternalIdRemoved { get; set; }
 
-        bool IPartyStateMergePatched.IsPropertyOrganizationNameRemoved
+        bool IPartyStateMergePatched.IsPropertyExternalIdRemoved
         {
             get 
             {
-                var b = this.IsPropertyOrganizationNameRemoved;
+                var b = this.IsPropertyExternalIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -138,7 +154,26 @@ namespace Dddml.Wms.Domain.Party
             }
             set 
             {
-                this.IsPropertyOrganizationNameRemoved = value;
+                this.IsPropertyExternalIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPreferredCurrencyUomIdRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyPreferredCurrencyUomIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPreferredCurrencyUomIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPreferredCurrencyUomIdRemoved = value;
             }
         }
 
@@ -161,13 +196,13 @@ namespace Dddml.Wms.Domain.Party
             }
         }
 
-		public virtual bool? IsPropertyTypeRemoved { get; set; }
+		public virtual bool? IsPropertyOrganizationNameRemoved { get; set; }
 
-        bool IPartyStateMergePatched.IsPropertyTypeRemoved
+        bool IPartyStateMergePatched.IsPropertyOrganizationNameRemoved
         {
             get 
             {
-                var b = this.IsPropertyTypeRemoved;
+                var b = this.IsPropertyOrganizationNameRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -176,7 +211,7 @@ namespace Dddml.Wms.Domain.Party
             }
             set 
             {
-                this.IsPropertyTypeRemoved = value;
+                this.IsPropertyOrganizationNameRemoved = value;
             }
         }
 
@@ -196,6 +231,139 @@ namespace Dddml.Wms.Domain.Party
             set 
             {
                 this.IsPropertyIsSummaryRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertySalutationRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertySalutationRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertySalutationRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertySalutationRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyFirstNameRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyFirstNameRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyFirstNameRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyFirstNameRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMiddleNameRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyMiddleNameRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyMiddleNameRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyMiddleNameRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyLastNameRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyLastNameRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyLastNameRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyLastNameRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPersonalTitleRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyPersonalTitleRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPersonalTitleRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPersonalTitleRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyNicknameRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyNicknameRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyNicknameRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyNicknameRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyCardIdRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyCardIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyCardIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyCardIdRemoved = value;
             }
         }
 

@@ -50,17 +50,33 @@ namespace Dddml.Wms.Domain.Party
             cmd.PartyId = state.PartyId;
             cmd.PartyTypeId = state.PartyTypeId;
             cmd.PrimaryRoleTypeId = state.PrimaryRoleTypeId;
-            cmd.OrganizationName = state.OrganizationName;
+            cmd.ExternalId = state.ExternalId;
+            cmd.PreferredCurrencyUomId = state.PreferredCurrencyUomId;
             cmd.Description = state.Description;
-            cmd.Type = state.Type;
+            cmd.OrganizationName = state.OrganizationName;
             cmd.IsSummary = state.IsSummary;
+            cmd.Salutation = state.Salutation;
+            cmd.FirstName = state.FirstName;
+            cmd.MiddleName = state.MiddleName;
+            cmd.LastName = state.LastName;
+            cmd.PersonalTitle = state.PersonalTitle;
+            cmd.Nickname = state.Nickname;
+            cmd.CardId = state.CardId;
             cmd.Active = ((IPartyStateProperties)state).Active;
             
             if (state.PartyTypeId == null) { cmd.IsPropertyPartyTypeIdRemoved = true; }
             if (state.PrimaryRoleTypeId == null) { cmd.IsPropertyPrimaryRoleTypeIdRemoved = true; }
-            if (state.OrganizationName == null) { cmd.IsPropertyOrganizationNameRemoved = true; }
+            if (state.ExternalId == null) { cmd.IsPropertyExternalIdRemoved = true; }
+            if (state.PreferredCurrencyUomId == null) { cmd.IsPropertyPreferredCurrencyUomIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
-            if (state.Type == null) { cmd.IsPropertyTypeRemoved = true; }
+            if (state.OrganizationName == null) { cmd.IsPropertyOrganizationNameRemoved = true; }
+            if (state.Salutation == null) { cmd.IsPropertySalutationRemoved = true; }
+            if (state.FirstName == null) { cmd.IsPropertyFirstNameRemoved = true; }
+            if (state.MiddleName == null) { cmd.IsPropertyMiddleNameRemoved = true; }
+            if (state.LastName == null) { cmd.IsPropertyLastNameRemoved = true; }
+            if (state.PersonalTitle == null) { cmd.IsPropertyPersonalTitleRemoved = true; }
+            if (state.Nickname == null) { cmd.IsPropertyNicknameRemoved = true; }
+            if (state.CardId == null) { cmd.IsPropertyCardIdRemoved = true; }
             return cmd;
         }
 
@@ -74,10 +90,18 @@ namespace Dddml.Wms.Domain.Party
             cmd.PartyId = state.PartyId;
             cmd.PartyTypeId = state.PartyTypeId;
             cmd.PrimaryRoleTypeId = state.PrimaryRoleTypeId;
-            cmd.OrganizationName = state.OrganizationName;
+            cmd.ExternalId = state.ExternalId;
+            cmd.PreferredCurrencyUomId = state.PreferredCurrencyUomId;
             cmd.Description = state.Description;
-            cmd.Type = state.Type;
+            cmd.OrganizationName = state.OrganizationName;
             cmd.IsSummary = state.IsSummary;
+            cmd.Salutation = state.Salutation;
+            cmd.FirstName = state.FirstName;
+            cmd.MiddleName = state.MiddleName;
+            cmd.LastName = state.LastName;
+            cmd.PersonalTitle = state.PersonalTitle;
+            cmd.Nickname = state.Nickname;
+            cmd.CardId = state.CardId;
             cmd.Active = ((IPartyStateProperties)state).Active;
             return cmd;
         }

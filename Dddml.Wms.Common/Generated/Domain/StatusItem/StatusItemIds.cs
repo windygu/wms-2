@@ -102,6 +102,56 @@ namespace Dddml.Wms.Domain.StatusItem
         public const string OrderCancelled = "ORDER_CANCELLED";
 
         /// <summary>
+        /// Created.
+        /// </summary>
+        public const string ItemCreated = "ITEM_CREATED";
+
+        /// <summary>
+        /// Approved.
+        /// </summary>
+        public const string ItemApproved = "ITEM_APPROVED";
+
+        /// <summary>
+        /// Completed.
+        /// </summary>
+        public const string ItemCompleted = "ITEM_COMPLETED";
+
+        /// <summary>
+        /// Rejected.
+        /// </summary>
+        public const string ItemRejected = "ITEM_REJECTED";
+
+        /// <summary>
+        /// Cancelled.
+        /// </summary>
+        public const string ItemCancelled = "ITEM_CANCELLED";
+
+        /// <summary>
+        /// Created.
+        /// </summary>
+        public const string ShipGrpCreated = "SHIP_GRP_CREATED";
+
+        /// <summary>
+        /// Approved.
+        /// </summary>
+        public const string ShipGrpApproved = "SHIP_GRP_APPROVED";
+
+        /// <summary>
+        /// Completed.
+        /// </summary>
+        public const string ShipGrpCompleted = "SHIP_GRP_COMPLETED";
+
+        /// <summary>
+        /// Rejected.
+        /// </summary>
+        public const string ShipGrpRejected = "SHIP_GRP_REJECTED";
+
+        /// <summary>
+        /// Cancelled.
+        /// </summary>
+        public const string ShipGrpCancelled = "SHIP_GRP_CANCELLED";
+
+        /// <summary>
         /// Proposed.
         /// </summary>
         public const string ReqProposed = "REQ_PROPOSED";

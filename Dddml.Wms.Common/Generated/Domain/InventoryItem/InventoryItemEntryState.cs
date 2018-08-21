@@ -199,6 +199,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 			this.Source = e.Source;
 
+			this.OccurredAt = e.OccurredAt;
+
 			this.Deleted = false;
 
 			this.CreatedBy = e.CreatedBy;

@@ -70,7 +70,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string VehicleId { get; set; }
 
-		public virtual string PoNumber { get; set; }
+		public virtual string ExternalOrderNumber { get; set; }
 
 		public virtual string Carrier { get; set; }
 
@@ -266,7 +266,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual bool IsPropertyVehicleIdRemoved { get; set; }
 
-		public virtual bool IsPropertyPoNumberRemoved { get; set; }
+		public virtual bool IsPropertyExternalOrderNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyCarrierRemoved { get; set; }
 
@@ -819,7 +819,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string SealNumber { get; set; }
 
-            public string PoNumber { get; set; }
+            public string ExternalOrderNumber { get; set; }
 
             public string Carrier { get; set; }
 
@@ -1163,6 +1163,186 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
+        public class IssueItem : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "IssueItem"; }
+            }
+
+            public string ShipmentItemSeqId { get; set; }
+
+            public string OrderId { get; set; }
+
+            public string OrderItemSeqId { get; set; }
+
+            public long? ShipGroupSeqId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string LocatorId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public decimal? Quantity { get; set; }
+
+            public decimal? CancelQuantity { get; set; }
+
+            public string ItemDescription { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
+        public class AddItemAndIssuance : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "AddItemAndIssuance"; }
+            }
+
+            public string OrderId { get; set; }
+
+            public string OrderItemSeqId { get; set; }
+
+            public long? ShipGroupSeqId { get; set; }
+
+            public string ItemIssuanceSeqId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string LocatorId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public decimal? Quantity { get; set; }
+
+            public decimal? CancelQuantity { get; set; }
+
+            public string ItemDescription { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
         public class ConfirmAllItemsReceived : IShipmentCommand
         {
 
@@ -1172,6 +1352,76 @@ namespace Dddml.Wms.Domain.Shipment
             }
 
             public string DestinationLocatorId { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
+        public class ConfirmAllItemsIssued : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "ConfirmAllItemsIssued"; }
+            }
 
             public string ShipmentId { get; set; }
 

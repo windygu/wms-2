@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string VehicleId { get; set; }
 
-		public virtual string PoNumber { get; set; }
+		public virtual string ExternalOrderNumber { get; set; }
 
 		public virtual string Carrier { get; set; }
 
@@ -294,13 +294,13 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual bool? IsPropertyPoNumberRemoved { get; set; }
+		public virtual bool? IsPropertyExternalOrderNumberRemoved { get; set; }
 
-        bool IMergePatchShipment.IsPropertyPoNumberRemoved
+        bool IMergePatchShipment.IsPropertyExternalOrderNumberRemoved
         {
             get
             {
-                var b = this.IsPropertyPoNumberRemoved;
+                var b = this.IsPropertyExternalOrderNumberRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -309,7 +309,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
             set
             {
-                this.IsPropertyPoNumberRemoved = value;
+                this.IsPropertyExternalOrderNumberRemoved = value;
             }
         }
 
@@ -1139,7 +1139,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string SealNumber { get; set; }
 
-            public string PoNumber { get; set; }
+            public string ExternalOrderNumber { get; set; }
 
             public string Carrier { get; set; }
 
@@ -1190,7 +1190,7 @@ namespace Dddml.Wms.Domain.Shipment
                 cmd.BolNumber = this.BolNumber;
                 cmd.VehicleId = this.VehicleId;
                 cmd.SealNumber = this.SealNumber;
-                cmd.PoNumber = this.PoNumber;
+                cmd.ExternalOrderNumber = this.ExternalOrderNumber;
                 cmd.Carrier = this.Carrier;
                 cmd.DateShipped = this.DateShipped;
                 cmd.EstimatedReadyDate = this.EstimatedReadyDate;
@@ -1357,6 +1357,122 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
+        public class IssueItemRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "IssueItem"; }
+            }
+
+            public string ShipmentItemSeqId { get; set; }
+
+            public string OrderId { get; set; }
+
+            public string OrderItemSeqId { get; set; }
+
+            public long? ShipGroupSeqId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string LocatorId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public decimal? Quantity { get; set; }
+
+            public decimal? CancelQuantity { get; set; }
+
+            public string ItemDescription { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.IssueItem ToIssueItem()
+            {
+                var cmd = new ShipmentCommands.IssueItem();
+                cmd.ShipmentItemSeqId = this.ShipmentItemSeqId;
+                cmd.OrderId = this.OrderId;
+                cmd.OrderItemSeqId = this.OrderItemSeqId;
+                cmd.ShipGroupSeqId = this.ShipGroupSeqId;
+                cmd.ProductId = this.ProductId;
+                cmd.LocatorId = this.LocatorId;
+                cmd.AttributeSetInstance = this.AttributeSetInstance;
+                cmd.Quantity = this.Quantity;
+                cmd.CancelQuantity = this.CancelQuantity;
+                cmd.ItemDescription = this.ItemDescription;
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
+        public class AddItemAndIssuanceRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "AddItemAndIssuance"; }
+            }
+
+            public string OrderId { get; set; }
+
+            public string OrderItemSeqId { get; set; }
+
+            public long? ShipGroupSeqId { get; set; }
+
+            public string ItemIssuanceSeqId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string LocatorId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public decimal? Quantity { get; set; }
+
+            public decimal? CancelQuantity { get; set; }
+
+            public string ItemDescription { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.AddItemAndIssuance ToAddItemAndIssuance()
+            {
+                var cmd = new ShipmentCommands.AddItemAndIssuance();
+                cmd.OrderId = this.OrderId;
+                cmd.OrderItemSeqId = this.OrderItemSeqId;
+                cmd.ShipGroupSeqId = this.ShipGroupSeqId;
+                cmd.ItemIssuanceSeqId = this.ItemIssuanceSeqId;
+                cmd.ProductId = this.ProductId;
+                cmd.LocatorId = this.LocatorId;
+                cmd.AttributeSetInstance = this.AttributeSetInstance;
+                cmd.Quantity = this.Quantity;
+                cmd.CancelQuantity = this.CancelQuantity;
+                cmd.ItemDescription = this.ItemDescription;
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
         public class ConfirmAllItemsReceivedRequestContent : ICommandDto
         {
 
@@ -1379,6 +1495,34 @@ namespace Dddml.Wms.Domain.Shipment
             {
                 var cmd = new ShipmentCommands.ConfirmAllItemsReceived();
                 cmd.DestinationLocatorId = this.DestinationLocatorId;
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
+        public class ConfirmAllItemsIssuedRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "ConfirmAllItemsIssued"; }
+            }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.ConfirmAllItemsIssued ToConfirmAllItemsIssued()
+            {
+                var cmd = new ShipmentCommands.ConfirmAllItemsIssued();
                 cmd.ShipmentId = this.ShipmentId;
                 cmd.Version = this.Version;
                 cmd.CommandId = this.CommandId;

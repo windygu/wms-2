@@ -29,6 +29,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		void When(InOutCommands.AddLine c);
 
+		void When(InOutCommands.Import c);
+
 		void When(InOutCommands.DocumentAction c);
 
  		IInOutState Get(string documentNumber);

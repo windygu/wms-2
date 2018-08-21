@@ -178,13 +178,29 @@ namespace Dddml.Wms.Domain.Party
 
 			this.PrimaryRoleTypeId = e.PrimaryRoleTypeId;
 
-			this.OrganizationName = e.OrganizationName;
+			this.ExternalId = e.ExternalId;
+
+			this.PreferredCurrencyUomId = e.PreferredCurrencyUomId;
 
 			this.Description = e.Description;
 
-			this.Type = e.Type;
+			this.OrganizationName = e.OrganizationName;
 
             this.IsSummary = (e.IsSummary != null && e.IsSummary.HasValue) ? e.IsSummary.Value : default(bool);
+
+			this.Salutation = e.Salutation;
+
+			this.FirstName = e.FirstName;
+
+			this.MiddleName = e.MiddleName;
+
+			this.LastName = e.LastName;
+
+			this.PersonalTitle = e.PersonalTitle;
+
+			this.Nickname = e.Nickname;
+
+			this.CardId = e.CardId;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
@@ -225,16 +241,28 @@ namespace Dddml.Wms.Domain.Party
 				this.PrimaryRoleTypeId = e.PrimaryRoleTypeId;
 			}
 
-			if (e.OrganizationName == null)
+			if (e.ExternalId == null)
 			{
-				if (e.IsPropertyOrganizationNameRemoved)
+				if (e.IsPropertyExternalIdRemoved)
 				{
-					this.OrganizationName = default(string);
+					this.ExternalId = default(string);
 				}
 			}
 			else
 			{
-				this.OrganizationName = e.OrganizationName;
+				this.ExternalId = e.ExternalId;
+			}
+
+			if (e.PreferredCurrencyUomId == null)
+			{
+				if (e.IsPropertyPreferredCurrencyUomIdRemoved)
+				{
+					this.PreferredCurrencyUomId = default(string);
+				}
+			}
+			else
+			{
+				this.PreferredCurrencyUomId = e.PreferredCurrencyUomId;
 			}
 
 			if (e.Description == null)
@@ -249,16 +277,16 @@ namespace Dddml.Wms.Domain.Party
 				this.Description = e.Description;
 			}
 
-			if (e.Type == null)
+			if (e.OrganizationName == null)
 			{
-				if (e.IsPropertyTypeRemoved)
+				if (e.IsPropertyOrganizationNameRemoved)
 				{
-					this.Type = default(string);
+					this.OrganizationName = default(string);
 				}
 			}
 			else
 			{
-				this.Type = e.Type;
+				this.OrganizationName = e.OrganizationName;
 			}
 
 			if (e.IsSummary == null)
@@ -271,6 +299,90 @@ namespace Dddml.Wms.Domain.Party
 			else
 			{
 				this.IsSummary = (e.IsSummary != null && e.IsSummary.HasValue) ? e.IsSummary.Value : default(bool);
+			}
+
+			if (e.Salutation == null)
+			{
+				if (e.IsPropertySalutationRemoved)
+				{
+					this.Salutation = default(string);
+				}
+			}
+			else
+			{
+				this.Salutation = e.Salutation;
+			}
+
+			if (e.FirstName == null)
+			{
+				if (e.IsPropertyFirstNameRemoved)
+				{
+					this.FirstName = default(string);
+				}
+			}
+			else
+			{
+				this.FirstName = e.FirstName;
+			}
+
+			if (e.MiddleName == null)
+			{
+				if (e.IsPropertyMiddleNameRemoved)
+				{
+					this.MiddleName = default(string);
+				}
+			}
+			else
+			{
+				this.MiddleName = e.MiddleName;
+			}
+
+			if (e.LastName == null)
+			{
+				if (e.IsPropertyLastNameRemoved)
+				{
+					this.LastName = default(string);
+				}
+			}
+			else
+			{
+				this.LastName = e.LastName;
+			}
+
+			if (e.PersonalTitle == null)
+			{
+				if (e.IsPropertyPersonalTitleRemoved)
+				{
+					this.PersonalTitle = default(string);
+				}
+			}
+			else
+			{
+				this.PersonalTitle = e.PersonalTitle;
+			}
+
+			if (e.Nickname == null)
+			{
+				if (e.IsPropertyNicknameRemoved)
+				{
+					this.Nickname = default(string);
+				}
+			}
+			else
+			{
+				this.Nickname = e.Nickname;
+			}
+
+			if (e.CardId == null)
+			{
+				if (e.IsPropertyCardIdRemoved)
+				{
+					this.CardId = default(string);
+				}
+			}
+			else
+			{
+				this.CardId = e.CardId;
 			}
 
 			if (e.Active == null)
@@ -339,6 +451,15 @@ namespace Dddml.Wms.Domain.Party
         {}
 
         public OrganizationState(bool b) : base(b)
+        {}
+    }
+
+    public class PersonState : PartyState, IPersonState
+    {
+        public PersonState() : base()
+        {}
+
+        public PersonState(bool b) : base(b)
         {}
     }
 

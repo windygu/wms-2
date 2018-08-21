@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		InventoryItemSourceInfo Source { get; set; }
 
+		DateTime? OccurredAt { get; set; }
+
 		bool? Active { get; set; }
 
 

@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.Order
 
 		string StatusId { get; set; }
 
-		string CurrencyUom { get; set; }
+		string CurrencyUomId { get; set; }
 
 		string SyncStatusId { get; set; }
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.Order
 
 		bool IsPropertyStatusIdRemoved { get; set; }
 
-		bool IsPropertyCurrencyUomRemoved { get; set; }
+		bool IsPropertyCurrencyUomIdRemoved { get; set; }
 
 		bool IsPropertySyncStatusIdRemoved { get; set; }
 

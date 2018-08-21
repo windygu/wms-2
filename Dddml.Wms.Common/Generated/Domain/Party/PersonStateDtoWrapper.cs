@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.Party;
 namespace Dddml.Wms.Domain.Party
 {
 
-	public partial class OrganizationStateDtoWrapper : StateDtoWrapperBase, IOrganizationStateDto, IOrganizationState
+	public partial class PersonStateDtoWrapper : StateDtoWrapperBase, IPersonStateDto, IPersonState
 	{
 
         internal static IList<string> _collectionFieldNames = new string[] {  };
@@ -22,19 +22,19 @@ namespace Dddml.Wms.Domain.Party
             return CollectionUtils.CollectionContainsIgnoringCase(_collectionFieldNames, fieldName);
         }
 
-		private IOrganizationState _state;
+		private IPersonState _state;
 
-        public OrganizationStateDtoWrapper()
+        public PersonStateDtoWrapper()
         {
-            this._state = new OrganizationState();
+            this._state = new PersonState();
         }
 
-		public OrganizationStateDtoWrapper(IOrganizationState state)
+		public PersonStateDtoWrapper(IPersonState state)
 		{
             this._state = state;
 		}
 
-		public IOrganizationState ToOrganizationState()
+		public IPersonState ToPersonState()
 		{
 			return this._state;
 		}
@@ -603,7 +603,7 @@ namespace Dddml.Wms.Domain.Party
 
 		string IGlobalIdentity<string>.GlobalId
 		{
-			get { return (_state as IOrganizationState).GlobalId; }
+			get { return (_state as IPersonState).GlobalId; }
 		}
 
 		#endregion
@@ -630,14 +630,14 @@ namespace Dddml.Wms.Domain.Party
 
 		string ICreated<string>.CreatedBy
 		{
-            get { return (_state as IOrganizationState).CreatedBy; }
-            set { (_state as IOrganizationState).CreatedBy = value; }
+            get { return (_state as IPersonState).CreatedBy; }
+            set { (_state as IPersonState).CreatedBy = value; }
 		}
 
 		DateTime ICreated<string>.CreatedAt
 		{
-            get { return (_state as IOrganizationState).CreatedAt; }
-            set { (_state as IOrganizationState).CreatedAt = value; }
+            get { return (_state as IPersonState).CreatedAt; }
+            set { (_state as IPersonState).CreatedAt = value; }
 		}
 
 		#endregion
@@ -646,14 +646,14 @@ namespace Dddml.Wms.Domain.Party
 
 		string IUpdated<string>.UpdatedBy
 		{
-            get { return (_state as IOrganizationState).UpdatedBy; }
-            set { (_state as IOrganizationState).UpdatedBy = value; }
+            get { return (_state as IPersonState).UpdatedBy; }
+            set { (_state as IPersonState).UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
 		{
-            get { return (_state as IOrganizationState).UpdatedAt; }
-            set { (_state as IOrganizationState).UpdatedAt = value; }
+            get { return (_state as IPersonState).UpdatedAt; }
+            set { (_state as IPersonState).UpdatedAt = value; }
 		}
 
 		#endregion
@@ -669,7 +669,7 @@ namespace Dddml.Wms.Domain.Party
 
         bool IPartyState.IsUnsaved
         {
-            get { return this.Version == OrganizationState.VersionZero; }
+            get { return this.Version == PersonState.VersionZero; }
         }
 
 		void IPartyState.When(IPartyStateCreated e)
@@ -709,12 +709,12 @@ namespace Dddml.Wms.Domain.Party
 
 	}
 
-    partial class OrganizationStateDtoWrapperCollection : StateDtoWrapperCollectionBase<OrganizationStateDtoWrapper>
+    partial class PersonStateDtoWrapperCollection : StateDtoWrapperCollectionBase<PersonStateDtoWrapper>
     {
 
         protected override bool IsCollectionField(string fieldName)
         {
-            return CollectionUtils.CollectionContainsIgnoringCase(OrganizationStateDtoWrapper._collectionFieldNames, fieldName);
+            return CollectionUtils.CollectionContainsIgnoringCase(PersonStateDtoWrapper._collectionFieldNames, fieldName);
         }
 
     }

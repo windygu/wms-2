@@ -320,31 +320,31 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-		public virtual string CurrencyUom
+		public virtual string CurrencyUomId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CurrencyUom"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CurrencyUomId"))
                 {
-                    return _state.CurrencyUom;
+                    return _state.CurrencyUomId;
                 }
                 return null;
             }
             set
             {
-                _state.CurrencyUom = value;
+                _state.CurrencyUomId = value;
             }
         }
 
-        string IOrderStateProperties.CurrencyUom
+        string IOrderStateProperties.CurrencyUomId
         {
             get 
             {
-                return (this._state as IOrderStateProperties).CurrencyUom;
+                return (this._state as IOrderStateProperties).CurrencyUomId;
             }
             set 
             {
-                (this._state as IOrderStateProperties).CurrencyUom = value;
+                (this._state as IOrderStateProperties).CurrencyUomId = value;
             }
         }
 

@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
-        public virtual string CurrencyUom
+        public virtual string CurrencyUomId
         {
             get;
             set;
@@ -251,7 +251,7 @@ namespace Dddml.Wms.Domain.Order
             state.EntryDate = this.EntryDate;
             state.PickSheetPrintedDate = this.PickSheetPrintedDate;
             state.StatusId = this.StatusId;
-            state.CurrencyUom = this.CurrencyUom;
+            state.CurrencyUomId = this.CurrencyUomId;
             state.SyncStatusId = this.SyncStatusId;
             state.BillingAccountId = this.BillingAccountId;
             state.OriginFacilityId = this.OriginFacilityId;

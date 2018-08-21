@@ -57,6 +57,12 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
+        public virtual DateTime? OccurredAt
+        {
+            get;
+            set;
+        }
+
         public virtual long? Version
         {
             get;
@@ -103,6 +109,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             if (this.OccupiedQuantity != null && this.OccupiedQuantity.HasValue) { state.OccupiedQuantity = this.OccupiedQuantity.Value; }
             if (this.VirtualQuantity != null && this.VirtualQuantity.HasValue) { state.VirtualQuantity = this.VirtualQuantity.Value; }
             state.Source = this.Source;
+            state.OccurredAt = this.OccurredAt;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.InventoryItemId = this.InventoryItemId;
             state.CreatedBy = this.CreatedBy;

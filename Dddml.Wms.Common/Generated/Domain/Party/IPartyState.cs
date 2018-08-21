@@ -40,5 +40,9 @@ namespace Dddml.Wms.Domain.Party
     {
     }
 
+    public interface IPersonState : IPartyState
+    {
+    }
+
 }
 

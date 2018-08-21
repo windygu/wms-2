@@ -53,6 +53,8 @@ namespace Dddml.Wms.Domain.Order
             dto.ContactMechId = e.ContactMechId;
             dto.TelecomContactMechId = e.TelecomContactMechId;
             dto.TrackingNumber = e.TrackingNumber;
+            dto.ContactPartyId = e.ContactPartyId;
+            dto.VehiclePlateNumber = e.VehiclePlateNumber;
             dto.ShippingInstructions = e.ShippingInstructions;
             dto.MaySplit = e.MaySplit;
             dto.GiftMessage = e.GiftMessage;
@@ -62,6 +64,10 @@ namespace Dddml.Wms.Domain.Order
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
             dto.PickwaveId = e.PickwaveId;
+            dto.NumberOfPackages = e.NumberOfPackages;
+            dto.NumberOfContainers = e.NumberOfContainers;
+            dto.NumberOfPakagesPerContainer = e.NumberOfPakagesPerContainer;
+            dto.OrderShipGroupStatusId = e.OrderShipGroupStatusId;
             dto.Active = e.Active;
             var orderItemShipGroupAssociationEvents = new List<OrderItemShipGroupAssociationStateCreatedDto>();
             foreach (var ee in e.OrderItemShipGroupAssociationEvents)
@@ -91,6 +97,8 @@ namespace Dddml.Wms.Domain.Order
             dto.ContactMechId = e.ContactMechId;
             dto.TelecomContactMechId = e.TelecomContactMechId;
             dto.TrackingNumber = e.TrackingNumber;
+            dto.ContactPartyId = e.ContactPartyId;
+            dto.VehiclePlateNumber = e.VehiclePlateNumber;
             dto.ShippingInstructions = e.ShippingInstructions;
             dto.MaySplit = e.MaySplit;
             dto.GiftMessage = e.GiftMessage;
@@ -100,6 +108,10 @@ namespace Dddml.Wms.Domain.Order
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
             dto.PickwaveId = e.PickwaveId;
+            dto.NumberOfPackages = e.NumberOfPackages;
+            dto.NumberOfContainers = e.NumberOfContainers;
+            dto.NumberOfPakagesPerContainer = e.NumberOfPakagesPerContainer;
+            dto.OrderShipGroupStatusId = e.OrderShipGroupStatusId;
             dto.Active = e.Active;
             dto.IsPropertyShipmentMethodTypeIdRemoved = e.IsPropertyShipmentMethodTypeIdRemoved;
             dto.IsPropertySupplierPartyIdRemoved = e.IsPropertySupplierPartyIdRemoved;
@@ -110,6 +122,8 @@ namespace Dddml.Wms.Domain.Order
             dto.IsPropertyContactMechIdRemoved = e.IsPropertyContactMechIdRemoved;
             dto.IsPropertyTelecomContactMechIdRemoved = e.IsPropertyTelecomContactMechIdRemoved;
             dto.IsPropertyTrackingNumberRemoved = e.IsPropertyTrackingNumberRemoved;
+            dto.IsPropertyContactPartyIdRemoved = e.IsPropertyContactPartyIdRemoved;
+            dto.IsPropertyVehiclePlateNumberRemoved = e.IsPropertyVehiclePlateNumberRemoved;
             dto.IsPropertyShippingInstructionsRemoved = e.IsPropertyShippingInstructionsRemoved;
             dto.IsPropertyMaySplitRemoved = e.IsPropertyMaySplitRemoved;
             dto.IsPropertyGiftMessageRemoved = e.IsPropertyGiftMessageRemoved;
@@ -119,6 +133,10 @@ namespace Dddml.Wms.Domain.Order
             dto.IsPropertyEstimatedShipDateRemoved = e.IsPropertyEstimatedShipDateRemoved;
             dto.IsPropertyEstimatedDeliveryDateRemoved = e.IsPropertyEstimatedDeliveryDateRemoved;
             dto.IsPropertyPickwaveIdRemoved = e.IsPropertyPickwaveIdRemoved;
+            dto.IsPropertyNumberOfPackagesRemoved = e.IsPropertyNumberOfPackagesRemoved;
+            dto.IsPropertyNumberOfContainersRemoved = e.IsPropertyNumberOfContainersRemoved;
+            dto.IsPropertyNumberOfPakagesPerContainerRemoved = e.IsPropertyNumberOfPakagesPerContainerRemoved;
+            dto.IsPropertyOrderShipGroupStatusIdRemoved = e.IsPropertyOrderShipGroupStatusIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var orderItemShipGroupAssociationEvents = new List<OrderItemShipGroupAssociationStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.OrderItemShipGroupAssociationEvents)

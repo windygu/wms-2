@@ -20,7 +20,7 @@ using NHibernateDisjunction = NHibernate.Criterion.Disjunction;
 namespace Dddml.Wms.Domain.Party.NHibernate
 {
 
-	public partial class NHibernateOrganizationStateQueryRepository : IOrganizationStateQueryRepository
+	public partial class NHibernatePersonStateQueryRepository : IPersonStateQueryRepository
 	{
 		public ISessionFactory SessionFactory { get; set; }
 
@@ -32,56 +32,56 @@ namespace Dddml.Wms.Domain.Party.NHibernate
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
-		public NHibernateOrganizationStateQueryRepository ()
+		public NHibernatePersonStateQueryRepository ()
 		{
 		}
 
 		[Transaction (ReadOnly = true)]
-		public IOrganizationState Get(string id)
+		public IPersonState Get(string id)
 		{
-			IOrganizationState state = CurrentSession.Get<OrganizationState>(id);
+			IPersonState state = CurrentSession.Get<PersonState>(id);
             if (ReadOnlyProxyGenerator != null && state != null)
             {
-                return ReadOnlyProxyGenerator.CreateProxy<IOrganizationState>(state, new Type[] {  }, _readOnlyPropertyNames);
+                return ReadOnlyProxyGenerator.CreateProxy<IPersonState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }
 			return state;
 		}
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IOrganizationState> GetAll(int firstResult, int maxResults)
+        public IEnumerable<IPersonState> GetAll(int firstResult, int maxResults)
         {
-            var criteria = CurrentSession.CreateCriteria<OrganizationState>();
+            var criteria = CurrentSession.CreateCriteria<PersonState>();
             criteria.SetFirstResult(firstResult);
             criteria.SetMaxResults(maxResults);
             AddNotDeletedRestriction(criteria);
-            return criteria.List<OrganizationState>();
+            return criteria.List<PersonState>();
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IPersonState> Get(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var criteria = CurrentSession.CreateCriteria<OrganizationState>();
+            var criteria = CurrentSession.CreateCriteria<PersonState>();
 
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
             AddNotDeletedRestriction(criteria);
-            return criteria.List<OrganizationState>();
+            return criteria.List<PersonState>();
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationState> Get(Dddml.Support.Criterion.ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IPersonState> Get(Dddml.Support.Criterion.ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var criteria = CurrentSession.CreateCriteria<OrganizationState>();
+            var criteria = CurrentSession.CreateCriteria<PersonState>();
 
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
             AddNotDeletedRestriction(criteria);
-            return criteria.List<OrganizationState>();
+            return criteria.List<PersonState>();
         }
 
 
         [Transaction(ReadOnly = true)]
-        public virtual IOrganizationState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null)
+        public virtual IPersonState GetFirst(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null)
         {
-            var list = (IList<OrganizationState>)Get(filter, orders, 0, 1);
+            var list = (IList<PersonState>)Get(filter, orders, 0, 1);
             if (list == null || list.Count <= 0)
             {
                 return null;
@@ -90,13 +90,13 @@ namespace Dddml.Wms.Domain.Party.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IOrganizationState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null)
+        public virtual IPersonState GetFirst(KeyValuePair<string, object> keyValue, IList<string> orders = null)
         {
             return GetFirst(new KeyValuePair<string, object>[] { keyValue }, orders);
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<IPersonState> GetByProperty(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue)
         {
             var filter = new KeyValuePair<string, object>[] { new KeyValuePair<string, object>(propertyName, propertyValue) };
             return Get(filter, orders, firstResult, maxResults);
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.Party.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual long GetCount(IEnumerable<KeyValuePair<string, object>> filter)
         {
-            var criteria = CurrentSession.CreateCriteria<OrganizationState>();
+            var criteria = CurrentSession.CreateCriteria<PersonState>();
             criteria.SetProjection(Projections.RowCountInt64());
             NHibernateUtils.CriteriaAddFilter(criteria, filter);
             AddNotDeletedRestriction(criteria);
@@ -115,7 +115,7 @@ namespace Dddml.Wms.Domain.Party.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual long GetCount(Dddml.Support.Criterion.ICriterion filter)
         {
-            var criteria = CurrentSession.CreateCriteria<OrganizationState>();
+            var criteria = CurrentSession.CreateCriteria<PersonState>();
             criteria.SetProjection(Projections.RowCountInt64());
             if (filter != null)
             {

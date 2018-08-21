@@ -20,6 +20,8 @@ namespace Dddml.Wms.Domain.Order
 
 		void When(IMergePatchOrder c);
 
+		void When(OrderCommands.OrderShipGroupAction c);
+
  		IOrderState Get(string orderId);
 
         IEnumerable<IOrderState> GetAll(int firstResult, int maxResults);

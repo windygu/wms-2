@@ -27,13 +27,29 @@ namespace Dddml.Wms.Domain.Party
 
 		string PrimaryRoleTypeId { get; set; }
 
-		string OrganizationName { get; set; }
+		string ExternalId { get; set; }
+
+		string PreferredCurrencyUomId { get; set; }
 
 		string Description { get; set; }
 
-		string Type { get; set; }
+		string OrganizationName { get; set; }
 
 		bool? IsSummary { get; set; }
+
+		string Salutation { get; set; }
+
+		string FirstName { get; set; }
+
+		string MiddleName { get; set; }
+
+		string LastName { get; set; }
+
+		string PersonalTitle { get; set; }
+
+		string Nickname { get; set; }
+
+		string CardId { get; set; }
 
 		bool? Active { get; set; }
 
@@ -51,13 +67,29 @@ namespace Dddml.Wms.Domain.Party
 
 		bool IsPropertyPrimaryRoleTypeIdRemoved { get; set; }
 
-		bool IsPropertyOrganizationNameRemoved { get; set; }
+		bool IsPropertyExternalIdRemoved { get; set; }
+
+		bool IsPropertyPreferredCurrencyUomIdRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
 
-		bool IsPropertyTypeRemoved { get; set; }
+		bool IsPropertyOrganizationNameRemoved { get; set; }
 
 		bool IsPropertyIsSummaryRemoved { get; set; }
+
+		bool IsPropertySalutationRemoved { get; set; }
+
+		bool IsPropertyFirstNameRemoved { get; set; }
+
+		bool IsPropertyMiddleNameRemoved { get; set; }
+
+		bool IsPropertyLastNameRemoved { get; set; }
+
+		bool IsPropertyPersonalTitleRemoved { get; set; }
+
+		bool IsPropertyNicknameRemoved { get; set; }
+
+		bool IsPropertyCardIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

@@ -221,6 +221,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
+                    Name = "OccurredAt",
+                    Type = typeof(DateTime),
+                    TypeName = "DateTime",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
@@ -851,6 +880,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("occupiedQuantity", "OccupiedQuantity");
             d.Add("VirtualQuantity", "VirtualQuantity");
             d.Add("virtualQuantity", "VirtualQuantity");
+            d.Add("OccurredAt", "OccurredAt");
+            d.Add("occurredAt", "OccurredAt");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

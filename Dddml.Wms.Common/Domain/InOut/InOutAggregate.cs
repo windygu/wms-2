@@ -56,5 +56,11 @@ namespace Dddml.Wms.Domain.InOut
         {
             throw new NotImplementedException();
         }
+
+
+        public void Import(string documentTypeId, string description, string orderId, DateTime? dateOrdered, string movementTypeId, DateTime? movementDate, string warehouseId, string pOReference, string shipperId, IEnumerable<ImportingInOutLine> inOutLines, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

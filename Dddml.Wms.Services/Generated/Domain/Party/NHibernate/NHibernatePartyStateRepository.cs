@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Party.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PartyId", "PartyTypeId", "PrimaryRoleTypeId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PartyId", "PartyTypeId", "PrimaryRoleTypeId", "ExternalId", "PreferredCurrencyUomId", "Description", "OrganizationName", "IsSummary", "Salutation", "FirstName", "MiddleName", "LastName", "PersonalTitle", "Nickname", "CardId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -69,6 +69,9 @@ namespace Dddml.Wms.Domain.Party.NHibernate
             }
             else if (type.Equals(typeof(OrganizationState))) {
                 clazz = typeof(OrganizationState);
+            }
+            else if (type.Equals(typeof(PersonState))) {
+                clazz = typeof(PersonState);
             }
             else {
                 throw new ArgumentException(String.Format("type: {0}", type.Name));

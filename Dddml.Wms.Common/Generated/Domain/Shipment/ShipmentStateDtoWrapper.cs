@@ -319,31 +319,31 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual string PoNumber
+		public virtual string ExternalOrderNumber
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PoNumber"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ExternalOrderNumber"))
                 {
-                    return _state.PoNumber;
+                    return _state.ExternalOrderNumber;
                 }
                 return null;
             }
             set
             {
-                _state.PoNumber = value;
+                _state.ExternalOrderNumber = value;
             }
         }
 
-        string IShipmentStateProperties.PoNumber
+        string IShipmentStateProperties.ExternalOrderNumber
         {
             get 
             {
-                return (this._state as IShipmentStateProperties).PoNumber;
+                return (this._state as IShipmentStateProperties).ExternalOrderNumber;
             }
             set 
             {
-                (this._state as IShipmentStateProperties).PoNumber = value;
+                (this._state as IShipmentStateProperties).ExternalOrderNumber = value;
             }
         }
 

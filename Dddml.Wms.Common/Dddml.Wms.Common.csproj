@@ -69,6 +69,7 @@
     <Compile Include="Domain\InventoryPostingRule\InventoryPostingRuleIds.cs" />
     <Compile Include="Domain\MovementType\MovementTypeIds.cs" />
     <Compile Include="Domain\Movement\MovementAggregate.cs" />
+    <Compile Include="Domain\Order\OrderAggregate.cs" />
     <Compile Include="Domain\Order\OrderTypeIds.cs" />
     <Compile Include="Domain\PhysicalInventory\PhysicalInventoryAggregate.cs" />
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
@@ -1330,6 +1331,9 @@
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InOut\IInOutStateRepository.cs">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOut\ImportingInOutLine.cs">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InOut\InOutAggregate.cs">
@@ -2900,6 +2904,9 @@
     </Compile>
     <Compile Include="Generated\Domain\OrderItemShipGrpInvReservation\OrderItemShipGrpInvResId.cs">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderShipGroupAction.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrderShipment\IOrderShipmentAggregate.cs">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
@@ -6524,6 +6531,7 @@
 .\IInOutStateProperties.cs
 .\IInOutStateQueryRepository.cs
 .\IInOutStateRepository.cs
+.\ImportingInOutLine.cs
 .\InOutAggregate.cs
 .\InOutApplicationServiceBase.cs
 .\InOutApplicationServiceFactory.cs
@@ -8747,6 +8755,7 @@
 .\IOrganizationTreeApplicationService.cs
 .\LocatorTreeInterfaces.cs
 .\LocatorTreeNode.cs
+.\OrderShipGroupAction.cs
 .\OrganizationTreeInterfaces.cs
 .\OrganizationTreeNode.cs
 </LastOutputs>

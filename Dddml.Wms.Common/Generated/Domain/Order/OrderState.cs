@@ -247,7 +247,7 @@ namespace Dddml.Wms.Domain.Order
 
 			this.StatusId = e.StatusId;
 
-			this.CurrencyUom = e.CurrencyUom;
+			this.CurrencyUomId = e.CurrencyUomId;
 
 			this.SyncStatusId = e.SyncStatusId;
 
@@ -410,16 +410,16 @@ namespace Dddml.Wms.Domain.Order
 				this.StatusId = e.StatusId;
 			}
 
-			if (e.CurrencyUom == null)
+			if (e.CurrencyUomId == null)
 			{
-				if (e.IsPropertyCurrencyUomRemoved)
+				if (e.IsPropertyCurrencyUomIdRemoved)
 				{
-					this.CurrencyUom = default(string);
+					this.CurrencyUomId = default(string);
 				}
 			}
 			else
 			{
-				this.CurrencyUom = e.CurrencyUom;
+				this.CurrencyUomId = e.CurrencyUomId;
 			}
 
 			if (e.SyncStatusId == null)

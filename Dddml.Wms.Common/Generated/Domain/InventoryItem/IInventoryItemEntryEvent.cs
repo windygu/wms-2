@@ -38,6 +38,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		InventoryItemSourceInfo Source { get; set; }
 
+		DateTime? OccurredAt { get; set; }
+
     }
    
 	public interface IInventoryItemEntryStateCreated : IInventoryItemEntryStateEvent

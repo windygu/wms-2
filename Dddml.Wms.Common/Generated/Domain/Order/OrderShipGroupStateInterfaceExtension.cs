@@ -58,6 +58,8 @@ namespace Dddml.Wms.Domain.Order
             cmd.ContactMechId = state.ContactMechId;
             cmd.TelecomContactMechId = state.TelecomContactMechId;
             cmd.TrackingNumber = state.TrackingNumber;
+            cmd.ContactPartyId = state.ContactPartyId;
+            cmd.VehiclePlateNumber = state.VehiclePlateNumber;
             cmd.ShippingInstructions = state.ShippingInstructions;
             cmd.MaySplit = state.MaySplit;
             cmd.GiftMessage = state.GiftMessage;
@@ -67,6 +69,9 @@ namespace Dddml.Wms.Domain.Order
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
             cmd.PickwaveId = state.PickwaveId;
+            cmd.NumberOfPackages = state.NumberOfPackages;
+            cmd.NumberOfContainers = state.NumberOfContainers;
+            cmd.NumberOfPakagesPerContainer = state.NumberOfPakagesPerContainer;
             cmd.Active = ((IOrderShipGroupStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             
@@ -79,6 +84,8 @@ namespace Dddml.Wms.Domain.Order
             if (state.ContactMechId == null) { cmd.IsPropertyContactMechIdRemoved = true; }
             if (state.TelecomContactMechId == null) { cmd.IsPropertyTelecomContactMechIdRemoved = true; }
             if (state.TrackingNumber == null) { cmd.IsPropertyTrackingNumberRemoved = true; }
+            if (state.ContactPartyId == null) { cmd.IsPropertyContactPartyIdRemoved = true; }
+            if (state.VehiclePlateNumber == null) { cmd.IsPropertyVehiclePlateNumberRemoved = true; }
             if (state.ShippingInstructions == null) { cmd.IsPropertyShippingInstructionsRemoved = true; }
             if (state.MaySplit == null) { cmd.IsPropertyMaySplitRemoved = true; }
             if (state.GiftMessage == null) { cmd.IsPropertyGiftMessageRemoved = true; }
@@ -112,6 +119,8 @@ namespace Dddml.Wms.Domain.Order
             cmd.ContactMechId = state.ContactMechId;
             cmd.TelecomContactMechId = state.TelecomContactMechId;
             cmd.TrackingNumber = state.TrackingNumber;
+            cmd.ContactPartyId = state.ContactPartyId;
+            cmd.VehiclePlateNumber = state.VehiclePlateNumber;
             cmd.ShippingInstructions = state.ShippingInstructions;
             cmd.MaySplit = state.MaySplit;
             cmd.GiftMessage = state.GiftMessage;
@@ -121,6 +130,9 @@ namespace Dddml.Wms.Domain.Order
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
             cmd.PickwaveId = state.PickwaveId;
+            cmd.NumberOfPackages = state.NumberOfPackages;
+            cmd.NumberOfContainers = state.NumberOfContainers;
+            cmd.NumberOfPakagesPerContainer = state.NumberOfPakagesPerContainer;
             cmd.Active = ((IOrderShipGroupStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             foreach (var d in state.OrderItemShipGroupAssociations)

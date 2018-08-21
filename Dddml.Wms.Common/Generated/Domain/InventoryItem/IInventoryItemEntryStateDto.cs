@@ -56,6 +56,12 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
+        DateTime? OccurredAt
+        {
+            get;
+            set;
+        }
+
         long? Version
         {
             get;

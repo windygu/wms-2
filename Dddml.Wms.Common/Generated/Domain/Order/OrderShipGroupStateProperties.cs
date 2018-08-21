@@ -35,6 +35,10 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string TrackingNumber { get; set; }
 
+		public virtual string ContactPartyId { get; set; }
+
+		public virtual string VehiclePlateNumber { get; set; }
+
 		public virtual string ShippingInstructions { get; set; }
 
 		public virtual string MaySplit { get; set; }
@@ -52,6 +56,14 @@ namespace Dddml.Wms.Domain.Order
 		public virtual DateTime? EstimatedDeliveryDate { get; set; }
 
 		public virtual long? PickwaveId { get; set; }
+
+		public virtual int NumberOfPackages { get; set; }
+
+		public virtual int NumberOfContainers { get; set; }
+
+		public virtual int NumberOfPakagesPerContainer { get; set; }
+
+		public virtual string OrderShipGroupStatusId { get; set; }
 
 		public virtual long Version { get; set; }
 

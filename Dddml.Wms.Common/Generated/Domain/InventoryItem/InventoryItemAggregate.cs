@@ -224,6 +224,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             e.OccupiedQuantity = c.OccupiedQuantity;
             e.VirtualQuantity = c.VirtualQuantity;
             e.Source = c.Source;
+            e.OccurredAt = c.OccurredAt;
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();

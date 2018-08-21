@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string StatusId { get; set; }
 
-		public virtual string CurrencyUom { get; set; }
+		public virtual string CurrencyUomId { get; set; }
 
 		public virtual string SyncStatusId { get; set; }
 
@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual bool IsPropertyStatusIdRemoved { get; set; }
 
-		public virtual bool IsPropertyCurrencyUomRemoved { get; set; }
+		public virtual bool IsPropertyCurrencyUomIdRemoved { get; set; }
 
 		public virtual bool IsPropertySyncStatusIdRemoved { get; set; }
 
@@ -632,6 +632,102 @@ namespace Dddml.Wms.Domain.Order
 
     public static partial class OrderCommands
     {
+        public class OrderShipGroupAction : IOrderCommand, IOrderShipGroupCommand
+        {
+
+            public string CommandType
+            {
+                get { return "OrderShipGroupAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public OrderShipGroupId OrderShipGroupId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.OrderShipGroupId.OrderId; }
+            }
+
+            string IOrderCommand.OrderId
+            {
+                get { return this.OrderShipGroupId.OrderId; }
+                set { this.OrderShipGroupId.OrderId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IOrderCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+            string IOrderShipGroupCommand.OrderId
+            {
+                get 
+                {
+                    return this.OrderShipGroupId.OrderId;
+                }
+                set 
+                {
+                    this.OrderShipGroupId.OrderId = value;
+                }
+            }
+
+            long? IOrderShipGroupCommand.ShipGroupSeqId
+            {
+                get 
+                {
+                    return this.OrderShipGroupId.ShipGroupSeqId;
+                }
+                set 
+                {
+                    this.OrderShipGroupId.ShipGroupSeqId = value;
+                }
+            }
+
+        }
+
     }
 
 }

@@ -18,6 +18,9 @@ namespace Dddml.Wms.Domain.Party
 		
 		public const string Organization = "Organization";
 
+		
+		public const string Person = "Person";
+
 	}
 
 }

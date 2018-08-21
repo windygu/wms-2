@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.BolNumber = state.BolNumber;
             cmd.SealNumber = state.SealNumber;
             cmd.VehicleId = state.VehicleId;
-            cmd.PoNumber = state.PoNumber;
+            cmd.ExternalOrderNumber = state.ExternalOrderNumber;
             cmd.Carrier = state.Carrier;
             cmd.DateShipped = state.DateShipped;
             cmd.EstimatedReadyDate = state.EstimatedReadyDate;
@@ -110,7 +110,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.BolNumber == null) { cmd.IsPropertyBolNumberRemoved = true; }
             if (state.SealNumber == null) { cmd.IsPropertySealNumberRemoved = true; }
             if (state.VehicleId == null) { cmd.IsPropertyVehicleIdRemoved = true; }
-            if (state.PoNumber == null) { cmd.IsPropertyPoNumberRemoved = true; }
+            if (state.ExternalOrderNumber == null) { cmd.IsPropertyExternalOrderNumberRemoved = true; }
             if (state.Carrier == null) { cmd.IsPropertyCarrierRemoved = true; }
             if (state.DateShipped == null) { cmd.IsPropertyDateShippedRemoved = true; }
             if (state.EstimatedReadyDate == null) { cmd.IsPropertyEstimatedReadyDateRemoved = true; }
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.BolNumber = state.BolNumber;
             cmd.SealNumber = state.SealNumber;
             cmd.VehicleId = state.VehicleId;
-            cmd.PoNumber = state.PoNumber;
+            cmd.ExternalOrderNumber = state.ExternalOrderNumber;
             cmd.Carrier = state.Carrier;
             cmd.DateShipped = state.DateShipped;
             cmd.EstimatedReadyDate = state.EstimatedReadyDate;
