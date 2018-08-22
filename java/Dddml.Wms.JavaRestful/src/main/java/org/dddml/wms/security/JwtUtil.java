@@ -11,6 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Component
@@ -39,11 +41,17 @@ public class JwtUtil {
             u.setUsername(body.getSubject());
             //u.setId((String) body.get("userId"));
             u.setRole((String) body.get("role"));
-            List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(u.getRole());
+            List<GrantedAuthority> authorityList = null;
+            if (u.getRole() != null) {
+                authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(u.getRole());
+            } else {
+                authorityList = new ArrayList<>();
+            }
             u.setAuthorities(authorityList);
             return u;
 
         } catch (JwtException | ClassCastException e) {
+            e.printStackTrace();
             return null;
         }
     }
