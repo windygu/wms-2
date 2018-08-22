@@ -28,6 +28,7 @@ public class OrderShipGroupServiceResource {
     public void createPOShipGroup(@RequestBody OrderShipGroupServiceCommands.CreatePOShipGroup requestContent)
     {
         try {
+        requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
          orderShipGroupApplicationService.when(requestContent);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -36,6 +37,7 @@ public class OrderShipGroupServiceResource {
     public void createSOShipGroup(@RequestBody OrderShipGroupServiceCommands.CreateSOShipGroup requestContent)
     {
         try {
+        requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
          orderShipGroupApplicationService.when(requestContent);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -44,6 +46,7 @@ public class OrderShipGroupServiceResource {
     public String createPOShipment(@RequestBody OrderShipGroupServiceCommands.CreatePOShipment requestContent)
     {
         try {
+        requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
         return orderShipGroupApplicationService.when(requestContent);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -52,6 +55,7 @@ public class OrderShipGroupServiceResource {
     public String createSOShipment(@RequestBody OrderShipGroupServiceCommands.CreateSOShipment requestContent)
     {
         try {
+        requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
         return orderShipGroupApplicationService.when(requestContent);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

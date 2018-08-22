@@ -173,6 +173,7 @@ public class PicklistResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Picklist");
             }
             String idObj = cmd.getPicklistId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             picklistApplicationService.when(cmd);
 
             return idObj;
@@ -191,6 +192,7 @@ public class PicklistResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PicklistCommand.MergePatchPicklist cmd = (PicklistCommand.MergePatchPicklist) value.toCommand();
                 PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 picklistApplicationService.when(cmd);
                 return;
             }
@@ -198,6 +200,7 @@ public class PicklistResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PicklistCommand.CreatePicklist cmd = (PicklistCommand.CreatePicklist) value.toCommand();
             PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             picklistApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -214,6 +217,7 @@ public class PicklistResource {
 
             PicklistCommand.MergePatchPicklist cmd = value.toMergePatchPicklist();
             PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             picklistApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -236,6 +240,7 @@ public class PicklistResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(picklistId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             picklistApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -328,6 +333,7 @@ public class PicklistResource {
                         }
                     }.parse(partyRoleId)));
             mergePatchPicklist.getPicklistRoleCommands().add(mergePatchPicklistRole);
+            mergePatchPicklist.setRequesterId(SecurityContextUtil.getRequesterId());
             picklistApplicationService.when(mergePatchPicklist);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -359,6 +365,7 @@ public class PicklistResource {
                         }
                     }.parse(partyRoleId)));
             mergePatchPicklist.getPicklistRoleCommands().add(removePicklistRole);
+            mergePatchPicklist.setRequesterId(SecurityContextUtil.getRequesterId());
             picklistApplicationService.when(mergePatchPicklist);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -395,6 +402,7 @@ public class PicklistResource {
             mergePatchPicklist.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             PicklistRoleCommand.CreatePicklistRole createPicklistRole = body.toCreatePicklistRole();
             mergePatchPicklist.getPicklistRoleCommands().add(createPicklistRole);
+            mergePatchPicklist.setRequesterId(SecurityContextUtil.getRequesterId());
             picklistApplicationService.when(mergePatchPicklist);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

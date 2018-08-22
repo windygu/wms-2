@@ -172,6 +172,7 @@ public class LotResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Lot");
             }
             String idObj = cmd.getLotId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             lotApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class LotResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 LotCommand.MergePatchLot cmd = (LotCommand.MergePatchLot) value.toCommand();
                 LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 lotApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class LotResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             LotCommand.CreateLot cmd = (LotCommand.CreateLot) value.toCommand();
             LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             lotApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class LotResource {
 
             LotCommand.MergePatchLot cmd = value.toMergePatchLot();
             LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             lotApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class LotResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             LotResourceUtils.setNullIdOrThrowOnInconsistentIds(lotId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             lotApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

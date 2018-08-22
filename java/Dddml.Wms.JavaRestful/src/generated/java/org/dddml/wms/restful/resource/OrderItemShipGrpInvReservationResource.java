@@ -172,6 +172,7 @@ public class OrderItemShipGrpInvReservationResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "OrderItemShipGrpInvReservation");
             }
             OrderItemShipGrpInvResId idObj = cmd.getOrderItemShipGrpInvResId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderItemShipGrpInvReservationApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class OrderItemShipGrpInvReservationResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation cmd = (OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation) value.toCommand();
                 OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 orderItemShipGrpInvReservationApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class OrderItemShipGrpInvReservationResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation cmd = (OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation) value.toCommand();
             OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderItemShipGrpInvReservationApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class OrderItemShipGrpInvReservationResource {
 
             OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation cmd = value.toMergePatchOrderItemShipGrpInvReservation();
             OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderItemShipGrpInvReservationApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class OrderItemShipGrpInvReservationResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(orderItemShipGrpInvResId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderItemShipGrpInvReservationApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

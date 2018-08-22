@@ -183,6 +183,7 @@ public class AttributeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Attribute");
             }
             String idObj = cmd.getAttributeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(cmd);
 
             return idObj;
@@ -201,6 +202,7 @@ public class AttributeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 AttributeCommand.MergePatchAttribute cmd = (AttributeCommand.MergePatchAttribute) value.toCommand();
                 AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 attributeApplicationService.when(cmd);
                 return;
             }
@@ -208,6 +210,7 @@ public class AttributeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             AttributeCommand.CreateAttribute cmd = (AttributeCommand.CreateAttribute) value.toCommand();
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -224,6 +227,7 @@ public class AttributeResource {
 
             AttributeCommand.MergePatchAttribute cmd = value.toMergePatchAttribute();
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -246,6 +250,7 @@ public class AttributeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -328,6 +333,7 @@ public class AttributeResource {
             AttributeValueCommand.MergePatchAttributeValue mergePatchAttributeValue = body.toMergePatchAttributeValue();
             mergePatchAttributeValue.setValue(value);
             mergePatchAttribute.getAttributeValueCommands().add(mergePatchAttributeValue);
+            mergePatchAttribute.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -354,6 +360,7 @@ public class AttributeResource {
             AttributeValueCommand.RemoveAttributeValue removeAttributeValue = new AbstractAttributeValueCommand.SimpleRemoveAttributeValue();
             removeAttributeValue.setValue(value);
             mergePatchAttribute.getAttributeValueCommands().add(removeAttributeValue);
+            mergePatchAttribute.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -390,6 +397,7 @@ public class AttributeResource {
             mergePatchAttribute.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             AttributeValueCommand.CreateAttributeValue createAttributeValue = body.toCreateAttributeValue();
             mergePatchAttribute.getAttributeValueCommands().add(createAttributeValue);
+            mergePatchAttribute.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -431,6 +439,7 @@ public class AttributeResource {
             AttributeAliasCommand.MergePatchAttributeAlias mergePatchAttributeAlias = body.toMergePatchAttributeAlias();
             mergePatchAttributeAlias.setCode(code);
             mergePatchAttribute.getAttributeAliasCommands().add(mergePatchAttributeAlias);
+            mergePatchAttribute.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -457,6 +466,7 @@ public class AttributeResource {
             AttributeAliasCommand.RemoveAttributeAlias removeAttributeAlias = new AbstractAttributeAliasCommand.SimpleRemoveAttributeAlias();
             removeAttributeAlias.setCode(code);
             mergePatchAttribute.getAttributeAliasCommands().add(removeAttributeAlias);
+            mergePatchAttribute.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -493,6 +503,7 @@ public class AttributeResource {
             mergePatchAttribute.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             AttributeAliasCommand.CreateAttributeAlias createAttributeAlias = body.toCreateAttributeAlias();
             mergePatchAttribute.getAttributeAliasCommands().add(createAttributeAlias);
+            mergePatchAttribute.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeApplicationService.when(mergePatchAttribute);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

@@ -172,6 +172,7 @@ public class StatusItemResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "StatusItem");
             }
             String idObj = cmd.getStatusId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             statusItemApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class StatusItemResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 StatusItemCommand.MergePatchStatusItem cmd = (StatusItemCommand.MergePatchStatusItem) value.toCommand();
                 StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(statusId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 statusItemApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class StatusItemResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             StatusItemCommand.CreateStatusItem cmd = (StatusItemCommand.CreateStatusItem) value.toCommand();
             StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(statusId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             statusItemApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class StatusItemResource {
 
             StatusItemCommand.MergePatchStatusItem cmd = value.toMergePatchStatusItem();
             StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(statusId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             statusItemApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

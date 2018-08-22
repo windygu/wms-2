@@ -173,6 +173,7 @@ public class InventoryPostingRuleResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryPostingRule");
             }
             String idObj = cmd.getInventoryPostingRuleId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryPostingRuleApplicationService.when(cmd);
 
             return idObj;
@@ -191,6 +192,7 @@ public class InventoryPostingRuleResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 InventoryPostingRuleCommand.MergePatchInventoryPostingRule cmd = (InventoryPostingRuleCommand.MergePatchInventoryPostingRule) value.toCommand();
                 InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 inventoryPostingRuleApplicationService.when(cmd);
                 return;
             }
@@ -198,6 +200,7 @@ public class InventoryPostingRuleResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             InventoryPostingRuleCommand.CreateInventoryPostingRule cmd = (InventoryPostingRuleCommand.CreateInventoryPostingRule) value.toCommand();
             InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryPostingRuleApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -214,6 +217,7 @@ public class InventoryPostingRuleResource {
 
             InventoryPostingRuleCommand.MergePatchInventoryPostingRule cmd = value.toMergePatchInventoryPostingRule();
             InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryPostingRuleApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -236,6 +240,7 @@ public class InventoryPostingRuleResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPostingRuleId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryPostingRuleApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

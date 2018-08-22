@@ -172,6 +172,7 @@ public class LocatorTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "LocatorType");
             }
             String idObj = cmd.getLocatorTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             locatorTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class LocatorTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 LocatorTypeCommand.MergePatchLocatorType cmd = (LocatorTypeCommand.MergePatchLocatorType) value.toCommand();
                 LocatorTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 locatorTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class LocatorTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             LocatorTypeCommand.CreateLocatorType cmd = (LocatorTypeCommand.CreateLocatorType) value.toCommand();
             LocatorTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             locatorTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class LocatorTypeResource {
 
             LocatorTypeCommand.MergePatchLocatorType cmd = value.toMergePatchLocatorType();
             LocatorTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             locatorTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class LocatorTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             LocatorTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(locatorTypeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             locatorTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

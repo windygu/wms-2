@@ -172,6 +172,7 @@ public class UomTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "UomType");
             }
             String idObj = cmd.getUomTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class UomTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 UomTypeCommand.MergePatchUomType cmd = (UomTypeCommand.MergePatchUomType) value.toCommand();
                 UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 uomTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class UomTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             UomTypeCommand.CreateUomType cmd = (UomTypeCommand.CreateUomType) value.toCommand();
             UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class UomTypeResource {
 
             UomTypeCommand.MergePatchUomType cmd = value.toMergePatchUomType();
             UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class UomTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             UomTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(uomTypeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

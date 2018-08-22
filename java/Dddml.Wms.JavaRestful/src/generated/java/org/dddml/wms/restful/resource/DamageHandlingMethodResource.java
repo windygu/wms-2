@@ -172,6 +172,7 @@ public class DamageHandlingMethodResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "DamageHandlingMethod");
             }
             String idObj = cmd.getDamageHandlingMethodId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             damageHandlingMethodApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class DamageHandlingMethodResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 DamageHandlingMethodCommand.MergePatchDamageHandlingMethod cmd = (DamageHandlingMethodCommand.MergePatchDamageHandlingMethod) value.toCommand();
                 DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 damageHandlingMethodApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class DamageHandlingMethodResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             DamageHandlingMethodCommand.CreateDamageHandlingMethod cmd = (DamageHandlingMethodCommand.CreateDamageHandlingMethod) value.toCommand();
             DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             damageHandlingMethodApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class DamageHandlingMethodResource {
 
             DamageHandlingMethodCommand.MergePatchDamageHandlingMethod cmd = value.toMergePatchDamageHandlingMethod();
             DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             damageHandlingMethodApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class DamageHandlingMethodResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(damageHandlingMethodId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             damageHandlingMethodApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

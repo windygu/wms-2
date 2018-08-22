@@ -1,5 +1,6 @@
 package org.dddml.wms.restful.tests;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -11,9 +12,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.dddml.wms.domain.product.CreateOrMergePatchProductDto;
 import org.dddml.wms.security.JwtUser;
 
 import java.io.BufferedReader;
@@ -22,16 +26,63 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by yangjiefeng on 2018/8/21.
  */
 public class JwtTests {
 
+    private static String baseUrl = "http://localhost:8080/api/";
+
     public static void main(String[] args) {
         String token = getJwtTokenRemote();
 
-        String url = "http://localhost:8080/api/InOuts";
+        String url = appendUrl(baseUrl, "InOuts");
+        testGetInouts(token, url);
+
+        url = appendUrl(baseUrl, "Products");
+        testPutProduct(token, url);
+    }
+
+    private static String appendUrl(String url, String component) {
+        return (url.endsWith("/") ? url : url + "/") + component;
+    }
+
+    private static void testPutProduct(String token, String url) {
+        try {
+            CloseableHttpClient client = HttpClientBuilder.create().build();
+
+            String productId = UUID.randomUUID().toString();
+            HttpPut httpPut = new HttpPut(appendUrl(url, productId));
+            httpPut.setHeader("Accept", "application/json");
+            httpPut.setHeader("Content-Type", "application/json");
+            httpPut.setHeader("Authorization", "Bearer " + token);
+            CreateOrMergePatchProductDto.CreateProductDto dto = new CreateOrMergePatchProductDto.CreateProductDto();
+            dto.setCommandId(UUID.randomUUID().toString());
+            dto.setProductName("test-prd-" + productId);
+            dto.setAmountUomTypeId("kg");
+            String json = JSON.toJSONString(dto);
+            StringEntity entity = new StringEntity(json, "utf-8");
+            entity.setContentType("application/json");
+            httpPut.setEntity(entity);
+            HttpResponse response = client.execute(httpPut);
+            //getContentFromResponse(response);
+            int responseCode = response.getStatusLine().getStatusCode();
+            //Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            System.out.println("==========================================");
+            System.out.println(responseCode);
+            System.out.println("==========================================");
+            client.close();
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+
+    }
+
+    private static void testGetInouts(String token, String url) {
         CloseableHttpClient client = HttpClientBuilder.create().build();
         try {
             HttpGet httpGet = new HttpGet(url);

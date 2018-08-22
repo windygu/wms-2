@@ -28,6 +28,7 @@ public class IdServiceResource {
     public String getDocumentNumber(@RequestBody IdServiceCommands.GetDocumentNumber requestContent)
     {
         try {
+        requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
         return idApplicationService.when(requestContent);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

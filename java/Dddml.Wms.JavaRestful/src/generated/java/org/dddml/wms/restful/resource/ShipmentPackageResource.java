@@ -172,6 +172,7 @@ public class ShipmentPackageResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentPackage");
             }
             ShipmentPackageId idObj = cmd.getShipmentPackageId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentPackageApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ShipmentPackageResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ShipmentPackageCommand.MergePatchShipmentPackage cmd = (ShipmentPackageCommand.MergePatchShipmentPackage) value.toCommand();
                 ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 shipmentPackageApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ShipmentPackageResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ShipmentPackageCommand.CreateShipmentPackage cmd = (ShipmentPackageCommand.CreateShipmentPackage) value.toCommand();
             ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentPackageApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ShipmentPackageResource {
 
             ShipmentPackageCommand.MergePatchShipmentPackage cmd = value.toMergePatchShipmentPackage();
             ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentPackageApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class ShipmentPackageResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             ShipmentPackageResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentPackageId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentPackageApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -327,6 +332,7 @@ public class ShipmentPackageResource {
             ShipmentPackageContentCommand.MergePatchShipmentPackageContent mergePatchShipmentPackageContent = body.toMergePatchShipmentPackageContent();
             mergePatchShipmentPackageContent.setShipmentItemSeqId(shipmentItemSeqId);
             mergePatchShipmentPackage.getShipmentPackageContentCommands().add(mergePatchShipmentPackageContent);
+            mergePatchShipmentPackage.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentPackageApplicationService.when(mergePatchShipmentPackage);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -363,6 +369,7 @@ public class ShipmentPackageResource {
             ShipmentPackageContentCommand.RemoveShipmentPackageContent removeShipmentPackageContent = new AbstractShipmentPackageContentCommand.SimpleRemoveShipmentPackageContent();
             removeShipmentPackageContent.setShipmentItemSeqId(shipmentItemSeqId);
             mergePatchShipmentPackage.getShipmentPackageContentCommands().add(removeShipmentPackageContent);
+            mergePatchShipmentPackage.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentPackageApplicationService.when(mergePatchShipmentPackage);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -409,6 +416,7 @@ public class ShipmentPackageResource {
             mergePatchShipmentPackage.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentPackageContentCommand.CreateShipmentPackageContent createShipmentPackageContent = body.toCreateShipmentPackageContent();
             mergePatchShipmentPackage.getShipmentPackageContentCommands().add(createShipmentPackageContent);
+            mergePatchShipmentPackage.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentPackageApplicationService.when(mergePatchShipmentPackage);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

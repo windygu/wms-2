@@ -172,6 +172,7 @@ public class ShipmentMethodTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentMethodType");
             }
             String idObj = cmd.getShipmentMethodTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentMethodTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ShipmentMethodTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ShipmentMethodTypeCommand.MergePatchShipmentMethodType cmd = (ShipmentMethodTypeCommand.MergePatchShipmentMethodType) value.toCommand();
                 ShipmentMethodTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentMethodTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 shipmentMethodTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ShipmentMethodTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ShipmentMethodTypeCommand.CreateShipmentMethodType cmd = (ShipmentMethodTypeCommand.CreateShipmentMethodType) value.toCommand();
             ShipmentMethodTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentMethodTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentMethodTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ShipmentMethodTypeResource {
 
             ShipmentMethodTypeCommand.MergePatchShipmentMethodType cmd = value.toMergePatchShipmentMethodType();
             ShipmentMethodTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentMethodTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentMethodTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class ShipmentMethodTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             ShipmentMethodTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentMethodTypeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentMethodTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

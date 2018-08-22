@@ -172,6 +172,7 @@ public class WarehouseResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Warehouse");
             }
             String idObj = cmd.getWarehouseId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             warehouseApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class WarehouseResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 WarehouseCommand.MergePatchWarehouse cmd = (WarehouseCommand.MergePatchWarehouse) value.toCommand();
                 WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(warehouseId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 warehouseApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class WarehouseResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             WarehouseCommand.CreateWarehouse cmd = (WarehouseCommand.CreateWarehouse) value.toCommand();
             WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(warehouseId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             warehouseApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class WarehouseResource {
 
             WarehouseCommand.MergePatchWarehouse cmd = value.toMergePatchWarehouse();
             WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(warehouseId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             warehouseApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class WarehouseResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(warehouseId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             warehouseApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

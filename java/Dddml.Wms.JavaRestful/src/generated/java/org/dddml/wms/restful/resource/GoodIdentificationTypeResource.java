@@ -172,6 +172,7 @@ public class GoodIdentificationTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "GoodIdentificationType");
             }
             String idObj = cmd.getGoodIdentificationTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             goodIdentificationTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class GoodIdentificationTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 GoodIdentificationTypeCommand.MergePatchGoodIdentificationType cmd = (GoodIdentificationTypeCommand.MergePatchGoodIdentificationType) value.toCommand();
                 GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 goodIdentificationTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class GoodIdentificationTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             GoodIdentificationTypeCommand.CreateGoodIdentificationType cmd = (GoodIdentificationTypeCommand.CreateGoodIdentificationType) value.toCommand();
             GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             goodIdentificationTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class GoodIdentificationTypeResource {
 
             GoodIdentificationTypeCommand.MergePatchGoodIdentificationType cmd = value.toMergePatchGoodIdentificationType();
             GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             goodIdentificationTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class GoodIdentificationTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             GoodIdentificationTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(goodIdentificationTypeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             goodIdentificationTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

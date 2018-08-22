@@ -172,6 +172,7 @@ public class UomConversionResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "UomConversion");
             }
             UomConversionId idObj = cmd.getUomConversionId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomConversionApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class UomConversionResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 UomConversionCommand.MergePatchUomConversion cmd = (UomConversionCommand.MergePatchUomConversion) value.toCommand();
                 UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 uomConversionApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class UomConversionResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             UomConversionCommand.CreateUomConversion cmd = (UomConversionCommand.CreateUomConversion) value.toCommand();
             UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomConversionApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class UomConversionResource {
 
             UomConversionCommand.MergePatchUomConversion cmd = value.toMergePatchUomConversion();
             UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomConversionApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class UomConversionResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomConversionApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

@@ -172,6 +172,7 @@ public class PartyResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Party");
             }
             String idObj = cmd.getPartyId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class PartyResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PartyCommand.MergePatchParty cmd = (PartyCommand.MergePatchParty) value.toCommand();
                 PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 partyApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class PartyResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PartyCommand.CreateParty cmd = (PartyCommand.CreateParty) value.toCommand();
             PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class PartyResource {
 
             PartyCommand.MergePatchParty cmd = value.toMergePatchParty();
             PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class PartyResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             PartyResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

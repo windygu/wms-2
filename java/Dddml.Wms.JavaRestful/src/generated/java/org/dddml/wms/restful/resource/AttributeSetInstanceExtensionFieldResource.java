@@ -172,6 +172,7 @@ public class AttributeSetInstanceExtensionFieldResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeSetInstanceExtensionField");
             }
             String idObj = cmd.getName();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeSetInstanceExtensionFieldApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class AttributeSetInstanceExtensionFieldResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField cmd = (AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField) value.toCommand();
                 AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 attributeSetInstanceExtensionFieldApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class AttributeSetInstanceExtensionFieldResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField cmd = (AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField) value.toCommand();
             AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeSetInstanceExtensionFieldApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class AttributeSetInstanceExtensionFieldResource {
 
             AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField cmd = value.toMergePatchAttributeSetInstanceExtensionField();
             AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeSetInstanceExtensionFieldApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class AttributeSetInstanceExtensionFieldResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(name, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeSetInstanceExtensionFieldApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

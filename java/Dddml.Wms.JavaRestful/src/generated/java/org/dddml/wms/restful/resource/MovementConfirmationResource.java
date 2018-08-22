@@ -173,6 +173,7 @@ public class MovementConfirmationResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementConfirmation");
             }
             String idObj = cmd.getDocumentNumber();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(cmd);
 
             return idObj;
@@ -191,6 +192,7 @@ public class MovementConfirmationResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 MovementConfirmationCommand.MergePatchMovementConfirmation cmd = (MovementConfirmationCommand.MergePatchMovementConfirmation) value.toCommand();
                 MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 movementConfirmationApplicationService.when(cmd);
                 return;
             }
@@ -198,6 +200,7 @@ public class MovementConfirmationResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             MovementConfirmationCommand.CreateMovementConfirmation cmd = (MovementConfirmationCommand.CreateMovementConfirmation) value.toCommand();
             MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -214,6 +217,7 @@ public class MovementConfirmationResource {
 
             MovementConfirmationCommand.MergePatchMovementConfirmation cmd = value.toMergePatchMovementConfirmation();
             MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -236,6 +240,7 @@ public class MovementConfirmationResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             MovementConfirmationResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -253,6 +258,7 @@ public class MovementConfirmationResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -335,6 +341,7 @@ public class MovementConfirmationResource {
             MovementConfirmationLineCommand.MergePatchMovementConfirmationLine mergePatchMovementConfirmationLine = body.toMergePatchMovementConfirmationLine();
             mergePatchMovementConfirmationLine.setLineNumber(lineNumber);
             mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(mergePatchMovementConfirmationLine);
+            mergePatchMovementConfirmation.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -361,6 +368,7 @@ public class MovementConfirmationResource {
             MovementConfirmationLineCommand.RemoveMovementConfirmationLine removeMovementConfirmationLine = new AbstractMovementConfirmationLineCommand.SimpleRemoveMovementConfirmationLine();
             removeMovementConfirmationLine.setLineNumber(lineNumber);
             mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(removeMovementConfirmationLine);
+            mergePatchMovementConfirmation.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -397,6 +405,7 @@ public class MovementConfirmationResource {
             mergePatchMovementConfirmation.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             MovementConfirmationLineCommand.CreateMovementConfirmationLine createMovementConfirmationLine = body.toCreateMovementConfirmationLine();
             mergePatchMovementConfirmation.getMovementConfirmationLineCommands().add(createMovementConfirmationLine);
+            mergePatchMovementConfirmation.setRequesterId(SecurityContextUtil.getRequesterId());
             movementConfirmationApplicationService.when(mergePatchMovementConfirmation);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

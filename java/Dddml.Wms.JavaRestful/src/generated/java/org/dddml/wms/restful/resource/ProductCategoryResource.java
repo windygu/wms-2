@@ -172,6 +172,7 @@ public class ProductCategoryResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ProductCategory");
             }
             String idObj = cmd.getProductCategoryId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productCategoryApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ProductCategoryResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ProductCategoryCommand.MergePatchProductCategory cmd = (ProductCategoryCommand.MergePatchProductCategory) value.toCommand();
                 ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 productCategoryApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ProductCategoryResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ProductCategoryCommand.CreateProductCategory cmd = (ProductCategoryCommand.CreateProductCategory) value.toCommand();
             ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productCategoryApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ProductCategoryResource {
 
             ProductCategoryCommand.MergePatchProductCategory cmd = value.toMergePatchProductCategory();
             ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productCategoryApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class ProductCategoryResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productCategoryApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

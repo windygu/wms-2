@@ -172,6 +172,7 @@ public class FacilityResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Facility");
             }
             String idObj = cmd.getFacilityId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             facilityApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class FacilityResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 FacilityCommand.MergePatchFacility cmd = (FacilityCommand.MergePatchFacility) value.toCommand();
                 FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 facilityApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class FacilityResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             FacilityCommand.CreateFacility cmd = (FacilityCommand.CreateFacility) value.toCommand();
             FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             facilityApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class FacilityResource {
 
             FacilityCommand.MergePatchFacility cmd = value.toMergePatchFacility();
             FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             facilityApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class FacilityResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(facilityId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             facilityApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

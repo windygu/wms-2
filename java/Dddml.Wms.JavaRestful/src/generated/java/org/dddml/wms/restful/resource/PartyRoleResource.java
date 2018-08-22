@@ -172,6 +172,7 @@ public class PartyRoleResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PartyRole");
             }
             PartyRoleId idObj = cmd.getPartyRoleId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyRoleApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class PartyRoleResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PartyRoleCommand.MergePatchPartyRole cmd = (PartyRoleCommand.MergePatchPartyRole) value.toCommand();
                 PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 partyRoleApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class PartyRoleResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PartyRoleCommand.CreatePartyRole cmd = (PartyRoleCommand.CreatePartyRole) value.toCommand();
             PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyRoleApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class PartyRoleResource {
 
             PartyRoleCommand.MergePatchPartyRole cmd = value.toMergePatchPartyRole();
             PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyRoleApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class PartyRoleResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(partyRoleId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyRoleApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

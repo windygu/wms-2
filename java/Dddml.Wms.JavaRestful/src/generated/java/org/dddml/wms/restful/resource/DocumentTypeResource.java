@@ -172,6 +172,7 @@ public class DocumentTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "DocumentType");
             }
             String idObj = cmd.getDocumentTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             documentTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class DocumentTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 DocumentTypeCommand.MergePatchDocumentType cmd = (DocumentTypeCommand.MergePatchDocumentType) value.toCommand();
                 DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 documentTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class DocumentTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             DocumentTypeCommand.CreateDocumentType cmd = (DocumentTypeCommand.CreateDocumentType) value.toCommand();
             DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             documentTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class DocumentTypeResource {
 
             DocumentTypeCommand.MergePatchDocumentType cmd = value.toMergePatchDocumentType();
             DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             documentTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class DocumentTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(documentTypeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             documentTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

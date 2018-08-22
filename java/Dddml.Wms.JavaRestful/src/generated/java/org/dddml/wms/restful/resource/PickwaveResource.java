@@ -172,6 +172,7 @@ public class PickwaveResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Pickwave");
             }
             Long idObj = cmd.getPickwaveId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             pickwaveApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class PickwaveResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PickwaveCommand.MergePatchPickwave cmd = (PickwaveCommand.MergePatchPickwave) value.toCommand();
                 PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 pickwaveApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class PickwaveResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PickwaveCommand.CreatePickwave cmd = (PickwaveCommand.CreatePickwave) value.toCommand();
             PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             pickwaveApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class PickwaveResource {
 
             PickwaveCommand.MergePatchPickwave cmd = value.toMergePatchPickwave();
             PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             pickwaveApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class PickwaveResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(pickwaveId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             pickwaveApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

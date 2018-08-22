@@ -173,6 +173,7 @@ public class InOutResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InOut");
             }
             String idObj = cmd.getDocumentNumber();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
             return idObj;
@@ -191,6 +192,7 @@ public class InOutResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 InOutCommand.MergePatchInOut cmd = (InOutCommand.MergePatchInOut) value.toCommand();
                 InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 inOutApplicationService.when(cmd);
                 return;
             }
@@ -198,6 +200,7 @@ public class InOutResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             InOutCommand.CreateInOut cmd = (InOutCommand.CreateInOut) value.toCommand();
             InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -214,6 +217,7 @@ public class InOutResource {
 
             InOutCommand.MergePatchInOut cmd = value.toMergePatchInOut();
             InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -231,6 +235,7 @@ public class InOutResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -248,6 +253,7 @@ public class InOutResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -265,6 +271,7 @@ public class InOutResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -282,6 +289,7 @@ public class InOutResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -299,6 +307,7 @@ public class InOutResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -316,6 +325,7 @@ public class InOutResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -333,6 +343,7 @@ public class InOutResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -415,6 +426,7 @@ public class InOutResource {
             InOutImageCommand.MergePatchInOutImage mergePatchInOutImage = body.toMergePatchInOutImage();
             mergePatchInOutImage.setSequenceId(sequenceId);
             mergePatchInOut.getInOutImageCommands().add(mergePatchInOutImage);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -441,6 +453,7 @@ public class InOutResource {
             InOutImageCommand.RemoveInOutImage removeInOutImage = new AbstractInOutImageCommand.SimpleRemoveInOutImage();
             removeInOutImage.setSequenceId(sequenceId);
             mergePatchInOut.getInOutImageCommands().add(removeInOutImage);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -477,6 +490,7 @@ public class InOutResource {
             mergePatchInOut.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             InOutImageCommand.CreateInOutImage createInOutImage = body.toCreateInOutImage();
             mergePatchInOut.getInOutImageCommands().add(createInOutImage);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -518,6 +532,7 @@ public class InOutResource {
             InOutLineCommand.MergePatchInOutLine mergePatchInOutLine = body.toMergePatchInOutLine();
             mergePatchInOutLine.setLineNumber(lineNumber);
             mergePatchInOut.getInOutLineCommands().add(mergePatchInOutLine);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -544,6 +559,7 @@ public class InOutResource {
             InOutLineCommand.RemoveInOutLine removeInOutLine = new AbstractInOutLineCommand.SimpleRemoveInOutLine();
             removeInOutLine.setLineNumber(lineNumber);
             mergePatchInOut.getInOutLineCommands().add(removeInOutLine);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -580,6 +596,7 @@ public class InOutResource {
             mergePatchInOut.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             InOutLineCommand.CreateInOutLine createInOutLine = body.toCreateInOutLine();
             mergePatchInOut.getInOutLineCommands().add(createInOutLine);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -624,6 +641,7 @@ public class InOutResource {
             InOutLineImageCommand.MergePatchInOutLineImage mergePatchInOutLineImage = body.toMergePatchInOutLineImage();
             mergePatchInOutLineImage.setSequenceId(sequenceId);
             mergePatchInOutLine.getInOutLineImageCommands().add(mergePatchInOutLineImage);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -653,6 +671,7 @@ public class InOutResource {
             InOutLineImageCommand.RemoveInOutLineImage removeInOutLineImage = new AbstractInOutLineImageCommand.SimpleRemoveInOutLineImage();
             removeInOutLineImage.setSequenceId(sequenceId);
             mergePatchInOutLine.getInOutLineImageCommands().add(removeInOutLineImage);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -692,6 +711,7 @@ public class InOutResource {
             mergePatchInOut.getInOutLineCommands().add(mergePatchInOutLine);
             InOutLineImageCommand.CreateInOutLineImage createInOutLineImage = body.toCreateInOutLineImage();
             mergePatchInOutLine.getInOutLineImageCommands().add(createInOutLineImage);
+            mergePatchInOut.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(mergePatchInOut);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

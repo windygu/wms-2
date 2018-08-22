@@ -172,6 +172,7 @@ public class ContactMechResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ContactMech");
             }
             String idObj = cmd.getContactMechId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             contactMechApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ContactMechResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ContactMechCommand.MergePatchContactMech cmd = (ContactMechCommand.MergePatchContactMech) value.toCommand();
                 ContactMechResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 contactMechApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ContactMechResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ContactMechCommand.CreateContactMech cmd = (ContactMechCommand.CreateContactMech) value.toCommand();
             ContactMechResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             contactMechApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ContactMechResource {
 
             ContactMechCommand.MergePatchContactMech cmd = value.toMergePatchContactMech();
             ContactMechResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             contactMechApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class ContactMechResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             ContactMechResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             contactMechApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

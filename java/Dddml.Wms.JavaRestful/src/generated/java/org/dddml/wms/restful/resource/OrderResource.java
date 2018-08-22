@@ -173,6 +173,7 @@ public class OrderResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Order");
             }
             String idObj = cmd.getOrderId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(cmd);
 
             return idObj;
@@ -191,6 +192,7 @@ public class OrderResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 OrderCommand.MergePatchOrder cmd = (OrderCommand.MergePatchOrder) value.toCommand();
                 OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(orderId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 orderApplicationService.when(cmd);
                 return;
             }
@@ -198,6 +200,7 @@ public class OrderResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             OrderCommand.CreateOrder cmd = (OrderCommand.CreateOrder) value.toCommand();
             OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(orderId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -214,6 +217,7 @@ public class OrderResource {
 
             OrderCommand.MergePatchOrder cmd = value.toMergePatchOrder();
             OrderResourceUtils.setNullIdOrThrowOnInconsistentIds(orderId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -306,6 +310,7 @@ public class OrderResource {
                         }
                     }.parse(partyRoleId)));
             mergePatchOrder.getOrderRoleCommands().add(mergePatchOrderRole);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -337,6 +342,7 @@ public class OrderResource {
                         }
                     }.parse(partyRoleId)));
             mergePatchOrder.getOrderRoleCommands().add(removeOrderRole);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -373,6 +379,7 @@ public class OrderResource {
             mergePatchOrder.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             OrderRoleCommand.CreateOrderRole createOrderRole = body.toCreateOrderRole();
             mergePatchOrder.getOrderRoleCommands().add(createOrderRole);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -414,6 +421,7 @@ public class OrderResource {
             OrderItemCommand.MergePatchOrderItem mergePatchOrderItem = body.toMergePatchOrderItem();
             mergePatchOrderItem.setOrderItemSeqId(orderItemSeqId);
             mergePatchOrder.getOrderItemCommands().add(mergePatchOrderItem);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -440,6 +448,7 @@ public class OrderResource {
             OrderItemCommand.RemoveOrderItem removeOrderItem = new AbstractOrderItemCommand.SimpleRemoveOrderItem();
             removeOrderItem.setOrderItemSeqId(orderItemSeqId);
             mergePatchOrder.getOrderItemCommands().add(removeOrderItem);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -476,6 +485,7 @@ public class OrderResource {
             mergePatchOrder.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             OrderItemCommand.CreateOrderItem createOrderItem = body.toCreateOrderItem();
             mergePatchOrder.getOrderItemCommands().add(createOrderItem);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -517,6 +527,7 @@ public class OrderResource {
             OrderShipGroupCommand.MergePatchOrderShipGroup mergePatchOrderShipGroup = body.toMergePatchOrderShipGroup();
             mergePatchOrderShipGroup.setShipGroupSeqId(shipGroupSeqId);
             mergePatchOrder.getOrderShipGroupCommands().add(mergePatchOrderShipGroup);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -543,6 +554,7 @@ public class OrderResource {
             OrderShipGroupCommand.RemoveOrderShipGroup removeOrderShipGroup = new AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup();
             removeOrderShipGroup.setShipGroupSeqId(shipGroupSeqId);
             mergePatchOrder.getOrderShipGroupCommands().add(removeOrderShipGroup);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -579,6 +591,7 @@ public class OrderResource {
             mergePatchOrder.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             OrderShipGroupCommand.CreateOrderShipGroup createOrderShipGroup = body.toCreateOrderShipGroup();
             mergePatchOrder.getOrderShipGroupCommands().add(createOrderShipGroup);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -595,6 +608,7 @@ public class OrderResource {
             else if (!cmd.getOrderShipGroupId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", idObj, cmd.getOrderShipGroupId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -640,6 +654,7 @@ public class OrderResource {
             OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation mergePatchOrderItemShipGroupAssociation = body.toMergePatchOrderItemShipGroupAssociation();
             mergePatchOrderItemShipGroupAssociation.setOrderItemSeqId(orderItemSeqId);
             mergePatchOrderShipGroup.getOrderItemShipGroupAssociationCommands().add(mergePatchOrderItemShipGroupAssociation);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -669,6 +684,7 @@ public class OrderResource {
             OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation removeOrderItemShipGroupAssociation = new AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation();
             removeOrderItemShipGroupAssociation.setOrderItemSeqId(orderItemSeqId);
             mergePatchOrderShipGroup.getOrderItemShipGroupAssociationCommands().add(removeOrderItemShipGroupAssociation);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -708,6 +724,7 @@ public class OrderResource {
             mergePatchOrder.getOrderShipGroupCommands().add(mergePatchOrderShipGroup);
             OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation createOrderItemShipGroupAssociation = body.toCreateOrderItemShipGroupAssociation();
             mergePatchOrderShipGroup.getOrderItemShipGroupAssociationCommands().add(createOrderItemShipGroupAssociation);
+            mergePatchOrder.setRequesterId(SecurityContextUtil.getRequesterId());
             orderApplicationService.when(mergePatchOrder);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

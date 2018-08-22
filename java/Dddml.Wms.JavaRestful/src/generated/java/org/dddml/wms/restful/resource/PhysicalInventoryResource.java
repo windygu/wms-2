@@ -174,6 +174,7 @@ public class PhysicalInventoryResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PhysicalInventory");
             }
             String idObj = cmd.getDocumentNumber();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(cmd);
 
             return idObj;
@@ -192,6 +193,7 @@ public class PhysicalInventoryResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PhysicalInventoryCommand.MergePatchPhysicalInventory cmd = (PhysicalInventoryCommand.MergePatchPhysicalInventory) value.toCommand();
                 PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 physicalInventoryApplicationService.when(cmd);
                 return;
             }
@@ -199,6 +201,7 @@ public class PhysicalInventoryResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PhysicalInventoryCommand.CreatePhysicalInventory cmd = (PhysicalInventoryCommand.CreatePhysicalInventory) value.toCommand();
             PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -215,6 +218,7 @@ public class PhysicalInventoryResource {
 
             PhysicalInventoryCommand.MergePatchPhysicalInventory cmd = value.toMergePatchPhysicalInventory();
             PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(documentNumber, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -232,6 +236,7 @@ public class PhysicalInventoryResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -249,6 +254,7 @@ public class PhysicalInventoryResource {
             } else if (!cmd.getDocumentNumber().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", documentNumber, cmd.getDocumentNumber());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -341,6 +347,7 @@ public class PhysicalInventoryResource {
                         }
                     }.parse(inventoryItemId)));
             mergePatchPhysicalInventory.getPhysicalInventoryLineCommands().add(mergePatchPhysicalInventoryLine);
+            mergePatchPhysicalInventory.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(mergePatchPhysicalInventory);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -372,6 +379,7 @@ public class PhysicalInventoryResource {
                         }
                     }.parse(inventoryItemId)));
             mergePatchPhysicalInventory.getPhysicalInventoryLineCommands().add(removePhysicalInventoryLine);
+            mergePatchPhysicalInventory.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(mergePatchPhysicalInventory);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -408,6 +416,7 @@ public class PhysicalInventoryResource {
             mergePatchPhysicalInventory.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             PhysicalInventoryLineCommand.CreatePhysicalInventoryLine createPhysicalInventoryLine = body.toCreatePhysicalInventoryLine();
             mergePatchPhysicalInventory.getPhysicalInventoryLineCommands().add(createPhysicalInventoryLine);
+            mergePatchPhysicalInventory.setRequesterId(SecurityContextUtil.getRequesterId());
             physicalInventoryApplicationService.when(mergePatchPhysicalInventory);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

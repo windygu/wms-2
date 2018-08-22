@@ -175,6 +175,7 @@ public class SellableInventoryItemResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "SellableInventoryItem");
             }
             InventoryItemId idObj = cmd.getSellableInventoryItemId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             sellableInventoryItemApplicationService.when(cmd);
 
             return idObj;
@@ -193,6 +194,7 @@ public class SellableInventoryItemResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 SellableInventoryItemCommand.MergePatchSellableInventoryItem cmd = (SellableInventoryItemCommand.MergePatchSellableInventoryItem) value.toCommand();
                 SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(sellableInventoryItemId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 sellableInventoryItemApplicationService.when(cmd);
                 return;
             }
@@ -200,6 +202,7 @@ public class SellableInventoryItemResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             SellableInventoryItemCommand.CreateSellableInventoryItem cmd = (SellableInventoryItemCommand.CreateSellableInventoryItem) value.toCommand();
             SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(sellableInventoryItemId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             sellableInventoryItemApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -216,6 +219,7 @@ public class SellableInventoryItemResource {
 
             SellableInventoryItemCommand.MergePatchSellableInventoryItem cmd = value.toMergePatchSellableInventoryItem();
             SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(sellableInventoryItemId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             sellableInventoryItemApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

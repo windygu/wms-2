@@ -44,8 +44,8 @@ configuration:
   namedStringPatterns:
     "AttributeId": "^[\\(A-Za-z0-9][A-Za-z0-9]*"
     
-  #onCommandExecuting:
-    #Java: "System.out.println({0});"
+  onCommandExecuting:
+    Java: "{0}.setRequesterId(SecurityContextUtil.getRequesterId());"
   
   metadata:
     

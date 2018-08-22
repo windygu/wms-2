@@ -175,6 +175,7 @@ public class InventoryItemRequirementResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryItemRequirement");
             }
             InventoryItemId idObj = cmd.getInventoryItemRequirementId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryItemRequirementApplicationService.when(cmd);
 
             return idObj;
@@ -193,6 +194,7 @@ public class InventoryItemRequirementResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 InventoryItemRequirementCommand.MergePatchInventoryItemRequirement cmd = (InventoryItemRequirementCommand.MergePatchInventoryItemRequirement) value.toCommand();
                 InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryItemRequirementId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 inventoryItemRequirementApplicationService.when(cmd);
                 return;
             }
@@ -200,6 +202,7 @@ public class InventoryItemRequirementResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             InventoryItemRequirementCommand.CreateInventoryItemRequirement cmd = (InventoryItemRequirementCommand.CreateInventoryItemRequirement) value.toCommand();
             InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryItemRequirementId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryItemRequirementApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -216,6 +219,7 @@ public class InventoryItemRequirementResource {
 
             InventoryItemRequirementCommand.MergePatchInventoryItemRequirement cmd = value.toMergePatchInventoryItemRequirement();
             InventoryItemRequirementResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryItemRequirementId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryItemRequirementApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

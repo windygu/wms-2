@@ -172,6 +172,7 @@ public class ShipmentTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentType");
             }
             String idObj = cmd.getShipmentTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ShipmentTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ShipmentTypeCommand.MergePatchShipmentType cmd = (ShipmentTypeCommand.MergePatchShipmentType) value.toCommand();
                 ShipmentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 shipmentTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ShipmentTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ShipmentTypeCommand.CreateShipmentType cmd = (ShipmentTypeCommand.CreateShipmentType) value.toCommand();
             ShipmentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ShipmentTypeResource {
 
             ShipmentTypeCommand.MergePatchShipmentType cmd = value.toMergePatchShipmentType();
             ShipmentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

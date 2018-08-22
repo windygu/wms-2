@@ -172,6 +172,7 @@ public class ProductResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Product");
             }
             String idObj = cmd.getProductId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ProductResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ProductCommand.MergePatchProduct cmd = (ProductCommand.MergePatchProduct) value.toCommand();
                 ProductResourceUtils.setNullIdOrThrowOnInconsistentIds(productId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 productApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ProductResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ProductCommand.CreateProduct cmd = (ProductCommand.CreateProduct) value.toCommand();
             ProductResourceUtils.setNullIdOrThrowOnInconsistentIds(productId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ProductResource {
 
             ProductCommand.MergePatchProduct cmd = value.toMergePatchProduct();
             ProductResourceUtils.setNullIdOrThrowOnInconsistentIds(productId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -295,6 +299,7 @@ public class ProductResource {
             GoodIdentificationCommand.MergePatchGoodIdentification mergePatchGoodIdentification = body.toMergePatchGoodIdentification();
             mergePatchGoodIdentification.setGoodIdentificationTypeId(goodIdentificationTypeId);
             mergePatchProduct.getGoodIdentificationCommands().add(mergePatchGoodIdentification);
+            mergePatchProduct.setRequesterId(SecurityContextUtil.getRequesterId());
             productApplicationService.when(mergePatchProduct);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -321,6 +326,7 @@ public class ProductResource {
             GoodIdentificationCommand.RemoveGoodIdentification removeGoodIdentification = new AbstractGoodIdentificationCommand.SimpleRemoveGoodIdentification();
             removeGoodIdentification.setGoodIdentificationTypeId(goodIdentificationTypeId);
             mergePatchProduct.getGoodIdentificationCommands().add(removeGoodIdentification);
+            mergePatchProduct.setRequesterId(SecurityContextUtil.getRequesterId());
             productApplicationService.when(mergePatchProduct);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -357,6 +363,7 @@ public class ProductResource {
             mergePatchProduct.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             GoodIdentificationCommand.CreateGoodIdentification createGoodIdentification = body.toCreateGoodIdentification();
             mergePatchProduct.getGoodIdentificationCommands().add(createGoodIdentification);
+            mergePatchProduct.setRequesterId(SecurityContextUtil.getRequesterId());
             productApplicationService.when(mergePatchProduct);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

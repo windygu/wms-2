@@ -172,6 +172,7 @@ public class OrganizationStructureTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "OrganizationStructureType");
             }
             String idObj = cmd.getId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             organizationStructureTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class OrganizationStructureTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 OrganizationStructureTypeCommand.MergePatchOrganizationStructureType cmd = (OrganizationStructureTypeCommand.MergePatchOrganizationStructureType) value.toCommand();
                 OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 organizationStructureTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class OrganizationStructureTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             OrganizationStructureTypeCommand.CreateOrganizationStructureType cmd = (OrganizationStructureTypeCommand.CreateOrganizationStructureType) value.toCommand();
             OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             organizationStructureTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class OrganizationStructureTypeResource {
 
             OrganizationStructureTypeCommand.MergePatchOrganizationStructureType cmd = value.toMergePatchOrganizationStructureType();
             OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             organizationStructureTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class OrganizationStructureTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             organizationStructureTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

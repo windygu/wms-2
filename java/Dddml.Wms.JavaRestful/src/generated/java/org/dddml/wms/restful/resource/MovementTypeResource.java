@@ -172,6 +172,7 @@ public class MovementTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementType");
             }
             String idObj = cmd.getMovementTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class MovementTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 MovementTypeCommand.MergePatchMovementType cmd = (MovementTypeCommand.MergePatchMovementType) value.toCommand();
                 MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 movementTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class MovementTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             MovementTypeCommand.CreateMovementType cmd = (MovementTypeCommand.CreateMovementType) value.toCommand();
             MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class MovementTypeResource {
 
             MovementTypeCommand.MergePatchMovementType cmd = value.toMergePatchMovementType();
             MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class MovementTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             MovementTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(movementTypeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             movementTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

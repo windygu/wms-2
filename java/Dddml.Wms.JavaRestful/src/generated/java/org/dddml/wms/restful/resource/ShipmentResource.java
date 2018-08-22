@@ -172,6 +172,7 @@ public class ShipmentResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Shipment");
             }
             String idObj = cmd.getShipmentId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ShipmentResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ShipmentCommand.MergePatchShipment cmd = (ShipmentCommand.MergePatchShipment) value.toCommand();
                 ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 shipmentApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ShipmentResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ShipmentCommand.CreateShipment cmd = (ShipmentCommand.CreateShipment) value.toCommand();
             ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ShipmentResource {
 
             ShipmentCommand.MergePatchShipment cmd = value.toMergePatchShipment();
             ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -230,6 +234,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -247,6 +252,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -264,6 +270,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -281,6 +288,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -298,6 +306,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -315,6 +324,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -332,6 +342,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -349,6 +360,7 @@ public class ShipmentResource {
             } else if (!cmd.getShipmentId().equals(idObj)) {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
             }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -431,6 +443,7 @@ public class ShipmentResource {
             ShipmentImageCommand.MergePatchShipmentImage mergePatchShipmentImage = body.toMergePatchShipmentImage();
             mergePatchShipmentImage.setSequenceId(sequenceId);
             mergePatchShipment.getShipmentImageCommands().add(mergePatchShipmentImage);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -457,6 +470,7 @@ public class ShipmentResource {
             ShipmentImageCommand.RemoveShipmentImage removeShipmentImage = new AbstractShipmentImageCommand.SimpleRemoveShipmentImage();
             removeShipmentImage.setSequenceId(sequenceId);
             mergePatchShipment.getShipmentImageCommands().add(removeShipmentImage);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -493,6 +507,7 @@ public class ShipmentResource {
             mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentImageCommand.CreateShipmentImage createShipmentImage = body.toCreateShipmentImage();
             mergePatchShipment.getShipmentImageCommands().add(createShipmentImage);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -534,6 +549,7 @@ public class ShipmentResource {
             ShipmentItemCommand.MergePatchShipmentItem mergePatchShipmentItem = body.toMergePatchShipmentItem();
             mergePatchShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
             mergePatchShipment.getShipmentItemCommands().add(mergePatchShipmentItem);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -560,6 +576,7 @@ public class ShipmentResource {
             ShipmentItemCommand.RemoveShipmentItem removeShipmentItem = new AbstractShipmentItemCommand.SimpleRemoveShipmentItem();
             removeShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
             mergePatchShipment.getShipmentItemCommands().add(removeShipmentItem);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -596,6 +613,7 @@ public class ShipmentResource {
             mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentItemCommand.CreateShipmentItem createShipmentItem = body.toCreateShipmentItem();
             mergePatchShipment.getShipmentItemCommands().add(createShipmentItem);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -637,6 +655,7 @@ public class ShipmentResource {
             ShipmentReceiptCommand.MergePatchShipmentReceipt mergePatchShipmentReceipt = body.toMergePatchShipmentReceipt();
             mergePatchShipmentReceipt.setReceiptSeqId(receiptSeqId);
             mergePatchShipment.getShipmentReceiptCommands().add(mergePatchShipmentReceipt);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -663,6 +682,7 @@ public class ShipmentResource {
             ShipmentReceiptCommand.RemoveShipmentReceipt removeShipmentReceipt = new AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt();
             removeShipmentReceipt.setReceiptSeqId(receiptSeqId);
             mergePatchShipment.getShipmentReceiptCommands().add(removeShipmentReceipt);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -699,6 +719,7 @@ public class ShipmentResource {
             mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ShipmentReceiptCommand.CreateShipmentReceipt createShipmentReceipt = body.toCreateShipmentReceipt();
             mergePatchShipment.getShipmentReceiptCommands().add(createShipmentReceipt);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -743,6 +764,7 @@ public class ShipmentResource {
             ShipmentReceiptImageCommand.MergePatchShipmentReceiptImage mergePatchShipmentReceiptImage = body.toMergePatchShipmentReceiptImage();
             mergePatchShipmentReceiptImage.setSequenceId(sequenceId);
             mergePatchShipmentReceipt.getShipmentReceiptImageCommands().add(mergePatchShipmentReceiptImage);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -772,6 +794,7 @@ public class ShipmentResource {
             ShipmentReceiptImageCommand.RemoveShipmentReceiptImage removeShipmentReceiptImage = new AbstractShipmentReceiptImageCommand.SimpleRemoveShipmentReceiptImage();
             removeShipmentReceiptImage.setSequenceId(sequenceId);
             mergePatchShipmentReceipt.getShipmentReceiptImageCommands().add(removeShipmentReceiptImage);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -811,6 +834,7 @@ public class ShipmentResource {
             mergePatchShipment.getShipmentReceiptCommands().add(mergePatchShipmentReceipt);
             ShipmentReceiptImageCommand.CreateShipmentReceiptImage createShipmentReceiptImage = body.toCreateShipmentReceiptImage();
             mergePatchShipmentReceipt.getShipmentReceiptImageCommands().add(createShipmentReceiptImage);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -852,6 +876,7 @@ public class ShipmentResource {
             ItemIssuanceCommand.MergePatchItemIssuance mergePatchItemIssuance = body.toMergePatchItemIssuance();
             mergePatchItemIssuance.setItemIssuanceSeqId(itemIssuanceSeqId);
             mergePatchShipment.getItemIssuanceCommands().add(mergePatchItemIssuance);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -878,6 +903,7 @@ public class ShipmentResource {
             ItemIssuanceCommand.RemoveItemIssuance removeItemIssuance = new AbstractItemIssuanceCommand.SimpleRemoveItemIssuance();
             removeItemIssuance.setItemIssuanceSeqId(itemIssuanceSeqId);
             mergePatchShipment.getItemIssuanceCommands().add(removeItemIssuance);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -914,6 +940,7 @@ public class ShipmentResource {
             mergePatchShipment.setRequesterId(requesterId != null && !requesterId.isEmpty() ? requesterId : body.getRequesterId());
             ItemIssuanceCommand.CreateItemIssuance createItemIssuance = body.toCreateItemIssuance();
             mergePatchShipment.getItemIssuanceCommands().add(createItemIssuance);
+            mergePatchShipment.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(mergePatchShipment);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

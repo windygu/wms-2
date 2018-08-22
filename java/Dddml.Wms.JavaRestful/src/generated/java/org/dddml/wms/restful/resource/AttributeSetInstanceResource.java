@@ -186,6 +186,7 @@ public class AttributeSetInstanceResource {
 
             AttributeSetInstanceCommand.CreateAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
             AttributeSetInstanceResourceUtils.setNullIdOrThrowOnInconsistentIds(attributeSetInstanceId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             attributeSetInstanceApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

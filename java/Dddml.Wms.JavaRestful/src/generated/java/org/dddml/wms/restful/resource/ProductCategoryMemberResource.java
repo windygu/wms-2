@@ -172,6 +172,7 @@ public class ProductCategoryMemberResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ProductCategoryMember");
             }
             ProductCategoryMemberId idObj = cmd.getProductCategoryMemberId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productCategoryMemberApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class ProductCategoryMemberResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ProductCategoryMemberCommand.MergePatchProductCategoryMember cmd = (ProductCategoryMemberCommand.MergePatchProductCategoryMember) value.toCommand();
                 ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryMemberId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 productCategoryMemberApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class ProductCategoryMemberResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ProductCategoryMemberCommand.CreateProductCategoryMember cmd = (ProductCategoryMemberCommand.CreateProductCategoryMember) value.toCommand();
             ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryMemberId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productCategoryMemberApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class ProductCategoryMemberResource {
 
             ProductCategoryMemberCommand.MergePatchProductCategoryMember cmd = value.toMergePatchProductCategoryMember();
             ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(productCategoryMemberId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             productCategoryMemberApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

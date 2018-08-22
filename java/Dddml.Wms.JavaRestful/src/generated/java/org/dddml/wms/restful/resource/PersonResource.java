@@ -176,6 +176,7 @@ public class PersonResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Party");
             }
             String idObj = cmd.getPartyId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(cmd);
 
             return idObj;
@@ -195,6 +196,7 @@ public class PersonResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 PartyCommand.MergePatchParty cmd = (PartyCommand.MergePatchParty) value.toCommand();
                 PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 partyApplicationService.when(cmd);
                 return;
             }
@@ -202,6 +204,7 @@ public class PersonResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             PartyCommand.CreateParty cmd = (PartyCommand.CreateParty) value.toCommand();
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -219,6 +222,7 @@ public class PersonResource {
             value.setPartyTypeId(PartyTypeIds.PERSON);
             PartyCommand.MergePatchParty cmd = value.toMergePatchParty();
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -242,6 +246,7 @@ public class PersonResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             PersonResourceUtils.setNullIdOrThrowOnInconsistentIds(partyId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             partyApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

@@ -172,6 +172,7 @@ public class RejectionReasonResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "RejectionReason");
             }
             String idObj = cmd.getRejectionReasonId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             rejectionReasonApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class RejectionReasonResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 RejectionReasonCommand.MergePatchRejectionReason cmd = (RejectionReasonCommand.MergePatchRejectionReason) value.toCommand();
                 RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 rejectionReasonApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class RejectionReasonResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             RejectionReasonCommand.CreateRejectionReason cmd = (RejectionReasonCommand.CreateRejectionReason) value.toCommand();
             RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             rejectionReasonApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class RejectionReasonResource {
 
             RejectionReasonCommand.MergePatchRejectionReason cmd = value.toMergePatchRejectionReason();
             RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             rejectionReasonApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class RejectionReasonResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(rejectionReasonId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             rejectionReasonApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

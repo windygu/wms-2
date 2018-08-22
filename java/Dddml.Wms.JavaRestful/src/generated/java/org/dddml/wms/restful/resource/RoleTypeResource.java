@@ -172,6 +172,7 @@ public class RoleTypeResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "RoleType");
             }
             String idObj = cmd.getRoleTypeId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             roleTypeApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class RoleTypeResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 RoleTypeCommand.MergePatchRoleType cmd = (RoleTypeCommand.MergePatchRoleType) value.toCommand();
                 RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 roleTypeApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class RoleTypeResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             RoleTypeCommand.CreateRoleType cmd = (RoleTypeCommand.CreateRoleType) value.toCommand();
             RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             roleTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class RoleTypeResource {
 
             RoleTypeCommand.MergePatchRoleType cmd = value.toMergePatchRoleType();
             RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             roleTypeApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class RoleTypeResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(roleTypeId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             roleTypeApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

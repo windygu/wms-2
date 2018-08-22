@@ -172,6 +172,7 @@ public class InventoryPRTriggeredResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryPRTriggered");
             }
             InventoryPRTriggeredId idObj = cmd.getInventoryPRTriggeredId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryPRTriggeredApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class InventoryPRTriggeredResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered cmd = (InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered) value.toCommand();
                 InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPRTriggeredId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 inventoryPRTriggeredApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class InventoryPRTriggeredResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             InventoryPRTriggeredCommand.CreateInventoryPRTriggered cmd = (InventoryPRTriggeredCommand.CreateInventoryPRTriggered) value.toCommand();
             InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPRTriggeredId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryPRTriggeredApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class InventoryPRTriggeredResource {
 
             InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered cmd = value.toMergePatchInventoryPRTriggered();
             InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(inventoryPRTriggeredId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             inventoryPRTriggeredApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }

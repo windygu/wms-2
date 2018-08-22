@@ -172,6 +172,7 @@ public class UomResource {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Uom");
             }
             String idObj = cmd.getUomId();
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomApplicationService.when(cmd);
 
             return idObj;
@@ -190,6 +191,7 @@ public class UomResource {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 UomCommand.MergePatchUom cmd = (UomCommand.MergePatchUom) value.toCommand();
                 UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, cmd);
+                cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 uomApplicationService.when(cmd);
                 return;
             }
@@ -197,6 +199,7 @@ public class UomResource {
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             UomCommand.CreateUom cmd = (UomCommand.CreateUom) value.toCommand();
             UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -213,6 +216,7 @@ public class UomResource {
 
             UomCommand.MergePatchUom cmd = value.toMergePatchUom();
             UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, cmd);
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
@@ -235,6 +239,7 @@ public class UomResource {
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             UomResourceUtils.setNullIdOrThrowOnInconsistentIds(uomId, deleteCmd);
+            deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
             uomApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
