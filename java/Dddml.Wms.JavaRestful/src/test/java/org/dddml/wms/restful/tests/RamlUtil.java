@@ -18,7 +18,8 @@ public class RamlUtil {
     public static void main(String[] args) {
         PartialRaml[] ramls = new PartialRaml[] {
                 new PartialRaml(getRaml0(), "api"),
-                new PartialRaml(getRaml1(), "queries")
+                new PartialRaml(getRaml1(), "queries"),
+                new PartialRaml(getRaml2(), "iam")
         };
         Raml fullRaml = combine(ramls);
 
@@ -49,6 +50,19 @@ public class RamlUtil {
         return RamlParser.parse(in);
     }
 
+    private static Raml getRaml2() {
+        String iamRamlPath = "C:\\Users\\yangjiefeng\\Documents\\coding.net\\wms\\iam\\src\\main\\resources\\malls-sso.raml";
+        File f = new File(iamRamlPath);
+        InputStream in = null;
+        try {
+            in = new FileInputStream(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Read file error. " + iamRamlPath);
+        }
+        return RamlParser.parse(in);
+    }
+
     // //////////////////////////////////////////////////////////////
 
     public static Raml combine(PartialRaml[] ramls) {
@@ -63,7 +77,10 @@ public class RamlUtil {
         List<TypeDeclaration> types = new ArrayList<>();
         List<Resource> resources = new ArrayList<>();
         for (PartialRaml partialRaml : ramls) {
-            types.addAll(partialRaml.getRaml().getTypes());
+            List<TypeDeclaration> partTS = partialRaml.getRaml().getTypes();
+            if(partTS != null) {
+                types.addAll(partTS);
+            }
             String relUri = null;
             if (partialRaml.getParentResourceName() != null) {
                 relUri = partialRaml.getParentResourceName();

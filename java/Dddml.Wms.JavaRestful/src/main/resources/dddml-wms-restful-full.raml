@@ -38926,3 +38926,94 @@ types:
                 items: 
                   type: org.dddml.wms.query.dto.SystemQueryDto.QueryLotDto
 
+/iam: 
+  /oauth2: 
+    /token: 
+      post: 
+        displayName: login
+        description: login
+        queryParameters: 
+          grant_type: 
+            displayName: grant_type
+            type: string
+            required: true
+            description: grant_type
+          client_id: 
+            displayName: client_id
+            type: string
+            required: true
+            description: client_id
+          username: 
+            displayName: username
+            type: string
+            required: true
+            description: username
+          password: 
+            displayName: password
+            type: string
+            required: true
+            description: password
+        responses: 
+          200: 
+            headers: 
+              text/html: 
+                type: string
+  /users: 
+    get: 
+      displayName: 查询所有用户接口
+      description: 查询所有用户接口
+      responses: 
+        200: 
+          headers: 
+            text/html: 
+              type: string
+    /{username}: 
+      uriParameters: 
+        username: 
+          displayName: username
+          type: string
+          required: true
+          description: username
+      get: 
+        displayName: 查询用户接口
+        description: 查询用户接口
+        responses: 
+          200: 
+            headers: 
+              text/html: 
+                type: string
+      patch: 
+        displayName: 修改用户接口
+        description: 修改用户接口
+        responses: 
+          200: 
+            headers: 
+              text/html: 
+                type: string
+      put: 
+        displayName: 添加用户接口
+        description: 添加用户接口
+        queryParameters: 
+          password: 
+            displayName: password
+            type: string
+            required: true
+            description: password
+          nickname: 
+            displayName: nickname
+            type: string
+            required: true
+            description: nickname
+        responses: 
+          200: 
+            headers: 
+              text/html: 
+                type: string
+      delete: 
+        displayName: 删除用户接口
+        description: 删除用户接口
+        responses: 
+          200: 
+            headers: 
+              text/html: 
+                type: string
