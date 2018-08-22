@@ -33,36 +33,36 @@ public interface AttributeSetInstanceExtensionFieldsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstanceExtensionFields/{id}")
-    Call<AttributeSetInstanceExtensionFieldStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("AttributeSetInstanceExtensionFields/{name}")
+    Call<AttributeSetInstanceExtensionFieldStateDto> get(@Path("name") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstanceExtensionFields/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstanceExtensionFields/{id}/_stateEvents/{version}")
-    Call<AttributeSetInstanceExtensionFieldStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("AttributeSetInstanceExtensionFields/{name}/_stateEvents/{version}")
+    Call<AttributeSetInstanceExtensionFieldStateEventDto> getStateEvent(@Path("name") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstanceExtensionFields/{id}/_historyStates/{version}")
-    Call<AttributeSetInstanceExtensionFieldStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("AttributeSetInstanceExtensionFields/{name}/_historyStates/{version}")
+    Call<AttributeSetInstanceExtensionFieldStateDto> getHistoryState(@Path("name") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("AttributeSetInstanceExtensionFields/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto value);
+    @PUT("AttributeSetInstanceExtensionFields/{name}")
+    Call<String> put(@Path("name") String id, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSetInstanceExtensionFields")
     Call<String> post(@Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("AttributeSetInstanceExtensionFields/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.MergePatchAttributeSetInstanceExtensionFieldDto value);
+    @PATCH("AttributeSetInstanceExtensionFields/{name}")
+    Call<String> patch(@Path("name") String id, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.MergePatchAttributeSetInstanceExtensionFieldDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("AttributeSetInstanceExtensionFields/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("AttributeSetInstanceExtensionFields/{name}")
+    Call<String> delete(@Path("name") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

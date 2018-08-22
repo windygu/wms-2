@@ -34,20 +34,20 @@ public interface InOutsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("InOuts/{id}")
-    Call<InOutStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("InOuts/{documentNumber}")
+    Call<InOutStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InOuts/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("InOuts/{id}/_stateEvents/{version}")
-    Call<InOutStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("InOuts/{documentNumber}/_stateEvents/{version}")
+    Call<InOutStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("InOuts/{id}/_historyStates/{version}")
-    Call<InOutStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("InOuts/{documentNumber}/_historyStates/{version}")
+    Call<InOutStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutImages/{sequenceId}")
@@ -62,48 +62,48 @@ public interface InOutsClient {
     Call<InOutLineImageStateDto> getInOutLineImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
+    @PUT("InOuts/{documentNumber}")
+    Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
 
     @Headers("Accept: application/json")
     @POST("InOuts")
     Call<String> post(@Body CreateOrMergePatchInOutDto.CreateInOutDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("InOuts/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
+    @PATCH("InOuts/{documentNumber}")
+    Call<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("InOuts/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("InOuts/{documentNumber}")
+    Call<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Complete")
-    Call<String> complete(@Path("id") String id, @Body InOutCommandDtos.CompleteRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Complete")
+    Call<String> complete(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.CompleteRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Close")
-    Call<String> close(@Path("id") String id, @Body InOutCommandDtos.CloseRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Close")
+    Call<String> close(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.CloseRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Void")
-    Call<String> _void(@Path("id") String id, @Body InOutCommandDtos.VoidRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Void")
+    Call<String> _void(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.VoidRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Reverse")
-    Call<String> reverse(@Path("id") String id, @Body InOutCommandDtos.ReverseRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Reverse")
+    Call<String> reverse(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.ReverseRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/AddLine")
-    Call<String> addLine(@Path("id") String id, @Body InOutCommandDtos.AddLineRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/AddLine")
+    Call<String> addLine(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.AddLineRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Import")
-    Call<String> _import(@Path("id") String id, @Body InOutCommandDtos.ImportRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Import")
+    Call<String> _import(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.ImportRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/DocumentAction")
-    Call<String> documentAction(@Path("id") String id, @Body InOutCommandDtos.DocumentActionRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/DocumentAction")
+    Call<String> documentAction(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.DocumentActionRequestContent content);
 
 }
 

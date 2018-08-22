@@ -34,36 +34,36 @@ public interface RxRoleTypesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("RoleTypes/{id}")
-    Observable<RoleTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("RoleTypes/{roleTypeId}")
+    Observable<RoleTypeStateDto> get(@Path("roleTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("RoleTypes/{id}/_stateEvents/{version}")
-    Observable<RoleTypeStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("RoleTypes/{roleTypeId}/_stateEvents/{version}")
+    Observable<RoleTypeStateEventDto> getStateEvent(@Path("roleTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("RoleTypes/{id}/_historyStates/{version}")
-    Observable<RoleTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("RoleTypes/{roleTypeId}/_historyStates/{version}")
+    Observable<RoleTypeStateDto> getHistoryState(@Path("roleTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("RoleTypes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
+    @PUT("RoleTypes/{roleTypeId}")
+    Observable<String> put(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("RoleTypes")
     Observable<String> post(@Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("RoleTypes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
+    @PATCH("RoleTypes/{roleTypeId}")
+    Observable<String> patch(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("RoleTypes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("RoleTypes/{roleTypeId}")
+    Observable<String> delete(@Path("roleTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

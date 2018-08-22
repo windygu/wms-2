@@ -34,48 +34,48 @@ public interface MovementsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Movements/{id}")
-    Call<MovementStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Movements/{documentNumber}")
+    Call<MovementStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Movements/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Movements/{id}/_stateEvents/{version}")
-    Call<MovementStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Movements/{documentNumber}/_stateEvents/{version}")
+    Call<MovementStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Movements/{id}/_historyStates/{version}")
-    Call<MovementStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Movements/{documentNumber}/_historyStates/{version}")
+    Call<MovementStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Movements/{movementDocumentNumber}/MovementLines/{lineNumber}")
     Call<MovementLineStateDto> getMovementLine(@Path("movementDocumentNumber") String movementDocumentNumber, @Path("lineNumber") String lineNumber);
  
     @Headers("Accept: application/json")
-    @PUT("Movements/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
+    @PUT("Movements/{documentNumber}")
+    Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
 
     @Headers("Accept: application/json")
     @POST("Movements")
     Call<String> post(@Body CreateOrMergePatchMovementDto.CreateMovementDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Movements/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchMovementDto.MergePatchMovementDto value);
+    @PATCH("Movements/{documentNumber}")
+    Call<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.MergePatchMovementDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Movements/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Movements/{documentNumber}")
+    Call<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("Movements/{id}/_commands/AddLine")
-    Call<String> addLine(@Path("id") String id, @Body MovementCommandDtos.AddLineRequestContent content);
+    @PUT("Movements/{documentNumber}/_commands/AddLine")
+    Call<String> addLine(@Path("documentNumber") String documentNumber, @Body MovementCommandDtos.AddLineRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Movements/{id}/_commands/DocumentAction")
-    Call<String> documentAction(@Path("id") String id, @Body MovementCommandDtos.DocumentActionRequestContent content);
+    @PUT("Movements/{documentNumber}/_commands/DocumentAction")
+    Call<String> documentAction(@Path("documentNumber") String documentNumber, @Body MovementCommandDtos.DocumentActionRequestContent content);
 
 }
 

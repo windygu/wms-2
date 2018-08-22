@@ -34,44 +34,44 @@ public interface MovementConfirmationsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("MovementConfirmations/{id}")
-    Call<MovementConfirmationStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("MovementConfirmations/{documentNumber}")
+    Call<MovementConfirmationStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("MovementConfirmations/{id}/_stateEvents/{version}")
-    Call<MovementConfirmationStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("MovementConfirmations/{documentNumber}/_stateEvents/{version}")
+    Call<MovementConfirmationStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("MovementConfirmations/{id}/_historyStates/{version}")
-    Call<MovementConfirmationStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("MovementConfirmations/{documentNumber}/_historyStates/{version}")
+    Call<MovementConfirmationStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{movementConfirmationDocumentNumber}/MovementConfirmationLines/{lineNumber}")
     Call<MovementConfirmationLineStateDto> getMovementConfirmationLine(@Path("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber, @Path("lineNumber") String lineNumber);
  
     @Headers("Accept: application/json")
-    @PUT("MovementConfirmations/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
+    @PUT("MovementConfirmations/{documentNumber}")
+    Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
 
     @Headers("Accept: application/json")
     @POST("MovementConfirmations")
     Call<String> post(@Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("MovementConfirmations/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value);
+    @PATCH("MovementConfirmations/{documentNumber}")
+    Call<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("MovementConfirmations/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("MovementConfirmations/{documentNumber}")
+    Call<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("MovementConfirmations/{id}/_commands/DocumentAction")
-    Call<String> documentAction(@Path("id") String id, @Body MovementConfirmationCommandDtos.DocumentActionRequestContent content);
+    @PUT("MovementConfirmations/{documentNumber}/_commands/DocumentAction")
+    Call<String> documentAction(@Path("documentNumber") String documentNumber, @Body MovementConfirmationCommandDtos.DocumentActionRequestContent content);
 
 }
 

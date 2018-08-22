@@ -33,36 +33,36 @@ public interface ContactMechesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("ContactMeches/{id}")
-    Call<ContactMechStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("ContactMeches/{contactMechId}")
+    Call<ContactMechStateDto> get(@Path("contactMechId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("ContactMeches/{id}/_stateEvents/{version}")
-    Call<ContactMechStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("ContactMeches/{contactMechId}/_stateEvents/{version}")
+    Call<ContactMechStateEventDto> getStateEvent(@Path("contactMechId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("ContactMeches/{id}/_historyStates/{version}")
-    Call<ContactMechStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("ContactMeches/{contactMechId}/_historyStates/{version}")
+    Call<ContactMechStateDto> getHistoryState(@Path("contactMechId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("ContactMeches/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
+    @PUT("ContactMeches/{contactMechId}")
+    Call<String> put(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
 
     @Headers("Accept: application/json")
     @POST("ContactMeches")
     Call<String> post(@Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("ContactMeches/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
+    @PATCH("ContactMeches/{contactMechId}")
+    Call<String> patch(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("ContactMeches/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("ContactMeches/{contactMechId}")
+    Call<String> delete(@Path("contactMechId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

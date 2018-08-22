@@ -33,36 +33,36 @@ public interface ProductCategoryMembersClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("ProductCategoryMembers/{id}")
-    Call<ProductCategoryMemberStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("ProductCategoryMembers/{productCategoryMemberId}")
+    Call<ProductCategoryMemberStateDto> get(@Path("productCategoryMemberId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ProductCategoryMembers/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("ProductCategoryMembers/{id}/_stateEvents/{version}")
-    Call<ProductCategoryMemberStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("ProductCategoryMembers/{productCategoryMemberId}/_stateEvents/{version}")
+    Call<ProductCategoryMemberStateEventDto> getStateEvent(@Path("productCategoryMemberId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("ProductCategoryMembers/{id}/_historyStates/{version}")
-    Call<ProductCategoryMemberStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("ProductCategoryMembers/{productCategoryMemberId}/_historyStates/{version}")
+    Call<ProductCategoryMemberStateDto> getHistoryState(@Path("productCategoryMemberId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("ProductCategoryMembers/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value);
+    @PUT("ProductCategoryMembers/{productCategoryMemberId}")
+    Call<String> put(@Path("productCategoryMemberId") String id, @Body CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value);
 
     @Headers("Accept: application/json")
     @POST("ProductCategoryMembers")
     Call<ProductCategoryMemberId> post(@Body CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("ProductCategoryMembers/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value);
+    @PATCH("ProductCategoryMembers/{productCategoryMemberId}")
+    Call<String> patch(@Path("productCategoryMemberId") String id, @Body CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("ProductCategoryMembers/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("ProductCategoryMembers/{productCategoryMemberId}")
+    Call<String> delete(@Path("productCategoryMemberId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

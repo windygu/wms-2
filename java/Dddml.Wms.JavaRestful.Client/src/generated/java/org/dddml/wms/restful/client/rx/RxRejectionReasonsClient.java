@@ -34,36 +34,36 @@ public interface RxRejectionReasonsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("RejectionReasons/{id}")
-    Observable<RejectionReasonStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("RejectionReasons/{rejectionReasonId}")
+    Observable<RejectionReasonStateDto> get(@Path("rejectionReasonId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("RejectionReasons/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("RejectionReasons/{id}/_stateEvents/{version}")
-    Observable<RejectionReasonStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("RejectionReasons/{rejectionReasonId}/_stateEvents/{version}")
+    Observable<RejectionReasonStateEventDto> getStateEvent(@Path("rejectionReasonId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("RejectionReasons/{id}/_historyStates/{version}")
-    Observable<RejectionReasonStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("RejectionReasons/{rejectionReasonId}/_historyStates/{version}")
+    Observable<RejectionReasonStateDto> getHistoryState(@Path("rejectionReasonId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("RejectionReasons/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value);
+    @PUT("RejectionReasons/{rejectionReasonId}")
+    Observable<String> put(@Path("rejectionReasonId") String id, @Body CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value);
 
     @Headers("Accept: application/json")
     @POST("RejectionReasons")
     Observable<String> post(@Body CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("RejectionReasons/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchRejectionReasonDto.MergePatchRejectionReasonDto value);
+    @PATCH("RejectionReasons/{rejectionReasonId}")
+    Observable<String> patch(@Path("rejectionReasonId") String id, @Body CreateOrMergePatchRejectionReasonDto.MergePatchRejectionReasonDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("RejectionReasons/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("RejectionReasons/{rejectionReasonId}")
+    Observable<String> delete(@Path("rejectionReasonId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

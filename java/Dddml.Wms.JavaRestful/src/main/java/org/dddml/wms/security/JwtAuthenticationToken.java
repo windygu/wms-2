@@ -22,7 +22,7 @@ public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken 
 
     public JwtAuthenticationToken(JwtUser user, Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
         super(principal, credentials, authorities);
-
+        this.user = user;
     }
 
     public JwtAuthenticationToken(String authToken) {

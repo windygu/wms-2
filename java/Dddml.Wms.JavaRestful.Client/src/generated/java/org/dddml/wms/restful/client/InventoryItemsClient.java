@@ -34,36 +34,36 @@ public interface InventoryItemsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("InventoryItems/{id}")
-    Call<InventoryItemStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("InventoryItems/{inventoryItemId}")
+    Call<InventoryItemStateDto> get(@Path("inventoryItemId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryItems/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("InventoryItems/{id}/_stateEvents/{version}")
-    Call<InventoryItemStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("InventoryItems/{inventoryItemId}/_stateEvents/{version}")
+    Call<InventoryItemStateEventDto> getStateEvent(@Path("inventoryItemId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("InventoryItems/{id}/_historyStates/{version}")
-    Call<InventoryItemStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("InventoryItems/{inventoryItemId}/_historyStates/{version}")
+    Call<InventoryItemStateDto> getHistoryState(@Path("inventoryItemId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InventoryItems/{inventoryItemId}/InventoryItemEntries/{entrySeqId}")
     Call<InventoryItemEntryStateDto> getInventoryItemEntry(@Path("inventoryItemId") String inventoryItemId, @Path("entrySeqId") Long entrySeqId);
  
     @Headers("Accept: application/json")
-    @PUT("InventoryItems/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchInventoryItemDto.CreateInventoryItemDto value);
+    @PUT("InventoryItems/{inventoryItemId}")
+    Call<String> put(@Path("inventoryItemId") String id, @Body CreateOrMergePatchInventoryItemDto.CreateInventoryItemDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("InventoryItems/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchInventoryItemDto.MergePatchInventoryItemDto value);
+    @PATCH("InventoryItems/{inventoryItemId}")
+    Call<String> patch(@Path("inventoryItemId") String id, @Body CreateOrMergePatchInventoryItemDto.MergePatchInventoryItemDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("InventoryItems/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("InventoryItems/{inventoryItemId}")
+    Call<String> delete(@Path("inventoryItemId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

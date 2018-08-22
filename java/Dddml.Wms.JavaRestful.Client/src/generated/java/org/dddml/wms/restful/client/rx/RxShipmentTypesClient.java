@@ -34,32 +34,32 @@ public interface RxShipmentTypesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("ShipmentTypes/{id}")
-    Observable<ShipmentTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("ShipmentTypes/{shipmentTypeId}")
+    Observable<ShipmentTypeStateDto> get(@Path("shipmentTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ShipmentTypes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("ShipmentTypes/{id}/_historyStates/{version}")
-    Observable<ShipmentTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("ShipmentTypes/{shipmentTypeId}/_historyStates/{version}")
+    Observable<ShipmentTypeStateDto> getHistoryState(@Path("shipmentTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("ShipmentTypes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value);
+    @PUT("ShipmentTypes/{shipmentTypeId}")
+    Observable<String> put(@Path("shipmentTypeId") String id, @Body CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("ShipmentTypes")
     Observable<String> post(@Body CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("ShipmentTypes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchShipmentTypeDto.MergePatchShipmentTypeDto value);
+    @PATCH("ShipmentTypes/{shipmentTypeId}")
+    Observable<String> patch(@Path("shipmentTypeId") String id, @Body CreateOrMergePatchShipmentTypeDto.MergePatchShipmentTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("ShipmentTypes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("ShipmentTypes/{shipmentTypeId}")
+    Observable<String> delete(@Path("shipmentTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -34,32 +34,32 @@ public interface RxDamageTypesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("DamageTypes/{id}")
-    Observable<DamageTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("DamageTypes/{damageTypeId}")
+    Observable<DamageTypeStateDto> get(@Path("damageTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DamageTypes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("DamageTypes/{id}/_historyStates/{version}")
-    Observable<DamageTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("DamageTypes/{damageTypeId}/_historyStates/{version}")
+    Observable<DamageTypeStateDto> getHistoryState(@Path("damageTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("DamageTypes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
+    @PUT("DamageTypes/{damageTypeId}")
+    Observable<String> put(@Path("damageTypeId") String id, @Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("DamageTypes")
     Observable<String> post(@Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("DamageTypes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value);
+    @PATCH("DamageTypes/{damageTypeId}")
+    Observable<String> patch(@Path("damageTypeId") String id, @Body CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("DamageTypes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("DamageTypes/{damageTypeId}")
+    Observable<String> delete(@Path("damageTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

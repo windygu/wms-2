@@ -35,48 +35,48 @@ public interface PhysicalInventoriesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("PhysicalInventories/{id}")
-    Call<PhysicalInventoryStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("PhysicalInventories/{documentNumber}")
+    Call<PhysicalInventoryStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("PhysicalInventories/{id}/_stateEvents/{version}")
-    Call<PhysicalInventoryStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("PhysicalInventories/{documentNumber}/_stateEvents/{version}")
+    Call<PhysicalInventoryStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("PhysicalInventories/{id}/_historyStates/{version}")
-    Call<PhysicalInventoryStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("PhysicalInventories/{documentNumber}/_historyStates/{version}")
+    Call<PhysicalInventoryStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
     Call<PhysicalInventoryLineStateDto> getPhysicalInventoryLine(@Path("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @Path("inventoryItemId") String inventoryItemId);
  
     @Headers("Accept: application/json")
-    @PUT("PhysicalInventories/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
+    @PUT("PhysicalInventories/{documentNumber}")
+    Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
     @POST("PhysicalInventories")
     Call<String> post(@Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("PhysicalInventories/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
+    @PATCH("PhysicalInventories/{documentNumber}")
+    Call<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("PhysicalInventories/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("PhysicalInventories/{documentNumber}")
+    Call<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("PhysicalInventories/{id}/_commands/CountItem")
-    Call<String> countItem(@Path("id") String id, @Body PhysicalInventoryCommandDtos.CountItemRequestContent content);
+    @PUT("PhysicalInventories/{documentNumber}/_commands/CountItem")
+    Call<String> countItem(@Path("documentNumber") String documentNumber, @Body PhysicalInventoryCommandDtos.CountItemRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("PhysicalInventories/{id}/_commands/DocumentAction")
-    Call<String> documentAction(@Path("id") String id, @Body PhysicalInventoryCommandDtos.DocumentActionRequestContent content);
+    @PUT("PhysicalInventories/{documentNumber}/_commands/DocumentAction")
+    Call<String> documentAction(@Path("documentNumber") String documentNumber, @Body PhysicalInventoryCommandDtos.DocumentActionRequestContent content);
 
 }
 

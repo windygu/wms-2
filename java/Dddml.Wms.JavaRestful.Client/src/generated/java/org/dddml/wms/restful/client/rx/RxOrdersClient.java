@@ -35,20 +35,20 @@ public interface RxOrdersClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Orders/{id}")
-    Observable<OrderStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Orders/{orderId}")
+    Observable<OrderStateDto> get(@Path("orderId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Orders/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Orders/{id}/_stateEvents/{version}")
-    Observable<OrderStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Orders/{orderId}/_stateEvents/{version}")
+    Observable<OrderStateEventDto> getStateEvent(@Path("orderId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Orders/{id}/_historyStates/{version}")
-    Observable<OrderStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Orders/{orderId}/_historyStates/{version}")
+    Observable<OrderStateDto> getHistoryState(@Path("orderId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderRoles/{partyRoleId}")
@@ -63,28 +63,28 @@ public interface RxOrdersClient {
     Observable<OrderShipGroupStateDto> getOrderShipGroup(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId);
  
     @Headers("Accept: application/json")
+    @PUT("Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction")
+    Observable<String> orderShipGroupAction(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
+
+    @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
     Observable<OrderItemShipGroupAssociationStateDto> getOrderItemShipGroupAssociation(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @Path("orderItemSeqId") String orderItemSeqId);
  
     @Headers("Accept: application/json")
-    @PUT("Orders/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
+    @PUT("Orders/{orderId}")
+    Observable<String> put(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
 
     @Headers("Accept: application/json")
     @POST("Orders")
     Observable<String> post(@Body CreateOrMergePatchOrderDto.CreateOrderDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Orders/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
+    @PATCH("Orders/{orderId}")
+    Observable<String> patch(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Orders/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
-
-    @Headers("Accept: application/json")
-    @PUT("Orders/{id}/_commands/OrderShipGroupAction")
-    Observable<String> orderShipGroupAction(@Path("id") String id, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
+    @DELETE("Orders/{orderId}")
+    Observable<String> delete(@Path("orderId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

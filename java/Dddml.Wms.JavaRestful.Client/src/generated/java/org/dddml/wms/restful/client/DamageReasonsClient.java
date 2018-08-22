@@ -33,36 +33,36 @@ public interface DamageReasonsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("DamageReasons/{id}")
-    Call<DamageReasonStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("DamageReasons/{damageReasonId}")
+    Call<DamageReasonStateDto> get(@Path("damageReasonId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DamageReasons/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("DamageReasons/{id}/_stateEvents/{version}")
-    Call<DamageReasonStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("DamageReasons/{damageReasonId}/_stateEvents/{version}")
+    Call<DamageReasonStateEventDto> getStateEvent(@Path("damageReasonId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("DamageReasons/{id}/_historyStates/{version}")
-    Call<DamageReasonStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("DamageReasons/{damageReasonId}/_historyStates/{version}")
+    Call<DamageReasonStateDto> getHistoryState(@Path("damageReasonId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("DamageReasons/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value);
+    @PUT("DamageReasons/{damageReasonId}")
+    Call<String> put(@Path("damageReasonId") String id, @Body CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value);
 
     @Headers("Accept: application/json")
     @POST("DamageReasons")
     Call<String> post(@Body CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("DamageReasons/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchDamageReasonDto.MergePatchDamageReasonDto value);
+    @PATCH("DamageReasons/{damageReasonId}")
+    Call<String> patch(@Path("damageReasonId") String id, @Body CreateOrMergePatchDamageReasonDto.MergePatchDamageReasonDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("DamageReasons/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("DamageReasons/{damageReasonId}")
+    Call<String> delete(@Path("damageReasonId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

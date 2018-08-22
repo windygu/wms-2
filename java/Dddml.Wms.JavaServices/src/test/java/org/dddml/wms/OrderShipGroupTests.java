@@ -1,5 +1,6 @@
 package org.dddml.wms;
 
+import org.dddml.wms.domain.order.*;
 import org.dddml.wms.domain.party.AbstractPartyCommand;
 import org.dddml.wms.domain.party.PartyApplicationService;
 import org.dddml.wms.domain.party.PartyCommand;
@@ -34,11 +35,14 @@ public class OrderShipGroupTests {
 
     private ShipmentApplicationService shipmentApplicationService;
 
+    private OrderApplicationService orderApplicationService;
+
     public final void setUp() {
         orderShipGroupApplicationService = (OrderShipGroupApplicationService) ApplicationContext.current.get("orderShipGroupApplicationService");
         partyApplicationService = (PartyApplicationService) ApplicationContext.current.get("partyApplicationService");
         productApplicationService = (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
         shipmentApplicationService = (ShipmentApplicationService) ApplicationContext.current.get("shipmentApplicationService");
+        orderApplicationService = (OrderApplicationService) ApplicationContext.current.get("orderApplicationService");
     }
 
     public void testCreatePOShipGroup1() {
@@ -109,6 +113,16 @@ public class OrderShipGroupTests {
         createPOShipment.setShipGroupSeqId(createPOShipGroup.getShipGroupSeqId());
         createPOShipment.setCommandId(createPOShipGroup.getShipGroupSeqId() + "");
         orderShipGroupApplicationService.when(createPOShipment);
+
+        String orderId = createPOShipGroup.getOrderId();
+        Long shipGroupSeqId = createPOShipGroup.getShipGroupSeqId();
+        OrderState orderState = orderApplicationService.get(orderId);
+        Long version = orderState.getVersion();
+
+        //OrderCommands.OrderShipGroupAction orderShipGroupAction = new OrderCommands.OrderShipGroupAction();
+        //orderShipGroupAction.setOrderShipGroupId(new OrderShipGroupId(orderId, shipGroupSeqId));//订单 Id（合同号）,与通知单号
+
+
     }
 
 

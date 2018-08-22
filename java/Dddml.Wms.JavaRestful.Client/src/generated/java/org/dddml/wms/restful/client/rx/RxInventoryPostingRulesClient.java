@@ -35,36 +35,36 @@ public interface RxInventoryPostingRulesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("InventoryPostingRules/{id}")
-    Observable<InventoryPostingRuleStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("InventoryPostingRules/{inventoryPostingRuleId}")
+    Observable<InventoryPostingRuleStateDto> get(@Path("inventoryPostingRuleId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryPostingRules/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("InventoryPostingRules/{id}/_stateEvents/{version}")
-    Observable<InventoryPostingRuleStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("InventoryPostingRules/{inventoryPostingRuleId}/_stateEvents/{version}")
+    Observable<InventoryPostingRuleStateEventDto> getStateEvent(@Path("inventoryPostingRuleId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("InventoryPostingRules/{id}/_historyStates/{version}")
-    Observable<InventoryPostingRuleStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("InventoryPostingRules/{inventoryPostingRuleId}/_historyStates/{version}")
+    Observable<InventoryPostingRuleStateDto> getHistoryState(@Path("inventoryPostingRuleId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("InventoryPostingRules/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value);
+    @PUT("InventoryPostingRules/{inventoryPostingRuleId}")
+    Observable<String> put(@Path("inventoryPostingRuleId") String id, @Body CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value);
 
     @Headers("Accept: application/json")
     @POST("InventoryPostingRules")
     Observable<String> post(@Body CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("InventoryPostingRules/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchInventoryPostingRuleDto.MergePatchInventoryPostingRuleDto value);
+    @PATCH("InventoryPostingRules/{inventoryPostingRuleId}")
+    Observable<String> patch(@Path("inventoryPostingRuleId") String id, @Body CreateOrMergePatchInventoryPostingRuleDto.MergePatchInventoryPostingRuleDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("InventoryPostingRules/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("InventoryPostingRules/{inventoryPostingRuleId}")
+    Observable<String> delete(@Path("inventoryPostingRuleId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

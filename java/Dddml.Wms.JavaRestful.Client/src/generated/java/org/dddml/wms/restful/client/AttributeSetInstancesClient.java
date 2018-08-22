@@ -34,24 +34,24 @@ public interface AttributeSetInstancesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstances/{id}")
-    Call<Map<String, Object>> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("AttributeSetInstances/{attributeSetInstanceId}")
+    Call<Map<String, Object>> get(@Path("attributeSetInstanceId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstances/{id}/_stateEvents/{version}")
-    Call<AttributeSetInstanceStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("AttributeSetInstances/{attributeSetInstanceId}/_stateEvents/{version}")
+    Call<AttributeSetInstanceStateEventDto> getStateEvent(@Path("attributeSetInstanceId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstances/{id}/_historyStates/{version}")
-    Call<AttributeSetInstanceStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("AttributeSetInstances/{attributeSetInstanceId}/_historyStates/{version}")
+    Call<AttributeSetInstanceStateDto> getHistoryState(@Path("attributeSetInstanceId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("AttributeSetInstances/{id}")
-    Call<String> put(@Path("id") String id, @Body Map<String, Object> value);
+    @PUT("AttributeSetInstances/{attributeSetInstanceId}")
+    Call<String> put(@Path("attributeSetInstanceId") String id, @Body Map<String, Object> value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSetInstances")

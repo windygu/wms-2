@@ -33,32 +33,32 @@ public interface InventoryPRTriggeredsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("InventoryPRTriggereds/{id}")
-    Call<InventoryPRTriggeredStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("InventoryPRTriggereds/{inventoryPRTriggeredId}")
+    Call<InventoryPRTriggeredStateDto> get(@Path("inventoryPRTriggeredId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryPRTriggereds/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("InventoryPRTriggereds/{id}/_historyStates/{version}")
-    Call<InventoryPRTriggeredStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("InventoryPRTriggereds/{inventoryPRTriggeredId}/_historyStates/{version}")
+    Call<InventoryPRTriggeredStateDto> getHistoryState(@Path("inventoryPRTriggeredId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("InventoryPRTriggereds/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
+    @PUT("InventoryPRTriggereds/{inventoryPRTriggeredId}")
+    Call<String> put(@Path("inventoryPRTriggeredId") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
     @POST("InventoryPRTriggereds")
     Call<InventoryPRTriggeredId> post(@Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("InventoryPRTriggereds/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value);
+    @PATCH("InventoryPRTriggereds/{inventoryPRTriggeredId}")
+    Call<String> patch(@Path("inventoryPRTriggeredId") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("InventoryPRTriggereds/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("InventoryPRTriggereds/{inventoryPRTriggeredId}")
+    Call<String> delete(@Path("inventoryPRTriggeredId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

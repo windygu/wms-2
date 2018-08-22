@@ -33,36 +33,36 @@ public interface LocatorsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Locators/{id}")
-    Call<LocatorStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Locators/{locatorId}")
+    Call<LocatorStateDto> get(@Path("locatorId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Locators/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Locators/{id}/_stateEvents/{version}")
-    Call<LocatorStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Locators/{locatorId}/_stateEvents/{version}")
+    Call<LocatorStateEventDto> getStateEvent(@Path("locatorId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Locators/{id}/_historyStates/{version}")
-    Call<LocatorStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Locators/{locatorId}/_historyStates/{version}")
+    Call<LocatorStateDto> getHistoryState(@Path("locatorId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Locators/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
+    @PUT("Locators/{locatorId}")
+    Call<String> put(@Path("locatorId") String id, @Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
 
     @Headers("Accept: application/json")
     @POST("Locators")
     Call<String> post(@Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Locators/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchLocatorDto.MergePatchLocatorDto value);
+    @PATCH("Locators/{locatorId}")
+    Call<String> patch(@Path("locatorId") String id, @Body CreateOrMergePatchLocatorDto.MergePatchLocatorDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Locators/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Locators/{locatorId}")
+    Call<String> delete(@Path("locatorId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

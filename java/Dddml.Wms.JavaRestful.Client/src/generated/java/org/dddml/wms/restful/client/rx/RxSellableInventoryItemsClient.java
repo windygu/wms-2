@@ -37,36 +37,36 @@ public interface RxSellableInventoryItemsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("SellableInventoryItems/{id}")
-    Observable<SellableInventoryItemStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("SellableInventoryItems/{sellableInventoryItemId}")
+    Observable<SellableInventoryItemStateDto> get(@Path("sellableInventoryItemId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("SellableInventoryItems/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("SellableInventoryItems/{id}/_historyStates/{version}")
-    Observable<SellableInventoryItemStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("SellableInventoryItems/{sellableInventoryItemId}/_historyStates/{version}")
+    Observable<SellableInventoryItemStateDto> getHistoryState(@Path("sellableInventoryItemId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}")
     Observable<SellableInventoryItemEntryStateDto> getSellableInventoryItemEntry(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Path("entrySeqId") Long entrySeqId);
  
     @Headers("Accept: application/json")
-    @PUT("SellableInventoryItems/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
+    @PUT("SellableInventoryItems/{sellableInventoryItemId}")
+    Observable<String> put(@Path("sellableInventoryItemId") String id, @Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
 
     @Headers("Accept: application/json")
     @POST("SellableInventoryItems")
     Observable<InventoryItemId> post(@Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("SellableInventoryItems/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value);
+    @PATCH("SellableInventoryItems/{sellableInventoryItemId}")
+    Observable<String> patch(@Path("sellableInventoryItemId") String id, @Body CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("SellableInventoryItems/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("SellableInventoryItems/{sellableInventoryItemId}")
+    Observable<String> delete(@Path("sellableInventoryItemId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

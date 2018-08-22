@@ -33,36 +33,36 @@ public interface OrganizationsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Organizations/{id}")
-    Call<PartyStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Organizations/{partyId}")
+    Call<PartyStateDto> get(@Path("partyId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Organizations/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Organizations/{id}/_stateEvents/{version}")
-    Call<PartyStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Organizations/{partyId}/_stateEvents/{version}")
+    Call<PartyStateEventDto> getStateEvent(@Path("partyId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Organizations/{id}/_historyStates/{version}")
-    Call<PartyStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Organizations/{partyId}/_historyStates/{version}")
+    Call<PartyStateDto> getHistoryState(@Path("partyId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Organizations/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
+    @PUT("Organizations/{partyId}")
+    Call<String> put(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
     @POST("Organizations")
     Call<String> post(@Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Organizations/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
+    @PATCH("Organizations/{partyId}")
+    Call<String> patch(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Organizations/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Organizations/{partyId}")
+    Call<String> delete(@Path("partyId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

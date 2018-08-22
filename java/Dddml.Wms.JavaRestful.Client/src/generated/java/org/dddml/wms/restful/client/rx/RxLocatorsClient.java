@@ -34,36 +34,36 @@ public interface RxLocatorsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Locators/{id}")
-    Observable<LocatorStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Locators/{locatorId}")
+    Observable<LocatorStateDto> get(@Path("locatorId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Locators/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Locators/{id}/_stateEvents/{version}")
-    Observable<LocatorStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Locators/{locatorId}/_stateEvents/{version}")
+    Observable<LocatorStateEventDto> getStateEvent(@Path("locatorId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Locators/{id}/_historyStates/{version}")
-    Observable<LocatorStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Locators/{locatorId}/_historyStates/{version}")
+    Observable<LocatorStateDto> getHistoryState(@Path("locatorId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Locators/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
+    @PUT("Locators/{locatorId}")
+    Observable<String> put(@Path("locatorId") String id, @Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
 
     @Headers("Accept: application/json")
     @POST("Locators")
     Observable<String> post(@Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Locators/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchLocatorDto.MergePatchLocatorDto value);
+    @PATCH("Locators/{locatorId}")
+    Observable<String> patch(@Path("locatorId") String id, @Body CreateOrMergePatchLocatorDto.MergePatchLocatorDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Locators/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Locators/{locatorId}")
+    Observable<String> delete(@Path("locatorId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

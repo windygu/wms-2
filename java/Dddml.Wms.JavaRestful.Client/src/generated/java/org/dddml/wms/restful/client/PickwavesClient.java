@@ -33,36 +33,36 @@ public interface PickwavesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Pickwaves/{id}")
-    Call<PickwaveStateDto> get(@Path("id") Long id, @Query("fields") String fields);
+    @GET("Pickwaves/{pickwaveId}")
+    Call<PickwaveStateDto> get(@Path("pickwaveId") Long id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Pickwaves/{id}/_stateEvents/{version}")
-    Call<PickwaveStateEventDto> getStateEvent(@Path("id") Long id, @Path("version") long version);
+    @GET("Pickwaves/{pickwaveId}/_stateEvents/{version}")
+    Call<PickwaveStateEventDto> getStateEvent(@Path("pickwaveId") Long id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Pickwaves/{id}/_historyStates/{version}")
-    Call<PickwaveStateDto> getHistoryState(@Path("id") Long id, @Path("version") long version);
+    @GET("Pickwaves/{pickwaveId}/_historyStates/{version}")
+    Call<PickwaveStateDto> getHistoryState(@Path("pickwaveId") Long id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Pickwaves/{id}")
-    Call<String> put(@Path("id") Long id, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
+    @PUT("Pickwaves/{pickwaveId}")
+    Call<String> put(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
 
     @Headers("Accept: application/json")
     @POST("Pickwaves")
     Call<Long> post(@Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Pickwaves/{id}")
-    Call<String> patch(@Path("id") Long id, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
+    @PATCH("Pickwaves/{pickwaveId}")
+    Call<String> patch(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Pickwaves/{id}")
-    Call<String> delete(@Path("id") Long id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Pickwaves/{pickwaveId}")
+    Call<String> delete(@Path("pickwaveId") Long id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

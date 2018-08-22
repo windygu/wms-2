@@ -34,36 +34,36 @@ public interface RxOrderItemShipGrpInvReservationsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("OrderItemShipGrpInvReservations/{id}")
-    Observable<OrderItemShipGrpInvReservationStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
+    Observable<OrderItemShipGrpInvReservationStateDto> get(@Path("orderItemShipGrpInvResId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("OrderItemShipGrpInvReservations/{id}/_stateEvents/{version}")
-    Observable<OrderItemShipGrpInvReservationStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}/_stateEvents/{version}")
+    Observable<OrderItemShipGrpInvReservationStateEventDto> getStateEvent(@Path("orderItemShipGrpInvResId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("OrderItemShipGrpInvReservations/{id}/_historyStates/{version}")
-    Observable<OrderItemShipGrpInvReservationStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}/_historyStates/{version}")
+    Observable<OrderItemShipGrpInvReservationStateDto> getHistoryState(@Path("orderItemShipGrpInvResId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("OrderItemShipGrpInvReservations/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value);
+    @PUT("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
+    Observable<String> put(@Path("orderItemShipGrpInvResId") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value);
 
     @Headers("Accept: application/json")
     @POST("OrderItemShipGrpInvReservations")
     Observable<OrderItemShipGrpInvResId> post(@Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("OrderItemShipGrpInvReservations/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value);
+    @PATCH("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
+    Observable<String> patch(@Path("orderItemShipGrpInvResId") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("OrderItemShipGrpInvReservations/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
+    Observable<String> delete(@Path("orderItemShipGrpInvResId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

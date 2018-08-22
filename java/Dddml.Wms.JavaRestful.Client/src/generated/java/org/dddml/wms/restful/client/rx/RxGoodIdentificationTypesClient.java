@@ -34,36 +34,36 @@ public interface RxGoodIdentificationTypesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("GoodIdentificationTypes/{id}")
-    Observable<GoodIdentificationTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Observable<GoodIdentificationTypeStateDto> get(@Path("goodIdentificationTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("GoodIdentificationTypes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("GoodIdentificationTypes/{id}/_stateEvents/{version}")
-    Observable<GoodIdentificationTypeStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("GoodIdentificationTypes/{goodIdentificationTypeId}/_stateEvents/{version}")
+    Observable<GoodIdentificationTypeStateEventDto> getStateEvent(@Path("goodIdentificationTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("GoodIdentificationTypes/{id}/_historyStates/{version}")
-    Observable<GoodIdentificationTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("GoodIdentificationTypes/{goodIdentificationTypeId}/_historyStates/{version}")
+    Observable<GoodIdentificationTypeStateDto> getHistoryState(@Path("goodIdentificationTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("GoodIdentificationTypes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto value);
+    @PUT("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Observable<String> put(@Path("goodIdentificationTypeId") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("GoodIdentificationTypes")
     Observable<String> post(@Body CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("GoodIdentificationTypes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.MergePatchGoodIdentificationTypeDto value);
+    @PATCH("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Observable<String> patch(@Path("goodIdentificationTypeId") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.MergePatchGoodIdentificationTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("GoodIdentificationTypes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Observable<String> delete(@Path("goodIdentificationTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

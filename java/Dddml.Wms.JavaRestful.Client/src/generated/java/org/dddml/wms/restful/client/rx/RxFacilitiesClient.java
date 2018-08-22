@@ -34,36 +34,36 @@ public interface RxFacilitiesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Facilities/{id}")
-    Observable<FacilityStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Facilities/{facilityId}")
+    Observable<FacilityStateDto> get(@Path("facilityId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Facilities/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Facilities/{id}/_stateEvents/{version}")
-    Observable<FacilityStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Facilities/{facilityId}/_stateEvents/{version}")
+    Observable<FacilityStateEventDto> getStateEvent(@Path("facilityId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Facilities/{id}/_historyStates/{version}")
-    Observable<FacilityStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Facilities/{facilityId}/_historyStates/{version}")
+    Observable<FacilityStateDto> getHistoryState(@Path("facilityId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Facilities/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchFacilityDto.CreateFacilityDto value);
+    @PUT("Facilities/{facilityId}")
+    Observable<String> put(@Path("facilityId") String id, @Body CreateOrMergePatchFacilityDto.CreateFacilityDto value);
 
     @Headers("Accept: application/json")
     @POST("Facilities")
     Observable<String> post(@Body CreateOrMergePatchFacilityDto.CreateFacilityDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Facilities/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchFacilityDto.MergePatchFacilityDto value);
+    @PATCH("Facilities/{facilityId}")
+    Observable<String> patch(@Path("facilityId") String id, @Body CreateOrMergePatchFacilityDto.MergePatchFacilityDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Facilities/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Facilities/{facilityId}")
+    Observable<String> delete(@Path("facilityId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

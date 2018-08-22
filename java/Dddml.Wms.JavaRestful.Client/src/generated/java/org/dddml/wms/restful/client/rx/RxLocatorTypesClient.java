@@ -34,36 +34,36 @@ public interface RxLocatorTypesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("LocatorTypes/{id}")
-    Observable<LocatorTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("LocatorTypes/{locatorTypeId}")
+    Observable<LocatorTypeStateDto> get(@Path("locatorTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("LocatorTypes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("LocatorTypes/{id}/_stateEvents/{version}")
-    Observable<LocatorTypeStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("LocatorTypes/{locatorTypeId}/_stateEvents/{version}")
+    Observable<LocatorTypeStateEventDto> getStateEvent(@Path("locatorTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("LocatorTypes/{id}/_historyStates/{version}")
-    Observable<LocatorTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("LocatorTypes/{locatorTypeId}/_historyStates/{version}")
+    Observable<LocatorTypeStateDto> getHistoryState(@Path("locatorTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("LocatorTypes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchLocatorTypeDto.CreateLocatorTypeDto value);
+    @PUT("LocatorTypes/{locatorTypeId}")
+    Observable<String> put(@Path("locatorTypeId") String id, @Body CreateOrMergePatchLocatorTypeDto.CreateLocatorTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("LocatorTypes")
     Observable<String> post(@Body CreateOrMergePatchLocatorTypeDto.CreateLocatorTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("LocatorTypes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchLocatorTypeDto.MergePatchLocatorTypeDto value);
+    @PATCH("LocatorTypes/{locatorTypeId}")
+    Observable<String> patch(@Path("locatorTypeId") String id, @Body CreateOrMergePatchLocatorTypeDto.MergePatchLocatorTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("LocatorTypes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("LocatorTypes/{locatorTypeId}")
+    Observable<String> delete(@Path("locatorTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

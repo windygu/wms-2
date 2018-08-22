@@ -38,20 +38,20 @@ public interface RxAttributesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Attributes/{id}")
-    Observable<AttributeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Attributes/{attributeId}")
+    Observable<AttributeStateDto> get(@Path("attributeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Attributes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Attributes/{id}/_stateEvents/{version}")
-    Observable<AttributeStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Attributes/{attributeId}/_stateEvents/{version}")
+    Observable<AttributeStateEventDto> getStateEvent(@Path("attributeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Attributes/{id}/_historyStates/{version}")
-    Observable<AttributeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Attributes/{attributeId}/_historyStates/{version}")
+    Observable<AttributeStateDto> getHistoryState(@Path("attributeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeValues/{value}")
@@ -62,20 +62,20 @@ public interface RxAttributesClient {
     Observable<AttributeAliasStateDto> getAttributeAlias(@Path("attributeId") String attributeId, @Path("code") String code);
  
     @Headers("Accept: application/json")
-    @PUT("Attributes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);
+    @PUT("Attributes/{attributeId}")
+    Observable<String> put(@Path("attributeId") String id, @Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);
 
     @Headers("Accept: application/json")
     @POST("Attributes")
     Observable<String> post(@Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Attributes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchAttributeDto.MergePatchAttributeDto value);
+    @PATCH("Attributes/{attributeId}")
+    Observable<String> patch(@Path("attributeId") String id, @Body CreateOrMergePatchAttributeDto.MergePatchAttributeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Attributes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Attributes/{attributeId}")
+    Observable<String> delete(@Path("attributeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

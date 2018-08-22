@@ -33,36 +33,36 @@ public interface PeopleClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("People/{id}")
-    Call<PartyStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("People/{partyId}")
+    Call<PartyStateDto> get(@Path("partyId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("People/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("People/{id}/_stateEvents/{version}")
-    Call<PartyStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("People/{partyId}/_stateEvents/{version}")
+    Call<PartyStateEventDto> getStateEvent(@Path("partyId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("People/{id}/_historyStates/{version}")
-    Call<PartyStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("People/{partyId}/_historyStates/{version}")
+    Call<PartyStateDto> getHistoryState(@Path("partyId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("People/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
+    @PUT("People/{partyId}")
+    Call<String> put(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
     @POST("People")
     Call<String> post(@Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("People/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
+    @PATCH("People/{partyId}")
+    Call<String> patch(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("People/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("People/{partyId}")
+    Call<String> delete(@Path("partyId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -33,36 +33,36 @@ public interface RoleTypesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("RoleTypes/{id}")
-    Call<RoleTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("RoleTypes/{roleTypeId}")
+    Call<RoleTypeStateDto> get(@Path("roleTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("RoleTypes/{id}/_stateEvents/{version}")
-    Call<RoleTypeStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("RoleTypes/{roleTypeId}/_stateEvents/{version}")
+    Call<RoleTypeStateEventDto> getStateEvent(@Path("roleTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("RoleTypes/{id}/_historyStates/{version}")
-    Call<RoleTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("RoleTypes/{roleTypeId}/_historyStates/{version}")
+    Call<RoleTypeStateDto> getHistoryState(@Path("roleTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("RoleTypes/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
+    @PUT("RoleTypes/{roleTypeId}")
+    Call<String> put(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("RoleTypes")
     Call<String> post(@Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("RoleTypes/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
+    @PATCH("RoleTypes/{roleTypeId}")
+    Call<String> patch(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("RoleTypes/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("RoleTypes/{roleTypeId}")
+    Call<String> delete(@Path("roleTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

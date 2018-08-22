@@ -34,40 +34,40 @@ public interface RxProductsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Products/{id}")
-    Observable<ProductStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Products/{productId}")
+    Observable<ProductStateDto> get(@Path("productId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Products/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Products/{id}/_stateEvents/{version}")
-    Observable<ProductStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Products/{productId}/_stateEvents/{version}")
+    Observable<ProductStateEventDto> getStateEvent(@Path("productId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Products/{id}/_historyStates/{version}")
-    Observable<ProductStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Products/{productId}/_historyStates/{version}")
+    Observable<ProductStateDto> getHistoryState(@Path("productId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Products/{productId}/GoodIdentifications/{goodIdentificationTypeId}")
     Observable<GoodIdentificationStateDto> getGoodIdentification(@Path("productId") String productId, @Path("goodIdentificationTypeId") String goodIdentificationTypeId);
  
     @Headers("Accept: application/json")
-    @PUT("Products/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchProductDto.CreateProductDto value);
+    @PUT("Products/{productId}")
+    Observable<String> put(@Path("productId") String id, @Body CreateOrMergePatchProductDto.CreateProductDto value);
 
     @Headers("Accept: application/json")
     @POST("Products")
     Observable<String> post(@Body CreateOrMergePatchProductDto.CreateProductDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Products/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchProductDto.MergePatchProductDto value);
+    @PATCH("Products/{productId}")
+    Observable<String> patch(@Path("productId") String id, @Body CreateOrMergePatchProductDto.MergePatchProductDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Products/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Products/{productId}")
+    Observable<String> delete(@Path("productId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

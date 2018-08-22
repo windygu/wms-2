@@ -33,36 +33,36 @@ public interface WarehousesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Warehouses/{id}")
-    Call<WarehouseStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Warehouses/{warehouseId}")
+    Call<WarehouseStateDto> get(@Path("warehouseId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Warehouses/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Warehouses/{id}/_stateEvents/{version}")
-    Call<WarehouseStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Warehouses/{warehouseId}/_stateEvents/{version}")
+    Call<WarehouseStateEventDto> getStateEvent(@Path("warehouseId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Warehouses/{id}/_historyStates/{version}")
-    Call<WarehouseStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Warehouses/{warehouseId}/_historyStates/{version}")
+    Call<WarehouseStateDto> getHistoryState(@Path("warehouseId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Warehouses/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
+    @PUT("Warehouses/{warehouseId}")
+    Call<String> put(@Path("warehouseId") String id, @Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
 
     @Headers("Accept: application/json")
     @POST("Warehouses")
     Call<String> post(@Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Warehouses/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value);
+    @PATCH("Warehouses/{warehouseId}")
+    Call<String> patch(@Path("warehouseId") String id, @Body CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Warehouses/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Warehouses/{warehouseId}")
+    Call<String> delete(@Path("warehouseId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

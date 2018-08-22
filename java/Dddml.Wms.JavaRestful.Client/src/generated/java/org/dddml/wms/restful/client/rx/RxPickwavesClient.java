@@ -34,36 +34,36 @@ public interface RxPickwavesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Pickwaves/{id}")
-    Observable<PickwaveStateDto> get(@Path("id") Long id, @Query("fields") String fields);
+    @GET("Pickwaves/{pickwaveId}")
+    Observable<PickwaveStateDto> get(@Path("pickwaveId") Long id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Pickwaves/{id}/_stateEvents/{version}")
-    Observable<PickwaveStateEventDto> getStateEvent(@Path("id") Long id, @Path("version") long version);
+    @GET("Pickwaves/{pickwaveId}/_stateEvents/{version}")
+    Observable<PickwaveStateEventDto> getStateEvent(@Path("pickwaveId") Long id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Pickwaves/{id}/_historyStates/{version}")
-    Observable<PickwaveStateDto> getHistoryState(@Path("id") Long id, @Path("version") long version);
+    @GET("Pickwaves/{pickwaveId}/_historyStates/{version}")
+    Observable<PickwaveStateDto> getHistoryState(@Path("pickwaveId") Long id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Pickwaves/{id}")
-    Observable<String> put(@Path("id") Long id, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
+    @PUT("Pickwaves/{pickwaveId}")
+    Observable<String> put(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
 
     @Headers("Accept: application/json")
     @POST("Pickwaves")
     Observable<Long> post(@Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Pickwaves/{id}")
-    Observable<String> patch(@Path("id") Long id, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
+    @PATCH("Pickwaves/{pickwaveId}")
+    Observable<String> patch(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Pickwaves/{id}")
-    Observable<String> delete(@Path("id") Long id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Pickwaves/{pickwaveId}")
+    Observable<String> delete(@Path("pickwaveId") Long id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

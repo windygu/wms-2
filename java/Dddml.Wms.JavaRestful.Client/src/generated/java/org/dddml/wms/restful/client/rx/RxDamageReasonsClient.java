@@ -34,36 +34,36 @@ public interface RxDamageReasonsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("DamageReasons/{id}")
-    Observable<DamageReasonStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("DamageReasons/{damageReasonId}")
+    Observable<DamageReasonStateDto> get(@Path("damageReasonId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DamageReasons/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("DamageReasons/{id}/_stateEvents/{version}")
-    Observable<DamageReasonStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("DamageReasons/{damageReasonId}/_stateEvents/{version}")
+    Observable<DamageReasonStateEventDto> getStateEvent(@Path("damageReasonId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("DamageReasons/{id}/_historyStates/{version}")
-    Observable<DamageReasonStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("DamageReasons/{damageReasonId}/_historyStates/{version}")
+    Observable<DamageReasonStateDto> getHistoryState(@Path("damageReasonId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("DamageReasons/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value);
+    @PUT("DamageReasons/{damageReasonId}")
+    Observable<String> put(@Path("damageReasonId") String id, @Body CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value);
 
     @Headers("Accept: application/json")
     @POST("DamageReasons")
     Observable<String> post(@Body CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("DamageReasons/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchDamageReasonDto.MergePatchDamageReasonDto value);
+    @PATCH("DamageReasons/{damageReasonId}")
+    Observable<String> patch(@Path("damageReasonId") String id, @Body CreateOrMergePatchDamageReasonDto.MergePatchDamageReasonDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("DamageReasons/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("DamageReasons/{damageReasonId}")
+    Observable<String> delete(@Path("damageReasonId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

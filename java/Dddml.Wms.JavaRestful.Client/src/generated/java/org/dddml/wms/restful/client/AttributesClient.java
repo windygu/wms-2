@@ -37,20 +37,20 @@ public interface AttributesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Attributes/{id}")
-    Call<AttributeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Attributes/{attributeId}")
+    Call<AttributeStateDto> get(@Path("attributeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Attributes/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Attributes/{id}/_stateEvents/{version}")
-    Call<AttributeStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Attributes/{attributeId}/_stateEvents/{version}")
+    Call<AttributeStateEventDto> getStateEvent(@Path("attributeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Attributes/{id}/_historyStates/{version}")
-    Call<AttributeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Attributes/{attributeId}/_historyStates/{version}")
+    Call<AttributeStateDto> getHistoryState(@Path("attributeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeValues/{value}")
@@ -61,20 +61,20 @@ public interface AttributesClient {
     Call<AttributeAliasStateDto> getAttributeAlias(@Path("attributeId") String attributeId, @Path("code") String code);
  
     @Headers("Accept: application/json")
-    @PUT("Attributes/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);
+    @PUT("Attributes/{attributeId}")
+    Call<String> put(@Path("attributeId") String id, @Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);
 
     @Headers("Accept: application/json")
     @POST("Attributes")
     Call<String> post(@Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Attributes/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchAttributeDto.MergePatchAttributeDto value);
+    @PATCH("Attributes/{attributeId}")
+    Call<String> patch(@Path("attributeId") String id, @Body CreateOrMergePatchAttributeDto.MergePatchAttributeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Attributes/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Attributes/{attributeId}")
+    Call<String> delete(@Path("attributeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

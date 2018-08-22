@@ -33,36 +33,36 @@ public interface LotsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Lots/{id}")
-    Call<LotStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Lots/{lotId}")
+    Call<LotStateDto> get(@Path("lotId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Lots/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Lots/{id}/_stateEvents/{version}")
-    Call<LotStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Lots/{lotId}/_stateEvents/{version}")
+    Call<LotStateEventDto> getStateEvent(@Path("lotId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Lots/{id}/_historyStates/{version}")
-    Call<LotStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Lots/{lotId}/_historyStates/{version}")
+    Call<LotStateDto> getHistoryState(@Path("lotId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Lots/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchLotDto.CreateLotDto value);
+    @PUT("Lots/{lotId}")
+    Call<String> put(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.CreateLotDto value);
 
     @Headers("Accept: application/json")
     @POST("Lots")
     Call<String> post(@Body CreateOrMergePatchLotDto.CreateLotDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Lots/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
+    @PATCH("Lots/{lotId}")
+    Call<String> patch(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Lots/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Lots/{lotId}")
+    Call<String> delete(@Path("lotId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

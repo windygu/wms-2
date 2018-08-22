@@ -34,32 +34,32 @@ public interface RxUomTypesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("UomTypes/{id}")
-    Observable<UomTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("UomTypes/{uomTypeId}")
+    Observable<UomTypeStateDto> get(@Path("uomTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("UomTypes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("UomTypes/{id}/_historyStates/{version}")
-    Observable<UomTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("UomTypes/{uomTypeId}/_historyStates/{version}")
+    Observable<UomTypeStateDto> getHistoryState(@Path("uomTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("UomTypes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
+    @PUT("UomTypes/{uomTypeId}")
+    Observable<String> put(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("UomTypes")
     Observable<String> post(@Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("UomTypes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
+    @PATCH("UomTypes/{uomTypeId}")
+    Observable<String> patch(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("UomTypes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("UomTypes/{uomTypeId}")
+    Observable<String> delete(@Path("uomTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

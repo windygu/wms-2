@@ -33,32 +33,32 @@ public interface DocumentTypesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("DocumentTypes/{id}")
-    Call<DocumentTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("DocumentTypes/{documentTypeId}")
+    Call<DocumentTypeStateDto> get(@Path("documentTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DocumentTypes/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("DocumentTypes/{id}/_historyStates/{version}")
-    Call<DocumentTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("DocumentTypes/{documentTypeId}/_historyStates/{version}")
+    Call<DocumentTypeStateDto> getHistoryState(@Path("documentTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("DocumentTypes/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value);
+    @PUT("DocumentTypes/{documentTypeId}")
+    Call<String> put(@Path("documentTypeId") String id, @Body CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("DocumentTypes")
     Call<String> post(@Body CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("DocumentTypes/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchDocumentTypeDto.MergePatchDocumentTypeDto value);
+    @PATCH("DocumentTypes/{documentTypeId}")
+    Call<String> patch(@Path("documentTypeId") String id, @Body CreateOrMergePatchDocumentTypeDto.MergePatchDocumentTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("DocumentTypes/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("DocumentTypes/{documentTypeId}")
+    Call<String> delete(@Path("documentTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

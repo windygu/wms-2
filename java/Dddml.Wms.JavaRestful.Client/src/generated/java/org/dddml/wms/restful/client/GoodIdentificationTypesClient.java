@@ -33,36 +33,36 @@ public interface GoodIdentificationTypesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("GoodIdentificationTypes/{id}")
-    Call<GoodIdentificationTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Call<GoodIdentificationTypeStateDto> get(@Path("goodIdentificationTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("GoodIdentificationTypes/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("GoodIdentificationTypes/{id}/_stateEvents/{version}")
-    Call<GoodIdentificationTypeStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("GoodIdentificationTypes/{goodIdentificationTypeId}/_stateEvents/{version}")
+    Call<GoodIdentificationTypeStateEventDto> getStateEvent(@Path("goodIdentificationTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("GoodIdentificationTypes/{id}/_historyStates/{version}")
-    Call<GoodIdentificationTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("GoodIdentificationTypes/{goodIdentificationTypeId}/_historyStates/{version}")
+    Call<GoodIdentificationTypeStateDto> getHistoryState(@Path("goodIdentificationTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("GoodIdentificationTypes/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto value);
+    @PUT("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Call<String> put(@Path("goodIdentificationTypeId") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("GoodIdentificationTypes")
     Call<String> post(@Body CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("GoodIdentificationTypes/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.MergePatchGoodIdentificationTypeDto value);
+    @PATCH("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Call<String> patch(@Path("goodIdentificationTypeId") String id, @Body CreateOrMergePatchGoodIdentificationTypeDto.MergePatchGoodIdentificationTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("GoodIdentificationTypes/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("GoodIdentificationTypes/{goodIdentificationTypeId}")
+    Call<String> delete(@Path("goodIdentificationTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

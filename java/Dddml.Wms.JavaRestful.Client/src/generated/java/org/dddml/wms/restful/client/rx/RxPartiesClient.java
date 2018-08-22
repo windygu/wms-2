@@ -34,36 +34,36 @@ public interface RxPartiesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Parties/{id}")
-    Observable<PartyStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Parties/{partyId}")
+    Observable<PartyStateDto> get(@Path("partyId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Parties/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Parties/{id}/_stateEvents/{version}")
-    Observable<PartyStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Parties/{partyId}/_stateEvents/{version}")
+    Observable<PartyStateEventDto> getStateEvent(@Path("partyId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Parties/{id}/_historyStates/{version}")
-    Observable<PartyStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Parties/{partyId}/_historyStates/{version}")
+    Observable<PartyStateDto> getHistoryState(@Path("partyId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Parties/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
+    @PUT("Parties/{partyId}")
+    Observable<String> put(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
     @POST("Parties")
     Observable<String> post(@Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Parties/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
+    @PATCH("Parties/{partyId}")
+    Observable<String> patch(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Parties/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Parties/{partyId}")
+    Observable<String> delete(@Path("partyId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

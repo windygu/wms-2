@@ -34,32 +34,32 @@ public interface RxDamageHandlingMethodsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("DamageHandlingMethods/{id}")
-    Observable<DamageHandlingMethodStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("DamageHandlingMethods/{damageHandlingMethodId}")
+    Observable<DamageHandlingMethodStateDto> get(@Path("damageHandlingMethodId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DamageHandlingMethods/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("DamageHandlingMethods/{id}/_historyStates/{version}")
-    Observable<DamageHandlingMethodStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("DamageHandlingMethods/{damageHandlingMethodId}/_historyStates/{version}")
+    Observable<DamageHandlingMethodStateDto> getHistoryState(@Path("damageHandlingMethodId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("DamageHandlingMethods/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value);
+    @PUT("DamageHandlingMethods/{damageHandlingMethodId}")
+    Observable<String> put(@Path("damageHandlingMethodId") String id, @Body CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value);
 
     @Headers("Accept: application/json")
     @POST("DamageHandlingMethods")
     Observable<String> post(@Body CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("DamageHandlingMethods/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value);
+    @PATCH("DamageHandlingMethods/{damageHandlingMethodId}")
+    Observable<String> patch(@Path("damageHandlingMethodId") String id, @Body CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("DamageHandlingMethods/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("DamageHandlingMethods/{damageHandlingMethodId}")
+    Observable<String> delete(@Path("damageHandlingMethodId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

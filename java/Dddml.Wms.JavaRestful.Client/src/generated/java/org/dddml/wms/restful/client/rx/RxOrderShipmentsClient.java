@@ -34,36 +34,36 @@ public interface RxOrderShipmentsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("OrderShipments/{id}")
-    Observable<OrderShipmentStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("OrderShipments/{orderShipmentId}")
+    Observable<OrderShipmentStateDto> get(@Path("orderShipmentId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("OrderShipments/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("OrderShipments/{id}/_stateEvents/{version}")
-    Observable<OrderShipmentStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("OrderShipments/{orderShipmentId}/_stateEvents/{version}")
+    Observable<OrderShipmentStateEventDto> getStateEvent(@Path("orderShipmentId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("OrderShipments/{id}/_historyStates/{version}")
-    Observable<OrderShipmentStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("OrderShipments/{orderShipmentId}/_historyStates/{version}")
+    Observable<OrderShipmentStateDto> getHistoryState(@Path("orderShipmentId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("OrderShipments/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto value);
+    @PUT("OrderShipments/{orderShipmentId}")
+    Observable<String> put(@Path("orderShipmentId") String id, @Body CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto value);
 
     @Headers("Accept: application/json")
     @POST("OrderShipments")
     Observable<OrderShipmentId> post(@Body CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("OrderShipments/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchOrderShipmentDto.MergePatchOrderShipmentDto value);
+    @PATCH("OrderShipments/{orderShipmentId}")
+    Observable<String> patch(@Path("orderShipmentId") String id, @Body CreateOrMergePatchOrderShipmentDto.MergePatchOrderShipmentDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("OrderShipments/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("OrderShipments/{orderShipmentId}")
+    Observable<String> delete(@Path("orderShipmentId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

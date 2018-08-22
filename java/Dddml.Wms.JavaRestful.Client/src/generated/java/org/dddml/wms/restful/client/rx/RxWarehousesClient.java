@@ -34,36 +34,36 @@ public interface RxWarehousesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Warehouses/{id}")
-    Observable<WarehouseStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Warehouses/{warehouseId}")
+    Observable<WarehouseStateDto> get(@Path("warehouseId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Warehouses/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Warehouses/{id}/_stateEvents/{version}")
-    Observable<WarehouseStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Warehouses/{warehouseId}/_stateEvents/{version}")
+    Observable<WarehouseStateEventDto> getStateEvent(@Path("warehouseId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Warehouses/{id}/_historyStates/{version}")
-    Observable<WarehouseStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Warehouses/{warehouseId}/_historyStates/{version}")
+    Observable<WarehouseStateDto> getHistoryState(@Path("warehouseId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Warehouses/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
+    @PUT("Warehouses/{warehouseId}")
+    Observable<String> put(@Path("warehouseId") String id, @Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
 
     @Headers("Accept: application/json")
     @POST("Warehouses")
     Observable<String> post(@Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Warehouses/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value);
+    @PATCH("Warehouses/{warehouseId}")
+    Observable<String> patch(@Path("warehouseId") String id, @Body CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Warehouses/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Warehouses/{warehouseId}")
+    Observable<String> delete(@Path("warehouseId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

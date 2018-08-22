@@ -34,32 +34,32 @@ public interface RxMovementTypesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("MovementTypes/{id}")
-    Observable<MovementTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("MovementTypes/{movementTypeId}")
+    Observable<MovementTypeStateDto> get(@Path("movementTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("MovementTypes/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("MovementTypes/{id}/_historyStates/{version}")
-    Observable<MovementTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("MovementTypes/{movementTypeId}/_historyStates/{version}")
+    Observable<MovementTypeStateDto> getHistoryState(@Path("movementTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("MovementTypes/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
+    @PUT("MovementTypes/{movementTypeId}")
+    Observable<String> put(@Path("movementTypeId") String id, @Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("MovementTypes")
     Observable<String> post(@Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("MovementTypes/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value);
+    @PATCH("MovementTypes/{movementTypeId}")
+    Observable<String> patch(@Path("movementTypeId") String id, @Body CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("MovementTypes/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("MovementTypes/{movementTypeId}")
+    Observable<String> delete(@Path("movementTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

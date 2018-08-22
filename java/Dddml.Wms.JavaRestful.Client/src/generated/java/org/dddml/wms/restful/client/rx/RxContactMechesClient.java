@@ -34,36 +34,36 @@ public interface RxContactMechesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("ContactMeches/{id}")
-    Observable<ContactMechStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("ContactMeches/{contactMechId}")
+    Observable<ContactMechStateDto> get(@Path("contactMechId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("ContactMeches/{id}/_stateEvents/{version}")
-    Observable<ContactMechStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("ContactMeches/{contactMechId}/_stateEvents/{version}")
+    Observable<ContactMechStateEventDto> getStateEvent(@Path("contactMechId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("ContactMeches/{id}/_historyStates/{version}")
-    Observable<ContactMechStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("ContactMeches/{contactMechId}/_historyStates/{version}")
+    Observable<ContactMechStateDto> getHistoryState(@Path("contactMechId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("ContactMeches/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
+    @PUT("ContactMeches/{contactMechId}")
+    Observable<String> put(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
 
     @Headers("Accept: application/json")
     @POST("ContactMeches")
     Observable<String> post(@Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("ContactMeches/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
+    @PATCH("ContactMeches/{contactMechId}")
+    Observable<String> patch(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("ContactMeches/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("ContactMeches/{contactMechId}")
+    Observable<String> delete(@Path("contactMechId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

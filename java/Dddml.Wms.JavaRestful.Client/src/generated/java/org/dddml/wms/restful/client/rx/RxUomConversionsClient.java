@@ -34,36 +34,36 @@ public interface RxUomConversionsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("UomConversions/{id}")
-    Observable<UomConversionStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("UomConversions/{uomConversionId}")
+    Observable<UomConversionStateDto> get(@Path("uomConversionId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("UomConversions/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("UomConversions/{id}/_stateEvents/{version}")
-    Observable<UomConversionStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("UomConversions/{uomConversionId}/_stateEvents/{version}")
+    Observable<UomConversionStateEventDto> getStateEvent(@Path("uomConversionId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("UomConversions/{id}/_historyStates/{version}")
-    Observable<UomConversionStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("UomConversions/{uomConversionId}/_historyStates/{version}")
+    Observable<UomConversionStateDto> getHistoryState(@Path("uomConversionId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("UomConversions/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchUomConversionDto.CreateUomConversionDto value);
+    @PUT("UomConversions/{uomConversionId}")
+    Observable<String> put(@Path("uomConversionId") String id, @Body CreateOrMergePatchUomConversionDto.CreateUomConversionDto value);
 
     @Headers("Accept: application/json")
     @POST("UomConversions")
     Observable<UomConversionId> post(@Body CreateOrMergePatchUomConversionDto.CreateUomConversionDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("UomConversions/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value);
+    @PATCH("UomConversions/{uomConversionId}")
+    Observable<String> patch(@Path("uomConversionId") String id, @Body CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("UomConversions/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("UomConversions/{uomConversionId}")
+    Observable<String> delete(@Path("uomConversionId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

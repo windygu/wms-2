@@ -33,32 +33,32 @@ public interface UomTypesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("UomTypes/{id}")
-    Call<UomTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("UomTypes/{uomTypeId}")
+    Call<UomTypeStateDto> get(@Path("uomTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("UomTypes/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("UomTypes/{id}/_historyStates/{version}")
-    Call<UomTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("UomTypes/{uomTypeId}/_historyStates/{version}")
+    Call<UomTypeStateDto> getHistoryState(@Path("uomTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("UomTypes/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
+    @PUT("UomTypes/{uomTypeId}")
+    Call<String> put(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("UomTypes")
     Call<String> post(@Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("UomTypes/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
+    @PATCH("UomTypes/{uomTypeId}")
+    Call<String> patch(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("UomTypes/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("UomTypes/{uomTypeId}")
+    Call<String> delete(@Path("uomTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

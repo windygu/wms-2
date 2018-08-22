@@ -33,20 +33,20 @@ public interface ShipmentsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Shipments/{id}")
-    Call<ShipmentStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Shipments/{shipmentId}")
+    Call<ShipmentStateDto> get(@Path("shipmentId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Shipments/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Shipments/{id}/_stateEvents/{version}")
-    Call<ShipmentStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Shipments/{shipmentId}/_stateEvents/{version}")
+    Call<ShipmentStateEventDto> getStateEvent(@Path("shipmentId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Shipments/{id}/_historyStates/{version}")
-    Call<ShipmentStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Shipments/{shipmentId}/_historyStates/{version}")
+    Call<ShipmentStateDto> getHistoryState(@Path("shipmentId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentImages/{sequenceId}")
@@ -69,52 +69,52 @@ public interface ShipmentsClient {
     Call<ItemIssuanceStateDto> getItemIssuance(@Path("shipmentId") String shipmentId, @Path("itemIssuanceSeqId") String itemIssuanceSeqId);
  
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchShipmentDto.CreateShipmentDto value);
+    @PUT("Shipments/{shipmentId}")
+    Call<String> put(@Path("shipmentId") String id, @Body CreateOrMergePatchShipmentDto.CreateShipmentDto value);
 
     @Headers("Accept: application/json")
     @POST("Shipments")
     Call<String> post(@Body CreateOrMergePatchShipmentDto.CreateShipmentDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Shipments/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchShipmentDto.MergePatchShipmentDto value);
+    @PATCH("Shipments/{shipmentId}")
+    Call<String> patch(@Path("shipmentId") String id, @Body CreateOrMergePatchShipmentDto.MergePatchShipmentDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Shipments/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Shipments/{shipmentId}")
+    Call<String> delete(@Path("shipmentId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/Import")
-    Call<String> _import(@Path("id") String id, @Body ShipmentCommandDtos.ImportRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/Import")
+    Call<String> _import(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ImportRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/Ship")
-    Call<String> ship(@Path("id") String id, @Body ShipmentCommandDtos.ShipRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/Ship")
+    Call<String> ship(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ShipRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/ReceiveItem")
-    Call<String> receiveItem(@Path("id") String id, @Body ShipmentCommandDtos.ReceiveItemRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/ReceiveItem")
+    Call<String> receiveItem(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ReceiveItemRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/AddItemAndReceipt")
-    Call<String> addItemAndReceipt(@Path("id") String id, @Body ShipmentCommandDtos.AddItemAndReceiptRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/AddItemAndReceipt")
+    Call<String> addItemAndReceipt(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.AddItemAndReceiptRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/IssueItem")
-    Call<String> issueItem(@Path("id") String id, @Body ShipmentCommandDtos.IssueItemRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/IssueItem")
+    Call<String> issueItem(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.IssueItemRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/AddItemAndIssuance")
-    Call<String> addItemAndIssuance(@Path("id") String id, @Body ShipmentCommandDtos.AddItemAndIssuanceRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/AddItemAndIssuance")
+    Call<String> addItemAndIssuance(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.AddItemAndIssuanceRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/ConfirmAllItemsReceived")
-    Call<String> confirmAllItemsReceived(@Path("id") String id, @Body ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/ConfirmAllItemsReceived")
+    Call<String> confirmAllItemsReceived(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Shipments/{id}/_commands/ConfirmAllItemsIssued")
-    Call<String> confirmAllItemsIssued(@Path("id") String id, @Body ShipmentCommandDtos.ConfirmAllItemsIssuedRequestContent content);
+    @PUT("Shipments/{shipmentId}/_commands/ConfirmAllItemsIssued")
+    Call<String> confirmAllItemsIssued(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ConfirmAllItemsIssuedRequestContent content);
 
 }
 

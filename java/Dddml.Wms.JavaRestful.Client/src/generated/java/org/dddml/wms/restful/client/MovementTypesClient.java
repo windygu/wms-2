@@ -33,32 +33,32 @@ public interface MovementTypesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("MovementTypes/{id}")
-    Call<MovementTypeStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("MovementTypes/{movementTypeId}")
+    Call<MovementTypeStateDto> get(@Path("movementTypeId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("MovementTypes/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("MovementTypes/{id}/_historyStates/{version}")
-    Call<MovementTypeStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("MovementTypes/{movementTypeId}/_historyStates/{version}")
+    Call<MovementTypeStateDto> getHistoryState(@Path("movementTypeId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("MovementTypes/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
+    @PUT("MovementTypes/{movementTypeId}")
+    Call<String> put(@Path("movementTypeId") String id, @Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("MovementTypes")
     Call<String> post(@Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("MovementTypes/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value);
+    @PATCH("MovementTypes/{movementTypeId}")
+    Call<String> patch(@Path("movementTypeId") String id, @Body CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("MovementTypes/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("MovementTypes/{movementTypeId}")
+    Call<String> delete(@Path("movementTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

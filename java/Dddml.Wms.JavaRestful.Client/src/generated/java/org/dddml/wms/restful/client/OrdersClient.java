@@ -34,20 +34,20 @@ public interface OrdersClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Orders/{id}")
-    Call<OrderStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Orders/{orderId}")
+    Call<OrderStateDto> get(@Path("orderId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Orders/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Orders/{id}/_stateEvents/{version}")
-    Call<OrderStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Orders/{orderId}/_stateEvents/{version}")
+    Call<OrderStateEventDto> getStateEvent(@Path("orderId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Orders/{id}/_historyStates/{version}")
-    Call<OrderStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Orders/{orderId}/_historyStates/{version}")
+    Call<OrderStateDto> getHistoryState(@Path("orderId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderRoles/{partyRoleId}")
@@ -62,28 +62,28 @@ public interface OrdersClient {
     Call<OrderShipGroupStateDto> getOrderShipGroup(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId);
  
     @Headers("Accept: application/json")
+    @PUT("Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction")
+    Call<String> orderShipGroupAction(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
+
+    @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
     Call<OrderItemShipGroupAssociationStateDto> getOrderItemShipGroupAssociation(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @Path("orderItemSeqId") String orderItemSeqId);
  
     @Headers("Accept: application/json")
-    @PUT("Orders/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
+    @PUT("Orders/{orderId}")
+    Call<String> put(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
 
     @Headers("Accept: application/json")
     @POST("Orders")
     Call<String> post(@Body CreateOrMergePatchOrderDto.CreateOrderDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Orders/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
+    @PATCH("Orders/{orderId}")
+    Call<String> patch(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Orders/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
-
-    @Headers("Accept: application/json")
-    @PUT("Orders/{id}/_commands/OrderShipGroupAction")
-    Call<String> orderShipGroupAction(@Path("id") String id, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
+    @DELETE("Orders/{orderId}")
+    Call<String> delete(@Path("orderId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

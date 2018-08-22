@@ -34,36 +34,36 @@ public interface RxLotsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Lots/{id}")
-    Observable<LotStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Lots/{lotId}")
+    Observable<LotStateDto> get(@Path("lotId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Lots/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Lots/{id}/_stateEvents/{version}")
-    Observable<LotStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Lots/{lotId}/_stateEvents/{version}")
+    Observable<LotStateEventDto> getStateEvent(@Path("lotId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Lots/{id}/_historyStates/{version}")
-    Observable<LotStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Lots/{lotId}/_historyStates/{version}")
+    Observable<LotStateDto> getHistoryState(@Path("lotId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("Lots/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchLotDto.CreateLotDto value);
+    @PUT("Lots/{lotId}")
+    Observable<String> put(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.CreateLotDto value);
 
     @Headers("Accept: application/json")
     @POST("Lots")
     Observable<String> post(@Body CreateOrMergePatchLotDto.CreateLotDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Lots/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
+    @PATCH("Lots/{lotId}")
+    Observable<String> patch(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Lots/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Lots/{lotId}")
+    Observable<String> delete(@Path("lotId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

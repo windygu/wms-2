@@ -35,20 +35,20 @@ public interface RxInOutsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("InOuts/{id}")
-    Observable<InOutStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("InOuts/{documentNumber}")
+    Observable<InOutStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InOuts/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("InOuts/{id}/_stateEvents/{version}")
-    Observable<InOutStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("InOuts/{documentNumber}/_stateEvents/{version}")
+    Observable<InOutStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("InOuts/{id}/_historyStates/{version}")
-    Observable<InOutStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("InOuts/{documentNumber}/_historyStates/{version}")
+    Observable<InOutStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutImages/{sequenceId}")
@@ -63,48 +63,48 @@ public interface RxInOutsClient {
     Observable<InOutLineImageStateDto> getInOutLineImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
+    @PUT("InOuts/{documentNumber}")
+    Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
 
     @Headers("Accept: application/json")
     @POST("InOuts")
     Observable<String> post(@Body CreateOrMergePatchInOutDto.CreateInOutDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("InOuts/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
+    @PATCH("InOuts/{documentNumber}")
+    Observable<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("InOuts/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("InOuts/{documentNumber}")
+    Observable<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Complete")
-    Observable<String> complete(@Path("id") String id, @Body InOutCommandDtos.CompleteRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Complete")
+    Observable<String> complete(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.CompleteRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Close")
-    Observable<String> close(@Path("id") String id, @Body InOutCommandDtos.CloseRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Close")
+    Observable<String> close(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.CloseRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Void")
-    Observable<String> _void(@Path("id") String id, @Body InOutCommandDtos.VoidRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Void")
+    Observable<String> _void(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.VoidRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Reverse")
-    Observable<String> reverse(@Path("id") String id, @Body InOutCommandDtos.ReverseRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Reverse")
+    Observable<String> reverse(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.ReverseRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/AddLine")
-    Observable<String> addLine(@Path("id") String id, @Body InOutCommandDtos.AddLineRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/AddLine")
+    Observable<String> addLine(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.AddLineRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/Import")
-    Observable<String> _import(@Path("id") String id, @Body InOutCommandDtos.ImportRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/Import")
+    Observable<String> _import(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.ImportRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("InOuts/{id}/_commands/DocumentAction")
-    Observable<String> documentAction(@Path("id") String id, @Body InOutCommandDtos.DocumentActionRequestContent content);
+    @PUT("InOuts/{documentNumber}/_commands/DocumentAction")
+    Observable<String> documentAction(@Path("documentNumber") String documentNumber, @Body InOutCommandDtos.DocumentActionRequestContent content);
 
 }
 

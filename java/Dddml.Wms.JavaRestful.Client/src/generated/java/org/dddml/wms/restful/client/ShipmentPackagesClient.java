@@ -33,40 +33,40 @@ public interface ShipmentPackagesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("ShipmentPackages/{id}")
-    Call<ShipmentPackageStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("ShipmentPackages/{shipmentPackageId}")
+    Call<ShipmentPackageStateDto> get(@Path("shipmentPackageId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("ShipmentPackages/{id}/_stateEvents/{version}")
-    Call<ShipmentPackageStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("ShipmentPackages/{shipmentPackageId}/_stateEvents/{version}")
+    Call<ShipmentPackageStateEventDto> getStateEvent(@Path("shipmentPackageId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("ShipmentPackages/{id}/_historyStates/{version}")
-    Call<ShipmentPackageStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("ShipmentPackages/{shipmentPackageId}/_historyStates/{version}")
+    Call<ShipmentPackageStateDto> getHistoryState(@Path("shipmentPackageId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}")
     Call<ShipmentPackageContentStateDto> getShipmentPackageContent(@Path("shipmentPackageId") String shipmentPackageId, @Path("shipmentItemSeqId") String shipmentItemSeqId);
  
     @Headers("Accept: application/json")
-    @PUT("ShipmentPackages/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
+    @PUT("ShipmentPackages/{shipmentPackageId}")
+    Call<String> put(@Path("shipmentPackageId") String id, @Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
 
     @Headers("Accept: application/json")
     @POST("ShipmentPackages")
     Call<ShipmentPackageId> post(@Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("ShipmentPackages/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchShipmentPackageDto.MergePatchShipmentPackageDto value);
+    @PATCH("ShipmentPackages/{shipmentPackageId}")
+    Call<String> patch(@Path("shipmentPackageId") String id, @Body CreateOrMergePatchShipmentPackageDto.MergePatchShipmentPackageDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("ShipmentPackages/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("ShipmentPackages/{shipmentPackageId}")
+    Call<String> delete(@Path("shipmentPackageId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

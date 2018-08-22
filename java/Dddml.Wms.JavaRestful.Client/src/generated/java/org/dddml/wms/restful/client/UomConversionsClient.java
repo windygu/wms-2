@@ -33,36 +33,36 @@ public interface UomConversionsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("UomConversions/{id}")
-    Call<UomConversionStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("UomConversions/{uomConversionId}")
+    Call<UomConversionStateDto> get(@Path("uomConversionId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("UomConversions/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("UomConversions/{id}/_stateEvents/{version}")
-    Call<UomConversionStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("UomConversions/{uomConversionId}/_stateEvents/{version}")
+    Call<UomConversionStateEventDto> getStateEvent(@Path("uomConversionId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("UomConversions/{id}/_historyStates/{version}")
-    Call<UomConversionStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("UomConversions/{uomConversionId}/_historyStates/{version}")
+    Call<UomConversionStateDto> getHistoryState(@Path("uomConversionId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("UomConversions/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchUomConversionDto.CreateUomConversionDto value);
+    @PUT("UomConversions/{uomConversionId}")
+    Call<String> put(@Path("uomConversionId") String id, @Body CreateOrMergePatchUomConversionDto.CreateUomConversionDto value);
 
     @Headers("Accept: application/json")
     @POST("UomConversions")
     Call<UomConversionId> post(@Body CreateOrMergePatchUomConversionDto.CreateUomConversionDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("UomConversions/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value);
+    @PATCH("UomConversions/{uomConversionId}")
+    Call<String> patch(@Path("uomConversionId") String id, @Body CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("UomConversions/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("UomConversions/{uomConversionId}")
+    Call<String> delete(@Path("uomConversionId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -35,48 +35,48 @@ public interface RxMovementsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Movements/{id}")
-    Observable<MovementStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Movements/{documentNumber}")
+    Observable<MovementStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Movements/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Movements/{id}/_stateEvents/{version}")
-    Observable<MovementStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Movements/{documentNumber}/_stateEvents/{version}")
+    Observable<MovementStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Movements/{id}/_historyStates/{version}")
-    Observable<MovementStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Movements/{documentNumber}/_historyStates/{version}")
+    Observable<MovementStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Movements/{movementDocumentNumber}/MovementLines/{lineNumber}")
     Observable<MovementLineStateDto> getMovementLine(@Path("movementDocumentNumber") String movementDocumentNumber, @Path("lineNumber") String lineNumber);
  
     @Headers("Accept: application/json")
-    @PUT("Movements/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
+    @PUT("Movements/{documentNumber}")
+    Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
 
     @Headers("Accept: application/json")
     @POST("Movements")
     Observable<String> post(@Body CreateOrMergePatchMovementDto.CreateMovementDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Movements/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchMovementDto.MergePatchMovementDto value);
+    @PATCH("Movements/{documentNumber}")
+    Observable<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.MergePatchMovementDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Movements/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Movements/{documentNumber}")
+    Observable<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("Movements/{id}/_commands/AddLine")
-    Observable<String> addLine(@Path("id") String id, @Body MovementCommandDtos.AddLineRequestContent content);
+    @PUT("Movements/{documentNumber}/_commands/AddLine")
+    Observable<String> addLine(@Path("documentNumber") String documentNumber, @Body MovementCommandDtos.AddLineRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("Movements/{id}/_commands/DocumentAction")
-    Observable<String> documentAction(@Path("id") String id, @Body MovementCommandDtos.DocumentActionRequestContent content);
+    @PUT("Movements/{documentNumber}/_commands/DocumentAction")
+    Observable<String> documentAction(@Path("documentNumber") String documentNumber, @Body MovementCommandDtos.DocumentActionRequestContent content);
 
 }
 

@@ -34,40 +34,40 @@ public interface RxPicklistBinsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("PicklistBins/{id}")
-    Observable<PicklistBinStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("PicklistBins/{picklistBinId}")
+    Observable<PicklistBinStateDto> get(@Path("picklistBinId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("PicklistBins/{id}/_stateEvents/{version}")
-    Observable<PicklistBinStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("PicklistBins/{picklistBinId}/_stateEvents/{version}")
+    Observable<PicklistBinStateEventDto> getStateEvent(@Path("picklistBinId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("PicklistBins/{id}/_historyStates/{version}")
-    Observable<PicklistBinStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("PicklistBins/{picklistBinId}/_historyStates/{version}")
+    Observable<PicklistBinStateDto> getHistoryState(@Path("picklistBinId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
     Observable<PicklistItemStateDto> getPicklistItem(@Path("picklistBinId") String picklistBinId, @Path("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId);
  
     @Headers("Accept: application/json")
-    @PUT("PicklistBins/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
+    @PUT("PicklistBins/{picklistBinId}")
+    Observable<String> put(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 
     @Headers("Accept: application/json")
     @POST("PicklistBins")
     Observable<String> post(@Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("PicklistBins/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value);
+    @PATCH("PicklistBins/{picklistBinId}")
+    Observable<String> patch(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("PicklistBins/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("PicklistBins/{picklistBinId}")
+    Observable<String> delete(@Path("picklistBinId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

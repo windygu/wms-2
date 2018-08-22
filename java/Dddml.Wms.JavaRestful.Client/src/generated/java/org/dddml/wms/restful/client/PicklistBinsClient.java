@@ -33,40 +33,40 @@ public interface PicklistBinsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("PicklistBins/{id}")
-    Call<PicklistBinStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("PicklistBins/{picklistBinId}")
+    Call<PicklistBinStateDto> get(@Path("picklistBinId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("PicklistBins/{id}/_stateEvents/{version}")
-    Call<PicklistBinStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("PicklistBins/{picklistBinId}/_stateEvents/{version}")
+    Call<PicklistBinStateEventDto> getStateEvent(@Path("picklistBinId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("PicklistBins/{id}/_historyStates/{version}")
-    Call<PicklistBinStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("PicklistBins/{picklistBinId}/_historyStates/{version}")
+    Call<PicklistBinStateDto> getHistoryState(@Path("picklistBinId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
     Call<PicklistItemStateDto> getPicklistItem(@Path("picklistBinId") String picklistBinId, @Path("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId);
  
     @Headers("Accept: application/json")
-    @PUT("PicklistBins/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
+    @PUT("PicklistBins/{picklistBinId}")
+    Call<String> put(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 
     @Headers("Accept: application/json")
     @POST("PicklistBins")
     Call<String> post(@Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("PicklistBins/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value);
+    @PATCH("PicklistBins/{picklistBinId}")
+    Call<String> patch(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("PicklistBins/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("PicklistBins/{picklistBinId}")
+    Call<String> delete(@Path("picklistBinId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

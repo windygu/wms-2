@@ -36,48 +36,48 @@ public interface RxPhysicalInventoriesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("PhysicalInventories/{id}")
-    Observable<PhysicalInventoryStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("PhysicalInventories/{documentNumber}")
+    Observable<PhysicalInventoryStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("PhysicalInventories/{id}/_stateEvents/{version}")
-    Observable<PhysicalInventoryStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("PhysicalInventories/{documentNumber}/_stateEvents/{version}")
+    Observable<PhysicalInventoryStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("PhysicalInventories/{id}/_historyStates/{version}")
-    Observable<PhysicalInventoryStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("PhysicalInventories/{documentNumber}/_historyStates/{version}")
+    Observable<PhysicalInventoryStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
     Observable<PhysicalInventoryLineStateDto> getPhysicalInventoryLine(@Path("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @Path("inventoryItemId") String inventoryItemId);
  
     @Headers("Accept: application/json")
-    @PUT("PhysicalInventories/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
+    @PUT("PhysicalInventories/{documentNumber}")
+    Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
     @POST("PhysicalInventories")
     Observable<String> post(@Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("PhysicalInventories/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
+    @PATCH("PhysicalInventories/{documentNumber}")
+    Observable<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("PhysicalInventories/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("PhysicalInventories/{documentNumber}")
+    Observable<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
-    @PUT("PhysicalInventories/{id}/_commands/CountItem")
-    Observable<String> countItem(@Path("id") String id, @Body PhysicalInventoryCommandDtos.CountItemRequestContent content);
+    @PUT("PhysicalInventories/{documentNumber}/_commands/CountItem")
+    Observable<String> countItem(@Path("documentNumber") String documentNumber, @Body PhysicalInventoryCommandDtos.CountItemRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("PhysicalInventories/{id}/_commands/DocumentAction")
-    Observable<String> documentAction(@Path("id") String id, @Body PhysicalInventoryCommandDtos.DocumentActionRequestContent content);
+    @PUT("PhysicalInventories/{documentNumber}/_commands/DocumentAction")
+    Observable<String> documentAction(@Path("documentNumber") String documentNumber, @Body PhysicalInventoryCommandDtos.DocumentActionRequestContent content);
 
 }
 

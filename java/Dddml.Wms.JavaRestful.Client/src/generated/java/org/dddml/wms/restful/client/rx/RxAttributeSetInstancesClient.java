@@ -35,24 +35,24 @@ public interface RxAttributeSetInstancesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstances/{id}")
-    Observable<Map<String, Object>> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("AttributeSetInstances/{attributeSetInstanceId}")
+    Observable<Map<String, Object>> get(@Path("attributeSetInstanceId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstances/{id}/_stateEvents/{version}")
-    Observable<AttributeSetInstanceStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("AttributeSetInstances/{attributeSetInstanceId}/_stateEvents/{version}")
+    Observable<AttributeSetInstanceStateEventDto> getStateEvent(@Path("attributeSetInstanceId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("AttributeSetInstances/{id}/_historyStates/{version}")
-    Observable<AttributeSetInstanceStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("AttributeSetInstances/{attributeSetInstanceId}/_historyStates/{version}")
+    Observable<AttributeSetInstanceStateDto> getHistoryState(@Path("attributeSetInstanceId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("AttributeSetInstances/{id}")
-    Observable<String> put(@Path("id") String id, @Body Map<String, Object> value);
+    @PUT("AttributeSetInstances/{attributeSetInstanceId}")
+    Observable<String> put(@Path("attributeSetInstanceId") String id, @Body Map<String, Object> value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSetInstances")

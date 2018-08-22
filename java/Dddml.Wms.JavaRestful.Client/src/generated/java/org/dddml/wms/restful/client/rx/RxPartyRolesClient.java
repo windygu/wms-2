@@ -34,36 +34,36 @@ public interface RxPartyRolesClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("PartyRoles/{id}")
-    Observable<PartyRoleStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("PartyRoles/{partyRoleId}")
+    Observable<PartyRoleStateDto> get(@Path("partyRoleId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PartyRoles/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("PartyRoles/{id}/_stateEvents/{version}")
-    Observable<PartyRoleStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("PartyRoles/{partyRoleId}/_stateEvents/{version}")
+    Observable<PartyRoleStateEventDto> getStateEvent(@Path("partyRoleId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("PartyRoles/{id}/_historyStates/{version}")
-    Observable<PartyRoleStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("PartyRoles/{partyRoleId}/_historyStates/{version}")
+    Observable<PartyRoleStateDto> getHistoryState(@Path("partyRoleId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("PartyRoles/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value);
+    @PUT("PartyRoles/{partyRoleId}")
+    Observable<String> put(@Path("partyRoleId") String id, @Body CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value);
 
     @Headers("Accept: application/json")
     @POST("PartyRoles")
     Observable<PartyRoleId> post(@Body CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("PartyRoles/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchPartyRoleDto.MergePatchPartyRoleDto value);
+    @PATCH("PartyRoles/{partyRoleId}")
+    Observable<String> patch(@Path("partyRoleId") String id, @Body CreateOrMergePatchPartyRoleDto.MergePatchPartyRoleDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("PartyRoles/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("PartyRoles/{partyRoleId}")
+    Observable<String> delete(@Path("partyRoleId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -35,40 +35,40 @@ public interface RxPicklistsClient {
     Observable<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("Picklists/{id}")
-    Observable<PicklistStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("Picklists/{picklistId}")
+    Observable<PicklistStateDto> get(@Path("picklistId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Picklists/_metadata/filteringFields")
     Observable<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("Picklists/{id}/_stateEvents/{version}")
-    Observable<PicklistStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("Picklists/{picklistId}/_stateEvents/{version}")
+    Observable<PicklistStateEventDto> getStateEvent(@Path("picklistId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("Picklists/{id}/_historyStates/{version}")
-    Observable<PicklistStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("Picklists/{picklistId}/_historyStates/{version}")
+    Observable<PicklistStateDto> getHistoryState(@Path("picklistId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/PicklistRoles/{partyRoleId}")
     Observable<PicklistRoleStateDto> getPicklistRole(@Path("picklistId") String picklistId, @Path("partyRoleId") String partyRoleId);
  
     @Headers("Accept: application/json")
-    @PUT("Picklists/{id}")
-    Observable<String> put(@Path("id") String id, @Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
+    @PUT("Picklists/{picklistId}")
+    Observable<String> put(@Path("picklistId") String id, @Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
 
     @Headers("Accept: application/json")
     @POST("Picklists")
     Observable<String> post(@Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("Picklists/{id}")
-    Observable<String> patch(@Path("id") String id, @Body CreateOrMergePatchPicklistDto.MergePatchPicklistDto value);
+    @PATCH("Picklists/{picklistId}")
+    Observable<String> patch(@Path("picklistId") String id, @Body CreateOrMergePatchPicklistDto.MergePatchPicklistDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("Picklists/{id}")
-    Observable<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("Picklists/{picklistId}")
+    Observable<String> delete(@Path("picklistId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

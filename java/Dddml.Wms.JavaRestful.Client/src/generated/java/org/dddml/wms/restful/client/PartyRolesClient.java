@@ -33,36 +33,36 @@ public interface PartyRolesClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("PartyRoles/{id}")
-    Call<PartyRoleStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("PartyRoles/{partyRoleId}")
+    Call<PartyRoleStateDto> get(@Path("partyRoleId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PartyRoles/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("PartyRoles/{id}/_stateEvents/{version}")
-    Call<PartyRoleStateEventDto> getStateEvent(@Path("id") String id, @Path("version") long version);
+    @GET("PartyRoles/{partyRoleId}/_stateEvents/{version}")
+    Call<PartyRoleStateEventDto> getStateEvent(@Path("partyRoleId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @GET("PartyRoles/{id}/_historyStates/{version}")
-    Call<PartyRoleStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("PartyRoles/{partyRoleId}/_historyStates/{version}")
+    Call<PartyRoleStateDto> getHistoryState(@Path("partyRoleId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("PartyRoles/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value);
+    @PUT("PartyRoles/{partyRoleId}")
+    Call<String> put(@Path("partyRoleId") String id, @Body CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value);
 
     @Headers("Accept: application/json")
     @POST("PartyRoles")
     Call<PartyRoleId> post(@Body CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("PartyRoles/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchPartyRoleDto.MergePatchPartyRoleDto value);
+    @PATCH("PartyRoles/{partyRoleId}")
+    Call<String> patch(@Path("partyRoleId") String id, @Body CreateOrMergePatchPartyRoleDto.MergePatchPartyRoleDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("PartyRoles/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("PartyRoles/{partyRoleId}")
+    Call<String> delete(@Path("partyRoleId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -33,32 +33,32 @@ public interface StatusItemsClient {
     Call<Long> getCount(@Query("filter") String filter);
 
     @Headers("Accept: application/json")
-    @GET("StatusItems/{id}")
-    Call<StatusItemStateDto> get(@Path("id") String id, @Query("fields") String fields);
+    @GET("StatusItems/{statusId}")
+    Call<StatusItemStateDto> get(@Path("statusId") String id, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("StatusItems/_metadata/filteringFields")
     Call<List<PropertyMetadataDto>> getMetadataFilteringFields();
 
     @Headers("Accept: application/json")
-    @GET("StatusItems/{id}/_historyStates/{version}")
-    Call<StatusItemStateDto> getHistoryState(@Path("id") String id, @Path("version") long version);
+    @GET("StatusItems/{statusId}/_historyStates/{version}")
+    Call<StatusItemStateDto> getHistoryState(@Path("statusId") String id, @Path("version") long version);
 
     @Headers("Accept: application/json")
-    @PUT("StatusItems/{id}")
-    Call<String> put(@Path("id") String id, @Body CreateOrMergePatchStatusItemDto.CreateStatusItemDto value);
+    @PUT("StatusItems/{statusId}")
+    Call<String> put(@Path("statusId") String id, @Body CreateOrMergePatchStatusItemDto.CreateStatusItemDto value);
 
     @Headers("Accept: application/json")
     @POST("StatusItems")
     Call<String> post(@Body CreateOrMergePatchStatusItemDto.CreateStatusItemDto value);
 
     @Headers("Accept: application/json")
-    @PATCH("StatusItems/{id}")
-    Call<String> patch(@Path("id") String id, @Body CreateOrMergePatchStatusItemDto.MergePatchStatusItemDto value);
+    @PATCH("StatusItems/{statusId}")
+    Call<String> patch(@Path("statusId") String id, @Body CreateOrMergePatchStatusItemDto.MergePatchStatusItemDto value);
 
     @Headers("Accept: application/json")
-    @DELETE("StatusItems/{id}")
-    Call<String> delete(@Path("id") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    @DELETE("StatusItems/{statusId}")
+    Call<String> delete(@Path("statusId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 
