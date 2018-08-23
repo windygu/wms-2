@@ -452,7 +452,7 @@ public class ImportServiceResource {
     }
 
     /*
-    
+
     @GetMapping("TestImportShipments")
     public void testImportShipments() throws MalformedURLException, IOException, BiffException {
         ImportingShipmentHeader shipmentHeader = new ImportingShipmentHeader();
@@ -470,22 +470,25 @@ public class ImportServiceResource {
         prdMapping1.setProductName("GOLDEN ISLES CO FLUFF PULP");//在 Excel 中出现的产品名称
         prdMapping1.setProductId("f6");//在系统中的产品 Id（Product Id）
 
+        //        ProductMapping prdMapping2 = new ProductMapping();
+        //        prdMapping2.setProductName("GOLDEN ISLES CO FLUFF PULP2");//在 Excel 中出现的产品名称
+        //        prdMapping2.setProductId("f6-2");//在系统中的产品 Id（Product Id）
+
         ProductMapping prdMapping2 = new ProductMapping();
-        prdMapping2.setProductName("GOLDEN ISLES CO FLUFF PULP2");//在 Excel 中出现的产品名称
-        prdMapping2.setProductId("f6-2");//在系统中的产品 Id（Product Id）
+        prdMapping2.setProductName("21005");//在 Excel 中出现的产品名称
+        prdMapping2.setProductId("f6");//在系统中的产品 Id（Product Id）
 
         shipmentHeader.setProductMap(new ProductMapping[]{prdMapping1, prdMapping2});
 
         // ////////////////  导入库存文件的 URL ////////////////////////
         // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
-        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportExample (1).xls";
+        String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/ShipmentImportTemplate1.xls";
         shipmentHeader.setFileUrl(fileUrl);
 
         //System.out.println(JSONObject.toJSONString(shipmentHeader));
         importShipments(shipmentHeader);
     }
-
-    */
+     */
 
     @PostMapping("ImportShipments")
     public void importShipments(@RequestBody ImportingShipmentHeader shipmentHeader)

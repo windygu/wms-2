@@ -24058,30 +24058,6 @@ types:
       reservedQuantity: 
         type: number
         required: false
-  org.dddml.wms.query.dto.InventoryItemDto.WarehouseSerialNumberDto: 
-    type: object
-    properties: 
-      productId: 
-        type: string
-        required: false
-      warehouseId: 
-        type: string
-        required: false
-      serial: 
-        type: string
-        required: false
-      onHandQuantity: 
-        type: number
-        required: false
-      inTransitQuantity: 
-        type: number
-        required: false
-      occupiedQuantity: 
-        type: number
-        required: false
-      reservedQuantity: 
-        type: number
-        required: false
   org.dddml.wms.query.dto.InventoryItemDto.WarehouseLotDto: 
     type: object
     properties: 
@@ -24106,13 +24082,16 @@ types:
       reservedQuantity: 
         type: number
         required: false
-  org.dddml.wms.query.dto.InventoryItemDto.InventoryPointInTimeDto: 
+  org.dddml.wms.query.dto.InventoryItemDto.WarehouseSerialNumberDto: 
     type: object
     properties: 
       productId: 
         type: string
         required: false
       warehouseId: 
+        type: string
+        required: false
+      serial: 
         type: string
         required: false
       onHandQuantity: 
@@ -24322,35 +24301,35 @@ types:
         type: string
         required: false
   org.dddml.wms.query.dto.InventoryItemDto: 
-    displayName: InventoryItemDto
+    displayName: 库存单元信息（货位-产品-属性集-数量）.
     type: object
-    description: InventoryItemDto
+    description: 库存单元信息（货位-产品-属性集-数量）.
     properties: 
       productId: 
-        displayName: 产品id
+        displayName: 产品 Id.
         type: string
         required: false
-        description: 产品id
+        description: 产品 Id.
       locatorId: 
-        displayName: 货位id
+        displayName: 货位 Id.
         type: string
         required: false
-        description: 货位id
+        description: 货位 Id.
       attributeSetInstanceId: 
-        displayName: 实例id
+        displayName: 属性集实例 Id.
         type: string
         required: false
-        description: 实例id
+        description: 属性集实例 Id.
       serialNumber: 
         displayName: 卷号
         type: string
         required: false
         description: 卷号
       lotId: 
-        displayName: 批次id
+        displayName: 批次 Id.
         type: string
         required: false
-        description: 批次id
+        description: 批次 Id.
       onHandQuantity: 
         displayName: 在库数量
         type: number
@@ -24459,6 +24438,27 @@ types:
         required: false
       documentImageUrl: 
         type: string
+        required: false
+  org.dddml.wms.query.dto.InventoryItemDto.TimePointWarehouseProductDto: 
+    type: object
+    properties: 
+      productId: 
+        type: string
+        required: false
+      warehouseId: 
+        type: string
+        required: false
+      onHandQuantity: 
+        type: number
+        required: false
+      inTransitQuantity: 
+        type: number
+        required: false
+      occupiedQuantity: 
+        type: number
+        required: false
+      reservedQuantity: 
+        type: number
         required: false
 /api: 
   /AttributeSetInstanceExtensionFieldGroups: 
@@ -38633,22 +38633,6 @@ types:
   /document: 
     displayName: DocumentController
     description: DocumentController
-    /inout: 
-      /{documentId}: 
-        uriParameters: 
-          documentId: 
-            displayName: documentId
-            type: string
-            required: true
-            description: documentId
-        get: 
-          displayName: getDocumentDtoByInoutId
-          description: getDocumentDtoByInoutId
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.query.dto.DocumentDto
     /shipment: 
       /{documentId}: 
         uriParameters: 
@@ -38681,28 +38665,25 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.query.dto.DocumentDto
-  /fuzzyQuery: 
-    displayName: FuzzyQueryController
-    description: FuzzyQueryController
-    /shipment: 
-      /{shipmentId}: 
+    /inout: 
+      /{documentId}: 
         uriParameters: 
-          shipmentId: 
-            displayName: shipmentId
+          documentId: 
+            displayName: documentId
             type: string
             required: true
-            description: shipmentId
+            description: documentId
         get: 
-          displayName: getFuzzyQueryDtoByShipmentId
-          description: getFuzzyQueryDtoByShipmentId
+          displayName: getDocumentDtoByInoutId
+          description: getDocumentDtoByInoutId
           responses: 
             200: 
               body: 
                 application/json: 
-                  type: array
-                  items: 
-                    type: string
-
+                  type: org.dddml.wms.query.dto.DocumentDto
+  /fuzzyQuery: 
+    displayName: FuzzyQueryController
+    description: FuzzyQueryController
     /product: 
       /{proId}: 
         uriParameters: 
@@ -38722,25 +38703,62 @@ types:
                   items: 
                     type: string
 
+    /shipment: 
+      /{shipmentId}: 
+        uriParameters: 
+          shipmentId: 
+            displayName: shipmentId
+            type: string
+            required: true
+            description: shipmentId
+        get: 
+          displayName: getFuzzyQueryDtoByShipmentId
+          description: getFuzzyQueryDtoByShipmentId
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: array
+                  items: 
+                    type: string
+
   /inventoryItemQuery: 
     displayName: 库存单元查询。
     description: 库存单元查询。
-    /warehouseProducts: 
+    /warehouseLots: 
       get: 
-        displayName: 查询仓库内的产品数量（不分货位）。
-        description: 查询仓库内的产品数量（不分货位）。
+        displayName: 仓库-产品-批次-数量查询
+        description: 仓库-产品-批次-数量查询
         responses: 
           200: 
             body: 
               application/json: 
                 type: array
                 items: 
-                  type: org.dddml.wms.query.dto.InventoryItemDto.WarehouseProductDto
+                  type: org.dddml.wms.query.dto.InventoryItemDto.WarehouseLotDto
+
+    /timePointWarehouseProducts: 
+      get: 
+        displayName: （截至时间点的）仓库-产品-数量查询
+        description: （截至时间点的）仓库-产品-数量查询
+        queryParameters: 
+          pointTime: 
+            displayName: 截至时间点
+            type: datetime
+            required: true
+            description: 截至时间点
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemDto.TimePointWarehouseProductDto
 
     /warehouseSerialNumbers: 
       get: 
-        displayName: 查询仓库内的产品、序列号、数量（不分货位）。
-        description: 查询仓库内的产品、序列号、数量（不分货位）。
+        displayName: 仓库-产品-序列号-数量查询
+        description: 仓库-产品-序列号-数量查询
         responses: 
           200: 
             body: 
@@ -38749,52 +38767,10 @@ types:
                 items: 
                   type: org.dddml.wms.query.dto.InventoryItemDto.WarehouseSerialNumberDto
 
-    /timePointWarehouseProducts: 
-      get: 
-        displayName: 查询到某一天（时间点）为止，仓库里产品的数量（不分货位）
-        description: 查询到某一天（时间点）为止，仓库里产品的数量（不分货位）
-        queryParameters: 
-          pointTime: 
-            displayName: 时间点
-            type: datetime
-            required: true
-            description: 时间点
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemDto.InventoryPointInTimeDto
-
-    /inventoryItems: 
-      get: 
-        displayName: 货位、产品、属性集、数量查询。
-        description: 货位、产品、属性集、数量查询。
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemDto
-
-    /inventoryItemSerialNumbers: 
-      get: 
-        displayName: 产品、货位、序列号、数量查询。
-        description: 产品、货位、序列号、数量查询。
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemDto.InventoryItemSerialNumberDto
-
     /inventoryItemLots: 
       get: 
-        displayName: 按照产品、批次查询货位中的库存数量。
-        description: 按照产品、批次查询货位中的库存数量。
+        displayName: 货位-产品-批次-数量查询
+        description: 货位-产品-批次-数量查询
         responses: 
           200: 
             body: 
@@ -38803,10 +38779,22 @@ types:
                 items: 
                   type: org.dddml.wms.query.dto.InventoryItemDto.InventoryItemLotDto
 
+    /inventoryItems: 
+      get: 
+        displayName: 货位-产品-属性集-数量查询
+        description: 货位-产品-属性集-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemDto
+
     /inventoryItemProducts: 
       get: 
-        displayName: 按照货位、产品汇总，查询库存数量。
-        description: 按照货位、产品汇总，查询库存数量。
+        displayName: 货位-产品-数量查询
+        description: 货位-产品-数量查询
         responses: 
           200: 
             body: 
@@ -38815,17 +38803,29 @@ types:
                 items: 
                   type: org.dddml.wms.query.dto.InventoryItemDto.InventoryItemProductDto
 
-    /warehouseLots: 
+    /inventoryItemSerialNumbers: 
       get: 
-        displayName: 查询仓库内的产品、批次、数量（不分货位）。
-        description: 查询仓库内的产品、批次、数量（不分货位）。
+        displayName: 货位-产品-序列号-数量查询
+        description: 货位-产品-序列号-数量查询
         responses: 
           200: 
             body: 
               application/json: 
                 type: array
                 items: 
-                  type: org.dddml.wms.query.dto.InventoryItemDto.WarehouseLotDto
+                  type: org.dddml.wms.query.dto.InventoryItemDto.InventoryItemSerialNumberDto
+
+    /warehouseProducts: 
+      get: 
+        displayName: 仓库-产品-数量查询
+        description: 仓库-产品-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemDto.WarehouseProductDto
 
   /mandatoryAtts: 
     displayName: MandatoryAttributeController
