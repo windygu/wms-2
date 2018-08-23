@@ -52,6 +52,10 @@ public interface SellableInventoryItemsClient {
     Call<SellableInventoryItemEntryStateDto> getSellableInventoryItemEntry(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Path("entrySeqId") Long entrySeqId);
  
     @Headers("Accept: application/json")
+    @GET("SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries")
+    Call<List<SellableInventoryItemEntryStateDto>> getSellableInventoryItemEntries(@Path("sellableInventoryItemId") String sellableInventoryItemId);
+
+    @Headers("Accept: application/json")
     @PUT("SellableInventoryItems/{sellableInventoryItemId}")
     Call<String> put(@Path("sellableInventoryItemId") String id, @Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
 

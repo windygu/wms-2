@@ -55,6 +55,10 @@ public interface RxMovementConfirmationsClient {
     Observable<MovementConfirmationLineStateDto> getMovementConfirmationLine(@Path("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber, @Path("lineNumber") String lineNumber);
  
     @Headers("Accept: application/json")
+    @GET("MovementConfirmations/{documentNumber}/MovementConfirmationLines")
+    Observable<List<MovementConfirmationLineStateDto>> getMovementConfirmationLines(@Path("documentNumber") String documentNumber);
+
+    @Headers("Accept: application/json")
     @PUT("MovementConfirmations/{documentNumber}")
     Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
 

@@ -56,6 +56,10 @@ public interface RxPhysicalInventoriesClient {
     Observable<PhysicalInventoryLineStateDto> getPhysicalInventoryLine(@Path("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @Path("inventoryItemId") String inventoryItemId);
  
     @Headers("Accept: application/json")
+    @GET("PhysicalInventories/{documentNumber}/PhysicalInventoryLines")
+    Observable<List<PhysicalInventoryLineStateDto>> getPhysicalInventoryLines(@Path("documentNumber") String documentNumber);
+
+    @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{documentNumber}")
     Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 

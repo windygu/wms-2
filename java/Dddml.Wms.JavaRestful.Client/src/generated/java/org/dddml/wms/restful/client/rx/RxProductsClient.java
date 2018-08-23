@@ -54,6 +54,10 @@ public interface RxProductsClient {
     Observable<GoodIdentificationStateDto> getGoodIdentification(@Path("productId") String productId, @Path("goodIdentificationTypeId") String goodIdentificationTypeId);
  
     @Headers("Accept: application/json")
+    @GET("Products/{productId}/GoodIdentifications")
+    Observable<List<GoodIdentificationStateDto>> getGoodIdentifications(@Path("productId") String productId);
+
+    @Headers("Accept: application/json")
     @PUT("Products/{productId}")
     Observable<String> put(@Path("productId") String id, @Body CreateOrMergePatchProductDto.CreateProductDto value);
 

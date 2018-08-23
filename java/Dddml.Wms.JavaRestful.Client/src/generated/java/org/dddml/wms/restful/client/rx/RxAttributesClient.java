@@ -58,9 +58,17 @@ public interface RxAttributesClient {
     Observable<AttributeValueStateDto> getAttributeValue(@Path("attributeId") String attributeId, @Path("value") String value);
  
     @Headers("Accept: application/json")
+    @GET("Attributes/{attributeId}/AttributeValues")
+    Observable<List<AttributeValueStateDto>> getAttributeValues(@Path("attributeId") String attributeId);
+
+    @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeAlias/{code}")
     Observable<AttributeAliasStateDto> getAttributeAlias(@Path("attributeId") String attributeId, @Path("code") String code);
  
+    @Headers("Accept: application/json")
+    @GET("Attributes/{attributeId}/AttributeAlias")
+    Observable<List<AttributeAliasStateDto>> getAttributeAlias(@Path("attributeId") String attributeId);
+
     @Headers("Accept: application/json")
     @PUT("Attributes/{attributeId}")
     Observable<String> put(@Path("attributeId") String id, @Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);

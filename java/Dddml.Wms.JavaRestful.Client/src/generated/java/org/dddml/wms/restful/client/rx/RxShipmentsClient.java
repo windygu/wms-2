@@ -54,21 +54,41 @@ public interface RxShipmentsClient {
     Observable<ShipmentImageStateDto> getShipmentImage(@Path("shipmentId") String shipmentId, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentImages")
+    Observable<List<ShipmentImageStateDto>> getShipmentImages(@Path("shipmentId") String shipmentId);
+
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     Observable<ShipmentItemStateDto> getShipmentItem(@Path("shipmentId") String shipmentId, @Path("shipmentItemSeqId") String shipmentItemSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentItems")
+    Observable<List<ShipmentItemStateDto>> getShipmentItems(@Path("shipmentId") String shipmentId);
+
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     Observable<ShipmentReceiptStateDto> getShipmentReceipt(@Path("shipmentId") String shipmentId, @Path("receiptSeqId") String receiptSeqId);
  
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentReceipts")
+    Observable<List<ShipmentReceiptStateDto>> getShipmentReceipts(@Path("shipmentId") String shipmentId);
+
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
     Observable<ShipmentReceiptImageStateDto> getShipmentReceiptImage(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
+    Observable<List<ShipmentReceiptImageStateDto>> getShipmentReceiptImages(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId);
+
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
     Observable<ItemIssuanceStateDto> getItemIssuance(@Path("shipmentId") String shipmentId, @Path("itemIssuanceSeqId") String itemIssuanceSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ItemIssuances")
+    Observable<List<ItemIssuanceStateDto>> getItemIssuances(@Path("shipmentId") String shipmentId);
+
     @Headers("Accept: application/json")
     @PUT("Shipments/{shipmentId}")
     Observable<String> put(@Path("shipmentId") String id, @Body CreateOrMergePatchShipmentDto.CreateShipmentDto value);

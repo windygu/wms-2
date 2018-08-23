@@ -54,9 +54,17 @@ public interface OrdersClient {
     Call<OrderRoleStateDto> getOrderRole(@Path("orderId") String orderId, @Path("partyRoleId") String partyRoleId);
  
     @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderRoles")
+    Call<List<OrderRoleStateDto>> getOrderRoles(@Path("orderId") String orderId);
+
+    @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderItems/{orderItemSeqId}")
     Call<OrderItemStateDto> getOrderItem(@Path("orderId") String orderId, @Path("orderItemSeqId") String orderItemSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderItems")
+    Call<List<OrderItemStateDto>> getOrderItems(@Path("orderId") String orderId);
+
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}")
     Call<OrderShipGroupStateDto> getOrderShipGroup(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId);
@@ -66,9 +74,17 @@ public interface OrdersClient {
     Call<String> orderShipGroupAction(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
 
     @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderShipGroups")
+    Call<List<OrderShipGroupStateDto>> getOrderShipGroups(@Path("orderId") String orderId);
+
+    @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
     Call<OrderItemShipGroupAssociationStateDto> getOrderItemShipGroupAssociation(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @Path("orderItemSeqId") String orderItemSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
+    Call<List<OrderItemShipGroupAssociationStateDto>> getOrderItemShipGroupAssociations(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId);
+
     @Headers("Accept: application/json")
     @PUT("Orders/{orderId}")
     Call<String> put(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);

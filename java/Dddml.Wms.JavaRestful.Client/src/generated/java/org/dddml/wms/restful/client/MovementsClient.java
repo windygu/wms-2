@@ -54,6 +54,10 @@ public interface MovementsClient {
     Call<MovementLineStateDto> getMovementLine(@Path("movementDocumentNumber") String movementDocumentNumber, @Path("lineNumber") String lineNumber);
  
     @Headers("Accept: application/json")
+    @GET("Movements/{documentNumber}/MovementLines")
+    Call<List<MovementLineStateDto>> getMovementLines(@Path("documentNumber") String documentNumber);
+
+    @Headers("Accept: application/json")
     @PUT("Movements/{documentNumber}")
     Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
 

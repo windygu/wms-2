@@ -55,6 +55,10 @@ public interface PhysicalInventoriesClient {
     Call<PhysicalInventoryLineStateDto> getPhysicalInventoryLine(@Path("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @Path("inventoryItemId") String inventoryItemId);
  
     @Headers("Accept: application/json")
+    @GET("PhysicalInventories/{documentNumber}/PhysicalInventoryLines")
+    Call<List<PhysicalInventoryLineStateDto>> getPhysicalInventoryLines(@Path("documentNumber") String documentNumber);
+
+    @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{documentNumber}")
     Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 

@@ -54,6 +54,10 @@ public interface RxPicklistBinsClient {
     Observable<PicklistItemStateDto> getPicklistItem(@Path("picklistBinId") String picklistBinId, @Path("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId);
  
     @Headers("Accept: application/json")
+    @GET("PicklistBins/{picklistBinId}/PicklistItems")
+    Observable<List<PicklistItemStateDto>> getPicklistItems(@Path("picklistBinId") String picklistBinId);
+
+    @Headers("Accept: application/json")
     @PUT("PicklistBins/{picklistBinId}")
     Observable<String> put(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 

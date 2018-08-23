@@ -55,13 +55,25 @@ public interface RxInOutsClient {
     Observable<InOutImageStateDto> getInOutImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
+    @GET("InOuts/{documentNumber}/InOutImages")
+    Observable<List<InOutImageStateDto>> getInOutImages(@Path("documentNumber") String documentNumber);
+
+    @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{lineNumber}")
     Observable<InOutLineStateDto> getInOutLine(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("lineNumber") String lineNumber);
  
     @Headers("Accept: application/json")
+    @GET("InOuts/{documentNumber}/InOutLines")
+    Observable<List<InOutLineStateDto>> getInOutLines(@Path("documentNumber") String documentNumber);
+
+    @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
     Observable<InOutLineImageStateDto> getInOutLineImage(@Path("inOutDocumentNumber") String inOutDocumentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber, @Path("sequenceId") String sequenceId);
  
+    @Headers("Accept: application/json")
+    @GET("InOuts/{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages")
+    Observable<List<InOutLineImageStateDto>> getInOutLineImages(@Path("documentNumber") String documentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber);
+
     @Headers("Accept: application/json")
     @PUT("InOuts/{documentNumber}")
     Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);

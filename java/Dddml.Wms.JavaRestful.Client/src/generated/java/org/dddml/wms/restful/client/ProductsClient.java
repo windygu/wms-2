@@ -53,6 +53,10 @@ public interface ProductsClient {
     Call<GoodIdentificationStateDto> getGoodIdentification(@Path("productId") String productId, @Path("goodIdentificationTypeId") String goodIdentificationTypeId);
  
     @Headers("Accept: application/json")
+    @GET("Products/{productId}/GoodIdentifications")
+    Call<List<GoodIdentificationStateDto>> getGoodIdentifications(@Path("productId") String productId);
+
+    @Headers("Accept: application/json")
     @PUT("Products/{productId}")
     Call<String> put(@Path("productId") String id, @Body CreateOrMergePatchProductDto.CreateProductDto value);
 

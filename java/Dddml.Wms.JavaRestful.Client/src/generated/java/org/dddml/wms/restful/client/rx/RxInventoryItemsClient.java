@@ -55,6 +55,10 @@ public interface RxInventoryItemsClient {
     Observable<InventoryItemEntryStateDto> getInventoryItemEntry(@Path("inventoryItemId") String inventoryItemId, @Path("entrySeqId") Long entrySeqId);
  
     @Headers("Accept: application/json")
+    @GET("InventoryItems/{inventoryItemId}/InventoryItemEntries")
+    Observable<List<InventoryItemEntryStateDto>> getInventoryItemEntries(@Path("inventoryItemId") String inventoryItemId);
+
+    @Headers("Accept: application/json")
     @PUT("InventoryItems/{inventoryItemId}")
     Observable<String> put(@Path("inventoryItemId") String id, @Body CreateOrMergePatchInventoryItemDto.CreateInventoryItemDto value);
 

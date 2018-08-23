@@ -53,6 +53,10 @@ public interface AttributeSetsClient {
     Call<AttributeUseStateDto> getAttributeUse(@Path("attributeSetId") String attributeSetId, @Path("attributeId") String attributeId);
  
     @Headers("Accept: application/json")
+    @GET("AttributeSets/{attributeSetId}/AttributeUses")
+    Call<List<AttributeUseStateDto>> getAttributeUses(@Path("attributeSetId") String attributeSetId);
+
+    @Headers("Accept: application/json")
     @PUT("AttributeSets/{attributeSetId}")
     Call<String> put(@Path("attributeSetId") String id, @Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
 

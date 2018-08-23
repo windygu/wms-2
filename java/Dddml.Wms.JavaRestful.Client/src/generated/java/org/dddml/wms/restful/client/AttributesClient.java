@@ -57,9 +57,17 @@ public interface AttributesClient {
     Call<AttributeValueStateDto> getAttributeValue(@Path("attributeId") String attributeId, @Path("value") String value);
  
     @Headers("Accept: application/json")
+    @GET("Attributes/{attributeId}/AttributeValues")
+    Call<List<AttributeValueStateDto>> getAttributeValues(@Path("attributeId") String attributeId);
+
+    @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeAlias/{code}")
     Call<AttributeAliasStateDto> getAttributeAlias(@Path("attributeId") String attributeId, @Path("code") String code);
  
+    @Headers("Accept: application/json")
+    @GET("Attributes/{attributeId}/AttributeAlias")
+    Call<List<AttributeAliasStateDto>> getAttributeAlias(@Path("attributeId") String attributeId);
+
     @Headers("Accept: application/json")
     @PUT("Attributes/{attributeId}")
     Call<String> put(@Path("attributeId") String id, @Body CreateOrMergePatchAttributeDto.CreateAttributeDto value);

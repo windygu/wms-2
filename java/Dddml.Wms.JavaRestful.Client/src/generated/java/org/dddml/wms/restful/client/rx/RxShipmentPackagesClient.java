@@ -54,6 +54,10 @@ public interface RxShipmentPackagesClient {
     Observable<ShipmentPackageContentStateDto> getShipmentPackageContent(@Path("shipmentPackageId") String shipmentPackageId, @Path("shipmentItemSeqId") String shipmentItemSeqId);
  
     @Headers("Accept: application/json")
+    @GET("ShipmentPackages/{shipmentPackageId}/ShipmentPackageContents")
+    Observable<List<ShipmentPackageContentStateDto>> getShipmentPackageContents(@Path("shipmentPackageId") String shipmentPackageId);
+
+    @Headers("Accept: application/json")
     @PUT("ShipmentPackages/{shipmentPackageId}")
     Observable<String> put(@Path("shipmentPackageId") String id, @Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
 

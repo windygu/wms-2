@@ -54,6 +54,10 @@ public interface RxAttributeSetsClient {
     Observable<AttributeUseStateDto> getAttributeUse(@Path("attributeSetId") String attributeSetId, @Path("attributeId") String attributeId);
  
     @Headers("Accept: application/json")
+    @GET("AttributeSets/{attributeSetId}/AttributeUses")
+    Observable<List<AttributeUseStateDto>> getAttributeUses(@Path("attributeSetId") String attributeSetId);
+
+    @Headers("Accept: application/json")
     @PUT("AttributeSets/{attributeSetId}")
     Observable<String> put(@Path("attributeSetId") String id, @Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
 

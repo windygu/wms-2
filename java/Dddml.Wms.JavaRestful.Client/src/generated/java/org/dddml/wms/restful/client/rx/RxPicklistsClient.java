@@ -55,6 +55,10 @@ public interface RxPicklistsClient {
     Observable<PicklistRoleStateDto> getPicklistRole(@Path("picklistId") String picklistId, @Path("partyRoleId") String partyRoleId);
  
     @Headers("Accept: application/json")
+    @GET("Picklists/{picklistId}/PicklistRoles")
+    Observable<List<PicklistRoleStateDto>> getPicklistRoles(@Path("picklistId") String picklistId);
+
+    @Headers("Accept: application/json")
     @PUT("Picklists/{picklistId}")
     Observable<String> put(@Path("picklistId") String id, @Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
 

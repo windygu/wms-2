@@ -55,9 +55,17 @@ public interface RxOrdersClient {
     Observable<OrderRoleStateDto> getOrderRole(@Path("orderId") String orderId, @Path("partyRoleId") String partyRoleId);
  
     @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderRoles")
+    Observable<List<OrderRoleStateDto>> getOrderRoles(@Path("orderId") String orderId);
+
+    @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderItems/{orderItemSeqId}")
     Observable<OrderItemStateDto> getOrderItem(@Path("orderId") String orderId, @Path("orderItemSeqId") String orderItemSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderItems")
+    Observable<List<OrderItemStateDto>> getOrderItems(@Path("orderId") String orderId);
+
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}")
     Observable<OrderShipGroupStateDto> getOrderShipGroup(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId);
@@ -67,9 +75,17 @@ public interface RxOrdersClient {
     Observable<String> orderShipGroupAction(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
 
     @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderShipGroups")
+    Observable<List<OrderShipGroupStateDto>> getOrderShipGroups(@Path("orderId") String orderId);
+
+    @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
     Observable<OrderItemShipGroupAssociationStateDto> getOrderItemShipGroupAssociation(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @Path("orderItemSeqId") String orderItemSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
+    Observable<List<OrderItemShipGroupAssociationStateDto>> getOrderItemShipGroupAssociations(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId);
+
     @Headers("Accept: application/json")
     @PUT("Orders/{orderId}")
     Observable<String> put(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);

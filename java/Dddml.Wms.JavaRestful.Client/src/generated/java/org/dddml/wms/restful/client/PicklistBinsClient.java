@@ -53,6 +53,10 @@ public interface PicklistBinsClient {
     Call<PicklistItemStateDto> getPicklistItem(@Path("picklistBinId") String picklistBinId, @Path("picklistItemOrderShipGrpInvId") String picklistItemOrderShipGrpInvId);
  
     @Headers("Accept: application/json")
+    @GET("PicklistBins/{picklistBinId}/PicklistItems")
+    Call<List<PicklistItemStateDto>> getPicklistItems(@Path("picklistBinId") String picklistBinId);
+
+    @Headers("Accept: application/json")
     @PUT("PicklistBins/{picklistBinId}")
     Call<String> put(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 

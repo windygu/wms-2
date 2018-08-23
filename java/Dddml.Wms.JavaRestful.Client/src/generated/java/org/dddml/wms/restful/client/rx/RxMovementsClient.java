@@ -55,6 +55,10 @@ public interface RxMovementsClient {
     Observable<MovementLineStateDto> getMovementLine(@Path("movementDocumentNumber") String movementDocumentNumber, @Path("lineNumber") String lineNumber);
  
     @Headers("Accept: application/json")
+    @GET("Movements/{documentNumber}/MovementLines")
+    Observable<List<MovementLineStateDto>> getMovementLines(@Path("documentNumber") String documentNumber);
+
+    @Headers("Accept: application/json")
     @PUT("Movements/{documentNumber}")
     Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
 

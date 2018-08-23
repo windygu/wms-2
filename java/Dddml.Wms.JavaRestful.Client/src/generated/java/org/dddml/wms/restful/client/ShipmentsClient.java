@@ -53,21 +53,41 @@ public interface ShipmentsClient {
     Call<ShipmentImageStateDto> getShipmentImage(@Path("shipmentId") String shipmentId, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentImages")
+    Call<List<ShipmentImageStateDto>> getShipmentImages(@Path("shipmentId") String shipmentId);
+
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
     Call<ShipmentItemStateDto> getShipmentItem(@Path("shipmentId") String shipmentId, @Path("shipmentItemSeqId") String shipmentItemSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentItems")
+    Call<List<ShipmentItemStateDto>> getShipmentItems(@Path("shipmentId") String shipmentId);
+
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{receiptSeqId}")
     Call<ShipmentReceiptStateDto> getShipmentReceipt(@Path("shipmentId") String shipmentId, @Path("receiptSeqId") String receiptSeqId);
  
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentReceipts")
+    Call<List<ShipmentReceiptStateDto>> getShipmentReceipts(@Path("shipmentId") String shipmentId);
+
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
     Call<ShipmentReceiptImageStateDto> getShipmentReceiptImage(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @Path("sequenceId") String sequenceId);
  
     @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
+    Call<List<ShipmentReceiptImageStateDto>> getShipmentReceiptImages(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId);
+
+    @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
     Call<ItemIssuanceStateDto> getItemIssuance(@Path("shipmentId") String shipmentId, @Path("itemIssuanceSeqId") String itemIssuanceSeqId);
  
+    @Headers("Accept: application/json")
+    @GET("Shipments/{shipmentId}/ItemIssuances")
+    Call<List<ItemIssuanceStateDto>> getItemIssuances(@Path("shipmentId") String shipmentId);
+
     @Headers("Accept: application/json")
     @PUT("Shipments/{shipmentId}")
     Call<String> put(@Path("shipmentId") String id, @Body CreateOrMergePatchShipmentDto.CreateShipmentDto value);
