@@ -290,6 +290,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipment.setDestinationFacilityId(c.getDestinationFacilityId());
         shipment.setPartyIdFrom(c.getPartyIdFrom());
         shipment.setPartyIdTo(c.getPartyIdTo());
+        if (shipment.getShipmentTypeId() == null) {
+            shipment.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);
+        }
         if (Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.PURCHASE_SHIPMENT)
                 || Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.INCOMING_SHIPMENT)) {
             shipment.setStatusId(StatusItemIds.PURCH_SHIP_CREATED);
