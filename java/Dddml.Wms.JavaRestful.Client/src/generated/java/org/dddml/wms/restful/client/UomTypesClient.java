@@ -34,7 +34,7 @@ public interface UomTypesClient {
 
     @Headers("Accept: application/json")
     @GET("UomTypes/{uomTypeId}")
-    Call<UomTypeStateDto> get(@Path("uomTypeId") String id, @Query("fields") String fields);
+    Call<UomTypeStateDto> get(@Path("uomTypeId") String uomTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("UomTypes/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface UomTypesClient {
 
     @Headers("Accept: application/json")
     @GET("UomTypes/{uomTypeId}/_historyStates/{version}")
-    Call<UomTypeStateDto> getHistoryState(@Path("uomTypeId") String id, @Path("version") long version);
+    Call<UomTypeStateDto> getHistoryState(@Path("uomTypeId") String uomTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("UomTypes/{uomTypeId}")
-    Call<String> put(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
+    Call<String> put(@Path("uomTypeId") String uomTypeId, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("UomTypes")
@@ -54,11 +54,11 @@ public interface UomTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("UomTypes/{uomTypeId}")
-    Call<String> patch(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
+    Call<String> patch(@Path("uomTypeId") String uomTypeId, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("UomTypes/{uomTypeId}")
-    Call<String> delete(@Path("uomTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("uomTypeId") String uomTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

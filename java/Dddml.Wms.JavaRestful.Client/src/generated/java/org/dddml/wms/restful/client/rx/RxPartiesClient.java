@@ -35,7 +35,7 @@ public interface RxPartiesClient {
 
     @Headers("Accept: application/json")
     @GET("Parties/{partyId}")
-    Observable<PartyStateDto> get(@Path("partyId") String id, @Query("fields") String fields);
+    Observable<PartyStateDto> get(@Path("partyId") String partyId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Parties/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxPartiesClient {
 
     @Headers("Accept: application/json")
     @GET("Parties/{partyId}/_stateEvents/{version}")
-    Observable<PartyStateEventDto> getStateEvent(@Path("partyId") String id, @Path("version") long version);
+    Observable<PartyStateEventDto> getStateEvent(@Path("partyId") String partyId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Parties/{partyId}/_historyStates/{version}")
-    Observable<PartyStateDto> getHistoryState(@Path("partyId") String id, @Path("version") long version);
+    Observable<PartyStateDto> getHistoryState(@Path("partyId") String partyId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Parties/{partyId}")
-    Observable<String> put(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
+    Observable<String> put(@Path("partyId") String partyId, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
     @POST("Parties")
@@ -59,11 +59,11 @@ public interface RxPartiesClient {
 
     @Headers("Accept: application/json")
     @PATCH("Parties/{partyId}")
-    Observable<String> patch(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
+    Observable<String> patch(@Path("partyId") String partyId, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Parties/{partyId}")
-    Observable<String> delete(@Path("partyId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("partyId") String partyId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

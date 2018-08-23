@@ -35,7 +35,7 @@ public interface RxUomTypesClient {
 
     @Headers("Accept: application/json")
     @GET("UomTypes/{uomTypeId}")
-    Observable<UomTypeStateDto> get(@Path("uomTypeId") String id, @Query("fields") String fields);
+    Observable<UomTypeStateDto> get(@Path("uomTypeId") String uomTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("UomTypes/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface RxUomTypesClient {
 
     @Headers("Accept: application/json")
     @GET("UomTypes/{uomTypeId}/_historyStates/{version}")
-    Observable<UomTypeStateDto> getHistoryState(@Path("uomTypeId") String id, @Path("version") long version);
+    Observable<UomTypeStateDto> getHistoryState(@Path("uomTypeId") String uomTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("UomTypes/{uomTypeId}")
-    Observable<String> put(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
+    Observable<String> put(@Path("uomTypeId") String uomTypeId, @Body CreateOrMergePatchUomTypeDto.CreateUomTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("UomTypes")
@@ -55,11 +55,11 @@ public interface RxUomTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("UomTypes/{uomTypeId}")
-    Observable<String> patch(@Path("uomTypeId") String id, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
+    Observable<String> patch(@Path("uomTypeId") String uomTypeId, @Body CreateOrMergePatchUomTypeDto.MergePatchUomTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("UomTypes/{uomTypeId}")
-    Observable<String> delete(@Path("uomTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("uomTypeId") String uomTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

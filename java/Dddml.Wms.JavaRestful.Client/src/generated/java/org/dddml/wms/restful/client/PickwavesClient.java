@@ -34,7 +34,7 @@ public interface PickwavesClient {
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/{pickwaveId}")
-    Call<PickwaveStateDto> get(@Path("pickwaveId") Long id, @Query("fields") String fields);
+    Call<PickwaveStateDto> get(@Path("pickwaveId") Long pickwaveId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface PickwavesClient {
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/{pickwaveId}/_stateEvents/{version}")
-    Call<PickwaveStateEventDto> getStateEvent(@Path("pickwaveId") Long id, @Path("version") long version);
+    Call<PickwaveStateEventDto> getStateEvent(@Path("pickwaveId") Long pickwaveId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/{pickwaveId}/_historyStates/{version}")
-    Call<PickwaveStateDto> getHistoryState(@Path("pickwaveId") Long id, @Path("version") long version);
+    Call<PickwaveStateDto> getHistoryState(@Path("pickwaveId") Long pickwaveId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Pickwaves/{pickwaveId}")
-    Call<String> put(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
+    Call<String> put(@Path("pickwaveId") Long pickwaveId, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
 
     @Headers("Accept: application/json")
     @POST("Pickwaves")
@@ -58,11 +58,11 @@ public interface PickwavesClient {
 
     @Headers("Accept: application/json")
     @PATCH("Pickwaves/{pickwaveId}")
-    Call<String> patch(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
+    Call<String> patch(@Path("pickwaveId") Long pickwaveId, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Pickwaves/{pickwaveId}")
-    Call<String> delete(@Path("pickwaveId") Long id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("pickwaveId") Long pickwaveId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -36,7 +36,7 @@ public interface RxInventoryItemsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryItems/{inventoryItemId}")
-    Observable<InventoryItemStateDto> get(@Path("inventoryItemId") String id, @Query("fields") String fields);
+    Observable<InventoryItemStateDto> get(@Path("inventoryItemId") String inventoryItemId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryItems/_metadata/filteringFields")
@@ -44,11 +44,11 @@ public interface RxInventoryItemsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryItems/{inventoryItemId}/_stateEvents/{version}")
-    Observable<InventoryItemStateEventDto> getStateEvent(@Path("inventoryItemId") String id, @Path("version") long version);
+    Observable<InventoryItemStateEventDto> getStateEvent(@Path("inventoryItemId") String inventoryItemId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InventoryItems/{inventoryItemId}/_historyStates/{version}")
-    Observable<InventoryItemStateDto> getHistoryState(@Path("inventoryItemId") String id, @Path("version") long version);
+    Observable<InventoryItemStateDto> getHistoryState(@Path("inventoryItemId") String inventoryItemId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InventoryItems/{inventoryItemId}/InventoryItemEntries/{entrySeqId}")
@@ -60,15 +60,15 @@ public interface RxInventoryItemsClient {
 
     @Headers("Accept: application/json")
     @PUT("InventoryItems/{inventoryItemId}")
-    Observable<String> put(@Path("inventoryItemId") String id, @Body CreateOrMergePatchInventoryItemDto.CreateInventoryItemDto value);
+    Observable<String> put(@Path("inventoryItemId") String inventoryItemId, @Body CreateOrMergePatchInventoryItemDto.CreateInventoryItemDto value);
 
     @Headers("Accept: application/json")
     @PATCH("InventoryItems/{inventoryItemId}")
-    Observable<String> patch(@Path("inventoryItemId") String id, @Body CreateOrMergePatchInventoryItemDto.MergePatchInventoryItemDto value);
+    Observable<String> patch(@Path("inventoryItemId") String inventoryItemId, @Body CreateOrMergePatchInventoryItemDto.MergePatchInventoryItemDto value);
 
     @Headers("Accept: application/json")
     @DELETE("InventoryItems/{inventoryItemId}")
-    Observable<String> delete(@Path("inventoryItemId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("inventoryItemId") String inventoryItemId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

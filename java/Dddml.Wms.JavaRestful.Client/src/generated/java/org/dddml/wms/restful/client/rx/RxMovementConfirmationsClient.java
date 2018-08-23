@@ -36,7 +36,7 @@ public interface RxMovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{documentNumber}")
-    Observable<MovementConfirmationStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
+    Observable<MovementConfirmationStateDto> get(@Path("documentNumber") String documentNumber, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/_metadata/filteringFields")
@@ -44,11 +44,11 @@ public interface RxMovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{documentNumber}/_stateEvents/{version}")
-    Observable<MovementConfirmationStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<MovementConfirmationStateEventDto> getStateEvent(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{documentNumber}/_historyStates/{version}")
-    Observable<MovementConfirmationStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<MovementConfirmationStateDto> getHistoryState(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{movementConfirmationDocumentNumber}/MovementConfirmationLines/{lineNumber}")
@@ -60,7 +60,7 @@ public interface RxMovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @PUT("MovementConfirmations/{documentNumber}")
-    Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
+    Observable<String> put(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
 
     @Headers("Accept: application/json")
     @POST("MovementConfirmations")
@@ -68,11 +68,11 @@ public interface RxMovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @PATCH("MovementConfirmations/{documentNumber}")
-    Observable<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value);
+    Observable<String> patch(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value);
 
     @Headers("Accept: application/json")
     @DELETE("MovementConfirmations/{documentNumber}")
-    Observable<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("documentNumber") String documentNumber, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
     @PUT("MovementConfirmations/{documentNumber}/_commands/DocumentAction")

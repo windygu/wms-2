@@ -36,7 +36,7 @@ public interface RxPicklistsClient {
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}")
-    Observable<PicklistStateDto> get(@Path("picklistId") String id, @Query("fields") String fields);
+    Observable<PicklistStateDto> get(@Path("picklistId") String picklistId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Picklists/_metadata/filteringFields")
@@ -44,11 +44,11 @@ public interface RxPicklistsClient {
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/_stateEvents/{version}")
-    Observable<PicklistStateEventDto> getStateEvent(@Path("picklistId") String id, @Path("version") long version);
+    Observable<PicklistStateEventDto> getStateEvent(@Path("picklistId") String picklistId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/_historyStates/{version}")
-    Observable<PicklistStateDto> getHistoryState(@Path("picklistId") String id, @Path("version") long version);
+    Observable<PicklistStateDto> getHistoryState(@Path("picklistId") String picklistId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/PicklistRoles/{partyRoleId}")
@@ -60,7 +60,7 @@ public interface RxPicklistsClient {
 
     @Headers("Accept: application/json")
     @PUT("Picklists/{picklistId}")
-    Observable<String> put(@Path("picklistId") String id, @Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
+    Observable<String> put(@Path("picklistId") String picklistId, @Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
 
     @Headers("Accept: application/json")
     @POST("Picklists")
@@ -68,11 +68,11 @@ public interface RxPicklistsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Picklists/{picklistId}")
-    Observable<String> patch(@Path("picklistId") String id, @Body CreateOrMergePatchPicklistDto.MergePatchPicklistDto value);
+    Observable<String> patch(@Path("picklistId") String picklistId, @Body CreateOrMergePatchPicklistDto.MergePatchPicklistDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Picklists/{picklistId}")
-    Observable<String> delete(@Path("picklistId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("picklistId") String picklistId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

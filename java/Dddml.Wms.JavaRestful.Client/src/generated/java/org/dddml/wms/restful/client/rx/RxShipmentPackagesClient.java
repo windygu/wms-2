@@ -35,7 +35,7 @@ public interface RxShipmentPackagesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/{shipmentPackageId}")
-    Observable<ShipmentPackageStateDto> get(@Path("shipmentPackageId") String id, @Query("fields") String fields);
+    Observable<ShipmentPackageStateDto> get(@Path("shipmentPackageId") String shipmentPackageId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface RxShipmentPackagesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/{shipmentPackageId}/_stateEvents/{version}")
-    Observable<ShipmentPackageStateEventDto> getStateEvent(@Path("shipmentPackageId") String id, @Path("version") long version);
+    Observable<ShipmentPackageStateEventDto> getStateEvent(@Path("shipmentPackageId") String shipmentPackageId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/{shipmentPackageId}/_historyStates/{version}")
-    Observable<ShipmentPackageStateDto> getHistoryState(@Path("shipmentPackageId") String id, @Path("version") long version);
+    Observable<ShipmentPackageStateDto> getHistoryState(@Path("shipmentPackageId") String shipmentPackageId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/{shipmentPackageId}/ShipmentPackageContents/{shipmentItemSeqId}")
@@ -59,7 +59,7 @@ public interface RxShipmentPackagesClient {
 
     @Headers("Accept: application/json")
     @PUT("ShipmentPackages/{shipmentPackageId}")
-    Observable<String> put(@Path("shipmentPackageId") String id, @Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
+    Observable<String> put(@Path("shipmentPackageId") String shipmentPackageId, @Body CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto value);
 
     @Headers("Accept: application/json")
     @POST("ShipmentPackages")
@@ -67,11 +67,11 @@ public interface RxShipmentPackagesClient {
 
     @Headers("Accept: application/json")
     @PATCH("ShipmentPackages/{shipmentPackageId}")
-    Observable<String> patch(@Path("shipmentPackageId") String id, @Body CreateOrMergePatchShipmentPackageDto.MergePatchShipmentPackageDto value);
+    Observable<String> patch(@Path("shipmentPackageId") String shipmentPackageId, @Body CreateOrMergePatchShipmentPackageDto.MergePatchShipmentPackageDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ShipmentPackages/{shipmentPackageId}")
-    Observable<String> delete(@Path("shipmentPackageId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("shipmentPackageId") String shipmentPackageId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

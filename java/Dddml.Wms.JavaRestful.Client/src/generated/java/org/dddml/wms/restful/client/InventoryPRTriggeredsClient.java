@@ -34,7 +34,7 @@ public interface InventoryPRTriggeredsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Call<InventoryPRTriggeredStateDto> get(@Path("inventoryPRTriggeredId") String id, @Query("fields") String fields);
+    Call<InventoryPRTriggeredStateDto> get(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryPRTriggereds/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface InventoryPRTriggeredsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryPRTriggereds/{inventoryPRTriggeredId}/_historyStates/{version}")
-    Call<InventoryPRTriggeredStateDto> getHistoryState(@Path("inventoryPRTriggeredId") String id, @Path("version") long version);
+    Call<InventoryPRTriggeredStateDto> getHistoryState(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Call<String> put(@Path("inventoryPRTriggeredId") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
+    Call<String> put(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
     @POST("InventoryPRTriggereds")
@@ -54,11 +54,11 @@ public interface InventoryPRTriggeredsClient {
 
     @Headers("Accept: application/json")
     @PATCH("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Call<String> patch(@Path("inventoryPRTriggeredId") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value);
+    Call<String> patch(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Body CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
     @DELETE("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Call<String> delete(@Path("inventoryPRTriggeredId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

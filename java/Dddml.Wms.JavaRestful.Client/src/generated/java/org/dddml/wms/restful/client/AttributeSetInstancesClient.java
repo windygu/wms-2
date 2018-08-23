@@ -35,7 +35,7 @@ public interface AttributeSetInstancesClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/{attributeSetInstanceId}")
-    Call<Map<String, Object>> get(@Path("attributeSetInstanceId") String id, @Query("fields") String fields);
+    Call<Map<String, Object>> get(@Path("attributeSetInstanceId") String attributeSetInstanceId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface AttributeSetInstancesClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/{attributeSetInstanceId}/_stateEvents/{version}")
-    Call<AttributeSetInstanceStateEventDto> getStateEvent(@Path("attributeSetInstanceId") String id, @Path("version") long version);
+    Call<AttributeSetInstanceStateEventDto> getStateEvent(@Path("attributeSetInstanceId") String attributeSetInstanceId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstances/{attributeSetInstanceId}/_historyStates/{version}")
-    Call<AttributeSetInstanceStateDto> getHistoryState(@Path("attributeSetInstanceId") String id, @Path("version") long version);
+    Call<AttributeSetInstanceStateDto> getHistoryState(@Path("attributeSetInstanceId") String attributeSetInstanceId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("AttributeSetInstances/{attributeSetInstanceId}")
-    Call<String> put(@Path("attributeSetInstanceId") String id, @Body Map<String, Object> value);
+    Call<String> put(@Path("attributeSetInstanceId") String attributeSetInstanceId, @Body Map<String, Object> value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSetInstances")

@@ -34,7 +34,7 @@ public interface PeopleClient {
 
     @Headers("Accept: application/json")
     @GET("People/{partyId}")
-    Call<PartyStateDto> get(@Path("partyId") String id, @Query("fields") String fields);
+    Call<PartyStateDto> get(@Path("partyId") String partyId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("People/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface PeopleClient {
 
     @Headers("Accept: application/json")
     @GET("People/{partyId}/_stateEvents/{version}")
-    Call<PartyStateEventDto> getStateEvent(@Path("partyId") String id, @Path("version") long version);
+    Call<PartyStateEventDto> getStateEvent(@Path("partyId") String partyId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("People/{partyId}/_historyStates/{version}")
-    Call<PartyStateDto> getHistoryState(@Path("partyId") String id, @Path("version") long version);
+    Call<PartyStateDto> getHistoryState(@Path("partyId") String partyId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("People/{partyId}")
-    Call<String> put(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
+    Call<String> put(@Path("partyId") String partyId, @Body CreateOrMergePatchPartyDto.CreatePartyDto value);
 
     @Headers("Accept: application/json")
     @POST("People")
@@ -58,11 +58,11 @@ public interface PeopleClient {
 
     @Headers("Accept: application/json")
     @PATCH("People/{partyId}")
-    Call<String> patch(@Path("partyId") String id, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
+    Call<String> patch(@Path("partyId") String partyId, @Body CreateOrMergePatchPartyDto.MergePatchPartyDto value);
 
     @Headers("Accept: application/json")
     @DELETE("People/{partyId}")
-    Call<String> delete(@Path("partyId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("partyId") String partyId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

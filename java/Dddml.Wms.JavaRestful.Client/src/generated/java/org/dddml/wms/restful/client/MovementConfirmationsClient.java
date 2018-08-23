@@ -35,7 +35,7 @@ public interface MovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{documentNumber}")
-    Call<MovementConfirmationStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
+    Call<MovementConfirmationStateDto> get(@Path("documentNumber") String documentNumber, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface MovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{documentNumber}/_stateEvents/{version}")
-    Call<MovementConfirmationStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
+    Call<MovementConfirmationStateEventDto> getStateEvent(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{documentNumber}/_historyStates/{version}")
-    Call<MovementConfirmationStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
+    Call<MovementConfirmationStateDto> getHistoryState(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{movementConfirmationDocumentNumber}/MovementConfirmationLines/{lineNumber}")
@@ -59,7 +59,7 @@ public interface MovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @PUT("MovementConfirmations/{documentNumber}")
-    Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
+    Call<String> put(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto value);
 
     @Headers("Accept: application/json")
     @POST("MovementConfirmations")
@@ -67,11 +67,11 @@ public interface MovementConfirmationsClient {
 
     @Headers("Accept: application/json")
     @PATCH("MovementConfirmations/{documentNumber}")
-    Call<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value);
+    Call<String> patch(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchMovementConfirmationDto.MergePatchMovementConfirmationDto value);
 
     @Headers("Accept: application/json")
     @DELETE("MovementConfirmations/{documentNumber}")
-    Call<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("documentNumber") String documentNumber, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
     @PUT("MovementConfirmations/{documentNumber}/_commands/DocumentAction")

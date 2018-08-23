@@ -34,7 +34,7 @@ public interface WarehousesClient {
 
     @Headers("Accept: application/json")
     @GET("Warehouses/{warehouseId}")
-    Call<WarehouseStateDto> get(@Path("warehouseId") String id, @Query("fields") String fields);
+    Call<WarehouseStateDto> get(@Path("warehouseId") String warehouseId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Warehouses/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface WarehousesClient {
 
     @Headers("Accept: application/json")
     @GET("Warehouses/{warehouseId}/_stateEvents/{version}")
-    Call<WarehouseStateEventDto> getStateEvent(@Path("warehouseId") String id, @Path("version") long version);
+    Call<WarehouseStateEventDto> getStateEvent(@Path("warehouseId") String warehouseId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Warehouses/{warehouseId}/_historyStates/{version}")
-    Call<WarehouseStateDto> getHistoryState(@Path("warehouseId") String id, @Path("version") long version);
+    Call<WarehouseStateDto> getHistoryState(@Path("warehouseId") String warehouseId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Warehouses/{warehouseId}")
-    Call<String> put(@Path("warehouseId") String id, @Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
+    Call<String> put(@Path("warehouseId") String warehouseId, @Body CreateOrMergePatchWarehouseDto.CreateWarehouseDto value);
 
     @Headers("Accept: application/json")
     @POST("Warehouses")
@@ -58,11 +58,11 @@ public interface WarehousesClient {
 
     @Headers("Accept: application/json")
     @PATCH("Warehouses/{warehouseId}")
-    Call<String> patch(@Path("warehouseId") String id, @Body CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value);
+    Call<String> patch(@Path("warehouseId") String warehouseId, @Body CreateOrMergePatchWarehouseDto.MergePatchWarehouseDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Warehouses/{warehouseId}")
-    Call<String> delete(@Path("warehouseId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("warehouseId") String warehouseId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -35,7 +35,7 @@ public interface RxLotsClient {
 
     @Headers("Accept: application/json")
     @GET("Lots/{lotId}")
-    Observable<LotStateDto> get(@Path("lotId") String id, @Query("fields") String fields);
+    Observable<LotStateDto> get(@Path("lotId") String lotId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Lots/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxLotsClient {
 
     @Headers("Accept: application/json")
     @GET("Lots/{lotId}/_stateEvents/{version}")
-    Observable<LotStateEventDto> getStateEvent(@Path("lotId") String id, @Path("version") long version);
+    Observable<LotStateEventDto> getStateEvent(@Path("lotId") String lotId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Lots/{lotId}/_historyStates/{version}")
-    Observable<LotStateDto> getHistoryState(@Path("lotId") String id, @Path("version") long version);
+    Observable<LotStateDto> getHistoryState(@Path("lotId") String lotId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Lots/{lotId}")
-    Observable<String> put(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.CreateLotDto value);
+    Observable<String> put(@Path("lotId") String lotId, @Body CreateOrMergePatchLotDto.CreateLotDto value);
 
     @Headers("Accept: application/json")
     @POST("Lots")
@@ -59,11 +59,11 @@ public interface RxLotsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Lots/{lotId}")
-    Observable<String> patch(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
+    Observable<String> patch(@Path("lotId") String lotId, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Lots/{lotId}")
-    Observable<String> delete(@Path("lotId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("lotId") String lotId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

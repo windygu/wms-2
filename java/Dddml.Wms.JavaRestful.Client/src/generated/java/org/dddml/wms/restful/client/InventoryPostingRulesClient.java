@@ -35,7 +35,7 @@ public interface InventoryPostingRulesClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryPostingRules/{inventoryPostingRuleId}")
-    Call<InventoryPostingRuleStateDto> get(@Path("inventoryPostingRuleId") String id, @Query("fields") String fields);
+    Call<InventoryPostingRuleStateDto> get(@Path("inventoryPostingRuleId") String inventoryPostingRuleId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryPostingRules/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface InventoryPostingRulesClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryPostingRules/{inventoryPostingRuleId}/_stateEvents/{version}")
-    Call<InventoryPostingRuleStateEventDto> getStateEvent(@Path("inventoryPostingRuleId") String id, @Path("version") long version);
+    Call<InventoryPostingRuleStateEventDto> getStateEvent(@Path("inventoryPostingRuleId") String inventoryPostingRuleId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InventoryPostingRules/{inventoryPostingRuleId}/_historyStates/{version}")
-    Call<InventoryPostingRuleStateDto> getHistoryState(@Path("inventoryPostingRuleId") String id, @Path("version") long version);
+    Call<InventoryPostingRuleStateDto> getHistoryState(@Path("inventoryPostingRuleId") String inventoryPostingRuleId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("InventoryPostingRules/{inventoryPostingRuleId}")
-    Call<String> put(@Path("inventoryPostingRuleId") String id, @Body CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value);
+    Call<String> put(@Path("inventoryPostingRuleId") String inventoryPostingRuleId, @Body CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value);
 
     @Headers("Accept: application/json")
     @POST("InventoryPostingRules")
@@ -59,11 +59,11 @@ public interface InventoryPostingRulesClient {
 
     @Headers("Accept: application/json")
     @PATCH("InventoryPostingRules/{inventoryPostingRuleId}")
-    Call<String> patch(@Path("inventoryPostingRuleId") String id, @Body CreateOrMergePatchInventoryPostingRuleDto.MergePatchInventoryPostingRuleDto value);
+    Call<String> patch(@Path("inventoryPostingRuleId") String inventoryPostingRuleId, @Body CreateOrMergePatchInventoryPostingRuleDto.MergePatchInventoryPostingRuleDto value);
 
     @Headers("Accept: application/json")
     @DELETE("InventoryPostingRules/{inventoryPostingRuleId}")
-    Call<String> delete(@Path("inventoryPostingRuleId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("inventoryPostingRuleId") String inventoryPostingRuleId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

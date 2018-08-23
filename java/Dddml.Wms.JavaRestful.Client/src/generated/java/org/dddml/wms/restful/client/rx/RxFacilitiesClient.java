@@ -35,7 +35,7 @@ public interface RxFacilitiesClient {
 
     @Headers("Accept: application/json")
     @GET("Facilities/{facilityId}")
-    Observable<FacilityStateDto> get(@Path("facilityId") String id, @Query("fields") String fields);
+    Observable<FacilityStateDto> get(@Path("facilityId") String facilityId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Facilities/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxFacilitiesClient {
 
     @Headers("Accept: application/json")
     @GET("Facilities/{facilityId}/_stateEvents/{version}")
-    Observable<FacilityStateEventDto> getStateEvent(@Path("facilityId") String id, @Path("version") long version);
+    Observable<FacilityStateEventDto> getStateEvent(@Path("facilityId") String facilityId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Facilities/{facilityId}/_historyStates/{version}")
-    Observable<FacilityStateDto> getHistoryState(@Path("facilityId") String id, @Path("version") long version);
+    Observable<FacilityStateDto> getHistoryState(@Path("facilityId") String facilityId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Facilities/{facilityId}")
-    Observable<String> put(@Path("facilityId") String id, @Body CreateOrMergePatchFacilityDto.CreateFacilityDto value);
+    Observable<String> put(@Path("facilityId") String facilityId, @Body CreateOrMergePatchFacilityDto.CreateFacilityDto value);
 
     @Headers("Accept: application/json")
     @POST("Facilities")
@@ -59,11 +59,11 @@ public interface RxFacilitiesClient {
 
     @Headers("Accept: application/json")
     @PATCH("Facilities/{facilityId}")
-    Observable<String> patch(@Path("facilityId") String id, @Body CreateOrMergePatchFacilityDto.MergePatchFacilityDto value);
+    Observable<String> patch(@Path("facilityId") String facilityId, @Body CreateOrMergePatchFacilityDto.MergePatchFacilityDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Facilities/{facilityId}")
-    Observable<String> delete(@Path("facilityId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("facilityId") String facilityId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

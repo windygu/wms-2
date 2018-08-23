@@ -35,7 +35,7 @@ public interface RxRoleTypesClient {
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/{roleTypeId}")
-    Observable<RoleTypeStateDto> get(@Path("roleTypeId") String id, @Query("fields") String fields);
+    Observable<RoleTypeStateDto> get(@Path("roleTypeId") String roleTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxRoleTypesClient {
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/{roleTypeId}/_stateEvents/{version}")
-    Observable<RoleTypeStateEventDto> getStateEvent(@Path("roleTypeId") String id, @Path("version") long version);
+    Observable<RoleTypeStateEventDto> getStateEvent(@Path("roleTypeId") String roleTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/{roleTypeId}/_historyStates/{version}")
-    Observable<RoleTypeStateDto> getHistoryState(@Path("roleTypeId") String id, @Path("version") long version);
+    Observable<RoleTypeStateDto> getHistoryState(@Path("roleTypeId") String roleTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("RoleTypes/{roleTypeId}")
-    Observable<String> put(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
+    Observable<String> put(@Path("roleTypeId") String roleTypeId, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("RoleTypes")
@@ -59,11 +59,11 @@ public interface RxRoleTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("RoleTypes/{roleTypeId}")
-    Observable<String> patch(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
+    Observable<String> patch(@Path("roleTypeId") String roleTypeId, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("RoleTypes/{roleTypeId}")
-    Observable<String> delete(@Path("roleTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("roleTypeId") String roleTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

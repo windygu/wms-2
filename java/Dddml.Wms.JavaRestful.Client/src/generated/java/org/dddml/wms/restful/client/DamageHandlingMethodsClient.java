@@ -34,7 +34,7 @@ public interface DamageHandlingMethodsClient {
 
     @Headers("Accept: application/json")
     @GET("DamageHandlingMethods/{damageHandlingMethodId}")
-    Call<DamageHandlingMethodStateDto> get(@Path("damageHandlingMethodId") String id, @Query("fields") String fields);
+    Call<DamageHandlingMethodStateDto> get(@Path("damageHandlingMethodId") String damageHandlingMethodId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DamageHandlingMethods/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface DamageHandlingMethodsClient {
 
     @Headers("Accept: application/json")
     @GET("DamageHandlingMethods/{damageHandlingMethodId}/_historyStates/{version}")
-    Call<DamageHandlingMethodStateDto> getHistoryState(@Path("damageHandlingMethodId") String id, @Path("version") long version);
+    Call<DamageHandlingMethodStateDto> getHistoryState(@Path("damageHandlingMethodId") String damageHandlingMethodId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("DamageHandlingMethods/{damageHandlingMethodId}")
-    Call<String> put(@Path("damageHandlingMethodId") String id, @Body CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value);
+    Call<String> put(@Path("damageHandlingMethodId") String damageHandlingMethodId, @Body CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value);
 
     @Headers("Accept: application/json")
     @POST("DamageHandlingMethods")
@@ -54,11 +54,11 @@ public interface DamageHandlingMethodsClient {
 
     @Headers("Accept: application/json")
     @PATCH("DamageHandlingMethods/{damageHandlingMethodId}")
-    Call<String> patch(@Path("damageHandlingMethodId") String id, @Body CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value);
+    Call<String> patch(@Path("damageHandlingMethodId") String damageHandlingMethodId, @Body CreateOrMergePatchDamageHandlingMethodDto.MergePatchDamageHandlingMethodDto value);
 
     @Headers("Accept: application/json")
     @DELETE("DamageHandlingMethods/{damageHandlingMethodId}")
-    Call<String> delete(@Path("damageHandlingMethodId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("damageHandlingMethodId") String damageHandlingMethodId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -34,7 +34,7 @@ public interface MovementTypesClient {
 
     @Headers("Accept: application/json")
     @GET("MovementTypes/{movementTypeId}")
-    Call<MovementTypeStateDto> get(@Path("movementTypeId") String id, @Query("fields") String fields);
+    Call<MovementTypeStateDto> get(@Path("movementTypeId") String movementTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("MovementTypes/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface MovementTypesClient {
 
     @Headers("Accept: application/json")
     @GET("MovementTypes/{movementTypeId}/_historyStates/{version}")
-    Call<MovementTypeStateDto> getHistoryState(@Path("movementTypeId") String id, @Path("version") long version);
+    Call<MovementTypeStateDto> getHistoryState(@Path("movementTypeId") String movementTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("MovementTypes/{movementTypeId}")
-    Call<String> put(@Path("movementTypeId") String id, @Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
+    Call<String> put(@Path("movementTypeId") String movementTypeId, @Body CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("MovementTypes")
@@ -54,11 +54,11 @@ public interface MovementTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("MovementTypes/{movementTypeId}")
-    Call<String> patch(@Path("movementTypeId") String id, @Body CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value);
+    Call<String> patch(@Path("movementTypeId") String movementTypeId, @Body CreateOrMergePatchMovementTypeDto.MergePatchMovementTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("MovementTypes/{movementTypeId}")
-    Call<String> delete(@Path("movementTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("movementTypeId") String movementTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

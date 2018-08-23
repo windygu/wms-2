@@ -37,7 +37,7 @@ public interface SellableInventoryItemsClient {
 
     @Headers("Accept: application/json")
     @GET("SellableInventoryItems/{sellableInventoryItemId}")
-    Call<SellableInventoryItemStateDto> get(@Path("sellableInventoryItemId") String id, @Query("fields") String fields);
+    Call<SellableInventoryItemStateDto> get(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("SellableInventoryItems/_metadata/filteringFields")
@@ -45,7 +45,7 @@ public interface SellableInventoryItemsClient {
 
     @Headers("Accept: application/json")
     @GET("SellableInventoryItems/{sellableInventoryItemId}/_historyStates/{version}")
-    Call<SellableInventoryItemStateDto> getHistoryState(@Path("sellableInventoryItemId") String id, @Path("version") long version);
+    Call<SellableInventoryItemStateDto> getHistoryState(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries/{entrySeqId}")
@@ -57,7 +57,7 @@ public interface SellableInventoryItemsClient {
 
     @Headers("Accept: application/json")
     @PUT("SellableInventoryItems/{sellableInventoryItemId}")
-    Call<String> put(@Path("sellableInventoryItemId") String id, @Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
+    Call<String> put(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Body CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value);
 
     @Headers("Accept: application/json")
     @POST("SellableInventoryItems")
@@ -65,11 +65,11 @@ public interface SellableInventoryItemsClient {
 
     @Headers("Accept: application/json")
     @PATCH("SellableInventoryItems/{sellableInventoryItemId}")
-    Call<String> patch(@Path("sellableInventoryItemId") String id, @Body CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value);
+    Call<String> patch(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Body CreateOrMergePatchSellableInventoryItemDto.MergePatchSellableInventoryItemDto value);
 
     @Headers("Accept: application/json")
     @DELETE("SellableInventoryItems/{sellableInventoryItemId}")
-    Call<String> delete(@Path("sellableInventoryItemId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

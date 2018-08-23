@@ -36,7 +36,7 @@ public interface RxMovementsClient {
 
     @Headers("Accept: application/json")
     @GET("Movements/{documentNumber}")
-    Observable<MovementStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
+    Observable<MovementStateDto> get(@Path("documentNumber") String documentNumber, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Movements/_metadata/filteringFields")
@@ -44,11 +44,11 @@ public interface RxMovementsClient {
 
     @Headers("Accept: application/json")
     @GET("Movements/{documentNumber}/_stateEvents/{version}")
-    Observable<MovementStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<MovementStateEventDto> getStateEvent(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Movements/{documentNumber}/_historyStates/{version}")
-    Observable<MovementStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<MovementStateDto> getHistoryState(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Movements/{movementDocumentNumber}/MovementLines/{lineNumber}")
@@ -60,7 +60,7 @@ public interface RxMovementsClient {
 
     @Headers("Accept: application/json")
     @PUT("Movements/{documentNumber}")
-    Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
+    Observable<String> put(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchMovementDto.CreateMovementDto value);
 
     @Headers("Accept: application/json")
     @POST("Movements")
@@ -68,11 +68,11 @@ public interface RxMovementsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Movements/{documentNumber}")
-    Observable<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchMovementDto.MergePatchMovementDto value);
+    Observable<String> patch(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchMovementDto.MergePatchMovementDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Movements/{documentNumber}")
-    Observable<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("documentNumber") String documentNumber, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
     @PUT("Movements/{documentNumber}/_commands/AddLine")

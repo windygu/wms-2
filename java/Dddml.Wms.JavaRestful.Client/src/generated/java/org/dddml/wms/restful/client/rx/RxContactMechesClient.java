@@ -35,7 +35,7 @@ public interface RxContactMechesClient {
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/{contactMechId}")
-    Observable<ContactMechStateDto> get(@Path("contactMechId") String id, @Query("fields") String fields);
+    Observable<ContactMechStateDto> get(@Path("contactMechId") String contactMechId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxContactMechesClient {
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/{contactMechId}/_stateEvents/{version}")
-    Observable<ContactMechStateEventDto> getStateEvent(@Path("contactMechId") String id, @Path("version") long version);
+    Observable<ContactMechStateEventDto> getStateEvent(@Path("contactMechId") String contactMechId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/{contactMechId}/_historyStates/{version}")
-    Observable<ContactMechStateDto> getHistoryState(@Path("contactMechId") String id, @Path("version") long version);
+    Observable<ContactMechStateDto> getHistoryState(@Path("contactMechId") String contactMechId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("ContactMeches/{contactMechId}")
-    Observable<String> put(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
+    Observable<String> put(@Path("contactMechId") String contactMechId, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
 
     @Headers("Accept: application/json")
     @POST("ContactMeches")
@@ -59,11 +59,11 @@ public interface RxContactMechesClient {
 
     @Headers("Accept: application/json")
     @PATCH("ContactMeches/{contactMechId}")
-    Observable<String> patch(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
+    Observable<String> patch(@Path("contactMechId") String contactMechId, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ContactMeches/{contactMechId}")
-    Observable<String> delete(@Path("contactMechId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("contactMechId") String contactMechId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

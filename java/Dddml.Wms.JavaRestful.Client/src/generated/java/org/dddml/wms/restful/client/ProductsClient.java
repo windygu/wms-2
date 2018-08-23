@@ -34,7 +34,7 @@ public interface ProductsClient {
 
     @Headers("Accept: application/json")
     @GET("Products/{productId}")
-    Call<ProductStateDto> get(@Path("productId") String id, @Query("fields") String fields);
+    Call<ProductStateDto> get(@Path("productId") String productId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Products/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface ProductsClient {
 
     @Headers("Accept: application/json")
     @GET("Products/{productId}/_stateEvents/{version}")
-    Call<ProductStateEventDto> getStateEvent(@Path("productId") String id, @Path("version") long version);
+    Call<ProductStateEventDto> getStateEvent(@Path("productId") String productId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Products/{productId}/_historyStates/{version}")
-    Call<ProductStateDto> getHistoryState(@Path("productId") String id, @Path("version") long version);
+    Call<ProductStateDto> getHistoryState(@Path("productId") String productId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Products/{productId}/GoodIdentifications/{goodIdentificationTypeId}")
@@ -58,7 +58,7 @@ public interface ProductsClient {
 
     @Headers("Accept: application/json")
     @PUT("Products/{productId}")
-    Call<String> put(@Path("productId") String id, @Body CreateOrMergePatchProductDto.CreateProductDto value);
+    Call<String> put(@Path("productId") String productId, @Body CreateOrMergePatchProductDto.CreateProductDto value);
 
     @Headers("Accept: application/json")
     @POST("Products")
@@ -66,11 +66,11 @@ public interface ProductsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Products/{productId}")
-    Call<String> patch(@Path("productId") String id, @Body CreateOrMergePatchProductDto.MergePatchProductDto value);
+    Call<String> patch(@Path("productId") String productId, @Body CreateOrMergePatchProductDto.MergePatchProductDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Products/{productId}")
-    Call<String> delete(@Path("productId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("productId") String productId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

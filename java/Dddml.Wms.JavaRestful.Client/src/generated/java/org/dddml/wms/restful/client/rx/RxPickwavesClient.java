@@ -35,7 +35,7 @@ public interface RxPickwavesClient {
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/{pickwaveId}")
-    Observable<PickwaveStateDto> get(@Path("pickwaveId") Long id, @Query("fields") String fields);
+    Observable<PickwaveStateDto> get(@Path("pickwaveId") Long pickwaveId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxPickwavesClient {
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/{pickwaveId}/_stateEvents/{version}")
-    Observable<PickwaveStateEventDto> getStateEvent(@Path("pickwaveId") Long id, @Path("version") long version);
+    Observable<PickwaveStateEventDto> getStateEvent(@Path("pickwaveId") Long pickwaveId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Pickwaves/{pickwaveId}/_historyStates/{version}")
-    Observable<PickwaveStateDto> getHistoryState(@Path("pickwaveId") Long id, @Path("version") long version);
+    Observable<PickwaveStateDto> getHistoryState(@Path("pickwaveId") Long pickwaveId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Pickwaves/{pickwaveId}")
-    Observable<String> put(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
+    Observable<String> put(@Path("pickwaveId") Long pickwaveId, @Body CreateOrMergePatchPickwaveDto.CreatePickwaveDto value);
 
     @Headers("Accept: application/json")
     @POST("Pickwaves")
@@ -59,11 +59,11 @@ public interface RxPickwavesClient {
 
     @Headers("Accept: application/json")
     @PATCH("Pickwaves/{pickwaveId}")
-    Observable<String> patch(@Path("pickwaveId") Long id, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
+    Observable<String> patch(@Path("pickwaveId") Long pickwaveId, @Body CreateOrMergePatchPickwaveDto.MergePatchPickwaveDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Pickwaves/{pickwaveId}")
-    Observable<String> delete(@Path("pickwaveId") Long id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("pickwaveId") Long pickwaveId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -34,7 +34,7 @@ public interface SupplierProductsClient {
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/{supplierProductId}")
-    Call<SupplierProductStateDto> get(@Path("supplierProductId") String id, @Query("fields") String fields);
+    Call<SupplierProductStateDto> get(@Path("supplierProductId") String supplierProductId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface SupplierProductsClient {
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/{supplierProductId}/_stateEvents/{version}")
-    Call<SupplierProductStateEventDto> getStateEvent(@Path("supplierProductId") String id, @Path("version") long version);
+    Call<SupplierProductStateEventDto> getStateEvent(@Path("supplierProductId") String supplierProductId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/{supplierProductId}/_historyStates/{version}")
-    Call<SupplierProductStateDto> getHistoryState(@Path("supplierProductId") String id, @Path("version") long version);
+    Call<SupplierProductStateDto> getHistoryState(@Path("supplierProductId") String supplierProductId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("SupplierProducts/{supplierProductId}")
-    Call<String> put(@Path("supplierProductId") String id, @Body CreateOrMergePatchSupplierProductDto.CreateSupplierProductDto value);
+    Call<String> put(@Path("supplierProductId") String supplierProductId, @Body CreateOrMergePatchSupplierProductDto.CreateSupplierProductDto value);
 
     @Headers("Accept: application/json")
     @POST("SupplierProducts")
@@ -58,11 +58,11 @@ public interface SupplierProductsClient {
 
     @Headers("Accept: application/json")
     @PATCH("SupplierProducts/{supplierProductId}")
-    Call<String> patch(@Path("supplierProductId") String id, @Body CreateOrMergePatchSupplierProductDto.MergePatchSupplierProductDto value);
+    Call<String> patch(@Path("supplierProductId") String supplierProductId, @Body CreateOrMergePatchSupplierProductDto.MergePatchSupplierProductDto value);
 
     @Headers("Accept: application/json")
     @DELETE("SupplierProducts/{supplierProductId}")
-    Call<String> delete(@Path("supplierProductId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("supplierProductId") String supplierProductId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

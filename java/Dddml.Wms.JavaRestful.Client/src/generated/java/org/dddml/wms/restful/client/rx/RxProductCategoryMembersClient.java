@@ -35,7 +35,7 @@ public interface RxProductCategoryMembersClient {
 
     @Headers("Accept: application/json")
     @GET("ProductCategoryMembers/{productCategoryMemberId}")
-    Observable<ProductCategoryMemberStateDto> get(@Path("productCategoryMemberId") String id, @Query("fields") String fields);
+    Observable<ProductCategoryMemberStateDto> get(@Path("productCategoryMemberId") String productCategoryMemberId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ProductCategoryMembers/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxProductCategoryMembersClient {
 
     @Headers("Accept: application/json")
     @GET("ProductCategoryMembers/{productCategoryMemberId}/_stateEvents/{version}")
-    Observable<ProductCategoryMemberStateEventDto> getStateEvent(@Path("productCategoryMemberId") String id, @Path("version") long version);
+    Observable<ProductCategoryMemberStateEventDto> getStateEvent(@Path("productCategoryMemberId") String productCategoryMemberId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ProductCategoryMembers/{productCategoryMemberId}/_historyStates/{version}")
-    Observable<ProductCategoryMemberStateDto> getHistoryState(@Path("productCategoryMemberId") String id, @Path("version") long version);
+    Observable<ProductCategoryMemberStateDto> getHistoryState(@Path("productCategoryMemberId") String productCategoryMemberId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("ProductCategoryMembers/{productCategoryMemberId}")
-    Observable<String> put(@Path("productCategoryMemberId") String id, @Body CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value);
+    Observable<String> put(@Path("productCategoryMemberId") String productCategoryMemberId, @Body CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value);
 
     @Headers("Accept: application/json")
     @POST("ProductCategoryMembers")
@@ -59,11 +59,11 @@ public interface RxProductCategoryMembersClient {
 
     @Headers("Accept: application/json")
     @PATCH("ProductCategoryMembers/{productCategoryMemberId}")
-    Observable<String> patch(@Path("productCategoryMemberId") String id, @Body CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value);
+    Observable<String> patch(@Path("productCategoryMemberId") String productCategoryMemberId, @Body CreateOrMergePatchProductCategoryMemberDto.MergePatchProductCategoryMemberDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ProductCategoryMembers/{productCategoryMemberId}")
-    Observable<String> delete(@Path("productCategoryMemberId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("productCategoryMemberId") String productCategoryMemberId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -34,7 +34,7 @@ public interface FacilitiesClient {
 
     @Headers("Accept: application/json")
     @GET("Facilities/{facilityId}")
-    Call<FacilityStateDto> get(@Path("facilityId") String id, @Query("fields") String fields);
+    Call<FacilityStateDto> get(@Path("facilityId") String facilityId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Facilities/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface FacilitiesClient {
 
     @Headers("Accept: application/json")
     @GET("Facilities/{facilityId}/_stateEvents/{version}")
-    Call<FacilityStateEventDto> getStateEvent(@Path("facilityId") String id, @Path("version") long version);
+    Call<FacilityStateEventDto> getStateEvent(@Path("facilityId") String facilityId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Facilities/{facilityId}/_historyStates/{version}")
-    Call<FacilityStateDto> getHistoryState(@Path("facilityId") String id, @Path("version") long version);
+    Call<FacilityStateDto> getHistoryState(@Path("facilityId") String facilityId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Facilities/{facilityId}")
-    Call<String> put(@Path("facilityId") String id, @Body CreateOrMergePatchFacilityDto.CreateFacilityDto value);
+    Call<String> put(@Path("facilityId") String facilityId, @Body CreateOrMergePatchFacilityDto.CreateFacilityDto value);
 
     @Headers("Accept: application/json")
     @POST("Facilities")
@@ -58,11 +58,11 @@ public interface FacilitiesClient {
 
     @Headers("Accept: application/json")
     @PATCH("Facilities/{facilityId}")
-    Call<String> patch(@Path("facilityId") String id, @Body CreateOrMergePatchFacilityDto.MergePatchFacilityDto value);
+    Call<String> patch(@Path("facilityId") String facilityId, @Body CreateOrMergePatchFacilityDto.MergePatchFacilityDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Facilities/{facilityId}")
-    Call<String> delete(@Path("facilityId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("facilityId") String facilityId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -35,7 +35,7 @@ public interface RxAttributeSetInstanceExtensionFieldsClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstanceExtensionFields/{name}")
-    Observable<AttributeSetInstanceExtensionFieldStateDto> get(@Path("name") String id, @Query("fields") String fields);
+    Observable<AttributeSetInstanceExtensionFieldStateDto> get(@Path("name") String name, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstanceExtensionFields/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxAttributeSetInstanceExtensionFieldsClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstanceExtensionFields/{name}/_stateEvents/{version}")
-    Observable<AttributeSetInstanceExtensionFieldStateEventDto> getStateEvent(@Path("name") String id, @Path("version") long version);
+    Observable<AttributeSetInstanceExtensionFieldStateEventDto> getStateEvent(@Path("name") String name, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("AttributeSetInstanceExtensionFields/{name}/_historyStates/{version}")
-    Observable<AttributeSetInstanceExtensionFieldStateDto> getHistoryState(@Path("name") String id, @Path("version") long version);
+    Observable<AttributeSetInstanceExtensionFieldStateDto> getHistoryState(@Path("name") String name, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("AttributeSetInstanceExtensionFields/{name}")
-    Observable<String> put(@Path("name") String id, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto value);
+    Observable<String> put(@Path("name") String name, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSetInstanceExtensionFields")
@@ -59,11 +59,11 @@ public interface RxAttributeSetInstanceExtensionFieldsClient {
 
     @Headers("Accept: application/json")
     @PATCH("AttributeSetInstanceExtensionFields/{name}")
-    Observable<String> patch(@Path("name") String id, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.MergePatchAttributeSetInstanceExtensionFieldDto value);
+    Observable<String> patch(@Path("name") String name, @Body CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.MergePatchAttributeSetInstanceExtensionFieldDto value);
 
     @Headers("Accept: application/json")
     @DELETE("AttributeSetInstanceExtensionFields/{name}")
-    Observable<String> delete(@Path("name") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("name") String name, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

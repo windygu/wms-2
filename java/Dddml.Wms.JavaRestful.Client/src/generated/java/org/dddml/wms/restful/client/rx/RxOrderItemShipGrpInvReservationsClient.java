@@ -35,7 +35,7 @@ public interface RxOrderItemShipGrpInvReservationsClient {
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Observable<OrderItemShipGrpInvReservationStateDto> get(@Path("orderItemShipGrpInvResId") String id, @Query("fields") String fields);
+    Observable<OrderItemShipGrpInvReservationStateDto> get(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxOrderItemShipGrpInvReservationsClient {
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}/_stateEvents/{version}")
-    Observable<OrderItemShipGrpInvReservationStateEventDto> getStateEvent(@Path("orderItemShipGrpInvResId") String id, @Path("version") long version);
+    Observable<OrderItemShipGrpInvReservationStateEventDto> getStateEvent(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}/_historyStates/{version}")
-    Observable<OrderItemShipGrpInvReservationStateDto> getHistoryState(@Path("orderItemShipGrpInvResId") String id, @Path("version") long version);
+    Observable<OrderItemShipGrpInvReservationStateDto> getHistoryState(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Observable<String> put(@Path("orderItemShipGrpInvResId") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value);
+    Observable<String> put(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value);
 
     @Headers("Accept: application/json")
     @POST("OrderItemShipGrpInvReservations")
@@ -59,11 +59,11 @@ public interface RxOrderItemShipGrpInvReservationsClient {
 
     @Headers("Accept: application/json")
     @PATCH("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Observable<String> patch(@Path("orderItemShipGrpInvResId") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value);
+    Observable<String> patch(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value);
 
     @Headers("Accept: application/json")
     @DELETE("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Observable<String> delete(@Path("orderItemShipGrpInvResId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

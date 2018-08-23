@@ -34,7 +34,7 @@ public interface LotsClient {
 
     @Headers("Accept: application/json")
     @GET("Lots/{lotId}")
-    Call<LotStateDto> get(@Path("lotId") String id, @Query("fields") String fields);
+    Call<LotStateDto> get(@Path("lotId") String lotId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Lots/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface LotsClient {
 
     @Headers("Accept: application/json")
     @GET("Lots/{lotId}/_stateEvents/{version}")
-    Call<LotStateEventDto> getStateEvent(@Path("lotId") String id, @Path("version") long version);
+    Call<LotStateEventDto> getStateEvent(@Path("lotId") String lotId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Lots/{lotId}/_historyStates/{version}")
-    Call<LotStateDto> getHistoryState(@Path("lotId") String id, @Path("version") long version);
+    Call<LotStateDto> getHistoryState(@Path("lotId") String lotId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Lots/{lotId}")
-    Call<String> put(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.CreateLotDto value);
+    Call<String> put(@Path("lotId") String lotId, @Body CreateOrMergePatchLotDto.CreateLotDto value);
 
     @Headers("Accept: application/json")
     @POST("Lots")
@@ -58,11 +58,11 @@ public interface LotsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Lots/{lotId}")
-    Call<String> patch(@Path("lotId") String id, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
+    Call<String> patch(@Path("lotId") String lotId, @Body CreateOrMergePatchLotDto.MergePatchLotDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Lots/{lotId}")
-    Call<String> delete(@Path("lotId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("lotId") String lotId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

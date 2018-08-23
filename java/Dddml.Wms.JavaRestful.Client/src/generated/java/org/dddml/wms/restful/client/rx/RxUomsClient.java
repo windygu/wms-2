@@ -35,7 +35,7 @@ public interface RxUomsClient {
 
     @Headers("Accept: application/json")
     @GET("Uoms/{uomId}")
-    Observable<UomStateDto> get(@Path("uomId") String id, @Query("fields") String fields);
+    Observable<UomStateDto> get(@Path("uomId") String uomId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Uoms/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxUomsClient {
 
     @Headers("Accept: application/json")
     @GET("Uoms/{uomId}/_stateEvents/{version}")
-    Observable<UomStateEventDto> getStateEvent(@Path("uomId") String id, @Path("version") long version);
+    Observable<UomStateEventDto> getStateEvent(@Path("uomId") String uomId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Uoms/{uomId}/_historyStates/{version}")
-    Observable<UomStateDto> getHistoryState(@Path("uomId") String id, @Path("version") long version);
+    Observable<UomStateDto> getHistoryState(@Path("uomId") String uomId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Uoms/{uomId}")
-    Observable<String> put(@Path("uomId") String id, @Body CreateOrMergePatchUomDto.CreateUomDto value);
+    Observable<String> put(@Path("uomId") String uomId, @Body CreateOrMergePatchUomDto.CreateUomDto value);
 
     @Headers("Accept: application/json")
     @POST("Uoms")
@@ -59,11 +59,11 @@ public interface RxUomsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Uoms/{uomId}")
-    Observable<String> patch(@Path("uomId") String id, @Body CreateOrMergePatchUomDto.MergePatchUomDto value);
+    Observable<String> patch(@Path("uomId") String uomId, @Body CreateOrMergePatchUomDto.MergePatchUomDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Uoms/{uomId}")
-    Observable<String> delete(@Path("uomId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("uomId") String uomId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

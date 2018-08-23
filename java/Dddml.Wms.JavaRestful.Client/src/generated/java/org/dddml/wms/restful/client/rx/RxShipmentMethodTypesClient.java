@@ -35,7 +35,7 @@ public interface RxShipmentMethodTypesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Observable<ShipmentMethodTypeStateDto> get(@Path("shipmentMethodTypeId") String id, @Query("fields") String fields);
+    Observable<ShipmentMethodTypeStateDto> get(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxShipmentMethodTypesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/{shipmentMethodTypeId}/_stateEvents/{version}")
-    Observable<ShipmentMethodTypeStateEventDto> getStateEvent(@Path("shipmentMethodTypeId") String id, @Path("version") long version);
+    Observable<ShipmentMethodTypeStateEventDto> getStateEvent(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/{shipmentMethodTypeId}/_historyStates/{version}")
-    Observable<ShipmentMethodTypeStateDto> getHistoryState(@Path("shipmentMethodTypeId") String id, @Path("version") long version);
+    Observable<ShipmentMethodTypeStateDto> getHistoryState(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Observable<String> put(@Path("shipmentMethodTypeId") String id, @Body CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto value);
+    Observable<String> put(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Body CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("ShipmentMethodTypes")
@@ -59,11 +59,11 @@ public interface RxShipmentMethodTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Observable<String> patch(@Path("shipmentMethodTypeId") String id, @Body CreateOrMergePatchShipmentMethodTypeDto.MergePatchShipmentMethodTypeDto value);
+    Observable<String> patch(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Body CreateOrMergePatchShipmentMethodTypeDto.MergePatchShipmentMethodTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Observable<String> delete(@Path("shipmentMethodTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

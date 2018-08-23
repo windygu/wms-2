@@ -35,7 +35,7 @@ public interface RxLocatorsClient {
 
     @Headers("Accept: application/json")
     @GET("Locators/{locatorId}")
-    Observable<LocatorStateDto> get(@Path("locatorId") String id, @Query("fields") String fields);
+    Observable<LocatorStateDto> get(@Path("locatorId") String locatorId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Locators/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxLocatorsClient {
 
     @Headers("Accept: application/json")
     @GET("Locators/{locatorId}/_stateEvents/{version}")
-    Observable<LocatorStateEventDto> getStateEvent(@Path("locatorId") String id, @Path("version") long version);
+    Observable<LocatorStateEventDto> getStateEvent(@Path("locatorId") String locatorId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Locators/{locatorId}/_historyStates/{version}")
-    Observable<LocatorStateDto> getHistoryState(@Path("locatorId") String id, @Path("version") long version);
+    Observable<LocatorStateDto> getHistoryState(@Path("locatorId") String locatorId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Locators/{locatorId}")
-    Observable<String> put(@Path("locatorId") String id, @Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
+    Observable<String> put(@Path("locatorId") String locatorId, @Body CreateOrMergePatchLocatorDto.CreateLocatorDto value);
 
     @Headers("Accept: application/json")
     @POST("Locators")
@@ -59,11 +59,11 @@ public interface RxLocatorsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Locators/{locatorId}")
-    Observable<String> patch(@Path("locatorId") String id, @Body CreateOrMergePatchLocatorDto.MergePatchLocatorDto value);
+    Observable<String> patch(@Path("locatorId") String locatorId, @Body CreateOrMergePatchLocatorDto.MergePatchLocatorDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Locators/{locatorId}")
-    Observable<String> delete(@Path("locatorId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("locatorId") String locatorId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

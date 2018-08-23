@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+  
+  <Warehouse warehouseId="W1" warehouseName="No.1" description="Warehouse No.1" />
+  <!-- <Warehouse warehouseId="W2" warehouseName="No.2" description="Warehouse No.2" /> -->
+  
+  <Locator locatorId="W1-A" warehouseId="W1" />
+  <Locator locatorId="W1-B" warehouseId="W1" />
+  <Locator locatorId="W1-C" warehouseId="W1" />
+  <Locator locatorId="W1-D" warehouseId="W1" />
+
+</entity-engine-xml>

@@ -35,7 +35,7 @@ public interface RxInventoryPRTriggeredsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Observable<InventoryPRTriggeredStateDto> get(@Path("inventoryPRTriggeredId") String id, @Query("fields") String fields);
+    Observable<InventoryPRTriggeredStateDto> get(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryPRTriggereds/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface RxInventoryPRTriggeredsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryPRTriggereds/{inventoryPRTriggeredId}/_historyStates/{version}")
-    Observable<InventoryPRTriggeredStateDto> getHistoryState(@Path("inventoryPRTriggeredId") String id, @Path("version") long version);
+    Observable<InventoryPRTriggeredStateDto> getHistoryState(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Observable<String> put(@Path("inventoryPRTriggeredId") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
+    Observable<String> put(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Body CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
     @POST("InventoryPRTriggereds")
@@ -55,11 +55,11 @@ public interface RxInventoryPRTriggeredsClient {
 
     @Headers("Accept: application/json")
     @PATCH("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Observable<String> patch(@Path("inventoryPRTriggeredId") String id, @Body CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value);
+    Observable<String> patch(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Body CreateOrMergePatchInventoryPRTriggeredDto.MergePatchInventoryPRTriggeredDto value);
 
     @Headers("Accept: application/json")
     @DELETE("InventoryPRTriggereds/{inventoryPRTriggeredId}")
-    Observable<String> delete(@Path("inventoryPRTriggeredId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("inventoryPRTriggeredId") String inventoryPRTriggeredId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

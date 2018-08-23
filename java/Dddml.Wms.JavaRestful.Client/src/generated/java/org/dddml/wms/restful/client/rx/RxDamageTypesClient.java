@@ -35,7 +35,7 @@ public interface RxDamageTypesClient {
 
     @Headers("Accept: application/json")
     @GET("DamageTypes/{damageTypeId}")
-    Observable<DamageTypeStateDto> get(@Path("damageTypeId") String id, @Query("fields") String fields);
+    Observable<DamageTypeStateDto> get(@Path("damageTypeId") String damageTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DamageTypes/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface RxDamageTypesClient {
 
     @Headers("Accept: application/json")
     @GET("DamageTypes/{damageTypeId}/_historyStates/{version}")
-    Observable<DamageTypeStateDto> getHistoryState(@Path("damageTypeId") String id, @Path("version") long version);
+    Observable<DamageTypeStateDto> getHistoryState(@Path("damageTypeId") String damageTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("DamageTypes/{damageTypeId}")
-    Observable<String> put(@Path("damageTypeId") String id, @Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
+    Observable<String> put(@Path("damageTypeId") String damageTypeId, @Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("DamageTypes")
@@ -55,11 +55,11 @@ public interface RxDamageTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("DamageTypes/{damageTypeId}")
-    Observable<String> patch(@Path("damageTypeId") String id, @Body CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value);
+    Observable<String> patch(@Path("damageTypeId") String damageTypeId, @Body CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("DamageTypes/{damageTypeId}")
-    Observable<String> delete(@Path("damageTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("damageTypeId") String damageTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

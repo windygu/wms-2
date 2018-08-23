@@ -34,7 +34,7 @@ public interface UomsClient {
 
     @Headers("Accept: application/json")
     @GET("Uoms/{uomId}")
-    Call<UomStateDto> get(@Path("uomId") String id, @Query("fields") String fields);
+    Call<UomStateDto> get(@Path("uomId") String uomId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Uoms/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface UomsClient {
 
     @Headers("Accept: application/json")
     @GET("Uoms/{uomId}/_stateEvents/{version}")
-    Call<UomStateEventDto> getStateEvent(@Path("uomId") String id, @Path("version") long version);
+    Call<UomStateEventDto> getStateEvent(@Path("uomId") String uomId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Uoms/{uomId}/_historyStates/{version}")
-    Call<UomStateDto> getHistoryState(@Path("uomId") String id, @Path("version") long version);
+    Call<UomStateDto> getHistoryState(@Path("uomId") String uomId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("Uoms/{uomId}")
-    Call<String> put(@Path("uomId") String id, @Body CreateOrMergePatchUomDto.CreateUomDto value);
+    Call<String> put(@Path("uomId") String uomId, @Body CreateOrMergePatchUomDto.CreateUomDto value);
 
     @Headers("Accept: application/json")
     @POST("Uoms")
@@ -58,11 +58,11 @@ public interface UomsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Uoms/{uomId}")
-    Call<String> patch(@Path("uomId") String id, @Body CreateOrMergePatchUomDto.MergePatchUomDto value);
+    Call<String> patch(@Path("uomId") String uomId, @Body CreateOrMergePatchUomDto.MergePatchUomDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Uoms/{uomId}")
-    Call<String> delete(@Path("uomId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("uomId") String uomId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

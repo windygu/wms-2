@@ -34,7 +34,7 @@ public interface DamageTypesClient {
 
     @Headers("Accept: application/json")
     @GET("DamageTypes/{damageTypeId}")
-    Call<DamageTypeStateDto> get(@Path("damageTypeId") String id, @Query("fields") String fields);
+    Call<DamageTypeStateDto> get(@Path("damageTypeId") String damageTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DamageTypes/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface DamageTypesClient {
 
     @Headers("Accept: application/json")
     @GET("DamageTypes/{damageTypeId}/_historyStates/{version}")
-    Call<DamageTypeStateDto> getHistoryState(@Path("damageTypeId") String id, @Path("version") long version);
+    Call<DamageTypeStateDto> getHistoryState(@Path("damageTypeId") String damageTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("DamageTypes/{damageTypeId}")
-    Call<String> put(@Path("damageTypeId") String id, @Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
+    Call<String> put(@Path("damageTypeId") String damageTypeId, @Body CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("DamageTypes")
@@ -54,11 +54,11 @@ public interface DamageTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("DamageTypes/{damageTypeId}")
-    Call<String> patch(@Path("damageTypeId") String id, @Body CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value);
+    Call<String> patch(@Path("damageTypeId") String damageTypeId, @Body CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("DamageTypes/{damageTypeId}")
-    Call<String> delete(@Path("damageTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("damageTypeId") String damageTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

@@ -34,7 +34,7 @@ public interface StatusItemsClient {
 
     @Headers("Accept: application/json")
     @GET("StatusItems/{statusId}")
-    Call<StatusItemStateDto> get(@Path("statusId") String id, @Query("fields") String fields);
+    Call<StatusItemStateDto> get(@Path("statusId") String statusId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("StatusItems/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface StatusItemsClient {
 
     @Headers("Accept: application/json")
     @GET("StatusItems/{statusId}/_historyStates/{version}")
-    Call<StatusItemStateDto> getHistoryState(@Path("statusId") String id, @Path("version") long version);
+    Call<StatusItemStateDto> getHistoryState(@Path("statusId") String statusId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("StatusItems/{statusId}")
-    Call<String> put(@Path("statusId") String id, @Body CreateOrMergePatchStatusItemDto.CreateStatusItemDto value);
+    Call<String> put(@Path("statusId") String statusId, @Body CreateOrMergePatchStatusItemDto.CreateStatusItemDto value);
 
     @Headers("Accept: application/json")
     @POST("StatusItems")
@@ -54,11 +54,11 @@ public interface StatusItemsClient {
 
     @Headers("Accept: application/json")
     @PATCH("StatusItems/{statusId}")
-    Call<String> patch(@Path("statusId") String id, @Body CreateOrMergePatchStatusItemDto.MergePatchStatusItemDto value);
+    Call<String> patch(@Path("statusId") String statusId, @Body CreateOrMergePatchStatusItemDto.MergePatchStatusItemDto value);
 
     @Headers("Accept: application/json")
     @DELETE("StatusItems/{statusId}")
-    Call<String> delete(@Path("statusId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("statusId") String statusId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

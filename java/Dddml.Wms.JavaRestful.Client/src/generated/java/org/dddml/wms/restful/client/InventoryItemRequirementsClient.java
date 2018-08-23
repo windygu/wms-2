@@ -37,7 +37,7 @@ public interface InventoryItemRequirementsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryItemRequirements/{inventoryItemRequirementId}")
-    Call<InventoryItemRequirementStateDto> get(@Path("inventoryItemRequirementId") String id, @Query("fields") String fields);
+    Call<InventoryItemRequirementStateDto> get(@Path("inventoryItemRequirementId") String inventoryItemRequirementId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InventoryItemRequirements/_metadata/filteringFields")
@@ -45,7 +45,7 @@ public interface InventoryItemRequirementsClient {
 
     @Headers("Accept: application/json")
     @GET("InventoryItemRequirements/{inventoryItemRequirementId}/_historyStates/{version}")
-    Call<InventoryItemRequirementStateDto> getHistoryState(@Path("inventoryItemRequirementId") String id, @Path("version") long version);
+    Call<InventoryItemRequirementStateDto> getHistoryState(@Path("inventoryItemRequirementId") String inventoryItemRequirementId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InventoryItemRequirements/{inventoryItemRequirementId}/InventoryItemRequirementEntries/{entrySeqId}")
@@ -57,7 +57,7 @@ public interface InventoryItemRequirementsClient {
 
     @Headers("Accept: application/json")
     @PUT("InventoryItemRequirements/{inventoryItemRequirementId}")
-    Call<String> put(@Path("inventoryItemRequirementId") String id, @Body CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto value);
+    Call<String> put(@Path("inventoryItemRequirementId") String inventoryItemRequirementId, @Body CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto value);
 
     @Headers("Accept: application/json")
     @POST("InventoryItemRequirements")
@@ -65,11 +65,11 @@ public interface InventoryItemRequirementsClient {
 
     @Headers("Accept: application/json")
     @PATCH("InventoryItemRequirements/{inventoryItemRequirementId}")
-    Call<String> patch(@Path("inventoryItemRequirementId") String id, @Body CreateOrMergePatchInventoryItemRequirementDto.MergePatchInventoryItemRequirementDto value);
+    Call<String> patch(@Path("inventoryItemRequirementId") String inventoryItemRequirementId, @Body CreateOrMergePatchInventoryItemRequirementDto.MergePatchInventoryItemRequirementDto value);
 
     @Headers("Accept: application/json")
     @DELETE("InventoryItemRequirements/{inventoryItemRequirementId}")
-    Call<String> delete(@Path("inventoryItemRequirementId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("inventoryItemRequirementId") String inventoryItemRequirementId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

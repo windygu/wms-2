@@ -34,7 +34,7 @@ public interface AttributeSetsClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}")
-    Call<AttributeSetStateDto> get(@Path("attributeSetId") String id, @Query("fields") String fields);
+    Call<AttributeSetStateDto> get(@Path("attributeSetId") String attributeSetId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface AttributeSetsClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}/_stateEvents/{version}")
-    Call<AttributeSetStateEventDto> getStateEvent(@Path("attributeSetId") String id, @Path("version") long version);
+    Call<AttributeSetStateEventDto> getStateEvent(@Path("attributeSetId") String attributeSetId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}/_historyStates/{version}")
-    Call<AttributeSetStateDto> getHistoryState(@Path("attributeSetId") String id, @Path("version") long version);
+    Call<AttributeSetStateDto> getHistoryState(@Path("attributeSetId") String attributeSetId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}/AttributeUses/{attributeId}")
@@ -58,7 +58,7 @@ public interface AttributeSetsClient {
 
     @Headers("Accept: application/json")
     @PUT("AttributeSets/{attributeSetId}")
-    Call<String> put(@Path("attributeSetId") String id, @Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
+    Call<String> put(@Path("attributeSetId") String attributeSetId, @Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSets")
@@ -66,11 +66,11 @@ public interface AttributeSetsClient {
 
     @Headers("Accept: application/json")
     @PATCH("AttributeSets/{attributeSetId}")
-    Call<String> patch(@Path("attributeSetId") String id, @Body CreateOrMergePatchAttributeSetDto.MergePatchAttributeSetDto value);
+    Call<String> patch(@Path("attributeSetId") String attributeSetId, @Body CreateOrMergePatchAttributeSetDto.MergePatchAttributeSetDto value);
 
     @Headers("Accept: application/json")
     @DELETE("AttributeSets/{attributeSetId}")
-    Call<String> delete(@Path("attributeSetId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("attributeSetId") String attributeSetId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

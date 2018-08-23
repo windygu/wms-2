@@ -34,7 +34,7 @@ public interface OrderItemShipGrpInvReservationsClient {
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Call<OrderItemShipGrpInvReservationStateDto> get(@Path("orderItemShipGrpInvResId") String id, @Query("fields") String fields);
+    Call<OrderItemShipGrpInvReservationStateDto> get(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface OrderItemShipGrpInvReservationsClient {
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}/_stateEvents/{version}")
-    Call<OrderItemShipGrpInvReservationStateEventDto> getStateEvent(@Path("orderItemShipGrpInvResId") String id, @Path("version") long version);
+    Call<OrderItemShipGrpInvReservationStateEventDto> getStateEvent(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}/_historyStates/{version}")
-    Call<OrderItemShipGrpInvReservationStateDto> getHistoryState(@Path("orderItemShipGrpInvResId") String id, @Path("version") long version);
+    Call<OrderItemShipGrpInvReservationStateDto> getHistoryState(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Call<String> put(@Path("orderItemShipGrpInvResId") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value);
+    Call<String> put(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value);
 
     @Headers("Accept: application/json")
     @POST("OrderItemShipGrpInvReservations")
@@ -58,11 +58,11 @@ public interface OrderItemShipGrpInvReservationsClient {
 
     @Headers("Accept: application/json")
     @PATCH("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Call<String> patch(@Path("orderItemShipGrpInvResId") String id, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value);
+    Call<String> patch(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Body CreateOrMergePatchOrderItemShipGrpInvReservationDto.MergePatchOrderItemShipGrpInvReservationDto value);
 
     @Headers("Accept: application/json")
     @DELETE("OrderItemShipGrpInvReservations/{orderItemShipGrpInvResId}")
-    Call<String> delete(@Path("orderItemShipGrpInvResId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("orderItemShipGrpInvResId") String orderItemShipGrpInvResId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

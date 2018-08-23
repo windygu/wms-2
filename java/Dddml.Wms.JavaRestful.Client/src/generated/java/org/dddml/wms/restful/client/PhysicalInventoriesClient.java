@@ -36,7 +36,7 @@ public interface PhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{documentNumber}")
-    Call<PhysicalInventoryStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
+    Call<PhysicalInventoryStateDto> get(@Path("documentNumber") String documentNumber, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/_metadata/filteringFields")
@@ -44,11 +44,11 @@ public interface PhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{documentNumber}/_stateEvents/{version}")
-    Call<PhysicalInventoryStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
+    Call<PhysicalInventoryStateEventDto> getStateEvent(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{documentNumber}/_historyStates/{version}")
-    Call<PhysicalInventoryStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
+    Call<PhysicalInventoryStateDto> getHistoryState(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
@@ -60,7 +60,7 @@ public interface PhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{documentNumber}")
-    Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
+    Call<String> put(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
     @POST("PhysicalInventories")
@@ -68,11 +68,11 @@ public interface PhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @PATCH("PhysicalInventories/{documentNumber}")
-    Call<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
+    Call<String> patch(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
     @DELETE("PhysicalInventories/{documentNumber}")
-    Call<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("documentNumber") String documentNumber, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{documentNumber}/_commands/CountItem")

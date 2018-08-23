@@ -34,7 +34,7 @@ public interface RejectionReasonsClient {
 
     @Headers("Accept: application/json")
     @GET("RejectionReasons/{rejectionReasonId}")
-    Call<RejectionReasonStateDto> get(@Path("rejectionReasonId") String id, @Query("fields") String fields);
+    Call<RejectionReasonStateDto> get(@Path("rejectionReasonId") String rejectionReasonId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("RejectionReasons/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface RejectionReasonsClient {
 
     @Headers("Accept: application/json")
     @GET("RejectionReasons/{rejectionReasonId}/_stateEvents/{version}")
-    Call<RejectionReasonStateEventDto> getStateEvent(@Path("rejectionReasonId") String id, @Path("version") long version);
+    Call<RejectionReasonStateEventDto> getStateEvent(@Path("rejectionReasonId") String rejectionReasonId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("RejectionReasons/{rejectionReasonId}/_historyStates/{version}")
-    Call<RejectionReasonStateDto> getHistoryState(@Path("rejectionReasonId") String id, @Path("version") long version);
+    Call<RejectionReasonStateDto> getHistoryState(@Path("rejectionReasonId") String rejectionReasonId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("RejectionReasons/{rejectionReasonId}")
-    Call<String> put(@Path("rejectionReasonId") String id, @Body CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value);
+    Call<String> put(@Path("rejectionReasonId") String rejectionReasonId, @Body CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value);
 
     @Headers("Accept: application/json")
     @POST("RejectionReasons")
@@ -58,11 +58,11 @@ public interface RejectionReasonsClient {
 
     @Headers("Accept: application/json")
     @PATCH("RejectionReasons/{rejectionReasonId}")
-    Call<String> patch(@Path("rejectionReasonId") String id, @Body CreateOrMergePatchRejectionReasonDto.MergePatchRejectionReasonDto value);
+    Call<String> patch(@Path("rejectionReasonId") String rejectionReasonId, @Body CreateOrMergePatchRejectionReasonDto.MergePatchRejectionReasonDto value);
 
     @Headers("Accept: application/json")
     @DELETE("RejectionReasons/{rejectionReasonId}")
-    Call<String> delete(@Path("rejectionReasonId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("rejectionReasonId") String rejectionReasonId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

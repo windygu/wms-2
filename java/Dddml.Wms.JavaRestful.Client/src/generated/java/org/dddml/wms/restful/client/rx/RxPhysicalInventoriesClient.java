@@ -37,7 +37,7 @@ public interface RxPhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{documentNumber}")
-    Observable<PhysicalInventoryStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
+    Observable<PhysicalInventoryStateDto> get(@Path("documentNumber") String documentNumber, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/_metadata/filteringFields")
@@ -45,11 +45,11 @@ public interface RxPhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{documentNumber}/_stateEvents/{version}")
-    Observable<PhysicalInventoryStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<PhysicalInventoryStateEventDto> getStateEvent(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{documentNumber}/_historyStates/{version}")
-    Observable<PhysicalInventoryStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<PhysicalInventoryStateDto> getHistoryState(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")
@@ -61,7 +61,7 @@ public interface RxPhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{documentNumber}")
-    Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
+    Observable<String> put(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
     @POST("PhysicalInventories")
@@ -69,11 +69,11 @@ public interface RxPhysicalInventoriesClient {
 
     @Headers("Accept: application/json")
     @PATCH("PhysicalInventories/{documentNumber}")
-    Observable<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
+    Observable<String> patch(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchPhysicalInventoryDto.MergePatchPhysicalInventoryDto value);
 
     @Headers("Accept: application/json")
     @DELETE("PhysicalInventories/{documentNumber}")
-    Observable<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("documentNumber") String documentNumber, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{documentNumber}/_commands/CountItem")

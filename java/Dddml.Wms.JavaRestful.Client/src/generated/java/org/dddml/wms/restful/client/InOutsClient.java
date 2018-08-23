@@ -35,7 +35,7 @@ public interface InOutsClient {
 
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}")
-    Call<InOutStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
+    Call<InOutStateDto> get(@Path("documentNumber") String documentNumber, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InOuts/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface InOutsClient {
 
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/_stateEvents/{version}")
-    Call<InOutStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
+    Call<InOutStateEventDto> getStateEvent(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/_historyStates/{version}")
-    Call<InOutStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
+    Call<InOutStateDto> getHistoryState(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutImages/{sequenceId}")
@@ -75,7 +75,7 @@ public interface InOutsClient {
 
     @Headers("Accept: application/json")
     @PUT("InOuts/{documentNumber}")
-    Call<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
+    Call<String> put(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
 
     @Headers("Accept: application/json")
     @POST("InOuts")
@@ -83,11 +83,11 @@ public interface InOutsClient {
 
     @Headers("Accept: application/json")
     @PATCH("InOuts/{documentNumber}")
-    Call<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
+    Call<String> patch(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
 
     @Headers("Accept: application/json")
     @DELETE("InOuts/{documentNumber}")
-    Call<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("documentNumber") String documentNumber, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
     @PUT("InOuts/{documentNumber}/_commands/Complete")

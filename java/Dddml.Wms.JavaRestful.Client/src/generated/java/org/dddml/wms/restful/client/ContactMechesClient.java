@@ -34,7 +34,7 @@ public interface ContactMechesClient {
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/{contactMechId}")
-    Call<ContactMechStateDto> get(@Path("contactMechId") String id, @Query("fields") String fields);
+    Call<ContactMechStateDto> get(@Path("contactMechId") String contactMechId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface ContactMechesClient {
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/{contactMechId}/_stateEvents/{version}")
-    Call<ContactMechStateEventDto> getStateEvent(@Path("contactMechId") String id, @Path("version") long version);
+    Call<ContactMechStateEventDto> getStateEvent(@Path("contactMechId") String contactMechId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ContactMeches/{contactMechId}/_historyStates/{version}")
-    Call<ContactMechStateDto> getHistoryState(@Path("contactMechId") String id, @Path("version") long version);
+    Call<ContactMechStateDto> getHistoryState(@Path("contactMechId") String contactMechId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("ContactMeches/{contactMechId}")
-    Call<String> put(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
+    Call<String> put(@Path("contactMechId") String contactMechId, @Body CreateOrMergePatchContactMechDto.CreateContactMechDto value);
 
     @Headers("Accept: application/json")
     @POST("ContactMeches")
@@ -58,11 +58,11 @@ public interface ContactMechesClient {
 
     @Headers("Accept: application/json")
     @PATCH("ContactMeches/{contactMechId}")
-    Call<String> patch(@Path("contactMechId") String id, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
+    Call<String> patch(@Path("contactMechId") String contactMechId, @Body CreateOrMergePatchContactMechDto.MergePatchContactMechDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ContactMeches/{contactMechId}")
-    Call<String> delete(@Path("contactMechId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("contactMechId") String contactMechId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

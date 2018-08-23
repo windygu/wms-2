@@ -36,7 +36,7 @@ public interface RxOrdersClient {
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}")
-    Observable<OrderStateDto> get(@Path("orderId") String id, @Query("fields") String fields);
+    Observable<OrderStateDto> get(@Path("orderId") String orderId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Orders/_metadata/filteringFields")
@@ -44,11 +44,11 @@ public interface RxOrdersClient {
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/_stateEvents/{version}")
-    Observable<OrderStateEventDto> getStateEvent(@Path("orderId") String id, @Path("version") long version);
+    Observable<OrderStateEventDto> getStateEvent(@Path("orderId") String orderId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/_historyStates/{version}")
-    Observable<OrderStateDto> getHistoryState(@Path("orderId") String id, @Path("version") long version);
+    Observable<OrderStateDto> getHistoryState(@Path("orderId") String orderId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderRoles/{partyRoleId}")
@@ -88,7 +88,7 @@ public interface RxOrdersClient {
 
     @Headers("Accept: application/json")
     @PUT("Orders/{orderId}")
-    Observable<String> put(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
+    Observable<String> put(@Path("orderId") String orderId, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
 
     @Headers("Accept: application/json")
     @POST("Orders")
@@ -96,11 +96,11 @@ public interface RxOrdersClient {
 
     @Headers("Accept: application/json")
     @PATCH("Orders/{orderId}")
-    Observable<String> patch(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
+    Observable<String> patch(@Path("orderId") String orderId, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Orders/{orderId}")
-    Observable<String> delete(@Path("orderId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("orderId") String orderId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

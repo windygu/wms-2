@@ -35,7 +35,7 @@ public interface PicklistsClient {
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}")
-    Call<PicklistStateDto> get(@Path("picklistId") String id, @Query("fields") String fields);
+    Call<PicklistStateDto> get(@Path("picklistId") String picklistId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Picklists/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface PicklistsClient {
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/_stateEvents/{version}")
-    Call<PicklistStateEventDto> getStateEvent(@Path("picklistId") String id, @Path("version") long version);
+    Call<PicklistStateEventDto> getStateEvent(@Path("picklistId") String picklistId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/_historyStates/{version}")
-    Call<PicklistStateDto> getHistoryState(@Path("picklistId") String id, @Path("version") long version);
+    Call<PicklistStateDto> getHistoryState(@Path("picklistId") String picklistId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/PicklistRoles/{partyRoleId}")
@@ -59,7 +59,7 @@ public interface PicklistsClient {
 
     @Headers("Accept: application/json")
     @PUT("Picklists/{picklistId}")
-    Call<String> put(@Path("picklistId") String id, @Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
+    Call<String> put(@Path("picklistId") String picklistId, @Body CreateOrMergePatchPicklistDto.CreatePicklistDto value);
 
     @Headers("Accept: application/json")
     @POST("Picklists")
@@ -67,11 +67,11 @@ public interface PicklistsClient {
 
     @Headers("Accept: application/json")
     @PATCH("Picklists/{picklistId}")
-    Call<String> patch(@Path("picklistId") String id, @Body CreateOrMergePatchPicklistDto.MergePatchPicklistDto value);
+    Call<String> patch(@Path("picklistId") String picklistId, @Body CreateOrMergePatchPicklistDto.MergePatchPicklistDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Picklists/{picklistId}")
-    Call<String> delete(@Path("picklistId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("picklistId") String picklistId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

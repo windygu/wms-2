@@ -36,7 +36,7 @@ public interface RxInOutsClient {
 
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}")
-    Observable<InOutStateDto> get(@Path("documentNumber") String id, @Query("fields") String fields);
+    Observable<InOutStateDto> get(@Path("documentNumber") String documentNumber, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("InOuts/_metadata/filteringFields")
@@ -44,11 +44,11 @@ public interface RxInOutsClient {
 
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/_stateEvents/{version}")
-    Observable<InOutStateEventDto> getStateEvent(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<InOutStateEventDto> getStateEvent(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/_historyStates/{version}")
-    Observable<InOutStateDto> getHistoryState(@Path("documentNumber") String id, @Path("version") long version);
+    Observable<InOutStateDto> getHistoryState(@Path("documentNumber") String documentNumber, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutImages/{sequenceId}")
@@ -76,7 +76,7 @@ public interface RxInOutsClient {
 
     @Headers("Accept: application/json")
     @PUT("InOuts/{documentNumber}")
-    Observable<String> put(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
+    Observable<String> put(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchInOutDto.CreateInOutDto value);
 
     @Headers("Accept: application/json")
     @POST("InOuts")
@@ -84,11 +84,11 @@ public interface RxInOutsClient {
 
     @Headers("Accept: application/json")
     @PATCH("InOuts/{documentNumber}")
-    Observable<String> patch(@Path("documentNumber") String id, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
+    Observable<String> patch(@Path("documentNumber") String documentNumber, @Body CreateOrMergePatchInOutDto.MergePatchInOutDto value);
 
     @Headers("Accept: application/json")
     @DELETE("InOuts/{documentNumber}")
-    Observable<String> delete(@Path("documentNumber") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("documentNumber") String documentNumber, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
     @Headers("Accept: application/json")
     @PUT("InOuts/{documentNumber}/_commands/Complete")

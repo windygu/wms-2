@@ -34,7 +34,7 @@ public interface ShipmentTypesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentTypes/{shipmentTypeId}")
-    Call<ShipmentTypeStateDto> get(@Path("shipmentTypeId") String id, @Query("fields") String fields);
+    Call<ShipmentTypeStateDto> get(@Path("shipmentTypeId") String shipmentTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ShipmentTypes/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface ShipmentTypesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentTypes/{shipmentTypeId}/_historyStates/{version}")
-    Call<ShipmentTypeStateDto> getHistoryState(@Path("shipmentTypeId") String id, @Path("version") long version);
+    Call<ShipmentTypeStateDto> getHistoryState(@Path("shipmentTypeId") String shipmentTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("ShipmentTypes/{shipmentTypeId}")
-    Call<String> put(@Path("shipmentTypeId") String id, @Body CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value);
+    Call<String> put(@Path("shipmentTypeId") String shipmentTypeId, @Body CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("ShipmentTypes")
@@ -54,11 +54,11 @@ public interface ShipmentTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("ShipmentTypes/{shipmentTypeId}")
-    Call<String> patch(@Path("shipmentTypeId") String id, @Body CreateOrMergePatchShipmentTypeDto.MergePatchShipmentTypeDto value);
+    Call<String> patch(@Path("shipmentTypeId") String shipmentTypeId, @Body CreateOrMergePatchShipmentTypeDto.MergePatchShipmentTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ShipmentTypes/{shipmentTypeId}")
-    Call<String> delete(@Path("shipmentTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("shipmentTypeId") String shipmentTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

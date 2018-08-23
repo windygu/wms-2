@@ -35,7 +35,7 @@ public interface RxAttributeSetsClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}")
-    Observable<AttributeSetStateDto> get(@Path("attributeSetId") String id, @Query("fields") String fields);
+    Observable<AttributeSetStateDto> get(@Path("attributeSetId") String attributeSetId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface RxAttributeSetsClient {
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}/_stateEvents/{version}")
-    Observable<AttributeSetStateEventDto> getStateEvent(@Path("attributeSetId") String id, @Path("version") long version);
+    Observable<AttributeSetStateEventDto> getStateEvent(@Path("attributeSetId") String attributeSetId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}/_historyStates/{version}")
-    Observable<AttributeSetStateDto> getHistoryState(@Path("attributeSetId") String id, @Path("version") long version);
+    Observable<AttributeSetStateDto> getHistoryState(@Path("attributeSetId") String attributeSetId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}/AttributeUses/{attributeId}")
@@ -59,7 +59,7 @@ public interface RxAttributeSetsClient {
 
     @Headers("Accept: application/json")
     @PUT("AttributeSets/{attributeSetId}")
-    Observable<String> put(@Path("attributeSetId") String id, @Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
+    Observable<String> put(@Path("attributeSetId") String attributeSetId, @Body CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value);
 
     @Headers("Accept: application/json")
     @POST("AttributeSets")
@@ -67,11 +67,11 @@ public interface RxAttributeSetsClient {
 
     @Headers("Accept: application/json")
     @PATCH("AttributeSets/{attributeSetId}")
-    Observable<String> patch(@Path("attributeSetId") String id, @Body CreateOrMergePatchAttributeSetDto.MergePatchAttributeSetDto value);
+    Observable<String> patch(@Path("attributeSetId") String attributeSetId, @Body CreateOrMergePatchAttributeSetDto.MergePatchAttributeSetDto value);
 
     @Headers("Accept: application/json")
     @DELETE("AttributeSets/{attributeSetId}")
-    Observable<String> delete(@Path("attributeSetId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("attributeSetId") String attributeSetId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

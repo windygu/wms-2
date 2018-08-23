@@ -35,7 +35,7 @@ public interface RxDocumentTypesClient {
 
     @Headers("Accept: application/json")
     @GET("DocumentTypes/{documentTypeId}")
-    Observable<DocumentTypeStateDto> get(@Path("documentTypeId") String id, @Query("fields") String fields);
+    Observable<DocumentTypeStateDto> get(@Path("documentTypeId") String documentTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("DocumentTypes/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface RxDocumentTypesClient {
 
     @Headers("Accept: application/json")
     @GET("DocumentTypes/{documentTypeId}/_historyStates/{version}")
-    Observable<DocumentTypeStateDto> getHistoryState(@Path("documentTypeId") String id, @Path("version") long version);
+    Observable<DocumentTypeStateDto> getHistoryState(@Path("documentTypeId") String documentTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("DocumentTypes/{documentTypeId}")
-    Observable<String> put(@Path("documentTypeId") String id, @Body CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value);
+    Observable<String> put(@Path("documentTypeId") String documentTypeId, @Body CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("DocumentTypes")
@@ -55,11 +55,11 @@ public interface RxDocumentTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("DocumentTypes/{documentTypeId}")
-    Observable<String> patch(@Path("documentTypeId") String id, @Body CreateOrMergePatchDocumentTypeDto.MergePatchDocumentTypeDto value);
+    Observable<String> patch(@Path("documentTypeId") String documentTypeId, @Body CreateOrMergePatchDocumentTypeDto.MergePatchDocumentTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("DocumentTypes/{documentTypeId}")
-    Observable<String> delete(@Path("documentTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("documentTypeId") String documentTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

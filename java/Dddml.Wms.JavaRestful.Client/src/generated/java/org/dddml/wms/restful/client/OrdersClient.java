@@ -35,7 +35,7 @@ public interface OrdersClient {
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}")
-    Call<OrderStateDto> get(@Path("orderId") String id, @Query("fields") String fields);
+    Call<OrderStateDto> get(@Path("orderId") String orderId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("Orders/_metadata/filteringFields")
@@ -43,11 +43,11 @@ public interface OrdersClient {
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/_stateEvents/{version}")
-    Call<OrderStateEventDto> getStateEvent(@Path("orderId") String id, @Path("version") long version);
+    Call<OrderStateEventDto> getStateEvent(@Path("orderId") String orderId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/_historyStates/{version}")
-    Call<OrderStateDto> getHistoryState(@Path("orderId") String id, @Path("version") long version);
+    Call<OrderStateDto> getHistoryState(@Path("orderId") String orderId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderRoles/{partyRoleId}")
@@ -87,7 +87,7 @@ public interface OrdersClient {
 
     @Headers("Accept: application/json")
     @PUT("Orders/{orderId}")
-    Call<String> put(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
+    Call<String> put(@Path("orderId") String orderId, @Body CreateOrMergePatchOrderDto.CreateOrderDto value);
 
     @Headers("Accept: application/json")
     @POST("Orders")
@@ -95,11 +95,11 @@ public interface OrdersClient {
 
     @Headers("Accept: application/json")
     @PATCH("Orders/{orderId}")
-    Call<String> patch(@Path("orderId") String id, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
+    Call<String> patch(@Path("orderId") String orderId, @Body CreateOrMergePatchOrderDto.MergePatchOrderDto value);
 
     @Headers("Accept: application/json")
     @DELETE("Orders/{orderId}")
-    Call<String> delete(@Path("orderId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("orderId") String orderId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

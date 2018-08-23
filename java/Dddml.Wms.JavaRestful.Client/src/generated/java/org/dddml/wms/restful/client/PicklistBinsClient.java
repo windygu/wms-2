@@ -34,7 +34,7 @@ public interface PicklistBinsClient {
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/{picklistBinId}")
-    Call<PicklistBinStateDto> get(@Path("picklistBinId") String id, @Query("fields") String fields);
+    Call<PicklistBinStateDto> get(@Path("picklistBinId") String picklistBinId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/_metadata/filteringFields")
@@ -42,11 +42,11 @@ public interface PicklistBinsClient {
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/{picklistBinId}/_stateEvents/{version}")
-    Call<PicklistBinStateEventDto> getStateEvent(@Path("picklistBinId") String id, @Path("version") long version);
+    Call<PicklistBinStateEventDto> getStateEvent(@Path("picklistBinId") String picklistBinId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/{picklistBinId}/_historyStates/{version}")
-    Call<PicklistBinStateDto> getHistoryState(@Path("picklistBinId") String id, @Path("version") long version);
+    Call<PicklistBinStateDto> getHistoryState(@Path("picklistBinId") String picklistBinId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("PicklistBins/{picklistBinId}/PicklistItems/{picklistItemOrderShipGrpInvId}")
@@ -58,7 +58,7 @@ public interface PicklistBinsClient {
 
     @Headers("Accept: application/json")
     @PUT("PicklistBins/{picklistBinId}")
-    Call<String> put(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
+    Call<String> put(@Path("picklistBinId") String picklistBinId, @Body CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto value);
 
     @Headers("Accept: application/json")
     @POST("PicklistBins")
@@ -66,11 +66,11 @@ public interface PicklistBinsClient {
 
     @Headers("Accept: application/json")
     @PATCH("PicklistBins/{picklistBinId}")
-    Call<String> patch(@Path("picklistBinId") String id, @Body CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value);
+    Call<String> patch(@Path("picklistBinId") String picklistBinId, @Body CreateOrMergePatchPicklistBinDto.MergePatchPicklistBinDto value);
 
     @Headers("Accept: application/json")
     @DELETE("PicklistBins/{picklistBinId}")
-    Call<String> delete(@Path("picklistBinId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("picklistBinId") String picklistBinId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

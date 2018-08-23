@@ -34,7 +34,7 @@ public interface ProductCategoriesClient {
 
     @Headers("Accept: application/json")
     @GET("ProductCategories/{productCategoryId}")
-    Call<ProductCategoryStateDto> get(@Path("productCategoryId") String id, @Query("fields") String fields);
+    Call<ProductCategoryStateDto> get(@Path("productCategoryId") String productCategoryId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ProductCategories/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface ProductCategoriesClient {
 
     @Headers("Accept: application/json")
     @GET("ProductCategories/{productCategoryId}/_stateEvents/{version}")
-    Call<ProductCategoryStateEventDto> getStateEvent(@Path("productCategoryId") String id, @Path("version") long version);
+    Call<ProductCategoryStateEventDto> getStateEvent(@Path("productCategoryId") String productCategoryId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ProductCategories/{productCategoryId}/_historyStates/{version}")
-    Call<ProductCategoryStateDto> getHistoryState(@Path("productCategoryId") String id, @Path("version") long version);
+    Call<ProductCategoryStateDto> getHistoryState(@Path("productCategoryId") String productCategoryId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("ProductCategories/{productCategoryId}")
-    Call<String> put(@Path("productCategoryId") String id, @Body CreateOrMergePatchProductCategoryDto.CreateProductCategoryDto value);
+    Call<String> put(@Path("productCategoryId") String productCategoryId, @Body CreateOrMergePatchProductCategoryDto.CreateProductCategoryDto value);
 
     @Headers("Accept: application/json")
     @POST("ProductCategories")
@@ -58,11 +58,11 @@ public interface ProductCategoriesClient {
 
     @Headers("Accept: application/json")
     @PATCH("ProductCategories/{productCategoryId}")
-    Call<String> patch(@Path("productCategoryId") String id, @Body CreateOrMergePatchProductCategoryDto.MergePatchProductCategoryDto value);
+    Call<String> patch(@Path("productCategoryId") String productCategoryId, @Body CreateOrMergePatchProductCategoryDto.MergePatchProductCategoryDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ProductCategories/{productCategoryId}")
-    Call<String> delete(@Path("productCategoryId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("productCategoryId") String productCategoryId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

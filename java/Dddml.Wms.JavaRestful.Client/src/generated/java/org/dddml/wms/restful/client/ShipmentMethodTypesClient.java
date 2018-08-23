@@ -34,7 +34,7 @@ public interface ShipmentMethodTypesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Call<ShipmentMethodTypeStateDto> get(@Path("shipmentMethodTypeId") String id, @Query("fields") String fields);
+    Call<ShipmentMethodTypeStateDto> get(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface ShipmentMethodTypesClient {
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/{shipmentMethodTypeId}/_stateEvents/{version}")
-    Call<ShipmentMethodTypeStateEventDto> getStateEvent(@Path("shipmentMethodTypeId") String id, @Path("version") long version);
+    Call<ShipmentMethodTypeStateEventDto> getStateEvent(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("ShipmentMethodTypes/{shipmentMethodTypeId}/_historyStates/{version}")
-    Call<ShipmentMethodTypeStateDto> getHistoryState(@Path("shipmentMethodTypeId") String id, @Path("version") long version);
+    Call<ShipmentMethodTypeStateDto> getHistoryState(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Call<String> put(@Path("shipmentMethodTypeId") String id, @Body CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto value);
+    Call<String> put(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Body CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("ShipmentMethodTypes")
@@ -58,11 +58,11 @@ public interface ShipmentMethodTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Call<String> patch(@Path("shipmentMethodTypeId") String id, @Body CreateOrMergePatchShipmentMethodTypeDto.MergePatchShipmentMethodTypeDto value);
+    Call<String> patch(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Body CreateOrMergePatchShipmentMethodTypeDto.MergePatchShipmentMethodTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("ShipmentMethodTypes/{shipmentMethodTypeId}")
-    Call<String> delete(@Path("shipmentMethodTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("shipmentMethodTypeId") String shipmentMethodTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 

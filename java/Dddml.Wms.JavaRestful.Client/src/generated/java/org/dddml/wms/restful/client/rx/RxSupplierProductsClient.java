@@ -35,7 +35,7 @@ public interface RxSupplierProductsClient {
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/{supplierProductId}")
-    Observable<SupplierProductStateDto> get(@Path("supplierProductId") String id, @Query("fields") String fields);
+    Observable<SupplierProductStateDto> get(@Path("supplierProductId") String supplierProductId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/_metadata/filteringFields")
@@ -43,15 +43,15 @@ public interface RxSupplierProductsClient {
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/{supplierProductId}/_stateEvents/{version}")
-    Observable<SupplierProductStateEventDto> getStateEvent(@Path("supplierProductId") String id, @Path("version") long version);
+    Observable<SupplierProductStateEventDto> getStateEvent(@Path("supplierProductId") String supplierProductId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("SupplierProducts/{supplierProductId}/_historyStates/{version}")
-    Observable<SupplierProductStateDto> getHistoryState(@Path("supplierProductId") String id, @Path("version") long version);
+    Observable<SupplierProductStateDto> getHistoryState(@Path("supplierProductId") String supplierProductId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("SupplierProducts/{supplierProductId}")
-    Observable<String> put(@Path("supplierProductId") String id, @Body CreateOrMergePatchSupplierProductDto.CreateSupplierProductDto value);
+    Observable<String> put(@Path("supplierProductId") String supplierProductId, @Body CreateOrMergePatchSupplierProductDto.CreateSupplierProductDto value);
 
     @Headers("Accept: application/json")
     @POST("SupplierProducts")
@@ -59,11 +59,11 @@ public interface RxSupplierProductsClient {
 
     @Headers("Accept: application/json")
     @PATCH("SupplierProducts/{supplierProductId}")
-    Observable<String> patch(@Path("supplierProductId") String id, @Body CreateOrMergePatchSupplierProductDto.MergePatchSupplierProductDto value);
+    Observable<String> patch(@Path("supplierProductId") String supplierProductId, @Body CreateOrMergePatchSupplierProductDto.MergePatchSupplierProductDto value);
 
     @Headers("Accept: application/json")
     @DELETE("SupplierProducts/{supplierProductId}")
-    Observable<String> delete(@Path("supplierProductId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Observable<String> delete(@Path("supplierProductId") String supplierProductId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 
