@@ -36,13 +36,24 @@ public class JwtTests {
     private static String baseUrl = "http://localhost:8080/api/";
 
     public static void main(String[] args) {
-        String token = getJwtTokenRemote();
+        String token = null;
+        String url = null;
 
-        String url = appendUrl(baseUrl, "InOuts");
+        // //////////////////////////////
+        //        token = getJwtToken();
+        //        url = appendUrl(baseUrl, "ImportService/TestInitializeInventoryItems");
+        //        testGet(token, url);
+        //        if (true) { return; }
+        // /////////////////////////////
+
+        token = getJwtTokenRemote();
+
+        url = appendUrl(baseUrl, "InOuts");
         testGetInouts(token, url);
 
         url = appendUrl(baseUrl, "Products");
         testPutProduct(token, url);
+
     }
 
     private static String appendUrl(String url, String component) {
@@ -85,12 +96,7 @@ public class JwtTests {
     private static void testGetInouts(String token, String url) {
         CloseableHttpClient client = HttpClientBuilder.create().build();
         try {
-            HttpGet httpGet = new HttpGet(url);
-            httpGet.setHeader("ACCEPT", "application/json");
-            httpGet.setHeader("Authorization", "Bearer " + token);
-            HttpResponse response = client.execute(httpGet);
-            //Assert.assertEquals(true, String.valueOf(response.getStatusLine().getStatusCode()).startsWith("20"));
-            System.out.println(response.getStatusLine().getStatusCode());
+            HttpResponse response = doHttpGet(client, token, url);
             String jsonStr = readString(response);
             System.out.println("==========================================");
             System.out.println(jsonStr);
@@ -99,6 +105,30 @@ public class JwtTests {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private static void testGet(String token, String url) {
+        CloseableHttpClient client = HttpClientBuilder.create().build();
+        try {
+            HttpResponse response = doHttpGet(client, token, url);
+            String str = readString(response);
+            System.out.println("==========================================");
+            System.out.println(str);
+            System.out.println("==========================================");
+            client.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private static HttpResponse doHttpGet(CloseableHttpClient client, String token, String url) throws IOException {
+        HttpGet httpGet = new HttpGet(url);
+        httpGet.setHeader("ACCEPT", "application/json");
+        httpGet.setHeader("Authorization", "Bearer " + token);
+        HttpResponse response = client.execute(httpGet);
+        //Assert.assertEquals(true, String.valueOf(response.getStatusLine().getStatusCode()).startsWith("20"));
+        System.out.println(response.getStatusLine().getStatusCode());
+        return response;
     }
 
     private static String getJwtTokenRemote() {
@@ -154,7 +184,7 @@ public class JwtTests {
         claims.put("role", u.getRole());
         //claims.put("userId", u.getId());
 
-        String secret = "mySecret";
+        String secret = "XXXXXXX";
         String token = Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, secret)

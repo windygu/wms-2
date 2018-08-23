@@ -15,6 +15,10 @@ import org.dddml.wms.domain.documenttype.DocumentTypeIds;
 import org.dddml.wms.domain.inout.ImportingInOutLine;
 import org.dddml.wms.domain.inout.InOutApplicationService;
 import org.dddml.wms.domain.inout.InOutCommands;
+import org.dddml.wms.domain.locator.LocatorApplicationService;
+import org.dddml.wms.domain.lot.AbstractLotCommand;
+import org.dddml.wms.domain.lot.LotApplicationService;
+import org.dddml.wms.domain.lot.LotCommand;
 import org.dddml.wms.domain.movementtype.MovementTypeIds;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
@@ -29,6 +33,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.rmi.CORBA.Tie;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -410,6 +415,9 @@ public class ImportServiceResource {
     @Autowired
     private InOutApplicationService inOutApplicationService;
 
+    @Autowired
+    private LotApplicationService lotApplicationService;
+
     @GetMapping("GetShipmentItemColumnNames")
     public List<String> getShipmentItemColumnNames(@RequestParam(value = "productIds") String productIds) {
         String[] prdIdArray = productIds.split(",");
@@ -638,6 +646,23 @@ public class ImportServiceResource {
             importInfo.setCommandId(importInfo.getDocumentNumber());
             inOutApplicationService.when(importInfo);
         }
+
+        // ////////////////////// 创建批次信息 //////////////////////
+        if (lotIdColumnIdx != null) {
+            Set<String> lotIds = matrix.stream().map(row -> row[lotIdColumnIdx]).collect(Collectors.toSet());
+            for (String lotId : lotIds) {
+                if (lotId == null || lotId.trim().isEmpty()) {
+                    continue;
+                }
+                LotCommand.CreateLot createLot = new AbstractLotCommand.SimpleCreateLot();
+                createLot.setLotId(lotId.trim());
+                // 创建一个不过期的“过期时间”
+                createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
+                createLot.setCommandId(lotId);
+                lotApplicationService.when(createLot);
+            }
+        }
+
     }
 
     private Map<String, String> getProductNameMap(ProductMapping[] productMappings) {
