@@ -4,9 +4,10 @@
   <Warehouse warehouseId="W1" warehouseName="No.1" description="Warehouse No.1" />
   <!-- <Warehouse warehouseId="W2" warehouseName="No.2" description="Warehouse No.2" /> -->
   
-  <Locator locatorId="W1-A" warehouseId="W1" />
-  <Locator locatorId="W1-B" warehouseId="W1" />
-  <Locator locatorId="W1-C" warehouseId="W1" />
-  <Locator locatorId="W1-D" warehouseId="W1" />
+  <Locator locatorId="W1-A-1-1-1" warehouseId="W1" x="A" y="1" z="1" />
+  <Locator locatorId="W1-B-1-1-1" warehouseId="W1" x="B" y="1" z="1" />
+  <Locator locatorId="W1-C-1-1-1" warehouseId="W1" x="C" y="1" z="1" />
+  <Locator locatorId="W1-D-1-1-1" warehouseId="W1" x="D" y="1" z="1" />
+  <Locator locatorId="W1-E-1-1-1" warehouseId="W1" x="E" y="1" z="1" />
 
 </entity-engine-xml>
