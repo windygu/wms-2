@@ -16,6 +16,7 @@ import java.util.List;
 public class RamlUtil {
 
     public static void main(String[] args) {
+        // combine
         PartialRaml[] ramls = new PartialRaml[] {
                 new PartialRaml(getRaml0(), "api"),
                 new PartialRaml(getRaml1(), "queries"),
@@ -23,47 +24,49 @@ public class RamlUtil {
         };
         Raml fullRaml = combine(ramls);
 
-        File fullFile = new File(
-                "C:\\Users\\yangjiefeng\\Documents\\GitHub\\wms\\java\\Dddml.Wms.JavaRestful\\"
-                        + "src\\main\\resources\\dddml-wms-restful-full.raml"
-        );
+        // dump
+        String fullFilePath = "C:\\Users\\yangjiefeng\\Documents\\GitHub\\wms\\java\\Dddml.Wms.JavaRestful\\"
+                        + "src\\main\\resources\\dddml-wms-restful-full.raml";
+        File fullFile = new File(fullFilePath);
         RamlEmitter ramlEmitter = new RamlEmitter();
         ramlEmitter.dump(fullRaml, fullFile);
+
         System.out.println("Dump full raml file Ok.");
     }
 
     private static Raml getRaml0() {
-        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("dddml-wms-restful.raml");
-        return RamlParser.parse(in);
+        String name = "dddml-wms-restful.raml";
+        return getRamlFromResource(name);
     }
 
     private static Raml getRaml1() {
         String queryRamlPath = "C:\\Users\\yangjiefeng\\Documents\\coding.net\\wms\\wms-query\\src\\main\\resources\\dddml-wms-query.raml";
-        File f = new File(queryRamlPath);
-        InputStream in = null;
-        try {
-            in = new FileInputStream(f);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Read file error. " + queryRamlPath);
-        }
-        return RamlParser.parse(in);
+        return getRamlFromFile(queryRamlPath);
     }
 
     private static Raml getRaml2() {
         String iamRamlPath = "C:\\Users\\yangjiefeng\\Documents\\coding.net\\wms\\iam\\src\\main\\resources\\malls-sso.raml";
-        File f = new File(iamRamlPath);
+        return getRamlFromFile(iamRamlPath);
+    }
+
+    // //////////////////////////////////////////////////////////////
+
+    private static Raml getRamlFromFile(String filePath) {
+        File f = new File(filePath);
         InputStream in = null;
         try {
             in = new FileInputStream(f);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            throw new RuntimeException("Read file error. " + iamRamlPath);
+            throw new RuntimeException("Read file error. " + filePath);
         }
         return RamlParser.parse(in);
     }
 
-    // //////////////////////////////////////////////////////////////
+    private static Raml getRamlFromResource(String name) {
+        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
+        return RamlParser.parse(in);
+    }
 
     public static Raml combine(PartialRaml[] ramls) {
         Raml fullRaml = new Raml();
