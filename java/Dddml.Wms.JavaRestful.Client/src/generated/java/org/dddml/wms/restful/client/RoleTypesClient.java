@@ -34,7 +34,7 @@ public interface RoleTypesClient {
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/{roleTypeId}")
-    Call<RoleTypeStateDto> get(@Path("roleTypeId") String id, @Query("fields") String fields);
+    Call<RoleTypeStateDto> get(@Path("roleTypeId") String roleTypeId, @Query("fields") String fields);
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/_metadata/filteringFields")
@@ -42,15 +42,15 @@ public interface RoleTypesClient {
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/{roleTypeId}/_stateEvents/{version}")
-    Call<RoleTypeStateEventDto> getStateEvent(@Path("roleTypeId") String id, @Path("version") long version);
+    Call<RoleTypeStateEventDto> getStateEvent(@Path("roleTypeId") String roleTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @GET("RoleTypes/{roleTypeId}/_historyStates/{version}")
-    Call<RoleTypeStateDto> getHistoryState(@Path("roleTypeId") String id, @Path("version") long version);
+    Call<RoleTypeStateDto> getHistoryState(@Path("roleTypeId") String roleTypeId, @Path("version") long version);
 
     @Headers("Accept: application/json")
     @PUT("RoleTypes/{roleTypeId}")
-    Call<String> put(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
+    Call<String> put(@Path("roleTypeId") String roleTypeId, @Body CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value);
 
     @Headers("Accept: application/json")
     @POST("RoleTypes")
@@ -58,11 +58,11 @@ public interface RoleTypesClient {
 
     @Headers("Accept: application/json")
     @PATCH("RoleTypes/{roleTypeId}")
-    Call<String> patch(@Path("roleTypeId") String id, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
+    Call<String> patch(@Path("roleTypeId") String roleTypeId, @Body CreateOrMergePatchRoleTypeDto.MergePatchRoleTypeDto value);
 
     @Headers("Accept: application/json")
     @DELETE("RoleTypes/{roleTypeId}")
-    Call<String> delete(@Path("roleTypeId") String id, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
+    Call<String> delete(@Path("roleTypeId") String roleTypeId, @Query("commandId") String commandId, @Query("version") String version, @Query("requesterId") String requesterId);
 
 }
 
