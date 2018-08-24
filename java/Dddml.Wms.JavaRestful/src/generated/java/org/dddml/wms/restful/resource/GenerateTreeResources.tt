@@ -8,6 +8,7 @@
 
     var generator = new TreesResourcesGenerator(boundedContext.Trees.Values);
     generator.UsingSpringMvc = true;
+    generator.UsingSpecificationAnnotation = true;
     generator.Run();
 
 #>

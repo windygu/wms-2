@@ -197,7 +197,7 @@ public class XmlEntityDataTool {
             ClassNotFoundException, IntrospectionException, IllegalAccessException,
             InstantiationException, NoSuchFieldException, InvocationTargetException {
         Class<?> beanClass = getEntityClass(entityName);
-        BeanInfo info = Introspector.getBeanInfo(beanClass);
+        //BeanInfo info = Introspector.getBeanInfo(beanClass);
 
         String createdAtPropName = getCreatedAtPropertyName(entityName);
         if (!attrMap.containsKey(createdAtPropName)) {

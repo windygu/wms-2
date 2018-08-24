@@ -12,6 +12,7 @@ import org.dddml.support.criterion.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.organizationstructuretype.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -36,7 +37,7 @@ public class OrganizationStructureTypeResource {
      * 查询 OrganizationStructureTypes
      */
     @GetMapping
-    public OrganizationStructureTypeStateDto[] getAll( HttpServletRequest request,
+    public OrganizationStructureTypeStateDto[] getAll(@Specification(value = OrganizationStructureTypeStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -78,7 +79,7 @@ public class OrganizationStructureTypeResource {
      * 分页查询 OrganizationStructureTypes
      */
     @GetMapping("_page")
-    public Page<OrganizationStructureTypeStateDto> getPage( HttpServletRequest request,
+    public Page<OrganizationStructureTypeStateDto> getPage(@Specification(value = OrganizationStructureTypeStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -140,7 +141,7 @@ public class OrganizationStructureTypeResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = OrganizationStructureTypeStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

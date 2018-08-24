@@ -12,6 +12,7 @@ import org.dddml.support.criterion.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.pickwave.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -36,7 +37,7 @@ public class PickwaveResource {
      * 查询 Pickwaves
      */
     @GetMapping
-    public PickwaveStateDto[] getAll( HttpServletRequest request,
+    public PickwaveStateDto[] getAll(@Specification(value = PickwaveStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -78,7 +79,7 @@ public class PickwaveResource {
      * 分页查询 Pickwaves
      */
     @GetMapping("_page")
-    public Page<PickwaveStateDto> getPage( HttpServletRequest request,
+    public Page<PickwaveStateDto> getPage(@Specification(value = PickwaveStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -140,7 +141,7 @@ public class PickwaveResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = PickwaveStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

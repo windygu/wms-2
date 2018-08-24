@@ -14,6 +14,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.physicalinventory.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -38,7 +39,7 @@ public class PhysicalInventoryResource {
      * 查询 PhysicalInventories
      */
     @GetMapping
-    public PhysicalInventoryStateDto[] getAll( HttpServletRequest request,
+    public PhysicalInventoryStateDto[] getAll(@Specification(value = PhysicalInventoryStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -80,7 +81,7 @@ public class PhysicalInventoryResource {
      * 分页查询 PhysicalInventories
      */
     @GetMapping("_page")
-    public Page<PhysicalInventoryStateDto> getPage( HttpServletRequest request,
+    public Page<PhysicalInventoryStateDto> getPage(@Specification(value = PhysicalInventoryStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -142,7 +143,7 @@ public class PhysicalInventoryResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = PhysicalInventoryStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

@@ -12,6 +12,7 @@ import org.dddml.support.criterion.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.party.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -36,7 +37,7 @@ public class OrganizationResource {
      * 查询 Organizations
      */
     @GetMapping
-    public PartyStateDto[] getAll( HttpServletRequest request,
+    public PartyStateDto[] getAll(@Specification(value = PartyStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -78,7 +79,7 @@ public class OrganizationResource {
      * 分页查询 Organizations
      */
     @GetMapping("_page")
-    public Page<PartyStateDto> getPage( HttpServletRequest request,
+    public Page<PartyStateDto> getPage(@Specification(value = PartyStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -143,7 +144,7 @@ public class OrganizationResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = PartyStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

@@ -12,6 +12,7 @@ import org.dddml.support.criterion.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.attribute.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -39,7 +40,7 @@ public class AttributeResource {
      * 查询 Attributes
      */
     @GetMapping
-    public AttributeStateDto[] getAll( HttpServletRequest request,
+    public AttributeStateDto[] getAll(@Specification(value = AttributeStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -81,7 +82,7 @@ public class AttributeResource {
      * 分页查询 Attributes
      */
     @GetMapping("_page")
-    public Page<AttributeStateDto> getPage( HttpServletRequest request,
+    public Page<AttributeStateDto> getPage(@Specification(value = AttributeStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -151,7 +152,7 @@ public class AttributeResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = AttributeStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

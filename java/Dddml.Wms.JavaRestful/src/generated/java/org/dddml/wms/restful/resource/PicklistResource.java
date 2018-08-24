@@ -13,6 +13,7 @@ import java.util.Date;
 import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.picklist.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -37,7 +38,7 @@ public class PicklistResource {
      * 查询 Picklists
      */
     @GetMapping
-    public PicklistStateDto[] getAll( HttpServletRequest request,
+    public PicklistStateDto[] getAll(@Specification(value = PicklistStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -79,7 +80,7 @@ public class PicklistResource {
      * 分页查询 Picklists
      */
     @GetMapping("_page")
-    public Page<PicklistStateDto> getPage( HttpServletRequest request,
+    public Page<PicklistStateDto> getPage(@Specification(value = PicklistStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -141,7 +142,7 @@ public class PicklistResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = PicklistStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

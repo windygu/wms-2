@@ -13,6 +13,7 @@ import org.dddml.wms.domain.inventoryitem.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.inventorypostingrule.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -37,7 +38,7 @@ public class InventoryPostingRuleResource {
      * 查询 InventoryPostingRules
      */
     @GetMapping
-    public InventoryPostingRuleStateDto[] getAll( HttpServletRequest request,
+    public InventoryPostingRuleStateDto[] getAll(@Specification(value = InventoryPostingRuleStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -79,7 +80,7 @@ public class InventoryPostingRuleResource {
      * 分页查询 InventoryPostingRules
      */
     @GetMapping("_page")
-    public Page<InventoryPostingRuleStateDto> getPage( HttpServletRequest request,
+    public Page<InventoryPostingRuleStateDto> getPage(@Specification(value = InventoryPostingRuleStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -141,7 +142,7 @@ public class InventoryPostingRuleResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = InventoryPostingRuleStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

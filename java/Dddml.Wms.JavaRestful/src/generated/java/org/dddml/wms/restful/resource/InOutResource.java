@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.inout.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -37,7 +38,7 @@ public class InOutResource {
      * 查询 InOuts
      */
     @GetMapping
-    public InOutStateDto[] getAll( HttpServletRequest request,
+    public InOutStateDto[] getAll(@Specification(value = InOutStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -79,7 +80,7 @@ public class InOutResource {
      * 分页查询 InOuts
      */
     @GetMapping("_page")
-    public Page<InOutStateDto> getPage( HttpServletRequest request,
+    public Page<InOutStateDto> getPage(@Specification(value = InOutStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -141,7 +142,7 @@ public class InOutResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = InOutStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

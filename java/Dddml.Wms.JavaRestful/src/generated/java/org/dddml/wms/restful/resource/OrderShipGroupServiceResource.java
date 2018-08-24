@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.dddml.support.criterion.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.meta.*;
 import org.dddml.wms.domain.service.*;
 import org.slf4j.Logger;

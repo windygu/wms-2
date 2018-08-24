@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.attributesetinstance.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -43,7 +44,7 @@ public class AttributeSetInstanceResource {
      * 查询 AttributeSetInstances
      */
     @GetMapping
-    public JSONArray getAll( HttpServletRequest request,
+    public JSONArray getAll(@Specification(value = AttributeSetInstanceStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -85,7 +86,7 @@ public class AttributeSetInstanceResource {
      * 分页查询 AttributeSetInstances
      */
     @GetMapping("_page")
-    public Page<JSONObject> getPage( HttpServletRequest request,
+    public Page<JSONObject> getPage(@Specification(value = AttributeSetInstanceStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -141,7 +142,7 @@ public class AttributeSetInstanceResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = AttributeSetInstanceStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

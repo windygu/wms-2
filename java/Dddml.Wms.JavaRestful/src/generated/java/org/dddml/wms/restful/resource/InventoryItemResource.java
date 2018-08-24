@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -37,7 +38,7 @@ public class InventoryItemResource {
      * 查询 InventoryItems
      */
     @GetMapping
-    public InventoryItemStateDto[] getAll( HttpServletRequest request,
+    public InventoryItemStateDto[] getAll(@Specification(value = InventoryItemStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -79,7 +80,7 @@ public class InventoryItemResource {
      * 分页查询 InventoryItems
      */
     @GetMapping("_page")
-    public Page<InventoryItemStateDto> getPage( HttpServletRequest request,
+    public Page<InventoryItemStateDto> getPage(@Specification(value = InventoryItemStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -141,7 +142,7 @@ public class InventoryItemResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = InventoryItemStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;

@@ -15,6 +15,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryprtriggered.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.annotation.*;
 import org.dddml.wms.domain.sellableinventoryitem.*;
 import org.dddml.wms.domain.meta.*;
 
@@ -39,7 +40,7 @@ public class SellableInventoryItemResource {
      * 查询 SellableInventoryItems
      */
     @GetMapping
-    public SellableInventoryItemStateDto[] getAll( HttpServletRequest request,
+    public SellableInventoryItemStateDto[] getAll(@Specification(value = SellableInventoryItemStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -81,7 +82,7 @@ public class SellableInventoryItemResource {
      * 分页查询 SellableInventoryItems
      */
     @GetMapping("_page")
-    public Page<SellableInventoryItemStateDto> getPage( HttpServletRequest request,
+    public Page<SellableInventoryItemStateDto> getPage(@Specification(value = SellableInventoryItemStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -143,7 +144,7 @@ public class SellableInventoryItemResource {
     }
 
     @GetMapping("_count")
-    public long getCount( HttpServletRequest request,
+    public long getCount(@Specification(value = SellableInventoryItemStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
