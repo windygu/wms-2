@@ -103,8 +103,8 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
         return getStateQueryRepository().getInventoryItemEntry(inventoryItemId, entrySeqId);
     }
 
-    public Iterable<InventoryItemEntryState> getInventoryItemEntries(InventoryItemId inventoryItemId) {
-        return getStateQueryRepository().getInventoryItemEntries(inventoryItemId);
+    public Iterable<InventoryItemEntryState> getInventoryItemEntries(InventoryItemId inventoryItemId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getInventoryItemEntries(inventoryItemId, filter, orders);
     }
 
 

@@ -379,17 +379,36 @@ public class ShipmentPackageResource {
      * ShipmentPackageContent List
      */
     @GetMapping("{shipmentPackageId}/ShipmentPackageContents")
-    public ShipmentPackageContentStateDto[] getShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId) {
+    public ShipmentPackageContentStateDto[] getShipmentPackageContents(@PathVariable("shipmentPackageId") String shipmentPackageId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = ShipmentPackageContentStateDto.class) HttpServletRequest request) {
         try {
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ShipmentPackageResourceUtils.getShipmentPackageContentFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (ShipmentPackageContentMetadata.aliasMap.containsKey(n) ? ShipmentPackageContentMetadata.aliasMap.get(n) : n));
             Iterable<ShipmentPackageContentState> states = shipmentPackageApplicationService.getShipmentPackageContents((new AbstractValueObjectTextFormatter<ShipmentPackageId>(ShipmentPackageId.class, ",") {
                         @Override
                         protected Class<?> getClassByTypeName(String type) {
                             return BoundedContextMetadata.CLASS_MAP.get(type);
                         }
-                    }.parse(shipmentPackageId)));
+                    }.parse(shipmentPackageId)), c,
+                    ShipmentPackageResourceUtils.getShipmentPackageContentQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentPackageContentStateDto.DtoConverter dtoConverter = new ShipmentPackageContentStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toShipmentPackageContentStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

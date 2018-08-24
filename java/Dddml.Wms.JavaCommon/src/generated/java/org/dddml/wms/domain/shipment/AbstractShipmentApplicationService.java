@@ -134,40 +134,40 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         return getStateQueryRepository().getShipmentImage(shipmentId, sequenceId);
     }
 
-    public Iterable<ShipmentImageState> getShipmentImages(String shipmentId) {
-        return getStateQueryRepository().getShipmentImages(shipmentId);
+    public Iterable<ShipmentImageState> getShipmentImages(String shipmentId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getShipmentImages(shipmentId, filter, orders);
     }
 
     public ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId) {
         return getStateQueryRepository().getShipmentItem(shipmentId, shipmentItemSeqId);
     }
 
-    public Iterable<ShipmentItemState> getShipmentItems(String shipmentId) {
-        return getStateQueryRepository().getShipmentItems(shipmentId);
+    public Iterable<ShipmentItemState> getShipmentItems(String shipmentId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getShipmentItems(shipmentId, filter, orders);
     }
 
     public ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId) {
         return getStateQueryRepository().getShipmentReceipt(shipmentId, receiptSeqId);
     }
 
-    public Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId) {
-        return getStateQueryRepository().getShipmentReceipts(shipmentId);
+    public Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getShipmentReceipts(shipmentId, filter, orders);
     }
 
     public ShipmentReceiptImageState getShipmentReceiptImage(String shipmentId, String shipmentReceiptReceiptSeqId, String sequenceId) {
         return getStateQueryRepository().getShipmentReceiptImage(shipmentId, shipmentReceiptReceiptSeqId, sequenceId);
     }
 
-    public Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId) {
-        return getStateQueryRepository().getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId);
+    public Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId, filter, orders);
     }
 
     public ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId) {
         return getStateQueryRepository().getItemIssuance(shipmentId, itemIssuanceSeqId);
     }
 
-    public Iterable<ItemIssuanceState> getItemIssuances(String shipmentId) {
-        return getStateQueryRepository().getItemIssuances(shipmentId);
+    public Iterable<ItemIssuanceState> getItemIssuances(String shipmentId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getItemIssuances(shipmentId, filter, orders);
     }
 
 

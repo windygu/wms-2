@@ -359,12 +359,31 @@ public class AttributeSetResource {
      * AttributeUse List
      */
     @GetMapping("{attributeSetId}/AttributeUses")
-    public AttributeUseStateDto[] getAttributeUses(@PathVariable("attributeSetId") String attributeSetId) {
+    public AttributeUseStateDto[] getAttributeUses(@PathVariable("attributeSetId") String attributeSetId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = AttributeUseStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<AttributeUseState> states = attributeSetApplicationService.getAttributeUses(attributeSetId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> AttributeSetResourceUtils.getAttributeUseFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (AttributeUseMetadata.aliasMap.containsKey(n) ? AttributeUseMetadata.aliasMap.get(n) : n));
+            Iterable<AttributeUseState> states = attributeSetApplicationService.getAttributeUses(attributeSetId, c,
+                    AttributeSetResourceUtils.getAttributeUseQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             AttributeUseStateDto.DtoConverter dtoConverter = new AttributeUseStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toAttributeUseStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

@@ -40,7 +40,7 @@ public interface PhysicalInventoryApplicationService
 
     PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId);
 
-    Iterable<PhysicalInventoryLineState> getPhysicalInventoryLines(String physicalInventoryDocumentNumber);
+    Iterable<PhysicalInventoryLineState> getPhysicalInventoryLines(String physicalInventoryDocumentNumber, Criterion filter, List<String> orders);
 
 }
 

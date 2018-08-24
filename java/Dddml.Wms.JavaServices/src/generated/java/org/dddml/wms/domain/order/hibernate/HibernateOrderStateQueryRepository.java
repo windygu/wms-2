@@ -140,11 +140,12 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrderRoleState> getOrderRoles(String orderId) {
+    public Iterable<OrderRoleState> getOrderRoles(String orderId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderRoleState.SimpleOrderRoleState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("orderRoleId.orderId", orderId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -155,11 +156,12 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrderItemState> getOrderItems(String orderId) {
+    public Iterable<OrderItemState> getOrderItems(String orderId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemState.SimpleOrderItemState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("orderItemId.orderId", orderId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -170,11 +172,12 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrderShipGroupState> getOrderShipGroups(String orderId) {
+    public Iterable<OrderShipGroupState> getOrderShipGroups(String orderId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderShipGroupState.SimpleOrderShipGroupState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("orderShipGroupId.orderId", orderId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -185,12 +188,13 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId) {
+    public Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("orderItemShipGroupAssociationId.orderId", orderId))
             .add(org.hibernate.criterion.Restrictions.eq("orderItemShipGroupAssociationId.orderShipGroupShipGroupSeqId", orderShipGroupShipGroupSeqId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

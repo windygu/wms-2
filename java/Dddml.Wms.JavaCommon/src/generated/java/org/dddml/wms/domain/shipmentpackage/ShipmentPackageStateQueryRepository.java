@@ -28,7 +28,7 @@ public interface ShipmentPackageStateQueryRepository
 
     ShipmentPackageContentState getShipmentPackageContent(ShipmentPackageId shipmentPackageId, String shipmentItemSeqId);
 
-    Iterable<ShipmentPackageContentState> getShipmentPackageContents(ShipmentPackageId shipmentPackageId);
+    Iterable<ShipmentPackageContentState> getShipmentPackageContents(ShipmentPackageId shipmentPackageId, Criterion filter, List<String> orders);
 
 }
 

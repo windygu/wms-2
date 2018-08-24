@@ -29,7 +29,7 @@ public interface InventoryItemStateQueryRepository
 
     InventoryItemEntryState getInventoryItemEntry(InventoryItemId inventoryItemId, Long entrySeqId);
 
-    Iterable<InventoryItemEntryState> getInventoryItemEntries(InventoryItemId inventoryItemId);
+    Iterable<InventoryItemEntryState> getInventoryItemEntries(InventoryItemId inventoryItemId, Criterion filter, List<String> orders);
 
 }
 

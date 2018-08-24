@@ -480,12 +480,31 @@ public class ShipmentResource {
      * ShipmentImage List
      */
     @GetMapping("{shipmentId}/ShipmentImages")
-    public ShipmentImageStateDto[] getShipmentImages(@PathVariable("shipmentId") String shipmentId) {
+    public ShipmentImageStateDto[] getShipmentImages(@PathVariable("shipmentId") String shipmentId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = ShipmentImageStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<ShipmentImageState> states = shipmentApplicationService.getShipmentImages(shipmentId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ShipmentResourceUtils.getShipmentImageFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (ShipmentImageMetadata.aliasMap.containsKey(n) ? ShipmentImageMetadata.aliasMap.get(n) : n));
+            Iterable<ShipmentImageState> states = shipmentApplicationService.getShipmentImages(shipmentId, c,
+                    ShipmentResourceUtils.getShipmentImageQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentImageStateDto.DtoConverter dtoConverter = new ShipmentImageStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toShipmentImageStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -586,12 +605,31 @@ public class ShipmentResource {
      * ShipmentItem List
      */
     @GetMapping("{shipmentId}/ShipmentItems")
-    public ShipmentItemStateDto[] getShipmentItems(@PathVariable("shipmentId") String shipmentId) {
+    public ShipmentItemStateDto[] getShipmentItems(@PathVariable("shipmentId") String shipmentId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = ShipmentItemStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<ShipmentItemState> states = shipmentApplicationService.getShipmentItems(shipmentId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ShipmentResourceUtils.getShipmentItemFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (ShipmentItemMetadata.aliasMap.containsKey(n) ? ShipmentItemMetadata.aliasMap.get(n) : n));
+            Iterable<ShipmentItemState> states = shipmentApplicationService.getShipmentItems(shipmentId, c,
+                    ShipmentResourceUtils.getShipmentItemQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentItemStateDto.DtoConverter dtoConverter = new ShipmentItemStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toShipmentItemStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -692,12 +730,31 @@ public class ShipmentResource {
      * ShipmentReceipt List
      */
     @GetMapping("{shipmentId}/ShipmentReceipts")
-    public ShipmentReceiptStateDto[] getShipmentReceipts(@PathVariable("shipmentId") String shipmentId) {
+    public ShipmentReceiptStateDto[] getShipmentReceipts(@PathVariable("shipmentId") String shipmentId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = ShipmentReceiptStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<ShipmentReceiptState> states = shipmentApplicationService.getShipmentReceipts(shipmentId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ShipmentResourceUtils.getShipmentReceiptFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (ShipmentReceiptMetadata.aliasMap.containsKey(n) ? ShipmentReceiptMetadata.aliasMap.get(n) : n));
+            Iterable<ShipmentReceiptState> states = shipmentApplicationService.getShipmentReceipts(shipmentId, c,
+                    ShipmentResourceUtils.getShipmentReceiptQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentReceiptStateDto.DtoConverter dtoConverter = new ShipmentReceiptStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toShipmentReceiptStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -804,12 +861,31 @@ public class ShipmentResource {
      * ShipmentReceiptImage List
      */
     @GetMapping("{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
-    public ShipmentReceiptImageStateDto[] getShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId) {
+    public ShipmentReceiptImageStateDto[] getShipmentReceiptImages(@PathVariable("shipmentId") String shipmentId, @PathVariable("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = ShipmentReceiptImageStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<ShipmentReceiptImageState> states = shipmentApplicationService.getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ShipmentResourceUtils.getShipmentReceiptImageFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (ShipmentReceiptImageMetadata.aliasMap.containsKey(n) ? ShipmentReceiptImageMetadata.aliasMap.get(n) : n));
+            Iterable<ShipmentReceiptImageState> states = shipmentApplicationService.getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId, c,
+                    ShipmentResourceUtils.getShipmentReceiptImageQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentReceiptImageStateDto.DtoConverter dtoConverter = new ShipmentReceiptImageStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toShipmentReceiptImageStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -913,12 +989,31 @@ public class ShipmentResource {
      * ItemIssuance List
      */
     @GetMapping("{shipmentId}/ItemIssuances")
-    public ItemIssuanceStateDto[] getItemIssuances(@PathVariable("shipmentId") String shipmentId) {
+    public ItemIssuanceStateDto[] getItemIssuances(@PathVariable("shipmentId") String shipmentId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = ItemIssuanceStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<ItemIssuanceState> states = shipmentApplicationService.getItemIssuances(shipmentId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ShipmentResourceUtils.getItemIssuanceFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (ItemIssuanceMetadata.aliasMap.containsKey(n) ? ItemIssuanceMetadata.aliasMap.get(n) : n));
+            Iterable<ItemIssuanceState> states = shipmentApplicationService.getItemIssuances(shipmentId, c,
+                    ShipmentResourceUtils.getItemIssuanceQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ItemIssuanceStateDto.DtoConverter dtoConverter = new ItemIssuanceStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toItemIssuanceStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

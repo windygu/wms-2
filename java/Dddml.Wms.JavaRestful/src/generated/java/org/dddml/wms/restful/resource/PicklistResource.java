@@ -375,12 +375,31 @@ public class PicklistResource {
      * PicklistRole List
      */
     @GetMapping("{picklistId}/PicklistRoles")
-    public PicklistRoleStateDto[] getPicklistRoles(@PathVariable("picklistId") String picklistId) {
+    public PicklistRoleStateDto[] getPicklistRoles(@PathVariable("picklistId") String picklistId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = PicklistRoleStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<PicklistRoleState> states = picklistApplicationService.getPicklistRoles(picklistId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> PicklistResourceUtils.getPicklistRoleFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (PicklistRoleMetadata.aliasMap.containsKey(n) ? PicklistRoleMetadata.aliasMap.get(n) : n));
+            Iterable<PicklistRoleState> states = picklistApplicationService.getPicklistRoles(picklistId, c,
+                    PicklistResourceUtils.getPicklistRoleQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             PicklistRoleStateDto.DtoConverter dtoConverter = new PicklistRoleStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toPicklistRoleStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

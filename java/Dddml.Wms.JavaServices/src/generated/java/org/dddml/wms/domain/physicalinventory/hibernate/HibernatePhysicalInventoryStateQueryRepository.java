@@ -141,11 +141,12 @@ public class HibernatePhysicalInventoryStateQueryRepository implements PhysicalI
     }
 
     @Transactional(readOnly = true)
-    public Iterable<PhysicalInventoryLineState> getPhysicalInventoryLines(String physicalInventoryDocumentNumber) {
+    public Iterable<PhysicalInventoryLineState> getPhysicalInventoryLines(String physicalInventoryDocumentNumber, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryLineState.SimplePhysicalInventoryLineState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("physicalInventoryLineId.physicalInventoryDocumentNumber", physicalInventoryDocumentNumber))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

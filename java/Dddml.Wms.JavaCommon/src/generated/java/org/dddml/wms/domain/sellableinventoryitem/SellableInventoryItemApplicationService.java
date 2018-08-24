@@ -33,7 +33,7 @@ public interface SellableInventoryItemApplicationService
 
     SellableInventoryItemEntryState getSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, Long entrySeqId);
 
-    Iterable<SellableInventoryItemEntryState> getSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId);
+    Iterable<SellableInventoryItemEntryState> getSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId, Criterion filter, List<String> orders);
 
 }
 

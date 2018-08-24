@@ -543,9 +543,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemCommandDtos.java">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemEntryEventId.java">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Content>
@@ -896,6 +893,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\GenerateOrderDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderCommandDtos.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderEventId.java">
@@ -1968,7 +1968,6 @@
 .\CreateOrMergePatchInventoryItemEntryDto.java
 .\DeleteInventoryItemDto.java
 .\GenerateInventoryItemDomain.txt
-.\InventoryItemCommandDtos.java
 .\InventoryItemEntryEventId.java
 .\InventoryItemEntryId.java
 .\InventoryItemEntryStateDto.java
@@ -2136,6 +2135,7 @@
 .\CreateOrMergePatchOrderShipGroupDto.java
 .\DeleteOrderDto.java
 .\GenerateOrderDomain.txt
+.\OrderCommandDtos.java
 .\OrderEventId.java
 .\OrderItemEventId.java
 .\OrderItemId.java

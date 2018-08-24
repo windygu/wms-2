@@ -139,11 +139,12 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
     }
 
     @Transactional(readOnly = true)
-    public Iterable<ShipmentImageState> getShipmentImages(String shipmentId) {
+    public Iterable<ShipmentImageState> getShipmentImages(String shipmentId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentImageState.SimpleShipmentImageState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("shipmentImageId.shipmentId", shipmentId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -154,11 +155,12 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
     }
 
     @Transactional(readOnly = true)
-    public Iterable<ShipmentItemState> getShipmentItems(String shipmentId) {
+    public Iterable<ShipmentItemState> getShipmentItems(String shipmentId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentItemState.SimpleShipmentItemState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("shipmentItemId.shipmentId", shipmentId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -169,11 +171,12 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
     }
 
     @Transactional(readOnly = true)
-    public Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId) {
+    public Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptState.SimpleShipmentReceiptState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("shipmentReceiptId.shipmentId", shipmentId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -184,12 +187,13 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
     }
 
     @Transactional(readOnly = true)
-    public Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId) {
+    public Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("shipmentReceiptImageId.shipmentId", shipmentId))
             .add(org.hibernate.criterion.Restrictions.eq("shipmentReceiptImageId.shipmentReceiptReceiptSeqId", shipmentReceiptReceiptSeqId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -200,11 +204,12 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
     }
 
     @Transactional(readOnly = true)
-    public Iterable<ItemIssuanceState> getItemIssuances(String shipmentId) {
+    public Iterable<ItemIssuanceState> getItemIssuances(String shipmentId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractItemIssuanceState.SimpleItemIssuanceState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("shipmentItemIssuanceId.shipmentId", shipmentId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

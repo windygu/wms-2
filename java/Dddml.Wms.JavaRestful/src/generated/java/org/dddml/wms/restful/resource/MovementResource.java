@@ -396,12 +396,31 @@ public class MovementResource {
      * MovementLine List
      */
     @GetMapping("{documentNumber}/MovementLines")
-    public MovementLineStateDto[] getMovementLines(@PathVariable("documentNumber") String documentNumber) {
+    public MovementLineStateDto[] getMovementLines(@PathVariable("documentNumber") String documentNumber,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = MovementLineStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<MovementLineState> states = movementApplicationService.getMovementLines(documentNumber);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> MovementResourceUtils.getMovementLineFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (MovementLineMetadata.aliasMap.containsKey(n) ? MovementLineMetadata.aliasMap.get(n) : n));
+            Iterable<MovementLineState> states = movementApplicationService.getMovementLines(documentNumber, c,
+                    MovementResourceUtils.getMovementLineQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             MovementLineStateDto.DtoConverter dtoConverter = new MovementLineStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toMovementLineStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

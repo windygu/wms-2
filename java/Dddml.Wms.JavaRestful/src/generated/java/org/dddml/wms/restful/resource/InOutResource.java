@@ -463,12 +463,31 @@ public class InOutResource {
      * InOutImage List
      */
     @GetMapping("{documentNumber}/InOutImages")
-    public InOutImageStateDto[] getInOutImages(@PathVariable("documentNumber") String documentNumber) {
+    public InOutImageStateDto[] getInOutImages(@PathVariable("documentNumber") String documentNumber,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = InOutImageStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<InOutImageState> states = inOutApplicationService.getInOutImages(documentNumber);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InOutResourceUtils.getInOutImageFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (InOutImageMetadata.aliasMap.containsKey(n) ? InOutImageMetadata.aliasMap.get(n) : n));
+            Iterable<InOutImageState> states = inOutApplicationService.getInOutImages(documentNumber, c,
+                    InOutResourceUtils.getInOutImageQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             InOutImageStateDto.DtoConverter dtoConverter = new InOutImageStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toInOutImageStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -569,12 +588,31 @@ public class InOutResource {
      * InOutLine List
      */
     @GetMapping("{documentNumber}/InOutLines")
-    public InOutLineStateDto[] getInOutLines(@PathVariable("documentNumber") String documentNumber) {
+    public InOutLineStateDto[] getInOutLines(@PathVariable("documentNumber") String documentNumber,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = InOutLineStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<InOutLineState> states = inOutApplicationService.getInOutLines(documentNumber);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InOutResourceUtils.getInOutLineFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (InOutLineMetadata.aliasMap.containsKey(n) ? InOutLineMetadata.aliasMap.get(n) : n));
+            Iterable<InOutLineState> states = inOutApplicationService.getInOutLines(documentNumber, c,
+                    InOutResourceUtils.getInOutLineQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             InOutLineStateDto.DtoConverter dtoConverter = new InOutLineStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toInOutLineStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -681,12 +719,31 @@ public class InOutResource {
      * InOutLineImage List
      */
     @GetMapping("{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages")
-    public InOutLineImageStateDto[] getInOutLineImages(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber) {
+    public InOutLineImageStateDto[] getInOutLineImages(@PathVariable("documentNumber") String documentNumber, @PathVariable("inOutLineLineNumber") String inOutLineLineNumber,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = InOutLineImageStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<InOutLineImageState> states = inOutApplicationService.getInOutLineImages(documentNumber, inOutLineLineNumber);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InOutResourceUtils.getInOutLineImageFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (InOutLineImageMetadata.aliasMap.containsKey(n) ? InOutLineImageMetadata.aliasMap.get(n) : n));
+            Iterable<InOutLineImageState> states = inOutApplicationService.getInOutLineImages(documentNumber, inOutLineLineNumber, c,
+                    InOutResourceUtils.getInOutLineImageQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             InOutLineImageStateDto.DtoConverter dtoConverter = new InOutLineImageStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toInOutLineImageStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

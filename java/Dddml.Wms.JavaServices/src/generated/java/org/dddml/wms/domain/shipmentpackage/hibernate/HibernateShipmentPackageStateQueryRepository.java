@@ -139,12 +139,13 @@ public class HibernateShipmentPackageStateQueryRepository implements ShipmentPac
     }
 
     @Transactional(readOnly = true)
-    public Iterable<ShipmentPackageContentState> getShipmentPackageContents(ShipmentPackageId shipmentPackageId) {
+    public Iterable<ShipmentPackageContentState> getShipmentPackageContents(ShipmentPackageId shipmentPackageId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentPackageContentState.SimpleShipmentPackageContentState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("shipmentPackageContentId.shipmentPackageIdShipmentId", shipmentPackageId.getShipmentId()))
             .add(org.hibernate.criterion.Restrictions.eq("shipmentPackageContentId.shipmentPackageIdShipmentPackageSeqId", shipmentPackageId.getShipmentPackageSeqId()))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

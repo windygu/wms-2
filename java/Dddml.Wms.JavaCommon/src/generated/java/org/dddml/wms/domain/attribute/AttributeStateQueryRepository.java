@@ -28,11 +28,11 @@ public interface AttributeStateQueryRepository
 
     AttributeValueState getAttributeValue(String attributeId, String value);
 
-    Iterable<AttributeValueState> getAttributeValues(String attributeId);
+    Iterable<AttributeValueState> getAttributeValues(String attributeId, Criterion filter, List<String> orders);
 
     AttributeAliasState getAttributeAlias(String attributeId, String code);
 
-    Iterable<AttributeAliasState> getAttributeAlias(String attributeId);
+    Iterable<AttributeAliasState> getAttributeAlias(String attributeId, Criterion filter, List<String> orders);
 
 }
 

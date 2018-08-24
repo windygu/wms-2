@@ -139,11 +139,12 @@ public class HibernateProductStateQueryRepository implements ProductStateQueryRe
     }
 
     @Transactional(readOnly = true)
-    public Iterable<GoodIdentificationState> getGoodIdentifications(String productId) {
+    public Iterable<GoodIdentificationState> getGoodIdentifications(String productId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractGoodIdentificationState.SimpleGoodIdentificationState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("productGoodIdentificationId.productId", productId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

@@ -107,32 +107,32 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         return getStateQueryRepository().getOrderRole(orderId, partyRoleId);
     }
 
-    public Iterable<OrderRoleState> getOrderRoles(String orderId) {
-        return getStateQueryRepository().getOrderRoles(orderId);
+    public Iterable<OrderRoleState> getOrderRoles(String orderId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getOrderRoles(orderId, filter, orders);
     }
 
     public OrderItemState getOrderItem(String orderId, String orderItemSeqId) {
         return getStateQueryRepository().getOrderItem(orderId, orderItemSeqId);
     }
 
-    public Iterable<OrderItemState> getOrderItems(String orderId) {
-        return getStateQueryRepository().getOrderItems(orderId);
+    public Iterable<OrderItemState> getOrderItems(String orderId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getOrderItems(orderId, filter, orders);
     }
 
     public OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId) {
         return getStateQueryRepository().getOrderShipGroup(orderId, shipGroupSeqId);
     }
 
-    public Iterable<OrderShipGroupState> getOrderShipGroups(String orderId) {
-        return getStateQueryRepository().getOrderShipGroups(orderId);
+    public Iterable<OrderShipGroupState> getOrderShipGroups(String orderId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getOrderShipGroups(orderId, filter, orders);
     }
 
     public OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId) {
         return getStateQueryRepository().getOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
     }
 
-    public Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId) {
-        return getStateQueryRepository().getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
+    public Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId, filter, orders);
     }
 
 

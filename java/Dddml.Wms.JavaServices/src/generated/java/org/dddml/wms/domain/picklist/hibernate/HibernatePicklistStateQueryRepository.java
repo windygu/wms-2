@@ -140,11 +140,12 @@ public class HibernatePicklistStateQueryRepository implements PicklistStateQuery
     }
 
     @Transactional(readOnly = true)
-    public Iterable<PicklistRoleState> getPicklistRoles(String picklistId) {
+    public Iterable<PicklistRoleState> getPicklistRoles(String picklistId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistRoleState.SimplePicklistRoleState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("picklistRoleId.picklistId", picklistId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

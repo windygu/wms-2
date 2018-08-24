@@ -140,11 +140,12 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber) {
+    public Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutImageState.SimpleInOutImageState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("inOutImageId.inOutDocumentNumber", inOutDocumentNumber))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -155,11 +156,12 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber) {
+    public Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineState.SimpleInOutLineState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("inOutLineId.inOutDocumentNumber", inOutDocumentNumber))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -170,12 +172,13 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber) {
+    public Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineImageState.SimpleInOutLineImageState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("inOutLineImageId.inOutDocumentNumber", inOutDocumentNumber))
             .add(org.hibernate.criterion.Restrictions.eq("inOutLineImageId.inOutLineLineNumber", inOutLineLineNumber))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

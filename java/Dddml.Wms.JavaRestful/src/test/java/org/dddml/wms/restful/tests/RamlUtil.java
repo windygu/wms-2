@@ -16,13 +16,14 @@ import java.util.List;
 public class RamlUtil {
 
     public static void main(String[] args) {
+        String baseUri = "/api";
         // combine
         PartialRaml[] ramls = new PartialRaml[] {
-                new PartialRaml(getRaml0(), "api"),
+                new PartialRaml(getRaml0(), null),
                 new PartialRaml(getRaml1(), "queries"),
                 new PartialRaml(getRaml2(), "iam")
         };
-        Raml fullRaml = combine(ramls);
+        Raml fullRaml = combine(ramls, baseUri);
 
         // dump
         String fullFilePath = "C:\\Users\\yangjiefeng\\Documents\\GitHub\\wms\\java\\Dddml.Wms.JavaRestful\\"
@@ -68,9 +69,9 @@ public class RamlUtil {
         return RamlParser.parse(in);
     }
 
-    public static Raml combine(PartialRaml[] ramls) {
+    public static Raml combine(PartialRaml[] ramls, String baseUri) {
         Raml fullRaml = new Raml();
-        fullRaml.setBaseUri("/");
+        fullRaml.setBaseUri(baseUri);
         fullRaml.setTitle(ramls[0].getRaml().getTitle());
         fullRaml.setDescription(ramls[0].getRaml().getDescription());
         fullRaml.setVersion(ramls[0].getRaml().getVersion());

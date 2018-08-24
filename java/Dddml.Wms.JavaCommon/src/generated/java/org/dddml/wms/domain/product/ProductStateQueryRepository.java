@@ -28,7 +28,7 @@ public interface ProductStateQueryRepository
 
     GoodIdentificationState getGoodIdentification(String productId, String goodIdentificationTypeId);
 
-    Iterable<GoodIdentificationState> getGoodIdentifications(String productId);
+    Iterable<GoodIdentificationState> getGoodIdentifications(String productId, Criterion filter, List<String> orders);
 
 }
 

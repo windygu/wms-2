@@ -374,12 +374,31 @@ public class PicklistBinResource {
      * PicklistItem List
      */
     @GetMapping("{picklistBinId}/PicklistItems")
-    public PicklistItemStateDto[] getPicklistItems(@PathVariable("picklistBinId") String picklistBinId) {
+    public PicklistItemStateDto[] getPicklistItems(@PathVariable("picklistBinId") String picklistBinId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = PicklistItemStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<PicklistItemState> states = picklistBinApplicationService.getPicklistItems(picklistBinId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> PicklistBinResourceUtils.getPicklistItemFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (PicklistItemMetadata.aliasMap.containsKey(n) ? PicklistItemMetadata.aliasMap.get(n) : n));
+            Iterable<PicklistItemState> states = picklistBinApplicationService.getPicklistItems(picklistBinId, c,
+                    PicklistBinResourceUtils.getPicklistItemQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             PicklistItemStateDto.DtoConverter dtoConverter = new PicklistItemStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toPicklistItemStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

@@ -139,11 +139,12 @@ public class HibernateAttributeSetStateQueryRepository implements AttributeSetSt
     }
 
     @Transactional(readOnly = true)
-    public Iterable<AttributeUseState> getAttributeUses(String attributeSetId) {
+    public Iterable<AttributeUseState> getAttributeUses(String attributeSetId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeUseState.SimpleAttributeUseState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("attributeSetAttributeUseId.attributeSetId", attributeSetId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

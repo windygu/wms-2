@@ -370,12 +370,31 @@ public class AttributeResource {
      * AttributeValue List
      */
     @GetMapping("{attributeId}/AttributeValues")
-    public AttributeValueStateDto[] getAttributeValues(@PathVariable("attributeId") String attributeId) {
+    public AttributeValueStateDto[] getAttributeValues(@PathVariable("attributeId") String attributeId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = AttributeValueStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<AttributeValueState> states = attributeApplicationService.getAttributeValues(attributeId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> AttributeResourceUtils.getAttributeValueFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (AttributeValueMetadata.aliasMap.containsKey(n) ? AttributeValueMetadata.aliasMap.get(n) : n));
+            Iterable<AttributeValueState> states = attributeApplicationService.getAttributeValues(attributeId, c,
+                    AttributeResourceUtils.getAttributeValueQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             AttributeValueStateDto.DtoConverter dtoConverter = new AttributeValueStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toAttributeValueStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -476,12 +495,31 @@ public class AttributeResource {
      * AttributeAlias List
      */
     @GetMapping("{attributeId}/AttributeAlias")
-    public AttributeAliasStateDto[] getAttributeAlias(@PathVariable("attributeId") String attributeId) {
+    public AttributeAliasStateDto[] getAttributeAlias(@PathVariable("attributeId") String attributeId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = AttributeAliasStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<AttributeAliasState> states = attributeApplicationService.getAttributeAlias(attributeId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> AttributeResourceUtils.getAttributeAliasFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (AttributeAliasMetadata.aliasMap.containsKey(n) ? AttributeAliasMetadata.aliasMap.get(n) : n));
+            Iterable<AttributeAliasState> states = attributeApplicationService.getAttributeAlias(attributeId, c,
+                    AttributeResourceUtils.getAttributeAliasQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             AttributeAliasStateDto.DtoConverter dtoConverter = new AttributeAliasStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toAttributeAliasStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

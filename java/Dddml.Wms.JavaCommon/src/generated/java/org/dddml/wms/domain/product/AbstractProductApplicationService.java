@@ -102,8 +102,8 @@ public abstract class AbstractProductApplicationService implements ProductApplic
         return getStateQueryRepository().getGoodIdentification(productId, goodIdentificationTypeId);
     }
 
-    public Iterable<GoodIdentificationState> getGoodIdentifications(String productId) {
-        return getStateQueryRepository().getGoodIdentifications(productId);
+    public Iterable<GoodIdentificationState> getGoodIdentifications(String productId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getGoodIdentifications(productId, filter, orders);
     }
 
 

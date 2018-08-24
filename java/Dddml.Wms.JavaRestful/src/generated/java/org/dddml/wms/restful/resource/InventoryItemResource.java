@@ -228,17 +228,36 @@ public class InventoryItemResource {
      * InventoryItemEntry List
      */
     @GetMapping("{inventoryItemId}/InventoryItemEntries")
-    public InventoryItemEntryStateDto[] getInventoryItemEntries(@PathVariable("inventoryItemId") String inventoryItemId) {
+    public InventoryItemEntryStateDto[] getInventoryItemEntries(@PathVariable("inventoryItemId") String inventoryItemId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = InventoryItemEntryStateDto.class) HttpServletRequest request) {
         try {
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InventoryItemResourceUtils.getInventoryItemEntryFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (InventoryItemEntryMetadata.aliasMap.containsKey(n) ? InventoryItemEntryMetadata.aliasMap.get(n) : n));
             Iterable<InventoryItemEntryState> states = inventoryItemApplicationService.getInventoryItemEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
                         @Override
                         protected Class<?> getClassByTypeName(String type) {
                             return BoundedContextMetadata.CLASS_MAP.get(type);
                         }
-                    }.parse(inventoryItemId)));
+                    }.parse(inventoryItemId)), c,
+                    InventoryItemResourceUtils.getInventoryItemEntryQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             InventoryItemEntryStateDto.DtoConverter dtoConverter = new InventoryItemEntryStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toInventoryItemEntryStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

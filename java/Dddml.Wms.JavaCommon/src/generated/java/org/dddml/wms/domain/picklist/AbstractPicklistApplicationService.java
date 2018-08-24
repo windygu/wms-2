@@ -107,8 +107,8 @@ public abstract class AbstractPicklistApplicationService implements PicklistAppl
         return getStateQueryRepository().getPicklistRole(picklistId, partyRoleId);
     }
 
-    public Iterable<PicklistRoleState> getPicklistRoles(String picklistId) {
-        return getStateQueryRepository().getPicklistRoles(picklistId);
+    public Iterable<PicklistRoleState> getPicklistRoles(String picklistId, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getPicklistRoles(picklistId, filter, orders);
     }
 
 

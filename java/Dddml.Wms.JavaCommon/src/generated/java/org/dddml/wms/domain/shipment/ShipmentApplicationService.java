@@ -50,23 +50,23 @@ public interface ShipmentApplicationService
 
     ShipmentImageState getShipmentImage(String shipmentId, String sequenceId);
 
-    Iterable<ShipmentImageState> getShipmentImages(String shipmentId);
+    Iterable<ShipmentImageState> getShipmentImages(String shipmentId, Criterion filter, List<String> orders);
 
     ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId);
 
-    Iterable<ShipmentItemState> getShipmentItems(String shipmentId);
+    Iterable<ShipmentItemState> getShipmentItems(String shipmentId, Criterion filter, List<String> orders);
 
     ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId);
 
-    Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId);
+    Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId, Criterion filter, List<String> orders);
 
     ShipmentReceiptImageState getShipmentReceiptImage(String shipmentId, String shipmentReceiptReceiptSeqId, String sequenceId);
 
-    Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId);
+    Iterable<ShipmentReceiptImageState> getShipmentReceiptImages(String shipmentId, String shipmentReceiptReceiptSeqId, Criterion filter, List<String> orders);
 
     ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId);
 
-    Iterable<ItemIssuanceState> getItemIssuances(String shipmentId);
+    Iterable<ItemIssuanceState> getItemIssuances(String shipmentId, Criterion filter, List<String> orders);
 
 }
 

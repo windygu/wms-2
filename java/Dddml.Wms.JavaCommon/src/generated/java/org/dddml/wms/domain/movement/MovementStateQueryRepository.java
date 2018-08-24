@@ -29,7 +29,7 @@ public interface MovementStateQueryRepository
 
     MovementLineState getMovementLine(String movementDocumentNumber, String lineNumber);
 
-    Iterable<MovementLineState> getMovementLines(String movementDocumentNumber);
+    Iterable<MovementLineState> getMovementLines(String movementDocumentNumber, Criterion filter, List<String> orders);
 
 }
 

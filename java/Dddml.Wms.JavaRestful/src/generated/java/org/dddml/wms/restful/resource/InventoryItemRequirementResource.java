@@ -266,17 +266,36 @@ public class InventoryItemRequirementResource {
      * InventoryItemRequirementEntry List
      */
     @GetMapping("{inventoryItemRequirementId}/InventoryItemRequirementEntries")
-    public InventoryItemRequirementEntryStateDto[] getInventoryItemRequirementEntries(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId) {
+    public InventoryItemRequirementEntryStateDto[] getInventoryItemRequirementEntries(@PathVariable("inventoryItemRequirementId") String inventoryItemRequirementId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = InventoryItemRequirementEntryStateDto.class) HttpServletRequest request) {
         try {
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> InventoryItemRequirementResourceUtils.getInventoryItemRequirementEntryFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (InventoryItemRequirementEntryMetadata.aliasMap.containsKey(n) ? InventoryItemRequirementEntryMetadata.aliasMap.get(n) : n));
             Iterable<InventoryItemRequirementEntryState> states = inventoryItemRequirementApplicationService.getInventoryItemRequirementEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
                         @Override
                         protected Class<?> getClassByTypeName(String type) {
                             return BoundedContextMetadata.CLASS_MAP.get(type);
                         }
-                    }.parse(inventoryItemRequirementId)));
+                    }.parse(inventoryItemRequirementId)), c,
+                    InventoryItemRequirementResourceUtils.getInventoryItemRequirementEntryQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             InventoryItemRequirementEntryStateDto.DtoConverter dtoConverter = new InventoryItemRequirementEntryStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toInventoryItemRequirementEntryStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

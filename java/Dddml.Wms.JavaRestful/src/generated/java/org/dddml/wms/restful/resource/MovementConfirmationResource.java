@@ -378,12 +378,31 @@ public class MovementConfirmationResource {
      * MovementConfirmationLine List
      */
     @GetMapping("{documentNumber}/MovementConfirmationLines")
-    public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber) {
+    public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathVariable("documentNumber") String documentNumber,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = MovementConfirmationLineStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<MovementConfirmationLineState> states = movementConfirmationApplicationService.getMovementConfirmationLines(documentNumber);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> MovementConfirmationResourceUtils.getMovementConfirmationLineFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (MovementConfirmationLineMetadata.aliasMap.containsKey(n) ? MovementConfirmationLineMetadata.aliasMap.get(n) : n));
+            Iterable<MovementConfirmationLineState> states = movementConfirmationApplicationService.getMovementConfirmationLines(documentNumber, c,
+                    MovementConfirmationResourceUtils.getMovementConfirmationLineQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             MovementConfirmationLineStateDto.DtoConverter dtoConverter = new MovementConfirmationLineStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toMovementConfirmationLineStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

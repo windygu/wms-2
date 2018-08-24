@@ -139,13 +139,14 @@ public class HibernateSellableInventoryItemStateQueryRepository implements Sella
     }
 
     @Transactional(readOnly = true)
-    public Iterable<SellableInventoryItemEntryState> getSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId) {
+    public Iterable<SellableInventoryItemEntryState> getSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("sellableInventoryItemEntryId.sellableInventoryItemIdProductId", sellableInventoryItemId.getProductId()))
             .add(org.hibernate.criterion.Restrictions.eq("sellableInventoryItemEntryId.sellableInventoryItemIdLocatorId", sellableInventoryItemId.getLocatorId()))
             .add(org.hibernate.criterion.Restrictions.eq("sellableInventoryItemEntryId.sellableInventoryItemIdAttributeSetInstanceId", sellableInventoryItemId.getAttributeSetInstanceId()))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

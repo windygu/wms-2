@@ -140,11 +140,12 @@ public class HibernateMovementStateQueryRepository implements MovementStateQuery
     }
 
     @Transactional(readOnly = true)
-    public Iterable<MovementLineState> getMovementLines(String movementDocumentNumber) {
+    public Iterable<MovementLineState> getMovementLines(String movementDocumentNumber, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementLineState.SimpleMovementLineState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("movementLineId.movementDocumentNumber", movementDocumentNumber))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

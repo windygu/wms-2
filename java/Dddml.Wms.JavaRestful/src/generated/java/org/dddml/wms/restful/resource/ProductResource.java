@@ -336,12 +336,31 @@ public class ProductResource {
      * GoodIdentification List
      */
     @GetMapping("{productId}/GoodIdentifications")
-    public GoodIdentificationStateDto[] getGoodIdentifications(@PathVariable("productId") String productId) {
+    public GoodIdentificationStateDto[] getGoodIdentifications(@PathVariable("productId") String productId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = GoodIdentificationStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<GoodIdentificationState> states = productApplicationService.getGoodIdentifications(productId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> ProductResourceUtils.getGoodIdentificationFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (GoodIdentificationMetadata.aliasMap.containsKey(n) ? GoodIdentificationMetadata.aliasMap.get(n) : n));
+            Iterable<GoodIdentificationState> states = productApplicationService.getGoodIdentifications(productId, c,
+                    ProductResourceUtils.getGoodIdentificationQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             GoodIdentificationStateDto.DtoConverter dtoConverter = new GoodIdentificationStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toGoodIdentificationStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

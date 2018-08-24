@@ -139,13 +139,14 @@ public class HibernateInventoryItemRequirementStateQueryRepository implements In
     }
 
     @Transactional(readOnly = true)
-    public Iterable<InventoryItemRequirementEntryState> getInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId) {
+    public Iterable<InventoryItemRequirementEntryState> getInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("inventoryItemRequirementEntryId.inventoryItemRequirementIdProductId", inventoryItemRequirementId.getProductId()))
             .add(org.hibernate.criterion.Restrictions.eq("inventoryItemRequirementEntryId.inventoryItemRequirementIdLocatorId", inventoryItemRequirementId.getLocatorId()))
             .add(org.hibernate.criterion.Restrictions.eq("inventoryItemRequirementEntryId.inventoryItemRequirementIdAttributeSetInstanceId", inventoryItemRequirementId.getAttributeSetInstanceId()))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

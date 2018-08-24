@@ -139,11 +139,12 @@ public class HibernateAttributeStateQueryRepository implements AttributeStateQue
     }
 
     @Transactional(readOnly = true)
-    public Iterable<AttributeValueState> getAttributeValues(String attributeId) {
+    public Iterable<AttributeValueState> getAttributeValues(String attributeId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeValueState.SimpleAttributeValueState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("attributeValueId.attributeId", attributeId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 
@@ -154,11 +155,12 @@ public class HibernateAttributeStateQueryRepository implements AttributeStateQue
     }
 
     @Transactional(readOnly = true)
-    public Iterable<AttributeAliasState> getAttributeAlias(String attributeId) {
+    public Iterable<AttributeAliasState> getAttributeAlias(String attributeId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeAliasState.SimpleAttributeAliasState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("attributeAliasId.attributeId", attributeId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

@@ -352,12 +352,31 @@ public class OrderResource {
      * OrderRole List
      */
     @GetMapping("{orderId}/OrderRoles")
-    public OrderRoleStateDto[] getOrderRoles(@PathVariable("orderId") String orderId) {
+    public OrderRoleStateDto[] getOrderRoles(@PathVariable("orderId") String orderId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = OrderRoleStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<OrderRoleState> states = orderApplicationService.getOrderRoles(orderId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrderResourceUtils.getOrderRoleFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (OrderRoleMetadata.aliasMap.containsKey(n) ? OrderRoleMetadata.aliasMap.get(n) : n));
+            Iterable<OrderRoleState> states = orderApplicationService.getOrderRoles(orderId, c,
+                    OrderResourceUtils.getOrderRoleQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             OrderRoleStateDto.DtoConverter dtoConverter = new OrderRoleStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toOrderRoleStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -458,12 +477,31 @@ public class OrderResource {
      * OrderItem List
      */
     @GetMapping("{orderId}/OrderItems")
-    public OrderItemStateDto[] getOrderItems(@PathVariable("orderId") String orderId) {
+    public OrderItemStateDto[] getOrderItems(@PathVariable("orderId") String orderId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = OrderItemStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<OrderItemState> states = orderApplicationService.getOrderItems(orderId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrderResourceUtils.getOrderItemFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (OrderItemMetadata.aliasMap.containsKey(n) ? OrderItemMetadata.aliasMap.get(n) : n));
+            Iterable<OrderItemState> states = orderApplicationService.getOrderItems(orderId, c,
+                    OrderResourceUtils.getOrderItemQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             OrderItemStateDto.DtoConverter dtoConverter = new OrderItemStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toOrderItemStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -564,12 +602,31 @@ public class OrderResource {
      * OrderShipGroup List
      */
     @GetMapping("{orderId}/OrderShipGroups")
-    public OrderShipGroupStateDto[] getOrderShipGroups(@PathVariable("orderId") String orderId) {
+    public OrderShipGroupStateDto[] getOrderShipGroups(@PathVariable("orderId") String orderId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = OrderShipGroupStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<OrderShipGroupState> states = orderApplicationService.getOrderShipGroups(orderId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrderResourceUtils.getOrderShipGroupFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (OrderShipGroupMetadata.aliasMap.containsKey(n) ? OrderShipGroupMetadata.aliasMap.get(n) : n));
+            Iterable<OrderShipGroupState> states = orderApplicationService.getOrderShipGroups(orderId, c,
+                    OrderResourceUtils.getOrderShipGroupQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             OrderShipGroupStateDto.DtoConverter dtoConverter = new OrderShipGroupStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toOrderShipGroupStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }
@@ -694,12 +751,31 @@ public class OrderResource {
      * OrderItemShipGroupAssociation List
      */
     @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
-    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId) {
+    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId,
+                    @RequestParam(value = "sort", required = false) String sort,
+                    @RequestParam(value = "fields", required = false) String fields,
+                    @RequestParam(value = "filter", required = false) String filter,
+                    @Specification(value = OrderItemShipGroupAssociationStateDto.class) HttpServletRequest request) {
         try {
-            Iterable<OrderItemShipGroupAssociationState> states = orderApplicationService.getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
+            CriterionDto criterion = null;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                criterion = JSON.parseObject(filter, CriterionDto.class);
+            } else {
+                criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
+                    .filter(kv -> OrderResourceUtils.getOrderItemShipGroupAssociationFilterPropertyName(kv.getKey()) != null)
+                    .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
+            }
+            Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
+                n -> (OrderItemShipGroupAssociationMetadata.aliasMap.containsKey(n) ? OrderItemShipGroupAssociationMetadata.aliasMap.get(n) : n));
+            Iterable<OrderItemShipGroupAssociationState> states = orderApplicationService.getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId, c,
+                    OrderResourceUtils.getOrderItemShipGroupAssociationQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             OrderItemShipGroupAssociationStateDto.DtoConverter dtoConverter = new OrderItemShipGroupAssociationStateDto.DtoConverter();
-            dtoConverter.setAllFieldsReturned(true);
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
             return dtoConverter.toOrderItemShipGroupAssociationStateDtoArray(states);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
     }

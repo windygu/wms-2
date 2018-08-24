@@ -139,11 +139,12 @@ public class HibernatePicklistBinStateQueryRepository implements PicklistBinStat
     }
 
     @Transactional(readOnly = true)
-    public Iterable<PicklistItemState> getPicklistItems(String picklistBinId) {
+    public Iterable<PicklistItemState> getPicklistItems(String picklistBinId, org.dddml.support.criterion.Criterion filter, List<String> orders) {
         Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistItemState.SimplePicklistItemState.class);
         org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
             .add(org.hibernate.criterion.Restrictions.eq("picklistBinPicklistItemId.picklistBinId", picklistBinId))
             ;
+        HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, 0, Integer.MAX_VALUE);
         return criteria.add(partIdCondition).list();
     }
 

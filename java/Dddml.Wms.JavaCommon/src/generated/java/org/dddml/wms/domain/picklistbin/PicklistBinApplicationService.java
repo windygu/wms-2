@@ -36,7 +36,7 @@ public interface PicklistBinApplicationService
 
     PicklistItemState getPicklistItem(String picklistBinId, PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
 
-    Iterable<PicklistItemState> getPicklistItems(String picklistBinId);
+    Iterable<PicklistItemState> getPicklistItems(String picklistBinId, Criterion filter, List<String> orders);
 
 }
 

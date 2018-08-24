@@ -49,15 +49,15 @@ public interface InOutApplicationService
 
     InOutImageState getInOutImage(String inOutDocumentNumber, String sequenceId);
 
-    Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber);
+    Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber, Criterion filter, List<String> orders);
 
     InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber);
 
-    Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber);
+    Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber, Criterion filter, List<String> orders);
 
     InOutLineImageState getInOutLineImage(String inOutDocumentNumber, String inOutLineLineNumber, String sequenceId);
 
-    Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber);
+    Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber, Criterion filter, List<String> orders);
 
 }
 

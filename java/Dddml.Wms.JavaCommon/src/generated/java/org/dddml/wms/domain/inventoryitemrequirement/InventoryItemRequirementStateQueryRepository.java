@@ -31,7 +31,7 @@ public interface InventoryItemRequirementStateQueryRepository
 
     InventoryItemRequirementEntryState getInventoryItemRequirementEntry(InventoryItemId inventoryItemRequirementId, Long entrySeqId);
 
-    Iterable<InventoryItemRequirementEntryState> getInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId);
+    Iterable<InventoryItemRequirementEntryState> getInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId, Criterion filter, List<String> orders);
 
 }
 

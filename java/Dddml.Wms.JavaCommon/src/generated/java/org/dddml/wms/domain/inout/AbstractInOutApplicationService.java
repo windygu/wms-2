@@ -131,24 +131,24 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         return getStateQueryRepository().getInOutImage(inOutDocumentNumber, sequenceId);
     }
 
-    public Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber) {
-        return getStateQueryRepository().getInOutImages(inOutDocumentNumber);
+    public Iterable<InOutImageState> getInOutImages(String inOutDocumentNumber, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getInOutImages(inOutDocumentNumber, filter, orders);
     }
 
     public InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber) {
         return getStateQueryRepository().getInOutLine(inOutDocumentNumber, lineNumber);
     }
 
-    public Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber) {
-        return getStateQueryRepository().getInOutLines(inOutDocumentNumber);
+    public Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getInOutLines(inOutDocumentNumber, filter, orders);
     }
 
     public InOutLineImageState getInOutLineImage(String inOutDocumentNumber, String inOutLineLineNumber, String sequenceId) {
         return getStateQueryRepository().getInOutLineImage(inOutDocumentNumber, inOutLineLineNumber, sequenceId);
     }
 
-    public Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber) {
-        return getStateQueryRepository().getInOutLineImages(inOutDocumentNumber, inOutLineLineNumber);
+    public Iterable<InOutLineImageState> getInOutLineImages(String inOutDocumentNumber, String inOutLineLineNumber, Criterion filter, List<String> orders) {
+        return getStateQueryRepository().getInOutLineImages(inOutDocumentNumber, inOutLineLineNumber, filter, orders);
     }
 
 
