@@ -57,7 +57,7 @@ public interface RxPhysicalInventoriesClient {
  
     @Headers("Accept: application/json")
     @GET("PhysicalInventories/{documentNumber}/PhysicalInventoryLines")
-    Observable<List<PhysicalInventoryLineStateDto>> getPhysicalInventoryLines(@Path("documentNumber") String documentNumber);
+    Observable<List<PhysicalInventoryLineStateDto>> getPhysicalInventoryLines(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("PhysicalInventories/{documentNumber}")

@@ -55,7 +55,7 @@ public interface RxAttributeSetsClient {
  
     @Headers("Accept: application/json")
     @GET("AttributeSets/{attributeSetId}/AttributeUses")
-    Observable<List<AttributeUseStateDto>> getAttributeUses(@Path("attributeSetId") String attributeSetId);
+    Observable<List<AttributeUseStateDto>> getAttributeUses(@Path("attributeSetId") String attributeSetId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("AttributeSets/{attributeSetId}")

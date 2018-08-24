@@ -54,7 +54,7 @@ public interface ShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentImages")
-    Call<List<ShipmentImageStateDto>> getShipmentImages(@Path("shipmentId") String shipmentId);
+    Call<List<ShipmentImageStateDto>> getShipmentImages(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
@@ -62,7 +62,7 @@ public interface ShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems")
-    Call<List<ShipmentItemStateDto>> getShipmentItems(@Path("shipmentId") String shipmentId);
+    Call<List<ShipmentItemStateDto>> getShipmentItems(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{receiptSeqId}")
@@ -70,7 +70,7 @@ public interface ShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts")
-    Call<List<ShipmentReceiptStateDto>> getShipmentReceipts(@Path("shipmentId") String shipmentId);
+    Call<List<ShipmentReceiptStateDto>> getShipmentReceipts(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
@@ -78,7 +78,7 @@ public interface ShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
-    Call<List<ShipmentReceiptImageStateDto>> getShipmentReceiptImages(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId);
+    Call<List<ShipmentReceiptImageStateDto>> getShipmentReceiptImages(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
@@ -86,7 +86,7 @@ public interface ShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances")
-    Call<List<ItemIssuanceStateDto>> getItemIssuances(@Path("shipmentId") String shipmentId);
+    Call<List<ItemIssuanceStateDto>> getItemIssuances(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Shipments/{shipmentId}")

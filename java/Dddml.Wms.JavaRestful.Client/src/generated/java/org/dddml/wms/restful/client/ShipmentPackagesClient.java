@@ -54,7 +54,7 @@ public interface ShipmentPackagesClient {
  
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/{shipmentPackageId}/ShipmentPackageContents")
-    Call<List<ShipmentPackageContentStateDto>> getShipmentPackageContents(@Path("shipmentPackageId") String shipmentPackageId);
+    Call<List<ShipmentPackageContentStateDto>> getShipmentPackageContents(@Path("shipmentPackageId") String shipmentPackageId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("ShipmentPackages/{shipmentPackageId}")

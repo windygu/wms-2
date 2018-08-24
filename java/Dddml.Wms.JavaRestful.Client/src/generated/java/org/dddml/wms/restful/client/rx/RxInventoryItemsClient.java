@@ -56,7 +56,7 @@ public interface RxInventoryItemsClient {
  
     @Headers("Accept: application/json")
     @GET("InventoryItems/{inventoryItemId}/InventoryItemEntries")
-    Observable<List<InventoryItemEntryStateDto>> getInventoryItemEntries(@Path("inventoryItemId") String inventoryItemId);
+    Observable<List<InventoryItemEntryStateDto>> getInventoryItemEntries(@Path("inventoryItemId") String inventoryItemId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("InventoryItems/{inventoryItemId}")

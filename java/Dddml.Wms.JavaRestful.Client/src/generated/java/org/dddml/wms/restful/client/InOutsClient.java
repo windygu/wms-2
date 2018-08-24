@@ -55,7 +55,7 @@ public interface InOutsClient {
  
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/InOutImages")
-    Call<List<InOutImageStateDto>> getInOutImages(@Path("documentNumber") String documentNumber);
+    Call<List<InOutImageStateDto>> getInOutImages(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{lineNumber}")
@@ -63,7 +63,7 @@ public interface InOutsClient {
  
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/InOutLines")
-    Call<List<InOutLineStateDto>> getInOutLines(@Path("documentNumber") String documentNumber);
+    Call<List<InOutLineStateDto>> getInOutLines(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
@@ -71,7 +71,7 @@ public interface InOutsClient {
  
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages")
-    Call<List<InOutLineImageStateDto>> getInOutLineImages(@Path("documentNumber") String documentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber);
+    Call<List<InOutLineImageStateDto>> getInOutLineImages(@Path("documentNumber") String documentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("InOuts/{documentNumber}")

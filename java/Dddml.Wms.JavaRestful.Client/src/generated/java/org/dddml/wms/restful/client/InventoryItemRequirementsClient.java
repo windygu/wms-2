@@ -53,7 +53,7 @@ public interface InventoryItemRequirementsClient {
  
     @Headers("Accept: application/json")
     @GET("InventoryItemRequirements/{inventoryItemRequirementId}/InventoryItemRequirementEntries")
-    Call<List<InventoryItemRequirementEntryStateDto>> getInventoryItemRequirementEntries(@Path("inventoryItemRequirementId") String inventoryItemRequirementId);
+    Call<List<InventoryItemRequirementEntryStateDto>> getInventoryItemRequirementEntries(@Path("inventoryItemRequirementId") String inventoryItemRequirementId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("InventoryItemRequirements/{inventoryItemRequirementId}")

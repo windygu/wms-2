@@ -56,7 +56,7 @@ public interface RxMovementsClient {
  
     @Headers("Accept: application/json")
     @GET("Movements/{documentNumber}/MovementLines")
-    Observable<List<MovementLineStateDto>> getMovementLines(@Path("documentNumber") String documentNumber);
+    Observable<List<MovementLineStateDto>> getMovementLines(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Movements/{documentNumber}")

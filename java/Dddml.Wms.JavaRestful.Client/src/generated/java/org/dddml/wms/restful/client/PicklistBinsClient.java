@@ -54,7 +54,7 @@ public interface PicklistBinsClient {
  
     @Headers("Accept: application/json")
     @GET("PicklistBins/{picklistBinId}/PicklistItems")
-    Call<List<PicklistItemStateDto>> getPicklistItems(@Path("picklistBinId") String picklistBinId);
+    Call<List<PicklistItemStateDto>> getPicklistItems(@Path("picklistBinId") String picklistBinId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("PicklistBins/{picklistBinId}")

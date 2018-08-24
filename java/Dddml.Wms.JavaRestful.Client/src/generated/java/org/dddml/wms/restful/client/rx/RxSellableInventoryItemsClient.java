@@ -54,7 +54,7 @@ public interface RxSellableInventoryItemsClient {
  
     @Headers("Accept: application/json")
     @GET("SellableInventoryItems/{sellableInventoryItemId}/SellableInventoryItemEntries")
-    Observable<List<SellableInventoryItemEntryStateDto>> getSellableInventoryItemEntries(@Path("sellableInventoryItemId") String sellableInventoryItemId);
+    Observable<List<SellableInventoryItemEntryStateDto>> getSellableInventoryItemEntries(@Path("sellableInventoryItemId") String sellableInventoryItemId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("SellableInventoryItems/{sellableInventoryItemId}")

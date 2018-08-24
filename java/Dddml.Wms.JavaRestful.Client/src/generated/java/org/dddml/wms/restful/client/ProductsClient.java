@@ -54,7 +54,7 @@ public interface ProductsClient {
  
     @Headers("Accept: application/json")
     @GET("Products/{productId}/GoodIdentifications")
-    Call<List<GoodIdentificationStateDto>> getGoodIdentifications(@Path("productId") String productId);
+    Call<List<GoodIdentificationStateDto>> getGoodIdentifications(@Path("productId") String productId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Products/{productId}")

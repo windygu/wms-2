@@ -55,7 +55,7 @@ public interface MovementConfirmationsClient {
  
     @Headers("Accept: application/json")
     @GET("MovementConfirmations/{documentNumber}/MovementConfirmationLines")
-    Call<List<MovementConfirmationLineStateDto>> getMovementConfirmationLines(@Path("documentNumber") String documentNumber);
+    Call<List<MovementConfirmationLineStateDto>> getMovementConfirmationLines(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("MovementConfirmations/{documentNumber}")

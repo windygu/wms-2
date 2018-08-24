@@ -58,7 +58,7 @@ public interface AttributesClient {
  
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeValues")
-    Call<List<AttributeValueStateDto>> getAttributeValues(@Path("attributeId") String attributeId);
+    Call<List<AttributeValueStateDto>> getAttributeValues(@Path("attributeId") String attributeId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeAlias/{code}")
@@ -66,7 +66,7 @@ public interface AttributesClient {
  
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeAlias")
-    Call<List<AttributeAliasStateDto>> getAttributeAlias(@Path("attributeId") String attributeId);
+    Call<List<AttributeAliasStateDto>> getAttributeAlias(@Path("attributeId") String attributeId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Attributes/{attributeId}")

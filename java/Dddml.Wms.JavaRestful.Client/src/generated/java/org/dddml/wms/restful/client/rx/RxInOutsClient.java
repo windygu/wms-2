@@ -56,7 +56,7 @@ public interface RxInOutsClient {
  
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/InOutImages")
-    Observable<List<InOutImageStateDto>> getInOutImages(@Path("documentNumber") String documentNumber);
+    Observable<List<InOutImageStateDto>> getInOutImages(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{lineNumber}")
@@ -64,7 +64,7 @@ public interface RxInOutsClient {
  
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/InOutLines")
-    Observable<List<InOutLineStateDto>> getInOutLines(@Path("documentNumber") String documentNumber);
+    Observable<List<InOutLineStateDto>> getInOutLines(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("InOuts/{inOutDocumentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages/{sequenceId}")
@@ -72,7 +72,7 @@ public interface RxInOutsClient {
  
     @Headers("Accept: application/json")
     @GET("InOuts/{documentNumber}/InOutLines/{inOutLineLineNumber}/InOutLineImages")
-    Observable<List<InOutLineImageStateDto>> getInOutLineImages(@Path("documentNumber") String documentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber);
+    Observable<List<InOutLineImageStateDto>> getInOutLineImages(@Path("documentNumber") String documentNumber, @Path("inOutLineLineNumber") String inOutLineLineNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("InOuts/{documentNumber}")

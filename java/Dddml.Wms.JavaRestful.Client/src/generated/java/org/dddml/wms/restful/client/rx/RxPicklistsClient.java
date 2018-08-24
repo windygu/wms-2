@@ -56,7 +56,7 @@ public interface RxPicklistsClient {
  
     @Headers("Accept: application/json")
     @GET("Picklists/{picklistId}/PicklistRoles")
-    Observable<List<PicklistRoleStateDto>> getPicklistRoles(@Path("picklistId") String picklistId);
+    Observable<List<PicklistRoleStateDto>> getPicklistRoles(@Path("picklistId") String picklistId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Picklists/{picklistId}")

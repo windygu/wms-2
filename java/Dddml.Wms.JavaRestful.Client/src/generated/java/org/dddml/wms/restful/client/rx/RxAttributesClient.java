@@ -59,7 +59,7 @@ public interface RxAttributesClient {
  
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeValues")
-    Observable<List<AttributeValueStateDto>> getAttributeValues(@Path("attributeId") String attributeId);
+    Observable<List<AttributeValueStateDto>> getAttributeValues(@Path("attributeId") String attributeId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeAlias/{code}")
@@ -67,7 +67,7 @@ public interface RxAttributesClient {
  
     @Headers("Accept: application/json")
     @GET("Attributes/{attributeId}/AttributeAlias")
-    Observable<List<AttributeAliasStateDto>> getAttributeAlias(@Path("attributeId") String attributeId);
+    Observable<List<AttributeAliasStateDto>> getAttributeAlias(@Path("attributeId") String attributeId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Attributes/{attributeId}")

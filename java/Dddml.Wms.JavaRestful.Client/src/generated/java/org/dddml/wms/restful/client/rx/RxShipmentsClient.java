@@ -55,7 +55,7 @@ public interface RxShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentImages")
-    Observable<List<ShipmentImageStateDto>> getShipmentImages(@Path("shipmentId") String shipmentId);
+    Observable<List<ShipmentImageStateDto>> getShipmentImages(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems/{shipmentItemSeqId}")
@@ -63,7 +63,7 @@ public interface RxShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentItems")
-    Observable<List<ShipmentItemStateDto>> getShipmentItems(@Path("shipmentId") String shipmentId);
+    Observable<List<ShipmentItemStateDto>> getShipmentItems(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{receiptSeqId}")
@@ -71,7 +71,7 @@ public interface RxShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts")
-    Observable<List<ShipmentReceiptStateDto>> getShipmentReceipts(@Path("shipmentId") String shipmentId);
+    Observable<List<ShipmentReceiptStateDto>> getShipmentReceipts(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages/{sequenceId}")
@@ -79,7 +79,7 @@ public interface RxShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ShipmentReceipts/{shipmentReceiptReceiptSeqId}/ShipmentReceiptImages")
-    Observable<List<ShipmentReceiptImageStateDto>> getShipmentReceiptImages(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId);
+    Observable<List<ShipmentReceiptImageStateDto>> getShipmentReceiptImages(@Path("shipmentId") String shipmentId, @Path("shipmentReceiptReceiptSeqId") String shipmentReceiptReceiptSeqId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")
@@ -87,7 +87,7 @@ public interface RxShipmentsClient {
  
     @Headers("Accept: application/json")
     @GET("Shipments/{shipmentId}/ItemIssuances")
-    Observable<List<ItemIssuanceStateDto>> getItemIssuances(@Path("shipmentId") String shipmentId);
+    Observable<List<ItemIssuanceStateDto>> getItemIssuances(@Path("shipmentId") String shipmentId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Shipments/{shipmentId}")

@@ -55,7 +55,7 @@ public interface RxShipmentPackagesClient {
  
     @Headers("Accept: application/json")
     @GET("ShipmentPackages/{shipmentPackageId}/ShipmentPackageContents")
-    Observable<List<ShipmentPackageContentStateDto>> getShipmentPackageContents(@Path("shipmentPackageId") String shipmentPackageId);
+    Observable<List<ShipmentPackageContentStateDto>> getShipmentPackageContents(@Path("shipmentPackageId") String shipmentPackageId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("ShipmentPackages/{shipmentPackageId}")

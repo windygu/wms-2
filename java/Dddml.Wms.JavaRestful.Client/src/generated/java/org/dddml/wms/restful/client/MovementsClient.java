@@ -55,7 +55,7 @@ public interface MovementsClient {
  
     @Headers("Accept: application/json")
     @GET("Movements/{documentNumber}/MovementLines")
-    Call<List<MovementLineStateDto>> getMovementLines(@Path("documentNumber") String documentNumber);
+    Call<List<MovementLineStateDto>> getMovementLines(@Path("documentNumber") String documentNumber, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Movements/{documentNumber}")
