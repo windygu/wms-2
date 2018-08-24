@@ -253,18 +253,15 @@ public class InventoryItemResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new InventoryItemPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return InventoryItemResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class InventoryItemPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return InventoryItemResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class InventoryItemResourceUtils {
 

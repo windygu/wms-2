@@ -264,18 +264,15 @@ public class DamageHandlingMethodResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new DamageHandlingMethodPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return DamageHandlingMethodResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class DamageHandlingMethodPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return DamageHandlingMethodResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class DamageHandlingMethodResourceUtils {
 

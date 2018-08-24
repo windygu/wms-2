@@ -303,18 +303,15 @@ public class PersonResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new PartyPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return PersonResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class PartyPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return PersonResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class PersonResourceUtils {
 

@@ -296,18 +296,15 @@ public class FacilityResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new FacilityPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return FacilityResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class FacilityPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return FacilityResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class FacilityResourceUtils {
 

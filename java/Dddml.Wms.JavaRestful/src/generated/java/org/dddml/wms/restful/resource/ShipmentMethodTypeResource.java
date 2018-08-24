@@ -296,18 +296,15 @@ public class ShipmentMethodTypeResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new ShipmentMethodTypePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentMethodTypeResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class ShipmentMethodTypePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return ShipmentMethodTypeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class ShipmentMethodTypeResourceUtils {
 

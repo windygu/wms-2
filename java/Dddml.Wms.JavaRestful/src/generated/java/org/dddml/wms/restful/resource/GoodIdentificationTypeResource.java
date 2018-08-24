@@ -296,18 +296,15 @@ public class GoodIdentificationTypeResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new GoodIdentificationTypePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return GoodIdentificationTypeResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class GoodIdentificationTypePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return GoodIdentificationTypeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class GoodIdentificationTypeResourceUtils {
 

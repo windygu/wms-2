@@ -296,18 +296,15 @@ public class ContactMechResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new ContactMechPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ContactMechResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class ContactMechPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return ContactMechResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class ContactMechResourceUtils {
 

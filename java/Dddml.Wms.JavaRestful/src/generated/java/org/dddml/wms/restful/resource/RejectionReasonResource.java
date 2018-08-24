@@ -296,18 +296,15 @@ public class RejectionReasonResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new RejectionReasonPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return RejectionReasonResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class RejectionReasonPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return RejectionReasonResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class RejectionReasonResourceUtils {
 

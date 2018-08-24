@@ -273,18 +273,15 @@ public class OrderShipmentResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new OrderShipmentPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrderShipmentResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class OrderShipmentPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return OrderShipmentResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class OrderShipmentResourceUtils {
 

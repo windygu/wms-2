@@ -379,18 +379,15 @@ public class ProductResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new ProductPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ProductResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class ProductPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return ProductResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class ProductResourceUtils {
 

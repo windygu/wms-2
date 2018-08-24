@@ -296,18 +296,15 @@ public class RoleTypeResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new RoleTypePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return RoleTypeResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class RoleTypePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return RoleTypeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class RoleTypeResourceUtils {
 

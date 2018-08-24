@@ -421,18 +421,15 @@ public class MovementConfirmationResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new MovementConfirmationPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return MovementConfirmationResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class MovementConfirmationPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return MovementConfirmationResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class MovementConfirmationResourceUtils {
 

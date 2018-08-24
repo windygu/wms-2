@@ -439,18 +439,15 @@ public class MovementResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new MovementPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return MovementResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class MovementPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return MovementResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class MovementResourceUtils {
 

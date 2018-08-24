@@ -291,18 +291,15 @@ public class SellableInventoryItemResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new SellableInventoryItemPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return SellableInventoryItemResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class SellableInventoryItemPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return SellableInventoryItemResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class SellableInventoryItemResourceUtils {
 

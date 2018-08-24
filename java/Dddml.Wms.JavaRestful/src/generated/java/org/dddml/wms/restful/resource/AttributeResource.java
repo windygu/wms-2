@@ -519,18 +519,15 @@ public class AttributeResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new AttributePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return AttributeResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class AttributePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class AttributeResourceUtils {
 

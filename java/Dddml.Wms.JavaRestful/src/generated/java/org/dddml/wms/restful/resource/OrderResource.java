@@ -740,18 +740,15 @@ public class OrderResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new OrderPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrderResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class OrderPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return OrderResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class OrderResourceUtils {
 

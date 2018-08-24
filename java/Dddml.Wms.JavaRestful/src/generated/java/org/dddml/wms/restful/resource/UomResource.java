@@ -296,18 +296,15 @@ public class UomResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new UomPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return UomResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class UomPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return UomResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class UomResourceUtils {
 

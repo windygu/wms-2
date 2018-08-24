@@ -432,18 +432,15 @@ public class PhysicalInventoryResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new PhysicalInventoryPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return PhysicalInventoryResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class PhysicalInventoryPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return PhysicalInventoryResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class PhysicalInventoryResourceUtils {
 

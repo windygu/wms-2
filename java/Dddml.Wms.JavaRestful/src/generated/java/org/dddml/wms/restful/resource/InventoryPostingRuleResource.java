@@ -297,18 +297,15 @@ public class InventoryPostingRuleResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new InventoryPostingRulePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return InventoryPostingRuleResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class InventoryPostingRulePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return InventoryPostingRuleResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class InventoryPostingRuleResourceUtils {
 

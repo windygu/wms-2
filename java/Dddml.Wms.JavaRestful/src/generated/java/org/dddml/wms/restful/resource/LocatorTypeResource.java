@@ -296,18 +296,15 @@ public class LocatorTypeResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new LocatorTypePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return LocatorTypeResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class LocatorTypePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return LocatorTypeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class LocatorTypeResourceUtils {
 

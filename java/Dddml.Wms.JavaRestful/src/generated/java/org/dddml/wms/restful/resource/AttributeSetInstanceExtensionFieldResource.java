@@ -296,18 +296,15 @@ public class AttributeSetInstanceExtensionFieldResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new AttributeSetInstanceExtensionFieldPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return AttributeSetInstanceExtensionFieldResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class AttributeSetInstanceExtensionFieldPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstanceExtensionFieldResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class AttributeSetInstanceExtensionFieldResourceUtils {
 

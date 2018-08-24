@@ -727,18 +727,15 @@ public class InOutResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new InOutPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return InOutResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class InOutPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return InOutResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class InOutResourceUtils {
 

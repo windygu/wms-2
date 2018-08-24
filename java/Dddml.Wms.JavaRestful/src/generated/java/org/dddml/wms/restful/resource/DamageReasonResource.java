@@ -296,18 +296,15 @@ public class DamageReasonResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new DamageReasonPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return DamageReasonResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class DamageReasonPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return DamageReasonResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class DamageReasonResourceUtils {
 

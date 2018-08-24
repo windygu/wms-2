@@ -264,18 +264,15 @@ public class DocumentTypeResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new DocumentTypePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return DocumentTypeResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class DocumentTypePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return DocumentTypeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class DocumentTypeResourceUtils {
 

@@ -296,18 +296,15 @@ public class OrderItemShipGrpInvReservationResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new OrderItemShipGrpInvReservationPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrderItemShipGrpInvReservationResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class OrderItemShipGrpInvReservationPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return OrderItemShipGrpInvReservationResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class OrderItemShipGrpInvReservationResourceUtils {
 

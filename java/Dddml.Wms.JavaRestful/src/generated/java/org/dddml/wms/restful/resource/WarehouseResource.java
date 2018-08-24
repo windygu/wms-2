@@ -296,18 +296,15 @@ public class WarehouseResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new WarehousePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return WarehouseResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class WarehousePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return WarehouseResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class WarehouseResourceUtils {
 

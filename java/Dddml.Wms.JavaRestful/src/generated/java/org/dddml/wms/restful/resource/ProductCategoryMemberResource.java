@@ -273,18 +273,15 @@ public class ProductCategoryMemberResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new ProductCategoryMemberPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ProductCategoryMemberResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class ProductCategoryMemberPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return ProductCategoryMemberResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class ProductCategoryMemberResourceUtils {
 

@@ -417,18 +417,15 @@ public class PicklistBinResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new PicklistBinPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return PicklistBinResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class PicklistBinPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return PicklistBinResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class PicklistBinResourceUtils {
 

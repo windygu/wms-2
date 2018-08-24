@@ -246,18 +246,15 @@ public class StatusItemResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new StatusItemPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return StatusItemResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class StatusItemPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return StatusItemResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class StatusItemResourceUtils {
 

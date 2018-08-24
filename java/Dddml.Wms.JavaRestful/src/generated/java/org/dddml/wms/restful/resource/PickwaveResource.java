@@ -296,18 +296,15 @@ public class PickwaveResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new PickwavePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return PickwaveResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class PickwavePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return PickwaveResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class PickwaveResourceUtils {
 

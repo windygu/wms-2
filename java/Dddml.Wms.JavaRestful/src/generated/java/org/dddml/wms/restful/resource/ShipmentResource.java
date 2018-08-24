@@ -956,18 +956,15 @@ public class ShipmentResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new ShipmentPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class ShipmentPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return ShipmentResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class ShipmentResourceUtils {
 

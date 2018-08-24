@@ -296,18 +296,15 @@ public class LotResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new LotPropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return LotResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class LotPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return LotResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class LotResourceUtils {
 

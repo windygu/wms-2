@@ -296,18 +296,15 @@ public class OrganizationStructureTypeResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new OrganizationStructureTypePropertyTypeResolver();
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrganizationStructureTypeResourceUtils.getFilterPropertyType(propertyName);
+            }
+        };
     }
 
     // ////////////////////////////////
-
-    private class OrganizationStructureTypePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return OrganizationStructureTypeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
  
     public static class OrganizationStructureTypeResourceUtils {
 
