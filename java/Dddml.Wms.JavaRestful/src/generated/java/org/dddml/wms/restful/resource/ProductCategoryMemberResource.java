@@ -285,6 +285,17 @@ public class ProductCategoryMemberResource {
  
     public static class ProductCategoryMemberResourceUtils {
 
+        public static ProductCategoryMemberId parseIdString(String idString) {
+            TextFormatter<ProductCategoryMemberId> formatter =
+                    new AbstractValueObjectTextFormatter<ProductCategoryMemberId>(ProductCategoryMemberId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String productCategoryMemberId, ProductCategoryMemberCommand value) {
             ProductCategoryMemberId idObj = parseIdString(productCategoryMemberId);
             if (value.getProductCategoryMemberId() == null) {
@@ -302,18 +313,6 @@ public class ProductCategoryMemberResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, ProductCategoryMemberMetadata.aliasMap);
         }
-
-        public static ProductCategoryMemberId parseIdString(String idString) {
-            TextFormatter<ProductCategoryMemberId> formatter =
-                    new AbstractValueObjectTextFormatter<ProductCategoryMemberId>(ProductCategoryMemberId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)

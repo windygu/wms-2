@@ -308,6 +308,17 @@ public class PartyRoleResource {
  
     public static class PartyRoleResourceUtils {
 
+        public static PartyRoleId parseIdString(String idString) {
+            TextFormatter<PartyRoleId> formatter =
+                    new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String partyRoleId, PartyRoleCommand value) {
             PartyRoleId idObj = parseIdString(partyRoleId);
             if (value.getPartyRoleId() == null) {
@@ -325,18 +336,6 @@ public class PartyRoleResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, PartyRoleMetadata.aliasMap);
         }
-
-        public static PartyRoleId parseIdString(String idString) {
-            TextFormatter<PartyRoleId> formatter =
-                    new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)

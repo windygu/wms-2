@@ -410,6 +410,15 @@ public class AttributeSetResource {
         };
     }
 
+    protected PropertyTypeResolver getAttributeUsePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return AttributeSetResourceUtils.getAttributeUseFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class AttributeSetResourceUtils {
@@ -431,7 +440,6 @@ public class AttributeSetResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, AttributeSetMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -465,6 +473,54 @@ public class AttributeSetResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getAttributeUseQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, AttributeUseMetadata.aliasMap);
+        }
+
+        public static List<String> getAttributeUseQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, AttributeUseMetadata.aliasMap);
+        }
+
+        public static String getAttributeUseFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (AttributeUseMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeUseMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getAttributeUseFilterPropertyType(String propertyName) {
+            if (AttributeUseMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeUseMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getAttributeUseQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getAttributeUseFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getAttributeUseFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

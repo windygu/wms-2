@@ -527,6 +527,24 @@ public class AttributeResource {
         };
     }
 
+    protected PropertyTypeResolver getAttributeValuePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return AttributeResourceUtils.getAttributeValueFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getAttributeAliasPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return AttributeResourceUtils.getAttributeAliasFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class AttributeResourceUtils {
@@ -548,7 +566,6 @@ public class AttributeResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, AttributeMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -582,6 +599,102 @@ public class AttributeResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getAttributeValueQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, AttributeValueMetadata.aliasMap);
+        }
+
+        public static List<String> getAttributeValueQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, AttributeValueMetadata.aliasMap);
+        }
+
+        public static String getAttributeValueFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (AttributeValueMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeValueMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getAttributeValueFilterPropertyType(String propertyName) {
+            if (AttributeValueMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeValueMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getAttributeValueQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getAttributeValueFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getAttributeValueFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getAttributeAliasQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, AttributeAliasMetadata.aliasMap);
+        }
+
+        public static List<String> getAttributeAliasQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, AttributeAliasMetadata.aliasMap);
+        }
+
+        public static String getAttributeAliasFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (AttributeAliasMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeAliasMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getAttributeAliasFilterPropertyType(String propertyName) {
+            if (AttributeAliasMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeAliasMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getAttributeAliasQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getAttributeAliasFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getAttributeAliasFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

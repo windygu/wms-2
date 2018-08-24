@@ -440,9 +440,29 @@ public class ShipmentPackageResource {
         };
     }
 
+    protected PropertyTypeResolver getShipmentPackageContentPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentPackageResourceUtils.getShipmentPackageContentFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class ShipmentPackageResourceUtils {
+
+        public static ShipmentPackageId parseIdString(String idString) {
+            TextFormatter<ShipmentPackageId> formatter =
+                    new AbstractValueObjectTextFormatter<ShipmentPackageId>(ShipmentPackageId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
 
         public static void setNullIdOrThrowOnInconsistentIds(String shipmentPackageId, ShipmentPackageCommand value) {
             ShipmentPackageId idObj = parseIdString(shipmentPackageId);
@@ -461,18 +481,6 @@ public class ShipmentPackageResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, ShipmentPackageMetadata.aliasMap);
         }
-
-        public static ShipmentPackageId parseIdString(String idString) {
-            TextFormatter<ShipmentPackageId> formatter =
-                    new AbstractValueObjectTextFormatter<ShipmentPackageId>(ShipmentPackageId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -506,6 +514,54 @@ public class ShipmentPackageResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getShipmentPackageContentQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, ShipmentPackageContentMetadata.aliasMap);
+        }
+
+        public static List<String> getShipmentPackageContentQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ShipmentPackageContentMetadata.aliasMap);
+        }
+
+        public static String getShipmentPackageContentFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (ShipmentPackageContentMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentPackageContentMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getShipmentPackageContentFilterPropertyType(String propertyName) {
+            if (ShipmentPackageContentMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentPackageContentMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getShipmentPackageContentQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getShipmentPackageContentFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getShipmentPackageContentFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

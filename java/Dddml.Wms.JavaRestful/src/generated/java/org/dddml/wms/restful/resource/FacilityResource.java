@@ -326,7 +326,6 @@ public class FacilityResource {
             return QueryParamUtils.getQuerySorts(values, FacilityMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

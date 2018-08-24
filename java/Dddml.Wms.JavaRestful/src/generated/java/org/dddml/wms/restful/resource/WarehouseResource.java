@@ -326,7 +326,6 @@ public class WarehouseResource {
             return QueryParamUtils.getQuerySorts(values, WarehouseMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

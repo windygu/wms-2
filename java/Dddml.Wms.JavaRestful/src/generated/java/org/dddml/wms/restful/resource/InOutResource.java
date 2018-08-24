@@ -735,6 +735,33 @@ public class InOutResource {
         };
     }
 
+    protected PropertyTypeResolver getInOutImagePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return InOutResourceUtils.getInOutImageFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getInOutLinePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return InOutResourceUtils.getInOutLineFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getInOutLineImagePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return InOutResourceUtils.getInOutLineImageFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class InOutResourceUtils {
@@ -756,7 +783,6 @@ public class InOutResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, InOutMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -790,6 +816,150 @@ public class InOutResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getInOutImageQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, InOutImageMetadata.aliasMap);
+        }
+
+        public static List<String> getInOutImageQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InOutImageMetadata.aliasMap);
+        }
+
+        public static String getInOutImageFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (InOutImageMetadata.aliasMap.containsKey(fieldName)) {
+                return InOutImageMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getInOutImageFilterPropertyType(String propertyName) {
+            if (InOutImageMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InOutImageMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getInOutImageQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getInOutImageFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getInOutImageFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getInOutLineQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, InOutLineMetadata.aliasMap);
+        }
+
+        public static List<String> getInOutLineQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InOutLineMetadata.aliasMap);
+        }
+
+        public static String getInOutLineFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (InOutLineMetadata.aliasMap.containsKey(fieldName)) {
+                return InOutLineMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getInOutLineFilterPropertyType(String propertyName) {
+            if (InOutLineMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InOutLineMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getInOutLineQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getInOutLineFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getInOutLineFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getInOutLineImageQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, InOutLineImageMetadata.aliasMap);
+        }
+
+        public static List<String> getInOutLineImageQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InOutLineImageMetadata.aliasMap);
+        }
+
+        public static String getInOutLineImageFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (InOutLineImageMetadata.aliasMap.containsKey(fieldName)) {
+                return InOutLineImageMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getInOutLineImageFilterPropertyType(String propertyName) {
+            if (InOutLineImageMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InOutLineImageMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getInOutLineImageQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getInOutLineImageFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getInOutLineImageFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

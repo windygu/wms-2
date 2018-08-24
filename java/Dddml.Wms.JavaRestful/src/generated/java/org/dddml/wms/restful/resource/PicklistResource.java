@@ -426,6 +426,15 @@ public class PicklistResource {
         };
     }
 
+    protected PropertyTypeResolver getPicklistRolePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return PicklistResourceUtils.getPicklistRoleFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class PicklistResourceUtils {
@@ -447,7 +456,6 @@ public class PicklistResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, PicklistMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -481,6 +489,54 @@ public class PicklistResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getPicklistRoleQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, PicklistRoleMetadata.aliasMap);
+        }
+
+        public static List<String> getPicklistRoleQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, PicklistRoleMetadata.aliasMap);
+        }
+
+        public static String getPicklistRoleFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (PicklistRoleMetadata.aliasMap.containsKey(fieldName)) {
+                return PicklistRoleMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getPicklistRoleFilterPropertyType(String propertyName) {
+            if (PicklistRoleMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PicklistRoleMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getPicklistRoleQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getPicklistRoleFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getPicklistRoleFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

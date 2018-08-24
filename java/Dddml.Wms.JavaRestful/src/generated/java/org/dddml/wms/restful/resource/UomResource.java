@@ -326,7 +326,6 @@ public class UomResource {
             return QueryParamUtils.getQuerySorts(values, UomMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

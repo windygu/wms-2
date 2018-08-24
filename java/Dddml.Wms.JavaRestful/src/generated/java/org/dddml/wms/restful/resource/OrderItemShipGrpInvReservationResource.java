@@ -308,6 +308,17 @@ public class OrderItemShipGrpInvReservationResource {
  
     public static class OrderItemShipGrpInvReservationResourceUtils {
 
+        public static OrderItemShipGrpInvResId parseIdString(String idString) {
+            TextFormatter<OrderItemShipGrpInvResId> formatter =
+                    new AbstractValueObjectTextFormatter<OrderItemShipGrpInvResId>(OrderItemShipGrpInvResId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String orderItemShipGrpInvResId, OrderItemShipGrpInvReservationCommand value) {
             OrderItemShipGrpInvResId idObj = parseIdString(orderItemShipGrpInvResId);
             if (value.getOrderItemShipGrpInvResId() == null) {
@@ -325,18 +336,6 @@ public class OrderItemShipGrpInvReservationResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, OrderItemShipGrpInvReservationMetadata.aliasMap);
         }
-
-        public static OrderItemShipGrpInvResId parseIdString(String idString) {
-            TextFormatter<OrderItemShipGrpInvResId> formatter =
-                    new AbstractValueObjectTextFormatter<OrderItemShipGrpInvResId>(OrderItemShipGrpInvResId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)

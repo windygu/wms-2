@@ -276,7 +276,6 @@ public class StatusItemResource {
             return QueryParamUtils.getQuerySorts(values, StatusItemMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

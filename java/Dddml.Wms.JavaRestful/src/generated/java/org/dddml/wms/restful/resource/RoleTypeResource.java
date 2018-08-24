@@ -326,7 +326,6 @@ public class RoleTypeResource {
             return QueryParamUtils.getQuerySorts(values, RoleTypeMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

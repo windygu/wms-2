@@ -308,6 +308,17 @@ public class UomConversionResource {
  
     public static class UomConversionResourceUtils {
 
+        public static UomConversionId parseIdString(String idString) {
+            TextFormatter<UomConversionId> formatter =
+                    new AbstractValueObjectTextFormatter<UomConversionId>(UomConversionId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String uomConversionId, UomConversionCommand value) {
             UomConversionId idObj = parseIdString(uomConversionId);
             if (value.getUomConversionId() == null) {
@@ -325,18 +336,6 @@ public class UomConversionResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, UomConversionMetadata.aliasMap);
         }
-
-        public static UomConversionId parseIdString(String idString) {
-            TextFormatter<UomConversionId> formatter =
-                    new AbstractValueObjectTextFormatter<UomConversionId>(UomConversionId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)

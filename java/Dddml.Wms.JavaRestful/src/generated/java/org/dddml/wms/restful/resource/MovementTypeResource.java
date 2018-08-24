@@ -294,7 +294,6 @@ public class MovementTypeResource {
             return QueryParamUtils.getQuerySorts(values, MovementTypeMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

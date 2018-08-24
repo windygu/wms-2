@@ -440,6 +440,15 @@ public class PhysicalInventoryResource {
         };
     }
 
+    protected PropertyTypeResolver getPhysicalInventoryLinePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return PhysicalInventoryResourceUtils.getPhysicalInventoryLineFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class PhysicalInventoryResourceUtils {
@@ -461,7 +470,6 @@ public class PhysicalInventoryResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, PhysicalInventoryMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -495,6 +503,54 @@ public class PhysicalInventoryResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getPhysicalInventoryLineQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, PhysicalInventoryLineMetadata.aliasMap);
+        }
+
+        public static List<String> getPhysicalInventoryLineQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, PhysicalInventoryLineMetadata.aliasMap);
+        }
+
+        public static String getPhysicalInventoryLineFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (PhysicalInventoryLineMetadata.aliasMap.containsKey(fieldName)) {
+                return PhysicalInventoryLineMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getPhysicalInventoryLineFilterPropertyType(String propertyName) {
+            if (PhysicalInventoryLineMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PhysicalInventoryLineMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getPhysicalInventoryLineQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getPhysicalInventoryLineFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getPhysicalInventoryLineFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

@@ -326,7 +326,6 @@ public class GoodIdentificationTypeResource {
             return QueryParamUtils.getQuerySorts(values, GoodIdentificationTypeMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

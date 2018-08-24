@@ -294,7 +294,6 @@ public class DamageHandlingMethodResource {
             return QueryParamUtils.getQuerySorts(values, DamageHandlingMethodMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

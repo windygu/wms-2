@@ -429,6 +429,15 @@ public class MovementConfirmationResource {
         };
     }
 
+    protected PropertyTypeResolver getMovementConfirmationLinePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return MovementConfirmationResourceUtils.getMovementConfirmationLineFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class MovementConfirmationResourceUtils {
@@ -450,7 +459,6 @@ public class MovementConfirmationResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, MovementConfirmationMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -484,6 +492,54 @@ public class MovementConfirmationResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getMovementConfirmationLineQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, MovementConfirmationLineMetadata.aliasMap);
+        }
+
+        public static List<String> getMovementConfirmationLineQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, MovementConfirmationLineMetadata.aliasMap);
+        }
+
+        public static String getMovementConfirmationLineFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (MovementConfirmationLineMetadata.aliasMap.containsKey(fieldName)) {
+                return MovementConfirmationLineMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getMovementConfirmationLineFilterPropertyType(String propertyName) {
+            if (MovementConfirmationLineMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = MovementConfirmationLineMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getMovementConfirmationLineQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getMovementConfirmationLineFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getMovementConfirmationLineFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

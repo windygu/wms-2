@@ -285,6 +285,17 @@ public class SupplierProductResource {
  
     public static class SupplierProductResourceUtils {
 
+        public static SupplierProductId parseIdString(String idString) {
+            TextFormatter<SupplierProductId> formatter =
+                    new AbstractValueObjectTextFormatter<SupplierProductId>(SupplierProductId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String supplierProductId, SupplierProductCommand value) {
             SupplierProductId idObj = parseIdString(supplierProductId);
             if (value.getSupplierProductId() == null) {
@@ -302,18 +313,6 @@ public class SupplierProductResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, SupplierProductMetadata.aliasMap);
         }
-
-        public static SupplierProductId parseIdString(String idString) {
-            TextFormatter<SupplierProductId> formatter =
-                    new AbstractValueObjectTextFormatter<SupplierProductId>(SupplierProductId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)

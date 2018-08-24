@@ -326,7 +326,6 @@ public class ContactMechResource {
             return QueryParamUtils.getQuerySorts(values, ContactMechMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

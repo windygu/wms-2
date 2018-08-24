@@ -326,7 +326,6 @@ public class PickwaveResource {
             return QueryParamUtils.getQuerySorts(values, PickwaveMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

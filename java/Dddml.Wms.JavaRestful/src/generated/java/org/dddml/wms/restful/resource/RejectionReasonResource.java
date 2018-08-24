@@ -326,7 +326,6 @@ public class RejectionReasonResource {
             return QueryParamUtils.getQuerySorts(values, RejectionReasonMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

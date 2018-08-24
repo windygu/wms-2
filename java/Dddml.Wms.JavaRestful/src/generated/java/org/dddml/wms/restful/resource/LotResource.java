@@ -326,7 +326,6 @@ public class LotResource {
             return QueryParamUtils.getQuerySorts(values, LotMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

@@ -387,6 +387,15 @@ public class ProductResource {
         };
     }
 
+    protected PropertyTypeResolver getGoodIdentificationPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ProductResourceUtils.getGoodIdentificationFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class ProductResourceUtils {
@@ -408,7 +417,6 @@ public class ProductResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, ProductMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -442,6 +450,54 @@ public class ProductResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getGoodIdentificationQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, GoodIdentificationMetadata.aliasMap);
+        }
+
+        public static List<String> getGoodIdentificationQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, GoodIdentificationMetadata.aliasMap);
+        }
+
+        public static String getGoodIdentificationFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (GoodIdentificationMetadata.aliasMap.containsKey(fieldName)) {
+                return GoodIdentificationMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getGoodIdentificationFilterPropertyType(String propertyName) {
+            if (GoodIdentificationMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = GoodIdentificationMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getGoodIdentificationQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getGoodIdentificationFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getGoodIdentificationFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

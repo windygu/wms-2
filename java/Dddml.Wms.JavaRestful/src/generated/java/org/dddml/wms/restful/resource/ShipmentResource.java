@@ -964,6 +964,51 @@ public class ShipmentResource {
         };
     }
 
+    protected PropertyTypeResolver getShipmentImagePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentResourceUtils.getShipmentImageFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getShipmentItemPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentResourceUtils.getShipmentItemFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getShipmentReceiptPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentResourceUtils.getShipmentReceiptFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getShipmentReceiptImagePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentResourceUtils.getShipmentReceiptImageFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getItemIssuancePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return ShipmentResourceUtils.getItemIssuanceFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class ShipmentResourceUtils {
@@ -985,7 +1030,6 @@ public class ShipmentResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, ShipmentMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -1019,6 +1063,246 @@ public class ShipmentResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getShipmentImageQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, ShipmentImageMetadata.aliasMap);
+        }
+
+        public static List<String> getShipmentImageQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ShipmentImageMetadata.aliasMap);
+        }
+
+        public static String getShipmentImageFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (ShipmentImageMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentImageMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getShipmentImageFilterPropertyType(String propertyName) {
+            if (ShipmentImageMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentImageMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getShipmentImageQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getShipmentImageFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getShipmentImageFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getShipmentItemQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, ShipmentItemMetadata.aliasMap);
+        }
+
+        public static List<String> getShipmentItemQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ShipmentItemMetadata.aliasMap);
+        }
+
+        public static String getShipmentItemFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (ShipmentItemMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentItemMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getShipmentItemFilterPropertyType(String propertyName) {
+            if (ShipmentItemMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentItemMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getShipmentItemQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getShipmentItemFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getShipmentItemFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getShipmentReceiptQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, ShipmentReceiptMetadata.aliasMap);
+        }
+
+        public static List<String> getShipmentReceiptQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ShipmentReceiptMetadata.aliasMap);
+        }
+
+        public static String getShipmentReceiptFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (ShipmentReceiptMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentReceiptMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getShipmentReceiptFilterPropertyType(String propertyName) {
+            if (ShipmentReceiptMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentReceiptMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getShipmentReceiptQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getShipmentReceiptFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getShipmentReceiptFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getShipmentReceiptImageQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, ShipmentReceiptImageMetadata.aliasMap);
+        }
+
+        public static List<String> getShipmentReceiptImageQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ShipmentReceiptImageMetadata.aliasMap);
+        }
+
+        public static String getShipmentReceiptImageFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (ShipmentReceiptImageMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentReceiptImageMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getShipmentReceiptImageFilterPropertyType(String propertyName) {
+            if (ShipmentReceiptImageMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentReceiptImageMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getShipmentReceiptImageQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getShipmentReceiptImageFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getShipmentReceiptImageFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getItemIssuanceQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, ItemIssuanceMetadata.aliasMap);
+        }
+
+        public static List<String> getItemIssuanceQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, ItemIssuanceMetadata.aliasMap);
+        }
+
+        public static String getItemIssuanceFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (ItemIssuanceMetadata.aliasMap.containsKey(fieldName)) {
+                return ItemIssuanceMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getItemIssuanceFilterPropertyType(String propertyName) {
+            if (ItemIssuanceMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ItemIssuanceMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getItemIssuanceQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getItemIssuanceFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getItemIssuanceFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

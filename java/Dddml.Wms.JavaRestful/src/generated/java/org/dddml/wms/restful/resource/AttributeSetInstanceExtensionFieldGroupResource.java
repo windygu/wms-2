@@ -326,7 +326,6 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             return QueryParamUtils.getQuerySorts(values, AttributeSetInstanceExtensionFieldGroupMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

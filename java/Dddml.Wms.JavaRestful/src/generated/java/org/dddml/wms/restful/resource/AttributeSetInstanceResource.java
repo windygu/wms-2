@@ -274,7 +274,6 @@ public class AttributeSetInstanceResource {
             return QueryParamUtils.getQuerySorts(values, AttributeSetInstanceMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

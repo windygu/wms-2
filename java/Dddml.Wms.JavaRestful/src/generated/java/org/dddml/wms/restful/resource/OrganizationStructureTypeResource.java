@@ -326,7 +326,6 @@ public class OrganizationStructureTypeResource {
             return QueryParamUtils.getQuerySorts(values, OrganizationStructureTypeMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

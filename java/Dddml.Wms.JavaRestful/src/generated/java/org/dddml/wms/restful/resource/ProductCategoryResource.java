@@ -339,7 +339,6 @@ public class ProductCategoryResource {
             return QueryParamUtils.getQuerySorts(values, ProductCategoryMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

@@ -326,7 +326,6 @@ public class ShipmentMethodTypeResource {
             return QueryParamUtils.getQuerySorts(values, ShipmentMethodTypeMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

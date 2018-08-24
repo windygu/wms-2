@@ -748,6 +748,42 @@ public class OrderResource {
         };
     }
 
+    protected PropertyTypeResolver getOrderRolePropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrderResourceUtils.getOrderRoleFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getOrderItemPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrderResourceUtils.getOrderItemFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getOrderShipGroupPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrderResourceUtils.getOrderShipGroupFilterPropertyType(propertyName);
+            }
+        };
+    }
+
+    protected PropertyTypeResolver getOrderItemShipGroupAssociationPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return OrderResourceUtils.getOrderItemShipGroupAssociationFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class OrderResourceUtils {
@@ -769,7 +805,6 @@ public class OrderResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, OrderMetadata.aliasMap);
         }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -803,6 +838,198 @@ public class OrderResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getOrderRoleQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, OrderRoleMetadata.aliasMap);
+        }
+
+        public static List<String> getOrderRoleQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, OrderRoleMetadata.aliasMap);
+        }
+
+        public static String getOrderRoleFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (OrderRoleMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderRoleMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getOrderRoleFilterPropertyType(String propertyName) {
+            if (OrderRoleMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderRoleMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getOrderRoleQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getOrderRoleFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getOrderRoleFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getOrderItemQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, OrderItemMetadata.aliasMap);
+        }
+
+        public static List<String> getOrderItemQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, OrderItemMetadata.aliasMap);
+        }
+
+        public static String getOrderItemFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (OrderItemMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderItemMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getOrderItemFilterPropertyType(String propertyName) {
+            if (OrderItemMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderItemMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getOrderItemQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getOrderItemFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getOrderItemFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getOrderShipGroupQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, OrderShipGroupMetadata.aliasMap);
+        }
+
+        public static List<String> getOrderShipGroupQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, OrderShipGroupMetadata.aliasMap);
+        }
+
+        public static String getOrderShipGroupFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (OrderShipGroupMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderShipGroupMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getOrderShipGroupFilterPropertyType(String propertyName) {
+            if (OrderShipGroupMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderShipGroupMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getOrderShipGroupQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getOrderShipGroupFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getOrderShipGroupFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getOrderItemShipGroupAssociationQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, OrderItemShipGroupAssociationMetadata.aliasMap);
+        }
+
+        public static List<String> getOrderItemShipGroupAssociationQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, OrderItemShipGroupAssociationMetadata.aliasMap);
+        }
+
+        public static String getOrderItemShipGroupAssociationFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (OrderItemShipGroupAssociationMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderItemShipGroupAssociationMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getOrderItemShipGroupAssociationFilterPropertyType(String propertyName) {
+            if (OrderItemShipGroupAssociationMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderItemShipGroupAssociationMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getOrderItemShipGroupAssociationQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getOrderItemShipGroupAssociationFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getOrderItemShipGroupAssociationFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

@@ -326,7 +326,6 @@ public class LocatorResource {
             return QueryParamUtils.getQuerySorts(values, LocatorMetadata.aliasMap);
         }
 
-
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
                     || "firstResult".equalsIgnoreCase(fieldName)

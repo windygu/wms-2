@@ -308,6 +308,17 @@ public class OrganizationStructureResource {
  
     public static class OrganizationStructureResourceUtils {
 
+        public static OrganizationStructureId parseIdString(String idString) {
+            TextFormatter<OrganizationStructureId> formatter =
+                    new AbstractValueObjectTextFormatter<OrganizationStructureId>(OrganizationStructureId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String id, OrganizationStructureCommand value) {
             OrganizationStructureId idObj = parseIdString(id);
             if (value.getId() == null) {
@@ -325,18 +336,6 @@ public class OrganizationStructureResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, OrganizationStructureMetadata.aliasMap);
         }
-
-        public static OrganizationStructureId parseIdString(String idString) {
-            TextFormatter<OrganizationStructureId> formatter =
-                    new AbstractValueObjectTextFormatter<OrganizationStructureId>(OrganizationStructureId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)

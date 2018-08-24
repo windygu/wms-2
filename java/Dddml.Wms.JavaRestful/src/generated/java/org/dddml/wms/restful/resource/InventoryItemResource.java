@@ -261,9 +261,29 @@ public class InventoryItemResource {
         };
     }
 
+    protected PropertyTypeResolver getInventoryItemEntryPropertyTypeResolver() {
+        return new PropertyTypeResolver() {
+            @Override
+            public Class resolveTypeByPropertyName(String propertyName) {
+                return InventoryItemResourceUtils.getInventoryItemEntryFilterPropertyType(propertyName);
+            }
+        };
+    }
+
     // ////////////////////////////////
  
     public static class InventoryItemResourceUtils {
+
+        public static InventoryItemId parseIdString(String idString) {
+            TextFormatter<InventoryItemId> formatter =
+                    new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
 
         public static void setNullIdOrThrowOnInconsistentIds(String inventoryItemId, InventoryItemCommand value) {
             InventoryItemId idObj = parseIdString(inventoryItemId);
@@ -282,18 +302,6 @@ public class InventoryItemResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, InventoryItemMetadata.aliasMap);
         }
-
-        public static InventoryItemId parseIdString(String idString) {
-            TextFormatter<InventoryItemId> formatter =
-                    new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
@@ -327,6 +335,54 @@ public class InventoryItemResource {
                     String pName = getFilterPropertyName(key);
                     if (!StringHelper.isNullOrEmpty(pName)) {
                         Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static List<String> getInventoryItemEntryQueryOrders(String str, String separator) {
+            return QueryParamUtils.getQueryOrders(str, separator, InventoryItemEntryMetadata.aliasMap);
+        }
+
+        public static List<String> getInventoryItemEntryQuerySorts(Map<String, String[]> queryNameValuePairs) {
+            String[] values = queryNameValuePairs.get("sort");
+            return QueryParamUtils.getQuerySorts(values, InventoryItemEntryMetadata.aliasMap);
+        }
+
+        public static String getInventoryItemEntryFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (InventoryItemEntryMetadata.aliasMap.containsKey(fieldName)) {
+                return InventoryItemEntryMetadata.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getInventoryItemEntryFilterPropertyType(String propertyName) {
+            if (InventoryItemEntryMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InventoryItemEntryMetadata.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getInventoryItemEntryQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getInventoryItemEntryFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getInventoryItemEntryFilterPropertyType(pName);
                         filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
                     }
                 }

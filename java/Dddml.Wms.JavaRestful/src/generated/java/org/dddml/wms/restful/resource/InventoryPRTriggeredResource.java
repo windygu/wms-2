@@ -258,6 +258,17 @@ public class InventoryPRTriggeredResource {
  
     public static class InventoryPRTriggeredResourceUtils {
 
+        public static InventoryPRTriggeredId parseIdString(String idString) {
+            TextFormatter<InventoryPRTriggeredId> formatter =
+                    new AbstractValueObjectTextFormatter<InventoryPRTriggeredId>(InventoryPRTriggeredId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String inventoryPRTriggeredId, InventoryPRTriggeredCommand value) {
             InventoryPRTriggeredId idObj = parseIdString(inventoryPRTriggeredId);
             if (value.getInventoryPRTriggeredId() == null) {
@@ -275,18 +286,6 @@ public class InventoryPRTriggeredResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, InventoryPRTriggeredMetadata.aliasMap);
         }
-
-        public static InventoryPRTriggeredId parseIdString(String idString) {
-            TextFormatter<InventoryPRTriggeredId> formatter =
-                    new AbstractValueObjectTextFormatter<InventoryPRTriggeredId>(InventoryPRTriggeredId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)

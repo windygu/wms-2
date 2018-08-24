@@ -285,6 +285,17 @@ public class OrderShipmentResource {
  
     public static class OrderShipmentResourceUtils {
 
+        public static OrderShipmentId parseIdString(String idString) {
+            TextFormatter<OrderShipmentId> formatter =
+                    new AbstractValueObjectTextFormatter<OrderShipmentId>(OrderShipmentId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
         public static void setNullIdOrThrowOnInconsistentIds(String orderShipmentId, OrderShipmentCommand value) {
             OrderShipmentId idObj = parseIdString(orderShipmentId);
             if (value.getOrderShipmentId() == null) {
@@ -302,18 +313,6 @@ public class OrderShipmentResource {
             String[] values = queryNameValuePairs.get("sort");
             return QueryParamUtils.getQuerySorts(values, OrderShipmentMetadata.aliasMap);
         }
-
-        public static OrderShipmentId parseIdString(String idString) {
-            TextFormatter<OrderShipmentId> formatter =
-                    new AbstractValueObjectTextFormatter<OrderShipmentId>(OrderShipmentId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
 
         public static String getFilterPropertyName(String fieldName) {
             if ("sort".equalsIgnoreCase(fieldName)
