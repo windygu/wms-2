@@ -128,7 +128,8 @@ public class ShipmentTests {
                         java.util.Arrays.asList(new ImportingShipmentItem[]{shipItem_1, shipItem_2})
         );
 
-        shipImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);
+        //shipImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);
+        shipImport.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);//先保证采购装运是正确的。
         shipImport.setDestinationFacilityId("TEST_1");
 
         shipmentApplicationService.when(shipImport);

@@ -150,8 +150,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
-        createShipment.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);
-        createShipment.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
+        //createShipment.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);
+        //createShipment.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         createShipmentItems(orderState, orderShipGroupState, createShipment);
@@ -179,8 +179,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
-        createShipment.setShipmentTypeId(ShipmentTypeIds.SALES_SHIPMENT);
-        createShipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
+        //createShipment.setShipmentTypeId(ShipmentTypeIds.SALES_SHIPMENT);
+        //createShipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         createShipmentItems(orderState, orderShipGroupState, createShipment);
@@ -209,7 +209,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
     }
 
-    private ShipmentCommand.CreateShipment createShipment(String orderId, Long shipGroupSeqId, String shipmentId, String shipmentTypeId, String shipmentStatusId) {
+    private ShipmentCommand.CreateShipment createShipment(String orderId, Long shipGroupSeqId, String shipmentId,
+                                                          String shipmentTypeId, String shipmentStatusId) {
         ShipmentCommand.CreateShipment createShipment = new AbstractShipmentCommand.SimpleCreateShipment();
         createShipment.setShipmentId(shipmentId);
         createShipment.setShipmentTypeId(shipmentTypeId);

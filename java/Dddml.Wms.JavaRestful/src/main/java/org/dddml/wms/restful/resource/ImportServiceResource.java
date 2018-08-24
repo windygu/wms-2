@@ -805,7 +805,8 @@ public class ImportServiceResource {
                 shipmentImport.setCarrier(shipmentHeader.getCarrier());
                 shipmentImport.setDateShipped(shipmentHeader.getDateShipped());
                 shipmentImport.setEstimatedArrivalDate(shipmentHeader.getEstimatedArrivalDate());
-                shipmentImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);
+                //shipmentImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);
+                shipmentImport.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);//todo 先把导入装运单都当作采购装运
                 // -------------------------------------------------------------
                 shipmentImport.setShipmentItems(new ArrayList<>());
                 shipmentMap.put(shipmentId, shipmentImport);

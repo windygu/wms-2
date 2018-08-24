@@ -598,8 +598,13 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             }
 
             ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            // //////////////////////////////////////
+            // todo 先让所有“入站”的装运单都在确认“发出”后置于同一个状态，方便后面的业务逻辑判断
+            // //////////////////////////////////////
             if (Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())
-                    || Objects.equals(ShipmentTypeIds.getParentTypeId(getState().getShipmentTypeId()).toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())) {
+                    || Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.PURCHASE_RETURN.toLowerCase())
+                    || Objects.equals(ShipmentTypeIds.getParentTypeId(getState().getShipmentTypeId()).toLowerCase(),
+                        ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())) {
                 e.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
             } else {
                 e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
