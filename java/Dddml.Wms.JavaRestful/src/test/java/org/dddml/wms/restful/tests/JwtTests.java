@@ -187,7 +187,7 @@ public class JwtTests {
     private static String getJwtToken() {
         JwtUser u = new JwtUser();
         u.setUsername("yang");
-        u.setRole("admin,inoutop");
+        u.setRole("admin,inOutOp");
         //u.setId("yangjf");
 
         Claims claims = Jwts.claims().setSubject(u.getUsername());

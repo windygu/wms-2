@@ -24,14 +24,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+
 
 /**
  * Created by yangjiefeng on 2018/8/25.
  */
 public class InitInventoryItems {
 
-    private static String baseUrl = "http://localhost:8080/api/";
+    private static String baseUrl = "http://47.104.74.139:8080/api/";
+    // /////////////////////////////////////////////////////////////
+    private static String authUrl = "http://47.104.74.139:8080/api/iam/oauth2/token";
+    private static String username = "006";
+    private static String password = "xxxxxxxx";
+    /**
+     * 在知道 Secret 的情况下，可以自己创建一个 JWT Token。
+     */
+    private static String jwtSecret = "xxxxxxxx";
+    // /////////////////////////////////////////////////////////////
+
 
     public static void main(String[] args) {
         String token = null;
@@ -44,10 +54,11 @@ public class InitInventoryItems {
         url = appendUrl(baseUrl, "ImportService/InitializeInventoryItems");
         ImportServiceResource.InitializingInventoryItemSettings importSettings = getInitializingInventoryItemSettings();
         doInitInventoryItems(token, url, importSettings);
-        // ///////////////////////////////////////
         //（现在只是生成若干入库单，执行掉这些入库单，库存就初始化好了）
         // ///////////////////////////////////////
     }
+
+    // ///////////////////////////////////////
 
     private static void doInitInventoryItems(String token, String url,
                                              ImportServiceResource.InitializingInventoryItemSettings importSettings) {
@@ -110,7 +121,7 @@ public class InitInventoryItems {
         claims.put("role", u.getRole());
         //claims.put("userId", u.getId());
 
-        String secret = "xxxxxxx";
+        String secret = jwtSecret;
         String token = Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, secret)
@@ -121,11 +132,10 @@ public class InitInventoryItems {
     }
 
     /**
-     * 从认证服务器上获取一个 Token（知道用户名和密码）
+     * 从认证服务器上获取一个 Token（需要知道用户名和密码）。
      * @return
      */
     private static String getJwtTokenRemote() {
-        String authUrl = "http://localhost:8089/iam/oauth2/token";
         CloseableHttpClient client = HttpClientBuilder.create().build();
         try {
             HttpPost httpPost = new HttpPost(authUrl);
@@ -133,8 +143,8 @@ public class InitInventoryItems {
             List<NameValuePair> pairs = new ArrayList<>();
             pairs.add(new BasicNameValuePair("grant_type", "password"));
             pairs.add(new BasicNameValuePair("client_id", "malls"));
-            pairs.add(new BasicNameValuePair("username", "admin0"));
-            pairs.add(new BasicNameValuePair("password", "admin0"));
+            pairs.add(new BasicNameValuePair("username", username));
+            pairs.add(new BasicNameValuePair("password", password));
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(pairs);
             httpPost.setEntity(entity);
             HttpResponse response = client.execute(httpPost);
@@ -192,6 +202,12 @@ public class InitInventoryItems {
         return client.execute(httpPut);
     }
 
+    /**
+     * 将 HTTP 的响应内容读为字符串。
+     * @param response
+     * @return
+     * @throws IOException
+     */
     private static String readString(HttpResponse response) throws IOException {
         InputStream inputStream = response.getEntity().getContent();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
