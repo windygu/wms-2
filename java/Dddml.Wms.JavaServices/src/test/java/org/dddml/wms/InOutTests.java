@@ -37,23 +37,13 @@ public class InOutTests {
     public void testInThenOut() {
         String prdId = getTestProductId2();
         String inDocumentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.IN, prdId, BigDecimal.valueOf(123));
-        InOutState in_1 = inOutApplicationService.get(inDocumentNumber);
-        InOutCommands.Complete complete_1 = new InOutCommands.Complete();
-        complete_1.setDocumentNumber(inDocumentNumber);
-        complete_1.setVersion(in_1.getVersion());
-        complete_1.setCommandId(UUID.randomUUID().toString());
-        inOutApplicationService.when(complete_1);
+        completeInOut(inDocumentNumber);
         testInThenOut_Out(prdId);
     }
 
     private void testInThenOut_Out(String prdId) {
         String outDocumentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.OUT, prdId, BigDecimal.valueOf(-123));
-        InOutState out_1 = inOutApplicationService.get(outDocumentNumber);
-        InOutCommands.Complete complete_2 = new InOutCommands.Complete();
-        complete_2.setDocumentNumber(outDocumentNumber);
-        complete_2.setVersion(out_1.getVersion());
-        complete_2.setCommandId(UUID.randomUUID().toString());
-        inOutApplicationService.when(complete_2);
+        completeInOut(outDocumentNumber);
     }
 
     public void testCreateAndCompleteAndReverseInOut() {
@@ -126,12 +116,7 @@ public class InOutTests {
 
     private String testCreateAndComplateInOut_0() {
         String documentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.IN_OUT, getTestProductId2(), BigDecimal.valueOf(123));
-        InOutState inOut_1 = inOutApplicationService.get(documentNumber);
-        InOutCommands.Complete complete = new InOutCommands.Complete();
-        complete.setDocumentNumber(documentNumber);
-        complete.setVersion(inOut_1.getVersion());
-        complete.setCommandId(UUID.randomUUID().toString());
-        inOutApplicationService.when(complete);
+        completeInOut(documentNumber);
         return documentNumber;
         //
         //            MergePatchInOut patchInOut = new MergePatchInOut();
@@ -148,6 +133,20 @@ public class InOutTests {
         //            //Console.WriteLine(inOutResult.ChargeAmount);
         //            //Assert.AreEqual(inOut.ChargeAmount, inOutResult.ChargeAmount);
         //
+    }
+
+    //    public void testCompleteInOut() {
+    //        String documentNumber = "IX2019-03-14";
+    //        completeInOut(documentNumber);
+    //    }
+
+    private void completeInOut(String documentNumber) {
+        InOutState inout = inOutApplicationService.get(documentNumber);
+        InOutCommands.Complete complete = new InOutCommands.Complete();
+        complete.setDocumentNumber(documentNumber);
+        complete.setVersion(inout.getVersion());
+        complete.setCommandId(UUID.randomUUID().toString());
+        inOutApplicationService.when(complete);
     }
 
     private String createInOutForTest(InOutApplicationService inOutApplicationService, String documentTypeId,
