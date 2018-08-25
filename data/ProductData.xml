@@ -54,7 +54,7 @@
 	outsideDiameter="1270" productWidth="1200" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" isSerialNumbered="true"/>
   <Product productId="22004" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
 	outsideDiameter="1270" productWidth="1800" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" isSerialNumbered="true"/>
-  -->	
+  -->	 
   <!--
     Product ID	产品名称	GSM	Width	Diam	Product	        Core	Brand	主计量单位	次计量单位	FSC
 		23101	瓦楞纸	    125	110	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
