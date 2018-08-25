@@ -39,6 +39,7 @@ public class TestMain {
         // //////////////////  initialize database data /////////////////
         if (true) { // if need to initialize, switch to true, else to false.
             try {
+                // 初始化属性集相关信息
                 InitAttributeSets.createDefaultAttributeSets();
             } catch (Exception ex) {
                 if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
@@ -48,9 +49,10 @@ public class TestMain {
                     throw new RuntimeException(ex);
                 }
             }
-
+            // 使用 XML 数据文件初始化
             InitEntityXmlData.createEntityXmlData();
             try {
+                // 初始化库存触发规则
                 InitInventoryPostingRules.createDefaultInventoryPostingRules();
             } catch (Exception ex) {
                 if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
@@ -61,6 +63,11 @@ public class TestMain {
                 }
             }
         }
+
+        if (true) { return; }
+
+        // ////////////////////////////////////////////////////////////
+        // 以下是测试，初始化的时候可以不执行
         // ////////////////////////////////////////////////////////////
         try {
             testCreateWarehouse();

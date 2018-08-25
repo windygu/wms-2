@@ -7,63 +7,142 @@
   
 	
   <!--
-	Product ID	产品名称	Product					Grade#	OD		Width	Roll Cnt	Brand	主计量单位	次计量单位
-	f1	全处理绒毛浆	FULLY TREATED FLUFF PULP	4723	1219	406		2 or 3		GI		KG			ADMT
-	f2	半处理绒毛浆	SEMI TREATED FLUFF PULP		4725	1219	483		2			GI		KG			ADMT
-	f3	半处理绒毛浆	SEMI TREATED FLUFF PULP		4725	1219	406		2			GI		KG			ADMT
-	f4	未处理绒毛浆	SOFTCEL FLUFF PULP			4872	1219	457		2			GI		KG			ADMT
-	f5	未处理绒毛浆	CO FLUFF PULP				4865	1219	451		2			GI		KG			ADMT
-	f6	未处理绒毛浆	CO FLUFF PULP				4865	1219	483		2			GI		KG			ADMT
-	f7	绒毛浆乱码	 	UTILITY ROLLS				4807	TBC		TBC		2			GI		KG			ADMT
+	Product ID	产品名称	Product					             Grade#	  OD		Width	Roll Cnt	Brand	主计量单位	次计量单位
+	21001	全处理绒毛浆	GI FULLY TREATED PULP	             4723	  48         16   	  2,3         GI        KG			ADMT
+	21101	半处理绒毛浆	GI SEMI-TREATED FLUFF		         4725	  48         19	      2           GI        KG			ADMT
+	21201	未处理绒毛浆	GOLDEN ISLES SOFTCEL FLUFF PULP		 4872	  48         18	      2           GI        KG			ADMT
+	21202	未处理绒毛浆	GOLDEN ISLES CO FLUFF PULP			 4865	  48         17.75	  2           GI        KG			ADMT
+	21203	未处理绒毛浆	GI Fluff Pulp Untreated				 4889	  48         18	      2    		  GI		KG			ADMT
+	21301	乱码绒毛浆	    GI FLUFF PULP UTILITY ROLLS			 4807	  60         19		  2	          GI		KG			ADMT
+	21302	乱码绒毛浆	 	GI FLUFF PULP UTILITY ROLLS			 4807	  48         19		  2           GI		KG			ADMT
+	21303   乱码绒毛浆      GI FLUFF PULP UTILITY ROLLS          4807     48         20       2           GI		KG			ADMT
+	21304   乱码绒毛浆      GI FULLY TREATED UTILITY PULP        4829     48         20       2,3         GI		KG			ADMT
+	21305   乱码绒毛浆      GI FULLY TREATED UTILITY PULP        4829     48         21       1,2         GI		KG			ADMT
   -->
-  <Product productId="f1" primaryProductCategoryId="FluffPulp" description="全处理绒毛浆" productName="FULLY TREATED FLUFF PULP" grade="4723" outsideDiameter="1219" productWidth="406" 
-	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
-  <Product productId="f2" primaryProductCategoryId="FluffPulp" description="半处理绒毛浆" productName="SEMI TREATED FLUFF PULP" grade="4725" outsideDiameter="1219" productWidth="483" 
-	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
-  <Product productId="f3" primaryProductCategoryId="FluffPulp" description="半处理绒毛浆" productName="SEMI TREATED FLUFF PULP" grade="4725" outsideDiameter="1219" productWidth="406" 
-	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
-  <Product productId="f4" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="SOFTCEL FLUFF PULP" grade="4872" outsideDiameter="1219" productWidth="457" 
-	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
-  <Product productId="f5" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="CO FLUFF PULP" grade="4865" outsideDiameter="1219" productWidth="451" 
-	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
-  <Product productId="f6" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="CO FLUFF PULP" grade="4865" outsideDiameter="1219" productWidth="483" 
-	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
-  <Product productId="f7" primaryProductCategoryId="FluffPulp" description="绒毛浆乱码" productName="UTILITY ROLLS" grade="4807" 
-	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" />
-
-  <!--
+  <Product productId="21001" primaryProductCategoryId="FluffPulp" description="全处理绒毛浆" productName="GI FULLY TREATED PULP" grade="4723" outsideDiameter="48" productWidth="16" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21101" primaryProductCategoryId="FluffPulp" description="半处理绒毛浆" productName="GI SEMI-TREATED FLUFF" grade="4725" outsideDiameter="48" productWidth="19" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21201" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="GOLDEN ISLES SOFTCEL FLUFF PULP" grade="4872" outsideDiameter="48" productWidth="18" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21202" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="GOLDEN ISLES CO FLUFF PULP" grade="4865" outsideDiameter="48" productWidth="17.75" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21203" primaryProductCategoryId="FluffPulp" description="未处理绒毛浆" productName="GI Fluff Pulp Untreated" grade="4889" outsideDiameter="48" productWidth="18" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21301" primaryProductCategoryId="FluffPulp" description="乱码绒毛浆" productName="GI FLUFF PULP UTILITY ROLLS" grade="4807" outsideDiameter="60" productWidth="19" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21302" primaryProductCategoryId="FluffPulp" description="乱码绒毛浆" productName="GI FLUFF PULP UTILITY ROLLS" grade="4807" outsideDiameter="48" productWidth="19" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21303" primaryProductCategoryId="FluffPulp" description="乱码绒毛浆" productName="GI FLUFF PULP UTILITY ROLLS" grade="4807" outsideDiameter="48" productWidth="20" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21304" primaryProductCategoryId="FluffPulp" description="乱码绒毛浆" productName="GI FULLY TREATED UTILITY PULP" grade="4829" outsideDiameter="48" productWidth="20" 
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <Product productId="21305" primaryProductCategoryId="FluffPulp" description="乱码绒毛浆" productName="GI FULLY TREATED UTILITY PULP" grade="4829" outsideDiameter="48" productWidth="21"
+	brandName="GI"  diameterUomId="mm" widthUomId="mm" quantityUomId="kg" attributeSetId="FluffPulpAttrSet" attributeSetInstanceId="FPSecondaryQtyUom:ADMT" isSerialNumbered="true"/>
+  <!--暂时不接收牛卡，所以暂时不初始化
 	Product ID	Description	Product			Grade	GSM	OD		Width	Core	Brand	Moisture	主计量单位
 	k1			牛卡纸		Kraft Linerboard		125	1270	 900	101		VK			7.2		KG
 	k2			牛卡纸		Kraft Linerboard		115	1250	1200	101		VK			7.2		KG
 	k3			牛卡纸		Kraft Linerboard		200	1270	1200	101		WestRock	7.4		KG
 	k4			牛卡纸		Kraft Linerboard		150	1270	1800	101		WestRock	7.4		KG
+
+  <Product productId="22001" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1270" productWidth="900" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" isSerialNumbered="true"/>
+  <Product productId="22002" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="115" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1250" productWidth="1200" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" isSerialNumbered="true"/>
+  <Product productId="22003" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="200" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1270" productWidth="1200" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" isSerialNumbered="true"/>
+  <Product productId="22004" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="1270" productWidth="1800" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" isSerialNumbered="true"/>
+  -->	
+  <!--
+    Product ID	产品名称	GSM	Width	Diam	Product	        Core	Brand	主计量单位	次计量单位	FSC
+		23101	瓦楞纸	    125	110	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23102	瓦楞纸	    125	115	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23103	瓦楞纸	    125	120	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23104	瓦楞纸	    125	125	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23105	瓦楞纸	    125	130	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23106	瓦楞纸	    125	135	    120	Sizing Medium Paper	76.2	SaigonPaper	KG             	M	Y
+		23107	瓦楞纸	    125	140	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23108	瓦楞纸	    125	145	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23109	瓦楞纸	    125	150	    120	Sizing Medium Paper	76.2	SaigonPaper	KG             	M	Y
+		23110	瓦楞纸	    125	155	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23111	瓦楞纸	    125	195	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23112	瓦楞纸	    125	200	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23113	瓦楞纸	    125	210	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23114	瓦楞纸	    125	215	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23115	瓦楞纸	    150	120	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23116	瓦楞纸	    150	125	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23117	瓦楞纸	    150	130	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23118	瓦楞纸	    150	135	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23119	瓦楞纸	    150	145	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23120	瓦楞纸	    150	155	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23121	瓦楞纸	    150	160	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23122	瓦楞纸	    150	185	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23123	瓦楞纸	    150	190	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23124	瓦楞纸	    150	195	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23125	瓦楞纸	    150	200	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23126	瓦楞纸	    150	210	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23127	瓦楞纸	    150	215	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
+		23128	瓦楞纸	    150	220	    120	Sizing Medium Paper	76.2	SaigonPaper	KG	            M	Y
   -->
-  <Product productId="k1" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1270" productWidth="900" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-  <Product productId="k2" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="115" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1250" productWidth="1200" coreDiameter="101" brandName="VK" moisturePct="7.2" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-  <Product productId="k3" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="200" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1270" productWidth="1200" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-  <Product productId="k4" primaryProductCategoryId="KLB" description="牛卡纸" productName="Kraft Linerboard" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1270" productWidth="1800" coreDiameter="101" brandName="WestRock" moisturePct="7.4" quantityUomId="kg" attributeSetId="KraftLinerboardAttrSet" attributeSetInstanceId="KLBSecondaryQtyUom:M-FSC:NO" />
-	
-  <!--	
-	Product ID	产品名称	Product			Grade	GSM	OD		Width	Core	Brand	主计量单位	次计量单位	FSC
-	c1			瓦楞纸		Corrugated Paper		90	1230	1800	76.2	Fajar	KG			M			Y
-	c2			瓦楞纸		Corrugated Paper		90	1250	1800	76.2	Fajar	KG			M			Y
-	c3			瓦楞纸		Corrugated Paper		90	1280	1800	76.2	Fajar	KG			M			Y
-	c4			瓦楞纸		Corrugated Paper		90	1240	1450	76.2	Fajar	KG			M			Y
-	c5			瓦楞纸		Corrugated Paper		100	1270	1200	76.2	Fajar	KG			M			Y
-  -->
-  <Product productId="c1" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1230" productWidth="1800" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
-  <Product productId="c2" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1250" productWidth="1800" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
-  <Product productId="c3" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1280" productWidth="1800" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
-  <Product productId="c4" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="90" diameterUomId="mm" widthUomId="mm" 
-	outsideDiameter="1240" productWidth="1450" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
-  <Product productId="c5" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="100" diameterUomId="mm" widthUomId="mm" 
+  <Product productId="23101" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="110" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23102" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="115" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23103" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="120" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23104" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="125" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23105" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="130" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23106" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="135" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23107" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="140" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23108" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="145" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23109" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="150" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23110" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="155" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23111" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="195" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23112" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="200" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23113" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="210" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23114" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="125" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="215" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23115" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="120" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23116" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="125" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23117" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="130" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23118" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="135" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23119" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="145" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23120" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="155" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23121" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="160" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23122" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="185" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23123" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="190" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23124" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="195" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23125" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="200" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23126" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="210" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23127" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="215" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+  <Product productId="23128" primaryProductCategoryId="CP" description="瓦楞纸" productName="Sizing Medium Paper" grade="" gsm="150" diameterUomId="mm" widthUomId="mm" 
+	outsideDiameter="120" productWidth="220" coreDiameter="76.2" brandName="SaigonPaper" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
+<!--  <Product productId="23005" primaryProductCategoryId="CP" description="瓦楞纸" productName="Corrugated Paper" grade="" gsm="100" diameterUomId="mm" widthUomId="mm" 
 	outsideDiameter="1270" productWidth="1200" coreDiameter="76.2" brandName="Fajar" quantityUomId="kg" attributeSetId="CorrugatedPaperAttrSet" attributeSetInstanceId="CPSecondaryQtyUom:M-FSC:YES" />
-  
+ --> 
 </entity-engine-xml>
