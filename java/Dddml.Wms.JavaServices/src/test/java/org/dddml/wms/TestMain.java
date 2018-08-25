@@ -51,17 +51,19 @@ public class TestMain {
             }
             // 使用 XML 数据文件初始化
             InitEntityXmlData.createEntityXmlData();
-            try {
-                // 初始化库存触发规则
-                InitInventoryPostingRules.createDefaultInventoryPostingRules();
-            } catch (Exception ex) {
-                if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
-                    ex.printStackTrace();
-                } else {
-                    ex.printStackTrace();
-                    throw new RuntimeException(ex);
-                }
-            }
+
+            // ////////////// 初始化库存触发规则 /////////////////////////
+            //            try {
+            //                InitInventoryPostingRules.createDefaultInventoryPostingRules();
+            //            } catch (Exception ex) {
+            //                if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
+            //                    ex.printStackTrace();
+            //                } else {
+            //                    ex.printStackTrace();
+            //                    throw new RuntimeException(ex);
+            //                }
+            //            }
+            // ///////////////////////////////////////////////////////////
         }
 
         if (true) { return; }
@@ -86,12 +88,12 @@ public class TestMain {
         //        inOutTests0.testCompleteInOut();
         //        if (true) return;
 
-        OrderShipGroupTests orderShipGroupTests = new OrderShipGroupTests();
-        orderShipGroupTests.setUp();
-        //orderShipGroupTests.testCreatePOShipGroup1();
-        //orderShipGroupTests.testCreatePOShipGroupAndShipment2();
-        orderShipGroupTests.testCreateSOShipGroup1();
-        orderShipGroupTests.testCreateSOShipGroupAndShipment2();
+        //        OrderShipGroupTests orderShipGroupTests = new OrderShipGroupTests();
+        //        orderShipGroupTests.setUp();
+        //        //orderShipGroupTests.testCreatePOShipGroup1();
+        //        //orderShipGroupTests.testCreatePOShipGroupAndShipment2();
+        //        orderShipGroupTests.testCreateSOShipGroup1();
+        //        orderShipGroupTests.testCreateSOShipGroupAndShipment2();
         //if (true) return;
 
         InOutTests inOutTests = new InOutTests();
