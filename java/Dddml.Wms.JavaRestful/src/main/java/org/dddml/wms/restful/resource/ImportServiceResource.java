@@ -279,6 +279,19 @@ public class ImportServiceResource {
 
         private String fileUrl;
 
+        /**
+         * 生成的单据（入库单）的前缀。
+         */
+        private String documentPrefix = "IX";
+
+        public String getDocumentPrefix() {
+            return documentPrefix;
+        }
+
+        public void setDocumentPrefix(String documentPrefix) {
+            this.documentPrefix = documentPrefix;
+        }
+
         public String getLocatorIdColumnName() {
             return locatorIdColumnName;
         }
@@ -642,7 +655,8 @@ public class ImportServiceResource {
                 airDryPctColumnIdx, airDryMetricTonColumnIdx, airDryWeightKgColumnIdx, airDryWeightLbsColumnIdx,
                 rollCntColumnIdx,
                 poReferenceColumnIdx,
-                prdMap, matrix);
+                prdMap, matrix,
+                settings.getDocumentPrefix());
 
         //execute import...
         for (InOutCommands.Import importInfo : inOutMap.values()) {
@@ -692,7 +706,8 @@ public class ImportServiceResource {
                                                                    Integer airDryWeightLbsColumnIdx,
                                                                    Integer rollCntColumnIdx,
                                                                    Integer poReferenceColumnIdx,
-                                                                   Map<String, ProductState> prdMap, List<String[]> matrix)
+                                                                   Map<String, ProductState> prdMap, List<String[]> matrix,
+                                                                   String documentPrefix)
             throws ParseException {
         Map<String, InOutCommands.Import> inOutMap = new HashMap<>();
         for (int i = 0; i < matrix.size(); i++ ) {
@@ -703,7 +718,7 @@ public class ImportServiceResource {
             //}
             java.text.DateFormat dateFormat3 = new SimpleDateFormat("yyyy-MM-dd");
             //使用日期作为单号
-            String documentNumber = "IX" + dateFormat3.format(entryDate);
+            String documentNumber = documentPrefix + dateFormat3.format(entryDate);
             InOutCommands.Import inOut = null;
             if (!inOutMap.containsKey(documentNumber)) {
                 inOut = new InOutCommands.Import();
