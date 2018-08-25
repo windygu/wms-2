@@ -23907,25 +23907,25 @@ types:
         required: false
         description: 卷号
       onHandQuantity: 
-        displayName: 在库数量.
+        displayName: 在库数量
         type: number
         required: false
-        description: 在库数量.
+        description: 在库数量
       inTransitQuantity: 
-        displayName: 在途数量.
+        displayName: 在途数量
         type: number
         required: false
-        description: 在途数量.
+        description: 在途数量
       occupiedQuantity: 
-        displayName: 占用数量.
+        displayName: 占用数量
         type: number
         required: false
-        description: 占用数量.
+        description: 占用数量
       reservedQuantity: 
-        displayName: 保留数量.
+        displayName: 保留数量
         type: number
         required: false
-        description: 保留数量.
+        description: 保留数量
   org.dddml.wms.query.dto.ProductAttributeDto: 
     displayName: ProductAttributeDto
     type: object
@@ -24043,25 +24043,25 @@ types:
         required: false
         description: 仓库 Id.
       onHandQuantity: 
-        displayName: 在库数量.
+        displayName: 在库数量
         type: number
         required: false
-        description: 在库数量.
+        description: 在库数量
       inTransitQuantity: 
-        displayName: 在途数量.
+        displayName: 在途数量
         type: number
         required: false
-        description: 在途数量.
+        description: 在途数量
       occupiedQuantity: 
-        displayName: 占用数量.
+        displayName: 占用数量
         type: number
         required: false
-        description: 占用数量.
+        description: 占用数量
       reservedQuantity: 
-        displayName: 保留数量.
+        displayName: 保留数量
         type: number
         required: false
-        description: 保留数量.
+        description: 保留数量
   org.dddml.wms.query.dto.InventoryAttributeDto.AttributeDto: 
     type: object
     properties: 
@@ -24130,25 +24130,25 @@ types:
         required: false
         description: 卷号
       onHandQuantity: 
-        displayName: 在库数量.
+        displayName: 在库数量
         type: number
         required: false
-        description: 在库数量.
+        description: 在库数量
       inTransitQuantity: 
-        displayName: 在途数量.
+        displayName: 在途数量
         type: number
         required: false
-        description: 在途数量.
+        description: 在途数量
       occupiedQuantity: 
-        displayName: 占用数量.
+        displayName: 占用数量
         type: number
         required: false
-        description: 占用数量.
+        description: 占用数量
       reservedQuantity: 
-        displayName: 保留数量.
+        displayName: 保留数量
         type: number
         required: false
-        description: 保留数量.
+        description: 保留数量
   org.dddml.wms.query.dto.DocumentDto.DocumentImage: 
     type: object
     properties: 
@@ -24338,65 +24338,25 @@ types:
         required: false
         description: 货位 Id.
       onHandQuantity: 
-        displayName: 在库数量.
+        displayName: 在库数量
         type: number
         required: false
-        description: 在库数量.
+        description: 在库数量
       inTransitQuantity: 
-        displayName: 在途数量.
+        displayName: 在途数量
         type: number
         required: false
-        description: 在途数量.
+        description: 在途数量
       occupiedQuantity: 
-        displayName: 占用数量.
+        displayName: 占用数量
         type: number
         required: false
-        description: 占用数量.
+        description: 占用数量
       reservedQuantity: 
-        displayName: 保留数量.
+        displayName: 保留数量
         type: number
         required: false
-        description: 保留数量.
-  org.dddml.wms.query.dto.WarehouseLotDto: 
-    displayName: 仓库-产品-批次-数量.
-    type: object
-    description: 仓库-产品-批次-数量.
-    properties: 
-      productId: 
-        displayName: 产品 Id.
-        type: string
-        required: false
-        description: 产品 Id.
-      warehouseId: 
-        displayName: 仓库 Id.
-        type: string
-        required: false
-        description: 仓库 Id.
-      lotId: 
-        displayName: 批次 Id.
-        type: string
-        required: false
-        description: 批次 Id.
-      onHandQuantity: 
-        displayName: 在库数量.
-        type: number
-        required: false
-        description: 在库数量.
-      inTransitQuantity: 
-        displayName: 在途数量.
-        type: number
-        required: false
-        description: 在途数量.
-      occupiedQuantity: 
-        displayName: 占用数量.
-        type: number
-        required: false
-        description: 占用数量.
-      reservedQuantity: 
-        displayName: 保留数量.
-        type: number
-        required: false
-        description: 保留数量.
+        description: 保留数量
   org.dddml.wms.query.dto.InventoryItemDto: 
     displayName: 库存单元信息（货位-产品-属性集-数量）.
     type: object
@@ -24422,6 +24382,46 @@ types:
         type: string
         required: false
         description: 卷号
+      lotId: 
+        displayName: 批次 Id.
+        type: string
+        required: false
+        description: 批次 Id.
+      onHandQuantity: 
+        displayName: 在库数量
+        type: number
+        required: false
+        description: 在库数量
+      inTransitQuantity: 
+        displayName: 在途数量
+        type: number
+        required: false
+        description: 在途数量
+      occupiedQuantity: 
+        displayName: 占用数量
+        type: number
+        required: false
+        description: 占用数量
+      reservedQuantity: 
+        displayName: 保留数量
+        type: number
+        required: false
+        description: 保留数量
+  org.dddml.wms.query.dto.WarehouseLotDto: 
+    displayName: 仓库-产品-批次-数量.
+    type: object
+    description: 仓库-产品-批次-数量.
+    properties: 
+      productId: 
+        displayName: 产品 Id.
+        type: string
+        required: false
+        description: 产品 Id.
+      warehouseId: 
+        displayName: 仓库 Id.
+        type: string
+        required: false
+        description: 仓库 Id.
       lotId: 
         displayName: 批次 Id.
         type: string
@@ -24498,25 +24498,25 @@ types:
         required: false
         description: 仓库 Id.
       onHandQuantity: 
-        displayName: 在库数量.
+        displayName: 在库数量
         type: number
         required: false
-        description: 在库数量.
+        description: 在库数量
       inTransitQuantity: 
-        displayName: 在途数量.
+        displayName: 在途数量
         type: number
         required: false
-        description: 在途数量.
+        description: 在途数量
       occupiedQuantity: 
-        displayName: 占用数量.
+        displayName: 占用数量
         type: number
         required: false
-        description: 占用数量.
+        description: 占用数量
       reservedQuantity: 
-        displayName: 保留数量.
+        displayName: 保留数量
         type: number
         required: false
-        description: 保留数量.
+        description: 保留数量
   org.dddml.wms.query.dto.DocumentDto.DocumentLine.DocumentLineImage: 
     type: object
     properties: 
@@ -24547,25 +24547,25 @@ types:
         required: false
         description: 批次 Id.
       onHandQuantity: 
-        displayName: 在库数量.
+        displayName: 在库数量
         type: number
         required: false
-        description: 在库数量.
+        description: 在库数量
       inTransitQuantity: 
-        displayName: 在途数量.
+        displayName: 在途数量
         type: number
         required: false
-        description: 在途数量.
+        description: 在途数量
       occupiedQuantity: 
-        displayName: 占用数量.
+        displayName: 占用数量
         type: number
         required: false
-        description: 占用数量.
+        description: 占用数量
       reservedQuantity: 
-        displayName: 保留数量.
+        displayName: 保留数量
         type: number
         required: false
-        description: 保留数量.
+        description: 保留数量
 /AttributeSetInstanceExtensionFieldGroups: 
   displayName: AttributeSetInstanceExtensionFieldGroupResource
   description: AttributeSetInstanceExtensionFieldGroupResource
@@ -47459,6 +47459,22 @@ types:
   /document: 
     displayName: DocumentController
     description: DocumentController
+    /inout: 
+      /{documentId}: 
+        uriParameters: 
+          documentId: 
+            displayName: documentId
+            type: string
+            required: true
+            description: documentId
+        get: 
+          displayName: getDocumentDtoByInoutId
+          description: getDocumentDtoByInoutId
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.query.dto.DocumentDto
     /movement: 
       /{documentId}: 
         uriParameters: 
@@ -47491,44 +47507,9 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.query.dto.DocumentDto
-    /inout: 
-      /{documentId}: 
-        uriParameters: 
-          documentId: 
-            displayName: documentId
-            type: string
-            required: true
-            description: documentId
-        get: 
-          displayName: getDocumentDtoByInoutId
-          description: getDocumentDtoByInoutId
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.query.dto.DocumentDto
   /fuzzyQuery: 
     displayName: FuzzyQueryController
     description: FuzzyQueryController
-    /shipment: 
-      /{shipmentId}: 
-        uriParameters: 
-          shipmentId: 
-            displayName: shipmentId
-            type: string
-            required: true
-            description: shipmentId
-        get: 
-          displayName: getFuzzyQueryDtoByShipmentId
-          description: getFuzzyQueryDtoByShipmentId
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: array
-                  items: 
-                    type: string
-
     /product: 
       /{proId}: 
         uriParameters: 
@@ -47548,32 +47529,39 @@ types:
                   items: 
                     type: string
 
+    /shipment: 
+      /{shipmentId}: 
+        uriParameters: 
+          shipmentId: 
+            displayName: shipmentId
+            type: string
+            required: true
+            description: shipmentId
+        get: 
+          displayName: getFuzzyQueryDtoByShipmentId
+          description: getFuzzyQueryDtoByShipmentId
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: array
+                  items: 
+                    type: string
+
   /inventoryItemQuery: 
     displayName: 库存单元查询。
     description: 库存单元查询。
-    /warehouseLots: 
+    /inventoryItems: 
       get: 
-        displayName: 仓库-产品-批次-数量查询
-        description: 仓库-产品-批次-数量查询
+        displayName: 货位-产品-属性集-数量查询
+        description: 货位-产品-属性集-数量查询
         responses: 
           200: 
             body: 
               application/json: 
                 type: array
                 items: 
-                  type: org.dddml.wms.query.dto.WarehouseLotDto
-
-    /inventoryItemLots: 
-      get: 
-        displayName: 货位-产品-批次-数量查询
-        description: 货位-产品-批次-数量查询
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemLotDto
+                  type: org.dddml.wms.query.dto.InventoryItemDto
 
     /timePointWarehouseProducts: 
       get: 
@@ -47592,6 +47580,42 @@ types:
                 type: array
                 items: 
                   type: org.dddml.wms.query.dto.TimePointWarehouseProductDto
+
+    /inventoryItemSerialNumbers: 
+      get: 
+        displayName: 货位-产品-序列号-数量查询
+        description: 货位-产品-序列号-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemSerialNumberDto
+
+    /warehouseProducts: 
+      get: 
+        displayName: 仓库-产品-数量查询
+        description: 仓库-产品-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.WarehouseProductDto
+
+    /inventoryItemLots: 
+      get: 
+        displayName: 货位-产品-批次-数量查询
+        description: 货位-产品-批次-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemLotDto
 
     /warehouseSerialNumbers: 
       get: 
@@ -47617,41 +47641,17 @@ types:
                 items: 
                   type: org.dddml.wms.query.dto.InventoryItemProductDto
 
-    /inventoryItems: 
+    /warehouseLots: 
       get: 
-        displayName: 货位-产品-属性集-数量查询
-        description: 货位-产品-属性集-数量查询
+        displayName: 仓库-产品-批次-数量查询
+        description: 仓库-产品-批次-数量查询
         responses: 
           200: 
             body: 
               application/json: 
                 type: array
                 items: 
-                  type: org.dddml.wms.query.dto.InventoryItemDto
-
-    /inventoryItemSerialNumbers: 
-      get: 
-        displayName: 货位-产品-序列号-数量查询
-        description: 货位-产品-序列号-数量查询
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemSerialNumberDto
-
-    /warehouseProducts: 
-      get: 
-        displayName: 仓库-产品-数量查询
-        description: 仓库-产品-数量查询
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.WarehouseProductDto
+                  type: org.dddml.wms.query.dto.WarehouseLotDto
 
   /mandatoryAtts: 
     displayName: MandatoryAttributeController
