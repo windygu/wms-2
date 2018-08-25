@@ -45,6 +45,10 @@ public class JwtTests {
         //        testGet(token, url);
         //        if (true) { return; }
         // /////////////////////////////
+        //        token = getJwtToken();
+        //        url = appendUrl(baseUrl, "ImportService/TestImportShipments");
+        //        testGet(token, url);
+        //        if (true) { return; }
 
         token = getJwtTokenRemote();
 
@@ -65,20 +69,13 @@ public class JwtTests {
             CloseableHttpClient client = HttpClientBuilder.create().build();
 
             String productId = UUID.randomUUID().toString();
-            HttpPut httpPut = new HttpPut(appendUrl(url, productId));
-            httpPut.setHeader("Accept", "application/json");
-            httpPut.setHeader("Content-Type", "application/json");
-            httpPut.setHeader("Authorization", "Bearer " + token);
+            String productUrl = appendUrl(url, productId);
             CreateOrMergePatchProductDto.CreateProductDto dto = new CreateOrMergePatchProductDto.CreateProductDto();
             dto.setCommandId(UUID.randomUUID().toString());
             dto.setProductName("test-prd-" + productId);
             dto.setAmountUomTypeId("kg");
-            String json = JSON.toJSONString(dto);
-            StringEntity entity = new StringEntity(json, "utf-8");
-            entity.setContentType("application/json");
-            httpPut.setEntity(entity);
-            HttpResponse response = client.execute(httpPut);
-            //getContentFromResponse(response);
+
+            HttpResponse response = doHttpPut(client, token, productUrl, dto);
             int responseCode = response.getStatusLine().getStatusCode();
             //Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             System.out.println("==========================================");
@@ -91,6 +88,19 @@ public class JwtTests {
             throw new RuntimeException(ex);
         }
 
+    }
+
+    private static HttpResponse doHttpPut(CloseableHttpClient client, String token, String url, Object dto) throws IOException {
+        HttpPut httpPut = new HttpPut(url);
+        httpPut.setHeader("Accept", "application/json");
+        httpPut.setHeader("Content-Type", "application/json");
+        httpPut.setHeader("Authorization", "Bearer " + token);
+        String json = JSON.toJSONString(dto);
+        StringEntity entity = new StringEntity(json, "utf-8");
+        entity.setContentType("application/json");
+        httpPut.setEntity(entity);
+        //getContentFromResponse(response);
+        return client.execute(httpPut);
     }
 
     private static void testGetInouts(String token, String url) {
@@ -184,7 +194,7 @@ public class JwtTests {
         claims.put("role", u.getRole());
         //claims.put("userId", u.getId());
 
-        String secret = "XXXXXXX";
+        String secret = "xxxxxxxx";
         String token = Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, secret)
