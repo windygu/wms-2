@@ -784,7 +784,7 @@ public class ImportServiceResource {
                 Integer attrColIdx = kv.getValue();
                 Object attrVal = row[attrColIdx];
                 // ////////////////////////////////////////////////////////
-                //todo 如果不在 product 的属性集中的属性，应该忽略
+                //todo 如果不在 product 的属性集中的属性，应该忽略???
                 // ////////////////////////////////////////////////////////
                 shipmentItem.getAttributeSetInstance().put(attrId, attrVal);
             }

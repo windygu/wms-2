@@ -28,6 +28,7 @@ public class AttributeSetInstanceUtils {
         }
         AttributeSetInstanceCommand.CreateAttributeSetInstance createAttrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
         createAttrSetInst.setAttributeSetId(attrSetId == null ? "*" : attrSetId);
+
         for (Map.Entry<String, Object> kv : attributeSetIntanceMap.entrySet()) {
             String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
             // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
@@ -74,16 +75,20 @@ public class AttributeSetInstanceUtils {
                         }
                         return ConvertUtils.convert(o, c);
                     });
+
+            // //////////////////////////////////////////
             if (!b) {
                 String fmt = "Set property error. Property name: %1$s";
                 //                if (_log.IsInfoEnabled) {
                 //                    _log.Info(String.format(fmt, fname));
                 //                }
-                //todo ???
-                //throw new DomainError(fmt, fname);
+                if (kv.getValue() != null && !kv.getValue().toString().trim().isEmpty()) {
+                    //todo ???
+                    //throw new DomainError(fmt, fname);
+                }
             }
-            // //////////////////////////////////////////
-        }
+
+        }// end for (Map.Entry<String, Object> kv : attributeSetIntanceMap.entrySet()) 
         String attrSetInstId = attrSetInstApplicationService.createWithoutId(createAttrSetInst);
         return attrSetInstId;
     }
