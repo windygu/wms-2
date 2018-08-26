@@ -1,9 +1,6 @@
 package org.dddml.wms.restful.resource;
 
-import jxl.Cell;
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.WorkbookSettings;
+import jxl.*;
 import jxl.format.Colour;
 import jxl.read.biff.BiffException;
 import jxl.write.*;
@@ -15,7 +12,6 @@ import org.dddml.wms.domain.documenttype.DocumentTypeIds;
 import org.dddml.wms.domain.inout.ImportingInOutLine;
 import org.dddml.wms.domain.inout.InOutApplicationService;
 import org.dddml.wms.domain.inout.InOutCommands;
-import org.dddml.wms.domain.locator.LocatorApplicationService;
 import org.dddml.wms.domain.lot.AbstractLotCommand;
 import org.dddml.wms.domain.lot.LotApplicationService;
 import org.dddml.wms.domain.lot.LotCommand;
@@ -986,7 +982,7 @@ public class ImportServiceResource {
                     }
                     for (int j = 0; j < columns; j++) {
                         Cell cell = sheet.getCell(j, i);
-                        String c = cell.getContents();
+                        String c = getCellStringValue(cell);
                         if (c != null) {
                             c = c.trim();
                         }
@@ -1025,6 +1021,24 @@ public class ImportServiceResource {
             return this;
         }
     }
+
+    /*
+    public static void main(String[] args) throws IOException, BiffException {
+        ImportServiceResource.InitializingInventoryItemSettings settings = new ImportServiceResource.InitializingInventoryItemSettings();
+        // ////////////////// 导入文件的列名设置 ////////////////////////
+        settings.setEntryDateColumnName("入库时间");// 入库时间
+        settings.setLocatorIdColumnName("Locator Id");// 货位 Id
+        settings.setSerialNumberColumnName("Package");// 序列号即包装 Id
+        settings.setAirDryMetricTonColumnName("ADMT");
+        // 如果 Excel 中的列名没有使用默认值，就需要设置！！！
+        // //////////////////////////////////////////////////////////////
+        URL fileUrl = new URL("file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\绒毛浆库存2018025（有出库）.xls");
+        InitializingInventoryItemBookReader reader = new InitializingInventoryItemBookReader(settings, fileUrl.openStream()).readSheet0();
+        for (String[] row : reader.getMatrix()) {
+            System.out.println(row[reader.getQuantityColumnIdx()]);
+        }
+    }
+     */
 
     private static class InitializingInventoryItemBookReader {
         private InitializingInventoryItemSettings settings;
@@ -1142,7 +1156,7 @@ public class ImportServiceResource {
                     }
                     for (int j = 0; j < columns; j++) {
                         Cell cell = sheet.getCell(j, i);
-                        String c = cell.getContents();
+                        String c = getCellStringValue(cell);
                         if (c != null) {
                             c = c.trim();
                         }
@@ -1193,6 +1207,10 @@ public class ImportServiceResource {
             }
             return this;
         }
+    }
+
+    private static String getCellStringValue(Cell cell) {
+        return (cell instanceof NumberCell) ? ((NumberCell)cell).getValue() + "" : cell.getContents();
     }
 }
 
