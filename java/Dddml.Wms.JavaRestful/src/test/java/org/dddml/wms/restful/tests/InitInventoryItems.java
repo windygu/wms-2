@@ -40,14 +40,7 @@ public class InitInventoryItems {
     private static String username = "006";
     private static String password = "XXXXXX";//需要密码！！！
 
-    // //////////////////////////////////////////////////////////////
-    /**
-     * 在知道 Secret 的情况下，也可以自己创建一个 JWT Token。
-     */
-    private static String jwtSecret = "xxxxxxxx";
-
     // /////////////////////////////////////////////////////////////
-
 
     public static void main(String[] args) {
         String token = null;
@@ -55,39 +48,29 @@ public class InitInventoryItems {
         // /////////////////////////////////////////
         // 获取一个有效的 Token
         //token = getJwtToken();
-        token = getJwtTokenRemote();
+        token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
 
         // ////////////////////////////////////////
-        url = appendUrl(baseUrl, "ImportService/InitializeInventoryItems");
+        url = HttpClientUtil.appendUrl(baseUrl, "ImportService/InitializeInventoryItems");
         ImportServiceResource.InitializingInventoryItemSettings importSettings = getInitializingInventoryItemSettings();
         doInitInventoryItems(token, url, importSettings);
         //（现在只是生成若干入库单，执行掉这些入库单，库存就初始化好了）
         // ///////////////////////////////////////
     }
 
-    // ///////////////////////////////////////
-
-    private static void doInitInventoryItems(String token, String url,
-                                             ImportServiceResource.InitializingInventoryItemSettings importSettings) {
-        try {
-            CloseableHttpClient client = HttpClientBuilder.create().build();
-            HttpResponse response = doHttpPost(client, token, url, importSettings);
-            int responseCode = response.getStatusLine().getStatusCode();
-            //Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
-            System.out.println("==========================================");
-            System.out.println(responseCode);
-            System.out.println("==========================================");
-            System.out.println(readString(response));
-            client.close();
-        } catch (Exception ex)
-        {
-            ex.printStackTrace();
-            throw new RuntimeException(ex);
-        }
-    }
-
     private static ImportServiceResource.InitializingInventoryItemSettings getInitializingInventoryItemSettings() {
         ImportServiceResource.InitializingInventoryItemSettings settings = new ImportServiceResource.InitializingInventoryItemSettings();
+
+        // ////////////////  导入库存文件的 URL ////////////////////////
+        // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
+        //String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\初始化库存示例.xls";
+        String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/%E7%BB%92%E6%AF%9B%E6%B5%86%E5%BA%93%E5%AD%98%E6%B1%87%E6%80%BB20180825.xls";
+        settings.setFileUrl(fileUrl);
+
+        // /////////////////////////////////////////////////////////
+        //每次导入可以使用不同的前缀，防止生成的单据（入库单） Id 冲突导致导入失败
+        // /////////////////////////////////////////////////////////
+        settings.setDocumentPrefix("II");
 
         // ////////////////// 导入文件的列名设置 ////////////////////////
         settings.setEntryDateColumnName("入库时间");// 入库时间
@@ -105,28 +88,21 @@ public class InitInventoryItems {
 
         settings.setProductMap(new ImportServiceResource.ProductMapping[]{});//prdMapping1
 
-        // ////////////////  导入库存文件的 URL ////////////////////////
-        // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
-        //String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\初始化库存示例.xls";
-        String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/%E7%BB%92%E6%AF%9B%E6%B5%86%E5%BA%93%E5%AD%98%E6%B1%87%E6%80%BB20180825.xls";
-        settings.setFileUrl(fileUrl);
-
-        // /////////////////////////////////////////////////////////
-        //每次导入可以使用不同的前缀，防止生成的单据（入库单） Id 冲突导致导入失败
-        // /////////////////////////////////////////////////////////
-        settings.setDocumentPrefix("II");
-
         return settings;
     }
 
-    // /////////////////////////////////////////////////////////
-    // 以下是（相对）通用的代码
-    // /////////////////////////////////////////////////////////
+
+    private static void doInitInventoryItems(String token, String url,
+                                             ImportServiceResource.InitializingInventoryItemSettings importSettings) {
+        HttpClientUtil.post(token, url, importSettings);
+    }
+    // //////////////////////////////////////////////////////////////
 
     /**
-     * 在知道 Secret 的情况下，可以自己创建一个 JWT Token。
-     * @return
+     * 在知道 Secret 的情况下，也可以自己创建一个 JWT Token。
      */
+    private static String jwtSecret = "xxxxxxxx";
+
     private static String getJwtToken() {
         JwtUser u = new JwtUser();
         u.setUsername("001");
@@ -146,91 +122,4 @@ public class InitInventoryItems {
         return token;
     }
 
-    /**
-     * 从认证服务器上获取一个 Token（需要知道用户名和密码）。
-     * @return
-     */
-    private static String getJwtTokenRemote() {
-        CloseableHttpClient client = HttpClientBuilder.create().build();
-        try {
-            HttpPost httpPost = new HttpPost(authTokenUrl);
-            httpPost.setHeader("ACCEPT", "application/json");
-            List<NameValuePair> pairs = new ArrayList<>();
-            pairs.add(new BasicNameValuePair("grant_type", "password"));
-            pairs.add(new BasicNameValuePair("client_id", "malls"));
-            pairs.add(new BasicNameValuePair("username", username));
-            pairs.add(new BasicNameValuePair("password", password));
-            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(pairs);
-            httpPost.setEntity(entity);
-            HttpResponse response = client.execute(httpPost);
-            //Assert.assertEquals(true, String.valueOf(response.getStatusLine().getStatusCode()).startsWith("20"));
-            System.out.println(response.getStatusLine().getStatusCode());
-            String jsonStr = readString(response);
-            System.out.println(jsonStr);
-            client.close();
-            JSONObject jsonObject = JSONObject.parseObject(jsonStr);
-            String token = (String)jsonObject.get("access_token");
-            if (token == null) {
-                throw new NullPointerException("access_token is null.");
-            }
-            System.out.println(token);
-            return token;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw new RuntimeException(ex);
-        }
-    }
-
-    private static String appendUrl(String url, String component) {
-        return (url.endsWith("/") ? url : url + "/") + component;
-    }
-
-    /**
-     * 执行 Http POST
-     */
-    private static HttpResponse doHttpPost(CloseableHttpClient client, String token, String url, Object dto) throws IOException {
-        HttpPost httpPost = new HttpPost(url);
-        httpPost.setHeader("Accept", "application/json");
-        httpPost.setHeader("Content-Type", "application/json");
-        httpPost.setHeader("Authorization", "Bearer " + token);
-        String json = JSON.toJSONString(dto);
-        StringEntity entity = new StringEntity(json, "utf-8");
-        entity.setContentType("application/json");
-        httpPost.setEntity(entity);
-        //getContentFromResponse(response);
-        return client.execute(httpPost);
-    }
-
-    /**
-     * 执行 Http PUT
-     */
-    private static HttpResponse doHttpPut(CloseableHttpClient client, String token, String url, Object dto) throws IOException {
-        HttpPut httpPut = new HttpPut(url);
-        httpPut.setHeader("Accept", "application/json");
-        httpPut.setHeader("Content-Type", "application/json");
-        httpPut.setHeader("Authorization", "Bearer " + token);
-        String json = JSON.toJSONString(dto);
-        StringEntity entity = new StringEntity(json, "utf-8");
-        entity.setContentType("application/json");
-        httpPut.setEntity(entity);
-        //getContentFromResponse(response);
-        return client.execute(httpPut);
-    }
-
-    /**
-     * 将 HTTP 的响应内容读为字符串。
-     * @param response
-     * @return
-     * @throws IOException
-     */
-    private static String readString(HttpResponse response) throws IOException {
-        InputStream inputStream = response.getEntity().getContent();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            sb.append(line);
-        }
-        return sb.toString();
-    }
 }
