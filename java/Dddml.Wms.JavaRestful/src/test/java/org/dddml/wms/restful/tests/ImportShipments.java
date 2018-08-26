@@ -69,13 +69,27 @@ public class ImportShipments {
         // ////////////////  产品名称到 产品 Id 的映射关系 //////////////////
         // 一般来说，Excel 中有多少种“没有使用产品 Id”作为 Product 列的值的产品，
         // 就需要添加多少个“品名映射”
+        // shipmentHeader.setProductMap(new ImportServiceResource.ProductMapping[]{getProductMapping1(), getProductMapping2()});
+        // 如果没有（Excel 中使用了 ProductId），那么就使用一个空数组
+        shipmentHeader.setProductMap(new ImportServiceResource.ProductMapping[]{});
+
+        return shipmentHeader;
+    }
+
+    private ImportServiceResource.ProductMapping getProductMapping1() {
         //ImportServiceResource.ProductMapping prdMapping1 = new ImportServiceResource.ProductMapping();
         //prdMapping1.setProductName("GOLDEN ISLES CO FLUFF PULP");//在 Excel 中出现的产品名称
         //prdMapping1.setProductId("21001");//在系统中的产品 Id（Product Id）
+        //return prdMapping1;
+        return null;
+    }
 
-        shipmentHeader.setProductMap(new ImportServiceResource.ProductMapping[]{});//prdMapping1
-
-        return shipmentHeader;
+    private ImportServiceResource.ProductMapping getProductMapping2() {
+        //ImportServiceResource.ProductMapping prdMapping1 = new ImportServiceResource.ProductMapping();
+        //prdMapping1.setProductName("XXXX FLUFF PULP");//在 Excel 中出现的产品名称
+        //prdMapping1.setProductId("2XXXX");//在系统中的产品 Id（Product Id）
+        //return prdMapping1;
+        return null;
     }
 
     // //////////////////////////////////////////////////////////////
