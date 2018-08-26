@@ -982,11 +982,11 @@ public class ImportServiceResource {
                     }
                     for (int j = 0; j < columns; j++) {
                         Cell cell = sheet.getCell(j, i);
-                        String c = getCellStringValue(cell);
-                        if (c != null) {
-                            c = c.trim();
-                        }
+                        String c = cell.getContents();
                         if (i == 0) {
+                            if (c != null) {
+                                c = c.trim();
+                            }
                             colNames.add(c);
                             if (columnNameEquals(ShipmentSheetConstants.SHIPMENT_ID_COLUMN_NAME, c)) {
                                 shipmentIdColumnIdx = j;
@@ -1008,6 +1008,10 @@ public class ImportServiceResource {
                                 attributeIdColumnIdxMap.put(c, j);
                             }
                         } else {
+                            c = getCellStringValue(cell, j);
+                            if (c != null) {
+                                c = c.trim();
+                            }
                             mr[j] = c;
                         }
                     }
@@ -1020,6 +1024,26 @@ public class ImportServiceResource {
             }
             return this;
         }
+
+
+        private String getCellStringValue(Cell cell, int columnIdx) {
+            if(columnIdx == (quantityColumnIdx != null ? quantityColumnIdx : -1)) {
+                return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
+            } else if (columnIdx == (shipmentIdColumnIdx != null ? shipmentIdColumnIdx : -1)
+                    || columnIdx == (productColumnIdx != null ? productColumnIdx : -1)
+                    || columnIdx == (serialNumberColumnIdx != null ? serialNumberColumnIdx : -1)
+                    || columnIdx == (lotIdColumnIdx != null ? lotIdColumnIdx : -1)
+                    || columnIdx == (bolNumberColumnIdx != null ? bolNumberColumnIdx : -1)
+                    || columnIdx == (vehicleIdColumnIdx != null ? vehicleIdColumnIdx : -1)
+                    || columnIdx == (sealNumberColumnIdx != null ? sealNumberColumnIdx : -1)
+            ) {
+                return cell.getContents();
+            }
+            //todo 还有其他类型为数值的列呢？
+            //return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
+            return cell.getContents();
+        }
+
     }
 
     /*
@@ -1156,11 +1180,11 @@ public class ImportServiceResource {
                     }
                     for (int j = 0; j < columns; j++) {
                         Cell cell = sheet.getCell(j, i);
-                        String c = getCellStringValue(cell);
-                        if (c != null) {
-                            c = c.trim();
-                        }
+                        String c = cell.getContents();
                         if (i == 0) {
+                            if (c != null) {
+                                c = c.trim();
+                            }
                             colNames.add(c);
                             if (columnNameEquals(settings.getProductColumnName(), c)) {
                                 productColumnIdx = j;
@@ -1195,6 +1219,10 @@ public class ImportServiceResource {
                             }
                             // ////////////////////////////////////////////
                         } else {
+                            c = getCellStringValue(cell, j);
+                            if (c != null) {
+                                c = c.trim();
+                            }
                             mr[j] = c;
                         }
                     }
@@ -1207,10 +1235,32 @@ public class ImportServiceResource {
             }
             return this;
         }
-    }
 
-    private static String getCellStringValue(Cell cell) {
-        return (cell instanceof NumberCell) ? ((NumberCell)cell).getValue() + "" : cell.getContents();
+
+        private String getCellStringValue(Cell cell, int columnIdx) {
+            if (columnIdx == (quantityColumnIdx != null ? quantityColumnIdx : -1)
+                    || columnIdx == (weightLbsColumnIdx != null ? weightLbsColumnIdx : -1)
+                    || columnIdx == (airDryWeightLbsColumnIdx != null ? airDryWeightLbsColumnIdx : -1)
+                    || columnIdx == (airDryPctColumnIdx != null ? airDryPctColumnIdx : -1)
+                    || columnIdx == (airDryWeightKgColumnIdx != null ? airDryWeightKgColumnIdx : -1)
+                    || columnIdx == (airDryMetricTonColumnIdx != null ? airDryMetricTonColumnIdx : -1)
+                    ) {
+                return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
+            } else if (columnIdx == (productColumnIdx != null ? productColumnIdx : -1)
+                    || columnIdx == (serialNumberColumnIdx != null ? serialNumberColumnIdx : -1)
+                    || columnIdx == (lotIdColumnIdx != null ? lotIdColumnIdx : -1)
+                    || columnIdx == (rollCntColumnIdx != null ? rollCntColumnIdx : -1)
+                    || columnIdx == (locatorIdColumnIdx != null ? locatorIdColumnIdx : -1)
+                    || columnIdx == (poReferenceColumnIdx != null ? poReferenceColumnIdx : -1)
+                    ) {
+                return cell.getContents();
+            }
+            //|| columnIdx == entryDateColumnIdx
+            //todo 还有其他类型为数值的列呢？
+            //return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
+            return cell.getContents();
+        }
+
     }
 }
 
