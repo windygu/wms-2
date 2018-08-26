@@ -464,45 +464,6 @@ public class ImportServiceResource {
                 .body(new InputStreamResource(inputStream));
     }
 
-    /*
-
-    @GetMapping("TestImportShipments")
-    public void testImportShipments() throws MalformedURLException, IOException, BiffException {
-        ImportingShipmentHeader shipmentHeader = new ImportingShipmentHeader();
-        //运单“头”信息
-        shipmentHeader.setShipToPartyId("XXX-XXX");//发送给谁（业务实体/单位/个人）
-        shipmentHeader.setPurchaseOrderId("test-po-no.");//PO#
-        shipmentHeader.setExternalOrderNumber("test-order-no.");//Order#
-        shipmentHeader.setCarrier("test_carrier_1");//
-        shipmentHeader.setDateShipped(new Timestamp(new Date().getTime()));//发运日期
-        shipmentHeader.setEstimatedArrivalDate(new Timestamp(new Date().getTime()));//预计到达日期
-
-        // ////////////////  产品名称到 产品 Id 的映射关系 //////////////////
-        // 一般来说，Excel 中有多少种产品，就需要添加多少个“品名映射”
-        ProductMapping prdMapping1 = new ProductMapping();
-        prdMapping1.setProductName("GOLDEN ISLES CO FLUFF PULP");//在 Excel 中出现的产品名称
-        prdMapping1.setProductId("f6");//在系统中的产品 Id（Product Id）
-
-        //        ProductMapping prdMapping2 = new ProductMapping();
-        //        prdMapping2.setProductName("GOLDEN ISLES CO FLUFF PULP2");//在 Excel 中出现的产品名称
-        //        prdMapping2.setProductId("f6-2");//在系统中的产品 Id（Product Id）
-
-        ProductMapping prdMapping2 = new ProductMapping();
-        prdMapping2.setProductName("21005");//在 Excel 中出现的产品名称
-        prdMapping2.setProductId("f6");//在系统中的产品 Id（Product Id）
-
-        shipmentHeader.setProductMap(new ProductMapping[]{prdMapping1, prdMapping2});
-
-        // ////////////////  导入库存文件的 URL ////////////////////////
-        // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
-        String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/ShipmentImportTemplate1.xls";
-        shipmentHeader.setFileUrl(fileUrl);
-
-        //System.out.println(JSONObject.toJSONString(shipmentHeader));
-        importShipments(shipmentHeader);
-    }
-     */
-
     @PostMapping("ImportShipments")
     public void importShipments(@RequestBody ImportingShipmentHeader shipmentHeader)
             throws MalformedURLException, IOException, BiffException {
@@ -550,45 +511,12 @@ public class ImportServiceResource {
 
         //execute import...
         for (ShipmentCommands.Import importInfo : shipmentMap.values()) {
-            importInfo.setCommandId(importInfo.getShipmentId());
+            importInfo.setCommandId(UUID.randomUUID().toString());//
+            importInfo.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(importInfo);
         }
         //return shipmentMap;
     }
-
-    /*
-
-    @GetMapping("TestInitializeInventoryItems")
-    public void testInitializeInventoryItems() throws IOException, BiffException, ParseException {
-        InitializingInventoryItemSettings settings = new InitializingInventoryItemSettings();
-
-        // ////////////////// 导入文件的列名设置 ////////////////////////
-        settings.setEntryDateColumnName("入库时间");// 入库时间
-        settings.setLocatorIdColumnName("Locator Id");// 货位 Id
-        settings.setSerialNumberColumnName("Package");// 序列号即包装 Id
-        settings.setAirDryMetricTonColumnName("ADMT");
-        //settings.setQuantityColumnName("重量（公斤）"); // （以主计量单位计算的）数量的列名
-        // 如果 Excel 中的列名没有使用默认值，就需要设置！！！
-        //...
-
-        // ////////////////  产品名称到 产品 Id 的映射关系 //////////////////
-        // 一般来说，Excel 中有多少种产品，就需要添加多少个“品名映射”
-        ProductMapping prdMapping1 = new ProductMapping();
-        prdMapping1.setProductName("GOLDEN ISLES CO FLUFF PULP");//在 Excel 中出现的产品名称
-        prdMapping1.setProductId("f6");//在系统中的产品 Id（Product Id）
-        settings.setProductMap(new ProductMapping[]{prdMapping1});
-
-        // ////////////////  导入库存文件的 URL ////////////////////////
-        // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
-        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\初始化库存示例.xls";
-        settings.setFileUrl(fileUrl);
-
-        // ////////////////////////////////////////
-        // 初始化库存
-        initializeInventoryItems(settings);
-        //（现在只是生成若干入库单，执行掉这些入库单，库存就初始化好了）
-    }
-     */
 
     @PostMapping("InitializeInventoryItems")
     public void initializeInventoryItems(@RequestBody InitializingInventoryItemSettings settings)
@@ -645,7 +573,6 @@ public class ImportServiceResource {
         //        System.out.println(rollCntColumnIdx);
         //        System.out.println(poReferenceColumnIdx);
         //        System.out.println(attributeIdColumnIdxMap);
-        //        System.out.println(matrix);
 
         Map<String, InOutCommands.Import> inOutMap = getImportingInOutMap(entryDateColumnIdx,
                 productColumnIdx, locatorIdColumnIdx,
@@ -661,6 +588,7 @@ public class ImportServiceResource {
         //execute import...
         for (InOutCommands.Import importInfo : inOutMap.values()) {
             importInfo.setCommandId(importInfo.getDocumentNumber());
+            importInfo.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(importInfo);
         }
 
@@ -676,6 +604,7 @@ public class ImportServiceResource {
                 // 创建一个不过期的“过期时间”
                 createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
                 createLot.setCommandId(lotId);
+                createLot.setRequesterId(SecurityContextUtil.getRequesterId());
                 lotApplicationService.when(createLot);
             }
         }
