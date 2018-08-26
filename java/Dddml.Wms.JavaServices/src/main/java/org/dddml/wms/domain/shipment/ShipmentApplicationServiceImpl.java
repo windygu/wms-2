@@ -248,8 +248,13 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         if (shipmentItemQuantity.compareTo(acceptedQuantity) == 0 && rejectedQuantity == null) {
             return;
         }
-        // ////////////////////////////////////////
+        if (shipmentItemQuantity.compareTo(acceptedQuantity.add(rejectedQuantity)) == 0) {
+            return;
+        }
         // todo Is this OK?
+        if (true) { return; }
+
+        // ////////////////////////////////////////
         if (shipmentItemQuantity.compareTo(BigDecimal.ZERO) > 0 && acceptedQuantity.compareTo(BigDecimal.ZERO) == 0
                 && (rejectedQuantity == null || rejectedQuantity.compareTo(BigDecimal.ZERO) == 0)) {
             return;
@@ -259,10 +264,6 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             return;
         }
         // ////////////////////////////////////////
-        if (shipmentItemQuantity.compareTo(acceptedQuantity.add(rejectedQuantity)) == 0) {
-            return;
-        }
-
         throw new IllegalArgumentException(String.format(
                 "shipmentItem.Quantity != acceptedQuantity + rejectedQuantity. %1$s != %2$s + %3$s",
                 shipmentItemQuantity, acceptedQuantity, rejectedQuantity));
