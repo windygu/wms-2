@@ -1039,9 +1039,9 @@ public class ImportServiceResource {
             ) {
                 return cell.getContents();
             }
-            //todo 还有其他类型为数值的列呢？
-            //return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
-            return cell.getContents();
+            //todo ???
+            //return cell.getContents();
+            return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
         }
 
     }
@@ -1254,11 +1254,12 @@ public class ImportServiceResource {
                     || columnIdx == (poReferenceColumnIdx != null ? poReferenceColumnIdx : -1)
                     ) {
                 return cell.getContents();
+            } else if (columnIdx == (entryDateColumnIdx != null ? entryDateColumnIdx : -1)) {
+                return cell.getContents();
             }
-            //|| columnIdx == entryDateColumnIdx
-            //todo 还有其他类型为数值的列呢？
-            //return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
-            return cell.getContents();
+            //todo ???
+            //return cell.getContents();
+            return (cell instanceof NumberCell) ? ((NumberCell) cell).getValue() + "" : cell.getContents();
         }
 
     }

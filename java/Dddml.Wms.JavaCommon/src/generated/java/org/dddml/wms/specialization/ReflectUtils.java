@@ -84,14 +84,17 @@ public class ReflectUtils {
                         return false;
                     }
                 } catch (Exception ex) {
+                    //ex.printStackTrace();
+                    //System.out.println("Convert value error. Value: " + value
+                    //        + "(" + (value != null ?  value.getClass() : "") + "), set " + propertyName + " of object: " + obj);
                     if (throwOnError) {
-                        throw new RuntimeException(e);// e.printStackTrace();
+                        throw new RuntimeException(e);
                     } // esle {}
                 }
             }
         }
         if (m == null && throwOnError) {
-            throw new RuntimeException(new NoSuchMethodException());
+            throw new RuntimeException(new NoSuchMethodException("set" + pascalName));
         }
         try {
             //todo m is null???
@@ -104,6 +107,11 @@ public class ReflectUtils {
             if (throwOnError) {
                 throw new RuntimeException(e);// e.printStackTrace();
             }
+        } catch (IllegalArgumentException | ClassCastException e) {// Runtime Exception.
+            //e.printStackTrace();
+            //System.out.println("Set value error. Value: " + value
+            //        + "(" + (value != null ?  value.getClass() : "") + "), set " + propertyName + " of object: " + obj);
+            throw e;
         }
         return false;
     }

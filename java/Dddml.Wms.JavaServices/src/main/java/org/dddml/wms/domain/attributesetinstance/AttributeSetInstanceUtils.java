@@ -42,14 +42,34 @@ public class AttributeSetInstanceUtils {
                             if (c.equals(BigDecimal.class)) {
                                 return new BigDecimal(s);
                             }
+                            if (c.equals(Double.class)) {
+                                return new Double(s);
+                            }
                             if (c.equals(Long.class)) {
-                                return Long.parseLong(s);
+                                return (new BigDecimal(o.toString())).longValue();
                             }
                             if (c.equals(Integer.class)) {
-                                return Integer.parseInt(s);
+                                return (new BigDecimal(o.toString())).intValue();
                             }
                             if (c.equals(Boolean.class)) {
                                 return Boolean.parseBoolean(s);
+                            }
+                        }
+                        if (c.equals(Integer.class)) {
+                            if (o instanceof Integer) {
+                                return o;
+                            }
+                            if (o instanceof Double) {
+                                return ((Double) o).intValue();
+                            } else if (o instanceof BigDecimal) {
+                                return ((BigDecimal) o).intValue();
+                            } else {
+                                if (o == null) return null;
+                                return (new BigDecimal(o.toString())).intValue();
+                            }
+                        } else if (c.equals(String.class)) {
+                            if (o != null) {
+                                return o.toString();
                             }
                         }
                         return ConvertUtils.convert(o, c);
