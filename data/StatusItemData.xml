@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <entity-engine-xml>
   
+  <!-- 质量不符 -->
+  <!-- Disagreement between Document and Goods -->
+  <StatusItem description="质量不符" sequenceId="0" statusCode="DISAGREEMENT_BDG_DAMAGE" statusId="DAMAGE_DISAGREEMENT" statusTypeId="DAMAGE_STATUS" />  
   <!-- 纸边破损 -->
   <StatusItem description="Edge Damage" sequenceId="01" statusCode="EDGE_DAMAGE" statusId="DAMAGE_EDGE" statusTypeId="DAMAGE_STATUS" />
   <!-- 侧面破损 -->
