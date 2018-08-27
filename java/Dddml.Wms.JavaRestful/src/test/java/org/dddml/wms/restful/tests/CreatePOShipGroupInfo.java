@@ -3,6 +3,7 @@ package org.dddml.wms.restful.tests;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.dddml.wms.domain.order.OrderCommands;
 import org.dddml.wms.domain.party.CreateOrMergePatchPartyDto;
 import org.dddml.wms.domain.service.OrderShipGroupServiceCommands;
 import org.dddml.wms.security.JwtUser;
@@ -20,8 +21,8 @@ import java.util.UUID;
 public class CreatePOShipGroupInfo {
 
     // /////////////////////// 命令（写） API 服务地址 /////////////////////////
-    private static String baseUrl = "http://47.104.74.139:8080/api/";
-    //private static String baseUrl = "http://localhost:8080/api/";
+    //private static String baseUrl = "http://47.104.74.139:8080/api/";
+    private static String baseUrl = "http://localhost:8080/api/";
 
     // //////////////  IAM（认证）服务获取 JWT Token 接口地址 ///////////////////
     private static String authTokenUrl = "http://47.104.74.139:8080/api/iam/oauth2/token";
@@ -42,11 +43,11 @@ public class CreatePOShipGroupInfo {
 
         OrderShipGroupServiceCommands.CreatePOShipGroup createPOShipGroup = new OrderShipGroupServiceCommands.CreatePOShipGroup();
         // 合同号:
-        createPOShipGroup.setOrderId("CCCCCC-XX");
+        createPOShipGroup.setOrderId("XXXXXX-XX");
         // 通知单号:
-        createPOShipGroup.setShipGroupSeqId(2018081801L);
+        createPOShipGroup.setShipGroupSeqId(2018082702L);
         // ////////////// 产品 Id： /////////////////
-        createPOShipGroup.setProductId("20XXX");
+        createPOShipGroup.setProductId("21001");
         //产品名称：	 GI SEMI-TREATED FLUFF
         //Grade：	8866
         //Quantity Uom: kg
@@ -71,6 +72,18 @@ public class CreatePOShipGroupInfo {
         createPOShipGroup.setCommandId(UUID.randomUUID().toString());
         HttpClientUtil.post(token, url, createPOShipGroup);
 
+
+        // /////////////// “批准”这个通知单 /////////////////////////
+        String orderShipGroupUrl = HttpClientUtil.appendUrl(baseUrl,
+                "Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction");
+        orderShipGroupUrl = orderShipGroupUrl.replace("{orderId}", createPOShipGroup.getOrderId())
+                .replace("{shipGroupSeqId}", createPOShipGroup.getShipGroupSeqId().toString());
+        OrderCommands.OrderShipGroupAction orderShipGroupAction = new OrderCommands.OrderShipGroupAction();
+        orderShipGroupAction.setValue("Approve");
+        orderShipGroupAction.setCommandId(UUID.randomUUID().toString());
+        orderShipGroupAction.setVersion(0L);//当前订单的版本号
+        HttpClientUtil.put(token, orderShipGroupUrl, orderShipGroupAction);
+
     }
 
     // //////////////////////////////////////////////////////////////
@@ -78,7 +91,7 @@ public class CreatePOShipGroupInfo {
     /**
      * 在知道 Secret 的情况下，也可以自己创建一个 JWT Token。
      */
-    private static String jwtSecret = "xxxxxxxx";
+    private static String jwtSecret = "xxxxxx";
 
     private static String getJwtToken() {
         JwtUser u = new JwtUser();
