@@ -49,8 +49,8 @@ public class InitAttributeSets {
     static final String[][] FLUFF_PULP_ATTRS = new String[][]{
             // 序列号（卷号）。
             //public string SerialNumber { get; set; }
-            new String[]{"widthInch", "Decimal"},
-            new String[]{"diameterInch", "Decimal"},
+            //new String[]{"widthInch", "Decimal"},
+            //new String[]{"diameterInch", "Decimal"},
             new String[]{"weightLbs", "Decimal"},
             //new String[]{"WeightKg", "Decimal", "true"},//isMandatory
             new String[]{"airDryWeightLbs", "Decimal"},
@@ -68,6 +68,7 @@ public class InitAttributeSets {
             new String[]{"SecondaryUomQuantity", "Decimal", "false", "_F_N_0_"},// 次计量单位数量
     };
 
+    /*
     static final String ATTR_QUALITY_STATUS_ID = "QualityStatus";
 
     static final String[][] ATTR_QUALITY_STATUS_VALUES = new String[][] {
@@ -76,6 +77,7 @@ public class InitAttributeSets {
             new String[]{"UM-G", "单货不符，质量完好"},
             new String[]{"UM-NG", "单货不符，质量缺陷"}
     };
+    */
 
     // ---------------------------- 产品的属性集实例的 Id --------------------------
 
@@ -101,14 +103,14 @@ public class InitAttributeSets {
 
         // 牛卡纸库存单元属性集
         List<AttributeCommand.CreateAttribute> klbAttrs = createAttributes(KRAFT_LINERBOARD_ATTRS);
-        klbAttrs.add(createQualityStatusAttribute());
+        //klbAttrs.add(createQualityStatusAttribute());
         AttributeSetCommand.CreateAttributeSet klbAttrSet = createAttributeSet(KRAFT_LINERBOARD_ATTR_SET_ID,
                 klbAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(klbAttrs, Collections.singletonList(klbAttrSet));
 
         // 瓦楞纸库存单元属性集
         List<AttributeCommand.CreateAttribute> cpAttrs = createAttributes(CORRUGATED_PAPER_ATTRS);
-        cpAttrs.add(createQualityStatusAttribute());
+        //cpAttrs.add(createQualityStatusAttribute());
         AttributeSetCommand.CreateAttributeSet cpAttrSet = createAttributeSet(CORRUGATED_PAPER_ATTR_SET_ID,
                 cpAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(cpAttrs, Collections.singletonList(cpAttrSet));
@@ -116,7 +118,7 @@ public class InitAttributeSets {
         // 绒毛浆库存单元属性集
         // create Fluff Pulp AttributeSet
         List<AttributeCommand.CreateAttribute> fpAttrs = createAttributes(FLUFF_PULP_ATTRS);
-        fpAttrs.add(createQualityStatusAttribute());
+        //fpAttrs.add(createQualityStatusAttribute());
         AttributeSetCommand.CreateAttributeSet fpAttrSet = createAttributeSet(FLUFF_PULP_ATTR_SET_ID,
                 fpAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(fpAttrs, Collections.singletonList(fpAttrSet));
@@ -205,6 +207,7 @@ public class InitAttributeSets {
 //        return attrSetInst;
 //    }
 
+    /*
     private static AttributeCommand.CreateAttribute createQualityStatusAttribute() {
         AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
         a.setAttributeId(ATTR_QUALITY_STATUS_ID);
@@ -223,6 +226,7 @@ public class InitAttributeSets {
         }
         return a;
     }
+    */
 
     private static List<AttributeCommand.CreateAttribute> createAttributes(String[][] attrArray){
         List<AttributeCommand.CreateAttribute> attrs = new ArrayList<>();
