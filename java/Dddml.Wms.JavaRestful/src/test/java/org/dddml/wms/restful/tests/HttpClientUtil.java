@@ -24,10 +24,10 @@ import java.util.List;
  */
 public class HttpClientUtil {
 
-    public static void post(String token, String url, Object importSettings) {
+    public static void post(String token, String url, Object obj) {
         try {
             CloseableHttpClient client = HttpClientBuilder.create().build();
-            HttpResponse response = doHttpPost(client, token, url, importSettings);
+            HttpResponse response = doHttpPost(client, token, url, obj);
             int responseCode = response.getStatusLine().getStatusCode();
             //Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             System.out.println("==========================================");
@@ -42,10 +42,10 @@ public class HttpClientUtil {
         }
     }
 
-    public static void put(String token, String url, Object importSettings) {
+    public static void put(String token, String url, Object obj) {
         try {
             CloseableHttpClient client = HttpClientBuilder.create().build();
-            HttpResponse response = doHttpPut(client, token, url, importSettings);
+            HttpResponse response = doHttpPut(client, token, url, obj);
             int responseCode = response.getStatusLine().getStatusCode();
             //Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             System.out.println("==========================================");

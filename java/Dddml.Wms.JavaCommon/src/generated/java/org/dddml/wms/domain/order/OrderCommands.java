@@ -86,10 +86,17 @@ public class OrderCommands
         }
 
         public String getOrderId() {
-            return this.getOrderShipGroupId().getOrderId();
+            if (this.getOrderShipGroupId() != null) {
+                return this.getOrderShipGroupId().getOrderId();
+            } else {
+                return null;
+            }
         }
 
         public void setOrderId(String id) {
+            if (this.getOrderShipGroupId() == null) {
+                this.setOrderShipGroupId(new OrderShipGroupId());
+            }
             this.getOrderShipGroupId().setOrderId(id);
         }
 
