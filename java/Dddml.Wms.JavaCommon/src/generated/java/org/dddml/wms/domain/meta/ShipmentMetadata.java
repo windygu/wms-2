@@ -65,7 +65,7 @@ public final class ShipmentMetadata {
             "String",
             "String",
             "String",
-            "Long",
+            "String",
             "String",
             "String",
             "String",

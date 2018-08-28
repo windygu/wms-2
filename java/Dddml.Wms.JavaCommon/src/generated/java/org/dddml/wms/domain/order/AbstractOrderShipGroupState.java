@@ -27,11 +27,11 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.getOrderShipGroupId().setOrderId(orderId);
     }
 
-    public Long getShipGroupSeqId() {
+    public String getShipGroupSeqId() {
         return this.getOrderShipGroupId().getShipGroupSeqId();
     }
         
-    public void setShipGroupSeqId(Long shipGroupSeqId) {
+    public void setShipGroupSeqId(String shipGroupSeqId) {
         this.getOrderShipGroupId().setShipGroupSeqId(shipGroupSeqId);
     }
 
@@ -839,8 +839,8 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
-        Long stateEntityIdShipGroupSeqId = this.getOrderShipGroupId().getShipGroupSeqId();
-        Long eventEntityIdShipGroupSeqId = event.getOrderShipGroupEventId().getShipGroupSeqId();
+        String stateEntityIdShipGroupSeqId = this.getOrderShipGroupId().getShipGroupSeqId();
+        String eventEntityIdShipGroupSeqId = event.getOrderShipGroupEventId().getShipGroupSeqId();
         if (!stateEntityIdShipGroupSeqId.equals(eventEntityIdShipGroupSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipGroupSeqId %1$s in state but entity id ShipGroupSeqId %2$s in event", stateEntityIdShipGroupSeqId, eventEntityIdShipGroupSeqId);

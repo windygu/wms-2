@@ -26,9 +26,9 @@ public interface ItemIssuanceCommand extends Command
 
         void setOrderItemSeqId(String orderItemSeqId);
 
-        Long getShipGroupSeqId();
+        String getShipGroupSeqId();
 
-        void setShipGroupSeqId(Long shipGroupSeqId);
+        void setShipGroupSeqId(String shipGroupSeqId);
 
         String getProductId();
 

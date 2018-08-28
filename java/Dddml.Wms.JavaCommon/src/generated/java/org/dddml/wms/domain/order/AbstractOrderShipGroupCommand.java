@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderShipGroupCommand extends AbstractCommand implements OrderShipGroupCommand
 {
-    private Long shipGroupSeqId;
+    private String shipGroupSeqId;
 
-    public Long getShipGroupSeqId()
+    public String getShipGroupSeqId()
     {
         return this.shipGroupSeqId;
     }
 
-    public void setShipGroupSeqId(Long shipGroupSeqId)
+    public void setShipGroupSeqId(String shipGroupSeqId)
     {
         this.shipGroupSeqId = shipGroupSeqId;
     }

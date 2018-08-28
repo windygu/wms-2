@@ -7,52 +7,57 @@ package org.dddml.wms.domain.statusitem;
 
 public class StatusItemIds {
     /**
-     * Edge Damage.
+     * 质量不符.
+     */
+    public static final String DAMAGE_DISAGREEMENT = "DAMAGE_DISAGREEMENT";
+
+    /**
+     * 纸边破损.
      */
     public static final String DAMAGE_EDGE = "DAMAGE_EDGE";
 
     /**
-     * Side Damage.
+     * 侧面破损.
      */
     public static final String DAMAGE_SIDE = "DAMAGE_SIDE";
 
     /**
-     * End Damage.
+     * 两端破损.
      */
     public static final String DAMAGE_END = "DAMAGE_END";
 
     /**
-     * Wrapper Damage/Broken Pallet base.
+     * 包装破损.
      */
     public static final String DAMAGE_WRAPPER = "DAMAGE_WRAPPER";
 
     /**
-     * Core Damage.
+     * 纸芯不良.
      */
     public static final String DAMAGE_CORE = "DAMAGE_CORE";
 
     /**
-     * Deformation/out of roudness.
+     * 严重变形.
      */
     public static final String DAMAGE_DEFORMATION = "DAMAGE_DEFORMATION";
 
     /**
-     * Water Damage.
+     * 水湿.
      */
     public static final String DAMAGE_WATER = "DAMAGE_WATER";
 
     /**
-     * Dirt and Contamination.
+     * 脏污、异物.
      */
     public static final String DAMAGE_DIRT = "DAMAGE_DIRT";
 
     /**
-     * Shortage, Non-delivery.
+     * 短重，短装.
      */
     public static final String DAMAGE_SHORTAGE = "DAMAGE_SHORTAGE";
 
     /**
-     * Other(wrinkle,spoiling,mould,rust,etc.).
+     * 其他(褶皱，磨损，发霉……).
      */
     public static final String DAMAGE_OTHER = "DAMAGE_OTHER";
 

@@ -43,7 +43,7 @@ public class CreateSOShipGroupInfo {
         // 合同号:
         createSOShipGroup.setOrderId("CCCCCC-XX");
         // 通知单号:
-        createSOShipGroup.setShipGroupSeqId(2018081801L);
+        createSOShipGroup.setShipGroupSeqId("" + 2018081801L);
         // 发货指示：（发货指示 / 客户信息 / 备注等）
         createSOShipGroup.setShippingInstructions("Xxxxx, yyyy, zzzzz");
         // ////////////// 产品 Id： /////////////////

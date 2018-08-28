@@ -9,7 +9,7 @@ public interface OrderItemShipGroupAssociationStateDao
 
     void save(OrderItemShipGroupAssociationState state);
 
-    Iterable<OrderItemShipGroupAssociationState> findByOrderIdAndOrderShipGroupShipGroupSeqId(String orderId, Long orderShipGroupShipGroupSeqId);
+    Iterable<OrderItemShipGroupAssociationState> findByOrderIdAndOrderShipGroupShipGroupSeqId(String orderId, String orderShipGroupShipGroupSeqId);
 
     void delete(OrderItemShipGroupAssociationState state);
 }

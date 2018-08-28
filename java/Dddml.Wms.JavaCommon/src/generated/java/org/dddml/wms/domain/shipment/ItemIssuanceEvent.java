@@ -38,9 +38,9 @@ public interface ItemIssuanceEvent extends Event
 
         void setOrderItemSeqId(String orderItemSeqId);
 
-        Long getShipGroupSeqId();
+        String getShipGroupSeqId();
 
-        void setShipGroupSeqId(Long shipGroupSeqId);
+        void setShipGroupSeqId(String shipGroupSeqId);
 
         String getProductId();
 

@@ -16,9 +16,9 @@ public interface OrderShipGroupState
 
     void setOrderShipGroupId(OrderShipGroupId orderShipGroupId);
 
-    Long getShipGroupSeqId();
+    String getShipGroupSeqId();
 
-    void setShipGroupSeqId(Long shipGroupSeqId);
+    void setShipGroupSeqId(String shipGroupSeqId);
 
     String getShipmentMethodTypeId();
 

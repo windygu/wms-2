@@ -16,9 +16,9 @@ public interface OrderItemShipGroupAssociationCommand extends Command
 
     void setOrderId(String orderId);
 
-    Long getOrderShipGroupShipGroupSeqId();
+    String getOrderShipGroupShipGroupSeqId();
 
-    void setOrderShipGroupShipGroupSeqId(Long orderShipGroupShipGroupSeqId);
+    void setOrderShipGroupShipGroupSeqId(String orderShipGroupShipGroupSeqId);
 
     interface CreateOrMergePatchOrderItemShipGroupAssociation extends OrderItemShipGroupAssociationCommand
     {

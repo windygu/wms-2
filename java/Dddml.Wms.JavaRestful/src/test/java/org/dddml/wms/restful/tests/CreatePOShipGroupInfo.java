@@ -45,7 +45,7 @@ public class CreatePOShipGroupInfo {
         // 合同号:
         createPOShipGroup.setOrderId("XXXXXX-XX");
         // 通知单号:
-        createPOShipGroup.setShipGroupSeqId(2018082702L);
+        createPOShipGroup.setShipGroupSeqId("" + 2018082702L);
         // ////////////// 产品 Id： /////////////////
         createPOShipGroup.setProductId("21001");
         //产品名称：	 GI SEMI-TREATED FLUFF

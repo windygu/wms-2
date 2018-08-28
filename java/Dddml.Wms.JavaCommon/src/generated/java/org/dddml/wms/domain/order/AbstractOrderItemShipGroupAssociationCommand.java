@@ -31,14 +31,14 @@ public abstract class AbstractOrderItemShipGroupAssociationCommand extends Abstr
         this.orderId = orderId;
     }
 
-    private Long orderShipGroupShipGroupSeqId;
+    private String orderShipGroupShipGroupSeqId;
 
-    public Long getOrderShipGroupShipGroupSeqId()
+    public String getOrderShipGroupShipGroupSeqId()
     {
         return this.orderShipGroupShipGroupSeqId;
     }
 
-    public void setOrderShipGroupShipGroupSeqId(Long orderShipGroupShipGroupSeqId)
+    public void setOrderShipGroupShipGroupSeqId(String orderShipGroupShipGroupSeqId)
     {
         this.orderShipGroupShipGroupSeqId = orderShipGroupShipGroupSeqId;
     }

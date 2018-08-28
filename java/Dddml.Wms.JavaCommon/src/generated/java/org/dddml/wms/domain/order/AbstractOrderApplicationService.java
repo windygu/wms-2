@@ -119,7 +119,7 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         return getStateQueryRepository().getOrderItems(orderId, filter, orders);
     }
 
-    public OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId) {
+    public OrderShipGroupState getOrderShipGroup(String orderId, String shipGroupSeqId) {
         return getStateQueryRepository().getOrderShipGroup(orderId, shipGroupSeqId);
     }
 
@@ -127,11 +127,11 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         return getStateQueryRepository().getOrderShipGroups(orderId, filter, orders);
     }
 
-    public OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId) {
+    public OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, String orderShipGroupShipGroupSeqId, String orderItemSeqId) {
         return getStateQueryRepository().getOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
     }
 
-    public Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId, Criterion filter, List<String> orders) {
+    public Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, String orderShipGroupShipGroupSeqId, Criterion filter, List<String> orders) {
         return getStateQueryRepository().getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId, filter, orders);
     }
 

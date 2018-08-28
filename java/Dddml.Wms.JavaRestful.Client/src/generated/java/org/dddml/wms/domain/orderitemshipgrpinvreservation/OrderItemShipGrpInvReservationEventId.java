@@ -39,12 +39,12 @@ public class OrderItemShipGrpInvReservationEventId implements Serializable
         getOrderItemShipGrpInvResId().setOrderId(orderItemShipGrpInvResIdOrderId);
     }
 
-    protected Long getOrderItemShipGrpInvResIdShipGroupSeqId()
+    protected String getOrderItemShipGrpInvResIdShipGroupSeqId()
     {
         return getOrderItemShipGrpInvResId().getShipGroupSeqId();
     }
 
-    protected void setOrderItemShipGrpInvResIdShipGroupSeqId(Long orderItemShipGrpInvResIdShipGroupSeqId)
+    protected void setOrderItemShipGrpInvResIdShipGroupSeqId(String orderItemShipGrpInvResIdShipGroupSeqId)
     {
         getOrderItemShipGrpInvResId().setShipGroupSeqId(orderItemShipGrpInvResIdShipGroupSeqId);
     }
@@ -142,7 +142,7 @@ public class OrderItemShipGrpInvReservationEventId implements Serializable
 
     protected static final String[] FLATTENED_PROPERTY_TYPES = new String[]{
             "String",
-            "Long",
+            "String",
             "String",
             "String",
             "String",

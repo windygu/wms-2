@@ -47,9 +47,9 @@ public final class OrderItemShipGroupAssociationMetadata {
             "Boolean",
             "Boolean",
             "String",
-            "Long",
             "String",
-            "Long",
+            "String",
+            "String",
             "String",
     };
 

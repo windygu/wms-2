@@ -10,7 +10,7 @@
 
 	<composite-id name="orderShipGroupEventId" class="org.dddml.wms.domain.order.OrderShipGroupEventId">
 		<key-property name="orderId" ><column name="OrderShipGroupIdOrderId" sql-type="VARCHAR(20)" /></key-property>
-		<key-property name="shipGroupSeqId" ><column name="OrderShipGroupIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+		<key-property name="shipGroupSeqId" ><column name="OrderShipGroupIdShipGroupSeqId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="orderVersion" ></key-property>
 	</composite-id>
 

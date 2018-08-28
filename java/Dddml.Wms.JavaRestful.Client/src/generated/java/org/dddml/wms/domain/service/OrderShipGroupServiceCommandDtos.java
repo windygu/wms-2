@@ -31,13 +31,13 @@ public class OrderShipGroupServiceCommandDtos {
         /**
          * Ship Group Seq Id
          */
-        private Long shipGroupSeqId;
+        private String shipGroupSeqId;
 
-        public Long getShipGroupSeqId() {
+        public String getShipGroupSeqId() {
             return shipGroupSeqId;
         }
 
-        public void setShipGroupSeqId(Long shipGroupSeqId) {
+        public void setShipGroupSeqId(String shipGroupSeqId) {
             this.shipGroupSeqId = shipGroupSeqId;
         }
 
@@ -204,13 +204,13 @@ public class OrderShipGroupServiceCommandDtos {
         /**
          * Ship Group Seq Id
          */
-        private Long shipGroupSeqId;
+        private String shipGroupSeqId;
 
-        public Long getShipGroupSeqId() {
+        public String getShipGroupSeqId() {
             return shipGroupSeqId;
         }
 
-        public void setShipGroupSeqId(Long shipGroupSeqId) {
+        public void setShipGroupSeqId(String shipGroupSeqId) {
             this.shipGroupSeqId = shipGroupSeqId;
         }
 
@@ -403,13 +403,13 @@ public class OrderShipGroupServiceCommandDtos {
         /**
          * Ship Group Seq Id
          */
-        private Long shipGroupSeqId;
+        private String shipGroupSeqId;
 
-        public Long getShipGroupSeqId() {
+        public String getShipGroupSeqId() {
             return shipGroupSeqId;
         }
 
-        public void setShipGroupSeqId(Long shipGroupSeqId) {
+        public void setShipGroupSeqId(String shipGroupSeqId) {
             this.shipGroupSeqId = shipGroupSeqId;
         }
 
@@ -472,13 +472,13 @@ public class OrderShipGroupServiceCommandDtos {
         /**
          * Ship Group Seq Id
          */
-        private Long shipGroupSeqId;
+        private String shipGroupSeqId;
 
-        public Long getShipGroupSeqId() {
+        public String getShipGroupSeqId() {
             return shipGroupSeqId;
         }
 
-        public void setShipGroupSeqId(Long shipGroupSeqId) {
+        public void setShipGroupSeqId(String shipGroupSeqId) {
             this.shipGroupSeqId = shipGroupSeqId;
         }
 

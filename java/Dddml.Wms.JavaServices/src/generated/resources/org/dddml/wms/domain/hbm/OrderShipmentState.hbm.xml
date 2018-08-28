@@ -11,7 +11,7 @@
 	<composite-id name="orderShipmentId" class="org.dddml.wms.domain.ordershipment.OrderShipmentId">
 		<key-property name="orderId" ><column name="OrderShipmentIdOrderId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="orderItemSeqId" ><column name="OrderShipmentIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
-		<key-property name="shipGroupSeqId" ><column name="OrderShipmentIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+		<key-property name="shipGroupSeqId" ><column name="OrderShipmentIdShipGroupSeqId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="shipmentId" ><column name="OrderShipmentIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="shipmentItemSeqId" ><column name="OrderShipmentIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
 	</composite-id>

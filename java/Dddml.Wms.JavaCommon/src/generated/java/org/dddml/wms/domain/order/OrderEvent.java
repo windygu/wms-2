@@ -147,7 +147,7 @@ public interface OrderEvent extends Event
         
         void addOrderShipGroupEvent(OrderShipGroupEvent.OrderShipGroupStateCreated e);
 
-        OrderShipGroupEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(Long shipGroupSeqId);
+        OrderShipGroupEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(String shipGroupSeqId);
 
     
     }
@@ -277,11 +277,11 @@ public interface OrderEvent extends Event
         
         void addOrderShipGroupEvent(OrderShipGroupEvent e);
 
-        OrderShipGroupEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(Long shipGroupSeqId);
+        OrderShipGroupEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(String shipGroupSeqId);
 
-        OrderShipGroupEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(Long shipGroupSeqId);
+        OrderShipGroupEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(String shipGroupSeqId);
 
-        OrderShipGroupEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(Long shipGroupSeqId);
+        OrderShipGroupEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(String shipGroupSeqId);
 
 
     }

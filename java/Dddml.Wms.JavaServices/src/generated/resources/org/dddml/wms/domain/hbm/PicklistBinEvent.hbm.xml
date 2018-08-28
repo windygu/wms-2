@@ -27,7 +27,7 @@
 	<property name="picklistId" ><column name="PicklistId" sql-type="VARCHAR(20)" /></property>
 	<property name="binLocationNumber" ><column name="BinLocationNumber" sql-type="DECIMAL(20,0)" /></property>
 	<property name="primaryOrderId" ><column name="PrimaryOrderId" sql-type="VARCHAR(20)" /></property>
-	<property name="primaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="primaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="active" ></property>
 
     <subclass name="AbstractPicklistBinEvent$SimplePicklistBinStateCreated" discriminator-value="Created">

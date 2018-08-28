@@ -19,7 +19,7 @@ aggregates:
       PrimaryOrderId:
         type: id
       PrimaryShipGroupSeqId:
-        type: numeric
+        type: id
         
       PicklistItems:
         itemType: PicklistItem
@@ -131,7 +131,7 @@ aggregates:
                 columnName: OrderItemSeqId
               # 订单装运组序号
               ShipGroupSeqId:
-                type: numeric
+                type: id
                 columnName: ShipGroupSeqId
               # ------------------------------------
               # 库存单元 Id.

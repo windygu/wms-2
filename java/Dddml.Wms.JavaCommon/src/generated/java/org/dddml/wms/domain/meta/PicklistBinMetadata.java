@@ -37,7 +37,7 @@ public final class PicklistBinMetadata {
             "String",
             "Long",
             "String",
-            "Long",
+            "String",
             "Long",
             "String",
             "Date",

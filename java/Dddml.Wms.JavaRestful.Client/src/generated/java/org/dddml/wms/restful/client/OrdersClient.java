@@ -67,11 +67,11 @@ public interface OrdersClient {
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}")
-    Call<OrderShipGroupStateDto> getOrderShipGroup(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId);
+    Call<OrderShipGroupStateDto> getOrderShipGroup(@Path("orderId") String orderId, @Path("shipGroupSeqId") String shipGroupSeqId);
  
     @Headers("Accept: application/json")
     @PUT("Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction")
-    Call<String> orderShipGroupAction(@Path("orderId") String orderId, @Path("shipGroupSeqId") Long shipGroupSeqId, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
+    Call<String> orderShipGroupAction(@Path("orderId") String orderId, @Path("shipGroupSeqId") String shipGroupSeqId, @Body OrderCommandDtos.OrderShipGroupActionRequestContent content);
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups")
@@ -79,11 +79,11 @@ public interface OrdersClient {
 
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
-    Call<OrderItemShipGroupAssociationStateDto> getOrderItemShipGroupAssociation(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @Path("orderItemSeqId") String orderItemSeqId);
+    Call<OrderItemShipGroupAssociationStateDto> getOrderItemShipGroupAssociation(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") String orderShipGroupShipGroupSeqId, @Path("orderItemSeqId") String orderItemSeqId);
  
     @Headers("Accept: application/json")
     @GET("Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
-    Call<List<OrderItemShipGroupAssociationStateDto>> getOrderItemShipGroupAssociations(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
+    Call<List<OrderItemShipGroupAssociationStateDto>> getOrderItemShipGroupAssociations(@Path("orderId") String orderId, @Path("orderShipGroupShipGroupSeqId") String orderShipGroupShipGroupSeqId, @Query("sort") String sort, @Query("fields") String fields, @Query("filter") String filter);
 
     @Headers("Accept: application/json")
     @PUT("Orders/{orderId}")

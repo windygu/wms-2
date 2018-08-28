@@ -289,7 +289,7 @@ aggregates:
           #---------------------------------
           # 订单装运组序号
           name: ShipGroupSeqId
-          type: numeric
+          type: id-ne
           # name: OrderItemShipGroupId
           # type: OrderItemShipGroupId
           

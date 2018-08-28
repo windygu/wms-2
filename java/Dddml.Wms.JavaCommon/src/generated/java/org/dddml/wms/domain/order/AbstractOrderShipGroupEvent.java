@@ -18,11 +18,11 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
         this.orderShipGroupEventId = eventId;
     }
     
-    public Long getShipGroupSeqId() {
+    public String getShipGroupSeqId() {
         return getOrderShipGroupEventId().getShipGroupSeqId();
     }
 
-    public void setShipGroupSeqId(Long shipGroupSeqId) {
+    public void setShipGroupSeqId(String shipGroupSeqId) {
         getOrderShipGroupEventId().setShipGroupSeqId(shipGroupSeqId);
     }
 

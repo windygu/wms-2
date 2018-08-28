@@ -48,7 +48,7 @@ public final class ItemIssuanceMetadata {
             "String",
             "String",
             "String",
-            "Long",
+            "String",
             "String",
             "String",
             "String",

@@ -52,9 +52,9 @@ public interface PicklistBinCommand extends Command
 
         void setPrimaryOrderId(String primaryOrderId);
 
-        Long getPrimaryShipGroupSeqId();
+        String getPrimaryShipGroupSeqId();
 
-        void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+        void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
 
         Boolean getActive();
 

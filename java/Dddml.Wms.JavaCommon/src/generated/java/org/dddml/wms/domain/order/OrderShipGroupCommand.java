@@ -8,9 +8,9 @@ import org.dddml.wms.specialization.DomainError;
 
 public interface OrderShipGroupCommand extends Command
 {
-    Long getShipGroupSeqId();
+    String getShipGroupSeqId();
 
-    void setShipGroupSeqId(Long shipGroupSeqId);
+    void setShipGroupSeqId(String shipGroupSeqId);
 
     String getOrderId();
 

@@ -131,7 +131,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         return (OrderShipGroupEventDao)ApplicationContext.current.get("OrderShipGroupEventDao");
     }
 
-    protected OrderShipGroupEventId newOrderShipGroupEventId(Long shipGroupSeqId)
+    protected OrderShipGroupEventId newOrderShipGroupEventId(String shipGroupSeqId)
     {
         OrderShipGroupEventId eventId = new OrderShipGroupEventId(this.getOrderEventId().getOrderId(), 
             shipGroupSeqId, 
@@ -173,15 +173,15 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         return new AbstractOrderItemEvent.SimpleOrderItemStateMergePatched(newOrderItemEventId(orderItemSeqId));
     }
 
-    public OrderShipGroupEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(Long shipGroupSeqId) {
+    public OrderShipGroupEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(String shipGroupSeqId) {
         return new AbstractOrderShipGroupEvent.SimpleOrderShipGroupStateCreated(newOrderShipGroupEventId(shipGroupSeqId));
     }
 
-    public OrderShipGroupEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(Long shipGroupSeqId) {
+    public OrderShipGroupEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(String shipGroupSeqId) {
         return new AbstractOrderShipGroupEvent.SimpleOrderShipGroupStateMergePatched(newOrderShipGroupEventId(shipGroupSeqId));
     }
 
-    public OrderShipGroupEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(Long shipGroupSeqId) {
+    public OrderShipGroupEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(String shipGroupSeqId) {
         return new AbstractOrderShipGroupEvent.SimpleOrderShipGroupStateRemoved(newOrderShipGroupEventId(shipGroupSeqId));
     }
 

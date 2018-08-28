@@ -56,7 +56,7 @@ public final class OrderShipGroupMetadata {
     };
 
     public static final String[] propertyTypes = new String[] {
-            "Long",
+            "String",
             "String",
             "String",
             "String",
@@ -90,7 +90,7 @@ public final class OrderShipGroupMetadata {
             "Boolean",
             "String",
             "String",
-            "Long",
+            "String",
     };
 
     public static final Map<String, String> propertyTypeMap;

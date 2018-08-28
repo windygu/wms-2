@@ -52,7 +52,7 @@ aggregates:
             type: id-ne
           # 装运组序号
           ShipGroupSeqId:
-            type: numeric
+            type: id-ne
           # 订单项（行）序号
           OrderItemSeqId:
             type: id-ne

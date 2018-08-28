@@ -17,7 +17,7 @@ public interface OrderAggregate
 
     void mergePatch(OrderCommand.MergePatchOrder c);
 
-    void orderShipGroupAction(Long shipGroupSeqId, String value, Long version, String commandId, String requesterId);
+    void orderShipGroupAction(String shipGroupSeqId, String value, Long version, String commandId, String requesterId);
 
     void throwOnInvalidStateTransition(Command c);
 }

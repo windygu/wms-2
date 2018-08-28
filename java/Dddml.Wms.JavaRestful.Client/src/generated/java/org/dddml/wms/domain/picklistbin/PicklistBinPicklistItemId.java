@@ -49,12 +49,12 @@ public class PicklistBinPicklistItemId implements Serializable
         getPicklistItemOrderShipGrpInvId().setOrderItemSeqId(picklistItemOrderShipGrpInvIdOrderItemSeqId);
     }
 
-    protected Long getPicklistItemOrderShipGrpInvIdShipGroupSeqId()
+    protected String getPicklistItemOrderShipGrpInvIdShipGroupSeqId()
     {
         return getPicklistItemOrderShipGrpInvId().getShipGroupSeqId();
     }
 
-    protected void setPicklistItemOrderShipGrpInvIdShipGroupSeqId(Long picklistItemOrderShipGrpInvIdShipGroupSeqId)
+    protected void setPicklistItemOrderShipGrpInvIdShipGroupSeqId(String picklistItemOrderShipGrpInvIdShipGroupSeqId)
     {
         getPicklistItemOrderShipGrpInvId().setShipGroupSeqId(picklistItemOrderShipGrpInvIdShipGroupSeqId);
     }
@@ -144,7 +144,7 @@ public class PicklistBinPicklistItemId implements Serializable
             "String",
             "String",
             "String",
-            "Long",
+            "String",
             "String",
             "String",
             "String",

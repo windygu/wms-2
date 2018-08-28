@@ -28,9 +28,9 @@ public interface PicklistBinState
 
     void setPrimaryOrderId(String primaryOrderId);
 
-    Long getPrimaryShipGroupSeqId();
+    String getPrimaryShipGroupSeqId();
 
-    void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+    void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
 
     Long getVersion();
 

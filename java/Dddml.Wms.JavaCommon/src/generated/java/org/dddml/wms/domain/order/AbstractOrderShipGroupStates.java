@@ -56,15 +56,15 @@ public abstract class AbstractOrderShipGroupStates implements OrderShipGroupStat
         return getInnerIterable().iterator();
     }
 
-    public OrderShipGroupState get(Long shipGroupSeqId) {
+    public OrderShipGroupState get(String shipGroupSeqId) {
         return get(shipGroupSeqId, false, false);
     }
 
-    public OrderShipGroupState get(Long shipGroupSeqId, boolean forCreation) {
+    public OrderShipGroupState get(String shipGroupSeqId, boolean forCreation) {
         return get(shipGroupSeqId, forCreation, false);
     }
 
-    public OrderShipGroupState get(Long shipGroupSeqId, boolean forCreation, boolean nullAllowed) {
+    public OrderShipGroupState get(String shipGroupSeqId, boolean forCreation, boolean nullAllowed) {
         OrderShipGroupId globalId = new OrderShipGroupId(orderState.getOrderId(), shipGroupSeqId);
         if (loadedOrderShipGroupStates.containsKey(globalId)) {
             return loadedOrderShipGroupStates.get(globalId);

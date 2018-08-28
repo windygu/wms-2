@@ -856,12 +856,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void issueItem(String shipmentItemSeqId, String orderId, String orderItemSeqId, Long shipGroupSeqId, String productId, String locatorId, java.util.Map<String, Object> attributeSetInstance, java.math.BigDecimal quantity, java.math.BigDecimal cancelQuantity, String itemDescription, Long version, String commandId, String requesterId) {
+        public void issueItem(String shipmentItemSeqId, String orderId, String orderItemSeqId, String shipGroupSeqId, String productId, String locatorId, java.util.Map<String, Object> attributeSetInstance, java.math.BigDecimal quantity, java.math.BigDecimal cancelQuantity, String itemDescription, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void addItemAndIssuance(String orderId, String orderItemSeqId, Long shipGroupSeqId, String itemIssuanceSeqId, String productId, String locatorId, java.util.Map<String, Object> attributeSetInstance, java.math.BigDecimal quantity, java.math.BigDecimal cancelQuantity, String itemDescription, Long version, String commandId, String requesterId) {
+        public void addItemAndIssuance(String orderId, String orderItemSeqId, String shipGroupSeqId, String itemIssuanceSeqId, String productId, String locatorId, java.util.Map<String, Object> attributeSetInstance, java.math.BigDecimal quantity, java.math.BigDecimal cancelQuantity, String itemDescription, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 

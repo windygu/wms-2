@@ -62,7 +62,7 @@ public final class OrderItemShipGrpInvReservationMetadata {
             "Boolean",
             "Boolean",
             "String",
-            "Long",
+            "String",
             "String",
             "String",
             "String",

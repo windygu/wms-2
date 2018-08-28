@@ -52,9 +52,9 @@ public interface ShipmentCommand extends Command
 
         void setPrimaryReturnId(String primaryReturnId);
 
-        Long getPrimaryShipGroupSeqId();
+        String getPrimaryShipGroupSeqId();
 
-        void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+        void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
 
         String getPicklistBinId();
 

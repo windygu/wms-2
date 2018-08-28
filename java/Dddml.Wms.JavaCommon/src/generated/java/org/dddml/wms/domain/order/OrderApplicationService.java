@@ -43,13 +43,13 @@ public interface OrderApplicationService
 
     Iterable<OrderItemState> getOrderItems(String orderId, Criterion filter, List<String> orders);
 
-    OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId);
+    OrderShipGroupState getOrderShipGroup(String orderId, String shipGroupSeqId);
 
     Iterable<OrderShipGroupState> getOrderShipGroups(String orderId, Criterion filter, List<String> orders);
 
-    OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId);
+    OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, String orderShipGroupShipGroupSeqId, String orderItemSeqId);
 
-    Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId, Criterion filter, List<String> orders);
+    Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, String orderShipGroupShipGroupSeqId, Criterion filter, List<String> orders);
 
 }
 

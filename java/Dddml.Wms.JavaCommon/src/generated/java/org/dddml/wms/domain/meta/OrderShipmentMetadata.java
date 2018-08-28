@@ -44,7 +44,7 @@ public final class OrderShipmentMetadata {
             "Boolean",
             "String",
             "String",
-            "Long",
+            "String",
             "String",
             "String",
     };

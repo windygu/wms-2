@@ -702,9 +702,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
             throw DomainError.named("inconsistentId", "Outer %1$s %2$s NOT equals inner %3$s %4$s", outerOrderIdName, outerOrderIdValue, innerOrderIdName, innerOrderIdValue);
         }
         String outerShipGroupSeqIdName = "ShipGroupSeqId";
-        Long outerShipGroupSeqIdValue = properties.getShipGroupSeqId();
+        String outerShipGroupSeqIdValue = properties.getShipGroupSeqId();
         String innerOrderShipGroupShipGroupSeqIdName = "OrderShipGroupShipGroupSeqId";
-        Long innerOrderShipGroupShipGroupSeqIdValue = innerProperties.getOrderShipGroupShipGroupSeqId();
+        String innerOrderShipGroupShipGroupSeqIdValue = innerProperties.getOrderShipGroupShipGroupSeqId();
         if (innerOrderShipGroupShipGroupSeqIdValue == null) {
             innerProperties.setOrderShipGroupShipGroupSeqId(outerShipGroupSeqIdValue);
         }
@@ -852,7 +852,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         }
 
         @Override
-        public void orderShipGroupAction(Long shipGroupSeqId, String value, Long version, String commandId, String requesterId) {
+        public void orderShipGroupAction(String shipGroupSeqId, String value, Long version, String commandId, String requesterId) {
             OrderEvent.OrderStateMergePatched eventOfOrder = newOrderStateMergePatched(version, commandId, requesterId);
             OrderShipGroupEvent.OrderShipGroupStateMergePatched eventOfOrderShipGroup = newOrderShipGroupStateMergePatched(new OrderShipGroupEventId(this.getState().getOrderId(), shipGroupSeqId, version));
             eventOfOrder.addOrderShipGroupEvent(eventOfOrderShipGroup);
@@ -860,7 +860,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
             apply(eventOfOrder);
         }
 
-        protected  void doOrderShipGroupAction(Long shipGroupSeqId, String value, java.util.function.Consumer<String> setOrderShipGroupStatusId) {
+        protected  void doOrderShipGroupAction(String shipGroupSeqId, String value, java.util.function.Consumer<String> setOrderShipGroupStatusId) {
             PropertyCommandHandler<String, String> pCommandHandler = this.getOrderShipGroupOrderShipGroupActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);

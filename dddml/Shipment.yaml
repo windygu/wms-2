@@ -30,7 +30,7 @@ aggregates:
       # ------------------------
       # 主订单装运组序号
       PrimaryShipGroupSeqId:
-        type: numeric
+        type: id
       # -------------------------
       # 拣货箱 Id.
       PicklistBinId:
@@ -327,7 +327,7 @@ aggregates:
             type: id-ne
             
           ShipGroupSeqId:
-            type: numeric
+            type: id
             
           # InventoryItemId:
             # type: id
@@ -543,7 +543,7 @@ aggregates:
             type: id-ne
           # 订单装运组的 Seq Id.（通知单号)
           ShipGroupSeqId:
-            type: numeric
+            type: id
           # # 发货项的 Seq Id.
           # ItemIssuanceSeqId:
           #  type: id
@@ -579,7 +579,7 @@ aggregates:
             type: id-ne
           # 订单装运组的 Seq Id.（通知单号)
           ShipGroupSeqId:
-            type: numeric
+            type: id
           # 发货项的 Seq Id.
           ItemIssuanceSeqId:
             type: id

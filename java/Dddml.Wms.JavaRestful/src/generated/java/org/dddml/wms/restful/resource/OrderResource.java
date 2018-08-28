@@ -534,7 +534,7 @@ public class OrderResource {
      * 获取指定 ShipGroupSeqId 的 OrderShipGroup
      */
     @GetMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
-    public OrderShipGroupStateDto getOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId) {
+    public OrderShipGroupStateDto getOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") String shipGroupSeqId) {
         try {
 
             OrderShipGroupState state = orderApplicationService.getOrderShipGroup(orderId, shipGroupSeqId);
@@ -552,7 +552,7 @@ public class OrderResource {
      * 创建 or 修改 OrderShipGroup
      */
     @PutMapping(path = "{orderId}/OrderShipGroups/{shipGroupSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void putOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId,
+    public void putOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") String shipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
@@ -576,7 +576,7 @@ public class OrderResource {
      * 移除 OrderShipGroup
      */
     @DeleteMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}")
-    public void deleteOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId,
+    public void deleteOrderShipGroup(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") String shipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -655,7 +655,7 @@ public class OrderResource {
     }
 
     @PutMapping("{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction")
-    public void orderShipGroupAction(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") Long shipGroupSeqId, @RequestBody OrderCommands.OrderShipGroupAction content) {
+    public void orderShipGroupAction(@PathVariable("orderId") String orderId, @PathVariable("shipGroupSeqId") String shipGroupSeqId, @RequestBody OrderCommands.OrderShipGroupAction content) {
         try {
 
             OrderCommands.OrderShipGroupAction cmd = content;//.toOrderShipGroupAction();
@@ -677,7 +677,7 @@ public class OrderResource {
      * 获取指定 OrderItemSeqId 的 OrderItemShipGroupAssociation
      */
     @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
-    public OrderItemShipGroupAssociationStateDto getOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId) {
+    public OrderItemShipGroupAssociationStateDto getOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") String orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId) {
         try {
 
             OrderItemShipGroupAssociationState state = orderApplicationService.getOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
@@ -695,7 +695,7 @@ public class OrderResource {
      * 创建 or 修改 OrderItemShipGroupAssociation
      */
     @PutMapping(path = "{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void putOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
+    public void putOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") String orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,
@@ -722,7 +722,7 @@ public class OrderResource {
      * 移除 OrderItemShipGroupAssociation
      */
     @DeleteMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")
-    public void deleteOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
+    public void deleteOrderItemShipGroupAssociation(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") String orderShipGroupShipGroupSeqId, @PathVariable("orderItemSeqId") String orderItemSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
@@ -751,7 +751,7 @@ public class OrderResource {
      * OrderItemShipGroupAssociation List
      */
     @GetMapping("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations")
-    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId,
+    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") String orderShipGroupShipGroupSeqId,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "filter", required = false) String filter,
@@ -785,7 +785,7 @@ public class OrderResource {
      * 新建 OrderItemShipGroupAssociation
      */
     @PostMapping(path = "{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void postOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId,
+    public void postOrderItemShipGroupAssociations(@PathVariable("orderId") String orderId, @PathVariable("orderShipGroupShipGroupSeqId") String orderShipGroupShipGroupSeqId,
                        @RequestParam(value = "commandId", required = false) String commandId,
                        @RequestParam(value = "version", required = false) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId,

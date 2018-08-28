@@ -17,14 +17,14 @@ public class OrderShipGroupId implements Serializable
         this.orderId = orderId;
     }
 
-    private Long shipGroupSeqId;
+    private String shipGroupSeqId;
 
-    public Long getShipGroupSeqId()
+    public String getShipGroupSeqId()
     {
         return this.shipGroupSeqId;
     }
 
-    public void setShipGroupSeqId(Long shipGroupSeqId)
+    public void setShipGroupSeqId(String shipGroupSeqId)
     {
         this.shipGroupSeqId = shipGroupSeqId;
     }
@@ -33,7 +33,7 @@ public class OrderShipGroupId implements Serializable
     {
     }
 
-    public OrderShipGroupId(String orderId, Long shipGroupSeqId)
+    public OrderShipGroupId(String orderId, String shipGroupSeqId)
     {
         this.orderId = orderId;
         this.shipGroupSeqId = shipGroupSeqId;
@@ -77,7 +77,7 @@ public class OrderShipGroupId implements Serializable
 
     protected static final String[] FLATTENED_PROPERTY_TYPES = new String[]{
             "String",
-            "Long",
+            "String",
     };
 
     protected static final java.util.Map<String, String> FLATTENED_PROPERTY_TYPE_MAP;

@@ -28,9 +28,9 @@ public interface ItemIssuanceState
 
     void setOrderItemSeqId(String orderItemSeqId);
 
-    Long getShipGroupSeqId();
+    String getShipGroupSeqId();
 
-    void setShipGroupSeqId(Long shipGroupSeqId);
+    void setShipGroupSeqId(String shipGroupSeqId);
 
     String getProductId();
 

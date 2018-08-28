@@ -6,11 +6,11 @@ import org.dddml.wms.specialization.Saveable;
 
 public interface OrderShipGroupStates extends Iterable<OrderShipGroupState>, Saveable
 {
-    OrderShipGroupState get(Long shipGroupSeqId);
+    OrderShipGroupState get(String shipGroupSeqId);
 
-    OrderShipGroupState get(Long shipGroupSeqId, boolean forCreation);
+    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation);
 
-    OrderShipGroupState get(Long shipGroupSeqId, boolean forCreation, boolean nullAllowed);
+    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(OrderShipGroupState state);
 

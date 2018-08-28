@@ -57,14 +57,14 @@ public class PicklistBinStateDto
         this.primaryOrderId = primaryOrderId;
     }
 
-    private Long primaryShipGroupSeqId;
+    private String primaryShipGroupSeqId;
 
-    public Long getPrimaryShipGroupSeqId()
+    public String getPrimaryShipGroupSeqId()
     {
         return this.primaryShipGroupSeqId;
     }
 
-    public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId)
+    public void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId)
     {
         this.primaryShipGroupSeqId = primaryShipGroupSeqId;
     }

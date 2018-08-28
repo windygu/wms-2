@@ -38,9 +38,9 @@ public interface PicklistBinEvent extends Event
 
         void setPrimaryOrderId(String primaryOrderId);
 
-        Long getPrimaryShipGroupSeqId();
+        String getPrimaryShipGroupSeqId();
 
-        void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+        void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
 
         Boolean getActive();
 

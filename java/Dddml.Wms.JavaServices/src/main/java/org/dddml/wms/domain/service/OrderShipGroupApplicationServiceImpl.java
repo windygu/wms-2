@@ -135,7 +135,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     @Override
     public String when(OrderShipGroupServiceCommands.CreatePOShipment c) {
         String orderId = c.getOrderId();
-        Long shipGroupSeqId = c.getShipGroupSeqId();
+        String shipGroupSeqId = c.getShipGroupSeqId();
         OrderState orderState = assertOrderId(orderId);
         if (!OrderTypeIds.PURCHASE_ORDER.equalsIgnoreCase(orderState.getOrderTypeId())) {
             throw new IllegalArgumentException("Order type error.");
@@ -164,7 +164,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     @Override
     public String when(OrderShipGroupServiceCommands.CreateSOShipment c) {
         String orderId = c.getOrderId();
-        Long shipGroupSeqId = c.getShipGroupSeqId();
+        String shipGroupSeqId = c.getShipGroupSeqId();
         OrderState orderState = assertOrderId(orderId);
         if (!OrderTypeIds.SALES_ORDER.equalsIgnoreCase(orderState.getOrderTypeId())) {
             throw new IllegalArgumentException("Order type error.");
@@ -209,7 +209,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
     }
 
-    private ShipmentCommand.CreateShipment createShipment(String orderId, Long shipGroupSeqId, String shipmentId,
+    private ShipmentCommand.CreateShipment createShipment(String orderId, String shipGroupSeqId, String shipmentId,
                                                           String shipmentTypeId, String shipmentStatusId) {
         ShipmentCommand.CreateShipment createShipment = new AbstractShipmentCommand.SimpleCreateShipment();
         createShipment.setShipmentId(shipmentId);
@@ -221,7 +221,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         return createShipment;
     }
 
-    private OrderShipGroupState assertShipGroupSeqId(OrderState orderState, Long shipGroupSeqId) {
+    private OrderShipGroupState assertShipGroupSeqId(OrderState orderState, String shipGroupSeqId) {
         OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, false, true);
         if (orderShipGroupState == null) {
             throw new IllegalArgumentException(String.format("ShipGroupSeqId Id '%1$s' error.", shipGroupSeqId));

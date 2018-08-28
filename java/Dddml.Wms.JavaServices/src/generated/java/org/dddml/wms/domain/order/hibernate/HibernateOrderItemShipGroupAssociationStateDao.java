@@ -70,7 +70,7 @@ public class HibernateOrderItemShipGroupAssociationStateDao implements OrderItem
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<OrderItemShipGroupAssociationState> findByOrderIdAndOrderShipGroupShipGroupSeqId(String orderId, Long orderShipGroupShipGroupSeqId)
+    public Iterable<OrderItemShipGroupAssociationState> findByOrderIdAndOrderShipGroupShipGroupSeqId(String orderId, String orderShipGroupShipGroupSeqId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState.class);
         Junction partIdCondition = Restrictions.conjunction()

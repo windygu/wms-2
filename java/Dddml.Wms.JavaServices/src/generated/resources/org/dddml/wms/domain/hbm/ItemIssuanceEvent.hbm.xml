@@ -27,7 +27,7 @@
 
 	<property name="orderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
 	<property name="orderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
-	<property name="shipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="shipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="productId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></property>
 	<property name="locatorId" ><column name="LocatorId" length="50" /></property>
 	<property name="attributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></property>

@@ -115,14 +115,14 @@ public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements
             this.orderItemSeqId = orderItemSeqId;
         }
 
-        private Long shipGroupSeqId;
+        private String shipGroupSeqId;
 
-        public Long getShipGroupSeqId()
+        public String getShipGroupSeqId()
         {
             return this.shipGroupSeqId;
         }
 
-        public void setShipGroupSeqId(Long shipGroupSeqId)
+        public void setShipGroupSeqId(String shipGroupSeqId)
         {
             this.shipGroupSeqId = shipGroupSeqId;
         }

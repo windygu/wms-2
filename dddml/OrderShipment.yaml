@@ -49,7 +49,7 @@ aggregates:
             type: id-ne
             
           ShipGroupSeqId:
-            type: numeric
+            type: id-ne
             
           # 装运单 Id.
           ShipmentId:
