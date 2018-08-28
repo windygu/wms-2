@@ -52,19 +52,29 @@ public class ImportServiceResource {
     private static class ShipmentSheetConstants {
         private static final String SHIPMENT_ID_COLUMN_NAME = "ShipmentId";
         private static final String PRODUCT_COLUMN_NAME = "Product";
-        private static final String[] SHIPMENT_ITEM_PREFIX_COLUMN_NAMES = new String[]{
-                SHIPMENT_ID_COLUMN_NAME,
-                PRODUCT_COLUMN_NAME
-        };
         private static final String SERIAL_NUMBER_COLUMN_NAME = "SerialNumber";
         private static final String LOT_ID_COLUMN_NAME = "LotId";
         private static final String QUANTITY_COLUMN_NAME = "Quantity";
         private static final String BOL_NUMBER_COLUMN_NAME = "BOL#";
         private static final String VEHICLE_ID_COLUMN_NAME = "VehicleId";
         private static final String SEAL_NUMBER_COLUMN_NAME = "Seal#";
-        private static final String[] SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES = new String[]{
-                BOL_NUMBER_COLUMN_NAME,
+        private static final String[] SHIPMENT_ITEM_PREFIX_COLUMN_NAMES = new String[]{
+                SHIPMENT_ID_COLUMN_NAME,
+        };
+        private static final String[] SHIPMENT_ITEM_MIDDLE_COLUMN_NAMES = new String[]{
+                "rollCnt",
+                SERIAL_NUMBER_COLUMN_NAME,
                 VEHICLE_ID_COLUMN_NAME,
+                "weightLbs",
+                "airDryWeightLbs",
+                QUANTITY_COLUMN_NAME,
+                "airDryPct",
+                "airDryWeightKg",
+                "airDryMetricTon",
+        };
+        private static final String[] SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES = new String[]{
+                PRODUCT_COLUMN_NAME,
+                BOL_NUMBER_COLUMN_NAME,
                 SEAL_NUMBER_COLUMN_NAME
         };
     }
@@ -847,7 +857,7 @@ public class ImportServiceResource {
     }
 
     private List<String> getShipmentItemColumnNames(String[] productIds) {
-        List<String> colNames = new ArrayList<>();
+        List<String> columnNames = new ArrayList<>();
         boolean isSerialNumbered = false;
         boolean isManagedByLot = false;
         List<String> qtyUomIds = new ArrayList<>();
@@ -880,22 +890,44 @@ public class ImportServiceResource {
                 }
             }
         }
-        colNames.addAll(Arrays.asList(ShipmentSheetConstants.SHIPMENT_ITEM_PREFIX_COLUMN_NAMES));
-        if (isSerialNumbered) {
-            colNames.add(ShipmentSheetConstants.SERIAL_NUMBER_COLUMN_NAME + "(PackageId)");
+
+        // /////////////////////////////////////////////
+        // 输出固定的列
+        // /////////////////////////////////////////////
+        columnNames.addAll(Arrays.asList(ShipmentSheetConstants.SHIPMENT_ITEM_PREFIX_COLUMN_NAMES));
+
+        for (String cn : ShipmentSheetConstants.SHIPMENT_ITEM_MIDDLE_COLUMN_NAMES) {
+            if (columnNameEquals(cn,ShipmentSheetConstants.SERIAL_NUMBER_COLUMN_NAME  )) {
+                //if (isSerialNumbered) {
+                columnNames.add(ShipmentSheetConstants.SERIAL_NUMBER_COLUMN_NAME + "(PackageId)");
+                //}
+            } else if (columnNameEquals(cn, ShipmentSheetConstants.QUANTITY_COLUMN_NAME)) {
+                if (qtyUomIds.size() > 0) {
+                    columnNames.add(ShipmentSheetConstants.QUANTITY_COLUMN_NAME + "("
+                            + qtyUomIds.stream().reduce("", (a, b) -> a.equals("") ? b : a + "," + b)
+                            + ")"
+                    );
+                } else {
+                    columnNames.add(cn);
+                }
+            } else {
+                columnNames.add(cn);
+            }
+            // /////////////////////////////////////////////////
+            if (attrIds.contains(cn)) {
+                attrIds.remove(cn);
+            }
         }
+
+        columnNames.addAll(Arrays.asList(ShipmentSheetConstants.SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES));
+
+        // /////////////////////////////////////////////
         if (isManagedByLot) {
-            colNames.add(ShipmentSheetConstants.LOT_ID_COLUMN_NAME);
+            columnNames.add(ShipmentSheetConstants.LOT_ID_COLUMN_NAME);
         }
-        if (qtyUomIds.size() > 0) {
-            colNames.add(ShipmentSheetConstants.QUANTITY_COLUMN_NAME + "("
-                    + qtyUomIds.stream().reduce("", (a, b) -> a.equals("") ? b : a + "," + b)
-                    + ")"
-            );
-        }
-        colNames.addAll(attrIds);
-        colNames.addAll(Arrays.asList(ShipmentSheetConstants.SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES));
-        return colNames;
+        columnNames.addAll(attrIds);
+
+        return columnNames;
     }
 
     private static class ImportingShipmentBookReader {

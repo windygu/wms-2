@@ -52,7 +52,7 @@ public class OrderShipGroupTests {
         //订单 Id（合同号）
         createPOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createPOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
+        createPOShipGroup.setShipGroupSeqId(getTestShipGroupSeqId());
         //（预计）入库时间
         createPOShipGroup.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
         //件数
@@ -84,7 +84,7 @@ public class OrderShipGroupTests {
         //订单 Id（合同号）
         createPOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createPOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
+        createPOShipGroup.setShipGroupSeqId(getTestShipGroupSeqId());
         //（预计）入库时间
         createPOShipGroup.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
         //件数
@@ -115,7 +115,7 @@ public class OrderShipGroupTests {
         orderShipGroupApplicationService.when(createPOShipment);
 
         String orderId = createPOShipGroup.getOrderId();
-        Long shipGroupSeqId = createPOShipGroup.getShipGroupSeqId();
+        String shipGroupSeqId = createPOShipGroup.getShipGroupSeqId();
         OrderState orderState = orderApplicationService.get(orderId);
         Long version = orderState.getVersion();
 
@@ -133,7 +133,7 @@ public class OrderShipGroupTests {
         //订单 Id（合同号）
         createSOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createSOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
+        createSOShipGroup.setShipGroupSeqId(getTestShipGroupSeqId());
         //（预计）出库时间
         createSOShipGroup.setEstimatedShipDate(new Timestamp(new Date().getTime()));
         //件数
@@ -170,7 +170,7 @@ public class OrderShipGroupTests {
         //订单 Id（合同号）
         createSOShipGroup.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createSOShipGroup.setShipGroupSeqId(Long.parseLong(getTestShipGroupSeqId()));
+        createSOShipGroup.setShipGroupSeqId(getTestShipGroupSeqId());
         //（预计）出库时间
         createSOShipGroup.setEstimatedShipDate(new Timestamp(new Date().getTime()));
         //件数
