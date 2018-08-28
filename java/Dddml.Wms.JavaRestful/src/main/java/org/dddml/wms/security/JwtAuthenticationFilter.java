@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import org.springframework.http.HttpStatus;
+
 /**
  * token的校验
  */
@@ -36,6 +38,10 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
             return;
         }
         UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
+        if (authentication == null) {
+            chain.doFilter(request, response);
+            return;
+        }
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(request, response);
 
@@ -51,7 +57,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         // parse the token.
         JwtUser parsedUser = jwtUtil.parseToken(authToken);
         if (parsedUser == null) {
-            throw new JwtTokenMalformedException("JWT token is not valid");
+            return null;//throw new JwtTokenMalformedException("JWT token is not valid");
         }
         return new JwtAuthenticationToken(parsedUser, parsedUser.getUsername(), null, parsedUser.getAuthorities());
     }

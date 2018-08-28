@@ -17,12 +17,12 @@ import java.util.Date;
 public class ImportShipments {
 
     // /////////////////////// 命令（写） API 服务地址 /////////////////////////
-    private static String baseUrl = "http://47.104.74.139:8080/api/";
-    //private static String baseUrl = "http://localhost:8080/api/";
+    //private static String baseUrl = "http://47.104.74.139:8080/api/";
+    private static String baseUrl = "http://localhost:8080/api/";
 
     // //////////////  IAM（认证）服务获取 JWT Token 接口地址 ///////////////////
-    private static String authTokenUrl = "http://47.104.74.139:8080/api/iam/oauth2/token";
-    //private static String authTokenUrl = "http://localhost:8080/api/iam/oauth2/token";
+    //private static String authTokenUrl = "http://47.104.74.139:8080/api/iam/oauth2/token";
+    private static String authTokenUrl = "http://localhost:8080/api/iam/oauth2/token";
     private static String username = "006";
     private static String password = "xxxxxx";//需要密码！！！
 
@@ -33,8 +33,8 @@ public class ImportShipments {
         String url = null;
         // /////////////////////////////////////////
         // 获取一个有效的 Token
-        //token = getJwtToken();
-        token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
+        token = getJwtToken();
+        //token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
 
         // ////////////////////////////////////////
         url = HttpClientUtil.appendUrl(baseUrl, "ImportService/ImportShipments");
@@ -49,7 +49,8 @@ public class ImportShipments {
 
         // ////////////////  导入库存文件的 URL ////////////////////////
         // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
-        String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/NO_EXIST_FILE.xls";
+        //String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/NO_EXIST_FILE.xls";
+        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportTest001.xls";
         shipmentHeader.setFileUrl(fileUrl);
 
         //运单“头”信息

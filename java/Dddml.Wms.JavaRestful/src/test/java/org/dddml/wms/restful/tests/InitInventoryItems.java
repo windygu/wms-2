@@ -31,8 +31,8 @@ import java.util.List;
 public class InitInventoryItems {
 
     // /////////////////////// 命令（写） API 服务地址 /////////////////////////
-    private static String baseUrl = "http://47.104.74.139:8080/api/";
-    //private static String baseUrl = "http://localhost:8080/api/";
+    //private static String baseUrl = "http://47.104.74.139:8080/api/";
+    private static String baseUrl = "http://localhost:8080/api/";
 
     // //////////////  IAM（认证）服务获取 JWT Token 接口地址 ///////////////////
     private static String authTokenUrl = "http://47.104.74.139:8080/api/iam/oauth2/token";
@@ -47,8 +47,8 @@ public class InitInventoryItems {
         String url = null;
         // /////////////////////////////////////////
         // 获取一个有效的 Token
-        //token = getJwtToken();
-        token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
+        token = getJwtToken();
+        //token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
 
         // ////////////////////////////////////////
         url = HttpClientUtil.appendUrl(baseUrl, "ImportService/InitializeInventoryItems");

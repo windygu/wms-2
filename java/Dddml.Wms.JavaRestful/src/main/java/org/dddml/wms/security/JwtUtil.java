@@ -5,6 +5,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +19,7 @@ import java.util.List;
 
 @Component
 public class JwtUtil {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${jwt.secret}")
     private String secret;
@@ -51,7 +54,10 @@ public class JwtUtil {
             return u;
 
         } catch (JwtException | ClassCastException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            if (logger.isInfoEnabled()) {
+                logger.info("Parse JWT error.", e);
+            }
             return null;
         }
     }
