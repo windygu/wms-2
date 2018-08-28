@@ -9,13 +9,15 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.boot.spi.MetadataImplementor;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.hibernate.tool.hbm2ddl.Target;
+import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 import org.hibernate.tool.schema.TargetType;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -108,6 +110,8 @@ public class SchemaTool {
 
     static final String FILENAME_HBM2DDL_CREATE = "hbm2ddl_create.sql";
 
+    static final String FILENAME_HBM2DDL_UPDATE = "hbm2ddl_update.sql";
+
     static final String FILENAME_DROP_RVIEW_NAME_CONFLICTED_TABLES = "DropRViewNameConflictedTables.sql";
 
     static final String FILENAME_CREATE_RVIEWS = "CreateRViews.sql";
@@ -177,6 +181,10 @@ public class SchemaTool {
         MetadataImplementor metadata = (MetadataImplementor)metadataSources.getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
+        // /////////////////// udpate ///////////////////////////
+        // Generate ddl update script
+        hbm2DdlOutputUpdate(metadata);
+        // //////////////////////////////////////////////////////
 
         SchemaExport schemaExport = new SchemaExport();
         String dropFilePath = Path.combine(getSqlDirectory(), "hbm2ddl_drop.sql");
@@ -184,11 +192,22 @@ public class SchemaTool {
         schemaExport.setOutputFile(dropFilePath)
                 .setDelimiter(SQL_DELIMITER).drop(EnumSet.of(TargetType.SCRIPT), metadata);
 
+
         String createFilePath = Path.combine(getSqlDirectory(), FILENAME_HBM2DDL_CREATE);
         FileUtils.deleteIfExists(createFilePath);
         schemaExport.setOutputFile(createFilePath)
                 .setDelimiter(SQL_DELIMITER)
                 .create(EnumSet.of(TargetType.SCRIPT), metadata);
+    }
+
+    private void hbm2DdlOutputUpdate(MetadataImplementor metadata) {
+        SchemaUpdate schemaUpdate = new SchemaUpdate();
+        String fileName = (new SimpleDateFormat("yyyyMMddHHmm").format(new Date())) + FILENAME_HBM2DDL_UPDATE;
+        String updateFilePath = Path.combine(getSqlDirectory(), fileName);
+        FileUtils.deleteIfExists(updateFilePath);
+        schemaUpdate.setOutputFile(updateFilePath)
+                .setDelimiter(SQL_DELIMITER)
+                .execute(EnumSet.of(TargetType.SCRIPT), metadata);
     }
 
     public final void copyAndFixHbm2DdlCreateSql() {
