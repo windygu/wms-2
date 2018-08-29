@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.InputStream;
+import java.util.UUID;
+
 
 /**
  * Created by yangjiefeng on 2018/8/8.
@@ -17,7 +18,12 @@ public class TestResource {
 
     @GetMapping(path = "testThrowDomainError", produces = MediaType.APPLICATION_JSON_VALUE)
     public String testThrowDomainError() {
-        throw DomainError.named("noname","Just a test.");
+        throw DomainError.named("noname", "Just a test DomainError.");
+    }
+
+    @GetMapping(path = "testThrowRuntimeException", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String testThrowRuntimeException() {
+        throw new RuntimeException("[" + UUID.randomUUID().toString() + "] Just a test RuntimeException.");
     }
 
 }
