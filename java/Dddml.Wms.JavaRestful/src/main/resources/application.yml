@@ -16,6 +16,11 @@ spring:
     date-format: yyyy-MM-dd'T'HH:mm:ss.SSSX
     default-property-inclusion: NON_EMPTY
 
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+    cache-seconds: 3600
+
 server:
   port: 8080
   servlet-path: /api

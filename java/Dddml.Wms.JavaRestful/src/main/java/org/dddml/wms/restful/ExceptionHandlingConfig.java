@@ -1,14 +1,19 @@
 package org.dddml.wms.restful;
 
 import com.stormpath.spring.web.servlet.handler.DefaultRestErrorResolver;
+import com.stormpath.spring.web.servlet.handler.RestErrorConverter;
+import com.stormpath.spring.web.servlet.handler.RestErrorResolver;
 import com.stormpath.spring.web.servlet.handler.RestExceptionHandler;
+import org.dddml.wms.web.servlet.handler.RestErrorResolverImpl;
+import org.dddml.wms.web.servlet.handler.SpringBootMapRestErrorConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
+import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import java.util.HashMap;
-import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -28,17 +33,21 @@ public class ExceptionHandlingConfig { //extends WebMvcConfigurerAdapter
         return new AcceptHeaderLocaleResolver();
     }
 
-    //    @Bean
-    //    public AnnotationMethodHandlerExceptionResolver annotationMethodHandlerExceptionResolver() {
-    //        AnnotationMethodHandlerExceptionResolver annotationMethodHandlerExceptionResolver = new AnnotationMethodHandlerExceptionResolver();
-    //        annotationMethodHandlerExceptionResolver.setOrder(0);
-    //        return annotationMethodHandlerExceptionResolver;
-    //    }
+    @Bean
+    public FixedLocaleResolver fixedLocaleResolver() {
+        FixedLocaleResolver fixedLocaleResolver = new FixedLocaleResolver(Locale.SIMPLIFIED_CHINESE);
+        return fixedLocaleResolver;
+    }
 
     @Bean
-    public DefaultRestErrorResolver defaultRestErrorResolver() {
-        DefaultRestErrorResolver restErrorResolver = new DefaultRestErrorResolver();
-        restErrorResolver.setLocaleResolver(localeResolver());
+    public RestErrorConverter restErrorConverter() {
+        return new SpringBootMapRestErrorConverter();
+    }
+
+    @Bean
+    public RestErrorResolver restErrorResolver() {
+        RestErrorResolverImpl restErrorResolver = new RestErrorResolverImpl();
+        restErrorResolver.setLocaleResolver(fixedLocaleResolver());
         restErrorResolver.setDefaultMoreInfoUrl("mailto:support@dddml.org");
         Map<String, String> exceptionMappingDefinitions = new HashMap<>();
         // exceptionMappingDefinitions.put("org.dddml.wms.security.JwtTokenMalformedException", "401, _exmsg");
@@ -55,8 +64,10 @@ public class ExceptionHandlingConfig { //extends WebMvcConfigurerAdapter
         RestExceptionHandler restExceptionHandler = new RestExceptionHandler();
         restExceptionHandler.setOrder(1);
         // //////////////////// restErrorResolver ///////////////////////////
-        restExceptionHandler.setErrorResolver(defaultRestErrorResolver());
-        // ////////////////////////////////////////////////////////////////////
+        restExceptionHandler.setErrorResolver(restErrorResolver());
+        // ///////////////////  restErrorConverter //////////////////////////
+        restExceptionHandler.setErrorConverter(restErrorConverter());
+        // //////////////////////////////////////////////////////////////////
         return restExceptionHandler;
     }
 
@@ -71,5 +82,13 @@ public class ExceptionHandlingConfig { //extends WebMvcConfigurerAdapter
     //        //exceptionResolvers.add(annotationMethodHandlerExceptionResolver());
     //        exceptionResolvers.add(restExceptionHandler());
     //    }
+
+    //    @Bean
+    //    public AnnotationMethodHandlerExceptionResolver annotationMethodHandlerExceptionResolver() {
+    //        AnnotationMethodHandlerExceptionResolver annotationMethodHandlerExceptionResolver = new AnnotationMethodHandlerExceptionResolver();
+    //        annotationMethodHandlerExceptionResolver.setOrder(0);
+    //        return annotationMethodHandlerExceptionResolver;
+    //    }
+
 
 }
