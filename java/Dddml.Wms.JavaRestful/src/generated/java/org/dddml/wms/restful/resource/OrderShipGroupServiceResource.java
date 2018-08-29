@@ -31,7 +31,7 @@ public class OrderShipGroupServiceResource {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
          orderShipGroupApplicationService.when(requestContent);
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     @PostMapping("CreateSOShipGroup")
@@ -40,7 +40,7 @@ public class OrderShipGroupServiceResource {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
          orderShipGroupApplicationService.when(requestContent);
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     @PostMapping("CreatePOShipment")
@@ -49,7 +49,7 @@ public class OrderShipGroupServiceResource {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
         return orderShipGroupApplicationService.when(requestContent);
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     @PostMapping("CreateSOShipment")
@@ -58,7 +58,7 @@ public class OrderShipGroupServiceResource {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
         return orderShipGroupApplicationService.when(requestContent);
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { logger.error("ExceptionCaught", ex); throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
 }
