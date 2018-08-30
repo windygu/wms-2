@@ -597,9 +597,13 @@ public class ImportServiceResource {
         // ////////////////////// 创建批次信息 //////////////////////
         if (lotIdColumnIdx != null) {
             Set<String> lotIds = matrix.stream().map(row -> row[lotIdColumnIdx]).collect(Collectors.toSet());
-            Map<String, String> lotMap = matrix.stream()
-                    .filter(row -> row[expirationDateColumnIdx] != null && !row[expirationDateColumnIdx].trim().isEmpty())
-                    .collect(Collectors.toMap(row -> row[lotIdColumnIdx], row -> row[expirationDateColumnIdx].trim()));
+            Map<String, String> lotMap = new HashMap<>();
+            matrix.stream().filter(row -> row[expirationDateColumnIdx] != null && !row[expirationDateColumnIdx].trim().isEmpty())
+                    .forEach(row -> {
+                        if(!lotMap.containsKey(row[lotIdColumnIdx])) {
+                            lotMap.put(row[lotIdColumnIdx], row[expirationDateColumnIdx].trim());
+                        }
+                    });
             for (String lotId : lotIds) {
                 if (lotId == null || lotId.trim().isEmpty()) {
                     continue;

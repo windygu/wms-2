@@ -68,6 +68,22 @@ public class InitAttributeSets {
             new String[]{"SecondaryUomQuantity", "Decimal", "false", "_F_N_0_"},// 次计量单位数量
     };
 
+    static final String ATTR_PO_REFERENCE_ID = "POReference";
+
+    public static final String PO_REFERENCE_FIELD_NAME = "_F_C20_3_";
+
+    private static AttributeCommand.CreateAttribute createPOReferenceAttribute() {
+        AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
+        a.setAttributeId(ATTR_PO_REFERENCE_ID);
+        a.setAttributeName("POReference");
+        a.setActive(true);
+        a.setIsMandatory(true);
+        a.setAttributeValueType("String");
+        a.setAttributeValueLength(20);
+        a.setFieldName(PO_REFERENCE_FIELD_NAME);//占用一个扩展字段
+        return a;
+    }
+
     /*
     static final String ATTR_QUALITY_STATUS_ID = "QualityStatus";
 
@@ -77,6 +93,25 @@ public class InitAttributeSets {
             new String[]{"UM-G", "单货不符，质量完好"},
             new String[]{"UM-NG", "单货不符，质量缺陷"}
     };
+
+    private static AttributeCommand.CreateAttribute createQualityStatusAttribute() {
+        AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
+        a.setAttributeId(ATTR_QUALITY_STATUS_ID);
+        a.setAttributeName("质量情况");
+        a.setActive(true);
+        a.setIsMandatory(true);
+        a.setAttributeValueType("String");
+        //a.setAttributeValueLength();
+        a.setFieldName("_F_C10_3_");//占用一个扩展字段
+        for (String[] vs : ATTR_QUALITY_STATUS_VALUES) {
+            AttributeValueCommand.CreateAttributeValue v = a.newCreateAttributeValue();
+            v.setValue(vs[0]);
+            v.setAttributeValueName(vs[1]);
+            v.setActive(true);
+            a.getAttributeValues().add(v);
+        }
+        return a;
+    }
     */
 
     // ---------------------------- 产品的属性集实例的 Id --------------------------
@@ -104,6 +139,7 @@ public class InitAttributeSets {
         // 牛卡纸库存单元属性集
         List<AttributeCommand.CreateAttribute> klbAttrs = createAttributes(KRAFT_LINERBOARD_ATTRS);
         //klbAttrs.add(createQualityStatusAttribute());
+        klbAttrs.add(createPOReferenceAttribute());
         AttributeSetCommand.CreateAttributeSet klbAttrSet = createAttributeSet(KRAFT_LINERBOARD_ATTR_SET_ID,
                 klbAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(klbAttrs, Collections.singletonList(klbAttrSet));
@@ -111,6 +147,7 @@ public class InitAttributeSets {
         // 瓦楞纸库存单元属性集
         List<AttributeCommand.CreateAttribute> cpAttrs = createAttributes(CORRUGATED_PAPER_ATTRS);
         //cpAttrs.add(createQualityStatusAttribute());
+        cpAttrs.add(createPOReferenceAttribute());
         AttributeSetCommand.CreateAttributeSet cpAttrSet = createAttributeSet(CORRUGATED_PAPER_ATTR_SET_ID,
                 cpAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(cpAttrs, Collections.singletonList(cpAttrSet));
@@ -119,6 +156,7 @@ public class InitAttributeSets {
         // create Fluff Pulp AttributeSet
         List<AttributeCommand.CreateAttribute> fpAttrs = createAttributes(FLUFF_PULP_ATTRS);
         //fpAttrs.add(createQualityStatusAttribute());
+        fpAttrs.add(createPOReferenceAttribute());
         AttributeSetCommand.CreateAttributeSet fpAttrSet = createAttributeSet(FLUFF_PULP_ATTR_SET_ID,
                 fpAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(fpAttrs, Collections.singletonList(fpAttrSet));
@@ -195,38 +233,19 @@ public class InitAttributeSets {
         return attrSetInst;
     }
 
-//    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst() {
-//        AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
-//        String attributeSetInstanceId = FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID;
-//        attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
-//        attrSetInst.setAttributeSetId(FLUFF_PULP_PRODUCT_ATTR_SET_ID);
-//        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "ADMT");
-//        ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "N");
-//        attrSetInst.setActive(true);
-//        attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
-//        return attrSetInst;
-//    }
+    //    private static AttributeSetInstanceCommand.CreateAttributeSetInstance createFpSecondaryQtyUomAdtmAndFscNoAttrSetInst() {
+    //        AttributeSetInstanceCommand.CreateAttributeSetInstance attrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
+    //        String attributeSetInstanceId = FP_SECONDARY_QTY_UOM_ADMT_FSC_NO_ATTR_SET_INST_ID;
+    //        attrSetInst.setAttributeSetInstanceId(attributeSetInstanceId);
+    //        attrSetInst.setAttributeSetId(FLUFF_PULP_PRODUCT_ATTR_SET_ID);
+    //        ReflectUtils.setPropertyValue(SECONDARY_QUANTITY_UOM_FIELD_NAME, attrSetInst, "ADMT");
+    //        ReflectUtils.setPropertyValue(FSC_FIELD_NAME, attrSetInst, "N");
+    //        attrSetInst.setActive(true);
+    //        attrSetInst.setCommandId(attrSetInst.getAttributeSetInstanceId());
+    //        return attrSetInst;
+    //    }
 
-    /*
-    private static AttributeCommand.CreateAttribute createQualityStatusAttribute() {
-        AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
-        a.setAttributeId(ATTR_QUALITY_STATUS_ID);
-        a.setAttributeName("质量情况");
-        a.setActive(true);
-        a.setIsMandatory(true);
-        a.setAttributeValueType("String");
-        //a.setAttributeValueLength();
-        a.setFieldName("_F_C10_3_");//占用一个扩展字段
-        for (String[] vs : ATTR_QUALITY_STATUS_VALUES) {
-            AttributeValueCommand.CreateAttributeValue v = a.newCreateAttributeValue();
-            v.setValue(vs[0]);
-            v.setAttributeValueName(vs[1]);
-            v.setActive(true);
-            a.getAttributeValues().add(v);
-        }
-        return a;
-    }
-    */
+
 
     private static List<AttributeCommand.CreateAttribute> createAttributes(String[][] attrArray){
         List<AttributeCommand.CreateAttribute> attrs = new ArrayList<>();
