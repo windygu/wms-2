@@ -257,7 +257,12 @@ public class ImportServiceResource {
         /**
          * 批次号列名。
          */
-        private String lotIdColumnName = "PO#";
+        private String lotIdColumnName = "LotId";
+
+        /**
+         * （批次的）过期时间。
+         */
+        private String expirationDateColumnName = "ExpirationDate";
 
         /**
          * 货位 Id 列名。
@@ -392,6 +397,14 @@ public class ImportServiceResource {
 
         public void setLotIdColumnName(String lotIdColumnName) {
             this.lotIdColumnName = lotIdColumnName;
+        }
+
+        public String getExpirationDateColumnName() {
+            return expirationDateColumnName;
+        }
+
+        public void setExpirationDateColumnName(String expirationDateColumnName) {
+            this.expirationDateColumnName = expirationDateColumnName;
         }
 
         public ProductMapping[] getProductMap() {
@@ -540,6 +553,7 @@ public class ImportServiceResource {
         Integer quantityColumnIdx = reader.getQuantityColumnIdx();
         Integer serialNumberColumnIdx = reader.getSerialNumberColumnIdx();
         Integer lotIdColumnIdx = reader.getLotIdColumnIdx();
+        Integer expirationDateColumnIdx = reader.getExpirationDateColumnIdx();
         Integer weightLbsColumnIdx = reader.getWeightLbsColumnIdx();
         Integer airDryWeightLbsColumnIdx = reader.getAirDryWeightLbsColumnIdx();
         Integer airDryPctColumnIdx = reader.getAirDryPctColumnIdx();
@@ -580,6 +594,33 @@ public class ImportServiceResource {
         //        System.out.println(poReferenceColumnIdx);
         //        System.out.println(attributeIdColumnIdxMap);
 
+        // ////////////////////// 创建批次信息 //////////////////////
+        if (lotIdColumnIdx != null) {
+            Set<String> lotIds = matrix.stream().map(row -> row[lotIdColumnIdx]).collect(Collectors.toSet());
+            Map<String, String> lotMap = matrix.stream()
+                    .filter(row -> row[expirationDateColumnIdx] != null && !row[expirationDateColumnIdx].trim().isEmpty())
+                    .collect(Collectors.toMap(row -> row[lotIdColumnIdx], row -> row[expirationDateColumnIdx].trim()));
+            for (String lotId : lotIds) {
+                if (lotId == null || lotId.trim().isEmpty()) {
+                    continue;
+                }
+                LotCommand.CreateLot createLot = new AbstractLotCommand.SimpleCreateLot();
+                createLot.setLotId(lotId.trim());
+                String expirationDateStr = lotMap.getOrDefault(lotId, null);
+                if(expirationDateStr != null) {
+                    Date expirationDate = parseEntryDate(expirationDateStr);
+                    createLot.setExpirationDate(new Timestamp(expirationDate.getTime()));
+                } else {
+                    // todo 创建一个不过期的“过期时间”???
+                    createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
+                }
+                createLot.setCommandId(lotId);
+                createLot.setRequesterId(SecurityContextUtil.getRequesterId());
+                lotApplicationService.when(createLot);
+            }
+        }
+        // /////////////////////////////////////////////////////////////
+
         Map<String, InOutCommands.Import> inOutMap = getImportingInOutMap(entryDateColumnIdx,
                 productColumnIdx, locatorIdColumnIdx,
                 serialNumberColumnIdx, lotIdColumnIdx,
@@ -596,23 +637,6 @@ public class ImportServiceResource {
             importInfo.setCommandId(importInfo.getDocumentNumber());
             importInfo.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(importInfo);
-        }
-
-        // ////////////////////// 创建批次信息 //////////////////////
-        if (lotIdColumnIdx != null) {
-            Set<String> lotIds = matrix.stream().map(row -> row[lotIdColumnIdx]).collect(Collectors.toSet());
-            for (String lotId : lotIds) {
-                if (lotId == null || lotId.trim().isEmpty()) {
-                    continue;
-                }
-                LotCommand.CreateLot createLot = new AbstractLotCommand.SimpleCreateLot();
-                createLot.setLotId(lotId.trim());
-                // 创建一个不过期的“过期时间”
-                createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
-                createLot.setCommandId(lotId);
-                createLot.setRequesterId(SecurityContextUtil.getRequesterId());
-                lotApplicationService.when(createLot);
-            }
         }
 
     }
@@ -705,6 +729,10 @@ public class ImportServiceResource {
             }
             if (rollCntColumnIdx != null) {
                 inOutLine.getAttributeSetInstance().put("rollCnt", row[rollCntColumnIdx]);
+            }
+            // 在属性集实例中也保存 PO 信息
+            if (poReferenceColumnIdx != null) {
+                inOutLine.getAttributeSetInstance().put("POReference", row[poReferenceColumnIdx]);
             }
             inOut.getInOutLines().add(inOutLine);
         }
@@ -1102,6 +1130,7 @@ public class ImportServiceResource {
         private Integer productColumnIdx;
         private Integer serialNumberColumnIdx;
         private Integer lotIdColumnIdx;
+        private Integer expirationDateColumnIdx;
         private Integer quantityColumnIdx;
         private Integer weightLbsColumnIdx;
         private Integer airDryWeightLbsColumnIdx;
@@ -1130,6 +1159,10 @@ public class ImportServiceResource {
 
         public Integer getLotIdColumnIdx() {
             return lotIdColumnIdx;
+        }
+
+        public Integer getExpirationDateColumnIdx() {
+            return expirationDateColumnIdx;
         }
 
         public Integer getQuantityColumnIdx() {
@@ -1184,6 +1217,7 @@ public class ImportServiceResource {
             productColumnIdx = null;
             serialNumberColumnIdx = null;
             lotIdColumnIdx = null;
+            expirationDateColumnIdx = null;
             quantityColumnIdx = null;
             weightLbsColumnIdx = null;
             airDryWeightLbsColumnIdx = null;
@@ -1224,6 +1258,8 @@ public class ImportServiceResource {
                                 serialNumberColumnIdx = j;
                             } else if (columnNameEquals(settings.getLotIdColumnName(), c)) {
                                 lotIdColumnIdx = j;
+                            } else if (columnNameEquals(settings.getExpirationDateColumnName(), c)) {
+                                expirationDateColumnIdx = j;
                             } else if (columnNameEquals(settings.getQuantityColumnName(), c)) {
                                 quantityColumnIdx = j;
                             } else if (columnNameEquals(settings.getWeightLbsColumnName(), c)) {
@@ -1281,6 +1317,7 @@ public class ImportServiceResource {
             } else if (columnIdx == (productColumnIdx != null ? productColumnIdx : -1)
                     || columnIdx == (serialNumberColumnIdx != null ? serialNumberColumnIdx : -1)
                     || columnIdx == (lotIdColumnIdx != null ? lotIdColumnIdx : -1)
+                    || columnIdx == (expirationDateColumnIdx != null ? expirationDateColumnIdx : -1)
                     || columnIdx == (rollCntColumnIdx != null ? rollCntColumnIdx : -1)
                     || columnIdx == (locatorIdColumnIdx != null ? locatorIdColumnIdx : -1)
                     || columnIdx == (poReferenceColumnIdx != null ? poReferenceColumnIdx : -1)

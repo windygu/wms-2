@@ -23,7 +23,7 @@ import java.util.Map;
  * <li>path - The URL path when the exception was raised</li>
  * </ul>
  *
- * @author Yang jiefeng
+ * @author Yang Jiefeng
  */
 public class SpringBootMapRestErrorConverter extends MapRestErrorConverter {
 
