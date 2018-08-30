@@ -863,17 +863,15 @@ public abstract class AbstractAttributeSetInstanceCommand extends AbstractComman
             this.active = active;
         }
 
-    private Set<String> statusIds;
+        private Set<String> statusIds;
 
-    public Set<String> getStatusIds()
-    {
-        return this.statusIds;
-    }
+        public Set<String> getStatusIds() {
+            return this.statusIds;
+        }
 
-    public void setStatusIds(Set<String> statusIds)
-    {
-        this.statusIds = statusIds;
-    }
+        public void setStatusIds(Set<String> statusIds) {
+            this.statusIds = statusIds;
+        }
 
     }
 
