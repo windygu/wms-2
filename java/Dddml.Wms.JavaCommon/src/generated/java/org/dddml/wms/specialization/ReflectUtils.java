@@ -44,6 +44,23 @@ public class ReflectUtils {
         throw new RuntimeException(String.format("Property %1$s is NOT present.", propertyName));
     }
 
+    public static boolean isPropertyPresent(String propertyName, Object obj) {
+        BeanInfo info = null;
+        try {
+            info = Introspector.getBeanInfo(obj.getClass());
+        } catch (IntrospectionException e) {
+            throw new RuntimeException(e);//e.printStackTrace();
+        }
+        Optional<PropertyDescriptor> pd =
+                Arrays.stream(info.getPropertyDescriptors())
+                        .filter(p -> Objects.equals(p.getName().toLowerCase(), propertyName.toLowerCase()))
+                        .findFirst();
+        if (pd.isPresent()) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean trySetPropertyValue(String propertyName, Object obj, Object value,
                                               BiFunction<Object, Class<?>, Object> convert) {
         boolean throwOnError = false;
@@ -109,9 +126,11 @@ public class ReflectUtils {
             }
         } catch (IllegalArgumentException | ClassCastException e) {// Runtime Exception.
             //e.printStackTrace();
-            //System.out.println("Set value error. Value: " + value
-            //        + "(" + (value != null ?  value.getClass() : "") + "), set " + propertyName + " of object: " + obj);
-            throw e;
+            if (throwOnError) {
+                //System.out.println("Set value error. Value: " + value
+                //        + "(" + (value != null ?  value.getClass() : "") + "), set " + propertyName + " of object: " + obj);
+                throw e;
+            }
         }
         return false;
     }

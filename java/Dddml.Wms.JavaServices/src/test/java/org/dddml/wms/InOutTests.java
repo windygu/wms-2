@@ -92,6 +92,7 @@ public class InOutTests {
         //attrSetInst_1.Add("AirDryMetricTon", (decimal)0.774);
         //attrSetInst_1.Add("RollCnt", 2);
         //attrSetInst_1.Add("AirDryPct", (decimal)101.650);
+        attrSetInst_1.put("statusIds", new String[] {"DAMAGE_WRAPPER", "DAMAGE_EDGE"});
         // //////////////////////////////////
         addLine.setAttributeSetInstance(attrSetInst_1);
         inOutApplicationService.when(addLine);
