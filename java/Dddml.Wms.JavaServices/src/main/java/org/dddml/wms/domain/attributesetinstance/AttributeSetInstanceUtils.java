@@ -55,12 +55,20 @@ public class AttributeSetInstanceUtils {
 
     static BiFunction<Object, Class<?>, Object> getConvertFunction() {
         return (Object o, Class<?> c) -> {
+            // //////////////////////////////////////////////
             // 先判断源类型
             if (o instanceof String) {
-                if (((String) o).trim().isEmpty()) {
+                if (c.equals(String.class)) {
+                    return o;
+                }
+                String s = ((String)o).trim();
+                if (s.isEmpty()) {
                     return null;
                 }
-                String s = (String)o;
+                if (c.equals(Boolean.class)) {
+                    return Boolean.parseBoolean(s);
+                }
+                //目标类型是数字类型的处理：
                 s = s.replace(",", "");
                 if (c.equals(BigDecimal.class)) {
                     return new BigDecimal(s);
@@ -74,12 +82,12 @@ public class AttributeSetInstanceUtils {
                 if (c.equals(Integer.class)) {
                     return (new BigDecimal(o.toString())).intValue();
                 }
-                if (c.equals(Boolean.class)) {
-                    return Boolean.parseBoolean(s);
-                }
             }
+            // //////////////////////////////////////////////
             // 再看看目标类型
             if (c.equals(Integer.class)) {
+                // ////////////////////////////////////////////////
+                // 目标类型是整数
                 if (o instanceof Integer) {
                     return o;
                 }
@@ -91,28 +99,34 @@ public class AttributeSetInstanceUtils {
                     if (o == null) return null;
                     return (new BigDecimal(o.toString())).intValue();
                 }
-                // ////////////////////////////////////////////////
             } else if (c.equals(String.class)) {
+                // ////////////////////////////////////////////////
+                // 目标类型是字符串
                 if (o != null) {
                     return o.toString();
                 }
             } else if (c.equals(Set.class)) {
                 // ////////////////////////////////////////////////
+                // 目标类型是“集”
                 if (o == null) {
                     return o;
                 }
                 if (o.getClass().isArray()) {
-                    Set resultSet = new HashSet();
                     //o.getClass().getComponentType();
                     Object array = o;
+                    Set resultSet = new HashSet();
                     if (array.getClass().isArray()) {
                         int length = Array.getLength(array);
                         for (int i = 0; i < length; i ++) {
                             Object arrayElement = Array.get(array, i);
-                            //System.out.println(arrayElement);
                             resultSet.add(arrayElement);
                         }
                     }
+                    return resultSet;
+                } else if (Collection.class.isAssignableFrom(o.getClass())) {
+                    Collection collection = (Collection) o;
+                    Set resultSet = new HashSet();
+                    resultSet.addAll(collection);
                     return resultSet;
                 }
             }
