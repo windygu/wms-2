@@ -63,8 +63,8 @@ public class InitInventoryItems {
 
         // ////////////////  导入库存文件的 URL ////////////////////////
         // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
-        //String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\初始化库存示例.xls";
-        String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/%E7%BB%92%E6%AF%9B%E6%B5%86%E5%BA%93%E5%AD%98%E6%B1%87%E6%80%BB20180825.xls";
+        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\绒毛浆库存初始化测试01.xls";
+        //String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/%E7%BB%92%E6%AF%9B%E6%B5%86%E5%BA%93%E5%AD%98%E6%B1%87%E6%80%BB20180825.xls";
         settings.setFileUrl(fileUrl);
 
         // /////////////////////////////////////////////////////////

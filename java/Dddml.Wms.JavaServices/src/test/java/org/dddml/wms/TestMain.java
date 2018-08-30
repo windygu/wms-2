@@ -36,6 +36,11 @@ public class TestMain {
     public static void main(final String[] args) throws Exception {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
+        //InOutTests inOutTests_0 = new InOutTests();
+        //inOutTests_0.setUp();
+        //inOutTests_0.testCreateAndCompleteAndReverseInOut();
+        //if (true) return;
+
         // //////////////////  initialize database data /////////////////
         if (true) { // if need to initialize, switch to true, else to false.
             try {

@@ -40,8 +40,6 @@ public class ImportShipments {
         url = HttpClientUtil.appendUrl(baseUrl, "ImportService/ImportShipments");
         ImportServiceResource.ImportingShipmentHeader importSettings = getImportingShipmentHeader();
         HttpClientUtil.post(token, url, importSettings);
-        //（现在只是生成若干入库单，执行掉这些入库单，库存就初始化好了）
-        // ///////////////////////////////////////
     }
 
     private static ImportServiceResource.ImportingShipmentHeader getImportingShipmentHeader() {
@@ -50,7 +48,7 @@ public class ImportShipments {
         // ////////////////  导入库存文件的 URL ////////////////////////
         // 需要先将导入文件“上传”到本服务能访问到的 URL 地址
         //String fileUrl = "https://takumi.oss-cn-qingdao.aliyuncs.com/NO_EXIST_FILE.xls";
-        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportTest001.xls";
+        String fileUrl = "file:///C:\\Users\\yangjiefeng\\Documents\\青岛\\ShipmentImportTest (2).xls";
         shipmentHeader.setFileUrl(fileUrl);
 
         //运单“头”信息
@@ -72,12 +70,12 @@ public class ImportShipments {
         // 就需要添加多少个“品名映射”
         // shipmentHeader.setProductMap(new ImportServiceResource.ProductMapping[]{getProductMapping1(), getProductMapping2()});
         // 如果没有（Excel 中使用了 ProductId），那么就使用一个空数组
-        shipmentHeader.setProductMap(new ImportServiceResource.ProductMapping[]{});
+        shipmentHeader.setProductMap(new ImportServiceResource.ProductMapping[]{ getProductMapping2() });
 
         return shipmentHeader;
     }
 
-    private ImportServiceResource.ProductMapping getProductMapping1() {
+    private static ImportServiceResource.ProductMapping getProductMapping1() {
         //ImportServiceResource.ProductMapping prdMapping1 = new ImportServiceResource.ProductMapping();
         //prdMapping1.setProductName("GOLDEN ISLES CO FLUFF PULP");//在 Excel 中出现的产品名称
         //prdMapping1.setProductId("21001");//在系统中的产品 Id（Product Id）
@@ -85,7 +83,14 @@ public class ImportShipments {
         return null;
     }
 
-    private ImportServiceResource.ProductMapping getProductMapping2() {
+    private static ImportServiceResource.ProductMapping getProductMapping2() {
+        ImportServiceResource.ProductMapping productMapping = new ImportServiceResource.ProductMapping();
+        productMapping.setProductName("GI SEMI-TREATED FLUFF");//在 Excel 中出现的产品名称
+        productMapping.setProductId("21101");//在系统中的产品 Id（Product Id）
+        return productMapping;
+    }
+
+    private static ImportServiceResource.ProductMapping getProductMapping3() {
         //ImportServiceResource.ProductMapping prdMapping1 = new ImportServiceResource.ProductMapping();
         //prdMapping1.setProductName("XXXX FLUFF PULP");//在 Excel 中出现的产品名称
         //prdMapping1.setProductId("2XXXX");//在系统中的产品 Id（Product Id）

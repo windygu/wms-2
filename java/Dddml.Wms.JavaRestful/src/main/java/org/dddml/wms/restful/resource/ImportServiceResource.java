@@ -29,7 +29,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.rmi.CORBA.Tie;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -54,6 +53,10 @@ public class ImportServiceResource {
         private static final String PRODUCT_COLUMN_NAME = "Product";
         private static final String SERIAL_NUMBER_COLUMN_NAME = "SerialNumber";
         private static final String LOT_ID_COLUMN_NAME = "LotId";
+        /**
+         * （批次的）过期时间。
+         */
+        private static final String EXPIRATION_DATE_COLUMN_NAME = "ExpirationDate";
         private static final String QUANTITY_COLUMN_NAME = "Quantity";
         private static final String BOL_NUMBER_COLUMN_NAME = "BOL#";
         private static final String VEHICLE_ID_COLUMN_NAME = "VehicleId";
@@ -485,7 +488,7 @@ public class ImportServiceResource {
 
     @PostMapping("ImportShipments")
     public void importShipments(@RequestBody ImportingShipmentHeader shipmentHeader)
-            throws MalformedURLException, IOException, BiffException {
+            throws MalformedURLException, IOException, BiffException, ParseException {
 
         Map<String, String> prdNameMap = getProductNameMap(shipmentHeader.getProductMap());
 
@@ -499,6 +502,7 @@ public class ImportServiceResource {
         Integer productColumnIdx = reader.getProductColumnIdx();
         Integer serialNumberColumnIdx = reader.getSerialNumberColumnIdx();
         Integer lotIdColumnIdx = reader.getLotIdColumnIdx();
+        Integer expirationDateColumnIdx = reader.getExpirationDateColumnIdx();
         Integer bolNumberColumnIdx = reader.getBolNumberColumnIdx();
         Integer vehicleIdColumnIdx = reader.getVehicleIdColumnIdx();
         Integer sealNumberColumnIdx = reader.getSealNumberColumnIdx();
@@ -522,6 +526,12 @@ public class ImportServiceResource {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", ShipmentSheetConstants.LOT_ID_COLUMN_NAME);
             }
         }
+
+        // ////////////////////// 创建批次信息 /////////////////////////
+        if (lotIdColumnIdx != null) {
+            createLots(lotIdColumnIdx, expirationDateColumnIdx, matrix);
+        }
+        // /////////////////////////////////////////////////////////////
 
         Map<String, ShipmentCommands.Import> shipmentMap = getImportingShipmentMap(
                 shipmentHeader,
@@ -584,44 +594,14 @@ public class ImportServiceResource {
             if (p.getIsManagedByLot() != null && p.getIsManagedByLot() && lotIdColumnIdx == null) {
                 throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getLotIdColumnName());
             }
-        }
-        //        System.out.println(weightLbsColumnIdx);
-        //        System.out.println(airDryWeightLbsColumnIdx);
-        //        System.out.println(airDryPctColumnIdx);
-        //        System.out.println(airDryMetricTonColumnIdx);
-        //        System.out.println(airDryWeightKgColumnIdx);
-        //        System.out.println(rollCntColumnIdx);
-        //        System.out.println(poReferenceColumnIdx);
-        //        System.out.println(attributeIdColumnIdxMap);
-
-        // ////////////////////// 创建批次信息 //////////////////////
-        if (lotIdColumnIdx != null) {
-            Set<String> lotIds = matrix.stream().map(row -> row[lotIdColumnIdx]).collect(Collectors.toSet());
-            Map<String, String> lotMap = new HashMap<>();
-            matrix.stream().filter(row -> row[expirationDateColumnIdx] != null && !row[expirationDateColumnIdx].trim().isEmpty())
-                    .forEach(row -> {
-                        if(!lotMap.containsKey(row[lotIdColumnIdx])) {
-                            lotMap.put(row[lotIdColumnIdx], row[expirationDateColumnIdx].trim());
-                        }
-                    });
-            for (String lotId : lotIds) {
-                if (lotId == null || lotId.trim().isEmpty()) {
-                    continue;
-                }
-                LotCommand.CreateLot createLot = new AbstractLotCommand.SimpleCreateLot();
-                createLot.setLotId(lotId.trim());
-                String expirationDateStr = lotMap.getOrDefault(lotId, null);
-                if(expirationDateStr != null) {
-                    Date expirationDate = parseEntryDate(expirationDateStr);
-                    createLot.setExpirationDate(new Timestamp(expirationDate.getTime()));
-                } else {
-                    // todo 创建一个不过期的“过期时间”???
-                    createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
-                }
-                createLot.setCommandId(lotId);
-                createLot.setRequesterId(SecurityContextUtil.getRequesterId());
-                lotApplicationService.when(createLot);
+            if (p.getIsManagedByLot() != null && p.getIsManagedByLot() && expirationDateColumnIdx == null) {
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", settings.getExpirationDateColumnName());
             }
+        }
+
+        // ////////////////////// 创建批次信息 /////////////////////////
+        if (lotIdColumnIdx != null) {
+            createLots(lotIdColumnIdx, expirationDateColumnIdx, matrix);
         }
         // /////////////////////////////////////////////////////////////
 
@@ -643,6 +623,39 @@ public class ImportServiceResource {
             inOutApplicationService.when(importInfo);
         }
 
+    }
+
+    void createLots(Integer lotIdColumnIdx, Integer expirationDateColumnIdx, List<String[]> matrix) throws ParseException {
+        if (lotIdColumnIdx != null) {
+            Set<String> lotIds = matrix.stream().map(row -> row[lotIdColumnIdx]).collect(Collectors.toSet());
+            Map<String, String> lotMap = new HashMap<>();
+            if (expirationDateColumnIdx != null) {
+                matrix.stream().filter(row -> row[expirationDateColumnIdx] != null && !row[expirationDateColumnIdx].trim().isEmpty())
+                        .forEach(row -> {
+                            if (!lotMap.containsKey(row[lotIdColumnIdx])) {
+                                lotMap.put(row[lotIdColumnIdx], row[expirationDateColumnIdx].trim());
+                            }
+                        });
+            }
+            for (String lotId : lotIds) {
+                if (lotId == null || lotId.trim().isEmpty()) {
+                    continue;
+                }
+                LotCommand.CreateLot createLot = new AbstractLotCommand.SimpleCreateLot();
+                createLot.setLotId(lotId.trim());
+                String expirationDateStr = lotMap.getOrDefault(lotId, null);
+                if(expirationDateStr != null) {
+                    Date expirationDate = parseEntryDate(expirationDateStr);
+                    createLot.setExpirationDate(new Timestamp(expirationDate.getTime()));
+                } else {
+                    // todo 创建一个不过期的“过期时间”???
+                    createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
+                }
+                createLot.setCommandId(lotId);
+                createLot.setRequesterId(SecurityContextUtil.getRequesterId());
+                lotApplicationService.when(createLot);
+            }
+        }
     }
 
     private Map<String, String> getProductNameMap(ProductMapping[] productMappings) {
@@ -954,9 +967,10 @@ public class ImportServiceResource {
         columnNames.addAll(Arrays.asList(ShipmentSheetConstants.SHIPMENT_ITEM_SUFFIX_COLUMN_NAMES));
 
         // /////////////////////////////////////////////
-        if (isManagedByLot) {
-            columnNames.add(ShipmentSheetConstants.LOT_ID_COLUMN_NAME);
-        }
+        //if (isManagedByLot) {
+        columnNames.add(ShipmentSheetConstants.LOT_ID_COLUMN_NAME);
+        columnNames.add(ShipmentSheetConstants.EXPIRATION_DATE_COLUMN_NAME);
+        //}
         columnNames.addAll(attrIds);
 
         return columnNames;
@@ -968,6 +982,11 @@ public class ImportServiceResource {
         private Integer productColumnIdx;
         private Integer serialNumberColumnIdx;
         private Integer lotIdColumnIdx;
+
+        /**
+         * （批次的）过期时间。
+         */
+        private Integer expirationDateColumnIdx;// = "ExpirationDate";
         private Integer quantityColumnIdx;
         private Integer bolNumberColumnIdx;
         private Integer vehicleIdColumnIdx;
@@ -993,6 +1012,10 @@ public class ImportServiceResource {
 
         public Integer getLotIdColumnIdx() {
             return lotIdColumnIdx;
+        }
+
+        public Integer getExpirationDateColumnIdx() {
+            return expirationDateColumnIdx;
         }
 
         public Integer getQuantityColumnIdx() {
@@ -1026,6 +1049,7 @@ public class ImportServiceResource {
             productColumnIdx = null;
             serialNumberColumnIdx = null;
             lotIdColumnIdx = null;
+            expirationDateColumnIdx = null;
             quantityColumnIdx = null;
             bolNumberColumnIdx = null;
             vehicleIdColumnIdx = null;
@@ -1060,6 +1084,8 @@ public class ImportServiceResource {
                                 serialNumberColumnIdx = j;
                             } else if (columnNameEquals(ShipmentSheetConstants.LOT_ID_COLUMN_NAME, c)) {
                                 lotIdColumnIdx = j;
+                            } else if (columnNameEquals(ShipmentSheetConstants.EXPIRATION_DATE_COLUMN_NAME, c)) {
+                                expirationDateColumnIdx = j;
                             } else if (columnNameEquals(ShipmentSheetConstants.QUANTITY_COLUMN_NAME, c)) {
                                 quantityColumnIdx = j;
                             } else if (columnNameEquals(ShipmentSheetConstants.BOL_NUMBER_COLUMN_NAME, c)) {
@@ -1097,6 +1123,7 @@ public class ImportServiceResource {
                     || columnIdx == (productColumnIdx != null ? productColumnIdx : -1)
                     || columnIdx == (serialNumberColumnIdx != null ? serialNumberColumnIdx : -1)
                     || columnIdx == (lotIdColumnIdx != null ? lotIdColumnIdx : -1)
+                    || columnIdx == (expirationDateColumnIdx != null ? expirationDateColumnIdx : -1)
                     || columnIdx == (bolNumberColumnIdx != null ? bolNumberColumnIdx : -1)
                     || columnIdx == (vehicleIdColumnIdx != null ? vehicleIdColumnIdx : -1)
                     || columnIdx == (sealNumberColumnIdx != null ? sealNumberColumnIdx : -1)
