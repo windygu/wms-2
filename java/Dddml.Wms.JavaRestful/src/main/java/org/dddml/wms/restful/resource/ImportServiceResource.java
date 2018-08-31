@@ -23,6 +23,8 @@ import org.dddml.wms.domain.shipment.ShipmentApplicationService;
 import org.dddml.wms.domain.shipment.ShipmentCommands;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.specialization.DomainError;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -435,6 +437,8 @@ public class ImportServiceResource {
         }
     }
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private ProductApplicationService productApplicationService;
 
@@ -455,12 +459,15 @@ public class ImportServiceResource {
 
     @GetMapping("GetShipmentItemColumnNames")
     public List<String> getShipmentItemColumnNames(@RequestParam(value = "productIds") String productIds) {
+        try {
         String[] prdIdArray = productIds.split(",");
         return getShipmentItemColumnNames(prdIdArray);
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     @GetMapping("GetShipmentImportTemplate")
     public ResponseEntity<InputStreamResource> getShipmentImportTemplate(@RequestParam(value = "productIds") String productIds) throws IOException, WriteException {
+        try {
         String[] prdIdArray = productIds.split(",");
         List<String> colNames = getShipmentItemColumnNames(prdIdArray);
 
@@ -484,11 +491,13 @@ public class ImportServiceResource {
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .header("Content-Disposition", "attachment; filename=" + filename)
                 .body(new InputStreamResource(inputStream));
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     @PostMapping("ImportShipments")
     public void importShipments(@RequestBody ImportingShipmentHeader shipmentHeader)
             throws MalformedURLException, IOException, BiffException, ParseException {
+        try {
 
         Map<String, String> prdNameMap = getProductNameMap(shipmentHeader.getProductMap());
 
@@ -545,11 +554,13 @@ public class ImportServiceResource {
             shipmentApplicationService.when(importInfo);
         }
         //return shipmentMap;
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     @PostMapping("InitializeInventoryItems")
     public void initializeInventoryItems(@RequestBody InitializingInventoryItemSettings settings)
             throws IOException, BiffException, ParseException {
+        try {
 
         Map<String, String> prdNameMap = getProductNameMap(settings.getProductMap());
 
@@ -622,6 +633,7 @@ public class ImportServiceResource {
             importInfo.setRequesterId(SecurityContextUtil.getRequesterId());
             inOutApplicationService.when(importInfo);
         }
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
 
     }
 
