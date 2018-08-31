@@ -44,9 +44,9 @@ public class MovementConfirmationResource {
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
                     @RequestParam(value = "maxResults", defaultValue = "2147483647") Integer maxResults,
                     @RequestParam(value = "filter", required = false) String filter) {
+        try {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
-        try {
 
             Iterable<MovementConfirmationState> states = null; 
             CriterionDto criterion = null;
