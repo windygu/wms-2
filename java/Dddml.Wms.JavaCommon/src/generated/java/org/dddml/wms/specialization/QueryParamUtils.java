@@ -22,7 +22,7 @@ public class QueryParamUtils {
                 if (!v.endsWith(")")) {
                     eqList.add(v);
                 } else {
-                    List<String> kws = Arrays.asList("eq", "gt", "lt", "ge", "le", "like", "notEq");
+                    List<String> kws = Arrays.asList("eq", "gt", "lt", "ge", "le", "like", "notEq", "ne");
                     String op = null;
                     int idx = v.indexOf("(");
                     if (idx > 0) {
@@ -30,7 +30,8 @@ public class QueryParamUtils {
                         String eval = v.substring(idx + 1, v.length() - 1);
                         if (op.equalsIgnoreCase("eq")) {
                             eqList.add(eval);
-                        } else if (op.equalsIgnoreCase("notEq")) {
+                        } else if (op.equalsIgnoreCase("notEq")
+                                || op.equalsIgnoreCase("ne")) {
                             CriterionDto c = new CriterionDto();
                             c.setType("eq");
                             c.setProperty(key);
