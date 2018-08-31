@@ -21,18 +21,26 @@ import java.util.Map;
  */
 @Configuration
 public class ExceptionHandlingConfig { //extends WebMvcConfigurerAdapter
-    @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
-        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-        localeChangeInterceptor.setParamName("lang");
-        return localeChangeInterceptor;
-    }
+    //    @Bean
+    //    public LocaleChangeInterceptor localeChangeInterceptor() {
+    //        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+    //        localeChangeInterceptor.setParamName("lang");
+    //        return localeChangeInterceptor;
+    //    }
 
+    /**
+     * 根据 Accept-Language 头信息来设置 Locale
+     * @return
+     */
     @Bean
     public AcceptHeaderLocaleResolver localeResolver() {
         return new AcceptHeaderLocaleResolver();
     }
 
+    /**
+     * 使用固定的 Locale
+     * @return
+     */
     @Bean
     public FixedLocaleResolver fixedLocaleResolver() {
         FixedLocaleResolver fixedLocaleResolver = new FixedLocaleResolver(Locale.SIMPLIFIED_CHINESE);
