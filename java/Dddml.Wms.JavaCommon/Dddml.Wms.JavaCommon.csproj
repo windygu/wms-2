@@ -2561,6 +2561,14 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\WarehouseEventId.java">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\support\AttributeSetInstanceExtensionFieldUtils.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldUtils.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\support\GenerateAttributeSetInstanceExtensionFieldUtils.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldUtils.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\DocumentStatusIds.java" />
     <Content Include="src\generated\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeApplicationService.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
@@ -6153,6 +6161,14 @@
 .\UomIds.java
 </LastOutputs>
     </None>
+    <Content Include="src\generated\java\org\dddml\wms\support\GenerateAttributeSetInstanceExtensionFieldUtils.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldUtils.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetInstanceExtensionFieldUtils.java
+.\GenerateAttributeSetInstanceExtensionFieldUtils.txt
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\generated\java\org\dddml\wms\specialization\" />

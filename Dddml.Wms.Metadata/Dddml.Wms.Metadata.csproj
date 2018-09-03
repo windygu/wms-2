@@ -75,6 +75,7 @@
     </None>
     <None Include="Templates\AttributeSetInstanceDddmlTemplate.tt" />
     <None Include="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" />
+    <Content Include="Templates\JavaAttributeSetInstanceExtensionFieldUtilsTemplate.tt" />
     <None Include="Templates\ExtensionFieldDddmlTemplate.tt" />
   </ItemGroup>
   <ItemGroup>

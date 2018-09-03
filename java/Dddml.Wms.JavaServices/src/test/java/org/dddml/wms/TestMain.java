@@ -40,12 +40,17 @@ public class TestMain {
         //inOutTests_0.setUp();
         //inOutTests_0.testCreateAndCompleteAndReverseInOut();
         //if (true) return;
+        //InitAttributeSetInstanceExtensionFields.createAttributeSetInstanceExtensionFieldsAndGroups();
+        //if (true) return;
 
         // //////////////////  initialize database data /////////////////
         if (true) { // if need to initialize, switch to true, else to false.
             try {
                 // 初始化属性集相关信息
                 InitAttributeSets.createDefaultAttributeSets();
+
+                // /////////////////////
+                InitAttributeSetInstanceExtensionFields.createAttributeSetInstanceExtensionFieldsAndGroups();
             } catch (Exception ex) {
                 if (InitEntityXmlData.isCausedByConstraintViolation(ex)) {
                     ex.printStackTrace();

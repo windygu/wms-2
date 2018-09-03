@@ -1,0 +1,22 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Metadata\Templates\JavaAttributeSetInstanceExtensionFieldUtilsTemplate.tt" #>
+<#@ include file="$(SolutionDir)Dddml.Wms.Metadata\AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
+<#
+// <copyright file="GenerateAttributeSetInstanceExtensionFieldUtils.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+	
+    var extensionFieldGroups = AttributeSetInstanceExtensionFieldMetadataUtils.GetExtensionFieldGroups();
+
+    var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields()
+        .Where(f => !AttributeSetInstanceExtensionFieldMetadataUtils.ReservedFieldNames.Contains(f.Name)).ToList();
+
+	var attributeSetInstanceExtensionFieldUtilsTemplate = new JavaAttributeSetInstanceExtensionFieldUtilsTemplate(extensionFieldGroups, extensionFields);
+	attributeSetInstanceExtensionFieldUtilsTemplate.Output.Encoding = new System.Text.UTF8Encoding(false);
+	attributeSetInstanceExtensionFieldUtilsTemplate.RenderToFile("AttributeSetInstanceExtensionFieldUtils.java");
+
+#>

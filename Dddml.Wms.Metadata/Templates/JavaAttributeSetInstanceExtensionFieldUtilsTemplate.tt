@@ -1,0 +1,90 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ include file="T4Toolbox.tt" #>
+<#+
+// <copyright file="JavaAttributeSetInstanceExtensionFieldUtilsTemplate.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class JavaAttributeSetInstanceExtensionFieldUtilsTemplate : CSharpTemplate
+{
+    IList<ExtensionFieldGroupMetadata> _extensionFieldGroups;
+
+    IList<ExtensionFieldMetadata> _extensionFields;
+
+    public JavaAttributeSetInstanceExtensionFieldUtilsTemplate(IList<ExtensionFieldGroupMetadata> extensionFieldGroups, IList<ExtensionFieldMetadata> extensionFields)
+    {
+        this._extensionFieldGroups = extensionFieldGroups;
+        this._extensionFields = extensionFields;
+    }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+
+#>
+package org.dddml.wms.support;
+
+import org.dddml.wms.domain.*;
+
+import java.util.*;
+import org.dddml.wms.domain.attributesetinstanceextensionfield.*;
+import org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.*;
+
+public class AttributeSetInstanceExtensionFieldUtils {
+
+    public static List<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField> CreateAttributeSetInstanceExtensionFields() {
+        List<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField> fs = new ArrayList<>();
+
+<#+ 
+		foreach (var fMeta in this._extensionFields)
+		{
+            string fieldName = fMeta.Name;
+            if (Char.IsUpper(fieldName[0])) 
+            {
+                fieldName = fieldName.Substring(0, 1).ToLowerInvariant() + fieldName.Substring(1);
+            }
+#>
+        AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField f<#= fMeta.Name #> = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField();
+        f<#= fMeta.Name #>.setName("<#= fieldName #>");
+        f<#= fMeta.Name #>.setType("<#= fMeta.Type #>");
+        f<#= fMeta.Name #>.setLength(<#= fMeta.Length == null ? "null" : fMeta.Length.Value.ToString() #>);
+        f<#= fMeta.Name #>.setGroupId(<#= fMeta.GroupId == null ? "null" : String.Format("\"{0}\"", fMeta.GroupId) #>);
+        f<#= fMeta.Name #>.setActive(true);
+        fs.add(f<#= fMeta.Name #>);
+
+<#+ 
+		}
+#>
+        return fs;
+    }
+
+    public static List<AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup> CreateAttributeSetInstanceExtensionFieldGroups() {
+        List<AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup> groups = new ArrayList<>();
+
+<#+ 
+		foreach (var gMeta in this._extensionFieldGroups)
+		{
+#>
+        AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup fg<#= gMeta.NamePrefix #> = new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup();
+        fg<#= gMeta.NamePrefix #>.setId("<#= gMeta.NamePrefix #>");
+        fg<#= gMeta.NamePrefix #>.setFieldType("<#= gMeta.FieldType.EndsWith("?") ? gMeta.FieldType.Substring(0, gMeta.FieldType.Length-1) : gMeta.FieldType #>");
+        fg<#= gMeta.NamePrefix #>.setFieldLength(<#= gMeta.FieldLength == null ? "null" : gMeta.FieldLength.ToString() #>);
+        fg<#= gMeta.NamePrefix #>.setFieldCount(<#= gMeta.FieldCount #>);
+        fg<#= gMeta.NamePrefix #>.setNameFormat("<#= gMeta.NameFormat #>");
+        fg<#= gMeta.NamePrefix #>.setActive(true);
+        groups.add(fg<#= gMeta.NamePrefix #>);
+
+<#+ 
+		}
+#>
+        return groups;
+    }
+
+}
+
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>
