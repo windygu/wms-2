@@ -71,6 +71,7 @@ aggregates:
         
       entities:
       
+      
         MovementConfirmationLine:
           id: 
             name: LineNumber
@@ -140,6 +141,16 @@ aggregates:
                 Java: "getScrappedQuantity() == null || getScrappedQuantity() .compareTo (getConfirmedQuantity()) <= 0"
 
 
+      # --------------------------------------------
+      # 方法
+      methods:
+      
+        # 对生成的方法进行设置
+        Patch:
+          verificationLogic:
+            Java: >
+              if (!"InProgress".equalsIgnoreCase({this}.getDocumentStatusId())) { throw new IllegalArgumentException("DocumentStatus error."); }
+              
       # --------------------------------------------
       metadata:
         # NoEventSourcing: true

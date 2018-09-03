@@ -42,6 +42,10 @@ public class TestMain {
         //if (true) return;
         //InitAttributeSetInstanceExtensionFields.createAttributeSetInstanceExtensionFieldsAndGroups();
         //if (true) return;
+        //MovementTests movementTests_0 = new MovementTests();
+        //movementTests_0.setUp();
+        //movementTests_0.testCreateAndCompleteAndReverseMovement();
+        //if (true) return;
 
         // //////////////////  initialize database data /////////////////
         if (true) { // if need to initialize, switch to true, else to false.

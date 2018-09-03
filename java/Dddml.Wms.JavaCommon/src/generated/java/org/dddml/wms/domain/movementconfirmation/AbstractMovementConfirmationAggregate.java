@@ -34,8 +34,33 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
 
     public void mergePatch(MovementConfirmationCommand.MergePatchMovementConfirmation c)
     {
+        try {
+            verifyPatch(c);
+        } catch (Exception ex) {
+            throw new DomainError("VerificationFailed", ex);
+        }
         MovementConfirmationEvent e = map(c);
         apply(e);
+    }
+
+    private void verifyPatch(MovementConfirmationCommand.MergePatchMovementConfirmation c) {
+        String movementDocumentNumber = c.getMovementDocumentNumber();
+        String MovementDocumentNumber = movementDocumentNumber;
+        Boolean isApproved = c.getIsApproved();
+        Boolean IsApproved = isApproved;
+        BigDecimal approvalAmount = c.getApprovalAmount();
+        BigDecimal ApprovalAmount = approvalAmount;
+        Boolean processed = c.getProcessed();
+        Boolean Processed = processed;
+        String processing = c.getProcessing();
+        String Processing = processing;
+        String documentTypeId = c.getDocumentTypeId();
+        String DocumentTypeId = documentTypeId;
+        String description = c.getDescription();
+        String Description = description;
+
+        if (!"InProgress".equalsIgnoreCase(getState().getDocumentStatusId())) { throw new IllegalArgumentException("DocumentStatus error."); }
+
     }
 
     public void delete(MovementConfirmationCommand.DeleteMovementConfirmation c)

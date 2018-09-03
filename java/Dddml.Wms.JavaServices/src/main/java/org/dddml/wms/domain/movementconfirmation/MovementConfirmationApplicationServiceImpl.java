@@ -111,7 +111,7 @@ public class MovementConfirmationApplicationServiceImpl extends AbstractMovement
             BigDecimal tq = d.getTargetQuantity() != null ? d.getTargetQuantity() : BigDecimal.ZERO;
             BigDecimal cq = d.getConfirmedQuantity() != null ? d.getConfirmedQuantity() : BigDecimal.ZERO;
             BigDecimal sq = d.getScrappedQuantity() != null ? d.getScrappedQuantity() : BigDecimal.ZERO;
-            boolean b = tq.equals(cq.add(sq));
+            boolean b = (tq.compareTo(cq.add(sq)) == 0);
             if (!b) {
                 throw new RuntimeException(
                         String.format("Error movement confirmation line quantities. Movement line No.: %1$s",
