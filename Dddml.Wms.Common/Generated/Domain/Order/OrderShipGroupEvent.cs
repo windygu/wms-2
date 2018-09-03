@@ -18,7 +18,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual OrderShipGroupEventId OrderShipGroupEventId { get; set; }
 
-        public virtual long? ShipGroupSeqId
+        public virtual string ShipGroupSeqId
         {
             get { return OrderShipGroupEventId.ShipGroupSeqId; }
             set { OrderShipGroupEventId.ShipGroupSeqId = value; }

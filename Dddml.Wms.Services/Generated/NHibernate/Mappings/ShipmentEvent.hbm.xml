@@ -23,7 +23,7 @@
     <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
     <property name="PrimaryOrderId" ><column name="PrimaryOrderId" sql-type="VARCHAR(20)" /></property>
     <property name="PrimaryReturnId" ><column name="PrimaryReturnId" sql-type="VARCHAR(20)" /></property>
-    <property name="PrimaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="PrimaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="VARCHAR(20)" /></property>
     <property name="PicklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></property>
     <property name="BolNumber" ><column name="BolNumber" sql-type="VARCHAR(60)" /></property>
     <property name="SealNumber" ><column name="SealNumber" sql-type="VARCHAR(60)" /></property>

@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.Order
 {
 	public interface IOrderShipGroupState : IOrderShipGroupStateProperties, 
 		IGlobalIdentity<OrderShipGroupId>, 
-		ILocalIdentity<long?>, 
+		ILocalIdentity<string>, 
 		ICreated<string>, 
 		IUpdated<string>, 
 		IDeleted, 

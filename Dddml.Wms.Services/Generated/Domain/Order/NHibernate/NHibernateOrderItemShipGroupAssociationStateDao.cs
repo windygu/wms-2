@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Order.NHibernate
 
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IOrderItemShipGroupAssociationState> FindByOrderIdAndOrderShipGroupShipGroupSeqId(string orderId, long? orderShipGroupShipGroupSeqId)
+        public IEnumerable<IOrderItemShipGroupAssociationState> FindByOrderIdAndOrderShipGroupShipGroupSeqId(string orderId, string orderShipGroupShipGroupSeqId)
         {
             var criteria = CurrentSession.CreateCriteria<OrderItemShipGroupAssociationState>();
             var partIdCondition = Restrictions.Conjunction()

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Order
 
 	public interface IOrderShipGroupStateProperties
 	{
-		long? ShipGroupSeqId { get; set; }
+		string ShipGroupSeqId { get; set; }
 
 		string ShipmentMethodTypeId { get; set; }
 

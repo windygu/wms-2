@@ -81,17 +81,17 @@ namespace Dddml.Wms.Domain.Order
             this._removedOrderShipGroupStates.Add(state.GlobalId, state);
         }
 
-        public virtual IOrderShipGroupState Get(long? shipGroupSeqId)
+        public virtual IOrderShipGroupState Get(string shipGroupSeqId)
 		{
 			return Get(shipGroupSeqId, false, false);
 		}
 
-        public virtual IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation)
+        public virtual IOrderShipGroupState Get(string shipGroupSeqId, bool forCreation)
         {
 			return Get(shipGroupSeqId, forCreation, false);
         }
 
-        public virtual IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation, bool nullAllowed)
+        public virtual IOrderShipGroupState Get(string shipGroupSeqId, bool forCreation, bool nullAllowed)
         {
             OrderShipGroupId globalId = new OrderShipGroupId(_orderState.OrderId, shipGroupSeqId);
             if (_loadedOrderShipGroupStates.ContainsKey(globalId)) {

@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IStatusItemState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _statusItemApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _statusItemApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new WebApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (StatusItemMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? StatusItemMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , StatusItemsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -60,7 +60,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = StatusItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpGet]
@@ -80,7 +80,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDto.ReturnedFieldsString = fields;
             }
             return stateDto;
-          } catch (Exception ex) { var response = StatusItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -88,12 +88,11 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public long GetCount(string filter = null)
         {
-          try
-          {
+          try {
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _statusItemApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _statusItemApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new WebApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (StatusItemMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? StatusItemMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
@@ -101,7 +100,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 count = _statusItemApplicationService.GetCount(StatusItemsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
             }
             return count;
-          } catch (Exception ex) { var response = StatusItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route(Order = 1)]
@@ -117,7 +116,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = value.StatusId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
-          } catch (Exception ex) { var response = StatusItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPut][SetRequesterId]
@@ -136,7 +135,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
             StatusItemsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _statusItemApplicationService.When(value as ICreateStatusItem);
-          } catch (Exception ex) { var response = StatusItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPatch][SetRequesterId]
@@ -145,7 +144,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             StatusItemsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _statusItemApplicationService.When(value as IMergePatchStatusItem);
-          } catch (Exception ex) { var response = StatusItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("_metadata/filteringFields")]
@@ -165,7 +164,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 }
             }
             return filtering;
-          } catch (Exception ex) { var response = StatusItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -177,34 +176,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         // ////////////////////////////////
-
-        private class ApiControllerTypeConverter : Dddml.Support.Criterion.ITypeConverter
-        {
-            public T ConvertFromString<T>(string text)
-            {
-                return (T)ApplicationContext.Current.TypeConverter.ConvertFromString(typeof(T), text);
-            }
-
-            public object ConvertFromString(Type type, string text)
-            {
-                return ApplicationContext.Current.TypeConverter.ConvertFromString(type, text);
-            }
-
-            public string ConvertToString<T>(T value)
-            {
-                return ApplicationContext.Current.TypeConverter.ConvertToString(typeof(T), value);
-            }
-
-            public string ConvertToString(object value)
-            {
-                return ApplicationContext.Current.TypeConverter.ConvertToString(value.GetType(), value);
-            }
-
-            public string[] ConvertToStringArray(object[] values)
-            {
-                throw new NotSupportedException();
-            }
-        }
 
         private class PropertyTypeResolver : IPropertyTypeResolver
         {
@@ -221,32 +192,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     
     public static class StatusItemsControllerUtils
     {
-
-        public static HttpResponseMessage GetErrorHttpResponseMessage(Exception ex)
-        {
-            var errorName = ex.GetType().Name;
-            var errorMessage = ex.Message;
-            if (ex is DomainError)
-            {
-                DomainError de = ex as DomainError;
-                errorName = de.Name;
-                errorMessage = de.Message;
-            }
-            else
-            {
-                //改进??
-                errorMessage = String.IsNullOrWhiteSpace(ex.Message) ? String.Empty : ex.Message.Substring(0, (ex.Message.Length > 140) ? 140 : ex.Message.Length);
-            }
-            dynamic content = new JObject();
-            content.ErrorName = errorName;
-            content.ErrorMessage = errorMessage;
-            var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
-            {
-                Content = new ObjectContent<JObject>(content as JObject, new JsonMediaTypeFormatter()),
-                ReasonPhrase = "Server Error"
-            };
-            return response;
-        }
 
         public static void SetNullIdOrThrowOnInconsistentIds(string id, CreateOrMergePatchOrDeleteStatusItemDto value)
         {

@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             }
         }
 
-		public virtual long? PrimaryShipGroupSeqId
+		public virtual string PrimaryShipGroupSeqId
 		{
             get
             {
@@ -167,7 +167,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             }
         }
 
-        long? IPicklistBinStateProperties.PrimaryShipGroupSeqId
+        string IPicklistBinStateProperties.PrimaryShipGroupSeqId
         {
             get 
             {

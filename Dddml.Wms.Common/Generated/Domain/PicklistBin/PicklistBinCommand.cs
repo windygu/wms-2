@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 		public virtual string PrimaryOrderId { get; set; }
 
-		public virtual long? PrimaryShipGroupSeqId { get; set; }
+		public virtual string PrimaryShipGroupSeqId { get; set; }
 
 		public virtual bool? Active { get; set; }
 

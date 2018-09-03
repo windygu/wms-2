@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 			set { OrderItemShipGrpInvResId.OrderId = value; }
 		}
 
-		protected internal virtual long? OrderItemShipGrpInvResIdShipGroupSeqId {
+		protected internal virtual string OrderItemShipGrpInvResIdShipGroupSeqId {
 			get { return OrderItemShipGrpInvResId.ShipGroupSeqId; }
 			set { OrderItemShipGrpInvResId.ShipGroupSeqId = value; }
 		}
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation
 
         protected internal static readonly string[] FlattenedPropertyNames = new string[] { "OrderItemShipGrpInvResIdOrderId", "OrderItemShipGrpInvResIdShipGroupSeqId", "OrderItemShipGrpInvResIdOrderItemSeqId", "OrderItemShipGrpInvResIdProductId", "OrderItemShipGrpInvResIdLocatorId", "OrderItemShipGrpInvResIdAttributeSetInstanceId", "Version" };
 
-        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(long?), typeof(string), typeof(string), typeof(string), typeof(string), typeof(long) };
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(string), typeof(string), typeof(string), typeof(long) };
 
         protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
 

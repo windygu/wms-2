@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string PrimaryReturnId { get; set; }
 
-		long? PrimaryShipGroupSeqId { get; set; }
+		string PrimaryShipGroupSeqId { get; set; }
 
 		string PicklistBinId { get; set; }
 

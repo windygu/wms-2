@@ -31,28 +31,36 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpPost][SetRequesterId]
         public void CreatePOShipGroup([FromBody]OrderShipGroupServiceCommandDtos.CreatePOShipGroupDto requestContent)
         {
+          try {
              _orderShipGroupApplicationService.When(requestContent.ToCreatePOShipGroup());
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
         [Route("CreateSOShipGroup")]
         [HttpPost][SetRequesterId]
         public void CreateSOShipGroup([FromBody]OrderShipGroupServiceCommandDtos.CreateSOShipGroupDto requestContent)
         {
+          try {
              _orderShipGroupApplicationService.When(requestContent.ToCreateSOShipGroup());
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
         [Route("CreatePOShipment")]
         [HttpPost][SetRequesterId]
         public string CreatePOShipment([FromBody]OrderShipGroupServiceCommandDtos.CreatePOShipmentDto requestContent)
         {
+          try {
             return _orderShipGroupApplicationService.When(requestContent.ToCreatePOShipment());
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
         [Route("CreateSOShipment")]
         [HttpPost][SetRequesterId]
         public string CreateSOShipment([FromBody]OrderShipGroupServiceCommandDtos.CreateSOShipmentDto requestContent)
         {
+          try {
             return _orderShipGroupApplicationService.When(requestContent.ToCreateSOShipment());
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
     }

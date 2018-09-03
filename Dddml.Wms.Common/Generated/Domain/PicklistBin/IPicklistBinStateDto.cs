@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             set;
         }
 
-        long? PrimaryShipGroupSeqId
+        string PrimaryShipGroupSeqId
         {
             get;
             set;

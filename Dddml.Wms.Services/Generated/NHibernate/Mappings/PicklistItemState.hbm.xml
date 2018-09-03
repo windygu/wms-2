@@ -9,7 +9,7 @@
         <key-property name="PicklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="PicklistItemOrderShipGrpInvIdOrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="PicklistItemOrderShipGrpInvIdOrderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
-        <key-property name="PicklistItemOrderShipGrpInvIdShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="PicklistItemOrderShipGrpInvIdShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="PicklistItemOrderShipGrpInvIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="PicklistItemOrderShipGrpInvIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="PicklistItemOrderShipGrpInvIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>

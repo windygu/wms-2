@@ -37,7 +37,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IOrderState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _orderApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _orderApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new WebApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (OrderMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrderMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , OrdersControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -61,7 +61,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpGet]
@@ -81,7 +81,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDto.ReturnedFieldsString = fields;
             }
             return stateDto;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -89,12 +89,11 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpGet]
         public long GetCount(string filter = null)
         {
-          try
-          {
+          try {
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _orderApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _orderApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new WebApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (OrderMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrderMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
@@ -102,7 +101,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 count = _orderApplicationService.GetCount(OrdersControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
             }
             return count;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route(Order = 1)]
@@ -118,7 +117,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = value.OrderId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPut][SetRequesterId]
@@ -137,7 +136,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
             OrdersControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _orderApplicationService.When(value as ICreateOrder);
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPatch][SetRequesterId]
@@ -146,7 +145,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           try {
             OrdersControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _orderApplicationService.When(value as IMergePatchOrder);
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("_metadata/filteringFields")]
@@ -166,7 +165,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 }
             }
             return filtering;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{id}/_stateEvents/{version}")]
@@ -178,7 +177,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var conv = new OrderStateEventDtoConverter();
             var se = _orderApplicationService.GetEvent(idObj, version);
             return se == null ? null : conv.ToOrderStateEventDto(se);
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{id}/_historyStates/{version}")]
@@ -199,7 +198,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDto.ReturnedFieldsString = fields;
             }
             return stateDto;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderRoles/{partyRoleId}")]
@@ -212,7 +211,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new OrderRoleStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderRoles/")]
@@ -230,7 +229,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderItems/{orderItemSeqId}")]
@@ -243,7 +242,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new OrderItemStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderItems/")]
@@ -261,12 +260,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderShipGroups/{shipGroupSeqId}")]
         [HttpGet]
-        public IOrderShipGroupStateDto GetOrderShipGroup(string orderId, long? shipGroupSeqId)
+        public IOrderShipGroupStateDto GetOrderShipGroup(string orderId, string shipGroupSeqId)
         {
           try {
             var state = (OrderShipGroupState)_orderApplicationService.GetOrderShipGroup(orderId, shipGroupSeqId);
@@ -274,7 +273,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new OrderShipGroupStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderShipGroups/")]
@@ -292,12 +291,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction")]
         [HttpPut][SetRequesterId]
-        public void OrderShipGroupAction(string orderId, long? shipGroupSeqId, [FromBody]OrderCommandDtos.OrderShipGroupActionRequestContent content)
+        public void OrderShipGroupAction(string orderId, string shipGroupSeqId, [FromBody]OrderCommandDtos.OrderShipGroupActionRequestContent content)
         {
           try {
             var cmd = content.ToOrderShipGroupAction();
@@ -311,12 +310,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", idObj, cmd.OrderShipGroupId);
             }
             _orderApplicationService.When(cmd);
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")]
         [HttpGet]
-        public IOrderItemShipGroupAssociationStateDto GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
+        public IOrderItemShipGroupAssociationStateDto GetOrderItemShipGroupAssociation(string orderId, string orderShipGroupShipGroupSeqId, string orderItemSeqId)
         {
           try {
             var state = (OrderItemShipGroupAssociationState)_orderApplicationService.GetOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
@@ -324,12 +323,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new OrderItemShipGroupAssociationStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/")]
         [HttpGet]
-        public IEnumerable<IOrderItemShipGroupAssociationStateDto> GetOrderItemShipGroupAssociations(string orderId, long? orderShipGroupShipGroupSeqId)
+        public IEnumerable<IOrderItemShipGroupAssociationStateDto> GetOrderItemShipGroupAssociations(string orderId, string orderShipGroupShipGroupSeqId)
         {
           try {
             var states = _orderApplicationService.GetOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
@@ -342,7 +341,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 
@@ -354,34 +353,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         // ////////////////////////////////
-
-        private class ApiControllerTypeConverter : Dddml.Support.Criterion.ITypeConverter
-        {
-            public T ConvertFromString<T>(string text)
-            {
-                return (T)ApplicationContext.Current.TypeConverter.ConvertFromString(typeof(T), text);
-            }
-
-            public object ConvertFromString(Type type, string text)
-            {
-                return ApplicationContext.Current.TypeConverter.ConvertFromString(type, text);
-            }
-
-            public string ConvertToString<T>(T value)
-            {
-                return ApplicationContext.Current.TypeConverter.ConvertToString(typeof(T), value);
-            }
-
-            public string ConvertToString(object value)
-            {
-                return ApplicationContext.Current.TypeConverter.ConvertToString(value.GetType(), value);
-            }
-
-            public string[] ConvertToStringArray(object[] values)
-            {
-                throw new NotSupportedException();
-            }
-        }
 
         private class PropertyTypeResolver : IPropertyTypeResolver
         {
@@ -398,32 +369,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     
     public static class OrdersControllerUtils
     {
-
-        public static HttpResponseMessage GetErrorHttpResponseMessage(Exception ex)
-        {
-            var errorName = ex.GetType().Name;
-            var errorMessage = ex.Message;
-            if (ex is DomainError)
-            {
-                DomainError de = ex as DomainError;
-                errorName = de.Name;
-                errorMessage = de.Message;
-            }
-            else
-            {
-                //改进??
-                errorMessage = String.IsNullOrWhiteSpace(ex.Message) ? String.Empty : ex.Message.Substring(0, (ex.Message.Length > 140) ? 140 : ex.Message.Length);
-            }
-            dynamic content = new JObject();
-            content.ErrorName = errorName;
-            content.ErrorMessage = errorMessage;
-            var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
-            {
-                Content = new ObjectContent<JObject>(content as JObject, new JsonMediaTypeFormatter()),
-                ReasonPhrase = "Server Error"
-            };
-            return response;
-        }
 
         public static void SetNullIdOrThrowOnInconsistentIds(string id, CreateOrMergePatchOrDeleteOrderDto value)
         {

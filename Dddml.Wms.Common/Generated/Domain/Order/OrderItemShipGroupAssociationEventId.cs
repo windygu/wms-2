@@ -23,9 +23,9 @@ namespace Dddml.Wms.Domain.Order
 			set { _orderId = value; } 
 		}
 
-		private long? _orderShipGroupShipGroupSeqId;
+		private string _orderShipGroupShipGroupSeqId;
 
-		public virtual long? OrderShipGroupShipGroupSeqId { 
+		public virtual string OrderShipGroupShipGroupSeqId { 
 			get { return this._orderShipGroupShipGroupSeqId; } 
 			set { _orderShipGroupShipGroupSeqId = value; } 
 		}
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.Order
 		{
 		}
 
-		public OrderItemShipGroupAssociationEventId (string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId, long orderVersion)
+		public OrderItemShipGroupAssociationEventId (string orderId, string orderShipGroupShipGroupSeqId, string orderItemSeqId, long orderVersion)
 		{
 			this._orderId = orderId;
 			this._orderShipGroupShipGroupSeqId = orderShipGroupShipGroupSeqId;
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected internal static readonly string[] FlattenedPropertyNames = new string[] { "OrderId", "OrderShipGroupShipGroupSeqId", "OrderItemSeqId", "OrderVersion" };
 
-        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(long?), typeof(string), typeof(long) };
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(long) };
 
         protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
 

@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.PicklistBin
             set;
         }
 
-        public virtual long? PrimaryShipGroupSeqId
+        public virtual string PrimaryShipGroupSeqId
         {
             get;
             set;

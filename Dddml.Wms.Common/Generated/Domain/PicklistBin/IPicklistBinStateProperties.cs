@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
 		string PrimaryOrderId { get; set; }
 
-		long? PrimaryShipGroupSeqId { get; set; }
+		string PrimaryShipGroupSeqId { get; set; }
 
 		long Version { get; set; }
 

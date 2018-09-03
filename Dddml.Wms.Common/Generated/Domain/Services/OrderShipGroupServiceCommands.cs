@@ -19,7 +19,7 @@ namespace Dddml.Wms.Domain.Services
         {
             public string OrderId { get; set; }
 
-            public long? ShipGroupSeqId { get; set; }
+            public string ShipGroupSeqId { get; set; }
 
             public int? NumberOfPackages { get; set; }
 
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.Services
         {
             public string OrderId { get; set; }
 
-            public long? ShipGroupSeqId { get; set; }
+            public string ShipGroupSeqId { get; set; }
 
             public int? NumberOfPackages { get; set; }
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Services
         {
             public string OrderId { get; set; }
 
-            public long? ShipGroupSeqId { get; set; }
+            public string ShipGroupSeqId { get; set; }
 
             public string ShipmentId { get; set; }
 
@@ -97,7 +97,7 @@ namespace Dddml.Wms.Domain.Services
         {
             public string OrderId { get; set; }
 
-            public long? ShipGroupSeqId { get; set; }
+            public string ShipGroupSeqId { get; set; }
 
             public string ShipmentId { get; set; }
 

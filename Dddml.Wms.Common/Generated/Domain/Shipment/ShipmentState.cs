@@ -390,7 +390,7 @@ namespace Dddml.Wms.Domain.Shipment
 			{
 				if (e.IsPropertyPrimaryShipGroupSeqIdRemoved)
 				{
-					this.PrimaryShipGroupSeqId = default(long?);
+					this.PrimaryShipGroupSeqId = default(string);
 				}
 			}
 			else

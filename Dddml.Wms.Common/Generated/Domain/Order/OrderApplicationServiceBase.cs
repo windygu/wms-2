@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.Order
             return StateQueryRepository.GetOrderItems(orderId);
         }
 
-        public virtual IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId)
+        public virtual IOrderShipGroupState GetOrderShipGroup(string orderId, string shipGroupSeqId)
         {
             return StateQueryRepository.GetOrderShipGroup(orderId, shipGroupSeqId);
         }
@@ -196,12 +196,12 @@ namespace Dddml.Wms.Domain.Order
             return StateQueryRepository.GetOrderShipGroups(orderId);
         }
 
-        public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
+        public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, string orderShipGroupShipGroupSeqId, string orderItemSeqId)
         {
             return StateQueryRepository.GetOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
         }
 
-        public IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, long? orderShipGroupShipGroupSeqId)
+        public IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, string orderShipGroupShipGroupSeqId)
         {
             return StateQueryRepository.GetOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
         }

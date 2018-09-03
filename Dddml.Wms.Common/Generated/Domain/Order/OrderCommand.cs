@@ -714,7 +714,7 @@ namespace Dddml.Wms.Domain.Order
                 }
             }
 
-            long? IOrderShipGroupCommand.ShipGroupSeqId
+            string IOrderShipGroupCommand.ShipGroupSeqId
             {
                 get 
                 {

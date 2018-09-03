@@ -29,7 +29,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string OrderItemSeqId { get; set; }
 
-		long? ShipGroupSeqId { get; set; }
+		string ShipGroupSeqId { get; set; }
 
 		string ProductId { get; set; }
 

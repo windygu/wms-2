@@ -31,7 +31,9 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         [HttpPost][SetRequesterId]
         public string GetDocumentNumber([FromBody]IdServiceCommandDtos.GetDocumentNumberDto requestContent)
         {
+          try {
             return _idApplicationService.When(requestContent.ToGetDocumentNumber());
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
     }

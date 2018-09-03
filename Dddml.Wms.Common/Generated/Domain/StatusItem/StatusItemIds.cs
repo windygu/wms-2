@@ -12,52 +12,57 @@ namespace Dddml.Wms.Domain.StatusItem
 	public static partial class StatusItemIds
 	{
         /// <summary>
-        /// Edge Damage.
+        /// 质量不符.
+        /// </summary>
+        public const string DamageDisagreement = "DAMAGE_DISAGREEMENT";
+
+        /// <summary>
+        /// 纸边破损.
         /// </summary>
         public const string DamageEdge = "DAMAGE_EDGE";
 
         /// <summary>
-        /// Side Damage.
+        /// 侧面破损.
         /// </summary>
         public const string DamageSide = "DAMAGE_SIDE";
 
         /// <summary>
-        /// End Damage.
+        /// 两端破损.
         /// </summary>
         public const string DamageEnd = "DAMAGE_END";
 
         /// <summary>
-        /// Wrapper Damage/Broken Pallet base.
+        /// 包装破损.
         /// </summary>
         public const string DamageWrapper = "DAMAGE_WRAPPER";
 
         /// <summary>
-        /// Core Damage.
+        /// 纸芯不良.
         /// </summary>
         public const string DamageCore = "DAMAGE_CORE";
 
         /// <summary>
-        /// Deformation/out of roudness.
+        /// 严重变形.
         /// </summary>
         public const string DamageDeformation = "DAMAGE_DEFORMATION";
 
         /// <summary>
-        /// Water Damage.
+        /// 水湿.
         /// </summary>
         public const string DamageWater = "DAMAGE_WATER";
 
         /// <summary>
-        /// Dirt and Contamination.
+        /// 脏污、异物.
         /// </summary>
         public const string DamageDirt = "DAMAGE_DIRT";
 
         /// <summary>
-        /// Shortage, Non-delivery.
+        /// 短重，短装.
         /// </summary>
         public const string DamageShortage = "DAMAGE_SHORTAGE";
 
         /// <summary>
-        /// Other(wrinkle,spoiling,mould,rust,etc.).
+        /// 其他(褶皱，磨损，发霉……).
         /// </summary>
         public const string DamageOther = "DAMAGE_OTHER";
 

@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
-        long? OrderShipGroupShipGroupSeqId
+        string OrderShipGroupShipGroupSeqId
         {
             get;
             set;

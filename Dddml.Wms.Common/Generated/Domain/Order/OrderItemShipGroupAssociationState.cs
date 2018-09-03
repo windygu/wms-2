@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.Order
 			}
 		}
 
-        public override long? OrderShipGroupShipGroupSeqId {
+        public override string OrderShipGroupShipGroupSeqId {
 			get {
 				return this.OrderItemShipGroupAssociationId.OrderShipGroupShipGroupSeqId;
 			}

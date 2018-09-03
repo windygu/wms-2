@@ -116,7 +116,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = OrganizationStructuresControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("_metadata/filteringFields")]
@@ -133,7 +133,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 }
             }
             return filtering;
-          } catch (Exception ex) { var response = OrganizationStructuresControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 		// /////////////////////////////////////////////////

@@ -179,17 +179,15 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             this.active = active;
         }
 
-    private Set<String> damageStatusIds;
+        private Set<String> damageStatusIds;
 
-    public Set<String> getDamageStatusIds()
-    {
-        return this.damageStatusIds;
-    }
+        public Set<String> getDamageStatusIds() {
+            return this.damageStatusIds;
+        }
 
-    public void setDamageStatusIds(Set<String> damageStatusIds)
-    {
-        this.damageStatusIds = damageStatusIds;
-    }
+        public void setDamageStatusIds(Set<String> damageStatusIds) {
+            this.damageStatusIds = damageStatusIds;
+        }
 
         public InOutLineImageCommand.CreateInOutLineImage newCreateInOutLineImage()
         {

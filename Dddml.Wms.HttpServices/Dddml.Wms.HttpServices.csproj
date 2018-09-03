@@ -445,6 +445,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Specialization\HttpServiceExceptionUtils.cs" />
+    <Compile Include="Specialization\WebApiControllerTypeConverter.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

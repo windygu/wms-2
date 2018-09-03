@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.Order
 		
 		void AddOrderShipGroupEvent(IOrderShipGroupStateCreated e);
 
-		IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId);
+		IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(string shipGroupSeqId);
 
 	
 	}
@@ -172,11 +172,11 @@ namespace Dddml.Wms.Domain.Order
 		
 		void AddOrderShipGroupEvent(IOrderShipGroupEvent e);
 
-		IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId);
+		IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(string shipGroupSeqId);
 
-		IOrderShipGroupStateMergePatched NewOrderShipGroupStateMergePatched(long? shipGroupSeqId);
+		IOrderShipGroupStateMergePatched NewOrderShipGroupStateMergePatched(string shipGroupSeqId);
 
-		IOrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(long? shipGroupSeqId);
+		IOrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(string shipGroupSeqId);
 
 
 	}

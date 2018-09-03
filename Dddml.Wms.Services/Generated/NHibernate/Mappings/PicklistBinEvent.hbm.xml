@@ -22,7 +22,7 @@
     <property name="PicklistId" ><column name="PicklistId" sql-type="VARCHAR(20)" /></property>
     <property name="BinLocationNumber" ><column name="BinLocationNumber" sql-type="DECIMAL(20,0)" /></property>
     <property name="PrimaryOrderId" ><column name="PrimaryOrderId" sql-type="VARCHAR(20)" /></property>
-    <property name="PrimaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="PrimaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="VARCHAR(20)" /></property>
     <property name="Active" ></property>
     <subclass name="PicklistBinStateCreated" discriminator-value="Created">
     	

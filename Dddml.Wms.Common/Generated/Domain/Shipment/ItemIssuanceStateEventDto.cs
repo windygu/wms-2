@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string OrderItemSeqId { get; set; }
 
-		public virtual long? ShipGroupSeqId { get; set; }
+		public virtual string ShipGroupSeqId { get; set; }
 
 		public virtual string ProductId { get; set; }
 

@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Order
 
     public partial class OrderShipGroupStateDto : IOrderShipGroupStateDto
     {
-        public virtual long? ShipGroupSeqId
+        public virtual string ShipGroupSeqId
         {
             get;
             set;

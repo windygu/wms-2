@@ -336,7 +336,7 @@ namespace Dddml.Wms.Domain.Order
                 ThrowOnInconsistentIds(innerProperties, innerOrderIdName, innerOrderIdValue, outerOrderIdName, outerOrderIdValue);
             }
 
-            if (innerProperties.OrderShipGroupShipGroupSeqId == default(long?))
+            if (innerProperties.OrderShipGroupShipGroupSeqId == default(string))
             {
                 innerProperties.OrderShipGroupShipGroupSeqId = properties.ShipGroupSeqId;
             }
@@ -990,7 +990,7 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-        protected virtual void DoOrderShipGroupAction(long? shipGroupSeqId, string value, Action<string> setOrderShipGroupStatusId)
+        protected virtual void DoOrderShipGroupAction(string shipGroupSeqId, string value, Action<string> setOrderShipGroupStatusId)
         {
             var pCommandHandler = this.OrderShipGroupOrderShipGroupActionCommandHandler;
             var pCmdContent = value;

@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        long? PrimaryShipGroupSeqId
+        string PrimaryShipGroupSeqId
         {
             get;
             set;

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Order
 
 	public abstract class OrderShipGroupCommandBase : IOrderShipGroupCommand
 	{
-		public virtual long? ShipGroupSeqId { get; set; }
+		public virtual string ShipGroupSeqId { get; set; }
 
 
 		public virtual string RequesterId { get; set; }

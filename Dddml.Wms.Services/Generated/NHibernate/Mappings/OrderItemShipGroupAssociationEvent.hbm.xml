@@ -7,7 +7,7 @@
 
     <composite-id name="OrderItemShipGroupAssociationEventId" class="Dddml.Wms.Domain.Order.OrderItemShipGroupAssociationEventId">
         <key-property name="OrderId" ><column name="OrderItemShipGroupAssociationIdOrderId" sql-type="VARCHAR(20)" /></key-property>
-        <key-property name="OrderShipGroupShipGroupSeqId" ><column name="OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="OrderShipGroupShipGroupSeqId" ><column name="OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="OrderItemSeqId" ><column name="OrderItemShipGroupAssociationIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="OrderVersion" ></key-property>
     </composite-id>

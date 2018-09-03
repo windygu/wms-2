@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
-        public virtual long? OrderShipGroupShipGroupSeqId
+        public virtual string OrderShipGroupShipGroupSeqId
         {
             get;
             set;

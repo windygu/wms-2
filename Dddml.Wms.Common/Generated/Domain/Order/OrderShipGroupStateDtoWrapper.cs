@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.Order
 			return this._state;
 		}
 
-		public virtual long? ShipGroupSeqId
+		public virtual string ShipGroupSeqId
 		{
             get
             {
@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-        long? IOrderShipGroupStateProperties.ShipGroupSeqId
+        string IOrderShipGroupStateProperties.ShipGroupSeqId
         {
             get 
             {
@@ -916,7 +916,7 @@ namespace Dddml.Wms.Domain.Order
 			get { return (_state as IOrderShipGroupState).GlobalId; }
 		}
 
-        long? ILocalIdentity<long?>.LocalId
+        string ILocalIdentity<string>.LocalId
         {
 			get { return (_state as IOrderShipGroupState).LocalId; }
         }

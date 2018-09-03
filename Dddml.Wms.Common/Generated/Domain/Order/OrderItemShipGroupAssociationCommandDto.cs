@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string OrderId { get; set; }
 
-		public virtual long? OrderShipGroupShipGroupSeqId { get; set; }
+		public virtual string OrderShipGroupShipGroupSeqId { get; set; }
 
 		public virtual bool? IsPropertyQuantityRemoved { get; set; }
 

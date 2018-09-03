@@ -28833,7 +28833,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         public string OrderId { get; set; }
 
 		[JsonProperty("shipGroupSeqId")]
-        public long? ShipGroupSeqId { get; set; }
+        public string ShipGroupSeqId { get; set; }
 
 
     } // end class
@@ -28847,7 +28847,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         public string OrderId { get; set; }
 
 		[JsonProperty("orderShipGroupShipGroupSeqId")]
-        public long? OrderShipGroupShipGroupSeqId { get; set; }
+        public string OrderShipGroupShipGroupSeqId { get; set; }
 
 		[JsonProperty("orderItemSeqId")]
         public string OrderItemSeqId { get; set; }

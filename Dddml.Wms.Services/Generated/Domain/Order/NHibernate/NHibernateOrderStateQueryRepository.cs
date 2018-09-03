@@ -164,7 +164,7 @@ namespace Dddml.Wms.Domain.Order.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId)
+        public virtual IOrderShipGroupState GetOrderShipGroup(string orderId, string shipGroupSeqId)
         {
             var entityId = new OrderShipGroupId(orderId, shipGroupSeqId);
             return CurrentSession.Get<OrderShipGroupState>(entityId);
@@ -182,14 +182,14 @@ namespace Dddml.Wms.Domain.Order.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
+        public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, string orderShipGroupShipGroupSeqId, string orderItemSeqId)
         {
             var entityId = new OrderItemShipGroupAssociationId(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
             return CurrentSession.Get<OrderItemShipGroupAssociationState>(entityId);
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, long? orderShipGroupShipGroupSeqId)
+        public IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, string orderShipGroupShipGroupSeqId)
         {
             var criteria = CurrentSession.CreateCriteria<OrderItemShipGroupAssociationState>();
             var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()

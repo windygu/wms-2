@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        public virtual long? ShipGroupSeqId
+        public virtual string ShipGroupSeqId
         {
             get;
             set;

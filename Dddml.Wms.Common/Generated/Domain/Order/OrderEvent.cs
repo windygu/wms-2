@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.Order
 			get { return ApplicationContext.Current["OrderShipGroupEventDao"] as IOrderShipGroupEventDao; }
 		}
 
-        protected OrderShipGroupEventId NewOrderShipGroupEventId(long? shipGroupSeqId)
+        protected OrderShipGroupEventId NewOrderShipGroupEventId(string shipGroupSeqId)
         {
             var stateEventId = new OrderShipGroupEventId(this.OrderEventId.OrderId, shipGroupSeqId, this.OrderEventId.Version);
             return stateEventId;
@@ -389,7 +389,7 @@ namespace Dddml.Wms.Domain.Order
 			this._orderShipGroupEvents[e.OrderShipGroupEventId] = e;
 		}
 
-        public virtual IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        public virtual IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(string shipGroupSeqId)
         {
             var stateEvent = new OrderShipGroupStateCreated(NewOrderShipGroupEventId(shipGroupSeqId));
             return stateEvent;
@@ -639,19 +639,19 @@ namespace Dddml.Wms.Domain.Order
 			this._orderShipGroupEvents[e.OrderShipGroupEventId] = e;
 		}
 
-        public virtual IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        public virtual IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(string shipGroupSeqId)
         {
             var stateEvent = new OrderShipGroupStateCreated(NewOrderShipGroupEventId(shipGroupSeqId));
             return stateEvent;
         }
 
-        public virtual IOrderShipGroupStateMergePatched NewOrderShipGroupStateMergePatched(long? shipGroupSeqId)
+        public virtual IOrderShipGroupStateMergePatched NewOrderShipGroupStateMergePatched(string shipGroupSeqId)
         {
             var stateEvent = new OrderShipGroupStateMergePatched(NewOrderShipGroupEventId(shipGroupSeqId));
             return stateEvent;
         }
 
-        public virtual IOrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(long? shipGroupSeqId)
+        public virtual IOrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(string shipGroupSeqId)
         {
             var stateEvent = new OrderShipGroupStateRemoved(NewOrderShipGroupEventId(shipGroupSeqId));
             return stateEvent;

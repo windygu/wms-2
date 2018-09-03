@@ -19,7 +19,7 @@ namespace Dddml.Wms.Domain.Order
 
         void Save (IOrderItemShipGroupAssociationState state);
 
-        IEnumerable<IOrderItemShipGroupAssociationState> FindByOrderIdAndOrderShipGroupShipGroupSeqId(string orderId, long? orderShipGroupShipGroupSeqId);
+        IEnumerable<IOrderItemShipGroupAssociationState> FindByOrderIdAndOrderShipGroupShipGroupSeqId(string orderId, string orderShipGroupShipGroupSeqId);
 
         void Delete(IOrderItemShipGroupAssociationState state);
 

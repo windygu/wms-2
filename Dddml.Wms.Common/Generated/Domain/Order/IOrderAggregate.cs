@@ -25,7 +25,7 @@ namespace Dddml.Wms.Domain.Order
 
 		void MergePatch (IMergePatchOrder c);
 
-		void OrderShipGroupAction(long? shipGroupSeqId, string value, long version, string commandId, string requesterId);
+		void OrderShipGroupAction(string shipGroupSeqId, string value, long version, string commandId, string requesterId);
 
 
 	}

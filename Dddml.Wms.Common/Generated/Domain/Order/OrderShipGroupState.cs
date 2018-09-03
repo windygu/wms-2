@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.Order
 			}
 		}
 
-        long? ILocalIdentity<long?>.LocalId
+        string ILocalIdentity<string>.LocalId
         {
             get
             {
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.Order
 			}
 		}
 
-        public override long? ShipGroupSeqId {
+        public override string ShipGroupSeqId {
 			get {
 				return this.OrderShipGroupId.ShipGroupSeqId;
 			}

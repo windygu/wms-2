@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryReturnId { get; set; }
 
-		public virtual long? PrimaryShipGroupSeqId { get; set; }
+		public virtual string PrimaryShipGroupSeqId { get; set; }
 
 		public virtual string PicklistBinId { get; set; }
 
@@ -1177,7 +1177,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string OrderItemSeqId { get; set; }
 
-            public long? ShipGroupSeqId { get; set; }
+            public string ShipGroupSeqId { get; set; }
 
             public string ProductId { get; set; }
 
@@ -1265,7 +1265,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string OrderItemSeqId { get; set; }
 
-            public long? ShipGroupSeqId { get; set; }
+            public string ShipGroupSeqId { get; set; }
 
             public string ItemIssuanceSeqId { get; set; }
 

@@ -263,7 +263,7 @@ namespace Dddml.Wms.Domain.Shipment
 			{
 				if (e.IsPropertyShipGroupSeqIdRemoved)
 				{
-					this.ShipGroupSeqId = default(long?);
+					this.ShipGroupSeqId = default(string);
 				}
 			}
 			else

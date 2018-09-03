@@ -16,11 +16,11 @@ namespace Dddml.Wms.Domain.Order
     public interface IOrderShipGroupStates : IEnumerable<IOrderShipGroupState>, ISaveable
     {
         
-        IOrderShipGroupState Get(long? shipGroupSeqId);
+        IOrderShipGroupState Get(string shipGroupSeqId);
 
-        IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation);
+        IOrderShipGroupState Get(string shipGroupSeqId, bool forCreation);
 
-        IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation, bool nullAllowed);
+        IOrderShipGroupState Get(string shipGroupSeqId, bool forCreation, bool nullAllowed);
         
         void Remove(IOrderShipGroupState state);
 

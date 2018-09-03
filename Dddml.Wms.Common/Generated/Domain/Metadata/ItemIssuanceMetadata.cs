@@ -106,8 +106,8 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "ShipGroupSeqId",
-                    Type = typeof(long),
-                    TypeName = "long",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",

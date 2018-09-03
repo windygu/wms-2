@@ -802,7 +802,7 @@ namespace Dddml.Wms.Domain.Order
 
 
 
-        private OrderShipGroupEventId NewOrderShipGroupEventId(long? shipGroupSeqId)
+        private OrderShipGroupEventId NewOrderShipGroupEventId(string shipGroupSeqId)
         {
             var eId = new OrderShipGroupEventId();
             eId.OrderId = this.OrderEventId.OrderId;
@@ -811,7 +811,7 @@ namespace Dddml.Wms.Domain.Order
             return eId;
         }
 
-        public virtual OrderShipGroupStateCreatedDto NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        public virtual OrderShipGroupStateCreatedDto NewOrderShipGroupStateCreated(string shipGroupSeqId)
         {
             var e = new OrderShipGroupStateCreatedDto();
             var eId = NewOrderShipGroupEventId(shipGroupSeqId);
@@ -819,7 +819,7 @@ namespace Dddml.Wms.Domain.Order
             return e;
         }
 
-        public virtual OrderShipGroupStateMergePatchedDto NewOrderShipGroupStateMergePatched(long? shipGroupSeqId)
+        public virtual OrderShipGroupStateMergePatchedDto NewOrderShipGroupStateMergePatched(string shipGroupSeqId)
         {
             var e = new OrderShipGroupStateMergePatchedDto();
             var eId = NewOrderShipGroupEventId(shipGroupSeqId);
@@ -827,7 +827,7 @@ namespace Dddml.Wms.Domain.Order
             return e;
         }
 
-        public virtual OrderShipGroupStateRemovedDto NewOrderShipGroupStateRemoved(long? shipGroupSeqId)
+        public virtual OrderShipGroupStateRemovedDto NewOrderShipGroupStateRemoved(string shipGroupSeqId)
         {
             var e = new OrderShipGroupStateRemovedDto();
             var eId = NewOrderShipGroupEventId(shipGroupSeqId);
@@ -845,7 +845,7 @@ namespace Dddml.Wms.Domain.Order
             this._orderShipGroupEvents.AddOrderShipGroupEvent(e);
         }
 
-        IOrderShipGroupStateCreated IOrderStateCreated.NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        IOrderShipGroupStateCreated IOrderStateCreated.NewOrderShipGroupStateCreated(string shipGroupSeqId)
         {
             return NewOrderShipGroupStateCreated(shipGroupSeqId);
         }
@@ -860,17 +860,17 @@ namespace Dddml.Wms.Domain.Order
             this._orderShipGroupEvents.AddOrderShipGroupEvent(e);
         }
 
-        IOrderShipGroupStateCreated IOrderStateMergePatched.NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        IOrderShipGroupStateCreated IOrderStateMergePatched.NewOrderShipGroupStateCreated(string shipGroupSeqId)
         {
             return NewOrderShipGroupStateCreated(shipGroupSeqId);
         }
 
-        IOrderShipGroupStateMergePatched IOrderStateMergePatched.NewOrderShipGroupStateMergePatched(long? shipGroupSeqId)
+        IOrderShipGroupStateMergePatched IOrderStateMergePatched.NewOrderShipGroupStateMergePatched(string shipGroupSeqId)
         {
             return NewOrderShipGroupStateMergePatched(shipGroupSeqId);
         }
 
-        IOrderShipGroupStateRemoved IOrderStateMergePatched.NewOrderShipGroupStateRemoved(long? shipGroupSeqId)
+        IOrderShipGroupStateRemoved IOrderStateMergePatched.NewOrderShipGroupStateRemoved(string shipGroupSeqId)
         {
             return NewOrderShipGroupStateRemoved(shipGroupSeqId);
         }

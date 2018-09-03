@@ -8,7 +8,7 @@
     <composite-id name="OrderShipmentId" class="Dddml.Wms.Domain.OrderShipment.OrderShipmentId">
         <key-property name="OrderId" ><column name="OrderShipmentIdOrderId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="OrderItemSeqId" ><column name="OrderShipmentIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
-        <key-property name="ShipGroupSeqId" ><column name="OrderShipmentIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="ShipGroupSeqId" ><column name="OrderShipmentIdShipGroupSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="ShipmentId" ><column name="OrderShipmentIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="ShipmentItemSeqId" ><column name="OrderShipmentIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
     </composite-id>

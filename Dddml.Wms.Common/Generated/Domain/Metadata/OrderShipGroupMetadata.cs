@@ -18,8 +18,8 @@ namespace Dddml.Wms.Domain.Metadata
         private static PropertyMetadata[] _properties = new PropertyMetadata[]{
                 new PropertyMetadata {
                     Name = "ShipGroupSeqId",
-                    Type = typeof(long),
-                    TypeName = "long",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -1064,8 +1064,8 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "OrderShipGroupId.ShipGroupSeqId",
-                    Type = typeof(long),
-                    TypeName = "long",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",

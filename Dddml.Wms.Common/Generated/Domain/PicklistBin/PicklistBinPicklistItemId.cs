@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 			set { PicklistItemOrderShipGrpInvId.OrderItemSeqId = value; }
 		}
 
-		protected internal virtual long? PicklistItemOrderShipGrpInvIdShipGroupSeqId {
+		protected internal virtual string PicklistItemOrderShipGrpInvIdShipGroupSeqId {
 			get { return PicklistItemOrderShipGrpInvId.ShipGroupSeqId; }
 			set { PicklistItemOrderShipGrpInvId.ShipGroupSeqId = value; }
 		}
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         protected internal static readonly string[] FlattenedPropertyNames = new string[] { "PicklistBinId", "PicklistItemOrderShipGrpInvIdOrderId", "PicklistItemOrderShipGrpInvIdOrderItemSeqId", "PicklistItemOrderShipGrpInvIdShipGroupSeqId", "PicklistItemOrderShipGrpInvIdProductId", "PicklistItemOrderShipGrpInvIdLocatorId", "PicklistItemOrderShipGrpInvIdAttributeSetInstanceId" };
 
-        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(long?), typeof(string), typeof(string), typeof(string) };
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(string), typeof(string), typeof(string), typeof(string) };
 
         protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
 

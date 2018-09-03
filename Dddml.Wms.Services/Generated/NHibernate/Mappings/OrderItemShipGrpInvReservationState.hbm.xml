@@ -7,7 +7,7 @@
 
     <composite-id name="OrderItemShipGrpInvResId" class="Dddml.Wms.Domain.OrderItemShipGrpInvReservation.OrderItemShipGrpInvResId">
         <key-property name="OrderId" ><column name="OrderItemShipGrpInvResIdOrderId" sql-type="VARCHAR(20)" /></key-property>
-        <key-property name="ShipGroupSeqId" ><column name="OrderItemShipGrpInvResIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="ShipGroupSeqId" ><column name="OrderItemShipGrpInvResIdShipGroupSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="OrderItemSeqId" ><column name="OrderItemShipGrpInvResIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="ProductId" ><column name="OrderItemShipGrpInvResIdProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="LocatorId" ><column name="OrderItemShipGrpInvResIdLocatorId" length="50" /></key-property>

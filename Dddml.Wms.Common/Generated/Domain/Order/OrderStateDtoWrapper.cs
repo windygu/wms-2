@@ -1256,17 +1256,17 @@ namespace Dddml.Wms.Domain.Order
                 return _innerStates.GetEnumerator();
             }
 
-            public IOrderShipGroupState Get(long? shipGroupSeqId)
+            public IOrderShipGroupState Get(string shipGroupSeqId)
             {
                 throw new NotSupportedException();
             }
 
-            public IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation)
+            public IOrderShipGroupState Get(string shipGroupSeqId, bool forCreation)
             {
                 throw new NotSupportedException();
             }
 
-            public IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation, bool nullAllowed)
+            public IOrderShipGroupState Get(string shipGroupSeqId, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

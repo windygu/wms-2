@@ -48,13 +48,13 @@ namespace Dddml.Wms.Domain.Order
 
         IEnumerable<IOrderItemState> GetOrderItems(string orderId);
 
-        IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId);
+        IOrderShipGroupState GetOrderShipGroup(string orderId, string shipGroupSeqId);
 
         IEnumerable<IOrderShipGroupState> GetOrderShipGroups(string orderId);
 
-        IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId);
+        IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, string orderShipGroupShipGroupSeqId, string orderItemSeqId);
 
-        IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, long? orderShipGroupShipGroupSeqId);
+        IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, string orderShipGroupShipGroupSeqId);
 
 
 	}

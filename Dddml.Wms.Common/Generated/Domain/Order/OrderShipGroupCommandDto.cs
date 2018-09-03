@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.Order
             set { this.CommandId = value; }
         }
 
-		public virtual long? ShipGroupSeqId { get; set; }
+		public virtual string ShipGroupSeqId { get; set; }
 
 		public virtual string ShipmentMethodTypeId { get; set; }
 

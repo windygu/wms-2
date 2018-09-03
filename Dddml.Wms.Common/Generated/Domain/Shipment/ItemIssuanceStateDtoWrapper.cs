@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual long? ShipGroupSeqId
+		public virtual string ShipGroupSeqId
 		{
             get
             {
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-        long? IItemIssuanceStateProperties.ShipGroupSeqId
+        string IItemIssuanceStateProperties.ShipGroupSeqId
         {
             get 
             {

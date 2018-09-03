@@ -431,8 +431,8 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "PicklistItemOrderShipGrpInvId.ShipGroupSeqId",
-                    Type = typeof(long),
-                    TypeName = "long",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -648,8 +648,8 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "PicklistBinPicklistItemId.PicklistItemOrderShipGrpInvIdShipGroupSeqId",
-                    Type = typeof(long),
-                    TypeName = "long",
+                    Type = typeof(string),
+                    TypeName = "string",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",

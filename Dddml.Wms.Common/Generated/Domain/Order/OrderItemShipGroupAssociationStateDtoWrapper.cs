@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-		public virtual long? OrderShipGroupShipGroupSeqId
+		public virtual string OrderShipGroupShipGroupSeqId
 		{
             get
             {
@@ -230,7 +230,7 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-        long? IOrderItemShipGroupAssociationStateProperties.OrderShipGroupShipGroupSeqId
+        string IOrderItemShipGroupAssociationStateProperties.OrderShipGroupShipGroupSeqId
         {
             get 
             {

@@ -9,7 +9,7 @@ namespace Dddml.Wms.Domain.Order
     public partial class OrderAggregate : IOrderAggregate
     {
 
-        public void OrderShipGroupAction(long? shipGroupSeqId, string value, long version, string commandId, string requesterId)
+        public void OrderShipGroupAction(string shipGroupSeqId, string value, long version, string commandId, string requesterId)
         {
             throw new NotImplementedException();
         }

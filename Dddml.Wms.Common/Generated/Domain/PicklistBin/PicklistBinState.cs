@@ -270,7 +270,7 @@ namespace Dddml.Wms.Domain.PicklistBin
 			{
 				if (e.IsPropertyPrimaryShipGroupSeqIdRemoved)
 				{
-					this.PrimaryShipGroupSeqId = default(long?);
+					this.PrimaryShipGroupSeqId = default(string);
 				}
 			}
 			else

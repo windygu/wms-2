@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Order
 
     public interface IOrderShipGroupStateDto
     {
-        long? ShipGroupSeqId
+        string ShipGroupSeqId
         {
             get;
             set;

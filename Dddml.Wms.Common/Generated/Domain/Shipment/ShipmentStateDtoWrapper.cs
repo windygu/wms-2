@@ -179,7 +179,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual long? PrimaryShipGroupSeqId
+		public virtual string PrimaryShipGroupSeqId
 		{
             get
             {
@@ -195,7 +195,7 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-        long? IShipmentStateProperties.PrimaryShipGroupSeqId
+        string IShipmentStateProperties.PrimaryShipGroupSeqId
         {
             get 
             {
