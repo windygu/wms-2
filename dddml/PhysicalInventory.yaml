@@ -163,6 +163,10 @@ aggregates:
             CountedQuantity: 
               type: decimal
 
-              
+      # --------------------------------------------
+      metadata:
+        # NoEventSourcing: true
+        JavaAggregateApplicationServiceImplementClassName: PhysicalInventoryApplicationServiceImpl
+
               
               

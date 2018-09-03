@@ -699,7 +699,7 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="physicalInventoryApplicationService" class="org.dddml.wms.domain.physicalinventory.AbstractPhysicalInventoryApplicationService$SimplePhysicalInventoryApplicationService">
+  <bean id="physicalInventoryApplicationService" class="org.dddml.wms.domain.physicalinventory.PhysicalInventoryApplicationServiceImpl">
     <constructor-arg ref="physicalInventoryEventStore"/>
     <constructor-arg ref="physicalInventoryStateRepository"/>
     <constructor-arg ref="physicalInventoryStateQueryRepository"/>
