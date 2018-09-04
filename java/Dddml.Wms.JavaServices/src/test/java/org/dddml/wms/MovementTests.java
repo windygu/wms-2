@@ -1,6 +1,7 @@
 package org.dddml.wms;
 
 import org.dddml.wms.domain.DocumentAction;
+import org.dddml.wms.domain.inventoryitem.InventoryItemIds;
 import org.dddml.wms.domain.movement.*;
 import org.dddml.wms.domain.movementconfirmation.*;
 import org.dddml.wms.specialization.ApplicationContext;
@@ -108,7 +109,7 @@ public class MovementTests {
         line_1.setProductId("TEST_" + new java.util.Date().getTime());
         line_1.setLocatorIdFrom("1_TEST_F_" + new java.util.Date().getTime());
         line_1.setLocatorIdTo("2_TEST_T_" + new java.util.Date().getTime());
-        line_1.setAttributeSetInstanceId("EMPTY");
+        line_1.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);
         line_1.setMovementQuantity(BigDecimal.valueOf(123));
         movement.getMovementLines().add(line_1);
 
@@ -140,7 +141,7 @@ public class MovementTests {
         line_1.setProductId("TEST_" + new java.util.Date().getTime());
         line_1.setLocatorIdFrom("1_TEST_F_" + new java.util.Date().getTime());
         line_1.setLocatorIdTo("2_TEST_T_" + new java.util.Date().getTime());
-        line_1.setAttributeSetInstanceId("EMPTY");
+        line_1.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);
         line_1.setMovementQuantity(BigDecimal.valueOf(233));
         movement.getMovementLines().add(line_1);
 

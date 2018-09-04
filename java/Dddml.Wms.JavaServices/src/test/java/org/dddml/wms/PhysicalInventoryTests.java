@@ -84,6 +84,8 @@ public class PhysicalInventoryTests {
         PhysicalInventoryCommand.CreatePhysicalInventory createPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleCreatePhysicalInventory();
         createPhysicalInventory.setDocumentNumber(piId);
         createPhysicalInventory.setWarehouseId(InOutTests.TEST_WAREHOUSE_ID);
+        createPhysicalInventory.setLocatorIdPattern("%%");
+        createPhysicalInventory.setProductIdPattern("%%");
         createPhysicalInventory.setActive(true);
         createPhysicalInventory.setCommandId(createPhysicalInventory.getDocumentNumber());
         physicalInventoryApplicationService.when(createPhysicalInventory);

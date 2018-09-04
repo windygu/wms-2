@@ -3,6 +3,7 @@ package org.dddml.wms;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
 import org.dddml.wms.domain.inout.*;
+import org.dddml.wms.domain.inventoryitem.InventoryItemIds;
 import org.dddml.wms.domain.product.AbstractProductCommand;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductCommand;
@@ -167,7 +168,7 @@ public class InOutTests {
         line_1.setLineNumber(String.valueOf(new java.util.Date().getTime()));
         line_1.setProductId(productId);
         line_1.setLocatorId(TEST_LOCATOR_ID_2);//("TEST_" + new java.util.Date().getTime());
-        line_1.setAttributeSetInstanceId("EMPTY");
+        line_1.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);
         line_1.setMovementQuantity(movementQuantity);
         inOut.getInOutLines().add(line_1);
 

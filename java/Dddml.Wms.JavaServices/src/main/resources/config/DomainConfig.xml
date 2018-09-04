@@ -5,8 +5,7 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="inOutDocumentActionCommandHandler" class="org.dddml.wms.domain.InOutDocumentActionCommandHandler">
-    </bean>
+    <!--<bean id="inOutDocumentActionCommandHandler" claorg.dddml.wms.InOutDocumentActionCommandHandlerdler" />-->
 
     <bean id="inventoryItemEventListener" class="org.dddml.wms.domain.listener.InventoryItemEventListener">
         <property name="inventoryPostingRuleApplicationService" ref="inventoryPostingRuleApplicationService"/>

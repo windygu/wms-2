@@ -6,6 +6,7 @@ import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.inventoryitem.InventoryItemApplicationService;
 import org.dddml.wms.domain.inventoryitem.InventoryItemId;
 import org.dddml.wms.domain.inventoryitem.InventoryItemIds;
+import org.dddml.wms.domain.inventoryitem.InventoryItemState;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.service.AttributeSetService;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,6 +27,10 @@ import java.util.Map;
 public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInventoryApplicationService.SimplePhysicalInventoryApplicationService {
 
     static final String ATTRIBUTE_SET_INSTANCE_ID_KEY = "attributeSetInstanceId";
+
+    InventoryItemQueryService getInventoryItemQueryService() {
+        return (InventoryItemQueryService) ApplicationContext.current.get("inventoryItemQueryService");
+    }
 
     ProductApplicationService getProductApplicationService() {
         return (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
@@ -54,6 +60,27 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
 
     public PhysicalInventoryApplicationServiceImpl(EventStore eventStore, PhysicalInventoryStateRepository stateRepository, PhysicalInventoryStateQueryRepository stateQueryRepository) {
         super(eventStore, stateRepository, stateQueryRepository);
+    }
+
+    @Override
+    public void when(PhysicalInventoryCommand.CreatePhysicalInventory c) {
+        if (c.getWarehouseId() == null || c.getWarehouseId().isEmpty()) {
+            throw new IllegalArgumentException("warehosueId is null");
+        }
+        if (c.getLocatorIdPattern() != null || c.getProductIdPattern() != null) {
+            List<InventoryItemState> inventoryItems = getInventoryItemQueryService()
+                    .getInventoryItems(c.getWarehouseId(), c.getLocatorIdPattern(), c.getProductIdPattern());
+            for (InventoryItemState ii : inventoryItems) {
+                PhysicalInventoryLineCommand.CreatePhysicalInventoryLine createPhysicalInventoryLine = new AbstractPhysicalInventoryLineCommand.SimpleCreatePhysicalInventoryLine();
+                InventoryItemId inventoryItemId = ii.getInventoryItemId();
+                createPhysicalInventoryLine.setInventoryItemId(inventoryItemId);
+                createPhysicalInventoryLine.setBookQuantity(ii.getOnHandQuantity());//todo ???
+                createPhysicalInventoryLine.setLineNumber(getSeqIdGenerator().getNextId().toString());
+                createPhysicalInventoryLine.setActive(true);
+                c.getPhysicalInventoryLines().add(createPhysicalInventoryLine);
+            }
+        }
+        super.when(c);
     }
 
     @Transactional

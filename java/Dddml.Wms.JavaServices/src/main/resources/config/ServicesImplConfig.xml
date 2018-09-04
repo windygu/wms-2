@@ -19,5 +19,9 @@
     <bean id="orderShipGroupApplicationService" class="org.dddml.wms.domain.service.OrderShipGroupApplicationServiceImpl">
     </bean>
 
+    <bean id="inventoryItemQueryService" class="org.dddml.wms.domain.physicalinventory.hibernate.HibernateInventoryItemQueryService">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
 </beans>
 
