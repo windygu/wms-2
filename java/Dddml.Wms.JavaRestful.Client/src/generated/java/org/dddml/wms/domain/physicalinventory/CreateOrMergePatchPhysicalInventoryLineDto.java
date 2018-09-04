@@ -70,14 +70,14 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
     /**
      * Reversal Line Number
      */
-    private Long reversalLineNumber;
+    private String reversalLineNumber;
 
-    public Long getReversalLineNumber()
+    public String getReversalLineNumber()
     {
         return this.reversalLineNumber;
     }
 
-    public void setReversalLineNumber(Long reversalLineNumber)
+    public void setReversalLineNumber(String reversalLineNumber)
     {
         this.reversalLineNumber = reversalLineNumber;
     }

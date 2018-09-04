@@ -46,7 +46,7 @@ public final class PhysicalInventoryLineMetadata {
             "BigDecimal",
             "Boolean",
             "String",
-            "Long",
+            "String",
             "String",
             "Long",
             "String",

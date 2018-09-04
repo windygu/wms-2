@@ -126,7 +126,8 @@ aggregates:
               notNull: true
 
             ReversalLineNumber:
-              type: long
+              type: string
+              length: 50
                 
             Description:
               type: string

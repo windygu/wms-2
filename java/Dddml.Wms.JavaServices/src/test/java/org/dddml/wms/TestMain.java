@@ -36,10 +36,6 @@ public class TestMain {
     public static void main(final String[] args) throws Exception {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
-//        PhysicalInventoryTests physicalInventoryTests_0 = new PhysicalInventoryTests();
-//        physicalInventoryTests_0.setUp();
-//        physicalInventoryTests_0.testCreatePhysicalInventoryAndAddLines();
-//        if (true) return;
         //InOutTests inOutTests_0 = new InOutTests();
         //inOutTests_0.setUp();
         //inOutTests_0.testCreateAndCompleteAndReverseInOut();
@@ -83,8 +79,7 @@ public class TestMain {
             //            }
             // ///////////////////////////////////////////////////////////
         }
-
-        if (1 == 1) { return; }
+        //if (1 == 1) { return; }
 
         // ////////////////////////////////////////////////////////////
         // 以下是测试，初始化的时候可以不执行
@@ -139,6 +134,12 @@ public class TestMain {
         ShipmentTests shipmentTests = new ShipmentTests();
         shipmentTests.setUp();
         shipmentTests.testImportAndReceive();
+
+        // /////////////// 盘点 /////////////////////
+        PhysicalInventoryTests physicalInventoryTests_0 = new PhysicalInventoryTests();
+        physicalInventoryTests_0.setUp();
+        physicalInventoryTests_0.testCreatePhysicalInventoryAndAddLinesAndCompleteAndReverse();
+        //if (true) return;
 
     }
 

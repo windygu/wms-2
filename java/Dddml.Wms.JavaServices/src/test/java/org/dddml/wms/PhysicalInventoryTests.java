@@ -34,7 +34,7 @@ public class PhysicalInventoryTests {
         physicalInventoryApplicationService = (PhysicalInventoryApplicationService) ApplicationContext.current.get("physicalInventoryApplicationService");
     }
 
-    public void testCreatePhysicalInventoryAndAddLines() {
+    public void testCreatePhysicalInventoryAndAddLinesAndCompleteAndReverse() {
 
         String piId = (new Date().getTime()) + "" + UUID.randomUUID().hashCode();
 
@@ -53,21 +53,35 @@ public class PhysicalInventoryTests {
         PhysicalInventoryState physicalInventoryState = physicalInventoryApplicationService.get(piId);
         Long piVersion = physicalInventoryState.getVersion();
 
+        // ///////////////////////////// 增加一个盘点行 /////////////////////////////////
         PhysicalInventoryCommands.CountItem countItem_1 = createTestCountItem(prdId_1, piId, piVersion);
-
         physicalInventoryApplicationService.when(countItem_1);
         piVersion++;
 
         // ///////////////////////////////////////
         // ///// 完成盘点（执行盘点调整） ////////
         completePhysicalInventory(piId, piVersion);
+        piVersion++;
 
+        // //////////////////////////////////////////////////
+        // //////// 反转（完成后撤销）盘点 //////////////////
+        reversePhysicalInventory(piId, piVersion);
+        piVersion++;
     }
 
     void completePhysicalInventory(String piId, Long version) {
         PhysicalInventoryCommands.DocumentAction documentAction = new PhysicalInventoryCommands.DocumentAction();
         documentAction.setDocumentNumber(piId);
         documentAction.setValue(DocumentAction.COMPLETE);
+        documentAction.setVersion(version);
+        documentAction.setCommandId(UUID.randomUUID().toString());
+        physicalInventoryApplicationService.when(documentAction);
+    }
+
+    void reversePhysicalInventory(String piId, Long version) {
+        PhysicalInventoryCommands.DocumentAction documentAction = new PhysicalInventoryCommands.DocumentAction();
+        documentAction.setDocumentNumber(piId);
+        documentAction.setValue(DocumentAction.REVERSE);
         documentAction.setVersion(version);
         documentAction.setCommandId(UUID.randomUUID().toString());
         physicalInventoryApplicationService.when(documentAction);

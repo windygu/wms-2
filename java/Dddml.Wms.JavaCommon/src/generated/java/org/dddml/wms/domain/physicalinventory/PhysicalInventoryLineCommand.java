@@ -36,9 +36,9 @@ public interface PhysicalInventoryLineCommand extends Command
 
         void setLineNumber(String lineNumber);
 
-        Long getReversalLineNumber();
+        String getReversalLineNumber();
 
-        void setReversalLineNumber(Long reversalLineNumber);
+        void setReversalLineNumber(String reversalLineNumber);
 
         String getDescription();
 

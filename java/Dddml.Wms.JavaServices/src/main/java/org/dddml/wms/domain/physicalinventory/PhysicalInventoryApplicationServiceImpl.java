@@ -6,6 +6,7 @@ import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplication
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
+import org.dddml.wms.domain.inout.*;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
@@ -66,7 +67,9 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
         if (c.getWarehouseId() == null || c.getWarehouseId().isEmpty()) {
             throw new IllegalArgumentException("warehosueId is null");
         }
-        if (c.getLocatorIdPattern() != null || c.getProductIdPattern() != null) {
+        //todo 如果不是反转的盘点单，且设置了 Pattern，那么生成默认的盘点行项？
+        if (c.getReversalDocumentNumber() == null
+                && (c.getLocatorIdPattern() != null || c.getProductIdPattern() != null)) {
             List<InventoryItemState> inventoryItems = getInventoryItemQueryService()
                     .getInventoryItems(c.getWarehouseId(), c.getLocatorIdPattern(), c.getProductIdPattern());
             for (InventoryItemState ii : inventoryItems) {
@@ -117,22 +120,118 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
         // 注意：这里通过覆写父类方法，加上事务注解，其实没有遵循“聚合外最终一致”的处理原则。
         //
         if (Objects.equals(c.getValue(), DocumentAction.COMPLETE)) {
-            PhysicalInventoryState inOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
+            PhysicalInventoryState physicalInventoryState = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
             // 操作库存（InventoryItem）
-            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completePhysicalInventoryCreateInventoryItemEntries(inOut);
+            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completePhysicalInventoryCreateInventoryItemEntries(physicalInventoryState);
             InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
             super.when(c);
-//        } else if (Objects.equals(c.getValue(), DocumentAction.REVERSE)) {
-//            PhysicalInventoryState srcPhysicalInventory = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.COMPLETED);
-//            PhysicalInventoryCommand.CreatePhysicalInventory reversalPhysicalInventoryInfo = createReversalPhysicalInventoryAndCompleteAndClose(c, srcPhysicalInventory);
-//            reverseUpdateSourcePhysicalInventory(c, reversalPhysicalInventoryInfo);
+        } else if (Objects.equals(c.getValue(), DocumentAction.REVERSE)) {
+            PhysicalInventoryState srcPhysicalInventory = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.COMPLETED);
+            PhysicalInventoryCommand.CreatePhysicalInventory reversalPhysicalInventoryInfo = createReversalPhysicalInventoryAndCompleteAndClose(c, srcPhysicalInventory);
+            reverseUpdateSourcePhysicalInventory(c, reversalPhysicalInventoryInfo);
         } else {
             super.when(c);
         }
     }
 
+    private void reverseUpdateSourcePhysicalInventory(PhysicalInventoryCommands.DocumentAction c, PhysicalInventoryCommand.CreatePhysicalInventory reversalPhysicalInventoryInfo) {
+        //源单据前向关联到反转单据：
+        String reversalDocumentNumber = reversalPhysicalInventoryInfo.getDocumentNumber();
+        String description = "(" + reversalPhysicalInventoryInfo.getDocumentNumber() + "<-)";//(1000016<-)
+        update(c, ar -> ((PhysicalInventoryApplicationServiceImpl.PhysicalInventoryAggregateImpl) ar)
+                .reverse(reversalDocumentNumber, description, c.getVersion(), c.getCommandId(), c.getRequesterId()));
+    }
+
+    private PhysicalInventoryCommand.CreatePhysicalInventory createReversalPhysicalInventoryAndCompleteAndClose(PhysicalInventoryCommands.DocumentAction c, PhysicalInventoryState physicalInventory) {
+        PhysicalInventoryCommand.CreatePhysicalInventory createReversalPhysicalInventory = createReversalPhysicalInventory(physicalInventory);
+
+        when(createReversalPhysicalInventory);
+        //if (true) return createReversalPhysicalInventory;
+        long firstVersion = 0;//!!!
+
+        PhysicalInventoryCommands.DocumentAction completeCmd = new PhysicalInventoryCommands.DocumentAction();
+        completeCmd.setDocumentNumber(createReversalPhysicalInventory.getDocumentNumber());
+        completeCmd.setVersion(firstVersion);
+        completeCmd.setValue(DocumentAction.COMPLETE);
+        completeCmd.setCommandId(c.getCommandId());
+        completeCmd.setRequesterId(c.getRequesterId());
+        when(completeCmd);
+
+        PhysicalInventoryCommands.DocumentAction closeCmd = new PhysicalInventoryCommands.DocumentAction();
+        closeCmd.setDocumentNumber(createReversalPhysicalInventory.getDocumentNumber());
+        closeCmd.setVersion(firstVersion + 1);
+        closeCmd.setValue(DocumentAction.CLOSE);
+        closeCmd.setCommandId(c.getCommandId());
+        closeCmd.setRequesterId(c.getRequesterId());
+        when(closeCmd);
+
+        return createReversalPhysicalInventory;
+    }
+
+    protected PhysicalInventoryCommand.CreatePhysicalInventory createReversalPhysicalInventory(PhysicalInventoryState physicalInventory) {
+        PhysicalInventoryCommand.CreatePhysicalInventory reversalPhysicalInventory = doCreateReversalPhysicalInventory(physicalInventory);
+
+        for (PhysicalInventoryLineState d : physicalInventory.getPhysicalInventoryLines()) {
+            PhysicalInventoryLineCommand.CreatePhysicalInventoryLine reversalLine = doCreateReversalPhysicalInventoryLine(d);
+            reversalPhysicalInventory.getPhysicalInventoryLines().add(reversalLine);
+        }
+
+        return reversalPhysicalInventory;
+    }
+    
+    /**
+     * 生成反转的单据（但不包括行）。
+     */
+    protected PhysicalInventoryCommand.CreatePhysicalInventory doCreateReversalPhysicalInventory(PhysicalInventoryState physicalInventory) {
+        PhysicalInventoryCommand.CreatePhysicalInventory reversalPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleCreatePhysicalInventory();
+
+        //生成新的单号:
+        reversalPhysicalInventory.setDocumentNumber("RPI" + getSeqIdGenerator().getNextId()); //DocumentNumberGenerator.GetNewDocumentNumber();
+        //设置反转关系:
+        reversalPhysicalInventory.setReversalDocumentNumber(physicalInventory.getDocumentNumber());
+        ////源单据前向关联到反转单据:
+        //physicalInventory.Description = "(" + reversalPhysicalInventory.DocumentNumber + "<-)";//(1000016<-)
+        //反转单据后向关联到源单据:
+        reversalPhysicalInventory.setDescription("{->" + physicalInventory.getDocumentNumber() + ")"); //{->1000015)
+
+        reversalPhysicalInventory.setDocumentTypeId(physicalInventory.getDocumentTypeId());
+        reversalPhysicalInventory.setMovementDate(physicalInventory.getMovementDate());
+        reversalPhysicalInventory.setWarehouseId(physicalInventory.getWarehouseId());
+        reversalPhysicalInventory.setLocatorIdPattern(physicalInventory.getLocatorIdPattern());
+        reversalPhysicalInventory.setProductIdPattern(physicalInventory.getProductIdPattern());
+
+        return reversalPhysicalInventory;
+    }
+
+
+    /**
+     * 生成反转的行。
+     */
+    protected PhysicalInventoryLineCommand.CreatePhysicalInventoryLine doCreateReversalPhysicalInventoryLine(PhysicalInventoryLineState physicalInventoryLine) {
+        PhysicalInventoryLineCommand.CreatePhysicalInventoryLine reversalLine = new AbstractPhysicalInventoryLineCommand.SimpleCreatePhysicalInventoryLine();
+
+        reversalLine.setLineNumber(getSeqIdGenerator().getNextId().toString());//physicalInventoryLine.getLineNumber()
+        reversalLine.setReversalLineNumber(physicalInventoryLine.getLineNumber()); //设置反转行的行号
+        reversalLine.setInventoryItemId(physicalInventoryLine.getInventoryItemId());
+        //        reversalLine.setProductId(physicalInventoryLine.getProductId());
+        //        reversalLine.setLocatorId(physicalInventoryLine.getLocatorId());
+        //        reversalLine.setAttributeSetInstanceId(physicalInventoryLine.getAttributeSetInstanceId());
+        reversalLine.setProcessed(physicalInventoryLine.getProcessed()); // ???
+        // //////////////////////////// 数量反转 //////////////////////////////////
+        reversalLine.setBookQuantity(physicalInventoryLine.getCountedQuantity());
+        reversalLine.setCountedQuantity(physicalInventoryLine.getBookQuantity());
+
+        if (reversalLine.getBookQuantity() == null) {
+            throw new NullPointerException("reversalLine.getBookQuantity() == null");
+        }
+        if (reversalLine.getCountedQuantity() == null) {
+            throw new NullPointerException("reversalLine.getCountedQuantity() == null");
+        }
+        return reversalLine;
+    }
+
+
     protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completePhysicalInventoryCreateInventoryItemEntries(PhysicalInventoryState physicalInventoryState) {
-        //int signum = GetSignumOfMovementType(inOut.MovementTypeId);
         PhysicalInventoryLineStates physicalInventoryLines = physicalInventoryState.getPhysicalInventoryLines();
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (PhysicalInventoryLineState d : physicalInventoryLines) {
@@ -216,6 +315,14 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
                 e.addPhysicalInventoryLineEvent(lineE);
                 apply(e);
             }
+        }
+
+        public void reverse(String reversalDocumentNumber, String desc, long version, String commandId, String requesterId) {
+            PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(version, commandId, requesterId);
+            e.setReversalDocumentNumber(reversalDocumentNumber);
+            e.setDescription(desc);
+            doDocumentAction(DocumentAction.REVERSE, ts -> e.setDocumentStatusId(ts));
+            apply(e);
         }
 
     }

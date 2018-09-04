@@ -48,9 +48,9 @@ public interface PhysicalInventoryLineEvent extends Event
 
         void setLineNumber(String lineNumber);
 
-        Long getReversalLineNumber();
+        String getReversalLineNumber();
 
-        void setReversalLineNumber(Long reversalLineNumber);
+        void setReversalLineNumber(String reversalLineNumber);
 
         String getDescription();
 
