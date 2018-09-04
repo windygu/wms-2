@@ -36,10 +36,10 @@ public class TestMain {
     public static void main(final String[] args) throws Exception {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
-        PhysicalInventoryTests physicalInventoryTests_0 = new PhysicalInventoryTests();
-        physicalInventoryTests_0.setUp();
-        physicalInventoryTests_0.testCreatePhysicalInventoryAndAddLines();
-        if (true) return;
+//        PhysicalInventoryTests physicalInventoryTests_0 = new PhysicalInventoryTests();
+//        physicalInventoryTests_0.setUp();
+//        physicalInventoryTests_0.testCreatePhysicalInventoryAndAddLines();
+//        if (true) return;
         //InOutTests inOutTests_0 = new InOutTests();
         //inOutTests_0.setUp();
         //inOutTests_0.testCreateAndCompleteAndReverseInOut();

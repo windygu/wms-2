@@ -46,7 +46,7 @@ public class HibernateInventoryItemQueryService implements InventoryItemQuerySer
         if (locatorIdPattern != null && !locatorIdPattern.isEmpty()) {
             locatorDC.add(Restrictions.like("locatorId", locatorIdPattern));
         }
-        criteria.add(Subqueries.propertyNotIn("inventoryItemId.locatorId", locatorDC));
+        criteria.add(Subqueries.propertyIn("inventoryItemId.locatorId", locatorDC));
         if (productIdPattern != null && !productIdPattern.isEmpty()) {
             criteria.add(Restrictions.like("inventoryItemId.productId", productIdPattern));
         }

@@ -1,5 +1,6 @@
 package org.dddml.wms;
 
+import org.dddml.wms.domain.DocumentAction;
 import org.dddml.wms.domain.attribute.*;
 import org.dddml.wms.domain.attributeset.*;
 import org.dddml.wms.domain.physicalinventory.*;
@@ -36,15 +37,20 @@ public class PhysicalInventoryTests {
     public void testCreatePhysicalInventoryAndAddLines() {
 
         String piId = (new Date().getTime()) + "" + UUID.randomUUID().hashCode();
+
+        // /////////////// 创建盘点单 //////////////////////////
         createTestPhysicalInventory(piId);
 
-        PhysicalInventoryState physicalInventoryState = physicalInventoryApplicationService.get(piId);
+        // //////////// 把所有库存的盘点数量置为 0 ///////////////////////////
+        // //////////// 如执行调整，现有库存都会被作（盘亏）出库 /////////////
+        setAllCountedQuantityZero(piId);
 
         // //////////////////////////// Create Product /////////////////////////////////////
         String prdId_1 = new java.util.Date().getTime() + "" + UUID.randomUUID().hashCode();
         ProductCommand.CreateProduct prd = createFPProduct_1(prdId_1);
         // /////////////////////////////////
 
+        PhysicalInventoryState physicalInventoryState = physicalInventoryApplicationService.get(piId);
         Long piVersion = physicalInventoryState.getVersion();
 
         PhysicalInventoryCommands.CountItem countItem_1 = createTestCountItem(prdId_1, piId, piVersion);
@@ -52,6 +58,38 @@ public class PhysicalInventoryTests {
         physicalInventoryApplicationService.when(countItem_1);
         piVersion++;
 
+        // ///////////////////////////////////////
+        // ///// 完成盘点（执行盘点调整） ////////
+        completePhysicalInventory(piId, piVersion);
+
+    }
+
+    void completePhysicalInventory(String piId, Long version) {
+        PhysicalInventoryCommands.DocumentAction documentAction = new PhysicalInventoryCommands.DocumentAction();
+        documentAction.setDocumentNumber(piId);
+        documentAction.setValue(DocumentAction.COMPLETE);
+        documentAction.setVersion(version);
+        documentAction.setCommandId(UUID.randomUUID().toString());
+        physicalInventoryApplicationService.when(documentAction);
+    }
+
+
+    void setAllCountedQuantityZero(String piId) {
+        PhysicalInventoryState physicalInventoryState = physicalInventoryApplicationService.get(piId);
+        if (physicalInventoryState.getPhysicalInventoryLines() == null) {
+            return;
+        }
+        PhysicalInventoryCommand.MergePatchPhysicalInventory patchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
+        patchPhysicalInventory.setDocumentNumber(piId);
+        patchPhysicalInventory.setCommandId(UUID.randomUUID().toString());
+        patchPhysicalInventory.setVersion(physicalInventoryState.getVersion());
+        for (PhysicalInventoryLineState line : physicalInventoryState.getPhysicalInventoryLines()) {
+            PhysicalInventoryLineCommand.MergePatchPhysicalInventoryLine patchLine = patchPhysicalInventory.newMergePatchPhysicalInventoryLine();
+            patchLine.setInventoryItemId(line.getInventoryItemId());
+            patchLine.setCountedQuantity(BigDecimal.ZERO);
+            patchPhysicalInventory.getPhysicalInventoryLineCommands().add(patchLine);
+        }
+        physicalInventoryApplicationService.when(patchPhysicalInventory);
     }
 
     PhysicalInventoryCommands.CountItem createTestCountItem(String productId, String piId, Long physicalInventoryVersion) {
