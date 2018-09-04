@@ -13,11 +13,11 @@ import org.dddml.wms.specialization.*;
 
 public interface OrganizationTreeOrganizationStructureStateQueryRepository extends OrganizationStructureStateQueryRepository
 {
-    Iterable<OrganizationStructureState> getOrganizationTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
+    Iterable<org.dddml.wms.domain.party.OrganizationState> getOrganizationTreeRootOrganizations(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
 
     Iterable<OrganizationStructureState> getOrganizationTreeChildren(String parentId, Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
 
-    Iterable<OrganizationStructureState> getOrganizationTreeRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults);
+    Iterable<org.dddml.wms.domain.party.OrganizationState> getOrganizationTreeRootOrganizations(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults);
 
     Iterable<OrganizationStructureState> getOrganizationTreeChildren(String parentId, Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults);
 

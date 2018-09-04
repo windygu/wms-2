@@ -35,8 +35,8 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
     @Transactional(readOnly = true)
     public Iterable<OrganizationTreeNode> getRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-        return structureStatesToOrganizationTreeNodeCollection(structureStates);
+        Iterable states = getOrganizationStructureStateQueryRepository().getOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+        return contentStatesToOrganizationTreeNodeCollection(states);
     }
 
     @Transactional(readOnly = true)
@@ -49,8 +49,8 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
     @Transactional(readOnly = true)
     public Iterable<String> getRootIds(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-        return structureStatesToIdCollection(structureStates);
+        Iterable states = getOrganizationStructureStateQueryRepository().getOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+        return contentStatesToIdCollection(states);
     }
 
     @Transactional(readOnly = true)
@@ -65,8 +65,8 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
     @Transactional(readOnly = true)
     public Iterable<OrganizationTreeNode> getRoots(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-        return structureStatesToOrganizationTreeNodeCollection(structureStates);
+        Iterable states = getOrganizationStructureStateQueryRepository().getOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+        return contentStatesToOrganizationTreeNodeCollection(states);
     }
 
     @Transactional(readOnly = true)
@@ -79,8 +79,8 @@ public class HibernateOrganizationTreeRepository implements OrganizationTreeRepo
     @Transactional(readOnly = true)
     public Iterable<String> getRootIds(org.dddml.support.criterion.Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
     {
-        Iterable<OrganizationStructureState> structureStates = getOrganizationStructureStateQueryRepository().getOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-        return structureStatesToIdCollection(structureStates);
+        Iterable states = getOrganizationStructureStateQueryRepository().getOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+        return contentStatesToIdCollection(states);
     }
 
     @Transactional(readOnly = true)

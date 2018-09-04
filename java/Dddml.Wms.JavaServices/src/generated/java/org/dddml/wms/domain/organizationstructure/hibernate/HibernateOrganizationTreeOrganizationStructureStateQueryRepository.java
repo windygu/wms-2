@@ -19,11 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class HibernateOrganizationTreeOrganizationStructureStateQueryRepository extends HibernateOrganizationStructureStateQueryRepository implements OrganizationTreeOrganizationStructureStateQueryRepository
 {
     @Transactional(readOnly = true)
-    public Iterable<OrganizationStructureState> getOrganizationTreeRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults)
-    {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
-
-        criteriaAddOrganizationTreeRootParentIdCriterion(criteria);
+    public Iterable<org.dddml.wms.domain.party.OrganizationState> getOrganizationTreeRootOrganizations(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults) {
+        Criteria criteria = getCurrentSession().createCriteria(org.dddml.wms.domain.party.OrganizationState.class);
+        DetachedCriteria dc = DetachedCriteria.forClass(AbstractOrganizationStructureState.class).setProjection(Projections.property("id.subsidiaryId"));
+        criteria.add(Subqueries.propertyNotIn("partyId", dc));
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
@@ -39,11 +38,10 @@ public class HibernateOrganizationTreeOrganizationStructureStateQueryRepository 
     }
 
     @Transactional(readOnly = true)
-    public Iterable<OrganizationStructureState> getOrganizationTreeRoots(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults)
-    {
-        Criteria criteria = getCurrentSession().createCriteria(OrganizationStructureState.class);
-
-        criteriaAddOrganizationTreeRootParentIdCriterion(criteria);
+    public Iterable<org.dddml.wms.domain.party.OrganizationState> getOrganizationTreeRootOrganizations(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults) {
+        Criteria criteria = getCurrentSession().createCriteria(org.dddml.wms.domain.party.OrganizationState.class);
+        DetachedCriteria dc = DetachedCriteria.forClass(AbstractOrganizationStructureState.class).setProjection(Projections.property("id.subsidiaryId"));
+        criteria.add(Subqueries.propertyNotIn("partyId", dc));
         HibernateUtils.criteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
         return criteria.list();
     }
@@ -60,7 +58,7 @@ public class HibernateOrganizationTreeOrganizationStructureStateQueryRepository 
 
     private void criteriaAddOrganizationTreeRootParentIdCriterion(Criteria criteria)
     {
-        Object[] rootParentIdValues = new Object[] { "" };
+        Object[] rootParentIdValues = new Object[] { null };
         if (rootParentIdValues.length == 1)
         {
             HibernateUtils.criteriaAddCriterion(criteria, "id.parentId", rootParentIdValues[0]);
