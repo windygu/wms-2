@@ -6373,6 +6373,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ListAllTypes.tt</DependentUpon>
     </Content>
+    <Content Include="GenerateStateMachineDotGraphs.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateStateMachineDotGraphs.tt</DependentUpon>
+    </Content>
     <Content Include="LoadBoundedContextFiles.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContextFiles.txt</LastGenOutput>
@@ -6509,6 +6514,10 @@
 .\GenerateUomOfbizDataConstObjects.txt
 .\UomIds.cs
 </LastOutputs>
+    </None>
+    <None Include="GenerateStateMachineDotGraphs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateStateMachineDotGraphs.txt</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <Content Include="Generated\Domain\InOut\GenerateInOutDomain.tt">

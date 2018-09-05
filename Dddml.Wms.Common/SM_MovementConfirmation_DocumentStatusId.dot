@@ -1,0 +1,5 @@
+digraph {
+ INITIAL -> InProgress [label=""];
+ InProgress -> Completed [label="Confirm"];
+ Completed -> Closed [label="Close"];
+}

@@ -1,0 +1,7 @@
+digraph {
+ INITIAL -> Drafted [label=""];
+ Drafted -> Completed [label="Complete"];
+ Drafted -> Voided [label="Void"];
+ Completed -> Closed [label="Close"];
+ Completed -> Reversed [label="Reverse"];
+}

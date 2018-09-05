@@ -1,0 +1,9 @@
+digraph {
+ INITIAL -> Drafted [label=""];
+ Drafted -> Voided [label="Void"];
+ Drafted -> Completed [label="Complete [{this}.IsInTransit == false]"];
+ Drafted -> InProgress [label="Complete [{this}.IsInTransit == true]"];
+ InProgress -> Complete [label="Confirm"];
+ Completed -> Closed [label="Close"];
+ Completed -> Reversed [label="Reverse [{this}.IsInTransit == false]"];
+}

@@ -1,0 +1,7 @@
+digraph {
+ INITIAL -> SHIP_GRP_CREATED [label=""];
+ SHIP_GRP_CREATED -> SHIP_GRP_APPROVED [label="Approve"];
+ SHIP_GRP_APPROVED -> SHIP_GRP_COMPLETED [label="Complete"];
+ SHIP_GRP_CREATED -> SHIP_GRP_REJECTED [label="Reject"];
+ SHIP_GRP_CREATED -> SHIP_GRP_CANCELLED [label="Cancel"];
+}

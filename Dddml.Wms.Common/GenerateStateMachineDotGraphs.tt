@@ -1,0 +1,35 @@
+<#@ template language="C#" debug="True" #>
+<#@ assembly name="System.Core" #>
+<#@ output extension="txt" #>
+<#@ include file="DddmlSerializationForT4.tc" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ import namespace="Dddml.Serialization" #>
+<#@ import namespace="Dddml.T4" #>
+<#@ import namespace="Dddml.T4.Extensions" #>
+<#@ import namespace="Dddml.T4.Extensions.Clr" #>
+<#@ import namespace="Dddml.T4.Extensions.CSharp" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="LoadBoundedContextFiles.tt" #>
+<#
+// <copyright file="GenerateStateMachineDotGraphs.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+    string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");
+    string projectDir = Path.GetDirectoryName(projectFile);
+    foreach(var stateMachine in boundedContext.AllStateMachines())
+    {
+        string fileName = "SM_" + (stateMachine.Property.Entity != null ? stateMachine.Property.Entity.Name : String.Empty)
+            + "_" + stateMachine.Property.Name + ".dot";
+        string filePath = Path.Combine(projectDir, fileName);
+        var dotGraphStr = stateMachine.ToDotGraph();
+        using (StreamWriter w = new StreamWriter(filePath, false, new System.Text.UTF8Encoding(false)))
+        {
+            w.Write(dotGraphStr);
+            w.Close();
+        }
+    }    
+
+#>
