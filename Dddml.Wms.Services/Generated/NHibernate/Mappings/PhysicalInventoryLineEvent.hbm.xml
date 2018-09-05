@@ -26,7 +26,7 @@
     <property name="CountedQuantity" ><column name="CountedQuantity" sql-type="decimal(18,6)" /></property>
     <property name="Processed" ></property>
     <property name="LineNumber" ><column name="LineNumber" length="50" unique-key="UniqueLineNumber" /></property>
-    <property name="ReversalLineNumber" ></property>
+    <property name="ReversalLineNumber" ><column name="ReversalLineNumber" length="50" /></property>
     <property name="Description" ></property>
     <property name="Version" column="Version" not-null="true" />
 

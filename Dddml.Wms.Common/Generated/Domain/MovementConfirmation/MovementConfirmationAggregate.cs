@@ -413,7 +413,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                 }
                 if ("InProgress" == command.GetState() && "Confirm" == command.Content)
                 {
-                    command.SetState("Complete");
+                    command.SetState("Completed");
                     return;
                 }
                 if ("Completed" == command.GetState() && "Close" == command.Content)

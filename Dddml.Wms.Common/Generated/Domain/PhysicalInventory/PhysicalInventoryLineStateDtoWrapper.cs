@@ -189,8 +189,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             }
         }
 
-		public virtual long? ReversalLineNumber
-        {
+		public virtual string ReversalLineNumber
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReversalLineNumber"))
@@ -201,14 +201,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             }
             set
             {
-                if (value != null && value.HasValue)
-                {
-                    _state.ReversalLineNumber = value.Value;
-                }
+                _state.ReversalLineNumber = value;
             }
         }
 
-        long IPhysicalInventoryLineStateProperties.ReversalLineNumber
+        string IPhysicalInventoryLineStateProperties.ReversalLineNumber
         {
             get 
             {

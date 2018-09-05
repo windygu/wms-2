@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		string LineNumber { get; set; }
 
-		long? ReversalLineNumber { get; set; }
+		string ReversalLineNumber { get; set; }
 
 		string Description { get; set; }
 

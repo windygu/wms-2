@@ -14,11 +14,11 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 {
 	public partial interface IOrganizationStructureStateQueryRepository
 	{
-        IEnumerable<IOrganizationStructureState> GetOrganizationTreeRoots(ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<Dddml.Wms.Domain.Party.IOrganizationState> GetOrganizationTreeRootOrganizations(ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
 
         IEnumerable<IOrganizationStructureState> GetOrganizationTreeChildren(string parentId, ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
 
-        IEnumerable<IOrganizationStructureState> GetOrganizationTreeRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<Dddml.Wms.Domain.Party.IOrganizationState> GetOrganizationTreeRootOrganizations(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
 
         IEnumerable<IOrganizationStructureState> GetOrganizationTreeChildren(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
 

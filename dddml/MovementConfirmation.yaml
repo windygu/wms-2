@@ -30,7 +30,7 @@ aggregates:
               
             - sourceState: "InProgress"
               trigger: "Confirm"
-              targetState: "Complete"
+              targetState: "Completed"
               
             - sourceState: "Completed"
               trigger: "Close"

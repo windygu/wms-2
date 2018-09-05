@@ -54,6 +54,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             cmd.PhysicalInventoryDocumentNumber = state.PhysicalInventoryDocumentNumber;
             
             if (state.LineNumber == null) { cmd.IsPropertyLineNumberRemoved = true; }
+            if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             return cmd;
         }

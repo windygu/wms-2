@@ -41,8 +41,8 @@ namespace Dddml.Wms.Domain.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<IOrganizationTreeNode> GetRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-            return ToOrganizationTreeNodeCollection(structureStates);
+            var states = OrganizationStructureStateQueryRepository.GetOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+            return ToOrganizationTreeNodeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
@@ -55,8 +55,8 @@ namespace Dddml.Wms.Domain.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<string> GetRootIds(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-            return ToIdCollection(structureStates);
+            var states = OrganizationStructureStateQueryRepository.GetOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+            return ToIdCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
@@ -71,8 +71,8 @@ namespace Dddml.Wms.Domain.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<IOrganizationTreeNode> GetRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-            return ToOrganizationTreeNodeCollection(structureStates);
+            var states = OrganizationStructureStateQueryRepository.GetOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+            return ToOrganizationTreeNodeCollection(states);
         }
 
         [Transaction(ReadOnly = true)]
@@ -85,8 +85,8 @@ namespace Dddml.Wms.Domain.NHibernate
         [Transaction(ReadOnly = true)]
         public virtual IEnumerable<string> GetRootIds(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var structureStates = OrganizationStructureStateQueryRepository.GetOrganizationTreeRoots(filter, orders, firstResult, maxResults);
-            return ToIdCollection(structureStates);
+            var states = OrganizationStructureStateQueryRepository.GetOrganizationTreeRootOrganizations(filter, orders, firstResult, maxResults);
+            return ToIdCollection(states);
         }
 
         [Transaction(ReadOnly = true)]

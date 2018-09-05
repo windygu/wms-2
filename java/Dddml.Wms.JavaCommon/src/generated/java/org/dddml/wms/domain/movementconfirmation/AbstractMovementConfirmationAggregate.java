@@ -330,7 +330,7 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
                 return;
             }
             if (Objects.equals("InProgress", command.getStateGetter().get()) && Objects.equals("Confirm", command.getContent())) {
-                command.getStateSetter().accept("Complete");
+                command.getStateSetter().accept("Completed");
                 return;
             }
             if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {

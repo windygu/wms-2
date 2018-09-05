@@ -194,7 +194,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 			this.LineNumber = e.LineNumber;
 
-            this.ReversalLineNumber = (e.ReversalLineNumber != null && e.ReversalLineNumber.HasValue) ? e.ReversalLineNumber.Value : default(long);
+			this.ReversalLineNumber = e.ReversalLineNumber;
 
 			this.Description = e.Description;
 
@@ -263,12 +263,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			{
 				if (e.IsPropertyReversalLineNumberRemoved)
 				{
-					this.ReversalLineNumber = default(long);
+					this.ReversalLineNumber = default(string);
 				}
 			}
 			else
 			{
-				this.ReversalLineNumber = (e.ReversalLineNumber != null && e.ReversalLineNumber.HasValue) ? e.ReversalLineNumber.Value : default(long);
+				this.ReversalLineNumber = e.ReversalLineNumber;
 			}
 
 			if (e.Description == null)

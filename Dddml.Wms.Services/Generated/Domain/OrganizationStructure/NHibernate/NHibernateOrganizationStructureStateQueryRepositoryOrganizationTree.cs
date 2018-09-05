@@ -19,13 +19,14 @@ namespace Dddml.Wms.Domain.OrganizationStructure.NHibernate
 	public partial class NHibernateOrganizationStructureStateQueryRepository
 	{
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationStructureState> GetOrganizationTreeRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<Dddml.Wms.Domain.Party.IOrganizationState> GetOrganizationTreeRootOrganizations(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureState>();
+            var criteria = CurrentSession.CreateCriteria<Dddml.Wms.Domain.Party.OrganizationState>();
 
-            CriteriaAddOrganizationTreeRootParentIdCriterion(criteria);
+            var dc = DetachedCriteria.For<OrganizationStructureState>().SetProjection(Projections.Property("Id.SubsidiaryId"));
+            criteria.Add(Subqueries.PropertyNotIn("PartyId", dc));
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-            return criteria.List<OrganizationStructureState>();
+            return criteria.List<Dddml.Wms.Domain.Party.OrganizationState>();
         }
 
         [Transaction(ReadOnly = true)]
@@ -39,13 +40,14 @@ namespace Dddml.Wms.Domain.OrganizationStructure.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public virtual IEnumerable<IOrganizationStructureState> GetOrganizationTreeRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
+        public virtual IEnumerable<Dddml.Wms.Domain.Party.IOrganizationState> GetOrganizationTreeRootOrganizations(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue)
         {
-            var criteria = CurrentSession.CreateCriteria<OrganizationStructureState>();
+            var criteria = CurrentSession.CreateCriteria<Dddml.Wms.Domain.Party.OrganizationState>();
 
-            CriteriaAddOrganizationTreeRootParentIdCriterion(criteria);
+            var dc = DetachedCriteria.For<OrganizationStructureState>().SetProjection(Projections.Property("Id.SubsidiaryId"));
+            criteria.Add(Subqueries.PropertyNotIn("PartyId", dc));
             NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
-            return criteria.List<OrganizationStructureState>();
+            return criteria.List<Dddml.Wms.Domain.Party.OrganizationState>();
         }
 
         [Transaction(ReadOnly = true)]
@@ -60,7 +62,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure.NHibernate
 
         private void CriteriaAddOrganizationTreeRootParentIdCriterion(ICriteria criteria)
         {
-            IList<object> rootParentIdValues = new object[] { "" };
+            IList<object> rootParentIdValues = new object[] { null };
             if (rootParentIdValues.Count == 1)
             {
                 NHibernateUtils.CriteriaAddCriterion(criteria, "Id.ParentId", rootParentIdValues[0]);

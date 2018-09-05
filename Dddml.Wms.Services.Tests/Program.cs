@@ -16,6 +16,14 @@ namespace Dddml.Wms.Services.Tests
     {
         static void Main(string[] args)
         {
+            //var dotGraphStr = DotGraphTests.GetTestOutputDotGraph();
+            //using (System.IO.StreamWriter w = new System.IO.StreamWriter("testDocStateMachine.dot", false, new System.Text.UTF8Encoding(false)))
+            //{
+            //    w.Write(dotGraphStr);
+            //    w.Close();
+            //}
+            //return;
+
             var initdb = new InitDatabase();
             initdb.SetUp();
 
