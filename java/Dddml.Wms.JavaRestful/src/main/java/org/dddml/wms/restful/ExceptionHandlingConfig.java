@@ -60,6 +60,7 @@ public class ExceptionHandlingConfig { //extends WebMvcConfigurerAdapter
         Map<String, String> exceptionMappingDefinitions = new HashMap<>();
         // exceptionMappingDefinitions.put("org.dddml.wms.security.JwtTokenMalformedException", "401, _exmsg");
         exceptionMappingDefinitions.put("org.dddml.wms.specialization.DomainError", "400, _exmsg");
+        exceptionMappingDefinitions.put("org.springframework.security.access.AccessDeniedException", "403, _exmsg");
         exceptionMappingDefinitions.put("java.lang.RuntimeException", "500, _exmsg");
         // <!-- 500 (catch all): -->
         exceptionMappingDefinitions.put("Throwable","500");

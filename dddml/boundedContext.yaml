@@ -60,6 +60,8 @@ configuration:
     #MvoClrAggregateDomainSubNamespaceName: "MViews"
     #MvoJavaAggregateDomainSubPackageName: "mviews"
     
+    SpringSecurityEnabled: true
+    
     ClrDomainServiceSubNamespaceName: "Services"
     ClrHttpServiceSetRequesterIdAttributeEnabled: true
     ClrHttpServiceJsonContractResolver: "Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver"
