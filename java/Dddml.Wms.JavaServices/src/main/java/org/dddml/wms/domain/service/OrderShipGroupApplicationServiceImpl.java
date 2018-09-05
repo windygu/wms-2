@@ -38,27 +38,28 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     @Transactional
     @Override
     public void when(OrderShipGroupServiceCommands.CreatePOShipGroup c) {
-        OrderCommand.CreateOrder createOrder = new AbstractOrderCommand.SimpleCreateOrder();
-
-        createOrder.setOrderId(c.getOrderId());
-        createOrder.setOrderTypeId(OrderTypeIds.PURCHASE_ORDER);//入库，先写死订单类型
-        createOrder.setActive(true);
-        createOrder.setCommandId(c.getCommandId());
-        createOrder.setRequesterId(c.getRequesterId());
+        AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = getCreateOrMergePatchPOCommand(c);
 
         // /////////// 只有一行 /////////////
-        String orderItemSeqId = "1";
+        String orderItemSeqId = seqIdGenerator.getNextId().toString();
 
-        OrderItemCommand.CreateOrderItem orderItem = createOrder.newCreateOrderItem();
+        OrderItemCommand.CreateOrderItem orderItem = orderCommand.newCreateOrderItem();
         orderItem.setOrderItemSeqId(orderItemSeqId);
         String productId = c.getProductId();
         ProductState productState = assertProductId(productId); // 确认 Product 存在
         orderItem.setProductId(productState.getProductId());
         orderItem.setQuantity(c.getQuantity());//数量
         orderItem.setActive(true);
-        createOrder.getOrderItems().add(orderItem);
 
-        OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = createOrder.newCreateOrderShipGroup();
+        if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
+            ((OrderCommand.CreateOrder)orderCommand).getOrderItems().add(orderItem);
+        } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
+            ((OrderCommand.MergePatchOrder)orderCommand).getOrderItemCommands().add(orderItem);
+        } else {
+            throw new RuntimeException("Unknown order command type.");
+        }
+
+        OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = orderCommand.newCreateOrderShipGroup();
         orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//电话号码
         orderShipGroup.setContactPartyId(c.getContactPartyId());
@@ -70,7 +71,13 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         //---------------------
         orderShipGroup.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());//预计收货日期
         //---------------------
-        createOrder.getOrderShipGroups().add(orderShipGroup);
+        if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
+            ((OrderCommand.CreateOrder)orderCommand).getOrderShipGroups().add(orderShipGroup);
+        } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
+            ((OrderCommand.MergePatchOrder)orderCommand).getOrderShipGroupCommands().add(orderShipGroup);
+        } else {
+            throw new RuntimeException("Unknown order command type.");
+        }
 
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation orderItemShipGroupAssociation
                 = orderShipGroup.newCreateOrderItemShipGroupAssociation();
@@ -79,33 +86,58 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         orderItemShipGroupAssociation.setActive(true);
         orderShipGroup.getOrderItemShipGroupAssociations().add(orderItemShipGroupAssociation);
 
-        getOrderApplicationService().when(createOrder);
+        if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
+            getOrderApplicationService().when((AbstractOrderCommand.SimpleCreateOrder) orderCommand);
+        } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
+            getOrderApplicationService().when((AbstractOrderCommand.SimpleMergePatchOrder) orderCommand);
+        } else {
+            throw new RuntimeException("Unknown order command type.");
+        }
+    }
+
+    AbstractOrderCommand.AbstractCreateOrMergePatchOrder getCreateOrMergePatchPOCommand(OrderShipGroupServiceCommands.CreatePOShipGroup c) {
+        AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = null;
+        OrderState orderState = getOrderApplicationService().get(c.getOrderId());
+        if (orderState == null) {
+            orderCommand = new AbstractOrderCommand.SimpleCreateOrder();
+            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setOrderTypeId(OrderTypeIds.PURCHASE_ORDER);//入库，先写死订单类型
+            orderCommand.setActive(true);
+            orderCommand.setCommandId(c.getCommandId());
+            orderCommand.setRequesterId(c.getRequesterId());
+        } else {
+            orderCommand = new AbstractOrderCommand.SimpleMergePatchOrder();
+            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setCommandId(c.getCommandId());
+            orderCommand.setRequesterId(c.getRequesterId());
+        }
+        return orderCommand;
     }
 
     @Transactional
     @Override
     public void when(OrderShipGroupServiceCommands.CreateSOShipGroup c) {
-        OrderCommand.CreateOrder createOrder = new AbstractOrderCommand.SimpleCreateOrder();
-
-        createOrder.setOrderId(c.getOrderId());
-        createOrder.setOrderTypeId(OrderTypeIds.SALES_ORDER);//出库，先写死订单类型
-        createOrder.setActive(true);
-        createOrder.setCommandId(c.getCommandId());
-        createOrder.setRequesterId(c.getRequesterId());
+        AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = getCreateOrMergePatchSOCommand(c);
 
         // /////////// 只有一行 /////////////
-        String orderItemSeqId = "1";
+        String orderItemSeqId = seqIdGenerator.getNextId().toString();
 
-        OrderItemCommand.CreateOrderItem orderItem = createOrder.newCreateOrderItem();
+        OrderItemCommand.CreateOrderItem orderItem = orderCommand.newCreateOrderItem();
         orderItem.setOrderItemSeqId(orderItemSeqId);
         String productId = c.getProductId();// 确认 Product 存在
         ProductState productState = assertProductId(productId);
         orderItem.setProductId(productState.getProductId());
         orderItem.setQuantity(c.getQuantity());//数量
         orderItem.setActive(true);
-        createOrder.getOrderItems().add(orderItem);
+        if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
+            ((OrderCommand.CreateOrder)orderCommand).getOrderItems().add(orderItem);
+        } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
+            ((OrderCommand.MergePatchOrder)orderCommand).getOrderItemCommands().add(orderItem);
+        } else {
+            throw new RuntimeException("Unknown order command type.");
+        }
 
-        OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = createOrder.newCreateOrderShipGroup();
+        OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = orderCommand.newCreateOrderShipGroup();
         orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//司机 / 联系人电话
         orderShipGroup.setContactPartyId(c.getContactPartyId());//司机 / 联系人
@@ -119,7 +151,13 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         orderShipGroup.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
         orderShipGroup.setShippingInstructions(c.getShippingInstructions());//发货指示
         //---------------------
-        createOrder.getOrderShipGroups().add(orderShipGroup);
+        if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
+            ((OrderCommand.CreateOrder)orderCommand).getOrderShipGroups().add(orderShipGroup);
+        } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
+            ((OrderCommand.MergePatchOrder)orderCommand).getOrderShipGroupCommands().add(orderShipGroup);
+        } else {
+            throw new RuntimeException("Unknown order command type.");
+        }
 
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation orderItemShipGroupAssociation
                 = orderShipGroup.newCreateOrderItemShipGroupAssociation();
@@ -128,7 +166,32 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         orderItemShipGroupAssociation.setActive(true);
         orderShipGroup.getOrderItemShipGroupAssociations().add(orderItemShipGroupAssociation);
 
-        getOrderApplicationService().when(createOrder);
+        if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
+            getOrderApplicationService().when((AbstractOrderCommand.SimpleCreateOrder) orderCommand);
+        } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
+            getOrderApplicationService().when((AbstractOrderCommand.SimpleMergePatchOrder) orderCommand);
+        } else {
+            throw new RuntimeException("Unknown order command type.");
+        }
+    }
+
+
+    AbstractOrderCommand.AbstractCreateOrMergePatchOrder getCreateOrMergePatchSOCommand(OrderShipGroupServiceCommands.CreateSOShipGroup c) {
+        AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = null;
+        OrderState orderState = getOrderApplicationService().get(c.getOrderId());
+        if (orderState == null) {
+            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setOrderTypeId(OrderTypeIds.SALES_ORDER);//出库，先写死订单类型
+            orderCommand.setActive(true);
+            orderCommand.setCommandId(c.getCommandId());
+            orderCommand.setRequesterId(c.getRequesterId());
+        } else {
+            orderCommand = new AbstractOrderCommand.SimpleMergePatchOrder();
+            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setCommandId(c.getCommandId());
+            orderCommand.setRequesterId(c.getRequesterId());
+        }
+        return orderCommand;
     }
 
     @Transactional
