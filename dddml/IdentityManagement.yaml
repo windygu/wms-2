@@ -132,16 +132,16 @@ aggregates:
       
         Create:
           authorizationEnabled: true
-          requiredRoles: [SystemAdministrator]
-          requiredPermissions: [UserManagement]
+          requiredAnyRole: [SystemAdministrator]
+          requiredAnyPermission: [UserManagement]
           
         Patch:
           authorizationEnabled: true
-          requiredRoles: [SystemAdministrator]
-          requiredPermissions: [UserManagement]
+          requiredAnyRole: [SystemAdministrator]
+          requiredAnyPermission: [UserManagement]
 
         Delete:
           authorizationEnabled: true
-          requiredRoles: [SystemAdministrator]
-          requiredPermissions: [UserManagement]
+          requiredAnyRole: [SystemAdministrator]
+          requiredAnyPermission: [UserManagement]
     

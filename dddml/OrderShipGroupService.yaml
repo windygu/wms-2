@@ -18,7 +18,7 @@ services:
       # 创建装运组（入库通知单）
       CreatePOShipGroup:
         #authorizationEnabled: true
-        #requiredRoles: ["ADMIN", "WarehouseOP"]
+        #requiredAnyRole: ["ADMIN", "WarehouseOP"]
         
         parameters:
           # 订单 Id（合同号）
