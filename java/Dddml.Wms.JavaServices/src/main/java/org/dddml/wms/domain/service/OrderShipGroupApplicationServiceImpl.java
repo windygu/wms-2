@@ -110,6 +110,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             orderCommand.setOrderId(c.getOrderId());
             orderCommand.setCommandId(c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
+            orderCommand.setVersion(orderState.getVersion());
         }
         return orderCommand;
     }
@@ -190,6 +191,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             orderCommand.setOrderId(c.getOrderId());
             orderCommand.setCommandId(c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
+            orderCommand.setVersion(orderState.getVersion());
         }
         return orderCommand;
     }
