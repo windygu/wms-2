@@ -96,6 +96,21 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
+     * Destination Facility Id
+     */
+    private String destinationFacilityId;
+
+    public String getDestinationFacilityId()
+    {
+        return this.destinationFacilityId;
+    }
+
+    public void setDestinationFacilityId(String destinationFacilityId)
+    {
+        this.destinationFacilityId = destinationFacilityId;
+    }
+
+    /**
      * Contact Mech Id
      */
     private String contactMechId;
@@ -449,6 +464,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyFacilityIdRemoved = removed;
     }
 
+    private Boolean isPropertyDestinationFacilityIdRemoved;
+
+    public Boolean getIsPropertyDestinationFacilityIdRemoved()
+    {
+        return this.isPropertyDestinationFacilityIdRemoved;
+    }
+
+    public void setIsPropertyDestinationFacilityIdRemoved(Boolean removed)
+    {
+        this.isPropertyDestinationFacilityIdRemoved = removed;
+    }
+
     private Boolean isPropertyContactMechIdRemoved;
 
     public Boolean getIsPropertyContactMechIdRemoved()
@@ -674,6 +701,7 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setCarrierPartyId(this.getCarrierPartyId());
         command.setCarrierRoleTypeId(this.getCarrierRoleTypeId());
         command.setFacilityId(this.getFacilityId());
+        command.setDestinationFacilityId(this.getDestinationFacilityId());
         command.setContactMechId(this.getContactMechId());
         command.setTelecomContactMechId(this.getTelecomContactMechId());
         command.setTrackingNumber(this.getTrackingNumber());
@@ -740,6 +768,7 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setIsPropertyCarrierPartyIdRemoved(this.getIsPropertyCarrierPartyIdRemoved());
         command.setIsPropertyCarrierRoleTypeIdRemoved(this.getIsPropertyCarrierRoleTypeIdRemoved());
         command.setIsPropertyFacilityIdRemoved(this.getIsPropertyFacilityIdRemoved());
+        command.setIsPropertyDestinationFacilityIdRemoved(this.getIsPropertyDestinationFacilityIdRemoved());
         command.setIsPropertyContactMechIdRemoved(this.getIsPropertyContactMechIdRemoved());
         command.setIsPropertyTelecomContactMechIdRemoved(this.getIsPropertyTelecomContactMechIdRemoved());
         command.setIsPropertyTrackingNumberRemoved(this.getIsPropertyTrackingNumberRemoved());

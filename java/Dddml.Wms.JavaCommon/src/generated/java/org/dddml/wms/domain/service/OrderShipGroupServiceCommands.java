@@ -159,6 +159,19 @@ public class OrderShipGroupServiceCommands {
         }
 
         /**
+         * Destination Facility Id
+         */
+        private String destinationFacilityId;
+
+        public String getDestinationFacilityId() {
+            return destinationFacilityId;
+        }
+
+        public void setDestinationFacilityId(String destinationFacilityId) {
+            this.destinationFacilityId = destinationFacilityId;
+        }
+
+        /**
          * Command Id
          */
         private String commandId;
@@ -355,6 +368,19 @@ public class OrderShipGroupServiceCommands {
 
         public void setShippingInstructions(String shippingInstructions) {
             this.shippingInstructions = shippingInstructions;
+        }
+
+        /**
+         * Facility Id
+         */
+        private String facilityId;
+
+        public String getFacilityId() {
+            return facilityId;
+        }
+
+        public void setFacilityId(String facilityId) {
+            this.facilityId = facilityId;
         }
 
         /**

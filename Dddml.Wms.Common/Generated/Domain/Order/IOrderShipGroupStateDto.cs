@@ -57,6 +57,12 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        string DestinationFacilityId
+        {
+            get;
+            set;
+        }
+
         string ContactMechId
         {
             get;

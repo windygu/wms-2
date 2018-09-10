@@ -47,6 +47,8 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string FacilityId { get; set; }
 
+		public virtual string DestinationFacilityId { get; set; }
+
 		public virtual string ContactMechId { get; set; }
 
 		public virtual string TelecomContactMechId { get; set; }
@@ -196,6 +198,25 @@ namespace Dddml.Wms.Domain.Order
             set
             {
                 this.IsPropertyFacilityIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDestinationFacilityIdRemoved { get; set; }
+
+        bool IMergePatchOrderShipGroup.IsPropertyDestinationFacilityIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDestinationFacilityIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDestinationFacilityIdRemoved = value;
             }
         }
 

@@ -29,6 +29,8 @@ namespace Dddml.Wms.Domain.Order
 
 		string FacilityId { get; set; }
 
+		string DestinationFacilityId { get; set; }
+
 		string ContactMechId { get; set; }
 
 		string TelecomContactMechId { get; set; }

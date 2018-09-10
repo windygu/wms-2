@@ -39,6 +39,8 @@ namespace Dddml.Wms.Domain.Order
 
 		string FacilityId { get; set; }
 
+		string DestinationFacilityId { get; set; }
+
 		string ContactMechId { get; set; }
 
 		string TelecomContactMechId { get; set; }
@@ -104,6 +106,8 @@ namespace Dddml.Wms.Domain.Order
 		bool IsPropertyCarrierRoleTypeIdRemoved { get; set; }
 
 		bool IsPropertyFacilityIdRemoved { get; set; }
+
+		bool IsPropertyDestinationFacilityIdRemoved { get; set; }
 
 		bool IsPropertyContactMechIdRemoved { get; set; }
 

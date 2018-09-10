@@ -26,6 +26,7 @@
     <property name="CarrierPartyId" ><column name="CarrierPartyId" sql-type="VARCHAR(20)" /></property>
     <property name="CarrierRoleTypeId" ><column name="CarrierRoleTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="FacilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="DestinationFacilityId" ><column name="DestinationFacilityId" sql-type="VARCHAR(20)" /></property>
     <property name="ContactMechId" ><column name="ContactMechId" sql-type="VARCHAR(20)" /></property>
     <property name="TelecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
     <property name="TrackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
@@ -65,6 +66,8 @@
         <property name="IsPropertyCarrierRoleTypeIdRemoved" column="IsPropertyCarrierRoleTypeIdRemoved"/>
 
         <property name="IsPropertyFacilityIdRemoved" column="IsPropertyFacilityIdRemoved"/>
+
+        <property name="IsPropertyDestinationFacilityIdRemoved" column="IsPropertyDestinationFacilityIdRemoved"/>
 
         <property name="IsPropertyContactMechIdRemoved" column="IsPropertyContactMechIdRemoved"/>
 

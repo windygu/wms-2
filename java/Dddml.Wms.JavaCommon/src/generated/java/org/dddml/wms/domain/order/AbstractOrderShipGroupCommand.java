@@ -106,6 +106,18 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.facilityId = facilityId;
         }
 
+        private String destinationFacilityId;
+
+        public String getDestinationFacilityId()
+        {
+            return this.destinationFacilityId;
+        }
+
+        public void setDestinationFacilityId(String destinationFacilityId)
+        {
+            this.destinationFacilityId = destinationFacilityId;
+        }
+
         private String contactMechId;
 
         public String getContactMechId()
@@ -447,6 +459,18 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setIsPropertyFacilityIdRemoved(Boolean removed)
         {
             this.isPropertyFacilityIdRemoved = removed;
+        }
+
+        private Boolean isPropertyDestinationFacilityIdRemoved;
+
+        public Boolean getIsPropertyDestinationFacilityIdRemoved()
+        {
+            return this.isPropertyDestinationFacilityIdRemoved;
+        }
+
+        public void setIsPropertyDestinationFacilityIdRemoved(Boolean removed)
+        {
+            this.isPropertyDestinationFacilityIdRemoved = removed;
         }
 
         private Boolean isPropertyContactMechIdRemoved;

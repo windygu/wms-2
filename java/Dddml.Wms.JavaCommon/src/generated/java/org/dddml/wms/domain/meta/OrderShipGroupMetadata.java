@@ -25,6 +25,7 @@ public final class OrderShipGroupMetadata {
             "carrierPartyId",
             "carrierRoleTypeId",
             "facilityId",
+            "destinationFacilityId",
             "contactMechId",
             "telecomContactMechId",
             "trackingNumber",
@@ -56,6 +57,7 @@ public final class OrderShipGroupMetadata {
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "String",
             "String",
@@ -119,6 +121,8 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("CarrierRoleTypeId", "carrierRoleTypeId");
         aliasMap.put("facilityId", "facilityId");
         aliasMap.put("FacilityId", "facilityId");
+        aliasMap.put("destinationFacilityId", "destinationFacilityId");
+        aliasMap.put("DestinationFacilityId", "destinationFacilityId");
         aliasMap.put("contactMechId", "contactMechId");
         aliasMap.put("ContactMechId", "contactMechId");
         aliasMap.put("telecomContactMechId", "telecomContactMechId");

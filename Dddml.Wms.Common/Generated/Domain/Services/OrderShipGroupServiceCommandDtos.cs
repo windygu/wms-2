@@ -39,6 +39,8 @@ namespace Dddml.Wms.Domain.Services
 
             public string TrackingNumber { get; set; }
 
+            public string DestinationFacilityId { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -57,6 +59,7 @@ namespace Dddml.Wms.Domain.Services
                 cmd.ContactPartyId = this.ContactPartyId;
                 cmd.TelecomContactMechId = this.TelecomContactMechId;
                 cmd.TrackingNumber = this.TrackingNumber;
+                cmd.DestinationFacilityId = this.DestinationFacilityId;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;
@@ -91,6 +94,8 @@ namespace Dddml.Wms.Domain.Services
 
             public string ShippingInstructions { get; set; }
 
+            public string FacilityId { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -111,6 +116,7 @@ namespace Dddml.Wms.Domain.Services
                 cmd.TrackingNumber = this.TrackingNumber;
                 cmd.VehiclePlateNumber = this.VehiclePlateNumber;
                 cmd.ShippingInstructions = this.ShippingInstructions;
+                cmd.FacilityId = this.FacilityId;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;

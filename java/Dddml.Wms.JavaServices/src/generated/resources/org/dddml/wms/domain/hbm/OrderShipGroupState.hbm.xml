@@ -20,6 +20,7 @@
 	<property name="carrierPartyId" ><column name="CarrierPartyId" sql-type="VARCHAR(20)" /></property>
 	<property name="carrierRoleTypeId" ><column name="CarrierRoleTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="facilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="destinationFacilityId" ><column name="DestinationFacilityId" sql-type="VARCHAR(20)" /></property>
 	<property name="contactMechId" ><column name="ContactMechId" sql-type="VARCHAR(20)" /></property>
 	<property name="telecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
 	<property name="trackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>

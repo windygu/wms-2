@@ -439,6 +439,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setCarrierPartyId(c.getCarrierPartyId());
         e.setCarrierRoleTypeId(c.getCarrierRoleTypeId());
         e.setFacilityId(c.getFacilityId());
+        e.setDestinationFacilityId(c.getDestinationFacilityId());
         e.setContactMechId(c.getContactMechId());
         e.setTelecomContactMechId(c.getTelecomContactMechId());
         e.setTrackingNumber(c.getTrackingNumber());
@@ -486,6 +487,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setCarrierPartyId(c.getCarrierPartyId());
         e.setCarrierRoleTypeId(c.getCarrierRoleTypeId());
         e.setFacilityId(c.getFacilityId());
+        e.setDestinationFacilityId(c.getDestinationFacilityId());
         e.setContactMechId(c.getContactMechId());
         e.setTelecomContactMechId(c.getTelecomContactMechId());
         e.setTrackingNumber(c.getTrackingNumber());
@@ -510,6 +512,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyCarrierPartyIdRemoved(c.getIsPropertyCarrierPartyIdRemoved());
         e.setIsPropertyCarrierRoleTypeIdRemoved(c.getIsPropertyCarrierRoleTypeIdRemoved());
         e.setIsPropertyFacilityIdRemoved(c.getIsPropertyFacilityIdRemoved());
+        e.setIsPropertyDestinationFacilityIdRemoved(c.getIsPropertyDestinationFacilityIdRemoved());
         e.setIsPropertyContactMechIdRemoved(c.getIsPropertyContactMechIdRemoved());
         e.setIsPropertyTelecomContactMechIdRemoved(c.getIsPropertyTelecomContactMechIdRemoved());
         e.setIsPropertyTrackingNumberRemoved(c.getIsPropertyTrackingNumberRemoved());

@@ -58,6 +58,12 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        public virtual string DestinationFacilityId
+        {
+            get;
+            set;
+        }
+
         public virtual string ContactMechId
         {
             get;
@@ -230,6 +236,7 @@ namespace Dddml.Wms.Domain.Order
             state.CarrierPartyId = this.CarrierPartyId;
             state.CarrierRoleTypeId = this.CarrierRoleTypeId;
             state.FacilityId = this.FacilityId;
+            state.DestinationFacilityId = this.DestinationFacilityId;
             state.ContactMechId = this.ContactMechId;
             state.TelecomContactMechId = this.TelecomContactMechId;
             state.TrackingNumber = this.TrackingNumber;

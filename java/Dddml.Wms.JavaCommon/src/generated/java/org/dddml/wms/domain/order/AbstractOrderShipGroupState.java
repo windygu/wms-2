@@ -107,6 +107,18 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.facilityId = facilityId;
     }
 
+    private String destinationFacilityId;
+
+    public String getDestinationFacilityId()
+    {
+        return this.destinationFacilityId;
+    }
+
+    public void setDestinationFacilityId(String destinationFacilityId)
+    {
+        this.destinationFacilityId = destinationFacilityId;
+    }
+
     private String contactMechId;
 
     public String getContactMechId()
@@ -479,6 +491,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setCarrierPartyId(e.getCarrierPartyId());
         this.setCarrierRoleTypeId(e.getCarrierRoleTypeId());
         this.setFacilityId(e.getFacilityId());
+        this.setDestinationFacilityId(e.getDestinationFacilityId());
         this.setContactMechId(e.getContactMechId());
         this.setTelecomContactMechId(e.getTelecomContactMechId());
         this.setTrackingNumber(e.getTrackingNumber());
@@ -579,6 +592,17 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         else
         {
             this.setFacilityId(e.getFacilityId());
+        }
+        if (e.getDestinationFacilityId() == null)
+        {
+            if (e.getIsPropertyDestinationFacilityIdRemoved() != null && e.getIsPropertyDestinationFacilityIdRemoved())
+            {
+                this.setDestinationFacilityId(null);
+            }
+        }
+        else
+        {
+            this.setDestinationFacilityId(e.getDestinationFacilityId());
         }
         if (e.getContactMechId() == null)
         {

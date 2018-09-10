@@ -236,6 +236,34 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
+		public virtual string DestinationFacilityId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DestinationFacilityId"))
+                {
+                    return _state.DestinationFacilityId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DestinationFacilityId = value;
+            }
+        }
+
+        string IOrderShipGroupStateProperties.DestinationFacilityId
+        {
+            get 
+            {
+                return (this._state as IOrderShipGroupStateProperties).DestinationFacilityId;
+            }
+            set 
+            {
+                (this._state as IOrderShipGroupStateProperties).DestinationFacilityId = value;
+            }
+        }
+
 		public virtual string ContactMechId
 		{
             get

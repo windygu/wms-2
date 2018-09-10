@@ -308,8 +308,14 @@ aggregates:
           CarrierRoleTypeId:
             type: id
             
+          # 源仓库 / 设施 Id
           FacilityId:
             type: id
+          # -----------------------------
+          # 目标仓库 / 设施 Id
+          DestinationFacilityId:
+            type: id
+          # -----------------------------
             
           ContactMechId:
             type: id

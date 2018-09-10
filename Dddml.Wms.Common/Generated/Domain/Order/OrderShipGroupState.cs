@@ -236,6 +236,8 @@ namespace Dddml.Wms.Domain.Order
 
 			this.FacilityId = e.FacilityId;
 
+			this.DestinationFacilityId = e.DestinationFacilityId;
+
 			this.ContactMechId = e.ContactMechId;
 
 			this.TelecomContactMechId = e.TelecomContactMechId;
@@ -361,6 +363,18 @@ namespace Dddml.Wms.Domain.Order
 			else
 			{
 				this.FacilityId = e.FacilityId;
+			}
+
+			if (e.DestinationFacilityId == null)
+			{
+				if (e.IsPropertyDestinationFacilityIdRemoved)
+				{
+					this.DestinationFacilityId = default(string);
+				}
+			}
+			else
+			{
+				this.DestinationFacilityId = e.DestinationFacilityId;
 			}
 
 			if (e.ContactMechId == null)

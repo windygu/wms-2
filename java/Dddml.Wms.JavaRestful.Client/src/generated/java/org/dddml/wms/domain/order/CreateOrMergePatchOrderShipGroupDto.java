@@ -96,6 +96,21 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
+     * Destination Facility Id
+     */
+    private String destinationFacilityId;
+
+    public String getDestinationFacilityId()
+    {
+        return this.destinationFacilityId;
+    }
+
+    public void setDestinationFacilityId(String destinationFacilityId)
+    {
+        this.destinationFacilityId = destinationFacilityId;
+    }
+
+    /**
      * Contact Mech Id
      */
     private String contactMechId;
@@ -447,6 +462,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     public void setIsPropertyFacilityIdRemoved(Boolean removed)
     {
         this.isPropertyFacilityIdRemoved = removed;
+    }
+
+    private Boolean isPropertyDestinationFacilityIdRemoved;
+
+    public Boolean getIsPropertyDestinationFacilityIdRemoved()
+    {
+        return this.isPropertyDestinationFacilityIdRemoved;
+    }
+
+    public void setIsPropertyDestinationFacilityIdRemoved(Boolean removed)
+    {
+        this.isPropertyDestinationFacilityIdRemoved = removed;
     }
 
     private Boolean isPropertyContactMechIdRemoved;

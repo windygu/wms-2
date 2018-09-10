@@ -222,6 +222,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "DestinationFacilityId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "ContactMechId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -1122,6 +1151,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("carrierRoleTypeId", "CarrierRoleTypeId");
             d.Add("FacilityId", "FacilityId");
             d.Add("facilityId", "FacilityId");
+            d.Add("DestinationFacilityId", "DestinationFacilityId");
+            d.Add("destinationFacilityId", "DestinationFacilityId");
             d.Add("ContactMechId", "ContactMechId");
             d.Add("contactMechId", "ContactMechId");
             d.Add("TelecomContactMechId", "TelecomContactMechId");

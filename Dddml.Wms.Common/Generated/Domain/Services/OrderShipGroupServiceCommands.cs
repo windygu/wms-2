@@ -39,6 +39,8 @@ namespace Dddml.Wms.Domain.Services
 
             public string TrackingNumber { get; set; }
 
+            public string DestinationFacilityId { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -72,6 +74,8 @@ namespace Dddml.Wms.Domain.Services
             public string VehiclePlateNumber { get; set; }
 
             public string ShippingInstructions { get; set; }
+
+            public string FacilityId { get; set; }
 
             public string CommandId { get; set; }
 

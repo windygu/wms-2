@@ -93,6 +93,18 @@ public class OrderShipGroupStateDto
         this.facilityId = facilityId;
     }
 
+    private String destinationFacilityId;
+
+    public String getDestinationFacilityId()
+    {
+        return this.destinationFacilityId;
+    }
+
+    public void setDestinationFacilityId(String destinationFacilityId)
+    {
+        this.destinationFacilityId = destinationFacilityId;
+    }
+
     private String contactMechId;
 
     public String getContactMechId()
@@ -454,6 +466,9 @@ public class OrderShipGroupStateDto
             }
             if (returnedFieldsContains("FacilityId")) {
                 dto.setFacilityId(state.getFacilityId());
+            }
+            if (returnedFieldsContains("DestinationFacilityId")) {
+                dto.setDestinationFacilityId(state.getDestinationFacilityId());
             }
             if (returnedFieldsContains("ContactMechId")) {
                 dto.setContactMechId(state.getContactMechId());

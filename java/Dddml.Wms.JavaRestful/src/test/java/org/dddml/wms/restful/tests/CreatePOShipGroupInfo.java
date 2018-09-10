@@ -38,8 +38,8 @@ public class CreatePOShipGroupInfo {
         String url = null;
         // /////////////////////////////////////////
         // 获取一个有效的 Token
-        //token = getJwtToken();
-        token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
+        token = getJwtToken();
+        //token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
 
         OrderShipGroupServiceCommands.CreatePOShipGroup createPOShipGroup = new OrderShipGroupServiceCommands.CreatePOShipGroup();
         // 合同号:
@@ -72,6 +72,12 @@ public class CreatePOShipGroupInfo {
         createPOShipGroup.setCommandId(UUID.randomUUID().toString());
         HttpClientUtil.post(token, url, createPOShipGroup);
 
+        // ////////////// 测试： 创建另一个“通知单” ///////////////////////////////////////////////
+        //createPOShipGroup.setCommandId(UUID.randomUUID().toString());
+        //createPOShipGroup.setShipGroupSeqId(UUID.randomUUID().hashCode() + "");//随机产生通知单号
+        //HttpClientUtil.post(token, url, createPOShipGroup);
+        // //////////////////////////////////////////////////////////////////////////////////////////
+
 
         // /////////////// “批准”这个通知单 /////////////////////////
         String orderShipGroupUrl = HttpClientUtil.appendUrl(baseUrl,
@@ -96,7 +102,7 @@ public class CreatePOShipGroupInfo {
     private static String getJwtToken() {
         JwtUser u = new JwtUser();
         u.setUsername("001");
-        u.setRole("admin");
+        u.setRole("ADMIN");
 
         Claims claims = Jwts.claims().setSubject(u.getUsername());
         claims.put("role", u.getRole());

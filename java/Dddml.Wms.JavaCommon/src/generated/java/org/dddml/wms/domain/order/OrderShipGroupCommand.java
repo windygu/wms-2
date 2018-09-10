@@ -42,6 +42,10 @@ public interface OrderShipGroupCommand extends Command
 
         void setFacilityId(String facilityId);
 
+        String getDestinationFacilityId();
+
+        void setDestinationFacilityId(String destinationFacilityId);
+
         String getContactMechId();
 
         void setContactMechId(String contactMechId);
@@ -149,6 +153,10 @@ public interface OrderShipGroupCommand extends Command
         Boolean getIsPropertyFacilityIdRemoved();
 
         void setIsPropertyFacilityIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDestinationFacilityIdRemoved();
+
+        void setIsPropertyDestinationFacilityIdRemoved(Boolean removed);
 
         Boolean getIsPropertyContactMechIdRemoved();
 

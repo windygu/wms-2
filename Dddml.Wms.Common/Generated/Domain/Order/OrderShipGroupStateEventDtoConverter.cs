@@ -50,6 +50,7 @@ namespace Dddml.Wms.Domain.Order
             dto.CarrierPartyId = e.CarrierPartyId;
             dto.CarrierRoleTypeId = e.CarrierRoleTypeId;
             dto.FacilityId = e.FacilityId;
+            dto.DestinationFacilityId = e.DestinationFacilityId;
             dto.ContactMechId = e.ContactMechId;
             dto.TelecomContactMechId = e.TelecomContactMechId;
             dto.TrackingNumber = e.TrackingNumber;
@@ -94,6 +95,7 @@ namespace Dddml.Wms.Domain.Order
             dto.CarrierPartyId = e.CarrierPartyId;
             dto.CarrierRoleTypeId = e.CarrierRoleTypeId;
             dto.FacilityId = e.FacilityId;
+            dto.DestinationFacilityId = e.DestinationFacilityId;
             dto.ContactMechId = e.ContactMechId;
             dto.TelecomContactMechId = e.TelecomContactMechId;
             dto.TrackingNumber = e.TrackingNumber;
@@ -119,6 +121,7 @@ namespace Dddml.Wms.Domain.Order
             dto.IsPropertyCarrierPartyIdRemoved = e.IsPropertyCarrierPartyIdRemoved;
             dto.IsPropertyCarrierRoleTypeIdRemoved = e.IsPropertyCarrierRoleTypeIdRemoved;
             dto.IsPropertyFacilityIdRemoved = e.IsPropertyFacilityIdRemoved;
+            dto.IsPropertyDestinationFacilityIdRemoved = e.IsPropertyDestinationFacilityIdRemoved;
             dto.IsPropertyContactMechIdRemoved = e.IsPropertyContactMechIdRemoved;
             dto.IsPropertyTelecomContactMechIdRemoved = e.IsPropertyTelecomContactMechIdRemoved;
             dto.IsPropertyTrackingNumberRemoved = e.IsPropertyTrackingNumberRemoved;

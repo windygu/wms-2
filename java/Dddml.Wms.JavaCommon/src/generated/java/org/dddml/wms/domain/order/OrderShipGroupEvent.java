@@ -54,6 +54,10 @@ public interface OrderShipGroupEvent extends Event
 
         void setFacilityId(String facilityId);
 
+        String getDestinationFacilityId();
+
+        void setDestinationFacilityId(String destinationFacilityId);
+
         String getContactMechId();
 
         void setContactMechId(String contactMechId);
@@ -169,6 +173,10 @@ public interface OrderShipGroupEvent extends Event
         Boolean getIsPropertyFacilityIdRemoved();
 
         void setIsPropertyFacilityIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDestinationFacilityIdRemoved();
+
+        void setIsPropertyDestinationFacilityIdRemoved(Boolean removed);
 
         Boolean getIsPropertyContactMechIdRemoved();
 

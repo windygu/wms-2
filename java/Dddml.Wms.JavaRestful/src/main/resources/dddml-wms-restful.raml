@@ -3506,6 +3506,9 @@ types:
       facilityId: 
         type: string
         required: false
+      destinationFacilityId: 
+        type: string
+        required: false
       contactMechId: 
         type: string
         required: false
@@ -3588,6 +3591,10 @@ types:
         required: false
         enum: [true, false]
       isPropertyFacilityIdRemoved: 
+        type: boolean
+        required: false
+        enum: [true, false]
+      isPropertyDestinationFacilityIdRemoved: 
         type: boolean
         required: false
         enum: [true, false]
@@ -3696,6 +3703,9 @@ types:
       facilityId: 
         type: string
         required: false
+      destinationFacilityId: 
+        type: string
+        required: false
       contactMechId: 
         type: string
         required: false
@@ -3778,6 +3788,10 @@ types:
         required: false
         enum: [true, false]
       isPropertyFacilityIdRemoved: 
+        type: boolean
+        required: false
+        enum: [true, false]
+      isPropertyDestinationFacilityIdRemoved: 
         type: boolean
         required: false
         enum: [true, false]
@@ -8460,6 +8474,9 @@ types:
         type: string
         required: false
       shippingInstructions: 
+        type: string
+        required: false
+      facilityId: 
         type: string
         required: false
       commandId: 
@@ -16993,6 +17010,9 @@ types:
       facilityId: 
         type: string
         required: false
+      destinationFacilityId: 
+        type: string
+        required: false
       contactMechId: 
         type: string
         required: false
@@ -20658,6 +20678,9 @@ types:
       trackingNumber: 
         type: string
         required: false
+      destinationFacilityId: 
+        type: string
+        required: false
       commandId: 
         type: string
         required: false
@@ -21714,6 +21737,9 @@ types:
       facilityId: 
         type: string
         required: false
+      destinationFacilityId: 
+        type: string
+        required: false
       contactMechId: 
         type: string
         required: false
@@ -21796,6 +21822,10 @@ types:
         required: false
         enum: [true, false]
       isPropertyFacilityIdRemoved: 
+        type: boolean
+        required: false
+        enum: [true, false]
+      isPropertyDestinationFacilityIdRemoved: 
         type: boolean
         required: false
         enum: [true, false]
@@ -24137,6 +24167,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -24220,19 +24263,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /AttributeSetInstanceExtensionFields: 
   displayName: AttributeSetInstanceExtensionFieldResource
   description: AttributeSetInstanceExtensionFieldResource
@@ -24478,6 +24508,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -24561,19 +24604,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /AttributeSetInstances: 
   displayName: AttributeSetInstanceResource
   description: AttributeSetInstanceResource
@@ -24871,6 +24901,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -24994,19 +25037,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /AttributeSets: 
   displayName: AttributeSetResource
   description: AttributeSetResource
@@ -25168,6 +25198,33 @@ types:
       responses: 
         200: 
     /AttributeUses: 
+      post: 
+        displayName: 新建
+        description: 新建 AttributeUse
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.attributeset.CreateOrMergePatchAttributeUseDto.CreateAttributeUseDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: AttributeUse List
         description: AttributeUse List
@@ -25223,33 +25280,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.attributeset.AttributeUseStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 AttributeUse
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.attributeset.CreateOrMergePatchAttributeUseDto.CreateAttributeUseDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{attributeId}: 
         uriParameters: 
           attributeId: 
@@ -25257,15 +25287,9 @@ types:
             type: string
             required: true
             description: attributeId
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 AttributeUse
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.attributeset.CreateOrMergePatchAttributeUseDto.MergePatchAttributeUseDto
-              required: true
-              description: body
+        delete: 
+          displayName: 移除
+          description: 移除 AttributeUse
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -25292,9 +25316,15 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.attributeset.AttributeUseStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 AttributeUse
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 AttributeUse
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.attributeset.CreateOrMergePatchAttributeUseDto.MergePatchAttributeUseDto
+              required: true
+              description: body
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -25408,6 +25438,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -25496,19 +25539,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Attributes: 
   displayName: AttributeResource
   description: AttributeResource
@@ -25679,6 +25709,33 @@ types:
       responses: 
         200: 
     /AttributeValues: 
+      post: 
+        displayName: 新建
+        description: 新建 AttributeValue
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeValueDto.CreateAttributeValueDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: AttributeValue List
         description: AttributeValue List
@@ -25740,33 +25797,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.attribute.AttributeValueStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 AttributeValue
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeValueDto.CreateAttributeValueDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{value}: 
         uriParameters: 
           value: 
@@ -25830,44 +25860,6 @@ types:
               description: requesterId
           responses: 
             200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.attribute.AttributeEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.attribute.AttributeStateDto
     /AttributeAlias: 
       post: 
         displayName: 新建
@@ -25958,6 +25950,33 @@ types:
             type: string
             required: true
             description: code
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 AttributeAlias
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeAliasDto.MergePatchAttributeAliasDto
+              required: true
+              description: body
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         delete: 
           displayName: 移除
           description: 移除 AttributeAlias
@@ -25987,33 +26006,44 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.attribute.AttributeAliasStateDto
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 AttributeAlias
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeAliasDto.MergePatchAttributeAliasDto
-              required: true
-              description: body
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
           responses: 
             200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.attribute.AttributeEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.attribute.AttributeStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -26080,15 +26110,19 @@ types:
           body: 
             application/json: 
               type: number
-  /_nextId: 
-    get: 
-      displayName: getNextId
-      description: getNextId
-      responses: 
-        200: 
-          body: 
-            text/plain: 
-              type: string
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -26186,19 +26220,15 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
+  /_nextId: 
+    get: 
+      displayName: getNextId
+      description: getNextId
+      responses: 
+        200: 
+          body: 
+            text/plain: 
+              type: string
 /ContactMeches: 
   displayName: ContactMechResource
   description: ContactMechResource
@@ -26528,6 +26558,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -26653,19 +26696,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /DamageHandlingMethods: 
   displayName: DamageHandlingMethodResource
   description: DamageHandlingMethodResource
@@ -26855,6 +26885,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -26929,19 +26972,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /DamageReasons: 
   displayName: DamageReasonResource
   description: DamageReasonResource
@@ -27169,6 +27199,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -27243,19 +27286,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /DamageTypes: 
   displayName: DamageTypeResource
   description: DamageTypeResource
@@ -27451,6 +27481,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -27528,19 +27571,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /DocumentTypes: 
   displayName: DocumentTypeResource
   description: DocumentTypeResource
@@ -27730,6 +27760,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -27804,19 +27847,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Facilities: 
   displayName: FacilityResource
   description: FacilityResource
@@ -28134,6 +28164,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -28253,19 +28296,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /GoodIdentificationTypes: 
   displayName: GoodIdentificationTypeResource
   description: GoodIdentificationTypeResource
@@ -28499,6 +28529,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -28576,19 +28619,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /IdService: 
   displayName: IdServiceResource
   description: IdServiceResource
@@ -28610,30 +28640,6 @@ types:
 /ImportService: 
   displayName: ImportServiceResource
   description: ImportServiceResource
-  /ImportShipments: 
-    post: 
-      displayName: importShipments
-      description: importShipments
-      body: 
-        application/json: 
-          displayName: shipmentHeader
-          type: org.dddml.wms.restful.resource.ImportServiceResource.ImportingShipmentHeader
-          required: true
-          description: shipmentHeader
-      responses: 
-        200: 
-  /InitializeInventoryItems: 
-    post: 
-      displayName: initializeInventoryItems
-      description: initializeInventoryItems
-      body: 
-        application/json: 
-          displayName: settings
-          type: org.dddml.wms.restful.resource.ImportServiceResource.InitializingInventoryItemSettings
-          required: true
-          description: settings
-      responses: 
-        200: 
   /GetShipmentItemColumnNames: 
     get: 
       displayName: getShipmentItemColumnNames
@@ -28667,6 +28673,30 @@ types:
           body: 
             application/json: 
               type: org.springframework.core.io.InputStreamResource
+  /InitializeInventoryItems: 
+    post: 
+      displayName: initializeInventoryItems
+      description: initializeInventoryItems
+      body: 
+        application/json: 
+          displayName: settings
+          type: org.dddml.wms.restful.resource.ImportServiceResource.InitializingInventoryItemSettings
+          required: true
+          description: settings
+      responses: 
+        200: 
+  /ImportShipments: 
+    post: 
+      displayName: importShipments
+      description: importShipments
+      body: 
+        application/json: 
+          displayName: shipmentHeader
+          type: org.dddml.wms.restful.resource.ImportServiceResource.ImportingShipmentHeader
+          required: true
+          description: shipmentHeader
+      responses: 
+        200: 
 /InOuts: 
   displayName: InOutResource
   description: InOutResource
@@ -28919,6 +28949,18 @@ types:
               description: content
           responses: 
             200: 
+      /AddLine: 
+        put: 
+          displayName: addLine
+          description: addLine
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.inout.InOutCommands.AddLine
+              required: true
+              description: content
+          responses: 
+            200: 
       /Import: 
         put: 
           displayName: _import
@@ -28927,18 +28969,6 @@ types:
             application/json: 
               displayName: content
               type: org.dddml.wms.domain.inout.InOutCommands.Import
-              required: true
-              description: content
-          responses: 
-            200: 
-      /DocumentAction: 
-        put: 
-          displayName: documentAction
-          description: documentAction
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.inout.InOutCommands.DocumentAction
               required: true
               description: content
           responses: 
@@ -28955,14 +28985,14 @@ types:
               description: content
           responses: 
             200: 
-      /AddLine: 
+      /DocumentAction: 
         put: 
-          displayName: addLine
-          description: addLine
+          displayName: documentAction
+          description: documentAction
           body: 
             application/json: 
               displayName: content
-              type: org.dddml.wms.domain.inout.InOutCommands.AddLine
+              type: org.dddml.wms.domain.inout.InOutCommands.DocumentAction
               required: true
               description: content
           responses: 
@@ -29082,69 +29112,6 @@ types:
             description: requesterId
         responses: 
           200: 
-      /{lineNumber}: 
-        uriParameters: 
-          lineNumber: 
-            displayName: lineNumber
-            type: string
-            required: true
-            description: lineNumber
-        get: 
-          displayName: 查看
-          description: 获取指定 LineNumber 的 InOutLine
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.inout.InOutLineStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 InOutLine
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 InOutLine
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.inout.CreateOrMergePatchInOutLineDto.MergePatchInOutLineDto
-              required: true
-              description: body
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
       /{inOutLineLineNumber}: 
         uriParameters: 
           inOutLineLineNumber: 
@@ -29301,6 +29268,69 @@ types:
                   description: requesterId
               responses: 
                 200: 
+      /{lineNumber}: 
+        uriParameters: 
+          lineNumber: 
+            displayName: lineNumber
+            type: string
+            required: true
+            description: lineNumber
+        get: 
+          displayName: 查看
+          description: 获取指定 LineNumber 的 InOutLine
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.inout.InOutLineStateDto
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 InOutLine
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.inout.CreateOrMergePatchInOutLineDto.MergePatchInOutLineDto
+              required: true
+              description: body
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
+        delete: 
+          displayName: 移除
+          description: 移除 InOutLine
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
     /InOutImages: 
       get: 
         displayName: InOutImage List
@@ -29391,6 +29421,33 @@ types:
             type: string
             required: true
             description: sequenceId
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 InOutImage
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.inout.CreateOrMergePatchInOutImageDto.MergePatchInOutImageDto
+              required: true
+              description: body
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         delete: 
           displayName: 移除
           description: 移除 InOutImage
@@ -29420,33 +29477,6 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.inout.InOutImageStateDto
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 InOutImage
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.inout.CreateOrMergePatchInOutImageDto.MergePatchInOutImageDto
-              required: true
-              description: body
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
     /_events: 
       /{version}: 
         uriParameters: 
@@ -29618,6 +29648,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -29782,19 +29825,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /InventoryItemRequirements: 
   displayName: InventoryItemRequirementResource
   description: InventoryItemRequirementResource
@@ -30007,6 +30037,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -30071,19 +30114,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /InventoryItems: 
   displayName: InventoryItemResource
   description: InventoryItemResource
@@ -30175,44 +30205,6 @@ types:
           body: 
             application/json: 
               type: org.dddml.wms.domain.inventoryitem.InventoryItemStateDto
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.inventoryitem.InventoryItemEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.inventoryitem.InventoryItemStateDto
     /InventoryItemEntries: 
       get: 
         displayName: InventoryItemEntry List
@@ -30292,6 +30284,44 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.inventoryitem.InventoryItemEntryStateDto
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.inventoryitem.InventoryItemEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.inventoryitem.InventoryItemStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -30337,6 +30367,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -30413,19 +30456,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /InventoryPRTriggereds: 
   displayName: InventoryPRTriggeredResource
   description: InventoryPRTriggeredResource
@@ -30576,6 +30606,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -30641,19 +30684,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /InventoryPostingRules: 
   displayName: InventoryPostingRuleResource
   description: InventoryPostingRuleResource
@@ -30889,6 +30919,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -30967,19 +31010,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /LocatorTrees: 
   displayName: LocatorTreeResource
   description: LocatorTreeResource
@@ -31259,6 +31289,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -31330,19 +31373,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Locators: 
   displayName: LocatorResource
   description: LocatorResource
@@ -31620,6 +31650,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -31719,19 +31762,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Lots: 
   displayName: LotResource
   description: LotResource
@@ -31959,6 +31989,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -32033,19 +32076,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /MovementConfirmations: 
   displayName: MovementConfirmationResource
   description: MovementConfirmationResource
@@ -32212,57 +32242,6 @@ types:
           description: value
       responses: 
         200: 
-    /_commands: 
-      /DocumentAction: 
-        put: 
-          displayName: documentAction
-          description: documentAction
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationCommands.DocumentAction
-              required: true
-              description: content
-          responses: 
-            200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationStateDto
     /MovementConfirmationLines: 
       get: 
         displayName: MovementConfirmationLine List
@@ -32428,6 +32407,57 @@ types:
               description: requesterId
           responses: 
             200: 
+    /_commands: 
+      /DocumentAction: 
+        put: 
+          displayName: documentAction
+          description: documentAction
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationCommands.DocumentAction
+              required: true
+              description: content
+          responses: 
+            200: 
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -32491,6 +32521,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -32585,19 +32628,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /MovementTypes: 
   displayName: MovementTypeResource
   description: MovementTypeResource
@@ -32781,6 +32811,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -32852,19 +32895,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Movements: 
   displayName: MovementResource
   description: MovementResource
@@ -33069,70 +33099,34 @@ types:
           description: value
       responses: 
         200: 
-    /_commands: 
-      /DocumentAction: 
-        put: 
-          displayName: documentAction
-          description: documentAction
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.movement.MovementCommands.DocumentAction
-              required: true
-              description: content
-          responses: 
-            200: 
-      /AddLine: 
-        put: 
-          displayName: addLine
-          description: addLine
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.movement.MovementCommands.AddLine
-              required: true
-              description: content
-          responses: 
-            200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.movement.MovementEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.movement.MovementStateDto
     /MovementLines: 
+      post: 
+        displayName: 新建
+        description: 新建 MovementLine
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.movement.CreateOrMergePatchMovementLineDto.CreateMovementLineDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: MovementLine List
         description: MovementLine List
@@ -33207,33 +33201,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.movement.MovementLineStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 MovementLine
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.movement.CreateOrMergePatchMovementLineDto.CreateMovementLineDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{lineNumber}: 
         uriParameters: 
           lineNumber: 
@@ -33241,6 +33208,35 @@ types:
             type: string
             required: true
             description: lineNumber
+        delete: 
+          displayName: 移除
+          description: 移除 MovementLine
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
+        get: 
+          displayName: 查看
+          description: 获取指定 LineNumber 的 MovementLine
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.movement.MovementLineStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 MovementLine
@@ -33268,35 +33264,69 @@ types:
               description: requesterId
           responses: 
             200: 
+    /_commands: 
+      /AddLine: 
+        put: 
+          displayName: addLine
+          description: addLine
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.movement.MovementCommands.AddLine
+              required: true
+              description: content
+          responses: 
+            200: 
+      /DocumentAction: 
+        put: 
+          displayName: documentAction
+          description: documentAction
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.movement.MovementCommands.DocumentAction
+              required: true
+              description: content
+          responses: 
+            200: 
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
         get: 
-          displayName: 查看
-          description: 获取指定 LineNumber 的 MovementLine
+          displayName: getStateEvent
+          description: getStateEvent
           responses: 
             200: 
               body: 
                 application/json: 
-                  type: org.dddml.wms.domain.movement.MovementLineStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 MovementLine
+                  type: org.dddml.wms.domain.movement.MovementEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
           queryParameters: 
-            commandId: 
-              displayName: commandId
+            fields: 
+              displayName: fields
               type: string
               required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
+              description: fields
           responses: 
             200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.movement.MovementStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -33398,6 +33428,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -33530,19 +33573,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /OrderItemShipGrpInvReservations: 
   displayName: OrderItemShipGrpInvReservationResource
   description: OrderItemShipGrpInvReservationResource
@@ -33812,6 +33842,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -33907,37 +33950,33 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /OrderShipGroupService: 
   displayName: OrderShipGroupServiceResource
   description: OrderShipGroupServiceResource
-  /CreateSOShipment: 
+  /CreatePOShipGroup: 
     post: 
-      displayName: createSOShipment
-      description: createSOShipment
+      displayName: createPOShipGroup
+      description: createPOShipGroup
       body: 
         application/json: 
           displayName: requestContent
-          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreateSOShipment
+          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreatePOShipGroup
           required: true
           description: requestContent
       responses: 
         200: 
-          body: 
-            application/json: 
-              type: string
+  /CreateSOShipGroup: 
+    post: 
+      displayName: createSOShipGroup
+      description: createSOShipGroup
+      body: 
+        application/json: 
+          displayName: requestContent
+          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreateSOShipGroup
+          required: true
+          description: requestContent
+      responses: 
+        200: 
   /CreatePOShipment: 
     post: 
       displayName: createPOShipment
@@ -33953,30 +33992,21 @@ types:
           body: 
             application/json: 
               type: string
-  /CreateSOShipGroup: 
+  /CreateSOShipment: 
     post: 
-      displayName: createSOShipGroup
-      description: createSOShipGroup
+      displayName: createSOShipment
+      description: createSOShipment
       body: 
         application/json: 
           displayName: requestContent
-          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreateSOShipGroup
+          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreateSOShipment
           required: true
           description: requestContent
       responses: 
         200: 
-  /CreatePOShipGroup: 
-    post: 
-      displayName: createPOShipGroup
-      description: createPOShipGroup
-      body: 
-        application/json: 
-          displayName: requestContent
-          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreatePOShipGroup
-          required: true
-          description: requestContent
-      responses: 
-        200: 
+          body: 
+            application/json: 
+              type: string
 /OrderShipments: 
   displayName: OrderShipmentResource
   description: OrderShipmentResource
@@ -34171,6 +34201,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -34239,19 +34282,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Orders: 
   displayName: OrderResource
   description: OrderResource
@@ -34443,72 +34473,7 @@ types:
           description: value
       responses: 
         200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.order.OrderEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.order.OrderStateDto
     /OrderShipGroups: 
-      post: 
-        displayName: 新建
-        description: 新建 OrderShipGroup
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderShipGroupDto.CreateOrderShipGroupDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       get: 
         displayName: OrderShipGroup List
         description: OrderShipGroup List
@@ -34548,6 +34513,9 @@ types:
             type: datetime
             required: false
           createdBy: 
+            type: string
+            required: false
+          destinationFacilityId: 
             type: string
             required: false
           estimatedDeliveryDate: 
@@ -34633,6 +34601,33 @@ types:
                 items: 
                   type: org.dddml.wms.domain.order.OrderShipGroupStateDto
 
+      post: 
+        displayName: 新建
+        description: 新建 OrderShipGroup
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderShipGroupDto.CreateOrderShipGroupDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       /{orderShipGroupShipGroupSeqId}: 
         uriParameters: 
           orderShipGroupShipGroupSeqId: 
@@ -34641,6 +34636,33 @@ types:
             required: true
             description: orderShipGroupShipGroupSeqId
         /OrderItemShipGroupAssociations: 
+          post: 
+            displayName: 新建
+            description: 新建 OrderItemShipGroupAssociation
+            body: 
+              application/json: 
+                displayName: body
+                type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemShipGroupAssociationDto.CreateOrderItemShipGroupAssociationDto
+                required: true
+                description: body
+            queryParameters: 
+              commandId: 
+                displayName: commandId
+                type: string
+                required: false
+                description: commandId
+              version: 
+                displayName: version
+                type: number
+                required: false
+                description: version
+              requesterId: 
+                displayName: requesterId
+                type: string
+                required: false
+                description: requesterId
+            responses: 
+              200: 
           get: 
             displayName: OrderItemShipGroupAssociation List
             description: OrderItemShipGroupAssociation List
@@ -34702,33 +34724,6 @@ types:
                     items: 
                       type: org.dddml.wms.domain.order.OrderItemShipGroupAssociationStateDto
 
-          post: 
-            displayName: 新建
-            description: 新建 OrderItemShipGroupAssociation
-            body: 
-              application/json: 
-                displayName: body
-                type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemShipGroupAssociationDto.CreateOrderItemShipGroupAssociationDto
-                required: true
-                description: body
-            queryParameters: 
-              commandId: 
-                displayName: commandId
-                type: string
-                required: false
-                description: commandId
-              version: 
-                displayName: version
-                type: number
-                required: false
-                description: version
-              requesterId: 
-                displayName: requesterId
-                type: string
-                required: false
-                description: requesterId
-            responses: 
-              200: 
           /{orderItemSeqId}: 
             uriParameters: 
               orderItemSeqId: 
@@ -34736,9 +34731,23 @@ types:
                 type: string
                 required: true
                 description: orderItemSeqId
-            delete: 
-              displayName: 移除
-              description: 移除 OrderItemShipGroupAssociation
+            get: 
+              displayName: 查看
+              description: 获取指定 OrderItemSeqId 的 OrderItemShipGroupAssociation
+              responses: 
+                200: 
+                  body: 
+                    application/json: 
+                      type: org.dddml.wms.domain.order.OrderItemShipGroupAssociationStateDto
+            put: 
+              displayName: 创建 or 修改
+              description: 创建 or 修改 OrderItemShipGroupAssociation
+              body: 
+                application/json: 
+                  displayName: body
+                  type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemShipGroupAssociationDto.MergePatchOrderItemShipGroupAssociationDto
+                  required: true
+                  description: body
               queryParameters: 
                 commandId: 
                   displayName: commandId
@@ -34757,23 +34766,9 @@ types:
                   description: requesterId
               responses: 
                 200: 
-            get: 
-              displayName: 查看
-              description: 获取指定 OrderItemSeqId 的 OrderItemShipGroupAssociation
-              responses: 
-                200: 
-                  body: 
-                    application/json: 
-                      type: org.dddml.wms.domain.order.OrderItemShipGroupAssociationStateDto
-            put: 
-              displayName: 创建 or 修改
-              description: 创建 or 修改 OrderItemShipGroupAssociation
-              body: 
-                application/json: 
-                  displayName: body
-                  type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemShipGroupAssociationDto.MergePatchOrderItemShipGroupAssociationDto
-                  required: true
-                  description: body
+            delete: 
+              displayName: 移除
+              description: 移除 OrderItemShipGroupAssociation
               queryParameters: 
                 commandId: 
                   displayName: commandId
@@ -34952,6 +34947,33 @@ types:
             type: string
             required: true
             description: partyRoleId
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 OrderRole
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.order.CreateOrMergePatchOrderRoleDto.MergePatchOrderRoleDto
+              required: true
+              description: body
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         get: 
           displayName: 查看
           description: 获取指定 PartyRoleId 的 OrderRole
@@ -34981,34 +35003,34 @@ types:
               description: requesterId
           responses: 
             200: 
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 OrderRole
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.order.CreateOrMergePatchOrderRoleDto.MergePatchOrderRoleDto
-              required: true
-              description: body
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
     /OrderItems: 
+      post: 
+        displayName: 新建
+        description: 新建 OrderItem
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemDto.CreateOrderItemDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: OrderItem List
         description: OrderItem List
@@ -35166,33 +35188,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.order.OrderItemStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 OrderItem
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemDto.CreateOrderItemDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{orderItemSeqId}: 
         uriParameters: 
           orderItemSeqId: 
@@ -35227,6 +35222,14 @@ types:
               description: requesterId
           responses: 
             200: 
+        get: 
+          displayName: 查看
+          description: 获取指定 OrderItemSeqId 的 OrderItem
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.order.OrderItemStateDto
         delete: 
           displayName: 移除
           description: 移除 OrderItem
@@ -35248,14 +35251,44 @@ types:
               description: requesterId
           responses: 
             200: 
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
         get: 
-          displayName: 查看
-          description: 获取指定 OrderItemSeqId 的 OrderItem
+          displayName: getStateEvent
+          description: getStateEvent
           responses: 
             200: 
               body: 
                 application/json: 
-                  type: org.dddml.wms.domain.order.OrderItemStateDto
+                  type: org.dddml.wms.domain.order.OrderEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.order.OrderStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -35365,6 +35398,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -35505,19 +35551,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /OrganizationStructureTypes: 
   displayName: OrganizationStructureTypeResource
   description: OrganizationStructureTypeResource
@@ -35739,6 +35772,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -35810,19 +35856,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /OrganizationStructures: 
   displayName: OrganizationStructureResource
   description: OrganizationStructureResource
@@ -36032,6 +36065,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -36097,19 +36143,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /OrganizationTrees: 
   displayName: OrganizationTreeResource
   description: OrganizationTreeResource
@@ -36469,6 +36502,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -36580,19 +36626,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Parties: 
   displayName: PartyResource
   description: PartyResource
@@ -36894,6 +36927,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -37005,19 +37051,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /PartyRoles: 
   displayName: PartyRoleResource
   description: PartyRoleResource
@@ -37227,6 +37260,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -37292,19 +37338,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /People: 
   displayName: PersonResource
   description: PersonResource
@@ -37606,6 +37639,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -37717,19 +37763,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /PhysicalInventories: 
   displayName: PhysicalInventoryResource
   description: PhysicalInventoryResource
@@ -38057,14 +38090,6 @@ types:
             type: string
             required: true
             description: inventoryItemId
-        get: 
-          displayName: 查看
-          description: 获取指定 InventoryItemId 的 PhysicalInventoryLine
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 PhysicalInventoryLine
@@ -38092,6 +38117,14 @@ types:
               description: requesterId
           responses: 
             200: 
+        get: 
+          displayName: 查看
+          description: 获取指定 InventoryItemId 的 PhysicalInventoryLine
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateDto
         delete: 
           displayName: 移除
           description: 移除 PhysicalInventoryLine
@@ -38196,6 +38229,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -38310,19 +38356,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /PicklistBins: 
   displayName: PicklistBinResource
   description: PicklistBinResource
@@ -38475,44 +38508,6 @@ types:
           description: value
       responses: 
         200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.picklistbin.PicklistBinEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.picklistbin.PicklistBinStateDto
     /PicklistItems: 
       get: 
         displayName: PicklistItem List
@@ -38603,6 +38598,14 @@ types:
             type: string
             required: true
             description: picklistItemOrderShipGrpInvId
+        get: 
+          displayName: 查看
+          description: 获取指定 PicklistItemOrderShipGrpInvId 的 PicklistItem
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.picklistbin.PicklistItemStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 PicklistItem
@@ -38630,14 +38633,6 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 PicklistItemOrderShipGrpInvId 的 PicklistItem
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.picklistbin.PicklistItemStateDto
         delete: 
           displayName: 移除
           description: 移除 PicklistItem
@@ -38659,6 +38654,44 @@ types:
               description: requesterId
           responses: 
             200: 
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.picklistbin.PicklistBinEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.picklistbin.PicklistBinStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -38708,6 +38741,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -38788,19 +38834,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Picklists: 
   displayName: PicklistResource
   description: PicklistResource
@@ -38959,44 +38992,6 @@ types:
           description: value
       responses: 
         200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.picklist.PicklistEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.picklist.PicklistStateDto
     /PicklistRoles: 
       get: 
         displayName: PicklistRole List
@@ -39137,6 +39132,44 @@ types:
               description: requesterId
           responses: 
             200: 
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.picklist.PicklistEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.picklist.PicklistStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -39192,6 +39225,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -39278,19 +39324,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Pickwaves: 
   displayName: PickwaveResource
   description: PickwaveResource
@@ -39518,6 +39551,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -39592,19 +39638,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /ProductCategories: 
   displayName: ProductCategoryResource
   description: ProductCategoryResource
@@ -39888,6 +39921,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -39981,19 +40027,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /ProductCategoryMembers: 
   displayName: ProductCategoryMemberResource
   description: ProductCategoryMemberResource
@@ -40206,6 +40239,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -40283,19 +40329,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Products: 
   displayName: ProductResource
   description: ProductResource
@@ -40654,6 +40687,33 @@ types:
                 application/json: 
                   type: org.dddml.wms.domain.product.ProductStateDto
     /GoodIdentifications: 
+      post: 
+        displayName: 新建
+        description: 新建 GoodIdentification
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.product.CreateOrMergePatchGoodIdentificationDto.CreateGoodIdentificationDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: GoodIdentification List
         description: GoodIdentification List
@@ -40709,33 +40769,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.product.GoodIdentificationStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 GoodIdentification
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.product.CreateOrMergePatchGoodIdentificationDto.CreateGoodIdentificationDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{goodIdentificationTypeId}: 
         uriParameters: 
           goodIdentificationTypeId: 
@@ -41036,6 +41069,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -41304,19 +41350,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /RejectionReasons: 
   displayName: RejectionReasonResource
   description: RejectionReasonResource
@@ -41538,6 +41571,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -41609,19 +41655,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /RoleTypes: 
   displayName: RoleTypeResource
   description: RoleTypeResource
@@ -41855,6 +41888,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -41932,19 +41978,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /SellableInventoryItems: 
   displayName: SellableInventoryItemResource
   description: SellableInventoryItemResource
@@ -42157,6 +42190,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -42221,19 +42267,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /ShipmentMethodTypes: 
   displayName: ShipmentMethodTypeResource
   description: ShipmentMethodTypeResource
@@ -42461,6 +42494,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -42535,19 +42581,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /ShipmentPackages: 
   displayName: ShipmentPackageResource
   description: ShipmentPackageResource
@@ -42751,33 +42784,6 @@ types:
                 application/json: 
                   type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageStateDto
     /ShipmentPackageContents: 
-      post: 
-        displayName: 新建
-        description: 新建 ShipmentPackageContent
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageContentDto.CreateShipmentPackageContentDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       get: 
         displayName: ShipmentPackageContent List
         description: ShipmentPackageContent List
@@ -42836,6 +42842,33 @@ types:
                 items: 
                   type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentStateDto
 
+      post: 
+        displayName: 新建
+        description: 新建 ShipmentPackageContent
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageContentDto.CreateShipmentPackageContentDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       /{shipmentItemSeqId}: 
         uriParameters: 
           shipmentItemSeqId: 
@@ -42843,23 +42876,9 @@ types:
             type: string
             required: true
             description: shipmentItemSeqId
-        get: 
-          displayName: 查看
-          description: 获取指定 ShipmentItemSeqId 的 ShipmentPackageContent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentStateDto
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 ShipmentPackageContent
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageContentDto.MergePatchShipmentPackageContentDto
-              required: true
-              description: body
+        delete: 
+          displayName: 移除
+          description: 移除 ShipmentPackageContent
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -42878,9 +42897,23 @@ types:
               description: requesterId
           responses: 
             200: 
-        delete: 
-          displayName: 移除
-          description: 移除 ShipmentPackageContent
+        get: 
+          displayName: 查看
+          description: 获取指定 ShipmentItemSeqId 的 ShipmentPackageContent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentStateDto
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 ShipmentPackageContent
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageContentDto.MergePatchShipmentPackageContentDto
+              required: true
+              description: body
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -42960,6 +42993,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -43052,19 +43098,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /ShipmentTypes: 
   displayName: ShipmentTypeResource
   description: ShipmentTypeResource
@@ -43239,6 +43272,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -43316,19 +43362,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Shipments: 
   displayName: ShipmentResource
   description: ShipmentResource
@@ -43640,6 +43673,14 @@ types:
             type: string
             required: true
             description: shipmentItemSeqId
+        get: 
+          displayName: 查看
+          description: 获取指定 ShipmentItemSeqId 的 ShipmentItem
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipment.ShipmentItemStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 ShipmentItem
@@ -43667,14 +43708,6 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 ShipmentItemSeqId 的 ShipmentItem
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipment.ShipmentItemStateDto
         delete: 
           displayName: 移除
           description: 移除 ShipmentItem
@@ -43709,18 +43742,6 @@ types:
               description: content
           responses: 
             200: 
-      /ReceiveItem: 
-        put: 
-          displayName: receiveItem
-          description: receiveItem
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.ReceiveItem
-              required: true
-              description: content
-          responses: 
-            200: 
       /IssueItem: 
         put: 
           displayName: issueItem
@@ -43745,6 +43766,18 @@ types:
               description: content
           responses: 
             200: 
+      /ReceiveItem: 
+        put: 
+          displayName: receiveItem
+          description: receiveItem
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.ReceiveItem
+              required: true
+              description: content
+          responses: 
+            200: 
       /AddItemAndReceipt: 
         put: 
           displayName: addItemAndReceipt
@@ -43757,14 +43790,14 @@ types:
               description: content
           responses: 
             200: 
-      /ConfirmAllItemsReceived: 
+      /ConfirmAllItemsIssued: 
         put: 
-          displayName: confirmAllItemsReceived
-          description: confirmAllItemsReceived
+          displayName: confirmAllItemsIssued
+          description: confirmAllItemsIssued
           body: 
             application/json: 
               displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.ConfirmAllItemsReceived
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.ConfirmAllItemsIssued
               required: true
               description: content
           responses: 
@@ -43781,14 +43814,14 @@ types:
               description: content
           responses: 
             200: 
-      /ConfirmAllItemsIssued: 
+      /ConfirmAllItemsReceived: 
         put: 
-          displayName: confirmAllItemsIssued
-          description: confirmAllItemsIssued
+          displayName: confirmAllItemsReceived
+          description: confirmAllItemsReceived
           body: 
             application/json: 
               displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.ConfirmAllItemsIssued
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.ConfirmAllItemsReceived
               required: true
               description: content
           responses: 
@@ -43831,6 +43864,152 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.shipment.ShipmentStateDto
+    /ShipmentImages: 
+      get: 
+        displayName: ShipmentImage List
+        description: ShipmentImage List
+        queryParameters: 
+          sort: 
+            displayName: sort
+            type: string
+            required: false
+            description: sort
+          fields: 
+            displayName: fields
+            type: string
+            required: false
+            description: fields
+          filter: 
+            displayName: filter
+            type: string
+            required: false
+            description: filter
+          active: 
+            type: boolean
+            required: false
+            enum: [true, false]
+          createdAt: 
+            type: datetime
+            required: false
+          createdBy: 
+            type: string
+            required: false
+          sequenceId: 
+            type: string
+            required: false
+          shipmentId: 
+            type: string
+            required: false
+          updatedAt: 
+            type: datetime
+            required: false
+          updatedBy: 
+            type: string
+            required: false
+          url: 
+            type: string
+            required: false
+          version: 
+            type: number
+            required: false
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.domain.shipment.ShipmentImageStateDto
+
+      post: 
+        displayName: 新建
+        description: 新建 ShipmentImage
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentImageDto.CreateShipmentImageDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
+      /{sequenceId}: 
+        uriParameters: 
+          sequenceId: 
+            displayName: sequenceId
+            type: string
+            required: true
+            description: sequenceId
+        get: 
+          displayName: 查看
+          description: 获取指定 SequenceId 的 ShipmentImage
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipment.ShipmentImageStateDto
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 ShipmentImage
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentImageDto.MergePatchShipmentImageDto
+              required: true
+              description: body
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
+        delete: 
+          displayName: 移除
+          description: 移除 ShipmentImage
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
     /ItemIssuances: 
       get: 
         displayName: ItemIssuance List
@@ -44013,69 +44192,14 @@ types:
               description: requesterId
           responses: 
             200: 
-    /ShipmentImages: 
-      get: 
-        displayName: ShipmentImage List
-        description: ShipmentImage List
-        queryParameters: 
-          sort: 
-            displayName: sort
-            type: string
-            required: false
-            description: sort
-          fields: 
-            displayName: fields
-            type: string
-            required: false
-            description: fields
-          filter: 
-            displayName: filter
-            type: string
-            required: false
-            description: filter
-          active: 
-            type: boolean
-            required: false
-            enum: [true, false]
-          createdAt: 
-            type: datetime
-            required: false
-          createdBy: 
-            type: string
-            required: false
-          sequenceId: 
-            type: string
-            required: false
-          shipmentId: 
-            type: string
-            required: false
-          updatedAt: 
-            type: datetime
-            required: false
-          updatedBy: 
-            type: string
-            required: false
-          url: 
-            type: string
-            required: false
-          version: 
-            type: number
-            required: false
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.domain.shipment.ShipmentImageStateDto
-
+    /ShipmentReceipts: 
       post: 
         displayName: 新建
-        description: 新建 ShipmentImage
+        description: 新建 ShipmentReceipt
         body: 
           application/json: 
             displayName: body
-            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentImageDto.CreateShipmentImageDto
+            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptDto.CreateShipmentReceiptDto
             required: true
             description: body
         queryParameters: 
@@ -44096,70 +44220,6 @@ types:
             description: requesterId
         responses: 
           200: 
-      /{sequenceId}: 
-        uriParameters: 
-          sequenceId: 
-            displayName: sequenceId
-            type: string
-            required: true
-            description: sequenceId
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 ShipmentImage
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentImageDto.MergePatchShipmentImageDto
-              required: true
-              description: body
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 SequenceId 的 ShipmentImage
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipment.ShipmentImageStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 ShipmentImage
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
-    /ShipmentReceipts: 
       get: 
         displayName: ShipmentReceipt List
         description: ShipmentReceipt List
@@ -44263,33 +44323,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.shipment.ShipmentReceiptStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 ShipmentReceipt
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptDto.CreateShipmentReceiptDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{receiptSeqId}: 
         uriParameters: 
           receiptSeqId: 
@@ -44297,6 +44330,27 @@ types:
             type: string
             required: true
             description: receiptSeqId
+        delete: 
+          displayName: 移除
+          description: 移除 ShipmentReceipt
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         get: 
           displayName: 查看
           description: 获取指定 ReceiptSeqId 的 ShipmentReceipt
@@ -44332,27 +44386,6 @@ types:
               description: requesterId
           responses: 
             200: 
-        delete: 
-          displayName: 移除
-          description: 移除 ShipmentReceipt
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
       /{shipmentReceiptReceiptSeqId}: 
         uriParameters: 
           shipmentReceiptReceiptSeqId: 
@@ -44361,33 +44394,6 @@ types:
             required: true
             description: shipmentReceiptReceiptSeqId
         /ShipmentReceiptImages: 
-          post: 
-            displayName: 新建
-            description: 新建 ShipmentReceiptImage
-            body: 
-              application/json: 
-                displayName: body
-                type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptImageDto.CreateShipmentReceiptImageDto
-                required: true
-                description: body
-            queryParameters: 
-              commandId: 
-                displayName: commandId
-                type: string
-                required: false
-                description: commandId
-              version: 
-                displayName: version
-                type: number
-                required: false
-                description: version
-              requesterId: 
-                displayName: requesterId
-                type: string
-                required: false
-                description: requesterId
-            responses: 
-              200: 
           get: 
             displayName: ShipmentReceiptImage List
             description: ShipmentReceiptImage List
@@ -44446,6 +44452,33 @@ types:
                     items: 
                       type: org.dddml.wms.domain.shipment.ShipmentReceiptImageStateDto
 
+          post: 
+            displayName: 新建
+            description: 新建 ShipmentReceiptImage
+            body: 
+              application/json: 
+                displayName: body
+                type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptImageDto.CreateShipmentReceiptImageDto
+                required: true
+                description: body
+            queryParameters: 
+              commandId: 
+                displayName: commandId
+                type: string
+                required: false
+                description: commandId
+              version: 
+                displayName: version
+                type: number
+                required: false
+                description: version
+              requesterId: 
+                displayName: requesterId
+                type: string
+                required: false
+                description: requesterId
+            responses: 
+              200: 
           /{sequenceId}: 
             uriParameters: 
               sequenceId: 
@@ -44639,6 +44672,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -44800,19 +44846,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /StatusItems: 
   displayName: StatusItemResource
   description: StatusItemResource
@@ -44993,6 +45026,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -45073,19 +45119,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /SupplierProducts: 
   displayName: SupplierProductResource
   description: SupplierProductResource
@@ -45354,6 +45387,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -45459,19 +45505,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /UomConversions: 
   displayName: UomConversionResource
   description: UomConversionResource
@@ -45705,6 +45738,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -45782,19 +45828,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /UomTypes: 
   displayName: UomTypeResource
   description: UomTypeResource
@@ -45990,6 +46023,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -46067,19 +46113,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Uoms: 
   displayName: UomResource
   description: UomResource
@@ -46313,6 +46346,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -46390,19 +46436,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /Warehouses: 
   displayName: WarehouseResource
   description: WarehouseResource
@@ -46638,6 +46671,19 @@ types:
           body: 
             application/json: 
               type: number
+  /_metadata: 
+    /filteringFields: 
+      get: 
+        displayName: getMetadataFilteringFields
+        description: getMetadataFilteringFields
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.specialization.PropertyMetadataDto
+
   /_page: 
     get: 
       displayName: 查询
@@ -46716,19 +46762,6 @@ types:
                 totalElements: 
                   type: number
                   required: false
-  /_metadata: 
-    /filteringFields: 
-      get: 
-        displayName: getMetadataFilteringFields
-        description: getMetadataFilteringFields
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.specialization.PropertyMetadataDto
-
 /api.json: 
   get: 
     displayName: getRamlJson

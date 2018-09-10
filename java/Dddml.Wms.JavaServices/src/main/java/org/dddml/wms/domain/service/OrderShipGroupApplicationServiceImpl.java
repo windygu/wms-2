@@ -70,6 +70,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         orderShipGroup.setActive(true);
         //---------------------
         orderShipGroup.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());//预计收货日期
+        orderShipGroup.setDestinationFacilityId(c.getDestinationFacilityId());//目标仓库 / 设施 Id
         //---------------------
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
             ((OrderCommand.CreateOrder)orderCommand).getOrderShipGroups().add(orderShipGroup);
@@ -151,6 +152,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         orderShipGroup.setEstimatedShipDate(c.getEstimatedShipDate());//预计发货日期
         orderShipGroup.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
         orderShipGroup.setShippingInstructions(c.getShippingInstructions());//发货指示
+        orderShipGroup.setFacilityId(c.getFacilityId());//源仓库 / 设施 Id
         //---------------------
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
             ((OrderCommand.CreateOrder)orderCommand).getOrderShipGroups().add(orderShipGroup);
@@ -214,9 +216,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         String shipmentStatusId = StatusItemIds.PURCH_SHIP_SHIPPED;
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
-                createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
-        //createShipment.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);
-        //createShipment.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
+                createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId,
+                        orderShipGroupState.getFacilityId(), orderShipGroupState.getDestinationFacilityId());
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         createShipmentItems(orderState, orderShipGroupState, createShipment);
@@ -243,9 +244,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         String shipmentStatusId = StatusItemIds.SHIPMENT_INPUT;
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
-                createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId);
-        //createShipment.setShipmentTypeId(ShipmentTypeIds.SALES_SHIPMENT);
-        //createShipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
+                createShipment(orderId, shipGroupSeqId, shipmentId, shipmentTypeId, shipmentStatusId,
+                        orderShipGroupState.getFacilityId(), orderShipGroupState.getDestinationFacilityId());
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         createShipmentItems(orderState, orderShipGroupState, createShipment);
@@ -275,7 +275,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     }
 
     private ShipmentCommand.CreateShipment createShipment(String orderId, String shipGroupSeqId, String shipmentId,
-                                                          String shipmentTypeId, String shipmentStatusId) {
+                                                          String shipmentTypeId, String shipmentStatusId,
+                                                          String originFacilityId, String destinationFacilityId) {
         ShipmentCommand.CreateShipment createShipment = new AbstractShipmentCommand.SimpleCreateShipment();
         createShipment.setShipmentId(shipmentId);
         createShipment.setShipmentTypeId(shipmentTypeId);
@@ -283,6 +284,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         createShipment.setPrimaryOrderId(orderId);
         createShipment.setPrimaryShipGroupSeqId(shipGroupSeqId);
         createShipment.setActive(true);
+        createShipment.setOriginFacilityId(originFacilityId);
+        createShipment.setDestinationFacilityId(destinationFacilityId);
         return createShipment;
     }
 

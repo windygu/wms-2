@@ -44,6 +44,10 @@ public interface OrderShipGroupState
 
     void setFacilityId(String facilityId);
 
+    String getDestinationFacilityId();
+
+    void setDestinationFacilityId(String destinationFacilityId);
+
     String getContactMechId();
 
     void setContactMechId(String contactMechId);
