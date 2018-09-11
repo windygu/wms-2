@@ -639,16 +639,25 @@ public class ImportServiceResource {
 
     void createLots(Integer lotIdColumnIdx, Integer expirationDateColumnIdx, List<String[]> matrix) throws ParseException {
         if (lotIdColumnIdx != null) {
-            Set<String> lotIds = matrix.stream().map(row -> row[lotIdColumnIdx]).collect(Collectors.toSet());
+            if (expirationDateColumnIdx == null) {
+                throw DomainError.named("missedColumn", "Column '%1$s' missed.", "expirationDate");
+            }
+
+            Set<String> lotIds = matrix.stream()
+                    .filter(row -> row[lotIdColumnIdx] != null && !row[lotIdColumnIdx].trim().isEmpty())
+                    .map(row -> row[lotIdColumnIdx].trim()).collect(Collectors.toSet());
+
             Map<String, String> lotMap = new HashMap<>();
             if (expirationDateColumnIdx != null) {
-                matrix.stream().filter(row -> row[expirationDateColumnIdx] != null && !row[expirationDateColumnIdx].trim().isEmpty())
-                        .forEach(row -> {
-                            if (!lotMap.containsKey(row[lotIdColumnIdx])) {
-                                lotMap.put(row[lotIdColumnIdx], row[expirationDateColumnIdx].trim());
-                            }
-                        });
+                matrix.stream().filter(row -> row[expirationDateColumnIdx] != null && !row[expirationDateColumnIdx].trim().isEmpty()
+                        && row[lotIdColumnIdx] != null && lotIds.contains(row[lotIdColumnIdx].trim())
+                ).forEach(row -> {
+                    if (!lotMap.containsKey(row[lotIdColumnIdx])) {
+                        lotMap.put(row[lotIdColumnIdx].trim(), row[expirationDateColumnIdx].trim());
+                    }
+                });
             }
+
             for (String lotId : lotIds) {
                 if (lotId == null || lotId.trim().isEmpty()) {
                     continue;
@@ -660,8 +669,9 @@ public class ImportServiceResource {
                     Date expirationDate = parseEntryDate(expirationDateStr);
                     createLot.setExpirationDate(new Timestamp(expirationDate.getTime()));
                 } else {
-                    // todo 创建一个不过期的“过期时间”???
-                    createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
+                    throw new NullPointerException("Value of expirationDate is null.");
+                    // 创建一个不过期的“过期时间”???
+                    //createLot.setExpirationDate(new Timestamp(1099, 8, 9, 0, 0, 0, 0));
                 }
                 createLot.setCommandId(lotId);
                 createLot.setRequesterId(SecurityContextUtil.getRequesterId());
