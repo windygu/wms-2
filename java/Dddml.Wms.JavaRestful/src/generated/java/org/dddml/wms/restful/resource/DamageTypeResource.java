@@ -151,10 +151,11 @@ public class DamageTypeResource {
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
-            count = damageTypeApplicationService.getCount(CriterionDto.toSubclass(criterion,
+            Criterion c = CriterionDto.toSubclass(criterion,
                 getCriterionTypeConverter(), 
                 getPropertyTypeResolver(), 
-                n -> (DamageTypeMetadata.aliasMap.containsKey(n) ? DamageTypeMetadata.aliasMap.get(n) : n)));
+                n -> (DamageTypeMetadata.aliasMap.containsKey(n) ? DamageTypeMetadata.aliasMap.get(n) : n));
+            count = damageTypeApplicationService.getCount(c);
             return count;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }

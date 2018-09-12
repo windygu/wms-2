@@ -151,10 +151,11 @@ public class ProductCategoryResource {
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
-            count = productCategoryApplicationService.getCount(CriterionDto.toSubclass(criterion,
+            Criterion c = CriterionDto.toSubclass(criterion,
                 getCriterionTypeConverter(), 
                 getPropertyTypeResolver(), 
-                n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n)));
+                n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n));
+            count = productCategoryApplicationService.getCount(c);
             return count;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }

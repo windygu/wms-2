@@ -151,10 +151,11 @@ public class UomTypeResource {
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
-            count = uomTypeApplicationService.getCount(CriterionDto.toSubclass(criterion,
+            Criterion c = CriterionDto.toSubclass(criterion,
                 getCriterionTypeConverter(), 
                 getPropertyTypeResolver(), 
-                n -> (UomTypeMetadata.aliasMap.containsKey(n) ? UomTypeMetadata.aliasMap.get(n) : n)));
+                n -> (UomTypeMetadata.aliasMap.containsKey(n) ? UomTypeMetadata.aliasMap.get(n) : n));
+            count = uomTypeApplicationService.getCount(c);
             return count;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }

@@ -2729,11 +2729,14 @@
 .\PicklistBinsClient.java
 .\PicklistsClient.java
 .\PickwavesClient.java
+.\PostalAddressesClient.java
 .\ProductCategoriesClient.java
 .\ProductCategoryMembersClient.java
 .\ProductsClient.java
+.\PurchaseShipmentsClient.java
 .\RejectionReasonsClient.java
 .\RoleTypesClient.java
+.\SalesShipmentsClient.java
 .\SellableInventoryItemsClient.java
 .\ShipmentMethodTypesClient.java
 .\ShipmentPackagesClient.java
@@ -2741,6 +2744,7 @@
 .\ShipmentTypesClient.java
 .\StatusItemsClient.java
 .\SupplierProductsClient.java
+.\TelecomNumbersClient.java
 .\UomConversionsClient.java
 .\UomsClient.java
 .\UomTypesClient.java
@@ -2867,6 +2871,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\PickwavesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PostalAddressesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\ProductCategoriesClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
@@ -2874,6 +2881,9 @@
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\ProductsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\PurchaseShipmentsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\RejectionReasonsClient.java">
@@ -2923,11 +2933,14 @@
 .\RxPicklistBinsClient.java
 .\RxPicklistsClient.java
 .\RxPickwavesClient.java
+.\RxPostalAddressesClient.java
 .\RxProductCategoriesClient.java
 .\RxProductCategoryMembersClient.java
 .\RxProductsClient.java
+.\RxPurchaseShipmentsClient.java
 .\RxRejectionReasonsClient.java
 .\RxRoleTypesClient.java
+.\RxSalesShipmentsClient.java
 .\RxSellableInventoryItemsClient.java
 .\RxShipmentMethodTypesClient.java
 .\RxShipmentPackagesClient.java
@@ -2935,6 +2948,7 @@
 .\RxShipmentTypesClient.java
 .\RxStatusItemsClient.java
 .\RxSupplierProductsClient.java
+.\RxTelecomNumbersClient.java
 .\RxUomConversionsClient.java
 .\RxUomsClient.java
 .\RxUomTypesClient.java
@@ -3094,6 +3108,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPickwavesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPostalAddressesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxProductCategoriesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
@@ -3103,10 +3120,16 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxProductsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxPurchaseShipmentsClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxRejectionReasonsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxRoleTypesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSalesShipmentsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSellableInventoryItemsClient.java">
@@ -3130,6 +3153,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxSupplierProductsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxTelecomNumbersClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxUomConversionsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
@@ -3141,6 +3167,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxWarehousesClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\SalesShipmentsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\SellableInventoryItemsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
@@ -3161,6 +3190,9 @@
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\SupplierProductsClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\TelecomNumbersClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\UomConversionsClient.java">

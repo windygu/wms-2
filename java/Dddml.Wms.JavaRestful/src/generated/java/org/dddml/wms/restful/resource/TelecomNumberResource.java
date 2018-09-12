@@ -13,7 +13,7 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.annotation.*;
-import org.dddml.wms.domain.uomconversion.*;
+import org.dddml.wms.domain.contactmech.*;
 import org.dddml.wms.domain.meta.*;
 
 import com.alibaba.fastjson.*;
@@ -22,22 +22,22 @@ import org.dddml.support.criterion.TypeConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RequestMapping(path = "UomConversions", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "TelecomNumbers", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
-public class UomConversionResource {
+public class TelecomNumberResource {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @Autowired
-    private UomConversionApplicationService uomConversionApplicationService;
+    private ContactMechApplicationService contactMechApplicationService;
 
 
     /**
      * 查询.
-     * 查询 UomConversions
+     * 查询 TelecomNumbers
      */
     @GetMapping
-    public UomConversionStateDto[] getAll(@Specification(value = UomConversionStateDto.class) HttpServletRequest request,
+    public ContactMechStateDto[] getAll(@Specification(value = ContactMechStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "sort", required = false) String sort,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "firstResult", defaultValue = "0") Integer firstResult,
@@ -47,39 +47,40 @@ public class UomConversionResource {
         if (firstResult < 0) { firstResult = 0; }
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
 
-            Iterable<UomConversionState> states = null; 
+            Iterable<ContactMechState> states = null; 
             CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> UomConversionResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> TelecomNumberResourceUtils.getFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
-                n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n));
-            states = uomConversionApplicationService.get(
+                n -> (ContactMechMetadata.aliasMap.containsKey(n) ? ContactMechMetadata.aliasMap.get(n) : n));
+            c = Restrictions.and(c, Restrictions.eq("ContactMechTypeId", ContactMechTypeId.TELECOM_NUMBER));
+            states = contactMechApplicationService.get(
                 c,
-                UomConversionResourceUtils.getQuerySorts(request.getParameterMap()),
+                TelecomNumberResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
 
-            UomConversionStateDto.DtoConverter dtoConverter = new UomConversionStateDto.DtoConverter();
+            ContactMechStateDto.DtoConverter dtoConverter = new ContactMechStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            return dtoConverter.toUomConversionStateDtoArray(states);
+            return dtoConverter.toContactMechStateDtoArray(states);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     /**
      * 查询.
-     * 分页查询 UomConversions
+     * 分页查询 TelecomNumbers
      */
     @GetMapping("_page")
-    public Page<UomConversionStateDto> getPage(@Specification(value = UomConversionStateDto.class) HttpServletRequest request,
+    public Page<ContactMechStateDto> getPage(@Specification(value = ContactMechStateDto.class) HttpServletRequest request,
                     @RequestParam(value = "fields", required = false) String fields,
                     @RequestParam(value = "page", defaultValue = "0") Integer page,
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
@@ -87,30 +88,31 @@ public class UomConversionResource {
         try {
             Integer firstResult = (page == null ? 0 : page) * size;
             Integer maxResults = (size ==null ? 0 : size);
-            Iterable<UomConversionState> states = null; 
+            Iterable<ContactMechState> states = null; 
             CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> UomConversionResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> TelecomNumberResourceUtils.getFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
-                n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n));
-            states = uomConversionApplicationService.get(
+                n -> (ContactMechMetadata.aliasMap.containsKey(n) ? ContactMechMetadata.aliasMap.get(n) : n));
+            c = Restrictions.and(c, Restrictions.eq("ContactMechTypeId", ContactMechTypeId.TELECOM_NUMBER));
+            states = contactMechApplicationService.get(
                 c,
-                UomConversionResourceUtils.getQuerySorts(request.getParameterMap()),
+                TelecomNumberResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
-            long count = uomConversionApplicationService.getCount(c);
+            long count = contactMechApplicationService.getCount(c);
 
-            UomConversionStateDto.DtoConverter dtoConverter = new UomConversionStateDto.DtoConverter();
+            ContactMechStateDto.DtoConverter dtoConverter = new ContactMechStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            Page.PageImpl<UomConversionStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toUomConversionStateDtoList(states), count);
+            Page.PageImpl<ContactMechStateDto> statePage =  new Page.PageImpl<>(dtoConverter.toContactMechStateDtoList(states), count);
             statePage.setSize(size);
             statePage.setNumber(page);
             return statePage;
@@ -120,28 +122,31 @@ public class UomConversionResource {
 
     /**
      * 查看.
-     * 通过 Id 获取单个 UomConversion
+     * 通过 Id 获取单个 ContactMech
      */
-    @GetMapping("{uomConversionId}")
-    public UomConversionStateDto get(@PathVariable("uomConversionId") String uomConversionId, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{contactMechId}")
+    public ContactMechStateDto get(@PathVariable("contactMechId") String contactMechId, @RequestParam(value = "fields", required = false) String fields) {
         try {
-            UomConversionId idObj = UomConversionResourceUtils.parseIdString(uomConversionId);
-            UomConversionState state = uomConversionApplicationService.get(idObj);
+            String idObj = contactMechId;
+            ContactMechState state = contactMechApplicationService.get(idObj);
             if (state == null) { return null; }
 
-            UomConversionStateDto.DtoConverter dtoConverter = new UomConversionStateDto.DtoConverter();
+            if (state != null && !(ContactMechTypeId.TELECOM_NUMBER.equals(state.getContactMechTypeId()))) {
+                return null;
+            }
+            ContactMechStateDto.DtoConverter dtoConverter = new ContactMechStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            return dtoConverter.toUomConversionStateDto(state);
+            return dtoConverter.toContactMechStateDto(state);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     @GetMapping("_count")
-    public long getCount(@Specification(value = UomConversionStateDto.class) HttpServletRequest request,
+    public long getCount(@Specification(value = ContactMechStateDto.class) HttpServletRequest request,
                          @RequestParam(value = "filter", required = false) String filter) {
         try {
             long count = 0;
@@ -154,8 +159,9 @@ public class UomConversionResource {
             Criterion c = CriterionDto.toSubclass(criterion,
                 getCriterionTypeConverter(), 
                 getPropertyTypeResolver(), 
-                n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n));
-            count = uomConversionApplicationService.getCount(c);
+                n -> (ContactMechMetadata.aliasMap.containsKey(n) ? ContactMechMetadata.aliasMap.get(n) : n));
+            c = Restrictions.and(c, Restrictions.eq("ContactMechTypeId", ContactMechTypeId.TELECOM_NUMBER));
+            count = contactMechApplicationService.getCount(c);
             return count;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
@@ -164,18 +170,19 @@ public class UomConversionResource {
 
     /**
      * 新建.
-     * 新建 UomConversion
+     * 新建 ContactMech
      */
     @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE) @ResponseStatus(HttpStatus.CREATED)
-    public UomConversionId post(@RequestBody CreateOrMergePatchUomConversionDto.CreateUomConversionDto value,  HttpServletResponse response) {
+    public String post(@RequestBody CreateOrMergePatchContactMechDto.CreateContactMechDto value,  HttpServletResponse response) {
         try {
-            UomConversionCommand.CreateUomConversion cmd = value.toCreateUomConversion();
-            if (cmd.getUomConversionId() == null) {
-                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "UomConversion");
+            value.setContactMechTypeId(ContactMechTypeId.TELECOM_NUMBER);
+            ContactMechCommand.CreateContactMech cmd = value.toCreateContactMech();
+            if (cmd.getContactMechId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ContactMech");
             }
-            UomConversionId idObj = cmd.getUomConversionId();
+            String idObj = cmd.getContactMechId();
             cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            uomConversionApplicationService.when(cmd);
+            contactMechApplicationService.when(cmd);
 
             return idObj;
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
@@ -184,25 +191,26 @@ public class UomConversionResource {
 
     /**
      * 创建 or 修改.
-     * 创建 or 修改 UomConversion
+     * 创建 or 修改 ContactMech
      */
-    @PutMapping("{uomConversionId}")
-    public void put(@PathVariable("uomConversionId") String uomConversionId, @RequestBody CreateOrMergePatchUomConversionDto value) {
+    @PutMapping("{contactMechId}")
+    public void put(@PathVariable("contactMechId") String contactMechId, @RequestBody CreateOrMergePatchContactMechDto value) {
         try {
+            value.setContactMechTypeId(ContactMechTypeId.TELECOM_NUMBER);
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
-                UomConversionCommand.MergePatchUomConversion cmd = (UomConversionCommand.MergePatchUomConversion) value.toCommand();
-                UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
+                ContactMechCommand.MergePatchContactMech cmd = (ContactMechCommand.MergePatchContactMech) value.toCommand();
+                TelecomNumberResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, cmd);
                 cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-                uomConversionApplicationService.when(cmd);
+                contactMechApplicationService.when(cmd);
                 return;
             }
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
-            UomConversionCommand.CreateUomConversion cmd = (UomConversionCommand.CreateUomConversion) value.toCommand();
-            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
+            ContactMechCommand.CreateContactMech cmd = (ContactMechCommand.CreateContactMech) value.toCommand();
+            TelecomNumberResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, cmd);
             cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            uomConversionApplicationService.when(cmd);
+            contactMechApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
@@ -210,39 +218,41 @@ public class UomConversionResource {
 
     /**
      * 修改.
-     * 修改 UomConversion
+     * 修改 ContactMech
      */
-    @PatchMapping("{uomConversionId}")
-    public void patch(@PathVariable("uomConversionId") String uomConversionId, @RequestBody CreateOrMergePatchUomConversionDto.MergePatchUomConversionDto value) {
+    @PatchMapping("{contactMechId}")
+    public void patch(@PathVariable("contactMechId") String contactMechId, @RequestBody CreateOrMergePatchContactMechDto.MergePatchContactMechDto value) {
         try {
 
-            UomConversionCommand.MergePatchUomConversion cmd = value.toMergePatchUomConversion();
-            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, cmd);
+            value.setContactMechTypeId(ContactMechTypeId.TELECOM_NUMBER);
+            ContactMechCommand.MergePatchContactMech cmd = value.toMergePatchContactMech();
+            TelecomNumberResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, cmd);
             cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            uomConversionApplicationService.when(cmd);
+            contactMechApplicationService.when(cmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
     /**
      * 删除.
-     * 删除 UomConversion
+     * 删除 ContactMech
      */
-    @DeleteMapping("{uomConversionId}")
-    public void delete(@PathVariable("uomConversionId") String uomConversionId,
+    @DeleteMapping("{contactMechId}")
+    public void delete(@PathVariable("contactMechId") String contactMechId,
                        @NotNull @RequestParam(value = "commandId", required = false) String commandId,
                        @NotNull @RequestParam(value = "version", required = false) @Min(value = -1) Long version,
                        @RequestParam(value = "requesterId", required = false) String requesterId) {
         try {
 
-            UomConversionCommand.DeleteUomConversion deleteCmd = new AbstractUomConversionCommand.SimpleDeleteUomConversion();
+            ContactMechCommand.DeleteContactMech deleteCmd = new AbstractContactMechCommand.SimpleDeleteContactMech();
+            deleteCmd.setContactMechTypeId(ContactMechTypeId.TELECOM_NUMBER);
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
-            UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(uomConversionId, deleteCmd);
+            TelecomNumberResourceUtils.setNullIdOrThrowOnInconsistentIds(contactMechId, deleteCmd);
             deleteCmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            uomConversionApplicationService.when(deleteCmd);
+            contactMechApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
@@ -252,7 +262,7 @@ public class UomConversionResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            UomConversionMetadata.propertyTypeMap.forEach((key, value) -> {
+            ContactMechMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -260,36 +270,36 @@ public class UomConversionResource {
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
-    @GetMapping("{uomConversionId}/_events/{version}")
-    public UomConversionEvent getStateEvent(@PathVariable("uomConversionId") String uomConversionId, @PathVariable("version") long version) {
+    @GetMapping("{contactMechId}/_events/{version}")
+    public ContactMechEvent getStateEvent(@PathVariable("contactMechId") String contactMechId, @PathVariable("version") long version) {
         try {
 
-            UomConversionId idObj = UomConversionResourceUtils.parseIdString(uomConversionId);
-            //UomConversionStateEventDtoConverter dtoConverter = getUomConversionStateEventDtoConverter();
-            return uomConversionApplicationService.getEvent(idObj, version);
+            String idObj = contactMechId;
+            //ContactMechStateEventDtoConverter dtoConverter = getContactMechStateEventDtoConverter();
+            return contactMechApplicationService.getEvent(idObj, version);
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
-    @GetMapping("{uomConversionId}/_historyStates/{version}")
-    public UomConversionStateDto getHistoryState(@PathVariable("uomConversionId") String uomConversionId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
+    @GetMapping("{contactMechId}/_historyStates/{version}")
+    public ContactMechStateDto getHistoryState(@PathVariable("contactMechId") String contactMechId, @PathVariable("version") long version, @RequestParam(value = "fields", required = false) String fields) {
         try {
 
-            UomConversionId idObj = UomConversionResourceUtils.parseIdString(uomConversionId);
-            UomConversionStateDto.DtoConverter dtoConverter = new UomConversionStateDto.DtoConverter();
+            String idObj = contactMechId;
+            ContactMechStateDto.DtoConverter dtoConverter = new ContactMechStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            return dtoConverter.toUomConversionStateDto(uomConversionApplicationService.getHistoryState(idObj, version));
+            return dtoConverter.toContactMechStateDto(contactMechApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
 
-    //protected  UomConversionStateEventDtoConverter getUomConversionStateEventDtoConverter() {
-    //    return new UomConversionStateEventDtoConverter();
+    //protected  ContactMechStateEventDtoConverter getContactMechStateEventDtoConverter() {
+    //    return new ContactMechStateEventDtoConverter();
     //}
 
     protected TypeConverter getCriterionTypeConverter() {
@@ -300,42 +310,31 @@ public class UomConversionResource {
         return new PropertyTypeResolver() {
             @Override
             public Class resolveTypeByPropertyName(String propertyName) {
-                return UomConversionResourceUtils.getFilterPropertyType(propertyName);
+                return TelecomNumberResourceUtils.getFilterPropertyType(propertyName);
             }
         };
     }
 
     // ////////////////////////////////
  
-    public static class UomConversionResourceUtils {
+    public static class TelecomNumberResourceUtils {
 
-        public static UomConversionId parseIdString(String idString) {
-            TextFormatter<UomConversionId> formatter =
-                    new AbstractValueObjectTextFormatter<UomConversionId>(UomConversionId.class) {
-                        @Override
-                        protected Class<?> getClassByTypeName(String type) {
-                            return BoundedContextMetadata.CLASS_MAP.get(type);
-                        }
-                    };
-            return formatter.parse(idString);
-        }
-
-        public static void setNullIdOrThrowOnInconsistentIds(String uomConversionId, UomConversionCommand value) {
-            UomConversionId idObj = parseIdString(uomConversionId);
-            if (value.getUomConversionId() == null) {
-                value.setUomConversionId(idObj);
-            } else if (!value.getUomConversionId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", uomConversionId, value.getUomConversionId());
+        public static void setNullIdOrThrowOnInconsistentIds(String contactMechId, ContactMechCommand value) {
+            String idObj = contactMechId;
+            if (value.getContactMechId() == null) {
+                value.setContactMechId(idObj);
+            } else if (!value.getContactMechId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", contactMechId, value.getContactMechId());
             }
         }
     
         public static List<String> getQueryOrders(String str, String separator) {
-            return QueryParamUtils.getQueryOrders(str, separator, UomConversionMetadata.aliasMap);
+            return QueryParamUtils.getQueryOrders(str, separator, ContactMechMetadata.aliasMap);
         }
 
         public static List<String> getQuerySorts(Map<String, String[]> queryNameValuePairs) {
             String[] values = queryNameValuePairs.get("sort");
-            return QueryParamUtils.getQuerySorts(values, UomConversionMetadata.aliasMap);
+            return QueryParamUtils.getQuerySorts(values, ContactMechMetadata.aliasMap);
         }
 
         public static String getFilterPropertyName(String fieldName) {
@@ -345,15 +344,15 @@ public class UomConversionResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (UomConversionMetadata.aliasMap.containsKey(fieldName)) {
-                return UomConversionMetadata.aliasMap.get(fieldName);
+            if (ContactMechMetadata.aliasMap.containsKey(fieldName)) {
+                return ContactMechMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (UomConversionMetadata.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = UomConversionMetadata.propertyTypeMap.get(propertyName);
+            if (ContactMechMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ContactMechMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
@@ -375,16 +374,6 @@ public class UomConversionResource {
                 }
             });
             return filter.entrySet();
-        }
-
-        public static UomConversionStateDto[] toUomConversionStateDtoArray(Iterable<UomConversionId> ids) {
-            List<UomConversionStateDto> states = new ArrayList<>();
-            ids.forEach(i -> {
-                UomConversionStateDto dto = new UomConversionStateDto();
-                dto.setUomConversionId(i);
-                states.add(dto);
-            });
-            return states.toArray(new UomConversionStateDto[0]);
         }
 
     }

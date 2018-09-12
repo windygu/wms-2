@@ -212,6 +212,10 @@ public interface ContactMechCommand extends Command
 
 	interface DeleteContactMech extends ContactMechCommand
 	{
+
+        String getContactMechTypeId();
+
+        void setContactMechTypeId(String contactMechTypeId);
 	}
 
 }

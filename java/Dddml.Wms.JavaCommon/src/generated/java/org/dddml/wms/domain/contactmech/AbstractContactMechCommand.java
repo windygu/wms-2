@@ -550,6 +550,16 @@ public abstract class AbstractContactMechCommand extends AbstractCommand impleme
         public String getCommandType() {
             return COMMAND_TYPE_DELETE;
         }
+
+        private String contactMechTypeId;
+
+        public String getContactMechTypeId() {
+            return this.contactMechTypeId;
+        }
+
+        public void setContactMechTypeId(String contactMechTypeId) {
+            this.contactMechTypeId = contactMechTypeId;
+        }
 	}
 
     

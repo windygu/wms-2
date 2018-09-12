@@ -132,6 +132,9 @@ public class OrganizationResource {
             if (state != null && !OrganizationState.class.isAssignableFrom(state.getClass())) {
                 return null;
             }
+            if (state != null && !(PartyTypeIds.ORGANIZATION.equals(state.getPartyTypeId()))) {
+                return null;
+            }
             PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -154,10 +157,11 @@ public class OrganizationResource {
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
-            count = partyApplicationService.getCount(OrganizationState.class, CriterionDto.toSubclass(criterion,
+            Criterion c = CriterionDto.toSubclass(criterion,
                 getCriterionTypeConverter(), 
                 getPropertyTypeResolver(), 
-                n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n)));
+                n -> (PartyMetadata.aliasMap.containsKey(n) ? PartyMetadata.aliasMap.get(n) : n));
+            count = partyApplicationService.getCount(OrganizationState.class, c);
             return count;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }

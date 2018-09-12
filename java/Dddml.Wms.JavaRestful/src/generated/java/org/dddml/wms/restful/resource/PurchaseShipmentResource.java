@@ -22,9 +22,9 @@ import org.dddml.support.criterion.TypeConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RequestMapping(path = "Shipments", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "PurchaseShipments", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
-public class ShipmentResource {
+public class PurchaseShipmentResource {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
@@ -34,7 +34,7 @@ public class ShipmentResource {
 
     /**
      * 查询.
-     * 查询 Shipments
+     * 查询 PurchaseShipments
      */
     @GetMapping
     public ShipmentStateDto[] getAll(@Specification(value = ShipmentStateDto.class) HttpServletRequest request,
@@ -53,14 +53,15 @@ public class ShipmentResource {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> ShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> PurchaseShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ShipmentMetadata.aliasMap.containsKey(n) ? ShipmentMetadata.aliasMap.get(n) : n));
+            c = Restrictions.and(c, Restrictions.eq("ShipmentTypeId", ShipmentTypeId.PURCHASE_SHIPMENT));
             states = shipmentApplicationService.get(
                 c,
-                ShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
+                PurchaseShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
 
             ShipmentStateDto.DtoConverter dtoConverter = new ShipmentStateDto.DtoConverter();
@@ -76,7 +77,7 @@ public class ShipmentResource {
 
     /**
      * 查询.
-     * 分页查询 Shipments
+     * 分页查询 PurchaseShipments
      */
     @GetMapping("_page")
     public Page<ShipmentStateDto> getPage(@Specification(value = ShipmentStateDto.class) HttpServletRequest request,
@@ -93,14 +94,15 @@ public class ShipmentResource {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> ShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> PurchaseShipmentResourceUtils.getFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ShipmentMetadata.aliasMap.containsKey(n) ? ShipmentMetadata.aliasMap.get(n) : n));
+            c = Restrictions.and(c, Restrictions.eq("ShipmentTypeId", ShipmentTypeId.PURCHASE_SHIPMENT));
             states = shipmentApplicationService.get(
                 c,
-                ShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
+                PurchaseShipmentResourceUtils.getQuerySorts(request.getParameterMap()),
                 firstResult, maxResults);
             long count = shipmentApplicationService.getCount(c);
 
@@ -129,6 +131,9 @@ public class ShipmentResource {
             ShipmentState state = shipmentApplicationService.get(idObj);
             if (state == null) { return null; }
 
+            if (state != null && !(ShipmentTypeId.PURCHASE_SHIPMENT.equals(state.getShipmentTypeId()))) {
+                return null;
+            }
             ShipmentStateDto.DtoConverter dtoConverter = new ShipmentStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
@@ -155,6 +160,7 @@ public class ShipmentResource {
                 getCriterionTypeConverter(), 
                 getPropertyTypeResolver(), 
                 n -> (ShipmentMetadata.aliasMap.containsKey(n) ? ShipmentMetadata.aliasMap.get(n) : n));
+            c = Restrictions.and(c, Restrictions.eq("ShipmentTypeId", ShipmentTypeId.PURCHASE_SHIPMENT));
             count = shipmentApplicationService.getCount(c);
             return count;
 
@@ -169,6 +175,7 @@ public class ShipmentResource {
     @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE) @ResponseStatus(HttpStatus.CREATED)
     public String post(@RequestBody CreateOrMergePatchShipmentDto.CreateShipmentDto value,  HttpServletResponse response) {
         try {
+            value.setShipmentTypeId(ShipmentTypeId.PURCHASE_SHIPMENT);
             ShipmentCommand.CreateShipment cmd = value.toCreateShipment();
             if (cmd.getShipmentId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Shipment");
@@ -189,10 +196,11 @@ public class ShipmentResource {
     @PutMapping("{shipmentId}")
     public void put(@PathVariable("shipmentId") String shipmentId, @RequestBody CreateOrMergePatchShipmentDto value) {
         try {
+            value.setShipmentTypeId(ShipmentTypeId.PURCHASE_SHIPMENT);
             if (value.getVersion() != null) {
                 value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
                 ShipmentCommand.MergePatchShipment cmd = (ShipmentCommand.MergePatchShipment) value.toCommand();
-                ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
+                PurchaseShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
                 cmd.setRequesterId(SecurityContextUtil.getRequesterId());
                 shipmentApplicationService.when(cmd);
                 return;
@@ -200,7 +208,7 @@ public class ShipmentResource {
 
             value.setCommandType(Command.COMMAND_TYPE_CREATE);
             ShipmentCommand.CreateShipment cmd = (ShipmentCommand.CreateShipment) value.toCommand();
-            ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
+            PurchaseShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
             cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
@@ -216,188 +224,9 @@ public class ShipmentResource {
     public void patch(@PathVariable("shipmentId") String shipmentId, @RequestBody CreateOrMergePatchShipmentDto.MergePatchShipmentDto value) {
         try {
 
+            value.setShipmentTypeId(ShipmentTypeId.PURCHASE_SHIPMENT);
             ShipmentCommand.MergePatchShipment cmd = value.toMergePatchShipment();
-            ShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/Import")
-    public void _import(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.Import content) {
-        try {
-
-            ShipmentCommands.Import cmd = content;//.toImport();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/Ship")
-    public void ship(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.Ship content) {
-        try {
-
-            ShipmentCommands.Ship cmd = content;//.toShip();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/ReceiveItem")
-    public void receiveItem(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ReceiveItem content) {
-        try {
-
-            ShipmentCommands.ReceiveItem cmd = content;//.toReceiveItem();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/AddItemAndReceipt")
-    public void addItemAndReceipt(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.AddItemAndReceipt content) {
-        try {
-
-            ShipmentCommands.AddItemAndReceipt cmd = content;//.toAddItemAndReceipt();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/IssueItem")
-    public void issueItem(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.IssueItem content) {
-        try {
-
-            ShipmentCommands.IssueItem cmd = content;//.toIssueItem();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/AddItemAndIssuance")
-    public void addItemAndIssuance(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.AddItemAndIssuance content) {
-        try {
-
-            ShipmentCommands.AddItemAndIssuance cmd = content;//.toAddItemAndIssuance();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/ConfirmAllItemsReceived")
-    public void confirmAllItemsReceived(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ConfirmAllItemsReceived content) {
-        try {
-
-            ShipmentCommands.ConfirmAllItemsReceived cmd = content;//.toConfirmAllItemsReceived();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/ConfirmAllItemsIssued")
-    public void confirmAllItemsIssued(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ConfirmAllItemsIssued content) {
-        try {
-
-            ShipmentCommands.ConfirmAllItemsIssued cmd = content;//.toConfirmAllItemsIssued();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/PurchaseShipmentAction")
-    public void purchaseShipmentAction(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.PurchaseShipmentAction content) {
-        try {
-
-            ShipmentCommands.PurchaseShipmentAction cmd = content;//.toPurchaseShipmentAction();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/SalesShipmentAction")
-    public void salesShipmentAction(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.SalesShipmentAction content) {
-        try {
-
-            ShipmentCommands.SalesShipmentAction cmd = content;//.toSalesShipmentAction();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
+            PurchaseShipmentResourceUtils.setNullIdOrThrowOnInconsistentIds(shipmentId, cmd);
             cmd.setRequesterId(SecurityContextUtil.getRequesterId());
             shipmentApplicationService.when(cmd);
 
@@ -528,13 +357,13 @@ public class ShipmentResource {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> ShipmentResourceUtils.getShipmentImageFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> PurchaseShipmentResourceUtils.getShipmentImageFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ShipmentImageMetadata.aliasMap.containsKey(n) ? ShipmentImageMetadata.aliasMap.get(n) : n));
             Iterable<ShipmentImageState> states = shipmentApplicationService.getShipmentImages(shipmentId, c,
-                    ShipmentResourceUtils.getShipmentImageQuerySorts(request.getParameterMap()));
+                    PurchaseShipmentResourceUtils.getShipmentImageQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentImageStateDto.DtoConverter dtoConverter = new ShipmentImageStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -653,13 +482,13 @@ public class ShipmentResource {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> ShipmentResourceUtils.getShipmentItemFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> PurchaseShipmentResourceUtils.getShipmentItemFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ShipmentItemMetadata.aliasMap.containsKey(n) ? ShipmentItemMetadata.aliasMap.get(n) : n));
             Iterable<ShipmentItemState> states = shipmentApplicationService.getShipmentItems(shipmentId, c,
-                    ShipmentResourceUtils.getShipmentItemQuerySorts(request.getParameterMap()));
+                    PurchaseShipmentResourceUtils.getShipmentItemQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentItemStateDto.DtoConverter dtoConverter = new ShipmentItemStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -778,13 +607,13 @@ public class ShipmentResource {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> ShipmentResourceUtils.getShipmentReceiptFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> PurchaseShipmentResourceUtils.getShipmentReceiptFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ShipmentReceiptMetadata.aliasMap.containsKey(n) ? ShipmentReceiptMetadata.aliasMap.get(n) : n));
             Iterable<ShipmentReceiptState> states = shipmentApplicationService.getShipmentReceipts(shipmentId, c,
-                    ShipmentResourceUtils.getShipmentReceiptQuerySorts(request.getParameterMap()));
+                    PurchaseShipmentResourceUtils.getShipmentReceiptQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentReceiptStateDto.DtoConverter dtoConverter = new ShipmentReceiptStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -909,13 +738,13 @@ public class ShipmentResource {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> ShipmentResourceUtils.getShipmentReceiptImageFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> PurchaseShipmentResourceUtils.getShipmentReceiptImageFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ShipmentReceiptImageMetadata.aliasMap.containsKey(n) ? ShipmentReceiptImageMetadata.aliasMap.get(n) : n));
             Iterable<ShipmentReceiptImageState> states = shipmentApplicationService.getShipmentReceiptImages(shipmentId, shipmentReceiptReceiptSeqId, c,
-                    ShipmentResourceUtils.getShipmentReceiptImageQuerySorts(request.getParameterMap()));
+                    PurchaseShipmentResourceUtils.getShipmentReceiptImageQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ShipmentReceiptImageStateDto.DtoConverter dtoConverter = new ShipmentReceiptImageStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -1037,13 +866,13 @@ public class ShipmentResource {
                 criterion = JSON.parseObject(filter, CriterionDto.class);
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap().entrySet().stream()
-                    .filter(kv -> ShipmentResourceUtils.getItemIssuanceFilterPropertyName(kv.getKey()) != null)
+                    .filter(kv -> PurchaseShipmentResourceUtils.getItemIssuanceFilterPropertyName(kv.getKey()) != null)
                     .collect(Collectors.toMap(kv -> kv.getKey(), kv -> kv.getValue())));
             }
             Criterion c = CriterionDto.toSubclass(criterion, getCriterionTypeConverter(), getPropertyTypeResolver(), 
                 n -> (ItemIssuanceMetadata.aliasMap.containsKey(n) ? ItemIssuanceMetadata.aliasMap.get(n) : n));
             Iterable<ItemIssuanceState> states = shipmentApplicationService.getItemIssuances(shipmentId, c,
-                    ShipmentResourceUtils.getItemIssuanceQuerySorts(request.getParameterMap()));
+                    PurchaseShipmentResourceUtils.getItemIssuanceQuerySorts(request.getParameterMap()));
             if (states == null) { return null; }
             ItemIssuanceStateDto.DtoConverter dtoConverter = new ItemIssuanceStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -1091,7 +920,7 @@ public class ShipmentResource {
         return new PropertyTypeResolver() {
             @Override
             public Class resolveTypeByPropertyName(String propertyName) {
-                return ShipmentResourceUtils.getFilterPropertyType(propertyName);
+                return PurchaseShipmentResourceUtils.getFilterPropertyType(propertyName);
             }
         };
     }
@@ -1100,7 +929,7 @@ public class ShipmentResource {
         return new PropertyTypeResolver() {
             @Override
             public Class resolveTypeByPropertyName(String propertyName) {
-                return ShipmentResourceUtils.getShipmentImageFilterPropertyType(propertyName);
+                return PurchaseShipmentResourceUtils.getShipmentImageFilterPropertyType(propertyName);
             }
         };
     }
@@ -1109,7 +938,7 @@ public class ShipmentResource {
         return new PropertyTypeResolver() {
             @Override
             public Class resolveTypeByPropertyName(String propertyName) {
-                return ShipmentResourceUtils.getShipmentItemFilterPropertyType(propertyName);
+                return PurchaseShipmentResourceUtils.getShipmentItemFilterPropertyType(propertyName);
             }
         };
     }
@@ -1118,7 +947,7 @@ public class ShipmentResource {
         return new PropertyTypeResolver() {
             @Override
             public Class resolveTypeByPropertyName(String propertyName) {
-                return ShipmentResourceUtils.getShipmentReceiptFilterPropertyType(propertyName);
+                return PurchaseShipmentResourceUtils.getShipmentReceiptFilterPropertyType(propertyName);
             }
         };
     }
@@ -1127,7 +956,7 @@ public class ShipmentResource {
         return new PropertyTypeResolver() {
             @Override
             public Class resolveTypeByPropertyName(String propertyName) {
-                return ShipmentResourceUtils.getShipmentReceiptImageFilterPropertyType(propertyName);
+                return PurchaseShipmentResourceUtils.getShipmentReceiptImageFilterPropertyType(propertyName);
             }
         };
     }
@@ -1136,14 +965,14 @@ public class ShipmentResource {
         return new PropertyTypeResolver() {
             @Override
             public Class resolveTypeByPropertyName(String propertyName) {
-                return ShipmentResourceUtils.getItemIssuanceFilterPropertyType(propertyName);
+                return PurchaseShipmentResourceUtils.getItemIssuanceFilterPropertyType(propertyName);
             }
         };
     }
 
     // ////////////////////////////////
  
-    public static class ShipmentResourceUtils {
+    public static class PurchaseShipmentResourceUtils {
 
         public static void setNullIdOrThrowOnInconsistentIds(String shipmentId, ShipmentCommand value) {
             String idObj = shipmentId;
@@ -1440,16 +1269,6 @@ public class ShipmentResource {
                 }
             });
             return filter.entrySet();
-        }
-
-        public static ShipmentStateDto[] toShipmentStateDtoArray(Iterable<String> ids) {
-            List<ShipmentStateDto> states = new ArrayList<>();
-            ids.forEach(i -> {
-                ShipmentStateDto dto = new ShipmentStateDto();
-                dto.setShipmentId(i);
-                states.add(dto);
-            });
-            return states.toArray(new ShipmentStateDto[0]);
         }
 
     }

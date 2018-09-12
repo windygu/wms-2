@@ -974,6 +974,9 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         protected  void doPurchaseShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
+            if (!ShipmentTypeId.PURCHASE_SHIPMENT.equals(this.getState().getShipmentTypeId())) {
+                throw new UnsupportedOperationException("Incorrect subtype.");
+            }
             PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentPurchaseShipmentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);
@@ -992,6 +995,9 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         protected  void doSalesShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
+            if (!ShipmentTypeId.SALES_SHIPMENT.equals(this.getState().getShipmentTypeId())) {
+                throw new UnsupportedOperationException("Incorrect subtype.");
+            }
             PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentSalesShipmentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);

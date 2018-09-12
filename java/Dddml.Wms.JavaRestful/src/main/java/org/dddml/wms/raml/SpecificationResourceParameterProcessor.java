@@ -2,6 +2,7 @@ package org.dddml.wms.raml;
 
 import com.syj.raml.model.datamodel.*;
 import com.syj.raml.model.resources.RamlMethod;
+import com.syj.raml.parser.javadoc.MethodDoc;
 import com.syj.raml.parser.parameter.ResourceParameterProcessor;
 import org.dddml.wms.specialization.annotation.Specification;
 
@@ -28,7 +29,7 @@ public class SpecificationResourceParameterProcessor implements ResourceParamete
     }
 
     @Override
-    public void resolve(final Method method, final RamlMethod me, final Parameter parameter) {
+    public void resolve(RamlMethod ramlMethod, Method method, MethodDoc methodDoc, Parameter parameter, String s) {
         Specification a = parameter.getAnnotation(Specification.class);
         Class type = a.value();
         try {
@@ -56,7 +57,7 @@ public class SpecificationResourceParameterProcessor implements ResourceParamete
                 }
                 typeDeclaration.setRequired(false);
                 typeDeclaration.setName(propertyDescriptor.getName());
-                me.addQueryParameter(typeDeclaration);
+                ramlMethod.addQueryParameter(typeDeclaration);
             }
         } catch (IntrospectionException e) {
             throw new RuntimeException(e);

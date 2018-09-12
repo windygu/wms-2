@@ -99,7 +99,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Override
     @Transactional
     public void when(ShipmentCommands.Ship c) {
-        //todo check shipment type.
+        // check shipment type??
         super.when(c);
     }
 
@@ -110,7 +110,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         // 目前要确认收货，必须把单据置到“采购装运已发货”的状态
         // /////////////////////////////////////////////////////////////////
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
-        //todo check shipment type??
+        // check shipment type??
 
         Map<Object, ShipmentReceiptState> shipmentReceiptDict = StreamSupport.stream(
                 shipment.getShipmentReceipts().spliterator(), false)
@@ -191,7 +191,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         // /////////////////////////////////////////////////////////////////
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
         // /////////////////////////////////////////////////////////////////
-        //todo check shipment type??
+        // check shipment type??
 
         Map<Object, ItemIssuanceState> itemIssuanceMap = StreamSupport.stream(
                 shipment.getItemIssuances().spliterator(), false)

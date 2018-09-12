@@ -151,10 +151,11 @@ public class DamageHandlingMethodResource {
             } else {
                 criterion = QueryParamUtils.getQueryCriterionDto(request.getParameterMap());
             }
-            count = damageHandlingMethodApplicationService.getCount(CriterionDto.toSubclass(criterion,
+            Criterion c = CriterionDto.toSubclass(criterion,
                 getCriterionTypeConverter(), 
                 getPropertyTypeResolver(), 
-                n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n)));
+                n -> (DamageHandlingMethodMetadata.aliasMap.containsKey(n) ? DamageHandlingMethodMetadata.aliasMap.get(n) : n));
+            count = damageHandlingMethodApplicationService.getCount(c);
             return count;
 
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
