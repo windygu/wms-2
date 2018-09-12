@@ -35,6 +35,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void When(ShipmentCommands.ConfirmAllItemsIssued c);
 
+		void When(ShipmentCommands.PurchaseShipmentAction c);
+
+		void When(ShipmentCommands.SalesShipmentAction c);
+
  		IShipmentState Get(string shipmentId);
 
         IEnumerable<IShipmentState> GetAll(int firstResult, int maxResults);

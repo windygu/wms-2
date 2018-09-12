@@ -40,6 +40,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void ConfirmAllItemsIssued(long version, string commandId, string requesterId);
 
+		void PurchaseShipmentAction(string value, long version, string commandId, string requesterId);
+
+		void SalesShipmentAction(string value, long version, string commandId, string requesterId);
+
 
 	}
 

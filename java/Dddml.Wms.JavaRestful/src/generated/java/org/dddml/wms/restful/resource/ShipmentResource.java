@@ -367,6 +367,42 @@ public class ShipmentResource {
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
+
+    @PutMapping("{shipmentId}/_commands/PurchaseShipmentAction")
+    public void purchaseShipmentAction(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.PurchaseShipmentAction content) {
+        try {
+
+            ShipmentCommands.PurchaseShipmentAction cmd = content;//.toPurchaseShipmentAction();
+            String idObj = shipmentId;
+            if (cmd.getShipmentId() == null) {
+                cmd.setShipmentId(idObj);
+            } else if (!cmd.getShipmentId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
+            }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
+            shipmentApplicationService.when(cmd);
+
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
+    }
+
+
+    @PutMapping("{shipmentId}/_commands/SalesShipmentAction")
+    public void salesShipmentAction(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.SalesShipmentAction content) {
+        try {
+
+            ShipmentCommands.SalesShipmentAction cmd = content;//.toSalesShipmentAction();
+            String idObj = shipmentId;
+            if (cmd.getShipmentId() == null) {
+                cmd.setShipmentId(idObj);
+            } else if (!cmd.getShipmentId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
+            }
+            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
+            shipmentApplicationService.when(cmd);
+
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
+    }
+
     @GetMapping("_metadata/filteringFields")
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {

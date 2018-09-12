@@ -137,5 +137,13 @@ public interface RxShipmentsClient {
     @PUT("Shipments/{shipmentId}/_commands/ConfirmAllItemsIssued")
     Observable<String> confirmAllItemsIssued(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ConfirmAllItemsIssuedRequestContent content);
 
+    @Headers("Accept: application/json")
+    @PUT("Shipments/{shipmentId}/_commands/PurchaseShipmentAction")
+    Observable<String> purchaseShipmentAction(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.PurchaseShipmentActionRequestContent content);
+
+    @Headers("Accept: application/json")
+    @PUT("Shipments/{shipmentId}/_commands/SalesShipmentAction")
+    Observable<String> salesShipmentAction(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.SalesShipmentActionRequestContent content);
+
 }
 

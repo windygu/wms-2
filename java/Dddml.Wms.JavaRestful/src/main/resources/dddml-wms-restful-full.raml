@@ -7966,6 +7966,27 @@ types:
         items: 
           type: org.dddml.wms.domain.shipment.ItemIssuanceStateDto
 
+  org.dddml.wms.domain.shipment.ShipmentCommands.SalesShipmentAction: 
+    type: object
+    properties: 
+      value: 
+        type: string
+        required: false
+      shipmentId: 
+        type: string
+        required: false
+      version: 
+        type: number
+        required: false
+      commandId: 
+        type: string
+        required: false
+      requesterId: 
+        type: string
+        required: false
+      commandType: 
+        type: string
+        required: false
   org.dddml.wms.domain.order.CreateOrMergePatchOrderItemShipGroupAssociationDto.CreateOrderItemShipGroupAssociationDto: 
     type: object
     properties: 
@@ -17740,6 +17761,27 @@ types:
       requesterId: 
         type: string
         required: false
+  org.dddml.wms.domain.shipment.ShipmentCommands.PurchaseShipmentAction: 
+    type: object
+    properties: 
+      value: 
+        type: string
+        required: false
+      shipmentId: 
+        type: string
+        required: false
+      version: 
+        type: number
+        required: false
+      commandId: 
+        type: string
+        required: false
+      requesterId: 
+        type: string
+        required: false
+      commandType: 
+        type: string
+        required: false
   org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateDto: 
     type: object
     properties: 
@@ -24924,6 +24966,20 @@ types:
 /AttributeSetInstanceExtensionFieldGroups: 
   displayName: AttributeSetInstanceExtensionFieldGroupResource
   description: AttributeSetInstanceExtensionFieldGroupResource
+  post: 
+    displayName: 新建
+    description: 新建 AttributeSetInstanceExtensionFieldGroup
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.CreateAttributeSetInstanceExtensionFieldGroupDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 AttributeSetInstanceExtensionFieldGroups
@@ -24998,20 +25054,6 @@ types:
             items: 
               type: org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AttributeSetInstanceExtensionFieldGroupStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 AttributeSetInstanceExtensionFieldGroup
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.CreateAttributeSetInstanceExtensionFieldGroupDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{id}: 
     uriParameters: 
       id: 
@@ -25265,6 +25307,20 @@ types:
 /AttributeSetInstanceExtensionFields: 
   displayName: AttributeSetInstanceExtensionFieldResource
   description: AttributeSetInstanceExtensionFieldResource
+  post: 
+    displayName: 新建
+    description: 新建 AttributeSetInstanceExtensionField
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.attributesetinstanceextensionfield.CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 AttributeSetInstanceExtensionFields
@@ -25339,20 +25395,6 @@ types:
             items: 
               type: org.dddml.wms.domain.attributesetinstanceextensionfield.AttributeSetInstanceExtensionFieldStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 AttributeSetInstanceExtensionField
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.attributesetinstanceextensionfield.CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{name}: 
     uriParameters: 
       name: 
@@ -25606,6 +25648,24 @@ types:
 /AttributeSetInstances: 
   displayName: AttributeSetInstanceResource
   description: AttributeSetInstanceResource
+  post: 
+    displayName: 新建
+    description: 新建 AttributeSetInstance
+    body: 
+      application/json: 
+        displayName: dynamicObject
+        type: object
+        required: true
+        description: dynamicObject
+        properties: 
+          /[a-zA-Z_$]+[a-zA-Z_$0-9]*/: 
+            type: any
+        additionalProperties: true
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 AttributeSetInstances
@@ -25716,24 +25776,6 @@ types:
             items: 
               type: any
 
-  post: 
-    displayName: 新建
-    description: 新建 AttributeSetInstance
-    body: 
-      application/json: 
-        displayName: dynamicObject
-        type: object
-        required: true
-        description: dynamicObject
-        properties: 
-          /[a-zA-Z_$]+[a-zA-Z_$0-9]*/: 
-            type: any
-        additionalProperties: true
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{attributeSetInstanceId}: 
     uriParameters: 
       attributeSetInstanceId: 
@@ -26039,6 +26081,20 @@ types:
 /AttributeSets: 
   displayName: AttributeSetResource
   description: AttributeSetResource
+  post: 
+    displayName: 新建
+    description: 新建 AttributeSet
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.attributeset.CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 AttributeSets
@@ -26118,20 +26174,6 @@ types:
             items: 
               type: org.dddml.wms.domain.attributeset.AttributeSetStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 AttributeSet
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.attributeset.CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{attributeSetId}: 
     uriParameters: 
       attributeSetId: 
@@ -26307,14 +26349,6 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 AttributeId 的 AttributeUse
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.attributeset.AttributeUseStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 AttributeUse
@@ -26342,6 +26376,14 @@ types:
               description: requesterId
           responses: 
             200: 
+        get: 
+          displayName: 查看
+          description: 获取指定 AttributeId 的 AttributeUse
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.attributeset.AttributeUseStateDto
     /_events: 
       /{version}: 
         uriParameters: 
@@ -26541,6 +26583,20 @@ types:
 /Attributes: 
   displayName: AttributeResource
   description: AttributeResource
+  post: 
+    displayName: 新建
+    description: 新建 Attribute
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeDto.CreateAttributeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Attributes
@@ -26629,20 +26685,6 @@ types:
             items: 
               type: org.dddml.wms.domain.attribute.AttributeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Attribute
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeDto.CreateAttributeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{attributeId}: 
     uriParameters: 
       attributeId: 
@@ -26811,27 +26853,6 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.attribute.AttributeValueStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 AttributeValue
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 AttributeValue
@@ -26859,34 +26880,28 @@ types:
               description: requesterId
           responses: 
             200: 
+        delete: 
+          displayName: 移除
+          description: 移除 AttributeValue
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
     /AttributeAlias: 
-      post: 
-        displayName: 新建
-        description: 新建 AttributeAlias
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeAliasDto.CreateAttributeAliasDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       get: 
         displayName: AttributeAlias List
         description: AttributeAlias List
@@ -26942,6 +26957,33 @@ types:
                 items: 
                   type: org.dddml.wms.domain.attribute.AttributeAliasStateDto
 
+      post: 
+        displayName: 新建
+        description: 新建 AttributeAlias
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.attribute.CreateOrMergePatchAttributeAliasDto.CreateAttributeAliasDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       /{code}: 
         uriParameters: 
           code: 
@@ -26949,6 +26991,14 @@ types:
             type: string
             required: true
             description: code
+        get: 
+          displayName: 查看
+          description: 获取指定 Code 的 AttributeAlias
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.attribute.AttributeAliasStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 AttributeAlias
@@ -26997,14 +27047,6 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 Code 的 AttributeAlias
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.attribute.AttributeAliasStateDto
     /_events: 
       /{version}: 
         uriParameters: 
@@ -27231,6 +27273,20 @@ types:
 /ContactMeches: 
   displayName: ContactMechResource
   description: ContactMechResource
+  post: 
+    displayName: 新建
+    description: 新建 ContactMech
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.contactmech.CreateOrMergePatchContactMechDto.CreateContactMechDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 ContactMeches
@@ -27347,20 +27403,6 @@ types:
             items: 
               type: org.dddml.wms.domain.contactmech.ContactMechStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 ContactMech
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.contactmech.CreateOrMergePatchContactMechDto.CreateContactMechDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{contactMechId}: 
     uriParameters: 
       contactMechId: 
@@ -27698,6 +27740,20 @@ types:
 /DamageHandlingMethods: 
   displayName: DamageHandlingMethodResource
   description: DamageHandlingMethodResource
+  post: 
+    displayName: 新建
+    description: 新建 DamageHandlingMethod
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.damagehandlingmethod.CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 DamageHandlingMethods
@@ -27763,20 +27819,6 @@ types:
             items: 
               type: org.dddml.wms.domain.damagehandlingmethod.DamageHandlingMethodStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 DamageHandlingMethod
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.damagehandlingmethod.CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{damageHandlingMethodId}: 
     uriParameters: 
       damageHandlingMethodId: 
@@ -27974,6 +28016,20 @@ types:
 /DamageReasons: 
   displayName: DamageReasonResource
   description: DamageReasonResource
+  post: 
+    displayName: 新建
+    description: 新建 DamageReason
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.damagereason.CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 DamageReasons
@@ -28039,20 +28095,6 @@ types:
             items: 
               type: org.dddml.wms.domain.damagereason.DamageReasonStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 DamageReason
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.damagereason.CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{damageReasonId}: 
     uriParameters: 
       damageReasonId: 
@@ -28288,6 +28330,20 @@ types:
 /DamageTypes: 
   displayName: DamageTypeResource
   description: DamageTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 DamageType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.damagetype.CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 DamageTypes
@@ -28356,20 +28412,6 @@ types:
             items: 
               type: org.dddml.wms.domain.damagetype.DamageTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 DamageType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.damagetype.CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{damageTypeId}: 
     uriParameters: 
       damageTypeId: 
@@ -28573,6 +28615,20 @@ types:
 /DocumentTypes: 
   displayName: DocumentTypeResource
   description: DocumentTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 DocumentType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.documenttype.CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 DocumentTypes
@@ -28638,20 +28694,6 @@ types:
             items: 
               type: org.dddml.wms.domain.documenttype.DocumentTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 DocumentType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.documenttype.CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{documentTypeId}: 
     uriParameters: 
       documentTypeId: 
@@ -28849,6 +28891,20 @@ types:
 /Facilities: 
   displayName: FacilityResource
   description: FacilityResource
+  post: 
+    displayName: 新建
+    description: 新建 Facility
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.facility.CreateOrMergePatchFacilityDto.CreateFacilityDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Facilities
@@ -28959,20 +29015,6 @@ types:
             items: 
               type: org.dddml.wms.domain.facility.FacilityStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Facility
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.facility.CreateOrMergePatchFacilityDto.CreateFacilityDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{facilityId}: 
     uriParameters: 
       facilityId: 
@@ -29298,6 +29340,20 @@ types:
 /GoodIdentificationTypes: 
   displayName: GoodIdentificationTypeResource
   description: GoodIdentificationTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 GoodIdentificationType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.goodidentificationtype.CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 GoodIdentificationTypes
@@ -29366,20 +29422,6 @@ types:
             items: 
               type: org.dddml.wms.domain.goodidentificationtype.GoodIdentificationTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 GoodIdentificationType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.goodidentificationtype.CreateOrMergePatchGoodIdentificationTypeDto.CreateGoodIdentificationTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{goodIdentificationTypeId}: 
     uriParameters: 
       goodIdentificationTypeId: 
@@ -29639,6 +29681,33 @@ types:
 /ImportService: 
   displayName: ImportServiceResource
   description: ImportServiceResource
+  /InitializeInventoryItems: 
+    post: 
+      displayName: initializeInventoryItems
+      description: initializeInventoryItems
+      body: 
+        application/json: 
+          displayName: settings
+          type: org.dddml.wms.restful.resource.ImportServiceResource.InitializingInventoryItemSettings
+          required: true
+          description: settings
+      responses: 
+        200: 
+  /GetShipmentImportTemplate: 
+    get: 
+      displayName: getShipmentImportTemplate
+      description: getShipmentImportTemplate
+      queryParameters: 
+        productIds: 
+          displayName: productIds
+          type: string
+          required: true
+          description: productIds
+      responses: 
+        200: 
+          body: 
+            application/json: 
+              type: org.springframework.core.io.InputStreamResource
   /GetShipmentItemColumnNames: 
     get: 
       displayName: getShipmentItemColumnNames
@@ -29657,33 +29726,6 @@ types:
               items: 
                 type: string
 
-  /GetShipmentImportTemplate: 
-    get: 
-      displayName: getShipmentImportTemplate
-      description: getShipmentImportTemplate
-      queryParameters: 
-        productIds: 
-          displayName: productIds
-          type: string
-          required: true
-          description: productIds
-      responses: 
-        200: 
-          body: 
-            application/json: 
-              type: org.springframework.core.io.InputStreamResource
-  /InitializeInventoryItems: 
-    post: 
-      displayName: initializeInventoryItems
-      description: initializeInventoryItems
-      body: 
-        application/json: 
-          displayName: settings
-          type: org.dddml.wms.restful.resource.ImportServiceResource.InitializingInventoryItemSettings
-          required: true
-          description: settings
-      responses: 
-        200: 
   /ImportShipments: 
     post: 
       displayName: importShipments
@@ -29699,6 +29741,20 @@ types:
 /InOuts: 
   displayName: InOutResource
   description: InOutResource
+  post: 
+    displayName: 新建
+    description: 新建 InOut
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.inout.CreateOrMergePatchInOutDto.CreateInOutDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 InOuts
@@ -29854,20 +29910,6 @@ types:
             items: 
               type: org.dddml.wms.domain.inout.InOutStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 InOut
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.inout.CreateOrMergePatchInOutDto.CreateInOutDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{documentNumber}: 
     uriParameters: 
       documentNumber: 
@@ -30211,6 +30253,14 @@ types:
                 type: string
                 required: true
                 description: sequenceId
+            get: 
+              displayName: 查看
+              description: 获取指定 SequenceId 的 InOutLineImage
+              responses: 
+                200: 
+                  body: 
+                    application/json: 
+                      type: org.dddml.wms.domain.inout.InOutLineImageStateDto
             put: 
               displayName: 创建 or 修改
               description: 创建 or 修改 InOutLineImage
@@ -30238,14 +30288,6 @@ types:
                   description: requesterId
               responses: 
                 200: 
-            get: 
-              displayName: 查看
-              description: 获取指定 SequenceId 的 InOutLineImage
-              responses: 
-                200: 
-                  body: 
-                    application/json: 
-                      type: org.dddml.wms.domain.inout.InOutLineImageStateDto
             delete: 
               displayName: 移除
               description: 移除 InOutLineImage
@@ -30330,6 +30372,44 @@ types:
               description: requesterId
           responses: 
             200: 
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.inout.InOutEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.inout.InOutStateDto
     /InOutImages: 
       get: 
         displayName: InOutImage List
@@ -30447,6 +30527,14 @@ types:
               description: requesterId
           responses: 
             200: 
+        get: 
+          displayName: 查看
+          description: 获取指定 SequenceId 的 InOutImage
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.inout.InOutImageStateDto
         delete: 
           displayName: 移除
           description: 移除 InOutImage
@@ -30468,52 +30556,6 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 SequenceId 的 InOutImage
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.inout.InOutImageStateDto
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.inout.InOutEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.inout.InOutStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -30827,6 +30869,20 @@ types:
 /InventoryItemRequirements: 
   displayName: InventoryItemRequirementResource
   description: InventoryItemRequirementResource
+  post: 
+    displayName: 新建
+    description: 新建 InventoryItemRequirement
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.inventoryitemrequirement.CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.inventoryitem.InventoryItemId
   get: 
     displayName: 查询
     description: 查询 InventoryItemRequirements
@@ -30882,20 +30938,6 @@ types:
             items: 
               type: org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 InventoryItemRequirement
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.inventoryitemrequirement.CreateOrMergePatchInventoryItemRequirementDto.CreateInventoryItemRequirementDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.inventoryitem.InventoryItemId
   /{inventoryItemRequirementId}: 
     uriParameters: 
       inventoryItemRequirementId: 
@@ -31458,6 +31500,20 @@ types:
 /InventoryPRTriggereds: 
   displayName: InventoryPRTriggeredResource
   description: InventoryPRTriggeredResource
+  post: 
+    displayName: 新建
+    description: 新建 InventoryPRTriggered
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.inventoryprtriggered.CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId
   get: 
     displayName: 查询
     description: 查询 InventoryPRTriggereds
@@ -31514,20 +31570,6 @@ types:
             items: 
               type: org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 InventoryPRTriggered
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.inventoryprtriggered.CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId
   /{inventoryPRTriggeredId}: 
     uriParameters: 
       inventoryPRTriggeredId: 
@@ -31686,6 +31728,20 @@ types:
 /InventoryPostingRules: 
   displayName: InventoryPostingRuleResource
   description: InventoryPostingRuleResource
+  post: 
+    displayName: 新建
+    description: 新建 InventoryPostingRule
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.inventorypostingrule.CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 InventoryPostingRules
@@ -31755,20 +31811,6 @@ types:
             items: 
               type: org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 InventoryPostingRule
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.inventorypostingrule.CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{inventoryPostingRuleId}: 
     uriParameters: 
       inventoryPostingRuleId: 
@@ -32070,6 +32112,20 @@ types:
 /LocatorTypes: 
   displayName: LocatorTypeResource
   description: LocatorTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 LocatorType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.locatortype.CreateOrMergePatchLocatorTypeDto.CreateLocatorTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 LocatorTypes
@@ -32132,20 +32188,6 @@ types:
             items: 
               type: org.dddml.wms.domain.locatortype.LocatorTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 LocatorType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.locatortype.CreateOrMergePatchLocatorTypeDto.CreateLocatorTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{locatorTypeId}: 
     uriParameters: 
       locatorTypeId: 
@@ -32375,6 +32417,20 @@ types:
 /Locators: 
   displayName: LocatorResource
   description: LocatorResource
+  post: 
+    displayName: 新建
+    description: 新建 Locator
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.locator.CreateOrMergePatchLocatorDto.CreateLocatorDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Locators
@@ -32465,20 +32521,6 @@ types:
             items: 
               type: org.dddml.wms.domain.locator.LocatorStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Locator
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.locator.CreateOrMergePatchLocatorDto.CreateLocatorDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{locatorId}: 
     uriParameters: 
       locatorId: 
@@ -32764,6 +32806,20 @@ types:
 /Lots: 
   displayName: LotResource
   description: LotResource
+  post: 
+    displayName: 新建
+    description: 新建 Lot
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.lot.CreateOrMergePatchLotDto.CreateLotDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Lots
@@ -32829,20 +32885,6 @@ types:
             items: 
               type: org.dddml.wms.domain.lot.LotStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Lot
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.lot.CreateOrMergePatchLotDto.CreateLotDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{lotId}: 
     uriParameters: 
       lotId: 
@@ -33078,6 +33120,20 @@ types:
 /MovementConfirmations: 
   displayName: MovementConfirmationResource
   description: MovementConfirmationResource
+  post: 
+    displayName: 新建
+    description: 新建 MovementConfirmation
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.movementconfirmation.CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 MovementConfirmations
@@ -33163,20 +33219,6 @@ types:
             items: 
               type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 MovementConfirmation
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.movementconfirmation.CreateOrMergePatchMovementConfirmationDto.CreateMovementConfirmationDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{documentNumber}: 
     uriParameters: 
       documentNumber: 
@@ -33350,15 +33392,9 @@ types:
             type: string
             required: true
             description: lineNumber
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 MovementConfirmationLine
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.movementconfirmation.CreateOrMergePatchMovementConfirmationLineDto.MergePatchMovementConfirmationLineDto
-              required: true
-              description: body
+        delete: 
+          displayName: 移除
+          description: 移除 MovementConfirmationLine
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -33385,9 +33421,15 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 MovementConfirmationLine
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 MovementConfirmationLine
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.movementconfirmation.CreateOrMergePatchMovementConfirmationLineDto.MergePatchMovementConfirmationLineDto
+              required: true
+              description: body
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -33404,19 +33446,6 @@ types:
               type: string
               required: false
               description: requesterId
-          responses: 
-            200: 
-    /_commands: 
-      /DocumentAction: 
-        put: 
-          displayName: documentAction
-          description: documentAction
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationCommands.DocumentAction
-              required: true
-              description: content
           responses: 
             200: 
     /_events: 
@@ -33457,6 +33486,19 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationStateDto
+    /_commands: 
+      /DocumentAction: 
+        put: 
+          displayName: documentAction
+          description: documentAction
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.movementconfirmation.MovementConfirmationCommands.DocumentAction
+              required: true
+              description: content
+          responses: 
+            200: 
   /_count: 
     get: 
       displayName: getCount
@@ -33630,6 +33672,20 @@ types:
 /MovementTypes: 
   displayName: MovementTypeResource
   description: MovementTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 MovementType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.movementtype.CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 MovementTypes
@@ -33692,20 +33748,6 @@ types:
             items: 
               type: org.dddml.wms.domain.movementtype.MovementTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 MovementType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.movementtype.CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{movementTypeId}: 
     uriParameters: 
       movementTypeId: 
@@ -33897,6 +33939,20 @@ types:
 /Movements: 
   displayName: MovementResource
   description: MovementResource
+  post: 
+    displayName: 新建
+    description: 新建 Movement
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.movement.CreateOrMergePatchMovementDto.CreateMovementDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Movements
@@ -34020,20 +34076,6 @@ types:
             items: 
               type: org.dddml.wms.domain.movement.MovementStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Movement
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.movement.CreateOrMergePatchMovementDto.CreateMovementDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{documentNumber}: 
     uriParameters: 
       documentNumber: 
@@ -34099,33 +34141,6 @@ types:
       responses: 
         200: 
     /MovementLines: 
-      post: 
-        displayName: 新建
-        description: 新建 MovementLine
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.movement.CreateOrMergePatchMovementLineDto.CreateMovementLineDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       get: 
         displayName: MovementLine List
         description: MovementLine List
@@ -34200,6 +34215,33 @@ types:
                 items: 
                   type: org.dddml.wms.domain.movement.MovementLineStateDto
 
+      post: 
+        displayName: 新建
+        description: 新建 MovementLine
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.movement.CreateOrMergePatchMovementLineDto.CreateMovementLineDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       /{lineNumber}: 
         uriParameters: 
           lineNumber: 
@@ -34207,35 +34249,6 @@ types:
             type: string
             required: true
             description: lineNumber
-        delete: 
-          displayName: 移除
-          description: 移除 MovementLine
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 LineNumber 的 MovementLine
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.movement.MovementLineStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 MovementLine
@@ -34263,29 +34276,33 @@ types:
               description: requesterId
           responses: 
             200: 
-    /_commands: 
-      /AddLine: 
-        put: 
-          displayName: addLine
-          description: addLine
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.movement.MovementCommands.AddLine
-              required: true
-              description: content
+        get: 
+          displayName: 查看
+          description: 获取指定 LineNumber 的 MovementLine
           responses: 
             200: 
-      /DocumentAction: 
-        put: 
-          displayName: documentAction
-          description: documentAction
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.movement.MovementCommands.DocumentAction
-              required: true
-              description: content
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.movement.MovementLineStateDto
+        delete: 
+          displayName: 移除
+          description: 移除 MovementLine
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
           responses: 
             200: 
     /_events: 
@@ -34326,6 +34343,31 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.movement.MovementStateDto
+    /_commands: 
+      /AddLine: 
+        put: 
+          displayName: addLine
+          description: addLine
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.movement.MovementCommands.AddLine
+              required: true
+              description: content
+          responses: 
+            200: 
+      /DocumentAction: 
+        put: 
+          displayName: documentAction
+          description: documentAction
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.movement.MovementCommands.DocumentAction
+              required: true
+              description: content
+          responses: 
+            200: 
   /_count: 
     get: 
       displayName: getCount
@@ -34575,6 +34617,20 @@ types:
 /OrderItemShipGrpInvReservations: 
   displayName: OrderItemShipGrpInvReservationResource
   description: OrderItemShipGrpInvReservationResource
+  post: 
+    displayName: 新建
+    description: 新建 OrderItemShipGrpInvReservation
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.orderitemshipgrpinvreservation.CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvResId
   get: 
     displayName: 查询
     description: 查询 OrderItemShipGrpInvReservations
@@ -34661,20 +34717,6 @@ types:
             items: 
               type: org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvReservationStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 OrderItemShipGrpInvReservation
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.orderitemshipgrpinvreservation.CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvResId
   /{orderItemShipGrpInvResId}: 
     uriParameters: 
       orderItemShipGrpInvResId: 
@@ -34952,45 +34994,6 @@ types:
 /OrderShipGroupService: 
   displayName: OrderShipGroupServiceResource
   description: OrderShipGroupServiceResource
-  /CreatePOShipGroup: 
-    post: 
-      displayName: createPOShipGroup
-      description: createPOShipGroup
-      body: 
-        application/json: 
-          displayName: requestContent
-          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreatePOShipGroup
-          required: true
-          description: requestContent
-      responses: 
-        200: 
-  /CreateSOShipGroup: 
-    post: 
-      displayName: createSOShipGroup
-      description: createSOShipGroup
-      body: 
-        application/json: 
-          displayName: requestContent
-          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreateSOShipGroup
-          required: true
-          description: requestContent
-      responses: 
-        200: 
-  /CreatePOShipment: 
-    post: 
-      displayName: createPOShipment
-      description: createPOShipment
-      body: 
-        application/json: 
-          displayName: requestContent
-          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreatePOShipment
-          required: true
-          description: requestContent
-      responses: 
-        200: 
-          body: 
-            application/json: 
-              type: string
   /CreateSOShipment: 
     post: 
       displayName: createSOShipment
@@ -35006,9 +35009,62 @@ types:
           body: 
             application/json: 
               type: string
+  /CreatePOShipment: 
+    post: 
+      displayName: createPOShipment
+      description: createPOShipment
+      body: 
+        application/json: 
+          displayName: requestContent
+          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreatePOShipment
+          required: true
+          description: requestContent
+      responses: 
+        200: 
+          body: 
+            application/json: 
+              type: string
+  /CreateSOShipGroup: 
+    post: 
+      displayName: createSOShipGroup
+      description: createSOShipGroup
+      body: 
+        application/json: 
+          displayName: requestContent
+          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreateSOShipGroup
+          required: true
+          description: requestContent
+      responses: 
+        200: 
+  /CreatePOShipGroup: 
+    post: 
+      displayName: createPOShipGroup
+      description: createPOShipGroup
+      body: 
+        application/json: 
+          displayName: requestContent
+          type: org.dddml.wms.domain.service.OrderShipGroupServiceCommands.CreatePOShipGroup
+          required: true
+          description: requestContent
+      responses: 
+        200: 
 /OrderShipments: 
   displayName: OrderShipmentResource
   description: OrderShipmentResource
+  post: 
+    displayName: 新建
+    description: 新建 OrderShipment
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.ordershipment.CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.ordershipment.OrderShipmentId
   get: 
     displayName: 查询
     description: 查询 OrderShipments
@@ -35068,20 +35124,6 @@ types:
             items: 
               type: org.dddml.wms.domain.ordershipment.OrderShipmentStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 OrderShipment
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.ordershipment.CreateOrMergePatchOrderShipmentDto.CreateOrderShipmentDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.ordershipment.OrderShipmentId
   /{orderShipmentId}: 
     uriParameters: 
       orderShipmentId: 
@@ -35284,6 +35326,20 @@ types:
 /Orders: 
   displayName: OrderResource
   description: OrderResource
+  post: 
+    displayName: 新建
+    description: 新建 Order
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.order.CreateOrMergePatchOrderDto.CreateOrderDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Orders
@@ -35415,20 +35471,6 @@ types:
             items: 
               type: org.dddml.wms.domain.order.OrderStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Order
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.order.CreateOrMergePatchOrderDto.CreateOrderDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{orderId}: 
     uriParameters: 
       orderId: 
@@ -35473,6 +35515,33 @@ types:
       responses: 
         200: 
     /OrderShipGroups: 
+      post: 
+        displayName: 新建
+        description: 新建 OrderShipGroup
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderShipGroupDto.CreateOrderShipGroupDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: OrderShipGroup List
         description: OrderShipGroup List
@@ -35600,33 +35669,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.order.OrderShipGroupStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 OrderShipGroup
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderShipGroupDto.CreateOrderShipGroupDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{orderShipGroupShipGroupSeqId}: 
         uriParameters: 
           orderShipGroupShipGroupSeqId: 
@@ -35635,33 +35677,6 @@ types:
             required: true
             description: orderShipGroupShipGroupSeqId
         /OrderItemShipGroupAssociations: 
-          post: 
-            displayName: 新建
-            description: 新建 OrderItemShipGroupAssociation
-            body: 
-              application/json: 
-                displayName: body
-                type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemShipGroupAssociationDto.CreateOrderItemShipGroupAssociationDto
-                required: true
-                description: body
-            queryParameters: 
-              commandId: 
-                displayName: commandId
-                type: string
-                required: false
-                description: commandId
-              version: 
-                displayName: version
-                type: number
-                required: false
-                description: version
-              requesterId: 
-                displayName: requesterId
-                type: string
-                required: false
-                description: requesterId
-            responses: 
-              200: 
           get: 
             displayName: OrderItemShipGroupAssociation List
             description: OrderItemShipGroupAssociation List
@@ -35723,6 +35738,33 @@ types:
                     items: 
                       type: org.dddml.wms.domain.order.OrderItemShipGroupAssociationStateDto
 
+          post: 
+            displayName: 新建
+            description: 新建 OrderItemShipGroupAssociation
+            body: 
+              application/json: 
+                displayName: body
+                type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemShipGroupAssociationDto.CreateOrderItemShipGroupAssociationDto
+                required: true
+                description: body
+            queryParameters: 
+              commandId: 
+                displayName: commandId
+                type: string
+                required: false
+                description: commandId
+              version: 
+                displayName: version
+                type: number
+                required: false
+                description: version
+              requesterId: 
+                displayName: requesterId
+                type: string
+                required: false
+                description: requesterId
+            responses: 
+              200: 
           /{orderItemSeqId}: 
             uriParameters: 
               orderItemSeqId: 
@@ -35730,6 +35772,27 @@ types:
                 type: string
                 required: true
                 description: orderItemSeqId
+            delete: 
+              displayName: 移除
+              description: 移除 OrderItemShipGroupAssociation
+              queryParameters: 
+                commandId: 
+                  displayName: commandId
+                  type: string
+                  required: false
+                  description: commandId
+                version: 
+                  displayName: version
+                  type: number
+                  required: false
+                  description: version
+                requesterId: 
+                  displayName: requesterId
+                  type: string
+                  required: false
+                  description: requesterId
+              responses: 
+                200: 
             get: 
               displayName: 查看
               description: 获取指定 OrderItemSeqId 的 OrderItemShipGroupAssociation
@@ -35765,27 +35828,6 @@ types:
                   description: requesterId
               responses: 
                 200: 
-            delete: 
-              displayName: 移除
-              description: 移除 OrderItemShipGroupAssociation
-              queryParameters: 
-                commandId: 
-                  displayName: commandId
-                  type: string
-                  required: false
-                  description: commandId
-                version: 
-                  displayName: version
-                  type: number
-                  required: false
-                  description: version
-                requesterId: 
-                  displayName: requesterId
-                  type: string
-                  required: false
-                  description: requesterId
-              responses: 
-                200: 
       /{shipGroupSeqId}: 
         uriParameters: 
           shipGroupSeqId: 
@@ -35793,14 +35835,27 @@ types:
             type: string
             required: true
             description: shipGroupSeqId
-        get: 
-          displayName: 查看
-          description: 获取指定 ShipGroupSeqId 的 OrderShipGroup
+        delete: 
+          displayName: 移除
+          description: 移除 OrderShipGroup
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
           responses: 
             200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.order.OrderShipGroupStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 OrderShipGroup
@@ -35828,27 +35883,14 @@ types:
               description: requesterId
           responses: 
             200: 
-        delete: 
-          displayName: 移除
-          description: 移除 OrderShipGroup
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
+        get: 
+          displayName: 查看
+          description: 获取指定 ShipGroupSeqId 的 OrderShipGroup
           responses: 
             200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.order.OrderShipGroupStateDto
         /_commands: 
           /OrderShipGroupAction: 
             put: 
@@ -35946,6 +35988,27 @@ types:
             type: string
             required: true
             description: partyRoleId
+        delete: 
+          displayName: 移除
+          description: 移除 OrderRole
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 OrderRole
@@ -35981,55 +36044,7 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.order.OrderRoleStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 OrderRole
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
     /OrderItems: 
-      post: 
-        displayName: 新建
-        description: 新建 OrderItem
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemDto.CreateOrderItemDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       get: 
         displayName: OrderItem List
         description: OrderItem List
@@ -36187,6 +36202,33 @@ types:
                 items: 
                   type: org.dddml.wms.domain.order.OrderItemStateDto
 
+      post: 
+        displayName: 新建
+        description: 新建 OrderItem
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemDto.CreateOrderItemDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       /{orderItemSeqId}: 
         uriParameters: 
           orderItemSeqId: 
@@ -36194,15 +36236,17 @@ types:
             type: string
             required: true
             description: orderItemSeqId
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 OrderItem
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemDto.MergePatchOrderItemDto
-              required: true
-              description: body
+        get: 
+          displayName: 查看
+          description: 获取指定 OrderItemSeqId 的 OrderItem
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.order.OrderItemStateDto
+        delete: 
+          displayName: 移除
+          description: 移除 OrderItem
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -36221,17 +36265,15 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 OrderItemSeqId 的 OrderItem
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.order.OrderItemStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 OrderItem
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 OrderItem
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.order.CreateOrMergePatchOrderItemDto.MergePatchOrderItemDto
+              required: true
+              description: body
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -36553,6 +36595,20 @@ types:
 /OrganizationStructureTypes: 
   displayName: OrganizationStructureTypeResource
   description: OrganizationStructureTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 OrganizationStructureType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.organizationstructuretype.CreateOrMergePatchOrganizationStructureTypeDto.CreateOrganizationStructureTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 OrganizationStructureTypes
@@ -36615,20 +36671,6 @@ types:
             items: 
               type: org.dddml.wms.domain.organizationstructuretype.OrganizationStructureTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 OrganizationStructureType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.organizationstructuretype.CreateOrMergePatchOrganizationStructureTypeDto.CreateOrganizationStructureTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{id}: 
     uriParameters: 
       id: 
@@ -36858,6 +36900,20 @@ types:
 /OrganizationStructures: 
   displayName: OrganizationStructureResource
   description: OrganizationStructureResource
+  post: 
+    displayName: 新建
+    description: 新建 OrganizationStructure
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.organizationstructure.CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.organizationstructure.OrganizationStructureId
   get: 
     displayName: 查询
     description: 查询 OrganizationStructures
@@ -36914,20 +36970,6 @@ types:
             items: 
               type: org.dddml.wms.domain.organizationstructure.OrganizationStructureStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 OrganizationStructure
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.organizationstructure.CreateOrMergePatchOrganizationStructureDto.CreateOrganizationStructureDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.organizationstructure.OrganizationStructureId
   /{id}: 
     uriParameters: 
       id: 
@@ -37203,6 +37245,20 @@ types:
 /Organizations: 
   displayName: OrganizationResource
   description: OrganizationResource
+  post: 
+    displayName: 新建
+    description: 新建 Party
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.party.CreateOrMergePatchPartyDto.CreatePartyDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Organizations
@@ -37305,20 +37361,6 @@ types:
             items: 
               type: org.dddml.wms.domain.party.PartyStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Party
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.party.CreateOrMergePatchPartyDto.CreatePartyDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{partyId}: 
     uriParameters: 
       partyId: 
@@ -37628,6 +37670,20 @@ types:
 /Parties: 
   displayName: PartyResource
   description: PartyResource
+  post: 
+    displayName: 新建
+    description: 新建 Party
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.party.CreateOrMergePatchPartyDto.CreatePartyDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Parties
@@ -37730,20 +37786,6 @@ types:
             items: 
               type: org.dddml.wms.domain.party.PartyStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Party
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.party.CreateOrMergePatchPartyDto.CreatePartyDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{partyId}: 
     uriParameters: 
       partyId: 
@@ -38053,6 +38095,20 @@ types:
 /PartyRoles: 
   displayName: PartyRoleResource
   description: PartyRoleResource
+  post: 
+    displayName: 新建
+    description: 新建 PartyRole
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.partyrole.CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.partyrole.PartyRoleId
   get: 
     displayName: 查询
     description: 查询 PartyRoles
@@ -38109,20 +38165,6 @@ types:
             items: 
               type: org.dddml.wms.domain.partyrole.PartyRoleStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 PartyRole
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.partyrole.CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.partyrole.PartyRoleId
   /{partyRoleId}: 
     uriParameters: 
       partyRoleId: 
@@ -38340,6 +38382,20 @@ types:
 /People: 
   displayName: PersonResource
   description: PersonResource
+  post: 
+    displayName: 新建
+    description: 新建 Party
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.party.CreateOrMergePatchPartyDto.CreatePartyDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 People
@@ -38442,20 +38498,6 @@ types:
             items: 
               type: org.dddml.wms.domain.party.PartyStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Party
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.party.CreateOrMergePatchPartyDto.CreatePartyDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{partyId}: 
     uriParameters: 
       partyId: 
@@ -38765,6 +38807,20 @@ types:
 /PhysicalInventories: 
   displayName: PhysicalInventoryResource
   description: PhysicalInventoryResource
+  post: 
+    displayName: 新建
+    description: 新建 PhysicalInventory
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.physicalinventory.CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 PhysicalInventories
@@ -38870,20 +38926,6 @@ types:
             items: 
               type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 PhysicalInventory
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.physicalinventory.CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{documentNumber}: 
     uriParameters: 
       documentNumber: 
@@ -38927,97 +38969,7 @@ types:
           description: value
       responses: 
         200: 
-    /_commands: 
-      /DocumentAction: 
-        put: 
-          displayName: documentAction
-          description: documentAction
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryCommands.DocumentAction
-              required: true
-              description: content
-          responses: 
-            200: 
-      /CountItem: 
-        put: 
-          displayName: countItem
-          description: countItem
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryCommands.CountItem
-              required: true
-              description: content
-          responses: 
-            200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryStateDto
     /PhysicalInventoryLines: 
-      post: 
-        displayName: 新建
-        description: 新建 PhysicalInventoryLine
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.physicalinventory.CreateOrMergePatchPhysicalInventoryLineDto.CreatePhysicalInventoryLineDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       get: 
         displayName: PhysicalInventoryLine List
         description: PhysicalInventoryLine List
@@ -39082,6 +39034,33 @@ types:
                 items: 
                   type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateDto
 
+      post: 
+        displayName: 新建
+        description: 新建 PhysicalInventoryLine
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.physicalinventory.CreateOrMergePatchPhysicalInventoryLineDto.CreatePhysicalInventoryLineDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       /{inventoryItemId}: 
         uriParameters: 
           inventoryItemId: 
@@ -39089,6 +39068,14 @@ types:
             type: string
             required: true
             description: inventoryItemId
+        get: 
+          displayName: 查看
+          description: 获取指定 InventoryItemId 的 PhysicalInventoryLine
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 PhysicalInventoryLine
@@ -39116,14 +39103,6 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 InventoryItemId 的 PhysicalInventoryLine
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateDto
         delete: 
           displayName: 移除
           description: 移除 PhysicalInventoryLine
@@ -39145,6 +39124,69 @@ types:
               description: requesterId
           responses: 
             200: 
+    /_commands: 
+      /CountItem: 
+        put: 
+          displayName: countItem
+          description: countItem
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryCommands.CountItem
+              required: true
+              description: content
+          responses: 
+            200: 
+      /DocumentAction: 
+        put: 
+          displayName: documentAction
+          description: documentAction
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryCommands.DocumentAction
+              required: true
+              description: content
+          responses: 
+            200: 
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.physicalinventory.PhysicalInventoryStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -39358,6 +39400,20 @@ types:
 /PicklistBins: 
   displayName: PicklistBinResource
   description: PicklistBinResource
+  post: 
+    displayName: 新建
+    description: 新建 PicklistBin
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.picklistbin.CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 PicklistBins
@@ -39429,20 +39485,6 @@ types:
             items: 
               type: org.dddml.wms.domain.picklistbin.PicklistBinStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 PicklistBin
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.picklistbin.CreateOrMergePatchPicklistBinDto.CreatePicklistBinDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{picklistBinId}: 
     uriParameters: 
       picklistBinId: 
@@ -39508,6 +39550,33 @@ types:
       responses: 
         200: 
     /PicklistItems: 
+      post: 
+        displayName: 新建
+        description: 新建 PicklistItem
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.picklistbin.CreateOrMergePatchPicklistItemDto.CreatePicklistItemDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: PicklistItem List
         description: PicklistItem List
@@ -39563,33 +39632,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.picklistbin.PicklistItemStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 PicklistItem
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.picklistbin.CreateOrMergePatchPicklistItemDto.CreatePicklistItemDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{picklistItemOrderShipGrpInvId}: 
         uriParameters: 
           picklistItemOrderShipGrpInvId: 
@@ -39597,23 +39639,9 @@ types:
             type: string
             required: true
             description: picklistItemOrderShipGrpInvId
-        get: 
-          displayName: 查看
-          description: 获取指定 PicklistItemOrderShipGrpInvId 的 PicklistItem
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.picklistbin.PicklistItemStateDto
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 PicklistItem
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.picklistbin.CreateOrMergePatchPicklistItemDto.MergePatchPicklistItemDto
-              required: true
-              description: body
+        delete: 
+          displayName: 移除
+          description: 移除 PicklistItem
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -39632,9 +39660,23 @@ types:
               description: requesterId
           responses: 
             200: 
-        delete: 
-          displayName: 移除
-          description: 移除 PicklistItem
+        get: 
+          displayName: 查看
+          description: 获取指定 PicklistItemOrderShipGrpInvId 的 PicklistItem
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.picklistbin.PicklistItemStateDto
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 PicklistItem
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.picklistbin.CreateOrMergePatchPicklistItemDto.MergePatchPicklistItemDto
+              required: true
+              description: body
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -39836,6 +39878,20 @@ types:
 /Picklists: 
   displayName: PicklistResource
   description: PicklistResource
+  post: 
+    displayName: 新建
+    description: 新建 Picklist
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.picklist.CreateOrMergePatchPicklistDto.CreatePicklistDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Picklists
@@ -39913,20 +39969,6 @@ types:
             items: 
               type: org.dddml.wms.domain.picklist.PicklistStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Picklist
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.picklist.CreateOrMergePatchPicklistDto.CreatePicklistDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{picklistId}: 
     uriParameters: 
       picklistId: 
@@ -39992,6 +40034,33 @@ types:
       responses: 
         200: 
     /PicklistRoles: 
+      post: 
+        displayName: 新建
+        description: 新建 PicklistRole
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.picklist.CreateOrMergePatchPicklistRoleDto.CreatePicklistRoleDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
         displayName: PicklistRole List
         description: PicklistRole List
@@ -40041,33 +40110,6 @@ types:
                 items: 
                   type: org.dddml.wms.domain.picklist.PicklistRoleStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 PicklistRole
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.picklist.CreateOrMergePatchPicklistRoleDto.CreatePicklistRoleDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       /{partyRoleId}: 
         uriParameters: 
           partyRoleId: 
@@ -40075,14 +40117,27 @@ types:
             type: string
             required: true
             description: partyRoleId
-        get: 
-          displayName: 查看
-          description: 获取指定 PartyRoleId 的 PicklistRole
+        delete: 
+          displayName: 移除
+          description: 移除 PicklistRole
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
           responses: 
             200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.picklist.PicklistRoleStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 PicklistRole
@@ -40110,27 +40165,14 @@ types:
               description: requesterId
           responses: 
             200: 
-        delete: 
-          displayName: 移除
-          description: 移除 PicklistRole
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
+        get: 
+          displayName: 查看
+          description: 获取指定 PartyRoleId 的 PicklistRole
           responses: 
             200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.picklist.PicklistRoleStateDto
     /_events: 
       /{version}: 
         uriParameters: 
@@ -40326,6 +40368,20 @@ types:
 /Pickwaves: 
   displayName: PickwaveResource
   description: PickwaveResource
+  post: 
+    displayName: 新建
+    description: 新建 Pickwave
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.pickwave.CreateOrMergePatchPickwaveDto.CreatePickwaveDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: number
   get: 
     displayName: 查询
     description: 查询 Pickwaves
@@ -40391,20 +40447,6 @@ types:
             items: 
               type: org.dddml.wms.domain.pickwave.PickwaveStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Pickwave
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.pickwave.CreateOrMergePatchPickwaveDto.CreatePickwaveDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: number
   /{pickwaveId}: 
     uriParameters: 
       pickwaveId: 
@@ -40640,6 +40682,20 @@ types:
 /ProductCategories: 
   displayName: ProductCategoryResource
   description: ProductCategoryResource
+  post: 
+    displayName: 新建
+    description: 新建 ProductCategory
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.productcategory.CreateOrMergePatchProductCategoryDto.CreateProductCategoryDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 ProductCategories
@@ -40724,20 +40780,6 @@ types:
             items: 
               type: org.dddml.wms.domain.productcategory.ProductCategoryStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 ProductCategory
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.productcategory.CreateOrMergePatchProductCategoryDto.CreateProductCategoryDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{productCategoryId}: 
     uriParameters: 
       productCategoryId: 
@@ -40802,6 +40844,24 @@ types:
           description: value
       responses: 
         200: 
+    /ChildProductCategories: 
+      get: 
+        displayName: getChildProductCategories
+        description: getChildProductCategories
+        queryParameters: 
+          productCategoryId: 
+            displayName: productCategoryId
+            type: string
+            required: false
+            description: productCategoryId
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.domain.productcategory.ProductCategoryStateDto
+
     /_events: 
       /{version}: 
         uriParameters: 
@@ -40840,24 +40900,6 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.productcategory.ProductCategoryStateDto
-    /ChildProductCategories: 
-      get: 
-        displayName: getChildProductCategories
-        description: getChildProductCategories
-        queryParameters: 
-          productCategoryId: 
-            displayName: productCategoryId
-            type: string
-            required: false
-            description: productCategoryId
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.domain.productcategory.ProductCategoryStateDto
-
   /_count: 
     get: 
       displayName: getCount
@@ -41029,6 +41071,20 @@ types:
 /ProductCategoryMembers: 
   displayName: ProductCategoryMemberResource
   description: ProductCategoryMemberResource
+  post: 
+    displayName: 新建
+    description: 新建 ProductCategoryMember
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.productcategorymember.CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.productcategorymember.ProductCategoryMemberId
   get: 
     displayName: 查询
     description: 查询 ProductCategoryMembers
@@ -41097,20 +41153,6 @@ types:
             items: 
               type: org.dddml.wms.domain.productcategorymember.ProductCategoryMemberStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 ProductCategoryMember
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.productcategorymember.CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.productcategorymember.ProductCategoryMemberId
   /{productCategoryMemberId}: 
     uriParameters: 
       productCategoryMemberId: 
@@ -41331,6 +41373,20 @@ types:
 /Products: 
   displayName: ProductResource
   description: ProductResource
+  post: 
+    displayName: 新建
+    description: 新建 Product
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.product.CreateOrMergePatchProductDto.CreateProductDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Products
@@ -41590,20 +41646,6 @@ types:
             items: 
               type: org.dddml.wms.domain.product.ProductStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Product
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.product.CreateOrMergePatchProductDto.CreateProductDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{productId}: 
     uriParameters: 
       productId: 
@@ -41647,44 +41689,6 @@ types:
           description: value
       responses: 
         200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.product.ProductEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.product.ProductStateDto
     /GoodIdentifications: 
       post: 
         displayName: 新建
@@ -41775,14 +41779,27 @@ types:
             type: string
             required: true
             description: goodIdentificationTypeId
-        get: 
-          displayName: 查看
-          description: 获取指定 GoodIdentificationTypeId 的 GoodIdentification
+        delete: 
+          displayName: 移除
+          description: 移除 GoodIdentification
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
           responses: 
             200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.product.GoodIdentificationStateDto
         put: 
           displayName: 创建 or 修改
           description: 创建 or 修改 GoodIdentification
@@ -41810,27 +41827,52 @@ types:
               description: requesterId
           responses: 
             200: 
-        delete: 
-          displayName: 移除
-          description: 移除 GoodIdentification
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
+        get: 
+          displayName: 查看
+          description: 获取指定 GoodIdentificationTypeId 的 GoodIdentification
           responses: 
             200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.product.GoodIdentificationStateDto
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.product.ProductEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.product.ProductStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -42352,6 +42394,20 @@ types:
 /RejectionReasons: 
   displayName: RejectionReasonResource
   description: RejectionReasonResource
+  post: 
+    displayName: 新建
+    description: 新建 RejectionReason
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.rejectionreason.CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 RejectionReasons
@@ -42414,20 +42470,6 @@ types:
             items: 
               type: org.dddml.wms.domain.rejectionreason.RejectionReasonStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 RejectionReason
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.rejectionreason.CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{rejectionReasonId}: 
     uriParameters: 
       rejectionReasonId: 
@@ -42657,6 +42699,20 @@ types:
 /RoleTypes: 
   displayName: RoleTypeResource
   description: RoleTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 RoleType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.roletype.CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 RoleTypes
@@ -42725,20 +42781,6 @@ types:
             items: 
               type: org.dddml.wms.domain.roletype.RoleTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 RoleType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.roletype.CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{roleTypeId}: 
     uriParameters: 
       roleTypeId: 
@@ -42980,6 +43022,20 @@ types:
 /SellableInventoryItems: 
   displayName: SellableInventoryItemResource
   description: SellableInventoryItemResource
+  post: 
+    displayName: 新建
+    description: 新建 SellableInventoryItem
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.sellableinventoryitem.CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.inventoryitem.InventoryItemId
   get: 
     displayName: 查询
     description: 查询 SellableInventoryItems
@@ -43035,20 +43091,6 @@ types:
             items: 
               type: org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 SellableInventoryItem
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.sellableinventoryitem.CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.inventoryitem.InventoryItemId
   /{sellableInventoryItemId}: 
     uriParameters: 
       sellableInventoryItemId: 
@@ -43269,6 +43311,20 @@ types:
 /ShipmentMethodTypes: 
   displayName: ShipmentMethodTypeResource
   description: ShipmentMethodTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 ShipmentMethodType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.shipmentmethodtype.CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 ShipmentMethodTypes
@@ -43334,20 +43390,6 @@ types:
             items: 
               type: org.dddml.wms.domain.shipmentmethodtype.ShipmentMethodTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 ShipmentMethodType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.shipmentmethodtype.CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{shipmentMethodTypeId}: 
     uriParameters: 
       shipmentMethodTypeId: 
@@ -43583,6 +43625,20 @@ types:
 /ShipmentPackages: 
   displayName: ShipmentPackageResource
   description: ShipmentPackageResource
+  post: 
+    displayName: 新建
+    description: 新建 ShipmentPackage
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageId
   get: 
     displayName: 查询
     description: 查询 ShipmentPackages
@@ -43666,20 +43722,6 @@ types:
             items: 
               type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 ShipmentPackage
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageDto.CreateShipmentPackageDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageId
   /{shipmentPackageId}: 
     uriParameters: 
       shipmentPackageId: 
@@ -43744,44 +43786,6 @@ types:
           description: value
       responses: 
         200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageStateDto
     /ShipmentPackageContents: 
       get: 
         displayName: ShipmentPackageContent List
@@ -43875,6 +43879,33 @@ types:
             type: string
             required: true
             description: shipmentItemSeqId
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 ShipmentPackageContent
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageContentDto.MergePatchShipmentPackageContentDto
+              required: true
+              description: body
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         delete: 
           displayName: 移除
           description: 移除 ShipmentPackageContent
@@ -43904,33 +43935,44 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentStateDto
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 ShipmentPackageContent
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.shipmentpackage.CreateOrMergePatchShipmentPackageContentDto.MergePatchShipmentPackageContentDto
-              required: true
-              description: body
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
           responses: 
             200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipmentpackage.ShipmentPackageStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -44100,6 +44142,20 @@ types:
 /ShipmentTypes: 
   displayName: ShipmentTypeResource
   description: ShipmentTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 ShipmentType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.shipmenttype.CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 ShipmentTypes
@@ -44168,20 +44224,6 @@ types:
             items: 
               type: org.dddml.wms.domain.shipmenttype.ShipmentTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 ShipmentType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.shipmenttype.CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{shipmentTypeId}: 
     uriParameters: 
       shipmentTypeId: 
@@ -44364,6 +44406,20 @@ types:
 /Shipments: 
   displayName: ShipmentResource
   description: ShipmentResource
+  post: 
+    displayName: 新建
+    description: 新建 Shipment
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentDto.CreateShipmentDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Shipments
@@ -44516,20 +44572,6 @@ types:
             items: 
               type: org.dddml.wms.domain.shipment.ShipmentStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Shipment
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentDto.CreateShipmentDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{shipmentId}: 
     uriParameters: 
       shipmentId: 
@@ -44573,206 +44615,15 @@ types:
           description: value
       responses: 
         200: 
-    /ShipmentItems: 
-      get: 
-        displayName: ShipmentItem List
-        description: ShipmentItem List
-        queryParameters: 
-          sort: 
-            displayName: sort
-            type: string
-            required: false
-            description: sort
-          fields: 
-            displayName: fields
-            type: string
-            required: false
-            description: fields
-          filter: 
-            displayName: filter
-            type: string
-            required: false
-            description: filter
-          active: 
-            type: boolean
-            required: false
-            enum: [true, false]
-          attributeSetInstanceId: 
-            type: string
-            required: false
-          createdAt: 
-            type: datetime
-            required: false
-          createdBy: 
-            type: string
-            required: false
-          productId: 
-            type: string
-            required: false
-          quantity: 
-            type: number
-            required: false
-          shipmentContentDescription: 
-            type: string
-            required: false
-          shipmentId: 
-            type: string
-            required: false
-          shipmentItemSeqId: 
-            type: string
-            required: false
-          updatedAt: 
-            type: datetime
-            required: false
-          updatedBy: 
-            type: string
-            required: false
-          version: 
-            type: number
-            required: false
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.domain.shipment.ShipmentItemStateDto
-
-      post: 
-        displayName: 新建
-        description: 新建 ShipmentItem
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentItemDto.CreateShipmentItemDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
-      /{shipmentItemSeqId}: 
-        uriParameters: 
-          shipmentItemSeqId: 
-            displayName: shipmentItemSeqId
-            type: string
-            required: true
-            description: shipmentItemSeqId
-        get: 
-          displayName: 查看
-          description: 获取指定 ShipmentItemSeqId 的 ShipmentItem
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipment.ShipmentItemStateDto
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 ShipmentItem
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentItemDto.MergePatchShipmentItemDto
-              required: true
-              description: body
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
-        delete: 
-          displayName: 移除
-          description: 移除 ShipmentItem
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
     /_commands: 
-      /Import: 
+      /AddItemAndIssuance: 
         put: 
-          displayName: _import
-          description: _import
+          displayName: addItemAndIssuance
+          description: addItemAndIssuance
           body: 
             application/json: 
               displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.Import
-              required: true
-              description: content
-          responses: 
-            200: 
-      /IssueItem: 
-        put: 
-          displayName: issueItem
-          description: issueItem
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.IssueItem
-              required: true
-              description: content
-          responses: 
-            200: 
-      /Ship: 
-        put: 
-          displayName: ship
-          description: ship
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.Ship
-              required: true
-              description: content
-          responses: 
-            200: 
-      /ReceiveItem: 
-        put: 
-          displayName: receiveItem
-          description: receiveItem
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.ReceiveItem
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.AddItemAndIssuance
               required: true
               description: content
           responses: 
@@ -44789,6 +44640,30 @@ types:
               description: content
           responses: 
             200: 
+      /SalesShipmentAction: 
+        put: 
+          displayName: salesShipmentAction
+          description: salesShipmentAction
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.SalesShipmentAction
+              required: true
+              description: content
+          responses: 
+            200: 
+      /PurchaseShipmentAction: 
+        put: 
+          displayName: purchaseShipmentAction
+          description: purchaseShipmentAction
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.PurchaseShipmentAction
+              required: true
+              description: content
+          responses: 
+            200: 
       /ConfirmAllItemsIssued: 
         put: 
           displayName: confirmAllItemsIssued
@@ -44797,18 +44672,6 @@ types:
             application/json: 
               displayName: content
               type: org.dddml.wms.domain.shipment.ShipmentCommands.ConfirmAllItemsIssued
-              required: true
-              description: content
-          responses: 
-            200: 
-      /AddItemAndIssuance: 
-        put: 
-          displayName: addItemAndIssuance
-          description: addItemAndIssuance
-          body: 
-            application/json: 
-              displayName: content
-              type: org.dddml.wms.domain.shipment.ShipmentCommands.AddItemAndIssuance
               required: true
               description: content
           responses: 
@@ -44825,44 +44688,54 @@ types:
               description: content
           responses: 
             200: 
-    /_events: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getStateEvent
-          description: getStateEvent
+      /IssueItem: 
+        put: 
+          displayName: issueItem
+          description: issueItem
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.IssueItem
+              required: true
+              description: content
           responses: 
             200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipment.ShipmentEvent
-    /_historyStates: 
-      /{version}: 
-        uriParameters: 
-          version: 
-            displayName: version
-            type: number
-            required: true
-            description: version
-        get: 
-          displayName: getHistoryState
-          description: getHistoryState
-          queryParameters: 
-            fields: 
-              displayName: fields
-              type: string
-              required: false
-              description: fields
+      /ReceiveItem: 
+        put: 
+          displayName: receiveItem
+          description: receiveItem
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.ReceiveItem
+              required: true
+              description: content
           responses: 
             200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipment.ShipmentStateDto
+      /Ship: 
+        put: 
+          displayName: ship
+          description: ship
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.Ship
+              required: true
+              description: content
+          responses: 
+            200: 
+      /Import: 
+        put: 
+          displayName: _import
+          description: _import
+          body: 
+            application/json: 
+              displayName: content
+              type: org.dddml.wms.domain.shipment.ShipmentCommands.Import
+              required: true
+              description: content
+          responses: 
+            200: 
     /ShipmentImages: 
       get: 
         displayName: ShipmentImage List
@@ -44953,6 +44826,27 @@ types:
             type: string
             required: true
             description: sequenceId
+        delete: 
+          displayName: 移除
+          description: 移除 ShipmentImage
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         get: 
           displayName: 查看
           description: 获取指定 SequenceId 的 ShipmentImage
@@ -44988,31 +44882,37 @@ types:
               description: requesterId
           responses: 
             200: 
-        delete: 
-          displayName: 移除
-          description: 移除 ShipmentImage
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
-    /ItemIssuances: 
+    /ShipmentItems: 
+      post: 
+        displayName: 新建
+        description: 新建 ShipmentItem
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentItemDto.CreateShipmentItemDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       get: 
-        displayName: ItemIssuance List
-        description: ItemIssuance List
+        displayName: ShipmentItem List
+        description: ShipmentItem List
         queryParameters: 
           sort: 
             displayName: sort
@@ -45036,37 +44936,10 @@ types:
           attributeSetInstanceId: 
             type: string
             required: false
-          cancelQuantity: 
-            type: number
-            required: false
           createdAt: 
             type: datetime
             required: false
           createdBy: 
-            type: string
-            required: false
-          fixedAssetId: 
-            type: string
-            required: false
-          issuedByUserLoginId: 
-            type: string
-            required: false
-          issuedDateTime: 
-            type: datetime
-            required: false
-          itemIssuanceSeqId: 
-            type: string
-            required: false
-          locatorId: 
-            type: string
-            required: false
-          maintHistSeqId: 
-            type: string
-            required: false
-          orderId: 
-            type: string
-            required: false
-          orderItemSeqId: 
             type: string
             required: false
           productId: 
@@ -45075,7 +44948,7 @@ types:
           quantity: 
             type: number
             required: false
-          shipGroupSeqId: 
+          shipmentContentDescription: 
             type: string
             required: false
           shipmentId: 
@@ -45099,49 +44972,43 @@ types:
               application/json: 
                 type: array
                 items: 
-                  type: org.dddml.wms.domain.shipment.ItemIssuanceStateDto
+                  type: org.dddml.wms.domain.shipment.ShipmentItemStateDto
 
-      post: 
-        displayName: 新建
-        description: 新建 ItemIssuance
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.shipment.CreateOrMergePatchItemIssuanceDto.CreateItemIssuanceDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
-      /{itemIssuanceSeqId}: 
+      /{shipmentItemSeqId}: 
         uriParameters: 
-          itemIssuanceSeqId: 
-            displayName: itemIssuanceSeqId
+          shipmentItemSeqId: 
+            displayName: shipmentItemSeqId
             type: string
             required: true
-            description: itemIssuanceSeqId
+            description: shipmentItemSeqId
+        delete: 
+          displayName: 移除
+          description: 移除 ShipmentItem
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
         put: 
           displayName: 创建 or 修改
-          description: 创建 or 修改 ItemIssuance
+          description: 创建 or 修改 ShipmentItem
           body: 
             application/json: 
               displayName: body
-              type: org.dddml.wms.domain.shipment.CreateOrMergePatchItemIssuanceDto.MergePatchItemIssuanceDto
+              type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentItemDto.MergePatchShipmentItemDto
               required: true
               description: body
           queryParameters: 
@@ -45164,61 +45031,13 @@ types:
             200: 
         get: 
           displayName: 查看
-          description: 获取指定 ItemIssuanceSeqId 的 ItemIssuance
+          description: 获取指定 ShipmentItemSeqId 的 ShipmentItem
           responses: 
             200: 
               body: 
                 application/json: 
-                  type: org.dddml.wms.domain.shipment.ItemIssuanceStateDto
-        delete: 
-          displayName: 移除
-          description: 移除 ItemIssuance
-          queryParameters: 
-            commandId: 
-              displayName: commandId
-              type: string
-              required: false
-              description: commandId
-            version: 
-              displayName: version
-              type: number
-              required: false
-              description: version
-            requesterId: 
-              displayName: requesterId
-              type: string
-              required: false
-              description: requesterId
-          responses: 
-            200: 
+                  type: org.dddml.wms.domain.shipment.ShipmentItemStateDto
     /ShipmentReceipts: 
-      post: 
-        displayName: 新建
-        description: 新建 ShipmentReceipt
-        body: 
-          application/json: 
-            displayName: body
-            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptDto.CreateShipmentReceiptDto
-            required: true
-            description: body
-        queryParameters: 
-          commandId: 
-            displayName: commandId
-            type: string
-            required: false
-            description: commandId
-          version: 
-            displayName: version
-            type: number
-            required: false
-            description: version
-          requesterId: 
-            displayName: requesterId
-            type: string
-            required: false
-            description: requesterId
-        responses: 
-          200: 
       get: 
         displayName: ShipmentReceipt List
         description: ShipmentReceipt List
@@ -45322,6 +45141,33 @@ types:
                 items: 
                   type: org.dddml.wms.domain.shipment.ShipmentReceiptStateDto
 
+      post: 
+        displayName: 新建
+        description: 新建 ShipmentReceipt
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptDto.CreateShipmentReceiptDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
       /{receiptSeqId}: 
         uriParameters: 
           receiptSeqId: 
@@ -45329,9 +45175,23 @@ types:
             type: string
             required: true
             description: receiptSeqId
-        delete: 
-          displayName: 移除
-          description: 移除 ShipmentReceipt
+        get: 
+          displayName: 查看
+          description: 获取指定 ReceiptSeqId 的 ShipmentReceipt
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipment.ShipmentReceiptStateDto
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 ShipmentReceipt
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptDto.MergePatchShipmentReceiptDto
+              required: true
+              description: body
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -45350,23 +45210,9 @@ types:
               description: requesterId
           responses: 
             200: 
-        get: 
-          displayName: 查看
-          description: 获取指定 ReceiptSeqId 的 ShipmentReceipt
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.domain.shipment.ShipmentReceiptStateDto
-        put: 
-          displayName: 创建 or 修改
-          description: 创建 or 修改 ShipmentReceipt
-          body: 
-            application/json: 
-              displayName: body
-              type: org.dddml.wms.domain.shipment.CreateOrMergePatchShipmentReceiptDto.MergePatchShipmentReceiptDto
-              required: true
-              description: body
+        delete: 
+          displayName: 移除
+          description: 移除 ShipmentReceipt
           queryParameters: 
             commandId: 
               displayName: commandId
@@ -45512,14 +45358,6 @@ types:
                   description: requesterId
               responses: 
                 200: 
-            get: 
-              displayName: 查看
-              description: 获取指定 SequenceId 的 ShipmentReceiptImage
-              responses: 
-                200: 
-                  body: 
-                    application/json: 
-                      type: org.dddml.wms.domain.shipment.ShipmentReceiptImageStateDto
             delete: 
               displayName: 移除
               description: 移除 ShipmentReceiptImage
@@ -45541,6 +45379,234 @@ types:
                   description: requesterId
               responses: 
                 200: 
+            get: 
+              displayName: 查看
+              description: 获取指定 SequenceId 的 ShipmentReceiptImage
+              responses: 
+                200: 
+                  body: 
+                    application/json: 
+                      type: org.dddml.wms.domain.shipment.ShipmentReceiptImageStateDto
+    /ItemIssuances: 
+      post: 
+        displayName: 新建
+        description: 新建 ItemIssuance
+        body: 
+          application/json: 
+            displayName: body
+            type: org.dddml.wms.domain.shipment.CreateOrMergePatchItemIssuanceDto.CreateItemIssuanceDto
+            required: true
+            description: body
+        queryParameters: 
+          commandId: 
+            displayName: commandId
+            type: string
+            required: false
+            description: commandId
+          version: 
+            displayName: version
+            type: number
+            required: false
+            description: version
+          requesterId: 
+            displayName: requesterId
+            type: string
+            required: false
+            description: requesterId
+        responses: 
+          200: 
+      get: 
+        displayName: ItemIssuance List
+        description: ItemIssuance List
+        queryParameters: 
+          sort: 
+            displayName: sort
+            type: string
+            required: false
+            description: sort
+          fields: 
+            displayName: fields
+            type: string
+            required: false
+            description: fields
+          filter: 
+            displayName: filter
+            type: string
+            required: false
+            description: filter
+          active: 
+            type: boolean
+            required: false
+            enum: [true, false]
+          attributeSetInstanceId: 
+            type: string
+            required: false
+          cancelQuantity: 
+            type: number
+            required: false
+          createdAt: 
+            type: datetime
+            required: false
+          createdBy: 
+            type: string
+            required: false
+          fixedAssetId: 
+            type: string
+            required: false
+          issuedByUserLoginId: 
+            type: string
+            required: false
+          issuedDateTime: 
+            type: datetime
+            required: false
+          itemIssuanceSeqId: 
+            type: string
+            required: false
+          locatorId: 
+            type: string
+            required: false
+          maintHistSeqId: 
+            type: string
+            required: false
+          orderId: 
+            type: string
+            required: false
+          orderItemSeqId: 
+            type: string
+            required: false
+          productId: 
+            type: string
+            required: false
+          quantity: 
+            type: number
+            required: false
+          shipGroupSeqId: 
+            type: string
+            required: false
+          shipmentId: 
+            type: string
+            required: false
+          shipmentItemSeqId: 
+            type: string
+            required: false
+          updatedAt: 
+            type: datetime
+            required: false
+          updatedBy: 
+            type: string
+            required: false
+          version: 
+            type: number
+            required: false
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.domain.shipment.ItemIssuanceStateDto
+
+      /{itemIssuanceSeqId}: 
+        uriParameters: 
+          itemIssuanceSeqId: 
+            displayName: itemIssuanceSeqId
+            type: string
+            required: true
+            description: itemIssuanceSeqId
+        delete: 
+          displayName: 移除
+          description: 移除 ItemIssuance
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
+        put: 
+          displayName: 创建 or 修改
+          description: 创建 or 修改 ItemIssuance
+          body: 
+            application/json: 
+              displayName: body
+              type: org.dddml.wms.domain.shipment.CreateOrMergePatchItemIssuanceDto.MergePatchItemIssuanceDto
+              required: true
+              description: body
+          queryParameters: 
+            commandId: 
+              displayName: commandId
+              type: string
+              required: false
+              description: commandId
+            version: 
+              displayName: version
+              type: number
+              required: false
+              description: version
+            requesterId: 
+              displayName: requesterId
+              type: string
+              required: false
+              description: requesterId
+          responses: 
+            200: 
+        get: 
+          displayName: 查看
+          description: 获取指定 ItemIssuanceSeqId 的 ItemIssuance
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipment.ItemIssuanceStateDto
+    /_events: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getStateEvent
+          description: getStateEvent
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipment.ShipmentEvent
+    /_historyStates: 
+      /{version}: 
+        uriParameters: 
+          version: 
+            displayName: version
+            type: number
+            required: true
+            description: version
+        get: 
+          displayName: getHistoryState
+          description: getHistoryState
+          queryParameters: 
+            fields: 
+              displayName: fields
+              type: string
+              required: false
+              description: fields
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.domain.shipment.ShipmentStateDto
   /_count: 
     get: 
       displayName: getCount
@@ -45848,6 +45914,20 @@ types:
 /StatusItems: 
   displayName: StatusItemResource
   description: StatusItemResource
+  post: 
+    displayName: 新建
+    description: 新建 StatusItem
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.statusitem.CreateOrMergePatchStatusItemDto.CreateStatusItemDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 StatusItems
@@ -45919,20 +45999,6 @@ types:
             items: 
               type: org.dddml.wms.domain.statusitem.StatusItemStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 StatusItem
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.statusitem.CreateOrMergePatchStatusItemDto.CreateStatusItemDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{statusId}: 
     uriParameters: 
       statusId: 
@@ -46121,6 +46187,20 @@ types:
 /SupplierProducts: 
   displayName: SupplierProductResource
   description: SupplierProductResource
+  post: 
+    displayName: 新建
+    description: 新建 SupplierProduct
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.supplierproduct.CreateOrMergePatchSupplierProductDto.CreateSupplierProductDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.supplierproduct.SupplierProductId
   get: 
     displayName: 查询
     description: 查询 SupplierProducts
@@ -46217,20 +46297,6 @@ types:
             items: 
               type: org.dddml.wms.domain.supplierproduct.SupplierProductStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 SupplierProduct
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.supplierproduct.CreateOrMergePatchSupplierProductDto.CreateSupplierProductDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.supplierproduct.SupplierProductId
   /{supplierProductId}: 
     uriParameters: 
       supplierProductId: 
@@ -46507,6 +46573,20 @@ types:
 /UomConversions: 
   displayName: UomConversionResource
   description: UomConversionResource
+  post: 
+    displayName: 新建
+    description: 新建 UomConversion
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.uomconversion.CreateOrMergePatchUomConversionDto.CreateUomConversionDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: org.dddml.wms.domain.uomconversion.UomConversionId
   get: 
     displayName: 查询
     description: 查询 UomConversions
@@ -46575,20 +46655,6 @@ types:
             items: 
               type: org.dddml.wms.domain.uomconversion.UomConversionStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 UomConversion
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.uomconversion.CreateOrMergePatchUomConversionDto.CreateUomConversionDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: org.dddml.wms.domain.uomconversion.UomConversionId
   /{uomConversionId}: 
     uriParameters: 
       uomConversionId: 
@@ -46830,6 +46896,20 @@ types:
 /UomTypes: 
   displayName: UomTypeResource
   description: UomTypeResource
+  post: 
+    displayName: 新建
+    description: 新建 UomType
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.uomtype.CreateOrMergePatchUomTypeDto.CreateUomTypeDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 UomTypes
@@ -46898,20 +46978,6 @@ types:
             items: 
               type: org.dddml.wms.domain.uomtype.UomTypeStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 UomType
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.uomtype.CreateOrMergePatchUomTypeDto.CreateUomTypeDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{uomTypeId}: 
     uriParameters: 
       uomTypeId: 
@@ -47115,6 +47181,20 @@ types:
 /Uoms: 
   displayName: UomResource
   description: UomResource
+  post: 
+    displayName: 新建
+    description: 新建 Uom
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.uom.CreateOrMergePatchUomDto.CreateUomDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Uoms
@@ -47183,20 +47263,6 @@ types:
             items: 
               type: org.dddml.wms.domain.uom.UomStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Uom
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.uom.CreateOrMergePatchUomDto.CreateUomDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{uomId}: 
     uriParameters: 
       uomId: 
@@ -47438,6 +47504,20 @@ types:
 /Warehouses: 
   displayName: WarehouseResource
   description: WarehouseResource
+  post: 
+    displayName: 新建
+    description: 新建 Warehouse
+    body: 
+      application/json: 
+        displayName: value
+        type: org.dddml.wms.domain.warehouse.CreateOrMergePatchWarehouseDto.CreateWarehouseDto
+        required: true
+        description: value
+    responses: 
+      200: 
+        body: 
+          text/plain: 
+            type: string
   get: 
     displayName: 查询
     description: 查询 Warehouses
@@ -47507,20 +47587,6 @@ types:
             items: 
               type: org.dddml.wms.domain.warehouse.WarehouseStateDto
 
-  post: 
-    displayName: 新建
-    description: 新建 Warehouse
-    body: 
-      application/json: 
-        displayName: value
-        type: org.dddml.wms.domain.warehouse.CreateOrMergePatchWarehouseDto.CreateWarehouseDto
-        required: true
-        description: value
-    responses: 
-      200: 
-        body: 
-          text/plain: 
-            type: string
   /{warehouseId}: 
     uriParameters: 
       warehouseId: 
@@ -47773,19 +47839,19 @@ types:
 /tests: 
   displayName: Created by yangjiefeng on 2018/8/8
   description: Created by yangjiefeng on 2018/8/8
-  /testThrowRuntimeException: 
+  /testThrowDomainError: 
     get: 
-      displayName: testThrowRuntimeException
-      description: testThrowRuntimeException
+      displayName: testThrowDomainError
+      description: testThrowDomainError
       responses: 
         200: 
           body: 
             application/json: 
               type: string
-  /testThrowDomainError: 
+  /testThrowRuntimeException: 
     get: 
-      displayName: testThrowDomainError
-      description: testThrowDomainError
+      displayName: testThrowRuntimeException
+      description: testThrowRuntimeException
       responses: 
         200: 
           body: 

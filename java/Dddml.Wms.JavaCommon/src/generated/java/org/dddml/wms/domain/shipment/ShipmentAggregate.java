@@ -32,6 +32,10 @@ public interface ShipmentAggregate
 
     void confirmAllItemsIssued(Long version, String commandId, String requesterId);
 
+    void purchaseShipmentAction(String value, Long version, String commandId, String requesterId);
+
+    void salesShipmentAction(String value, Long version, String commandId, String requesterId);
+
     void throwOnInvalidStateTransition(Command c);
 }
 

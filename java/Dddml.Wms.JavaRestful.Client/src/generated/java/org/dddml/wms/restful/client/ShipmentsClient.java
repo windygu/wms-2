@@ -136,5 +136,13 @@ public interface ShipmentsClient {
     @PUT("Shipments/{shipmentId}/_commands/ConfirmAllItemsIssued")
     Call<String> confirmAllItemsIssued(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ConfirmAllItemsIssuedRequestContent content);
 
+    @Headers("Accept: application/json")
+    @PUT("Shipments/{shipmentId}/_commands/PurchaseShipmentAction")
+    Call<String> purchaseShipmentAction(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.PurchaseShipmentActionRequestContent content);
+
+    @Headers("Accept: application/json")
+    @PUT("Shipments/{shipmentId}/_commands/SalesShipmentAction")
+    Call<String> salesShipmentAction(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.SalesShipmentActionRequestContent content);
+
 }
 

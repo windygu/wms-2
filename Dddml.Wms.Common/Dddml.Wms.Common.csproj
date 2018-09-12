@@ -4513,6 +4513,9 @@
     <Compile Include="Generated\Domain\Product\ProductStateProperties.cs">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\PurchaseShipmentAction.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonAggregate.cs">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Compile>
@@ -4668,6 +4671,9 @@
     </Compile>
     <Compile Include="Generated\Domain\RoleType\RoleTypeStateProperties.cs">
       <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\SalesShipmentAction.cs">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\ISellableInventoryItemAggregate.cs">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
@@ -8792,6 +8798,8 @@
 .\OrderShipGroupAction.cs
 .\OrganizationTreeInterfaces.cs
 .\OrganizationTreeNode.cs
+.\PurchaseShipmentAction.cs
+.\SalesShipmentAction.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\GenerateBoundedContextDomain.txt">

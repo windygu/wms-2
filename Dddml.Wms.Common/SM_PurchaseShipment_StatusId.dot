@@ -1,0 +1,5 @@
+digraph {
+ INITIAL -> PURCH_SHIP_CREATED [label=""];
+ PURCH_SHIP_CREATED -> PURCH_SHIP_SHIPPED [label="Ship"];
+ PURCH_SHIP_SHIPPED -> PURCH_SHIP_RECEIVED [label="Receive"];
+}

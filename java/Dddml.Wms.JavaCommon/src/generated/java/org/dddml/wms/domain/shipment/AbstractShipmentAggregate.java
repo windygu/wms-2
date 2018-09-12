@@ -829,6 +829,94 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         return new AbstractItemIssuanceEvent.SimpleItemIssuanceStateRemoved(stateEventId);
     }
 
+    protected void newShipmentPurchaseShipmentActionCommandAndExecute(ShipmentCommand.CreateShipment c, ShipmentState s, ShipmentEvent.ShipmentStateCreated e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentPurchaseShipmentActionCommandHandler();
+        String pCmdContent = null;
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getStatusId());
+        pCmd.setStateSetter(p -> e.setStatusId(p));
+        pCmd.setOuterCommandType(CommandType.CREATE);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
+    public class SimpleShipmentPurchaseShipmentActionCommandHandler implements PropertyCommandHandler<String, String> {
+
+        public void execute(PropertyCommand<String, String> command) {
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+                command.getStateSetter().accept("PURCH_SHIP_CREATED");
+                return;
+            }
+            if (Objects.equals("PURCH_SHIP_CREATED", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent())) {
+                command.getStateSetter().accept("PURCH_SHIP_SHIPPED");
+                return;
+            }
+            if (Objects.equals("PURCH_SHIP_SHIPPED", command.getStateGetter().get()) && Objects.equals("Receive", command.getContent())) {
+                command.getStateSetter().accept("PURCH_SHIP_RECEIVED");
+                return;
+            }
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+        }
+    }
+
+    private PropertyCommandHandler<String, String> shipmentPurchaseShipmentActionCommandHandler = new SimpleShipmentPurchaseShipmentActionCommandHandler();
+
+    public void setShipmentPurchaseShipmentActionCommandHandler(PropertyCommandHandler<String, String> h) {
+        this.shipmentPurchaseShipmentActionCommandHandler = h;
+    }
+
+    protected PropertyCommandHandler<String, String> getShipmentPurchaseShipmentActionCommandHandler() {
+        Object h = ApplicationContext.current.get("ShipmentPurchaseShipmentActionCommandHandler");
+        if (h instanceof PropertyCommandHandler) {
+            return (PropertyCommandHandler<String, String>) h;
+        }
+        return this.shipmentPurchaseShipmentActionCommandHandler;
+    }
+
+    protected void newShipmentSalesShipmentActionCommandAndExecute(ShipmentCommand.CreateShipment c, ShipmentState s, ShipmentEvent.ShipmentStateCreated e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentSalesShipmentActionCommandHandler();
+        String pCmdContent = null;
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getStatusId());
+        pCmd.setStateSetter(p -> e.setStatusId(p));
+        pCmd.setOuterCommandType(CommandType.CREATE);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
+    public class SimpleShipmentSalesShipmentActionCommandHandler implements PropertyCommandHandler<String, String> {
+
+        public void execute(PropertyCommand<String, String> command) {
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_INPUT");
+                return;
+            }
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_SHIPPED");
+                return;
+            }
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+        }
+    }
+
+    private PropertyCommandHandler<String, String> shipmentSalesShipmentActionCommandHandler = new SimpleShipmentSalesShipmentActionCommandHandler();
+
+    public void setShipmentSalesShipmentActionCommandHandler(PropertyCommandHandler<String, String> h) {
+        this.shipmentSalesShipmentActionCommandHandler = h;
+    }
+
+    protected PropertyCommandHandler<String, String> getShipmentSalesShipmentActionCommandHandler() {
+        Object h = ApplicationContext.current.get("ShipmentSalesShipmentActionCommandHandler");
+        if (h instanceof PropertyCommandHandler) {
+            return (PropertyCommandHandler<String, String>) h;
+        }
+        return this.shipmentSalesShipmentActionCommandHandler;
+    }
+
     public static class SimpleShipmentAggregate extends AbstractShipmentAggregate
     {
         public SimpleShipmentAggregate(ShipmentState state) {
@@ -873,6 +961,42 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         @Override
         public void confirmAllItemsIssued(Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public void purchaseShipmentAction(String value, Long version, String commandId, String requesterId) {
+            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            doPurchaseShipmentAction(value, s -> e.setStatusId(s));
+            apply(e);
+        }
+
+        protected  void doPurchaseShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
+            PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentPurchaseShipmentActionCommandHandler();
+            PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
+            pCmd.setContent(value);
+            pCmd.setStateGetter(() -> this.getState().getStatusId());
+            pCmd.setStateSetter(setStatusId);
+            pCmd.setOuterCommandType("PurchaseShipmentAction");
+            pCmd.setContext(getState());
+            pCommandHandler.execute(pCmd);
+        }
+
+        @Override
+        public void salesShipmentAction(String value, Long version, String commandId, String requesterId) {
+            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            doSalesShipmentAction(value, s -> e.setStatusId(s));
+            apply(e);
+        }
+
+        protected  void doSalesShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
+            PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentSalesShipmentActionCommandHandler();
+            PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
+            pCmd.setContent(value);
+            pCmd.setStateGetter(() -> this.getState().getStatusId());
+            pCmd.setStateSetter(setStatusId);
+            pCmd.setOuterCommandType("SalesShipmentAction");
+            pCmd.setContext(getState());
+            pCommandHandler.execute(pCmd);
         }
 
     }

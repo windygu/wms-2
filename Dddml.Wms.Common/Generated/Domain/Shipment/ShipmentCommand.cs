@@ -1485,6 +1485,150 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
+        public class PurchaseShipmentAction : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "PurchaseShipmentAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
+        public class SalesShipmentAction : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "SalesShipmentAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
     }
 
 }

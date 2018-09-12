@@ -983,6 +983,117 @@ namespace Dddml.Wms.Domain.Shipment
 			return new ItemIssuanceStateRemoved(stateEventId);
 		}
 
+        protected void NewShipmentPurchaseShipmentActionCommandAndExecute(ICreateShipment c, IShipmentState s, IShipmentStateCreated e)
+        {
+            var pCommandHandler = this.ShipmentPurchaseShipmentActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.StatusId, SetState = p => e.StatusId = p, OuterCommandType = CommandType.Create };
+            pCmd.Context = this.State;
+            pCommandHandler.Execute(pCmd);
+        }
+
+        public class SimpleShipmentPurchaseShipmentActionCommandHandler : IPropertyCommandHandler<string, string>
+        {
+            public virtual void Execute(IPropertyCommand<string, string> command)
+            {
+                if (null == command.GetState() && null == command.Content)
+                {
+                    command.SetState("PURCH_SHIP_CREATED");
+                    return;
+                }
+                if ("PURCH_SHIP_CREATED" == command.GetState() && "Ship" == command.Content)
+                {
+                    command.SetState("PURCH_SHIP_SHIPPED");
+                    return;
+                }
+                if ("PURCH_SHIP_SHIPPED" == command.GetState() && "Receive" == command.Content)
+                {
+                    command.SetState("PURCH_SHIP_RECEIVED");
+                    return;
+                }
+                throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
+        private IPropertyCommandHandler<string, string> _shipmentPurchaseShipmentActionCommandHandler = new SimpleShipmentPurchaseShipmentActionCommandHandler();
+
+        protected IPropertyCommandHandler<string, string> ShipmentPurchaseShipmentActionCommandHandler
+        {
+            get
+            {
+                var h = ApplicationContext.Current["ShipmentPurchaseShipmentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                if (h != null)
+                { return h; }
+                return this._shipmentPurchaseShipmentActionCommandHandler;
+            }
+            set
+            {
+                this._shipmentPurchaseShipmentActionCommandHandler = value;
+            }
+        }
+
+        protected void NewShipmentSalesShipmentActionCommandAndExecute(ICreateShipment c, IShipmentState s, IShipmentStateCreated e)
+        {
+            var pCommandHandler = this.ShipmentSalesShipmentActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.StatusId, SetState = p => e.StatusId = p, OuterCommandType = CommandType.Create };
+            pCmd.Context = this.State;
+            pCommandHandler.Execute(pCmd);
+        }
+
+        public class SimpleShipmentSalesShipmentActionCommandHandler : IPropertyCommandHandler<string, string>
+        {
+            public virtual void Execute(IPropertyCommand<string, string> command)
+            {
+                if (null == command.GetState() && null == command.Content)
+                {
+                    command.SetState("SHIPMENT_INPUT");
+                    return;
+                }
+                if ("SHIPMENT_INPUT" == command.GetState() && "Ship" == command.Content)
+                {
+                    command.SetState("SHIPMENT_SHIPPED");
+                    return;
+                }
+                throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
+        private IPropertyCommandHandler<string, string> _shipmentSalesShipmentActionCommandHandler = new SimpleShipmentSalesShipmentActionCommandHandler();
+
+        protected IPropertyCommandHandler<string, string> ShipmentSalesShipmentActionCommandHandler
+        {
+            get
+            {
+                var h = ApplicationContext.Current["ShipmentSalesShipmentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                if (h != null)
+                { return h; }
+                return this._shipmentSalesShipmentActionCommandHandler;
+            }
+            set
+            {
+                this._shipmentSalesShipmentActionCommandHandler = value;
+            }
+        }
+
+        protected virtual void DoPurchaseShipmentAction(string value, Action<string> setStatusId)
+        {
+            var pCommandHandler = this.ShipmentPurchaseShipmentActionCommandHandler;
+            var pCmdContent = value;
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.StatusId, SetState = setStatusId, OuterCommandType = "PurchaseShipmentAction" };
+            pCmd.Context = this.State;
+            pCommandHandler.Execute(pCmd);
+        }
+
+        protected virtual void DoSalesShipmentAction(string value, Action<string> setStatusId)
+        {
+            var pCommandHandler = this.ShipmentSalesShipmentActionCommandHandler;
+            var pCmdContent = value;
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.StatusId, SetState = setStatusId, OuterCommandType = "SalesShipmentAction" };
+            pCmd.Context = this.State;
+            pCommandHandler.Execute(pCmd);
+        }
+
     }
 
 }

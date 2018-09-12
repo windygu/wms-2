@@ -299,6 +299,44 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/PurchaseShipmentAction")]
+        [HttpPut][SetRequesterId]
+        public void PurchaseShipmentAction(string id, [FromBody]ShipmentCommandDtos.PurchaseShipmentActionRequestContent content)
+        {
+          try {
+            var cmd = content.ToPurchaseShipmentAction();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{id}/_commands/SalesShipmentAction")]
+        [HttpPut][SetRequesterId]
+        public void SalesShipmentAction(string id, [FromBody]ShipmentCommandDtos.SalesShipmentActionRequestContent content)
+        {
+          try {
+            var cmd = content.ToSalesShipmentAction();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadataDto> GetMetadataFilteringFields()

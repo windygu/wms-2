@@ -1532,6 +1532,68 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
+        public class PurchaseShipmentActionRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "PurchaseShipmentAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.PurchaseShipmentAction ToPurchaseShipmentAction()
+            {
+                var cmd = new ShipmentCommands.PurchaseShipmentAction();
+                cmd.Value = this.Value;
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
+        public class SalesShipmentActionRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "SalesShipmentAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.SalesShipmentAction ToSalesShipmentAction()
+            {
+                var cmd = new ShipmentCommands.SalesShipmentAction();
+                cmd.Value = this.Value;
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
     }
 
 }

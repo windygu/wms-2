@@ -94,5 +94,16 @@ namespace Dddml.Wms.Domain.Shipment
         {
             throw new NotImplementedException();
         }
+
+
+        public void PurchaseShipmentAction(string value, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SalesShipmentAction(string value, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

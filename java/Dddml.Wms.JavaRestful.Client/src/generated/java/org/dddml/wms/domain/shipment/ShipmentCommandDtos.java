@@ -1308,5 +1308,151 @@ public class ShipmentCommandDtos
 
     }
 
+    public static class PurchaseShipmentActionRequestContent {
+
+        public String getCommandType() {
+            return "PurchaseShipmentAction";
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Version
+         */
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
+    public static class SalesShipmentActionRequestContent {
+
+        public String getCommandType() {
+            return "SalesShipmentAction";
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Version
+         */
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
 }
 

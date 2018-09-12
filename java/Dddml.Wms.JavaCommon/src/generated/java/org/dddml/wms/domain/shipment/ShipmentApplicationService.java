@@ -30,6 +30,10 @@ public interface ShipmentApplicationService
 
     void when(ShipmentCommands.ConfirmAllItemsIssued c);
 
+    void when(ShipmentCommands.PurchaseShipmentAction c);
+
+    void when(ShipmentCommands.SalesShipmentAction c);
+
     ShipmentState get(String id);
 
     Iterable<ShipmentState> getAll(Integer firstResult, Integer maxResults);

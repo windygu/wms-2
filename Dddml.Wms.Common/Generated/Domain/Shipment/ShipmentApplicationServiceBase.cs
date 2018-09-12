@@ -140,6 +140,16 @@ namespace Dddml.Wms.Domain.Shipment
 			Update(c, ar => ar.ConfirmAllItemsIssued(c.Version, c.CommandId, c.RequesterId));
 		}
 
+		public virtual void When(ShipmentCommands.PurchaseShipmentAction c)
+		{
+			Update(c, ar => ar.PurchaseShipmentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
+		}
+
+		public virtual void When(ShipmentCommands.SalesShipmentAction c)
+		{
+			Update(c, ar => ar.SalesShipmentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
+		}
+
         public virtual IShipmentState Get(string shipmentId)
         {
             var state = StateRepository.Get(shipmentId, true);

@@ -21,7 +21,10 @@
     string projectDir = Path.GetDirectoryName(projectFile);
     foreach(var stateMachine in boundedContext.AllStateMachines())
     {
-        string fileName = "SM_" + (stateMachine.Property.Entity != null ? stateMachine.Property.Entity.Name : String.Empty)
+        string entityTypeName = stateMachine.Property.EntityBaseSubtype != null 
+            ? stateMachine.Property.EntityBaseSubtype.Name
+            : (stateMachine.Property.Entity != null ? stateMachine.Property.Entity.Name : String.Empty);
+        string fileName = "SM_" + entityTypeName
             + "_" + stateMachine.Property.Name + ".dot";
         string filePath = Path.Combine(projectDir, fileName);
         var dotGraphStr = stateMachine.ToDotGraph();
