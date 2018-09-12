@@ -270,5 +270,13 @@ namespace Dddml.Wms.Domain.Shipment
 
     }
 
+    public interface IPurchaseShipmentStateDto : IShipmentStateDto
+    {
+    }
+
+    public interface ISalesShipmentStateDto : IShipmentStateDto
+    {
+    }
+
 }
 

@@ -340,6 +340,104 @@ namespace Dddml.Wms.Domain.Shipment
             return state;
         }
 
+        public virtual IPurchaseShipmentState ToPurchaseShipmentState()
+        {
+            var state = new PurchaseShipmentState(true);
+            state.ShipmentId = this.ShipmentId;
+            state.ShipmentTypeId = this.ShipmentTypeId;
+            state.StatusId = this.StatusId;
+            state.PrimaryOrderId = this.PrimaryOrderId;
+            state.PrimaryReturnId = this.PrimaryReturnId;
+            state.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
+            state.PicklistBinId = this.PicklistBinId;
+            state.BolNumber = this.BolNumber;
+            state.SealNumber = this.SealNumber;
+            state.VehicleId = this.VehicleId;
+            state.ExternalOrderNumber = this.ExternalOrderNumber;
+            state.Carrier = this.Carrier;
+            state.DateShipped = this.DateShipped;
+            state.EstimatedReadyDate = this.EstimatedReadyDate;
+            state.EstimatedShipDate = this.EstimatedShipDate;
+            state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;
+            state.EstimatedArrivalDate = this.EstimatedArrivalDate;
+            state.EstimatedArrivalWorkEffId = this.EstimatedArrivalWorkEffId;
+            state.LatestCancelDate = this.LatestCancelDate;
+            state.EstimatedShipCost = this.EstimatedShipCost;
+            state.CurrencyUomId = this.CurrencyUomId;
+            state.HandlingInstructions = this.HandlingInstructions;
+            state.OriginFacilityId = this.OriginFacilityId;
+            state.DestinationFacilityId = this.DestinationFacilityId;
+            state.OriginContactMechId = this.OriginContactMechId;
+            state.OriginTelecomNumberId = this.OriginTelecomNumberId;
+            state.DestinationContactMechId = this.DestinationContactMechId;
+            state.DestinationTelecomNumberId = this.DestinationTelecomNumberId;
+            state.PartyIdTo = this.PartyIdTo;
+            state.PartyIdFrom = this.PartyIdFrom;
+            state.AdditionalShippingCharge = this.AdditionalShippingCharge;
+            state.AddtlShippingChargeDesc = this.AddtlShippingChargeDesc;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.ShipmentImages != null) { foreach (var s in this.ShipmentImages) { state.ShipmentImages.AddToSave(s.ToShipmentImageState()); } };
+            if (this.ShipmentItems != null) { foreach (var s in this.ShipmentItems) { state.ShipmentItems.AddToSave(s.ToShipmentItemState()); } };
+            if (this.ShipmentReceipts != null) { foreach (var s in this.ShipmentReceipts) { state.ShipmentReceipts.AddToSave(s.ToShipmentReceiptState()); } };
+            if (this.ItemIssuances != null) { foreach (var s in this.ItemIssuances) { state.ItemIssuances.AddToSave(s.ToItemIssuanceState()); } };
+
+            return state;
+        }
+
+        public virtual ISalesShipmentState ToSalesShipmentState()
+        {
+            var state = new SalesShipmentState(true);
+            state.ShipmentId = this.ShipmentId;
+            state.ShipmentTypeId = this.ShipmentTypeId;
+            state.StatusId = this.StatusId;
+            state.PrimaryOrderId = this.PrimaryOrderId;
+            state.PrimaryReturnId = this.PrimaryReturnId;
+            state.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
+            state.PicklistBinId = this.PicklistBinId;
+            state.BolNumber = this.BolNumber;
+            state.SealNumber = this.SealNumber;
+            state.VehicleId = this.VehicleId;
+            state.ExternalOrderNumber = this.ExternalOrderNumber;
+            state.Carrier = this.Carrier;
+            state.DateShipped = this.DateShipped;
+            state.EstimatedReadyDate = this.EstimatedReadyDate;
+            state.EstimatedShipDate = this.EstimatedShipDate;
+            state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;
+            state.EstimatedArrivalDate = this.EstimatedArrivalDate;
+            state.EstimatedArrivalWorkEffId = this.EstimatedArrivalWorkEffId;
+            state.LatestCancelDate = this.LatestCancelDate;
+            state.EstimatedShipCost = this.EstimatedShipCost;
+            state.CurrencyUomId = this.CurrencyUomId;
+            state.HandlingInstructions = this.HandlingInstructions;
+            state.OriginFacilityId = this.OriginFacilityId;
+            state.DestinationFacilityId = this.DestinationFacilityId;
+            state.OriginContactMechId = this.OriginContactMechId;
+            state.OriginTelecomNumberId = this.OriginTelecomNumberId;
+            state.DestinationContactMechId = this.DestinationContactMechId;
+            state.DestinationTelecomNumberId = this.DestinationTelecomNumberId;
+            state.PartyIdTo = this.PartyIdTo;
+            state.PartyIdFrom = this.PartyIdFrom;
+            state.AdditionalShippingCharge = this.AdditionalShippingCharge;
+            state.AddtlShippingChargeDesc = this.AddtlShippingChargeDesc;
+            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
+            if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
+            state.CreatedBy = this.CreatedBy;
+            if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
+            state.UpdatedBy = this.UpdatedBy;
+            if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.ShipmentImages != null) { foreach (var s in this.ShipmentImages) { state.ShipmentImages.AddToSave(s.ToShipmentImageState()); } };
+            if (this.ShipmentItems != null) { foreach (var s in this.ShipmentItems) { state.ShipmentItems.AddToSave(s.ToShipmentItemState()); } };
+            if (this.ShipmentReceipts != null) { foreach (var s in this.ShipmentReceipts) { state.ShipmentReceipts.AddToSave(s.ToShipmentReceiptState()); } };
+            if (this.ItemIssuances != null) { foreach (var s in this.ItemIssuances) { state.ItemIssuances.AddToSave(s.ToItemIssuanceState()); } };
+
+            return state;
+        }
+
     }
 
 }

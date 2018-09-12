@@ -802,5 +802,23 @@ namespace Dddml.Wms.Domain.Shipment
         }
     }
 
+    public class PurchaseShipmentState : ShipmentState, IPurchaseShipmentState
+    {
+        public PurchaseShipmentState() : base()
+        {}
+
+        public PurchaseShipmentState(bool b) : base(b)
+        {}
+    }
+
+    public class SalesShipmentState : ShipmentState, ISalesShipmentState
+    {
+        public SalesShipmentState() : base()
+        {}
+
+        public SalesShipmentState(bool b) : base(b)
+        {}
+    }
+
 }
 

@@ -51,4 +51,23 @@ enumObjects:
         Approve:
           description: Approve
           
-            
+    # 采购装运单操作
+    PurchaseShipmentAction:
+      baseType: string
+      
+      values:
+        Ship:
+          description: Ship
+        Receive:
+          description: Receive
+    
+    # 销售装运单操作
+    SalesShipmentAction:
+      baseType: string
+      
+      values:
+        Ship:
+          description: Ship
+
+          
+          

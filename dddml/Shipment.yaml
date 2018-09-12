@@ -141,12 +141,67 @@ aggregates:
       # updatedAt: LastModifiedDate
       # updatedBy: LastModifiedByUserLogin
       noDeleted: true
-      
+
+    #polymorphic: false    
     discriminator: ShipmentTypeId
+    discriminatorValue: "*"
     
     # metadata: 
       # StateEventDatabaseTableName: SHIPMENT_STATE_EVENT
-      
+    
+    subtypes:
+      PurchaseShipment:
+        discriminatorValue: "PURCHASE_SHIPMENT"
+        properties:
+          # ------------------------------------
+          # 采购装运单的状态
+          StatusId:
+            type: id
+            commandType: PurchaseShipmentAction
+            commandName: PurchaseShipmentAction
+            # -------------------------------------
+            # 状态机
+            stateMachine:
+              # 转换
+              transitions:
+              
+              - sourceState: null
+                trigger: null
+                targetState: "PURCH_SHIP_CREATED"
+              
+              - sourceState: "PURCH_SHIP_CREATED"
+                trigger: "Ship"
+                targetState: "PURCH_SHIP_SHIPPED"
+              
+              - sourceState: "PURCH_SHIP_SHIPPED"
+                trigger: "Receive"
+                targetState: "PURCH_SHIP_RECEIVED"
+            # -------------------------------------
+            
+      SalesShipment:
+        discriminatorValue: "SALES_SHIPMENT"
+        properties:
+          # ------------------------------------
+          # 销售装运单的状态
+          StatusId:
+            type: id
+            commandType: SalesShipmentAction
+            commandName: SalesShipmentAction
+            # -------------------------------------
+            # 状态机
+            stateMachine:
+              # 转换
+              transitions:
+              
+              - sourceState: null
+                trigger: null
+                targetState: "SHIPMENT_INPUT"
+              
+              - sourceState: "SHIPMENT_INPUT"
+                trigger: "Ship"
+                targetState: "SHIPMENT_SHIPPED"
+            # -------------------------------------
+    
     entities:
     
       ShipmentImage:

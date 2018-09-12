@@ -5566,6 +5566,9 @@
     <Compile Include="Generated\Domain\Shipment\ShipmentStateProperties.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentTypeId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\StatusItem\IStatusItemAggregate.cs">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Compile>
@@ -7511,6 +7514,7 @@
 .\ShipmentStateExtension.cs
 .\ShipmentStateInterfaceExtension.cs
 .\ShipmentStateProperties.cs
+.\ShipmentTypeId.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\StatusItem\GenerateStatusItemDomain.tt">

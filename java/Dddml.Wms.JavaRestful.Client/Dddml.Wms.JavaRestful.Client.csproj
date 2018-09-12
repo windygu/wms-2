@@ -1328,6 +1328,9 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\product\RemoveGoodIdentificationDto.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\PurchaseShipmentAction.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonCommandDto.java">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Content>
@@ -1373,6 +1376,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateEventDto.java">
       <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\SalesShipmentAction.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\AbstractSellableInventoryItemCommandDto.java">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
@@ -1648,6 +1654,9 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentStateEventDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentTypeId.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\AbstractStatusItemCommandDto.java">
@@ -2462,6 +2471,7 @@
 .\ShipmentReceiptStateEventDto.java
 .\ShipmentStateDto.java
 .\ShipmentStateEventDto.java
+.\ShipmentTypeId.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\GenerateShipmentMethodTypeDomain.tt">
@@ -2641,6 +2651,8 @@
 .\DocumentAction.java
 .\GenerateBoundedContextDomain.txt
 .\OrderShipGroupAction.java
+.\PurchaseShipmentAction.java
+.\SalesShipmentAction.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\AttributesClient.java">

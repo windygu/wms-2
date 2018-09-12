@@ -45,5 +45,13 @@ namespace Dddml.Wms.Domain.Shipment
 
 	}
 
+    public interface IPurchaseShipmentState : IShipmentState
+    {
+    }
+
+    public interface ISalesShipmentState : IShipmentState
+    {
+    }
+
 }
 
