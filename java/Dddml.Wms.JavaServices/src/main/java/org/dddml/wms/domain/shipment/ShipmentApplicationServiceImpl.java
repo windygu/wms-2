@@ -1,5 +1,7 @@
 package org.dddml.wms.domain.shipment;
 
+import org.dddml.wms.domain.PurchaseShipmentAction;
+import org.dddml.wms.domain.SalesShipmentAction;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
@@ -9,6 +11,7 @@ import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.service.AttributeSetService;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.domain.statusitem.StatusItemIds;
+import org.dddml.wms.domain.warehouse.WarehouseUtils;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,11 +59,58 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
 
     @Override
     @Transactional
+    public void when(ShipmentCommands.PurchaseShipmentAction c) {
+        if (Objects.equals(c.getValue(), PurchaseShipmentAction.SHIP)) {
+            ShipmentCommands.Ship ship = new ShipmentCommands.Ship();
+            ship.setShipmentId(c.getShipmentId());
+            ship.setVersion(c.getVersion());
+            ship.setCommandId(c.getCommandId());
+            ship.setRequesterId(c.getRequesterId());
+            when(ship);
+        } else if (Objects.equals(c.getValue(), PurchaseShipmentAction.RECEIVE)) {
+            throw new UnsupportedOperationException("Need Destination Locator Id.");
+            //            ShipmentCommands.ConfirmAllItemsReceived receive = new ShipmentCommands.ConfirmAllItemsReceived();
+            //            receive.setShipmentId(c.getShipmentId());
+            //            receive.setDestinationLocatorId(WarehouseUtils.getReceivingLocatorId(xxx));
+            //            receive.setVersion(c.getVersion());
+            //            receive.setCommandId(c.getCommandId());
+            //            receive.setRequesterId(c.getRequesterId());
+            //            when(receive);
+        } else {
+            super.when(c);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void when(ShipmentCommands.SalesShipmentAction c) {
+        if (Objects.equals(c.getValue(), SalesShipmentAction.SHIP)) {
+            ShipmentCommands.ConfirmAllItemsIssued ship = new ShipmentCommands.ConfirmAllItemsIssued();
+            ship.setShipmentId(c.getShipmentId());
+            ship.setVersion(c.getVersion());
+            ship.setCommandId(c.getCommandId());
+            ship.setRequesterId(c.getRequesterId());
+            when(ship);
+        } else {
+            super.when(c);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void when(ShipmentCommands.Ship c) {
+        //todo check shipment type.
+        super.when(c);
+    }
+
+    @Override
+    @Transactional
     public void when(ShipmentCommands.ConfirmAllItemsReceived c) {
         // /////////////////////////////////////////////////////////////////
         // 目前要确认收货，必须把单据置到“采购装运已发货”的状态
         // /////////////////////////////////////////////////////////////////
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
+        //todo check shipment type??
 
         Map<Object, ShipmentReceiptState> shipmentReceiptDict = StreamSupport.stream(
                 shipment.getShipmentReceipts().spliterator(), false)
@@ -141,6 +191,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         // /////////////////////////////////////////////////////////////////
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
         // /////////////////////////////////////////////////////////////////
+        //todo check shipment type??
 
         Map<Object, ItemIssuanceState> itemIssuanceMap = StreamSupport.stream(
                 shipment.getItemIssuances().spliterator(), false)
@@ -294,12 +345,15 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         if (shipment.getShipmentTypeId() == null) {
             shipment.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);
         }
-        if (Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.PURCHASE_SHIPMENT)
-                || Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.INCOMING_SHIPMENT)) {
-            shipment.setStatusId(StatusItemIds.PURCH_SHIP_CREATED);
-        } else {
-            shipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
+        if (!Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.PURCHASE_SHIPMENT)) {
+            throw new IllegalArgumentException("c.getShipmentTypeId()");
         }
+        //        if (Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.PURCHASE_SHIPMENT)
+        //                || Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.INCOMING_SHIPMENT)) {
+        //            shipment.setStatusId(StatusItemIds.PURCH_SHIP_CREATED);
+        //        } else {
+        //            shipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
+        //        }
         // 主订单 Id
         shipment.setPrimaryOrderId(c.getPrimaryOrderId());
         // 提单号
@@ -584,67 +638,69 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
 
         @Override
         public void ship(Long version, String commandId, String requesterId) {
-            boolean isStatusOk = false;
-            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_CREATED.toLowerCase())) {
-                isStatusOk = true;
-            } else if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_INPUT.toLowerCase())
-                    || Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PICKED.toLowerCase())
-                    || Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PACKED.toLowerCase())
-                    ) //?? - ??
-            {
-                isStatusOk = true;
-            }
-            if (!isStatusOk) {
-                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
-            }
-
-            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
-            // //////////////////////////////////////
-            // todo 先让所有“入站”的装运单都在确认“发出”后置于同一个状态，方便后面的业务逻辑判断
-            // //////////////////////////////////////
-            if (Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())
-                    || Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.PURCHASE_RETURN.toLowerCase())
-                    || Objects.equals(ShipmentTypeIds.getParentTypeId(getState().getShipmentTypeId()).toLowerCase(),
-                        ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())) {
-                e.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
-            } else {
-                e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
-            }
-            apply(e);
+            purchaseShipmentAction(PurchaseShipmentAction.SHIP, version, commandId, requesterId);
+            //            boolean isStatusOk = false;
+            //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_CREATED.toLowerCase())) {
+            //                isStatusOk = true;
+            //            } else if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_INPUT.toLowerCase())
+            //                    || Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PICKED.toLowerCase())
+            //                    || Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PACKED.toLowerCase())
+            //                    ) //?? - ??
+            //            {
+            //                isStatusOk = true;
+            //            }
+            //            if (!isStatusOk) {
+            //                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
+            //            }
+            //ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            //            // //////////////////////////////////////
+            //            // 先让所有“入站”的装运单都在确认“发出”后置于同一个状态，方便后面的业务逻辑判断
+            //            // //////////////////////////////////////
+            //            if (Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())
+            //                    || Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.PURCHASE_RETURN.toLowerCase())
+            //                    || Objects.equals(ShipmentTypeIds.getParentTypeId(getState().getShipmentTypeId()).toLowerCase(),
+            //                        ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())) {
+            //                e.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
+            //            } else {
+            //                e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
+            //            }
+            //apply(e);
         }
 
         @Override
         public void confirmAllItemsReceived(String destinationLocatorId, Long version, String commandId, String requesterId) {
-            boolean isStatusOk = false;
-            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_SHIPPED.toLowerCase())) {
-                isStatusOk = true;
-            }
-            if (!isStatusOk) {
-                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
-            }
-            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
-            e.setStatusId(StatusItemIds.PURCH_SHIP_RECEIVED);
-            apply(e);
+            purchaseShipmentAction(PurchaseShipmentAction.RECEIVE, version, commandId, requesterId);
+            //            boolean isStatusOk = false;
+            //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_SHIPPED.toLowerCase())) {
+            //                isStatusOk = true;
+            //            }
+            //            if (!isStatusOk) {
+            //                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
+            //            }
+            //            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            //            e.setStatusId(StatusItemIds.PURCH_SHIP_RECEIVED);
+            //            apply(e);
         }
 
         @Override
         public void confirmAllItemsIssued(Long version, String commandId, String requesterId) {
-            boolean isStatusOk = false;
-            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_INPUT.toLowerCase())) {
-                isStatusOk = true;
-            }
-            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PICKED.toLowerCase())) {
-                isStatusOk = true;
-            }
-            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PACKED.toLowerCase())) {
-                isStatusOk = true;
-            }
-            if (!isStatusOk) {
-                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
-            }
-            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
-            e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
-            apply(e);
+            salesShipmentAction(SalesShipmentAction.SHIP, version, commandId, requesterId);
+            //            boolean isStatusOk = false;
+            //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_INPUT.toLowerCase())) {
+            //                isStatusOk = true;
+            //            }
+            //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PICKED.toLowerCase())) {
+            //                isStatusOk = true;
+            //            }
+            //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PACKED.toLowerCase())) {
+            //                isStatusOk = true;
+            //            }
+            //            if (!isStatusOk) {
+            //                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
+            //            }
+            //            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            //            e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
+            //            apply(e);
         }
 
     }

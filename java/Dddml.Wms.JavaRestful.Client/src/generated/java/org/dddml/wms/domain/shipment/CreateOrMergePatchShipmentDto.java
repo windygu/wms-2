@@ -21,21 +21,6 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
-     * Status Id
-     */
-    private String statusId;
-
-    public String getStatusId()
-    {
-        return this.statusId;
-    }
-
-    public void setStatusId(String statusId)
-    {
-        this.statusId = statusId;
-    }
-
-    /**
      * Primary Order Id
      */
     private String primaryOrderId;
@@ -543,18 +528,6 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setIsPropertyShipmentTypeIdRemoved(Boolean removed)
     {
         this.isPropertyShipmentTypeIdRemoved = removed;
-    }
-
-    private Boolean isPropertyStatusIdRemoved;
-
-    public Boolean getIsPropertyStatusIdRemoved()
-    {
-        return this.isPropertyStatusIdRemoved;
-    }
-
-    public void setIsPropertyStatusIdRemoved(Boolean removed)
-    {
-        this.isPropertyStatusIdRemoved = removed;
     }
 
     private Boolean isPropertyPrimaryOrderIdRemoved;

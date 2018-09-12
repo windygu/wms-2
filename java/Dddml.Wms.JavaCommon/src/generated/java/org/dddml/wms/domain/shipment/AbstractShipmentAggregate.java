@@ -52,7 +52,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ShipmentEventId stateEventId = new ShipmentEventId(c.getShipmentId(), c.getVersion());
         ShipmentEvent.ShipmentStateCreated e = newShipmentStateCreated(stateEventId);
         e.setShipmentTypeId(c.getShipmentTypeId());
-        e.setStatusId(c.getStatusId());
+        if (ShipmentTypeId.PURCHASE_SHIPMENT.equals(c.getShipmentTypeId())) {
+            newShipmentPurchaseShipmentActionCommandAndExecute(c, state, e);
+        }
+        if (ShipmentTypeId.SALES_SHIPMENT.equals(c.getShipmentTypeId())) {
+            newShipmentSalesShipmentActionCommandAndExecute(c, state, e);
+        }
         e.setPrimaryOrderId(c.getPrimaryOrderId());
         e.setPrimaryReturnId(c.getPrimaryReturnId());
         e.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
@@ -122,7 +127,6 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ShipmentEventId stateEventId = new ShipmentEventId(c.getShipmentId(), c.getVersion());
         ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(stateEventId);
         e.setShipmentTypeId(c.getShipmentTypeId());
-        e.setStatusId(c.getStatusId());
         e.setPrimaryOrderId(c.getPrimaryOrderId());
         e.setPrimaryReturnId(c.getPrimaryReturnId());
         e.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
@@ -154,7 +158,6 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setAddtlShippingChargeDesc(c.getAddtlShippingChargeDesc());
         e.setActive(c.getActive());
         e.setIsPropertyShipmentTypeIdRemoved(c.getIsPropertyShipmentTypeIdRemoved());
-        e.setIsPropertyStatusIdRemoved(c.getIsPropertyStatusIdRemoved());
         e.setIsPropertyPrimaryOrderIdRemoved(c.getIsPropertyPrimaryOrderIdRemoved());
         e.setIsPropertyPrimaryReturnIdRemoved(c.getIsPropertyPrimaryReturnIdRemoved());
         e.setIsPropertyPrimaryShipGroupSeqIdRemoved(c.getIsPropertyPrimaryShipGroupSeqIdRemoved());

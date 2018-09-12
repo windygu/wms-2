@@ -40,10 +40,6 @@ public interface ShipmentCommand extends Command
 
         void setShipmentTypeId(String shipmentTypeId);
 
-        String getStatusId();
-
-        void setStatusId(String statusId);
-
         String getPrimaryOrderId();
 
         void setPrimaryOrderId(String primaryOrderId);
@@ -191,10 +187,6 @@ public interface ShipmentCommand extends Command
         Boolean getIsPropertyShipmentTypeIdRemoved();
 
         void setIsPropertyShipmentTypeIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyStatusIdRemoved();
-
-        void setIsPropertyStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyPrimaryOrderIdRemoved();
 

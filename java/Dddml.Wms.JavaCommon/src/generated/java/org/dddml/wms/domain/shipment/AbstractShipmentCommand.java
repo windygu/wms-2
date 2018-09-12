@@ -46,18 +46,6 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.shipmentTypeId = shipmentTypeId;
         }
 
-        private String statusId;
-
-        public String getStatusId()
-        {
-            return this.statusId;
-        }
-
-        public void setStatusId(String statusId)
-        {
-            this.statusId = statusId;
-        }
-
         private String primaryOrderId;
 
         public String getPrimaryOrderId()
@@ -570,18 +558,6 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public void setIsPropertyShipmentTypeIdRemoved(Boolean removed)
         {
             this.isPropertyShipmentTypeIdRemoved = removed;
-        }
-
-        private Boolean isPropertyStatusIdRemoved;
-
-        public Boolean getIsPropertyStatusIdRemoved()
-        {
-            return this.isPropertyStatusIdRemoved;
-        }
-
-        public void setIsPropertyStatusIdRemoved(Boolean removed)
-        {
-            this.isPropertyStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyPrimaryOrderIdRemoved;
