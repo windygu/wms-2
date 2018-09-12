@@ -966,6 +966,16 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public String getCommandType() {
             return COMMAND_TYPE_DELETE;
         }
+
+        private String shipmentTypeId;
+
+        public String getShipmentTypeId() {
+            return this.shipmentTypeId;
+        }
+
+        public void setShipmentTypeId(String shipmentTypeId) {
+            this.shipmentTypeId = shipmentTypeId;
+        }
 	}
 
     

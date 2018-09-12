@@ -344,6 +344,10 @@ public interface ShipmentCommand extends Command
 
 	interface DeleteShipment extends ShipmentCommand
 	{
+
+        String getShipmentTypeId();
+
+        void setShipmentTypeId(String shipmentTypeId);
 	}
 
     interface CreateShipmentImageCommands extends Iterable<ShipmentImageCommand.CreateShipmentImage>
