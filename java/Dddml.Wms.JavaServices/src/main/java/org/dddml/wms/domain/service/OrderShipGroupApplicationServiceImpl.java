@@ -183,6 +183,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = null;
         OrderState orderState = getOrderApplicationService().get(c.getOrderId());
         if (orderState == null) {
+            orderCommand = new AbstractOrderCommand.SimpleCreateOrder();
             orderCommand.setOrderId(c.getOrderId());
             orderCommand.setOrderTypeId(OrderTypeIds.SALES_ORDER);//出库，先写死订单类型
             orderCommand.setActive(true);
