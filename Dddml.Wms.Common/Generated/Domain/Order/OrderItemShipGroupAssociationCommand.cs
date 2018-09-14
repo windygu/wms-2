@@ -38,6 +38,14 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual decimal? CancelQuantity { get; set; }
 
+		public virtual int? NumberOfPackages { get; set; }
+
+		public virtual int? NumberOfContainers { get; set; }
+
+		public virtual int? NumberOfPakagesPerContainer { get; set; }
+
+		public virtual string OrderItemShipGroupAssociationKey { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		// Outer Id:
@@ -83,6 +91,14 @@ namespace Dddml.Wms.Domain.Order
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyCancelQuantityRemoved { get; set; }
+
+		public virtual bool IsPropertyNumberOfPackagesRemoved { get; set; }
+
+		public virtual bool IsPropertyNumberOfContainersRemoved { get; set; }
+
+		public virtual bool IsPropertyNumberOfPakagesPerContainerRemoved { get; set; }
+
+		public virtual bool IsPropertyOrderItemShipGroupAssociationKeyRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

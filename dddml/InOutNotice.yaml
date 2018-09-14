@@ -1,0 +1,118 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  # 入出库通知单
+  InOutNotice:
+    id:
+      name: InOutNoticeId
+      type: id-ne
+          
+    properties:
+            
+      # 仓库 / 设施 Id
+      WarehouseId:
+        type: id
+        
+      InOutNoticeType:
+        type: InOutNoticeType
+        
+      TelecomContactMechId:
+        type: id
+        
+      # 跟踪单号
+      TrackingNumber:
+        type: short-varchar
+        
+      # ------------------------------
+      # 联系人 / 司机 Id
+      ContactPartyId:
+        referenceType: Party
+      
+      # 车牌号
+      VehiclePlateNumber:
+        type: long-varchar
+      # ------------------------------
+      
+      # 发货指示 / 客户名称 / 备注等  
+      ShippingInstructions:
+        type: long-varchar
+        
+      # 预计（发货）日期
+      EstimatedShipDate:
+        type: date-time
+      # 预计交付（入库）日期  
+      EstimatedDeliveryDate:
+        type: date-time
+
+      # -------------------------
+      # 通知单的状态
+      StatusId:
+        type: id
+        referenceType: StatusItem
+        commandType: InOutNoticeAction
+        commandName: InOutNoticeAction
+      
+        # -------------------------------------
+        # 单据状态的状态机
+        stateMachine:
+          # 转换
+          transitions:
+        
+          - sourceState: null
+            trigger: null
+            targetState: "NOTICE_CREATED"
+          
+          - sourceState: "NOTICE_CREATED"
+            trigger: "Approve"
+            targetState: "NOTICE_APPROVED"
+          
+          - sourceState: "NOTICE_APPROVED"
+            trigger: "Complete"
+            targetState: "NOTICE_COMPLETED"
+          
+          - sourceState: "NOTICE_CREATED"
+            trigger: "Reject"
+            targetState: "NOTICE_REJECTED"
+          
+          - sourceState: "NOTICE_CREATED"
+            trigger: "Cancel"
+            targetState: "NOTICE_CANCELLED"
+          
+
+    # ------------------------------
+    enumObjects:
+    
+      # ----------------------------
+      # 通知单类型
+      InOutNoticeType:
+        baseType: string
+        
+        values:
+          IncomingNotice:
+            description: Incoming Notice
+          OutgingNotice:
+            description: Outging Notice
+      
+      # ----------------------------
+      # 通知单操作
+      InOutNoticeAction:
+        baseType: string
+        
+        values:
+          Complete:
+            description: Complete
+          # 作废
+          Cancel:
+            description: Cancel
+          # Reject
+          Reject:
+            description: Reject
+          # Approve
+          Approve:
+            description: Approve
+
+            

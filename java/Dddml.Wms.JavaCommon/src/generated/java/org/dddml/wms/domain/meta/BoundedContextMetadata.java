@@ -40,6 +40,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("InOutImage", "InOut");
         typeToAggMap.put("InOutLine", "InOut");
         typeToAggMap.put("InOutLineImage", "InOut");
+        typeToAggMap.put("InOutNotice", "InOutNotice");
         typeToAggMap.put("InventoryItem", "InventoryItem");
         typeToAggMap.put("InventoryItemEntry", "InventoryItem");
         typeToAggMap.put("InventoryItemRequirement", "InventoryItemRequirement");

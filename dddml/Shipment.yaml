@@ -31,6 +31,12 @@ aggregates:
       # 主订单装运组序号
       PrimaryShipGroupSeqId:
         type: id
+        
+      # -----------------------------------
+      # 是否只是“一个订单”的装运单
+      OnlyOneOrder:
+        type: bool
+      
       # -------------------------
       # 拣货箱 Id.
       PicklistBinId:
@@ -450,7 +456,8 @@ aggregates:
             type: id
           PrimaryReturnId:
             type: id
-            
+          OnlyOneOrder:
+            type: bool
           # -------------------------
           # 提单号
           BolNumber:
@@ -508,18 +515,27 @@ aggregates:
           ShipmentItems:
             itemType: ImportingShipmentItem
             
-      # --------------------------------------
-      # 发出装运单
-      Ship:
-        parameters:
+      # # --------------------------------------
+      # # 发出装运单
+      # Ship:
+        # parameters:
 
       # --------------------------------------
       # 接收一个装运项
       ReceiveItem:
         parameters:
+          # 接收项的 Sequence Id.
+          ReceiptSeqId:
+            type: id
           ShipmentItemSeqId:
             type: id
+          OrderId:
+            type: id
+          OrderItemSeqId:
+            type: id
           # -----------------------------------
+          LocatorId:
+            type: string
           # ProductId:
             # type: id-long
           # AttributeSetInstanceId:
@@ -546,45 +562,53 @@ aggregates:
           ItemDescription:
             type: description
       
-      # --------------------------------------
-      # 增加一个接收项以及对应的装运项
-      AddItemAndReceipt:
-        parameters:
-          # 接收项的 Sequence Id.
-          ReceiptSeqId:
-            type: id
-          # 产品 Id.
-          ProductId:
-            type: id-long
-          # AttributeSetInstanceId:
-            # type: string
-          # 属性集信息
-          AttributeSetInstance:
-            type: map
-          RejectionReasonId:
-            type: id
-            referenceType: RejectionReason
-          DamageStatusIds:
-            itemType: id
-            #referenceType: StatusItem
-          DamageReasonId:
-            type: id
-            referenceType: DamageReason 
-          # -----------------------------------
-          AcceptedQuantity:
-            type: fixed-point
-          RejectedQuantity:
-            type: fixed-point
-          DamagedQuantity:
-            type: fixed-point
-          # -----------------------------------
-          ItemDescription:
-            type: description
+      # # --------------------------------------
+      # # 增加一个接收项以及对应的装运项
+      # AddItemAndReceipt:
+        # parameters:
+          # OrderId:
+            # type: id
+          # OrderItemSeqId:
+            # type: id
+          # # 接收项的 Sequence Id.
+          # ReceiptSeqId:
+            # type: id
+          # # 产品 Id.
+          # ProductId:
+            # type: id-long
+          # # AttributeSetInstanceId:
+            # # type: string
+          # # 属性集信息
+          # AttributeSetInstance:
+            # type: map
+          # RejectionReasonId:
+            # type: id
+            # referenceType: RejectionReason
+          # DamageStatusIds:
+            # itemType: id
+            # #referenceType: StatusItem
+          # DamageReasonId:
+            # type: id
+            # referenceType: DamageReason 
+          # # -----------------------------------
+          # AcceptedQuantity:
+            # type: fixed-point
+          # RejectedQuantity:
+            # type: fixed-point
+          # DamagedQuantity:
+            # type: fixed-point
+          # # -----------------------------------
+          # ItemDescription:
+            # type: description
+            
 
       # --------------------------------------
       # 发出一个装运项
       IssueItem:
         parameters:
+          # 发货项的 Seq Id.
+          ItemIssuanceSeqId:
+            type: id
           # -----------------------------
           # 装运单项目序列号
           # -----------------------------
@@ -599,9 +623,7 @@ aggregates:
           # 订单装运组的 Seq Id.（通知单号)
           ShipGroupSeqId:
             type: id
-          # # 发货项的 Seq Id.
-          # ItemIssuanceSeqId:
-          #  type: id
+          # -----------------------------------
           # 产品 Id
           ProductId:
             type: id-long
@@ -622,46 +644,46 @@ aggregates:
           ItemDescription:
             type: description
             
-      # --------------------------------------
-      # 增加一个发货项以及对应的装运项
-      AddItemAndIssuance:
-        parameters:
-          # 订单 Id
-          OrderId:
-            type: id-ne
-          # 订单项目序列号
-          OrderItemSeqId:
-            type: id-ne
-          # 订单装运组的 Seq Id.（通知单号)
-          ShipGroupSeqId:
-            type: id
-          # 发货项的 Seq Id.
-          ItemIssuanceSeqId:
-            type: id
-          # -----------------------------
-          # # 装运单项目序列号
-          # ShipmentItemSeqId:
-          #   type: id-ne
-          # -----------------------------
-          # 产品 Id
-          ProductId:
-            type: id-long
-          # 货位 Id.
-          LocatorId: 
-            type: string
-          # 属性集信息
-          AttributeSetInstance:
-            type: map
-          Quantity:
-            type: fixed-point
-          CancelQuantity:
-            type: fixed-point
-          # # 数量单位 Id.
-          # QuantityUomId:
-          #   type: string
-          # -----------------------------------
-          ItemDescription:
-            type: description
+      # # --------------------------------------
+      # # 增加一个发货项以及对应的装运项
+      # AddItemAndIssuance:
+        # parameters:
+          # # 订单 Id
+          # OrderId:
+            # type: id-ne
+          # # 订单项目序列号
+          # OrderItemSeqId:
+            # type: id-ne
+          # # 订单装运组的 Seq Id.（通知单号)
+          # ShipGroupSeqId:
+            # type: id
+          # # 发货项的 Seq Id.
+          # ItemIssuanceSeqId:
+            # type: id
+          # # -----------------------------
+          # # # 装运单项目序列号
+          # # ShipmentItemSeqId:
+          # #   type: id-ne
+          # # -----------------------------
+          # # 产品 Id
+          # ProductId:
+            # type: id-long
+          # # 货位 Id.
+          # LocatorId: 
+            # type: string
+          # # 属性集信息
+          # AttributeSetInstance:
+            # type: map
+          # Quantity:
+            # type: fixed-point
+          # CancelQuantity:
+            # type: fixed-point
+          # # # 数量单位 Id.
+          # # QuantityUomId:
+          # #   type: string
+          # # -----------------------------------
+          # ItemDescription:
+            # type: description
             
           
       # --------------------------------------

@@ -102,32 +102,17 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual void When(ShipmentCommands.Import c)
 		{
-			Update(c, ar => ar.Import(c.ShipmentTypeId, c.PrimaryOrderId, c.PrimaryReturnId, c.BolNumber, c.VehicleId, c.SealNumber, c.ExternalOrderNumber, c.Carrier, c.DateShipped, c.EstimatedReadyDate, c.EstimatedShipDate, c.EstimatedArrivalDate, c.LatestCancelDate, c.EstimatedShipCost, c.CurrencyUomId, c.HandlingInstructions, c.OriginFacilityId, c.DestinationFacilityId, c.PartyIdTo, c.PartyIdFrom, c.AdditionalShippingCharge, c.AddtlShippingChargeDesc, c.ShipmentItems, c.Version, c.CommandId, c.RequesterId));
-		}
-
-		public virtual void When(ShipmentCommands.Ship c)
-		{
-			Update(c, ar => ar.Ship(c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.Import(c.ShipmentTypeId, c.PrimaryOrderId, c.PrimaryReturnId, c.OnlyOneOrder, c.BolNumber, c.VehicleId, c.SealNumber, c.ExternalOrderNumber, c.Carrier, c.DateShipped, c.EstimatedReadyDate, c.EstimatedShipDate, c.EstimatedArrivalDate, c.LatestCancelDate, c.EstimatedShipCost, c.CurrencyUomId, c.HandlingInstructions, c.OriginFacilityId, c.DestinationFacilityId, c.PartyIdTo, c.PartyIdFrom, c.AdditionalShippingCharge, c.AddtlShippingChargeDesc, c.ShipmentItems, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(ShipmentCommands.ReceiveItem c)
 		{
-			Update(c, ar => ar.ReceiveItem(c.ShipmentItemSeqId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusIds, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
-		}
-
-		public virtual void When(ShipmentCommands.AddItemAndReceipt c)
-		{
-			Update(c, ar => ar.AddItemAndReceipt(c.ReceiptSeqId, c.ProductId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusIds, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.ReceiveItem(c.ReceiptSeqId, c.ShipmentItemSeqId, c.OrderId, c.OrderItemSeqId, c.LocatorId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusIds, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(ShipmentCommands.IssueItem c)
 		{
-			Update(c, ar => ar.IssueItem(c.ShipmentItemSeqId, c.OrderId, c.OrderItemSeqId, c.ShipGroupSeqId, c.ProductId, c.LocatorId, c.AttributeSetInstance, c.Quantity, c.CancelQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
-		}
-
-		public virtual void When(ShipmentCommands.AddItemAndIssuance c)
-		{
-			Update(c, ar => ar.AddItemAndIssuance(c.OrderId, c.OrderItemSeqId, c.ShipGroupSeqId, c.ItemIssuanceSeqId, c.ProductId, c.LocatorId, c.AttributeSetInstance, c.Quantity, c.CancelQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.IssueItem(c.ItemIssuanceSeqId, c.ShipmentItemSeqId, c.OrderId, c.OrderItemSeqId, c.ShipGroupSeqId, c.ProductId, c.LocatorId, c.AttributeSetInstance, c.Quantity, c.CancelQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(ShipmentCommands.ConfirmAllItemsReceived c)

@@ -33,6 +33,30 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        int? NumberOfPackages
+        {
+            get;
+            set;
+        }
+
+        int? NumberOfContainers
+        {
+            get;
+            set;
+        }
+
+        int? NumberOfPakagesPerContainer
+        {
+            get;
+            set;
+        }
+
+        string OrderItemShipGroupAssociationKey
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

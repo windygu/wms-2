@@ -787,6 +787,71 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateRepository.java">
       <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\AbstractInOutNoticeAggregate.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\AbstractInOutNoticeApplicationService.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\AbstractInOutNoticeCommand.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\AbstractInOutNoticeCommandDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\AbstractInOutNoticeEvent.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\AbstractInOutNoticeState.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\CreateOrMergePatchInOutNoticeDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\DeleteInOutNoticeDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\GenerateInOutNoticeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeAction.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeAggregate.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeApplicationService.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeCommand.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeCommands.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeEvent.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeEventId.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeState.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeStateDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeStateQueryRepository.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeStateRepository.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeType.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutAggregate.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -1152,6 +1217,9 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutLineImageMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutNoticeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMetadata.java">
@@ -2194,6 +2262,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommands.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderIdShipGroupSeqIdPair.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderItemShipGroupAssociationInfo.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderShipGroupApplicationService.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
@@ -3222,6 +3296,7 @@
 .\InOutLineImageMetadata.java
 .\InOutLineMetadata.java
 .\InOutMetadata.java
+.\InOutNoticeMetadata.java
 .\InventoryItemEntryMetadata.java
 .\InventoryItemMetadata.java
 .\InventoryItemRequirementEntryMetadata.java
@@ -6132,6 +6207,33 @@
 .\GoodIdentificationTypeStateRepository.java
 </LastOutputs>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\GenerateInOutNoticeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutNoticeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractInOutNoticeAggregate.java
+.\AbstractInOutNoticeApplicationService.java
+.\AbstractInOutNoticeCommand.java
+.\AbstractInOutNoticeCommandDto.java
+.\AbstractInOutNoticeEvent.java
+.\AbstractInOutNoticeState.java
+.\CreateOrMergePatchInOutNoticeDto.java
+.\DeleteInOutNoticeDto.java
+.\GenerateInOutNoticeDomain.txt
+.\InOutNoticeAction.java
+.\InOutNoticeAggregate.java
+.\InOutNoticeApplicationService.java
+.\InOutNoticeCommand.java
+.\InOutNoticeCommands.java
+.\InOutNoticeEvent.java
+.\InOutNoticeEventId.java
+.\InOutNoticeState.java
+.\InOutNoticeStateDto.java
+.\InOutNoticeStateQueryRepository.java
+.\InOutNoticeStateRepository.java
+.\InOutNoticeType.java
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -6145,6 +6247,8 @@
 .\GenerateBoundedContextDomainServices.txt
 .\IdApplicationService.java
 .\IdServiceCommands.java
+.\OrderIdShipGroupSeqIdPair.java
+.\OrderItemShipGroupAssociationInfo.java
 .\OrderShipGroupApplicationService.java
 .\OrderShipGroupServiceCommands.java
 </LastOutputs>

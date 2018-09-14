@@ -28,6 +28,22 @@ public interface OrderItemShipGroupAssociationState
 
     void setCancelQuantity(java.math.BigDecimal cancelQuantity);
 
+    Integer getNumberOfPackages();
+
+    void setNumberOfPackages(Integer numberOfPackages);
+
+    Integer getNumberOfContainers();
+
+    void setNumberOfContainers(Integer numberOfContainers);
+
+    Integer getNumberOfPakagesPerContainer();
+
+    void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
+
+    String getOrderItemShipGroupAssociationKey();
+
+    void setOrderItemShipGroupAssociationKey(String orderItemShipGroupAssociationKey);
+
     Long getVersion();
 
     void setVersion(Long version);

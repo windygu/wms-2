@@ -326,20 +326,6 @@ aggregates:
           TrackingNumber:
             type: short-varchar
             
-          # ------------------------------
-          # 联系人 / 司机 Id
-          ContactPartyId:
-            referenceType: Party
-          
-          # 车牌号
-          VehiclePlateNumber:
-            type: long-varchar
-          # ------------------------------
-          
-          # 发货指示 / 客户名称 / 备注等  
-          ShippingInstructions:
-            type: long-varchar
-            
           MaySplit:
             type: indicator
             
@@ -365,16 +351,7 @@ aggregates:
           # -------------------------
           PickwaveId:
             referenceType: Pickwave
-          # -------------------------
-          # 件数（包裹数量）
-          NumberOfPackages:
-            type: int
-          # 柜数（集装箱数量）
-          NumberOfContainers:
-            type: int
-          # 每集装箱件数
-          NumberOfPakagesPerContainer:
-            type: int
+            
           # -------------------------
           # 订单装运组的状态
           OrderShipGroupStatusId:
@@ -476,6 +453,23 @@ aggregates:
                 type: fixed-point
               CancelQuantity:
                 type: fixed-point
+
+              # -------------------------
+              # 件数（包裹数量）
+              NumberOfPackages:
+                type: int
+              # 柜数（集装箱数量）
+              NumberOfContainers:
+                type: int
+              # 每集装箱件数
+              NumberOfPakagesPerContainer:
+                type: int
+                
+              # 用于建立唯一约束的 Key。
+              #（比如一个订单、一个装运组内，多个 OrderItemShipGroupAssociation 不能关联到同一个产品。）
+              OrderItemShipGroupAssociationKey:
+                type: id-vlong
+                
               # TestStautsId:
                 # type: id
                 # referenceType: StatusItem
@@ -487,8 +481,12 @@ aggregates:
                   # - sourceState: null
                     # trigger: null
                     # targetState: "SHIP_GRP_CREATED"
-                # # -------------------------------------
-              
+                    
+            # -----------------------------------------
+            # 唯一约束
+            uniqueConstraints:
+              UniqueOrderItmShipGrpAssocKey: [OrderItemShipGroupAssociationKey]
+            
             # references: {}
             # reservedProperties: {}
             

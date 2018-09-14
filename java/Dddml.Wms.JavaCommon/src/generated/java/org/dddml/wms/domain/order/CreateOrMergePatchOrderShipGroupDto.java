@@ -156,51 +156,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
-     * Contact Party Id
-     */
-    private String contactPartyId;
-
-    public String getContactPartyId()
-    {
-        return this.contactPartyId;
-    }
-
-    public void setContactPartyId(String contactPartyId)
-    {
-        this.contactPartyId = contactPartyId;
-    }
-
-    /**
-     * Vehicle Plate Number
-     */
-    private String vehiclePlateNumber;
-
-    public String getVehiclePlateNumber()
-    {
-        return this.vehiclePlateNumber;
-    }
-
-    public void setVehiclePlateNumber(String vehiclePlateNumber)
-    {
-        this.vehiclePlateNumber = vehiclePlateNumber;
-    }
-
-    /**
-     * Shipping Instructions
-     */
-    private String shippingInstructions;
-
-    public String getShippingInstructions()
-    {
-        return this.shippingInstructions;
-    }
-
-    public void setShippingInstructions(String shippingInstructions)
-    {
-        this.shippingInstructions = shippingInstructions;
-    }
-
-    /**
      * May Split
      */
     private String maySplit;
@@ -318,51 +273,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     public void setPickwaveId(Long pickwaveId)
     {
         this.pickwaveId = pickwaveId;
-    }
-
-    /**
-     * Number Of Packages
-     */
-    private Integer numberOfPackages;
-
-    public Integer getNumberOfPackages()
-    {
-        return this.numberOfPackages;
-    }
-
-    public void setNumberOfPackages(Integer numberOfPackages)
-    {
-        this.numberOfPackages = numberOfPackages;
-    }
-
-    /**
-     * Number Of Containers
-     */
-    private Integer numberOfContainers;
-
-    public Integer getNumberOfContainers()
-    {
-        return this.numberOfContainers;
-    }
-
-    public void setNumberOfContainers(Integer numberOfContainers)
-    {
-        this.numberOfContainers = numberOfContainers;
-    }
-
-    /**
-     * Number Of Pakages Per Container
-     */
-    private Integer numberOfPakagesPerContainer;
-
-    public Integer getNumberOfPakagesPerContainer()
-    {
-        return this.numberOfPakagesPerContainer;
-    }
-
-    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
-    {
-        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
     }
 
     /**
@@ -512,42 +422,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyTrackingNumberRemoved = removed;
     }
 
-    private Boolean isPropertyContactPartyIdRemoved;
-
-    public Boolean getIsPropertyContactPartyIdRemoved()
-    {
-        return this.isPropertyContactPartyIdRemoved;
-    }
-
-    public void setIsPropertyContactPartyIdRemoved(Boolean removed)
-    {
-        this.isPropertyContactPartyIdRemoved = removed;
-    }
-
-    private Boolean isPropertyVehiclePlateNumberRemoved;
-
-    public Boolean getIsPropertyVehiclePlateNumberRemoved()
-    {
-        return this.isPropertyVehiclePlateNumberRemoved;
-    }
-
-    public void setIsPropertyVehiclePlateNumberRemoved(Boolean removed)
-    {
-        this.isPropertyVehiclePlateNumberRemoved = removed;
-    }
-
-    private Boolean isPropertyShippingInstructionsRemoved;
-
-    public Boolean getIsPropertyShippingInstructionsRemoved()
-    {
-        return this.isPropertyShippingInstructionsRemoved;
-    }
-
-    public void setIsPropertyShippingInstructionsRemoved(Boolean removed)
-    {
-        this.isPropertyShippingInstructionsRemoved = removed;
-    }
-
     private Boolean isPropertyMaySplitRemoved;
 
     public Boolean getIsPropertyMaySplitRemoved()
@@ -644,42 +518,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyPickwaveIdRemoved = removed;
     }
 
-    private Boolean isPropertyNumberOfPackagesRemoved;
-
-    public Boolean getIsPropertyNumberOfPackagesRemoved()
-    {
-        return this.isPropertyNumberOfPackagesRemoved;
-    }
-
-    public void setIsPropertyNumberOfPackagesRemoved(Boolean removed)
-    {
-        this.isPropertyNumberOfPackagesRemoved = removed;
-    }
-
-    private Boolean isPropertyNumberOfContainersRemoved;
-
-    public Boolean getIsPropertyNumberOfContainersRemoved()
-    {
-        return this.isPropertyNumberOfContainersRemoved;
-    }
-
-    public void setIsPropertyNumberOfContainersRemoved(Boolean removed)
-    {
-        this.isPropertyNumberOfContainersRemoved = removed;
-    }
-
-    private Boolean isPropertyNumberOfPakagesPerContainerRemoved;
-
-    public Boolean getIsPropertyNumberOfPakagesPerContainerRemoved()
-    {
-        return this.isPropertyNumberOfPakagesPerContainerRemoved;
-    }
-
-    public void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed)
-    {
-        this.isPropertyNumberOfPakagesPerContainerRemoved = removed;
-    }
-
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -705,9 +543,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setContactMechId(this.getContactMechId());
         command.setTelecomContactMechId(this.getTelecomContactMechId());
         command.setTrackingNumber(this.getTrackingNumber());
-        command.setContactPartyId(this.getContactPartyId());
-        command.setVehiclePlateNumber(this.getVehiclePlateNumber());
-        command.setShippingInstructions(this.getShippingInstructions());
         command.setMaySplit(this.getMaySplit());
         command.setGiftMessage(this.getGiftMessage());
         command.setIsGift(this.getIsGift());
@@ -716,9 +551,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setEstimatedShipDate(this.getEstimatedShipDate());
         command.setEstimatedDeliveryDate(this.getEstimatedDeliveryDate());
         command.setPickwaveId(this.getPickwaveId());
-        command.setNumberOfPackages(this.getNumberOfPackages());
-        command.setNumberOfContainers(this.getNumberOfContainers());
-        command.setNumberOfPakagesPerContainer(this.getNumberOfPakagesPerContainer());
         command.setActive(this.getActive());
     }
 
@@ -772,9 +604,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setIsPropertyContactMechIdRemoved(this.getIsPropertyContactMechIdRemoved());
         command.setIsPropertyTelecomContactMechIdRemoved(this.getIsPropertyTelecomContactMechIdRemoved());
         command.setIsPropertyTrackingNumberRemoved(this.getIsPropertyTrackingNumberRemoved());
-        command.setIsPropertyContactPartyIdRemoved(this.getIsPropertyContactPartyIdRemoved());
-        command.setIsPropertyVehiclePlateNumberRemoved(this.getIsPropertyVehiclePlateNumberRemoved());
-        command.setIsPropertyShippingInstructionsRemoved(this.getIsPropertyShippingInstructionsRemoved());
         command.setIsPropertyMaySplitRemoved(this.getIsPropertyMaySplitRemoved());
         command.setIsPropertyGiftMessageRemoved(this.getIsPropertyGiftMessageRemoved());
         command.setIsPropertyIsGiftRemoved(this.getIsPropertyIsGiftRemoved());
@@ -783,9 +612,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
         command.setIsPropertyEstimatedDeliveryDateRemoved(this.getIsPropertyEstimatedDeliveryDateRemoved());
         command.setIsPropertyPickwaveIdRemoved(this.getIsPropertyPickwaveIdRemoved());
-        command.setIsPropertyNumberOfPackagesRemoved(this.getIsPropertyNumberOfPackagesRemoved());
-        command.setIsPropertyNumberOfContainersRemoved(this.getIsPropertyNumberOfContainersRemoved());
-        command.setIsPropertyNumberOfPakagesPerContainerRemoved(this.getIsPropertyNumberOfPakagesPerContainerRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

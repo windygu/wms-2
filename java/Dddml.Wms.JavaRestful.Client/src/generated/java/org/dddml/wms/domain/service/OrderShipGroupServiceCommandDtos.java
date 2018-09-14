@@ -42,71 +42,6 @@ public class OrderShipGroupServiceCommandDtos {
         }
 
         /**
-         * Number Of Packages
-         */
-        private Integer numberOfPackages;
-
-        public Integer getNumberOfPackages() {
-            return numberOfPackages;
-        }
-
-        public void setNumberOfPackages(Integer numberOfPackages) {
-            this.numberOfPackages = numberOfPackages;
-        }
-
-        /**
-         * Number Of Containers
-         */
-        private Integer numberOfContainers;
-
-        public Integer getNumberOfContainers() {
-            return numberOfContainers;
-        }
-
-        public void setNumberOfContainers(Integer numberOfContainers) {
-            this.numberOfContainers = numberOfContainers;
-        }
-
-        /**
-         * Number Of Pakages Per Container
-         */
-        private Integer numberOfPakagesPerContainer;
-
-        public Integer getNumberOfPakagesPerContainer() {
-            return numberOfPakagesPerContainer;
-        }
-
-        public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer) {
-            this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
-        }
-
-        /**
-         * Product Id
-         */
-        private String productId;
-
-        public String getProductId() {
-            return productId;
-        }
-
-        public void setProductId(String productId) {
-            this.productId = productId;
-        }
-
-        /**
-         * Quantity
-         */
-        private java.math.BigDecimal quantity;
-
-        public java.math.BigDecimal getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(java.math.BigDecimal quantity) {
-            this.quantity = quantity;
-        }
-
-        /**
          * Estimated Delivery Date
          */
         private java.sql.Timestamp estimatedDeliveryDate;
@@ -172,6 +107,19 @@ public class OrderShipGroupServiceCommandDtos {
         }
 
         /**
+         * Order Item Ship Group Associations
+         */
+        private OrderItemShipGroupAssociationInfo[] orderItemShipGroupAssociations;
+
+        public OrderItemShipGroupAssociationInfo[] getOrderItemShipGroupAssociations() {
+            return orderItemShipGroupAssociations;
+        }
+
+        public void setOrderItemShipGroupAssociations(OrderItemShipGroupAssociationInfo[] orderItemShipGroupAssociations) {
+            this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
+        }
+
+        /**
          * Command Id
          */
         private String commandId;
@@ -225,71 +173,6 @@ public class OrderShipGroupServiceCommandDtos {
 
         public void setShipGroupSeqId(String shipGroupSeqId) {
             this.shipGroupSeqId = shipGroupSeqId;
-        }
-
-        /**
-         * Number Of Packages
-         */
-        private Integer numberOfPackages;
-
-        public Integer getNumberOfPackages() {
-            return numberOfPackages;
-        }
-
-        public void setNumberOfPackages(Integer numberOfPackages) {
-            this.numberOfPackages = numberOfPackages;
-        }
-
-        /**
-         * Number Of Containers
-         */
-        private Integer numberOfContainers;
-
-        public Integer getNumberOfContainers() {
-            return numberOfContainers;
-        }
-
-        public void setNumberOfContainers(Integer numberOfContainers) {
-            this.numberOfContainers = numberOfContainers;
-        }
-
-        /**
-         * Number Of Pakages Per Container
-         */
-        private Integer numberOfPakagesPerContainer;
-
-        public Integer getNumberOfPakagesPerContainer() {
-            return numberOfPakagesPerContainer;
-        }
-
-        public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer) {
-            this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
-        }
-
-        /**
-         * Product Id
-         */
-        private String productId;
-
-        public String getProductId() {
-            return productId;
-        }
-
-        public void setProductId(String productId) {
-            this.productId = productId;
-        }
-
-        /**
-         * Quantity
-         */
-        private java.math.BigDecimal quantity;
-
-        public java.math.BigDecimal getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(java.math.BigDecimal quantity) {
-            this.quantity = quantity;
         }
 
         /**
@@ -384,6 +267,88 @@ public class OrderShipGroupServiceCommandDtos {
         }
 
         /**
+         * Order Item Ship Group Associations
+         */
+        private OrderItemShipGroupAssociationInfo[] orderItemShipGroupAssociations;
+
+        public OrderItemShipGroupAssociationInfo[] getOrderItemShipGroupAssociations() {
+            return orderItemShipGroupAssociations;
+        }
+
+        public void setOrderItemShipGroupAssociations(OrderItemShipGroupAssociationInfo[] orderItemShipGroupAssociations) {
+            this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
+    public static class UpdateOrderItemShipGroupAssociationDto {
+
+        /**
+         * Order Id
+         */
+        private String orderId;
+
+        public String getOrderId() {
+            return orderId;
+        }
+
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
+
+        /**
+         * Ship Group Seq Id
+         */
+        private String shipGroupSeqId;
+
+        public String getShipGroupSeqId() {
+            return shipGroupSeqId;
+        }
+
+        public void setShipGroupSeqId(String shipGroupSeqId) {
+            this.shipGroupSeqId = shipGroupSeqId;
+        }
+
+        /**
+         * Order Item Ship Group Association
+         */
+        private OrderItemShipGroupAssociationInfo orderItemShipGroupAssociation;
+
+        public OrderItemShipGroupAssociationInfo getOrderItemShipGroupAssociation() {
+            return orderItemShipGroupAssociation;
+        }
+
+        public void setOrderItemShipGroupAssociation(OrderItemShipGroupAssociationInfo orderItemShipGroupAssociation) {
+            this.orderItemShipGroupAssociation = orderItemShipGroupAssociation;
+        }
+
+        /**
          * Command Id
          */
         private String commandId;
@@ -414,29 +379,16 @@ public class OrderShipGroupServiceCommandDtos {
     public static class CreatePOShipmentDto {
 
         /**
-         * Order Id
+         * Order Id Ship Group Seq Id Pairs
          */
-        private String orderId;
+        private OrderIdShipGroupSeqIdPair[] orderIdShipGroupSeqIdPairs;
 
-        public String getOrderId() {
-            return orderId;
+        public OrderIdShipGroupSeqIdPair[] getOrderIdShipGroupSeqIdPairs() {
+            return orderIdShipGroupSeqIdPairs;
         }
 
-        public void setOrderId(String orderId) {
-            this.orderId = orderId;
-        }
-
-        /**
-         * Ship Group Seq Id
-         */
-        private String shipGroupSeqId;
-
-        public String getShipGroupSeqId() {
-            return shipGroupSeqId;
-        }
-
-        public void setShipGroupSeqId(String shipGroupSeqId) {
-            this.shipGroupSeqId = shipGroupSeqId;
+        public void setOrderIdShipGroupSeqIdPairs(OrderIdShipGroupSeqIdPair[] orderIdShipGroupSeqIdPairs) {
+            this.orderIdShipGroupSeqIdPairs = orderIdShipGroupSeqIdPairs;
         }
 
         /**
@@ -483,29 +435,16 @@ public class OrderShipGroupServiceCommandDtos {
     public static class CreateSOShipmentDto {
 
         /**
-         * Order Id
+         * Order Id Ship Group Seq Id Pairs
          */
-        private String orderId;
+        private OrderIdShipGroupSeqIdPair[] orderIdShipGroupSeqIdPairs;
 
-        public String getOrderId() {
-            return orderId;
+        public OrderIdShipGroupSeqIdPair[] getOrderIdShipGroupSeqIdPairs() {
+            return orderIdShipGroupSeqIdPairs;
         }
 
-        public void setOrderId(String orderId) {
-            this.orderId = orderId;
-        }
-
-        /**
-         * Ship Group Seq Id
-         */
-        private String shipGroupSeqId;
-
-        public String getShipGroupSeqId() {
-            return shipGroupSeqId;
-        }
-
-        public void setShipGroupSeqId(String shipGroupSeqId) {
-            this.shipGroupSeqId = shipGroupSeqId;
+        public void setOrderIdShipGroupSeqIdPairs(OrderIdShipGroupSeqIdPair[] orderIdShipGroupSeqIdPairs) {
+            this.orderIdShipGroupSeqIdPairs = orderIdShipGroupSeqIdPairs;
         }
 
         /**
@@ -519,6 +458,75 @@ public class OrderShipGroupServiceCommandDtos {
 
         public void setShipmentId(String shipmentId) {
             this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Command Id
+         */
+        private String commandId;
+
+        public String getCommandId() {
+            return commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        /**
+         * Requester Id
+         */
+        private String requesterId;
+
+        public String getRequesterId() {
+            return requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
+    public static class ShipDto {
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Primary Order Id
+         */
+        private String primaryOrderId;
+
+        public String getPrimaryOrderId() {
+            return primaryOrderId;
+        }
+
+        public void setPrimaryOrderId(String primaryOrderId) {
+            this.primaryOrderId = primaryOrderId;
+        }
+
+        /**
+         * Primary Ship Group Seq Id
+         */
+        private String primaryShipGroupSeqId;
+
+        public String getPrimaryShipGroupSeqId() {
+            return primaryShipGroupSeqId;
+        }
+
+        public void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId) {
+            this.primaryShipGroupSeqId = primaryShipGroupSeqId;
         }
 
         /**

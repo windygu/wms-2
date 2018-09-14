@@ -38,24 +38,23 @@ aggregates:
     
       # ------------------------------
       OrderShipmentId:
-        name: OrderShipmentId
         properties:
-        
+          # ---------------------
           # 订单 Id.
           OrderId:
             type: id-ne
-          # 订单项目序列号
+          # 订单（行）项序号
           OrderItemSeqId:
             type: id-ne
-            
+          # 订单装运组序号
           ShipGroupSeqId:
             type: id-ne
-            
+          # ---------------------
           # 装运单 Id.
           ShipmentId:
             type: id-ne
           # 装运单项目序列号
           ShipmentItemSeqId:
             type: id-ne
-
+          # ---------------------
       

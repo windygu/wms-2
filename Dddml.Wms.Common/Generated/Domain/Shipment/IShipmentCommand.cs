@@ -33,6 +33,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string PrimaryShipGroupSeqId { get; set; }
 
+		bool? OnlyOneOrder { get; set; }
+
 		string PicklistBinId { get; set; }
 
 		string BolNumber { get; set; }
@@ -122,6 +124,8 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyPrimaryReturnIdRemoved { get; set; }
 
 		bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
+
+		bool IsPropertyOnlyOneOrderRemoved { get; set; }
 
 		bool IsPropertyPicklistBinIdRemoved { get; set; }
 

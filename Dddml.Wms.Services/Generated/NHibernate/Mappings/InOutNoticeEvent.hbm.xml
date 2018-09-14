@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.InOutNotice">
+  
+  <class name="InOutNoticeEventBase" table="InOutNoticeEvents" mutable="false" abstract="true">
+
+    <composite-id name="InOutNoticeEventId" class="Dddml.Wms.Domain.InOutNotice.InOutNoticeEventId">
+        <key-property name="InOutNoticeId" ><column name="InOutNoticeId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+
+        <subclass name="InOutNoticeStateEventBase" abstract="true">
+
+    <property name="WarehouseId" ><column name="WarehouseId" sql-type="VARCHAR(20)" /></property>
+    <property name="InOutNoticeType" ></property>
+    <property name="TelecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="TrackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="ContactPartyId" ></property>
+    <property name="VehiclePlateNumber" ><column name="VehiclePlateNumber" sql-type="VARCHAR(255)" /></property>
+    <property name="ShippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
+    <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
+    <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+    <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="Active" ></property>
+    <subclass name="InOutNoticeStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="InOutNoticeStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyWarehouseIdRemoved" column="IsPropertyWarehouseIdRemoved"/>
+
+        <property name="IsPropertyInOutNoticeTypeRemoved" column="IsPropertyInOutNoticeTypeRemoved"/>
+
+        <property name="IsPropertyTelecomContactMechIdRemoved" column="IsPropertyTelecomContactMechIdRemoved"/>
+
+        <property name="IsPropertyTrackingNumberRemoved" column="IsPropertyTrackingNumberRemoved"/>
+
+        <property name="IsPropertyContactPartyIdRemoved" column="IsPropertyContactPartyIdRemoved"/>
+
+        <property name="IsPropertyVehiclePlateNumberRemoved" column="IsPropertyVehiclePlateNumberRemoved"/>
+
+        <property name="IsPropertyShippingInstructionsRemoved" column="IsPropertyShippingInstructionsRemoved"/>
+
+        <property name="IsPropertyEstimatedShipDateRemoved" column="IsPropertyEstimatedShipDateRemoved"/>
+
+        <property name="IsPropertyEstimatedDeliveryDateRemoved" column="IsPropertyEstimatedDeliveryDateRemoved"/>
+
+        <property name="IsPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="InOutNoticeStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+        </subclass>
+
+  </class>
+  
+</hibernate-mapping>

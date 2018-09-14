@@ -25,7 +25,7 @@ namespace Dddml.Wms.Domain.Order.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "OrderItemSeqId", "Quantity", "CancelQuantity", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId", "OrderShipGroupShipGroupSeqId" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "OrderItemSeqId", "Quantity", "CancelQuantity", "NumberOfPackages", "NumberOfContainers", "NumberOfPakagesPerContainer", "OrderItemShipGroupAssociationKey", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId", "OrderShipGroupShipGroupSeqId" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

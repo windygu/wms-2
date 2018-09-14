@@ -251,6 +251,18 @@
     <Compile Include="Generated\Domain\GoodIdentificationType\NHibernate\NHibernateGoodIdentificationTypeStateRepository.cs">
       <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\NHibernate\InOutNoticeApplicationService.cs">
+      <DependentUpon>GenerateInOutNoticeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\NHibernate\NHibernateInOutNoticeEventStore.cs">
+      <DependentUpon>GenerateInOutNoticeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\NHibernate\NHibernateInOutNoticeStateQueryRepository.cs">
+      <DependentUpon>GenerateInOutNoticeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\NHibernate\NHibernateInOutNoticeStateRepository.cs">
+      <DependentUpon>GenerateInOutNoticeDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\InOut\NHibernate\InOutApplicationService.cs">
       <DependentUpon>GenerateInOutDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -957,6 +969,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateGoodIdentificationTypeDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\InOutNotice\NHibernate\GenerateInOutNoticeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutNoticeDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\InOut\NHibernate\GenerateInOutDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1276,6 +1293,8 @@
 .\InOutLineImageEvent.hbm.xml
 .\InOutLineImageState.hbm.xml
 .\InOutLineState.hbm.xml
+.\InOutNoticeEvent.hbm.xml
+.\InOutNoticeState.hbm.xml
 .\InOutState.hbm.xml
 .\InventoryItemEntryState.hbm.xml
 .\InventoryItemEvent.hbm.xml
@@ -1727,6 +1746,12 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptImageEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutNoticeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\InOutNoticeEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -2352,6 +2377,17 @@
 .\NHibernateGoodIdentificationTypeEventStore.cs
 .\NHibernateGoodIdentificationTypeStateQueryRepository.cs
 .\NHibernateGoodIdentificationTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\InOutNotice\NHibernate\GenerateInOutNoticeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutNoticeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInOutNoticeDomainNHibernate.txt
+.\InOutNoticeApplicationService.cs
+.\NHibernateInOutNoticeEventStore.cs
+.\NHibernateInOutNoticeStateQueryRepository.cs
+.\NHibernateInOutNoticeStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

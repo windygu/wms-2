@@ -17,6 +17,10 @@
 
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="cancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="numberOfPackages" ></property>
+	<property name="numberOfContainers" ></property>
+	<property name="numberOfPakagesPerContainer" ></property>
+	<property name="orderItemShipGroupAssociationKey" ><column name="OrderItemShipGroupAssociationKey" unique-key="UniqueOrderItmShipGrpAssocKey" sql-type="VARCHAR(250)" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

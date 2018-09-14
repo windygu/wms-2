@@ -47,12 +47,17 @@ namespace Dddml.Wms.Domain.Order
             cmd.OrderItemSeqId = state.OrderItemSeqId;
             cmd.Quantity = state.Quantity;
             cmd.CancelQuantity = state.CancelQuantity;
+            cmd.NumberOfPackages = state.NumberOfPackages;
+            cmd.NumberOfContainers = state.NumberOfContainers;
+            cmd.NumberOfPakagesPerContainer = state.NumberOfPakagesPerContainer;
+            cmd.OrderItemShipGroupAssociationKey = state.OrderItemShipGroupAssociationKey;
             cmd.Active = ((IOrderItemShipGroupAssociationStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             cmd.OrderShipGroupShipGroupSeqId = state.OrderShipGroupShipGroupSeqId;
             
             if (state.Quantity == null) { cmd.IsPropertyQuantityRemoved = true; }
             if (state.CancelQuantity == null) { cmd.IsPropertyCancelQuantityRemoved = true; }
+            if (state.OrderItemShipGroupAssociationKey == null) { cmd.IsPropertyOrderItemShipGroupAssociationKeyRemoved = true; }
             return cmd;
         }
 
@@ -64,6 +69,10 @@ namespace Dddml.Wms.Domain.Order
             cmd.OrderItemSeqId = state.OrderItemSeqId;
             cmd.Quantity = state.Quantity;
             cmd.CancelQuantity = state.CancelQuantity;
+            cmd.NumberOfPackages = state.NumberOfPackages;
+            cmd.NumberOfContainers = state.NumberOfContainers;
+            cmd.NumberOfPakagesPerContainer = state.NumberOfPakagesPerContainer;
+            cmd.OrderItemShipGroupAssociationKey = state.OrderItemShipGroupAssociationKey;
             cmd.Active = ((IOrderItemShipGroupAssociationStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             cmd.OrderShipGroupShipGroupSeqId = state.OrderShipGroupShipGroupSeqId;

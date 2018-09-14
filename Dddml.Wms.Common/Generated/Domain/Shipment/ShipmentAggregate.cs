@@ -102,6 +102,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.PrimaryOrderId = c.PrimaryOrderId;
             e.PrimaryReturnId = c.PrimaryReturnId;
             e.PrimaryShipGroupSeqId = c.PrimaryShipGroupSeqId;
+            e.OnlyOneOrder = c.OnlyOneOrder;
             e.PicklistBinId = c.PicklistBinId;
             e.BolNumber = c.BolNumber;
             e.SealNumber = c.SealNumber;
@@ -182,6 +183,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.PrimaryOrderId = c.PrimaryOrderId;
             e.PrimaryReturnId = c.PrimaryReturnId;
             e.PrimaryShipGroupSeqId = c.PrimaryShipGroupSeqId;
+            e.OnlyOneOrder = c.OnlyOneOrder;
             e.PicklistBinId = c.PicklistBinId;
             e.BolNumber = c.BolNumber;
             e.SealNumber = c.SealNumber;
@@ -214,6 +216,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyPrimaryOrderIdRemoved = c.IsPropertyPrimaryOrderIdRemoved;
             e.IsPropertyPrimaryReturnIdRemoved = c.IsPropertyPrimaryReturnIdRemoved;
             e.IsPropertyPrimaryShipGroupSeqIdRemoved = c.IsPropertyPrimaryShipGroupSeqIdRemoved;
+            e.IsPropertyOnlyOneOrderRemoved = c.IsPropertyOnlyOneOrderRemoved;
             e.IsPropertyPicklistBinIdRemoved = c.IsPropertyPicklistBinIdRemoved;
             e.IsPropertyBolNumberRemoved = c.IsPropertyBolNumberRemoved;
             e.IsPropertySealNumberRemoved = c.IsPropertySealNumberRemoved;

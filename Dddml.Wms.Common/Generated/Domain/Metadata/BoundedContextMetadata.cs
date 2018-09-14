@@ -40,6 +40,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("Facility");
             _aggregateNames.Add("GoodIdentificationType");
             _aggregateNames.Add("InOut");
+            _aggregateNames.Add("InOutNotice");
             _aggregateNames.Add("InventoryItem");
             _aggregateNames.Add("InventoryItemRequirement");
             _aggregateNames.Add("InventoryPostingRule");
@@ -92,6 +93,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("Facility", "Dddml.Wms.Domain.Facility");
             _aggregateNamespaces.Add("GoodIdentificationType", "Dddml.Wms.Domain.GoodIdentificationType");
             _aggregateNamespaces.Add("InOut", "Dddml.Wms.Domain.InOut");
+            _aggregateNamespaces.Add("InOutNotice", "Dddml.Wms.Domain.InOutNotice");
             _aggregateNamespaces.Add("InventoryItem", "Dddml.Wms.Domain.InventoryItem");
             _aggregateNamespaces.Add("InventoryItemRequirement", "Dddml.Wms.Domain.InventoryItemRequirement");
             _aggregateNamespaces.Add("InventoryPostingRule", "Dddml.Wms.Domain.InventoryPostingRule");

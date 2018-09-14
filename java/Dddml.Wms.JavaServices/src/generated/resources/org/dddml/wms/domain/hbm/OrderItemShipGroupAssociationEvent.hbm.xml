@@ -28,6 +28,10 @@
 
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="cancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="numberOfPackages" ></property>
+	<property name="numberOfContainers" ></property>
+	<property name="numberOfPakagesPerContainer" ></property>
+	<property name="orderItemShipGroupAssociationKey" ><column name="OrderItemShipGroupAssociationKey" unique-key="UniqueOrderItmShipGrpAssocKey" sql-type="VARCHAR(250)" /></property>
 	<property name="active" ></property>
 
     <property name="version" column="Version" not-null="true" />
@@ -41,6 +45,14 @@
         <property name="isPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
 
         <property name="isPropertyCancelQuantityRemoved" column="IsPropertyCancelQuantityRemoved"/>
+
+        <property name="isPropertyNumberOfPackagesRemoved" column="IsPropertyNumberOfPackagesRemoved"/>
+
+        <property name="isPropertyNumberOfContainersRemoved" column="IsPropertyNumberOfContainersRemoved"/>
+
+        <property name="isPropertyNumberOfPakagesPerContainerRemoved" column="IsPropertyNumberOfPakagesPerContainerRemoved"/>
+
+        <property name="isPropertyOrderItemShipGroupAssociationKeyRemoved" column="IsPropertyOrderItemShipGroupAssociationKeyRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

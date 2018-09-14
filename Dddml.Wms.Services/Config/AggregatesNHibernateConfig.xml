@@ -261,6 +261,28 @@
   </object>
 
 
+
+  <object id="inOutNoticeStateRepository" type="Dddml.Wms.Domain.InOutNotice.NHibernate.NHibernateInOutNoticeStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="inOutNoticeStateQueryRepository" type="Dddml.Wms.Domain.InOutNotice.NHibernate.NHibernateInOutNoticeStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="inOutNoticeEventStore" type="Dddml.Wms.Domain.InOutNotice.NHibernate.NHibernateInOutNoticeEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="inOutNoticeApplicationService" type="Dddml.Wms.Domain.InOutNotice.NHibernate.InOutNoticeApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="inOutNoticeEventStore"/>
+    <constructor-arg ref="inOutNoticeStateRepository"/>
+    <constructor-arg ref="inOutNoticeStateQueryRepository"/>
+  </object>
+
+
   <object id="inventoryItemEntryStateDao" type="Dddml.Wms.Domain.InventoryItem.NHibernate.NHibernateInventoryItemEntryStateDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>

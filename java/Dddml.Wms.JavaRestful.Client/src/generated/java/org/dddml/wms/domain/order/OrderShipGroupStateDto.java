@@ -141,42 +141,6 @@ public class OrderShipGroupStateDto
         this.trackingNumber = trackingNumber;
     }
 
-    private String contactPartyId;
-
-    public String getContactPartyId()
-    {
-        return this.contactPartyId;
-    }
-
-    public void setContactPartyId(String contactPartyId)
-    {
-        this.contactPartyId = contactPartyId;
-    }
-
-    private String vehiclePlateNumber;
-
-    public String getVehiclePlateNumber()
-    {
-        return this.vehiclePlateNumber;
-    }
-
-    public void setVehiclePlateNumber(String vehiclePlateNumber)
-    {
-        this.vehiclePlateNumber = vehiclePlateNumber;
-    }
-
-    private String shippingInstructions;
-
-    public String getShippingInstructions()
-    {
-        return this.shippingInstructions;
-    }
-
-    public void setShippingInstructions(String shippingInstructions)
-    {
-        this.shippingInstructions = shippingInstructions;
-    }
-
     private String maySplit;
 
     public String getMaySplit()
@@ -271,42 +235,6 @@ public class OrderShipGroupStateDto
     public void setPickwaveId(Long pickwaveId)
     {
         this.pickwaveId = pickwaveId;
-    }
-
-    private Integer numberOfPackages;
-
-    public Integer getNumberOfPackages()
-    {
-        return this.numberOfPackages;
-    }
-
-    public void setNumberOfPackages(Integer numberOfPackages)
-    {
-        this.numberOfPackages = numberOfPackages;
-    }
-
-    private Integer numberOfContainers;
-
-    public Integer getNumberOfContainers()
-    {
-        return this.numberOfContainers;
-    }
-
-    public void setNumberOfContainers(Integer numberOfContainers)
-    {
-        this.numberOfContainers = numberOfContainers;
-    }
-
-    private Integer numberOfPakagesPerContainer;
-
-    public Integer getNumberOfPakagesPerContainer()
-    {
-        return this.numberOfPakagesPerContainer;
-    }
-
-    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
-    {
-        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
     }
 
     private String orderShipGroupStatusId;

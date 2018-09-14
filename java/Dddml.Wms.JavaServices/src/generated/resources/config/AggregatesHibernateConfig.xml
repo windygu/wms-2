@@ -255,6 +255,27 @@
   </bean>
 
 
+  <bean id="inOutNoticeStateRepository" class="org.dddml.wms.domain.inoutnotice.hibernate.HibernateInOutNoticeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="inOutNoticeStateQueryRepository" class="org.dddml.wms.domain.inoutnotice.hibernate.HibernateInOutNoticeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="inOutNoticeEventStore" class="org.dddml.wms.domain.inoutnotice.hibernate.HibernateInOutNoticeEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="inOutNoticeApplicationService" class="org.dddml.wms.domain.inoutnotice.AbstractInOutNoticeApplicationService$SimpleInOutNoticeApplicationService">
+    <constructor-arg ref="inOutNoticeEventStore"/>
+    <constructor-arg ref="inOutNoticeStateRepository"/>
+    <constructor-arg ref="inOutNoticeStateQueryRepository"/>
+  </bean>
+
+
   <bean id="inventoryItemEntryStateDao" class="org.dddml.wms.domain.inventoryitem.hibernate.HibernateInventoryItemEntryStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>

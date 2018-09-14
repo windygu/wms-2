@@ -92,6 +92,7 @@
 .\FacilityResource.java
 .\GenerateAggregatesResources.txt
 .\GoodIdentificationTypeResource.java
+.\InOutNoticeResource.java
 .\InOutResource.java
 .\InventoryItemRequirementResource.java
 .\InventoryItemResource.java
@@ -167,6 +168,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\IdServiceResource.java">
       <DependentUpon>GenerateDomainServicesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\InOutNoticeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\InOutResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>

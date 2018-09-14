@@ -51,6 +51,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineImageState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutLineImageEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InOutNoticeState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/InOutNoticeEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryItemEntryState.hbm.xml"/>

@@ -61,12 +61,13 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Transactional
     public void when(ShipmentCommands.PurchaseShipmentAction c) {
         if (Objects.equals(c.getValue(), PurchaseShipmentAction.SHIP)) {
-            ShipmentCommands.Ship ship = new ShipmentCommands.Ship();
-            ship.setShipmentId(c.getShipmentId());
-            ship.setVersion(c.getVersion());
-            ship.setCommandId(c.getCommandId());
-            ship.setRequesterId(c.getRequesterId());
-            when(ship);
+            throw new UnsupportedOperationException();
+            //            ShipmentCommands.Ship ship = new ShipmentCommands.Ship();
+            //            ship.setShipmentId(c.getShipmentId());
+            //            ship.setVersion(c.getVersion());
+            //            ship.setCommandId(c.getCommandId());
+            //            ship.setRequesterId(c.getRequesterId());
+            //            when(ship);
         } else if (Objects.equals(c.getValue(), PurchaseShipmentAction.RECEIVE)) {
             throw new UnsupportedOperationException("Need Destination Locator Id.");
             //            ShipmentCommands.ConfirmAllItemsReceived receive = new ShipmentCommands.ConfirmAllItemsReceived();
@@ -96,12 +97,12 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
     }
 
-    @Override
-    @Transactional
-    public void when(ShipmentCommands.Ship c) {
-        // check shipment type??
-        super.when(c);
-    }
+    //    @Override
+    //    @Transactional
+    //    public void when(ShipmentCommands.Ship c) {
+    //        // check shipment type??
+    //        super.when(c);
+    //    }
 
     @Override
     @Transactional
@@ -163,27 +164,27 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         // ////////////////////////////////////////////////////
         updateShipment(c, updateReceipt);
     }
-
-    @Override
-    @Transactional
-    public void when(ShipmentCommands.AddItemAndReceipt c) {
-        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
-        String shipmentItemSeqId = c.getReceiptSeqId();
-        ShipmentItemCommand.CreateShipmentItem createShipmentItem = createShipmentItem(c, shipmentItemSeqId);
-        assertReceiptQuantities(createShipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity());
-        // ////////////////////////////////////////////////////
-        ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(
-                c, shipment,
-                shipmentItemSeqId,
-                c.getProductId(),
-                c.getAttributeSetInstance(),
-                c.getAcceptedQuantity(),
-                c.getRejectedQuantity(),
-                c.getDamagedQuantity(), c.getDamageStatusIds(), c.getDamageReasonId()
-                );
-        // ////////////////////////////////////////////////////
-        updateShipment(c, updateReceipt, createShipmentItem);
-    }
+    //
+    //    @Override
+    //    @Transactional
+    //    public void when(ShipmentCommands.AddItemAndReceipt c) {
+    //        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
+    //        String shipmentItemSeqId = c.getReceiptSeqId();
+    //        ShipmentItemCommand.CreateShipmentItem createShipmentItem = createShipmentItem(c, shipmentItemSeqId);
+    //        assertReceiptQuantities(createShipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity());
+    //        // ////////////////////////////////////////////////////
+    //        ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(
+    //                c, shipment,
+    //                shipmentItemSeqId,
+    //                c.getProductId(),
+    //                c.getAttributeSetInstance(),
+    //                c.getAcceptedQuantity(),
+    //                c.getRejectedQuantity(),
+    //                c.getDamagedQuantity(), c.getDamageStatusIds(), c.getDamageReasonId()
+    //                );
+    //        // ////////////////////////////////////////////////////
+    //        updateShipment(c, updateReceipt, createShipmentItem);
+    //    }
 
     @Override
     @Transactional
@@ -249,51 +250,51 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         updateShipment(c, updateItemIssuance);
     }
 
-    @Override
-    @Transactional
-    public void when(ShipmentCommands.AddItemAndIssuance c) {
-        if (c.getLocatorId() == null) {
-            throw new IllegalArgumentException("locatorId is null.");
-        }
-        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
-        String shipmentItemSeqId = c.getItemIssuanceSeqId();
-        ShipmentItemCommand.CreateShipmentItem createShipmentItem = createShipmentItem(c, shipmentItemSeqId);
-        assertIssuanceQuantities(createShipmentItem.getQuantity(), c.getQuantity(), c.getCancelQuantity());
-        // ////////////////////////////////////////////////////
-        ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateItemIssuance = createOrUpdateItemIssuance(
-                c, shipment,
-                shipmentItemSeqId,
-                c.getProductId(),
-                c.getLocatorId(),
-                c.getAttributeSetInstance(),
-                c.getQuantity(),
-                c.getCancelQuantity()
-        );
-        // ////////////////////////////////////////////////////
-        updateShipment(c, updateItemIssuance, createShipmentItem);
-    }
-
-    private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndReceipt c,
-                                                                      String shipmentItemSeqId) {
-        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
-        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
-        createShipmentItem.setProductId(c.getProductId());
-        createShipmentItem.setQuantity(BigDecimal.ZERO);//todo ???
-        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
-        createShipmentItem.setActive(true);
-        return createShipmentItem;
-    }
-
-    private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndIssuance c,
-                                                                      String shipmentItemSeqId) {
-        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
-        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
-        createShipmentItem.setProductId(c.getProductId());
-        createShipmentItem.setQuantity(c.getQuantity());//todo ???
-        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
-        createShipmentItem.setActive(true);
-        return createShipmentItem;
-    }
+    //    @Override
+    //    @Transactional
+    //    public void when(ShipmentCommands.AddItemAndIssuance c) {
+    //        if (c.getLocatorId() == null) {
+    //            throw new IllegalArgumentException("locatorId is null.");
+    //        }
+    //        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
+    //        String shipmentItemSeqId = c.getItemIssuanceSeqId();
+    //        ShipmentItemCommand.CreateShipmentItem createShipmentItem = createShipmentItem(c, shipmentItemSeqId);
+    //        assertIssuanceQuantities(createShipmentItem.getQuantity(), c.getQuantity(), c.getCancelQuantity());
+    //        // ////////////////////////////////////////////////////
+    //        ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateItemIssuance = createOrUpdateItemIssuance(
+    //                c, shipment,
+    //                shipmentItemSeqId,
+    //                c.getProductId(),
+    //                c.getLocatorId(),
+    //                c.getAttributeSetInstance(),
+    //                c.getQuantity(),
+    //                c.getCancelQuantity()
+    //        );
+    //        // ////////////////////////////////////////////////////
+    //        updateShipment(c, updateItemIssuance, createShipmentItem);
+    //    }
+    //
+    //    private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndReceipt c,
+    //                                                                      String shipmentItemSeqId) {
+    //        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
+    //        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
+    //        createShipmentItem.setProductId(c.getProductId());
+    //        createShipmentItem.setQuantity(BigDecimal.ZERO);//todo ???
+    //        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
+    //        createShipmentItem.setActive(true);
+    //        return createShipmentItem;
+    //    }
+    //
+    //    private ShipmentItemCommand.CreateShipmentItem createShipmentItem(ShipmentCommands.AddItemAndIssuance c,
+    //                                                                      String shipmentItemSeqId) {
+    //        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
+    //        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
+    //        createShipmentItem.setProductId(c.getProductId());
+    //        createShipmentItem.setQuantity(c.getQuantity());//todo ???
+    //        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
+    //        createShipmentItem.setActive(true);
+    //        return createShipmentItem;
+    //    }
 
     private static void assertReceiptQuantities(BigDecimal shipmentItemQuantity, BigDecimal acceptedQuantity, BigDecimal rejectedQuantity) {
         if (shipmentItemQuantity.compareTo(acceptedQuantity) == 0 && rejectedQuantity == null) {
@@ -636,9 +637,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             super(state);
         }
 
-        @Override
-        public void ship(Long version, String commandId, String requesterId) {
-            purchaseShipmentAction(PurchaseShipmentAction.SHIP, version, commandId, requesterId);
+        //@Override
+        //public void ship(Long version, String commandId, String requesterId) {
+        //    purchaseShipmentAction(PurchaseShipmentAction.SHIP, version, commandId, requesterId);
             //            boolean isStatusOk = false;
             //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_CREATED.toLowerCase())) {
             //                isStatusOk = true;
@@ -665,7 +666,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             //                e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
             //            }
             //apply(e);
-        }
+        //}
 
         @Override
         public void confirmAllItemsReceived(String destinationLocatorId, Long version, String commandId, String requesterId) {

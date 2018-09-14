@@ -21,15 +21,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void When(ShipmentCommands.Import c);
 
-		void When(ShipmentCommands.Ship c);
-
 		void When(ShipmentCommands.ReceiveItem c);
 
-		void When(ShipmentCommands.AddItemAndReceipt c);
-
 		void When(ShipmentCommands.IssueItem c);
-
-		void When(ShipmentCommands.AddItemAndIssuance c);
 
 		void When(ShipmentCommands.ConfirmAllItemsReceived c);
 

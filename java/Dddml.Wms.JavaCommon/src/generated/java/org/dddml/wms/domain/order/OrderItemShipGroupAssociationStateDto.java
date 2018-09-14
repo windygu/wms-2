@@ -45,6 +45,54 @@ public class OrderItemShipGroupAssociationStateDto
         this.cancelQuantity = cancelQuantity;
     }
 
+    private Integer numberOfPackages;
+
+    public Integer getNumberOfPackages()
+    {
+        return this.numberOfPackages;
+    }
+
+    public void setNumberOfPackages(Integer numberOfPackages)
+    {
+        this.numberOfPackages = numberOfPackages;
+    }
+
+    private Integer numberOfContainers;
+
+    public Integer getNumberOfContainers()
+    {
+        return this.numberOfContainers;
+    }
+
+    public void setNumberOfContainers(Integer numberOfContainers)
+    {
+        this.numberOfContainers = numberOfContainers;
+    }
+
+    private Integer numberOfPakagesPerContainer;
+
+    public Integer getNumberOfPakagesPerContainer()
+    {
+        return this.numberOfPakagesPerContainer;
+    }
+
+    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
+    {
+        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
+    }
+
+    private String orderItemShipGroupAssociationKey;
+
+    public String getOrderItemShipGroupAssociationKey()
+    {
+        return this.orderItemShipGroupAssociationKey;
+    }
+
+    public void setOrderItemShipGroupAssociationKey(String orderItemShipGroupAssociationKey)
+    {
+        this.orderItemShipGroupAssociationKey = orderItemShipGroupAssociationKey;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -178,6 +226,18 @@ public class OrderItemShipGroupAssociationStateDto
             }
             if (returnedFieldsContains("CancelQuantity")) {
                 dto.setCancelQuantity(state.getCancelQuantity());
+            }
+            if (returnedFieldsContains("NumberOfPackages")) {
+                dto.setNumberOfPackages(state.getNumberOfPackages());
+            }
+            if (returnedFieldsContains("NumberOfContainers")) {
+                dto.setNumberOfContainers(state.getNumberOfContainers());
+            }
+            if (returnedFieldsContains("NumberOfPakagesPerContainer")) {
+                dto.setNumberOfPakagesPerContainer(state.getNumberOfPakagesPerContainer());
+            }
+            if (returnedFieldsContains("OrderItemShipGroupAssociationKey")) {
+                dto.setOrderItemShipGroupAssociationKey(state.getOrderItemShipGroupAssociationKey());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

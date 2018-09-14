@@ -208,6 +208,14 @@ namespace Dddml.Wms.Domain.Order
 
 			this.CancelQuantity = e.CancelQuantity;
 
+            this.NumberOfPackages = (e.NumberOfPackages != null && e.NumberOfPackages.HasValue) ? e.NumberOfPackages.Value : default(int);
+
+            this.NumberOfContainers = (e.NumberOfContainers != null && e.NumberOfContainers.HasValue) ? e.NumberOfContainers.Value : default(int);
+
+            this.NumberOfPakagesPerContainer = (e.NumberOfPakagesPerContainer != null && e.NumberOfPakagesPerContainer.HasValue) ? e.NumberOfPakagesPerContainer.Value : default(int);
+
+			this.OrderItemShipGroupAssociationKey = e.OrderItemShipGroupAssociationKey;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -245,6 +253,54 @@ namespace Dddml.Wms.Domain.Order
 			else
 			{
 				this.CancelQuantity = e.CancelQuantity;
+			}
+
+			if (e.NumberOfPackages == null)
+			{
+				if (e.IsPropertyNumberOfPackagesRemoved)
+				{
+					this.NumberOfPackages = default(int);
+				}
+			}
+			else
+			{
+				this.NumberOfPackages = (e.NumberOfPackages != null && e.NumberOfPackages.HasValue) ? e.NumberOfPackages.Value : default(int);
+			}
+
+			if (e.NumberOfContainers == null)
+			{
+				if (e.IsPropertyNumberOfContainersRemoved)
+				{
+					this.NumberOfContainers = default(int);
+				}
+			}
+			else
+			{
+				this.NumberOfContainers = (e.NumberOfContainers != null && e.NumberOfContainers.HasValue) ? e.NumberOfContainers.Value : default(int);
+			}
+
+			if (e.NumberOfPakagesPerContainer == null)
+			{
+				if (e.IsPropertyNumberOfPakagesPerContainerRemoved)
+				{
+					this.NumberOfPakagesPerContainer = default(int);
+				}
+			}
+			else
+			{
+				this.NumberOfPakagesPerContainer = (e.NumberOfPakagesPerContainer != null && e.NumberOfPakagesPerContainer.HasValue) ? e.NumberOfPakagesPerContainer.Value : default(int);
+			}
+
+			if (e.OrderItemShipGroupAssociationKey == null)
+			{
+				if (e.IsPropertyOrderItemShipGroupAssociationKeyRemoved)
+				{
+					this.OrderItemShipGroupAssociationKey = default(string);
+				}
+			}
+			else
+			{
+				this.OrderItemShipGroupAssociationKey = e.OrderItemShipGroupAssociationKey;
 			}
 
 			if (e.Active == null)

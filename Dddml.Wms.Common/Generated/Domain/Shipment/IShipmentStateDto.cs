@@ -50,6 +50,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        bool? OnlyOneOrder
+        {
+            get;
+            set;
+        }
+
         string PicklistBinId
         {
             get;

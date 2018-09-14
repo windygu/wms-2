@@ -243,24 +243,6 @@ public class ShipmentResource {
     }
 
 
-    @PutMapping("{shipmentId}/_commands/Ship")
-    public void ship(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.Ship content) {
-        try {
-
-            ShipmentCommands.Ship cmd = content;//.toShip();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
     @PutMapping("{shipmentId}/_commands/ReceiveItem")
     public void receiveItem(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.ReceiveItem content) {
         try {
@@ -279,47 +261,11 @@ public class ShipmentResource {
     }
 
 
-    @PutMapping("{shipmentId}/_commands/AddItemAndReceipt")
-    public void addItemAndReceipt(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.AddItemAndReceipt content) {
-        try {
-
-            ShipmentCommands.AddItemAndReceipt cmd = content;//.toAddItemAndReceipt();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
     @PutMapping("{shipmentId}/_commands/IssueItem")
     public void issueItem(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.IssueItem content) {
         try {
 
             ShipmentCommands.IssueItem cmd = content;//.toIssueItem();
-            String idObj = shipmentId;
-            if (cmd.getShipmentId() == null) {
-                cmd.setShipmentId(idObj);
-            } else if (!cmd.getShipmentId().equals(idObj)) {
-                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", shipmentId, cmd.getShipmentId());
-            }
-            cmd.setRequesterId(SecurityContextUtil.getRequesterId());
-            shipmentApplicationService.when(cmd);
-
-        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
-    }
-
-
-    @PutMapping("{shipmentId}/_commands/AddItemAndIssuance")
-    public void addItemAndIssuance(@PathVariable("shipmentId") String shipmentId, @RequestBody ShipmentCommands.AddItemAndIssuance content) {
-        try {
-
-            ShipmentCommands.AddItemAndIssuance cmd = content;//.toAddItemAndIssuance();
             String idObj = shipmentId;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);

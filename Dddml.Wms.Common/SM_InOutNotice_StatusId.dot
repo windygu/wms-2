@@ -1,0 +1,7 @@
+digraph {
+ INITIAL -> NOTICE_CREATED [label=""];
+ NOTICE_CREATED -> NOTICE_APPROVED [label="Approve"];
+ NOTICE_APPROVED -> NOTICE_COMPLETED [label="Complete"];
+ NOTICE_CREATED -> NOTICE_REJECTED [label="Reject"];
+ NOTICE_CREATED -> NOTICE_CANCELLED [label="Cancel"];
+}

@@ -249,6 +249,20 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\hibernate\GenerateInOutNoticeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutNoticeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\hibernate\HibernateInOutNoticeEventStore.java">
+      <DependentUpon>GenerateInOutNoticeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\hibernate\HibernateInOutNoticeStateQueryRepository.java">
+      <DependentUpon>GenerateInOutNoticeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\hibernate\HibernateInOutNoticeStateRepository.java">
+      <DependentUpon>GenerateInOutNoticeDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1316,6 +1330,12 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptImageEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutNoticeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutNoticeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\generated\resources\script\AddStateIdForeignKeyConstraints.sql">
       <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
     </Content>
@@ -1432,6 +1452,8 @@
 .\InOutLineImageEvent.hbm.xml
 .\InOutLineImageState.hbm.xml
 .\InOutLineState.hbm.xml
+.\InOutNoticeEvent.hbm.xml
+.\InOutNoticeState.hbm.xml
 .\InOutState.hbm.xml
 .\InventoryItemEntryState.hbm.xml
 .\InventoryItemEvent.hbm.xml
@@ -2080,6 +2102,16 @@
 .\HibernateGoodIdentificationTypeEventStore.java
 .\HibernateGoodIdentificationTypeStateQueryRepository.java
 .\HibernateGoodIdentificationTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\hibernate\GenerateInOutNoticeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutNoticeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInOutNoticeDomainHibernate.txt
+.\HibernateInOutNoticeEventStore.java
+.\HibernateInOutNoticeStateQueryRepository.java
+.\HibernateInOutNoticeStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

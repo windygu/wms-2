@@ -46,6 +46,8 @@ public class CreatePOShipGroupInfo {
         createPOShipGroup.setOrderId("XXXXXX-XX");
         // 通知单号:
         createPOShipGroup.setShipGroupSeqId("" + 2018082702L);
+        //todo
+        /*
         // ////////////// 产品 Id： /////////////////
         createPOShipGroup.setProductId("21001");
         //产品名称：	 GI SEMI-TREATED FLUFF
@@ -60,6 +62,7 @@ public class CreatePOShipGroupInfo {
         createPOShipGroup.setNumberOfContainers(10);
         //每柜件数：
         createPOShipGroup.setNumberOfPakagesPerContainer(40);
+        */
         //联系人:
         createPOShipGroup.setContactPartyId("YangXx");//个人的 Id，如果没有，需要到 {baseUri}/People 中新建个人信息
         //入库时间:

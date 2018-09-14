@@ -124,6 +124,127 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
+		public virtual int? NumberOfPackages
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("NumberOfPackages"))
+                {
+                    return _state.NumberOfPackages;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.NumberOfPackages = value.Value;
+                }
+            }
+        }
+
+        int IOrderItemShipGroupAssociationStateProperties.NumberOfPackages
+        {
+            get 
+            {
+                return (this._state as IOrderItemShipGroupAssociationStateProperties).NumberOfPackages;
+            }
+            set 
+            {
+                (this._state as IOrderItemShipGroupAssociationStateProperties).NumberOfPackages = value;
+            }
+        }
+
+		public virtual int? NumberOfContainers
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("NumberOfContainers"))
+                {
+                    return _state.NumberOfContainers;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.NumberOfContainers = value.Value;
+                }
+            }
+        }
+
+        int IOrderItemShipGroupAssociationStateProperties.NumberOfContainers
+        {
+            get 
+            {
+                return (this._state as IOrderItemShipGroupAssociationStateProperties).NumberOfContainers;
+            }
+            set 
+            {
+                (this._state as IOrderItemShipGroupAssociationStateProperties).NumberOfContainers = value;
+            }
+        }
+
+		public virtual int? NumberOfPakagesPerContainer
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("NumberOfPakagesPerContainer"))
+                {
+                    return _state.NumberOfPakagesPerContainer;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.NumberOfPakagesPerContainer = value.Value;
+                }
+            }
+        }
+
+        int IOrderItemShipGroupAssociationStateProperties.NumberOfPakagesPerContainer
+        {
+            get 
+            {
+                return (this._state as IOrderItemShipGroupAssociationStateProperties).NumberOfPakagesPerContainer;
+            }
+            set 
+            {
+                (this._state as IOrderItemShipGroupAssociationStateProperties).NumberOfPakagesPerContainer = value;
+            }
+        }
+
+		public virtual string OrderItemShipGroupAssociationKey
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrderItemShipGroupAssociationKey"))
+                {
+                    return _state.OrderItemShipGroupAssociationKey;
+                }
+                return null;
+            }
+            set
+            {
+                _state.OrderItemShipGroupAssociationKey = value;
+            }
+        }
+
+        string IOrderItemShipGroupAssociationStateProperties.OrderItemShipGroupAssociationKey
+        {
+            get 
+            {
+                return (this._state as IOrderItemShipGroupAssociationStateProperties).OrderItemShipGroupAssociationKey;
+            }
+            set 
+            {
+                (this._state as IOrderItemShipGroupAssociationStateProperties).OrderItemShipGroupAssociationKey = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

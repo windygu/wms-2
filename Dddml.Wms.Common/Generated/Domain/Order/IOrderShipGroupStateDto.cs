@@ -81,24 +81,6 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
-        string ContactPartyId
-        {
-            get;
-            set;
-        }
-
-        string VehiclePlateNumber
-        {
-            get;
-            set;
-        }
-
-        string ShippingInstructions
-        {
-            get;
-            set;
-        }
-
         string MaySplit
         {
             get;
@@ -142,24 +124,6 @@ namespace Dddml.Wms.Domain.Order
         }
 
         long? PickwaveId
-        {
-            get;
-            set;
-        }
-
-        int? NumberOfPackages
-        {
-            get;
-            set;
-        }
-
-        int? NumberOfContainers
-        {
-            get;
-            set;
-        }
-
-        int? NumberOfPakagesPerContainer
         {
             get;
             set;

@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryShipGroupSeqId { get; set; }
 
+		public virtual bool OnlyOneOrder { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual string BolNumber { get; set; }

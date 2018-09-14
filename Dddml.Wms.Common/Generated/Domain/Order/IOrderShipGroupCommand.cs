@@ -46,12 +46,6 @@ namespace Dddml.Wms.Domain.Order
 
 		string TrackingNumber { get; set; }
 
-		string ContactPartyId { get; set; }
-
-		string VehiclePlateNumber { get; set; }
-
-		string ShippingInstructions { get; set; }
-
 		string MaySplit { get; set; }
 
 		string GiftMessage { get; set; }
@@ -67,12 +61,6 @@ namespace Dddml.Wms.Domain.Order
 		DateTime? EstimatedDeliveryDate { get; set; }
 
 		long? PickwaveId { get; set; }
-
-		int? NumberOfPackages { get; set; }
-
-		int? NumberOfContainers { get; set; }
-
-		int? NumberOfPakagesPerContainer { get; set; }
 
 		bool? Active { get; set; }
 
@@ -110,12 +98,6 @@ namespace Dddml.Wms.Domain.Order
 
 		bool IsPropertyTrackingNumberRemoved { get; set; }
 
-		bool IsPropertyContactPartyIdRemoved { get; set; }
-
-		bool IsPropertyVehiclePlateNumberRemoved { get; set; }
-
-		bool IsPropertyShippingInstructionsRemoved { get; set; }
-
 		bool IsPropertyMaySplitRemoved { get; set; }
 
 		bool IsPropertyGiftMessageRemoved { get; set; }
@@ -131,12 +113,6 @@ namespace Dddml.Wms.Domain.Order
 		bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
 
 		bool IsPropertyPickwaveIdRemoved { get; set; }
-
-		bool IsPropertyNumberOfPackagesRemoved { get; set; }
-
-		bool IsPropertyNumberOfContainersRemoved { get; set; }
-
-		bool IsPropertyNumberOfPakagesPerContainerRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

@@ -73,6 +73,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.PrimaryOrderId = state.PrimaryOrderId;
             cmd.PrimaryReturnId = state.PrimaryReturnId;
             cmd.PrimaryShipGroupSeqId = state.PrimaryShipGroupSeqId;
+            cmd.OnlyOneOrder = state.OnlyOneOrder;
             cmd.PicklistBinId = state.PicklistBinId;
             cmd.BolNumber = state.BolNumber;
             cmd.SealNumber = state.SealNumber;
@@ -173,6 +174,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.PrimaryOrderId = state.PrimaryOrderId;
             cmd.PrimaryReturnId = state.PrimaryReturnId;
             cmd.PrimaryShipGroupSeqId = state.PrimaryShipGroupSeqId;
+            cmd.OnlyOneOrder = state.OnlyOneOrder;
             cmd.PicklistBinId = state.PicklistBinId;
             cmd.BolNumber = state.BolNumber;
             cmd.SealNumber = state.SealNumber;

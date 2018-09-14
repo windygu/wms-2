@@ -36,6 +36,10 @@ public interface ShipmentState
 
     void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
 
+    Boolean getOnlyOneOrder();
+
+    void setOnlyOneOrder(Boolean onlyOneOrder);
+
     String getPicklistBinId();
 
     void setPicklistBinId(String picklistBinId);

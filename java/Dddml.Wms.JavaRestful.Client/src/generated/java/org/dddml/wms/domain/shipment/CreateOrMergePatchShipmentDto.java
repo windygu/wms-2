@@ -66,6 +66,21 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * Only One Order
+     */
+    private Boolean onlyOneOrder;
+
+    public Boolean getOnlyOneOrder()
+    {
+        return this.onlyOneOrder;
+    }
+
+    public void setOnlyOneOrder(Boolean onlyOneOrder)
+    {
+        this.onlyOneOrder = onlyOneOrder;
+    }
+
+    /**
      * Picklist Bin Id
      */
     private String picklistBinId;
@@ -564,6 +579,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed)
     {
         this.isPropertyPrimaryShipGroupSeqIdRemoved = removed;
+    }
+
+    private Boolean isPropertyOnlyOneOrderRemoved;
+
+    public Boolean getIsPropertyOnlyOneOrderRemoved()
+    {
+        return this.isPropertyOnlyOneOrderRemoved;
+    }
+
+    public void setIsPropertyOnlyOneOrderRemoved(Boolean removed)
+    {
+        this.isPropertyOnlyOneOrderRemoved = removed;
     }
 
     private Boolean isPropertyPicklistBinIdRemoved;

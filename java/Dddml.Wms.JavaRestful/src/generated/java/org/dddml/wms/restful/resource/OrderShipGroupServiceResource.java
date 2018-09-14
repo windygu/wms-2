@@ -44,6 +44,15 @@ public class OrderShipGroupServiceResource {
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
+    @PostMapping("UpdateOrderItemShipGroupAssociation")
+    public void updateOrderItemShipGroupAssociation(@RequestBody OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation requestContent)
+    {
+        try {
+        requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
+         orderShipGroupApplicationService.when(requestContent);
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
+    }
+
     @PostMapping("CreatePOShipment")
     public String createPOShipment(@RequestBody OrderShipGroupServiceCommands.CreatePOShipment requestContent)
     {
@@ -59,6 +68,15 @@ public class OrderShipGroupServiceResource {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
         return orderShipGroupApplicationService.when(requestContent);
+        } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
+    }
+
+    @PostMapping("Ship")
+    public void ship(@RequestBody OrderShipGroupServiceCommands.Ship requestContent)
+    {
+        try {
+        requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
+         orderShipGroupApplicationService.when(requestContent);
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 

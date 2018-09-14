@@ -34,6 +34,30 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        public virtual int? NumberOfPackages
+        {
+            get;
+            set;
+        }
+
+        public virtual int? NumberOfContainers
+        {
+            get;
+            set;
+        }
+
+        public virtual int? NumberOfPakagesPerContainer
+        {
+            get;
+            set;
+        }
+
+        public virtual string OrderItemShipGroupAssociationKey
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -88,6 +112,10 @@ namespace Dddml.Wms.Domain.Order
             state.OrderItemSeqId = this.OrderItemSeqId;
             state.Quantity = this.Quantity;
             state.CancelQuantity = this.CancelQuantity;
+            if (this.NumberOfPackages != null && this.NumberOfPackages.HasValue) { state.NumberOfPackages = this.NumberOfPackages.Value; }
+            if (this.NumberOfContainers != null && this.NumberOfContainers.HasValue) { state.NumberOfContainers = this.NumberOfContainers.Value; }
+            if (this.NumberOfPakagesPerContainer != null && this.NumberOfPakagesPerContainer.HasValue) { state.NumberOfPakagesPerContainer = this.NumberOfPakagesPerContainer.Value; }
+            state.OrderItemShipGroupAssociationKey = this.OrderItemShipGroupAssociationKey;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.OrderId = this.OrderId;

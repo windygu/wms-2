@@ -29,9 +29,6 @@ public final class OrderShipGroupMetadata {
             "contactMechId",
             "telecomContactMechId",
             "trackingNumber",
-            "contactPartyId",
-            "vehiclePlateNumber",
-            "shippingInstructions",
             "maySplit",
             "giftMessage",
             "isGift",
@@ -40,9 +37,6 @@ public final class OrderShipGroupMetadata {
             "estimatedShipDate",
             "estimatedDeliveryDate",
             "pickwaveId",
-            "numberOfPackages",
-            "numberOfContainers",
-            "numberOfPakagesPerContainer",
             "orderShipGroupStatusId",
             "version",
             "createdBy",
@@ -71,17 +65,11 @@ public final class OrderShipGroupMetadata {
             "String",
             "String",
             "String",
-            "String",
-            "String",
-            "String",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "Long",
-            "Integer",
-            "Integer",
-            "Integer",
             "String",
             "Long",
             "String",
@@ -129,12 +117,6 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("TelecomContactMechId", "telecomContactMechId");
         aliasMap.put("trackingNumber", "trackingNumber");
         aliasMap.put("TrackingNumber", "trackingNumber");
-        aliasMap.put("contactPartyId", "contactPartyId");
-        aliasMap.put("ContactPartyId", "contactPartyId");
-        aliasMap.put("vehiclePlateNumber", "vehiclePlateNumber");
-        aliasMap.put("VehiclePlateNumber", "vehiclePlateNumber");
-        aliasMap.put("shippingInstructions", "shippingInstructions");
-        aliasMap.put("ShippingInstructions", "shippingInstructions");
         aliasMap.put("maySplit", "maySplit");
         aliasMap.put("MaySplit", "maySplit");
         aliasMap.put("giftMessage", "giftMessage");
@@ -151,12 +133,6 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("EstimatedDeliveryDate", "estimatedDeliveryDate");
         aliasMap.put("pickwaveId", "pickwaveId");
         aliasMap.put("PickwaveId", "pickwaveId");
-        aliasMap.put("numberOfPackages", "numberOfPackages");
-        aliasMap.put("NumberOfPackages", "numberOfPackages");
-        aliasMap.put("numberOfContainers", "numberOfContainers");
-        aliasMap.put("NumberOfContainers", "numberOfContainers");
-        aliasMap.put("numberOfPakagesPerContainer", "numberOfPakagesPerContainer");
-        aliasMap.put("NumberOfPakagesPerContainer", "numberOfPakagesPerContainer");
         aliasMap.put("orderShipGroupStatusId", "orderShipGroupStatusId");
         aliasMap.put("OrderShipGroupStatusId", "orderShipGroupStatusId");
         aliasMap.put("version", "version");

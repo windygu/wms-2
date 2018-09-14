@@ -257,6 +257,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.PrimaryShipGroupSeqId = e.PrimaryShipGroupSeqId;
 
+            this.OnlyOneOrder = (e.OnlyOneOrder != null && e.OnlyOneOrder.HasValue) ? e.OnlyOneOrder.Value : default(bool);
+
 			this.PicklistBinId = e.PicklistBinId;
 
 			this.BolNumber = e.BolNumber;
@@ -396,6 +398,18 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.PrimaryShipGroupSeqId = e.PrimaryShipGroupSeqId;
+			}
+
+			if (e.OnlyOneOrder == null)
+			{
+				if (e.IsPropertyOnlyOneOrderRemoved)
+				{
+					this.OnlyOneOrder = default(bool);
+				}
+			}
+			else
+			{
+				this.OnlyOneOrder = (e.OnlyOneOrder != null && e.OnlyOneOrder.HasValue) ? e.OnlyOneOrder.Value : default(bool);
 			}
 
 			if (e.PicklistBinId == null)

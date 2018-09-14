@@ -67,6 +67,54 @@ public abstract class AbstractOrderItemShipGroupAssociationState implements Orde
         this.cancelQuantity = cancelQuantity;
     }
 
+    private Integer numberOfPackages;
+
+    public Integer getNumberOfPackages()
+    {
+        return this.numberOfPackages;
+    }
+
+    public void setNumberOfPackages(Integer numberOfPackages)
+    {
+        this.numberOfPackages = numberOfPackages;
+    }
+
+    private Integer numberOfContainers;
+
+    public Integer getNumberOfContainers()
+    {
+        return this.numberOfContainers;
+    }
+
+    public void setNumberOfContainers(Integer numberOfContainers)
+    {
+        this.numberOfContainers = numberOfContainers;
+    }
+
+    private Integer numberOfPakagesPerContainer;
+
+    public Integer getNumberOfPakagesPerContainer()
+    {
+        return this.numberOfPakagesPerContainer;
+    }
+
+    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
+    {
+        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
+    }
+
+    private String orderItemShipGroupAssociationKey;
+
+    public String getOrderItemShipGroupAssociationKey()
+    {
+        return this.orderItemShipGroupAssociationKey;
+    }
+
+    public void setOrderItemShipGroupAssociationKey(String orderItemShipGroupAssociationKey)
+    {
+        this.orderItemShipGroupAssociationKey = orderItemShipGroupAssociationKey;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -206,6 +254,10 @@ public abstract class AbstractOrderItemShipGroupAssociationState implements Orde
 
         this.setQuantity(e.getQuantity());
         this.setCancelQuantity(e.getCancelQuantity());
+        this.setNumberOfPackages(e.getNumberOfPackages());
+        this.setNumberOfContainers(e.getNumberOfContainers());
+        this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
+        this.setOrderItemShipGroupAssociationKey(e.getOrderItemShipGroupAssociationKey());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -240,6 +292,50 @@ public abstract class AbstractOrderItemShipGroupAssociationState implements Orde
         else
         {
             this.setCancelQuantity(e.getCancelQuantity());
+        }
+        if (e.getNumberOfPackages() == null)
+        {
+            if (e.getIsPropertyNumberOfPackagesRemoved() != null && e.getIsPropertyNumberOfPackagesRemoved())
+            {
+                this.setNumberOfPackages(null);
+            }
+        }
+        else
+        {
+            this.setNumberOfPackages(e.getNumberOfPackages());
+        }
+        if (e.getNumberOfContainers() == null)
+        {
+            if (e.getIsPropertyNumberOfContainersRemoved() != null && e.getIsPropertyNumberOfContainersRemoved())
+            {
+                this.setNumberOfContainers(null);
+            }
+        }
+        else
+        {
+            this.setNumberOfContainers(e.getNumberOfContainers());
+        }
+        if (e.getNumberOfPakagesPerContainer() == null)
+        {
+            if (e.getIsPropertyNumberOfPakagesPerContainerRemoved() != null && e.getIsPropertyNumberOfPakagesPerContainerRemoved())
+            {
+                this.setNumberOfPakagesPerContainer(null);
+            }
+        }
+        else
+        {
+            this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
+        }
+        if (e.getOrderItemShipGroupAssociationKey() == null)
+        {
+            if (e.getIsPropertyOrderItemShipGroupAssociationKeyRemoved() != null && e.getIsPropertyOrderItemShipGroupAssociationKeyRemoved())
+            {
+                this.setOrderItemShipGroupAssociationKey(null);
+            }
+        }
+        else
+        {
+            this.setOrderItemShipGroupAssociationKey(e.getOrderItemShipGroupAssociationKey());
         }
         if (e.getActive() == null)
         {

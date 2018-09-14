@@ -622,9 +622,6 @@ namespace Dddml.Wms.Domain.Order
             e.ContactMechId = c.ContactMechId;
             e.TelecomContactMechId = c.TelecomContactMechId;
             e.TrackingNumber = c.TrackingNumber;
-            e.ContactPartyId = c.ContactPartyId;
-            e.VehiclePlateNumber = c.VehiclePlateNumber;
-            e.ShippingInstructions = c.ShippingInstructions;
             e.MaySplit = c.MaySplit;
             e.GiftMessage = c.GiftMessage;
             e.IsGift = c.IsGift;
@@ -633,9 +630,6 @@ namespace Dddml.Wms.Domain.Order
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
             e.PickwaveId = c.PickwaveId;
-            e.NumberOfPackages = c.NumberOfPackages;
-            e.NumberOfContainers = c.NumberOfContainers;
-            e.NumberOfPakagesPerContainer = c.NumberOfPakagesPerContainer;
             NewOrderShipGroupOrderShipGroupActionCommandAndExecute(c, s, e);
             e.Active = c.Active;
 
@@ -673,9 +667,6 @@ namespace Dddml.Wms.Domain.Order
             e.ContactMechId = c.ContactMechId;
             e.TelecomContactMechId = c.TelecomContactMechId;
             e.TrackingNumber = c.TrackingNumber;
-            e.ContactPartyId = c.ContactPartyId;
-            e.VehiclePlateNumber = c.VehiclePlateNumber;
-            e.ShippingInstructions = c.ShippingInstructions;
             e.MaySplit = c.MaySplit;
             e.GiftMessage = c.GiftMessage;
             e.IsGift = c.IsGift;
@@ -684,9 +675,6 @@ namespace Dddml.Wms.Domain.Order
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
             e.PickwaveId = c.PickwaveId;
-            e.NumberOfPackages = c.NumberOfPackages;
-            e.NumberOfContainers = c.NumberOfContainers;
-            e.NumberOfPakagesPerContainer = c.NumberOfPakagesPerContainer;
             e.Active = c.Active;
             e.IsPropertyShipmentMethodTypeIdRemoved = c.IsPropertyShipmentMethodTypeIdRemoved;
             e.IsPropertySupplierPartyIdRemoved = c.IsPropertySupplierPartyIdRemoved;
@@ -698,9 +686,6 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyContactMechIdRemoved = c.IsPropertyContactMechIdRemoved;
             e.IsPropertyTelecomContactMechIdRemoved = c.IsPropertyTelecomContactMechIdRemoved;
             e.IsPropertyTrackingNumberRemoved = c.IsPropertyTrackingNumberRemoved;
-            e.IsPropertyContactPartyIdRemoved = c.IsPropertyContactPartyIdRemoved;
-            e.IsPropertyVehiclePlateNumberRemoved = c.IsPropertyVehiclePlateNumberRemoved;
-            e.IsPropertyShippingInstructionsRemoved = c.IsPropertyShippingInstructionsRemoved;
             e.IsPropertyMaySplitRemoved = c.IsPropertyMaySplitRemoved;
             e.IsPropertyGiftMessageRemoved = c.IsPropertyGiftMessageRemoved;
             e.IsPropertyIsGiftRemoved = c.IsPropertyIsGiftRemoved;
@@ -709,9 +694,6 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
             e.IsPropertyEstimatedDeliveryDateRemoved = c.IsPropertyEstimatedDeliveryDateRemoved;
             e.IsPropertyPickwaveIdRemoved = c.IsPropertyPickwaveIdRemoved;
-            e.IsPropertyNumberOfPackagesRemoved = c.IsPropertyNumberOfPackagesRemoved;
-            e.IsPropertyNumberOfContainersRemoved = c.IsPropertyNumberOfContainersRemoved;
-            e.IsPropertyNumberOfPakagesPerContainerRemoved = c.IsPropertyNumberOfPakagesPerContainerRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -777,6 +759,10 @@ namespace Dddml.Wms.Domain.Order
 
             e.Quantity = c.Quantity;
             e.CancelQuantity = c.CancelQuantity;
+            e.NumberOfPackages = c.NumberOfPackages;
+            e.NumberOfContainers = c.NumberOfContainers;
+            e.NumberOfPakagesPerContainer = c.NumberOfPakagesPerContainer;
+            e.OrderItemShipGroupAssociationKey = c.OrderItemShipGroupAssociationKey;
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -796,9 +782,17 @@ namespace Dddml.Wms.Domain.Order
 
             e.Quantity = c.Quantity;
             e.CancelQuantity = c.CancelQuantity;
+            e.NumberOfPackages = c.NumberOfPackages;
+            e.NumberOfContainers = c.NumberOfContainers;
+            e.NumberOfPakagesPerContainer = c.NumberOfPakagesPerContainer;
+            e.OrderItemShipGroupAssociationKey = c.OrderItemShipGroupAssociationKey;
             e.Active = c.Active;
             e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
             e.IsPropertyCancelQuantityRemoved = c.IsPropertyCancelQuantityRemoved;
+            e.IsPropertyNumberOfPackagesRemoved = c.IsPropertyNumberOfPackagesRemoved;
+            e.IsPropertyNumberOfContainersRemoved = c.IsPropertyNumberOfContainersRemoved;
+            e.IsPropertyNumberOfPakagesPerContainerRemoved = c.IsPropertyNumberOfPakagesPerContainerRemoved;
+            e.IsPropertyOrderItemShipGroupAssociationKeyRemoved = c.IsPropertyOrderItemShipGroupAssociationKeyRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;

@@ -17,9 +17,13 @@ namespace Dddml.Wms.Domain.Services
 
 		void When(OrderShipGroupServiceCommands.CreateSOShipGroup c);
 
+		void When(OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation c);
+
 		string When(OrderShipGroupServiceCommands.CreatePOShipment c);
 
 		string When(OrderShipGroupServiceCommands.CreateSOShipment c);
+
+		void When(OrderShipGroupServiceCommands.Ship c);
 
 	}
 

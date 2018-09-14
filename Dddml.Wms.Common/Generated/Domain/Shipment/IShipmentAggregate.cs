@@ -24,17 +24,11 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void MergePatch (IMergePatchShipment c);
 
-		void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, string bolNumber, string vehicleId, string sealNumber, string externalOrderNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId);
+		void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, bool onlyOneOrder, string bolNumber, string vehicleId, string sealNumber, string externalOrderNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId);
 
-		void Ship(long version, string commandId, string requesterId);
+		void ReceiveItem(string receiptSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string locatorId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId);
 
-		void ReceiveItem(string shipmentItemSeqId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId);
-
-		void AddItemAndReceipt(string receiptSeqId, string productId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId);
-
-		void IssueItem(string shipmentItemSeqId, string orderId, string orderItemSeqId, string shipGroupSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId);
-
-		void AddItemAndIssuance(string orderId, string orderItemSeqId, string shipGroupSeqId, string itemIssuanceSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId);
+		void IssueItem(string itemIssuanceSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string shipGroupSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId);
 
 		void ConfirmAllItemsReceived(string destinationLocatorId, long version, string commandId, string requesterId);
 

@@ -46,6 +46,10 @@ namespace Dddml.Wms.Domain.Order
             dto.CommandId = e.CommandId;
             dto.Quantity = e.Quantity;
             dto.CancelQuantity = e.CancelQuantity;
+            dto.NumberOfPackages = e.NumberOfPackages;
+            dto.NumberOfContainers = e.NumberOfContainers;
+            dto.NumberOfPakagesPerContainer = e.NumberOfPakagesPerContainer;
+            dto.OrderItemShipGroupAssociationKey = e.OrderItemShipGroupAssociationKey;
             dto.Active = e.Active;
             return dto;
         }
@@ -60,9 +64,17 @@ namespace Dddml.Wms.Domain.Order
             dto.CommandId = e.CommandId;
             dto.Quantity = e.Quantity;
             dto.CancelQuantity = e.CancelQuantity;
+            dto.NumberOfPackages = e.NumberOfPackages;
+            dto.NumberOfContainers = e.NumberOfContainers;
+            dto.NumberOfPakagesPerContainer = e.NumberOfPakagesPerContainer;
+            dto.OrderItemShipGroupAssociationKey = e.OrderItemShipGroupAssociationKey;
             dto.Active = e.Active;
             dto.IsPropertyQuantityRemoved = e.IsPropertyQuantityRemoved;
             dto.IsPropertyCancelQuantityRemoved = e.IsPropertyCancelQuantityRemoved;
+            dto.IsPropertyNumberOfPackagesRemoved = e.IsPropertyNumberOfPackagesRemoved;
+            dto.IsPropertyNumberOfContainersRemoved = e.IsPropertyNumberOfContainersRemoved;
+            dto.IsPropertyNumberOfPakagesPerContainerRemoved = e.IsPropertyNumberOfPakagesPerContainerRemoved;
+            dto.IsPropertyOrderItemShipGroupAssociationKeyRemoved = e.IsPropertyOrderItemShipGroupAssociationKeyRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

@@ -54,27 +54,15 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
     }
 
     public void when(ShipmentCommands.Import c) {
-        update(c, ar -> ar._import(c.getShipmentTypeId(), c.getPrimaryOrderId(), c.getPrimaryReturnId(), c.getBolNumber(), c.getVehicleId(), c.getSealNumber(), c.getExternalOrderNumber(), c.getCarrier(), c.getDateShipped(), c.getEstimatedReadyDate(), c.getEstimatedShipDate(), c.getEstimatedArrivalDate(), c.getLatestCancelDate(), c.getEstimatedShipCost(), c.getCurrencyUomId(), c.getHandlingInstructions(), c.getOriginFacilityId(), c.getDestinationFacilityId(), c.getPartyIdTo(), c.getPartyIdFrom(), c.getAdditionalShippingCharge(), c.getAddtlShippingChargeDesc(), c.getShipmentItems(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
-    }
-
-    public void when(ShipmentCommands.Ship c) {
-        update(c, ar -> ar.ship(c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar._import(c.getShipmentTypeId(), c.getPrimaryOrderId(), c.getPrimaryReturnId(), c.getOnlyOneOrder(), c.getBolNumber(), c.getVehicleId(), c.getSealNumber(), c.getExternalOrderNumber(), c.getCarrier(), c.getDateShipped(), c.getEstimatedReadyDate(), c.getEstimatedShipDate(), c.getEstimatedArrivalDate(), c.getLatestCancelDate(), c.getEstimatedShipCost(), c.getCurrencyUomId(), c.getHandlingInstructions(), c.getOriginFacilityId(), c.getDestinationFacilityId(), c.getPartyIdTo(), c.getPartyIdFrom(), c.getAdditionalShippingCharge(), c.getAddtlShippingChargeDesc(), c.getShipmentItems(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(ShipmentCommands.ReceiveItem c) {
-        update(c, ar -> ar.receiveItem(c.getShipmentItemSeqId(), c.getAttributeSetInstance(), c.getRejectionReasonId(), c.getDamageStatusIds(), c.getDamageReasonId(), c.getAcceptedQuantity(), c.getRejectedQuantity(), c.getDamagedQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
-    }
-
-    public void when(ShipmentCommands.AddItemAndReceipt c) {
-        update(c, ar -> ar.addItemAndReceipt(c.getReceiptSeqId(), c.getProductId(), c.getAttributeSetInstance(), c.getRejectionReasonId(), c.getDamageStatusIds(), c.getDamageReasonId(), c.getAcceptedQuantity(), c.getRejectedQuantity(), c.getDamagedQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.receiveItem(c.getReceiptSeqId(), c.getShipmentItemSeqId(), c.getOrderId(), c.getOrderItemSeqId(), c.getLocatorId(), c.getAttributeSetInstance(), c.getRejectionReasonId(), c.getDamageStatusIds(), c.getDamageReasonId(), c.getAcceptedQuantity(), c.getRejectedQuantity(), c.getDamagedQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(ShipmentCommands.IssueItem c) {
-        update(c, ar -> ar.issueItem(c.getShipmentItemSeqId(), c.getOrderId(), c.getOrderItemSeqId(), c.getShipGroupSeqId(), c.getProductId(), c.getLocatorId(), c.getAttributeSetInstance(), c.getQuantity(), c.getCancelQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
-    }
-
-    public void when(ShipmentCommands.AddItemAndIssuance c) {
-        update(c, ar -> ar.addItemAndIssuance(c.getOrderId(), c.getOrderItemSeqId(), c.getShipGroupSeqId(), c.getItemIssuanceSeqId(), c.getProductId(), c.getLocatorId(), c.getAttributeSetInstance(), c.getQuantity(), c.getCancelQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.issueItem(c.getItemIssuanceSeqId(), c.getShipmentItemSeqId(), c.getOrderId(), c.getOrderItemSeqId(), c.getShipGroupSeqId(), c.getProductId(), c.getLocatorId(), c.getAttributeSetInstance(), c.getQuantity(), c.getCancelQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(ShipmentCommands.ConfirmAllItemsReceived c) {

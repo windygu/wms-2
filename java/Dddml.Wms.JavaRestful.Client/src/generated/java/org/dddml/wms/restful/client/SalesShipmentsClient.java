@@ -109,24 +109,12 @@ public interface SalesShipmentsClient {
     Call<String> _import(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ImportRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("SalesShipments/{shipmentId}/_commands/Ship")
-    Call<String> ship(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ShipRequestContent content);
-
-    @Headers("Accept: application/json")
     @PUT("SalesShipments/{shipmentId}/_commands/ReceiveItem")
     Call<String> receiveItem(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ReceiveItemRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("SalesShipments/{shipmentId}/_commands/AddItemAndReceipt")
-    Call<String> addItemAndReceipt(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.AddItemAndReceiptRequestContent content);
-
-    @Headers("Accept: application/json")
     @PUT("SalesShipments/{shipmentId}/_commands/IssueItem")
     Call<String> issueItem(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.IssueItemRequestContent content);
-
-    @Headers("Accept: application/json")
-    @PUT("SalesShipments/{shipmentId}/_commands/AddItemAndIssuance")
-    Call<String> addItemAndIssuance(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.AddItemAndIssuanceRequestContent content);
 
     @Headers("Accept: application/json")
     @PUT("SalesShipments/{shipmentId}/_commands/ConfirmAllItemsReceived")

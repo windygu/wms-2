@@ -52,6 +52,10 @@ public interface ShipmentCommand extends Command
 
         void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
 
+        Boolean getOnlyOneOrder();
+
+        void setOnlyOneOrder(Boolean onlyOneOrder);
+
         String getPicklistBinId();
 
         void setPicklistBinId(String picklistBinId);
@@ -199,6 +203,10 @@ public interface ShipmentCommand extends Command
         Boolean getIsPropertyPrimaryShipGroupSeqIdRemoved();
 
         void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyOnlyOneOrderRemoved();
+
+        void setIsPropertyOnlyOneOrderRemoved(Boolean removed);
 
         Boolean getIsPropertyPicklistBinIdRemoved();
 

@@ -51,6 +51,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual bool? OnlyOneOrder
+        {
+            get;
+            set;
+        }
+
         public virtual string PicklistBinId
         {
             get;
@@ -300,6 +306,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.PrimaryOrderId = this.PrimaryOrderId;
             state.PrimaryReturnId = this.PrimaryReturnId;
             state.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
+            if (this.OnlyOneOrder != null && this.OnlyOneOrder.HasValue) { state.OnlyOneOrder = this.OnlyOneOrder.Value; }
             state.PicklistBinId = this.PicklistBinId;
             state.BolNumber = this.BolNumber;
             state.SealNumber = this.SealNumber;
@@ -349,6 +356,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.PrimaryOrderId = this.PrimaryOrderId;
             state.PrimaryReturnId = this.PrimaryReturnId;
             state.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
+            if (this.OnlyOneOrder != null && this.OnlyOneOrder.HasValue) { state.OnlyOneOrder = this.OnlyOneOrder.Value; }
             state.PicklistBinId = this.PicklistBinId;
             state.BolNumber = this.BolNumber;
             state.SealNumber = this.SealNumber;
@@ -398,6 +406,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.PrimaryOrderId = this.PrimaryOrderId;
             state.PrimaryReturnId = this.PrimaryReturnId;
             state.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
+            if (this.OnlyOneOrder != null && this.OnlyOneOrder.HasValue) { state.OnlyOneOrder = this.OnlyOneOrder.Value; }
             state.PicklistBinId = this.PicklistBinId;
             state.BolNumber = this.BolNumber;
             state.SealNumber = this.SealNumber;

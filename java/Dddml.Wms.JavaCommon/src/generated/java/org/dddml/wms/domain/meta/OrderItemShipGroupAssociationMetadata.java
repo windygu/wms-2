@@ -21,6 +21,10 @@ public final class OrderItemShipGroupAssociationMetadata {
             "orderItemSeqId",
             "quantity",
             "cancelQuantity",
+            "numberOfPackages",
+            "numberOfContainers",
+            "numberOfPakagesPerContainer",
+            "orderItemShipGroupAssociationKey",
             "version",
             "createdBy",
             "createdAt",
@@ -39,6 +43,10 @@ public final class OrderItemShipGroupAssociationMetadata {
             "String",
             "java.math.BigDecimal",
             "java.math.BigDecimal",
+            "Integer",
+            "Integer",
+            "Integer",
+            "String",
             "Long",
             "String",
             "Date",
@@ -71,6 +79,14 @@ public final class OrderItemShipGroupAssociationMetadata {
         aliasMap.put("Quantity", "quantity");
         aliasMap.put("cancelQuantity", "cancelQuantity");
         aliasMap.put("CancelQuantity", "cancelQuantity");
+        aliasMap.put("numberOfPackages", "numberOfPackages");
+        aliasMap.put("NumberOfPackages", "numberOfPackages");
+        aliasMap.put("numberOfContainers", "numberOfContainers");
+        aliasMap.put("NumberOfContainers", "numberOfContainers");
+        aliasMap.put("numberOfPakagesPerContainer", "numberOfPakagesPerContainer");
+        aliasMap.put("NumberOfPakagesPerContainer", "numberOfPakagesPerContainer");
+        aliasMap.put("orderItemShipGroupAssociationKey", "orderItemShipGroupAssociationKey");
+        aliasMap.put("OrderItemShipGroupAssociationKey", "orderItemShipGroupAssociationKey");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

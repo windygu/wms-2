@@ -211,6 +211,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryShipGroupSeqId { get; set; }
 
+		public virtual bool? OnlyOneOrder { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual string BolNumber { get; set; }
@@ -520,6 +522,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyPrimaryReturnIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
+
+		public virtual bool IsPropertyOnlyOneOrderRemoved { get; set; }
 
 		public virtual bool IsPropertyPicklistBinIdRemoved { get; set; }
 

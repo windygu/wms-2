@@ -1,0 +1,79 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inoutnotice">
+  
+  <class name="AbstractInOutNoticeEvent" table="InOutNoticeEvents" mutable="false" abstract="true">
+
+	<composite-id name="inOutNoticeEventId" class="org.dddml.wms.domain.inoutnotice.InOutNoticeEventId">
+		<key-property name="inOutNoticeId" ><column name="InOutNoticeId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+        <subclass name="AbstractInOutNoticeEvent$AbstractInOutNoticeStateEvent" abstract="true">
+
+	<property name="warehouseId" ><column name="WarehouseId" sql-type="VARCHAR(20)" /></property>
+	<property name="inOutNoticeType" ></property>
+	<property name="telecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
+	<property name="trackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
+	<property name="contactPartyId" ></property>
+	<property name="vehiclePlateNumber" ><column name="VehiclePlateNumber" sql-type="VARCHAR(255)" /></property>
+	<property name="shippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
+	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
+	<property name="estimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="active" ></property>
+
+    <subclass name="AbstractInOutNoticeEvent$SimpleInOutNoticeStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractInOutNoticeEvent$SimpleInOutNoticeStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyWarehouseIdRemoved" column="IsPropertyWarehouseIdRemoved"/>
+
+        <property name="isPropertyInOutNoticeTypeRemoved" column="IsPropertyInOutNoticeTypeRemoved"/>
+
+        <property name="isPropertyTelecomContactMechIdRemoved" column="IsPropertyTelecomContactMechIdRemoved"/>
+
+        <property name="isPropertyTrackingNumberRemoved" column="IsPropertyTrackingNumberRemoved"/>
+
+        <property name="isPropertyContactPartyIdRemoved" column="IsPropertyContactPartyIdRemoved"/>
+
+        <property name="isPropertyVehiclePlateNumberRemoved" column="IsPropertyVehiclePlateNumberRemoved"/>
+
+        <property name="isPropertyShippingInstructionsRemoved" column="IsPropertyShippingInstructionsRemoved"/>
+
+        <property name="isPropertyEstimatedShipDateRemoved" column="IsPropertyEstimatedShipDateRemoved"/>
+
+        <property name="isPropertyEstimatedDeliveryDateRemoved" column="IsPropertyEstimatedDeliveryDateRemoved"/>
+
+        <property name="isPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractInOutNoticeEvent$SimpleInOutNoticeStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+        </subclass>
+
+  </class>
+  
+</hibernate-mapping>

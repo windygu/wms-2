@@ -46,6 +46,46 @@ public class OrderItemShipGroupAssociationStateEventDto extends AbstractEvent
         this.cancelQuantity = cancelQuantity;
     }
 
+    private Integer numberOfPackages;
+
+    public Integer getNumberOfPackages() {
+        return this.numberOfPackages;
+    }
+
+    public void setNumberOfPackages(Integer numberOfPackages) {
+        this.numberOfPackages = numberOfPackages;
+    }
+
+    private Integer numberOfContainers;
+
+    public Integer getNumberOfContainers() {
+        return this.numberOfContainers;
+    }
+
+    public void setNumberOfContainers(Integer numberOfContainers) {
+        this.numberOfContainers = numberOfContainers;
+    }
+
+    private Integer numberOfPakagesPerContainer;
+
+    public Integer getNumberOfPakagesPerContainer() {
+        return this.numberOfPakagesPerContainer;
+    }
+
+    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer) {
+        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
+    }
+
+    private String orderItemShipGroupAssociationKey;
+
+    public String getOrderItemShipGroupAssociationKey() {
+        return this.orderItemShipGroupAssociationKey;
+    }
+
+    public void setOrderItemShipGroupAssociationKey(String orderItemShipGroupAssociationKey) {
+        this.orderItemShipGroupAssociationKey = orderItemShipGroupAssociationKey;
+    }
+
     private Boolean active;
 
     public Boolean getActive() {
@@ -104,6 +144,46 @@ public class OrderItemShipGroupAssociationStateEventDto extends AbstractEvent
 
     public void setIsPropertyCancelQuantityRemoved(Boolean removed) {
         this.isPropertyCancelQuantityRemoved = removed;
+    }
+
+    private Boolean isPropertyNumberOfPackagesRemoved;
+
+    public Boolean getIsPropertyNumberOfPackagesRemoved() {
+        return this.isPropertyNumberOfPackagesRemoved;
+    }
+
+    public void setIsPropertyNumberOfPackagesRemoved(Boolean removed) {
+        this.isPropertyNumberOfPackagesRemoved = removed;
+    }
+
+    private Boolean isPropertyNumberOfContainersRemoved;
+
+    public Boolean getIsPropertyNumberOfContainersRemoved() {
+        return this.isPropertyNumberOfContainersRemoved;
+    }
+
+    public void setIsPropertyNumberOfContainersRemoved(Boolean removed) {
+        this.isPropertyNumberOfContainersRemoved = removed;
+    }
+
+    private Boolean isPropertyNumberOfPakagesPerContainerRemoved;
+
+    public Boolean getIsPropertyNumberOfPakagesPerContainerRemoved() {
+        return this.isPropertyNumberOfPakagesPerContainerRemoved;
+    }
+
+    public void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed) {
+        this.isPropertyNumberOfPakagesPerContainerRemoved = removed;
+    }
+
+    private Boolean isPropertyOrderItemShipGroupAssociationKeyRemoved;
+
+    public Boolean getIsPropertyOrderItemShipGroupAssociationKeyRemoved() {
+        return this.isPropertyOrderItemShipGroupAssociationKeyRemoved;
+    }
+
+    public void setIsPropertyOrderItemShipGroupAssociationKeyRemoved(Boolean removed) {
+        this.isPropertyOrderItemShipGroupAssociationKeyRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

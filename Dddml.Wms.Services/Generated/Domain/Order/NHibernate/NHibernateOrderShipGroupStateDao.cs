@@ -25,7 +25,7 @@ namespace Dddml.Wms.Domain.Order.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "DestinationFacilityId", "ContactMechId", "TelecomContactMechId", "TrackingNumber", "ContactPartyId", "VehiclePlateNumber", "ShippingInstructions", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "EstimatedShipDate", "EstimatedDeliveryDate", "PickwaveId", "NumberOfPackages", "NumberOfContainers", "NumberOfPakagesPerContainer", "OrderShipGroupStatusId", "OrderItemShipGroupAssociations", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "DestinationFacilityId", "ContactMechId", "TelecomContactMechId", "TrackingNumber", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "EstimatedShipDate", "EstimatedDeliveryDate", "PickwaveId", "OrderShipGroupStatusId", "OrderItemShipGroupAssociations", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

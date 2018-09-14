@@ -166,25 +166,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{id}/_commands/Ship")]
-        [HttpPut][SetRequesterId]
-        public void Ship(string id, [FromBody]ShipmentCommandDtos.ShipRequestContent content)
-        {
-          try {
-            var cmd = content.ToShip();
-            var idObj = id;
-            if (cmd.ShipmentId == null)
-            {
-                cmd.ShipmentId = idObj;
-            }
-            else if (!cmd.ShipmentId.Equals(idObj))
-            {
-                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
-            }
-            _shipmentApplicationService.When(cmd);
-          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
         [Route("{id}/_commands/ReceiveItem")]
         [HttpPut][SetRequesterId]
         public void ReceiveItem(string id, [FromBody]ShipmentCommandDtos.ReceiveItemRequestContent content)
@@ -204,50 +185,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{id}/_commands/AddItemAndReceipt")]
-        [HttpPut][SetRequesterId]
-        public void AddItemAndReceipt(string id, [FromBody]ShipmentCommandDtos.AddItemAndReceiptRequestContent content)
-        {
-          try {
-            var cmd = content.ToAddItemAndReceipt();
-            var idObj = id;
-            if (cmd.ShipmentId == null)
-            {
-                cmd.ShipmentId = idObj;
-            }
-            else if (!cmd.ShipmentId.Equals(idObj))
-            {
-                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
-            }
-            _shipmentApplicationService.When(cmd);
-          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
         [Route("{id}/_commands/IssueItem")]
         [HttpPut][SetRequesterId]
         public void IssueItem(string id, [FromBody]ShipmentCommandDtos.IssueItemRequestContent content)
         {
           try {
             var cmd = content.ToIssueItem();
-            var idObj = id;
-            if (cmd.ShipmentId == null)
-            {
-                cmd.ShipmentId = idObj;
-            }
-            else if (!cmd.ShipmentId.Equals(idObj))
-            {
-                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
-            }
-            _shipmentApplicationService.When(cmd);
-          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
-        [Route("{id}/_commands/AddItemAndIssuance")]
-        [HttpPut][SetRequesterId]
-        public void AddItemAndIssuance(string id, [FromBody]ShipmentCommandDtos.AddItemAndIssuanceRequestContent content)
-        {
-          try {
-            var cmd = content.ToAddItemAndIssuance();
             var idObj = id;
             if (cmd.ShipmentId == null)
             {

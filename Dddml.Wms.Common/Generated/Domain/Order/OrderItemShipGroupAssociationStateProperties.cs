@@ -21,6 +21,14 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual decimal? CancelQuantity { get; set; }
 
+		public virtual int NumberOfPackages { get; set; }
+
+		public virtual int NumberOfContainers { get; set; }
+
+		public virtual int NumberOfPakagesPerContainer { get; set; }
+
+		public virtual string OrderItemShipGroupAssociationKey { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inoutnotice">
+  
+  <class name="org.dddml.wms.domain.inoutnotice.AbstractInOutNoticeState$SimpleInOutNoticeState" table="InOutNotices">
+
+	<id name="inOutNoticeId" length="20" column="InOutNoticeId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="warehouseId" ><column name="WarehouseId" sql-type="VARCHAR(20)" /></property>
+	<property name="inOutNoticeType" ></property>
+	<property name="telecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
+	<property name="trackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
+	<property name="contactPartyId" ></property>
+	<property name="vehiclePlateNumber" ><column name="VehiclePlateNumber" sql-type="VARCHAR(255)" /></property>
+	<property name="shippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
+	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
+	<property name="estimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

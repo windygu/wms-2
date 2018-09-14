@@ -41,6 +41,14 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual decimal? CancelQuantity { get; set; }
 
+		public virtual int? NumberOfPackages { get; set; }
+
+		public virtual int? NumberOfContainers { get; set; }
+
+		public virtual int? NumberOfPakagesPerContainer { get; set; }
+
+		public virtual string OrderItemShipGroupAssociationKey { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -109,6 +117,82 @@ namespace Dddml.Wms.Domain.Order
             set 
             {
                 this.IsPropertyCancelQuantityRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyNumberOfPackagesRemoved { get; set; }
+
+        bool IOrderItemShipGroupAssociationStateMergePatched.IsPropertyNumberOfPackagesRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyNumberOfPackagesRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyNumberOfPackagesRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyNumberOfContainersRemoved { get; set; }
+
+        bool IOrderItemShipGroupAssociationStateMergePatched.IsPropertyNumberOfContainersRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyNumberOfContainersRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyNumberOfContainersRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyNumberOfPakagesPerContainerRemoved { get; set; }
+
+        bool IOrderItemShipGroupAssociationStateMergePatched.IsPropertyNumberOfPakagesPerContainerRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyNumberOfPakagesPerContainerRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyNumberOfPakagesPerContainerRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyOrderItemShipGroupAssociationKeyRemoved { get; set; }
+
+        bool IOrderItemShipGroupAssociationStateMergePatched.IsPropertyOrderItemShipGroupAssociationKeyRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyOrderItemShipGroupAssociationKeyRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyOrderItemShipGroupAssociationKeyRemoved = value;
             }
         }
 

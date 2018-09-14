@@ -9,6 +9,47 @@ services:
   # 订单装运组服务（入库出库通知）
   OrderShipGroupService:
   
+    # ------------------------------
+    valueObjects:
+    
+      # -------------------------------------
+      # 订单行项与装运组的关联信息
+      OrderItemShipGroupAssociationInfo:
+        properties:
+          # -------------------------------------------------
+          # 订单（行）项序号
+          # （为空则创建新行项，否则检查、更新已有行项）
+          OrderItemSeqId:
+            type: id
+          # 产品 Id
+          ProductId:
+            type: id-long
+          # 数量（以产品主计量单位计算）
+          Quantity:
+            type: fixed-point
+          # -------------------------------------------------
+          # 件数（包裹数量）
+          NumberOfPackages:
+            type: int
+          # 柜数（集装箱数量）
+          NumberOfContainers:
+            type: int
+          # 每集装箱件数
+          NumberOfPakagesPerContainer:
+            type: int
+            
+      # -------------------------------------
+      # 订单 Id 与装运组序号 Pair
+      OrderIdShipGroupSeqIdPair:
+        properties:
+          # 订单 Id（合同号）
+          OrderId:
+            type: id
+          #---------------------------------
+          # 订单装运组序号（通知单号）
+          ShipGroupSeqId:
+            type: id
+          
     
     # ------------------------------------
     # 方法
@@ -28,22 +69,6 @@ services:
           # 订单装运组序号（通知单号）
           ShipGroupSeqId:
             type: id
-          # -------------------------
-          # 件数（包裹数量）
-          NumberOfPackages:
-            type: int
-          # 柜数（集装箱数量）
-          NumberOfContainers:
-            type: int
-          # 每集装箱件数
-          NumberOfPakagesPerContainer:
-            type: int
-          # 产品 Id
-          ProductId:
-            type: id-long
-          # 数量（以产品主计量单位计算）
-          Quantity:
-            type: fixed-point
           # ------------------------------
           # 预计交付时间（入库时间）
           EstimatedDeliveryDate:
@@ -66,6 +91,9 @@ services:
           # 目标仓库 / 设施 Id
           DestinationFacilityId:
             type: id
+          # -----------------------------
+          OrderItemShipGroupAssociations:
+            itemType: OrderItemShipGroupAssociationInfo
             
       # ------------------------------------
       # 创建装运组（出库通知单）
@@ -79,22 +107,6 @@ services:
           # 订单装运组序号（通知单号）
           ShipGroupSeqId:
             type: id
-          # -------------------------
-          # 件数（包裹数量）
-          NumberOfPackages:
-            type: int
-          # 柜数（集装箱数量）
-          NumberOfContainers:
-            type: int
-          # 每集装箱件数
-          NumberOfPakagesPerContainer:
-            type: int
-          # 产品 Id
-          ProductId:
-            type: id-long
-          # 数量（以产品主计量单位计算）
-          Quantity:
-            type: fixed-point
           # ------------------------------
           # 预计发货日期（出库时间）
           EstimatedShipDate:
@@ -125,14 +137,14 @@ services:
           #DestinationFacilityId:
           #  type: id
           # ------------------------------
-            
-
-      # ---------------------------------------
-      # 从装运组（入库通知单）创建装运单
-      CreatePOShipment:
+          OrderItemShipGroupAssociations:
+            itemType: OrderItemShipGroupAssociationInfo
       
+      # ----------------------------------------------------
+      # 更新订单项目与装运组的关联信息
+      UpdateOrderItemShipGroupAssociation:
         parameters:
-          
+        
           # 订单 Id（合同号）
           OrderId:
             type: id
@@ -140,6 +152,20 @@ services:
           # 订单装运组序号（通知单号）
           ShipGroupSeqId:
             type: id
+          OrderItemShipGroupAssociation:
+            type: OrderItemShipGroupAssociationInfo
+            
+        
+      # ---------------------------------------
+      # 从装运组（入库通知单）创建装运单
+      CreatePOShipment:
+      
+        parameters:
+        
+          # 一个装运单可以发多个装运组的货
+          OrderIdShipGroupSeqIdPairs:
+            itemType: OrderIdShipGroupSeqIdPair
+            
           # 装运单 Id，可以为空
           ShipmentId:
             type: id
@@ -153,14 +179,11 @@ services:
       CreateSOShipment:
       
         parameters:
-          
-          # 订单 Id（合同号）
-          OrderId:
-            type: id
-          #---------------------------------
-          # 订单装运组序号（通知单号）
-          ShipGroupSeqId:
-            type: id
+        
+          # 一个装运单可以发多个装运组的货
+          OrderIdShipGroupSeqIdPairs:
+            itemType: OrderIdShipGroupSeqIdPair
+            
           # 装运单 Id，可以为空
           ShipmentId:
             type: id
@@ -169,7 +192,25 @@ services:
         result:
           type: string
         
-        
+      # ---------------------------------------
+      # 发出一个 PO 装运单（状态转换为“已发出”）
+      # todo 重命名？ShipPOShipment???
+      Ship:
+      
+        parameters:
+          ShipmentId:
+            type: id-ne
+          # ------------------------
+          # 主订单 Id
+          PrimaryOrderId:
+            type: id
+          # 主订单装运组序号
+          PrimaryShipGroupSeqId:
+            type: id
+          # ------------------------
+          # todo???
+          #AutoShipmentItemsEnabled:
+          #  type: bool
         
         
         

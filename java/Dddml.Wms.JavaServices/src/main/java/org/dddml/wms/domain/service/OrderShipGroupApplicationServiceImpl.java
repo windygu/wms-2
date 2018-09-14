@@ -40,15 +40,18 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     public void when(OrderShipGroupServiceCommands.CreatePOShipGroup c) {
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = getCreateOrMergePatchPOCommand(c);
 
-        // /////////// 只有一行 /////////////
+        //todo
+        // /////////// 不只有一行 /////////////
         String orderItemSeqId = seqIdGenerator.getNextId().toString();
 
         OrderItemCommand.CreateOrderItem orderItem = orderCommand.newCreateOrderItem();
         orderItem.setOrderItemSeqId(orderItemSeqId);
-        String productId = c.getProductId();
+        //todo
+        String productId = null;//c.getProductId();
         ProductState productState = assertProductId(productId); // 确认 Product 存在
         orderItem.setProductId(productState.getProductId());
-        orderItem.setQuantity(c.getQuantity());//数量
+        //todo
+        //orderItem.setQuantity(c.getQuantity());//数量
         orderItem.setActive(true);
 
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
@@ -62,11 +65,12 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = orderCommand.newCreateOrderShipGroup();
         orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//电话号码
-        orderShipGroup.setContactPartyId(c.getContactPartyId());
+        //orderShipGroup.setContactPartyId(c.getContactPartyId());
         orderShipGroup.setTrackingNumber(c.getTrackingNumber());
-        orderShipGroup.setNumberOfPackages(c.getNumberOfPackages());//件数
-        orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
-        orderShipGroup.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());//每柜件数
+        //todo
+        //        orderShipGroup.setNumberOfPackages(c.getNumberOfPackages());//件数
+        //        orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
+        //        orderShipGroup.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());//每柜件数
         orderShipGroup.setActive(true);
         //---------------------
         orderShipGroup.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());//预计收货日期
@@ -121,15 +125,18 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     public void when(OrderShipGroupServiceCommands.CreateSOShipGroup c) {
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = getCreateOrMergePatchSOCommand(c);
 
-        // /////////// 只有一行 /////////////
+        //todo
+        // /////////// 不只有一行 /////////////
         String orderItemSeqId = seqIdGenerator.getNextId().toString();
 
         OrderItemCommand.CreateOrderItem orderItem = orderCommand.newCreateOrderItem();
         orderItem.setOrderItemSeqId(orderItemSeqId);
-        String productId = c.getProductId();// 确认 Product 存在
+        //todo
+        String productId = null;//c.getProductId();// 确认 Product 存在
         ProductState productState = assertProductId(productId);
         orderItem.setProductId(productState.getProductId());
-        orderItem.setQuantity(c.getQuantity());//数量
+        //todo
+        //orderItem.setQuantity(c.getQuantity());//数量
         orderItem.setActive(true);
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
             ((OrderCommand.CreateOrder)orderCommand).getOrderItems().add(orderItem);
@@ -142,16 +149,17 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = orderCommand.newCreateOrderShipGroup();
         orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//司机 / 联系人电话
-        orderShipGroup.setContactPartyId(c.getContactPartyId());//司机 / 联系人
+        //orderShipGroup.setContactPartyId(c.getContactPartyId());//司机 / 联系人
         orderShipGroup.setTrackingNumber(c.getTrackingNumber());
-        orderShipGroup.setNumberOfPackages(c.getNumberOfPackages());//件数
-        orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
-        orderShipGroup.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());//每柜件数
+        //todo
+        //        orderShipGroup.setNumberOfPackages(c.getNumberOfPackages());//件数
+        //        orderShipGroup.setNumberOfContainers(c.getNumberOfContainers());//柜数
+        //        orderShipGroup.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());//每柜件数
         orderShipGroup.setActive(true);
         //---------------------
         orderShipGroup.setEstimatedShipDate(c.getEstimatedShipDate());//预计发货日期
-        orderShipGroup.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
-        orderShipGroup.setShippingInstructions(c.getShippingInstructions());//发货指示
+        //        orderShipGroup.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
+        //        orderShipGroup.setShippingInstructions(c.getShippingInstructions());//发货指示
         orderShipGroup.setFacilityId(c.getFacilityId());//源仓库 / 设施 Id
         //---------------------
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
@@ -178,6 +186,11 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
     }
 
+    @Override
+    public void when(OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation c) {
+        //todo
+    }
+
 
     AbstractOrderCommand.AbstractCreateOrMergePatchOrder getCreateOrMergePatchSOCommand(OrderShipGroupServiceCommands.CreateSOShipGroup c) {
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = null;
@@ -202,8 +215,9 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     @Transactional
     @Override
     public String when(OrderShipGroupServiceCommands.CreatePOShipment c) {
-        String orderId = c.getOrderId();
-        String shipGroupSeqId = c.getShipGroupSeqId();
+        //todo
+        String orderId = null;//c.getOrderId();
+        String shipGroupSeqId = null;//c.getShipGroupSeqId();
         OrderState orderState = assertOrderId(orderId);
         if (!OrderTypeIds.PURCHASE_ORDER.equalsIgnoreCase(orderState.getOrderTypeId())) {
             throw new IllegalArgumentException("Order type error.");
@@ -230,8 +244,9 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     @Transactional
     @Override
     public String when(OrderShipGroupServiceCommands.CreateSOShipment c) {
-        String orderId = c.getOrderId();
-        String shipGroupSeqId = c.getShipGroupSeqId();
+        //todo
+        String orderId = null;//c.getOrderId();
+        String shipGroupSeqId = null;//c.getShipGroupSeqId();
         OrderState orderState = assertOrderId(orderId);
         if (!OrderTypeIds.SALES_ORDER.equalsIgnoreCase(orderState.getOrderTypeId())) {
             throw new IllegalArgumentException("Order type error.");
@@ -253,6 +268,11 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
         getShipmentApplicationService().when(createShipment);
         return shipmentId;
+    }
+
+    @Override
+    public void when(OrderShipGroupServiceCommands.Ship c) {
+
     }
 
     private void createShipmentItems(OrderState orderState, OrderShipGroupState orderShipGroupState, ShipmentCommand.CreateShipment createShipment) {

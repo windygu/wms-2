@@ -62,6 +62,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryShipGroupSeqId { get; set; }
 
+		public virtual bool? OnlyOneOrder { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual string BolNumber { get; set; }
@@ -257,6 +259,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyPrimaryReturnIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
+
+		public virtual bool IsPropertyOnlyOneOrderRemoved { get; set; }
 
 		public virtual bool IsPropertyPicklistBinIdRemoved { get; set; }
 
@@ -813,6 +817,8 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string PrimaryReturnId { get; set; }
 
+            public bool OnlyOneOrder { get; set; }
+
             public string BolNumber { get; set; }
 
             public string VehicleId { get; set; }
@@ -915,76 +921,6 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
-        public class Ship : IShipmentCommand
-        {
-
-            public string CommandType
-            {
-                get { return "Ship"; }
-            }
-
-            public string ShipmentId { get; set; }
-
-            public long Version { get; set; }
-
-            public string CommandId { get; set; }
-
-            public string RequesterId { get; set; }
-
-
-            string ICommand.CommandId
-            {
-                get
-                {
-                    return this.CommandId;
-                }
-                set
-                {
-                    this.CommandId = value;
-                }
-            }
-
-            object ICommand.RequesterId
-            {
-                get { return this.RequesterId; }
-                set { this.RequesterId = (string)value; }
-            }
-
-            string ICommandDto.CommandType
-            {
-                get { return this.CommandType; }
-            }
-
-            string IAggregateCommand<string, long>.AggregateId
-            {
-                get { return this.ShipmentId; }
-            }
-
-            string IShipmentCommand.ShipmentId
-            {
-                get { return this.ShipmentId; }
-                set { this.ShipmentId = value; }
-            }
-
-            long IAggregateCommand<string, long>.AggregateVersion
-            {
-                get { return this.Version; }
-            }
-
-            long IShipmentCommand.Version
-            {
-                get
-                {
-                    return this.Version;
-                }
-                set
-                {
-                    this.Version = value;
-                }
-            }
-
-        }
-
         public class ReceiveItem : IShipmentCommand
         {
 
@@ -993,97 +929,15 @@ namespace Dddml.Wms.Domain.Shipment
                 get { return "ReceiveItem"; }
             }
 
-            public string ShipmentItemSeqId { get; set; }
-
-            public IDictionary<string, object> AttributeSetInstance { get; set; }
-
-            public string RejectionReasonId { get; set; }
-
-            public ISet<string> DamageStatusIds { get; set; }
-
-            public string DamageReasonId { get; set; }
-
-            public decimal? AcceptedQuantity { get; set; }
-
-            public decimal? RejectedQuantity { get; set; }
-
-            public decimal? DamagedQuantity { get; set; }
-
-            public string ItemDescription { get; set; }
-
-            public string ShipmentId { get; set; }
-
-            public long Version { get; set; }
-
-            public string CommandId { get; set; }
-
-            public string RequesterId { get; set; }
-
-
-            string ICommand.CommandId
-            {
-                get
-                {
-                    return this.CommandId;
-                }
-                set
-                {
-                    this.CommandId = value;
-                }
-            }
-
-            object ICommand.RequesterId
-            {
-                get { return this.RequesterId; }
-                set { this.RequesterId = (string)value; }
-            }
-
-            string ICommandDto.CommandType
-            {
-                get { return this.CommandType; }
-            }
-
-            string IAggregateCommand<string, long>.AggregateId
-            {
-                get { return this.ShipmentId; }
-            }
-
-            string IShipmentCommand.ShipmentId
-            {
-                get { return this.ShipmentId; }
-                set { this.ShipmentId = value; }
-            }
-
-            long IAggregateCommand<string, long>.AggregateVersion
-            {
-                get { return this.Version; }
-            }
-
-            long IShipmentCommand.Version
-            {
-                get
-                {
-                    return this.Version;
-                }
-                set
-                {
-                    this.Version = value;
-                }
-            }
-
-        }
-
-        public class AddItemAndReceipt : IShipmentCommand
-        {
-
-            public string CommandType
-            {
-                get { return "AddItemAndReceipt"; }
-            }
-
             public string ReceiptSeqId { get; set; }
 
-            public string ProductId { get; set; }
+            public string ShipmentItemSeqId { get; set; }
+
+            public string OrderId { get; set; }
+
+            public string OrderItemSeqId { get; set; }
+
+            public string LocatorId { get; set; }
 
             public IDictionary<string, object> AttributeSetInstance { get; set; }
 
@@ -1171,6 +1025,8 @@ namespace Dddml.Wms.Domain.Shipment
                 get { return "IssueItem"; }
             }
 
+            public string ItemIssuanceSeqId { get; set; }
+
             public string ShipmentItemSeqId { get; set; }
 
             public string OrderId { get; set; }
@@ -1178,96 +1034,6 @@ namespace Dddml.Wms.Domain.Shipment
             public string OrderItemSeqId { get; set; }
 
             public string ShipGroupSeqId { get; set; }
-
-            public string ProductId { get; set; }
-
-            public string LocatorId { get; set; }
-
-            public IDictionary<string, object> AttributeSetInstance { get; set; }
-
-            public decimal? Quantity { get; set; }
-
-            public decimal? CancelQuantity { get; set; }
-
-            public string ItemDescription { get; set; }
-
-            public string ShipmentId { get; set; }
-
-            public long Version { get; set; }
-
-            public string CommandId { get; set; }
-
-            public string RequesterId { get; set; }
-
-
-            string ICommand.CommandId
-            {
-                get
-                {
-                    return this.CommandId;
-                }
-                set
-                {
-                    this.CommandId = value;
-                }
-            }
-
-            object ICommand.RequesterId
-            {
-                get { return this.RequesterId; }
-                set { this.RequesterId = (string)value; }
-            }
-
-            string ICommandDto.CommandType
-            {
-                get { return this.CommandType; }
-            }
-
-            string IAggregateCommand<string, long>.AggregateId
-            {
-                get { return this.ShipmentId; }
-            }
-
-            string IShipmentCommand.ShipmentId
-            {
-                get { return this.ShipmentId; }
-                set { this.ShipmentId = value; }
-            }
-
-            long IAggregateCommand<string, long>.AggregateVersion
-            {
-                get { return this.Version; }
-            }
-
-            long IShipmentCommand.Version
-            {
-                get
-                {
-                    return this.Version;
-                }
-                set
-                {
-                    this.Version = value;
-                }
-            }
-
-        }
-
-        public class AddItemAndIssuance : IShipmentCommand
-        {
-
-            public string CommandType
-            {
-                get { return "AddItemAndIssuance"; }
-            }
-
-            public string OrderId { get; set; }
-
-            public string OrderItemSeqId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
-
-            public string ItemIssuanceSeqId { get; set; }
 
             public string ProductId { get; set; }
 

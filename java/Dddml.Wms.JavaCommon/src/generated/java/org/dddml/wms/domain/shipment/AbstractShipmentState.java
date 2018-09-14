@@ -81,6 +81,18 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.primaryShipGroupSeqId = primaryShipGroupSeqId;
     }
 
+    private Boolean onlyOneOrder;
+
+    public Boolean getOnlyOneOrder()
+    {
+        return this.onlyOneOrder;
+    }
+
+    public void setOnlyOneOrder(Boolean onlyOneOrder)
+    {
+        this.onlyOneOrder = onlyOneOrder;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId()
@@ -584,6 +596,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setPrimaryOrderId(e.getPrimaryOrderId());
         this.setPrimaryReturnId(e.getPrimaryReturnId());
         this.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
+        this.setOnlyOneOrder(e.getOnlyOneOrder());
         this.setPicklistBinId(e.getPicklistBinId());
         this.setBolNumber(e.getBolNumber());
         this.setSealNumber(e.getSealNumber());
@@ -691,6 +704,17 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         else
         {
             this.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
+        }
+        if (e.getOnlyOneOrder() == null)
+        {
+            if (e.getIsPropertyOnlyOneOrderRemoved() != null && e.getIsPropertyOnlyOneOrderRemoved())
+            {
+                this.setOnlyOneOrder(null);
+            }
+        }
+        else
+        {
+            this.setOnlyOneOrder(e.getOnlyOneOrder());
         }
         if (e.getPicklistBinId() == null)
         {

@@ -45,6 +45,15 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
+        [Route("UpdateOrderItemShipGroupAssociation")]
+        [HttpPost][SetRequesterId]
+        public void UpdateOrderItemShipGroupAssociation([FromBody]OrderShipGroupServiceCommandDtos.UpdateOrderItemShipGroupAssociationDto requestContent)
+        {
+          try {
+             _orderShipGroupApplicationService.When(requestContent.ToUpdateOrderItemShipGroupAssociation());
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+        
         [Route("CreatePOShipment")]
         [HttpPost][SetRequesterId]
         public string CreatePOShipment([FromBody]OrderShipGroupServiceCommandDtos.CreatePOShipmentDto requestContent)
@@ -60,6 +69,15 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             return _orderShipGroupApplicationService.When(requestContent.ToCreateSOShipment());
+          } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+        
+        [Route("Ship")]
+        [HttpPost][SetRequesterId]
+        public void Ship([FromBody]OrderShipGroupServiceCommandDtos.ShipDto requestContent)
+        {
+          try {
+             _orderShipGroupApplicationService.When(requestContent.ToShip());
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         

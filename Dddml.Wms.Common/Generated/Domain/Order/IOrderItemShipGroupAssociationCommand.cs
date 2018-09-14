@@ -34,6 +34,14 @@ namespace Dddml.Wms.Domain.Order
 
 		decimal? CancelQuantity { get; set; }
 
+		int? NumberOfPackages { get; set; }
+
+		int? NumberOfContainers { get; set; }
+
+		int? NumberOfPakagesPerContainer { get; set; }
+
+		string OrderItemShipGroupAssociationKey { get; set; }
+
 		bool? Active { get; set; }
 
 
@@ -49,6 +57,14 @@ namespace Dddml.Wms.Domain.Order
 		bool IsPropertyQuantityRemoved { get; set; }
 
 		bool IsPropertyCancelQuantityRemoved { get; set; }
+
+		bool IsPropertyNumberOfPackagesRemoved { get; set; }
+
+		bool IsPropertyNumberOfContainersRemoved { get; set; }
+
+		bool IsPropertyNumberOfPakagesPerContainerRemoved { get; set; }
+
+		bool IsPropertyOrderItemShipGroupAssociationKeyRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

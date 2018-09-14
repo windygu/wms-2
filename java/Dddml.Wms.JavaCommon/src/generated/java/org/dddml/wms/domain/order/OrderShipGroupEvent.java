@@ -70,18 +70,6 @@ public interface OrderShipGroupEvent extends Event
 
         void setTrackingNumber(String trackingNumber);
 
-        String getContactPartyId();
-
-        void setContactPartyId(String contactPartyId);
-
-        String getVehiclePlateNumber();
-
-        void setVehiclePlateNumber(String vehiclePlateNumber);
-
-        String getShippingInstructions();
-
-        void setShippingInstructions(String shippingInstructions);
-
         String getMaySplit();
 
         void setMaySplit(String maySplit);
@@ -113,18 +101,6 @@ public interface OrderShipGroupEvent extends Event
         Long getPickwaveId();
 
         void setPickwaveId(Long pickwaveId);
-
-        Integer getNumberOfPackages();
-
-        void setNumberOfPackages(Integer numberOfPackages);
-
-        Integer getNumberOfContainers();
-
-        void setNumberOfContainers(Integer numberOfContainers);
-
-        Integer getNumberOfPakagesPerContainer();
-
-        void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
 
         String getOrderShipGroupStatusId();
 
@@ -190,18 +166,6 @@ public interface OrderShipGroupEvent extends Event
 
         void setIsPropertyTrackingNumberRemoved(Boolean removed);
 
-        Boolean getIsPropertyContactPartyIdRemoved();
-
-        void setIsPropertyContactPartyIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyVehiclePlateNumberRemoved();
-
-        void setIsPropertyVehiclePlateNumberRemoved(Boolean removed);
-
-        Boolean getIsPropertyShippingInstructionsRemoved();
-
-        void setIsPropertyShippingInstructionsRemoved(Boolean removed);
-
         Boolean getIsPropertyMaySplitRemoved();
 
         void setIsPropertyMaySplitRemoved(Boolean removed);
@@ -233,18 +197,6 @@ public interface OrderShipGroupEvent extends Event
         Boolean getIsPropertyPickwaveIdRemoved();
 
         void setIsPropertyPickwaveIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyNumberOfPackagesRemoved();
-
-        void setIsPropertyNumberOfPackagesRemoved(Boolean removed);
-
-        Boolean getIsPropertyNumberOfContainersRemoved();
-
-        void setIsPropertyNumberOfContainersRemoved(Boolean removed);
-
-        Boolean getIsPropertyNumberOfPakagesPerContainerRemoved();
-
-        void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed);
 
         Boolean getIsPropertyOrderShipGroupStatusIdRemoved();
 

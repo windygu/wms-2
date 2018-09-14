@@ -443,9 +443,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setContactMechId(c.getContactMechId());
         e.setTelecomContactMechId(c.getTelecomContactMechId());
         e.setTrackingNumber(c.getTrackingNumber());
-        e.setContactPartyId(c.getContactPartyId());
-        e.setVehiclePlateNumber(c.getVehiclePlateNumber());
-        e.setShippingInstructions(c.getShippingInstructions());
         e.setMaySplit(c.getMaySplit());
         e.setGiftMessage(c.getGiftMessage());
         e.setIsGift(c.getIsGift());
@@ -454,9 +451,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
         e.setPickwaveId(c.getPickwaveId());
-        e.setNumberOfPackages(c.getNumberOfPackages());
-        e.setNumberOfContainers(c.getNumberOfContainers());
-        e.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());
         newOrderShipGroupOrderShipGroupActionCommandAndExecute(c, s, e);
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
@@ -491,9 +485,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setContactMechId(c.getContactMechId());
         e.setTelecomContactMechId(c.getTelecomContactMechId());
         e.setTrackingNumber(c.getTrackingNumber());
-        e.setContactPartyId(c.getContactPartyId());
-        e.setVehiclePlateNumber(c.getVehiclePlateNumber());
-        e.setShippingInstructions(c.getShippingInstructions());
         e.setMaySplit(c.getMaySplit());
         e.setGiftMessage(c.getGiftMessage());
         e.setIsGift(c.getIsGift());
@@ -502,9 +493,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
         e.setPickwaveId(c.getPickwaveId());
-        e.setNumberOfPackages(c.getNumberOfPackages());
-        e.setNumberOfContainers(c.getNumberOfContainers());
-        e.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());
         e.setActive(c.getActive());
         e.setIsPropertyShipmentMethodTypeIdRemoved(c.getIsPropertyShipmentMethodTypeIdRemoved());
         e.setIsPropertySupplierPartyIdRemoved(c.getIsPropertySupplierPartyIdRemoved());
@@ -516,9 +504,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyContactMechIdRemoved(c.getIsPropertyContactMechIdRemoved());
         e.setIsPropertyTelecomContactMechIdRemoved(c.getIsPropertyTelecomContactMechIdRemoved());
         e.setIsPropertyTrackingNumberRemoved(c.getIsPropertyTrackingNumberRemoved());
-        e.setIsPropertyContactPartyIdRemoved(c.getIsPropertyContactPartyIdRemoved());
-        e.setIsPropertyVehiclePlateNumberRemoved(c.getIsPropertyVehiclePlateNumberRemoved());
-        e.setIsPropertyShippingInstructionsRemoved(c.getIsPropertyShippingInstructionsRemoved());
         e.setIsPropertyMaySplitRemoved(c.getIsPropertyMaySplitRemoved());
         e.setIsPropertyGiftMessageRemoved(c.getIsPropertyGiftMessageRemoved());
         e.setIsPropertyIsGiftRemoved(c.getIsPropertyIsGiftRemoved());
@@ -527,9 +512,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedDeliveryDateRemoved(c.getIsPropertyEstimatedDeliveryDateRemoved());
         e.setIsPropertyPickwaveIdRemoved(c.getIsPropertyPickwaveIdRemoved());
-        e.setIsPropertyNumberOfPackagesRemoved(c.getIsPropertyNumberOfPackagesRemoved());
-        e.setIsPropertyNumberOfContainersRemoved(c.getIsPropertyNumberOfContainersRemoved());
-        e.setIsPropertyNumberOfPakagesPerContainerRemoved(c.getIsPropertyNumberOfPakagesPerContainerRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -591,6 +573,10 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
         e.setQuantity(c.getQuantity());
         e.setCancelQuantity(c.getCancelQuantity());
+        e.setNumberOfPackages(c.getNumberOfPackages());
+        e.setNumberOfContainers(c.getNumberOfContainers());
+        e.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());
+        e.setOrderItemShipGroupAssociationKey(c.getOrderItemShipGroupAssociationKey());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -607,9 +593,17 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
         e.setQuantity(c.getQuantity());
         e.setCancelQuantity(c.getCancelQuantity());
+        e.setNumberOfPackages(c.getNumberOfPackages());
+        e.setNumberOfContainers(c.getNumberOfContainers());
+        e.setNumberOfPakagesPerContainer(c.getNumberOfPakagesPerContainer());
+        e.setOrderItemShipGroupAssociationKey(c.getOrderItemShipGroupAssociationKey());
         e.setActive(c.getActive());
         e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
         e.setIsPropertyCancelQuantityRemoved(c.getIsPropertyCancelQuantityRemoved());
+        e.setIsPropertyNumberOfPackagesRemoved(c.getIsPropertyNumberOfPackagesRemoved());
+        e.setIsPropertyNumberOfContainersRemoved(c.getIsPropertyNumberOfContainersRemoved());
+        e.setIsPropertyNumberOfPakagesPerContainerRemoved(c.getIsPropertyNumberOfPakagesPerContainerRemoved());
+        e.setIsPropertyOrderItemShipGroupAssociationKeyRemoved(c.getIsPropertyOrderItemShipGroupAssociationKeyRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));

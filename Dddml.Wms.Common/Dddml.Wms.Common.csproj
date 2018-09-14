@@ -61,6 +61,7 @@
     <Compile Include="Domain\AttributeSetInstance\AttributeSetInstanceAggregate.cs" />
     <Compile Include="Domain\DocumentStatusIds.cs" />
     <Compile Include="Domain\DocumentType\DocumentTypeIds.cs" />
+    <Compile Include="Domain\InOutNotice\InOutNotice.cs" />
     <Compile Include="Domain\InOut\InOutAggregate.cs" />
     <Compile Include="Domain\MovementConfirmation\MovementConfirmationAggregate.cs" />
     <Compile Include="Domain\MovementConfirmation\MovementConfirmationDocumentActionCommandHandler.cs" />
@@ -1231,6 +1232,90 @@
     <Compile Include="Generated\Domain\ILocatorTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeAggregate.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeApplicationService.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeCommand.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeEvent.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeState.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeStateDto.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeStateProperties.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeStateQueryRepository.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\IInOutNoticeStateRepository.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeAction.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeAggregate.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeApplicationServiceBase.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeCommand.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeCommandDto.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeEvent.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeEventId.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeState.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateDto.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateDtoExtension.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateDtoWrapper.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateEventDto.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateEventDtoConverter.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateExtension.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateInterfaceExtension.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeStateProperties.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\InOutNotice\InOutNoticeType.cs">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\InOut\IInOutAggregate.cs">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Compile>
@@ -2285,6 +2370,9 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\InOutMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\InOutNoticeMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\InventoryItemEntryMetadata.cs">
@@ -4834,6 +4922,12 @@
     <Compile Include="Generated\Domain\Services\IOrderShipGroupApplicationService.cs">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Services\OrderIdShipGroupSeqIdPair.cs">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Services\OrderItemShipGroupAssociationInfo.cs">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Services\OrderShipGroupServiceCommandDtos.cs">
       <DependentUpon>GenerateDomainServicesDtos.tt</DependentUpon>
     </Compile>
@@ -6129,6 +6223,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\InOutNotice\GenerateInOutNoticeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\InOut\GenerateInOutDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -6284,6 +6383,8 @@
 .\IdServiceCommands.cs
 .\IIdApplicationService.cs
 .\IOrderShipGroupApplicationService.cs
+.\OrderIdShipGroupSeqIdPair.cs
+.\OrderItemShipGroupAssociationInfo.cs
 .\OrderShipGroupServiceCommandDtos.cs
 .\OrderShipGroupServiceCommands.cs
 </LastOutputs>
@@ -6443,6 +6544,7 @@
 .\InOutLineImageMetadata.cs
 .\InOutLineMetadata.cs
 .\InOutMetadata.cs
+.\InOutNoticeMetadata.cs
 .\InventoryItemEntryMetadata.cs
 .\InventoryItemMetadata.cs
 .\InventoryItemRequirementEntryMetadata.cs
@@ -8776,6 +8878,41 @@
 .\IGoodIdentificationTypeStateProperties.cs
 .\IGoodIdentificationTypeStateQueryRepository.cs
 .\IGoodIdentificationTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\InOutNotice\GenerateInOutNoticeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutNoticeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateInOutNoticeDomain.txt
+.\IInOutNoticeAggregate.cs
+.\IInOutNoticeApplicationService.cs
+.\IInOutNoticeApplicationServiceFactory.cs
+.\IInOutNoticeCommand.cs
+.\IInOutNoticeEvent.cs
+.\IInOutNoticeState.cs
+.\IInOutNoticeStateDto.cs
+.\IInOutNoticeStateProperties.cs
+.\IInOutNoticeStateQueryRepository.cs
+.\IInOutNoticeStateRepository.cs
+.\InOutNoticeAction.cs
+.\InOutNoticeAggregate.cs
+.\InOutNoticeApplicationServiceBase.cs
+.\InOutNoticeApplicationServiceFactory.cs
+.\InOutNoticeCommand.cs
+.\InOutNoticeCommandDto.cs
+.\InOutNoticeEvent.cs
+.\InOutNoticeEventId.cs
+.\InOutNoticeState.cs
+.\InOutNoticeStateDto.cs
+.\InOutNoticeStateDtoExtension.cs
+.\InOutNoticeStateDtoWrapper.cs
+.\InOutNoticeStateEventDto.cs
+.\InOutNoticeStateEventDtoConverter.cs
+.\InOutNoticeStateExtension.cs
+.\InOutNoticeStateInterfaceExtension.cs
+.\InOutNoticeStateProperties.cs
+.\InOutNoticeType.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

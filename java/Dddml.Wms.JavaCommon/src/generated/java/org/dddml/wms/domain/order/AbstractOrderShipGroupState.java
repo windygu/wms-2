@@ -155,42 +155,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.trackingNumber = trackingNumber;
     }
 
-    private String contactPartyId;
-
-    public String getContactPartyId()
-    {
-        return this.contactPartyId;
-    }
-
-    public void setContactPartyId(String contactPartyId)
-    {
-        this.contactPartyId = contactPartyId;
-    }
-
-    private String vehiclePlateNumber;
-
-    public String getVehiclePlateNumber()
-    {
-        return this.vehiclePlateNumber;
-    }
-
-    public void setVehiclePlateNumber(String vehiclePlateNumber)
-    {
-        this.vehiclePlateNumber = vehiclePlateNumber;
-    }
-
-    private String shippingInstructions;
-
-    public String getShippingInstructions()
-    {
-        return this.shippingInstructions;
-    }
-
-    public void setShippingInstructions(String shippingInstructions)
-    {
-        this.shippingInstructions = shippingInstructions;
-    }
-
     private String maySplit;
 
     public String getMaySplit()
@@ -285,42 +249,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
     public void setPickwaveId(Long pickwaveId)
     {
         this.pickwaveId = pickwaveId;
-    }
-
-    private Integer numberOfPackages;
-
-    public Integer getNumberOfPackages()
-    {
-        return this.numberOfPackages;
-    }
-
-    public void setNumberOfPackages(Integer numberOfPackages)
-    {
-        this.numberOfPackages = numberOfPackages;
-    }
-
-    private Integer numberOfContainers;
-
-    public Integer getNumberOfContainers()
-    {
-        return this.numberOfContainers;
-    }
-
-    public void setNumberOfContainers(Integer numberOfContainers)
-    {
-        this.numberOfContainers = numberOfContainers;
-    }
-
-    private Integer numberOfPakagesPerContainer;
-
-    public Integer getNumberOfPakagesPerContainer()
-    {
-        return this.numberOfPakagesPerContainer;
-    }
-
-    public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
-    {
-        this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
     }
 
     private String orderShipGroupStatusId;
@@ -495,9 +423,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setContactMechId(e.getContactMechId());
         this.setTelecomContactMechId(e.getTelecomContactMechId());
         this.setTrackingNumber(e.getTrackingNumber());
-        this.setContactPartyId(e.getContactPartyId());
-        this.setVehiclePlateNumber(e.getVehiclePlateNumber());
-        this.setShippingInstructions(e.getShippingInstructions());
         this.setMaySplit(e.getMaySplit());
         this.setGiftMessage(e.getGiftMessage());
         this.setIsGift(e.getIsGift());
@@ -506,9 +431,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setEstimatedShipDate(e.getEstimatedShipDate());
         this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
         this.setPickwaveId(e.getPickwaveId());
-        this.setNumberOfPackages(e.getNumberOfPackages());
-        this.setNumberOfContainers(e.getNumberOfContainers());
-        this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
         this.setOrderShipGroupStatusId(e.getOrderShipGroupStatusId());
         this.setActive(e.getActive());
 
@@ -637,39 +559,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         {
             this.setTrackingNumber(e.getTrackingNumber());
         }
-        if (e.getContactPartyId() == null)
-        {
-            if (e.getIsPropertyContactPartyIdRemoved() != null && e.getIsPropertyContactPartyIdRemoved())
-            {
-                this.setContactPartyId(null);
-            }
-        }
-        else
-        {
-            this.setContactPartyId(e.getContactPartyId());
-        }
-        if (e.getVehiclePlateNumber() == null)
-        {
-            if (e.getIsPropertyVehiclePlateNumberRemoved() != null && e.getIsPropertyVehiclePlateNumberRemoved())
-            {
-                this.setVehiclePlateNumber(null);
-            }
-        }
-        else
-        {
-            this.setVehiclePlateNumber(e.getVehiclePlateNumber());
-        }
-        if (e.getShippingInstructions() == null)
-        {
-            if (e.getIsPropertyShippingInstructionsRemoved() != null && e.getIsPropertyShippingInstructionsRemoved())
-            {
-                this.setShippingInstructions(null);
-            }
-        }
-        else
-        {
-            this.setShippingInstructions(e.getShippingInstructions());
-        }
         if (e.getMaySplit() == null)
         {
             if (e.getIsPropertyMaySplitRemoved() != null && e.getIsPropertyMaySplitRemoved())
@@ -757,39 +646,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         else
         {
             this.setPickwaveId(e.getPickwaveId());
-        }
-        if (e.getNumberOfPackages() == null)
-        {
-            if (e.getIsPropertyNumberOfPackagesRemoved() != null && e.getIsPropertyNumberOfPackagesRemoved())
-            {
-                this.setNumberOfPackages(null);
-            }
-        }
-        else
-        {
-            this.setNumberOfPackages(e.getNumberOfPackages());
-        }
-        if (e.getNumberOfContainers() == null)
-        {
-            if (e.getIsPropertyNumberOfContainersRemoved() != null && e.getIsPropertyNumberOfContainersRemoved())
-            {
-                this.setNumberOfContainers(null);
-            }
-        }
-        else
-        {
-            this.setNumberOfContainers(e.getNumberOfContainers());
-        }
-        if (e.getNumberOfPakagesPerContainer() == null)
-        {
-            if (e.getIsPropertyNumberOfPakagesPerContainerRemoved() != null && e.getIsPropertyNumberOfPakagesPerContainerRemoved())
-            {
-                this.setNumberOfPakagesPerContainer(null);
-            }
-        }
-        else
-        {
-            this.setNumberOfPakagesPerContainer(e.getNumberOfPakagesPerContainer());
         }
         if (e.getOrderShipGroupStatusId() == null)
         {

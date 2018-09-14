@@ -311,6 +311,9 @@
     <Compile Include="Generated\Controllers\IdServiceController.cs">
       <DependentUpon>GenerateDomainServicesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\InOutNoticesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\InOutsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -513,6 +516,7 @@
 .\FacilitiesController.cs
 .\GenerateAggregatesControllers.txt
 .\GoodIdentificationTypesController.cs
+.\InOutNoticesController.cs
 .\InOutsController.cs
 .\InventoryItemRequirementsController.cs
 .\InventoryItemsController.cs

@@ -55,6 +55,19 @@ public class ShipmentCommandDtos
         }
 
         /**
+         * Only One Order
+         */
+        private Boolean onlyOneOrder;
+
+        public Boolean getOnlyOneOrder() {
+            return this.onlyOneOrder;
+        }
+
+        public void setOnlyOneOrder(Boolean onlyOneOrder) {
+            this.onlyOneOrder = onlyOneOrder;
+        }
+
+        /**
          * Bill of lading
          */
         private String bolNumber;
@@ -368,247 +381,10 @@ public class ShipmentCommandDtos
 
     }
 
-    public static class ShipRequestContent {
-
-        public String getCommandType() {
-            return "Ship";
-        }
-
-        /**
-         * Shipment Id
-         */
-        private String shipmentId;
-
-        public String getShipmentId() {
-            return this.shipmentId;
-        }
-
-        public void setShipmentId(String shipmentId) {
-            this.shipmentId = shipmentId;
-        }
-
-        /**
-         * Version
-         */
-        private Long version;
-
-        public Long getVersion() {
-            return this.version;
-        }
-
-        public void setVersion(Long version) {
-            this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
-    }
-
     public static class ReceiveItemRequestContent {
 
         public String getCommandType() {
             return "ReceiveItem";
-        }
-
-        /**
-         * Shipment Item Seq Id
-         */
-        private String shipmentItemSeqId;
-
-        public String getShipmentItemSeqId() {
-            return this.shipmentItemSeqId;
-        }
-
-        public void setShipmentItemSeqId(String shipmentItemSeqId) {
-            this.shipmentItemSeqId = shipmentItemSeqId;
-        }
-
-        /**
-         * Attribute Set Instance
-         */
-        private java.util.Map<String, Object> attributeSetInstance;
-
-        public java.util.Map<String, Object> getAttributeSetInstance() {
-            return this.attributeSetInstance;
-        }
-
-        public void setAttributeSetInstance(java.util.Map<String, Object> attributeSetInstance) {
-            this.attributeSetInstance = attributeSetInstance;
-        }
-
-        /**
-         * Rejection Reason Id
-         */
-        private String rejectionReasonId;
-
-        public String getRejectionReasonId() {
-            return this.rejectionReasonId;
-        }
-
-        public void setRejectionReasonId(String rejectionReasonId) {
-            this.rejectionReasonId = rejectionReasonId;
-        }
-
-        /**
-         * Damage Status Ids
-         */
-        private String[] damageStatusIds;
-
-        public String[] getDamageStatusIds() {
-            return this.damageStatusIds;
-        }
-
-        public void setDamageStatusIds(String[] damageStatusIds) {
-            this.damageStatusIds = damageStatusIds;
-        }
-
-        /**
-         * Damage Reason Id
-         */
-        private String damageReasonId;
-
-        public String getDamageReasonId() {
-            return this.damageReasonId;
-        }
-
-        public void setDamageReasonId(String damageReasonId) {
-            this.damageReasonId = damageReasonId;
-        }
-
-        /**
-         * Accepted Quantity
-         */
-        private java.math.BigDecimal acceptedQuantity;
-
-        public java.math.BigDecimal getAcceptedQuantity() {
-            return this.acceptedQuantity;
-        }
-
-        public void setAcceptedQuantity(java.math.BigDecimal acceptedQuantity) {
-            this.acceptedQuantity = acceptedQuantity;
-        }
-
-        /**
-         * Rejected Quantity
-         */
-        private java.math.BigDecimal rejectedQuantity;
-
-        public java.math.BigDecimal getRejectedQuantity() {
-            return this.rejectedQuantity;
-        }
-
-        public void setRejectedQuantity(java.math.BigDecimal rejectedQuantity) {
-            this.rejectedQuantity = rejectedQuantity;
-        }
-
-        /**
-         * Damaged Quantity
-         */
-        private java.math.BigDecimal damagedQuantity;
-
-        public java.math.BigDecimal getDamagedQuantity() {
-            return this.damagedQuantity;
-        }
-
-        public void setDamagedQuantity(java.math.BigDecimal damagedQuantity) {
-            this.damagedQuantity = damagedQuantity;
-        }
-
-        /**
-         * Item Description
-         */
-        private String itemDescription;
-
-        public String getItemDescription() {
-            return this.itemDescription;
-        }
-
-        public void setItemDescription(String itemDescription) {
-            this.itemDescription = itemDescription;
-        }
-
-        /**
-         * Shipment Id
-         */
-        private String shipmentId;
-
-        public String getShipmentId() {
-            return this.shipmentId;
-        }
-
-        public void setShipmentId(String shipmentId) {
-            this.shipmentId = shipmentId;
-        }
-
-        /**
-         * Version
-         */
-        private Long version;
-
-        public Long getVersion() {
-            return this.version;
-        }
-
-        public void setVersion(Long version) {
-            this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
-    }
-
-    public static class AddItemAndReceiptRequestContent {
-
-        public String getCommandType() {
-            return "AddItemAndReceipt";
         }
 
         /**
@@ -625,16 +401,55 @@ public class ShipmentCommandDtos
         }
 
         /**
-         * Product Id
+         * Shipment Item Seq Id
          */
-        private String productId;
+        private String shipmentItemSeqId;
 
-        public String getProductId() {
-            return this.productId;
+        public String getShipmentItemSeqId() {
+            return this.shipmentItemSeqId;
         }
 
-        public void setProductId(String productId) {
-            this.productId = productId;
+        public void setShipmentItemSeqId(String shipmentItemSeqId) {
+            this.shipmentItemSeqId = shipmentItemSeqId;
+        }
+
+        /**
+         * Order Id
+         */
+        private String orderId;
+
+        public String getOrderId() {
+            return this.orderId;
+        }
+
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
+
+        /**
+         * Order Item Seq Id
+         */
+        private String orderItemSeqId;
+
+        public String getOrderItemSeqId() {
+            return this.orderItemSeqId;
+        }
+
+        public void setOrderItemSeqId(String orderItemSeqId) {
+            this.orderItemSeqId = orderItemSeqId;
+        }
+
+        /**
+         * Locator Id
+         */
+        private String locatorId;
+
+        public String getLocatorId() {
+            return this.locatorId;
+        }
+
+        public void setLocatorId(String locatorId) {
+            this.locatorId = locatorId;
         }
 
         /**
@@ -802,6 +617,19 @@ public class ShipmentCommandDtos
         }
 
         /**
+         * Item Issuance Seq Id
+         */
+        private String itemIssuanceSeqId;
+
+        public String getItemIssuanceSeqId() {
+            return this.itemIssuanceSeqId;
+        }
+
+        public void setItemIssuanceSeqId(String itemIssuanceSeqId) {
+            this.itemIssuanceSeqId = itemIssuanceSeqId;
+        }
+
+        /**
          * Shipment Item Seq Id
          */
         private String shipmentItemSeqId;
@@ -851,196 +679,6 @@ public class ShipmentCommandDtos
 
         public void setShipGroupSeqId(String shipGroupSeqId) {
             this.shipGroupSeqId = shipGroupSeqId;
-        }
-
-        /**
-         * Product Id
-         */
-        private String productId;
-
-        public String getProductId() {
-            return this.productId;
-        }
-
-        public void setProductId(String productId) {
-            this.productId = productId;
-        }
-
-        /**
-         * Locator Id
-         */
-        private String locatorId;
-
-        public String getLocatorId() {
-            return this.locatorId;
-        }
-
-        public void setLocatorId(String locatorId) {
-            this.locatorId = locatorId;
-        }
-
-        /**
-         * Attribute Set Instance
-         */
-        private java.util.Map<String, Object> attributeSetInstance;
-
-        public java.util.Map<String, Object> getAttributeSetInstance() {
-            return this.attributeSetInstance;
-        }
-
-        public void setAttributeSetInstance(java.util.Map<String, Object> attributeSetInstance) {
-            this.attributeSetInstance = attributeSetInstance;
-        }
-
-        /**
-         * Quantity
-         */
-        private java.math.BigDecimal quantity;
-
-        public java.math.BigDecimal getQuantity() {
-            return this.quantity;
-        }
-
-        public void setQuantity(java.math.BigDecimal quantity) {
-            this.quantity = quantity;
-        }
-
-        /**
-         * Cancel Quantity
-         */
-        private java.math.BigDecimal cancelQuantity;
-
-        public java.math.BigDecimal getCancelQuantity() {
-            return this.cancelQuantity;
-        }
-
-        public void setCancelQuantity(java.math.BigDecimal cancelQuantity) {
-            this.cancelQuantity = cancelQuantity;
-        }
-
-        /**
-         * Item Description
-         */
-        private String itemDescription;
-
-        public String getItemDescription() {
-            return this.itemDescription;
-        }
-
-        public void setItemDescription(String itemDescription) {
-            this.itemDescription = itemDescription;
-        }
-
-        /**
-         * Shipment Id
-         */
-        private String shipmentId;
-
-        public String getShipmentId() {
-            return this.shipmentId;
-        }
-
-        public void setShipmentId(String shipmentId) {
-            this.shipmentId = shipmentId;
-        }
-
-        /**
-         * Version
-         */
-        private Long version;
-
-        public Long getVersion() {
-            return this.version;
-        }
-
-        public void setVersion(Long version) {
-            this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
-    }
-
-    public static class AddItemAndIssuanceRequestContent {
-
-        public String getCommandType() {
-            return "AddItemAndIssuance";
-        }
-
-        /**
-         * Order Id
-         */
-        private String orderId;
-
-        public String getOrderId() {
-            return this.orderId;
-        }
-
-        public void setOrderId(String orderId) {
-            this.orderId = orderId;
-        }
-
-        /**
-         * Order Item Seq Id
-         */
-        private String orderItemSeqId;
-
-        public String getOrderItemSeqId() {
-            return this.orderItemSeqId;
-        }
-
-        public void setOrderItemSeqId(String orderItemSeqId) {
-            this.orderItemSeqId = orderItemSeqId;
-        }
-
-        /**
-         * Ship Group Seq Id
-         */
-        private String shipGroupSeqId;
-
-        public String getShipGroupSeqId() {
-            return this.shipGroupSeqId;
-        }
-
-        public void setShipGroupSeqId(String shipGroupSeqId) {
-            this.shipGroupSeqId = shipGroupSeqId;
-        }
-
-        /**
-         * Item Issuance Seq Id
-         */
-        private String itemIssuanceSeqId;
-
-        public String getItemIssuanceSeqId() {
-            return this.itemIssuanceSeqId;
-        }
-
-        public void setItemIssuanceSeqId(String itemIssuanceSeqId) {
-            this.itemIssuanceSeqId = itemIssuanceSeqId;
         }
 
         /**

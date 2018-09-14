@@ -30,6 +30,22 @@ public interface OrderItemShipGroupAssociationCommand extends Command
 
         void setCancelQuantity(java.math.BigDecimal cancelQuantity);
 
+        Integer getNumberOfPackages();
+
+        void setNumberOfPackages(Integer numberOfPackages);
+
+        Integer getNumberOfContainers();
+
+        void setNumberOfContainers(Integer numberOfContainers);
+
+        Integer getNumberOfPakagesPerContainer();
+
+        void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
+
+        String getOrderItemShipGroupAssociationKey();
+
+        void setOrderItemShipGroupAssociationKey(String orderItemShipGroupAssociationKey);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -49,6 +65,22 @@ public interface OrderItemShipGroupAssociationCommand extends Command
         Boolean getIsPropertyCancelQuantityRemoved();
 
         void setIsPropertyCancelQuantityRemoved(Boolean removed);
+
+        Boolean getIsPropertyNumberOfPackagesRemoved();
+
+        void setIsPropertyNumberOfPackagesRemoved(Boolean removed);
+
+        Boolean getIsPropertyNumberOfContainersRemoved();
+
+        void setIsPropertyNumberOfContainersRemoved(Boolean removed);
+
+        Boolean getIsPropertyNumberOfPakagesPerContainerRemoved();
+
+        void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed);
+
+        Boolean getIsPropertyOrderItemShipGroupAssociationKeyRemoved();
+
+        void setIsPropertyOrderItemShipGroupAssociationKeyRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

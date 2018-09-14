@@ -387,6 +387,38 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\goodidentificationtype\GoodIdentificationTypeStateEventDto.java">
       <DependentUpon>GenerateGoodIdentificationTypeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\AbstractInOutNoticeCommandDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\CreateOrMergePatchInOutNoticeDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\DeleteInOutNoticeDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\GenerateInOutNoticeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeAction.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeCommandDtos.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeEventId.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeStateDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeStateEventDto.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\InOutNoticeType.java">
+      <DependentUpon>GenerateInOutNoticeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\AbstractInOutCommandDto.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -1432,6 +1464,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\service\IdServiceCommandDtos.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderIdShipGroupSeqIdPair.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderItemShipGroupAssociationInfo.java">
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\service\OrderShipGroupServiceCommandDtos.java">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Content>
@@ -1808,6 +1846,8 @@
       <LastOutputs>
 .\GenerateBoundedContextDomainServices.txt
 .\IdServiceCommandDtos.java
+.\OrderIdShipGroupSeqIdPair.java
+.\OrderItemShipGroupAssociationInfo.java
 .\OrderShipGroupServiceCommandDtos.java
 </LastOutputs>
     </Content>
@@ -2705,6 +2745,7 @@
 .\FacilitiesClient.java
 .\GenerateAggregatesInterfaces.txt
 .\GoodIdentificationTypesClient.java
+.\InOutNoticesClient.java
 .\InOutsClient.java
 .\InventoryItemRequirementsClient.java
 .\InventoryItemsClient.java
@@ -2789,6 +2830,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\IdServiceClient.java">
       <DependentUpon>GenerateDomainServicesInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutNoticesClient.java">
+      <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\InOutsClient.java">
       <DependentUpon>GenerateAggregatesInterfaces.tt</DependentUpon>
@@ -2909,6 +2953,7 @@
 .\RxDocumentTypesClient.java
 .\RxFacilitiesClient.java
 .\RxGoodIdentificationTypesClient.java
+.\RxInOutNoticesClient.java
 .\RxInOutsClient.java
 .\RxInventoryItemRequirementsClient.java
 .\RxInventoryItemsClient.java
@@ -3026,6 +3071,9 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxIdServiceClient.java">
       <DependentUpon>GenerateDomainServicesRxInterfaces.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutNoticesClient.java">
+      <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\client\rx\RxInOutsClient.java">
       <DependentUpon>GenerateAggregatesRxInterfaces.tt</DependentUpon>
@@ -3218,6 +3266,22 @@
 .\GoodIdentificationTypeEventId.java
 .\GoodIdentificationTypeStateDto.java
 .\GoodIdentificationTypeStateEventDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutnotice\GenerateInOutNoticeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateInOutNoticeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractInOutNoticeCommandDto.java
+.\CreateOrMergePatchInOutNoticeDto.java
+.\DeleteInOutNoticeDto.java
+.\GenerateInOutNoticeDomain.txt
+.\InOutNoticeAction.java
+.\InOutNoticeCommandDtos.java
+.\InOutNoticeEventId.java
+.\InOutNoticeStateDto.java
+.\InOutNoticeStateEventDto.java
+.\InOutNoticeType.java
 </LastOutputs>
     </Content>
   </ItemGroup>

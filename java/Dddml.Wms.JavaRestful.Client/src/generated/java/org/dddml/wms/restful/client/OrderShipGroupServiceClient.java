@@ -29,12 +29,20 @@ public interface OrderShipGroupServiceClient {
     Call<String> createSOShipGroup(@Body OrderShipGroupServiceCommandDtos.CreateSOShipGroupDto requestContent);
 
     @Headers("Accept: application/json")
+    @POST("OrderShipGroupService/UpdateOrderItemShipGroupAssociation")
+    Call<String> updateOrderItemShipGroupAssociation(@Body OrderShipGroupServiceCommandDtos.UpdateOrderItemShipGroupAssociationDto requestContent);
+
+    @Headers("Accept: application/json")
     @POST("OrderShipGroupService/CreatePOShipment")
     Call<String> createPOShipment(@Body OrderShipGroupServiceCommandDtos.CreatePOShipmentDto requestContent);
 
     @Headers("Accept: application/json")
     @POST("OrderShipGroupService/CreateSOShipment")
     Call<String> createSOShipment(@Body OrderShipGroupServiceCommandDtos.CreateSOShipmentDto requestContent);
+
+    @Headers("Accept: application/json")
+    @POST("OrderShipGroupService/Ship")
+    Call<String> ship(@Body OrderShipGroupServiceCommandDtos.ShipDto requestContent);
 
 }
 

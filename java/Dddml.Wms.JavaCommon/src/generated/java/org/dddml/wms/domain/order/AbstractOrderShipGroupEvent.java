@@ -254,42 +254,6 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
             this.trackingNumber = trackingNumber;
         }
 
-        private String contactPartyId;
-
-        public String getContactPartyId()
-        {
-            return this.contactPartyId;
-        }
-
-        public void setContactPartyId(String contactPartyId)
-        {
-            this.contactPartyId = contactPartyId;
-        }
-
-        private String vehiclePlateNumber;
-
-        public String getVehiclePlateNumber()
-        {
-            return this.vehiclePlateNumber;
-        }
-
-        public void setVehiclePlateNumber(String vehiclePlateNumber)
-        {
-            this.vehiclePlateNumber = vehiclePlateNumber;
-        }
-
-        private String shippingInstructions;
-
-        public String getShippingInstructions()
-        {
-            return this.shippingInstructions;
-        }
-
-        public void setShippingInstructions(String shippingInstructions)
-        {
-            this.shippingInstructions = shippingInstructions;
-        }
-
         private String maySplit;
 
         public String getMaySplit()
@@ -384,42 +348,6 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
         public void setPickwaveId(Long pickwaveId)
         {
             this.pickwaveId = pickwaveId;
-        }
-
-        private Integer numberOfPackages;
-
-        public Integer getNumberOfPackages()
-        {
-            return this.numberOfPackages;
-        }
-
-        public void setNumberOfPackages(Integer numberOfPackages)
-        {
-            this.numberOfPackages = numberOfPackages;
-        }
-
-        private Integer numberOfContainers;
-
-        public Integer getNumberOfContainers()
-        {
-            return this.numberOfContainers;
-        }
-
-        public void setNumberOfContainers(Integer numberOfContainers)
-        {
-            this.numberOfContainers = numberOfContainers;
-        }
-
-        private Integer numberOfPakagesPerContainer;
-
-        public Integer getNumberOfPakagesPerContainer()
-        {
-            return this.numberOfPakagesPerContainer;
-        }
-
-        public void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer)
-        {
-            this.numberOfPakagesPerContainer = numberOfPakagesPerContainer;
         }
 
         private String orderShipGroupStatusId;
@@ -630,36 +558,6 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
             this.isPropertyTrackingNumberRemoved = removed;
         }
 
-        private Boolean isPropertyContactPartyIdRemoved;
-
-        public Boolean getIsPropertyContactPartyIdRemoved() {
-            return this.isPropertyContactPartyIdRemoved;
-        }
-
-        public void setIsPropertyContactPartyIdRemoved(Boolean removed) {
-            this.isPropertyContactPartyIdRemoved = removed;
-        }
-
-        private Boolean isPropertyVehiclePlateNumberRemoved;
-
-        public Boolean getIsPropertyVehiclePlateNumberRemoved() {
-            return this.isPropertyVehiclePlateNumberRemoved;
-        }
-
-        public void setIsPropertyVehiclePlateNumberRemoved(Boolean removed) {
-            this.isPropertyVehiclePlateNumberRemoved = removed;
-        }
-
-        private Boolean isPropertyShippingInstructionsRemoved;
-
-        public Boolean getIsPropertyShippingInstructionsRemoved() {
-            return this.isPropertyShippingInstructionsRemoved;
-        }
-
-        public void setIsPropertyShippingInstructionsRemoved(Boolean removed) {
-            this.isPropertyShippingInstructionsRemoved = removed;
-        }
-
         private Boolean isPropertyMaySplitRemoved;
 
         public Boolean getIsPropertyMaySplitRemoved() {
@@ -738,36 +636,6 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
 
         public void setIsPropertyPickwaveIdRemoved(Boolean removed) {
             this.isPropertyPickwaveIdRemoved = removed;
-        }
-
-        private Boolean isPropertyNumberOfPackagesRemoved;
-
-        public Boolean getIsPropertyNumberOfPackagesRemoved() {
-            return this.isPropertyNumberOfPackagesRemoved;
-        }
-
-        public void setIsPropertyNumberOfPackagesRemoved(Boolean removed) {
-            this.isPropertyNumberOfPackagesRemoved = removed;
-        }
-
-        private Boolean isPropertyNumberOfContainersRemoved;
-
-        public Boolean getIsPropertyNumberOfContainersRemoved() {
-            return this.isPropertyNumberOfContainersRemoved;
-        }
-
-        public void setIsPropertyNumberOfContainersRemoved(Boolean removed) {
-            this.isPropertyNumberOfContainersRemoved = removed;
-        }
-
-        private Boolean isPropertyNumberOfPakagesPerContainerRemoved;
-
-        public Boolean getIsPropertyNumberOfPakagesPerContainerRemoved() {
-            return this.isPropertyNumberOfPakagesPerContainerRemoved;
-        }
-
-        public void setIsPropertyNumberOfPakagesPerContainerRemoved(Boolean removed) {
-            this.isPropertyNumberOfPakagesPerContainerRemoved = removed;
         }
 
         private Boolean isPropertyOrderShipGroupStatusIdRemoved;

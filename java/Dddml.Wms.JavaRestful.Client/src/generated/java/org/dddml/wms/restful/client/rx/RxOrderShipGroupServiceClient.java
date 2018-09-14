@@ -30,12 +30,20 @@ public interface RxOrderShipGroupServiceClient {
     Observable<String> createSOShipGroup(@Body OrderShipGroupServiceCommandDtos.CreateSOShipGroupDto requestContent);
 
     @Headers("Accept: application/json")
+    @POST("OrderShipGroupService/UpdateOrderItemShipGroupAssociation")
+    Observable<String> updateOrderItemShipGroupAssociation(@Body OrderShipGroupServiceCommandDtos.UpdateOrderItemShipGroupAssociationDto requestContent);
+
+    @Headers("Accept: application/json")
     @POST("OrderShipGroupService/CreatePOShipment")
     Observable<String> createPOShipment(@Body OrderShipGroupServiceCommandDtos.CreatePOShipmentDto requestContent);
 
     @Headers("Accept: application/json")
     @POST("OrderShipGroupService/CreateSOShipment")
     Observable<String> createSOShipment(@Body OrderShipGroupServiceCommandDtos.CreateSOShipmentDto requestContent);
+
+    @Headers("Accept: application/json")
+    @POST("OrderShipGroupService/Ship")
+    Observable<String> ship(@Body OrderShipGroupServiceCommandDtos.ShipDto requestContent);
 
 }
 

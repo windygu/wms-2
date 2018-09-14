@@ -21,16 +21,6 @@ namespace Dddml.Wms.Domain.Services
 
             public string ShipGroupSeqId { get; set; }
 
-            public int? NumberOfPackages { get; set; }
-
-            public int? NumberOfContainers { get; set; }
-
-            public int? NumberOfPakagesPerContainer { get; set; }
-
-            public string ProductId { get; set; }
-
-            public decimal? Quantity { get; set; }
-
             public DateTime? EstimatedDeliveryDate { get; set; }
 
             public string ContactPartyId { get; set; }
@@ -40,6 +30,8 @@ namespace Dddml.Wms.Domain.Services
             public string TrackingNumber { get; set; }
 
             public string DestinationFacilityId { get; set; }
+
+            public ISet<OrderItemShipGroupAssociationInfo> OrderItemShipGroupAssociations { get; set; }
 
             public string CommandId { get; set; }
 
@@ -52,16 +44,6 @@ namespace Dddml.Wms.Domain.Services
             public string OrderId { get; set; }
 
             public string ShipGroupSeqId { get; set; }
-
-            public int? NumberOfPackages { get; set; }
-
-            public int? NumberOfContainers { get; set; }
-
-            public int? NumberOfPakagesPerContainer { get; set; }
-
-            public string ProductId { get; set; }
-
-            public decimal? Quantity { get; set; }
 
             public DateTime? EstimatedShipDate { get; set; }
 
@@ -77,6 +59,22 @@ namespace Dddml.Wms.Domain.Services
 
             public string FacilityId { get; set; }
 
+            public ISet<OrderItemShipGroupAssociationInfo> OrderItemShipGroupAssociations { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+        }
+
+        public class UpdateOrderItemShipGroupAssociation
+        {
+            public string OrderId { get; set; }
+
+            public string ShipGroupSeqId { get; set; }
+
+            public OrderItemShipGroupAssociationInfo OrderItemShipGroupAssociation { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -85,9 +83,7 @@ namespace Dddml.Wms.Domain.Services
 
         public class CreatePOShipment
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
+            public ISet<OrderIdShipGroupSeqIdPair> OrderIdShipGroupSeqIdPairs { get; set; }
 
             public string ShipmentId { get; set; }
 
@@ -99,11 +95,23 @@ namespace Dddml.Wms.Domain.Services
 
         public class CreateSOShipment
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
+            public ISet<OrderIdShipGroupSeqIdPair> OrderIdShipGroupSeqIdPairs { get; set; }
 
             public string ShipmentId { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+        }
+
+        public class Ship
+        {
+            public string ShipmentId { get; set; }
+
+            public string PrimaryOrderId { get; set; }
+
+            public string PrimaryShipGroupSeqId { get; set; }
 
             public string CommandId { get; set; }
 

@@ -105,5 +105,21 @@ namespace Dddml.Wms.Domain.Shipment
         {
             throw new NotImplementedException();
         }
+
+
+        public void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, bool onlyOneOrder, string bolNumber, string vehicleId, string sealNumber, string externalOrderNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReceiveItem(string receiptSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string locatorId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IssueItem(string itemIssuanceSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string shipGroupSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

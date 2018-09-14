@@ -110,24 +110,12 @@ public interface RxSalesShipmentsClient {
     Observable<String> _import(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ImportRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("SalesShipments/{shipmentId}/_commands/Ship")
-    Observable<String> ship(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ShipRequestContent content);
-
-    @Headers("Accept: application/json")
     @PUT("SalesShipments/{shipmentId}/_commands/ReceiveItem")
     Observable<String> receiveItem(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.ReceiveItemRequestContent content);
 
     @Headers("Accept: application/json")
-    @PUT("SalesShipments/{shipmentId}/_commands/AddItemAndReceipt")
-    Observable<String> addItemAndReceipt(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.AddItemAndReceiptRequestContent content);
-
-    @Headers("Accept: application/json")
     @PUT("SalesShipments/{shipmentId}/_commands/IssueItem")
     Observable<String> issueItem(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.IssueItemRequestContent content);
-
-    @Headers("Accept: application/json")
-    @PUT("SalesShipments/{shipmentId}/_commands/AddItemAndIssuance")
-    Observable<String> addItemAndIssuance(@Path("shipmentId") String shipmentId, @Body ShipmentCommandDtos.AddItemAndIssuanceRequestContent content);
 
     @Headers("Accept: application/json")
     @PUT("SalesShipments/{shipmentId}/_commands/ConfirmAllItemsReceived")

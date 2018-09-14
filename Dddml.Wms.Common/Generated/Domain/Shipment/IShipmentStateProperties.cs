@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string PrimaryShipGroupSeqId { get; set; }
 
+		bool OnlyOneOrder { get; set; }
+
 		string PicklistBinId { get; set; }
 
 		string BolNumber { get; set; }

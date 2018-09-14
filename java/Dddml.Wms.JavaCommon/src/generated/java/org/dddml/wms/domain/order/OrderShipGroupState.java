@@ -60,18 +60,6 @@ public interface OrderShipGroupState
 
     void setTrackingNumber(String trackingNumber);
 
-    String getContactPartyId();
-
-    void setContactPartyId(String contactPartyId);
-
-    String getVehiclePlateNumber();
-
-    void setVehiclePlateNumber(String vehiclePlateNumber);
-
-    String getShippingInstructions();
-
-    void setShippingInstructions(String shippingInstructions);
-
     String getMaySplit();
 
     void setMaySplit(String maySplit);
@@ -103,18 +91,6 @@ public interface OrderShipGroupState
     Long getPickwaveId();
 
     void setPickwaveId(Long pickwaveId);
-
-    Integer getNumberOfPackages();
-
-    void setNumberOfPackages(Integer numberOfPackages);
-
-    Integer getNumberOfContainers();
-
-    void setNumberOfContainers(Integer numberOfContainers);
-
-    Integer getNumberOfPakagesPerContainer();
-
-    void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
 
     String getOrderShipGroupStatusId();
 

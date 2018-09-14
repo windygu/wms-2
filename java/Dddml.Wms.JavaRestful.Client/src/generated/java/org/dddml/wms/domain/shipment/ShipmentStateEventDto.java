@@ -84,6 +84,16 @@ public class ShipmentStateEventDto extends AbstractEvent
         this.primaryShipGroupSeqId = primaryShipGroupSeqId;
     }
 
+    private Boolean onlyOneOrder;
+
+    public Boolean getOnlyOneOrder() {
+        return this.onlyOneOrder;
+    }
+
+    public void setOnlyOneOrder(Boolean onlyOneOrder) {
+        this.onlyOneOrder = onlyOneOrder;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId() {
@@ -422,6 +432,16 @@ public class ShipmentStateEventDto extends AbstractEvent
 
     public void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed) {
         this.isPropertyPrimaryShipGroupSeqIdRemoved = removed;
+    }
+
+    private Boolean isPropertyOnlyOneOrderRemoved;
+
+    public Boolean getIsPropertyOnlyOneOrderRemoved() {
+        return this.isPropertyOnlyOneOrderRemoved;
+    }
+
+    public void setIsPropertyOnlyOneOrderRemoved(Boolean removed) {
+        this.isPropertyOnlyOneOrderRemoved = removed;
     }
 
     private Boolean isPropertyPicklistBinIdRemoved;
