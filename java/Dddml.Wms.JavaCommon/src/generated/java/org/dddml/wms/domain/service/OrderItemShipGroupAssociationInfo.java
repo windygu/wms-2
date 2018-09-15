@@ -5,6 +5,30 @@ import org.dddml.wms.domain.*;
 
 public class OrderItemShipGroupAssociationInfo implements Serializable
 {
+    private String orderId;
+
+    public String getOrderId()
+    {
+        return this.orderId;
+    }
+
+    public void setOrderId(String orderId)
+    {
+        this.orderId = orderId;
+    }
+
+    private String shipGroupSeqId;
+
+    public String getShipGroupSeqId()
+    {
+        return this.shipGroupSeqId;
+    }
+
+    public void setShipGroupSeqId(String shipGroupSeqId)
+    {
+        this.shipGroupSeqId = shipGroupSeqId;
+    }
+
     private String orderItemSeqId;
 
     public String getOrderItemSeqId()
@@ -81,8 +105,10 @@ public class OrderItemShipGroupAssociationInfo implements Serializable
     {
     }
 
-    public OrderItemShipGroupAssociationInfo(String orderItemSeqId, String productId, java.math.BigDecimal quantity, Integer numberOfPackages, Integer numberOfContainers, Integer numberOfPakagesPerContainer)
+    public OrderItemShipGroupAssociationInfo(String orderId, String shipGroupSeqId, String orderItemSeqId, String productId, java.math.BigDecimal quantity, Integer numberOfPackages, Integer numberOfContainers, Integer numberOfPakagesPerContainer)
     {
+        this.orderId = orderId;
+        this.shipGroupSeqId = shipGroupSeqId;
         this.orderItemSeqId = orderItemSeqId;
         this.productId = productId;
         this.quantity = quantity;
@@ -103,6 +129,8 @@ public class OrderItemShipGroupAssociationInfo implements Serializable
 
         OrderItemShipGroupAssociationInfo other = (OrderItemShipGroupAssociationInfo)obj;
         return true 
+            && (orderId == other.orderId || (orderId != null && orderId.equals(other.orderId)))
+            && (shipGroupSeqId == other.shipGroupSeqId || (shipGroupSeqId != null && shipGroupSeqId.equals(other.shipGroupSeqId)))
             && (orderItemSeqId == other.orderItemSeqId || (orderItemSeqId != null && orderItemSeqId.equals(other.orderItemSeqId)))
             && (productId == other.productId || (productId != null && productId.equals(other.productId)))
             && (quantity == other.quantity || (quantity != null && quantity.equals(other.quantity)))
@@ -116,6 +144,12 @@ public class OrderItemShipGroupAssociationInfo implements Serializable
     public int hashCode()
     {
         int hash = 0;
+        if (this.orderId != null) {
+            hash += 13 * this.orderId.hashCode();
+        }
+        if (this.shipGroupSeqId != null) {
+            hash += 13 * this.shipGroupSeqId.hashCode();
+        }
         if (this.orderItemSeqId != null) {
             hash += 13 * this.orderItemSeqId.hashCode();
         }

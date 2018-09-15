@@ -20,7 +20,7 @@
 	<property name="productId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></property>
 	<property name="locatorId" ><column name="LocatorId" length="50" /></property>
 	<property name="attributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></property>
-	<property name="shipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentItemSeqId" ><column name="ShipmentItemSeqId" not-null="true" sql-type="VARCHAR(20)" /></property>
 	<property name="fixedAssetId" ><column name="FixedAssetId" sql-type="VARCHAR(20)" /></property>
 	<property name="maintHistSeqId" ><column name="MaintHistSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="issuedDateTime" ><column name="IssuedDateTime" sql-type="DATETIME" /></property>

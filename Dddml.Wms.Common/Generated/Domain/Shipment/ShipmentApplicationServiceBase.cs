@@ -102,7 +102,7 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual void When(ShipmentCommands.Import c)
 		{
-			Update(c, ar => ar.Import(c.ShipmentTypeId, c.PrimaryOrderId, c.PrimaryReturnId, c.OnlyOneOrder, c.BolNumber, c.VehicleId, c.SealNumber, c.ExternalOrderNumber, c.Carrier, c.DateShipped, c.EstimatedReadyDate, c.EstimatedShipDate, c.EstimatedArrivalDate, c.LatestCancelDate, c.EstimatedShipCost, c.CurrencyUomId, c.HandlingInstructions, c.OriginFacilityId, c.DestinationFacilityId, c.PartyIdTo, c.PartyIdFrom, c.AdditionalShippingCharge, c.AddtlShippingChargeDesc, c.ShipmentItems, c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.Import(c.ShipmentTypeId, c.PrimaryOrderId, c.PrimaryReturnId, c.OnlyOneOrder, c.OnlyOneOrderShipGroup, c.BolNumber, c.VehicleId, c.SealNumber, c.ExternalOrderNumber, c.Carrier, c.DateShipped, c.EstimatedReadyDate, c.EstimatedShipDate, c.EstimatedArrivalDate, c.LatestCancelDate, c.EstimatedShipCost, c.CurrencyUomId, c.HandlingInstructions, c.OriginFacilityId, c.DestinationFacilityId, c.PartyIdTo, c.PartyIdFrom, c.AdditionalShippingCharge, c.AddtlShippingChargeDesc, c.ShipmentItems, c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(ShipmentCommands.ReceiveItem c)

@@ -27,21 +27,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         IOrderShipGroupApplicationService _orderShipGroupApplicationService = ApplicationContext.Current["OrderShipGroupApplicationService"] as IOrderShipGroupApplicationService;
 
-        [Route("CreatePOShipGroup")]
+        [Route("CreatePOShipGroups")]
         [HttpPost][SetRequesterId]
-        public void CreatePOShipGroup([FromBody]OrderShipGroupServiceCommandDtos.CreatePOShipGroupDto requestContent)
+        public void CreatePOShipGroups([FromBody]OrderShipGroupServiceCommandDtos.CreatePOShipGroupsDto requestContent)
         {
           try {
-             _orderShipGroupApplicationService.When(requestContent.ToCreatePOShipGroup());
+             _orderShipGroupApplicationService.When(requestContent.ToCreatePOShipGroups());
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
-        [Route("CreateSOShipGroup")]
+        [Route("CreateSOShipGroups")]
         [HttpPost][SetRequesterId]
-        public void CreateSOShipGroup([FromBody]OrderShipGroupServiceCommandDtos.CreateSOShipGroupDto requestContent)
+        public void CreateSOShipGroups([FromBody]OrderShipGroupServiceCommandDtos.CreateSOShipGroupsDto requestContent)
         {
           try {
-             _orderShipGroupApplicationService.When(requestContent.ToCreateSOShipGroup());
+             _orderShipGroupApplicationService.When(requestContent.ToCreateSOShipGroups());
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
@@ -72,12 +72,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         
-        [Route("Ship")]
+        [Route("ShipPOShipment")]
         [HttpPost][SetRequesterId]
-        public void Ship([FromBody]OrderShipGroupServiceCommandDtos.ShipDto requestContent)
+        public void ShipPOShipment([FromBody]OrderShipGroupServiceCommandDtos.ShipPOShipmentDto requestContent)
         {
           try {
-             _orderShipGroupApplicationService.When(requestContent.ToShip());
+             _orderShipGroupApplicationService.When(requestContent.ToShipPOShipment());
           } catch (Exception ex) { var response = HttpServiceExceptionUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
         

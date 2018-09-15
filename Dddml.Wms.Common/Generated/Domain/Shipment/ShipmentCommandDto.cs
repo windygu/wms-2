@@ -71,6 +71,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual bool? OnlyOneOrder { get; set; }
 
+		public virtual bool? OnlyOneOrderShipGroup { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual string BolNumber { get; set; }
@@ -236,6 +238,25 @@ namespace Dddml.Wms.Domain.Shipment
             set
             {
                 this.IsPropertyOnlyOneOrderRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyOnlyOneOrderShipGroupRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertyOnlyOneOrderShipGroupRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyOnlyOneOrderShipGroupRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyOnlyOneOrderShipGroupRemoved = value;
             }
         }
 
@@ -1156,6 +1177,8 @@ namespace Dddml.Wms.Domain.Shipment
 
             public bool OnlyOneOrder { get; set; }
 
+            public bool OnlyOneOrderShipGroup { get; set; }
+
             public string BolNumber { get; set; }
 
             public string VehicleId { get; set; }
@@ -1211,6 +1234,7 @@ namespace Dddml.Wms.Domain.Shipment
                 cmd.PrimaryOrderId = this.PrimaryOrderId;
                 cmd.PrimaryReturnId = this.PrimaryReturnId;
                 cmd.OnlyOneOrder = this.OnlyOneOrder;
+                cmd.OnlyOneOrderShipGroup = this.OnlyOneOrderShipGroup;
                 cmd.BolNumber = this.BolNumber;
                 cmd.VehicleId = this.VehicleId;
                 cmd.SealNumber = this.SealNumber;

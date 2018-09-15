@@ -81,6 +81,21 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * Only One Order Ship Group
+     */
+    private Boolean onlyOneOrderShipGroup;
+
+    public Boolean getOnlyOneOrderShipGroup()
+    {
+        return this.onlyOneOrderShipGroup;
+    }
+
+    public void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup)
+    {
+        this.onlyOneOrderShipGroup = onlyOneOrderShipGroup;
+    }
+
+    /**
      * Picklist Bin Id
      */
     private String picklistBinId;
@@ -593,6 +608,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.isPropertyOnlyOneOrderRemoved = removed;
     }
 
+    private Boolean isPropertyOnlyOneOrderShipGroupRemoved;
+
+    public Boolean getIsPropertyOnlyOneOrderShipGroupRemoved()
+    {
+        return this.isPropertyOnlyOneOrderShipGroupRemoved;
+    }
+
+    public void setIsPropertyOnlyOneOrderShipGroupRemoved(Boolean removed)
+    {
+        this.isPropertyOnlyOneOrderShipGroupRemoved = removed;
+    }
+
     private Boolean isPropertyPicklistBinIdRemoved;
 
     public Boolean getIsPropertyPicklistBinIdRemoved()
@@ -925,6 +952,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setPrimaryReturnId(this.getPrimaryReturnId());
         command.setPrimaryShipGroupSeqId(this.getPrimaryShipGroupSeqId());
         command.setOnlyOneOrder(this.getOnlyOneOrder());
+        command.setOnlyOneOrderShipGroup(this.getOnlyOneOrderShipGroup());
         command.setPicklistBinId(this.getPicklistBinId());
         command.setBolNumber(this.getBolNumber());
         command.setSealNumber(this.getSealNumber());
@@ -1024,6 +1052,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setIsPropertyPrimaryReturnIdRemoved(this.getIsPropertyPrimaryReturnIdRemoved());
         command.setIsPropertyPrimaryShipGroupSeqIdRemoved(this.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         command.setIsPropertyOnlyOneOrderRemoved(this.getIsPropertyOnlyOneOrderRemoved());
+        command.setIsPropertyOnlyOneOrderShipGroupRemoved(this.getIsPropertyOnlyOneOrderShipGroupRemoved());
         command.setIsPropertyPicklistBinIdRemoved(this.getIsPropertyPicklistBinIdRemoved());
         command.setIsPropertyBolNumberRemoved(this.getIsPropertyBolNumberRemoved());
         command.setIsPropertySealNumberRemoved(this.getIsPropertySealNumberRemoved());

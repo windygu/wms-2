@@ -238,6 +238,37 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual bool? OnlyOneOrderShipGroup
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OnlyOneOrderShipGroup"))
+                {
+                    return _state.OnlyOneOrderShipGroup;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.OnlyOneOrderShipGroup = value.Value;
+                }
+            }
+        }
+
+        bool IShipmentStateProperties.OnlyOneOrderShipGroup
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).OnlyOneOrderShipGroup;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).OnlyOneOrderShipGroup = value;
+            }
+        }
+
 		public virtual string PicklistBinId
 		{
             get

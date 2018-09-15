@@ -62,6 +62,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setPrimaryReturnId(c.getPrimaryReturnId());
         e.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
         e.setOnlyOneOrder(c.getOnlyOneOrder());
+        e.setOnlyOneOrderShipGroup(c.getOnlyOneOrderShipGroup());
         e.setPicklistBinId(c.getPicklistBinId());
         e.setBolNumber(c.getBolNumber());
         e.setSealNumber(c.getSealNumber());
@@ -132,6 +133,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setPrimaryReturnId(c.getPrimaryReturnId());
         e.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
         e.setOnlyOneOrder(c.getOnlyOneOrder());
+        e.setOnlyOneOrderShipGroup(c.getOnlyOneOrderShipGroup());
         e.setPicklistBinId(c.getPicklistBinId());
         e.setBolNumber(c.getBolNumber());
         e.setSealNumber(c.getSealNumber());
@@ -164,6 +166,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setIsPropertyPrimaryReturnIdRemoved(c.getIsPropertyPrimaryReturnIdRemoved());
         e.setIsPropertyPrimaryShipGroupSeqIdRemoved(c.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         e.setIsPropertyOnlyOneOrderRemoved(c.getIsPropertyOnlyOneOrderRemoved());
+        e.setIsPropertyOnlyOneOrderShipGroupRemoved(c.getIsPropertyOnlyOneOrderShipGroupRemoved());
         e.setIsPropertyPicklistBinIdRemoved(c.getIsPropertyPicklistBinIdRemoved());
         e.setIsPropertyBolNumberRemoved(c.getIsPropertyBolNumberRemoved());
         e.setIsPropertySealNumberRemoved(c.getIsPropertySealNumberRemoved());
@@ -930,7 +933,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, Boolean onlyOneOrder, String bolNumber, String vehicleId, String sealNumber, String externalOrderNumber, String carrier, java.sql.Timestamp dateShipped, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
+        public void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, Boolean onlyOneOrder, Boolean onlyOneOrderShipGroup, String bolNumber, String vehicleId, String sealNumber, String externalOrderNumber, String carrier, java.sql.Timestamp dateShipped, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 

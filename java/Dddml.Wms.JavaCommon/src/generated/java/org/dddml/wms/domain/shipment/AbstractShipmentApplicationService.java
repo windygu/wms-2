@@ -54,7 +54,7 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
     }
 
     public void when(ShipmentCommands.Import c) {
-        update(c, ar -> ar._import(c.getShipmentTypeId(), c.getPrimaryOrderId(), c.getPrimaryReturnId(), c.getOnlyOneOrder(), c.getBolNumber(), c.getVehicleId(), c.getSealNumber(), c.getExternalOrderNumber(), c.getCarrier(), c.getDateShipped(), c.getEstimatedReadyDate(), c.getEstimatedShipDate(), c.getEstimatedArrivalDate(), c.getLatestCancelDate(), c.getEstimatedShipCost(), c.getCurrencyUomId(), c.getHandlingInstructions(), c.getOriginFacilityId(), c.getDestinationFacilityId(), c.getPartyIdTo(), c.getPartyIdFrom(), c.getAdditionalShippingCharge(), c.getAddtlShippingChargeDesc(), c.getShipmentItems(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar._import(c.getShipmentTypeId(), c.getPrimaryOrderId(), c.getPrimaryReturnId(), c.getOnlyOneOrder(), c.getOnlyOneOrderShipGroup(), c.getBolNumber(), c.getVehicleId(), c.getSealNumber(), c.getExternalOrderNumber(), c.getCarrier(), c.getDateShipped(), c.getEstimatedReadyDate(), c.getEstimatedShipDate(), c.getEstimatedArrivalDate(), c.getLatestCancelDate(), c.getEstimatedShipCost(), c.getCurrencyUomId(), c.getHandlingInstructions(), c.getOriginFacilityId(), c.getDestinationFacilityId(), c.getPartyIdTo(), c.getPartyIdFrom(), c.getAdditionalShippingCharge(), c.getAddtlShippingChargeDesc(), c.getShipmentItems(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(ShipmentCommands.ReceiveItem c) {

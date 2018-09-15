@@ -10,77 +10,66 @@ namespace Dddml.Wms.Domain.Shipment
     public partial class ShipmentAggregate : IShipmentAggregate
     {
 
-        public void Ship(long version, string commandId, string requesterId)
-        {
-            bool isStatusOk = false;
-            if (State.StatusId == StatusItemIds.PurchShipCreated)
-            {
-                isStatusOk = true;
-            }
-            else if (State.StatusId == StatusItemIds.ShipmentInput
-                || State.StatusId == StatusItemIds.ShipmentPicked//??
-                || State.StatusId == StatusItemIds.ShipmentPacked//??
-                )
-            {
-                isStatusOk = true;
-            }
-            if (!isStatusOk)
-            {
-                throw new ArgumentException(String.Format("Error shipment status: {0}.", State.StatusId));
-            }
+       // public void Ship(long version, string commandId, string requesterId)
+       // {
+       //     bool isStatusOk = false;
+       //     if (State.StatusId == StatusItemIds.PurchShipCreated)
+       //     {
+       //         isStatusOk = true;
+       //     }
+       //     else if (State.StatusId == StatusItemIds.ShipmentInput
+       //         || State.StatusId == StatusItemIds.ShipmentPicked//??
+       //         || State.StatusId == StatusItemIds.ShipmentPacked//??
+       //         )
+       //     {
+       //         isStatusOk = true;
+       //     }
+       //     if (!isStatusOk)
+       //     {
+       //         throw new ArgumentException(String.Format("Error shipment status: {0}.", State.StatusId));
+       //     }
 
-            var e = NewShipmentStateMergePatched(version, commandId,requesterId);
-            if (State.ShipmentTypeId == ShipmentTypeIds.IncomingShipment
-                || ShipmentTypeIds.GetParentTypeId(State.ShipmentTypeId) == ShipmentTypeIds.IncomingShipment)
-            {
-                e.StatusId = StatusItemIds.PurchShipShipped;
-            }
-            else
-            {
-                e.StatusId = StatusItemIds.ShipmentShipped;
-            }
-            Apply(e);
-       }
+       //     var e = NewShipmentStateMergePatched(version, commandId,requesterId);
+       //     if (State.ShipmentTypeId == ShipmentTypeIds.IncomingShipment
+       //         || ShipmentTypeIds.GetParentTypeId(State.ShipmentTypeId) == ShipmentTypeIds.IncomingShipment)
+       //     {
+       //         e.StatusId = StatusItemIds.PurchShipShipped;
+       //     }
+       //     else
+       //     {
+       //         e.StatusId = StatusItemIds.ShipmentShipped;
+       //     }
+       //     Apply(e);
+       //}
 
-        public void ConfirmAllItemsReceived(long version, string commandId, string requesterId)
-        {
-            bool isStatusOk = false;
-            if (State.StatusId == StatusItemIds.PurchShipShipped)
-            {
-                isStatusOk = true;
-            }
-            if (!isStatusOk)
-            {
-                throw new ArgumentException(String.Format("Error shipment status: {0}.", State.StatusId));
-            }
-            var e = NewShipmentStateMergePatched(version, commandId, requesterId);
-            e.StatusId = StatusItemIds.PurchShipReceived;
-            Apply(e);
-        }
+       // public void ConfirmAllItemsReceived(long version, string commandId, string requesterId)
+       // {
+       //     bool isStatusOk = false;
+       //     if (State.StatusId == StatusItemIds.PurchShipShipped)
+       //     {
+       //         isStatusOk = true;
+       //     }
+       //     if (!isStatusOk)
+       //     {
+       //         throw new ArgumentException(String.Format("Error shipment status: {0}.", State.StatusId));
+       //     }
+       //     var e = NewShipmentStateMergePatched(version, commandId, requesterId);
+       //     e.StatusId = StatusItemIds.PurchShipReceived;
+       //     Apply(e);
+       // }
 
 
-
-        public void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, string bolNumber, string vehicleId, string sealNumber, string externalOrderNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ReceiveItem(string shipmentItemSeqId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId)
+        public void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, bool onlyOneOrder, bool onlyOneOrderShipGroup, string bolNumber, string vehicleId, string sealNumber, string externalOrderNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId)
         {
             throw new NotImplementedException();
         }
 
-        public void AddItemAndReceipt(string receiptSeqId, string productId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId)
+        public void ReceiveItem(string receiptSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string locatorId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId)
         {
             throw new NotImplementedException();
         }
 
-        public void IssueItem(string shipmentItemSeqId, string orderId, string orderItemSeqId, string shipGroupSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddItemAndIssuance(string orderId, string orderItemSeqId, string shipGroupSeqId, string itemIssuanceSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId)
+        public void IssueItem(string itemIssuanceSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string shipGroupSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId)
         {
             throw new NotImplementedException();
         }
@@ -95,29 +84,12 @@ namespace Dddml.Wms.Domain.Shipment
             throw new NotImplementedException();
         }
 
-
         public void PurchaseShipmentAction(string value, long version, string commandId, string requesterId)
         {
             throw new NotImplementedException();
         }
 
         public void SalesShipmentAction(string value, long version, string commandId, string requesterId)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void Import(string shipmentTypeId, string primaryOrderId, string primaryReturnId, bool onlyOneOrder, string bolNumber, string vehicleId, string sealNumber, string externalOrderNumber, string carrier, DateTime? dateShipped, DateTime? estimatedReadyDate, DateTime? estimatedShipDate, DateTime? estimatedArrivalDate, DateTime? latestCancelDate, decimal? estimatedShipCost, string currencyUomId, string handlingInstructions, string originFacilityId, string destinationFacilityId, string partyIdTo, string partyIdFrom, decimal? additionalShippingCharge, string addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ReceiveItem(string receiptSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string locatorId, IDictionary<string, object> attributeSetInstance, string rejectionReasonId, IEnumerable<string> damageStatusIds, string damageReasonId, decimal? acceptedQuantity, decimal? rejectedQuantity, decimal? damagedQuantity, string itemDescription, long version, string commandId, string requesterId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void IssueItem(string itemIssuanceSeqId, string shipmentItemSeqId, string orderId, string orderItemSeqId, string shipGroupSeqId, string productId, string locatorId, IDictionary<string, object> attributeSetInstance, decimal? quantity, decimal? cancelQuantity, string itemDescription, long version, string commandId, string requesterId)
         {
             throw new NotImplementedException();
         }

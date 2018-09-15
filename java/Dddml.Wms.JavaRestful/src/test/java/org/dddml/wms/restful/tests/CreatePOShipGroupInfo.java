@@ -41,13 +41,13 @@ public class CreatePOShipGroupInfo {
         token = getJwtToken();
         //token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
 
-        OrderShipGroupServiceCommands.CreatePOShipGroup createPOShipGroup = new OrderShipGroupServiceCommands.CreatePOShipGroup();
+        OrderShipGroupServiceCommands.CreatePOShipGroups createPOShipGroup = new OrderShipGroupServiceCommands.CreatePOShipGroups();
+        //todo
+        /*
         // 合同号:
         createPOShipGroup.setOrderId("XXXXXX-XX");
         // 通知单号:
         createPOShipGroup.setShipGroupSeqId("" + 2018082702L);
-        //todo
-        /*
         // ////////////// 产品 Id： /////////////////
         createPOShipGroup.setProductId("21001");
         //产品名称：	 GI SEMI-TREATED FLUFF
@@ -83,15 +83,16 @@ public class CreatePOShipGroupInfo {
 
 
         // /////////////// “批准”这个通知单 /////////////////////////
-        String orderShipGroupUrl = HttpClientUtil.appendUrl(baseUrl,
-                "Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction");
-        orderShipGroupUrl = orderShipGroupUrl.replace("{orderId}", createPOShipGroup.getOrderId())
-                .replace("{shipGroupSeqId}", createPOShipGroup.getShipGroupSeqId().toString());
-        OrderCommands.OrderShipGroupAction orderShipGroupAction = new OrderCommands.OrderShipGroupAction();
-        orderShipGroupAction.setValue("Approve");
-        orderShipGroupAction.setCommandId(UUID.randomUUID().toString());
-        orderShipGroupAction.setVersion(0L);//当前订单的版本号
-        HttpClientUtil.put(token, orderShipGroupUrl, orderShipGroupAction);
+        //
+        //        String orderShipGroupUrl = HttpClientUtil.appendUrl(baseUrl,
+        //                "Orders/{orderId}/OrderShipGroups/{shipGroupSeqId}/_commands/OrderShipGroupAction");
+        //        orderShipGroupUrl = orderShipGroupUrl.replace("{orderId}", createPOShipGroup.getOrderId())
+        //                .replace("{shipGroupSeqId}", createPOShipGroup.getShipGroupSeqId().toString());
+        //        OrderCommands.OrderShipGroupAction orderShipGroupAction = new OrderCommands.OrderShipGroupAction();
+        //        orderShipGroupAction.setValue("Approve");
+        //        orderShipGroupAction.setCommandId(UUID.randomUUID().toString());
+        //        orderShipGroupAction.setVersion(0L);//当前订单的版本号
+        //        HttpClientUtil.put(token, orderShipGroupUrl, orderShipGroupAction);
 
     }
 

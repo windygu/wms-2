@@ -16,6 +16,13 @@ services:
       # 订单行项与装运组的关联信息
       OrderItemShipGroupAssociationInfo:
         properties:
+          # 订单 Id（合同号）
+          OrderId:
+            type: id
+          #---------------------------------
+          # 订单装运组序号（通知单号）
+          ShipGroupSeqId:
+            type: id
           # -------------------------------------------------
           # 订单（行）项序号
           # （为空则创建新行项，否则检查、更新已有行项）
@@ -57,18 +64,11 @@ services:
       
       # ------------------------------------
       # 创建装运组（入库通知单）
-      CreatePOShipGroup:
+      CreatePOShipGroups:
         #authorizationEnabled: true
         #requiredAnyRole: ["ADMIN", "WarehouseOP"]
         
         parameters:
-          # 订单 Id（合同号）
-          OrderId:
-            type: id
-          #---------------------------------
-          # 订单装运组序号（通知单号）
-          ShipGroupSeqId:
-            type: id
           # ------------------------------
           # 预计交付时间（入库时间）
           EstimatedDeliveryDate:
@@ -97,16 +97,9 @@ services:
             
       # ------------------------------------
       # 创建装运组（出库通知单）
-      CreateSOShipGroup:
+      CreateSOShipGroups:
       
         parameters:
-          # 订单 Id（合同号）
-          OrderId:
-            type: id
-          #---------------------------------
-          # 订单装运组序号（通知单号）
-          ShipGroupSeqId:
-            type: id
           # ------------------------------
           # 预计发货日期（出库时间）
           EstimatedShipDate:
@@ -145,13 +138,6 @@ services:
       UpdateOrderItemShipGroupAssociation:
         parameters:
         
-          # 订单 Id（合同号）
-          OrderId:
-            type: id
-          #---------------------------------
-          # 订单装运组序号（通知单号）
-          ShipGroupSeqId:
-            type: id
           OrderItemShipGroupAssociation:
             type: OrderItemShipGroupAssociationInfo
             
@@ -194,24 +180,26 @@ services:
         
       # ---------------------------------------
       # 发出一个 PO 装运单（状态转换为“已发出”）
-      # todo 重命名？ShipPOShipment???
-      Ship:
+      ShipPOShipment:
       
         parameters:
+          # 装运单 Id
           ShipmentId:
             type: id-ne
           # ------------------------
-          # 主订单 Id
+          # 关联的主订单 Id
           PrimaryOrderId:
             type: id
-          # 主订单装运组序号
+          # 关联的主订单装运组序号
           PrimaryShipGroupSeqId:
             type: id
-          # ------------------------
-          # todo???
-          #AutoShipmentItemsEnabled:
-          #  type: bool
-        
+          # ------------------------------------------------
+          # 是否自动生成（订单装运组中存在的产品的）装运项
+          HintShipmentItemsEnabled:
+            type: bool
+          # 主订单/装运组之外的其他订单装运组 Id Pair
+          OtherOrderIdShipGroupSeqIdPairs:
+            itemType: OrderIdShipGroupSeqIdPair
         
         
         

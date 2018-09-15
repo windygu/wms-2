@@ -25,6 +25,7 @@ public final class ShipmentMetadata {
             "primaryReturnId",
             "primaryShipGroupSeqId",
             "onlyOneOrder",
+            "onlyOneOrderShipGroup",
             "picklistBinId",
             "bolNumber",
             "sealNumber",
@@ -67,6 +68,7 @@ public final class ShipmentMetadata {
             "String",
             "String",
             "String",
+            "Boolean",
             "Boolean",
             "String",
             "String",
@@ -129,6 +131,8 @@ public final class ShipmentMetadata {
         aliasMap.put("PrimaryShipGroupSeqId", "primaryShipGroupSeqId");
         aliasMap.put("onlyOneOrder", "onlyOneOrder");
         aliasMap.put("OnlyOneOrder", "onlyOneOrder");
+        aliasMap.put("onlyOneOrderShipGroup", "onlyOneOrderShipGroup");
+        aliasMap.put("OnlyOneOrderShipGroup", "onlyOneOrderShipGroup");
         aliasMap.put("picklistBinId", "picklistBinId");
         aliasMap.put("PicklistBinId", "picklistBinId");
         aliasMap.put("bolNumber", "bolNumber");

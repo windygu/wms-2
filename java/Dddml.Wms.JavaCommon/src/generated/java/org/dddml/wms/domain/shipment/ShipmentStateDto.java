@@ -93,6 +93,18 @@ public class ShipmentStateDto
         this.onlyOneOrder = onlyOneOrder;
     }
 
+    private Boolean onlyOneOrderShipGroup;
+
+    public Boolean getOnlyOneOrderShipGroup()
+    {
+        return this.onlyOneOrderShipGroup;
+    }
+
+    public void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup)
+    {
+        this.onlyOneOrderShipGroup = onlyOneOrderShipGroup;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId()
@@ -574,6 +586,9 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("OnlyOneOrder")) {
                 dto.setOnlyOneOrder(state.getOnlyOneOrder());
+            }
+            if (returnedFieldsContains("OnlyOneOrderShipGroup")) {
+                dto.setOnlyOneOrderShipGroup(state.getOnlyOneOrderShipGroup());
             }
             if (returnedFieldsContains("PicklistBinId")) {
                 dto.setPicklistBinId(state.getPicklistBinId());

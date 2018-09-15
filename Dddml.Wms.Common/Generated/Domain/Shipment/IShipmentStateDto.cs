@@ -56,6 +56,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        bool? OnlyOneOrderShipGroup
+        {
+            get;
+            set;
+        }
+
         string PicklistBinId
         {
             get;

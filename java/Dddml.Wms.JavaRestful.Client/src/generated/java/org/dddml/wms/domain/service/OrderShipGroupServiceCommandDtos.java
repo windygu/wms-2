@@ -13,33 +13,7 @@ public class OrderShipGroupServiceCommandDtos {
     private OrderShipGroupServiceCommandDtos() {
     }
     
-    public static class CreatePOShipGroupDto {
-
-        /**
-         * Order Id
-         */
-        private String orderId;
-
-        public String getOrderId() {
-            return orderId;
-        }
-
-        public void setOrderId(String orderId) {
-            this.orderId = orderId;
-        }
-
-        /**
-         * Ship Group Seq Id
-         */
-        private String shipGroupSeqId;
-
-        public String getShipGroupSeqId() {
-            return shipGroupSeqId;
-        }
-
-        public void setShipGroupSeqId(String shipGroupSeqId) {
-            this.shipGroupSeqId = shipGroupSeqId;
-        }
+    public static class CreatePOShipGroupsDto {
 
         /**
          * Estimated Delivery Date
@@ -147,33 +121,7 @@ public class OrderShipGroupServiceCommandDtos {
 
     }
 
-    public static class CreateSOShipGroupDto {
-
-        /**
-         * Order Id
-         */
-        private String orderId;
-
-        public String getOrderId() {
-            return orderId;
-        }
-
-        public void setOrderId(String orderId) {
-            this.orderId = orderId;
-        }
-
-        /**
-         * Ship Group Seq Id
-         */
-        private String shipGroupSeqId;
-
-        public String getShipGroupSeqId() {
-            return shipGroupSeqId;
-        }
-
-        public void setShipGroupSeqId(String shipGroupSeqId) {
-            this.shipGroupSeqId = shipGroupSeqId;
-        }
+    public static class CreateSOShipGroupsDto {
 
         /**
          * Estimated Ship Date
@@ -308,32 +256,6 @@ public class OrderShipGroupServiceCommandDtos {
     }
 
     public static class UpdateOrderItemShipGroupAssociationDto {
-
-        /**
-         * Order Id
-         */
-        private String orderId;
-
-        public String getOrderId() {
-            return orderId;
-        }
-
-        public void setOrderId(String orderId) {
-            this.orderId = orderId;
-        }
-
-        /**
-         * Ship Group Seq Id
-         */
-        private String shipGroupSeqId;
-
-        public String getShipGroupSeqId() {
-            return shipGroupSeqId;
-        }
-
-        public void setShipGroupSeqId(String shipGroupSeqId) {
-            this.shipGroupSeqId = shipGroupSeqId;
-        }
 
         /**
          * Order Item Ship Group Association
@@ -488,7 +410,7 @@ public class OrderShipGroupServiceCommandDtos {
 
     }
 
-    public static class ShipDto {
+    public static class ShipPOShipmentDto {
 
         /**
          * Shipment Id
@@ -527,6 +449,32 @@ public class OrderShipGroupServiceCommandDtos {
 
         public void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId) {
             this.primaryShipGroupSeqId = primaryShipGroupSeqId;
+        }
+
+        /**
+         * Hint Shipment Items Enabled
+         */
+        private Boolean hintShipmentItemsEnabled;
+
+        public Boolean getHintShipmentItemsEnabled() {
+            return hintShipmentItemsEnabled;
+        }
+
+        public void setHintShipmentItemsEnabled(Boolean hintShipmentItemsEnabled) {
+            this.hintShipmentItemsEnabled = hintShipmentItemsEnabled;
+        }
+
+        /**
+         * Other Order Id Ship Group Seq Id Pairs
+         */
+        private OrderIdShipGroupSeqIdPair[] otherOrderIdShipGroupSeqIdPairs;
+
+        public OrderIdShipGroupSeqIdPair[] getOtherOrderIdShipGroupSeqIdPairs() {
+            return otherOrderIdShipGroupSeqIdPairs;
+        }
+
+        public void setOtherOrderIdShipGroupSeqIdPairs(OrderIdShipGroupSeqIdPair[] otherOrderIdShipGroupSeqIdPairs) {
+            this.otherOrderIdShipGroupSeqIdPairs = otherOrderIdShipGroupSeqIdPairs;
         }
 
         /**

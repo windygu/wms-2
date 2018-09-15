@@ -13,9 +13,9 @@ namespace Dddml.Wms.Domain.Services
 {
 	public partial interface IOrderShipGroupApplicationService
 	{
-		void When(OrderShipGroupServiceCommands.CreatePOShipGroup c);
+		void When(OrderShipGroupServiceCommands.CreatePOShipGroups c);
 
-		void When(OrderShipGroupServiceCommands.CreateSOShipGroup c);
+		void When(OrderShipGroupServiceCommands.CreateSOShipGroups c);
 
 		void When(OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation c);
 
@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.Services
 
 		string When(OrderShipGroupServiceCommands.CreateSOShipment c);
 
-		void When(OrderShipGroupServiceCommands.Ship c);
+		void When(OrderShipGroupServiceCommands.ShipPOShipment c);
 
 	}
 

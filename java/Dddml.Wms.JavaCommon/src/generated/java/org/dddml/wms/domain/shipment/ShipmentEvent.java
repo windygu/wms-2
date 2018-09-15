@@ -50,6 +50,10 @@ public interface ShipmentEvent extends Event
 
         void setOnlyOneOrder(Boolean onlyOneOrder);
 
+        Boolean getOnlyOneOrderShipGroup();
+
+        void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup);
+
         String getPicklistBinId();
 
         void setPicklistBinId(String picklistBinId);
@@ -215,6 +219,10 @@ public interface ShipmentEvent extends Event
         Boolean getIsPropertyOnlyOneOrderRemoved();
 
         void setIsPropertyOnlyOneOrderRemoved(Boolean removed);
+
+        Boolean getIsPropertyOnlyOneOrderShipGroupRemoved();
+
+        void setIsPropertyOnlyOneOrderShipGroupRemoved(Boolean removed);
 
         Boolean getIsPropertyPicklistBinIdRemoved();
 

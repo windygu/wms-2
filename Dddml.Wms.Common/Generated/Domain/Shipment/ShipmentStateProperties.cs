@@ -28,6 +28,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual bool OnlyOneOrder { get; set; }
 
+		public virtual bool OnlyOneOrderShipGroup { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual string BolNumber { get; set; }

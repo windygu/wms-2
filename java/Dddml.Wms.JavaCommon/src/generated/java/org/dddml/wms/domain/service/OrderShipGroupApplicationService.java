@@ -9,9 +9,9 @@ import org.dddml.wms.domain.*;
 
 public interface OrderShipGroupApplicationService {
 
-    void when(OrderShipGroupServiceCommands.CreatePOShipGroup c);
+    void when(OrderShipGroupServiceCommands.CreatePOShipGroups c);
 
-    void when(OrderShipGroupServiceCommands.CreateSOShipGroup c);
+    void when(OrderShipGroupServiceCommands.CreateSOShipGroups c);
 
     void when(OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation c);
 
@@ -19,7 +19,7 @@ public interface OrderShipGroupApplicationService {
 
     String when(OrderShipGroupServiceCommands.CreateSOShipment c);
 
-    void when(OrderShipGroupServiceCommands.Ship c);
+    void when(OrderShipGroupServiceCommands.ShipPOShipment c);
 
 
 }

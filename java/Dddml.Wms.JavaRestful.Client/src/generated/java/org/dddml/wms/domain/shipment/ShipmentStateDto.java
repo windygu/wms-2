@@ -93,6 +93,18 @@ public class ShipmentStateDto
         this.onlyOneOrder = onlyOneOrder;
     }
 
+    private Boolean onlyOneOrderShipGroup;
+
+    public Boolean getOnlyOneOrderShipGroup()
+    {
+        return this.onlyOneOrderShipGroup;
+    }
+
+    public void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup)
+    {
+        this.onlyOneOrderShipGroup = onlyOneOrderShipGroup;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId()

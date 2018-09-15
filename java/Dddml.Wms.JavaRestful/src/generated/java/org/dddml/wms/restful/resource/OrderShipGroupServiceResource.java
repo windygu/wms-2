@@ -26,8 +26,8 @@ public class OrderShipGroupServiceResource {
     @Autowired
     private OrderShipGroupApplicationService orderShipGroupApplicationService;
 
-    @PostMapping("CreatePOShipGroup")
-    public void createPOShipGroup(@RequestBody OrderShipGroupServiceCommands.CreatePOShipGroup requestContent)
+    @PostMapping("CreatePOShipGroups")
+    public void createPOShipGroups(@RequestBody OrderShipGroupServiceCommands.CreatePOShipGroups requestContent)
     {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
@@ -35,8 +35,8 @@ public class OrderShipGroupServiceResource {
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
-    @PostMapping("CreateSOShipGroup")
-    public void createSOShipGroup(@RequestBody OrderShipGroupServiceCommands.CreateSOShipGroup requestContent)
+    @PostMapping("CreateSOShipGroups")
+    public void createSOShipGroups(@RequestBody OrderShipGroupServiceCommands.CreateSOShipGroups requestContent)
     {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());
@@ -71,8 +71,8 @@ public class OrderShipGroupServiceResource {
         } catch (DomainError error) { logger.info(error.getMessage(), error); throw error; } catch (Exception ex) { String exMsg = "[" + UUID.randomUUID().toString() + "] Exception caught."; logger.error(exMsg, ex); throw new RuntimeException(exMsg, ex); }
     }
 
-    @PostMapping("Ship")
-    public void ship(@RequestBody OrderShipGroupServiceCommands.Ship requestContent)
+    @PostMapping("ShipPOShipment")
+    public void shipPOShipment(@RequestBody OrderShipGroupServiceCommands.ShipPOShipment requestContent)
     {
         try {
         requestContent.setRequesterId(SecurityContextUtil.getRequesterId());

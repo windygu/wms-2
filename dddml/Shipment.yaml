@@ -36,6 +36,9 @@ aggregates:
       # 是否只是“一个订单”的装运单
       OnlyOneOrder:
         type: bool
+      # 是否只是“一个订单装运组”的装运单
+      OnlyOneOrderShipGroup:
+        type: bool
       
       # -------------------------
       # 拣货箱 Id.
@@ -298,6 +301,7 @@ aggregates:
           # 装运项（行）序列 Id.
           ShipmentItemSeqId:
             type: id
+            notNull: true
             
           ShipmentPackageSeqId:
             type: id
@@ -411,6 +415,7 @@ aggregates:
             
           ShipmentItemSeqId:
             type: id
+            notNull: true
             
           FixedAssetId:
             type: id
@@ -456,7 +461,11 @@ aggregates:
             type: id
           PrimaryReturnId:
             type: id
+          # 是否只是“一个订单”的装运单
           OnlyOneOrder:
+            type: bool
+          # 是否只是“一个订单装运组”的装运单
+          OnlyOneOrderShipGroup:
             type: bool
           # -------------------------
           # 提单号
@@ -529,6 +538,7 @@ aggregates:
             type: id
           ShipmentItemSeqId:
             type: id
+          # -----------------------------------
           OrderId:
             type: id
           OrderItemSeqId:
@@ -609,12 +619,11 @@ aggregates:
           # 发货项的 Seq Id.
           ItemIssuanceSeqId:
             type: id
-          # -----------------------------
-          # 装运单项目序列号
-          # -----------------------------
+          # 装运（行）项序列号
           ShipmentItemSeqId:
             type: id
-          # 订单 Id
+         # -----------------------------------
+           # 订单 Id
           OrderId:
             type: id-ne
           # 订单项目序列号
@@ -637,7 +646,7 @@ aggregates:
             type: fixed-point
           CancelQuantity:
             type: fixed-point
-          # # 数量单位 Id.
+          # # 数量单位 Id.//可能是产品主单位不同吗？
           # QuantityUomId:
           #   type: string
           # -----------------------------------
@@ -731,14 +740,5 @@ aggregates:
       JavaAggregateApplicationServiceImplementClassName: ShipmentApplicationServiceImpl
           
               
-# # ---------------------------------    
-# valueObjects:
-  # KeyValuePair:
-    # properties:
-      # Key:
-        # type: string
-      # Value:
-        # type: object
-        
-        
-    
+              
+              

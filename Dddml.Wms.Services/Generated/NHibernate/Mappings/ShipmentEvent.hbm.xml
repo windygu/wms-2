@@ -25,6 +25,7 @@
     <property name="PrimaryReturnId" ><column name="PrimaryReturnId" sql-type="VARCHAR(20)" /></property>
     <property name="PrimaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="VARCHAR(20)" /></property>
     <property name="OnlyOneOrder" ></property>
+    <property name="OnlyOneOrderShipGroup" ></property>
     <property name="PicklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></property>
     <property name="BolNumber" ><column name="BolNumber" sql-type="VARCHAR(60)" /></property>
     <property name="SealNumber" ><column name="SealNumber" sql-type="VARCHAR(60)" /></property>
@@ -70,6 +71,8 @@
         <property name="IsPropertyPrimaryShipGroupSeqIdRemoved" column="IsPropertyPrimaryShipGroupSeqIdRemoved"/>
 
         <property name="IsPropertyOnlyOneOrderRemoved" column="IsPropertyOnlyOneOrderRemoved"/>
+
+        <property name="IsPropertyOnlyOneOrderShipGroupRemoved" column="IsPropertyOnlyOneOrderShipGroupRemoved"/>
 
         <property name="IsPropertyPicklistBinIdRemoved" column="IsPropertyPicklistBinIdRemoved"/>
 

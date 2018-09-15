@@ -295,6 +295,18 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
             this.onlyOneOrder = onlyOneOrder;
         }
 
+        private Boolean onlyOneOrderShipGroup;
+
+        public Boolean getOnlyOneOrderShipGroup()
+        {
+            return this.onlyOneOrderShipGroup;
+        }
+
+        public void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup)
+        {
+            this.onlyOneOrderShipGroup = onlyOneOrderShipGroup;
+        }
+
         private String picklistBinId;
 
         public String getPicklistBinId()
@@ -896,6 +908,16 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
 
         public void setIsPropertyOnlyOneOrderRemoved(Boolean removed) {
             this.isPropertyOnlyOneOrderRemoved = removed;
+        }
+
+        private Boolean isPropertyOnlyOneOrderShipGroupRemoved;
+
+        public Boolean getIsPropertyOnlyOneOrderShipGroupRemoved() {
+            return this.isPropertyOnlyOneOrderShipGroupRemoved;
+        }
+
+        public void setIsPropertyOnlyOneOrderShipGroupRemoved(Boolean removed) {
+            this.isPropertyOnlyOneOrderShipGroupRemoved = removed;
         }
 
         private Boolean isPropertyPicklistBinIdRemoved;

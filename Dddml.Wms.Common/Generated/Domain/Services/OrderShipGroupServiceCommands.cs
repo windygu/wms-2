@@ -15,12 +15,8 @@ namespace Dddml.Wms.Domain.Services
     public partial class OrderShipGroupServiceCommands
     {
 
-        public class CreatePOShipGroup
+        public class CreatePOShipGroups
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
-
             public DateTime? EstimatedDeliveryDate { get; set; }
 
             public string ContactPartyId { get; set; }
@@ -39,12 +35,8 @@ namespace Dddml.Wms.Domain.Services
 
         }
 
-        public class CreateSOShipGroup
+        public class CreateSOShipGroups
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
-
             public DateTime? EstimatedShipDate { get; set; }
 
             public string ContactPartyId { get; set; }
@@ -69,10 +61,6 @@ namespace Dddml.Wms.Domain.Services
 
         public class UpdateOrderItemShipGroupAssociation
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
-
             public OrderItemShipGroupAssociationInfo OrderItemShipGroupAssociation { get; set; }
 
             public string CommandId { get; set; }
@@ -105,13 +93,17 @@ namespace Dddml.Wms.Domain.Services
 
         }
 
-        public class Ship
+        public class ShipPOShipment
         {
             public string ShipmentId { get; set; }
 
             public string PrimaryOrderId { get; set; }
 
             public string PrimaryShipGroupSeqId { get; set; }
+
+            public bool? HintShipmentItemsEnabled { get; set; }
+
+            public ISet<OrderIdShipGroupSeqIdPair> OtherOrderIdShipGroupSeqIdPairs { get; set; }
 
             public string CommandId { get; set; }
 

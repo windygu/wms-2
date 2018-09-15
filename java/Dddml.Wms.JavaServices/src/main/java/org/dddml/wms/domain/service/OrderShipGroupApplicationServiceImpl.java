@@ -37,7 +37,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
     @Transactional
     @Override
-    public void when(OrderShipGroupServiceCommands.CreatePOShipGroup c) {
+    public void when(OrderShipGroupServiceCommands.CreatePOShipGroups c) {
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = getCreateOrMergePatchPOCommand(c);
 
         //todo
@@ -63,7 +63,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
 
         OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = orderCommand.newCreateOrderShipGroup();
-        orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
+        //todo
+        //orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//电话号码
         //orderShipGroup.setContactPartyId(c.getContactPartyId());
         orderShipGroup.setTrackingNumber(c.getTrackingNumber());
@@ -100,19 +101,21 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
     }
 
-    AbstractOrderCommand.AbstractCreateOrMergePatchOrder getCreateOrMergePatchPOCommand(OrderShipGroupServiceCommands.CreatePOShipGroup c) {
+    AbstractOrderCommand.AbstractCreateOrMergePatchOrder getCreateOrMergePatchPOCommand(OrderShipGroupServiceCommands.CreatePOShipGroups c) {
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = null;
-        OrderState orderState = getOrderApplicationService().get(c.getOrderId());
+        //todo
+        String orderId = null;
+        OrderState orderState = null;//getOrderApplicationService().get(c.getOrderId());
         if (orderState == null) {
             orderCommand = new AbstractOrderCommand.SimpleCreateOrder();
-            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setOrderId(orderId);
             orderCommand.setOrderTypeId(OrderTypeIds.PURCHASE_ORDER);//入库，先写死订单类型
             orderCommand.setActive(true);
             orderCommand.setCommandId(c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
         } else {
             orderCommand = new AbstractOrderCommand.SimpleMergePatchOrder();
-            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setOrderId(orderId);
             orderCommand.setCommandId(c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
             orderCommand.setVersion(orderState.getVersion());
@@ -122,7 +125,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
     @Transactional
     @Override
-    public void when(OrderShipGroupServiceCommands.CreateSOShipGroup c) {
+    public void when(OrderShipGroupServiceCommands.CreateSOShipGroups c) {
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = getCreateOrMergePatchSOCommand(c);
 
         //todo
@@ -147,7 +150,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
 
         OrderShipGroupCommand.CreateOrderShipGroup orderShipGroup = orderCommand.newCreateOrderShipGroup();
-        orderShipGroup.setShipGroupSeqId(c.getShipGroupSeqId());
+        //todo
+        orderShipGroup.setShipGroupSeqId(null);//c.getShipGroupSeqId());
         orderShipGroup.setTelecomContactMechId(c.getTelecomContactMechId());//司机 / 联系人电话
         //orderShipGroup.setContactPartyId(c.getContactPartyId());//司机 / 联系人
         orderShipGroup.setTrackingNumber(c.getTrackingNumber());
@@ -192,19 +196,21 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     }
 
 
-    AbstractOrderCommand.AbstractCreateOrMergePatchOrder getCreateOrMergePatchSOCommand(OrderShipGroupServiceCommands.CreateSOShipGroup c) {
+    AbstractOrderCommand.AbstractCreateOrMergePatchOrder getCreateOrMergePatchSOCommand(OrderShipGroupServiceCommands.CreateSOShipGroups c) {
         AbstractOrderCommand.AbstractCreateOrMergePatchOrder orderCommand = null;
-        OrderState orderState = getOrderApplicationService().get(c.getOrderId());
+        //todo
+        String orderId = null;
+        OrderState orderState = null;//getOrderApplicationService().get(c.getOrderId());
         if (orderState == null) {
             orderCommand = new AbstractOrderCommand.SimpleCreateOrder();
-            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setOrderId(orderId);
             orderCommand.setOrderTypeId(OrderTypeIds.SALES_ORDER);//出库，先写死订单类型
             orderCommand.setActive(true);
             orderCommand.setCommandId(c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
         } else {
             orderCommand = new AbstractOrderCommand.SimpleMergePatchOrder();
-            orderCommand.setOrderId(c.getOrderId());
+            orderCommand.setOrderId(orderId);
             orderCommand.setCommandId(c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
             orderCommand.setVersion(orderState.getVersion());
@@ -271,7 +277,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     }
 
     @Override
-    public void when(OrderShipGroupServiceCommands.Ship c) {
+    public void when(OrderShipGroupServiceCommands.ShipPOShipment c) {
 
     }
 

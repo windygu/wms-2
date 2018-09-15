@@ -39,15 +39,15 @@ public class CreateSOShipGroupInfo {
         //token = getJwtToken();
         token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
 
-        OrderShipGroupServiceCommands.CreateSOShipGroup createSOShipGroup = new OrderShipGroupServiceCommands.CreateSOShipGroup();
+        OrderShipGroupServiceCommands.CreateSOShipGroups createSOShipGroup = new OrderShipGroupServiceCommands.CreateSOShipGroups();
+        //todo
+        /*
         // 合同号:
         createSOShipGroup.setOrderId("CCCCCC-XX");
         // 通知单号:
         createSOShipGroup.setShipGroupSeqId("" + 2018081801L);
         // 发货指示：（发货指示 / 客户信息 / 备注等）
         createSOShipGroup.setShippingInstructions("Xxxxx, yyyy, zzzzz");
-        //todo
-        /*
         // ////////////// 产品 Id： /////////////////
         createSOShipGroup.setProductId("20XXX");
         //产品名称：	 GI SEMI-TREATED FLUFF

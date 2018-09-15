@@ -72,6 +72,19 @@ public class ShipmentCommands
         }
 
         /**
+         * Only One Order Ship Group
+         */
+        private Boolean onlyOneOrderShipGroup;
+
+        public Boolean getOnlyOneOrderShipGroup() {
+            return this.onlyOneOrderShipGroup;
+        }
+
+        public void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup) {
+            this.onlyOneOrderShipGroup = onlyOneOrderShipGroup;
+        }
+
+        /**
          * Bill of lading
          */
         private String bolNumber;

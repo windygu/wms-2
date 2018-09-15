@@ -22,12 +22,12 @@ import org.dddml.wms.domain.service.*;
 public interface RxOrderShipGroupServiceClient {
 
     @Headers("Accept: application/json")
-    @POST("OrderShipGroupService/CreatePOShipGroup")
-    Observable<String> createPOShipGroup(@Body OrderShipGroupServiceCommandDtos.CreatePOShipGroupDto requestContent);
+    @POST("OrderShipGroupService/CreatePOShipGroups")
+    Observable<String> createPOShipGroups(@Body OrderShipGroupServiceCommandDtos.CreatePOShipGroupsDto requestContent);
 
     @Headers("Accept: application/json")
-    @POST("OrderShipGroupService/CreateSOShipGroup")
-    Observable<String> createSOShipGroup(@Body OrderShipGroupServiceCommandDtos.CreateSOShipGroupDto requestContent);
+    @POST("OrderShipGroupService/CreateSOShipGroups")
+    Observable<String> createSOShipGroups(@Body OrderShipGroupServiceCommandDtos.CreateSOShipGroupsDto requestContent);
 
     @Headers("Accept: application/json")
     @POST("OrderShipGroupService/UpdateOrderItemShipGroupAssociation")
@@ -42,8 +42,8 @@ public interface RxOrderShipGroupServiceClient {
     Observable<String> createSOShipment(@Body OrderShipGroupServiceCommandDtos.CreateSOShipmentDto requestContent);
 
     @Headers("Accept: application/json")
-    @POST("OrderShipGroupService/Ship")
-    Observable<String> ship(@Body OrderShipGroupServiceCommandDtos.ShipDto requestContent);
+    @POST("OrderShipGroupService/ShipPOShipment")
+    Observable<String> shipPOShipment(@Body OrderShipGroupServiceCommandDtos.ShipPOShipmentDto requestContent);
 
 }
 

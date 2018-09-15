@@ -14,6 +14,20 @@ namespace Dddml.Wms.Domain.Services
 	public class OrderItemShipGroupAssociationInfo
 	{
 
+		private string _orderId;
+
+		public virtual string OrderId { 
+			get { return this._orderId; } 
+			set { _orderId = value; } 
+		}
+
+		private string _shipGroupSeqId;
+
+		public virtual string ShipGroupSeqId { 
+			get { return this._shipGroupSeqId; } 
+			set { _shipGroupSeqId = value; } 
+		}
+
 		private string _orderItemSeqId;
 
 		public virtual string OrderItemSeqId { 
@@ -66,8 +80,10 @@ namespace Dddml.Wms.Domain.Services
 		{
 		}
 
-		public OrderItemShipGroupAssociationInfo (string orderItemSeqId, string productId, decimal? quantity, int numberOfPackages, int numberOfContainers, int numberOfPakagesPerContainer)
+		public OrderItemShipGroupAssociationInfo (string orderId, string shipGroupSeqId, string orderItemSeqId, string productId, decimal? quantity, int numberOfPackages, int numberOfContainers, int numberOfPakagesPerContainer)
 		{
+			this._orderId = orderId;
+			this._shipGroupSeqId = shipGroupSeqId;
 			this._orderItemSeqId = orderItemSeqId;
 			this._productId = productId;
 			this._quantity = quantity;
@@ -90,6 +106,8 @@ namespace Dddml.Wms.Domain.Services
 			}
 
 			return true 
+				&& Object.Equals (this.OrderId, other.OrderId)
+				&& Object.Equals (this.ShipGroupSeqId, other.ShipGroupSeqId)
 				&& Object.Equals (this.OrderItemSeqId, other.OrderItemSeqId)
 				&& Object.Equals (this.ProductId, other.ProductId)
 				&& Object.Equals (this.Quantity, other.Quantity)
@@ -102,6 +120,12 @@ namespace Dddml.Wms.Domain.Services
 		public override int GetHashCode ()
 		{
 			int hash = 0;
+			if (this.OrderId != null) {
+				hash += 13 * this.OrderId.GetHashCode ();
+			}
+			if (this.ShipGroupSeqId != null) {
+				hash += 13 * this.ShipGroupSeqId.GetHashCode ();
+			}
 			if (this.OrderItemSeqId != null) {
 				hash += 13 * this.OrderItemSeqId.GetHashCode ();
 			}
@@ -136,6 +160,8 @@ namespace Dddml.Wms.Domain.Services
         public override string ToString()
         {
             return String.Empty
+                + "OrderId: " + this.OrderId + ", "
+                + "ShipGroupSeqId: " + this.ShipGroupSeqId + ", "
                 + "OrderItemSeqId: " + this.OrderItemSeqId + ", "
                 + "ProductId: " + this.ProductId + ", "
                 + "Quantity: " + this.Quantity + ", "

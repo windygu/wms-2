@@ -15,12 +15,8 @@ namespace Dddml.Wms.Domain.Services
     public partial class OrderShipGroupServiceCommandDtos
     {
 
-        public class CreatePOShipGroupDto
+        public class CreatePOShipGroupsDto
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
-
             public DateTime? EstimatedDeliveryDate { get; set; }
 
             public string ContactPartyId { get; set; }
@@ -37,11 +33,9 @@ namespace Dddml.Wms.Domain.Services
 
             public string RequesterId { get; set; }
 
-            public OrderShipGroupServiceCommands.CreatePOShipGroup ToCreatePOShipGroup()
+            public OrderShipGroupServiceCommands.CreatePOShipGroups ToCreatePOShipGroups()
             {
-                var cmd = new OrderShipGroupServiceCommands.CreatePOShipGroup();
-                cmd.OrderId = this.OrderId;
-                cmd.ShipGroupSeqId = this.ShipGroupSeqId;
+                var cmd = new OrderShipGroupServiceCommands.CreatePOShipGroups();
                 cmd.EstimatedDeliveryDate = this.EstimatedDeliveryDate;
                 cmd.ContactPartyId = this.ContactPartyId;
                 cmd.TelecomContactMechId = this.TelecomContactMechId;
@@ -54,12 +48,8 @@ namespace Dddml.Wms.Domain.Services
             }
         }
 
-        public class CreateSOShipGroupDto
+        public class CreateSOShipGroupsDto
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
-
             public DateTime? EstimatedShipDate { get; set; }
 
             public string ContactPartyId { get; set; }
@@ -80,11 +70,9 @@ namespace Dddml.Wms.Domain.Services
 
             public string RequesterId { get; set; }
 
-            public OrderShipGroupServiceCommands.CreateSOShipGroup ToCreateSOShipGroup()
+            public OrderShipGroupServiceCommands.CreateSOShipGroups ToCreateSOShipGroups()
             {
-                var cmd = new OrderShipGroupServiceCommands.CreateSOShipGroup();
-                cmd.OrderId = this.OrderId;
-                cmd.ShipGroupSeqId = this.ShipGroupSeqId;
+                var cmd = new OrderShipGroupServiceCommands.CreateSOShipGroups();
                 cmd.EstimatedShipDate = this.EstimatedShipDate;
                 cmd.ContactPartyId = this.ContactPartyId;
                 cmd.TelecomContactMechId = this.TelecomContactMechId;
@@ -101,10 +89,6 @@ namespace Dddml.Wms.Domain.Services
 
         public class UpdateOrderItemShipGroupAssociationDto
         {
-            public string OrderId { get; set; }
-
-            public string ShipGroupSeqId { get; set; }
-
             public OrderItemShipGroupAssociationInfo OrderItemShipGroupAssociation { get; set; }
 
             public string CommandId { get; set; }
@@ -114,8 +98,6 @@ namespace Dddml.Wms.Domain.Services
             public OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation ToUpdateOrderItemShipGroupAssociation()
             {
                 var cmd = new OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation();
-                cmd.OrderId = this.OrderId;
-                cmd.ShipGroupSeqId = this.ShipGroupSeqId;
                 cmd.OrderItemShipGroupAssociation = this.OrderItemShipGroupAssociation;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
@@ -165,7 +147,7 @@ namespace Dddml.Wms.Domain.Services
             }
         }
 
-        public class ShipDto
+        public class ShipPOShipmentDto
         {
             public string ShipmentId { get; set; }
 
@@ -173,16 +155,22 @@ namespace Dddml.Wms.Domain.Services
 
             public string PrimaryShipGroupSeqId { get; set; }
 
+            public bool? HintShipmentItemsEnabled { get; set; }
+
+            public OrderIdShipGroupSeqIdPair[] OtherOrderIdShipGroupSeqIdPairs { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
 
-            public OrderShipGroupServiceCommands.Ship ToShip()
+            public OrderShipGroupServiceCommands.ShipPOShipment ToShipPOShipment()
             {
-                var cmd = new OrderShipGroupServiceCommands.Ship();
+                var cmd = new OrderShipGroupServiceCommands.ShipPOShipment();
                 cmd.ShipmentId = this.ShipmentId;
                 cmd.PrimaryOrderId = this.PrimaryOrderId;
                 cmd.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
+                cmd.HintShipmentItemsEnabled = this.HintShipmentItemsEnabled;
+                cmd.OtherOrderIdShipGroupSeqIdPairs = this.OtherOrderIdShipGroupSeqIdPairs == null ? null : new HashSet<OrderIdShipGroupSeqIdPair>(this.OtherOrderIdShipGroupSeqIdPairs);
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;

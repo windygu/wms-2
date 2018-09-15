@@ -40,6 +40,10 @@ public interface ShipmentState
 
     void setOnlyOneOrder(Boolean onlyOneOrder);
 
+    Boolean getOnlyOneOrderShipGroup();
+
+    void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup);
+
     String getPicklistBinId();
 
     void setPicklistBinId(String picklistBinId);
