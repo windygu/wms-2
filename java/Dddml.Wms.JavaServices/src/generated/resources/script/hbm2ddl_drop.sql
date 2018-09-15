@@ -38,6 +38,8 @@ drop table if exists InOutLineImageEvents;
 drop table if exists InOutLineImages;
 drop table if exists InOutLines;
 drop table if exists InOutLineStateEventDamageStatusIds;
+drop table if exists InOutNoticeEvents;
+drop table if exists InOutNotices;
 drop table if exists InOuts;
 drop table if exists InventoryItemEntries;
 drop table if exists InventoryItemEvents;
