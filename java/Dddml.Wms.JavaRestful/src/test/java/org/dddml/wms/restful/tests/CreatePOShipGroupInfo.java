@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.dddml.wms.domain.order.OrderCommands;
 import org.dddml.wms.domain.party.CreateOrMergePatchPartyDto;
+import org.dddml.wms.domain.service.OrderIdShipGroupSeqIdPair;
 import org.dddml.wms.domain.service.OrderItemShipGroupAssociationInfo;
 import org.dddml.wms.domain.service.OrderShipGroupServiceCommands;
 import org.dddml.wms.security.JwtUser;
@@ -53,11 +54,13 @@ public class CreatePOShipGroupInfo {
 
         // 通知单号:
         String shipGroupSeqId = "" + 2018082702L;
+        String orderId1 = "X111111-XX";
+        String orderId2 = "X222222-YY";
 
         // //////////////// 通知单（装运组）的“行”信息 //////////////////////
         OrderItemShipGroupAssociationInfo line1 = new OrderItemShipGroupAssociationInfo();
         // 合同号:
-        line1.setOrderId("XXXXXX-XX");
+        line1.setOrderId(orderId1);
         // 通知单号:
         line1.setShipGroupSeqId(shipGroupSeqId);
         // ////////////// 产品 Id： /////////////////
@@ -78,7 +81,7 @@ public class CreatePOShipGroupInfo {
         // ///////////////////////// 第二行 ////////////////////////////
         OrderItemShipGroupAssociationInfo line2 = new OrderItemShipGroupAssociationInfo();
         // 合同号:
-        line2.setOrderId("XXXXXX-YY");
+        line2.setOrderId(orderId2);
         // 通知单号:
         line2.setShipGroupSeqId(shipGroupSeqId);
         // ////////////// 产品 Id： /////////////////
@@ -121,6 +124,14 @@ public class CreatePOShipGroupInfo {
         //        orderShipGroupAction.setCommandId(UUID.randomUUID().toString());
         //        orderShipGroupAction.setVersion(0L);//当前订单的版本号
         //        HttpClientUtil.put(token, orderShipGroupUrl, orderShipGroupAction);
+
+        url = HttpClientUtil.appendUrl(baseUrl, "OrderShipGroupService/CreatePOShipment");
+        OrderShipGroupServiceCommands.CreatePOShipment createPOShipment = new OrderShipGroupServiceCommands.CreatePOShipment();
+        createPOShipment.setDestinationFacilityId("W1");
+        createPOShipment.setCommandId(UUID.randomUUID().toString());
+        createPOShipment.setOrderIdShipGroupSeqIdPairs(Arrays.asList(new OrderIdShipGroupSeqIdPair(orderId1, shipGroupSeqId),
+                new OrderIdShipGroupSeqIdPair(orderId2, shipGroupSeqId)));
+        HttpClientUtil.post(token, url, createPOShipment);
 
     }
 

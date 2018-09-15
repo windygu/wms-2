@@ -155,6 +155,10 @@ services:
           # 装运单 Id，可以为空
           ShipmentId:
             type: id
+          OriginFacilityId:
+            type: id
+          DestinationFacilityId:
+            type: id
         
         # 返回结果，装运单 Id
         result:
@@ -172,6 +176,10 @@ services:
             
           # 装运单 Id，可以为空
           ShipmentId:
+            type: id
+          OriginFacilityId:
+            type: id
+          DestinationFacilityId:
             type: id
         
         # 返回结果，装运单 Id
