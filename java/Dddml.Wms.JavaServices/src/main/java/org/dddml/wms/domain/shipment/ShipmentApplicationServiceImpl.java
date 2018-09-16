@@ -61,13 +61,13 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Transactional
     public void when(ShipmentCommands.PurchaseShipmentAction c) {
         if (Objects.equals(c.getValue(), PurchaseShipmentAction.SHIP)) {
-            throw new UnsupportedOperationException();
-            //            ShipmentCommands.Ship ship = new ShipmentCommands.Ship();
-            //            ship.setShipmentId(c.getShipmentId());
-            //            ship.setVersion(c.getVersion());
-            //            ship.setCommandId(c.getCommandId());
-            //            ship.setRequesterId(c.getRequesterId());
-            //            when(ship);
+            ShipmentState shipmentState = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_CREATED);
+            if (shipmentState.getPrimaryOrderId() != null && !shipmentState.getPrimaryOrderId().trim().isEmpty()
+                && shipmentState.getPrimaryShipGroupSeqId() != null && !shipmentState.getPrimaryShipGroupSeqId().trim().isEmpty()) {
+                super.when(c);
+            } else {
+                throw new UnsupportedOperationException();
+            }
         } else if (Objects.equals(c.getValue(), PurchaseShipmentAction.RECEIVE)) {
             throw new UnsupportedOperationException("Need Destination Locator Id.");
             //            ShipmentCommands.ConfirmAllItemsReceived receive = new ShipmentCommands.ConfirmAllItemsReceived();
@@ -150,10 +150,14 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             throw new IllegalArgumentException(String.format(
                     "CANNOT get shipment item. ShipmentItemSeqId: %1$s", c.getShipmentItemSeqId()));
         }
+        if (c.getReceiptSeqId() == null || c.getReceiptSeqId().trim().isEmpty()) {
+            throw new IllegalArgumentException("receiptSeqId is null.");
+        }
         assertReceiptQuantities(shipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity());
         // ////////////////////////////////////////////////////
         ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(
                 c, shipment,
+                c.getReceiptSeqId(),
                 c.getShipmentItemSeqId(),
                 shipmentItem.getProductId(),
                 c.getAttributeSetInstance(),
@@ -228,6 +232,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         if (c.getLocatorId() == null) {
             throw new IllegalArgumentException("locatorId is null.");
         }
+        if (c.getItemIssuanceSeqId() == null || c.getItemIssuanceSeqId().trim().isEmpty()) {
+            throw new IllegalArgumentException("itemIssuanceSeqId is null.");
+        }
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.SHIPMENT_INPUT);
         ShipmentItemState shipmentItem = shipment.getShipmentItems().get(c.getShipmentItemSeqId());
         if (shipmentItem == null) {
@@ -238,6 +245,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         // ////////////////////////////////////////////////////
         ItemIssuanceCommand.CreateOrMergePatchItemIssuance updateItemIssuance = createOrUpdateItemIssuance(
                 c, shipment,
+                c.getItemIssuanceSeqId(),
                 c.getShipmentItemSeqId(),
                 shipmentItem.getProductId(),
                 c.getLocatorId(),
@@ -523,6 +531,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     private ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt createOrUpdateShipmentReceipt(
             ShipmentCommand c,
             ShipmentState shipment,
+            String receiptSeqId,
             String shipmentItemSeqId,
             String productId,
             Map<String, Object> attributeSetInstance,
@@ -531,7 +540,10 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             BigDecimal damagedQuantity, List<String> damageStatusIds, String damageReasonId
     ) {
         ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = null;
-        String receiptSeqId = shipmentItemSeqId;
+        //String receiptSeqId = shipmentItemSeqId;
+        if (receiptSeqId == null) {
+            throw new NullPointerException("receiptSeqId is null.");
+        }
         ShipmentReceiptState receipt = shipment.getShipmentReceipts().get(receiptSeqId, false, true);
         if (receipt == null) {
             updateReceipt = new AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt();
@@ -564,6 +576,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     private ItemIssuanceCommand.CreateOrMergePatchItemIssuance createOrUpdateItemIssuance(
             ShipmentCommand c,
             ShipmentState shipment,
+            String itemIssuanceSeqId,
             String shipmentItemSeqId,
             String productId,
             String locatorId,
@@ -575,7 +588,10 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             throw new IllegalArgumentException("locatorId is null.");
         }
         ItemIssuanceCommand.CreateOrMergePatchItemIssuance udpateItemIssuance = null;
-        String itemIssuanceSeqId = shipmentItemSeqId;
+        //String itemIssuanceSeqId = shipmentItemSeqId;
+        if (itemIssuanceSeqId == null) {
+            throw new NullPointerException("itemIssuanceSeqId is null.");
+        }
         ItemIssuanceState itemIssuanceState = shipment.getItemIssuances().get(itemIssuanceSeqId, false, true);
         if (itemIssuanceState == null) {
             udpateItemIssuance = new AbstractItemIssuanceCommand.SimpleCreateItemIssuance();

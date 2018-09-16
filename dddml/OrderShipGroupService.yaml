@@ -159,6 +159,9 @@ services:
             type: id
           DestinationFacilityId:
             type: id
+          # 是否置为“已发运”状态
+          IsShipped:
+            type: bool
         
         # 返回结果，装运单 Id
         result:
@@ -208,6 +211,10 @@ services:
           # 主订单/装运组之外的其他订单装运组 Id Pair
           OtherOrderIdShipGroupSeqIdPairs:
             itemType: OrderIdShipGroupSeqIdPair
+          OriginFacilityId:
+            type: id
+          DestinationFacilityId:
+            type: id
         
         
         

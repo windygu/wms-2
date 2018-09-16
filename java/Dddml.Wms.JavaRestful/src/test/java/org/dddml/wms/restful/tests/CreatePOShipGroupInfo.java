@@ -53,9 +53,9 @@ public class CreatePOShipGroupInfo {
         //createPOShipGroup.setTrackingNumber("XXXXXXXX");
 
         // 通知单号:
-        String shipGroupSeqId = "" + 2018082702L;
-        String orderId1 = "X111111-XX";
-        String orderId2 = "X222222-YY";
+        String shipGroupSeqId = "" + 2018091102L;
+        String orderId1 = "XX1111-XX";
+        String orderId2 = "XX2222-YY";
 
         // //////////////// 通知单（装运组）的“行”信息 //////////////////////
         OrderItemShipGroupAssociationInfo line1 = new OrderItemShipGroupAssociationInfo();
@@ -125,12 +125,17 @@ public class CreatePOShipGroupInfo {
         //        orderShipGroupAction.setVersion(0L);//当前订单的版本号
         //        HttpClientUtil.put(token, orderShipGroupUrl, orderShipGroupAction);
 
+        // ///////////////////////// 创建“收货”装运单 /////////////////////////
         url = HttpClientUtil.appendUrl(baseUrl, "OrderShipGroupService/CreatePOShipment");
         OrderShipGroupServiceCommands.CreatePOShipment createPOShipment = new OrderShipGroupServiceCommands.CreatePOShipment();
         createPOShipment.setDestinationFacilityId("W1");
         createPOShipment.setCommandId(UUID.randomUUID().toString());
         createPOShipment.setOrderIdShipGroupSeqIdPairs(Arrays.asList(new OrderIdShipGroupSeqIdPair(orderId1, shipGroupSeqId),
                 new OrderIdShipGroupSeqIdPair(orderId2, shipGroupSeqId)));
+        // ////////////////////////////////////////
+        //设置为“已发运”状态（可接收）。
+        createPOShipment.setIsShipped(true);
+        // ////////////////////////////////////////
         HttpClientUtil.post(token, url, createPOShipment);
 
     }

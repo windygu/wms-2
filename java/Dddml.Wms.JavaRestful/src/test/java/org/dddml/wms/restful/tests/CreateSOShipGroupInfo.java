@@ -3,6 +3,7 @@ package org.dddml.wms.restful.tests;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.dddml.wms.domain.service.OrderIdShipGroupSeqIdPair;
 import org.dddml.wms.domain.service.OrderItemShipGroupAssociationInfo;
 import org.dddml.wms.domain.service.OrderShipGroupServiceCommands;
 import org.dddml.wms.security.JwtUser;
@@ -55,12 +56,14 @@ public class CreateSOShipGroupInfo {
         //跟踪（物流）单号:	（选填）
         //createSOShipGroup.setTrackingNumber("XXXXXXXX");
 
-        String shipGroupSeqId = "" + 2018081801L;
+        String shipGroupSeqId = "" + 2018090901L;
+        String orderId1 = "CC1111-XX";
+        String orderId2 = "CC2222-YY";
 
         // //////////////// 通知单（装运组）的“行”信息 //////////////////////
         OrderItemShipGroupAssociationInfo line1 = new OrderItemShipGroupAssociationInfo();
         // 合同号:
-        line1.setOrderId("CCCCCC-XX");
+        line1.setOrderId(orderId1);
         // 通知单号:
         line1.setShipGroupSeqId(shipGroupSeqId);
         // ////////////// 产品 Id： /////////////////
@@ -81,7 +84,7 @@ public class CreateSOShipGroupInfo {
         // ///////////////////////// 第二行 ////////////////////////////
         OrderItemShipGroupAssociationInfo line2 = new OrderItemShipGroupAssociationInfo();
         // 合同号:
-        line2.setOrderId("CCCCCC-YY");
+        line2.setOrderId(orderId2);
         // 通知单号:
         line2.setShipGroupSeqId(shipGroupSeqId);
         // ////////////// 产品 Id： /////////////////
@@ -106,6 +109,15 @@ public class CreateSOShipGroupInfo {
         url = HttpClientUtil.appendUrl(baseUrl, "OrderShipGroupService/CreateSOShipGroups");
         createSOShipGroups.setCommandId(UUID.randomUUID().toString());
         HttpClientUtil.post(token, url, createSOShipGroups);
+
+        // /////////////////  创建“发货”装运单 ////////////////////////
+        url = HttpClientUtil.appendUrl(baseUrl, "OrderShipGroupService/CreateSOShipment");
+        OrderShipGroupServiceCommands.CreateSOShipment createSOShipment = new OrderShipGroupServiceCommands.CreateSOShipment();
+        createSOShipment.setOriginFacilityId("W1");
+        createSOShipment.setCommandId(UUID.randomUUID().toString());
+        createSOShipment.setOrderIdShipGroupSeqIdPairs(Arrays.asList(new OrderIdShipGroupSeqIdPair(orderId1, shipGroupSeqId),
+                new OrderIdShipGroupSeqIdPair(orderId2, shipGroupSeqId)));
+        HttpClientUtil.post(token, url, createSOShipment);
 
     }
 

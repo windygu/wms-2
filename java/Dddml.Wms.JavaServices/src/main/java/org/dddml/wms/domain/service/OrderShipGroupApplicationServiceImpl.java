@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.service;
 
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.domain.PurchaseShipmentAction;
 import org.dddml.wms.domain.order.*;
 import org.dddml.wms.domain.ordershipment.AbstractOrderShipmentCommand;
 import org.dddml.wms.domain.ordershipment.OrderShipmentApplicationService;
@@ -10,11 +11,14 @@ import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.shipment.*;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
+import org.dddml.wms.domain.statusitem.StatusItemIds;
 import org.dddml.wms.specialization.ApplicationContext;
+import org.dddml.wms.specialization.DomainError;
 import org.dddml.wms.specialization.IdGenerator;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -108,6 +112,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
                         c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId(),
                         shipmentId, shipmentTypeId, //shipmentStatusId,
                         c.getOriginFacilityId(), c.getDestinationFacilityId());
+        createShipment.setRequesterId(c.getRequesterId());
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         Map<OrderShipmentId, BigDecimal> orderShipmentMap =
@@ -116,7 +121,22 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         getShipmentApplicationService().when(createShipment);
 
         createOrderShipmentMap(orderShipmentMap, c.getRequesterId());
+
+        ShipmentState shipmentState = assertShipmentStatus(shipmentId, StatusItemIds.PURCH_SHIP_CREATED);
+        if (c.getIsShipped() != null && c.getIsShipped()) {
+            setPOShipmentShipped(shipmentId, shipmentState.getVersion(), c.getRequesterId());
+        }
         return shipmentId;
+    }
+
+    private void setPOShipmentShipped(String shipmentId, Long version, String requesterId) {
+        ShipmentCommands.PurchaseShipmentAction purchaseShipmentAction = new ShipmentCommands.PurchaseShipmentAction();
+        purchaseShipmentAction.setShipmentId(shipmentId);
+        purchaseShipmentAction.setVersion(version);
+        purchaseShipmentAction.setValue(PurchaseShipmentAction.SHIP);
+        purchaseShipmentAction.setCommandId(UUID.randomUUID().toString());
+        purchaseShipmentAction.setRequesterId(requesterId);
+        getShipmentApplicationService().when(purchaseShipmentAction);
     }
 
 
@@ -142,6 +162,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
                         c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId(),
                         shipmentId, shipmentTypeId, //shipmentStatusId,
                         c.getOriginFacilityId(), c.getDestinationFacilityId());
+        createShipment.setRequesterId(c.getRequesterId());
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
         Map<OrderShipmentId, BigDecimal> orderShipmentMap =
@@ -155,27 +176,110 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     @Override
     @Transactional
     public void when(OrderShipGroupServiceCommands.ShipPOShipment c) {
+        // ////////////////////////////////////////////////////
+        // 增加一些用于“提示”的应收数量为 0 的备用行项
         if (!c.getHintShipmentItemsEnabled()) {
             throw new UnsupportedOperationException("HintShipmentItemsEnabled MUST be true.");
         }
+        // ////////////////////////////////////////////////////
+
+        if (c.getPrimaryOrderId() == null || c.getPrimaryOrderId().trim().isEmpty()) {
+            throw new NullPointerException("primaryOrderId is null.");
+        }
+        if (c.getPrimaryShipGroupSeqId() == null || c.getPrimaryShipGroupSeqId().trim().isEmpty()) {
+            throw new NullPointerException("primaryShipGroupSeqId is null.");
+        }
+        String shipmentId = c.getShipmentId();
+        ShipmentState shipmentState = assertShipmentStatus(shipmentId, StatusItemIds.PURCH_SHIP_CREATED);
+        if (shipmentState.getPrimaryOrderId() != null && !shipmentState.getPrimaryOrderId().equals(c.getPrimaryOrderId())) {
+            throw new IllegalArgumentException("Shipment primaryOrderId CANNOT be modified.");
+        }
+        if (shipmentState.getPrimaryShipGroupSeqId() != null && !shipmentState.getPrimaryShipGroupSeqId().equals(c.getPrimaryShipGroupSeqId())) {
+            throw new IllegalArgumentException("Shipment primaryShipGroupSeqId CANNOT be modified.");
+        }
+        // /////////////////////////////////////////////////////////
+        // 添加之前已有装运单行项，与订单装运组之间的关联
+        String orderId = c.getPrimaryOrderId();
+        String shipGroupSeqId = c.getPrimaryShipGroupSeqId();
+        Map<String, OrderItemId> productOrderItemMap = getProductOrderItemMap(orderId, shipGroupSeqId);
+        createOrderShipmentMap(shipmentState, orderId, shipGroupSeqId, productOrderItemMap, c);
+        // /////////////////////////////////////////////////////////
+
         List<OrderIdShipGroupSeqIdPair> orderIdShipGroupSeqIdPairs = new ArrayList<>();
         orderIdShipGroupSeqIdPairs.add(new OrderIdShipGroupSeqIdPair(c.getPrimaryOrderId(), c.getPrimaryShipGroupSeqId()));
         if (c.getOtherOrderIdShipGroupSeqIdPairs() != null) {
             orderIdShipGroupSeqIdPairs.addAll(c.getOtherOrderIdShipGroupSeqIdPairs());
         }
-        String shipmentId = c.getShipmentId();
-        ShipmentState shipmentState = getShipmentApplicationService().get(shipmentId);
-        if (shipmentState == null) {
-            throw new IllegalArgumentException(String.format("ShipmentId '%1$s' error.", shipmentId));
-        }
         // /////////////////////////////////////////////
-        //todo 添加之前已有的订单与装运单行项的映射
-        // /////////////////////////////////////////////
+        //if (c.getHintShipmentItemsEnabled()) {
         ShipmentCommand.MergePatchShipment mergePatchShipment = new AbstractShipmentCommand.SimpleMergePatchShipment();
+        mergePatchShipment.setShipmentId(shipmentId);
+        mergePatchShipment.setPrimaryOrderId(c.getPrimaryOrderId());
+        mergePatchShipment.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
+        mergePatchShipment.setVersion(shipmentState.getVersion());
+        mergePatchShipment.setCommandId(c.getCommandId());
+        mergePatchShipment.setRequesterId(c.getRequesterId());
         Map<OrderShipmentId, BigDecimal> orderShipmentMap =
                 createShipmentItems(orderIdShipGroupSeqIdPairs, mergePatchShipment, true);
         getShipmentApplicationService().when(mergePatchShipment);
         createOrderShipmentMap(orderShipmentMap, c.getRequesterId());
+        //}
+    }
+
+    private ShipmentState assertShipmentStatus(String shipmentId, String status) {
+        ShipmentState shipmentState = assertShipmentId(shipmentId);
+        if (!shipmentState.getStatusId().equals(status)) {
+            throw new IllegalArgumentException("Shipment status MUST be PURCH_SHIP_CREATED.");
+        }
+        return shipmentState;
+    }
+
+    private void createOrderShipmentMap(ShipmentState shipmentState,
+                                        String orderId, String shipGroupSeqId,
+                                        Map<String, OrderItemId> productOrderItemMap,
+                                        OrderShipGroupServiceCommands.ShipPOShipment c) {
+        for (ShipmentItemState shipmentItemState : shipmentState.getShipmentItems()) {
+            String shipmentItemSeqId = shipmentItemState.getShipmentItemSeqId();
+            String productId = shipmentItemState.getProductId();
+            if (!productOrderItemMap.containsKey(productId)) {
+                throw DomainError.named("wrongProductId",
+                        "Shipment productId '%1$s' not in orderShipGroup.", productId);
+            }
+            String orderItemSeqId = productOrderItemMap.get(productId).getOrderItemSeqId();
+            // ///////////////////////////////////////////////
+            OrderShipmentId orderShipmentId = new OrderShipmentId();
+            orderShipmentId.setOrderId(orderId);
+            orderShipmentId.setOrderItemSeqId(orderItemSeqId);
+            orderShipmentId.setShipGroupSeqId(shipGroupSeqId);
+            orderShipmentId.setShipmentId(shipmentState.getShipmentId());
+            orderShipmentId.setShipmentItemSeqId(shipmentItemSeqId);
+            // ////////////////////////////////////////////////
+            BigDecimal qty = shipmentItemState.getQuantity();
+            createOrderShipmentMapping(orderShipmentId, qty, c.getRequesterId());
+        }
+    }
+
+    private ShipmentState assertShipmentId(String shipmentId) {
+        ShipmentState shipmentState = getShipmentApplicationService().get(shipmentId);
+        if (shipmentState == null) {
+            throw new IllegalArgumentException(String.format("ShipmentId '%1$s' error.", shipmentId));
+        }
+        return shipmentState;
+    }
+
+    private Map<String, OrderItemId> getProductOrderItemMap(String orderId, String shipGroupSeqId) {
+        //产品与订单项目的映射关系（只保留一个订单项）
+        Map<String, OrderItemId> productOrderItemMap = new HashMap<>();
+        OrderState orderState = assertOrderId(orderId);
+        OrderShipGroupState orderShipGroupState = assertShipGroupSeqId(orderState, shipGroupSeqId);
+        for (OrderItemShipGroupAssociationState orderItemShipGroupAssoc : orderShipGroupState.getOrderItemShipGroupAssociations()) {
+            String orderItemSeqId = orderItemShipGroupAssoc.getOrderItemSeqId();
+            OrderItemState orderItemState = assertOrderItemSeqSeqId(orderState, orderItemSeqId);
+            if (!productOrderItemMap.containsKey(orderItemState.getProductId())) {
+                productOrderItemMap.put(orderItemState.getProductId(), new OrderItemId(orderId, orderItemSeqId));
+            }
+        }
+        return productOrderItemMap;
     }
 
     private void createOrMergePatchOrderItemAndShipGroupAssociation(OrderState orderState, OrderItemShipGroupAssociationInfo line) {
@@ -374,13 +478,19 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
     private void createOrderShipmentMap(Map<OrderShipmentId, BigDecimal> orderShipmentMap, String requesterId) {
         for (Map.Entry<OrderShipmentId, BigDecimal> entry : orderShipmentMap.entrySet()) {
-            OrderShipmentCommand.CreateOrderShipment createOrderShipment = new AbstractOrderShipmentCommand.SimpleCreateOrderShipment();
-            createOrderShipment.setOrderShipmentId(entry.getKey());
-            createOrderShipment.setQuantity(entry.getValue());
-            createOrderShipment.setCommandId(UUID.randomUUID().toString());
-            createOrderShipment.setRequesterId(requesterId);
-            getOrderShipmentApplicationService().when(createOrderShipment);
+            OrderShipmentId orderShipmentId = entry.getKey();
+            BigDecimal qty = entry.getValue();
+            createOrderShipmentMapping(orderShipmentId, qty, requesterId);
         }
+    }
+
+    private void createOrderShipmentMapping(OrderShipmentId orderShipmentId, BigDecimal qty, String requesterId) {
+        OrderShipmentCommand.CreateOrderShipment createOrderShipment = new AbstractOrderShipmentCommand.SimpleCreateOrderShipment();
+        createOrderShipment.setOrderShipmentId(orderShipmentId);
+        createOrderShipment.setQuantity(qty);
+        createOrderShipment.setCommandId(UUID.randomUUID().toString());
+        createOrderShipment.setRequesterId(requesterId);
+        getOrderShipmentApplicationService().when(createOrderShipment);
     }
 
     private Map<OrderShipmentId, BigDecimal> createShipmentItems(List<OrderIdShipGroupSeqIdPair> orderIdShipGroupSeqIdPairs,
@@ -482,6 +592,14 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             throw new IllegalArgumentException(String.format("ShipGroupSeqId Id '%1$s' error.", shipGroupSeqId));
         }
         return orderShipGroupState;
+    }
+
+    private OrderItemState assertOrderItemSeqSeqId(OrderState orderState, String orderItemSeqId) {
+        OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, false, true);
+        if (orderItemState == null) {
+            throw new IllegalArgumentException(String.format("OrderItemSeqId Id '%1$s' error.", orderItemSeqId));
+        }
+        return orderItemState;
     }
 
     private OrderState assertOrderId(String orderId) {

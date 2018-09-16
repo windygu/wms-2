@@ -103,7 +103,7 @@ public class ImportShipments {
     /**
      * 在知道 Secret 的情况下，也可以自己创建一个 JWT Token。
      */
-    private static String jwtSecret = "xxxxxxxx";
+    private static String jwtSecret = "bWFsbHM=";
 
     private static String getJwtToken() {
         JwtUser u = new JwtUser();
