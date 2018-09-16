@@ -75,6 +75,12 @@ namespace Dddml.Wms.Domain.Services
 
             public string ShipmentId { get; set; }
 
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
+
+            public bool? IsShipped { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -86,6 +92,10 @@ namespace Dddml.Wms.Domain.Services
             public ISet<OrderIdShipGroupSeqIdPair> OrderIdShipGroupSeqIdPairs { get; set; }
 
             public string ShipmentId { get; set; }
+
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
 
             public string CommandId { get; set; }
 
@@ -104,6 +114,10 @@ namespace Dddml.Wms.Domain.Services
             public bool? HintShipmentItemsEnabled { get; set; }
 
             public ISet<OrderIdShipGroupSeqIdPair> OtherOrderIdShipGroupSeqIdPairs { get; set; }
+
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
 
             public string CommandId { get; set; }
 

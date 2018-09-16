@@ -327,6 +327,45 @@ public class OrderShipGroupServiceCommandDtos {
         }
 
         /**
+         * Origin Facility Id
+         */
+        private String originFacilityId;
+
+        public String getOriginFacilityId() {
+            return originFacilityId;
+        }
+
+        public void setOriginFacilityId(String originFacilityId) {
+            this.originFacilityId = originFacilityId;
+        }
+
+        /**
+         * Destination Facility Id
+         */
+        private String destinationFacilityId;
+
+        public String getDestinationFacilityId() {
+            return destinationFacilityId;
+        }
+
+        public void setDestinationFacilityId(String destinationFacilityId) {
+            this.destinationFacilityId = destinationFacilityId;
+        }
+
+        /**
+         * Is Shipped
+         */
+        private Boolean isShipped;
+
+        public Boolean getIsShipped() {
+            return isShipped;
+        }
+
+        public void setIsShipped(Boolean isShipped) {
+            this.isShipped = isShipped;
+        }
+
+        /**
          * Command Id
          */
         private String commandId;
@@ -380,6 +419,32 @@ public class OrderShipGroupServiceCommandDtos {
 
         public void setShipmentId(String shipmentId) {
             this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Origin Facility Id
+         */
+        private String originFacilityId;
+
+        public String getOriginFacilityId() {
+            return originFacilityId;
+        }
+
+        public void setOriginFacilityId(String originFacilityId) {
+            this.originFacilityId = originFacilityId;
+        }
+
+        /**
+         * Destination Facility Id
+         */
+        private String destinationFacilityId;
+
+        public String getDestinationFacilityId() {
+            return destinationFacilityId;
+        }
+
+        public void setDestinationFacilityId(String destinationFacilityId) {
+            this.destinationFacilityId = destinationFacilityId;
         }
 
         /**
@@ -475,6 +540,32 @@ public class OrderShipGroupServiceCommandDtos {
 
         public void setOtherOrderIdShipGroupSeqIdPairs(OrderIdShipGroupSeqIdPair[] otherOrderIdShipGroupSeqIdPairs) {
             this.otherOrderIdShipGroupSeqIdPairs = otherOrderIdShipGroupSeqIdPairs;
+        }
+
+        /**
+         * Origin Facility Id
+         */
+        private String originFacilityId;
+
+        public String getOriginFacilityId() {
+            return originFacilityId;
+        }
+
+        public void setOriginFacilityId(String originFacilityId) {
+            this.originFacilityId = originFacilityId;
+        }
+
+        /**
+         * Destination Facility Id
+         */
+        private String destinationFacilityId;
+
+        public String getDestinationFacilityId() {
+            return destinationFacilityId;
+        }
+
+        public void setDestinationFacilityId(String destinationFacilityId) {
+            this.destinationFacilityId = destinationFacilityId;
         }
 
         /**

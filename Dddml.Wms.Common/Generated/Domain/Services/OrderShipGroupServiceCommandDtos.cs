@@ -111,6 +111,12 @@ namespace Dddml.Wms.Domain.Services
 
             public string ShipmentId { get; set; }
 
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
+
+            public bool? IsShipped { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -120,6 +126,9 @@ namespace Dddml.Wms.Domain.Services
                 var cmd = new OrderShipGroupServiceCommands.CreatePOShipment();
                 cmd.OrderIdShipGroupSeqIdPairs = this.OrderIdShipGroupSeqIdPairs == null ? null : new HashSet<OrderIdShipGroupSeqIdPair>(this.OrderIdShipGroupSeqIdPairs);
                 cmd.ShipmentId = this.ShipmentId;
+                cmd.OriginFacilityId = this.OriginFacilityId;
+                cmd.DestinationFacilityId = this.DestinationFacilityId;
+                cmd.IsShipped = this.IsShipped;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;
@@ -132,6 +141,10 @@ namespace Dddml.Wms.Domain.Services
 
             public string ShipmentId { get; set; }
 
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -141,6 +154,8 @@ namespace Dddml.Wms.Domain.Services
                 var cmd = new OrderShipGroupServiceCommands.CreateSOShipment();
                 cmd.OrderIdShipGroupSeqIdPairs = this.OrderIdShipGroupSeqIdPairs == null ? null : new HashSet<OrderIdShipGroupSeqIdPair>(this.OrderIdShipGroupSeqIdPairs);
                 cmd.ShipmentId = this.ShipmentId;
+                cmd.OriginFacilityId = this.OriginFacilityId;
+                cmd.DestinationFacilityId = this.DestinationFacilityId;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;
@@ -159,6 +174,10 @@ namespace Dddml.Wms.Domain.Services
 
             public OrderIdShipGroupSeqIdPair[] OtherOrderIdShipGroupSeqIdPairs { get; set; }
 
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -171,6 +190,8 @@ namespace Dddml.Wms.Domain.Services
                 cmd.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
                 cmd.HintShipmentItemsEnabled = this.HintShipmentItemsEnabled;
                 cmd.OtherOrderIdShipGroupSeqIdPairs = this.OtherOrderIdShipGroupSeqIdPairs == null ? null : new HashSet<OrderIdShipGroupSeqIdPair>(this.OtherOrderIdShipGroupSeqIdPairs);
+                cmd.OriginFacilityId = this.OriginFacilityId;
+                cmd.DestinationFacilityId = this.DestinationFacilityId;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;
