@@ -3,11 +3,17 @@ package org.dddml.wms.restful.tests;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.dddml.wms.domain.service.OrderIdShipGroupSeqIdPair;
+import org.dddml.wms.domain.service.OrderItemShipGroupAssociationInfo;
+import org.dddml.wms.domain.service.OrderShipGroupServiceCommands;
 import org.dddml.wms.restful.resource.ImportServiceResource;
 import org.dddml.wms.security.JwtUser;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.UUID;
 
 
 /**
@@ -40,6 +46,74 @@ public class ImportShipments {
         url = HttpClientUtil.appendUrl(baseUrl, "ImportService/ImportShipments");
         ImportServiceResource.ImportingShipmentHeader importSettings = getImportingShipmentHeader();
         HttpClientUtil.post(token, url, importSettings);
+
+        if (true) return;
+
+        // ///////////////////////////////////////////////////////////////////////////////
+        // 创建一个测试“通知单”（有多行——即多个订单/装运组的行项） ///////////////////
+        // ///////////////////////////////////////////////////////////////////////////////
+        String orderId = "test-po-no.";
+        String shipGroupSeqId = "" + UUID.randomUUID().hashCode();//测试装运组序号（通知单号）
+
+        // ////////////////// “通知单”的第一行 /////////////////////////
+        OrderItemShipGroupAssociationInfo orderItemShipGroupAssoc1 = new OrderItemShipGroupAssociationInfo();
+        orderItemShipGroupAssoc1.setOrderId(orderId);
+        orderItemShipGroupAssoc1.setShipGroupSeqId(shipGroupSeqId);
+        orderItemShipGroupAssoc1.setProductId("21101");
+        orderItemShipGroupAssoc1.setQuantity(BigDecimal.valueOf(100000));
+        // ////////////////// “通知单”的第二行 /////////////////////////
+        OrderItemShipGroupAssociationInfo orderItemShipGroupAssoc2 = new OrderItemShipGroupAssociationInfo();
+        orderItemShipGroupAssoc2.setOrderId(orderId);
+        orderItemShipGroupAssoc2.setShipGroupSeqId(shipGroupSeqId);
+        orderItemShipGroupAssoc2.setProductId("21001");
+        orderItemShipGroupAssoc2.setQuantity(BigDecimal.valueOf(100000));
+
+        // ///////////////////
+        OrderIdShipGroupSeqIdPair orderIdShipGroupSeqIdPair = new OrderIdShipGroupSeqIdPair();
+        orderIdShipGroupSeqIdPair.setOrderId(orderId);
+        orderIdShipGroupSeqIdPair.setShipGroupSeqId(shipGroupSeqId);
+        OrderShipGroupServiceCommands.CreatePOShipGroups createPOShipGroups = new OrderShipGroupServiceCommands.CreatePOShipGroups();
+        createPOShipGroups.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
+        createPOShipGroups.setContactPartyId("XXX-XXX");
+        createPOShipGroups.setTelecomContactMechId("18000000000");
+        createPOShipGroups.setDestinationFacilityId("W1");
+        createPOShipGroups.setOrderItemShipGroupAssociations(Arrays.asList(orderItemShipGroupAssoc1));
+        createPOShipGroups.setCommandId(UUID.randomUUID().toString());
+        // ////////////////////////////////////////
+        url = HttpClientUtil.appendUrl(baseUrl, "OrderShipGroupService/CreatePOShipGroups");
+        HttpClientUtil.post(token, url, createPOShipGroups);
+
+        if (true) return;
+
+        // ////////////更新通知单的行项（其实是更新“订单/装运组”的相关行项） //////////////
+        OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation updateOrderItemShipGroupAssociation = new OrderShipGroupServiceCommands.UpdateOrderItemShipGroupAssociation();
+        OrderItemShipGroupAssociationInfo orderItemShipGroupAssoc = new OrderItemShipGroupAssociationInfo();
+        orderItemShipGroupAssoc.setOrderId(orderId);//合同号
+        orderItemShipGroupAssoc.setShipGroupSeqId("-602270240");//通知单号（装运组序号）
+        orderItemShipGroupAssoc.setOrderItemSeqId(10161 + "");//生成的订单项目序号
+        orderItemShipGroupAssoc.setProductId("21101");//不支持修改产品 Id，应该设置为与创建时一致的 Id
+        orderItemShipGroupAssoc.setQuantity(BigDecimal.ZERO);
+        updateOrderItemShipGroupAssociation.setOrderItemShipGroupAssociation(orderItemShipGroupAssoc);
+        updateOrderItemShipGroupAssociation.setCommandId(UUID.randomUUID().toString());
+        url = HttpClientUtil.appendUrl(baseUrl, "OrderShipGroupService/UpdateOrderItemShipGroupAssociation");
+        HttpClientUtil.post(token, url, updateOrderItemShipGroupAssociation);
+
+        if (true) return;
+
+        // ///////////////////////////// /////////////////////////////
+        // 将“通知单”与已经存在（导入）的码单（装运单）关联起来
+        // ///////////////////////////////////////////////////////////
+        OrderShipGroupServiceCommands.ShipPOShipment shipPOShipment = new OrderShipGroupServiceCommands.ShipPOShipment();
+        shipPOShipment.setShipmentId("TCNU4367495");// 已导入装运单（码单）号
+        shipPOShipment.setPrimaryOrderId(orderId);//合同号（必须与导入时相同）
+        shipPOShipment.setPrimaryShipGroupSeqId(shipGroupSeqId);//通知单号（装运组序号）
+        shipPOShipment.setDestinationFacilityId("W1");//目标仓库
+        shipPOShipment.setHintShipmentItemsEnabled(true);//目前必须为 true
+        shipPOShipment.setCommandId(UUID.randomUUID().toString());
+        // ////////////////////////////////////////
+        url = HttpClientUtil.appendUrl(baseUrl, "OrderShipGroupService/ShipPOShipment");
+        HttpClientUtil.post(token, url, shipPOShipment);
+
     }
 
     private static ImportServiceResource.ImportingShipmentHeader getImportingShipmentHeader() {

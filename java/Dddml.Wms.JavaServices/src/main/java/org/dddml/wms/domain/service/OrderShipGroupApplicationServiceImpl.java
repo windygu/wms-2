@@ -219,11 +219,14 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         mergePatchShipment.setVersion(shipmentState.getVersion());
         mergePatchShipment.setCommandId(c.getCommandId());
         mergePatchShipment.setRequesterId(c.getRequesterId());
+        // 增加一些数量为 0 的装运行项目（“提示”）
         Map<OrderShipmentId, BigDecimal> orderShipmentMap =
                 createShipmentItems(orderIdShipGroupSeqIdPairs, mergePatchShipment, true);
         getShipmentApplicationService().when(mergePatchShipment);
         createOrderShipmentMap(orderShipmentMap, c.getRequesterId());
         //}
+        // ///////////////// 更新状态到“已发运” ///////////////////////////
+        setPOShipmentShipped(shipmentId,shipmentState.getVersion(), c.getRequesterId());
     }
 
     private ShipmentState assertShipmentStatus(String shipmentId, String status) {
@@ -311,8 +314,10 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             }
             orderItemCommand.setOrderItemSeqId(orderItemSeqId);
             String productId = line.getProductId();
-            if (!orderItemState.getProductId().equals(productId)) {
-                throw new IllegalArgumentException(String.format("ProductId '%1$s' CANNOT be modified.", productId));
+            if (productId != null) {
+                if (!orderItemState.getProductId().equals(productId)) {
+                    throw new IllegalArgumentException(String.format("ProductId '%1$s' CANNOT be modified.", productId));
+                }
             }
             orderItemCommand.setQuantity(line.getQuantity());//数量
             orderCommand.getOrderItemCommands().add(orderItemCommand);
