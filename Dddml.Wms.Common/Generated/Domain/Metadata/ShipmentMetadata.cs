@@ -451,6 +451,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "IsCreatedFromPackingList",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "EstimatedReadyDate",
                     Type = typeof(DateTime),
                     TypeName = "DateTime",
@@ -1349,6 +1378,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("carrier", "Carrier");
             d.Add("DateShipped", "DateShipped");
             d.Add("dateShipped", "DateShipped");
+            d.Add("IsCreatedFromPackingList", "IsCreatedFromPackingList");
+            d.Add("isCreatedFromPackingList", "IsCreatedFromPackingList");
             d.Add("EstimatedReadyDate", "EstimatedReadyDate");
             d.Add("estimatedReadyDate", "EstimatedReadyDate");
             d.Add("EstimatedShipDate", "EstimatedShipDate");

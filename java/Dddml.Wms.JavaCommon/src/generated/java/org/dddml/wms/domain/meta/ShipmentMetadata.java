@@ -33,6 +33,7 @@ public final class ShipmentMetadata {
             "externalOrderNumber",
             "carrier",
             "dateShipped",
+            "isCreatedFromPackingList",
             "estimatedReadyDate",
             "estimatedShipDate",
             "estimatedShipWorkEffId",
@@ -77,6 +78,7 @@ public final class ShipmentMetadata {
             "String",
             "String",
             "java.sql.Timestamp",
+            "Boolean",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "String",
@@ -147,6 +149,8 @@ public final class ShipmentMetadata {
         aliasMap.put("Carrier", "carrier");
         aliasMap.put("dateShipped", "dateShipped");
         aliasMap.put("DateShipped", "dateShipped");
+        aliasMap.put("isCreatedFromPackingList", "isCreatedFromPackingList");
+        aliasMap.put("IsCreatedFromPackingList", "isCreatedFromPackingList");
         aliasMap.put("estimatedReadyDate", "estimatedReadyDate");
         aliasMap.put("EstimatedReadyDate", "estimatedReadyDate");
         aliasMap.put("estimatedShipDate", "estimatedShipDate");
