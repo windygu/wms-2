@@ -96,21 +96,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     }
 
     /**
-     * Destination Facility Id
-     */
-    private String destinationFacilityId;
-
-    public String getDestinationFacilityId()
-    {
-        return this.destinationFacilityId;
-    }
-
-    public void setDestinationFacilityId(String destinationFacilityId)
-    {
-        this.destinationFacilityId = destinationFacilityId;
-    }
-
-    /**
      * Contact Mech Id
      */
     private String contactMechId;
@@ -138,21 +123,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     public void setTelecomContactMechId(String telecomContactMechId)
     {
         this.telecomContactMechId = telecomContactMechId;
-    }
-
-    /**
-     * Tracking Number
-     */
-    private String trackingNumber;
-
-    public String getTrackingNumber()
-    {
-        return this.trackingNumber;
-    }
-
-    public void setTrackingNumber(String trackingNumber)
-    {
-        this.trackingNumber = trackingNumber;
     }
 
     /**
@@ -228,51 +198,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     public void setShipByDate(java.sql.Timestamp shipByDate)
     {
         this.shipByDate = shipByDate;
-    }
-
-    /**
-     * Estimated Ship Date
-     */
-    private java.sql.Timestamp estimatedShipDate;
-
-    public java.sql.Timestamp getEstimatedShipDate()
-    {
-        return this.estimatedShipDate;
-    }
-
-    public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate)
-    {
-        this.estimatedShipDate = estimatedShipDate;
-    }
-
-    /**
-     * Estimated Delivery Date
-     */
-    private java.sql.Timestamp estimatedDeliveryDate;
-
-    public java.sql.Timestamp getEstimatedDeliveryDate()
-    {
-        return this.estimatedDeliveryDate;
-    }
-
-    public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate)
-    {
-        this.estimatedDeliveryDate = estimatedDeliveryDate;
-    }
-
-    /**
-     * Pickwave Id
-     */
-    private Long pickwaveId;
-
-    public Long getPickwaveId()
-    {
-        return this.pickwaveId;
-    }
-
-    public void setPickwaveId(Long pickwaveId)
-    {
-        this.pickwaveId = pickwaveId;
     }
 
     /**
@@ -374,18 +299,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyFacilityIdRemoved = removed;
     }
 
-    private Boolean isPropertyDestinationFacilityIdRemoved;
-
-    public Boolean getIsPropertyDestinationFacilityIdRemoved()
-    {
-        return this.isPropertyDestinationFacilityIdRemoved;
-    }
-
-    public void setIsPropertyDestinationFacilityIdRemoved(Boolean removed)
-    {
-        this.isPropertyDestinationFacilityIdRemoved = removed;
-    }
-
     private Boolean isPropertyContactMechIdRemoved;
 
     public Boolean getIsPropertyContactMechIdRemoved()
@@ -408,18 +321,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
     public void setIsPropertyTelecomContactMechIdRemoved(Boolean removed)
     {
         this.isPropertyTelecomContactMechIdRemoved = removed;
-    }
-
-    private Boolean isPropertyTrackingNumberRemoved;
-
-    public Boolean getIsPropertyTrackingNumberRemoved()
-    {
-        return this.isPropertyTrackingNumberRemoved;
-    }
-
-    public void setIsPropertyTrackingNumberRemoved(Boolean removed)
-    {
-        this.isPropertyTrackingNumberRemoved = removed;
     }
 
     private Boolean isPropertyMaySplitRemoved;
@@ -482,42 +383,6 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyShipByDateRemoved = removed;
     }
 
-    private Boolean isPropertyEstimatedShipDateRemoved;
-
-    public Boolean getIsPropertyEstimatedShipDateRemoved()
-    {
-        return this.isPropertyEstimatedShipDateRemoved;
-    }
-
-    public void setIsPropertyEstimatedShipDateRemoved(Boolean removed)
-    {
-        this.isPropertyEstimatedShipDateRemoved = removed;
-    }
-
-    private Boolean isPropertyEstimatedDeliveryDateRemoved;
-
-    public Boolean getIsPropertyEstimatedDeliveryDateRemoved()
-    {
-        return this.isPropertyEstimatedDeliveryDateRemoved;
-    }
-
-    public void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed)
-    {
-        this.isPropertyEstimatedDeliveryDateRemoved = removed;
-    }
-
-    private Boolean isPropertyPickwaveIdRemoved;
-
-    public Boolean getIsPropertyPickwaveIdRemoved()
-    {
-        return this.isPropertyPickwaveIdRemoved;
-    }
-
-    public void setIsPropertyPickwaveIdRemoved(Boolean removed)
-    {
-        this.isPropertyPickwaveIdRemoved = removed;
-    }
-
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -539,18 +404,13 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setCarrierPartyId(this.getCarrierPartyId());
         command.setCarrierRoleTypeId(this.getCarrierRoleTypeId());
         command.setFacilityId(this.getFacilityId());
-        command.setDestinationFacilityId(this.getDestinationFacilityId());
         command.setContactMechId(this.getContactMechId());
         command.setTelecomContactMechId(this.getTelecomContactMechId());
-        command.setTrackingNumber(this.getTrackingNumber());
         command.setMaySplit(this.getMaySplit());
         command.setGiftMessage(this.getGiftMessage());
         command.setIsGift(this.getIsGift());
         command.setShipAfterDate(this.getShipAfterDate());
         command.setShipByDate(this.getShipByDate());
-        command.setEstimatedShipDate(this.getEstimatedShipDate());
-        command.setEstimatedDeliveryDate(this.getEstimatedDeliveryDate());
-        command.setPickwaveId(this.getPickwaveId());
         command.setActive(this.getActive());
     }
 
@@ -600,18 +460,13 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setIsPropertyCarrierPartyIdRemoved(this.getIsPropertyCarrierPartyIdRemoved());
         command.setIsPropertyCarrierRoleTypeIdRemoved(this.getIsPropertyCarrierRoleTypeIdRemoved());
         command.setIsPropertyFacilityIdRemoved(this.getIsPropertyFacilityIdRemoved());
-        command.setIsPropertyDestinationFacilityIdRemoved(this.getIsPropertyDestinationFacilityIdRemoved());
         command.setIsPropertyContactMechIdRemoved(this.getIsPropertyContactMechIdRemoved());
         command.setIsPropertyTelecomContactMechIdRemoved(this.getIsPropertyTelecomContactMechIdRemoved());
-        command.setIsPropertyTrackingNumberRemoved(this.getIsPropertyTrackingNumberRemoved());
         command.setIsPropertyMaySplitRemoved(this.getIsPropertyMaySplitRemoved());
         command.setIsPropertyGiftMessageRemoved(this.getIsPropertyGiftMessageRemoved());
         command.setIsPropertyIsGiftRemoved(this.getIsPropertyIsGiftRemoved());
         command.setIsPropertyShipAfterDateRemoved(this.getIsPropertyShipAfterDateRemoved());
         command.setIsPropertyShipByDateRemoved(this.getIsPropertyShipByDateRemoved());
-        command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
-        command.setIsPropertyEstimatedDeliveryDateRemoved(this.getIsPropertyEstimatedDeliveryDateRemoved());
-        command.setIsPropertyPickwaveIdRemoved(this.getIsPropertyPickwaveIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

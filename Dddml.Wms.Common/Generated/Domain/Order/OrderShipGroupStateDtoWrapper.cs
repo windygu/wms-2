@@ -236,34 +236,6 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
-		public virtual string DestinationFacilityId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DestinationFacilityId"))
-                {
-                    return _state.DestinationFacilityId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.DestinationFacilityId = value;
-            }
-        }
-
-        string IOrderShipGroupStateProperties.DestinationFacilityId
-        {
-            get 
-            {
-                return (this._state as IOrderShipGroupStateProperties).DestinationFacilityId;
-            }
-            set 
-            {
-                (this._state as IOrderShipGroupStateProperties).DestinationFacilityId = value;
-            }
-        }
-
 		public virtual string ContactMechId
 		{
             get
@@ -317,34 +289,6 @@ namespace Dddml.Wms.Domain.Order
             set 
             {
                 (this._state as IOrderShipGroupStateProperties).TelecomContactMechId = value;
-            }
-        }
-
-		public virtual string TrackingNumber
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("TrackingNumber"))
-                {
-                    return _state.TrackingNumber;
-                }
-                return null;
-            }
-            set
-            {
-                _state.TrackingNumber = value;
-            }
-        }
-
-        string IOrderShipGroupStateProperties.TrackingNumber
-        {
-            get 
-            {
-                return (this._state as IOrderShipGroupStateProperties).TrackingNumber;
-            }
-            set 
-            {
-                (this._state as IOrderShipGroupStateProperties).TrackingNumber = value;
             }
         }
 
@@ -485,90 +429,6 @@ namespace Dddml.Wms.Domain.Order
             set 
             {
                 (this._state as IOrderShipGroupStateProperties).ShipByDate = value;
-            }
-        }
-
-		public virtual DateTime? EstimatedShipDate
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("EstimatedShipDate"))
-                {
-                    return _state.EstimatedShipDate;
-                }
-                return null;
-            }
-            set
-            {
-                _state.EstimatedShipDate = value;
-            }
-        }
-
-        DateTime? IOrderShipGroupStateProperties.EstimatedShipDate
-        {
-            get 
-            {
-                return (this._state as IOrderShipGroupStateProperties).EstimatedShipDate;
-            }
-            set 
-            {
-                (this._state as IOrderShipGroupStateProperties).EstimatedShipDate = value;
-            }
-        }
-
-		public virtual DateTime? EstimatedDeliveryDate
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("EstimatedDeliveryDate"))
-                {
-                    return _state.EstimatedDeliveryDate;
-                }
-                return null;
-            }
-            set
-            {
-                _state.EstimatedDeliveryDate = value;
-            }
-        }
-
-        DateTime? IOrderShipGroupStateProperties.EstimatedDeliveryDate
-        {
-            get 
-            {
-                return (this._state as IOrderShipGroupStateProperties).EstimatedDeliveryDate;
-            }
-            set 
-            {
-                (this._state as IOrderShipGroupStateProperties).EstimatedDeliveryDate = value;
-            }
-        }
-
-		public virtual long? PickwaveId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PickwaveId"))
-                {
-                    return _state.PickwaveId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.PickwaveId = value;
-            }
-        }
-
-        long? IOrderShipGroupStateProperties.PickwaveId
-        {
-            get 
-            {
-                return (this._state as IOrderShipGroupStateProperties).PickwaveId;
-            }
-            set 
-            {
-                (this._state as IOrderShipGroupStateProperties).PickwaveId = value;
             }
         }
 

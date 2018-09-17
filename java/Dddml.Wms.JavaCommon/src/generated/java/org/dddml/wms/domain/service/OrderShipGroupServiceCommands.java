@@ -16,32 +16,6 @@ public class OrderShipGroupServiceCommands {
     public static class CreatePOShipGroups {
 
         /**
-         * Estimated Delivery Date
-         */
-        private java.sql.Timestamp estimatedDeliveryDate;
-
-        public java.sql.Timestamp getEstimatedDeliveryDate() {
-            return estimatedDeliveryDate;
-        }
-
-        public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate) {
-            this.estimatedDeliveryDate = estimatedDeliveryDate;
-        }
-
-        /**
-         * Contact Party Id
-         */
-        private String contactPartyId;
-
-        public String getContactPartyId() {
-            return contactPartyId;
-        }
-
-        public void setContactPartyId(String contactPartyId) {
-            this.contactPartyId = contactPartyId;
-        }
-
-        /**
          * Telecom Contact Mech Id
          */
         private String telecomContactMechId;
@@ -55,29 +29,16 @@ public class OrderShipGroupServiceCommands {
         }
 
         /**
-         * Tracking Number
+         * Facility Id
          */
-        private String trackingNumber;
+        private String facilityId;
 
-        public String getTrackingNumber() {
-            return trackingNumber;
+        public String getFacilityId() {
+            return facilityId;
         }
 
-        public void setTrackingNumber(String trackingNumber) {
-            this.trackingNumber = trackingNumber;
-        }
-
-        /**
-         * Destination Facility Id
-         */
-        private String destinationFacilityId;
-
-        public String getDestinationFacilityId() {
-            return destinationFacilityId;
-        }
-
-        public void setDestinationFacilityId(String destinationFacilityId) {
-            this.destinationFacilityId = destinationFacilityId;
+        public void setFacilityId(String facilityId) {
+            this.facilityId = facilityId;
         }
 
         /**
@@ -124,32 +85,6 @@ public class OrderShipGroupServiceCommands {
     public static class CreateSOShipGroups {
 
         /**
-         * Estimated Ship Date
-         */
-        private java.sql.Timestamp estimatedShipDate;
-
-        public java.sql.Timestamp getEstimatedShipDate() {
-            return estimatedShipDate;
-        }
-
-        public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate) {
-            this.estimatedShipDate = estimatedShipDate;
-        }
-
-        /**
-         * Contact Party Id
-         */
-        private String contactPartyId;
-
-        public String getContactPartyId() {
-            return contactPartyId;
-        }
-
-        public void setContactPartyId(String contactPartyId) {
-            this.contactPartyId = contactPartyId;
-        }
-
-        /**
          * Telecom Contact Mech Id
          */
         private String telecomContactMechId;
@@ -160,45 +95,6 @@ public class OrderShipGroupServiceCommands {
 
         public void setTelecomContactMechId(String telecomContactMechId) {
             this.telecomContactMechId = telecomContactMechId;
-        }
-
-        /**
-         * Tracking Number
-         */
-        private String trackingNumber;
-
-        public String getTrackingNumber() {
-            return trackingNumber;
-        }
-
-        public void setTrackingNumber(String trackingNumber) {
-            this.trackingNumber = trackingNumber;
-        }
-
-        /**
-         * Vehicle Plate Number
-         */
-        private String vehiclePlateNumber;
-
-        public String getVehiclePlateNumber() {
-            return vehiclePlateNumber;
-        }
-
-        public void setVehiclePlateNumber(String vehiclePlateNumber) {
-            this.vehiclePlateNumber = vehiclePlateNumber;
-        }
-
-        /**
-         * Shipping Instructions
-         */
-        private String shippingInstructions;
-
-        public String getShippingInstructions() {
-            return shippingInstructions;
-        }
-
-        public void setShippingInstructions(String shippingInstructions) {
-            this.shippingInstructions = shippingInstructions;
         }
 
         /**
@@ -327,6 +223,19 @@ public class OrderShipGroupServiceCommands {
         }
 
         /**
+         * Is Shipped
+         */
+        private Boolean isShipped;
+
+        public Boolean getIsShipped() {
+            return isShipped;
+        }
+
+        public void setIsShipped(Boolean isShipped) {
+            this.isShipped = isShipped;
+        }
+
+        /**
          * Origin Facility Id
          */
         private String originFacilityId;
@@ -353,16 +262,55 @@ public class OrderShipGroupServiceCommands {
         }
 
         /**
-         * Is Shipped
+         * Origin Contact Mech Id
          */
-        private Boolean isShipped;
+        private String originContactMechId;
 
-        public Boolean getIsShipped() {
-            return isShipped;
+        public String getOriginContactMechId() {
+            return originContactMechId;
         }
 
-        public void setIsShipped(Boolean isShipped) {
-            this.isShipped = isShipped;
+        public void setOriginContactMechId(String originContactMechId) {
+            this.originContactMechId = originContactMechId;
+        }
+
+        /**
+         * Destination Contact Mech Id
+         */
+        private String destinationContactMechId;
+
+        public String getDestinationContactMechId() {
+            return destinationContactMechId;
+        }
+
+        public void setDestinationContactMechId(String destinationContactMechId) {
+            this.destinationContactMechId = destinationContactMechId;
+        }
+
+        /**
+         * Handling Instructions
+         */
+        private String handlingInstructions;
+
+        public String getHandlingInstructions() {
+            return handlingInstructions;
+        }
+
+        public void setHandlingInstructions(String handlingInstructions) {
+            this.handlingInstructions = handlingInstructions;
+        }
+
+        /**
+         * Estimated Ship Date
+         */
+        private java.sql.Timestamp estimatedShipDate;
+
+        public java.sql.Timestamp getEstimatedShipDate() {
+            return estimatedShipDate;
+        }
+
+        public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate) {
+            this.estimatedShipDate = estimatedShipDate;
         }
 
         /**
@@ -445,6 +393,58 @@ public class OrderShipGroupServiceCommands {
 
         public void setDestinationFacilityId(String destinationFacilityId) {
             this.destinationFacilityId = destinationFacilityId;
+        }
+
+        /**
+         * Origin Contact Mech Id
+         */
+        private String originContactMechId;
+
+        public String getOriginContactMechId() {
+            return originContactMechId;
+        }
+
+        public void setOriginContactMechId(String originContactMechId) {
+            this.originContactMechId = originContactMechId;
+        }
+
+        /**
+         * Destination Contact Mech Id
+         */
+        private String destinationContactMechId;
+
+        public String getDestinationContactMechId() {
+            return destinationContactMechId;
+        }
+
+        public void setDestinationContactMechId(String destinationContactMechId) {
+            this.destinationContactMechId = destinationContactMechId;
+        }
+
+        /**
+         * Handling Instructions
+         */
+        private String handlingInstructions;
+
+        public String getHandlingInstructions() {
+            return handlingInstructions;
+        }
+
+        public void setHandlingInstructions(String handlingInstructions) {
+            this.handlingInstructions = handlingInstructions;
+        }
+
+        /**
+         * Estimated Ship Date
+         */
+        private java.sql.Timestamp estimatedShipDate;
+
+        public java.sql.Timestamp getEstimatedShipDate() {
+            return estimatedShipDate;
+        }
+
+        public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate) {
+            this.estimatedShipDate = estimatedShipDate;
         }
 
         /**
@@ -566,6 +566,45 @@ public class OrderShipGroupServiceCommands {
 
         public void setDestinationFacilityId(String destinationFacilityId) {
             this.destinationFacilityId = destinationFacilityId;
+        }
+
+        /**
+         * Origin Contact Mech Id
+         */
+        private String originContactMechId;
+
+        public String getOriginContactMechId() {
+            return originContactMechId;
+        }
+
+        public void setOriginContactMechId(String originContactMechId) {
+            this.originContactMechId = originContactMechId;
+        }
+
+        /**
+         * Destination Contact Mech Id
+         */
+        private String destinationContactMechId;
+
+        public String getDestinationContactMechId() {
+            return destinationContactMechId;
+        }
+
+        public void setDestinationContactMechId(String destinationContactMechId) {
+            this.destinationContactMechId = destinationContactMechId;
+        }
+
+        /**
+         * Handling Instructions
+         */
+        private String handlingInstructions;
+
+        public String getHandlingInstructions() {
+            return handlingInstructions;
+        }
+
+        public void setHandlingInstructions(String handlingInstructions) {
+            this.handlingInstructions = handlingInstructions;
         }
 
         /**

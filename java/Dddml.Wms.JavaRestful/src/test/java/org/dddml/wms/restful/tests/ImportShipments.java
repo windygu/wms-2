@@ -73,10 +73,10 @@ public class ImportShipments {
         orderIdShipGroupSeqIdPair.setOrderId(orderId);
         orderIdShipGroupSeqIdPair.setShipGroupSeqId(shipGroupSeqId);
         OrderShipGroupServiceCommands.CreatePOShipGroups createPOShipGroups = new OrderShipGroupServiceCommands.CreatePOShipGroups();
-        createPOShipGroups.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
-        createPOShipGroups.setContactPartyId("XXX-XXX");
-        createPOShipGroups.setTelecomContactMechId("18000000000");
-        createPOShipGroups.setDestinationFacilityId("W1");
+        //        createPOShipGroups.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
+        //        createPOShipGroups.setContactPartyId("XXX-XXX");
+        //        createPOShipGroups.setTelecomContactMechId("18000000000");
+        //        createPOShipGroups.setDestinationFacilityId("W1");
         createPOShipGroups.setOrderItemShipGroupAssociations(Arrays.asList(orderItemShipGroupAssoc1));
         createPOShipGroups.setCommandId(UUID.randomUUID().toString());
         // ////////////////////////////////////////

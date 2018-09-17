@@ -57,12 +57,6 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
-        string DestinationFacilityId
-        {
-            get;
-            set;
-        }
-
         string ContactMechId
         {
             get;
@@ -70,12 +64,6 @@ namespace Dddml.Wms.Domain.Order
         }
 
         string TelecomContactMechId
-        {
-            get;
-            set;
-        }
-
-        string TrackingNumber
         {
             get;
             set;
@@ -106,24 +94,6 @@ namespace Dddml.Wms.Domain.Order
         }
 
         DateTime? ShipByDate
-        {
-            get;
-            set;
-        }
-
-        DateTime? EstimatedShipDate
-        {
-            get;
-            set;
-        }
-
-        DateTime? EstimatedDeliveryDate
-        {
-            get;
-            set;
-        }
-
-        long? PickwaveId
         {
             get;
             set;

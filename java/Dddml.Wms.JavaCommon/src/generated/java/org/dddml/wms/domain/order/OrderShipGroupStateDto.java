@@ -93,18 +93,6 @@ public class OrderShipGroupStateDto
         this.facilityId = facilityId;
     }
 
-    private String destinationFacilityId;
-
-    public String getDestinationFacilityId()
-    {
-        return this.destinationFacilityId;
-    }
-
-    public void setDestinationFacilityId(String destinationFacilityId)
-    {
-        this.destinationFacilityId = destinationFacilityId;
-    }
-
     private String contactMechId;
 
     public String getContactMechId()
@@ -127,18 +115,6 @@ public class OrderShipGroupStateDto
     public void setTelecomContactMechId(String telecomContactMechId)
     {
         this.telecomContactMechId = telecomContactMechId;
-    }
-
-    private String trackingNumber;
-
-    public String getTrackingNumber()
-    {
-        return this.trackingNumber;
-    }
-
-    public void setTrackingNumber(String trackingNumber)
-    {
-        this.trackingNumber = trackingNumber;
     }
 
     private String maySplit;
@@ -199,42 +175,6 @@ public class OrderShipGroupStateDto
     public void setShipByDate(java.sql.Timestamp shipByDate)
     {
         this.shipByDate = shipByDate;
-    }
-
-    private java.sql.Timestamp estimatedShipDate;
-
-    public java.sql.Timestamp getEstimatedShipDate()
-    {
-        return this.estimatedShipDate;
-    }
-
-    public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate)
-    {
-        this.estimatedShipDate = estimatedShipDate;
-    }
-
-    private java.sql.Timestamp estimatedDeliveryDate;
-
-    public java.sql.Timestamp getEstimatedDeliveryDate()
-    {
-        return this.estimatedDeliveryDate;
-    }
-
-    public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate)
-    {
-        this.estimatedDeliveryDate = estimatedDeliveryDate;
-    }
-
-    private Long pickwaveId;
-
-    public Long getPickwaveId()
-    {
-        return this.pickwaveId;
-    }
-
-    public void setPickwaveId(Long pickwaveId)
-    {
-        this.pickwaveId = pickwaveId;
     }
 
     private String orderShipGroupStatusId;
@@ -395,17 +335,11 @@ public class OrderShipGroupStateDto
             if (returnedFieldsContains("FacilityId")) {
                 dto.setFacilityId(state.getFacilityId());
             }
-            if (returnedFieldsContains("DestinationFacilityId")) {
-                dto.setDestinationFacilityId(state.getDestinationFacilityId());
-            }
             if (returnedFieldsContains("ContactMechId")) {
                 dto.setContactMechId(state.getContactMechId());
             }
             if (returnedFieldsContains("TelecomContactMechId")) {
                 dto.setTelecomContactMechId(state.getTelecomContactMechId());
-            }
-            if (returnedFieldsContains("TrackingNumber")) {
-                dto.setTrackingNumber(state.getTrackingNumber());
             }
             if (returnedFieldsContains("MaySplit")) {
                 dto.setMaySplit(state.getMaySplit());
@@ -421,15 +355,6 @@ public class OrderShipGroupStateDto
             }
             if (returnedFieldsContains("ShipByDate")) {
                 dto.setShipByDate(state.getShipByDate());
-            }
-            if (returnedFieldsContains("EstimatedShipDate")) {
-                dto.setEstimatedShipDate(state.getEstimatedShipDate());
-            }
-            if (returnedFieldsContains("EstimatedDeliveryDate")) {
-                dto.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());
-            }
-            if (returnedFieldsContains("PickwaveId")) {
-                dto.setPickwaveId(state.getPickwaveId());
             }
             if (returnedFieldsContains("OrderShipGroupStatusId")) {
                 dto.setOrderShipGroupStatusId(state.getOrderShipGroupStatusId());

@@ -110,8 +110,10 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId(),
                         c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId(),
-                        shipmentId, shipmentTypeId, //shipmentStatusId,
-                        c.getOriginFacilityId(), c.getDestinationFacilityId());
+                        shipmentId, shipmentTypeId);
+        setShipmentProperties(createShipment, c.getOriginFacilityId(), c.getDestinationFacilityId(),
+                c.getOriginContactMechId(), c.getDestinationContactMechId(),
+                c.getHandlingInstructions(), c.getEstimatedShipDate());
         createShipment.setRequesterId(c.getRequesterId());
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
@@ -160,8 +162,10 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId(),
                         c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId(),
-                        shipmentId, shipmentTypeId, //shipmentStatusId,
-                        c.getOriginFacilityId(), c.getDestinationFacilityId());
+                        shipmentId, shipmentTypeId); //shipmentStatusId,
+        setShipmentProperties(createShipment, c.getOriginFacilityId(), c.getDestinationFacilityId(),
+                c.getOriginContactMechId(), c.getDestinationContactMechId(),
+                c.getHandlingInstructions(), c.getEstimatedShipDate());
         createShipment.setRequesterId(c.getRequesterId());
         createShipment.setCommandId(c.getCommandId());
         // //////////////////////////////////////////////
@@ -216,6 +220,11 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         mergePatchShipment.setShipmentId(shipmentId);
         mergePatchShipment.setPrimaryOrderId(c.getPrimaryOrderId());
         mergePatchShipment.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
+        // ///////////////
+        setShipmentProperties(mergePatchShipment, c.getOriginFacilityId(), c.getDestinationFacilityId(),
+                c.getOriginContactMechId(), c.getDestinationContactMechId(),
+                c.getHandlingInstructions(), null);
+        // ///////////////
         mergePatchShipment.setVersion(shipmentState.getVersion());
         mergePatchShipment.setCommandId(c.getCommandId());
         mergePatchShipment.setRequesterId(c.getRequesterId());
@@ -394,17 +403,17 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             orderShipGroupCommand.setTelecomContactMechId(c.getTelecomContactMechId());//电话号码
         }
         //orderShipGroup.setContactPartyId(c.getContactPartyId());
-        if (c.getTrackingNumber()!=null && !c.getTrackingNumber().isEmpty()) {
-            orderShipGroupCommand.setTrackingNumber(c.getTrackingNumber());
-        }
+        //        if (c.getTrackingNumber()!=null && !c.getTrackingNumber().isEmpty()) {
+        //            orderShipGroupCommand.setTrackingNumber(c.getTrackingNumber());
+        //        }
         orderShipGroupCommand.setActive(true);
         //---------------------
-        if (c.getEstimatedDeliveryDate()!=null) {
-            orderShipGroupCommand.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());//预计收货日期
-        }
-        if (c.getDestinationFacilityId()!=null && !c.getDestinationFacilityId().isEmpty()) {
-            orderShipGroupCommand.setDestinationFacilityId(c.getDestinationFacilityId());//目标仓库 / 设施 Id
-        }
+        //        if (c.getEstimatedDeliveryDate()!=null) {
+        //            orderShipGroupCommand.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());//预计收货日期
+        //        }
+        //        if (c.getDestinationFacilityId()!=null && !c.getDestinationFacilityId().isEmpty()) {
+        //            orderShipGroupCommand.setDestinationFacilityId(c.getDestinationFacilityId());//目标仓库 / 设施 Id
+        //        }
 
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
             ((OrderCommand.CreateOrder)orderCommand).getOrderShipGroups().add((OrderShipGroupCommand.CreateOrderShipGroup)orderShipGroupCommand);
@@ -452,14 +461,14 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             orderShipGroupCommand.setTelecomContactMechId(c.getTelecomContactMechId());//电话号码
         }
         //orderShipGroup.setContactPartyId(c.getContactPartyId());
-        if (c.getTrackingNumber()!=null && !c.getTrackingNumber().isEmpty()) {
-            orderShipGroupCommand.setTrackingNumber(c.getTrackingNumber());
-        }
+        //        if (c.getTrackingNumber()!=null && !c.getTrackingNumber().isEmpty()) {
+        //            orderShipGroupCommand.setTrackingNumber(c.getTrackingNumber());
+        //        }
         orderShipGroupCommand.setActive(true);
         //---------------------
-        if (c.getEstimatedShipDate()!=null) {
-            orderShipGroupCommand.setEstimatedShipDate(c.getEstimatedShipDate());//预计发货日期
-        }
+        //        if (c.getEstimatedShipDate()!=null) {
+        //            orderShipGroupCommand.setEstimatedShipDate(c.getEstimatedShipDate());//预计发货日期
+        //        }
         //        orderShipGroupCommand.setVehiclePlateNumber(c.getVehiclePlateNumber());//车牌号
         //        orderShipGroupCommand.setShippingInstructions(c.getShippingInstructions());//发货指示
         if (c.getFacilityId()!=null && !c.getFacilityId().isEmpty()) {
@@ -577,8 +586,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     }
 
     private ShipmentCommand.CreateShipment createShipment(String primaryOrderId, String primaryShipGroupSeqId, String shipmentId,
-                                                          String shipmentTypeId, //String shipmentStatusId,
-                                                          String originFacilityId, String destinationFacilityId) {
+                                                          String shipmentTypeId) {
         ShipmentCommand.CreateShipment createShipment = new AbstractShipmentCommand.SimpleCreateShipment();
         createShipment.setShipmentId(shipmentId);
         createShipment.setShipmentTypeId(shipmentTypeId);
@@ -586,9 +594,42 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         createShipment.setPrimaryOrderId(primaryOrderId);
         createShipment.setPrimaryShipGroupSeqId(primaryShipGroupSeqId);
         createShipment.setActive(true);
-        createShipment.setOriginFacilityId(originFacilityId);
-        createShipment.setDestinationFacilityId(destinationFacilityId);
+        //createShipment.setOriginFacilityId(originFacilityId);
+        //createShipment.setDestinationFacilityId(destinationFacilityId);
         return createShipment;
+    }
+
+    private void setShipmentProperties(ShipmentCommand.CreateOrMergePatchShipment shipmentCommand,
+                                       String originFacilityId, String destinationFacilityId,
+                                       String originContactMechId, String destinationContactMechId,
+                                       String handlingInstructions, java.sql.Timestamp estimatedShipDate) {
+        if (originFacilityId != null) {
+            shipmentCommand.setOriginFacilityId(originFacilityId);
+        }
+        if (destinationFacilityId != null) {
+            shipmentCommand.setDestinationFacilityId(destinationFacilityId);
+        }
+        if (originContactMechId != null) {
+            shipmentCommand.setOriginContactMechId(originContactMechId);
+        }
+        if (destinationContactMechId != null) {
+            shipmentCommand.setDestinationContactMechId(destinationContactMechId);
+        }
+        //shipmentCommand.setTrackingNumber();
+        // 联系人 / 司机 Id
+        //shipmentCommand.setContactPartyId();
+        // 车牌号
+        //shipmentCommand.setVehiclePlateNumber();
+        // 预计交付（入库）日期
+        //shipmentCommand.setEstimatedDeliveryDate();
+        // 发货指示 / 客户名称 / 备注等
+        if (handlingInstructions != null) {
+            shipmentCommand.setHandlingInstructions(handlingInstructions);
+        }
+        // 预计（发货）日期
+        if (estimatedShipDate != null) {
+            shipmentCommand.setEstimatedShipDate(estimatedShipDate);
+        }
     }
 
     private OrderShipGroupState assertShipGroupSeqId(OrderState orderState, String shipGroupSeqId) {

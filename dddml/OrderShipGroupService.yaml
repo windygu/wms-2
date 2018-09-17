@@ -69,28 +69,28 @@ services:
         #requiredAnyRole: ["ADMIN", "WarehouseOP"]
         
         parameters:
-          # ------------------------------
-          # 预计交付时间（入库时间）
-          EstimatedDeliveryDate:
-            type: date-time
-          # ------------------------------
-          # 联系人
-          ContactPartyId:
-            type: string
-            referenceType: Party
+          # -----------------------------
           # 联系电话
           TelecomContactMechId:
             type: id
-          # 追踪（物流）单号
-          TrackingNumber:
-            type: short-varchar
-          # -----------------------------
-          ## 源仓库 / 设施 Id
-          #FacilityId:
-          #  type: id
-          # 目标仓库 / 设施 Id
-          DestinationFacilityId:
+          # 源仓库 / 设施 Id
+          FacilityId:
             type: id
+          # # 目标仓库 / 设施 Id
+          # DestinationFacilityId:
+            # type: id
+          # # ------------------------------
+          # # 预计交付时间（入库时间）
+          # EstimatedDeliveryDate:
+            # type: date-time
+          # # ------------------------------
+          # # 联系人
+          # ContactPartyId:
+            # type: string
+            # referenceType: Party
+          # # 追踪（物流）单号
+          # TrackingNumber:
+            # type: short-varchar
           # -----------------------------
           OrderItemShipGroupAssociations:
             itemType: OrderItemShipGroupAssociationInfo
@@ -100,36 +100,29 @@ services:
       CreateSOShipGroups:
       
         parameters:
-          # ------------------------------
-          # 预计发货日期（出库时间）
-          EstimatedShipDate:
-            type: date-time
-          # ------------------------------
-          # 司机 / 联系人
-          ContactPartyId:
-            type: string
-            referenceType: Party
-          # 司机 / 联系人电话
+          # -----------------------------
+          # 联系电话
           TelecomContactMechId:
             type: id
-          # 追踪（物流）单号
-          TrackingNumber:
-            type: short-varchar
-          # ------------------------------
-          # 车牌号
-          VehiclePlateNumber:
-            type: long-varchar
-          # 发货指示 / 客户名称 / 备注等  
-          ShippingInstructions:
-            type: long-varchar
-          # -----------------------------
           # 源仓库 / 设施 Id
           FacilityId:
             type: id
-          ## 目标仓库 / 设施 Id
-          #DestinationFacilityId:
-          #  type: id
-          # ------------------------------
+          # # 目标仓库 / 设施 Id
+          # DestinationFacilityId:
+            # type: id
+          # # ------------------------------
+          # # 预计交付时间（入库时间）
+          # EstimatedDeliveryDate:
+            # type: date-time
+          # # ------------------------------
+          # # 联系人
+          # ContactPartyId:
+            # type: string
+            # referenceType: Party
+          # # 追踪（物流）单号
+          # TrackingNumber:
+            # type: short-varchar
+          # -----------------------------
           OrderItemShipGroupAssociations:
             itemType: OrderItemShipGroupAssociationInfo
       
@@ -155,14 +148,44 @@ services:
           # 装运单 Id，可以为空
           ShipmentId:
             type: id
+          # 是否置为“已发运”状态
+          IsShipped:
+            type: bool
+            
           OriginFacilityId:
             type: id
           DestinationFacilityId:
             type: id
-          # 是否置为“已发运”状态
-          IsShipped:
-            type: bool
-        
+          OriginFacilityId:
+            type: id
+          DestinationFacilityId:
+            type: id
+          OriginContactMechId:
+            type: id
+          DestinationContactMechId:
+            type: id
+          # ------------------------------
+          # 发货指示 / 客户名称 / 备注等  
+          HandlingInstructions:
+            type: long-varchar
+          # 预计（发货）日期
+          EstimatedShipDate:
+            type: date-time
+          # 跟踪单号
+          # TrackingNumber:
+          #   type: short-varchar
+          # ------------------------------
+          # 联系人 / 司机 Id
+          # ContactPartyId:
+          #   referenceType: Party
+          # 车牌号
+          # VehiclePlateNumber:
+          #   type: long-varchar
+          # 预计交付（入库）日期  
+          # EstimatedDeliveryDate:
+          #   type: date-time
+
+            
         # 返回结果，装运单 Id
         result:
           type: string
@@ -184,6 +207,30 @@ services:
             type: id
           DestinationFacilityId:
             type: id
+          OriginContactMechId:
+            type: id
+          DestinationContactMechId:
+            type: id
+          # ------------------------------
+          # 发货指示 / 客户名称 / 备注等  
+          HandlingInstructions:
+            type: long-varchar
+          # 预计（发货）日期
+          EstimatedShipDate:
+            type: date-time
+          # 跟踪单号
+          # TrackingNumber:
+          #   type: short-varchar
+          # ------------------------------
+          # 联系人 / 司机 Id
+          # ContactPartyId:
+          #   referenceType: Party
+          # 车牌号
+          # VehiclePlateNumber:
+          #   type: long-varchar
+          # 预计交付（入库）日期  
+          # EstimatedDeliveryDate:
+          #   type: date-time
         
         # 返回结果，装运单 Id
         result:
@@ -215,13 +262,30 @@ services:
             type: id
           DestinationFacilityId:
             type: id
+          OriginContactMechId:
+            type: id
+          DestinationContactMechId:
+            type: id
+          # 跟踪单号
+          # TrackingNumber:
+          #   type: short-varchar
+          # ------------------------------
+          # 联系人 / 司机 Id
+          # ContactPartyId:
+          #   referenceType: Party
+          # 车牌号
+          # VehiclePlateNumber:
+          #   type: long-varchar
+          # ------------------------------
+          # 发货指示 / 客户名称 / 备注等  
+          HandlingInstructions:
+            type: long-varchar
+          # 预计（发货）日期
+          # EstimatedShipDate:
+          #   type: date-time
+          # 预计交付（入库）日期  
+          # EstimatedDeliveryDate:
+          #   type: date-time
         
         
         
-        
-        
-        
-        
-        
-        
-            

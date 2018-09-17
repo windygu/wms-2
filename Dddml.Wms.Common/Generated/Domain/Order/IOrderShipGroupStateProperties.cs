@@ -29,13 +29,9 @@ namespace Dddml.Wms.Domain.Order
 
 		string FacilityId { get; set; }
 
-		string DestinationFacilityId { get; set; }
-
 		string ContactMechId { get; set; }
 
 		string TelecomContactMechId { get; set; }
-
-		string TrackingNumber { get; set; }
 
 		string MaySplit { get; set; }
 
@@ -46,12 +42,6 @@ namespace Dddml.Wms.Domain.Order
 		DateTime? ShipAfterDate { get; set; }
 
 		DateTime? ShipByDate { get; set; }
-
-		DateTime? EstimatedShipDate { get; set; }
-
-		DateTime? EstimatedDeliveryDate { get; set; }
-
-		long? PickwaveId { get; set; }
 
 		string OrderShipGroupStatusId { get; set; }
 

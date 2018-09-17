@@ -25,18 +25,13 @@ public final class OrderShipGroupMetadata {
             "carrierPartyId",
             "carrierRoleTypeId",
             "facilityId",
-            "destinationFacilityId",
             "contactMechId",
             "telecomContactMechId",
-            "trackingNumber",
             "maySplit",
             "giftMessage",
             "isGift",
             "shipAfterDate",
             "shipByDate",
-            "estimatedShipDate",
-            "estimatedDeliveryDate",
-            "pickwaveId",
             "orderShipGroupStatusId",
             "version",
             "createdBy",
@@ -63,13 +58,8 @@ public final class OrderShipGroupMetadata {
             "String",
             "String",
             "String",
-            "String",
-            "String",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
-            "java.sql.Timestamp",
-            "java.sql.Timestamp",
-            "Long",
             "String",
             "Long",
             "String",
@@ -109,14 +99,10 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("CarrierRoleTypeId", "carrierRoleTypeId");
         aliasMap.put("facilityId", "facilityId");
         aliasMap.put("FacilityId", "facilityId");
-        aliasMap.put("destinationFacilityId", "destinationFacilityId");
-        aliasMap.put("DestinationFacilityId", "destinationFacilityId");
         aliasMap.put("contactMechId", "contactMechId");
         aliasMap.put("ContactMechId", "contactMechId");
         aliasMap.put("telecomContactMechId", "telecomContactMechId");
         aliasMap.put("TelecomContactMechId", "telecomContactMechId");
-        aliasMap.put("trackingNumber", "trackingNumber");
-        aliasMap.put("TrackingNumber", "trackingNumber");
         aliasMap.put("maySplit", "maySplit");
         aliasMap.put("MaySplit", "maySplit");
         aliasMap.put("giftMessage", "giftMessage");
@@ -127,12 +113,6 @@ public final class OrderShipGroupMetadata {
         aliasMap.put("ShipAfterDate", "shipAfterDate");
         aliasMap.put("shipByDate", "shipByDate");
         aliasMap.put("ShipByDate", "shipByDate");
-        aliasMap.put("estimatedShipDate", "estimatedShipDate");
-        aliasMap.put("EstimatedShipDate", "estimatedShipDate");
-        aliasMap.put("estimatedDeliveryDate", "estimatedDeliveryDate");
-        aliasMap.put("EstimatedDeliveryDate", "estimatedDeliveryDate");
-        aliasMap.put("pickwaveId", "pickwaveId");
-        aliasMap.put("PickwaveId", "pickwaveId");
         aliasMap.put("orderShipGroupStatusId", "orderShipGroupStatusId");
         aliasMap.put("OrderShipGroupStatusId", "orderShipGroupStatusId");
         aliasMap.put("version", "version");

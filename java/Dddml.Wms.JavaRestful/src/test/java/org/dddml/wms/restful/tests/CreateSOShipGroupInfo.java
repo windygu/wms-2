@@ -43,16 +43,16 @@ public class CreateSOShipGroupInfo {
         token = getJwtToken();
 
         OrderShipGroupServiceCommands.CreateSOShipGroups createSOShipGroups = new OrderShipGroupServiceCommands.CreateSOShipGroups();
-        // 发货指示：（发货指示 / 客户信息 / 备注等）
-        createSOShipGroups.setShippingInstructions("Xxxxx, yyyy, zzzzz");
-        //联系人 / 司机:
-        createSOShipGroups.setContactPartyId("YangXx");//个人的 Id，如果没有，需要到 {baseUri}/People 中新建个人信息
-        //联系人 / 司机电话：
-        createSOShipGroups.setTelecomContactMechId("18000001111");//先直接用电话作为联系方式 Id
-        //车牌号：
-        createSOShipGroups.setVehiclePlateNumber("鲁B123765");
-        //出库时间:
-        createSOShipGroups.setEstimatedShipDate(new Timestamp(new Date().getTime()));
+        //        // 发货指示：（发货指示 / 客户信息 / 备注等）
+        //        createSOShipGroups.setShippingInstructions("Xxxxx, yyyy, zzzzz");
+        //        //联系人 / 司机:
+        //        createSOShipGroups.setContactPartyId("YangXx");//个人的 Id，如果没有，需要到 {baseUri}/People 中新建个人信息
+        //        //联系人 / 司机电话：
+        //        createSOShipGroups.setTelecomContactMechId("18000001111");//先直接用电话作为联系方式 Id
+        //        //车牌号：
+        //        createSOShipGroups.setVehiclePlateNumber("鲁B123765");
+        //        //出库时间:
+        //        createSOShipGroups.setEstimatedShipDate(new Timestamp(new Date().getTime()));
         //跟踪（物流）单号:	（选填）
         //createSOShipGroup.setTrackingNumber("XXXXXXXX");
 

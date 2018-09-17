@@ -26,18 +26,13 @@
     <property name="CarrierPartyId" ><column name="CarrierPartyId" sql-type="VARCHAR(20)" /></property>
     <property name="CarrierRoleTypeId" ><column name="CarrierRoleTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="FacilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
-    <property name="DestinationFacilityId" ><column name="DestinationFacilityId" sql-type="VARCHAR(20)" /></property>
     <property name="ContactMechId" ><column name="ContactMechId" sql-type="VARCHAR(20)" /></property>
     <property name="TelecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
-    <property name="TrackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
     <property name="MaySplit" ><column name="MaySplit" sql-type="CHAR(1)" /></property>
     <property name="GiftMessage" ><column name="GiftMessage" sql-type="VARCHAR(255)" /></property>
     <property name="IsGift" ><column name="IsGift" sql-type="CHAR(1)" /></property>
     <property name="ShipAfterDate" ><column name="ShipAfterDate" sql-type="DATETIME" /></property>
     <property name="ShipByDate" ><column name="ShipByDate" sql-type="DATETIME" /></property>
-    <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
-    <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
-    <property name="PickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
     <property name="OrderShipGroupStatusId" ><column name="OrderShipGroupStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="Active" ></property>
     <property name="Version" column="Version" not-null="true" />
@@ -61,13 +56,9 @@
 
         <property name="IsPropertyFacilityIdRemoved" column="IsPropertyFacilityIdRemoved"/>
 
-        <property name="IsPropertyDestinationFacilityIdRemoved" column="IsPropertyDestinationFacilityIdRemoved"/>
-
         <property name="IsPropertyContactMechIdRemoved" column="IsPropertyContactMechIdRemoved"/>
 
         <property name="IsPropertyTelecomContactMechIdRemoved" column="IsPropertyTelecomContactMechIdRemoved"/>
-
-        <property name="IsPropertyTrackingNumberRemoved" column="IsPropertyTrackingNumberRemoved"/>
 
         <property name="IsPropertyMaySplitRemoved" column="IsPropertyMaySplitRemoved"/>
 
@@ -78,12 +69,6 @@
         <property name="IsPropertyShipAfterDateRemoved" column="IsPropertyShipAfterDateRemoved"/>
 
         <property name="IsPropertyShipByDateRemoved" column="IsPropertyShipByDateRemoved"/>
-
-        <property name="IsPropertyEstimatedShipDateRemoved" column="IsPropertyEstimatedShipDateRemoved"/>
-
-        <property name="IsPropertyEstimatedDeliveryDateRemoved" column="IsPropertyEstimatedDeliveryDateRemoved"/>
-
-        <property name="IsPropertyPickwaveIdRemoved" column="IsPropertyPickwaveIdRemoved"/>
 
         <property name="IsPropertyOrderShipGroupStatusIdRemoved" column="IsPropertyOrderShipGroupStatusIdRemoved"/>
 

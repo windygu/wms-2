@@ -106,18 +106,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.facilityId = facilityId;
         }
 
-        private String destinationFacilityId;
-
-        public String getDestinationFacilityId()
-        {
-            return this.destinationFacilityId;
-        }
-
-        public void setDestinationFacilityId(String destinationFacilityId)
-        {
-            this.destinationFacilityId = destinationFacilityId;
-        }
-
         private String contactMechId;
 
         public String getContactMechId()
@@ -140,18 +128,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setTelecomContactMechId(String telecomContactMechId)
         {
             this.telecomContactMechId = telecomContactMechId;
-        }
-
-        private String trackingNumber;
-
-        public String getTrackingNumber()
-        {
-            return this.trackingNumber;
-        }
-
-        public void setTrackingNumber(String trackingNumber)
-        {
-            this.trackingNumber = trackingNumber;
         }
 
         private String maySplit;
@@ -212,42 +188,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setShipByDate(java.sql.Timestamp shipByDate)
         {
             this.shipByDate = shipByDate;
-        }
-
-        private java.sql.Timestamp estimatedShipDate;
-
-        public java.sql.Timestamp getEstimatedShipDate()
-        {
-            return this.estimatedShipDate;
-        }
-
-        public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate)
-        {
-            this.estimatedShipDate = estimatedShipDate;
-        }
-
-        private java.sql.Timestamp estimatedDeliveryDate;
-
-        public java.sql.Timestamp getEstimatedDeliveryDate()
-        {
-            return this.estimatedDeliveryDate;
-        }
-
-        public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate)
-        {
-            this.estimatedDeliveryDate = estimatedDeliveryDate;
-        }
-
-        private Long pickwaveId;
-
-        public Long getPickwaveId()
-        {
-            return this.pickwaveId;
-        }
-
-        public void setPickwaveId(Long pickwaveId)
-        {
-            this.pickwaveId = pickwaveId;
         }
 
         private Boolean active;
@@ -389,18 +329,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.isPropertyFacilityIdRemoved = removed;
         }
 
-        private Boolean isPropertyDestinationFacilityIdRemoved;
-
-        public Boolean getIsPropertyDestinationFacilityIdRemoved()
-        {
-            return this.isPropertyDestinationFacilityIdRemoved;
-        }
-
-        public void setIsPropertyDestinationFacilityIdRemoved(Boolean removed)
-        {
-            this.isPropertyDestinationFacilityIdRemoved = removed;
-        }
-
         private Boolean isPropertyContactMechIdRemoved;
 
         public Boolean getIsPropertyContactMechIdRemoved()
@@ -423,18 +351,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setIsPropertyTelecomContactMechIdRemoved(Boolean removed)
         {
             this.isPropertyTelecomContactMechIdRemoved = removed;
-        }
-
-        private Boolean isPropertyTrackingNumberRemoved;
-
-        public Boolean getIsPropertyTrackingNumberRemoved()
-        {
-            return this.isPropertyTrackingNumberRemoved;
-        }
-
-        public void setIsPropertyTrackingNumberRemoved(Boolean removed)
-        {
-            this.isPropertyTrackingNumberRemoved = removed;
         }
 
         private Boolean isPropertyMaySplitRemoved;
@@ -495,42 +411,6 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setIsPropertyShipByDateRemoved(Boolean removed)
         {
             this.isPropertyShipByDateRemoved = removed;
-        }
-
-        private Boolean isPropertyEstimatedShipDateRemoved;
-
-        public Boolean getIsPropertyEstimatedShipDateRemoved()
-        {
-            return this.isPropertyEstimatedShipDateRemoved;
-        }
-
-        public void setIsPropertyEstimatedShipDateRemoved(Boolean removed)
-        {
-            this.isPropertyEstimatedShipDateRemoved = removed;
-        }
-
-        private Boolean isPropertyEstimatedDeliveryDateRemoved;
-
-        public Boolean getIsPropertyEstimatedDeliveryDateRemoved()
-        {
-            return this.isPropertyEstimatedDeliveryDateRemoved;
-        }
-
-        public void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed)
-        {
-            this.isPropertyEstimatedDeliveryDateRemoved = removed;
-        }
-
-        private Boolean isPropertyPickwaveIdRemoved;
-
-        public Boolean getIsPropertyPickwaveIdRemoved()
-        {
-            return this.isPropertyPickwaveIdRemoved;
-        }
-
-        public void setIsPropertyPickwaveIdRemoved(Boolean removed)
-        {
-            this.isPropertyPickwaveIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

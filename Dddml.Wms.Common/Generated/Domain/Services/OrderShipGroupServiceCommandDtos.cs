@@ -17,15 +17,9 @@ namespace Dddml.Wms.Domain.Services
 
         public class CreatePOShipGroupsDto
         {
-            public DateTime? EstimatedDeliveryDate { get; set; }
-
-            public string ContactPartyId { get; set; }
-
             public string TelecomContactMechId { get; set; }
 
-            public string TrackingNumber { get; set; }
-
-            public string DestinationFacilityId { get; set; }
+            public string FacilityId { get; set; }
 
             public OrderItemShipGroupAssociationInfo[] OrderItemShipGroupAssociations { get; set; }
 
@@ -36,11 +30,8 @@ namespace Dddml.Wms.Domain.Services
             public OrderShipGroupServiceCommands.CreatePOShipGroups ToCreatePOShipGroups()
             {
                 var cmd = new OrderShipGroupServiceCommands.CreatePOShipGroups();
-                cmd.EstimatedDeliveryDate = this.EstimatedDeliveryDate;
-                cmd.ContactPartyId = this.ContactPartyId;
                 cmd.TelecomContactMechId = this.TelecomContactMechId;
-                cmd.TrackingNumber = this.TrackingNumber;
-                cmd.DestinationFacilityId = this.DestinationFacilityId;
+                cmd.FacilityId = this.FacilityId;
                 cmd.OrderItemShipGroupAssociations = this.OrderItemShipGroupAssociations == null ? null : new HashSet<OrderItemShipGroupAssociationInfo>(this.OrderItemShipGroupAssociations);
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
@@ -50,17 +41,7 @@ namespace Dddml.Wms.Domain.Services
 
         public class CreateSOShipGroupsDto
         {
-            public DateTime? EstimatedShipDate { get; set; }
-
-            public string ContactPartyId { get; set; }
-
             public string TelecomContactMechId { get; set; }
-
-            public string TrackingNumber { get; set; }
-
-            public string VehiclePlateNumber { get; set; }
-
-            public string ShippingInstructions { get; set; }
 
             public string FacilityId { get; set; }
 
@@ -73,12 +54,7 @@ namespace Dddml.Wms.Domain.Services
             public OrderShipGroupServiceCommands.CreateSOShipGroups ToCreateSOShipGroups()
             {
                 var cmd = new OrderShipGroupServiceCommands.CreateSOShipGroups();
-                cmd.EstimatedShipDate = this.EstimatedShipDate;
-                cmd.ContactPartyId = this.ContactPartyId;
                 cmd.TelecomContactMechId = this.TelecomContactMechId;
-                cmd.TrackingNumber = this.TrackingNumber;
-                cmd.VehiclePlateNumber = this.VehiclePlateNumber;
-                cmd.ShippingInstructions = this.ShippingInstructions;
                 cmd.FacilityId = this.FacilityId;
                 cmd.OrderItemShipGroupAssociations = this.OrderItemShipGroupAssociations == null ? null : new HashSet<OrderItemShipGroupAssociationInfo>(this.OrderItemShipGroupAssociations);
                 cmd.CommandId = this.CommandId;
@@ -111,11 +87,19 @@ namespace Dddml.Wms.Domain.Services
 
             public string ShipmentId { get; set; }
 
+            public bool? IsShipped { get; set; }
+
             public string OriginFacilityId { get; set; }
 
             public string DestinationFacilityId { get; set; }
 
-            public bool? IsShipped { get; set; }
+            public string OriginContactMechId { get; set; }
+
+            public string DestinationContactMechId { get; set; }
+
+            public string HandlingInstructions { get; set; }
+
+            public DateTime? EstimatedShipDate { get; set; }
 
             public string CommandId { get; set; }
 
@@ -126,9 +110,13 @@ namespace Dddml.Wms.Domain.Services
                 var cmd = new OrderShipGroupServiceCommands.CreatePOShipment();
                 cmd.OrderIdShipGroupSeqIdPairs = this.OrderIdShipGroupSeqIdPairs == null ? null : new HashSet<OrderIdShipGroupSeqIdPair>(this.OrderIdShipGroupSeqIdPairs);
                 cmd.ShipmentId = this.ShipmentId;
+                cmd.IsShipped = this.IsShipped;
                 cmd.OriginFacilityId = this.OriginFacilityId;
                 cmd.DestinationFacilityId = this.DestinationFacilityId;
-                cmd.IsShipped = this.IsShipped;
+                cmd.OriginContactMechId = this.OriginContactMechId;
+                cmd.DestinationContactMechId = this.DestinationContactMechId;
+                cmd.HandlingInstructions = this.HandlingInstructions;
+                cmd.EstimatedShipDate = this.EstimatedShipDate;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;
@@ -145,6 +133,14 @@ namespace Dddml.Wms.Domain.Services
 
             public string DestinationFacilityId { get; set; }
 
+            public string OriginContactMechId { get; set; }
+
+            public string DestinationContactMechId { get; set; }
+
+            public string HandlingInstructions { get; set; }
+
+            public DateTime? EstimatedShipDate { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -156,6 +152,10 @@ namespace Dddml.Wms.Domain.Services
                 cmd.ShipmentId = this.ShipmentId;
                 cmd.OriginFacilityId = this.OriginFacilityId;
                 cmd.DestinationFacilityId = this.DestinationFacilityId;
+                cmd.OriginContactMechId = this.OriginContactMechId;
+                cmd.DestinationContactMechId = this.DestinationContactMechId;
+                cmd.HandlingInstructions = this.HandlingInstructions;
+                cmd.EstimatedShipDate = this.EstimatedShipDate;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;
@@ -178,6 +178,12 @@ namespace Dddml.Wms.Domain.Services
 
             public string DestinationFacilityId { get; set; }
 
+            public string OriginContactMechId { get; set; }
+
+            public string DestinationContactMechId { get; set; }
+
+            public string HandlingInstructions { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }
@@ -192,6 +198,9 @@ namespace Dddml.Wms.Domain.Services
                 cmd.OtherOrderIdShipGroupSeqIdPairs = this.OtherOrderIdShipGroupSeqIdPairs == null ? null : new HashSet<OrderIdShipGroupSeqIdPair>(this.OtherOrderIdShipGroupSeqIdPairs);
                 cmd.OriginFacilityId = this.OriginFacilityId;
                 cmd.DestinationFacilityId = this.DestinationFacilityId;
+                cmd.OriginContactMechId = this.OriginContactMechId;
+                cmd.DestinationContactMechId = this.DestinationContactMechId;
+                cmd.HandlingInstructions = this.HandlingInstructions;
                 cmd.CommandId = this.CommandId;
                 cmd.RequesterId = this.RequesterId;
                 return cmd;

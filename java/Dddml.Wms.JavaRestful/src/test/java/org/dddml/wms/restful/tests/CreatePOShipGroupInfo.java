@@ -45,11 +45,11 @@ public class CreatePOShipGroupInfo {
         //token = HttpClientUtil.getJwtTokenRemote(authTokenUrl, username, password);
 
         OrderShipGroupServiceCommands.CreatePOShipGroups createPOShipGroups = new OrderShipGroupServiceCommands.CreatePOShipGroups();
-        //联系人:
-        createPOShipGroups.setContactPartyId("YangXx");//个人的 Id，如果没有，需要到 {baseUri}/People 中新建个人信息
-        //入库时间:
-        createPOShipGroups.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
-        //跟踪（物流）单号:	（选填）
+        //        //联系人:
+        //        createPOShipGroups.setContactPartyId("YangXx");//个人的 Id，如果没有，需要到 {baseUri}/People 中新建个人信息
+        //        //入库时间:
+        //        createPOShipGroups.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
+        //        //跟踪（物流）单号:	（选填）
         //createPOShipGroup.setTrackingNumber("XXXXXXXX");
 
         // 通知单号:

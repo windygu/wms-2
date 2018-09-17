@@ -311,20 +311,11 @@ aggregates:
           # 源仓库 / 设施 Id
           FacilityId:
             type: id
-          # -----------------------------
-          # 目标仓库 / 设施 Id
-          DestinationFacilityId:
-            type: id
-          # -----------------------------
-            
+          
           ContactMechId:
             type: id
           TelecomContactMechId:
             type: id
-            
-          # 跟踪单号
-          TrackingNumber:
-            type: short-varchar
             
           MaySplit:
             type: indicator
@@ -341,16 +332,24 @@ aggregates:
           ShipByDate:
             type: date-time
             
-          # 预计（发货）日期
-          EstimatedShipDate:
-            type: date-time
-          # 预计交付（入库）日期  
-          EstimatedDeliveryDate:
-            type: date-time
-
           # -------------------------
-          PickwaveId:
-            referenceType: Pickwave
+          # PickwaveId:
+          #  referenceType: Pickwave
+          
+          # -----------------------------
+          # 目标仓库 / 设施 Id
+          # DestinationFacilityId:
+          #  type: id
+          # -----------------------------
+          # 跟踪单号
+          # TrackingNumber:
+          #   type: short-varchar
+          # 预计（发货）日期
+          # EstimatedShipDate:
+          #   type: date-time
+          # 预计交付（入库）日期  
+          # EstimatedDeliveryDate:
+          #   type: date-time
             
           # -------------------------
           # 订单装运组的状态

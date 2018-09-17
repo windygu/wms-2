@@ -236,13 +236,9 @@ namespace Dddml.Wms.Domain.Order
 
 			this.FacilityId = e.FacilityId;
 
-			this.DestinationFacilityId = e.DestinationFacilityId;
-
 			this.ContactMechId = e.ContactMechId;
 
 			this.TelecomContactMechId = e.TelecomContactMechId;
-
-			this.TrackingNumber = e.TrackingNumber;
 
 			this.MaySplit = e.MaySplit;
 
@@ -253,12 +249,6 @@ namespace Dddml.Wms.Domain.Order
 			this.ShipAfterDate = e.ShipAfterDate;
 
 			this.ShipByDate = e.ShipByDate;
-
-			this.EstimatedShipDate = e.EstimatedShipDate;
-
-			this.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
-
-			this.PickwaveId = e.PickwaveId;
 
 			this.OrderShipGroupStatusId = e.OrderShipGroupStatusId;
 
@@ -353,18 +343,6 @@ namespace Dddml.Wms.Domain.Order
 				this.FacilityId = e.FacilityId;
 			}
 
-			if (e.DestinationFacilityId == null)
-			{
-				if (e.IsPropertyDestinationFacilityIdRemoved)
-				{
-					this.DestinationFacilityId = default(string);
-				}
-			}
-			else
-			{
-				this.DestinationFacilityId = e.DestinationFacilityId;
-			}
-
 			if (e.ContactMechId == null)
 			{
 				if (e.IsPropertyContactMechIdRemoved)
@@ -387,18 +365,6 @@ namespace Dddml.Wms.Domain.Order
 			else
 			{
 				this.TelecomContactMechId = e.TelecomContactMechId;
-			}
-
-			if (e.TrackingNumber == null)
-			{
-				if (e.IsPropertyTrackingNumberRemoved)
-				{
-					this.TrackingNumber = default(string);
-				}
-			}
-			else
-			{
-				this.TrackingNumber = e.TrackingNumber;
 			}
 
 			if (e.MaySplit == null)
@@ -459,42 +425,6 @@ namespace Dddml.Wms.Domain.Order
 			else
 			{
 				this.ShipByDate = e.ShipByDate;
-			}
-
-			if (e.EstimatedShipDate == null)
-			{
-				if (e.IsPropertyEstimatedShipDateRemoved)
-				{
-					this.EstimatedShipDate = default(DateTime?);
-				}
-			}
-			else
-			{
-				this.EstimatedShipDate = e.EstimatedShipDate;
-			}
-
-			if (e.EstimatedDeliveryDate == null)
-			{
-				if (e.IsPropertyEstimatedDeliveryDateRemoved)
-				{
-					this.EstimatedDeliveryDate = default(DateTime?);
-				}
-			}
-			else
-			{
-				this.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
-			}
-
-			if (e.PickwaveId == null)
-			{
-				if (e.IsPropertyPickwaveIdRemoved)
-				{
-					this.PickwaveId = default(long?);
-				}
-			}
-			else
-			{
-				this.PickwaveId = e.PickwaveId;
 			}
 
 			if (e.OrderShipGroupStatusId == null)

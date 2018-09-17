@@ -21,7 +21,7 @@ public class HibernateOrderShipGroupStateDao implements OrderShipGroupStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "DestinationFacilityId", "ContactMechId", "TelecomContactMechId", "TrackingNumber", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "EstimatedShipDate", "EstimatedDeliveryDate", "PickwaveId", "OrderShipGroupStatusId", "OrderItemShipGroupAssociations", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "ContactMechId", "TelecomContactMechId", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "OrderShipGroupStatusId", "OrderItemShipGroupAssociations", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

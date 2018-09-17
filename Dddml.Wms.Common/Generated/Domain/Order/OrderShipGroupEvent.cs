@@ -140,13 +140,9 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string FacilityId { get; set; }
 
-		public virtual string DestinationFacilityId { get; set; }
-
 		public virtual string ContactMechId { get; set; }
 
 		public virtual string TelecomContactMechId { get; set; }
-
-		public virtual string TrackingNumber { get; set; }
 
 		public virtual string MaySplit { get; set; }
 
@@ -157,12 +153,6 @@ namespace Dddml.Wms.Domain.Order
 		public virtual DateTime? ShipAfterDate { get; set; }
 
 		public virtual DateTime? ShipByDate { get; set; }
-
-		public virtual DateTime? EstimatedShipDate { get; set; }
-
-		public virtual DateTime? EstimatedDeliveryDate { get; set; }
-
-		public virtual long? PickwaveId { get; set; }
 
 		public virtual string OrderShipGroupStatusId { get; set; }
 
@@ -267,13 +257,9 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual bool IsPropertyFacilityIdRemoved { get; set; }
 
-		public virtual bool IsPropertyDestinationFacilityIdRemoved { get; set; }
-
 		public virtual bool IsPropertyContactMechIdRemoved { get; set; }
 
 		public virtual bool IsPropertyTelecomContactMechIdRemoved { get; set; }
-
-		public virtual bool IsPropertyTrackingNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyMaySplitRemoved { get; set; }
 
@@ -284,12 +270,6 @@ namespace Dddml.Wms.Domain.Order
 		public virtual bool IsPropertyShipAfterDateRemoved { get; set; }
 
 		public virtual bool IsPropertyShipByDateRemoved { get; set; }
-
-		public virtual bool IsPropertyEstimatedShipDateRemoved { get; set; }
-
-		public virtual bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
-
-		public virtual bool IsPropertyPickwaveIdRemoved { get; set; }
 
 		public virtual bool IsPropertyOrderShipGroupStatusIdRemoved { get; set; }
 

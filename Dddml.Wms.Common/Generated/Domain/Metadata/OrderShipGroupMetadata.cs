@@ -222,35 +222,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "DestinationFacilityId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "ContactMechId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -281,35 +252,6 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "TelecomContactMechId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "TrackingNumber",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -464,93 +406,6 @@ namespace Dddml.Wms.Domain.Metadata
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "EstimatedShipDate",
-                    Type = typeof(DateTime),
-                    TypeName = "DateTime",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "EstimatedDeliveryDate",
-                    Type = typeof(DateTime),
-                    TypeName = "DateTime",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "PickwaveId",
-                    Type = typeof(long),
-                    TypeName = "long",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "Pickwave",
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
@@ -977,14 +832,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("carrierRoleTypeId", "CarrierRoleTypeId");
             d.Add("FacilityId", "FacilityId");
             d.Add("facilityId", "FacilityId");
-            d.Add("DestinationFacilityId", "DestinationFacilityId");
-            d.Add("destinationFacilityId", "DestinationFacilityId");
             d.Add("ContactMechId", "ContactMechId");
             d.Add("contactMechId", "ContactMechId");
             d.Add("TelecomContactMechId", "TelecomContactMechId");
             d.Add("telecomContactMechId", "TelecomContactMechId");
-            d.Add("TrackingNumber", "TrackingNumber");
-            d.Add("trackingNumber", "TrackingNumber");
             d.Add("MaySplit", "MaySplit");
             d.Add("maySplit", "MaySplit");
             d.Add("GiftMessage", "GiftMessage");
@@ -995,12 +846,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("shipAfterDate", "ShipAfterDate");
             d.Add("ShipByDate", "ShipByDate");
             d.Add("shipByDate", "ShipByDate");
-            d.Add("EstimatedShipDate", "EstimatedShipDate");
-            d.Add("estimatedShipDate", "EstimatedShipDate");
-            d.Add("EstimatedDeliveryDate", "EstimatedDeliveryDate");
-            d.Add("estimatedDeliveryDate", "EstimatedDeliveryDate");
-            d.Add("PickwaveId", "PickwaveId");
-            d.Add("pickwaveId", "PickwaveId");
             d.Add("OrderShipGroupStatusId", "OrderShipGroupStatusId");
             d.Add("orderShipGroupStatusId", "OrderShipGroupStatusId");
             d.Add("Version", "Version");

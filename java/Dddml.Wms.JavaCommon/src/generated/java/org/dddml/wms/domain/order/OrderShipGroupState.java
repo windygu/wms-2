@@ -44,10 +44,6 @@ public interface OrderShipGroupState
 
     void setFacilityId(String facilityId);
 
-    String getDestinationFacilityId();
-
-    void setDestinationFacilityId(String destinationFacilityId);
-
     String getContactMechId();
 
     void setContactMechId(String contactMechId);
@@ -55,10 +51,6 @@ public interface OrderShipGroupState
     String getTelecomContactMechId();
 
     void setTelecomContactMechId(String telecomContactMechId);
-
-    String getTrackingNumber();
-
-    void setTrackingNumber(String trackingNumber);
 
     String getMaySplit();
 
@@ -79,18 +71,6 @@ public interface OrderShipGroupState
     java.sql.Timestamp getShipByDate();
 
     void setShipByDate(java.sql.Timestamp shipByDate);
-
-    java.sql.Timestamp getEstimatedShipDate();
-
-    void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
-
-    java.sql.Timestamp getEstimatedDeliveryDate();
-
-    void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
-
-    Long getPickwaveId();
-
-    void setPickwaveId(Long pickwaveId);
 
     String getOrderShipGroupStatusId();
 

@@ -55,18 +55,13 @@ namespace Dddml.Wms.Domain.Order
             cmd.CarrierPartyId = state.CarrierPartyId;
             cmd.CarrierRoleTypeId = state.CarrierRoleTypeId;
             cmd.FacilityId = state.FacilityId;
-            cmd.DestinationFacilityId = state.DestinationFacilityId;
             cmd.ContactMechId = state.ContactMechId;
             cmd.TelecomContactMechId = state.TelecomContactMechId;
-            cmd.TrackingNumber = state.TrackingNumber;
             cmd.MaySplit = state.MaySplit;
             cmd.GiftMessage = state.GiftMessage;
             cmd.IsGift = state.IsGift;
             cmd.ShipAfterDate = state.ShipAfterDate;
             cmd.ShipByDate = state.ShipByDate;
-            cmd.EstimatedShipDate = state.EstimatedShipDate;
-            cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
-            cmd.PickwaveId = state.PickwaveId;
             cmd.Active = ((IOrderShipGroupStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             
@@ -76,18 +71,13 @@ namespace Dddml.Wms.Domain.Order
             if (state.CarrierPartyId == null) { cmd.IsPropertyCarrierPartyIdRemoved = true; }
             if (state.CarrierRoleTypeId == null) { cmd.IsPropertyCarrierRoleTypeIdRemoved = true; }
             if (state.FacilityId == null) { cmd.IsPropertyFacilityIdRemoved = true; }
-            if (state.DestinationFacilityId == null) { cmd.IsPropertyDestinationFacilityIdRemoved = true; }
             if (state.ContactMechId == null) { cmd.IsPropertyContactMechIdRemoved = true; }
             if (state.TelecomContactMechId == null) { cmd.IsPropertyTelecomContactMechIdRemoved = true; }
-            if (state.TrackingNumber == null) { cmd.IsPropertyTrackingNumberRemoved = true; }
             if (state.MaySplit == null) { cmd.IsPropertyMaySplitRemoved = true; }
             if (state.GiftMessage == null) { cmd.IsPropertyGiftMessageRemoved = true; }
             if (state.IsGift == null) { cmd.IsPropertyIsGiftRemoved = true; }
             if (state.ShipAfterDate == null) { cmd.IsPropertyShipAfterDateRemoved = true; }
             if (state.ShipByDate == null) { cmd.IsPropertyShipByDateRemoved = true; }
-            if (state.EstimatedShipDate == null) { cmd.IsPropertyEstimatedShipDateRemoved = true; }
-            if (state.EstimatedDeliveryDate == null) { cmd.IsPropertyEstimatedDeliveryDateRemoved = true; }
-            if (state.PickwaveId == null) { cmd.IsPropertyPickwaveIdRemoved = true; }
             foreach (var d in state.OrderItemShipGroupAssociations)
             {
                 var c = d.ToCreateOrMergePatchOrderItemShipGroupAssociation<TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>();
@@ -109,18 +99,13 @@ namespace Dddml.Wms.Domain.Order
             cmd.CarrierPartyId = state.CarrierPartyId;
             cmd.CarrierRoleTypeId = state.CarrierRoleTypeId;
             cmd.FacilityId = state.FacilityId;
-            cmd.DestinationFacilityId = state.DestinationFacilityId;
             cmd.ContactMechId = state.ContactMechId;
             cmd.TelecomContactMechId = state.TelecomContactMechId;
-            cmd.TrackingNumber = state.TrackingNumber;
             cmd.MaySplit = state.MaySplit;
             cmd.GiftMessage = state.GiftMessage;
             cmd.IsGift = state.IsGift;
             cmd.ShipAfterDate = state.ShipAfterDate;
             cmd.ShipByDate = state.ShipByDate;
-            cmd.EstimatedShipDate = state.EstimatedShipDate;
-            cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
-            cmd.PickwaveId = state.PickwaveId;
             cmd.Active = ((IOrderShipGroupStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             foreach (var d in state.OrderItemShipGroupAssociations)

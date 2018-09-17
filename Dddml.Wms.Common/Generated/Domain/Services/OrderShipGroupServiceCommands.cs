@@ -17,15 +17,9 @@ namespace Dddml.Wms.Domain.Services
 
         public class CreatePOShipGroups
         {
-            public DateTime? EstimatedDeliveryDate { get; set; }
-
-            public string ContactPartyId { get; set; }
-
             public string TelecomContactMechId { get; set; }
 
-            public string TrackingNumber { get; set; }
-
-            public string DestinationFacilityId { get; set; }
+            public string FacilityId { get; set; }
 
             public ISet<OrderItemShipGroupAssociationInfo> OrderItemShipGroupAssociations { get; set; }
 
@@ -37,17 +31,7 @@ namespace Dddml.Wms.Domain.Services
 
         public class CreateSOShipGroups
         {
-            public DateTime? EstimatedShipDate { get; set; }
-
-            public string ContactPartyId { get; set; }
-
             public string TelecomContactMechId { get; set; }
-
-            public string TrackingNumber { get; set; }
-
-            public string VehiclePlateNumber { get; set; }
-
-            public string ShippingInstructions { get; set; }
 
             public string FacilityId { get; set; }
 
@@ -75,11 +59,19 @@ namespace Dddml.Wms.Domain.Services
 
             public string ShipmentId { get; set; }
 
+            public bool? IsShipped { get; set; }
+
             public string OriginFacilityId { get; set; }
 
             public string DestinationFacilityId { get; set; }
 
-            public bool? IsShipped { get; set; }
+            public string OriginContactMechId { get; set; }
+
+            public string DestinationContactMechId { get; set; }
+
+            public string HandlingInstructions { get; set; }
+
+            public DateTime? EstimatedShipDate { get; set; }
 
             public string CommandId { get; set; }
 
@@ -96,6 +88,14 @@ namespace Dddml.Wms.Domain.Services
             public string OriginFacilityId { get; set; }
 
             public string DestinationFacilityId { get; set; }
+
+            public string OriginContactMechId { get; set; }
+
+            public string DestinationContactMechId { get; set; }
+
+            public string HandlingInstructions { get; set; }
+
+            public DateTime? EstimatedShipDate { get; set; }
 
             public string CommandId { get; set; }
 
@@ -118,6 +118,12 @@ namespace Dddml.Wms.Domain.Services
             public string OriginFacilityId { get; set; }
 
             public string DestinationFacilityId { get; set; }
+
+            public string OriginContactMechId { get; set; }
+
+            public string DestinationContactMechId { get; set; }
+
+            public string HandlingInstructions { get; set; }
 
             public string CommandId { get; set; }
 

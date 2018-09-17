@@ -58,12 +58,6 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
-        public virtual string DestinationFacilityId
-        {
-            get;
-            set;
-        }
-
         public virtual string ContactMechId
         {
             get;
@@ -71,12 +65,6 @@ namespace Dddml.Wms.Domain.Order
         }
 
         public virtual string TelecomContactMechId
-        {
-            get;
-            set;
-        }
-
-        public virtual string TrackingNumber
         {
             get;
             set;
@@ -107,24 +95,6 @@ namespace Dddml.Wms.Domain.Order
         }
 
         public virtual DateTime? ShipByDate
-        {
-            get;
-            set;
-        }
-
-        public virtual DateTime? EstimatedShipDate
-        {
-            get;
-            set;
-        }
-
-        public virtual DateTime? EstimatedDeliveryDate
-        {
-            get;
-            set;
-        }
-
-        public virtual long? PickwaveId
         {
             get;
             set;
@@ -200,18 +170,13 @@ namespace Dddml.Wms.Domain.Order
             state.CarrierPartyId = this.CarrierPartyId;
             state.CarrierRoleTypeId = this.CarrierRoleTypeId;
             state.FacilityId = this.FacilityId;
-            state.DestinationFacilityId = this.DestinationFacilityId;
             state.ContactMechId = this.ContactMechId;
             state.TelecomContactMechId = this.TelecomContactMechId;
-            state.TrackingNumber = this.TrackingNumber;
             state.MaySplit = this.MaySplit;
             state.GiftMessage = this.GiftMessage;
             state.IsGift = this.IsGift;
             state.ShipAfterDate = this.ShipAfterDate;
             state.ShipByDate = this.ShipByDate;
-            state.EstimatedShipDate = this.EstimatedShipDate;
-            state.EstimatedDeliveryDate = this.EstimatedDeliveryDate;
-            state.PickwaveId = this.PickwaveId;
             state.OrderShipGroupStatusId = this.OrderShipGroupStatusId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

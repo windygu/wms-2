@@ -107,18 +107,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.facilityId = facilityId;
     }
 
-    private String destinationFacilityId;
-
-    public String getDestinationFacilityId()
-    {
-        return this.destinationFacilityId;
-    }
-
-    public void setDestinationFacilityId(String destinationFacilityId)
-    {
-        this.destinationFacilityId = destinationFacilityId;
-    }
-
     private String contactMechId;
 
     public String getContactMechId()
@@ -141,18 +129,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
     public void setTelecomContactMechId(String telecomContactMechId)
     {
         this.telecomContactMechId = telecomContactMechId;
-    }
-
-    private String trackingNumber;
-
-    public String getTrackingNumber()
-    {
-        return this.trackingNumber;
-    }
-
-    public void setTrackingNumber(String trackingNumber)
-    {
-        this.trackingNumber = trackingNumber;
     }
 
     private String maySplit;
@@ -213,42 +189,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
     public void setShipByDate(java.sql.Timestamp shipByDate)
     {
         this.shipByDate = shipByDate;
-    }
-
-    private java.sql.Timestamp estimatedShipDate;
-
-    public java.sql.Timestamp getEstimatedShipDate()
-    {
-        return this.estimatedShipDate;
-    }
-
-    public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate)
-    {
-        this.estimatedShipDate = estimatedShipDate;
-    }
-
-    private java.sql.Timestamp estimatedDeliveryDate;
-
-    public java.sql.Timestamp getEstimatedDeliveryDate()
-    {
-        return this.estimatedDeliveryDate;
-    }
-
-    public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate)
-    {
-        this.estimatedDeliveryDate = estimatedDeliveryDate;
-    }
-
-    private Long pickwaveId;
-
-    public Long getPickwaveId()
-    {
-        return this.pickwaveId;
-    }
-
-    public void setPickwaveId(Long pickwaveId)
-    {
-        this.pickwaveId = pickwaveId;
     }
 
     private String orderShipGroupStatusId;
@@ -419,18 +359,13 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setCarrierPartyId(e.getCarrierPartyId());
         this.setCarrierRoleTypeId(e.getCarrierRoleTypeId());
         this.setFacilityId(e.getFacilityId());
-        this.setDestinationFacilityId(e.getDestinationFacilityId());
         this.setContactMechId(e.getContactMechId());
         this.setTelecomContactMechId(e.getTelecomContactMechId());
-        this.setTrackingNumber(e.getTrackingNumber());
         this.setMaySplit(e.getMaySplit());
         this.setGiftMessage(e.getGiftMessage());
         this.setIsGift(e.getIsGift());
         this.setShipAfterDate(e.getShipAfterDate());
         this.setShipByDate(e.getShipByDate());
-        this.setEstimatedShipDate(e.getEstimatedShipDate());
-        this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
-        this.setPickwaveId(e.getPickwaveId());
         this.setOrderShipGroupStatusId(e.getOrderShipGroupStatusId());
         this.setActive(e.getActive());
 
@@ -515,17 +450,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         {
             this.setFacilityId(e.getFacilityId());
         }
-        if (e.getDestinationFacilityId() == null)
-        {
-            if (e.getIsPropertyDestinationFacilityIdRemoved() != null && e.getIsPropertyDestinationFacilityIdRemoved())
-            {
-                this.setDestinationFacilityId(null);
-            }
-        }
-        else
-        {
-            this.setDestinationFacilityId(e.getDestinationFacilityId());
-        }
         if (e.getContactMechId() == null)
         {
             if (e.getIsPropertyContactMechIdRemoved() != null && e.getIsPropertyContactMechIdRemoved())
@@ -547,17 +471,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         else
         {
             this.setTelecomContactMechId(e.getTelecomContactMechId());
-        }
-        if (e.getTrackingNumber() == null)
-        {
-            if (e.getIsPropertyTrackingNumberRemoved() != null && e.getIsPropertyTrackingNumberRemoved())
-            {
-                this.setTrackingNumber(null);
-            }
-        }
-        else
-        {
-            this.setTrackingNumber(e.getTrackingNumber());
         }
         if (e.getMaySplit() == null)
         {
@@ -613,39 +526,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         else
         {
             this.setShipByDate(e.getShipByDate());
-        }
-        if (e.getEstimatedShipDate() == null)
-        {
-            if (e.getIsPropertyEstimatedShipDateRemoved() != null && e.getIsPropertyEstimatedShipDateRemoved())
-            {
-                this.setEstimatedShipDate(null);
-            }
-        }
-        else
-        {
-            this.setEstimatedShipDate(e.getEstimatedShipDate());
-        }
-        if (e.getEstimatedDeliveryDate() == null)
-        {
-            if (e.getIsPropertyEstimatedDeliveryDateRemoved() != null && e.getIsPropertyEstimatedDeliveryDateRemoved())
-            {
-                this.setEstimatedDeliveryDate(null);
-            }
-        }
-        else
-        {
-            this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
-        }
-        if (e.getPickwaveId() == null)
-        {
-            if (e.getIsPropertyPickwaveIdRemoved() != null && e.getIsPropertyPickwaveIdRemoved())
-            {
-                this.setPickwaveId(null);
-            }
-        }
-        else
-        {
-            this.setPickwaveId(e.getPickwaveId());
         }
         if (e.getOrderShipGroupStatusId() == null)
         {

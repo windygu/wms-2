@@ -54,10 +54,6 @@ public interface OrderShipGroupEvent extends Event
 
         void setFacilityId(String facilityId);
 
-        String getDestinationFacilityId();
-
-        void setDestinationFacilityId(String destinationFacilityId);
-
         String getContactMechId();
 
         void setContactMechId(String contactMechId);
@@ -65,10 +61,6 @@ public interface OrderShipGroupEvent extends Event
         String getTelecomContactMechId();
 
         void setTelecomContactMechId(String telecomContactMechId);
-
-        String getTrackingNumber();
-
-        void setTrackingNumber(String trackingNumber);
 
         String getMaySplit();
 
@@ -89,18 +81,6 @@ public interface OrderShipGroupEvent extends Event
         java.sql.Timestamp getShipByDate();
 
         void setShipByDate(java.sql.Timestamp shipByDate);
-
-        java.sql.Timestamp getEstimatedShipDate();
-
-        void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
-
-        java.sql.Timestamp getEstimatedDeliveryDate();
-
-        void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
-
-        Long getPickwaveId();
-
-        void setPickwaveId(Long pickwaveId);
 
         String getOrderShipGroupStatusId();
 
@@ -150,10 +130,6 @@ public interface OrderShipGroupEvent extends Event
 
         void setIsPropertyFacilityIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyDestinationFacilityIdRemoved();
-
-        void setIsPropertyDestinationFacilityIdRemoved(Boolean removed);
-
         Boolean getIsPropertyContactMechIdRemoved();
 
         void setIsPropertyContactMechIdRemoved(Boolean removed);
@@ -161,10 +137,6 @@ public interface OrderShipGroupEvent extends Event
         Boolean getIsPropertyTelecomContactMechIdRemoved();
 
         void setIsPropertyTelecomContactMechIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyTrackingNumberRemoved();
-
-        void setIsPropertyTrackingNumberRemoved(Boolean removed);
 
         Boolean getIsPropertyMaySplitRemoved();
 
@@ -185,18 +157,6 @@ public interface OrderShipGroupEvent extends Event
         Boolean getIsPropertyShipByDateRemoved();
 
         void setIsPropertyShipByDateRemoved(Boolean removed);
-
-        Boolean getIsPropertyEstimatedShipDateRemoved();
-
-        void setIsPropertyEstimatedShipDateRemoved(Boolean removed);
-
-        Boolean getIsPropertyEstimatedDeliveryDateRemoved();
-
-        void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed);
-
-        Boolean getIsPropertyPickwaveIdRemoved();
-
-        void setIsPropertyPickwaveIdRemoved(Boolean removed);
 
         Boolean getIsPropertyOrderShipGroupStatusIdRemoved();
 

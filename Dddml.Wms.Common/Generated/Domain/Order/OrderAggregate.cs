@@ -618,18 +618,13 @@ namespace Dddml.Wms.Domain.Order
             e.CarrierPartyId = c.CarrierPartyId;
             e.CarrierRoleTypeId = c.CarrierRoleTypeId;
             e.FacilityId = c.FacilityId;
-            e.DestinationFacilityId = c.DestinationFacilityId;
             e.ContactMechId = c.ContactMechId;
             e.TelecomContactMechId = c.TelecomContactMechId;
-            e.TrackingNumber = c.TrackingNumber;
             e.MaySplit = c.MaySplit;
             e.GiftMessage = c.GiftMessage;
             e.IsGift = c.IsGift;
             e.ShipAfterDate = c.ShipAfterDate;
             e.ShipByDate = c.ShipByDate;
-            e.EstimatedShipDate = c.EstimatedShipDate;
-            e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
-            e.PickwaveId = c.PickwaveId;
             NewOrderShipGroupOrderShipGroupActionCommandAndExecute(c, s, e);
             e.Active = c.Active;
 
@@ -663,18 +658,13 @@ namespace Dddml.Wms.Domain.Order
             e.CarrierPartyId = c.CarrierPartyId;
             e.CarrierRoleTypeId = c.CarrierRoleTypeId;
             e.FacilityId = c.FacilityId;
-            e.DestinationFacilityId = c.DestinationFacilityId;
             e.ContactMechId = c.ContactMechId;
             e.TelecomContactMechId = c.TelecomContactMechId;
-            e.TrackingNumber = c.TrackingNumber;
             e.MaySplit = c.MaySplit;
             e.GiftMessage = c.GiftMessage;
             e.IsGift = c.IsGift;
             e.ShipAfterDate = c.ShipAfterDate;
             e.ShipByDate = c.ShipByDate;
-            e.EstimatedShipDate = c.EstimatedShipDate;
-            e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
-            e.PickwaveId = c.PickwaveId;
             e.Active = c.Active;
             e.IsPropertyShipmentMethodTypeIdRemoved = c.IsPropertyShipmentMethodTypeIdRemoved;
             e.IsPropertySupplierPartyIdRemoved = c.IsPropertySupplierPartyIdRemoved;
@@ -682,18 +672,13 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyCarrierPartyIdRemoved = c.IsPropertyCarrierPartyIdRemoved;
             e.IsPropertyCarrierRoleTypeIdRemoved = c.IsPropertyCarrierRoleTypeIdRemoved;
             e.IsPropertyFacilityIdRemoved = c.IsPropertyFacilityIdRemoved;
-            e.IsPropertyDestinationFacilityIdRemoved = c.IsPropertyDestinationFacilityIdRemoved;
             e.IsPropertyContactMechIdRemoved = c.IsPropertyContactMechIdRemoved;
             e.IsPropertyTelecomContactMechIdRemoved = c.IsPropertyTelecomContactMechIdRemoved;
-            e.IsPropertyTrackingNumberRemoved = c.IsPropertyTrackingNumberRemoved;
             e.IsPropertyMaySplitRemoved = c.IsPropertyMaySplitRemoved;
             e.IsPropertyGiftMessageRemoved = c.IsPropertyGiftMessageRemoved;
             e.IsPropertyIsGiftRemoved = c.IsPropertyIsGiftRemoved;
             e.IsPropertyShipAfterDateRemoved = c.IsPropertyShipAfterDateRemoved;
             e.IsPropertyShipByDateRemoved = c.IsPropertyShipByDateRemoved;
-            e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
-            e.IsPropertyEstimatedDeliveryDateRemoved = c.IsPropertyEstimatedDeliveryDateRemoved;
-            e.IsPropertyPickwaveIdRemoved = c.IsPropertyPickwaveIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
