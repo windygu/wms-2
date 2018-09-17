@@ -201,6 +201,21 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * Is Created From Packing List
+     */
+    private Boolean isCreatedFromPackingList;
+
+    public Boolean getIsCreatedFromPackingList()
+    {
+        return this.isCreatedFromPackingList;
+    }
+
+    public void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList)
+    {
+        this.isCreatedFromPackingList = isCreatedFromPackingList;
+    }
+
+    /**
      * Estimated Ready Date
      */
     private java.sql.Timestamp estimatedReadyDate;
@@ -704,6 +719,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.isPropertyDateShippedRemoved = removed;
     }
 
+    private Boolean isPropertyIsCreatedFromPackingListRemoved;
+
+    public Boolean getIsPropertyIsCreatedFromPackingListRemoved()
+    {
+        return this.isPropertyIsCreatedFromPackingListRemoved;
+    }
+
+    public void setIsPropertyIsCreatedFromPackingListRemoved(Boolean removed)
+    {
+        this.isPropertyIsCreatedFromPackingListRemoved = removed;
+    }
+
     private Boolean isPropertyEstimatedReadyDateRemoved;
 
     public Boolean getIsPropertyEstimatedReadyDateRemoved()
@@ -960,6 +987,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setExternalOrderNumber(this.getExternalOrderNumber());
         command.setCarrier(this.getCarrier());
         command.setDateShipped(this.getDateShipped());
+        command.setIsCreatedFromPackingList(this.getIsCreatedFromPackingList());
         command.setEstimatedReadyDate(this.getEstimatedReadyDate());
         command.setEstimatedShipDate(this.getEstimatedShipDate());
         command.setEstimatedShipWorkEffId(this.getEstimatedShipWorkEffId());
@@ -1060,6 +1088,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setIsPropertyExternalOrderNumberRemoved(this.getIsPropertyExternalOrderNumberRemoved());
         command.setIsPropertyCarrierRemoved(this.getIsPropertyCarrierRemoved());
         command.setIsPropertyDateShippedRemoved(this.getIsPropertyDateShippedRemoved());
+        command.setIsPropertyIsCreatedFromPackingListRemoved(this.getIsPropertyIsCreatedFromPackingListRemoved());
         command.setIsPropertyEstimatedReadyDateRemoved(this.getIsPropertyEstimatedReadyDateRemoved());
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
         command.setIsPropertyEstimatedShipWorkEffIdRemoved(this.getIsPropertyEstimatedShipWorkEffIdRemoved());

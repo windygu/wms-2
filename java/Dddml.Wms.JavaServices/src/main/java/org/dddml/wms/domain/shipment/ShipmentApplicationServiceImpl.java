@@ -386,6 +386,8 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipment.setHandlingInstructions(c.getHandlingInstructions());
         shipment.setAdditionalShippingCharge(c.getAdditionalShippingCharge());
         shipment.setAddtlShippingChargeDesc(c.getAddtlShippingChargeDesc());
+        //标记为从“码单”导入
+        shipment.setIsCreatedFromPackingList(true);
         //todo More properties ???
 
         int i = 0;

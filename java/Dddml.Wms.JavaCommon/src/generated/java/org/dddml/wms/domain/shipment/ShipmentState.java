@@ -72,6 +72,10 @@ public interface ShipmentState
 
     void setDateShipped(java.sql.Timestamp dateShipped);
 
+    Boolean getIsCreatedFromPackingList();
+
+    void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList);
+
     java.sql.Timestamp getEstimatedReadyDate();
 
     void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);

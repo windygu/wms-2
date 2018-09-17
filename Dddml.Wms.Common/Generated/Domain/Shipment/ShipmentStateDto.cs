@@ -105,6 +105,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual bool? IsCreatedFromPackingList
+        {
+            get;
+            set;
+        }
+
         public virtual DateTime? EstimatedReadyDate
         {
             get;
@@ -321,6 +327,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.ExternalOrderNumber = this.ExternalOrderNumber;
             state.Carrier = this.Carrier;
             state.DateShipped = this.DateShipped;
+            if (this.IsCreatedFromPackingList != null && this.IsCreatedFromPackingList.HasValue) { state.IsCreatedFromPackingList = this.IsCreatedFromPackingList.Value; }
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;
@@ -372,6 +379,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.ExternalOrderNumber = this.ExternalOrderNumber;
             state.Carrier = this.Carrier;
             state.DateShipped = this.DateShipped;
+            if (this.IsCreatedFromPackingList != null && this.IsCreatedFromPackingList.HasValue) { state.IsCreatedFromPackingList = this.IsCreatedFromPackingList.Value; }
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;
@@ -423,6 +431,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.ExternalOrderNumber = this.ExternalOrderNumber;
             state.Carrier = this.Carrier;
             state.DateShipped = this.DateShipped;
+            if (this.IsCreatedFromPackingList != null && this.IsCreatedFromPackingList.HasValue) { state.IsCreatedFromPackingList = this.IsCreatedFromPackingList.Value; }
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;

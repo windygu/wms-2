@@ -70,6 +70,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setExternalOrderNumber(c.getExternalOrderNumber());
         e.setCarrier(c.getCarrier());
         e.setDateShipped(c.getDateShipped());
+        e.setIsCreatedFromPackingList(c.getIsCreatedFromPackingList());
         e.setEstimatedReadyDate(c.getEstimatedReadyDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedShipWorkEffId(c.getEstimatedShipWorkEffId());
@@ -141,6 +142,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setExternalOrderNumber(c.getExternalOrderNumber());
         e.setCarrier(c.getCarrier());
         e.setDateShipped(c.getDateShipped());
+        e.setIsCreatedFromPackingList(c.getIsCreatedFromPackingList());
         e.setEstimatedReadyDate(c.getEstimatedReadyDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedShipWorkEffId(c.getEstimatedShipWorkEffId());
@@ -174,6 +176,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setIsPropertyExternalOrderNumberRemoved(c.getIsPropertyExternalOrderNumberRemoved());
         e.setIsPropertyCarrierRemoved(c.getIsPropertyCarrierRemoved());
         e.setIsPropertyDateShippedRemoved(c.getIsPropertyDateShippedRemoved());
+        e.setIsPropertyIsCreatedFromPackingListRemoved(c.getIsPropertyIsCreatedFromPackingListRemoved());
         e.setIsPropertyEstimatedReadyDateRemoved(c.getIsPropertyEstimatedReadyDateRemoved());
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedShipWorkEffIdRemoved(c.getIsPropertyEstimatedShipWorkEffIdRemoved());

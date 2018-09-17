@@ -201,6 +201,21 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * Is Created From Packing List
+     */
+    private Boolean isCreatedFromPackingList;
+
+    public Boolean getIsCreatedFromPackingList()
+    {
+        return this.isCreatedFromPackingList;
+    }
+
+    public void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList)
+    {
+        this.isCreatedFromPackingList = isCreatedFromPackingList;
+    }
+
+    /**
      * Estimated Ready Date
      */
     private java.sql.Timestamp estimatedReadyDate;
@@ -702,6 +717,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setIsPropertyDateShippedRemoved(Boolean removed)
     {
         this.isPropertyDateShippedRemoved = removed;
+    }
+
+    private Boolean isPropertyIsCreatedFromPackingListRemoved;
+
+    public Boolean getIsPropertyIsCreatedFromPackingListRemoved()
+    {
+        return this.isPropertyIsCreatedFromPackingListRemoved;
+    }
+
+    public void setIsPropertyIsCreatedFromPackingListRemoved(Boolean removed)
+    {
+        this.isPropertyIsCreatedFromPackingListRemoved = removed;
     }
 
     private Boolean isPropertyEstimatedReadyDateRemoved;

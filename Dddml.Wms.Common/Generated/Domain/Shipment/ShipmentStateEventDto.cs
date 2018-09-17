@@ -70,6 +70,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual DateTime? DateShipped { get; set; }
 
+		public virtual bool? IsCreatedFromPackingList { get; set; }
+
 		public virtual DateTime? EstimatedReadyDate { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }
@@ -402,6 +404,25 @@ namespace Dddml.Wms.Domain.Shipment
             set 
             {
                 this.IsPropertyDateShippedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyIsCreatedFromPackingListRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyIsCreatedFromPackingListRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyIsCreatedFromPackingListRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyIsCreatedFromPackingListRemoved = value;
             }
         }
 

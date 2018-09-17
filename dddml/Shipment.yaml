@@ -54,6 +54,7 @@ aggregates:
       SealNumber:
         type: id-long
       # 集装箱号
+      # （这里可以放车牌号？）
       VehicleId:
         type: id-long
       ExternalOrderNumber:
@@ -64,6 +65,9 @@ aggregates:
       # DOS
       DateShipped:
         type: date-time
+      # 是否是从码单（装箱明细清单）导入产生
+      IsCreatedFromPackingList:
+        type: bool
       # -------------------------
         
       EstimatedReadyDate:

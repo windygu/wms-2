@@ -275,6 +275,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.DateShipped = e.DateShipped;
 
+            this.IsCreatedFromPackingList = (e.IsCreatedFromPackingList != null && e.IsCreatedFromPackingList.HasValue) ? e.IsCreatedFromPackingList.Value : default(bool);
+
 			this.EstimatedReadyDate = e.EstimatedReadyDate;
 
 			this.EstimatedShipDate = e.EstimatedShipDate;
@@ -508,6 +510,18 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.DateShipped = e.DateShipped;
+			}
+
+			if (e.IsCreatedFromPackingList == null)
+			{
+				if (e.IsPropertyIsCreatedFromPackingListRemoved)
+				{
+					this.IsCreatedFromPackingList = default(bool);
+				}
+			}
+			else
+			{
+				this.IsCreatedFromPackingList = (e.IsCreatedFromPackingList != null && e.IsCreatedFromPackingList.HasValue) ? e.IsCreatedFromPackingList.Value : default(bool);
 			}
 
 			if (e.EstimatedReadyDate == null)

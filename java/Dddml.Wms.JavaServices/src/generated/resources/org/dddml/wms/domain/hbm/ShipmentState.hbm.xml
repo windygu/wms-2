@@ -25,6 +25,7 @@
 	<property name="externalOrderNumber" ><column name="ExternalOrderNumber" sql-type="VARCHAR(60)" /></property>
 	<property name="carrier" ><column name="Carrier" sql-type="VARCHAR(60)" /></property>
 	<property name="dateShipped" ><column name="DateShipped" sql-type="DATETIME" /></property>
+	<property name="isCreatedFromPackingList" ></property>
 	<property name="estimatedReadyDate" ><column name="EstimatedReadyDate" sql-type="DATETIME" /></property>
 	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
 	<property name="estimatedShipWorkEffId" ><column name="EstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>

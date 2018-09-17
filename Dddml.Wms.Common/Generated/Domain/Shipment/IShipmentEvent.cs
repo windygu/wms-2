@@ -49,6 +49,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		DateTime? DateShipped { get; set; }
 
+		bool? IsCreatedFromPackingList { get; set; }
+
 		DateTime? EstimatedReadyDate { get; set; }
 
 		DateTime? EstimatedShipDate { get; set; }
@@ -150,6 +152,8 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyCarrierRemoved { get; set; }
 
 		bool IsPropertyDateShippedRemoved { get; set; }
+
+		bool IsPropertyIsCreatedFromPackingListRemoved { get; set; }
 
 		bool IsPropertyEstimatedReadyDateRemoved { get; set; }
 

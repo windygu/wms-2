@@ -465,6 +465,37 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual bool? IsCreatedFromPackingList
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsCreatedFromPackingList"))
+                {
+                    return _state.IsCreatedFromPackingList;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.IsCreatedFromPackingList = value.Value;
+                }
+            }
+        }
+
+        bool IShipmentStateProperties.IsCreatedFromPackingList
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).IsCreatedFromPackingList;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).IsCreatedFromPackingList = value;
+            }
+        }
+
 		public virtual DateTime? EstimatedReadyDate
 		{
             get

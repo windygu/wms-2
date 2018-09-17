@@ -82,6 +82,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ExternalOrderNumber = state.ExternalOrderNumber;
             cmd.Carrier = state.Carrier;
             cmd.DateShipped = state.DateShipped;
+            cmd.IsCreatedFromPackingList = state.IsCreatedFromPackingList;
             cmd.EstimatedReadyDate = state.EstimatedReadyDate;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedShipWorkEffId = state.EstimatedShipWorkEffId;
@@ -184,6 +185,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ExternalOrderNumber = state.ExternalOrderNumber;
             cmd.Carrier = state.Carrier;
             cmd.DateShipped = state.DateShipped;
+            cmd.IsCreatedFromPackingList = state.IsCreatedFromPackingList;
             cmd.EstimatedReadyDate = state.EstimatedReadyDate;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedShipWorkEffId = state.EstimatedShipWorkEffId;

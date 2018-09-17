@@ -189,6 +189,18 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.dateShipped = dateShipped;
     }
 
+    private Boolean isCreatedFromPackingList;
+
+    public Boolean getIsCreatedFromPackingList()
+    {
+        return this.isCreatedFromPackingList;
+    }
+
+    public void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList)
+    {
+        this.isCreatedFromPackingList = isCreatedFromPackingList;
+    }
+
     private java.sql.Timestamp estimatedReadyDate;
 
     public java.sql.Timestamp getEstimatedReadyDate()
@@ -617,6 +629,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setExternalOrderNumber(e.getExternalOrderNumber());
         this.setCarrier(e.getCarrier());
         this.setDateShipped(e.getDateShipped());
+        this.setIsCreatedFromPackingList(e.getIsCreatedFromPackingList());
         this.setEstimatedReadyDate(e.getEstimatedReadyDate());
         this.setEstimatedShipDate(e.getEstimatedShipDate());
         this.setEstimatedShipWorkEffId(e.getEstimatedShipWorkEffId());
@@ -816,6 +829,17 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         else
         {
             this.setDateShipped(e.getDateShipped());
+        }
+        if (e.getIsCreatedFromPackingList() == null)
+        {
+            if (e.getIsPropertyIsCreatedFromPackingListRemoved() != null && e.getIsPropertyIsCreatedFromPackingListRemoved())
+            {
+                this.setIsCreatedFromPackingList(null);
+            }
+        }
+        else
+        {
+            this.setIsCreatedFromPackingList(e.getIsCreatedFromPackingList());
         }
         if (e.getEstimatedReadyDate() == null)
         {

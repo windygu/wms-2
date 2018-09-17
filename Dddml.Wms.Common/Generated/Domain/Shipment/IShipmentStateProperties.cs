@@ -44,6 +44,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		DateTime? DateShipped { get; set; }
 
+		bool IsCreatedFromPackingList { get; set; }
+
 		DateTime? EstimatedReadyDate { get; set; }
 
 		DateTime? EstimatedShipDate { get; set; }

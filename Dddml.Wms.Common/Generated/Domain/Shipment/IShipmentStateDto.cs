@@ -104,6 +104,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        bool? IsCreatedFromPackingList
+        {
+            get;
+            set;
+        }
+
         DateTime? EstimatedReadyDate
         {
             get;

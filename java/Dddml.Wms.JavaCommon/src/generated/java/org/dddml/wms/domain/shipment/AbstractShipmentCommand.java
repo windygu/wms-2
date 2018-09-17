@@ -190,6 +190,18 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.dateShipped = dateShipped;
         }
 
+        private Boolean isCreatedFromPackingList;
+
+        public Boolean getIsCreatedFromPackingList()
+        {
+            return this.isCreatedFromPackingList;
+        }
+
+        public void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList)
+        {
+            this.isCreatedFromPackingList = isCreatedFromPackingList;
+        }
+
         private java.sql.Timestamp estimatedReadyDate;
 
         public java.sql.Timestamp getEstimatedReadyDate()
@@ -726,6 +738,18 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public void setIsPropertyDateShippedRemoved(Boolean removed)
         {
             this.isPropertyDateShippedRemoved = removed;
+        }
+
+        private Boolean isPropertyIsCreatedFromPackingListRemoved;
+
+        public Boolean getIsPropertyIsCreatedFromPackingListRemoved()
+        {
+            return this.isPropertyIsCreatedFromPackingListRemoved;
+        }
+
+        public void setIsPropertyIsCreatedFromPackingListRemoved(Boolean removed)
+        {
+            this.isPropertyIsCreatedFromPackingListRemoved = removed;
         }
 
         private Boolean isPropertyEstimatedReadyDateRemoved;

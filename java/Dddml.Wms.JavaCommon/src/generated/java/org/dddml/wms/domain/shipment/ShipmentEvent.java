@@ -82,6 +82,10 @@ public interface ShipmentEvent extends Event
 
         void setDateShipped(java.sql.Timestamp dateShipped);
 
+        Boolean getIsCreatedFromPackingList();
+
+        void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList);
+
         java.sql.Timestamp getEstimatedReadyDate();
 
         void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);
@@ -251,6 +255,10 @@ public interface ShipmentEvent extends Event
         Boolean getIsPropertyDateShippedRemoved();
 
         void setIsPropertyDateShippedRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsCreatedFromPackingListRemoved();
+
+        void setIsPropertyIsCreatedFromPackingListRemoved(Boolean removed);
 
         Boolean getIsPropertyEstimatedReadyDateRemoved();
 

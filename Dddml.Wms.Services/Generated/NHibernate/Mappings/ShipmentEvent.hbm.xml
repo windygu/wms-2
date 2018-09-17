@@ -33,6 +33,7 @@
     <property name="ExternalOrderNumber" ><column name="ExternalOrderNumber" sql-type="VARCHAR(60)" /></property>
     <property name="Carrier" ><column name="Carrier" sql-type="VARCHAR(60)" /></property>
     <property name="DateShipped" ><column name="DateShipped" sql-type="DATETIME" /></property>
+    <property name="IsCreatedFromPackingList" ></property>
     <property name="EstimatedReadyDate" ><column name="EstimatedReadyDate" sql-type="DATETIME" /></property>
     <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
     <property name="EstimatedShipWorkEffId" ><column name="EstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>
@@ -87,6 +88,8 @@
         <property name="IsPropertyCarrierRemoved" column="IsPropertyCarrierRemoved"/>
 
         <property name="IsPropertyDateShippedRemoved" column="IsPropertyDateShippedRemoved"/>
+
+        <property name="IsPropertyIsCreatedFromPackingListRemoved" column="IsPropertyIsCreatedFromPackingListRemoved"/>
 
         <property name="IsPropertyEstimatedReadyDateRemoved" column="IsPropertyEstimatedReadyDateRemoved"/>
 
