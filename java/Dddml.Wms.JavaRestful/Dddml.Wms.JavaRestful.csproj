@@ -75,79 +75,28 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\FacilityResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateAggregatesResources.tt">
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateMetadataResources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAggregatesResources.txt</LastGenOutput>
+      <LastGenOutput>GenerateMetadataResources1.txt</LastGenOutput>
       <LastOutputs>
-.\AttributeResource.java
-.\AttributeSetInstanceExtensionFieldGroupResource.java
-.\AttributeSetInstanceExtensionFieldResource.java
-.\AttributeSetInstanceResource.java
-.\AttributeSetResource.java
-.\ContactMechResource.java
-.\DamageHandlingMethodResource.java
-.\DamageReasonResource.java
-.\DamageTypeResource.java
-.\DocumentTypeResource.java
-.\FacilityResource.java
-.\GenerateAggregatesResources.txt
-.\GoodIdentificationTypeResource.java
-.\InOutNoticeResource.java
-.\InOutResource.java
-.\InventoryItemRequirementResource.java
-.\InventoryItemResource.java
-.\InventoryPostingRuleResource.java
-.\InventoryPRTriggeredResource.java
-.\LocatorResource.java
-.\LocatorTypeResource.java
-.\LotResource.java
-.\MovementConfirmationResource.java
-.\MovementResource.java
-.\MovementTypeResource.java
-.\OrderItemShipGrpInvReservationResource.java
-.\OrderResource.java
-.\OrderShipmentResource.java
-.\OrganizationResource.java
-.\OrganizationStructureResource.java
-.\OrganizationStructureTypeResource.java
-.\PartyResource.java
-.\PartyRoleResource.java
-.\PersonResource.java
-.\PhysicalInventoryResource.java
-.\PicklistBinResource.java
-.\PicklistResource.java
-.\PickwaveResource.java
-.\PostalAddressResource.java
-.\ProductCategoryMemberResource.java
-.\ProductCategoryResource.java
-.\ProductResource.java
-.\PurchaseShipmentResource.java
-.\RejectionReasonResource.java
-.\RoleTypeResource.java
-.\SalesShipmentResource.java
-.\SellableInventoryItemResource.java
-.\ShipmentMethodTypeResource.java
-.\ShipmentPackageResource.java
-.\ShipmentResource.java
-.\ShipmentTypeResource.java
-.\StatusItemResource.java
-.\SupplierProductResource.java
-.\TelecomNumberResource.java
-.\UomConversionResource.java
-.\UomResource.java
-.\UomTypeResource.java
-.\WarehouseResource.java
+.\GenerateMetadataResources1.txt
+.\StateMachineMetadataResource.java
 </LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateDomainServicesResources.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDomainServicesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateAggregatesResources.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateDomainServicesResources.txt">
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateMetadataResources1.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateDomainServicesResources.tt</DependentUpon>
+      <DependentUpon>GenerateMetadataResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateTreeResources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -292,6 +241,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentTypeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\StateMachineMetadataResource.java">
+      <DependentUpon>GenerateMetadataResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\StatusItemResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -318,6 +270,70 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateAggregatesResources.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAggregatesResources.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeResource.java
+.\AttributeSetInstanceExtensionFieldGroupResource.java
+.\AttributeSetInstanceExtensionFieldResource.java
+.\AttributeSetInstanceResource.java
+.\AttributeSetResource.java
+.\ContactMechResource.java
+.\DamageHandlingMethodResource.java
+.\DamageReasonResource.java
+.\DamageTypeResource.java
+.\DocumentTypeResource.java
+.\FacilityResource.java
+.\GenerateAggregatesResources.txt
+.\GoodIdentificationTypeResource.java
+.\InOutNoticeResource.java
+.\InOutResource.java
+.\InventoryItemRequirementResource.java
+.\InventoryItemResource.java
+.\InventoryPostingRuleResource.java
+.\InventoryPRTriggeredResource.java
+.\LocatorResource.java
+.\LocatorTypeResource.java
+.\LotResource.java
+.\MovementConfirmationResource.java
+.\MovementResource.java
+.\MovementTypeResource.java
+.\OrderItemShipGrpInvReservationResource.java
+.\OrderResource.java
+.\OrderShipmentResource.java
+.\OrganizationResource.java
+.\OrganizationStructureResource.java
+.\OrganizationStructureTypeResource.java
+.\PartyResource.java
+.\PartyRoleResource.java
+.\PersonResource.java
+.\PhysicalInventoryResource.java
+.\PicklistBinResource.java
+.\PicklistResource.java
+.\PickwaveResource.java
+.\PostalAddressResource.java
+.\ProductCategoryMemberResource.java
+.\ProductCategoryResource.java
+.\ProductResource.java
+.\PurchaseShipmentResource.java
+.\RejectionReasonResource.java
+.\RoleTypeResource.java
+.\SalesShipmentResource.java
+.\SellableInventoryItemResource.java
+.\ShipmentMethodTypeResource.java
+.\ShipmentPackageResource.java
+.\ShipmentResource.java
+.\ShipmentTypeResource.java
+.\StatusItemResource.java
+.\SupplierProductResource.java
+.\TelecomNumberResource.java
+.\UomConversionResource.java
+.\UomResource.java
+.\UomTypeResource.java
+.\WarehouseResource.java
+</LastOutputs>
+    </Content>
     <None Include="src\generated\java\org\dddml\wms\restful\resource\GenerateDomainServicesResources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDomainServicesResources.txt</LastGenOutput>
