@@ -216,6 +216,21 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * Is Schedule Needed
+     */
+    private Boolean isScheduleNeeded;
+
+    public Boolean getIsScheduleNeeded()
+    {
+        return this.isScheduleNeeded;
+    }
+
+    public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+    {
+        this.isScheduleNeeded = isScheduleNeeded;
+    }
+
+    /**
      * Estimated Ready Date
      */
     private java.sql.Timestamp estimatedReadyDate;
@@ -729,6 +744,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setIsPropertyIsCreatedFromPackingListRemoved(Boolean removed)
     {
         this.isPropertyIsCreatedFromPackingListRemoved = removed;
+    }
+
+    private Boolean isPropertyIsScheduleNeededRemoved;
+
+    public Boolean getIsPropertyIsScheduleNeededRemoved()
+    {
+        return this.isPropertyIsScheduleNeededRemoved;
+    }
+
+    public void setIsPropertyIsScheduleNeededRemoved(Boolean removed)
+    {
+        this.isPropertyIsScheduleNeededRemoved = removed;
     }
 
     private Boolean isPropertyEstimatedReadyDateRemoved;

@@ -231,6 +231,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual bool? IsCreatedFromPackingList { get; set; }
 
+		public virtual bool? IsScheduleNeeded { get; set; }
+
 		public virtual DateTime? EstimatedReadyDate { get; set; }
 
 		public virtual DateTime? EstimatedShipDate { get; set; }
@@ -546,6 +548,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyDateShippedRemoved { get; set; }
 
 		public virtual bool IsPropertyIsCreatedFromPackingListRemoved { get; set; }
+
+		public virtual bool IsPropertyIsScheduleNeededRemoved { get; set; }
 
 		public virtual bool IsPropertyEstimatedReadyDateRemoved { get; set; }
 

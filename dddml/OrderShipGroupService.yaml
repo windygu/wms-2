@@ -231,6 +231,10 @@ services:
           # 预计交付（入库）日期  
           # EstimatedDeliveryDate:
           #   type: date-time
+          # ------------------------------
+          # 是否需要先备货
+          IsScheduleNeeded:
+            type: bool
         
         # 返回结果，装运单 Id
         result:

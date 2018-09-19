@@ -52,6 +52,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.Carrier = e.Carrier;
             dto.DateShipped = e.DateShipped;
             dto.IsCreatedFromPackingList = e.IsCreatedFromPackingList;
+            dto.IsScheduleNeeded = e.IsScheduleNeeded;
             dto.EstimatedReadyDate = e.EstimatedReadyDate;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedShipWorkEffId = e.EstimatedShipWorkEffId;
@@ -129,6 +130,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.Carrier = e.Carrier;
             dto.DateShipped = e.DateShipped;
             dto.IsCreatedFromPackingList = e.IsCreatedFromPackingList;
+            dto.IsScheduleNeeded = e.IsScheduleNeeded;
             dto.EstimatedReadyDate = e.EstimatedReadyDate;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedShipWorkEffId = e.EstimatedShipWorkEffId;
@@ -164,6 +166,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyCarrierRemoved = e.IsPropertyCarrierRemoved;
             dto.IsPropertyDateShippedRemoved = e.IsPropertyDateShippedRemoved;
             dto.IsPropertyIsCreatedFromPackingListRemoved = e.IsPropertyIsCreatedFromPackingListRemoved;
+            dto.IsPropertyIsScheduleNeededRemoved = e.IsPropertyIsScheduleNeededRemoved;
             dto.IsPropertyEstimatedReadyDateRemoved = e.IsPropertyEstimatedReadyDateRemoved;
             dto.IsPropertyEstimatedShipDateRemoved = e.IsPropertyEstimatedShipDateRemoved;
             dto.IsPropertyEstimatedShipWorkEffIdRemoved = e.IsPropertyEstimatedShipWorkEffIdRemoved;

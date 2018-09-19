@@ -142,6 +142,18 @@ public abstract class AbstractInOutNoticeCommand extends AbstractCommand impleme
             this.estimatedDeliveryDate = estimatedDeliveryDate;
         }
 
+        private Boolean isScheduleNeeded;
+
+        public Boolean getIsScheduleNeeded()
+        {
+            return this.isScheduleNeeded;
+        }
+
+        public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+        {
+            this.isScheduleNeeded = isScheduleNeeded;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -278,6 +290,18 @@ public abstract class AbstractInOutNoticeCommand extends AbstractCommand impleme
         public void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed)
         {
             this.isPropertyEstimatedDeliveryDateRemoved = removed;
+        }
+
+        private Boolean isPropertyIsScheduleNeededRemoved;
+
+        public Boolean getIsPropertyIsScheduleNeededRemoved()
+        {
+            return this.isPropertyIsScheduleNeededRemoved;
+        }
+
+        public void setIsPropertyIsScheduleNeededRemoved(Boolean removed)
+        {
+            this.isPropertyIsScheduleNeededRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

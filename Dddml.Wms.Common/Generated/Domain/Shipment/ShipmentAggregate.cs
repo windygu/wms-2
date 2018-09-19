@@ -112,6 +112,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.Carrier = c.Carrier;
             e.DateShipped = c.DateShipped;
             e.IsCreatedFromPackingList = c.IsCreatedFromPackingList;
+            e.IsScheduleNeeded = c.IsScheduleNeeded;
             e.EstimatedReadyDate = c.EstimatedReadyDate;
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedShipWorkEffId = c.EstimatedShipWorkEffId;
@@ -195,6 +196,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.Carrier = c.Carrier;
             e.DateShipped = c.DateShipped;
             e.IsCreatedFromPackingList = c.IsCreatedFromPackingList;
+            e.IsScheduleNeeded = c.IsScheduleNeeded;
             e.EstimatedReadyDate = c.EstimatedReadyDate;
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedShipWorkEffId = c.EstimatedShipWorkEffId;
@@ -230,6 +232,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyCarrierRemoved = c.IsPropertyCarrierRemoved;
             e.IsPropertyDateShippedRemoved = c.IsPropertyDateShippedRemoved;
             e.IsPropertyIsCreatedFromPackingListRemoved = c.IsPropertyIsCreatedFromPackingListRemoved;
+            e.IsPropertyIsScheduleNeededRemoved = c.IsPropertyIsScheduleNeededRemoved;
             e.IsPropertyEstimatedReadyDateRemoved = c.IsPropertyEstimatedReadyDateRemoved;
             e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
             e.IsPropertyEstimatedShipWorkEffIdRemoved = c.IsPropertyEstimatedShipWorkEffIdRemoved;
@@ -1059,9 +1062,39 @@ namespace Dddml.Wms.Domain.Shipment
                     command.SetState("SHIPMENT_INPUT");
                     return;
                 }
-                if ("SHIPMENT_INPUT" == command.GetState() && "Ship" == command.Content)
+                if ("SHIPMENT_INPUT" == command.GetState() && "Ship" == command.Content && !((IShipmentState)command.Context).IsScheduleNeeded)
                 {
                     command.SetState("SHIPMENT_SHIPPED");
+                    return;
+                }
+                if ("SHIPMENT_INPUT" == command.GetState() && "Schedule" == command.Content)
+                {
+                    command.SetState("SHIPMENT_SCHEDULED");
+                    return;
+                }
+                if ("SHIPMENT_INPUT" == command.GetState() && "Cancel" == command.Content)
+                {
+                    command.SetState("SHIPMENT_CANCELLED");
+                    return;
+                }
+                if ("SHIPMENT_SCHEDULED" == command.GetState() && "Cancel" == command.Content)
+                {
+                    command.SetState("SHIPMENT_CANCELLED");
+                    return;
+                }
+                if ("SHIPMENT_SCHEDULED" == command.GetState() && "Ship" == command.Content)
+                {
+                    command.SetState("SHIPMENT_SHIPPED");
+                    return;
+                }
+                if ("SHIPMENT_SHIPPED" == command.GetState() && "Deliver" == command.Content)
+                {
+                    command.SetState("SHIPMENT_DELIVERED");
+                    return;
+                }
+                if ("SHIPMENT_SHIPPED" == command.GetState() && "Reverse" == command.Content)
+                {
+                    command.SetState("SHIPMENT_REVERSED");
                     return;
                 }
                 throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));

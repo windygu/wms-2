@@ -44,7 +44,7 @@ public class OrderShipGroupTests {
         shipmentApplicationService = (ShipmentApplicationService) ApplicationContext.current.get("shipmentApplicationService");
         orderApplicationService = (OrderApplicationService) ApplicationContext.current.get("orderApplicationService");
     }
-
+/*
     public void testCreatePOShipGroup1() {
         String partyId = createTestPersonParty();
 
@@ -241,7 +241,7 @@ public class OrderShipGroupTests {
         shipmentApplicationService.when(confirmAllItemsIssued);
 
     }
-
+*/
     private String createTestPersonParty() {
         PartyCommand.CreateParty createPerson = new AbstractPartyCommand.SimpleCreatePerson();
         String partyId = "" + new Date().getTime();

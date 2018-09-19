@@ -26,7 +26,7 @@ public class HibernateInOutNoticeStateQueryRepository implements InOutNoticeStat
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InOutNoticeId", "WarehouseId", "InOutNoticeType", "TelecomContactMechId", "TrackingNumber", "ContactPartyId", "VehiclePlateNumber", "ShippingInstructions", "EstimatedShipDate", "EstimatedDeliveryDate", "StatusId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InOutNoticeId", "WarehouseId", "InOutNoticeType", "TelecomContactMechId", "TrackingNumber", "ContactPartyId", "VehiclePlateNumber", "ShippingInstructions", "EstimatedShipDate", "EstimatedDeliveryDate", "IsScheduleNeeded", "StatusId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

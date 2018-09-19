@@ -448,6 +448,19 @@ public class OrderShipGroupServiceCommands {
         }
 
         /**
+         * Is Schedule Needed
+         */
+        private Boolean isScheduleNeeded;
+
+        public Boolean getIsScheduleNeeded() {
+            return isScheduleNeeded;
+        }
+
+        public void setIsScheduleNeeded(Boolean isScheduleNeeded) {
+            this.isScheduleNeeded = isScheduleNeeded;
+        }
+
+        /**
          * Command Id
          */
         private String commandId;

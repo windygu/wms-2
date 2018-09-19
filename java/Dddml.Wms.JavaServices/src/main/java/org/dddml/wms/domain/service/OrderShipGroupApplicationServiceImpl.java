@@ -168,6 +168,8 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
                 c.getHandlingInstructions(), c.getEstimatedShipDate());
         createShipment.setRequesterId(c.getRequesterId());
         createShipment.setCommandId(c.getCommandId());
+        // ///////////////////////////////////////////////
+        createShipment.setIsScheduleNeeded(c.getIsScheduleNeeded());
         // //////////////////////////////////////////////
         Map<OrderShipmentId, BigDecimal> orderShipmentMap =
                 createShipmentItems(c.getOrderIdShipGroupSeqIdPairs(), createShipment, false);

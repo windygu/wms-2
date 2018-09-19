@@ -187,6 +187,18 @@ public abstract class AbstractInOutNoticeEvent extends AbstractEvent implements 
             this.estimatedDeliveryDate = estimatedDeliveryDate;
         }
 
+        private Boolean isScheduleNeeded;
+
+        public Boolean getIsScheduleNeeded()
+        {
+            return this.isScheduleNeeded;
+        }
+
+        public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+        {
+            this.isScheduleNeeded = isScheduleNeeded;
+        }
+
         private String statusId;
 
         public String getStatusId()
@@ -335,6 +347,16 @@ public abstract class AbstractInOutNoticeEvent extends AbstractEvent implements 
 
         public void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed) {
             this.isPropertyEstimatedDeliveryDateRemoved = removed;
+        }
+
+        private Boolean isPropertyIsScheduleNeededRemoved;
+
+        public Boolean getIsPropertyIsScheduleNeededRemoved() {
+            return this.isPropertyIsScheduleNeededRemoved;
+        }
+
+        public void setIsPropertyIsScheduleNeededRemoved(Boolean removed) {
+            this.isPropertyIsScheduleNeededRemoved = removed;
         }
 
         private Boolean isPropertyStatusIdRemoved;

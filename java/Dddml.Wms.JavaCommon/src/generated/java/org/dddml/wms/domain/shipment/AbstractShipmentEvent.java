@@ -403,6 +403,18 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
             this.isCreatedFromPackingList = isCreatedFromPackingList;
         }
 
+        private Boolean isScheduleNeeded;
+
+        public Boolean getIsScheduleNeeded()
+        {
+            return this.isScheduleNeeded;
+        }
+
+        public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+        {
+            this.isScheduleNeeded = isScheduleNeeded;
+        }
+
         private java.sql.Timestamp estimatedReadyDate;
 
         public java.sql.Timestamp getEstimatedReadyDate()
@@ -1010,6 +1022,16 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
 
         public void setIsPropertyIsCreatedFromPackingListRemoved(Boolean removed) {
             this.isPropertyIsCreatedFromPackingListRemoved = removed;
+        }
+
+        private Boolean isPropertyIsScheduleNeededRemoved;
+
+        public Boolean getIsPropertyIsScheduleNeededRemoved() {
+            return this.isPropertyIsScheduleNeededRemoved;
+        }
+
+        public void setIsPropertyIsScheduleNeededRemoved(Boolean removed) {
+            this.isPropertyIsScheduleNeededRemoved = removed;
         }
 
         private Boolean isPropertyEstimatedReadyDateRemoved;

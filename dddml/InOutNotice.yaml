@@ -47,6 +47,10 @@ aggregates:
       # 预计交付（入库）日期  
       EstimatedDeliveryDate:
         type: date-time
+        
+      # 是否需要先备货（发货通知）
+      IsScheduleNeeded:
+        type: bool
 
       # -------------------------
       # 通知单的状态

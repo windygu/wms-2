@@ -13,7 +13,19 @@ namespace Dddml.Wms.Domain
 	{
 
 		
+		public const string Schedule = "Schedule";
+
+		
 		public const string Ship = "Ship";
+
+		
+		public const string Cancel = "Cancel";
+
+		
+		public const string Deliver = "Deliver";
+
+		
+		public const string Reverse = "Reverse";
 
 	}
 

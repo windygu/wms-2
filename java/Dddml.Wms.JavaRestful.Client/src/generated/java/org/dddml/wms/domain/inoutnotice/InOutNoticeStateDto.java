@@ -129,6 +129,18 @@ public class InOutNoticeStateDto
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Boolean isScheduleNeeded;
+
+    public Boolean getIsScheduleNeeded()
+    {
+        return this.isScheduleNeeded;
+    }
+
+    public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+    {
+        this.isScheduleNeeded = isScheduleNeeded;
+    }
+
     private String statusId;
 
     public String getStatusId()

@@ -10,7 +10,19 @@ public class SalesShipmentAction
 {
 
 		
+    public static final String SCHEDULE = "Schedule";
+
+		
     public static final String SHIP = "Ship";
+
+		
+    public static final String CANCEL = "Cancel";
+
+		
+    public static final String DELIVER = "Deliver";
+
+		
+    public static final String REVERSE = "Reverse";
 
 }
 

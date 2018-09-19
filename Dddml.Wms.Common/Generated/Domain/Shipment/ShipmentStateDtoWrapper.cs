@@ -496,6 +496,37 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual bool? IsScheduleNeeded
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsScheduleNeeded"))
+                {
+                    return _state.IsScheduleNeeded;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.IsScheduleNeeded = value.Value;
+                }
+            }
+        }
+
+        bool IShipmentStateProperties.IsScheduleNeeded
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).IsScheduleNeeded;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).IsScheduleNeeded = value;
+            }
+        }
+
 		public virtual DateTime? EstimatedReadyDate
 		{
             get

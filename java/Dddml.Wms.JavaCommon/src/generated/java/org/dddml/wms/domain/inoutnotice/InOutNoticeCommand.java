@@ -76,6 +76,10 @@ public interface InOutNoticeCommand extends Command
 
         void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
 
+        Boolean getIsScheduleNeeded();
+
+        void setIsScheduleNeeded(Boolean isScheduleNeeded);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -123,6 +127,10 @@ public interface InOutNoticeCommand extends Command
         Boolean getIsPropertyEstimatedDeliveryDateRemoved();
 
         void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsScheduleNeededRemoved();
+
+        void setIsPropertyIsScheduleNeededRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

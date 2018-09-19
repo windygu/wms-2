@@ -71,6 +71,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setCarrier(c.getCarrier());
         e.setDateShipped(c.getDateShipped());
         e.setIsCreatedFromPackingList(c.getIsCreatedFromPackingList());
+        e.setIsScheduleNeeded(c.getIsScheduleNeeded());
         e.setEstimatedReadyDate(c.getEstimatedReadyDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedShipWorkEffId(c.getEstimatedShipWorkEffId());
@@ -143,6 +144,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setCarrier(c.getCarrier());
         e.setDateShipped(c.getDateShipped());
         e.setIsCreatedFromPackingList(c.getIsCreatedFromPackingList());
+        e.setIsScheduleNeeded(c.getIsScheduleNeeded());
         e.setEstimatedReadyDate(c.getEstimatedReadyDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedShipWorkEffId(c.getEstimatedShipWorkEffId());
@@ -177,6 +179,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setIsPropertyCarrierRemoved(c.getIsPropertyCarrierRemoved());
         e.setIsPropertyDateShippedRemoved(c.getIsPropertyDateShippedRemoved());
         e.setIsPropertyIsCreatedFromPackingListRemoved(c.getIsPropertyIsCreatedFromPackingListRemoved());
+        e.setIsPropertyIsScheduleNeededRemoved(c.getIsPropertyIsScheduleNeededRemoved());
         e.setIsPropertyEstimatedReadyDateRemoved(c.getIsPropertyEstimatedReadyDateRemoved());
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedShipWorkEffIdRemoved(c.getIsPropertyEstimatedShipWorkEffIdRemoved());
@@ -907,8 +910,32 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
                 command.getStateSetter().accept("SHIPMENT_INPUT");
                 return;
             }
-            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent())) {
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent()) && !((ShipmentState)command.getContext()).getIsScheduleNeeded()) {
                 command.getStateSetter().accept("SHIPMENT_SHIPPED");
+                return;
+            }
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Schedule", command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_SCHEDULED");
+                return;
+            }
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Cancel", command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_CANCELLED");
+                return;
+            }
+            if (Objects.equals("SHIPMENT_SCHEDULED", command.getStateGetter().get()) && Objects.equals("Cancel", command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_CANCELLED");
+                return;
+            }
+            if (Objects.equals("SHIPMENT_SCHEDULED", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_SHIPPED");
+                return;
+            }
+            if (Objects.equals("SHIPMENT_SHIPPED", command.getStateGetter().get()) && Objects.equals("Deliver", command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_DELIVERED");
+                return;
+            }
+            if (Objects.equals("SHIPMENT_SHIPPED", command.getStateGetter().get()) && Objects.equals("Reverse", command.getContent())) {
+                command.getStateSetter().accept("SHIPMENT_REVERSED");
                 return;
             }
             throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));

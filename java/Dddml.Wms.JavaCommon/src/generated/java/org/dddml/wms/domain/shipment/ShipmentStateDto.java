@@ -201,6 +201,18 @@ public class ShipmentStateDto
         this.isCreatedFromPackingList = isCreatedFromPackingList;
     }
 
+    private Boolean isScheduleNeeded;
+
+    public Boolean getIsScheduleNeeded()
+    {
+        return this.isScheduleNeeded;
+    }
+
+    public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+    {
+        this.isScheduleNeeded = isScheduleNeeded;
+    }
+
     private java.sql.Timestamp estimatedReadyDate;
 
     public java.sql.Timestamp getEstimatedReadyDate()
@@ -625,6 +637,9 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("IsCreatedFromPackingList")) {
                 dto.setIsCreatedFromPackingList(state.getIsCreatedFromPackingList());
+            }
+            if (returnedFieldsContains("IsScheduleNeeded")) {
+                dto.setIsScheduleNeeded(state.getIsScheduleNeeded());
             }
             if (returnedFieldsContains("EstimatedReadyDate")) {
                 dto.setEstimatedReadyDate(state.getEstimatedReadyDate());

@@ -66,6 +66,7 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
         e.setShippingInstructions(c.getShippingInstructions());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
+        e.setIsScheduleNeeded(c.getIsScheduleNeeded());
         newInOutNoticeInOutNoticeActionCommandAndExecute(c, state, e);
         e.setActive(c.getActive());
         ((AbstractInOutNoticeEvent)e).setCommandId(c.getCommandId());
@@ -86,6 +87,7 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
         e.setShippingInstructions(c.getShippingInstructions());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
+        e.setIsScheduleNeeded(c.getIsScheduleNeeded());
         e.setActive(c.getActive());
         e.setIsPropertyWarehouseIdRemoved(c.getIsPropertyWarehouseIdRemoved());
         e.setIsPropertyInOutNoticeTypeRemoved(c.getIsPropertyInOutNoticeTypeRemoved());
@@ -96,6 +98,7 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
         e.setIsPropertyShippingInstructionsRemoved(c.getIsPropertyShippingInstructionsRemoved());
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedDeliveryDateRemoved(c.getIsPropertyEstimatedDeliveryDateRemoved());
+        e.setIsPropertyIsScheduleNeededRemoved(c.getIsPropertyIsScheduleNeededRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractInOutNoticeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

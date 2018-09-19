@@ -62,6 +62,10 @@ public interface InOutNoticeEvent extends Event
 
         void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
 
+        Boolean getIsScheduleNeeded();
+
+        void setIsScheduleNeeded(Boolean isScheduleNeeded);
+
         String getStatusId();
 
         void setStatusId(String statusId);
@@ -115,6 +119,10 @@ public interface InOutNoticeEvent extends Event
         Boolean getIsPropertyEstimatedDeliveryDateRemoved();
 
         void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsScheduleNeededRemoved();
+
+        void setIsPropertyIsScheduleNeededRemoved(Boolean removed);
 
         Boolean getIsPropertyStatusIdRemoved();
 

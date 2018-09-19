@@ -66,8 +66,20 @@ enumObjects:
       baseType: string
       
       values:
+        # 计划（备货）
+        Schedule:
+          description: Schedule
+        # 发货
         Ship:
           description: Ship
+        # 取消
+        Cancel:
+          description: Cancel
+        # 交付
+        Deliver:
+          description: Deliver
+        # 反转
+        Reverse:
+          description: Reverse
 
-          
           

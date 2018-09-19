@@ -111,6 +111,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual bool? IsScheduleNeeded
+        {
+            get;
+            set;
+        }
+
         public virtual DateTime? EstimatedReadyDate
         {
             get;
@@ -328,6 +334,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.Carrier = this.Carrier;
             state.DateShipped = this.DateShipped;
             if (this.IsCreatedFromPackingList != null && this.IsCreatedFromPackingList.HasValue) { state.IsCreatedFromPackingList = this.IsCreatedFromPackingList.Value; }
+            if (this.IsScheduleNeeded != null && this.IsScheduleNeeded.HasValue) { state.IsScheduleNeeded = this.IsScheduleNeeded.Value; }
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;
@@ -380,6 +387,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.Carrier = this.Carrier;
             state.DateShipped = this.DateShipped;
             if (this.IsCreatedFromPackingList != null && this.IsCreatedFromPackingList.HasValue) { state.IsCreatedFromPackingList = this.IsCreatedFromPackingList.Value; }
+            if (this.IsScheduleNeeded != null && this.IsScheduleNeeded.HasValue) { state.IsScheduleNeeded = this.IsScheduleNeeded.Value; }
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;
@@ -432,6 +440,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.Carrier = this.Carrier;
             state.DateShipped = this.DateShipped;
             if (this.IsCreatedFromPackingList != null && this.IsCreatedFromPackingList.HasValue) { state.IsCreatedFromPackingList = this.IsCreatedFromPackingList.Value; }
+            if (this.IsScheduleNeeded != null && this.IsScheduleNeeded.HasValue) { state.IsScheduleNeeded = this.IsScheduleNeeded.Value; }
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedShipWorkEffId = this.EstimatedShipWorkEffId;

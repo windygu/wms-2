@@ -129,6 +129,18 @@ public abstract class AbstractInOutNoticeState implements InOutNoticeState
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Boolean isScheduleNeeded;
+
+    public Boolean getIsScheduleNeeded()
+    {
+        return this.isScheduleNeeded;
+    }
+
+    public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+    {
+        this.isScheduleNeeded = isScheduleNeeded;
+    }
+
     private String statusId;
 
     public String getStatusId()
@@ -298,6 +310,7 @@ public abstract class AbstractInOutNoticeState implements InOutNoticeState
         this.setShippingInstructions(e.getShippingInstructions());
         this.setEstimatedShipDate(e.getEstimatedShipDate());
         this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        this.setIsScheduleNeeded(e.getIsScheduleNeeded());
         this.setStatusId(e.getStatusId());
         this.setActive(e.getActive());
 
@@ -410,6 +423,17 @@ public abstract class AbstractInOutNoticeState implements InOutNoticeState
         else
         {
             this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        }
+        if (e.getIsScheduleNeeded() == null)
+        {
+            if (e.getIsPropertyIsScheduleNeededRemoved() != null && e.getIsPropertyIsScheduleNeededRemoved())
+            {
+                this.setIsScheduleNeeded(null);
+            }
+        }
+        else
+        {
+            this.setIsScheduleNeeded(e.getIsScheduleNeeded());
         }
         if (e.getStatusId() == null)
         {

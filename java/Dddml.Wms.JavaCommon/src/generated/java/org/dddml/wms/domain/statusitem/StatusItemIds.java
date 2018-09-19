@@ -232,6 +232,11 @@ public class StatusItemIds {
     public static final String SHIPMENT_CANCELLED = "SHIPMENT_CANCELLED";
 
     /**
+     * Reversed.
+     */
+    public static final String SHIPMENT_REVERSED = "SHIPMENT_REVERSED";
+
+    /**
      * Created.
      */
     public static final String PURCH_SHIP_CREATED = "PURCH_SHIP_CREATED";

@@ -97,6 +97,8 @@ namespace Dddml.Wms.Domain.Services
 
             public DateTime? EstimatedShipDate { get; set; }
 
+            public bool? IsScheduleNeeded { get; set; }
+
             public string CommandId { get; set; }
 
             public string RequesterId { get; set; }

@@ -20,6 +20,7 @@
 	<property name="shippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
 	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
 	<property name="estimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+	<property name="isScheduleNeeded" ></property>
 	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>

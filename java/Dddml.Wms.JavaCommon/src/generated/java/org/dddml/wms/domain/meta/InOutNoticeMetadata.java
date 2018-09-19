@@ -28,6 +28,7 @@ public final class InOutNoticeMetadata {
             "shippingInstructions",
             "estimatedShipDate",
             "estimatedDeliveryDate",
+            "isScheduleNeeded",
             "statusId",
             "version",
             "createdBy",
@@ -49,6 +50,7 @@ public final class InOutNoticeMetadata {
             "String",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
+            "Boolean",
             "String",
             "Long",
             "String",
@@ -91,6 +93,8 @@ public final class InOutNoticeMetadata {
         aliasMap.put("EstimatedShipDate", "estimatedShipDate");
         aliasMap.put("estimatedDeliveryDate", "estimatedDeliveryDate");
         aliasMap.put("EstimatedDeliveryDate", "estimatedDeliveryDate");
+        aliasMap.put("isScheduleNeeded", "isScheduleNeeded");
+        aliasMap.put("IsScheduleNeeded", "isScheduleNeeded");
         aliasMap.put("statusId", "statusId");
         aliasMap.put("StatusId", "statusId");
         aliasMap.put("version", "version");

@@ -129,6 +129,18 @@ public class InOutNoticeStateDto
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Boolean isScheduleNeeded;
+
+    public Boolean getIsScheduleNeeded()
+    {
+        return this.isScheduleNeeded;
+    }
+
+    public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+    {
+        this.isScheduleNeeded = isScheduleNeeded;
+    }
+
     private String statusId;
 
     public String getStatusId()
@@ -271,6 +283,9 @@ public class InOutNoticeStateDto
             }
             if (returnedFieldsContains("EstimatedDeliveryDate")) {
                 dto.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());
+            }
+            if (returnedFieldsContains("IsScheduleNeeded")) {
+                dto.setIsScheduleNeeded(state.getIsScheduleNeeded());
             }
             if (returnedFieldsContains("StatusId")) {
                 dto.setStatusId(state.getStatusId());

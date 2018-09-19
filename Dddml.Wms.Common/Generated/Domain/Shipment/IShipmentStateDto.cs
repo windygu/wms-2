@@ -110,6 +110,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        bool? IsScheduleNeeded
+        {
+            get;
+            set;
+        }
+
         DateTime? EstimatedReadyDate
         {
             get;

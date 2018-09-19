@@ -68,6 +68,9 @@ aggregates:
       # 是否是从码单（装箱明细清单）导入产生
       IsCreatedFromPackingList:
         type: bool
+      # 是否需要先备货
+      IsScheduleNeeded:
+        type: bool
       # -------------------------
         
       EstimatedReadyDate:
@@ -213,6 +216,37 @@ aggregates:
               - sourceState: "SHIPMENT_INPUT"
                 trigger: "Ship"
                 targetState: "SHIPMENT_SHIPPED"
+                guard:
+                  Java: "!{this}.getIsScheduleNeeded()"
+                  CSharp: "!{this}.IsScheduleNeeded"
+                  
+              - sourceState: "SHIPMENT_INPUT"
+                trigger: "Schedule"
+                targetState: "SHIPMENT_SCHEDULED"
+                #guard:
+                #  Java: "{this}.getIsScheduleNeeded()"
+                #  CSharp: "{this}.IsScheduleNeeded"
+                
+              - sourceState: "SHIPMENT_INPUT"
+                trigger: "Cancel"
+                targetState: "SHIPMENT_CANCELLED"
+                
+              - sourceState: "SHIPMENT_SCHEDULED"
+                trigger: "Cancel"
+                targetState: "SHIPMENT_CANCELLED"
+                
+              - sourceState: "SHIPMENT_SCHEDULED"
+                trigger: "Ship"
+                targetState: "SHIPMENT_SHIPPED"
+                
+              - sourceState: "SHIPMENT_SHIPPED"
+                trigger: "Deliver"
+                targetState: "SHIPMENT_DELIVERED"
+
+              - sourceState: "SHIPMENT_SHIPPED"
+                trigger: "Reverse"
+                targetState: "SHIPMENT_REVERSED"
+                
             # -------------------------------------
     
     entities:

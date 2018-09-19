@@ -237,6 +237,11 @@ namespace Dddml.Wms.Domain.StatusItem
         public const string ShipmentCancelled = "SHIPMENT_CANCELLED";
 
         /// <summary>
+        /// Reversed.
+        /// </summary>
+        public const string ShipmentReversed = "SHIPMENT_REVERSED";
+
+        /// <summary>
         /// Created.
         /// </summary>
         public const string PurchShipCreated = "PURCH_SHIP_CREATED";

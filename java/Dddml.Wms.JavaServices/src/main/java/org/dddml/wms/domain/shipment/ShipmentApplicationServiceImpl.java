@@ -86,12 +86,22 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Transactional
     public void when(ShipmentCommands.SalesShipmentAction c) {
         if (Objects.equals(c.getValue(), SalesShipmentAction.SHIP)) {
+            ShipmentState shipmentState = assertShipmentId(c.getShipmentId());
+            if (!(StatusItemIds.SHIPMENT_INPUT.equals(shipmentState.getStatusId()) && !shipmentState.getIsScheduleNeeded()
+                    || StatusItemIds.SHIPMENT_SCHEDULED.equals(shipmentState.getStatusId())
+                    || StatusItemIds.SHIPMENT_PACKED.equals(shipmentState.getStatusId())//???
+            )) {
+                throw new IllegalArgumentException(String.format("Error shipment status: %1$s", shipmentState.getStatusId()));
+            }
             ShipmentCommands.ConfirmAllItemsIssued ship = new ShipmentCommands.ConfirmAllItemsIssued();
             ship.setShipmentId(c.getShipmentId());
             ship.setVersion(c.getVersion());
             ship.setCommandId(c.getCommandId());
             ship.setRequesterId(c.getRequesterId());
             when(ship);
+        } else if (Objects.equals(c.getValue(), SalesShipmentAction.REVERSE)) {
+            //todo
+            throw new UnsupportedOperationException("SalesShipmentAction.REVERSE");
         } else {
             super.when(c);
         }
@@ -630,6 +640,14 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             throw new IllegalArgumentException(String.format("Product NOT found. Product Id.: %1$s", productId));
         }
         return prdState;
+    }
+
+    private ShipmentState assertShipmentId(String shipmentId) {
+        ShipmentState shipment = getStateRepository().get(shipmentId, true);
+        if (shipment == null) {
+            throw new IllegalArgumentException(String.format("Error shipment Id.: %1$s", shipmentId));
+        }
+        return shipment;
     }
 
     private ShipmentState assertShipmentStatus(String shipmentId, String status) {

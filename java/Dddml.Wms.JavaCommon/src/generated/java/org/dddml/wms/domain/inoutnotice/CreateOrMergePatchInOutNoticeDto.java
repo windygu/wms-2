@@ -141,6 +141,21 @@ public class CreateOrMergePatchInOutNoticeDto extends AbstractInOutNoticeCommand
     }
 
     /**
+     * Is Schedule Needed
+     */
+    private Boolean isScheduleNeeded;
+
+    public Boolean getIsScheduleNeeded()
+    {
+        return this.isScheduleNeeded;
+    }
+
+    public void setIsScheduleNeeded(Boolean isScheduleNeeded)
+    {
+        this.isScheduleNeeded = isScheduleNeeded;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -263,6 +278,18 @@ public class CreateOrMergePatchInOutNoticeDto extends AbstractInOutNoticeCommand
         this.isPropertyEstimatedDeliveryDateRemoved = removed;
     }
 
+    private Boolean isPropertyIsScheduleNeededRemoved;
+
+    public Boolean getIsPropertyIsScheduleNeededRemoved()
+    {
+        return this.isPropertyIsScheduleNeededRemoved;
+    }
+
+    public void setIsPropertyIsScheduleNeededRemoved(Boolean removed)
+    {
+        this.isPropertyIsScheduleNeededRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -287,6 +314,7 @@ public class CreateOrMergePatchInOutNoticeDto extends AbstractInOutNoticeCommand
         command.setShippingInstructions(this.getShippingInstructions());
         command.setEstimatedShipDate(this.getEstimatedShipDate());
         command.setEstimatedDeliveryDate(this.getEstimatedDeliveryDate());
+        command.setIsScheduleNeeded(this.getIsScheduleNeeded());
         command.setActive(this.getActive());
     }
 
@@ -324,6 +352,7 @@ public class CreateOrMergePatchInOutNoticeDto extends AbstractInOutNoticeCommand
         command.setIsPropertyShippingInstructionsRemoved(this.getIsPropertyShippingInstructionsRemoved());
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
         command.setIsPropertyEstimatedDeliveryDateRemoved(this.getIsPropertyEstimatedDeliveryDateRemoved());
+        command.setIsPropertyIsScheduleNeededRemoved(this.getIsPropertyIsScheduleNeededRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

@@ -28,6 +28,7 @@
     <property name="ShippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
     <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
     <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+    <property name="IsScheduleNeeded" ></property>
     <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
     <property name="Active" ></property>
     <subclass name="InOutNoticeStateCreated" discriminator-value="Created">
@@ -54,6 +55,8 @@
         <property name="IsPropertyEstimatedShipDateRemoved" column="IsPropertyEstimatedShipDateRemoved"/>
 
         <property name="IsPropertyEstimatedDeliveryDateRemoved" column="IsPropertyEstimatedDeliveryDateRemoved"/>
+
+        <property name="IsPropertyIsScheduleNeededRemoved" column="IsPropertyIsScheduleNeededRemoved"/>
 
         <property name="IsPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
 

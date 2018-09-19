@@ -52,6 +52,10 @@ public interface InOutNoticeState
 
     void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
 
+    Boolean getIsScheduleNeeded();
+
+    void setIsScheduleNeeded(Boolean isScheduleNeeded);
+
     String getStatusId();
 
     void setStatusId(String statusId);

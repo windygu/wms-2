@@ -4911,7 +4911,7 @@
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Services\IdServiceCommandDtos.cs">
-      <DependentUpon>GenerateDomainServicesDtos.tt</DependentUpon>
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Services\IdServiceCommands.cs">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
@@ -4929,7 +4929,7 @@
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Services\OrderShipGroupServiceCommandDtos.cs">
-      <DependentUpon>GenerateDomainServicesDtos.tt</DependentUpon>
+      <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Services\OrderShipGroupServiceCommands.cs">
       <DependentUpon>GenerateBoundedContextDomainServices.tt</DependentUpon>
