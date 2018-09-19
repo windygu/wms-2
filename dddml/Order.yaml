@@ -465,7 +465,9 @@ aggregates:
                 type: int
                 
               # 用于建立唯一约束的 Key。
-              #（比如一个订单、一个装运组内，多个 OrderItemShipGroupAssociation 不能关联到同一个产品。）
+              #（比如一个订单、一个装运组内，多个 OrderItemShipGroupAssociation 不能关联到同一个产品。
+              # 也就是说，让同一个订单装运组内，一个产品只能有一个“行项”，
+              # 这可能会让一些业务逻辑的实现变成更简单。）
               OrderItemShipGroupAssociationKey:
                 type: id-vlong
                 
