@@ -107,6 +107,30 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
     }
 
+    public static void createShipmentItem(ShipmentCommand.CreateOrMergePatchShipment shipmentCommand,
+                                   String productId, String shipmentItemSeqId, BigDecimal quantity) {
+        ShipmentItemCommand.CreateShipmentItem shipmentItem = null;
+        if (shipmentCommand instanceof ShipmentCommand.CreateShipment) {
+            shipmentItem = ((ShipmentCommand.CreateShipment) shipmentCommand).newCreateShipmentItem();
+        } else if (shipmentCommand instanceof ShipmentCommand.MergePatchShipment) {
+            shipmentItem = ((ShipmentCommand.MergePatchShipment) shipmentCommand).newCreateShipmentItem();
+        } else {
+            throw new RuntimeException("Unknown command type.");
+        }
+        shipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
+        shipmentItem.setProductId(productId);
+        shipmentItem.setQuantity(quantity);
+        shipmentItem.setActive(true);
+        if (shipmentCommand instanceof ShipmentCommand.CreateShipment) {
+            ((ShipmentCommand.CreateShipment) shipmentCommand).getShipmentItems().add(shipmentItem);
+        } else if (shipmentCommand instanceof ShipmentCommand.MergePatchShipment) {
+            ((ShipmentCommand.MergePatchShipment) shipmentCommand).getShipmentItemCommands().add(shipmentItem);
+        } else {
+            throw new RuntimeException("Unknown command type.");
+        }
+    }
+
+
     //    @Override
     //    @Transactional
     //    public void when(ShipmentCommands.Ship c) {
