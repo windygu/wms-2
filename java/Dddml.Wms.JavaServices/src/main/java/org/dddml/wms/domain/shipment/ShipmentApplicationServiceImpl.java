@@ -588,14 +588,19 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
 
         ProductState productState = getProductState(productId);
-        //todo 应该对 AttributeSetInstancd 做检查？
-        // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
-        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
-                getAttributeSetService(), getAttributeSetInstanceApplicationService(),
-                productState.getAttributeSetId(), attributeSetInstance);
-        //        if (_log.IsDebugEnabled) {
-        //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
-        //        }
+        String attrSetInstId = null;
+        if (attributeSetInstance == null) {
+            attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
+        } else {
+            //todo 应该对 AttributeSetInstancd 做检查？
+            // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
+            attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
+                    getAttributeSetService(), getAttributeSetInstanceApplicationService(),
+                    productState.getAttributeSetId(), attributeSetInstance);
+            //        if (_log.IsDebugEnabled) {
+            //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
+            //        }
+        }
         updateReceipt.setAttributeSetInstanceId(attrSetInstId);
         updateReceipt.setReceiptSeqId(receiptSeqId);
         updateReceipt.setShipmentItemSeqId(shipmentItemSeqId);

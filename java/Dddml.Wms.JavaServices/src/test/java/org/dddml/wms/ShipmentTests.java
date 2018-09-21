@@ -5,6 +5,8 @@ import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
 import org.dddml.wms.domain.product.AbstractProductCommand;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductCommand;
+import org.dddml.wms.domain.service.OrderShipGroupApplicationService;
+import org.dddml.wms.domain.service.OrderShipGroupServiceCommands;
 import org.dddml.wms.domain.shipment.*;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.specialization.ApplicationContext;
@@ -22,11 +24,14 @@ public class ShipmentTests {
 
     private AttributeSetInstanceApplicationService attributeSetInstanceApplicationService;
 
+    private OrderShipGroupApplicationService orderShipGroupApplicationService;
+
     public void setUp() {
         //super.SetUp();
         shipmentApplicationService = (ShipmentApplicationService) ApplicationContext.current.get("shipmentApplicationService");
         productApplicationService = (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
         attributeSetInstanceApplicationService = (AttributeSetInstanceApplicationService) ApplicationContext.current.get("attributeSetInstanceApplicationService");
+        orderShipGroupApplicationService = (OrderShipGroupApplicationService) ApplicationContext.current.get("orderShipGroupApplicationService");
     }
 
     public void testImportAndReceive() {
@@ -38,8 +43,7 @@ public class ShipmentTests {
         // Create a shipment.
         String shipmentId = createShipment_1(prd_1);
 
-        //updateShipmentToPurchShipShipped(shipmentId);
-        if (true) return;
+        updatePurchaseShipmentToShipped(shipmentId);
 
         receiveAllItems(shipmentId);
 
@@ -51,13 +55,14 @@ public class ShipmentTests {
     }
 
     private void updateShipmentToPurchShipReceived(String shipmentId) {
+        ShipmentState shipmentState = shipmentApplicationService.get(shipmentId);
         //var updateShipment = new MergePatchShipment();
         ShipmentCommands.ConfirmAllItemsReceived updateShipment = new ShipmentCommands.ConfirmAllItemsReceived();
         updateShipment.setShipmentId(shipmentId);
+        updateShipment.setVersion(shipmentState.getVersion());
         updateShipment.setDestinationLocatorId(InOutTests.TEST_LOCATOR_ID_1_RECEIVING_AREA);
         updateShipment.setCommandId(UUID.randomUUID().toString());
         //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
-        updateShipment.setVersion(3L); //todo???
         shipmentApplicationService.when(updateShipment);
     }
 
@@ -92,25 +97,30 @@ public class ShipmentTests {
                 // //////////////////////////////////
                 receiveItem.setAttributeSetInstance(attrSetInst_1);
             }
+            // else {
+            //    throw new RuntimeException("null == item.getAttributeSetInstanceId()");
+            //}
 
             receiveItem.setCommandId(UUID.randomUUID().toString());
             receiveItem.setVersion(version);
+            receiveItem.setReceiptSeqId(receiveItem.getShipmentItemSeqId());
             shipmentApplicationService.when(receiveItem);
 
             version++;
         }
     }
 
-    //    private void updateShipmentToPurchShipShipped(String shipmentId) {
-    //        long firstVersion = 0L;
-    //        //var updateShipment = new MergePatchShipment();
-    //        ShipmentCommands.Ship updateShipment = new ShipmentCommands.Ship();
-    //        updateShipment.setShipmentId(shipmentId);
-    //        updateShipment.setCommandId(UUID.randomUUID().toString());
-    //        //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
-    //        updateShipment.setVersion(firstVersion);
-    //        shipmentApplicationService.when(updateShipment);
-    //    }
+    private void updatePurchaseShipmentToShipped(String shipmentId) {
+        //long firstVersion = 0L;
+        //var updateShipment = new MergePatchShipment();
+        OrderShipGroupServiceCommands.ShipPOShipment updateShipment = new OrderShipGroupServiceCommands.ShipPOShipment();
+        updateShipment.setShipmentId(shipmentId);
+        updateShipment.setCommandId(UUID.randomUUID().toString());
+        updateShipment.setHintShipmentItemsEnabled(true);
+        //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
+        //updateShipment.setVersion(firstVersion);
+        orderShipGroupApplicationService.when(updateShipment);
+    }
 
     private String createShipment_1(ProductCommand.CreateProduct prd_1) {
         String shipmentId = new java.util.Date().getTime() + "";
@@ -119,10 +129,10 @@ public class ShipmentTests {
 
         String prdId = prd_1.getProductId();
 
-        String rollId_1 = "H71051402A";
+        String rollId_1 = "" + UUID.randomUUID().hashCode();//"H71051402A";
         ImportingShipmentItem shipItem_1 = newImportingShipmentItem(prdId, rollId_1);
 
-        String rollId_2 = "H00000000A";
+        String rollId_2 = "" + UUID.randomUUID().hashCode();//"H00000000A";
         ImportingShipmentItem shipItem_2 = newImportingShipmentItem(prdId, rollId_2);
 
         shipImport.setShipmentItems(
@@ -132,6 +142,7 @@ public class ShipmentTests {
         //shipImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);
         shipImport.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);//先保证采购装运是正确的。
         shipImport.setDestinationFacilityId("TEST_1");
+        shipImport.setPrimaryOrderId("" + UUID.randomUUID().hashCode());
 
         shipmentApplicationService.when(shipImport);
         return shipmentId;

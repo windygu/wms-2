@@ -44,6 +44,7 @@ public class OrderShipGroupTests {
         shipmentApplicationService = (ShipmentApplicationService) ApplicationContext.current.get("shipmentApplicationService");
         orderApplicationService = (OrderApplicationService) ApplicationContext.current.get("orderApplicationService");
     }
+    //todo 重写这些注释掉的测试代码
 /*
     public void testCreatePOShipGroup1() {
         String partyId = createTestPersonParty();

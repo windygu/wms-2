@@ -198,6 +198,9 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         // //////////////////////////////////////////////////////
         String shipmentId = c.getShipmentId();
         ShipmentState shipmentState = assertShipmentStatus(shipmentId, StatusItemIds.PURCH_SHIP_CREATED);
+        if (shipmentState.getPrimaryOrderId() == null || shipmentState.getPrimaryOrderId().trim().isEmpty()) {
+            throw new NullPointerException("Shipment primaryOrderId is null.");
+        }
         if (shipmentState.getPrimaryOrderId() != null && c.getPrimaryOrderId() != null
                 && !shipmentState.getPrimaryOrderId().equals(c.getPrimaryOrderId())) {
             throw new IllegalArgumentException("Shipment primaryOrderId CANNOT be modified.");
@@ -214,8 +217,6 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
                 && c.getPrimaryShipGroupSeqId() != null && !c.getPrimaryShipGroupSeqId().trim().isEmpty()) {
             // /////////////////////////////////////////////////////////
             // 添加之前已有装运单行项，与订单装运组之间的关联
-            //String primaryOrderId = c.getPrimaryOrderId();
-            //String primaryShipGroupSeqId = c.getPrimaryShipGroupSeqId();
             Map<String, OrderItemId> productOrderItemMap = getProductOrderItemMap(c.getPrimaryOrderId(), c.getPrimaryShipGroupSeqId());
             createOrderShipmentMap(shipmentState, c.getPrimaryOrderId(), c.getPrimaryShipGroupSeqId(), productOrderItemMap, c);
             // /////////////////////////////////////////////////////////
@@ -233,20 +234,54 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             // ///////////////// 更新状态到“已发运” ///////////////////////////
             setPOShipmentShipped(shipmentId, shipmentState.getVersion(), c.getRequesterId());
         } else {
+            String primaryOrderId = shipmentState.getPrimaryOrderId();
+            assert primaryOrderId != null && !primaryOrderId.trim().isEmpty();
+            assert shipmentState.getPrimaryShipGroupSeqId() == null;
+            String primaryShipGroupSeqId = "SG" + seqIdGenerator.getNextId();//create a new orderShipGroupSeqId
             ShipmentCommand.MergePatchShipment mergePatchShipment = getMergePatchShipmentCommand(shipmentState, c);
-            // 增加一些数量为 0 的装运行项目（“提示”）
-            Set<String> prdIds = new HashSet<>();
+            mergePatchShipment.setPrimaryShipGroupSeqId(primaryShipGroupSeqId);
+            //得到装运的产品与数量
+            Map<String, BigDecimal> prdIdQtyMap = new HashMap<>();
             for (ShipmentItemState item : shipmentState.getShipmentItems()) {
-                prdIds.add(item.getProductId());
+                if (!prdIdQtyMap.containsKey(item.getProductId())) {
+                    prdIdQtyMap.put(item.getProductId(), BigDecimal.ZERO);
+                }
+                prdIdQtyMap.put(item.getProductId(), prdIdQtyMap.get(item.getProductId()).add(item.getQuantity()));
             }
-            for (String prdId : prdIds) {
+            //反过来创建订单装运组
+            createPOShipGroup(primaryOrderId, primaryShipGroupSeqId, prdIdQtyMap, c);
+            // 增加一些数量为 0 的装运行项目（“提示”）
+            for (String prdId : prdIdQtyMap.keySet()) {
                 String shipmentItemSeqId = seqIdGenerator.getNextId().toString();
                 ShipmentApplicationServiceImpl.createShipmentItem(mergePatchShipment, prdId, shipmentItemSeqId, BigDecimal.ZERO);
             }
             getShipmentApplicationService().when(mergePatchShipment);
+            // /////////////////////////////////////////
+            // 添加装运单行项，与订单装运组之间的关联
+            Map<String, OrderItemId> productOrderItemMap = getProductOrderItemMap(primaryOrderId, primaryShipGroupSeqId);
+            createOrderShipmentMap(shipmentState, primaryOrderId, primaryShipGroupSeqId, productOrderItemMap, c);
             // ///////////////// 更新状态到“已发运” ///////////////////////////
             setPOShipmentShipped(shipmentId, shipmentState.getVersion(), c.getRequesterId());
         }
+    }
+
+    private void createPOShipGroup(String primaryOrderId, String primaryShipGroupSeqId,
+                                   Map<String, BigDecimal> prdIdQtyMap, OrderShipGroupServiceCommands.ShipPOShipment c) {
+        OrderShipGroupServiceCommands.CreatePOShipGroups createPOShipGroups = new OrderShipGroupServiceCommands.CreatePOShipGroups();
+        createPOShipGroups.setFacilityId(c.getOriginFacilityId());
+        createPOShipGroups.setRequesterId(c.getRequesterId());
+        createPOShipGroups.setCommandId(UUID.randomUUID().toString());
+        List<OrderItemShipGroupAssociationInfo> orderItemShipGroupAssociations = new ArrayList<>();
+        for (Map.Entry<String, BigDecimal> kv : prdIdQtyMap.entrySet()) {
+            OrderItemShipGroupAssociationInfo a = new OrderItemShipGroupAssociationInfo();
+            a.setProductId(kv.getKey());
+            a.setQuantity(kv.getValue());
+            a.setOrderId(primaryOrderId);
+            a.setShipGroupSeqId(primaryShipGroupSeqId);
+            orderItemShipGroupAssociations.add(a);
+        }
+        createPOShipGroups.setOrderItemShipGroupAssociations(orderItemShipGroupAssociations);
+        this.when(createPOShipGroups);
     }
 
     private ShipmentCommand.MergePatchShipment getMergePatchShipmentCommand(ShipmentState shipmentState,
