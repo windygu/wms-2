@@ -41,6 +41,8 @@ aggregates:
               guard:
                 Java: "{this}.getIsInTransit() == false"
                 CSharp: "{this}.IsInTransit == false"
+                PropertyConjunction:
+                  IsInTransit: false
               
             - sourceState: "Drafted"
               trigger: "Complete"
@@ -49,6 +51,8 @@ aggregates:
               guard:
                 Java: "{this}.getIsInTransit() == true"
                 CSharp: "{this}.IsInTransit == true"
+                PropertyConjunction:
+                  IsInTransit: true
                 
             - sourceState: "InProgress"
               trigger: "Confirm"
@@ -64,6 +68,8 @@ aggregates:
               guard:
                 Java: "{this}.getIsInTransit() == false"
                 CSharp: "{this}.IsInTransit == false"
+                PropertyConjunction:
+                  IsInTransit: false
               
           # -------------------------------------
           

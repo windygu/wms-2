@@ -219,6 +219,9 @@ aggregates:
                 guard:
                   Java: "!{this}.getIsScheduleNeeded()"
                   CSharp: "!{this}.IsScheduleNeeded"
+                  PropertyConjunction:
+                    IsScheduleNeeded: false
+
                   
               - sourceState: "SHIPMENT_INPUT"
                 trigger: "Schedule"
