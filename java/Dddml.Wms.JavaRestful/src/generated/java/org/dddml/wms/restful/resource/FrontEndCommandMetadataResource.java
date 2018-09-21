@@ -1,23 +1,26 @@
 package org.dddml.wms.restful.resource;
 
 import java.util.*;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.meta.*;
-
 
 @RestController
 public class FrontEndCommandMetadataResource {
 
 
-    private List<FrontEndCommand> frontEndCommands;
+    //private List<FrontEndCommand> frontEndCommands;
 
     public List<FrontEndCommand> getFrontEndCommands() {
-        if(frontEndCommands != null) {
-            return frontEndCommands;
-        }
+        //if(frontEndCommands != null) {
+        //    return frontEndCommands;
+        //}
 
         List<FrontEndCommand> cmds = new ArrayList<>();
         FrontEndCommand cmd = null;
@@ -373,13 +376,36 @@ public class FrontEndCommandMetadataResource {
         // ///////////////  state machine end.  //////////////////
 
 
-        frontEndCommands = cmds;
-        return frontEndCommands;
+        return cmds;//frontEndCommands = cmds;
     }
 
+    private String getDisplayName(String msg, HttpServletRequest request) {
+        if (messageSource == null) {
+            return msg;
+        }
+        Locale locale = null;
+        if (this.localeResolver != null) {
+            locale = this.localeResolver.resolveLocale(request);
+        }
+        msg = this.messageSource.getMessage(msg, (Object[]) null, msg, locale);
+        return msg;
+    }
+
+    @Autowired
+    private MessageSource messageSource;
+
+    @Autowired
+    private LocaleResolver localeResolver;
+
     @GetMapping("_metadata/frontEndCommands")
-    public List<FrontEndCommand> getFrontEndCommandMetadata() {
-        return getFrontEndCommands();
+    public List<FrontEndCommand> getFrontEndCommandMetadata( HttpServletRequest request) {
+        List<FrontEndCommand> cmds = getFrontEndCommands();
+        for (FrontEndCommand cmd : cmds) {
+            for (FrontEndCommand.CommandInstance ci : cmd.getCommandInstances()) {
+                ci.setDisplayName(getDisplayName(ci.getDisplayName(), request));
+            }
+        }
+        return cmds;
     }
 
     public static class FrontEndCommand {
