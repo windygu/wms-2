@@ -75,12 +75,15 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\FacilityResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\FrontEndCommandMetadataResource.java">
+      <DependentUpon>GenerateMetadataResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateMetadataResources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateMetadataResources1.txt</LastGenOutput>
       <LastOutputs>
+.\FrontEndCommandMetadataResource.java
 .\GenerateMetadataResources1.txt
-.\StateMachineMetadataResource.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateDomainServicesResources.txt">
@@ -240,9 +243,6 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentTypeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\restful\resource\StateMachineMetadataResource.java">
-      <DependentUpon>GenerateMetadataResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\StatusItemResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
