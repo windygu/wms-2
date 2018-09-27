@@ -54,7 +54,7 @@ public class PhysicalInventoryTests {
         Long piVersion = physicalInventoryState.getVersion();
 
         // ///////////////////////////// 增加一个盘点行 /////////////////////////////////
-        PhysicalInventoryCommands.CountItem countItem_1 = createTestCountItem(prdId_1, piId, piVersion);
+        PhysicalInventoryCommands.CountItem countItem_1 = createTestCountItem(piId, prdId_1, piVersion);
         physicalInventoryApplicationService.when(countItem_1);
         piVersion++;
 
@@ -106,7 +106,7 @@ public class PhysicalInventoryTests {
         physicalInventoryApplicationService.when(patchPhysicalInventory);
     }
 
-    PhysicalInventoryCommands.CountItem createTestCountItem(String productId, String piId, Long physicalInventoryVersion) {
+    PhysicalInventoryCommands.CountItem createTestCountItem(String piId, String productId, Long physicalInventoryVersion) {
         PhysicalInventoryCommands.CountItem countItem_1 = new PhysicalInventoryCommands.CountItem();
         countItem_1.setDocumentNumber(piId);
         countItem_1.setVersion(physicalInventoryVersion);

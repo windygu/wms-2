@@ -23,7 +23,9 @@ spring:
 
 server:
   port: 8080
-  servlet-path: /api
+  servlet:
+    context-path: /
+    path: /api
   compression:
     enabled: true
     min-response-size: 20480  #20K 以上开启gzip
