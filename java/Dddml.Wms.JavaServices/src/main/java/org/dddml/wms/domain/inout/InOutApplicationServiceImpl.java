@@ -334,7 +334,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         String quantityUomId = d.getQuantityUomId();
         BigDecimal movementQty = d.getMovementQuantity();
         if (DocumentTypeIds.OUT.equalsIgnoreCase(inOutState.getDocumentTypeId())) {
-            if (BigDecimal.ZERO.compareTo(movementQty) > 0) {
+            if (!(BigDecimal.ZERO.compareTo(movementQty) > 0)) {
                 throw new IllegalArgumentException("Movement quantity must be negative.");
             }
         }
