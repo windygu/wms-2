@@ -356,12 +356,17 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         ProductState productState = getProductState(productId);
         //todo 应该对 AttributeSetInstancd 做检查？
         // assertAttributeSetInstance(prodcutState, attrSetInstMap)???
-        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
-                getAttributeSetService(), getAttributeSetInstanceApplicationService(),
-                productState.getAttributeSetId(), attrSetInstMap);
-        //if (_log.IsDebugEnabled) {
-        //    _log.Debug("Create attribute set instance, id: " + attrSetInstId);
-        //}
+        String attrSetInstId = null;
+        if (attrSetInstMap == null) {
+            attrSetInstId = InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID;
+        } else {
+            attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
+                    getAttributeSetService(), getAttributeSetInstanceApplicationService(),
+                    productState.getAttributeSetId(), attrSetInstMap);
+            //if (_log.IsDebugEnabled) {
+            //    _log.Debug("Create attribute set instance, id: " + attrSetInstId);
+            //}
+        }
         InOutLineCommand.CreateInOutLine line = new AbstractInOutLineCommand.SimpleCreateInOutLine();
         line.setLineNumber(lineNumber);
         line.setProductId(productState.getProductId());

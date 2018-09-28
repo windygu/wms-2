@@ -43,7 +43,7 @@ public class InOutTests {
     }
 
     private void testInThenOut_Out(String prdId) {
-        String outDocumentNumber = createInOutForTest(inOutApplicationService, DocumentTypeIds.OUT, prdId, BigDecimal.valueOf(-123));
+        String outDocumentNumber = createInOutForTest2(inOutApplicationService, DocumentTypeIds.OUT, prdId, BigDecimal.valueOf(-123));
         completeInOut(outDocumentNumber);
     }
 
@@ -176,8 +176,50 @@ public class InOutTests {
         return documentNumber;
     }
 
+
+    private String createInOutForTest2(InOutApplicationService inOutApplicationService, String documentTypeId,
+                                      String productId, BigDecimal movementQuantity) {
+        String documentNumber = UUID.randomUUID().toString();
+
+        InOutCommand.CreateInOut inOut = new AbstractInOutCommand.SimpleCreateInOut();
+        inOut.setDocumentNumber(documentNumber);
+        inOut.setCommandId(UUID.randomUUID().toString());
+        //inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
+        //inOut.ChargeAmount = new Money(10000, "CNY");
+        //inOut.FreightAmount = new Money(400, "CNY");
+        inOut.setMovementTypeId(documentTypeId);
+        inOut.setMovementDate(new java.util.Date());
+        inOutApplicationService.when(inOut);
+
+        InOutState inOutState = inOutApplicationService.get(documentNumber);
+        InOutCommands.AddLine line_1 = new InOutCommands.AddLine();
+        line_1.setDocumentNumber(documentNumber);
+        line_1.setLineNumber(String.valueOf(new java.util.Date().getTime()));
+        line_1.setProductId(productId);
+        line_1.setLocatorId(TEST_LOCATOR_ID_2);//("TEST_" + new java.util.Date().getTime());
+        line_1.setAttributeSetInstance(null);
+        line_1.setMovementQuantity(movementQuantity);
+        line_1.setVersion(inOutState.getVersion());
+        line_1.setCommandId(UUID.randomUUID().toString());
+        inOutApplicationService.when(line_1);
+
+        return documentNumber;
+    }
+
     private String getTestProductId2() {
-        return "TEST_" + new java.util.Date().getTime();//todo???
+        String productId = "TEST_" + new java.util.Date().getTime();
+        ProductCommand.CreateProduct prd_1 = new AbstractProductCommand.SimpleCreateProduct();
+        prd_1.setProductId(productId); //Guid.NewGuid().ToString();
+        prd_1.setProductName("Test_" + prd_1.getProductId());
+        //prd_1.setPrimaryProductCategoryId(InitAttributeSets.FLUFF_PULP_PRODUCT_CATEGORY_ID);
+        //prd_1.setAttributeSetId(InitAttributeSets.FLUFF_PULP_ATTR_SET_ID);//"FluffPulpAttrSet");
+        //prd_1.setAttributeSetInstanceId(InitAttributeSets.FP_SECONDARY_QTY_UOM_ADMT_ATTR_SET_INST_ID);
+        prd_1.setIsSerialNumbered(false);
+        prd_1.setQuantityUomId(UomIds.kg);
+        prd_1.setCommandId(UUID.randomUUID().toString());
+
+        productApplicationService.when(prd_1);
+        return productId;
     }
 
 }

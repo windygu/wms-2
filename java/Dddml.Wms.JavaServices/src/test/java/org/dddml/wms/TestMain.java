@@ -46,6 +46,14 @@ public class TestMain {
         //movementTests_0.setUp();
         //movementTests_0.testCreateAndCompleteAndReverseMovement();
         //if (true) return;
+        //ShipmentTests shipmentTests_0 = new ShipmentTests();
+        //shipmentTests_0.setUp();
+        //shipmentTests_0.testImportAndReceive();
+        //if (true) return;
+        //InOutTests inOutTests_0 = new InOutTests();
+        //inOutTests_0.setUp();
+        //inOutTests_0.testInThenOut();//测试入库后马上出库，该产品的库存应该为 0
+        //if (true) return;
 
         // //////////////////  initialize database data /////////////////
         if (true) { // if need to initialize, switch to true, else to false.
