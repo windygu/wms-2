@@ -606,6 +606,16 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.purchaseShipmentAction = purchaseShipmentAction;
         }
                 
+        private String salesShipmentAction;
+ 
+        public String getSalesShipmentAction() {
+            return this.salesShipmentAction;
+        }
+
+        public void setSalesShipmentAction(String salesShipmentAction) {
+            this.salesShipmentAction = salesShipmentAction;
+        }
+                
         private Boolean isPropertyShipmentTypeIdRemoved;
 
         public Boolean getIsPropertyShipmentTypeIdRemoved()

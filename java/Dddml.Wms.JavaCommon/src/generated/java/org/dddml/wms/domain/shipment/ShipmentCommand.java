@@ -204,6 +204,10 @@ public interface ShipmentCommand extends Command
 
         void setPurchaseShipmentAction(String purchaseShipmentAction);
                 
+        String getSalesShipmentAction();
+
+        void setSalesShipmentAction(String salesShipmentAction);
+                
         Boolean getIsPropertyShipmentTypeIdRemoved();
 
         void setIsPropertyShipmentTypeIdRemoved(Boolean removed);

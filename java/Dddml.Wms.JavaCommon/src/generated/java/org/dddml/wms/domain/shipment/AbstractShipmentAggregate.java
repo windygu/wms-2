@@ -131,6 +131,14 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ShipmentEventId stateEventId = new ShipmentEventId(c.getShipmentId(), c.getVersion());
         ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(stateEventId);
         e.setShipmentTypeId(c.getShipmentTypeId());
+        if (ShipmentTypeId.PURCHASE_SHIPMENT.equals(c.getShipmentTypeId())) {
+            if (c.getPurchaseShipmentAction() != null)
+            newShipmentPurchaseShipmentActionCommandAndExecute(c, state, e);
+        }
+        if (ShipmentTypeId.SALES_SHIPMENT.equals(c.getShipmentTypeId())) {
+            if (c.getSalesShipmentAction() != null)
+            newShipmentSalesShipmentActionCommandAndExecute(c, state, e);
+        }
         e.setPrimaryOrderId(c.getPrimaryOrderId());
         e.setPrimaryReturnId(c.getPrimaryReturnId());
         e.setPrimaryShipGroupSeqId(c.getPrimaryShipGroupSeqId());
@@ -844,6 +852,19 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         return new AbstractItemIssuanceEvent.SimpleItemIssuanceStateRemoved(stateEventId);
     }
 
+    protected void newShipmentPurchaseShipmentActionCommandAndExecute(ShipmentCommand.MergePatchShipment c, ShipmentState s, ShipmentEvent.ShipmentStateMergePatched e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentPurchaseShipmentActionCommandHandler();
+        String pCmdContent = c.getPurchaseShipmentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getStatusId());
+        pCmd.setStateSetter(p -> e.setStatusId(p));
+        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
     protected void newShipmentPurchaseShipmentActionCommandAndExecute(ShipmentCommand.CreateShipment c, ShipmentState s, ShipmentEvent.ShipmentStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentPurchaseShipmentActionCommandHandler();
@@ -888,6 +909,19 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
             return (PropertyCommandHandler<String, String>) h;
         }
         return this.shipmentPurchaseShipmentActionCommandHandler;
+    }
+
+    protected void newShipmentSalesShipmentActionCommandAndExecute(ShipmentCommand.MergePatchShipment c, ShipmentState s, ShipmentEvent.ShipmentStateMergePatched e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getShipmentSalesShipmentActionCommandHandler();
+        String pCmdContent = c.getSalesShipmentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getStatusId());
+        pCmd.setStateSetter(p -> e.setStatusId(p));
+        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
     }
 
     protected void newShipmentSalesShipmentActionCommandAndExecute(ShipmentCommand.CreateShipment c, ShipmentState s, ShipmentEvent.ShipmentStateCreated e)
@@ -990,11 +1024,15 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         @Override
         public void purchaseShipmentAction(String value, Long version, String commandId, String requesterId) {
             ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
-            doPurchaseShipmentAction(value, s -> e.setStatusId(s));
+            purchaseShipmentAction(e, value);
             apply(e);
         }
 
-        protected  void doPurchaseShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
+        protected void purchaseShipmentAction(ShipmentEvent.ShipmentStateMergePatched e, String value) {
+            doPurchaseShipmentAction(value, s -> e.setStatusId(s));
+        }
+
+        protected void doPurchaseShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
             if (!ShipmentTypeId.PURCHASE_SHIPMENT.equals(this.getState().getShipmentTypeId())) {
                 throw new UnsupportedOperationException("Incorrect subtype.");
             }
@@ -1011,11 +1049,15 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         @Override
         public void salesShipmentAction(String value, Long version, String commandId, String requesterId) {
             ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
-            doSalesShipmentAction(value, s -> e.setStatusId(s));
+            salesShipmentAction(e, value);
             apply(e);
         }
 
-        protected  void doSalesShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
+        protected void salesShipmentAction(ShipmentEvent.ShipmentStateMergePatched e, String value) {
+            doSalesShipmentAction(value, s -> e.setStatusId(s));
+        }
+
+        protected void doSalesShipmentAction(String value, java.util.function.Consumer<String> setStatusId) {
             if (!ShipmentTypeId.SALES_SHIPMENT.equals(this.getState().getShipmentTypeId())) {
                 throw new UnsupportedOperationException("Incorrect subtype.");
             }

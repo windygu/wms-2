@@ -88,6 +88,8 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
         e.setIsScheduleNeeded(c.getIsScheduleNeeded());
+        if (c.getInOutNoticeAction() != null)
+        newInOutNoticeInOutNoticeActionCommandAndExecute(c, state, e);
         e.setActive(c.getActive());
         e.setIsPropertyWarehouseIdRemoved(c.getIsPropertyWarehouseIdRemoved());
         e.setIsPropertyInOutNoticeTypeRemoved(c.getIsPropertyInOutNoticeTypeRemoved());
@@ -158,6 +160,19 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
         return new AbstractInOutNoticeEvent.SimpleInOutNoticeStateDeleted(stateEventId);
     }
 
+    protected void newInOutNoticeInOutNoticeActionCommandAndExecute(InOutNoticeCommand.MergePatchInOutNotice c, InOutNoticeState s, InOutNoticeEvent.InOutNoticeStateMergePatched e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutNoticeInOutNoticeActionCommandHandler();
+        String pCmdContent = c.getInOutNoticeAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getStatusId());
+        pCmd.setStateSetter(p -> e.setStatusId(p));
+        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
     protected void newInOutNoticeInOutNoticeActionCommandAndExecute(InOutNoticeCommand.CreateInOutNotice c, InOutNoticeState s, InOutNoticeEvent.InOutNoticeStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getInOutNoticeInOutNoticeActionCommandHandler();
@@ -221,11 +236,15 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
         @Override
         public void inOutNoticeAction(String value, Long version, String commandId, String requesterId) {
             InOutNoticeEvent.InOutNoticeStateMergePatched e = newInOutNoticeStateMergePatched(version, commandId, requesterId);
-            doInOutNoticeAction(value, s -> e.setStatusId(s));
+            inOutNoticeAction(e, value);
             apply(e);
         }
 
-        protected  void doInOutNoticeAction(String value, java.util.function.Consumer<String> setStatusId) {
+        protected void inOutNoticeAction(InOutNoticeEvent.InOutNoticeStateMergePatched e, String value) {
+            doInOutNoticeAction(value, s -> e.setStatusId(s));
+        }
+
+        protected void doInOutNoticeAction(String value, java.util.function.Consumer<String> setStatusId) {
             PropertyCommandHandler<String, String> pCommandHandler = this.getInOutNoticeInOutNoticeActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);

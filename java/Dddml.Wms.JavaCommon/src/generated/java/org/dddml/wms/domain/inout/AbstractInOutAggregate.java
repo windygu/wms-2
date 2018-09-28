@@ -175,6 +175,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutEvent map(InOutCommand.MergePatchInOut c) {
         InOutEventId stateEventId = new InOutEventId(c.getDocumentNumber(), c.getVersion());
         InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
+        if (c.getDocumentAction() != null)
+        newInOutDocumentActionCommandAndExecute(c, state, e);
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
         e.setProcessing(c.getProcessing());
@@ -648,6 +650,19 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return new AbstractInOutLineImageEvent.SimpleInOutLineImageStateRemoved(stateEventId);
     }
 
+    protected void newInOutDocumentActionCommandAndExecute(InOutCommand.MergePatchInOut c, InOutState s, InOutEvent.InOutStateMergePatched e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
+        String pCmdContent = c.getDocumentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
     protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutEvent.InOutStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
@@ -741,11 +756,15 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
             InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
-            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+            documentAction(e, value);
             apply(e);
         }
 
-        protected  void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
+        protected void documentAction(InOutEvent.InOutStateMergePatched e, String value) {
+            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+        }
+
+        protected void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
             PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);

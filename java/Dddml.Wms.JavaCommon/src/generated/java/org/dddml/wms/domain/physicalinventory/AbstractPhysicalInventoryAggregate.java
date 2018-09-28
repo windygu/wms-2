@@ -85,6 +85,8 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     protected PhysicalInventoryEvent map(PhysicalInventoryCommand.MergePatchPhysicalInventory c) {
         PhysicalInventoryEventId stateEventId = new PhysicalInventoryEventId(c.getDocumentNumber(), c.getVersion());
         PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(stateEventId);
+        if (c.getDocumentAction() != null)
+        newPhysicalInventoryDocumentActionCommandAndExecute(c, state, e);
         e.setWarehouseId(c.getWarehouseId());
         e.setLocatorIdPattern(c.getLocatorIdPattern());
         e.setProductIdPattern(c.getProductIdPattern());
@@ -268,6 +270,19 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         return new AbstractPhysicalInventoryLineEvent.SimplePhysicalInventoryLineStateRemoved(stateEventId);
     }
 
+    protected void newPhysicalInventoryDocumentActionCommandAndExecute(PhysicalInventoryCommand.MergePatchPhysicalInventory c, PhysicalInventoryState s, PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
+        String pCmdContent = c.getDocumentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
     protected void newPhysicalInventoryDocumentActionCommandAndExecute(PhysicalInventoryCommand.CreatePhysicalInventory c, PhysicalInventoryState s, PhysicalInventoryEvent.PhysicalInventoryStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
@@ -336,11 +351,15 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
             PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(version, commandId, requesterId);
-            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+            documentAction(e, value);
             apply(e);
         }
 
-        protected  void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
+        protected void documentAction(PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e, String value) {
+            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+        }
+
+        protected void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
             PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);

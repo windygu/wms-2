@@ -145,6 +145,8 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     protected MovementEvent map(MovementCommand.MergePatchMovement c) {
         MovementEventId stateEventId = new MovementEventId(c.getDocumentNumber(), c.getVersion());
         MovementEvent.MovementStateMergePatched e = newMovementStateMergePatched(stateEventId);
+        if (c.getDocumentAction() != null)
+        newMovementDocumentActionCommandAndExecute(c, state, e);
         e.setMovementDate(c.getMovementDate());
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
@@ -369,6 +371,19 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         return new AbstractMovementLineEvent.SimpleMovementLineStateRemoved(stateEventId);
     }
 
+    protected void newMovementDocumentActionCommandAndExecute(MovementCommand.MergePatchMovement c, MovementState s, MovementEvent.MovementStateMergePatched e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
+        String pCmdContent = c.getDocumentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
     protected void newMovementDocumentActionCommandAndExecute(MovementCommand.CreateMovement c, MovementState s, MovementEvent.MovementStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
@@ -445,11 +460,15 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
             MovementEvent.MovementStateMergePatched e = newMovementStateMergePatched(version, commandId, requesterId);
-            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+            documentAction(e, value);
             apply(e);
         }
 
-        protected  void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
+        protected void documentAction(MovementEvent.MovementStateMergePatched e, String value) {
+            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+        }
+
+        protected void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
             PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);

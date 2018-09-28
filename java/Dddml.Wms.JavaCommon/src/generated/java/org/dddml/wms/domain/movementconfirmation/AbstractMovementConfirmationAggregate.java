@@ -109,6 +109,8 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
     protected MovementConfirmationEvent map(MovementConfirmationCommand.MergePatchMovementConfirmation c) {
         MovementConfirmationEventId stateEventId = new MovementConfirmationEventId(c.getDocumentNumber(), c.getVersion());
         MovementConfirmationEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(stateEventId);
+        if (c.getDocumentAction() != null)
+        newMovementConfirmationDocumentActionCommandAndExecute(c, state, e);
         e.setMovementDocumentNumber(c.getMovementDocumentNumber());
         e.setIsApproved(c.getIsApproved());
         e.setApprovalAmount(c.getApprovalAmount());
@@ -309,6 +311,19 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         return new AbstractMovementConfirmationLineEvent.SimpleMovementConfirmationLineStateRemoved(stateEventId);
     }
 
+    protected void newMovementConfirmationDocumentActionCommandAndExecute(MovementConfirmationCommand.MergePatchMovementConfirmation c, MovementConfirmationState s, MovementConfirmationEvent.MovementConfirmationStateMergePatched e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
+        String pCmdContent = c.getDocumentAction();
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
+        pCmd.setContext(getState());
+        pCommandHandler.execute(pCmd);
+    }
+
     protected void newMovementConfirmationDocumentActionCommandAndExecute(MovementConfirmationCommand.CreateMovementConfirmation c, MovementConfirmationState s, MovementConfirmationEvent.MovementConfirmationStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
@@ -364,11 +379,15 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
             MovementConfirmationEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(version, commandId, requesterId);
-            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+            documentAction(e, value);
             apply(e);
         }
 
-        protected  void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
+        protected void documentAction(MovementConfirmationEvent.MovementConfirmationStateMergePatched e, String value) {
+            doDocumentAction(value, s -> e.setDocumentStatusId(s));
+        }
+
+        protected void doDocumentAction(String value, java.util.function.Consumer<String> setDocumentStatusId) {
             PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
             pCmd.setContent(value);
