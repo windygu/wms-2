@@ -85,6 +85,10 @@ public interface MovementConfirmationCommand extends Command
 
     interface MergePatchMovementConfirmation extends CreateOrMergePatchMovementConfirmation
     {
+        String getDocumentAction();
+
+        void setDocumentAction(String documentAction);
+                
         Boolean getIsPropertyMovementDocumentNumberRemoved();
 
         void setIsPropertyMovementDocumentNumberRemoved(Boolean removed);

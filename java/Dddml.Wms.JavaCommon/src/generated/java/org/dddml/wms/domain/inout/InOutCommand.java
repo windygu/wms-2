@@ -173,6 +173,10 @@ public interface InOutCommand extends Command
 
     interface MergePatchInOut extends CreateOrMergePatchInOut
     {
+        String getDocumentAction();
+
+        void setDocumentAction(String documentAction);
+                
         Boolean getIsPropertyPostedRemoved();
 
         void setIsPropertyPostedRemoved(Boolean removed);

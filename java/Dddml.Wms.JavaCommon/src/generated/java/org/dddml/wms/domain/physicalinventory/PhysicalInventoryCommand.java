@@ -106,6 +106,10 @@ public interface PhysicalInventoryCommand extends Command
 
     interface MergePatchPhysicalInventory extends CreateOrMergePatchPhysicalInventory
     {
+        String getDocumentAction();
+
+        void setDocumentAction(String documentAction);
+                
         Boolean getIsPropertyWarehouseIdRemoved();
 
         void setIsPropertyWarehouseIdRemoved(Boolean removed);

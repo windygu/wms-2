@@ -910,7 +910,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
                 command.getStateSetter().accept("SHIPMENT_INPUT");
                 return;
             }
-            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent()) && !((ShipmentState)command.getContext()).getIsScheduleNeeded()) {
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent()) && ((ShipmentState)command.getContext()).getIsScheduleNeeded() == null || !((ShipmentState)command.getContext()).getIsScheduleNeeded()) {
                 command.getStateSetter().accept("SHIPMENT_SHIPPED");
                 return;
             }

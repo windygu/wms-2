@@ -92,6 +92,10 @@ public interface InOutNoticeCommand extends Command
 
     interface MergePatchInOutNotice extends CreateOrMergePatchInOutNotice
     {
+        String getInOutNoticeAction();
+
+        void setInOutNoticeAction(String inOutNoticeAction);
+                
         Boolean getIsPropertyWarehouseIdRemoved();
 
         void setIsPropertyWarehouseIdRemoved(Boolean removed);

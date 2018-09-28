@@ -253,6 +253,16 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
+        private String documentAction;
+ 
+        public String getDocumentAction() {
+            return this.documentAction;
+        }
+
+        public void setDocumentAction(String documentAction) {
+            this.documentAction = documentAction;
+        }
+                
         private Boolean isPropertyWarehouseIdRemoved;
 
         public Boolean getIsPropertyWarehouseIdRemoved()

@@ -184,6 +184,16 @@ public abstract class AbstractInOutNoticeCommand extends AbstractCommand impleme
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
+        private String inOutNoticeAction;
+ 
+        public String getInOutNoticeAction() {
+            return this.inOutNoticeAction;
+        }
+
+        public void setInOutNoticeAction(String inOutNoticeAction) {
+            this.inOutNoticeAction = inOutNoticeAction;
+        }
+                
         private Boolean isPropertyWarehouseIdRemoved;
 
         public Boolean getIsPropertyWarehouseIdRemoved()

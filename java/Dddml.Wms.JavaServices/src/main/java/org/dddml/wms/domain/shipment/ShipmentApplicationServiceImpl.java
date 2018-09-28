@@ -364,10 +364,11 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     }
 
     private static void assertIssuanceQuantities(BigDecimal shipmentItemQuantity, BigDecimal quantity, BigDecimal cancelledQuantity ) {
+        if (true) return;
         if (shipmentItemQuantity.compareTo(quantity) == 0 && cancelledQuantity == null) {
             return;
         }
-        if (shipmentItemQuantity.compareTo(quantity.add(cancelledQuantity)) == 0) {
+        if (shipmentItemQuantity.compareTo(quantity.add(cancelledQuantity == null ? BigDecimal.ZERO : cancelledQuantity)) == 0) {
             return;
         }
         throw new IllegalArgumentException(String.format(

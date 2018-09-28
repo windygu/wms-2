@@ -200,6 +200,10 @@ public interface ShipmentCommand extends Command
 
     interface MergePatchShipment extends CreateOrMergePatchShipment
     {
+        String getPurchaseShipmentAction();
+
+        void setPurchaseShipmentAction(String purchaseShipmentAction);
+                
         Boolean getIsPropertyShipmentTypeIdRemoved();
 
         void setIsPropertyShipmentTypeIdRemoved(Boolean removed);

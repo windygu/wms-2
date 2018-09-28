@@ -217,8 +217,8 @@ aggregates:
                 trigger: "Ship"
                 targetState: "SHIPMENT_SHIPPED"
                 guard:
-                  Java: "!{this}.getIsScheduleNeeded()"
-                  CSharp: "!{this}.IsScheduleNeeded"
+                  Java: "{this}.getIsScheduleNeeded() == null || !{this}.getIsScheduleNeeded()"
+                  CSharp: "{this}.IsScheduleNeeded == null || !{this}.IsScheduleNeeded"
                   PropertyConjunction:
                     IsScheduleNeeded: false
 
@@ -227,8 +227,8 @@ aggregates:
                 trigger: "Schedule"
                 targetState: "SHIPMENT_SCHEDULED"
                 #guard:
-                #  Java: "{this}.getIsScheduleNeeded()"
-                #  CSharp: "{this}.IsScheduleNeeded"
+                #  Java: "{this}.getIsScheduleNeeded() != null && {this}.getIsScheduleNeeded()"
+                #  CSharp: "{this}.IsScheduleNeeded != null && {this}.IsScheduleNeeded"
                 
               - sourceState: "SHIPMENT_INPUT"
                 trigger: "Cancel"

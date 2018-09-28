@@ -596,6 +596,16 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
+        private String purchaseShipmentAction;
+ 
+        public String getPurchaseShipmentAction() {
+            return this.purchaseShipmentAction;
+        }
+
+        public void setPurchaseShipmentAction(String purchaseShipmentAction) {
+            this.purchaseShipmentAction = purchaseShipmentAction;
+        }
+                
         private Boolean isPropertyShipmentTypeIdRemoved;
 
         public Boolean getIsPropertyShipmentTypeIdRemoved()

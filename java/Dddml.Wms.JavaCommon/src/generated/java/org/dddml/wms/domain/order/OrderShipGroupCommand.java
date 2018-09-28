@@ -86,6 +86,10 @@ public interface OrderShipGroupCommand extends Command
 
     interface MergePatchOrderShipGroup extends CreateOrMergePatchOrderShipGroup
     {
+        String getOrderShipGroupAction();
+
+        void setOrderShipGroupAction(String orderShipGroupAction);
+                
         Boolean getIsPropertyShipmentMethodTypeIdRemoved();
 
         void setIsPropertyShipmentMethodTypeIdRemoved(Boolean removed);

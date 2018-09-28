@@ -133,6 +133,10 @@ public interface MovementCommand extends Command
 
     interface MergePatchMovement extends CreateOrMergePatchMovement
     {
+        String getDocumentAction();
+
+        void setDocumentAction(String documentAction);
+                
         Boolean getIsPropertyMovementDateRemoved();
 
         void setIsPropertyMovementDateRemoved(Boolean removed);

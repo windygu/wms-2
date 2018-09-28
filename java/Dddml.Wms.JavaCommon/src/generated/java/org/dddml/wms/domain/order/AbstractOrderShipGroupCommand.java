@@ -257,6 +257,16 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             return COMMAND_TYPE_MERGE_PATCH;
         }
 
+        private String orderShipGroupAction;
+ 
+        public String getOrderShipGroupAction() {
+            return this.orderShipGroupAction;
+        }
+
+        public void setOrderShipGroupAction(String orderShipGroupAction) {
+            this.orderShipGroupAction = orderShipGroupAction;
+        }
+                
         private Boolean isPropertyShipmentMethodTypeIdRemoved;
 
         public Boolean getIsPropertyShipmentMethodTypeIdRemoved()
