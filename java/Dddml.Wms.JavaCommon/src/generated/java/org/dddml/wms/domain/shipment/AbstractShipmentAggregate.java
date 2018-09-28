@@ -881,19 +881,20 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     public class SimpleShipmentPurchaseShipmentActionCommandHandler implements PropertyCommandHandler<String, String> {
 
         public void execute(PropertyCommand<String, String> command) {
-            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+            String trigger = command.getContent();
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, trigger)) {
                 command.getStateSetter().accept("PURCH_SHIP_CREATED");
                 return;
             }
-            if (Objects.equals("PURCH_SHIP_CREATED", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent())) {
+            if (Objects.equals("PURCH_SHIP_CREATED", command.getStateGetter().get()) && Objects.equals("Ship", trigger)) {
                 command.getStateSetter().accept("PURCH_SHIP_SHIPPED");
                 return;
             }
-            if (Objects.equals("PURCH_SHIP_SHIPPED", command.getStateGetter().get()) && Objects.equals("Receive", command.getContent())) {
+            if (Objects.equals("PURCH_SHIP_SHIPPED", command.getStateGetter().get()) && Objects.equals("Receive", trigger)) {
                 command.getStateSetter().accept("PURCH_SHIP_RECEIVED");
                 return;
             }
-            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), trigger));
         }
     }
 
@@ -940,39 +941,40 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     public class SimpleShipmentSalesShipmentActionCommandHandler implements PropertyCommandHandler<String, String> {
 
         public void execute(PropertyCommand<String, String> command) {
-            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+            String trigger = command.getContent();
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, trigger)) {
                 command.getStateSetter().accept("SHIPMENT_INPUT");
                 return;
             }
-            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent()) && ((ShipmentState)command.getContext()).getIsScheduleNeeded() == null || !((ShipmentState)command.getContext()).getIsScheduleNeeded()) {
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Ship", trigger) && ((ShipmentState)command.getContext()).getIsScheduleNeeded() == null || !((ShipmentState)command.getContext()).getIsScheduleNeeded()) {
                 command.getStateSetter().accept("SHIPMENT_SHIPPED");
                 return;
             }
-            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Schedule", command.getContent())) {
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Schedule", trigger)) {
                 command.getStateSetter().accept("SHIPMENT_SCHEDULED");
                 return;
             }
-            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Cancel", command.getContent())) {
+            if (Objects.equals("SHIPMENT_INPUT", command.getStateGetter().get()) && Objects.equals("Cancel", trigger)) {
                 command.getStateSetter().accept("SHIPMENT_CANCELLED");
                 return;
             }
-            if (Objects.equals("SHIPMENT_SCHEDULED", command.getStateGetter().get()) && Objects.equals("Cancel", command.getContent())) {
+            if (Objects.equals("SHIPMENT_SCHEDULED", command.getStateGetter().get()) && Objects.equals("Cancel", trigger)) {
                 command.getStateSetter().accept("SHIPMENT_CANCELLED");
                 return;
             }
-            if (Objects.equals("SHIPMENT_SCHEDULED", command.getStateGetter().get()) && Objects.equals("Ship", command.getContent())) {
+            if (Objects.equals("SHIPMENT_SCHEDULED", command.getStateGetter().get()) && Objects.equals("Ship", trigger)) {
                 command.getStateSetter().accept("SHIPMENT_SHIPPED");
                 return;
             }
-            if (Objects.equals("SHIPMENT_SHIPPED", command.getStateGetter().get()) && Objects.equals("Deliver", command.getContent())) {
+            if (Objects.equals("SHIPMENT_SHIPPED", command.getStateGetter().get()) && Objects.equals("Deliver", trigger)) {
                 command.getStateSetter().accept("SHIPMENT_DELIVERED");
                 return;
             }
-            if (Objects.equals("SHIPMENT_SHIPPED", command.getStateGetter().get()) && Objects.equals("Reverse", command.getContent())) {
+            if (Objects.equals("SHIPMENT_SHIPPED", command.getStateGetter().get()) && Objects.equals("Reverse", trigger)) {
                 command.getStateSetter().accept("SHIPMENT_REVERSED");
                 return;
             }
-            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), trigger));
         }
     }
 
