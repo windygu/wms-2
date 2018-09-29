@@ -69,6 +69,7 @@ public class ShipmentTests {
     private void receiveAllItems(String shipmentId) {
         ShipmentState shipmentState = shipmentApplicationService.get(shipmentId);
         Long version = shipmentState.getVersion();
+        int i = 0;
         for (ShipmentItemState item : shipmentState.getShipmentItems()) {
             ShipmentCommands.ReceiveItem receiveItem = new ShipmentCommands.ReceiveItem();
             receiveItem.setShipmentId(shipmentId);
@@ -78,24 +79,37 @@ public class ShipmentTests {
             receiveItem.setDamagedQuantity(BigDecimal.ZERO);
 
             if (!(null == item.getAttributeSetInstanceId())) {
-                AttributeSetInstanceState srcAttrSetInst = attributeSetInstanceApplicationService.get(item.getAttributeSetInstanceId());
-                String rollId = srcAttrSetInst.getSerialNumber();
+                if (i == 0) {
 
-                java.util.HashMap<String, Object> attrSetInst_1 = new java.util.HashMap<String, Object>();
-                // //////////////////////////////////
-                attrSetInst_1.put("SerialNumber", rollId);
-                //attrSetInst_1.Add("WidthInch", (decimal)17.75);
-                //attrSetInst_1.Add("DiameterInch", 48.00);
-                //attrSetInst_1.Add("WeightLbs", (decimal)1678);
-                attrSetInst_1.put("WeightKg",
-                        getTestWeightKg().subtract(java.math.BigDecimal.valueOf(0.001)));
-                //attrSetInst_1.Add("AirDryWeightLbs", (decimal)1705.682);
-                //attrSetInst_1.Add("AirDryWeightKg", (decimal)773.684);
-                //attrSetInst_1.Add("AirDryMetricTon", (decimal)0.774);
-                //attrSetInst_1.Add("RollCnt", 2);
-                //attrSetInst_1.Add("AirDryPct", (decimal)101.650);
-                // //////////////////////////////////
-                receiveItem.setAttributeSetInstance(attrSetInst_1);
+                    AttributeSetInstanceState srcAttrSetInst = attributeSetInstanceApplicationService.get(item.getAttributeSetInstanceId());
+                    String rollId = srcAttrSetInst.getSerialNumber();
+
+                    java.util.HashMap<String, Object> attrSetInst_1 = new java.util.HashMap<String, Object>();
+                    // //////////////////////////////////
+                    attrSetInst_1.put("SerialNumber", rollId);
+                    //attrSetInst_1.Add("WidthInch", (decimal)17.75);
+                    //attrSetInst_1.Add("DiameterInch", 48.00);
+                    //attrSetInst_1.Add("WeightLbs", (decimal)1678);
+                    attrSetInst_1.put("WeightKg",
+                            getTestWeightKg().subtract(java.math.BigDecimal.valueOf(0.001)));
+                    //attrSetInst_1.Add("AirDryWeightLbs", (decimal)1705.682);
+                    //attrSetInst_1.Add("AirDryWeightKg", (decimal)773.684);
+                    //attrSetInst_1.Add("AirDryMetricTon", (decimal)0.774);
+                    //attrSetInst_1.Add("RollCnt", 2);
+                    //attrSetInst_1.Add("AirDryPct", (decimal)101.650);
+                    // //////////////////////////////////
+                    receiveItem.setAttributeSetInstance(attrSetInst_1);
+
+                } else {
+
+                    AttributeSetInstanceState srcAttrSetInst = attributeSetInstanceApplicationService.get(item.getAttributeSetInstanceId());
+                    String attrSetInstId = srcAttrSetInst.getAttributeSetInstanceId();
+                    java.util.HashMap<String, Object> attrSetInst_2 = new java.util.HashMap<String, Object>();
+                    attrSetInst_2.put("attributeSetInstanceId", attrSetInstId);
+                    receiveItem.setAttributeSetInstance(attrSetInst_2);
+
+                }
+                i++;
             }
             // else {
             //    throw new RuntimeException("null == item.getAttributeSetInstanceId()");
