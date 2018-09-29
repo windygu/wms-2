@@ -15,10 +15,12 @@ import java.util.function.BiFunction;
  */
 public class AttributeSetInstanceUtils {
 
+    private static final String ATTRIBUTE_SET_INSTANCE_ID_KEY = "attributeSetInstanceId";
+
     public static String createAttributeSetInstance(
             AttributeSetService attributeSetService, AttributeSetInstanceApplicationService attrSetInstApplicationService,
-                                                    String attrSetId, Map<String, Object> attributeSetIntanceMap) {
-        if (attributeSetIntanceMap == null) {
+                                                    String attrSetId, Map<String, Object> attributeSetInstanceMap) {
+        if (attributeSetInstanceMap == null) {
             throw new IllegalArgumentException("attributeSetInstanceMap is null.");
         }
         Map<String, String> nameDict = null;
@@ -27,10 +29,19 @@ public class AttributeSetInstanceUtils {
         } else {
             nameDict = attributeSetService.getPropertyExtensionFieldDictionary(attrSetId);
         }
+        // /////////////// 如果传入的 Map 包含 attributeSetInstanceId ////////////////////
+        if(attributeSetInstanceMap.containsKey(ATTRIBUTE_SET_INSTANCE_ID_KEY)) {
+            String attrSetInstId = attributeSetInstanceMap.get(ATTRIBUTE_SET_INSTANCE_ID_KEY).toString();
+            // 且该 Id 在数据库中已经存在对应的属性集实例，则不再创建新的属性集实例
+            AttributeSetInstanceState attrSetInstState = attrSetInstApplicationService.get(attrSetInstId);
+            if (attrSetInstState != null) {
+                return attrSetInstId;
+            }
+        }
         AttributeSetInstanceCommand.CreateAttributeSetInstance createAttrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
         createAttrSetInst.setAttributeSetId(attrSetId == null ? "*" : attrSetId);
 
-        for (Map.Entry<String, Object> kv : attributeSetIntanceMap.entrySet()) {
+        for (Map.Entry<String, Object> kv : attributeSetInstanceMap.entrySet()) {
             String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
             // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
             boolean b = ReflectUtils.trySetPropertyValue(fname, createAttrSetInst, kv.getValue(), getConvertFunction());
@@ -49,8 +60,7 @@ public class AttributeSetInstanceUtils {
             }
 
         }// end for (Map.Entry<String, Object> kv : attributeSetIntanceMap.entrySet())
-        String attrSetInstId = attrSetInstApplicationService.createWithoutId(createAttrSetInst);
-        return attrSetInstId;
+        return attrSetInstApplicationService.createWithoutId(createAttrSetInst);
     }
 
     static BiFunction<Object, Class<?>, Object> getConvertFunction() {
