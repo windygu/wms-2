@@ -16,6 +16,7 @@ import java.util.function.BiFunction;
 public class AttributeSetInstanceUtils {
 
     private static final String ATTRIBUTE_SET_INSTANCE_ID_KEY = "attributeSetInstanceId";
+    private static final String ATTRIBUTE_SET_INSTANCE_ID_KEY_2 = "AttributeSetInstanceId";
 
     public static String createAttributeSetInstance(
             AttributeSetService attributeSetService, AttributeSetInstanceApplicationService attrSetInstApplicationService,
@@ -23,9 +24,14 @@ public class AttributeSetInstanceUtils {
         if (attributeSetInstanceMap == null) {
             throw new IllegalArgumentException("attributeSetInstanceMap is null.");
         }
+        String attrSetInstId = null;
         // /////////////// 如果传入的 Map 包含 attributeSetInstanceId ////////////////////
         if (attributeSetInstanceMap.containsKey(ATTRIBUTE_SET_INSTANCE_ID_KEY)) {
-            String attrSetInstId = attributeSetInstanceMap.get(ATTRIBUTE_SET_INSTANCE_ID_KEY).toString();
+            attrSetInstId = attributeSetInstanceMap.get(ATTRIBUTE_SET_INSTANCE_ID_KEY).toString();
+        } else if(attributeSetInstanceMap.containsKey(ATTRIBUTE_SET_INSTANCE_ID_KEY_2)) {
+            attrSetInstId = attributeSetInstanceMap.get(ATTRIBUTE_SET_INSTANCE_ID_KEY_2).toString();
+        }
+        if (attrSetInstId != null) {
             // 且该 Id 在数据库中已经存在对应的属性集实例，则不再创建新的属性集实例
             AttributeSetInstanceState attrSetInstState = attrSetInstApplicationService.get(attrSetInstId);
             if (attrSetInstState != null) {
@@ -61,7 +67,8 @@ public class AttributeSetInstanceUtils {
             }
 
         }// end for (Map.Entry<String, Object> kv : attributeSetIntanceMap.entrySet())
-        return attrSetInstApplicationService.createWithoutId(createAttrSetInst);
+        attrSetInstId = attrSetInstApplicationService.createWithoutId(createAttrSetInst);
+        return attrSetInstId;
     }
 
     static BiFunction<Object, Class<?>, Object> getConvertFunction() {
