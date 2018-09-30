@@ -28,7 +28,7 @@ public class AttributeSetInstanceUtils {
         // /////////////// 如果传入的 Map 包含 attributeSetInstanceId ////////////////////
         if (attributeSetInstanceMap.containsKey(ATTRIBUTE_SET_INSTANCE_ID_KEY)) {
             attrSetInstId = attributeSetInstanceMap.get(ATTRIBUTE_SET_INSTANCE_ID_KEY).toString();
-        } else if(attributeSetInstanceMap.containsKey(ATTRIBUTE_SET_INSTANCE_ID_KEY_2)) {
+        } else if (attributeSetInstanceMap.containsKey(ATTRIBUTE_SET_INSTANCE_ID_KEY_2)) {
             attrSetInstId = attributeSetInstanceMap.get(ATTRIBUTE_SET_INSTANCE_ID_KEY_2).toString();
         }
         if (attrSetInstId != null) {
