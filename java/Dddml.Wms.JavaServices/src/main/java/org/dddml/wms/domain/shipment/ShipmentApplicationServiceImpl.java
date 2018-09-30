@@ -147,29 +147,33 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
         // check shipment type??
 
-        Map<Object, ShipmentReceiptState> shipmentReceiptDict = StreamSupport.stream(
-                shipment.getShipmentReceipts().spliterator(), false)
-                .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
-
-        Map<Object, ShipmentItemState> shipmentItemDict = StreamSupport.stream(
+        Iterable<ShipmentReceiptState> shipmentReceiptStates = shipment.getShipmentReceipts();
+        //Map<Object, ShipmentReceiptState> shipmentReceiptDict = StreamSupport.stream(
+        //        shipment.getShipmentReceipts().spliterator(), false)
+        //        .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
+        Map<Object, ShipmentItemState> shipmentItemSeqIdToItemMap = StreamSupport.stream(
                 shipment.getShipmentItems().spliterator(), false)
                 .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
 
-
-        Optional<Object> itemIdNotFound = shipmentItemDict.keySet().stream()
-                .filter((i -> !shipmentReceiptDict.containsKey((String) i))).findFirst();
-        if (itemIdNotFound.isPresent()) {
-            throw new IllegalArgumentException(String.format("Shipment item NOT received. ShipmentItemSeqId.: %1$s", itemIdNotFound.get()));
-        }
+        //Optional<Object> itemIdNotFound = shipmentItemSeqIdToItemMap.keySet().stream()
+        //        .filter((i -> !shipmentReceiptDict.containsKey((String) i))).findFirst();
+        //if (itemIdNotFound.isPresent()) {
+        //    throw new IllegalArgumentException(String.format("Shipment item NOT received. ShipmentItemSeqId.: %1$s", itemIdNotFound.get()));
+        //}
         // /////////////////////////////
-        Optional<ShipmentReceiptState> receiptUnknown = shipmentReceiptDict.values().stream()
-                .filter(i -> !shipmentItemDict.containsKey(((ShipmentReceiptState) i).getShipmentItemSeqId())).findFirst();
-        if (receiptUnknown.isPresent()) {
-            throw new IllegalArgumentException(String.format("Shipment receipt has unknown ShipmentItemSeqId.: %1$s", receiptUnknown.get().getShipmentItemSeqId()));
+        //Optional<ShipmentReceiptState> receiptUnknown = shipmentReceiptDict.values().stream()
+        //        .filter(i -> !shipmentItemSeqIdToItemMap.containsKey(((ShipmentReceiptState) i).getShipmentItemSeqId())).findFirst();
+        //if (receiptUnknown.isPresent()) {
+        //    throw new IllegalArgumentException(String.format("Shipment receipt has unknown ShipmentItemSeqId.: %1$s", receiptUnknown.get().getShipmentItemSeqId()));
+        //}
+        for (ShipmentReceiptState i :  shipmentReceiptStates) {
+            if (!shipmentItemSeqIdToItemMap.containsKey(i.getShipmentItemSeqId())) {
+                throw new IllegalArgumentException(String.format("Shipment receipt has unknown ShipmentItemSeqId.: %1$s", i.getShipmentItemSeqId()));
+            }
         }
 
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries =
-                confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptDict.values(), c.getDestinationLocatorId());
+                confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptStates, c.getDestinationLocatorId());
         InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
 
         super.when(c);
