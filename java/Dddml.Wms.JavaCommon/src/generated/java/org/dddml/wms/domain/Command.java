@@ -2,8 +2,8 @@ package org.dddml.wms.domain;
 
 import org.dddml.wms.specialization.CommandType;
 
-public interface Command
-{
+public interface Command {
+
     String COMMAND_TYPE_CREATE = CommandType.CREATE;
 
     String COMMAND_TYPE_MERGE_PATCH = CommandType.MERGE_PATCH;
@@ -23,6 +23,9 @@ public interface Command
     String getRequesterId();
 
     void setRequesterId(String requesterId);
+
+    java.util.Map<String, Object> getCommandContext();
+
 }
 
 

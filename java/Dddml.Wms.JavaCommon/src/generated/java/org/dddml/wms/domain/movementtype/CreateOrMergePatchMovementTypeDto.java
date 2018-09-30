@@ -124,6 +124,17 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
                 CreateOrMergePatchMovementTypeDto.this.setRequesterId(requesterId);
             }
 
+            private java.util.Map<String, Object> commandContext;
+
+            @Override
+            public java.util.Map<String, Object> getCommandContext() {
+                return commandContext;
+            }
+
+            public void setCommandContext(java.util.Map<String, Object> commandContext) {
+                this.commandContext = commandContext;
+            }
+
             @Override
             public String getDescription() {
                 return CreateOrMergePatchMovementTypeDto.this.getDescription();
@@ -198,6 +209,17 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
             @Override
             public void setRequesterId(String requesterId) {
                 CreateOrMergePatchMovementTypeDto.this.setRequesterId(requesterId);
+            }
+
+            private java.util.Map<String, Object> commandContext;
+
+            @Override
+            public java.util.Map<String, Object> getCommandContext() {
+                return commandContext;
+            }
+
+            public void setCommandContext(java.util.Map<String, Object> commandContext) {
+                this.commandContext = commandContext;
             }
 
             @Override

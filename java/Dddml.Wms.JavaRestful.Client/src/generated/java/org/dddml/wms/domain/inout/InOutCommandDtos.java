@@ -10,7 +10,7 @@ public class InOutCommandDtos
     private InOutCommandDtos() {
     }
 
-    public static class CompleteRequestContent {
+    public static class CompleteRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "Complete";
@@ -42,35 +42,9 @@ public class InOutCommandDtos
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class CloseRequestContent {
+    public static class CloseRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "Close";
@@ -102,35 +76,9 @@ public class InOutCommandDtos
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class VoidRequestContent {
+    public static class VoidRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "Void";
@@ -162,35 +110,9 @@ public class InOutCommandDtos
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class ReverseRequestContent {
+    public static class ReverseRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "Reverse";
@@ -222,35 +144,9 @@ public class InOutCommandDtos
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class AddLineRequestContent {
+    public static class AddLineRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "AddLine";
@@ -386,35 +282,9 @@ public class InOutCommandDtos
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class ImportRequestContent {
+    public static class ImportRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "Import";
@@ -576,35 +446,9 @@ public class InOutCommandDtos
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class DocumentActionRequestContent {
+    public static class DocumentActionRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "DocumentAction";
@@ -647,32 +491,6 @@ public class InOutCommandDtos
 
         public void setVersion(Long version) {
             this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

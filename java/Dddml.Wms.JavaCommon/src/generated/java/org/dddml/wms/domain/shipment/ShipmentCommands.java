@@ -9,7 +9,7 @@ public class ShipmentCommands
     private ShipmentCommands() {
     }
 
-    public static class Import implements ShipmentCommand {
+    public static class Import extends org.dddml.wms.domain.AbstractCommand implements ShipmentCommand {
 
         public String getCommandType() {
             return "Import";
@@ -370,35 +370,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class ReceiveItem implements ShipmentCommand {
+    public static class ReceiveItem extends org.dddml.wms.domain.AbstractCommand implements ShipmentCommand {
 
         public String getCommandType() {
             return "ReceiveItem";
@@ -603,35 +577,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class IssueItem implements ShipmentCommand {
+    public static class IssueItem extends org.dddml.wms.domain.AbstractCommand implements ShipmentCommand {
 
         public String getCommandType() {
             return "IssueItem";
@@ -810,35 +758,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class ConfirmAllItemsReceived implements ShipmentCommand {
+    public static class ConfirmAllItemsReceived extends org.dddml.wms.domain.AbstractCommand implements ShipmentCommand {
 
         public String getCommandType() {
             return "ConfirmAllItemsReceived";
@@ -887,35 +809,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class ConfirmAllItemsIssued implements ShipmentCommand {
+    public static class ConfirmAllItemsIssued extends org.dddml.wms.domain.AbstractCommand implements ShipmentCommand {
 
         public String getCommandType() {
             return "ConfirmAllItemsIssued";
@@ -951,35 +847,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class PurchaseShipmentAction implements ShipmentCommand {
+    public static class PurchaseShipmentAction extends org.dddml.wms.domain.AbstractCommand implements ShipmentCommand {
 
         public String getCommandType() {
             return "PurchaseShipmentAction";
@@ -1028,35 +898,9 @@ public class ShipmentCommands
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class SalesShipmentAction implements ShipmentCommand {
+    public static class SalesShipmentAction extends org.dddml.wms.domain.AbstractCommand implements ShipmentCommand {
 
         public String getCommandType() {
             return "SalesShipmentAction";
@@ -1103,32 +947,6 @@ public class ShipmentCommands
 
         public void setVersion(Long version) {
             this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

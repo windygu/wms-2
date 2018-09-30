@@ -340,19 +340,20 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
     public class SimpleMovementConfirmationDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
 
         public void execute(PropertyCommand<String, String> command) {
-            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+            String trigger = command.getContent();
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, trigger)) {
                 command.getStateSetter().accept("InProgress");
                 return;
             }
-            if (Objects.equals("InProgress", command.getStateGetter().get()) && Objects.equals("Confirm", command.getContent())) {
+            if (Objects.equals("InProgress", command.getStateGetter().get()) && Objects.equals("Confirm", trigger)) {
                 command.getStateSetter().accept("Completed");
                 return;
             }
-            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", trigger)) {
                 command.getStateSetter().accept("Closed");
                 return;
             }
-            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), trigger));
         }
     }
 

@@ -13,7 +13,7 @@ public class IdServiceCommandDtos {
     private IdServiceCommandDtos() {
     }
     
-    public static class GetDocumentNumberDto {
+    public static class GetDocumentNumberDto extends org.dddml.wms.domain.AbstractCommand {
 
         /**
          * Document Type
@@ -26,32 +26,6 @@ public class IdServiceCommandDtos {
 
         public void setDocumentType(String documentType) {
             this.documentType = documentType;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

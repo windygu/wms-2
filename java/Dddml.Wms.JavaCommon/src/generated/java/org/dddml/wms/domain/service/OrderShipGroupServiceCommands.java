@@ -13,7 +13,7 @@ public class OrderShipGroupServiceCommands {
     private OrderShipGroupServiceCommands() {
     }
     
-    public static class CreatePOShipGroups {
+    public static class CreatePOShipGroups extends org.dddml.wms.domain.AbstractCommand {
 
         /**
          * Telecom Contact Mech Id
@@ -54,35 +54,9 @@ public class OrderShipGroupServiceCommands {
             this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class CreateSOShipGroups {
+    public static class CreateSOShipGroups extends org.dddml.wms.domain.AbstractCommand {
 
         /**
          * Telecom Contact Mech Id
@@ -123,35 +97,9 @@ public class OrderShipGroupServiceCommands {
             this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class UpdateOrderItemShipGroupAssociation {
+    public static class UpdateOrderItemShipGroupAssociation extends org.dddml.wms.domain.AbstractCommand {
 
         /**
          * Order Item Ship Group Association
@@ -166,35 +114,9 @@ public class OrderShipGroupServiceCommands {
             this.orderItemShipGroupAssociation = orderItemShipGroupAssociation;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class CreatePOShipment {
+    public static class CreatePOShipment extends org.dddml.wms.domain.AbstractCommand {
 
         /**
          * Order Id Ship Group Seq Id Pairs
@@ -313,35 +235,9 @@ public class OrderShipGroupServiceCommands {
             this.estimatedShipDate = estimatedShipDate;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class CreateSOShipment {
+    public static class CreateSOShipment extends org.dddml.wms.domain.AbstractCommand {
 
         /**
          * Order Id Ship Group Seq Id Pairs
@@ -460,35 +356,9 @@ public class OrderShipGroupServiceCommands {
             this.isScheduleNeeded = isScheduleNeeded;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class ShipPOShipment {
+    public static class ShipPOShipment extends org.dddml.wms.domain.AbstractCommand {
 
         /**
          * Shipment Id
@@ -618,32 +488,6 @@ public class OrderShipGroupServiceCommands {
 
         public void setHandlingInstructions(String handlingInstructions) {
             this.handlingInstructions = handlingInstructions;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

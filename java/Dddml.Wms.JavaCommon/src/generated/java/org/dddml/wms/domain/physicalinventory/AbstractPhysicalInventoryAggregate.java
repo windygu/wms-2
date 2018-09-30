@@ -299,27 +299,28 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     public class SimplePhysicalInventoryDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
 
         public void execute(PropertyCommand<String, String> command) {
-            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+            String trigger = command.getContent();
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, trigger)) {
                 command.getStateSetter().accept("Drafted");
                 return;
             }
-            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent())) {
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", trigger)) {
                 command.getStateSetter().accept("Completed");
                 return;
             }
-            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Void", command.getContent())) {
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Void", trigger)) {
                 command.getStateSetter().accept("Voided");
                 return;
             }
-            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", trigger)) {
                 command.getStateSetter().accept("Closed");
                 return;
             }
-            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Reverse", command.getContent())) {
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Reverse", trigger)) {
                 command.getStateSetter().accept("Reversed");
                 return;
             }
-            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), trigger));
         }
     }
 

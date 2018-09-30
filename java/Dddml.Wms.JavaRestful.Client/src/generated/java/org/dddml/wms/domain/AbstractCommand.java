@@ -2,8 +2,7 @@ package org.dddml.wms.domain;
 
 import org.dddml.wms.specialization.CommandType;
 
-public abstract class AbstractCommand implements Command
-{
+public abstract class AbstractCommand implements Command {
 
     protected String commandType;
 
@@ -39,6 +38,16 @@ public abstract class AbstractCommand implements Command
     public void setRequesterId(String requesterId)
     {
         this.requesterId = requesterId;
+    }
+
+    private java.util.Map<String, Object> commandContext;
+
+    public java.util.Map<String, Object> getCommandContext() {
+        return commandContext;
+    }
+
+    public void setCommandContext(java.util.Map<String, Object> commandContext) {
+        this.commandContext = commandContext;
     }
 
 }

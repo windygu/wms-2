@@ -151,6 +151,17 @@ public class CreateOrMergePatchDamageHandlingMethodDto extends AbstractDamageHan
                 CreateOrMergePatchDamageHandlingMethodDto.this.setRequesterId(requesterId);
             }
 
+            private java.util.Map<String, Object> commandContext;
+
+            @Override
+            public java.util.Map<String, Object> getCommandContext() {
+                return commandContext;
+            }
+
+            public void setCommandContext(java.util.Map<String, Object> commandContext) {
+                this.commandContext = commandContext;
+            }
+
             @Override
             public String getDescription() {
                 return CreateOrMergePatchDamageHandlingMethodDto.this.getDescription();
@@ -235,6 +246,17 @@ public class CreateOrMergePatchDamageHandlingMethodDto extends AbstractDamageHan
             @Override
             public void setRequesterId(String requesterId) {
                 CreateOrMergePatchDamageHandlingMethodDto.this.setRequesterId(requesterId);
+            }
+
+            private java.util.Map<String, Object> commandContext;
+
+            @Override
+            public java.util.Map<String, Object> getCommandContext() {
+                return commandContext;
+            }
+
+            public void setCommandContext(java.util.Map<String, Object> commandContext) {
+                this.commandContext = commandContext;
             }
 
             @Override

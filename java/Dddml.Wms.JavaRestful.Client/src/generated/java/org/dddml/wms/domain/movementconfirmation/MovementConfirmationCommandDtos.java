@@ -10,7 +10,7 @@ public class MovementConfirmationCommandDtos
     private MovementConfirmationCommandDtos() {
     }
 
-    public static class DocumentActionRequestContent {
+    public static class DocumentActionRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "DocumentAction";
@@ -53,32 +53,6 @@ public class MovementConfirmationCommandDtos
 
         public void setVersion(Long version) {
             this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

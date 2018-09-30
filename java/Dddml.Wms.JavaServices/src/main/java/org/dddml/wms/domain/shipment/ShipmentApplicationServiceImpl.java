@@ -130,14 +130,6 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
     }
 
-
-    //    @Override
-    //    @Transactional
-    //    public void when(ShipmentCommands.Ship c) {
-    //        // check shipment type??
-    //        super.when(c);
-    //    }
-
     @Override
     @Transactional
     public void when(ShipmentCommands.ConfirmAllItemsReceived c) {
@@ -323,7 +315,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     //        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
     //        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
     //        createShipmentItem.setProductId(c.getProductId());
-    //        createShipmentItem.setQuantity(BigDecimal.ZERO);//todo ???
+    //        createShipmentItem.setQuantity(BigDecimal.ZERO);// ???
     //        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
     //        createShipmentItem.setActive(true);
     //        return createShipmentItem;
@@ -334,7 +326,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     //        ShipmentItemCommand.CreateShipmentItem createShipmentItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
     //        createShipmentItem.setShipmentItemSeqId(shipmentItemSeqId);
     //        createShipmentItem.setProductId(c.getProductId());
-    //        createShipmentItem.setQuantity(c.getQuantity());//todo ???
+    //        createShipmentItem.setQuantity(c.getQuantity());// ???
     //        createShipmentItem.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);//???
     //        createShipmentItem.setActive(true);
     //        return createShipmentItem;
@@ -425,7 +417,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipment.setAddtlShippingChargeDesc(c.getAddtlShippingChargeDesc());
         //标记为从“码单”导入
         shipment.setIsCreatedFromPackingList(true);
-        //todo More properties ???
+        // More properties ???
 
         int i = 0;
         for (ImportingShipmentItem d : c.getShipmentItems()) {
@@ -519,7 +511,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipItem.setQuantity(d.getQuantity());
         shipItem.setActive(true);
         shipItem.setShipmentContentDescription(d.getShipmentContentDescription());
-        //todo More proerties???
+        // More proerties???
         return shipItem;
     }
 

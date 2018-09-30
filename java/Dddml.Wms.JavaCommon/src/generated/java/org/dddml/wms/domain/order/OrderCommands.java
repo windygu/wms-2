@@ -10,7 +10,7 @@ public class OrderCommands
     private OrderCommands() {
     }
 
-    public static class OrderShipGroupAction implements OrderCommand {
+    public static class OrderShipGroupAction extends org.dddml.wms.domain.AbstractCommand implements OrderCommand {
 
         public String getCommandType() {
             return "OrderShipGroupAction";
@@ -57,32 +57,6 @@ public class OrderCommands
 
         public void setVersion(Long version) {
             this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
         public String getOrderId() {

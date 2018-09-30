@@ -9,7 +9,7 @@ public class InOutNoticeCommandDtos
     private InOutNoticeCommandDtos() {
     }
 
-    public static class InOutNoticeActionRequestContent {
+    public static class InOutNoticeActionRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "InOutNoticeAction";
@@ -52,32 +52,6 @@ public class InOutNoticeCommandDtos
 
         public void setVersion(Long version) {
             this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

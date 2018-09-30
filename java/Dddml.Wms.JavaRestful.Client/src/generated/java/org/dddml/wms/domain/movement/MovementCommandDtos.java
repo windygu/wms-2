@@ -10,7 +10,7 @@ public class MovementCommandDtos
     private MovementCommandDtos() {
     }
 
-    public static class AddLineRequestContent {
+    public static class AddLineRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "AddLine";
@@ -146,35 +146,9 @@ public class MovementCommandDtos
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class DocumentActionRequestContent {
+    public static class DocumentActionRequestContent extends org.dddml.wms.domain.AbstractCommand {
 
         public String getCommandType() {
             return "DocumentAction";
@@ -217,32 +191,6 @@ public class MovementCommandDtos
 
         public void setVersion(Long version) {
             this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

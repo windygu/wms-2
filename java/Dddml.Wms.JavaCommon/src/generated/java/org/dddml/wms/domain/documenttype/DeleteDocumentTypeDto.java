@@ -66,6 +66,17 @@ public class DeleteDocumentTypeDto extends AbstractDocumentTypeCommandDto
                 DeleteDocumentTypeDto.this.setRequesterId(requesterId);
             }
 
+            private java.util.Map<String, Object> commandContext;
+
+            @Override
+            public java.util.Map<String, Object> getCommandContext() {
+                return commandContext;
+            }
+
+            public void setCommandContext(java.util.Map<String, Object> commandContext) {
+                this.commandContext = commandContext;
+            }
+
 
         };
     }

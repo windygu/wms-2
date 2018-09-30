@@ -400,35 +400,36 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     public class SimpleMovementDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
 
         public void execute(PropertyCommand<String, String> command) {
-            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+            String trigger = command.getContent();
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, trigger)) {
                 command.getStateSetter().accept("Drafted");
                 return;
             }
-            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Void", command.getContent())) {
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Void", trigger)) {
                 command.getStateSetter().accept("Voided");
                 return;
             }
-            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent()) && ((MovementState)command.getContext()).getIsInTransit() == false) {
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", trigger) && ((MovementState)command.getContext()).getIsInTransit() == false) {
                 command.getStateSetter().accept("Completed");
                 return;
             }
-            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent()) && ((MovementState)command.getContext()).getIsInTransit() == true) {
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", trigger) && ((MovementState)command.getContext()).getIsInTransit() == true) {
                 command.getStateSetter().accept("InProgress");
                 return;
             }
-            if (Objects.equals("InProgress", command.getStateGetter().get()) && Objects.equals("Confirm", command.getContent())) {
+            if (Objects.equals("InProgress", command.getStateGetter().get()) && Objects.equals("Confirm", trigger)) {
                 command.getStateSetter().accept("Complete");
                 return;
             }
-            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", trigger)) {
                 command.getStateSetter().accept("Closed");
                 return;
             }
-            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Reverse", command.getContent()) && ((MovementState)command.getContext()).getIsInTransit() == false) {
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Reverse", trigger) && ((MovementState)command.getContext()).getIsInTransit() == false) {
                 command.getStateSetter().accept("Reversed");
                 return;
             }
-            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), trigger));
         }
     }
 

@@ -189,27 +189,28 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
     public class SimpleInOutNoticeInOutNoticeActionCommandHandler implements PropertyCommandHandler<String, String> {
 
         public void execute(PropertyCommand<String, String> command) {
-            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+            String trigger = command.getContent();
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, trigger)) {
                 command.getStateSetter().accept("NOTICE_CREATED");
                 return;
             }
-            if (Objects.equals("NOTICE_CREATED", command.getStateGetter().get()) && Objects.equals("Approve", command.getContent())) {
+            if (Objects.equals("NOTICE_CREATED", command.getStateGetter().get()) && Objects.equals("Approve", trigger)) {
                 command.getStateSetter().accept("NOTICE_APPROVED");
                 return;
             }
-            if (Objects.equals("NOTICE_APPROVED", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent())) {
+            if (Objects.equals("NOTICE_APPROVED", command.getStateGetter().get()) && Objects.equals("Complete", trigger)) {
                 command.getStateSetter().accept("NOTICE_COMPLETED");
                 return;
             }
-            if (Objects.equals("NOTICE_CREATED", command.getStateGetter().get()) && Objects.equals("Reject", command.getContent())) {
+            if (Objects.equals("NOTICE_CREATED", command.getStateGetter().get()) && Objects.equals("Reject", trigger)) {
                 command.getStateSetter().accept("NOTICE_REJECTED");
                 return;
             }
-            if (Objects.equals("NOTICE_CREATED", command.getStateGetter().get()) && Objects.equals("Cancel", command.getContent())) {
+            if (Objects.equals("NOTICE_CREATED", command.getStateGetter().get()) && Objects.equals("Cancel", trigger)) {
                 command.getStateSetter().accept("NOTICE_CANCELLED");
                 return;
             }
-            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), trigger));
         }
     }
 

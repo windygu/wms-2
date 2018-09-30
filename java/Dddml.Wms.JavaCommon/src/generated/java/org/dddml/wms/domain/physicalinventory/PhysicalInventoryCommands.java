@@ -11,7 +11,7 @@ public class PhysicalInventoryCommands
     private PhysicalInventoryCommands() {
     }
 
-    public static class CountItem implements PhysicalInventoryCommand {
+    public static class CountItem extends org.dddml.wms.domain.AbstractCommand implements PhysicalInventoryCommand {
 
         public String getCommandType() {
             return "CountItem";
@@ -99,35 +99,9 @@ public class PhysicalInventoryCommands
             this.version = version;
         }
 
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
-        }
-
     }
 
-    public static class DocumentAction implements PhysicalInventoryCommand {
+    public static class DocumentAction extends org.dddml.wms.domain.AbstractCommand implements PhysicalInventoryCommand {
 
         public String getCommandType() {
             return "DocumentAction";
@@ -174,32 +148,6 @@ public class PhysicalInventoryCommands
 
         public void setVersion(Long version) {
             this.version = version;
-        }
-
-        /**
-         * Command Id
-         */
-        private String commandId;
-
-        public String getCommandId() {
-            return this.commandId;
-        }
-
-        public void setCommandId(String commandId) {
-            this.commandId = commandId;
-        }
-
-        /**
-         * Requester Id
-         */
-        private String requesterId;
-
-        public String getRequesterId() {
-            return this.requesterId;
-        }
-
-        public void setRequesterId(String requesterId) {
-            this.requesterId = requesterId;
         }
 
     }

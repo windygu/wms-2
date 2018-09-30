@@ -178,6 +178,17 @@ public class CreateOrMergePatchShipmentTypeDto extends AbstractShipmentTypeComma
                 CreateOrMergePatchShipmentTypeDto.this.setRequesterId(requesterId);
             }
 
+            private java.util.Map<String, Object> commandContext;
+
+            @Override
+            public java.util.Map<String, Object> getCommandContext() {
+                return commandContext;
+            }
+
+            public void setCommandContext(java.util.Map<String, Object> commandContext) {
+                this.commandContext = commandContext;
+            }
+
             @Override
             public String getParentTypeId() {
                 return CreateOrMergePatchShipmentTypeDto.this.getParentTypeId();
@@ -272,6 +283,17 @@ public class CreateOrMergePatchShipmentTypeDto extends AbstractShipmentTypeComma
             @Override
             public void setRequesterId(String requesterId) {
                 CreateOrMergePatchShipmentTypeDto.this.setRequesterId(requesterId);
+            }
+
+            private java.util.Map<String, Object> commandContext;
+
+            @Override
+            public java.util.Map<String, Object> getCommandContext() {
+                return commandContext;
+            }
+
+            public void setCommandContext(java.util.Map<String, Object> commandContext) {
+                this.commandContext = commandContext;
             }
 
             @Override
