@@ -77,6 +77,8 @@ namespace Dddml.Wms.Domain.InOutNotice
 
 		public virtual DateTime? EstimatedDeliveryDate { get; set; }
 
+		public virtual bool? IsScheduleNeeded { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual bool? IsPropertyWarehouseIdRemoved { get; set; }
@@ -247,6 +249,25 @@ namespace Dddml.Wms.Domain.InOutNotice
             set
             {
                 this.IsPropertyEstimatedDeliveryDateRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyIsScheduleNeededRemoved { get; set; }
+
+        bool IMergePatchInOutNotice.IsPropertyIsScheduleNeededRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyIsScheduleNeededRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyIsScheduleNeededRemoved = value;
             }
         }
 

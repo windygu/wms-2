@@ -1,6 +1,6 @@
 digraph {
  INITIAL -> SHIPMENT_INPUT [label=""];
- SHIPMENT_INPUT -> SHIPMENT_SHIPPED [label="Ship [!{this}.IsScheduleNeeded]"];
+ SHIPMENT_INPUT -> SHIPMENT_SHIPPED [label="Ship [{this}.IsScheduleNeeded == null || !{this}.IsScheduleNeeded]"];
  SHIPMENT_INPUT -> SHIPMENT_SCHEDULED [label="Schedule"];
  SHIPMENT_INPUT -> SHIPMENT_CANCELLED [label="Cancel"];
  SHIPMENT_SCHEDULED -> SHIPMENT_CANCELLED [label="Cancel"];

@@ -57,6 +57,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             cmd.ShippingInstructions = state.ShippingInstructions;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
+            cmd.IsScheduleNeeded = state.IsScheduleNeeded;
             cmd.Active = ((IInOutNoticeStateProperties)state).Active;
             
             if (state.WarehouseId == null) { cmd.IsPropertyWarehouseIdRemoved = true; }
@@ -88,6 +89,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             cmd.ShippingInstructions = state.ShippingInstructions;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
+            cmd.IsScheduleNeeded = state.IsScheduleNeeded;
             cmd.Active = ((IInOutNoticeStateProperties)state).Active;
             return cmd;
         }

@@ -111,6 +111,8 @@ namespace Dddml.Wms.Domain.InOutNotice
 
 		public virtual DateTime? EstimatedDeliveryDate { get; set; }
 
+		public virtual bool? IsScheduleNeeded { get; set; }
+
 		public virtual string StatusId { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -163,6 +165,8 @@ namespace Dddml.Wms.Domain.InOutNotice
 		public virtual bool IsPropertyEstimatedShipDateRemoved { get; set; }
 
 		public virtual bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
+
+		public virtual bool IsPropertyIsScheduleNeededRemoved { get; set; }
 
 		public virtual bool IsPropertyStatusIdRemoved { get; set; }
 

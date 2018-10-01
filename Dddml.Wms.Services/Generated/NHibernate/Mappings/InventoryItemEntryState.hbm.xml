@@ -3,7 +3,7 @@
 				   assembly="Dddml.Wms.Common" 
 				   namespace="Dddml.Wms.Domain.InventoryItem">
   
-  <class name="Dddml.Wms.Domain.InventoryItem.InventoryItemEntryState" table="InventoryItemEntries">
+  <class name="Dddml.Wms.Domain.InventoryItem.InventoryItemEntryState" mutable="false" table="InventoryItemEntries">
 
     <cache usage="read-only"/>
     <composite-id name="InventoryItemEntryId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemEntryId">

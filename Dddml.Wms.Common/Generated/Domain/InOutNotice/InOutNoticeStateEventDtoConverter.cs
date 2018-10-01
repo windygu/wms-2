@@ -51,6 +51,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             dto.ShippingInstructions = e.ShippingInstructions;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
+            dto.IsScheduleNeeded = e.IsScheduleNeeded;
             dto.StatusId = e.StatusId;
             dto.Active = e.Active;
             return dto;
@@ -72,6 +73,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             dto.ShippingInstructions = e.ShippingInstructions;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
+            dto.IsScheduleNeeded = e.IsScheduleNeeded;
             dto.StatusId = e.StatusId;
             dto.Active = e.Active;
             dto.IsPropertyWarehouseIdRemoved = e.IsPropertyWarehouseIdRemoved;
@@ -83,6 +85,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             dto.IsPropertyShippingInstructionsRemoved = e.IsPropertyShippingInstructionsRemoved;
             dto.IsPropertyEstimatedShipDateRemoved = e.IsPropertyEstimatedShipDateRemoved;
             dto.IsPropertyEstimatedDeliveryDateRemoved = e.IsPropertyEstimatedDeliveryDateRemoved;
+            dto.IsPropertyIsScheduleNeededRemoved = e.IsPropertyIsScheduleNeededRemoved;
             dto.IsPropertyStatusIdRemoved = e.IsPropertyStatusIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 

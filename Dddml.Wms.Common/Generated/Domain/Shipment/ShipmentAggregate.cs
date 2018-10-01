@@ -1062,7 +1062,7 @@ namespace Dddml.Wms.Domain.Shipment
                     command.SetState("SHIPMENT_INPUT");
                     return;
                 }
-                if ("SHIPMENT_INPUT" == command.GetState() && "Ship" == command.Content && !((IShipmentState)command.Context).IsScheduleNeeded)
+                if ("SHIPMENT_INPUT" == command.GetState() && "Ship" == command.Content && ((IShipmentState)command.Context).IsScheduleNeeded == null || !((IShipmentState)command.Context).IsScheduleNeeded)
                 {
                     command.SetState("SHIPMENT_SHIPPED");
                     return;

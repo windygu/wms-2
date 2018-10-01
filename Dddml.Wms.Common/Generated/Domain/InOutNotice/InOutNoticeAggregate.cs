@@ -116,6 +116,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             e.ShippingInstructions = c.ShippingInstructions;
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
+            e.IsScheduleNeeded = c.IsScheduleNeeded;
             NewInOutNoticeInOutNoticeActionCommandAndExecute(c, _state, e);
             e.Active = c.Active;
             e.CommandId = c.CommandId;
@@ -143,6 +144,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             e.ShippingInstructions = c.ShippingInstructions;
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
+            e.IsScheduleNeeded = c.IsScheduleNeeded;
             e.Active = c.Active;
             e.IsPropertyWarehouseIdRemoved = c.IsPropertyWarehouseIdRemoved;
             e.IsPropertyInOutNoticeTypeRemoved = c.IsPropertyInOutNoticeTypeRemoved;
@@ -153,6 +155,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             e.IsPropertyShippingInstructionsRemoved = c.IsPropertyShippingInstructionsRemoved;
             e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
             e.IsPropertyEstimatedDeliveryDateRemoved = c.IsPropertyEstimatedDeliveryDateRemoved;
+            e.IsPropertyIsScheduleNeededRemoved = c.IsPropertyIsScheduleNeededRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

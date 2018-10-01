@@ -75,6 +75,12 @@ namespace Dddml.Wms.Domain.InOutNotice
             set;
         }
 
+        public virtual bool? IsScheduleNeeded
+        {
+            get;
+            set;
+        }
+
         public virtual string StatusId
         {
             get;
@@ -130,6 +136,7 @@ namespace Dddml.Wms.Domain.InOutNotice
             state.ShippingInstructions = this.ShippingInstructions;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedDeliveryDate = this.EstimatedDeliveryDate;
+            if (this.IsScheduleNeeded != null && this.IsScheduleNeeded.HasValue) { state.IsScheduleNeeded = this.IsScheduleNeeded.Value; }
             state.StatusId = this.StatusId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

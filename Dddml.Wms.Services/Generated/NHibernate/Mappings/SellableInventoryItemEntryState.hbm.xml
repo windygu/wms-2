@@ -3,7 +3,7 @@
 				   assembly="Dddml.Wms.Common" 
 				   namespace="Dddml.Wms.Domain.SellableInventoryItem">
   
-  <class name="Dddml.Wms.Domain.SellableInventoryItem.SellableInventoryItemEntryState" table="SellableInventoryItemEntries">
+  <class name="Dddml.Wms.Domain.SellableInventoryItem.SellableInventoryItemEntryState" mutable="false" table="SellableInventoryItemEntries">
 
     <cache usage="read-only"/>
     <composite-id name="SellableInventoryItemEntryId" class="Dddml.Wms.Domain.SellableInventoryItem.SellableInventoryItemEntryId">

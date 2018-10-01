@@ -74,6 +74,12 @@ namespace Dddml.Wms.Domain.InOutNotice
             set;
         }
 
+        bool? IsScheduleNeeded
+        {
+            get;
+            set;
+        }
+
         string StatusId
         {
             get;

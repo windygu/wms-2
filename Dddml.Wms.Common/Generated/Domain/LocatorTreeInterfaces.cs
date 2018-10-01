@@ -16,8 +16,20 @@ namespace Dddml.Wms.Domain
         new IEnumerable<ILocatorTreeNode> Children { get; }
     }
 
-    public partial interface ILocatorTreeRepository : ITreeRepository<ILocatorTreeNode, string>
+    public partial interface ILocatorTreeRepository// : ITreeRepository<ILocatorTreeNode, string>
     {
+
+        IEnumerable<ILocatorTreeNode> GetRoots(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<ILocatorTreeNode> GetChildren(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<string> GetRootIds(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<string> GetChildIds(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+
+        IEnumerable<ILocatorTreeNode> GetRoots(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<ILocatorTreeNode> GetChildren(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<string> GetRootIds(Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+        IEnumerable<string> GetChildIds(string parentId, Dddml.Support.Criterion.ICriterion filter, IList<string> orders, int firstResult = 0, int maxResults = int.MaxValue);
+
+
     }
 
 }

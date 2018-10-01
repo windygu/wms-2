@@ -3,7 +3,7 @@
 				   assembly="Dddml.Wms.Common" 
 				   namespace="Dddml.Wms.Domain.AttributeSetInstance">
   
-  <class name="Dddml.Wms.Domain.AttributeSetInstance.AttributeSetInstanceState" table="AttributeSetInstances">
+  <class name="Dddml.Wms.Domain.AttributeSetInstance.AttributeSetInstanceState" mutable="false" table="AttributeSetInstances">
 
     <cache usage="read-only"/>
 	<id name="AttributeSetInstanceId" length="50" column="AttributeSetInstanceId"><generator class="assigned"/></id>

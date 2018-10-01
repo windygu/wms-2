@@ -192,6 +192,8 @@ namespace Dddml.Wms.Domain.InOutNotice
 
 			this.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
 
+            this.IsScheduleNeeded = (e.IsScheduleNeeded != null && e.IsScheduleNeeded.HasValue) ? e.IsScheduleNeeded.Value : default(bool);
+
 			this.StatusId = e.StatusId;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -315,6 +317,18 @@ namespace Dddml.Wms.Domain.InOutNotice
 			else
 			{
 				this.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
+			}
+
+			if (e.IsScheduleNeeded == null)
+			{
+				if (e.IsPropertyIsScheduleNeededRemoved)
+				{
+					this.IsScheduleNeeded = default(bool);
+				}
+			}
+			else
+			{
+				this.IsScheduleNeeded = (e.IsScheduleNeeded != null && e.IsScheduleNeeded.HasValue) ? e.IsScheduleNeeded.Value : default(bool);
 			}
 
 			if (e.StatusId == null)

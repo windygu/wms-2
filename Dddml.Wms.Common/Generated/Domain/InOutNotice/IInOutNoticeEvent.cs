@@ -39,6 +39,8 @@ namespace Dddml.Wms.Domain.InOutNotice
 
 		DateTime? EstimatedDeliveryDate { get; set; }
 
+		bool? IsScheduleNeeded { get; set; }
+
 		string StatusId { get; set; }
 
 		bool? Active { get; set; }
@@ -70,6 +72,8 @@ namespace Dddml.Wms.Domain.InOutNotice
 		bool IsPropertyEstimatedShipDateRemoved { get; set; }
 
 		bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
+
+		bool IsPropertyIsScheduleNeededRemoved { get; set; }
 
 		bool IsPropertyStatusIdRemoved { get; set; }
 

@@ -306,6 +306,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "IsScheduleNeeded",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "StatusId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -572,6 +601,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("estimatedShipDate", "EstimatedShipDate");
             d.Add("EstimatedDeliveryDate", "EstimatedDeliveryDate");
             d.Add("estimatedDeliveryDate", "EstimatedDeliveryDate");
+            d.Add("IsScheduleNeeded", "IsScheduleNeeded");
+            d.Add("isScheduleNeeded", "IsScheduleNeeded");
             d.Add("StatusId", "StatusId");
             d.Add("statusId", "StatusId");
             d.Add("Version", "Version");

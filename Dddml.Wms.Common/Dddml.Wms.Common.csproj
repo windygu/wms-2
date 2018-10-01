@@ -6397,11 +6397,7 @@
     <Content Include="Generated\Domain\Services\GenerateDomainServicesDtos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDomainServicesDtos.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateDomainServicesDtos.txt
-.\IdServiceCommandDtos.cs
-.\OrderShipGroupServiceCommandDtos.cs
-</LastOutputs>
+      <LastOutputs>.\GenerateDomainServicesDtos.txt</LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Services\GenerateDomainServicesDtos.txt">
       <AutoGen>True</AutoGen>

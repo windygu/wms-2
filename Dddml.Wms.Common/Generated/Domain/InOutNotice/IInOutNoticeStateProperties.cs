@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.InOutNotice
 
 		DateTime? EstimatedDeliveryDate { get; set; }
 
+		bool IsScheduleNeeded { get; set; }
+
 		string StatusId { get; set; }
 
 		long Version { get; set; }

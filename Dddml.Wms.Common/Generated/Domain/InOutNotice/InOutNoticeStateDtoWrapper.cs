@@ -319,6 +319,37 @@ namespace Dddml.Wms.Domain.InOutNotice
             }
         }
 
+		public virtual bool? IsScheduleNeeded
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsScheduleNeeded"))
+                {
+                    return _state.IsScheduleNeeded;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.IsScheduleNeeded = value.Value;
+                }
+            }
+        }
+
+        bool IInOutNoticeStateProperties.IsScheduleNeeded
+        {
+            get 
+            {
+                return (this._state as IInOutNoticeStateProperties).IsScheduleNeeded;
+            }
+            set 
+            {
+                (this._state as IInOutNoticeStateProperties).IsScheduleNeeded = value;
+            }
+        }
+
 		public virtual string StatusId
 		{
             get

@@ -6,8 +6,7 @@
 <#@ include file="..\..\..\LoadBoundedContext.tt" #>
 <#
 
-    var generator = new DomainServicesDtosGenerator(boundedContext.Services.Values);
-
-    generator.Run();
+    //var generator = new DomainServicesDtosGenerator(boundedContext.Services.Values);
+    //generator.Run();
 
 #>
