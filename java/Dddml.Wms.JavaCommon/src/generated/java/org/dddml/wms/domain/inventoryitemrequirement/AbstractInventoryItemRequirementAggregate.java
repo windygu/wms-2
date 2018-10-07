@@ -59,7 +59,7 @@ public abstract class AbstractInventoryItemRequirementAggregate extends Abstract
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         BigDecimal quantity = BigDecimal.ZERO;
         Long version = c.getVersion();
-        for (InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry innerCommand : c.getEntries())
+        for (InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry innerCommand : c.getCreateInventoryItemRequirementEntryCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

@@ -66,7 +66,7 @@ public abstract class AbstractPicklistBinAggregate extends AbstractAggregate imp
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (PicklistItemCommand.CreatePicklistItem innerCommand : c.getPicklistItems())
+        for (PicklistItemCommand.CreatePicklistItem innerCommand : c.getCreatePicklistItemCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             PicklistItemEvent.PicklistItemStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

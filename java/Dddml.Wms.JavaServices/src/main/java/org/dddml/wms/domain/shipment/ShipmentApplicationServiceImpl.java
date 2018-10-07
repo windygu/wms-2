@@ -122,7 +122,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipmentItem.setQuantity(quantity);
         shipmentItem.setActive(true);
         if (shipmentCommand instanceof ShipmentCommand.CreateShipment) {
-            ((ShipmentCommand.CreateShipment) shipmentCommand).getShipmentItems().add(shipmentItem);
+            ((ShipmentCommand.CreateShipment) shipmentCommand).getCreateShipmentItemCommands().add(shipmentItem);
         } else if (shipmentCommand instanceof ShipmentCommand.MergePatchShipment) {
             ((ShipmentCommand.MergePatchShipment) shipmentCommand).getShipmentItemCommands().add(shipmentItem);
         } else {
@@ -422,7 +422,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         int i = 0;
         for (ImportingShipmentItem d : c.getShipmentItems()) {
             ShipmentItemCommand.CreateShipmentItem shipItem = createShipmentItem(i, d);
-            shipment.getShipmentItems().add(shipItem);
+            shipment.getCreateShipmentItemCommands().add(shipItem);
             i++;
         }
         when(shipment);
@@ -575,7 +575,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         if (receiptSeqId == null) {
             throw new NullPointerException("receiptSeqId is null.");
         }
-        ShipmentReceiptState receipt = shipment.getShipmentReceipts().get(receiptSeqId, false, true);
+        ShipmentReceiptState receipt = shipment.getShipmentReceipts().get(receiptSeqId, true);
         if (receipt == null) {
             updateReceipt = new AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt();
         } else {
@@ -628,7 +628,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         if (itemIssuanceSeqId == null) {
             throw new NullPointerException("itemIssuanceSeqId is null.");
         }
-        ItemIssuanceState itemIssuanceState = shipment.getItemIssuances().get(itemIssuanceSeqId, false, true);
+        ItemIssuanceState itemIssuanceState = shipment.getItemIssuances().get(itemIssuanceSeqId, true);
         if (itemIssuanceState == null) {
             udpateItemIssuance = new AbstractItemIssuanceCommand.SimpleCreateItemIssuance();
         } else {

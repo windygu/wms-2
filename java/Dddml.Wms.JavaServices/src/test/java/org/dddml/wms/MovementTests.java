@@ -111,7 +111,7 @@ public class MovementTests {
         line_1.setLocatorIdTo("2_TEST_T_" + new java.util.Date().getTime());
         line_1.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);
         line_1.setMovementQuantity(BigDecimal.valueOf(123));
-        movement.getMovementLines().add(line_1);
+        movement.getCreateMovementLineCommands().add(line_1);
 
         movementApplicationService.when(movement);
 
@@ -143,7 +143,7 @@ public class MovementTests {
         line_1.setLocatorIdTo("2_TEST_T_" + new java.util.Date().getTime());
         line_1.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);
         line_1.setMovementQuantity(BigDecimal.valueOf(233));
-        movement.getMovementLines().add(line_1);
+        movement.getCreateMovementLineCommands().add(line_1);
 
         movementApplicationService.when(movement);
 

@@ -125,7 +125,7 @@ public interface MovementCommand extends Command
 
     interface CreateMovement extends CreateOrMergePatchMovement
     {
-        CreateMovementLineCommandCollection getMovementLines();
+        CreateMovementLineCommandCollection getCreateMovementLineCommands();
 
         MovementLineCommand.CreateMovementLine newCreateMovementLine();
 

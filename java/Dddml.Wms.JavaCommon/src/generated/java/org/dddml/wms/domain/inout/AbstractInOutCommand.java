@@ -452,18 +452,24 @@ public abstract class AbstractInOutCommand extends AbstractCommand implements In
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateInOutImageCommandCollection inOutImages = new SimpleCreateInOutImageCommandCollection();
+        private CreateInOutImageCommandCollection createInOutImageCommands = new SimpleCreateInOutImageCommandCollection();
 
-        public CreateInOutImageCommandCollection getInOutImages()
-        {
-            return this.inOutImages;
+        public CreateInOutImageCommandCollection getCreateInOutImageCommands() {
+            return this.createInOutImageCommands;
         }
 
-        private CreateInOutLineCommandCollection inOutLines = new SimpleCreateInOutLineCommandCollection();
+        public CreateInOutImageCommandCollection getInOutImages() {
+            return this.createInOutImageCommands; //inOutImages;
+        }
 
-        public CreateInOutLineCommandCollection getInOutLines()
-        {
-            return this.inOutLines;
+        private CreateInOutLineCommandCollection createInOutLineCommands = new SimpleCreateInOutLineCommandCollection();
+
+        public CreateInOutLineCommandCollection getCreateInOutLineCommands() {
+            return this.createInOutLineCommands;
+        }
+
+        public CreateInOutLineCommandCollection getInOutLines() {
+            return this.createInOutLineCommands; //inOutLines;
         }
 
     }

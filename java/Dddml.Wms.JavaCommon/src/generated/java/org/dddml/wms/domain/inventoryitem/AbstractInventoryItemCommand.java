@@ -64,11 +64,14 @@ public abstract class AbstractInventoryItemCommand extends AbstractCommand imple
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateInventoryItemEntryCommandCollection entries = new SimpleCreateInventoryItemEntryCommandCollection();
+        private CreateInventoryItemEntryCommandCollection createInventoryItemEntryCommands = new SimpleCreateInventoryItemEntryCommandCollection();
 
-        public CreateInventoryItemEntryCommandCollection getEntries()
-        {
-            return this.entries;
+        public CreateInventoryItemEntryCommandCollection getCreateInventoryItemEntryCommands() {
+            return this.createInventoryItemEntryCommands;
+        }
+
+        public CreateInventoryItemEntryCommandCollection getEntries() {
+            return this.createInventoryItemEntryCommands; //entries;
         }
 
     }

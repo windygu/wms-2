@@ -78,7 +78,7 @@ public interface OrderShipGroupCommand extends Command
 
     interface CreateOrderShipGroup extends CreateOrMergePatchOrderShipGroup
     {
-        CreateOrderItemShipGroupAssociationCommandCollection getOrderItemShipGroupAssociations();
+        CreateOrderItemShipGroupAssociationCommandCollection getCreateOrderItemShipGroupAssociationCommands();
 
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation newCreateOrderItemShipGroupAssociation();
 

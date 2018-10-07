@@ -75,7 +75,7 @@ public interface InOutLineCommand extends Command
 
     interface CreateInOutLine extends CreateOrMergePatchInOutLine
     {
-        CreateInOutLineImageCommandCollection getInOutLineImages();
+        CreateInOutLineImageCommandCollection getCreateInOutLineImageCommands();
 
         InOutLineImageCommand.CreateInOutLineImage newCreateInOutLineImage();
 

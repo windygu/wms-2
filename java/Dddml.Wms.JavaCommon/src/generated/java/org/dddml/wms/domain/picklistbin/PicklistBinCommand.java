@@ -64,7 +64,7 @@ public interface PicklistBinCommand extends Command
 
     interface CreatePicklistBin extends CreateOrMergePatchPicklistBin
     {
-        CreatePicklistItemCommandCollection getPicklistItems();
+        CreatePicklistItemCommandCollection getCreatePicklistItemCommands();
 
         PicklistItemCommand.CreatePicklistItem newCreatePicklistItem();
 

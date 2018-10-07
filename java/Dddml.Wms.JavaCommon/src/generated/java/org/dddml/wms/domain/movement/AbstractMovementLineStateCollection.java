@@ -34,8 +34,28 @@ public abstract class AbstractMovementLineStateCollection implements EntityState
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.movementState instanceof AbstractMovementState) {
+        //    if (((AbstractMovementState)this.movementState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<MovementLineState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getMovementLineStateDao().findByMovementDocumentNumber(movementState.getDocumentNumber());
         } else {
             List<MovementLineState> ss = new ArrayList<MovementLineState>();
@@ -62,17 +82,24 @@ public abstract class AbstractMovementLineStateCollection implements EntityState
         return get(lineNumber, false, false);
     }
 
-    MovementLineState get(String lineNumber, boolean forCreation) {
-        return get(lineNumber, forCreation, false);
+    public MovementLineState get(String lineNumber, boolean nullAllowed) {
+        return get(lineNumber, nullAllowed, false);
     }
 
-    MovementLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
+    MovementLineState get(String lineNumber, boolean nullAllowed, boolean forCreation) {
         MovementLineId globalId = new MovementLineId(movementState.getDocumentNumber(), lineNumber);
         if (loadedMovementLineStates.containsKey(globalId)) {
-            return loadedMovementLineStates.get(globalId);
+            MovementLineState state = loadedMovementLineStates.get(globalId);
+            if (state instanceof AbstractMovementLineState) {
+                ((AbstractMovementLineState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             MovementLineState state = new AbstractMovementLineState.SimpleMovementLineState(getForReapplying());
             state.setMovementLineId(globalId);
             loadedMovementLineStates.put(globalId, state);
@@ -80,6 +107,9 @@ public abstract class AbstractMovementLineStateCollection implements EntityState
         } else {
             MovementLineState state = getMovementLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedMovementLineStates.put(globalId, state);
             }
             return state;
@@ -87,13 +117,17 @@ public abstract class AbstractMovementLineStateCollection implements EntityState
 
     }
 
-    public void remove(MovementLineState state)
-    {
+    public void remove(MovementLineState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedMovementLineStates.put(state.getMovementLineId(), state);
     }
 
-    public void add(MovementLineState state)
-    {
+    public void add(MovementLineState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedMovementLineStates.put(state.getMovementLineId(), state);
     }
 

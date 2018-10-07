@@ -73,7 +73,7 @@ public interface PicklistCommand extends Command
 
     interface CreatePicklist extends CreateOrMergePatchPicklist
     {
-        CreatePicklistRoleCommandCollection getPicklistRoles();
+        CreatePicklistRoleCommandCollection getCreatePicklistRoleCommands();
 
         PicklistRoleCommand.CreatePicklistRole newCreatePicklistRole();
 

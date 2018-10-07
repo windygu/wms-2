@@ -127,11 +127,14 @@ public abstract class AbstractPicklistBinCommand extends AbstractCommand impleme
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreatePicklistItemCommandCollection picklistItems = new SimpleCreatePicklistItemCommandCollection();
+        private CreatePicklistItemCommandCollection createPicklistItemCommands = new SimpleCreatePicklistItemCommandCollection();
 
-        public CreatePicklistItemCommandCollection getPicklistItems()
-        {
-            return this.picklistItems;
+        public CreatePicklistItemCommandCollection getCreatePicklistItemCommands() {
+            return this.createPicklistItemCommands;
+        }
+
+        public CreatePicklistItemCommandCollection getPicklistItems() {
+            return this.createPicklistItemCommands; //picklistItems;
         }
 
     }

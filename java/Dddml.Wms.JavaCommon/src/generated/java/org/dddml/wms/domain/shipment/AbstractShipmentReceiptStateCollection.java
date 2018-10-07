@@ -33,8 +33,28 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.shipmentState instanceof AbstractShipmentState) {
+        //    if (((AbstractShipmentState)this.shipmentState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<ShipmentReceiptState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getShipmentReceiptStateDao().findByShipmentId(shipmentState.getShipmentId());
         } else {
             List<ShipmentReceiptState> ss = new ArrayList<ShipmentReceiptState>();
@@ -61,17 +81,24 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
         return get(receiptSeqId, false, false);
     }
 
-    ShipmentReceiptState get(String receiptSeqId, boolean forCreation) {
-        return get(receiptSeqId, forCreation, false);
+    public ShipmentReceiptState get(String receiptSeqId, boolean nullAllowed) {
+        return get(receiptSeqId, nullAllowed, false);
     }
 
-    ShipmentReceiptState get(String receiptSeqId, boolean forCreation, boolean nullAllowed) {
+    ShipmentReceiptState get(String receiptSeqId, boolean nullAllowed, boolean forCreation) {
         ShipmentReceiptId globalId = new ShipmentReceiptId(shipmentState.getShipmentId(), receiptSeqId);
         if (loadedShipmentReceiptStates.containsKey(globalId)) {
-            return loadedShipmentReceiptStates.get(globalId);
+            ShipmentReceiptState state = loadedShipmentReceiptStates.get(globalId);
+            if (state instanceof AbstractShipmentReceiptState) {
+                ((AbstractShipmentReceiptState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             ShipmentReceiptState state = new AbstractShipmentReceiptState.SimpleShipmentReceiptState(getForReapplying());
             state.setShipmentReceiptId(globalId);
             loadedShipmentReceiptStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
         } else {
             ShipmentReceiptState state = getShipmentReceiptStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedShipmentReceiptStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
 
     }
 
-    public void remove(ShipmentReceiptState state)
-    {
+    public void remove(ShipmentReceiptState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedShipmentReceiptStates.put(state.getShipmentReceiptId(), state);
     }
 
-    public void add(ShipmentReceiptState state)
-    {
+    public void add(ShipmentReceiptState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedShipmentReceiptStates.put(state.getShipmentReceiptId(), state);
     }
 

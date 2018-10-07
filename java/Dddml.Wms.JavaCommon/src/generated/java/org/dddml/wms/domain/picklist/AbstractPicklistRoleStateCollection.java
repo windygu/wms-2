@@ -34,8 +34,28 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.picklistState instanceof AbstractPicklistState) {
+        //    if (((AbstractPicklistState)this.picklistState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<PicklistRoleState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getPicklistRoleStateDao().findByPicklistId(picklistState.getPicklistId());
         } else {
             List<PicklistRoleState> ss = new ArrayList<PicklistRoleState>();
@@ -62,17 +82,24 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
         return get(partyRoleId, false, false);
     }
 
-    PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation) {
-        return get(partyRoleId, forCreation, false);
+    public PicklistRoleState get(PartyRoleId partyRoleId, boolean nullAllowed) {
+        return get(partyRoleId, nullAllowed, false);
     }
 
-    PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed) {
+    PicklistRoleState get(PartyRoleId partyRoleId, boolean nullAllowed, boolean forCreation) {
         PicklistRoleId globalId = new PicklistRoleId(picklistState.getPicklistId(), partyRoleId);
         if (loadedPicklistRoleStates.containsKey(globalId)) {
-            return loadedPicklistRoleStates.get(globalId);
+            PicklistRoleState state = loadedPicklistRoleStates.get(globalId);
+            if (state instanceof AbstractPicklistRoleState) {
+                ((AbstractPicklistRoleState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             PicklistRoleState state = new AbstractPicklistRoleState.SimplePicklistRoleState(getForReapplying());
             state.setPicklistRoleId(globalId);
             loadedPicklistRoleStates.put(globalId, state);
@@ -80,6 +107,9 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
         } else {
             PicklistRoleState state = getPicklistRoleStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedPicklistRoleStates.put(globalId, state);
             }
             return state;
@@ -87,13 +117,17 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
 
     }
 
-    public void remove(PicklistRoleState state)
-    {
+    public void remove(PicklistRoleState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedPicklistRoleStates.put(state.getPicklistRoleId(), state);
     }
 
-    public void add(PicklistRoleState state)
-    {
+    public void add(PicklistRoleState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedPicklistRoleStates.put(state.getPicklistRoleId(), state);
     }
 

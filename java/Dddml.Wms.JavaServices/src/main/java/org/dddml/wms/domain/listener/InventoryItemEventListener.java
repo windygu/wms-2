@@ -149,7 +149,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
             SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry createEntry = createItem.newCreateSellableInventoryItemEntry();
             setCreateSellableInventoryItemEntry(outputQuantity, tid, createEntry);
-            createItem.getEntries().add(createEntry);
+            createItem.getCreateSellableInventoryItemEntryCommands().add(createEntry);
             getSellableInventoryItemApplicationService().when(createItem);
             //return SellableInventoryItemApplicationService.Get(outputItemId);
         }
@@ -186,7 +186,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
             InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry createEntry = createItem.newCreateInventoryItemRequirementEntry();
             setCreateInventoryItemRequirementEntry(outputQuantity, tid, createEntry);
-            createItem.getEntries().add(createEntry);
+            createItem.getCreateInventoryItemRequirementEntryCommands().add(createEntry);
             getInventoryItemRequirementApplicationService().when(createItem);
             //return InventoryItemRequirementApplicationService.Get(outputItemId);
         }

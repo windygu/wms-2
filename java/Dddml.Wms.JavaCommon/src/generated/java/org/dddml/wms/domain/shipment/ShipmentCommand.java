@@ -180,19 +180,19 @@ public interface ShipmentCommand extends Command
 
     interface CreateShipment extends CreateOrMergePatchShipment
     {
-        CreateShipmentImageCommandCollection getShipmentImages();
+        CreateShipmentImageCommandCollection getCreateShipmentImageCommands();
 
         ShipmentImageCommand.CreateShipmentImage newCreateShipmentImage();
 
-        CreateShipmentItemCommandCollection getShipmentItems();
+        CreateShipmentItemCommandCollection getCreateShipmentItemCommands();
 
         ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
 
-        CreateShipmentReceiptCommandCollection getShipmentReceipts();
+        CreateShipmentReceiptCommandCollection getCreateShipmentReceiptCommands();
 
         ShipmentReceiptCommand.CreateShipmentReceipt newCreateShipmentReceipt();
 
-        CreateItemIssuanceCommandCollection getItemIssuances();
+        CreateItemIssuanceCommandCollection getCreateItemIssuanceCommands();
 
         ItemIssuanceCommand.CreateItemIssuance newCreateItemIssuance();
 

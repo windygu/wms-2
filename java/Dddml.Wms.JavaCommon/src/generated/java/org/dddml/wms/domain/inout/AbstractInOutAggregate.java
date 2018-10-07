@@ -155,14 +155,14 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (InOutImageCommand.CreateInOutImage innerCommand : c.getInOutImages())
+        for (InOutImageCommand.CreateInOutImage innerCommand : c.getCreateInOutImageCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             InOutImageEvent.InOutImageStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addInOutImageEvent(innerEvent);
         }
 
-        for (InOutLineCommand.CreateInOutLine innerCommand : c.getInOutLines())
+        for (InOutLineCommand.CreateInOutLine innerCommand : c.getCreateInOutLineCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             InOutLineEvent.InOutLineStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
@@ -372,7 +372,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
 
-        for (InOutLineImageCommand.CreateInOutLineImage innerCommand : c.getInOutLineImages())
+        for (InOutLineImageCommand.CreateInOutLineImage innerCommand : c.getCreateInOutLineImageCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
 

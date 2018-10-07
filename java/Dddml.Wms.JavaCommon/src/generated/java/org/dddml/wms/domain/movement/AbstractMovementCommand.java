@@ -308,11 +308,14 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateMovementLineCommandCollection movementLines = new SimpleCreateMovementLineCommandCollection();
+        private CreateMovementLineCommandCollection createMovementLineCommands = new SimpleCreateMovementLineCommandCollection();
 
-        public CreateMovementLineCommandCollection getMovementLines()
-        {
-            return this.movementLines;
+        public CreateMovementLineCommandCollection getCreateMovementLineCommands() {
+            return this.createMovementLineCommands;
+        }
+
+        public CreateMovementLineCommandCollection getMovementLines() {
+            return this.createMovementLineCommands; //movementLines;
         }
 
     }

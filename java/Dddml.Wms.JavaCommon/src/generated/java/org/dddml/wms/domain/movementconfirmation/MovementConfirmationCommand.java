@@ -77,7 +77,7 @@ public interface MovementConfirmationCommand extends Command
 
     interface CreateMovementConfirmation extends CreateOrMergePatchMovementConfirmation
     {
-        CreateMovementConfirmationLineCommandCollection getMovementConfirmationLines();
+        CreateMovementConfirmationLineCommandCollection getCreateMovementConfirmationLineCommands();
 
         MovementConfirmationLineCommand.CreateMovementConfirmationLine newCreateMovementConfirmationLine();
 

@@ -384,7 +384,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             orderCommand.getOrderItemCommands().add(orderItemCommand);
         } else {
             orderItemCommand = orderCommand.newMergePatchOrderItem();
-            OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, false, true);
+            OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, true);
             if (orderItemState == null) {
                 throw new IllegalArgumentException(String.format("OrderItemSeqId '%1$s' error.", orderItemSeqId));
             }
@@ -457,7 +457,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             orderCommand.setCommandId(UUID.randomUUID().toString());//c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
             orderCommand.setVersion(orderState.getVersion());
-            OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, false, true);
+            OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, true);
             if (orderShipGroupState == null) {
                 orderShipGroupCommand = orderCommand.newCreateOrderShipGroup();
             } else {
@@ -483,7 +483,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         //        }
 
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
-            ((OrderCommand.CreateOrder)orderCommand).getOrderShipGroups().add((OrderShipGroupCommand.CreateOrderShipGroup)orderShipGroupCommand);
+            ((OrderCommand.CreateOrder)orderCommand).getCreateOrderShipGroupCommands().add((OrderShipGroupCommand.CreateOrderShipGroup)orderShipGroupCommand);
             getOrderApplicationService().when((AbstractOrderCommand.SimpleCreateOrder) orderCommand);
         } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
             ((OrderCommand.MergePatchOrder)orderCommand).getOrderShipGroupCommands().add(orderShipGroupCommand);
@@ -515,7 +515,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             orderCommand.setCommandId(UUID.randomUUID().toString());//c.getCommandId());
             orderCommand.setRequesterId(c.getRequesterId());
             orderCommand.setVersion(orderState.getVersion());
-            OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, false, true);
+            OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, true);
             if (orderShipGroupState == null) {
                 orderShipGroupCommand = orderCommand.newCreateOrderShipGroup();
             } else {
@@ -543,7 +543,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
 
         if(orderCommand instanceof AbstractOrderCommand.SimpleCreateOrder) {
-            ((OrderCommand.CreateOrder)orderCommand).getOrderShipGroups().add((OrderShipGroupCommand.CreateOrderShipGroup)orderShipGroupCommand);
+            ((OrderCommand.CreateOrder)orderCommand).getCreateOrderShipGroupCommands().add((OrderShipGroupCommand.CreateOrderShipGroup)orderShipGroupCommand);
             getOrderApplicationService().when((AbstractOrderCommand.SimpleCreateOrder) orderCommand);
         } else if(orderCommand instanceof AbstractOrderCommand.SimpleMergePatchOrder) {
             ((OrderCommand.MergePatchOrder)orderCommand).getOrderShipGroupCommands().add(orderShipGroupCommand);
@@ -588,13 +588,13 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             if (orderState == null) {
                 throw new IllegalArgumentException(String.format("OrderId '%1$s' error.", orderId));
             }
-            OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(orderShipGroupSeqId, false, true);
+            OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(orderShipGroupSeqId, true);
             if (orderShipGroupState == null) {
                 throw new IllegalArgumentException(String.format("OrderShipGroupSeqId '%1$s' error.", orderShipGroupSeqId));
             }
             for (OrderItemShipGroupAssociationState assoc : orderShipGroupState.getOrderItemShipGroupAssociations()) {
                 String orderItemSeqId = assoc.getOrderItemSeqId();
-                OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, false, true);
+                OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, true);
                 if (orderItemState == null) {
                     throw new IllegalArgumentException(String.format("OrderItemSeqId '%1$s' error.", orderItemSeqId));
                 }
@@ -682,7 +682,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     }
 
     private OrderShipGroupState assertShipGroupSeqId(OrderState orderState, String shipGroupSeqId) {
-        OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, false, true);
+        OrderShipGroupState orderShipGroupState = orderState.getOrderShipGroups().get(shipGroupSeqId, true);
         if (orderShipGroupState == null) {
             throw new IllegalArgumentException(String.format("ShipGroupSeqId Id '%1$s' error.", shipGroupSeqId));
         }
@@ -690,7 +690,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
     }
 
     private OrderItemState assertOrderItemSeqSeqId(OrderState orderState, String orderItemSeqId) {
-        OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, false, true);
+        OrderItemState orderItemState = orderState.getOrderItems().get(orderItemSeqId, true);
         if (orderItemState == null) {
             throw new IllegalArgumentException(String.format("OrderItemSeqId Id '%1$s' error.", orderItemSeqId));
         }

@@ -2,6 +2,7 @@ package org.dddml.wms.domain.physicalinventory;
 
 import org.dddml.wms.domain.DocumentAction;
 import org.dddml.wms.domain.DocumentStatusIds;
+import org.dddml.wms.domain.EntityStateCollection;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
@@ -79,7 +80,7 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
                 createPhysicalInventoryLine.setBookQuantity(ii.getOnHandQuantity());//todo ???
                 createPhysicalInventoryLine.setLineNumber(getSeqIdGenerator().getNextId().toString());
                 createPhysicalInventoryLine.setActive(true);
-                c.getPhysicalInventoryLines().add(createPhysicalInventoryLine);
+                c.getCreatePhysicalInventoryLineCommands().add(createPhysicalInventoryLine);
             }
         }
         super.when(c);
@@ -173,7 +174,7 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
 
         for (PhysicalInventoryLineState d : physicalInventory.getPhysicalInventoryLines()) {
             PhysicalInventoryLineCommand.CreatePhysicalInventoryLine reversalLine = doCreateReversalPhysicalInventoryLine(d);
-            reversalPhysicalInventory.getPhysicalInventoryLines().add(reversalLine);
+            reversalPhysicalInventory.getCreatePhysicalInventoryLineCommands().add(reversalLine);
         }
 
         return reversalPhysicalInventory;
@@ -232,7 +233,7 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
 
 
     protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completePhysicalInventoryCreateInventoryItemEntries(PhysicalInventoryState physicalInventoryState) {
-        PhysicalInventoryLineStates physicalInventoryLines = physicalInventoryState.getPhysicalInventoryLines();
+        EntityStateCollection<InventoryItemId, PhysicalInventoryLineState> physicalInventoryLines = physicalInventoryState.getPhysicalInventoryLines();
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (PhysicalInventoryLineState d : physicalInventoryLines) {
             InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(physicalInventoryState, d);// signum);
@@ -299,7 +300,7 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
             }
             String notNullAttrSetInstId = attributeSetInstanceId;
             InventoryItemId inventoryItemId = new InventoryItemId(productId, locatorId, notNullAttrSetInstId);
-            PhysicalInventoryLineState lineState = getState().getPhysicalInventoryLines().get(inventoryItemId, false, true);
+            PhysicalInventoryLineState lineState = getState().getPhysicalInventoryLines().get(inventoryItemId, true);
 
             PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(version, commandId, requesterId);
             if (lineState != null) {

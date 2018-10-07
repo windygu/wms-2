@@ -33,8 +33,28 @@ public abstract class AbstractOrderItemStateCollection implements EntityStateCol
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.orderState instanceof AbstractOrderState) {
+        //    if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<OrderItemState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getOrderItemStateDao().findByOrderId(orderState.getOrderId());
         } else {
             List<OrderItemState> ss = new ArrayList<OrderItemState>();
@@ -61,17 +81,24 @@ public abstract class AbstractOrderItemStateCollection implements EntityStateCol
         return get(orderItemSeqId, false, false);
     }
 
-    OrderItemState get(String orderItemSeqId, boolean forCreation) {
-        return get(orderItemSeqId, forCreation, false);
+    public OrderItemState get(String orderItemSeqId, boolean nullAllowed) {
+        return get(orderItemSeqId, nullAllowed, false);
     }
 
-    OrderItemState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed) {
+    OrderItemState get(String orderItemSeqId, boolean nullAllowed, boolean forCreation) {
         OrderItemId globalId = new OrderItemId(orderState.getOrderId(), orderItemSeqId);
         if (loadedOrderItemStates.containsKey(globalId)) {
-            return loadedOrderItemStates.get(globalId);
+            OrderItemState state = loadedOrderItemStates.get(globalId);
+            if (state instanceof AbstractOrderItemState) {
+                ((AbstractOrderItemState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             OrderItemState state = new AbstractOrderItemState.SimpleOrderItemState(getForReapplying());
             state.setOrderItemId(globalId);
             loadedOrderItemStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractOrderItemStateCollection implements EntityStateCol
         } else {
             OrderItemState state = getOrderItemStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedOrderItemStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractOrderItemStateCollection implements EntityStateCol
 
     }
 
-    public void remove(OrderItemState state)
-    {
+    public void remove(OrderItemState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedOrderItemStates.put(state.getOrderItemId(), state);
     }
 
-    public void add(OrderItemState state)
-    {
+    public void add(OrderItemState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedOrderItemStates.put(state.getOrderItemId(), state);
     }
 

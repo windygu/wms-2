@@ -33,8 +33,28 @@ public abstract class AbstractShipmentImageStateCollection implements EntityStat
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.shipmentState instanceof AbstractShipmentState) {
+        //    if (((AbstractShipmentState)this.shipmentState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<ShipmentImageState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getShipmentImageStateDao().findByShipmentId(shipmentState.getShipmentId());
         } else {
             List<ShipmentImageState> ss = new ArrayList<ShipmentImageState>();
@@ -61,17 +81,24 @@ public abstract class AbstractShipmentImageStateCollection implements EntityStat
         return get(sequenceId, false, false);
     }
 
-    ShipmentImageState get(String sequenceId, boolean forCreation) {
-        return get(sequenceId, forCreation, false);
+    public ShipmentImageState get(String sequenceId, boolean nullAllowed) {
+        return get(sequenceId, nullAllowed, false);
     }
 
-    ShipmentImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
+    ShipmentImageState get(String sequenceId, boolean nullAllowed, boolean forCreation) {
         ShipmentImageId globalId = new ShipmentImageId(shipmentState.getShipmentId(), sequenceId);
         if (loadedShipmentImageStates.containsKey(globalId)) {
-            return loadedShipmentImageStates.get(globalId);
+            ShipmentImageState state = loadedShipmentImageStates.get(globalId);
+            if (state instanceof AbstractShipmentImageState) {
+                ((AbstractShipmentImageState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             ShipmentImageState state = new AbstractShipmentImageState.SimpleShipmentImageState(getForReapplying());
             state.setShipmentImageId(globalId);
             loadedShipmentImageStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractShipmentImageStateCollection implements EntityStat
         } else {
             ShipmentImageState state = getShipmentImageStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedShipmentImageStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractShipmentImageStateCollection implements EntityStat
 
     }
 
-    public void remove(ShipmentImageState state)
-    {
+    public void remove(ShipmentImageState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedShipmentImageStates.put(state.getShipmentImageId(), state);
     }
 
-    public void add(ShipmentImageState state)
-    {
+    public void add(ShipmentImageState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedShipmentImageStates.put(state.getShipmentImageId(), state);
     }
 

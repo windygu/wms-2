@@ -416,25 +416,34 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateOrderRoleCommandCollection orderRoles = new SimpleCreateOrderRoleCommandCollection();
+        private CreateOrderRoleCommandCollection createOrderRoleCommands = new SimpleCreateOrderRoleCommandCollection();
 
-        public CreateOrderRoleCommandCollection getOrderRoles()
-        {
-            return this.orderRoles;
+        public CreateOrderRoleCommandCollection getCreateOrderRoleCommands() {
+            return this.createOrderRoleCommands;
         }
 
-        private CreateOrderItemCommandCollection orderItems = new SimpleCreateOrderItemCommandCollection();
-
-        public CreateOrderItemCommandCollection getOrderItems()
-        {
-            return this.orderItems;
+        public CreateOrderRoleCommandCollection getOrderRoles() {
+            return this.createOrderRoleCommands; //orderRoles;
         }
 
-        private CreateOrderShipGroupCommandCollection orderShipGroups = new SimpleCreateOrderShipGroupCommandCollection();
+        private CreateOrderItemCommandCollection createOrderItemCommands = new SimpleCreateOrderItemCommandCollection();
 
-        public CreateOrderShipGroupCommandCollection getOrderShipGroups()
-        {
-            return this.orderShipGroups;
+        public CreateOrderItemCommandCollection getCreateOrderItemCommands() {
+            return this.createOrderItemCommands;
+        }
+
+        public CreateOrderItemCommandCollection getOrderItems() {
+            return this.createOrderItemCommands; //orderItems;
+        }
+
+        private CreateOrderShipGroupCommandCollection createOrderShipGroupCommands = new SimpleCreateOrderShipGroupCommandCollection();
+
+        public CreateOrderShipGroupCommandCollection getCreateOrderShipGroupCommands() {
+            return this.createOrderShipGroupCommands;
+        }
+
+        public CreateOrderShipGroupCommandCollection getOrderShipGroups() {
+            return this.createOrderShipGroupCommands; //orderShipGroups;
         }
 
     }

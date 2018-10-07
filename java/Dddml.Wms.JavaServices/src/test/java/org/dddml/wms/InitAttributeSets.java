@@ -277,7 +277,7 @@ public class InitAttributeSets {
             AttributeUseCommand.CreateAttributeUse attrUse = attrSet.newCreateAttributeUse();
             attrUse.setAttributeId(a);
             attrUse.setActive(true);
-            attrSet.getAttributeUses().add(attrUse);
+            attrSet.getCreateAttributeUseCommands().add(attrUse);
         }
         return attrSet;
     }
@@ -312,12 +312,12 @@ public class InitAttributeSets {
         y.setValue("Y");
         y.setActive(true);
         y.setAttributeValueName("Yes");
-        fscAttr.getAttributeValues().add(y);
+        fscAttr.getCreateAttributeValueCommands().add(y);
         AttributeValueCommand.CreateAttributeValue n = fscAttr.newCreateAttributeValue();
         n.setValue("N");
         n.setActive(true);
         n.setAttributeValueName("No");
-        fscAttr.getAttributeValues().add(n);
+        fscAttr.getCreateAttributeValueCommands().add(n);
         attributeApplicationService.when(fscAttr);
         return fscAttr.getAttributeId();
     }

@@ -122,7 +122,7 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (GoodIdentificationCommand.CreateGoodIdentification innerCommand : c.getGoodIdentifications())
+        for (GoodIdentificationCommand.CreateGoodIdentification innerCommand : c.getCreateGoodIdentificationCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             GoodIdentificationEvent.GoodIdentificationStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

@@ -71,7 +71,7 @@ public abstract class AbstractShipmentPackageAggregate extends AbstractAggregate
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (ShipmentPackageContentCommand.CreateShipmentPackageContent innerCommand : c.getShipmentPackageContents())
+        for (ShipmentPackageContentCommand.CreateShipmentPackageContent innerCommand : c.getCreateShipmentPackageContentCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             ShipmentPackageContentEvent.ShipmentPackageContentStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

@@ -98,7 +98,7 @@ public interface ShipmentReceiptCommand extends Command
 
     interface CreateShipmentReceipt extends CreateOrMergePatchShipmentReceipt
     {
-        CreateShipmentReceiptImageCommandCollection getShipmentReceiptImages();
+        CreateShipmentReceiptImageCommandCollection getCreateShipmentReceiptImageCommands();
 
         ShipmentReceiptImageCommand.CreateShipmentReceiptImage newCreateShipmentReceiptImage();
 

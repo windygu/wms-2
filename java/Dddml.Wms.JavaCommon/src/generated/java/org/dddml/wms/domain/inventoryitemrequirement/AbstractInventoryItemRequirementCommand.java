@@ -66,11 +66,14 @@ public abstract class AbstractInventoryItemRequirementCommand extends AbstractCo
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateInventoryItemRequirementEntryCommandCollection entries = new SimpleCreateInventoryItemRequirementEntryCommandCollection();
+        private CreateInventoryItemRequirementEntryCommandCollection createInventoryItemRequirementEntryCommands = new SimpleCreateInventoryItemRequirementEntryCommandCollection();
 
-        public CreateInventoryItemRequirementEntryCommandCollection getEntries()
-        {
-            return this.entries;
+        public CreateInventoryItemRequirementEntryCommandCollection getCreateInventoryItemRequirementEntryCommands() {
+            return this.createInventoryItemRequirementEntryCommands;
+        }
+
+        public CreateInventoryItemRequirementEntryCommandCollection getEntries() {
+            return this.createInventoryItemRequirementEntryCommands; //entries;
         }
 
     }

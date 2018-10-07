@@ -96,28 +96,28 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (ShipmentImageCommand.CreateShipmentImage innerCommand : c.getShipmentImages())
+        for (ShipmentImageCommand.CreateShipmentImage innerCommand : c.getCreateShipmentImageCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             ShipmentImageEvent.ShipmentImageStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addShipmentImageEvent(innerEvent);
         }
 
-        for (ShipmentItemCommand.CreateShipmentItem innerCommand : c.getShipmentItems())
+        for (ShipmentItemCommand.CreateShipmentItem innerCommand : c.getCreateShipmentItemCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             ShipmentItemEvent.ShipmentItemStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addShipmentItemEvent(innerEvent);
         }
 
-        for (ShipmentReceiptCommand.CreateShipmentReceipt innerCommand : c.getShipmentReceipts())
+        for (ShipmentReceiptCommand.CreateShipmentReceipt innerCommand : c.getCreateShipmentReceiptCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             ShipmentReceiptEvent.ShipmentReceiptStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addShipmentReceiptEvent(innerEvent);
         }
 
-        for (ItemIssuanceCommand.CreateItemIssuance innerCommand : c.getItemIssuances())
+        for (ItemIssuanceCommand.CreateItemIssuance innerCommand : c.getCreateItemIssuanceCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             ItemIssuanceEvent.ItemIssuanceStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
@@ -417,7 +417,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
 
-        for (ShipmentReceiptImageCommand.CreateShipmentReceiptImage innerCommand : c.getShipmentReceiptImages())
+        for (ShipmentReceiptImageCommand.CreateShipmentReceiptImage innerCommand : c.getCreateShipmentReceiptImageCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
 

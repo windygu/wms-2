@@ -33,8 +33,28 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.productState instanceof AbstractProductState) {
+        //    if (((AbstractProductState)this.productState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<GoodIdentificationState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getGoodIdentificationStateDao().findByProductId(productState.getProductId());
         } else {
             List<GoodIdentificationState> ss = new ArrayList<GoodIdentificationState>();
@@ -61,17 +81,24 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
         return get(goodIdentificationTypeId, false, false);
     }
 
-    GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation) {
-        return get(goodIdentificationTypeId, forCreation, false);
+    public GoodIdentificationState get(String goodIdentificationTypeId, boolean nullAllowed) {
+        return get(goodIdentificationTypeId, nullAllowed, false);
     }
 
-    GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation, boolean nullAllowed) {
+    GoodIdentificationState get(String goodIdentificationTypeId, boolean nullAllowed, boolean forCreation) {
         ProductGoodIdentificationId globalId = new ProductGoodIdentificationId(productState.getProductId(), goodIdentificationTypeId);
         if (loadedGoodIdentificationStates.containsKey(globalId)) {
-            return loadedGoodIdentificationStates.get(globalId);
+            GoodIdentificationState state = loadedGoodIdentificationStates.get(globalId);
+            if (state instanceof AbstractGoodIdentificationState) {
+                ((AbstractGoodIdentificationState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             GoodIdentificationState state = new AbstractGoodIdentificationState.SimpleGoodIdentificationState(getForReapplying());
             state.setProductGoodIdentificationId(globalId);
             loadedGoodIdentificationStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
         } else {
             GoodIdentificationState state = getGoodIdentificationStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedGoodIdentificationStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
 
     }
 
-    public void remove(GoodIdentificationState state)
-    {
+    public void remove(GoodIdentificationState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedGoodIdentificationStates.put(state.getProductGoodIdentificationId(), state);
     }
 
-    public void add(GoodIdentificationState state)
-    {
+    public void add(GoodIdentificationState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedGoodIdentificationStates.put(state.getProductGoodIdentificationId(), state);
     }
 

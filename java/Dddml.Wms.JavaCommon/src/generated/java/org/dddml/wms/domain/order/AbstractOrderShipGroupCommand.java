@@ -241,11 +241,14 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateOrderItemShipGroupAssociationCommandCollection orderItemShipGroupAssociations = new SimpleCreateOrderItemShipGroupAssociationCommandCollection();
+        private CreateOrderItemShipGroupAssociationCommandCollection createOrderItemShipGroupAssociationCommands = new SimpleCreateOrderItemShipGroupAssociationCommandCollection();
 
-        public CreateOrderItemShipGroupAssociationCommandCollection getOrderItemShipGroupAssociations()
-        {
-            return this.orderItemShipGroupAssociations;
+        public CreateOrderItemShipGroupAssociationCommandCollection getCreateOrderItemShipGroupAssociationCommands() {
+            return this.createOrderItemShipGroupAssociationCommands;
+        }
+
+        public CreateOrderItemShipGroupAssociationCommandCollection getOrderItemShipGroupAssociations() {
+            return this.createOrderItemShipGroupAssociationCommands; //orderItemShipGroupAssociations;
         }
 
     }

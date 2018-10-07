@@ -68,7 +68,7 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (AttributeUseCommand.CreateAttributeUse innerCommand : c.getAttributeUses())
+        for (AttributeUseCommand.CreateAttributeUse innerCommand : c.getCreateAttributeUseCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             AttributeUseEvent.AttributeUseStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

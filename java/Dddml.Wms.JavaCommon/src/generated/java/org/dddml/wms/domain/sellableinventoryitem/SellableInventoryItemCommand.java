@@ -47,7 +47,7 @@ public interface SellableInventoryItemCommand extends Command
 
     interface CreateSellableInventoryItem extends CreateOrMergePatchSellableInventoryItem
     {
-        CreateSellableInventoryItemEntryCommandCollection getEntries();
+        CreateSellableInventoryItemEntryCommandCollection getCreateSellableInventoryItemEntryCommands();
 
         SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry newCreateSellableInventoryItemEntry();
 

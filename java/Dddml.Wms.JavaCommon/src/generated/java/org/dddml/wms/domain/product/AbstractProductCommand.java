@@ -871,11 +871,14 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateGoodIdentificationCommandCollection goodIdentifications = new SimpleCreateGoodIdentificationCommandCollection();
+        private CreateGoodIdentificationCommandCollection createGoodIdentificationCommands = new SimpleCreateGoodIdentificationCommandCollection();
 
-        public CreateGoodIdentificationCommandCollection getGoodIdentifications()
-        {
-            return this.goodIdentifications;
+        public CreateGoodIdentificationCommandCollection getCreateGoodIdentificationCommands() {
+            return this.createGoodIdentificationCommands;
+        }
+
+        public CreateGoodIdentificationCommandCollection getGoodIdentifications() {
+            return this.createGoodIdentificationCommands; //goodIdentifications;
         }
 
     }

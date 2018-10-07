@@ -33,8 +33,28 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.attributeState instanceof AbstractAttributeState) {
+        //    if (((AbstractAttributeState)this.attributeState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<AttributeValueState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getAttributeValueStateDao().findByAttributeId(attributeState.getAttributeId());
         } else {
             List<AttributeValueState> ss = new ArrayList<AttributeValueState>();
@@ -61,17 +81,24 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
         return get(value, false, false);
     }
 
-    AttributeValueState get(String value, boolean forCreation) {
-        return get(value, forCreation, false);
+    public AttributeValueState get(String value, boolean nullAllowed) {
+        return get(value, nullAllowed, false);
     }
 
-    AttributeValueState get(String value, boolean forCreation, boolean nullAllowed) {
+    AttributeValueState get(String value, boolean nullAllowed, boolean forCreation) {
         AttributeValueId globalId = new AttributeValueId(attributeState.getAttributeId(), value);
         if (loadedAttributeValueStates.containsKey(globalId)) {
-            return loadedAttributeValueStates.get(globalId);
+            AttributeValueState state = loadedAttributeValueStates.get(globalId);
+            if (state instanceof AbstractAttributeValueState) {
+                ((AbstractAttributeValueState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             AttributeValueState state = new AbstractAttributeValueState.SimpleAttributeValueState(getForReapplying());
             state.setAttributeValueId(globalId);
             loadedAttributeValueStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
         } else {
             AttributeValueState state = getAttributeValueStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedAttributeValueStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
 
     }
 
-    public void remove(AttributeValueState state)
-    {
+    public void remove(AttributeValueState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedAttributeValueStates.put(state.getAttributeValueId(), state);
     }
 
-    public void add(AttributeValueState state)
-    {
+    public void add(AttributeValueState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedAttributeValueStates.put(state.getAttributeValueId(), state);
     }
 

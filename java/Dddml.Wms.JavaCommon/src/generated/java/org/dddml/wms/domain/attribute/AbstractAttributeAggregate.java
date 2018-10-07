@@ -71,14 +71,14 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (AttributeValueCommand.CreateAttributeValue innerCommand : c.getAttributeValues())
+        for (AttributeValueCommand.CreateAttributeValue innerCommand : c.getCreateAttributeValueCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             AttributeValueEvent.AttributeValueStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addAttributeValueEvent(innerEvent);
         }
 
-        for (AttributeAliasCommand.CreateAttributeAlias innerCommand : c.getAliases())
+        for (AttributeAliasCommand.CreateAttributeAlias innerCommand : c.getCreateAttributeAliasCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             AttributeAliasEvent.AttributeAliasStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

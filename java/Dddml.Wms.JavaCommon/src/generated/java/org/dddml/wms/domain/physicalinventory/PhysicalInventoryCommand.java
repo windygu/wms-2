@@ -98,7 +98,7 @@ public interface PhysicalInventoryCommand extends Command
 
     interface CreatePhysicalInventory extends CreateOrMergePatchPhysicalInventory
     {
-        CreatePhysicalInventoryLineCommandCollection getPhysicalInventoryLines();
+        CreatePhysicalInventoryLineCommandCollection getCreatePhysicalInventoryLineCommands();
 
         PhysicalInventoryLineCommand.CreatePhysicalInventoryLine newCreatePhysicalInventoryLine();
 

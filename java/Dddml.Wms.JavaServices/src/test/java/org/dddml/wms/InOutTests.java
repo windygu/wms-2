@@ -170,7 +170,7 @@ public class InOutTests {
         line_1.setLocatorId(TEST_LOCATOR_ID_2);//("TEST_" + new java.util.Date().getTime());
         line_1.setAttributeSetInstanceId(InventoryItemIds.EMPTY_ATTRIBUTE_SET_INSTANCE_ID);
         line_1.setMovementQuantity(movementQuantity);
-        inOut.getInOutLines().add(line_1);
+        inOut.getCreateInOutLineCommands().add(line_1);
 
         inOutApplicationService.when(inOut);
         return documentNumber;

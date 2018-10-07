@@ -132,7 +132,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (MovementLineCommand.CreateMovementLine innerCommand : c.getMovementLines())
+        for (MovementLineCommand.CreateMovementLine innerCommand : c.getCreateMovementLineCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             MovementLineEvent.MovementLineStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

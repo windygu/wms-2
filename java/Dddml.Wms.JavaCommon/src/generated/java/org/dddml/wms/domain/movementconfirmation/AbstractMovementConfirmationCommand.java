@@ -164,11 +164,14 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateMovementConfirmationLineCommandCollection movementConfirmationLines = new SimpleCreateMovementConfirmationLineCommandCollection();
+        private CreateMovementConfirmationLineCommandCollection createMovementConfirmationLineCommands = new SimpleCreateMovementConfirmationLineCommandCollection();
 
-        public CreateMovementConfirmationLineCommandCollection getMovementConfirmationLines()
-        {
-            return this.movementConfirmationLines;
+        public CreateMovementConfirmationLineCommandCollection getCreateMovementConfirmationLineCommands() {
+            return this.createMovementConfirmationLineCommands;
+        }
+
+        public CreateMovementConfirmationLineCommandCollection getMovementConfirmationLines() {
+            return this.createMovementConfirmationLineCommands; //movementConfirmationLines;
         }
 
     }

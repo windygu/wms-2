@@ -47,7 +47,7 @@ public interface InventoryItemRequirementCommand extends Command
 
     interface CreateInventoryItemRequirement extends CreateOrMergePatchInventoryItemRequirement
     {
-        CreateInventoryItemRequirementEntryCommandCollection getEntries();
+        CreateInventoryItemRequirementEntryCommandCollection getCreateInventoryItemRequirementEntryCommands();
 
         InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry newCreateInventoryItemRequirementEntry();
 

@@ -33,8 +33,28 @@ public abstract class AbstractShipmentItemStateCollection implements EntityState
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.shipmentState instanceof AbstractShipmentState) {
+        //    if (((AbstractShipmentState)this.shipmentState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<ShipmentItemState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getShipmentItemStateDao().findByShipmentId(shipmentState.getShipmentId());
         } else {
             List<ShipmentItemState> ss = new ArrayList<ShipmentItemState>();
@@ -61,17 +81,24 @@ public abstract class AbstractShipmentItemStateCollection implements EntityState
         return get(shipmentItemSeqId, false, false);
     }
 
-    ShipmentItemState get(String shipmentItemSeqId, boolean forCreation) {
-        return get(shipmentItemSeqId, forCreation, false);
+    public ShipmentItemState get(String shipmentItemSeqId, boolean nullAllowed) {
+        return get(shipmentItemSeqId, nullAllowed, false);
     }
 
-    ShipmentItemState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed) {
+    ShipmentItemState get(String shipmentItemSeqId, boolean nullAllowed, boolean forCreation) {
         ShipmentItemId globalId = new ShipmentItemId(shipmentState.getShipmentId(), shipmentItemSeqId);
         if (loadedShipmentItemStates.containsKey(globalId)) {
-            return loadedShipmentItemStates.get(globalId);
+            ShipmentItemState state = loadedShipmentItemStates.get(globalId);
+            if (state instanceof AbstractShipmentItemState) {
+                ((AbstractShipmentItemState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             ShipmentItemState state = new AbstractShipmentItemState.SimpleShipmentItemState(getForReapplying());
             state.setShipmentItemId(globalId);
             loadedShipmentItemStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractShipmentItemStateCollection implements EntityState
         } else {
             ShipmentItemState state = getShipmentItemStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedShipmentItemStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractShipmentItemStateCollection implements EntityState
 
     }
 
-    public void remove(ShipmentItemState state)
-    {
+    public void remove(ShipmentItemState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedShipmentItemStates.put(state.getShipmentItemId(), state);
     }
 
-    public void add(ShipmentItemState state)
-    {
+    public void add(ShipmentItemState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedShipmentItemStates.put(state.getShipmentItemId(), state);
     }
 

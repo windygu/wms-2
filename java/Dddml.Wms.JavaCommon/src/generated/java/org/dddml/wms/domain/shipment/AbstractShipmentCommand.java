@@ -559,32 +559,44 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateShipmentImageCommandCollection shipmentImages = new SimpleCreateShipmentImageCommandCollection();
+        private CreateShipmentImageCommandCollection createShipmentImageCommands = new SimpleCreateShipmentImageCommandCollection();
 
-        public CreateShipmentImageCommandCollection getShipmentImages()
-        {
-            return this.shipmentImages;
+        public CreateShipmentImageCommandCollection getCreateShipmentImageCommands() {
+            return this.createShipmentImageCommands;
         }
 
-        private CreateShipmentItemCommandCollection shipmentItems = new SimpleCreateShipmentItemCommandCollection();
-
-        public CreateShipmentItemCommandCollection getShipmentItems()
-        {
-            return this.shipmentItems;
+        public CreateShipmentImageCommandCollection getShipmentImages() {
+            return this.createShipmentImageCommands; //shipmentImages;
         }
 
-        private CreateShipmentReceiptCommandCollection shipmentReceipts = new SimpleCreateShipmentReceiptCommandCollection();
+        private CreateShipmentItemCommandCollection createShipmentItemCommands = new SimpleCreateShipmentItemCommandCollection();
 
-        public CreateShipmentReceiptCommandCollection getShipmentReceipts()
-        {
-            return this.shipmentReceipts;
+        public CreateShipmentItemCommandCollection getCreateShipmentItemCommands() {
+            return this.createShipmentItemCommands;
         }
 
-        private CreateItemIssuanceCommandCollection itemIssuances = new SimpleCreateItemIssuanceCommandCollection();
+        public CreateShipmentItemCommandCollection getShipmentItems() {
+            return this.createShipmentItemCommands; //shipmentItems;
+        }
 
-        public CreateItemIssuanceCommandCollection getItemIssuances()
-        {
-            return this.itemIssuances;
+        private CreateShipmentReceiptCommandCollection createShipmentReceiptCommands = new SimpleCreateShipmentReceiptCommandCollection();
+
+        public CreateShipmentReceiptCommandCollection getCreateShipmentReceiptCommands() {
+            return this.createShipmentReceiptCommands;
+        }
+
+        public CreateShipmentReceiptCommandCollection getShipmentReceipts() {
+            return this.createShipmentReceiptCommands; //shipmentReceipts;
+        }
+
+        private CreateItemIssuanceCommandCollection createItemIssuanceCommands = new SimpleCreateItemIssuanceCommandCollection();
+
+        public CreateItemIssuanceCommandCollection getCreateItemIssuanceCommands() {
+            return this.createItemIssuanceCommands;
+        }
+
+        public CreateItemIssuanceCommandCollection getItemIssuances() {
+            return this.createItemIssuanceCommands; //itemIssuances;
         }
 
     }

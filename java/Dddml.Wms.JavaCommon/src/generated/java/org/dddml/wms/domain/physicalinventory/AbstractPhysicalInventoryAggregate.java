@@ -72,7 +72,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (PhysicalInventoryLineCommand.CreatePhysicalInventoryLine innerCommand : c.getPhysicalInventoryLines())
+        for (PhysicalInventoryLineCommand.CreatePhysicalInventoryLine innerCommand : c.getCreatePhysicalInventoryLineCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

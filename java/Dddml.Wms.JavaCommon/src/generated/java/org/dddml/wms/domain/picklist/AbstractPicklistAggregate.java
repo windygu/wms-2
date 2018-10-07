@@ -69,7 +69,7 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (PicklistRoleCommand.CreatePicklistRole innerCommand : c.getPicklistRoles())
+        for (PicklistRoleCommand.CreatePicklistRole innerCommand : c.getCreatePicklistRoleCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             PicklistRoleEvent.PicklistRoleStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

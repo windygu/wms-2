@@ -66,11 +66,14 @@ public abstract class AbstractSellableInventoryItemCommand extends AbstractComma
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateSellableInventoryItemEntryCommandCollection entries = new SimpleCreateSellableInventoryItemEntryCommandCollection();
+        private CreateSellableInventoryItemEntryCommandCollection createSellableInventoryItemEntryCommands = new SimpleCreateSellableInventoryItemEntryCommandCollection();
 
-        public CreateSellableInventoryItemEntryCommandCollection getEntries()
-        {
-            return this.entries;
+        public CreateSellableInventoryItemEntryCommandCollection getCreateSellableInventoryItemEntryCommands() {
+            return this.createSellableInventoryItemEntryCommands;
+        }
+
+        public CreateSellableInventoryItemEntryCommandCollection getEntries() {
+            return this.createSellableInventoryItemEntryCommands; //entries;
         }
 
     }

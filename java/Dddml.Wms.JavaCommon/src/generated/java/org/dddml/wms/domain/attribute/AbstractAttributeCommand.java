@@ -211,18 +211,24 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateAttributeValueCommandCollection attributeValues = new SimpleCreateAttributeValueCommandCollection();
+        private CreateAttributeValueCommandCollection createAttributeValueCommands = new SimpleCreateAttributeValueCommandCollection();
 
-        public CreateAttributeValueCommandCollection getAttributeValues()
-        {
-            return this.attributeValues;
+        public CreateAttributeValueCommandCollection getCreateAttributeValueCommands() {
+            return this.createAttributeValueCommands;
         }
 
-        private CreateAttributeAliasCommandCollection aliases = new SimpleCreateAttributeAliasCommandCollection();
+        public CreateAttributeValueCommandCollection getAttributeValues() {
+            return this.createAttributeValueCommands; //attributeValues;
+        }
 
-        public CreateAttributeAliasCommandCollection getAliases()
-        {
-            return this.aliases;
+        private CreateAttributeAliasCommandCollection createAttributeAliasCommands = new SimpleCreateAttributeAliasCommandCollection();
+
+        public CreateAttributeAliasCommandCollection getCreateAttributeAliasCommands() {
+            return this.createAttributeAliasCommands;
+        }
+
+        public CreateAttributeAliasCommandCollection getAliases() {
+            return this.createAttributeAliasCommands; //aliases;
         }
 
     }

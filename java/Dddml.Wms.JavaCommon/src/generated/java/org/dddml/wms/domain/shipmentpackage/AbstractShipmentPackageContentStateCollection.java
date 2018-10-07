@@ -33,8 +33,28 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.shipmentPackageState instanceof AbstractShipmentPackageState) {
+        //    if (((AbstractShipmentPackageState)this.shipmentPackageState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<ShipmentPackageContentState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getShipmentPackageContentStateDao().findByShipmentPackageId(shipmentPackageState.getShipmentPackageId());
         } else {
             List<ShipmentPackageContentState> ss = new ArrayList<ShipmentPackageContentState>();
@@ -61,17 +81,24 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
         return get(shipmentItemSeqId, false, false);
     }
 
-    ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation) {
-        return get(shipmentItemSeqId, forCreation, false);
+    public ShipmentPackageContentState get(String shipmentItemSeqId, boolean nullAllowed) {
+        return get(shipmentItemSeqId, nullAllowed, false);
     }
 
-    ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed) {
+    ShipmentPackageContentState get(String shipmentItemSeqId, boolean nullAllowed, boolean forCreation) {
         ShipmentPackageContentId globalId = new ShipmentPackageContentId(shipmentPackageState.getShipmentPackageId(), shipmentItemSeqId);
         if (loadedShipmentPackageContentStates.containsKey(globalId)) {
-            return loadedShipmentPackageContentStates.get(globalId);
+            ShipmentPackageContentState state = loadedShipmentPackageContentStates.get(globalId);
+            if (state instanceof AbstractShipmentPackageContentState) {
+                ((AbstractShipmentPackageContentState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             ShipmentPackageContentState state = new AbstractShipmentPackageContentState.SimpleShipmentPackageContentState(getForReapplying());
             state.setShipmentPackageContentId(globalId);
             loadedShipmentPackageContentStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
         } else {
             ShipmentPackageContentState state = getShipmentPackageContentStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedShipmentPackageContentStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
 
     }
 
-    public void remove(ShipmentPackageContentState state)
-    {
+    public void remove(ShipmentPackageContentState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedShipmentPackageContentStates.put(state.getShipmentPackageContentId(), state);
     }
 
-    public void add(ShipmentPackageContentState state)
-    {
+    public void add(ShipmentPackageContentState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedShipmentPackageContentStates.put(state.getShipmentPackageContentId(), state);
     }
 

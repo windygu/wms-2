@@ -96,7 +96,7 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (MovementConfirmationLineCommand.CreateMovementConfirmationLine innerCommand : c.getMovementConfirmationLines())
+        for (MovementConfirmationLineCommand.CreateMovementConfirmationLine innerCommand : c.getCreateMovementConfirmationLineCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             MovementConfirmationLineEvent.MovementConfirmationLineStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

@@ -61,7 +61,7 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         BigDecimal occupiedQuantity = BigDecimal.ZERO;
         BigDecimal virtualQuantity = BigDecimal.ZERO;
         Long version = c.getVersion();
-        for (InventoryItemEntryCommand.CreateInventoryItemEntry innerCommand : c.getEntries())
+        for (InventoryItemEntryCommand.CreateInventoryItemEntry innerCommand : c.getCreateInventoryItemEntryCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             InventoryItemEntryEvent.InventoryItemEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

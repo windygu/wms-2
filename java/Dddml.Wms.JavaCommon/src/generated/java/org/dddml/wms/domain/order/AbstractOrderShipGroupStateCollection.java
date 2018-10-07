@@ -33,8 +33,28 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.orderState instanceof AbstractOrderState) {
+        //    if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<OrderShipGroupState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getOrderShipGroupStateDao().findByOrderId(orderState.getOrderId());
         } else {
             List<OrderShipGroupState> ss = new ArrayList<OrderShipGroupState>();
@@ -61,17 +81,24 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
         return get(shipGroupSeqId, false, false);
     }
 
-    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation) {
-        return get(shipGroupSeqId, forCreation, false);
+    public OrderShipGroupState get(String shipGroupSeqId, boolean nullAllowed) {
+        return get(shipGroupSeqId, nullAllowed, false);
     }
 
-    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation, boolean nullAllowed) {
+    OrderShipGroupState get(String shipGroupSeqId, boolean nullAllowed, boolean forCreation) {
         OrderShipGroupId globalId = new OrderShipGroupId(orderState.getOrderId(), shipGroupSeqId);
         if (loadedOrderShipGroupStates.containsKey(globalId)) {
-            return loadedOrderShipGroupStates.get(globalId);
+            OrderShipGroupState state = loadedOrderShipGroupStates.get(globalId);
+            if (state instanceof AbstractOrderShipGroupState) {
+                ((AbstractOrderShipGroupState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             OrderShipGroupState state = new AbstractOrderShipGroupState.SimpleOrderShipGroupState(getForReapplying());
             state.setOrderShipGroupId(globalId);
             loadedOrderShipGroupStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
         } else {
             OrderShipGroupState state = getOrderShipGroupStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedOrderShipGroupStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
 
     }
 
-    public void remove(OrderShipGroupState state)
-    {
+    public void remove(OrderShipGroupState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedOrderShipGroupStates.put(state.getOrderShipGroupId(), state);
     }
 
-    public void add(OrderShipGroupState state)
-    {
+    public void add(OrderShipGroupState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedOrderShipGroupStates.put(state.getOrderShipGroupId(), state);
     }
 

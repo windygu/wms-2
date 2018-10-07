@@ -34,8 +34,28 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.orderState instanceof AbstractOrderState) {
+        //    if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<OrderRoleState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getOrderRoleStateDao().findByOrderId(orderState.getOrderId());
         } else {
             List<OrderRoleState> ss = new ArrayList<OrderRoleState>();
@@ -62,17 +82,24 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
         return get(partyRoleId, false, false);
     }
 
-    OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation) {
-        return get(partyRoleId, forCreation, false);
+    public OrderRoleState get(PartyRoleId partyRoleId, boolean nullAllowed) {
+        return get(partyRoleId, nullAllowed, false);
     }
 
-    OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed) {
+    OrderRoleState get(PartyRoleId partyRoleId, boolean nullAllowed, boolean forCreation) {
         OrderRoleId globalId = new OrderRoleId(orderState.getOrderId(), partyRoleId);
         if (loadedOrderRoleStates.containsKey(globalId)) {
-            return loadedOrderRoleStates.get(globalId);
+            OrderRoleState state = loadedOrderRoleStates.get(globalId);
+            if (state instanceof AbstractOrderRoleState) {
+                ((AbstractOrderRoleState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             OrderRoleState state = new AbstractOrderRoleState.SimpleOrderRoleState(getForReapplying());
             state.setOrderRoleId(globalId);
             loadedOrderRoleStates.put(globalId, state);
@@ -80,6 +107,9 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
         } else {
             OrderRoleState state = getOrderRoleStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedOrderRoleStates.put(globalId, state);
             }
             return state;
@@ -87,13 +117,17 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
 
     }
 
-    public void remove(OrderRoleState state)
-    {
+    public void remove(OrderRoleState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedOrderRoleStates.put(state.getOrderRoleId(), state);
     }
 
-    public void add(OrderRoleState state)
-    {
+    public void add(OrderRoleState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedOrderRoleStates.put(state.getOrderRoleId(), state);
     }
 

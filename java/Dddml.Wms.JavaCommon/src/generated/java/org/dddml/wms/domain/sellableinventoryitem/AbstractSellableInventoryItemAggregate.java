@@ -59,7 +59,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         BigDecimal sellableQuantity = BigDecimal.ZERO;
         Long version = c.getVersion();
-        for (SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry innerCommand : c.getEntries())
+        for (SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry innerCommand : c.getCreateSellableInventoryItemEntryCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);

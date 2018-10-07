@@ -308,7 +308,7 @@ public interface ProductCommand extends Command
 
     interface CreateProduct extends CreateOrMergePatchProduct
     {
-        CreateGoodIdentificationCommandCollection getGoodIdentifications();
+        CreateGoodIdentificationCommandCollection getCreateGoodIdentificationCommands();
 
         GoodIdentificationCommand.CreateGoodIdentification newCreateGoodIdentification();
 

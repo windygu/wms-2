@@ -34,8 +34,28 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.movementConfirmationState instanceof AbstractMovementConfirmationState) {
+        //    if (((AbstractMovementConfirmationState)this.movementConfirmationState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<MovementConfirmationLineState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getMovementConfirmationLineStateDao().findByMovementConfirmationDocumentNumber(movementConfirmationState.getDocumentNumber());
         } else {
             List<MovementConfirmationLineState> ss = new ArrayList<MovementConfirmationLineState>();
@@ -62,17 +82,24 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
         return get(lineNumber, false, false);
     }
 
-    MovementConfirmationLineState get(String lineNumber, boolean forCreation) {
-        return get(lineNumber, forCreation, false);
+    public MovementConfirmationLineState get(String lineNumber, boolean nullAllowed) {
+        return get(lineNumber, nullAllowed, false);
     }
 
-    MovementConfirmationLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
+    MovementConfirmationLineState get(String lineNumber, boolean nullAllowed, boolean forCreation) {
         MovementConfirmationLineId globalId = new MovementConfirmationLineId(movementConfirmationState.getDocumentNumber(), lineNumber);
         if (loadedMovementConfirmationLineStates.containsKey(globalId)) {
-            return loadedMovementConfirmationLineStates.get(globalId);
+            MovementConfirmationLineState state = loadedMovementConfirmationLineStates.get(globalId);
+            if (state instanceof AbstractMovementConfirmationLineState) {
+                ((AbstractMovementConfirmationLineState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             MovementConfirmationLineState state = new AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState(getForReapplying());
             state.setMovementConfirmationLineId(globalId);
             loadedMovementConfirmationLineStates.put(globalId, state);
@@ -80,6 +107,9 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
         } else {
             MovementConfirmationLineState state = getMovementConfirmationLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedMovementConfirmationLineStates.put(globalId, state);
             }
             return state;
@@ -87,13 +117,17 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
 
     }
 
-    public void remove(MovementConfirmationLineState state)
-    {
+    public void remove(MovementConfirmationLineState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedMovementConfirmationLineStates.put(state.getMovementConfirmationLineId(), state);
     }
 
-    public void add(MovementConfirmationLineState state)
-    {
+    public void add(MovementConfirmationLineState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedMovementConfirmationLineStates.put(state.getMovementConfirmationLineId(), state);
     }
 

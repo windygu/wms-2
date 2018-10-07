@@ -152,11 +152,14 @@ public abstract class AbstractPicklistCommand extends AbstractCommand implements
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreatePicklistRoleCommandCollection picklistRoles = new SimpleCreatePicklistRoleCommandCollection();
+        private CreatePicklistRoleCommandCollection createPicklistRoleCommands = new SimpleCreatePicklistRoleCommandCollection();
 
-        public CreatePicklistRoleCommandCollection getPicklistRoles()
-        {
-            return this.picklistRoles;
+        public CreatePicklistRoleCommandCollection getCreatePicklistRoleCommands() {
+            return this.createPicklistRoleCommands;
+        }
+
+        public CreatePicklistRoleCommandCollection getPicklistRoles() {
+            return this.createPicklistRoleCommands; //picklistRoles;
         }
 
     }

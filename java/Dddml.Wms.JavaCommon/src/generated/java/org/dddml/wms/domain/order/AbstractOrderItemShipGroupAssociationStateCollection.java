@@ -33,8 +33,28 @@ public abstract class AbstractOrderItemShipGroupAssociationStateCollection imple
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.orderShipGroupState instanceof AbstractOrderShipGroupState) {
+        //    if (((AbstractOrderShipGroupState)this.orderShipGroupState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<OrderItemShipGroupAssociationState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getOrderItemShipGroupAssociationStateDao().findByOrderIdAndOrderShipGroupShipGroupSeqId(orderShipGroupState.getOrderShipGroupId().getOrderId(), orderShipGroupState.getOrderShipGroupId().getShipGroupSeqId());
         } else {
             List<OrderItemShipGroupAssociationState> ss = new ArrayList<OrderItemShipGroupAssociationState>();
@@ -61,17 +81,24 @@ public abstract class AbstractOrderItemShipGroupAssociationStateCollection imple
         return get(orderItemSeqId, false, false);
     }
 
-    OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation) {
-        return get(orderItemSeqId, forCreation, false);
+    public OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean nullAllowed) {
+        return get(orderItemSeqId, nullAllowed, false);
     }
 
-    OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed) {
+    OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean nullAllowed, boolean forCreation) {
         OrderItemShipGroupAssociationId globalId = new OrderItemShipGroupAssociationId(orderShipGroupState.getOrderShipGroupId().getOrderId(), orderShipGroupState.getOrderShipGroupId().getShipGroupSeqId(), orderItemSeqId);
         if (loadedOrderItemShipGroupAssociationStates.containsKey(globalId)) {
-            return loadedOrderItemShipGroupAssociationStates.get(globalId);
+            OrderItemShipGroupAssociationState state = loadedOrderItemShipGroupAssociationStates.get(globalId);
+            if (state instanceof AbstractOrderItemShipGroupAssociationState) {
+                ((AbstractOrderItemShipGroupAssociationState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             OrderItemShipGroupAssociationState state = new AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState(getForReapplying());
             state.setOrderItemShipGroupAssociationId(globalId);
             loadedOrderItemShipGroupAssociationStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractOrderItemShipGroupAssociationStateCollection imple
         } else {
             OrderItemShipGroupAssociationState state = getOrderItemShipGroupAssociationStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedOrderItemShipGroupAssociationStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractOrderItemShipGroupAssociationStateCollection imple
 
     }
 
-    public void remove(OrderItemShipGroupAssociationState state)
-    {
+    public void remove(OrderItemShipGroupAssociationState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedOrderItemShipGroupAssociationStates.put(state.getOrderItemShipGroupAssociationId(), state);
     }
 
-    public void add(OrderItemShipGroupAssociationState state)
-    {
+    public void add(OrderItemShipGroupAssociationState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedOrderItemShipGroupAssociationStates.put(state.getOrderItemShipGroupAssociationId(), state);
     }
 

@@ -33,8 +33,28 @@ public abstract class AbstractItemIssuanceStateCollection implements EntityState
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.shipmentState instanceof AbstractShipmentState) {
+        //    if (((AbstractShipmentState)this.shipmentState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<ItemIssuanceState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getItemIssuanceStateDao().findByShipmentId(shipmentState.getShipmentId());
         } else {
             List<ItemIssuanceState> ss = new ArrayList<ItemIssuanceState>();
@@ -61,17 +81,24 @@ public abstract class AbstractItemIssuanceStateCollection implements EntityState
         return get(itemIssuanceSeqId, false, false);
     }
 
-    ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation) {
-        return get(itemIssuanceSeqId, forCreation, false);
+    public ItemIssuanceState get(String itemIssuanceSeqId, boolean nullAllowed) {
+        return get(itemIssuanceSeqId, nullAllowed, false);
     }
 
-    ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation, boolean nullAllowed) {
+    ItemIssuanceState get(String itemIssuanceSeqId, boolean nullAllowed, boolean forCreation) {
         ShipmentItemIssuanceId globalId = new ShipmentItemIssuanceId(shipmentState.getShipmentId(), itemIssuanceSeqId);
         if (loadedItemIssuanceStates.containsKey(globalId)) {
-            return loadedItemIssuanceStates.get(globalId);
+            ItemIssuanceState state = loadedItemIssuanceStates.get(globalId);
+            if (state instanceof AbstractItemIssuanceState) {
+                ((AbstractItemIssuanceState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             ItemIssuanceState state = new AbstractItemIssuanceState.SimpleItemIssuanceState(getForReapplying());
             state.setShipmentItemIssuanceId(globalId);
             loadedItemIssuanceStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractItemIssuanceStateCollection implements EntityState
         } else {
             ItemIssuanceState state = getItemIssuanceStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedItemIssuanceStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractItemIssuanceStateCollection implements EntityState
 
     }
 
-    public void remove(ItemIssuanceState state)
-    {
+    public void remove(ItemIssuanceState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedItemIssuanceStates.put(state.getShipmentItemIssuanceId(), state);
     }
 
-    public void add(ItemIssuanceState state)
-    {
+    public void add(ItemIssuanceState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedItemIssuanceStates.put(state.getShipmentItemIssuanceId(), state);
     }
 

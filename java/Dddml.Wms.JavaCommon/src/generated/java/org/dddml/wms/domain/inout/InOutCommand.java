@@ -161,11 +161,11 @@ public interface InOutCommand extends Command
 
     interface CreateInOut extends CreateOrMergePatchInOut
     {
-        CreateInOutImageCommandCollection getInOutImages();
+        CreateInOutImageCommandCollection getCreateInOutImageCommands();
 
         InOutImageCommand.CreateInOutImage newCreateInOutImage();
 
-        CreateInOutLineCommandCollection getInOutLines();
+        CreateInOutLineCommandCollection getCreateInOutLineCommands();
 
         InOutLineCommand.CreateInOutLine newCreateInOutLine();
 

@@ -72,7 +72,7 @@ public interface AttributeSetCommand extends Command
 
     interface CreateAttributeSet extends CreateOrMergePatchAttributeSet
     {
-        CreateAttributeUseCommandCollection getAttributeUses();
+        CreateAttributeUseCommandCollection getCreateAttributeUseCommands();
 
         AttributeUseCommand.CreateAttributeUse newCreateAttributeUse();
 

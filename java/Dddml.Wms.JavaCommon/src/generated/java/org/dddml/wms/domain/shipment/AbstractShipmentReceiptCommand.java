@@ -299,11 +299,14 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateShipmentReceiptImageCommandCollection shipmentReceiptImages = new SimpleCreateShipmentReceiptImageCommandCollection();
+        private CreateShipmentReceiptImageCommandCollection createShipmentReceiptImageCommands = new SimpleCreateShipmentReceiptImageCommandCollection();
 
-        public CreateShipmentReceiptImageCommandCollection getShipmentReceiptImages()
-        {
-            return this.shipmentReceiptImages;
+        public CreateShipmentReceiptImageCommandCollection getCreateShipmentReceiptImageCommands() {
+            return this.createShipmentReceiptImageCommands;
+        }
+
+        public CreateShipmentReceiptImageCommandCollection getShipmentReceiptImages() {
+            return this.createShipmentReceiptImageCommands; //shipmentReceiptImages;
         }
 
     }

@@ -33,8 +33,28 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.attributeState instanceof AbstractAttributeState) {
+        //    if (((AbstractAttributeState)this.attributeState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<AttributeAliasState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getAttributeAliasStateDao().findByAttributeId(attributeState.getAttributeId());
         } else {
             List<AttributeAliasState> ss = new ArrayList<AttributeAliasState>();
@@ -61,17 +81,24 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
         return get(code, false, false);
     }
 
-    AttributeAliasState get(String code, boolean forCreation) {
-        return get(code, forCreation, false);
+    public AttributeAliasState get(String code, boolean nullAllowed) {
+        return get(code, nullAllowed, false);
     }
 
-    AttributeAliasState get(String code, boolean forCreation, boolean nullAllowed) {
+    AttributeAliasState get(String code, boolean nullAllowed, boolean forCreation) {
         AttributeAliasId globalId = new AttributeAliasId(attributeState.getAttributeId(), code);
         if (loadedAttributeAliasStates.containsKey(globalId)) {
-            return loadedAttributeAliasStates.get(globalId);
+            AttributeAliasState state = loadedAttributeAliasStates.get(globalId);
+            if (state instanceof AbstractAttributeAliasState) {
+                ((AbstractAttributeAliasState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             AttributeAliasState state = new AbstractAttributeAliasState.SimpleAttributeAliasState(getForReapplying());
             state.setAttributeAliasId(globalId);
             loadedAttributeAliasStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
         } else {
             AttributeAliasState state = getAttributeAliasStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedAttributeAliasStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
 
     }
 
-    public void remove(AttributeAliasState state)
-    {
+    public void remove(AttributeAliasState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedAttributeAliasStates.put(state.getAttributeAliasId(), state);
     }
 
-    public void add(AttributeAliasState state)
-    {
+    public void add(AttributeAliasState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedAttributeAliasStates.put(state.getAttributeAliasId(), state);
     }
 

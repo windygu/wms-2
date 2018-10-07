@@ -84,7 +84,7 @@ public interface ShipmentPackageCommand extends Command
 
     interface CreateShipmentPackage extends CreateOrMergePatchShipmentPackage
     {
-        CreateShipmentPackageContentCommandCollection getShipmentPackageContents();
+        CreateShipmentPackageContentCommandCollection getCreateShipmentPackageContentCommands();
 
         ShipmentPackageContentCommand.CreateShipmentPackageContent newCreateShipmentPackageContent();
 

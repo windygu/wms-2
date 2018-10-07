@@ -11,7 +11,7 @@ public class InventoryItemUtils {
             if (iitem == null) {
                 InventoryItemCommand.CreateInventoryItem createInventoryItem = new AbstractInventoryItemCommand.SimpleCreateInventoryItem();
                 createInventoryItem.setInventoryItemId(e.getInventoryItemId());
-                createInventoryItem.getEntries().add(e);
+                createInventoryItem.getCreateInventoryItemEntryCommands().add(e);
                 invItemApplicationService.when(createInventoryItem);
             } else {
                 InventoryItemCommand.MergePatchInventoryItem updateInventoryItem = new AbstractInventoryItemCommand.SimpleMergePatchInventoryItem();

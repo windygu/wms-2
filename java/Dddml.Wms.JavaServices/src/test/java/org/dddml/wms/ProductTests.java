@@ -55,11 +55,11 @@ public class ProductTests {
         AttributeUseCommand.CreateAttributeUse useColor = attrSet.newCreateAttributeUse();
         useColor.setAttributeId(colorAttrId);
         useColor.setActive(true);
-        attrSet.getAttributeUses().add(useColor);
+        attrSet.getCreateAttributeUseCommands().add(useColor);
         AttributeUseCommand.CreateAttributeUse useSize = attrSet.newCreateAttributeUse();
         useSize.setAttributeId(sizeAttrId);
         useSize.setActive(true);
-        attrSet.getAttributeUses().add(useSize);
+        attrSet.getCreateAttributeUseCommands().add(useSize);
         attributeSetApplicationService.when(attrSet);
         return  attrSet.getAttributeSetId();
     }
@@ -79,17 +79,17 @@ public class ProductTests {
         s.setValue("S");
         s.setActive(true);
         s.setAttributeValueName("S");
-        sizeAttr.getAttributeValues().add(s);
+        sizeAttr.getCreateAttributeValueCommands().add(s);
         AttributeValueCommand.CreateAttributeValue m = sizeAttr.newCreateAttributeValue();
         m.setValue("M");
         m.setActive(true);
         m.setAttributeValueName("M");
-        sizeAttr.getAttributeValues().add(m);
+        sizeAttr.getCreateAttributeValueCommands().add(m);
         AttributeValueCommand.CreateAttributeValue l = sizeAttr.newCreateAttributeValue();
         l.setValue("L");
         l.setActive(true);
         l.setAttributeValueName("L");
-        sizeAttr.getAttributeValues().add(l);
+        sizeAttr.getCreateAttributeValueCommands().add(l);
         attributeApplicationService.when(sizeAttr);
         return sizeAttr.getAttributeId();
     }
@@ -109,17 +109,17 @@ public class ProductTests {
         r.setValue("R");
         r.setActive(true);
         r.setAttributeValueName("Red");
-        colorAttr.getAttributeValues().add(r);
+        colorAttr.getCreateAttributeValueCommands().add(r);
         AttributeValueCommand.CreateAttributeValue g = colorAttr.newCreateAttributeValue();
         g.setValue("G");
         g.setActive(true);
         g.setAttributeValueName("Green");
-        colorAttr.getAttributeValues().add(g);
+        colorAttr.getCreateAttributeValueCommands().add(g);
         AttributeValueCommand.CreateAttributeValue b = colorAttr.newCreateAttributeValue();
         b.setValue("B");
         b.setActive(true);
         b.setAttributeValueName("Blue");
-        colorAttr.getAttributeValues().add(b);
+        colorAttr.getCreateAttributeValueCommands().add(b);
         attributeApplicationService.when(colorAttr);
         return colorAttr.getAttributeId();
     }

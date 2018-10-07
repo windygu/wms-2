@@ -36,8 +36,28 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.sellableInventoryItemState instanceof AbstractSellableInventoryItemState) {
+        //    if (((AbstractSellableInventoryItemState)this.sellableInventoryItemState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<SellableInventoryItemEntryState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getSellableInventoryItemEntryStateDao().findBySellableInventoryItemId(sellableInventoryItemState.getSellableInventoryItemId());
         } else {
             List<SellableInventoryItemEntryState> ss = new ArrayList<SellableInventoryItemEntryState>();
@@ -62,17 +82,24 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
         return get(entrySeqId, false, false);
     }
 
-    SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation) {
-        return get(entrySeqId, forCreation, false);
+    public SellableInventoryItemEntryState get(Long entrySeqId, boolean nullAllowed) {
+        return get(entrySeqId, nullAllowed, false);
     }
 
-    SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
+    SellableInventoryItemEntryState get(Long entrySeqId, boolean nullAllowed, boolean forCreation) {
         SellableInventoryItemEntryId globalId = new SellableInventoryItemEntryId(sellableInventoryItemState.getSellableInventoryItemId(), entrySeqId);
         if (loadedSellableInventoryItemEntryStates.containsKey(globalId)) {
-            return loadedSellableInventoryItemEntryStates.get(globalId);
+            SellableInventoryItemEntryState state = loadedSellableInventoryItemEntryStates.get(globalId);
+            if (state instanceof AbstractSellableInventoryItemEntryState) {
+                ((AbstractSellableInventoryItemEntryState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             SellableInventoryItemEntryState state = new AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState(getForReapplying());
             state.setSellableInventoryItemEntryId(globalId);
             loadedSellableInventoryItemEntryStates.put(globalId, state);
@@ -80,6 +107,9 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
         } else {
             SellableInventoryItemEntryState state = getSellableInventoryItemEntryStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedSellableInventoryItemEntryStates.put(globalId, state);
             }
             return state;
@@ -87,13 +117,17 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
 
     }
 
-    public void remove(SellableInventoryItemEntryState state)
-    {
+    public void remove(SellableInventoryItemEntryState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedSellableInventoryItemEntryStates.put(state.getSellableInventoryItemEntryId(), state);
     }
 
-    public void add(SellableInventoryItemEntryState state)
-    {
+    public void add(SellableInventoryItemEntryState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedSellableInventoryItemEntryStates.put(state.getSellableInventoryItemEntryId(), state);
     }
 

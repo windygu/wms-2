@@ -2,6 +2,7 @@ package org.dddml.wms.domain.inout;
 
 import org.dddml.wms.domain.DocumentAction;
 import org.dddml.wms.domain.DocumentStatusIds;
+import org.dddml.wms.domain.EntityStateCollection;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
@@ -113,7 +114,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
 
         for (InOutLineState d : inOut.getInOutLines()) {
             InOutLineCommand.CreateInOutLine r = doCreateReversalInOutLine(d);
-            reversalInOut.getInOutLines().add(r);
+            reversalInOut.getCreateInOutLineCommands().add(r);
         }
 
         return reversalInOut;
@@ -211,7 +212,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
 
     protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completeInOutCreateInventoryItemEntries(InOutState inOut) {
         //int signum = GetSignumOfMovementType(inOut.MovementTypeId);
-        InOutLineStates ioLines = inOut.getInOutLines();
+        EntityStateCollection<String, InOutLineState> ioLines = inOut.getInOutLines();
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (InOutLineState d : ioLines) {
             InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(inOut, d);// signum);
@@ -320,7 +321,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
                         null
                         );
                 //lines.add(createLine);
-                createInOut.getInOutLines().add(createLine);
+                createInOut.getCreateInOutLineCommands().add(createLine);
             }
         }
         when(createInOut);

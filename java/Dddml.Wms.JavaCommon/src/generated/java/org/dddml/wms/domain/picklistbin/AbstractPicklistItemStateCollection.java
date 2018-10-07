@@ -33,8 +33,28 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.picklistBinState instanceof AbstractPicklistBinState) {
+        //    if (((AbstractPicklistBinState)this.picklistBinState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<PicklistItemState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getPicklistItemStateDao().findByPicklistBinId(picklistBinState.getPicklistBinId());
         } else {
             List<PicklistItemState> ss = new ArrayList<PicklistItemState>();
@@ -61,17 +81,24 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
         return get(picklistItemOrderShipGrpInvId, false, false);
     }
 
-    PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation) {
-        return get(picklistItemOrderShipGrpInvId, forCreation, false);
+    public PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean nullAllowed) {
+        return get(picklistItemOrderShipGrpInvId, nullAllowed, false);
     }
 
-    PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation, boolean nullAllowed) {
+    PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean nullAllowed, boolean forCreation) {
         PicklistBinPicklistItemId globalId = new PicklistBinPicklistItemId(picklistBinState.getPicklistBinId(), picklistItemOrderShipGrpInvId);
         if (loadedPicklistItemStates.containsKey(globalId)) {
-            return loadedPicklistItemStates.get(globalId);
+            PicklistItemState state = loadedPicklistItemStates.get(globalId);
+            if (state instanceof AbstractPicklistItemState) {
+                ((AbstractPicklistItemState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             PicklistItemState state = new AbstractPicklistItemState.SimplePicklistItemState(getForReapplying());
             state.setPicklistBinPicklistItemId(globalId);
             loadedPicklistItemStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
         } else {
             PicklistItemState state = getPicklistItemStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedPicklistItemStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
 
     }
 
-    public void remove(PicklistItemState state)
-    {
+    public void remove(PicklistItemState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedPicklistItemStates.put(state.getPicklistBinPicklistItemId(), state);
     }
 
-    public void add(PicklistItemState state)
-    {
+    public void add(PicklistItemState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedPicklistItemStates.put(state.getPicklistBinPicklistItemId(), state);
     }
 

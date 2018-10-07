@@ -141,15 +141,15 @@ public interface OrderCommand extends Command
 
     interface CreateOrder extends CreateOrMergePatchOrder
     {
-        CreateOrderRoleCommandCollection getOrderRoles();
+        CreateOrderRoleCommandCollection getCreateOrderRoleCommands();
 
         OrderRoleCommand.CreateOrderRole newCreateOrderRole();
 
-        CreateOrderItemCommandCollection getOrderItems();
+        CreateOrderItemCommandCollection getCreateOrderItemCommands();
 
         OrderItemCommand.CreateOrderItem newCreateOrderItem();
 
-        CreateOrderShipGroupCommandCollection getOrderShipGroups();
+        CreateOrderShipGroupCommandCollection getCreateOrderShipGroupCommands();
 
         OrderShipGroupCommand.CreateOrderShipGroup newCreateOrderShipGroup();
 

@@ -84,11 +84,11 @@ public interface AttributeCommand extends Command
 
     interface CreateAttribute extends CreateOrMergePatchAttribute
     {
-        CreateAttributeValueCommandCollection getAttributeValues();
+        CreateAttributeValueCommandCollection getCreateAttributeValueCommands();
 
         AttributeValueCommand.CreateAttributeValue newCreateAttributeValue();
 
-        CreateAttributeAliasCommandCollection getAliases();
+        CreateAttributeAliasCommandCollection getCreateAttributeAliasCommands();
 
         AttributeAliasCommand.CreateAttributeAlias newCreateAttributeAlias();
 

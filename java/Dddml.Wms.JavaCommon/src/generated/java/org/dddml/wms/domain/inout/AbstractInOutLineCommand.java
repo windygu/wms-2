@@ -228,11 +228,14 @@ public abstract class AbstractInOutLineCommand extends AbstractCommand implement
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateInOutLineImageCommandCollection inOutLineImages = new SimpleCreateInOutLineImageCommandCollection();
+        private CreateInOutLineImageCommandCollection createInOutLineImageCommands = new SimpleCreateInOutLineImageCommandCollection();
 
-        public CreateInOutLineImageCommandCollection getInOutLineImages()
-        {
-            return this.inOutLineImages;
+        public CreateInOutLineImageCommandCollection getCreateInOutLineImageCommands() {
+            return this.createInOutLineImageCommands;
+        }
+
+        public CreateInOutLineImageCommandCollection getInOutLineImages() {
+            return this.createInOutLineImageCommands; //inOutLineImages;
         }
 
     }

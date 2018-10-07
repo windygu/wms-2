@@ -195,7 +195,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         MovementCommand.CreateMovement reversalMov = doCreateReversalMovement(movement);
         for (MovementLineState d : movement.getMovementLines()) {
             MovementLineCommand.CreateMovementLine r = doCreateReversalMovementLine(d);
-            reversalMov.getMovementLines().add(r);
+            reversalMov.getCreateMovementLineCommands().add(r);
         }
         return reversalMov;
     }
@@ -394,7 +394,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
             confirmLine.setMovementLineNumber(movLine.getLineNumber());
             confirmLine.setTargetQuantity(movLine.getMovementQuantity());
             confirmLine.setConfirmedQuantity(BigDecimal.valueOf(0)); //??
-            movConfirm.getMovementConfirmationLines().add(confirmLine);
+            movConfirm.getCreateMovementConfirmationLineCommands().add(confirmLine);
         }
     }
 

@@ -45,7 +45,7 @@ public interface InventoryItemCommand extends Command
 
     interface CreateInventoryItem extends CreateOrMergePatchInventoryItem
     {
-        CreateInventoryItemEntryCommandCollection getEntries();
+        CreateInventoryItemEntryCommandCollection getCreateInventoryItemEntryCommands();
 
         InventoryItemEntryCommand.CreateInventoryItemEntry newCreateInventoryItemEntry();
 

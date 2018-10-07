@@ -151,11 +151,14 @@ public abstract class AbstractAttributeSetCommand extends AbstractCommand implem
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateAttributeUseCommandCollection attributeUses = new SimpleCreateAttributeUseCommandCollection();
+        private CreateAttributeUseCommandCollection createAttributeUseCommands = new SimpleCreateAttributeUseCommandCollection();
 
-        public CreateAttributeUseCommandCollection getAttributeUses()
-        {
-            return this.attributeUses;
+        public CreateAttributeUseCommandCollection getCreateAttributeUseCommands() {
+            return this.createAttributeUseCommands;
+        }
+
+        public CreateAttributeUseCommandCollection getAttributeUses() {
+            return this.createAttributeUseCommands; //attributeUses;
         }
 
     }

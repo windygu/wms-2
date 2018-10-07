@@ -237,11 +237,14 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreatePhysicalInventoryLineCommandCollection physicalInventoryLines = new SimpleCreatePhysicalInventoryLineCommandCollection();
+        private CreatePhysicalInventoryLineCommandCollection createPhysicalInventoryLineCommands = new SimpleCreatePhysicalInventoryLineCommandCollection();
 
-        public CreatePhysicalInventoryLineCommandCollection getPhysicalInventoryLines()
-        {
-            return this.physicalInventoryLines;
+        public CreatePhysicalInventoryLineCommandCollection getCreatePhysicalInventoryLineCommands() {
+            return this.createPhysicalInventoryLineCommands;
+        }
+
+        public CreatePhysicalInventoryLineCommandCollection getPhysicalInventoryLines() {
+            return this.createPhysicalInventoryLineCommands; //physicalInventoryLines;
         }
 
     }

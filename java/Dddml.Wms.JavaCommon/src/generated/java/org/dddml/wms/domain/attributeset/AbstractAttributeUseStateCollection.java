@@ -33,8 +33,28 @@ public abstract class AbstractAttributeUseStateCollection implements EntityState
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.attributeSetState instanceof AbstractAttributeSetState) {
+        //    if (((AbstractAttributeSetState)this.attributeSetState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<AttributeUseState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getAttributeUseStateDao().findByAttributeSetId(attributeSetState.getAttributeSetId());
         } else {
             List<AttributeUseState> ss = new ArrayList<AttributeUseState>();
@@ -61,17 +81,24 @@ public abstract class AbstractAttributeUseStateCollection implements EntityState
         return get(attributeId, false, false);
     }
 
-    AttributeUseState get(String attributeId, boolean forCreation) {
-        return get(attributeId, forCreation, false);
+    public AttributeUseState get(String attributeId, boolean nullAllowed) {
+        return get(attributeId, nullAllowed, false);
     }
 
-    AttributeUseState get(String attributeId, boolean forCreation, boolean nullAllowed) {
+    AttributeUseState get(String attributeId, boolean nullAllowed, boolean forCreation) {
         AttributeSetAttributeUseId globalId = new AttributeSetAttributeUseId(attributeSetState.getAttributeSetId(), attributeId);
         if (loadedAttributeUseStates.containsKey(globalId)) {
-            return loadedAttributeUseStates.get(globalId);
+            AttributeUseState state = loadedAttributeUseStates.get(globalId);
+            if (state instanceof AbstractAttributeUseState) {
+                ((AbstractAttributeUseState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             AttributeUseState state = new AbstractAttributeUseState.SimpleAttributeUseState(getForReapplying());
             state.setAttributeSetAttributeUseId(globalId);
             loadedAttributeUseStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractAttributeUseStateCollection implements EntityState
         } else {
             AttributeUseState state = getAttributeUseStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedAttributeUseStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractAttributeUseStateCollection implements EntityState
 
     }
 
-    public void remove(AttributeUseState state)
-    {
+    public void remove(AttributeUseState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedAttributeUseStates.put(state.getAttributeSetAttributeUseId(), state);
     }
 
-    public void add(AttributeUseState state)
-    {
+    public void add(AttributeUseState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedAttributeUseStates.put(state.getAttributeSetAttributeUseId(), state);
     }
 

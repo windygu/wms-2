@@ -216,7 +216,7 @@ public class TestMain {
         InventoryItemSourceInfo iiEntrySrc = new InventoryItemSourceInfo("TEST_EVT_TYPE", "TEST_DOCUMENT_NO_1", UUID.randomUUID().toString(), 0);
         iiEntry.setSource(iiEntrySrc);
 
-        ii.getEntries().add(iiEntry);
+        ii.getCreateInventoryItemEntryCommands().add(iiEntry);
         ii.setCommandId(UUID.randomUUID().toString());
 
         service.when(ii);

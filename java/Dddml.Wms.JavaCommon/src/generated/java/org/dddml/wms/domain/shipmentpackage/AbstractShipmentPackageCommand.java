@@ -187,11 +187,14 @@ public abstract class AbstractShipmentPackageCommand extends AbstractCommand imp
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateShipmentPackageContentCommandCollection shipmentPackageContents = new SimpleCreateShipmentPackageContentCommandCollection();
+        private CreateShipmentPackageContentCommandCollection createShipmentPackageContentCommands = new SimpleCreateShipmentPackageContentCommandCollection();
 
-        public CreateShipmentPackageContentCommandCollection getShipmentPackageContents()
-        {
-            return this.shipmentPackageContents;
+        public CreateShipmentPackageContentCommandCollection getCreateShipmentPackageContentCommands() {
+            return this.createShipmentPackageContentCommands;
+        }
+
+        public CreateShipmentPackageContentCommandCollection getShipmentPackageContents() {
+            return this.createShipmentPackageContentCommands; //shipmentPackageContents;
         }
 
     }

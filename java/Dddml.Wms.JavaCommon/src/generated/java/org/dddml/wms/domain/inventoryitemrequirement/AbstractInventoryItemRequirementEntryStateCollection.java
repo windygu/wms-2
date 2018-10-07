@@ -36,8 +36,28 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.inventoryItemRequirementState instanceof AbstractInventoryItemRequirementState) {
+        //    if (((AbstractInventoryItemRequirementState)this.inventoryItemRequirementState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<InventoryItemRequirementEntryState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getInventoryItemRequirementEntryStateDao().findByInventoryItemRequirementId(inventoryItemRequirementState.getInventoryItemRequirementId());
         } else {
             List<InventoryItemRequirementEntryState> ss = new ArrayList<InventoryItemRequirementEntryState>();
@@ -62,17 +82,24 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
         return get(entrySeqId, false, false);
     }
 
-    InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation) {
-        return get(entrySeqId, forCreation, false);
+    public InventoryItemRequirementEntryState get(Long entrySeqId, boolean nullAllowed) {
+        return get(entrySeqId, nullAllowed, false);
     }
 
-    InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
+    InventoryItemRequirementEntryState get(Long entrySeqId, boolean nullAllowed, boolean forCreation) {
         InventoryItemRequirementEntryId globalId = new InventoryItemRequirementEntryId(inventoryItemRequirementState.getInventoryItemRequirementId(), entrySeqId);
         if (loadedInventoryItemRequirementEntryStates.containsKey(globalId)) {
-            return loadedInventoryItemRequirementEntryStates.get(globalId);
+            InventoryItemRequirementEntryState state = loadedInventoryItemRequirementEntryStates.get(globalId);
+            if (state instanceof AbstractInventoryItemRequirementEntryState) {
+                ((AbstractInventoryItemRequirementEntryState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             InventoryItemRequirementEntryState state = new AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState(getForReapplying());
             state.setInventoryItemRequirementEntryId(globalId);
             loadedInventoryItemRequirementEntryStates.put(globalId, state);
@@ -80,6 +107,9 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
         } else {
             InventoryItemRequirementEntryState state = getInventoryItemRequirementEntryStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedInventoryItemRequirementEntryStates.put(globalId, state);
             }
             return state;
@@ -87,13 +117,17 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
 
     }
 
-    public void remove(InventoryItemRequirementEntryState state)
-    {
+    public void remove(InventoryItemRequirementEntryState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedInventoryItemRequirementEntryStates.put(state.getInventoryItemRequirementEntryId(), state);
     }
 
-    public void add(InventoryItemRequirementEntryState state)
-    {
+    public void add(InventoryItemRequirementEntryState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedInventoryItemRequirementEntryStates.put(state.getInventoryItemRequirementEntryId(), state);
     }
 

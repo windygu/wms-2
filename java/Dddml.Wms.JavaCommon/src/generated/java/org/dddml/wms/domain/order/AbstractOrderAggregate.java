@@ -81,21 +81,21 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
-        for (OrderRoleCommand.CreateOrderRole innerCommand : c.getOrderRoles())
+        for (OrderRoleCommand.CreateOrderRole innerCommand : c.getCreateOrderRoleCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             OrderRoleEvent.OrderRoleStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addOrderRoleEvent(innerEvent);
         }
 
-        for (OrderItemCommand.CreateOrderItem innerCommand : c.getOrderItems())
+        for (OrderItemCommand.CreateOrderItem innerCommand : c.getCreateOrderItemCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             OrderItemEvent.OrderItemStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addOrderItemEvent(innerEvent);
         }
 
-        for (OrderShipGroupCommand.CreateOrderShipGroup innerCommand : c.getOrderShipGroups())
+        for (OrderShipGroupCommand.CreateOrderShipGroup innerCommand : c.getCreateOrderShipGroupCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
             OrderShipGroupEvent.OrderShipGroupStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
@@ -451,7 +451,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
 
-        for (OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation innerCommand : c.getOrderItemShipGroupAssociations())
+        for (OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation innerCommand : c.getCreateOrderItemShipGroupAssociationCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
 

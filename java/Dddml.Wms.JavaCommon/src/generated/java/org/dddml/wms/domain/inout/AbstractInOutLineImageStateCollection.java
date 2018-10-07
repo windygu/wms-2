@@ -33,8 +33,28 @@ public abstract class AbstractInOutLineImageStateCollection implements EntitySta
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.inOutLineState instanceof AbstractInOutLineState) {
+        //    if (((AbstractInOutLineState)this.inOutLineState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<InOutLineImageState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getInOutLineImageStateDao().findByInOutDocumentNumberAndInOutLineLineNumber(inOutLineState.getInOutLineId().getInOutDocumentNumber(), inOutLineState.getInOutLineId().getLineNumber());
         } else {
             List<InOutLineImageState> ss = new ArrayList<InOutLineImageState>();
@@ -61,17 +81,24 @@ public abstract class AbstractInOutLineImageStateCollection implements EntitySta
         return get(sequenceId, false, false);
     }
 
-    InOutLineImageState get(String sequenceId, boolean forCreation) {
-        return get(sequenceId, forCreation, false);
+    public InOutLineImageState get(String sequenceId, boolean nullAllowed) {
+        return get(sequenceId, nullAllowed, false);
     }
 
-    InOutLineImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
+    InOutLineImageState get(String sequenceId, boolean nullAllowed, boolean forCreation) {
         InOutLineImageId globalId = new InOutLineImageId(inOutLineState.getInOutLineId().getInOutDocumentNumber(), inOutLineState.getInOutLineId().getLineNumber(), sequenceId);
         if (loadedInOutLineImageStates.containsKey(globalId)) {
-            return loadedInOutLineImageStates.get(globalId);
+            InOutLineImageState state = loadedInOutLineImageStates.get(globalId);
+            if (state instanceof AbstractInOutLineImageState) {
+                ((AbstractInOutLineImageState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             InOutLineImageState state = new AbstractInOutLineImageState.SimpleInOutLineImageState(getForReapplying());
             state.setInOutLineImageId(globalId);
             loadedInOutLineImageStates.put(globalId, state);
@@ -79,6 +106,9 @@ public abstract class AbstractInOutLineImageStateCollection implements EntitySta
         } else {
             InOutLineImageState state = getInOutLineImageStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedInOutLineImageStates.put(globalId, state);
             }
             return state;
@@ -86,13 +116,17 @@ public abstract class AbstractInOutLineImageStateCollection implements EntitySta
 
     }
 
-    public void remove(InOutLineImageState state)
-    {
+    public void remove(InOutLineImageState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedInOutLineImageStates.put(state.getInOutLineImageId(), state);
     }
 
-    public void add(InOutLineImageState state)
-    {
+    public void add(InOutLineImageState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedInOutLineImageStates.put(state.getInOutLineImageId(), state);
     }
 

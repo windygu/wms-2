@@ -34,8 +34,28 @@ public abstract class AbstractInOutLineStateCollection implements EntityStateCol
         this.forReapplying = forReapplying;
     }
 
+    private Boolean stateCollectionReadOnly;
+
+    public Boolean getStateCollectionReadOnly() {
+        //if (this.inOutState instanceof AbstractInOutState) {
+        //    if (((AbstractInOutState)this.inOutState).getStateReadOnly()) 
+        //    { return true; }
+        //}
+        if (this.stateCollectionReadOnly == null) {
+            return false;
+        }
+        return this.stateCollectionReadOnly;
+    }
+
+    public void setStateCollectionReadOnly(Boolean readOnly) {
+        this.stateCollectionReadOnly = readOnly;
+    }
+
     protected Iterable<InOutLineState> getInnerIterable() {
         if (!getForReapplying()) {
+            //if (!getStateCollectionReadOnly()) {
+            //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
+            //}
             return getInOutLineStateDao().findByInOutDocumentNumber(inOutState.getDocumentNumber());
         } else {
             List<InOutLineState> ss = new ArrayList<InOutLineState>();
@@ -62,17 +82,24 @@ public abstract class AbstractInOutLineStateCollection implements EntityStateCol
         return get(lineNumber, false, false);
     }
 
-    InOutLineState get(String lineNumber, boolean forCreation) {
-        return get(lineNumber, forCreation, false);
+    public InOutLineState get(String lineNumber, boolean nullAllowed) {
+        return get(lineNumber, nullAllowed, false);
     }
 
-    InOutLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
+    InOutLineState get(String lineNumber, boolean nullAllowed, boolean forCreation) {
         InOutLineId globalId = new InOutLineId(inOutState.getDocumentNumber(), lineNumber);
         if (loadedInOutLineStates.containsKey(globalId)) {
-            return loadedInOutLineStates.get(globalId);
+            InOutLineState state = loadedInOutLineStates.get(globalId);
+            if (state instanceof AbstractInOutLineState) {
+                ((AbstractInOutLineState)state).setStateReadOnly(getStateCollectionReadOnly());
+            }
+            return state;
         }
         boolean justNewIfNotLoaded = forCreation || getForReapplying();
         if (justNewIfNotLoaded) {
+            if (getStateCollectionReadOnly()) {
+                throw new UnsupportedOperationException("State collection is ReadOnly.");
+            }
             InOutLineState state = new AbstractInOutLineState.SimpleInOutLineState(getForReapplying());
             state.setInOutLineId(globalId);
             loadedInOutLineStates.put(globalId, state);
@@ -80,6 +107,9 @@ public abstract class AbstractInOutLineStateCollection implements EntityStateCol
         } else {
             InOutLineState state = getInOutLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
+                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                    throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
                 loadedInOutLineStates.put(globalId, state);
             }
             return state;
@@ -87,13 +117,17 @@ public abstract class AbstractInOutLineStateCollection implements EntityStateCol
 
     }
 
-    public void remove(InOutLineState state)
-    {
+    public void remove(InOutLineState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.removedInOutLineStates.put(state.getInOutLineId(), state);
     }
 
-    public void add(InOutLineState state)
-    {
+    public void add(InOutLineState state) {
+        if (getStateCollectionReadOnly()) {
+            throw new UnsupportedOperationException("State collection is ReadOnly.");
+        }
         this.loadedInOutLineStates.put(state.getInOutLineId(), state);
     }
 
