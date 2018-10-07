@@ -387,38 +387,38 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         return this.getVersion() == null;
     }
 
-    private OrderRoleStates orderRoles;
+    private EntityStateCollection<PartyRoleId, OrderRoleState> orderRoles;
 
-    public OrderRoleStates getOrderRoles()
+    public EntityStateCollection<PartyRoleId, OrderRoleState> getOrderRoles()
     {
         return this.orderRoles;
     }
 
-    public void setOrderRoles(OrderRoleStates orderRoles)
+    public void setOrderRoles(EntityStateCollection<PartyRoleId, OrderRoleState> orderRoles)
     {
         this.orderRoles = orderRoles;
     }
 
-    private OrderItemStates orderItems;
+    private EntityStateCollection<String, OrderItemState> orderItems;
 
-    public OrderItemStates getOrderItems()
+    public EntityStateCollection<String, OrderItemState> getOrderItems()
     {
         return this.orderItems;
     }
 
-    public void setOrderItems(OrderItemStates orderItems)
+    public void setOrderItems(EntityStateCollection<String, OrderItemState> orderItems)
     {
         this.orderItems = orderItems;
     }
 
-    private OrderShipGroupStates orderShipGroups;
+    private EntityStateCollection<String, OrderShipGroupState> orderShipGroups;
 
-    public OrderShipGroupStates getOrderShipGroups()
+    public EntityStateCollection<String, OrderShipGroupState> getOrderShipGroups()
     {
         return this.orderShipGroups;
     }
 
-    public void setOrderShipGroups(OrderShipGroupStates orderShipGroups)
+    public void setOrderShipGroups(EntityStateCollection<String, OrderShipGroupState> orderShipGroups)
     {
         this.orderShipGroups = orderShipGroups;
     }
@@ -462,9 +462,9 @@ public abstract class AbstractOrderState implements OrderState, Saveable
     }
     
     protected void initializeProperties() {
-        orderRoles = new SimpleOrderRoleStates(this);
-        orderItems = new SimpleOrderItemStates(this);
-        orderShipGroups = new SimpleOrderShipGroupStates(this);
+        orderRoles = new SimpleOrderRoleStateCollection(this);
+        orderItems = new SimpleOrderItemStateCollection(this);
+        orderShipGroups = new SimpleOrderShipGroupStateCollection(this);
     }
 
 
@@ -835,11 +835,11 @@ public abstract class AbstractOrderState implements OrderState, Saveable
 
     public void save()
     {
-        orderRoles.save();
+        ((Saveable)orderRoles).save();
 
-        orderItems.save();
+        ((Saveable)orderItems).save();
 
-        orderShipGroups.save();
+        ((Saveable)orderShipGroups).save();
 
     }
 
@@ -880,25 +880,25 @@ public abstract class AbstractOrderState implements OrderState, Saveable
 
     }
 
-    static class SimpleOrderRoleStates extends AbstractOrderRoleStates
+    static class SimpleOrderRoleStateCollection extends AbstractOrderRoleStateCollection
     {
-        public SimpleOrderRoleStates(AbstractOrderState outerState)
+        public SimpleOrderRoleStateCollection(AbstractOrderState outerState)
         {
             super(outerState);
         }
     }
 
-    static class SimpleOrderItemStates extends AbstractOrderItemStates
+    static class SimpleOrderItemStateCollection extends AbstractOrderItemStateCollection
     {
-        public SimpleOrderItemStates(AbstractOrderState outerState)
+        public SimpleOrderItemStateCollection(AbstractOrderState outerState)
         {
             super(outerState);
         }
     }
 
-    static class SimpleOrderShipGroupStates extends AbstractOrderShipGroupStates
+    static class SimpleOrderShipGroupStateCollection extends AbstractOrderShipGroupStateCollection
     {
-        public SimpleOrderShipGroupStates(AbstractOrderState outerState)
+        public SimpleOrderShipGroupStateCollection(AbstractOrderState outerState)
         {
             super(outerState);
         }

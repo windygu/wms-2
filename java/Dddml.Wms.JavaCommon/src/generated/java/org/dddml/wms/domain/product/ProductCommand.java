@@ -308,7 +308,7 @@ public interface ProductCommand extends Command
 
     interface CreateProduct extends CreateOrMergePatchProduct
     {
-        CreateGoodIdentificationCommands getGoodIdentifications();
+        CreateGoodIdentificationCommandCollection getGoodIdentifications();
 
         GoodIdentificationCommand.CreateGoodIdentification newCreateGoodIdentification();
 
@@ -584,7 +584,7 @@ public interface ProductCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        GoodIdentificationCommands getGoodIdentificationCommands();
+        GoodIdentificationCommandCollection getGoodIdentificationCommands();
 
         GoodIdentificationCommand.CreateGoodIdentification newCreateGoodIdentification();
 
@@ -598,7 +598,7 @@ public interface ProductCommand extends Command
 	{
 	}
 
-    interface CreateGoodIdentificationCommands extends Iterable<GoodIdentificationCommand.CreateGoodIdentification>
+    interface CreateGoodIdentificationCommandCollection extends Iterable<GoodIdentificationCommand.CreateGoodIdentification>
     {
         void add(GoodIdentificationCommand.CreateGoodIdentification c);
 
@@ -607,7 +607,7 @@ public interface ProductCommand extends Command
         void clear();
     }
 
-    interface GoodIdentificationCommands extends Iterable<GoodIdentificationCommand>
+    interface GoodIdentificationCommandCollection extends Iterable<GoodIdentificationCommand>
     {
         void add(GoodIdentificationCommand c);
 

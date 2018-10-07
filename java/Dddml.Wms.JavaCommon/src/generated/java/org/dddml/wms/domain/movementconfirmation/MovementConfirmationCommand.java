@@ -77,7 +77,7 @@ public interface MovementConfirmationCommand extends Command
 
     interface CreateMovementConfirmation extends CreateOrMergePatchMovementConfirmation
     {
-        CreateMovementConfirmationLineCommands getMovementConfirmationLines();
+        CreateMovementConfirmationLineCommandCollection getMovementConfirmationLines();
 
         MovementConfirmationLineCommand.CreateMovementConfirmationLine newCreateMovementConfirmationLine();
 
@@ -121,7 +121,7 @@ public interface MovementConfirmationCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        MovementConfirmationLineCommands getMovementConfirmationLineCommands();
+        MovementConfirmationLineCommandCollection getMovementConfirmationLineCommands();
 
         MovementConfirmationLineCommand.CreateMovementConfirmationLine newCreateMovementConfirmationLine();
 
@@ -135,7 +135,7 @@ public interface MovementConfirmationCommand extends Command
 	{
 	}
 
-    interface CreateMovementConfirmationLineCommands extends Iterable<MovementConfirmationLineCommand.CreateMovementConfirmationLine>
+    interface CreateMovementConfirmationLineCommandCollection extends Iterable<MovementConfirmationLineCommand.CreateMovementConfirmationLine>
     {
         void add(MovementConfirmationLineCommand.CreateMovementConfirmationLine c);
 
@@ -144,7 +144,7 @@ public interface MovementConfirmationCommand extends Command
         void clear();
     }
 
-    interface MovementConfirmationLineCommands extends Iterable<MovementConfirmationLineCommand>
+    interface MovementConfirmationLineCommandCollection extends Iterable<MovementConfirmationLineCommand>
     {
         void add(MovementConfirmationLineCommand c);
 

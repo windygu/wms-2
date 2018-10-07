@@ -142,11 +142,11 @@ public interface OrderState
 
     boolean getForReapplying();
 
-    OrderRoleStates getOrderRoles();
+    EntityStateCollection<PartyRoleId, OrderRoleState> getOrderRoles();
 
-    OrderItemStates getOrderItems();
+    EntityStateCollection<String, OrderItemState> getOrderItems();
 
-    OrderShipGroupStates getOrderShipGroups();
+    EntityStateCollection<String, OrderShipGroupState> getOrderShipGroups();
 
 
     void mutate(Event e);

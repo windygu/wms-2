@@ -98,7 +98,7 @@ public interface ShipmentReceiptCommand extends Command
 
     interface CreateShipmentReceipt extends CreateOrMergePatchShipmentReceipt
     {
-        CreateShipmentReceiptImageCommands getShipmentReceiptImages();
+        CreateShipmentReceiptImageCommandCollection getShipmentReceiptImages();
 
         ShipmentReceiptImageCommand.CreateShipmentReceiptImage newCreateShipmentReceiptImage();
 
@@ -182,7 +182,7 @@ public interface ShipmentReceiptCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        ShipmentReceiptImageCommands getShipmentReceiptImageCommands();
+        ShipmentReceiptImageCommandCollection getShipmentReceiptImageCommands();
 
         ShipmentReceiptImageCommand.CreateShipmentReceiptImage newCreateShipmentReceiptImage();
 
@@ -196,7 +196,7 @@ public interface ShipmentReceiptCommand extends Command
 	{
 	}
 
-    interface CreateShipmentReceiptImageCommands extends Iterable<ShipmentReceiptImageCommand.CreateShipmentReceiptImage>
+    interface CreateShipmentReceiptImageCommandCollection extends Iterable<ShipmentReceiptImageCommand.CreateShipmentReceiptImage>
     {
         void add(ShipmentReceiptImageCommand.CreateShipmentReceiptImage c);
 
@@ -205,7 +205,7 @@ public interface ShipmentReceiptCommand extends Command
         void clear();
     }
 
-    interface ShipmentReceiptImageCommands extends Iterable<ShipmentReceiptImageCommand>
+    interface ShipmentReceiptImageCommandCollection extends Iterable<ShipmentReceiptImageCommand>
     {
         void add(ShipmentReceiptImageCommand c);
 

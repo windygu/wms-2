@@ -45,7 +45,7 @@ public interface InventoryItemCommand extends Command
 
     interface CreateInventoryItem extends CreateOrMergePatchInventoryItem
     {
-        CreateInventoryItemEntryCommands getEntries();
+        CreateInventoryItemEntryCommandCollection getEntries();
 
         InventoryItemEntryCommand.CreateInventoryItemEntry newCreateInventoryItemEntry();
 
@@ -57,7 +57,7 @@ public interface InventoryItemCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        InventoryItemEntryCommands getInventoryItemEntryCommands();
+        InventoryItemEntryCommandCollection getInventoryItemEntryCommands();
 
         InventoryItemEntryCommand.CreateInventoryItemEntry newCreateInventoryItemEntry();
 
@@ -67,7 +67,7 @@ public interface InventoryItemCommand extends Command
 	{
 	}
 
-    interface CreateInventoryItemEntryCommands extends Iterable<InventoryItemEntryCommand.CreateInventoryItemEntry>
+    interface CreateInventoryItemEntryCommandCollection extends Iterable<InventoryItemEntryCommand.CreateInventoryItemEntry>
     {
         void add(InventoryItemEntryCommand.CreateInventoryItemEntry c);
 
@@ -76,7 +76,7 @@ public interface InventoryItemCommand extends Command
         void clear();
     }
 
-    interface InventoryItemEntryCommands extends Iterable<InventoryItemEntryCommand>
+    interface InventoryItemEntryCommandCollection extends Iterable<InventoryItemEntryCommand>
     {
         void add(InventoryItemEntryCommand c);
 

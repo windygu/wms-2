@@ -106,7 +106,7 @@ public interface InOutLineState
 
     boolean getForReapplying();
 
-    InOutLineImageStates getInOutLineImages();
+    EntityStateCollection<String, InOutLineImageState> getInOutLineImages();
 
 
     void mutate(Event e);

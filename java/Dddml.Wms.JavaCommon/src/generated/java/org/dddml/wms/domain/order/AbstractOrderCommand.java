@@ -416,23 +416,23 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateOrderRoleCommands orderRoles = new SimpleCreateOrderRoleCommands();
+        private CreateOrderRoleCommandCollection orderRoles = new SimpleCreateOrderRoleCommandCollection();
 
-        public CreateOrderRoleCommands getOrderRoles()
+        public CreateOrderRoleCommandCollection getOrderRoles()
         {
             return this.orderRoles;
         }
 
-        private CreateOrderItemCommands orderItems = new SimpleCreateOrderItemCommands();
+        private CreateOrderItemCommandCollection orderItems = new SimpleCreateOrderItemCommandCollection();
 
-        public CreateOrderItemCommands getOrderItems()
+        public CreateOrderItemCommandCollection getOrderItems()
         {
             return this.orderItems;
         }
 
-        private CreateOrderShipGroupCommands orderShipGroups = new SimpleCreateOrderShipGroupCommands();
+        private CreateOrderShipGroupCommandCollection orderShipGroups = new SimpleCreateOrderShipGroupCommandCollection();
 
-        public CreateOrderShipGroupCommands getOrderShipGroups()
+        public CreateOrderShipGroupCommandCollection getOrderShipGroups()
         {
             return this.orderShipGroups;
         }
@@ -746,23 +746,23 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             this.isPropertyActiveRemoved = removed;
         }
 
-        private OrderRoleCommands orderRoleCommands = new SimpleOrderRoleCommands();
+        private OrderRoleCommandCollection orderRoleCommands = new SimpleOrderRoleCommandCollection();
 
-        public OrderRoleCommands getOrderRoleCommands()
+        public OrderRoleCommandCollection getOrderRoleCommands()
         {
             return this.orderRoleCommands;
         }
 
-        private OrderItemCommands orderItemCommands = new SimpleOrderItemCommands();
+        private OrderItemCommandCollection orderItemCommands = new SimpleOrderItemCommandCollection();
 
-        public OrderItemCommands getOrderItemCommands()
+        public OrderItemCommandCollection getOrderItemCommands()
         {
             return this.orderItemCommands;
         }
 
-        private OrderShipGroupCommands orderShipGroupCommands = new SimpleOrderShipGroupCommands();
+        private OrderShipGroupCommandCollection orderShipGroupCommands = new SimpleOrderShipGroupCommandCollection();
 
-        public OrderShipGroupCommands getOrderShipGroupCommands()
+        public OrderShipGroupCommandCollection getOrderShipGroupCommands()
         {
             return this.orderShipGroupCommands;
         }
@@ -788,158 +788,128 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
 	}
 
     
-    public static class SimpleCreateOrderRoleCommands implements CreateOrderRoleCommands
-    {
+    public static class SimpleCreateOrderRoleCommandCollection implements CreateOrderRoleCommandCollection {
         private List<OrderRoleCommand.CreateOrderRole> innerCommands = new ArrayList<OrderRoleCommand.CreateOrderRole>();
 
-        public void add(OrderRoleCommand.CreateOrderRole c)
-        {
+        public void add(OrderRoleCommand.CreateOrderRole c) {
             innerCommands.add(c);
         }
 
-        public void remove(OrderRoleCommand.CreateOrderRole c)
-        {
+        public void remove(OrderRoleCommand.CreateOrderRole c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<OrderRoleCommand.CreateOrderRole> iterator()
-        {
+        public Iterator<OrderRoleCommand.CreateOrderRole> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleOrderRoleCommands implements OrderRoleCommands
-    {
+    public static class SimpleOrderRoleCommandCollection implements OrderRoleCommandCollection {
         private List<OrderRoleCommand> innerCommands = new ArrayList<OrderRoleCommand>();
 
-        public void add(OrderRoleCommand c)
-        {
+        public void add(OrderRoleCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(OrderRoleCommand c)
-        {
+        public void remove(OrderRoleCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<OrderRoleCommand> iterator()
-        {
+        public Iterator<OrderRoleCommand> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleCreateOrderItemCommands implements CreateOrderItemCommands
-    {
+    public static class SimpleCreateOrderItemCommandCollection implements CreateOrderItemCommandCollection {
         private List<OrderItemCommand.CreateOrderItem> innerCommands = new ArrayList<OrderItemCommand.CreateOrderItem>();
 
-        public void add(OrderItemCommand.CreateOrderItem c)
-        {
+        public void add(OrderItemCommand.CreateOrderItem c) {
             innerCommands.add(c);
         }
 
-        public void remove(OrderItemCommand.CreateOrderItem c)
-        {
+        public void remove(OrderItemCommand.CreateOrderItem c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<OrderItemCommand.CreateOrderItem> iterator()
-        {
+        public Iterator<OrderItemCommand.CreateOrderItem> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleOrderItemCommands implements OrderItemCommands
-    {
+    public static class SimpleOrderItemCommandCollection implements OrderItemCommandCollection {
         private List<OrderItemCommand> innerCommands = new ArrayList<OrderItemCommand>();
 
-        public void add(OrderItemCommand c)
-        {
+        public void add(OrderItemCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(OrderItemCommand c)
-        {
+        public void remove(OrderItemCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<OrderItemCommand> iterator()
-        {
+        public Iterator<OrderItemCommand> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleCreateOrderShipGroupCommands implements CreateOrderShipGroupCommands
-    {
+    public static class SimpleCreateOrderShipGroupCommandCollection implements CreateOrderShipGroupCommandCollection {
         private List<OrderShipGroupCommand.CreateOrderShipGroup> innerCommands = new ArrayList<OrderShipGroupCommand.CreateOrderShipGroup>();
 
-        public void add(OrderShipGroupCommand.CreateOrderShipGroup c)
-        {
+        public void add(OrderShipGroupCommand.CreateOrderShipGroup c) {
             innerCommands.add(c);
         }
 
-        public void remove(OrderShipGroupCommand.CreateOrderShipGroup c)
-        {
+        public void remove(OrderShipGroupCommand.CreateOrderShipGroup c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<OrderShipGroupCommand.CreateOrderShipGroup> iterator()
-        {
+        public Iterator<OrderShipGroupCommand.CreateOrderShipGroup> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleOrderShipGroupCommands implements OrderShipGroupCommands
-    {
+    public static class SimpleOrderShipGroupCommandCollection implements OrderShipGroupCommandCollection {
         private List<OrderShipGroupCommand> innerCommands = new ArrayList<OrderShipGroupCommand>();
 
-        public void add(OrderShipGroupCommand c)
-        {
+        public void add(OrderShipGroupCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(OrderShipGroupCommand c)
-        {
+        public void remove(OrderShipGroupCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<OrderShipGroupCommand> iterator()
-        {
+        public Iterator<OrderShipGroupCommand> iterator() {
             return innerCommands.iterator();
         }
     }

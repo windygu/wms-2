@@ -74,7 +74,7 @@ public interface PicklistState
 
     boolean getForReapplying();
 
-    PicklistRoleStates getPicklistRoles();
+    EntityStateCollection<PartyRoleId, PicklistRoleState> getPicklistRoles();
 
 
     void mutate(Event e);

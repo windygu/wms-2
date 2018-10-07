@@ -268,14 +268,14 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         return this.getVersion() == null;
     }
 
-    private PhysicalInventoryLineStates physicalInventoryLines;
+    private EntityStateCollection<InventoryItemId, PhysicalInventoryLineState> physicalInventoryLines;
 
-    public PhysicalInventoryLineStates getPhysicalInventoryLines()
+    public EntityStateCollection<InventoryItemId, PhysicalInventoryLineState> getPhysicalInventoryLines()
     {
         return this.physicalInventoryLines;
     }
 
-    public void setPhysicalInventoryLines(PhysicalInventoryLineStates physicalInventoryLines)
+    public void setPhysicalInventoryLines(EntityStateCollection<InventoryItemId, PhysicalInventoryLineState> physicalInventoryLines)
     {
         this.physicalInventoryLines = physicalInventoryLines;
     }
@@ -319,7 +319,7 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
     }
     
     protected void initializeProperties() {
-        physicalInventoryLines = new SimplePhysicalInventoryLineStates(this);
+        physicalInventoryLines = new SimplePhysicalInventoryLineStateCollection(this);
     }
 
 
@@ -549,7 +549,7 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
 
     public void save()
     {
-        physicalInventoryLines.save();
+        ((Saveable)physicalInventoryLines).save();
 
     }
 
@@ -590,9 +590,9 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
 
     }
 
-    static class SimplePhysicalInventoryLineStates extends AbstractPhysicalInventoryLineStates
+    static class SimplePhysicalInventoryLineStateCollection extends AbstractPhysicalInventoryLineStateCollection
     {
-        public SimplePhysicalInventoryLineStates(AbstractPhysicalInventoryState outerState)
+        public SimplePhysicalInventoryLineStateCollection(AbstractPhysicalInventoryState outerState)
         {
             super(outerState);
         }

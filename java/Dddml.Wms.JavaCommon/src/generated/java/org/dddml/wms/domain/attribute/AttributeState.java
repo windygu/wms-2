@@ -85,9 +85,9 @@ public interface AttributeState
 
     boolean getForReapplying();
 
-    AttributeValueStates getAttributeValues();
+    EntityStateCollection<String, AttributeValueState> getAttributeValues();
 
-    AttributeAliasStates getAliases();
+    EntityStateCollection<String, AttributeAliasState> getAliases();
 
 
     void mutate(Event e);

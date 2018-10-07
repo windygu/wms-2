@@ -62,7 +62,7 @@ public interface InventoryItemState
 
     boolean getForReapplying();
 
-    InventoryItemEntryStates getEntries();
+    EntityStateCollection<Long, InventoryItemEntryState> getEntries();
 
 
     void mutate(Event e);

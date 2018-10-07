@@ -64,9 +64,9 @@ public abstract class AbstractInventoryItemCommand extends AbstractCommand imple
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateInventoryItemEntryCommands entries = new SimpleCreateInventoryItemEntryCommands();
+        private CreateInventoryItemEntryCommandCollection entries = new SimpleCreateInventoryItemEntryCommandCollection();
 
-        public CreateInventoryItemEntryCommands getEntries()
+        public CreateInventoryItemEntryCommandCollection getEntries()
         {
             return this.entries;
         }
@@ -92,9 +92,9 @@ public abstract class AbstractInventoryItemCommand extends AbstractCommand imple
             this.isPropertyActiveRemoved = removed;
         }
 
-        private InventoryItemEntryCommands inventoryItemEntryCommands = new SimpleInventoryItemEntryCommands();
+        private InventoryItemEntryCommandCollection inventoryItemEntryCommands = new SimpleInventoryItemEntryCommandCollection();
 
-        public InventoryItemEntryCommands getInventoryItemEntryCommands()
+        public InventoryItemEntryCommandCollection getInventoryItemEntryCommands()
         {
             return this.inventoryItemEntryCommands;
         }
@@ -120,54 +120,44 @@ public abstract class AbstractInventoryItemCommand extends AbstractCommand imple
 	}
 
     
-    public static class SimpleCreateInventoryItemEntryCommands implements CreateInventoryItemEntryCommands
-    {
+    public static class SimpleCreateInventoryItemEntryCommandCollection implements CreateInventoryItemEntryCommandCollection {
         private List<InventoryItemEntryCommand.CreateInventoryItemEntry> innerCommands = new ArrayList<InventoryItemEntryCommand.CreateInventoryItemEntry>();
 
-        public void add(InventoryItemEntryCommand.CreateInventoryItemEntry c)
-        {
+        public void add(InventoryItemEntryCommand.CreateInventoryItemEntry c) {
             innerCommands.add(c);
         }
 
-        public void remove(InventoryItemEntryCommand.CreateInventoryItemEntry c)
-        {
+        public void remove(InventoryItemEntryCommand.CreateInventoryItemEntry c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<InventoryItemEntryCommand.CreateInventoryItemEntry> iterator()
-        {
+        public Iterator<InventoryItemEntryCommand.CreateInventoryItemEntry> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleInventoryItemEntryCommands implements InventoryItemEntryCommands
-    {
+    public static class SimpleInventoryItemEntryCommandCollection implements InventoryItemEntryCommandCollection {
         private List<InventoryItemEntryCommand> innerCommands = new ArrayList<InventoryItemEntryCommand>();
 
-        public void add(InventoryItemEntryCommand c)
-        {
+        public void add(InventoryItemEntryCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(InventoryItemEntryCommand c)
-        {
+        public void remove(InventoryItemEntryCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<InventoryItemEntryCommand> iterator()
-        {
+        public Iterator<InventoryItemEntryCommand> iterator() {
             return innerCommands.iterator();
         }
     }

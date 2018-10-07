@@ -351,14 +351,14 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         return this.getVersion() == null;
     }
 
-    private MovementLineStates movementLines;
+    private EntityStateCollection<String, MovementLineState> movementLines;
 
-    public MovementLineStates getMovementLines()
+    public EntityStateCollection<String, MovementLineState> getMovementLines()
     {
         return this.movementLines;
     }
 
-    public void setMovementLines(MovementLineStates movementLines)
+    public void setMovementLines(EntityStateCollection<String, MovementLineState> movementLines)
     {
         this.movementLines = movementLines;
     }
@@ -402,7 +402,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     }
     
     protected void initializeProperties() {
-        movementLines = new SimpleMovementLineStates(this);
+        movementLines = new SimpleMovementLineStateCollection(this);
     }
 
 
@@ -728,7 +728,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
     public void save()
     {
-        movementLines.save();
+        ((Saveable)movementLines).save();
 
     }
 
@@ -769,9 +769,9 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
     }
 
-    static class SimpleMovementLineStates extends AbstractMovementLineStates
+    static class SimpleMovementLineStateCollection extends AbstractMovementLineStateCollection
     {
-        public SimpleMovementLineStates(AbstractMovementState outerState)
+        public SimpleMovementLineStateCollection(AbstractMovementState outerState)
         {
             super(outerState);
         }

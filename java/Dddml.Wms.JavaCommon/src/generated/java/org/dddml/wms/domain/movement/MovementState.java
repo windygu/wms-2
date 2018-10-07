@@ -130,7 +130,7 @@ public interface MovementState
 
     boolean getForReapplying();
 
-    MovementLineStates getMovementLines();
+    EntityStateCollection<String, MovementLineState> getMovementLines();
 
 
     void mutate(Event e);

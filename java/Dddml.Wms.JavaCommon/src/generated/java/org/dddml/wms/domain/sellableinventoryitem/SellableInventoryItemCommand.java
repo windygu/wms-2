@@ -47,7 +47,7 @@ public interface SellableInventoryItemCommand extends Command
 
     interface CreateSellableInventoryItem extends CreateOrMergePatchSellableInventoryItem
     {
-        CreateSellableInventoryItemEntryCommands getEntries();
+        CreateSellableInventoryItemEntryCommandCollection getEntries();
 
         SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry newCreateSellableInventoryItemEntry();
 
@@ -59,7 +59,7 @@ public interface SellableInventoryItemCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        SellableInventoryItemEntryCommands getSellableInventoryItemEntryCommands();
+        SellableInventoryItemEntryCommandCollection getSellableInventoryItemEntryCommands();
 
         SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry newCreateSellableInventoryItemEntry();
 
@@ -69,7 +69,7 @@ public interface SellableInventoryItemCommand extends Command
 	{
 	}
 
-    interface CreateSellableInventoryItemEntryCommands extends Iterable<SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry>
+    interface CreateSellableInventoryItemEntryCommandCollection extends Iterable<SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry>
     {
         void add(SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry c);
 
@@ -78,7 +78,7 @@ public interface SellableInventoryItemCommand extends Command
         void clear();
     }
 
-    interface SellableInventoryItemEntryCommands extends Iterable<SellableInventoryItemEntryCommand>
+    interface SellableInventoryItemEntryCommandCollection extends Iterable<SellableInventoryItemEntryCommand>
     {
         void add(SellableInventoryItemEntryCommand c);
 

@@ -161,11 +161,11 @@ public interface InOutCommand extends Command
 
     interface CreateInOut extends CreateOrMergePatchInOut
     {
-        CreateInOutImageCommands getInOutImages();
+        CreateInOutImageCommandCollection getInOutImages();
 
         InOutImageCommand.CreateInOutImage newCreateInOutImage();
 
-        CreateInOutLineCommands getInOutLines();
+        CreateInOutLineCommandCollection getInOutLines();
 
         InOutLineCommand.CreateInOutLine newCreateInOutLine();
 
@@ -297,7 +297,7 @@ public interface InOutCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        InOutImageCommands getInOutImageCommands();
+        InOutImageCommandCollection getInOutImageCommands();
 
         InOutImageCommand.CreateInOutImage newCreateInOutImage();
 
@@ -305,7 +305,7 @@ public interface InOutCommand extends Command
 
         InOutImageCommand.RemoveInOutImage newRemoveInOutImage();
 
-        InOutLineCommands getInOutLineCommands();
+        InOutLineCommandCollection getInOutLineCommands();
 
         InOutLineCommand.CreateInOutLine newCreateInOutLine();
 
@@ -319,7 +319,7 @@ public interface InOutCommand extends Command
 	{
 	}
 
-    interface CreateInOutImageCommands extends Iterable<InOutImageCommand.CreateInOutImage>
+    interface CreateInOutImageCommandCollection extends Iterable<InOutImageCommand.CreateInOutImage>
     {
         void add(InOutImageCommand.CreateInOutImage c);
 
@@ -328,7 +328,7 @@ public interface InOutCommand extends Command
         void clear();
     }
 
-    interface InOutImageCommands extends Iterable<InOutImageCommand>
+    interface InOutImageCommandCollection extends Iterable<InOutImageCommand>
     {
         void add(InOutImageCommand c);
 
@@ -337,7 +337,7 @@ public interface InOutCommand extends Command
         void clear();
     }
 
-    interface CreateInOutLineCommands extends Iterable<InOutLineCommand.CreateInOutLine>
+    interface CreateInOutLineCommandCollection extends Iterable<InOutLineCommand.CreateInOutLine>
     {
         void add(InOutLineCommand.CreateInOutLine c);
 
@@ -346,7 +346,7 @@ public interface InOutCommand extends Command
         void clear();
     }
 
-    interface InOutLineCommands extends Iterable<InOutLineCommand>
+    interface InOutLineCommandCollection extends Iterable<InOutLineCommand>
     {
         void add(InOutLineCommand c);
 

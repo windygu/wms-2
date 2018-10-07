@@ -47,7 +47,7 @@ public interface InventoryItemRequirementCommand extends Command
 
     interface CreateInventoryItemRequirement extends CreateOrMergePatchInventoryItemRequirement
     {
-        CreateInventoryItemRequirementEntryCommands getEntries();
+        CreateInventoryItemRequirementEntryCommandCollection getEntries();
 
         InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry newCreateInventoryItemRequirementEntry();
 
@@ -59,7 +59,7 @@ public interface InventoryItemRequirementCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        InventoryItemRequirementEntryCommands getInventoryItemRequirementEntryCommands();
+        InventoryItemRequirementEntryCommandCollection getInventoryItemRequirementEntryCommands();
 
         InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry newCreateInventoryItemRequirementEntry();
 
@@ -69,7 +69,7 @@ public interface InventoryItemRequirementCommand extends Command
 	{
 	}
 
-    interface CreateInventoryItemRequirementEntryCommands extends Iterable<InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry>
+    interface CreateInventoryItemRequirementEntryCommandCollection extends Iterable<InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry>
     {
         void add(InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry c);
 
@@ -78,7 +78,7 @@ public interface InventoryItemRequirementCommand extends Command
         void clear();
     }
 
-    interface InventoryItemRequirementEntryCommands extends Iterable<InventoryItemRequirementEntryCommand>
+    interface InventoryItemRequirementEntryCommandCollection extends Iterable<InventoryItemRequirementEntryCommand>
     {
         void add(InventoryItemRequirementEntryCommand c);
 

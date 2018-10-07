@@ -52,7 +52,7 @@ public interface InventoryItemRequirementState
 
     void setCommandId(String commandId);
 
-    InventoryItemRequirementEntryStates getEntries();
+    EntityStateCollection<Long, InventoryItemRequirementEntryState> getEntries();
 
 
     void mutate(Event e);

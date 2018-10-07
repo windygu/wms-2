@@ -151,9 +151,9 @@ public abstract class AbstractAttributeSetCommand extends AbstractCommand implem
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateAttributeUseCommands attributeUses = new SimpleCreateAttributeUseCommands();
+        private CreateAttributeUseCommandCollection attributeUses = new SimpleCreateAttributeUseCommandCollection();
 
-        public CreateAttributeUseCommands getAttributeUses()
+        public CreateAttributeUseCommandCollection getAttributeUses()
         {
             return this.attributeUses;
         }
@@ -251,9 +251,9 @@ public abstract class AbstractAttributeSetCommand extends AbstractCommand implem
             this.isPropertyActiveRemoved = removed;
         }
 
-        private AttributeUseCommands attributeUseCommands = new SimpleAttributeUseCommands();
+        private AttributeUseCommandCollection attributeUseCommands = new SimpleAttributeUseCommandCollection();
 
-        public AttributeUseCommands getAttributeUseCommands()
+        public AttributeUseCommandCollection getAttributeUseCommands()
         {
             return this.attributeUseCommands;
         }
@@ -279,54 +279,44 @@ public abstract class AbstractAttributeSetCommand extends AbstractCommand implem
 	}
 
     
-    public static class SimpleCreateAttributeUseCommands implements CreateAttributeUseCommands
-    {
+    public static class SimpleCreateAttributeUseCommandCollection implements CreateAttributeUseCommandCollection {
         private List<AttributeUseCommand.CreateAttributeUse> innerCommands = new ArrayList<AttributeUseCommand.CreateAttributeUse>();
 
-        public void add(AttributeUseCommand.CreateAttributeUse c)
-        {
+        public void add(AttributeUseCommand.CreateAttributeUse c) {
             innerCommands.add(c);
         }
 
-        public void remove(AttributeUseCommand.CreateAttributeUse c)
-        {
+        public void remove(AttributeUseCommand.CreateAttributeUse c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<AttributeUseCommand.CreateAttributeUse> iterator()
-        {
+        public Iterator<AttributeUseCommand.CreateAttributeUse> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleAttributeUseCommands implements AttributeUseCommands
-    {
+    public static class SimpleAttributeUseCommandCollection implements AttributeUseCommandCollection {
         private List<AttributeUseCommand> innerCommands = new ArrayList<AttributeUseCommand>();
 
-        public void add(AttributeUseCommand c)
-        {
+        public void add(AttributeUseCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(AttributeUseCommand c)
-        {
+        public void remove(AttributeUseCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<AttributeUseCommand> iterator()
-        {
+        public Iterator<AttributeUseCommand> iterator() {
             return innerCommands.iterator();
         }
     }

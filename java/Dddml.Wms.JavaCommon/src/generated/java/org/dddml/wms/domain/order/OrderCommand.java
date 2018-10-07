@@ -141,15 +141,15 @@ public interface OrderCommand extends Command
 
     interface CreateOrder extends CreateOrMergePatchOrder
     {
-        CreateOrderRoleCommands getOrderRoles();
+        CreateOrderRoleCommandCollection getOrderRoles();
 
         OrderRoleCommand.CreateOrderRole newCreateOrderRole();
 
-        CreateOrderItemCommands getOrderItems();
+        CreateOrderItemCommandCollection getOrderItems();
 
         OrderItemCommand.CreateOrderItem newCreateOrderItem();
 
-        CreateOrderShipGroupCommands getOrderShipGroups();
+        CreateOrderShipGroupCommandCollection getOrderShipGroups();
 
         OrderShipGroupCommand.CreateOrderShipGroup newCreateOrderShipGroup();
 
@@ -257,7 +257,7 @@ public interface OrderCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        OrderRoleCommands getOrderRoleCommands();
+        OrderRoleCommandCollection getOrderRoleCommands();
 
         OrderRoleCommand.CreateOrderRole newCreateOrderRole();
 
@@ -265,7 +265,7 @@ public interface OrderCommand extends Command
 
         OrderRoleCommand.RemoveOrderRole newRemoveOrderRole();
 
-        OrderItemCommands getOrderItemCommands();
+        OrderItemCommandCollection getOrderItemCommands();
 
         OrderItemCommand.CreateOrderItem newCreateOrderItem();
 
@@ -273,7 +273,7 @@ public interface OrderCommand extends Command
 
         OrderItemCommand.RemoveOrderItem newRemoveOrderItem();
 
-        OrderShipGroupCommands getOrderShipGroupCommands();
+        OrderShipGroupCommandCollection getOrderShipGroupCommands();
 
         OrderShipGroupCommand.CreateOrderShipGroup newCreateOrderShipGroup();
 
@@ -287,7 +287,7 @@ public interface OrderCommand extends Command
 	{
 	}
 
-    interface CreateOrderRoleCommands extends Iterable<OrderRoleCommand.CreateOrderRole>
+    interface CreateOrderRoleCommandCollection extends Iterable<OrderRoleCommand.CreateOrderRole>
     {
         void add(OrderRoleCommand.CreateOrderRole c);
 
@@ -296,7 +296,7 @@ public interface OrderCommand extends Command
         void clear();
     }
 
-    interface OrderRoleCommands extends Iterable<OrderRoleCommand>
+    interface OrderRoleCommandCollection extends Iterable<OrderRoleCommand>
     {
         void add(OrderRoleCommand c);
 
@@ -305,7 +305,7 @@ public interface OrderCommand extends Command
         void clear();
     }
 
-    interface CreateOrderItemCommands extends Iterable<OrderItemCommand.CreateOrderItem>
+    interface CreateOrderItemCommandCollection extends Iterable<OrderItemCommand.CreateOrderItem>
     {
         void add(OrderItemCommand.CreateOrderItem c);
 
@@ -314,7 +314,7 @@ public interface OrderCommand extends Command
         void clear();
     }
 
-    interface OrderItemCommands extends Iterable<OrderItemCommand>
+    interface OrderItemCommandCollection extends Iterable<OrderItemCommand>
     {
         void add(OrderItemCommand c);
 
@@ -323,7 +323,7 @@ public interface OrderCommand extends Command
         void clear();
     }
 
-    interface CreateOrderShipGroupCommands extends Iterable<OrderShipGroupCommand.CreateOrderShipGroup>
+    interface CreateOrderShipGroupCommandCollection extends Iterable<OrderShipGroupCommand.CreateOrderShipGroup>
     {
         void add(OrderShipGroupCommand.CreateOrderShipGroup c);
 
@@ -332,7 +332,7 @@ public interface OrderCommand extends Command
         void clear();
     }
 
-    interface OrderShipGroupCommands extends Iterable<OrderShipGroupCommand>
+    interface OrderShipGroupCommandCollection extends Iterable<OrderShipGroupCommand>
     {
         void add(OrderShipGroupCommand c);
 

@@ -73,7 +73,7 @@ public interface PicklistCommand extends Command
 
     interface CreatePicklist extends CreateOrMergePatchPicklist
     {
-        CreatePicklistRoleCommands getPicklistRoles();
+        CreatePicklistRoleCommandCollection getPicklistRoles();
 
         PicklistRoleCommand.CreatePicklistRole newCreatePicklistRole();
 
@@ -109,7 +109,7 @@ public interface PicklistCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        PicklistRoleCommands getPicklistRoleCommands();
+        PicklistRoleCommandCollection getPicklistRoleCommands();
 
         PicklistRoleCommand.CreatePicklistRole newCreatePicklistRole();
 
@@ -123,7 +123,7 @@ public interface PicklistCommand extends Command
 	{
 	}
 
-    interface CreatePicklistRoleCommands extends Iterable<PicklistRoleCommand.CreatePicklistRole>
+    interface CreatePicklistRoleCommandCollection extends Iterable<PicklistRoleCommand.CreatePicklistRole>
     {
         void add(PicklistRoleCommand.CreatePicklistRole c);
 
@@ -132,7 +132,7 @@ public interface PicklistCommand extends Command
         void clear();
     }
 
-    interface PicklistRoleCommands extends Iterable<PicklistRoleCommand>
+    interface PicklistRoleCommandCollection extends Iterable<PicklistRoleCommand>
     {
         void add(PicklistRoleCommand c);
 

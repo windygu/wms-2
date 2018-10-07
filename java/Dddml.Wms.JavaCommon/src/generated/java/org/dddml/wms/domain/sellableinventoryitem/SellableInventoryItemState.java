@@ -52,7 +52,7 @@ public interface SellableInventoryItemState
 
     void setCommandId(String commandId);
 
-    SellableInventoryItemEntryStates getEntries();
+    EntityStateCollection<Long, SellableInventoryItemEntryState> getEntries();
 
 
     void mutate(Event e);

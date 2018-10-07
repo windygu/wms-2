@@ -73,7 +73,7 @@ public interface AttributeSetState
 
     boolean getForReapplying();
 
-    AttributeUseStates getAttributeUses();
+    EntityStateCollection<String, AttributeUseState> getAttributeUses();
 
 
     void mutate(Event e);

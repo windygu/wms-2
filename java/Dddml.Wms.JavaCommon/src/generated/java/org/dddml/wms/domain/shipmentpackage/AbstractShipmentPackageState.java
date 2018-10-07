@@ -218,14 +218,14 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         return this.getVersion() == null;
     }
 
-    private ShipmentPackageContentStates shipmentPackageContents;
+    private EntityStateCollection<String, ShipmentPackageContentState> shipmentPackageContents;
 
-    public ShipmentPackageContentStates getShipmentPackageContents()
+    public EntityStateCollection<String, ShipmentPackageContentState> getShipmentPackageContents()
     {
         return this.shipmentPackageContents;
     }
 
-    public void setShipmentPackageContents(ShipmentPackageContentStates shipmentPackageContents)
+    public void setShipmentPackageContents(EntityStateCollection<String, ShipmentPackageContentState> shipmentPackageContents)
     {
         this.shipmentPackageContents = shipmentPackageContents;
     }
@@ -269,7 +269,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
     }
     
     protected void initializeProperties() {
-        shipmentPackageContents = new SimpleShipmentPackageContentStates(this);
+        shipmentPackageContents = new SimpleShipmentPackageContentStateCollection(this);
     }
 
 
@@ -463,7 +463,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
 
     public void save()
     {
-        shipmentPackageContents.save();
+        ((Saveable)shipmentPackageContents).save();
 
     }
 
@@ -504,9 +504,9 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
 
     }
 
-    static class SimpleShipmentPackageContentStates extends AbstractShipmentPackageContentStates
+    static class SimpleShipmentPackageContentStateCollection extends AbstractShipmentPackageContentStateCollection
     {
-        public SimpleShipmentPackageContentStates(AbstractShipmentPackageState outerState)
+        public SimpleShipmentPackageContentStateCollection(AbstractShipmentPackageState outerState)
         {
             super(outerState);
         }

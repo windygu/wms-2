@@ -125,7 +125,7 @@ public interface MovementCommand extends Command
 
     interface CreateMovement extends CreateOrMergePatchMovement
     {
-        CreateMovementLineCommands getMovementLines();
+        CreateMovementLineCommandCollection getMovementLines();
 
         MovementLineCommand.CreateMovementLine newCreateMovementLine();
 
@@ -217,7 +217,7 @@ public interface MovementCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        MovementLineCommands getMovementLineCommands();
+        MovementLineCommandCollection getMovementLineCommands();
 
         MovementLineCommand.CreateMovementLine newCreateMovementLine();
 
@@ -231,7 +231,7 @@ public interface MovementCommand extends Command
 	{
 	}
 
-    interface CreateMovementLineCommands extends Iterable<MovementLineCommand.CreateMovementLine>
+    interface CreateMovementLineCommandCollection extends Iterable<MovementLineCommand.CreateMovementLine>
     {
         void add(MovementLineCommand.CreateMovementLine c);
 
@@ -240,7 +240,7 @@ public interface MovementCommand extends Command
         void clear();
     }
 
-    interface MovementLineCommands extends Iterable<MovementLineCommand>
+    interface MovementLineCommandCollection extends Iterable<MovementLineCommand>
     {
         void add(MovementLineCommand c);
 

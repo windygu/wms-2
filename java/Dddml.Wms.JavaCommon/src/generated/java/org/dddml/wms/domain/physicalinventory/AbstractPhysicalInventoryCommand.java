@@ -237,9 +237,9 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreatePhysicalInventoryLineCommands physicalInventoryLines = new SimpleCreatePhysicalInventoryLineCommands();
+        private CreatePhysicalInventoryLineCommandCollection physicalInventoryLines = new SimpleCreatePhysicalInventoryLineCommandCollection();
 
-        public CreatePhysicalInventoryLineCommands getPhysicalInventoryLines()
+        public CreatePhysicalInventoryLineCommandCollection getPhysicalInventoryLines()
         {
             return this.physicalInventoryLines;
         }
@@ -431,9 +431,9 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
             this.isPropertyActiveRemoved = removed;
         }
 
-        private PhysicalInventoryLineCommands physicalInventoryLineCommands = new SimplePhysicalInventoryLineCommands();
+        private PhysicalInventoryLineCommandCollection physicalInventoryLineCommands = new SimplePhysicalInventoryLineCommandCollection();
 
-        public PhysicalInventoryLineCommands getPhysicalInventoryLineCommands()
+        public PhysicalInventoryLineCommandCollection getPhysicalInventoryLineCommands()
         {
             return this.physicalInventoryLineCommands;
         }
@@ -459,54 +459,44 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
 	}
 
     
-    public static class SimpleCreatePhysicalInventoryLineCommands implements CreatePhysicalInventoryLineCommands
-    {
+    public static class SimpleCreatePhysicalInventoryLineCommandCollection implements CreatePhysicalInventoryLineCommandCollection {
         private List<PhysicalInventoryLineCommand.CreatePhysicalInventoryLine> innerCommands = new ArrayList<PhysicalInventoryLineCommand.CreatePhysicalInventoryLine>();
 
-        public void add(PhysicalInventoryLineCommand.CreatePhysicalInventoryLine c)
-        {
+        public void add(PhysicalInventoryLineCommand.CreatePhysicalInventoryLine c) {
             innerCommands.add(c);
         }
 
-        public void remove(PhysicalInventoryLineCommand.CreatePhysicalInventoryLine c)
-        {
+        public void remove(PhysicalInventoryLineCommand.CreatePhysicalInventoryLine c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<PhysicalInventoryLineCommand.CreatePhysicalInventoryLine> iterator()
-        {
+        public Iterator<PhysicalInventoryLineCommand.CreatePhysicalInventoryLine> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimplePhysicalInventoryLineCommands implements PhysicalInventoryLineCommands
-    {
+    public static class SimplePhysicalInventoryLineCommandCollection implements PhysicalInventoryLineCommandCollection {
         private List<PhysicalInventoryLineCommand> innerCommands = new ArrayList<PhysicalInventoryLineCommand>();
 
-        public void add(PhysicalInventoryLineCommand c)
-        {
+        public void add(PhysicalInventoryLineCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(PhysicalInventoryLineCommand c)
-        {
+        public void remove(PhysicalInventoryLineCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<PhysicalInventoryLineCommand> iterator()
-        {
+        public Iterator<PhysicalInventoryLineCommand> iterator() {
             return innerCommands.iterator();
         }
     }

@@ -218,26 +218,26 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         return this.getVersion() == null;
     }
 
-    private AttributeValueStates attributeValues;
+    private EntityStateCollection<String, AttributeValueState> attributeValues;
 
-    public AttributeValueStates getAttributeValues()
+    public EntityStateCollection<String, AttributeValueState> getAttributeValues()
     {
         return this.attributeValues;
     }
 
-    public void setAttributeValues(AttributeValueStates attributeValues)
+    public void setAttributeValues(EntityStateCollection<String, AttributeValueState> attributeValues)
     {
         this.attributeValues = attributeValues;
     }
 
-    private AttributeAliasStates aliases;
+    private EntityStateCollection<String, AttributeAliasState> aliases;
 
-    public AttributeAliasStates getAliases()
+    public EntityStateCollection<String, AttributeAliasState> getAliases()
     {
         return this.aliases;
     }
 
-    public void setAliases(AttributeAliasStates aliases)
+    public void setAliases(EntityStateCollection<String, AttributeAliasState> aliases)
     {
         this.aliases = aliases;
     }
@@ -281,8 +281,8 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     }
     
     protected void initializeProperties() {
-        attributeValues = new SimpleAttributeValueStates(this);
-        aliases = new SimpleAttributeAliasStates(this);
+        attributeValues = new SimpleAttributeValueStateCollection(this);
+        aliases = new SimpleAttributeAliasStateCollection(this);
     }
 
 
@@ -499,9 +499,9 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
     public void save()
     {
-        attributeValues.save();
+        ((Saveable)attributeValues).save();
 
-        aliases.save();
+        ((Saveable)aliases).save();
 
     }
 
@@ -542,17 +542,17 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
     }
 
-    static class SimpleAttributeValueStates extends AbstractAttributeValueStates
+    static class SimpleAttributeValueStateCollection extends AbstractAttributeValueStateCollection
     {
-        public SimpleAttributeValueStates(AbstractAttributeState outerState)
+        public SimpleAttributeValueStateCollection(AbstractAttributeState outerState)
         {
             super(outerState);
         }
     }
 
-    static class SimpleAttributeAliasStates extends AbstractAttributeAliasStates
+    static class SimpleAttributeAliasStateCollection extends AbstractAttributeAliasStateCollection
     {
-        public SimpleAttributeAliasStates(AbstractAttributeState outerState)
+        public SimpleAttributeAliasStateCollection(AbstractAttributeState outerState)
         {
             super(outerState);
         }

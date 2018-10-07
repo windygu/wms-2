@@ -182,14 +182,14 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         return this.getVersion() == null;
     }
 
-    private AttributeUseStates attributeUses;
+    private EntityStateCollection<String, AttributeUseState> attributeUses;
 
-    public AttributeUseStates getAttributeUses()
+    public EntityStateCollection<String, AttributeUseState> getAttributeUses()
     {
         return this.attributeUses;
     }
 
-    public void setAttributeUses(AttributeUseStates attributeUses)
+    public void setAttributeUses(EntityStateCollection<String, AttributeUseState> attributeUses)
     {
         this.attributeUses = attributeUses;
     }
@@ -233,7 +233,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
     }
     
     protected void initializeProperties() {
-        attributeUses = new SimpleAttributeUseStates(this);
+        attributeUses = new SimpleAttributeUseStateCollection(this);
     }
 
 
@@ -391,7 +391,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
 
     public void save()
     {
-        attributeUses.save();
+        ((Saveable)attributeUses).save();
 
     }
 
@@ -432,9 +432,9 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
 
     }
 
-    static class SimpleAttributeUseStates extends AbstractAttributeUseStates
+    static class SimpleAttributeUseStateCollection extends AbstractAttributeUseStateCollection
     {
-        public SimpleAttributeUseStates(AbstractAttributeSetState outerState)
+        public SimpleAttributeUseStateCollection(AbstractAttributeSetState outerState)
         {
             super(outerState);
         }

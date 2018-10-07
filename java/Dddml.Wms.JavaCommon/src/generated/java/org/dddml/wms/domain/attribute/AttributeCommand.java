@@ -84,11 +84,11 @@ public interface AttributeCommand extends Command
 
     interface CreateAttribute extends CreateOrMergePatchAttribute
     {
-        CreateAttributeValueCommands getAttributeValues();
+        CreateAttributeValueCommandCollection getAttributeValues();
 
         AttributeValueCommand.CreateAttributeValue newCreateAttributeValue();
 
-        CreateAttributeAliasCommands getAliases();
+        CreateAttributeAliasCommandCollection getAliases();
 
         AttributeAliasCommand.CreateAttributeAlias newCreateAttributeAlias();
 
@@ -136,7 +136,7 @@ public interface AttributeCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        AttributeValueCommands getAttributeValueCommands();
+        AttributeValueCommandCollection getAttributeValueCommands();
 
         AttributeValueCommand.CreateAttributeValue newCreateAttributeValue();
 
@@ -144,7 +144,7 @@ public interface AttributeCommand extends Command
 
         AttributeValueCommand.RemoveAttributeValue newRemoveAttributeValue();
 
-        AttributeAliasCommands getAttributeAliasCommands();
+        AttributeAliasCommandCollection getAttributeAliasCommands();
 
         AttributeAliasCommand.CreateAttributeAlias newCreateAttributeAlias();
 
@@ -158,7 +158,7 @@ public interface AttributeCommand extends Command
 	{
 	}
 
-    interface CreateAttributeValueCommands extends Iterable<AttributeValueCommand.CreateAttributeValue>
+    interface CreateAttributeValueCommandCollection extends Iterable<AttributeValueCommand.CreateAttributeValue>
     {
         void add(AttributeValueCommand.CreateAttributeValue c);
 
@@ -167,7 +167,7 @@ public interface AttributeCommand extends Command
         void clear();
     }
 
-    interface AttributeValueCommands extends Iterable<AttributeValueCommand>
+    interface AttributeValueCommandCollection extends Iterable<AttributeValueCommand>
     {
         void add(AttributeValueCommand c);
 
@@ -176,7 +176,7 @@ public interface AttributeCommand extends Command
         void clear();
     }
 
-    interface CreateAttributeAliasCommands extends Iterable<AttributeAliasCommand.CreateAttributeAlias>
+    interface CreateAttributeAliasCommandCollection extends Iterable<AttributeAliasCommand.CreateAttributeAlias>
     {
         void add(AttributeAliasCommand.CreateAttributeAlias c);
 
@@ -185,7 +185,7 @@ public interface AttributeCommand extends Command
         void clear();
     }
 
-    interface AttributeAliasCommands extends Iterable<AttributeAliasCommand>
+    interface AttributeAliasCommandCollection extends Iterable<AttributeAliasCommand>
     {
         void add(AttributeAliasCommand c);
 

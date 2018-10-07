@@ -871,9 +871,9 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateGoodIdentificationCommands goodIdentifications = new SimpleCreateGoodIdentificationCommands();
+        private CreateGoodIdentificationCommandCollection goodIdentifications = new SimpleCreateGoodIdentificationCommandCollection();
 
-        public CreateGoodIdentificationCommands getGoodIdentifications()
+        public CreateGoodIdentificationCommandCollection getGoodIdentifications()
         {
             return this.goodIdentifications;
         }
@@ -1691,9 +1691,9 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             this.isPropertyActiveRemoved = removed;
         }
 
-        private GoodIdentificationCommands goodIdentificationCommands = new SimpleGoodIdentificationCommands();
+        private GoodIdentificationCommandCollection goodIdentificationCommands = new SimpleGoodIdentificationCommandCollection();
 
-        public GoodIdentificationCommands getGoodIdentificationCommands()
+        public GoodIdentificationCommandCollection getGoodIdentificationCommands()
         {
             return this.goodIdentificationCommands;
         }
@@ -1719,54 +1719,44 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
 	}
 
     
-    public static class SimpleCreateGoodIdentificationCommands implements CreateGoodIdentificationCommands
-    {
+    public static class SimpleCreateGoodIdentificationCommandCollection implements CreateGoodIdentificationCommandCollection {
         private List<GoodIdentificationCommand.CreateGoodIdentification> innerCommands = new ArrayList<GoodIdentificationCommand.CreateGoodIdentification>();
 
-        public void add(GoodIdentificationCommand.CreateGoodIdentification c)
-        {
+        public void add(GoodIdentificationCommand.CreateGoodIdentification c) {
             innerCommands.add(c);
         }
 
-        public void remove(GoodIdentificationCommand.CreateGoodIdentification c)
-        {
+        public void remove(GoodIdentificationCommand.CreateGoodIdentification c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<GoodIdentificationCommand.CreateGoodIdentification> iterator()
-        {
+        public Iterator<GoodIdentificationCommand.CreateGoodIdentification> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleGoodIdentificationCommands implements GoodIdentificationCommands
-    {
+    public static class SimpleGoodIdentificationCommandCollection implements GoodIdentificationCommandCollection {
         private List<GoodIdentificationCommand> innerCommands = new ArrayList<GoodIdentificationCommand>();
 
-        public void add(GoodIdentificationCommand c)
-        {
+        public void add(GoodIdentificationCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(GoodIdentificationCommand c)
-        {
+        public void remove(GoodIdentificationCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<GoodIdentificationCommand> iterator()
-        {
+        public Iterator<GoodIdentificationCommand> iterator() {
             return innerCommands.iterator();
         }
     }

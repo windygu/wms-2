@@ -113,7 +113,7 @@ public interface OrderShipGroupState
 
     boolean getForReapplying();
 
-    OrderItemShipGroupAssociationStates getOrderItemShipGroupAssociations();
+    EntityStateCollection<String, OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations();
 
 
     void mutate(Event e);

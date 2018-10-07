@@ -180,19 +180,19 @@ public interface ShipmentCommand extends Command
 
     interface CreateShipment extends CreateOrMergePatchShipment
     {
-        CreateShipmentImageCommands getShipmentImages();
+        CreateShipmentImageCommandCollection getShipmentImages();
 
         ShipmentImageCommand.CreateShipmentImage newCreateShipmentImage();
 
-        CreateShipmentItemCommands getShipmentItems();
+        CreateShipmentItemCommandCollection getShipmentItems();
 
         ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
 
-        CreateShipmentReceiptCommands getShipmentReceipts();
+        CreateShipmentReceiptCommandCollection getShipmentReceipts();
 
         ShipmentReceiptCommand.CreateShipmentReceipt newCreateShipmentReceipt();
 
-        CreateItemIssuanceCommands getItemIssuances();
+        CreateItemIssuanceCommandCollection getItemIssuances();
 
         ItemIssuanceCommand.CreateItemIssuance newCreateItemIssuance();
 
@@ -348,7 +348,7 @@ public interface ShipmentCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        ShipmentImageCommands getShipmentImageCommands();
+        ShipmentImageCommandCollection getShipmentImageCommands();
 
         ShipmentImageCommand.CreateShipmentImage newCreateShipmentImage();
 
@@ -356,7 +356,7 @@ public interface ShipmentCommand extends Command
 
         ShipmentImageCommand.RemoveShipmentImage newRemoveShipmentImage();
 
-        ShipmentItemCommands getShipmentItemCommands();
+        ShipmentItemCommandCollection getShipmentItemCommands();
 
         ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
 
@@ -364,7 +364,7 @@ public interface ShipmentCommand extends Command
 
         ShipmentItemCommand.RemoveShipmentItem newRemoveShipmentItem();
 
-        ShipmentReceiptCommands getShipmentReceiptCommands();
+        ShipmentReceiptCommandCollection getShipmentReceiptCommands();
 
         ShipmentReceiptCommand.CreateShipmentReceipt newCreateShipmentReceipt();
 
@@ -372,7 +372,7 @@ public interface ShipmentCommand extends Command
 
         ShipmentReceiptCommand.RemoveShipmentReceipt newRemoveShipmentReceipt();
 
-        ItemIssuanceCommands getItemIssuanceCommands();
+        ItemIssuanceCommandCollection getItemIssuanceCommands();
 
         ItemIssuanceCommand.CreateItemIssuance newCreateItemIssuance();
 
@@ -390,7 +390,7 @@ public interface ShipmentCommand extends Command
         void setShipmentTypeId(String shipmentTypeId);
 	}
 
-    interface CreateShipmentImageCommands extends Iterable<ShipmentImageCommand.CreateShipmentImage>
+    interface CreateShipmentImageCommandCollection extends Iterable<ShipmentImageCommand.CreateShipmentImage>
     {
         void add(ShipmentImageCommand.CreateShipmentImage c);
 
@@ -399,7 +399,7 @@ public interface ShipmentCommand extends Command
         void clear();
     }
 
-    interface ShipmentImageCommands extends Iterable<ShipmentImageCommand>
+    interface ShipmentImageCommandCollection extends Iterable<ShipmentImageCommand>
     {
         void add(ShipmentImageCommand c);
 
@@ -408,7 +408,7 @@ public interface ShipmentCommand extends Command
         void clear();
     }
 
-    interface CreateShipmentItemCommands extends Iterable<ShipmentItemCommand.CreateShipmentItem>
+    interface CreateShipmentItemCommandCollection extends Iterable<ShipmentItemCommand.CreateShipmentItem>
     {
         void add(ShipmentItemCommand.CreateShipmentItem c);
 
@@ -417,7 +417,7 @@ public interface ShipmentCommand extends Command
         void clear();
     }
 
-    interface ShipmentItemCommands extends Iterable<ShipmentItemCommand>
+    interface ShipmentItemCommandCollection extends Iterable<ShipmentItemCommand>
     {
         void add(ShipmentItemCommand c);
 
@@ -426,7 +426,7 @@ public interface ShipmentCommand extends Command
         void clear();
     }
 
-    interface CreateShipmentReceiptCommands extends Iterable<ShipmentReceiptCommand.CreateShipmentReceipt>
+    interface CreateShipmentReceiptCommandCollection extends Iterable<ShipmentReceiptCommand.CreateShipmentReceipt>
     {
         void add(ShipmentReceiptCommand.CreateShipmentReceipt c);
 
@@ -435,7 +435,7 @@ public interface ShipmentCommand extends Command
         void clear();
     }
 
-    interface ShipmentReceiptCommands extends Iterable<ShipmentReceiptCommand>
+    interface ShipmentReceiptCommandCollection extends Iterable<ShipmentReceiptCommand>
     {
         void add(ShipmentReceiptCommand c);
 
@@ -444,7 +444,7 @@ public interface ShipmentCommand extends Command
         void clear();
     }
 
-    interface CreateItemIssuanceCommands extends Iterable<ItemIssuanceCommand.CreateItemIssuance>
+    interface CreateItemIssuanceCommandCollection extends Iterable<ItemIssuanceCommand.CreateItemIssuance>
     {
         void add(ItemIssuanceCommand.CreateItemIssuance c);
 
@@ -453,7 +453,7 @@ public interface ShipmentCommand extends Command
         void clear();
     }
 
-    interface ItemIssuanceCommands extends Iterable<ItemIssuanceCommand>
+    interface ItemIssuanceCommandCollection extends Iterable<ItemIssuanceCommand>
     {
         void add(ItemIssuanceCommand c);
 

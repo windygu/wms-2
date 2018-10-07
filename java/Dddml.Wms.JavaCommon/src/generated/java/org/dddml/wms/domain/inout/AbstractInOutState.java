@@ -459,26 +459,26 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         return this.getVersion() == null;
     }
 
-    private InOutImageStates inOutImages;
+    private EntityStateCollection<String, InOutImageState> inOutImages;
 
-    public InOutImageStates getInOutImages()
+    public EntityStateCollection<String, InOutImageState> getInOutImages()
     {
         return this.inOutImages;
     }
 
-    public void setInOutImages(InOutImageStates inOutImages)
+    public void setInOutImages(EntityStateCollection<String, InOutImageState> inOutImages)
     {
         this.inOutImages = inOutImages;
     }
 
-    private InOutLineStates inOutLines;
+    private EntityStateCollection<String, InOutLineState> inOutLines;
 
-    public InOutLineStates getInOutLines()
+    public EntityStateCollection<String, InOutLineState> getInOutLines()
     {
         return this.inOutLines;
     }
 
-    public void setInOutLines(InOutLineStates inOutLines)
+    public void setInOutLines(EntityStateCollection<String, InOutLineState> inOutLines)
     {
         this.inOutLines = inOutLines;
     }
@@ -522,8 +522,8 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     }
     
     protected void initializeProperties() {
-        inOutImages = new SimpleInOutImageStates(this);
-        inOutLines = new SimpleInOutLineStates(this);
+        inOutImages = new SimpleInOutImageStateCollection(this);
+        inOutLines = new SimpleInOutLineStateCollection(this);
     }
 
 
@@ -958,9 +958,9 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
     public void save()
     {
-        inOutImages.save();
+        ((Saveable)inOutImages).save();
 
-        inOutLines.save();
+        ((Saveable)inOutLines).save();
 
     }
 
@@ -1001,17 +1001,17 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
     }
 
-    static class SimpleInOutImageStates extends AbstractInOutImageStates
+    static class SimpleInOutImageStateCollection extends AbstractInOutImageStateCollection
     {
-        public SimpleInOutImageStates(AbstractInOutState outerState)
+        public SimpleInOutImageStateCollection(AbstractInOutState outerState)
         {
             super(outerState);
         }
     }
 
-    static class SimpleInOutLineStates extends AbstractInOutLineStates
+    static class SimpleInOutLineStateCollection extends AbstractInOutLineStateCollection
     {
-        public SimpleInOutLineStates(AbstractInOutState outerState)
+        public SimpleInOutLineStateCollection(AbstractInOutState outerState)
         {
             super(outerState);
         }

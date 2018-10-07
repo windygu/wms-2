@@ -518,50 +518,50 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         return this.getVersion() == null;
     }
 
-    private ShipmentImageStates shipmentImages;
+    private EntityStateCollection<String, ShipmentImageState> shipmentImages;
 
-    public ShipmentImageStates getShipmentImages()
+    public EntityStateCollection<String, ShipmentImageState> getShipmentImages()
     {
         return this.shipmentImages;
     }
 
-    public void setShipmentImages(ShipmentImageStates shipmentImages)
+    public void setShipmentImages(EntityStateCollection<String, ShipmentImageState> shipmentImages)
     {
         this.shipmentImages = shipmentImages;
     }
 
-    private ShipmentItemStates shipmentItems;
+    private EntityStateCollection<String, ShipmentItemState> shipmentItems;
 
-    public ShipmentItemStates getShipmentItems()
+    public EntityStateCollection<String, ShipmentItemState> getShipmentItems()
     {
         return this.shipmentItems;
     }
 
-    public void setShipmentItems(ShipmentItemStates shipmentItems)
+    public void setShipmentItems(EntityStateCollection<String, ShipmentItemState> shipmentItems)
     {
         this.shipmentItems = shipmentItems;
     }
 
-    private ShipmentReceiptStates shipmentReceipts;
+    private EntityStateCollection<String, ShipmentReceiptState> shipmentReceipts;
 
-    public ShipmentReceiptStates getShipmentReceipts()
+    public EntityStateCollection<String, ShipmentReceiptState> getShipmentReceipts()
     {
         return this.shipmentReceipts;
     }
 
-    public void setShipmentReceipts(ShipmentReceiptStates shipmentReceipts)
+    public void setShipmentReceipts(EntityStateCollection<String, ShipmentReceiptState> shipmentReceipts)
     {
         this.shipmentReceipts = shipmentReceipts;
     }
 
-    private ItemIssuanceStates itemIssuances;
+    private EntityStateCollection<String, ItemIssuanceState> itemIssuances;
 
-    public ItemIssuanceStates getItemIssuances()
+    public EntityStateCollection<String, ItemIssuanceState> getItemIssuances()
     {
         return this.itemIssuances;
     }
 
-    public void setItemIssuances(ItemIssuanceStates itemIssuances)
+    public void setItemIssuances(EntityStateCollection<String, ItemIssuanceState> itemIssuances)
     {
         this.itemIssuances = itemIssuances;
     }
@@ -605,10 +605,10 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     }
     
     protected void initializeProperties() {
-        shipmentImages = new SimpleShipmentImageStates(this);
-        shipmentItems = new SimpleShipmentItemStates(this);
-        shipmentReceipts = new SimpleShipmentReceiptStates(this);
-        itemIssuances = new SimpleItemIssuanceStates(this);
+        shipmentImages = new SimpleShipmentImageStateCollection(this);
+        shipmentItems = new SimpleShipmentItemStateCollection(this);
+        shipmentReceipts = new SimpleShipmentReceiptStateCollection(this);
+        itemIssuances = new SimpleItemIssuanceStateCollection(this);
     }
 
 
@@ -1119,13 +1119,13 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
 
     public void save()
     {
-        shipmentImages.save();
+        ((Saveable)shipmentImages).save();
 
-        shipmentItems.save();
+        ((Saveable)shipmentItems).save();
 
-        shipmentReceipts.save();
+        ((Saveable)shipmentReceipts).save();
 
-        itemIssuances.save();
+        ((Saveable)itemIssuances).save();
 
     }
 
@@ -1166,33 +1166,33 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
 
     }
 
-    static class SimpleShipmentImageStates extends AbstractShipmentImageStates
+    static class SimpleShipmentImageStateCollection extends AbstractShipmentImageStateCollection
     {
-        public SimpleShipmentImageStates(AbstractShipmentState outerState)
+        public SimpleShipmentImageStateCollection(AbstractShipmentState outerState)
         {
             super(outerState);
         }
     }
 
-    static class SimpleShipmentItemStates extends AbstractShipmentItemStates
+    static class SimpleShipmentItemStateCollection extends AbstractShipmentItemStateCollection
     {
-        public SimpleShipmentItemStates(AbstractShipmentState outerState)
+        public SimpleShipmentItemStateCollection(AbstractShipmentState outerState)
         {
             super(outerState);
         }
     }
 
-    static class SimpleShipmentReceiptStates extends AbstractShipmentReceiptStates
+    static class SimpleShipmentReceiptStateCollection extends AbstractShipmentReceiptStateCollection
     {
-        public SimpleShipmentReceiptStates(AbstractShipmentState outerState)
+        public SimpleShipmentReceiptStateCollection(AbstractShipmentState outerState)
         {
             super(outerState);
         }
     }
 
-    static class SimpleItemIssuanceStates extends AbstractItemIssuanceStates
+    static class SimpleItemIssuanceStateCollection extends AbstractItemIssuanceStateCollection
     {
-        public SimpleItemIssuanceStates(AbstractShipmentState outerState)
+        public SimpleItemIssuanceStateCollection(AbstractShipmentState outerState)
         {
             super(outerState);
         }

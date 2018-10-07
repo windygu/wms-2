@@ -309,7 +309,7 @@ public interface ProductState
 
     boolean getForReapplying();
 
-    GoodIdentificationStates getGoodIdentifications();
+    EntityStateCollection<String, GoodIdentificationState> getGoodIdentifications();
 
 
     void mutate(Event e);

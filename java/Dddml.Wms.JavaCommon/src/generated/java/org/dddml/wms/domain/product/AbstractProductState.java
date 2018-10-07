@@ -890,14 +890,14 @@ public abstract class AbstractProductState implements ProductState, Saveable
         return this.getVersion() == null;
     }
 
-    private GoodIdentificationStates goodIdentifications;
+    private EntityStateCollection<String, GoodIdentificationState> goodIdentifications;
 
-    public GoodIdentificationStates getGoodIdentifications()
+    public EntityStateCollection<String, GoodIdentificationState> getGoodIdentifications()
     {
         return this.goodIdentifications;
     }
 
-    public void setGoodIdentifications(GoodIdentificationStates goodIdentifications)
+    public void setGoodIdentifications(EntityStateCollection<String, GoodIdentificationState> goodIdentifications)
     {
         this.goodIdentifications = goodIdentifications;
     }
@@ -941,7 +941,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
     }
     
     protected void initializeProperties() {
-        goodIdentifications = new SimpleGoodIdentificationStates(this);
+        goodIdentifications = new SimpleGoodIdentificationStateCollection(this);
     }
 
 
@@ -1795,7 +1795,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
 
     public void save()
     {
-        goodIdentifications.save();
+        ((Saveable)goodIdentifications).save();
 
     }
 
@@ -1836,9 +1836,9 @@ public abstract class AbstractProductState implements ProductState, Saveable
 
     }
 
-    static class SimpleGoodIdentificationStates extends AbstractGoodIdentificationStates
+    static class SimpleGoodIdentificationStateCollection extends AbstractGoodIdentificationStateCollection
     {
-        public SimpleGoodIdentificationStates(AbstractProductState outerState)
+        public SimpleGoodIdentificationStateCollection(AbstractProductState outerState)
         {
             super(outerState);
         }

@@ -98,7 +98,7 @@ public interface PhysicalInventoryCommand extends Command
 
     interface CreatePhysicalInventory extends CreateOrMergePatchPhysicalInventory
     {
-        CreatePhysicalInventoryLineCommands getPhysicalInventoryLines();
+        CreatePhysicalInventoryLineCommandCollection getPhysicalInventoryLines();
 
         PhysicalInventoryLineCommand.CreatePhysicalInventoryLine newCreatePhysicalInventoryLine();
 
@@ -166,7 +166,7 @@ public interface PhysicalInventoryCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        PhysicalInventoryLineCommands getPhysicalInventoryLineCommands();
+        PhysicalInventoryLineCommandCollection getPhysicalInventoryLineCommands();
 
         PhysicalInventoryLineCommand.CreatePhysicalInventoryLine newCreatePhysicalInventoryLine();
 
@@ -180,7 +180,7 @@ public interface PhysicalInventoryCommand extends Command
 	{
 	}
 
-    interface CreatePhysicalInventoryLineCommands extends Iterable<PhysicalInventoryLineCommand.CreatePhysicalInventoryLine>
+    interface CreatePhysicalInventoryLineCommandCollection extends Iterable<PhysicalInventoryLineCommand.CreatePhysicalInventoryLine>
     {
         void add(PhysicalInventoryLineCommand.CreatePhysicalInventoryLine c);
 
@@ -189,7 +189,7 @@ public interface PhysicalInventoryCommand extends Command
         void clear();
     }
 
-    interface PhysicalInventoryLineCommands extends Iterable<PhysicalInventoryLineCommand>
+    interface PhysicalInventoryLineCommandCollection extends Iterable<PhysicalInventoryLineCommand>
     {
         void add(PhysicalInventoryLineCommand c);
 

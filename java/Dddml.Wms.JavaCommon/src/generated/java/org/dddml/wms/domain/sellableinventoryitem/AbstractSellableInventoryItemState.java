@@ -101,14 +101,14 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         return this.getVersion() == null;
     }
 
-    private SellableInventoryItemEntryStates entries;
+    private EntityStateCollection<Long, SellableInventoryItemEntryState> entries;
 
-    public SellableInventoryItemEntryStates getEntries()
+    public EntityStateCollection<Long, SellableInventoryItemEntryState> getEntries()
     {
         return this.entries;
     }
 
-    public void setEntries(SellableInventoryItemEntryStates entries)
+    public void setEntries(EntityStateCollection<Long, SellableInventoryItemEntryState> entries)
     {
         this.entries = entries;
     }
@@ -162,7 +162,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
     }
     
     protected void initializeProperties() {
-        entries = new SimpleSellableInventoryItemEntryStates(this);
+        entries = new SimpleSellableInventoryItemEntryStateCollection(this);
     }
 
 
@@ -219,7 +219,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
 
     public void save()
     {
-        entries.save();
+        ((Saveable)entries).save();
 
     }
 
@@ -260,9 +260,9 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
 
     }
 
-    static class SimpleSellableInventoryItemEntryStates extends AbstractSellableInventoryItemEntryStates
+    static class SimpleSellableInventoryItemEntryStateCollection extends AbstractSellableInventoryItemEntryStateCollection
     {
-        public SimpleSellableInventoryItemEntryStates(AbstractSellableInventoryItemState outerState)
+        public SimpleSellableInventoryItemEntryStateCollection(AbstractSellableInventoryItemState outerState)
         {
             super(outerState);
         }

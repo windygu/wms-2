@@ -65,7 +65,7 @@ public interface PicklistBinState
 
     boolean getForReapplying();
 
-    PicklistItemStates getPicklistItems();
+    EntityStateCollection<PicklistItemOrderShipGrpInvId, PicklistItemState> getPicklistItems();
 
 
     void mutate(Event e);

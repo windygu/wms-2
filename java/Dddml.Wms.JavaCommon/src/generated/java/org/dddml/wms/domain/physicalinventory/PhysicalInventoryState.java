@@ -103,7 +103,7 @@ public interface PhysicalInventoryState
 
     boolean getForReapplying();
 
-    PhysicalInventoryLineStates getPhysicalInventoryLines();
+    EntityStateCollection<InventoryItemId, PhysicalInventoryLineState> getPhysicalInventoryLines();
 
 
     void mutate(Event e);

@@ -336,6 +336,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\EntityStateCollection.java">
+      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityCommandDto.java">
       <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
     </Content>
@@ -2689,6 +2692,7 @@
 .\AbstractEvent.java
 .\Command.java
 .\DocumentAction.java
+.\EntityStateCollection.java
 .\GenerateBoundedContextDomain.txt
 .\OrderShipGroupAction.java
 .\PurchaseShipmentAction.java

@@ -559,30 +559,30 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateShipmentImageCommands shipmentImages = new SimpleCreateShipmentImageCommands();
+        private CreateShipmentImageCommandCollection shipmentImages = new SimpleCreateShipmentImageCommandCollection();
 
-        public CreateShipmentImageCommands getShipmentImages()
+        public CreateShipmentImageCommandCollection getShipmentImages()
         {
             return this.shipmentImages;
         }
 
-        private CreateShipmentItemCommands shipmentItems = new SimpleCreateShipmentItemCommands();
+        private CreateShipmentItemCommandCollection shipmentItems = new SimpleCreateShipmentItemCommandCollection();
 
-        public CreateShipmentItemCommands getShipmentItems()
+        public CreateShipmentItemCommandCollection getShipmentItems()
         {
             return this.shipmentItems;
         }
 
-        private CreateShipmentReceiptCommands shipmentReceipts = new SimpleCreateShipmentReceiptCommands();
+        private CreateShipmentReceiptCommandCollection shipmentReceipts = new SimpleCreateShipmentReceiptCommandCollection();
 
-        public CreateShipmentReceiptCommands getShipmentReceipts()
+        public CreateShipmentReceiptCommandCollection getShipmentReceipts()
         {
             return this.shipmentReceipts;
         }
 
-        private CreateItemIssuanceCommands itemIssuances = new SimpleCreateItemIssuanceCommands();
+        private CreateItemIssuanceCommandCollection itemIssuances = new SimpleCreateItemIssuanceCommandCollection();
 
-        public CreateItemIssuanceCommands getItemIssuances()
+        public CreateItemIssuanceCommandCollection getItemIssuances()
         {
             return this.itemIssuances;
         }
@@ -1036,30 +1036,30 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.isPropertyActiveRemoved = removed;
         }
 
-        private ShipmentImageCommands shipmentImageCommands = new SimpleShipmentImageCommands();
+        private ShipmentImageCommandCollection shipmentImageCommands = new SimpleShipmentImageCommandCollection();
 
-        public ShipmentImageCommands getShipmentImageCommands()
+        public ShipmentImageCommandCollection getShipmentImageCommands()
         {
             return this.shipmentImageCommands;
         }
 
-        private ShipmentItemCommands shipmentItemCommands = new SimpleShipmentItemCommands();
+        private ShipmentItemCommandCollection shipmentItemCommands = new SimpleShipmentItemCommandCollection();
 
-        public ShipmentItemCommands getShipmentItemCommands()
+        public ShipmentItemCommandCollection getShipmentItemCommands()
         {
             return this.shipmentItemCommands;
         }
 
-        private ShipmentReceiptCommands shipmentReceiptCommands = new SimpleShipmentReceiptCommands();
+        private ShipmentReceiptCommandCollection shipmentReceiptCommands = new SimpleShipmentReceiptCommandCollection();
 
-        public ShipmentReceiptCommands getShipmentReceiptCommands()
+        public ShipmentReceiptCommandCollection getShipmentReceiptCommands()
         {
             return this.shipmentReceiptCommands;
         }
 
-        private ItemIssuanceCommands itemIssuanceCommands = new SimpleItemIssuanceCommands();
+        private ItemIssuanceCommandCollection itemIssuanceCommands = new SimpleItemIssuanceCommandCollection();
 
-        public ItemIssuanceCommands getItemIssuanceCommands()
+        public ItemIssuanceCommandCollection getItemIssuanceCommands()
         {
             return this.itemIssuanceCommands;
         }
@@ -1095,210 +1095,170 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
 	}
 
     
-    public static class SimpleCreateShipmentImageCommands implements CreateShipmentImageCommands
-    {
+    public static class SimpleCreateShipmentImageCommandCollection implements CreateShipmentImageCommandCollection {
         private List<ShipmentImageCommand.CreateShipmentImage> innerCommands = new ArrayList<ShipmentImageCommand.CreateShipmentImage>();
 
-        public void add(ShipmentImageCommand.CreateShipmentImage c)
-        {
+        public void add(ShipmentImageCommand.CreateShipmentImage c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentImageCommand.CreateShipmentImage c)
-        {
+        public void remove(ShipmentImageCommand.CreateShipmentImage c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentImageCommand.CreateShipmentImage> iterator()
-        {
+        public Iterator<ShipmentImageCommand.CreateShipmentImage> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleShipmentImageCommands implements ShipmentImageCommands
-    {
+    public static class SimpleShipmentImageCommandCollection implements ShipmentImageCommandCollection {
         private List<ShipmentImageCommand> innerCommands = new ArrayList<ShipmentImageCommand>();
 
-        public void add(ShipmentImageCommand c)
-        {
+        public void add(ShipmentImageCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentImageCommand c)
-        {
+        public void remove(ShipmentImageCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentImageCommand> iterator()
-        {
+        public Iterator<ShipmentImageCommand> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleCreateShipmentItemCommands implements CreateShipmentItemCommands
-    {
+    public static class SimpleCreateShipmentItemCommandCollection implements CreateShipmentItemCommandCollection {
         private List<ShipmentItemCommand.CreateShipmentItem> innerCommands = new ArrayList<ShipmentItemCommand.CreateShipmentItem>();
 
-        public void add(ShipmentItemCommand.CreateShipmentItem c)
-        {
+        public void add(ShipmentItemCommand.CreateShipmentItem c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentItemCommand.CreateShipmentItem c)
-        {
+        public void remove(ShipmentItemCommand.CreateShipmentItem c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentItemCommand.CreateShipmentItem> iterator()
-        {
+        public Iterator<ShipmentItemCommand.CreateShipmentItem> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleShipmentItemCommands implements ShipmentItemCommands
-    {
+    public static class SimpleShipmentItemCommandCollection implements ShipmentItemCommandCollection {
         private List<ShipmentItemCommand> innerCommands = new ArrayList<ShipmentItemCommand>();
 
-        public void add(ShipmentItemCommand c)
-        {
+        public void add(ShipmentItemCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentItemCommand c)
-        {
+        public void remove(ShipmentItemCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentItemCommand> iterator()
-        {
+        public Iterator<ShipmentItemCommand> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleCreateShipmentReceiptCommands implements CreateShipmentReceiptCommands
-    {
+    public static class SimpleCreateShipmentReceiptCommandCollection implements CreateShipmentReceiptCommandCollection {
         private List<ShipmentReceiptCommand.CreateShipmentReceipt> innerCommands = new ArrayList<ShipmentReceiptCommand.CreateShipmentReceipt>();
 
-        public void add(ShipmentReceiptCommand.CreateShipmentReceipt c)
-        {
+        public void add(ShipmentReceiptCommand.CreateShipmentReceipt c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentReceiptCommand.CreateShipmentReceipt c)
-        {
+        public void remove(ShipmentReceiptCommand.CreateShipmentReceipt c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentReceiptCommand.CreateShipmentReceipt> iterator()
-        {
+        public Iterator<ShipmentReceiptCommand.CreateShipmentReceipt> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleShipmentReceiptCommands implements ShipmentReceiptCommands
-    {
+    public static class SimpleShipmentReceiptCommandCollection implements ShipmentReceiptCommandCollection {
         private List<ShipmentReceiptCommand> innerCommands = new ArrayList<ShipmentReceiptCommand>();
 
-        public void add(ShipmentReceiptCommand c)
-        {
+        public void add(ShipmentReceiptCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentReceiptCommand c)
-        {
+        public void remove(ShipmentReceiptCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentReceiptCommand> iterator()
-        {
+        public Iterator<ShipmentReceiptCommand> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleCreateItemIssuanceCommands implements CreateItemIssuanceCommands
-    {
+    public static class SimpleCreateItemIssuanceCommandCollection implements CreateItemIssuanceCommandCollection {
         private List<ItemIssuanceCommand.CreateItemIssuance> innerCommands = new ArrayList<ItemIssuanceCommand.CreateItemIssuance>();
 
-        public void add(ItemIssuanceCommand.CreateItemIssuance c)
-        {
+        public void add(ItemIssuanceCommand.CreateItemIssuance c) {
             innerCommands.add(c);
         }
 
-        public void remove(ItemIssuanceCommand.CreateItemIssuance c)
-        {
+        public void remove(ItemIssuanceCommand.CreateItemIssuance c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ItemIssuanceCommand.CreateItemIssuance> iterator()
-        {
+        public Iterator<ItemIssuanceCommand.CreateItemIssuance> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleItemIssuanceCommands implements ItemIssuanceCommands
-    {
+    public static class SimpleItemIssuanceCommandCollection implements ItemIssuanceCommandCollection {
         private List<ItemIssuanceCommand> innerCommands = new ArrayList<ItemIssuanceCommand>();
 
-        public void add(ItemIssuanceCommand c)
-        {
+        public void add(ItemIssuanceCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(ItemIssuanceCommand c)
-        {
+        public void remove(ItemIssuanceCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ItemIssuanceCommand> iterator()
-        {
+        public Iterator<ItemIssuanceCommand> iterator() {
             return innerCommands.iterator();
         }
     }

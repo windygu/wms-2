@@ -127,9 +127,9 @@ public abstract class AbstractPicklistBinCommand extends AbstractCommand impleme
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreatePicklistItemCommands picklistItems = new SimpleCreatePicklistItemCommands();
+        private CreatePicklistItemCommandCollection picklistItems = new SimpleCreatePicklistItemCommandCollection();
 
-        public CreatePicklistItemCommands getPicklistItems()
+        public CreatePicklistItemCommandCollection getPicklistItems()
         {
             return this.picklistItems;
         }
@@ -203,9 +203,9 @@ public abstract class AbstractPicklistBinCommand extends AbstractCommand impleme
             this.isPropertyActiveRemoved = removed;
         }
 
-        private PicklistItemCommands picklistItemCommands = new SimplePicklistItemCommands();
+        private PicklistItemCommandCollection picklistItemCommands = new SimplePicklistItemCommandCollection();
 
-        public PicklistItemCommands getPicklistItemCommands()
+        public PicklistItemCommandCollection getPicklistItemCommands()
         {
             return this.picklistItemCommands;
         }
@@ -231,54 +231,44 @@ public abstract class AbstractPicklistBinCommand extends AbstractCommand impleme
 	}
 
     
-    public static class SimpleCreatePicklistItemCommands implements CreatePicklistItemCommands
-    {
+    public static class SimpleCreatePicklistItemCommandCollection implements CreatePicklistItemCommandCollection {
         private List<PicklistItemCommand.CreatePicklistItem> innerCommands = new ArrayList<PicklistItemCommand.CreatePicklistItem>();
 
-        public void add(PicklistItemCommand.CreatePicklistItem c)
-        {
+        public void add(PicklistItemCommand.CreatePicklistItem c) {
             innerCommands.add(c);
         }
 
-        public void remove(PicklistItemCommand.CreatePicklistItem c)
-        {
+        public void remove(PicklistItemCommand.CreatePicklistItem c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<PicklistItemCommand.CreatePicklistItem> iterator()
-        {
+        public Iterator<PicklistItemCommand.CreatePicklistItem> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimplePicklistItemCommands implements PicklistItemCommands
-    {
+    public static class SimplePicklistItemCommandCollection implements PicklistItemCommandCollection {
         private List<PicklistItemCommand> innerCommands = new ArrayList<PicklistItemCommand>();
 
-        public void add(PicklistItemCommand c)
-        {
+        public void add(PicklistItemCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(PicklistItemCommand c)
-        {
+        public void remove(PicklistItemCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<PicklistItemCommand> iterator()
-        {
+        public Iterator<PicklistItemCommand> iterator() {
             return innerCommands.iterator();
         }
     }

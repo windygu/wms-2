@@ -183,14 +183,14 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         return this.getVersion() == null;
     }
 
-    private PicklistRoleStates picklistRoles;
+    private EntityStateCollection<PartyRoleId, PicklistRoleState> picklistRoles;
 
-    public PicklistRoleStates getPicklistRoles()
+    public EntityStateCollection<PartyRoleId, PicklistRoleState> getPicklistRoles()
     {
         return this.picklistRoles;
     }
 
-    public void setPicklistRoles(PicklistRoleStates picklistRoles)
+    public void setPicklistRoles(EntityStateCollection<PartyRoleId, PicklistRoleState> picklistRoles)
     {
         this.picklistRoles = picklistRoles;
     }
@@ -234,7 +234,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
     }
     
     protected void initializeProperties() {
-        picklistRoles = new SimplePicklistRoleStates(this);
+        picklistRoles = new SimplePicklistRoleStateCollection(this);
     }
 
 
@@ -392,7 +392,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
 
     public void save()
     {
-        picklistRoles.save();
+        ((Saveable)picklistRoles).save();
 
     }
 
@@ -433,9 +433,9 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
 
     }
 
-    static class SimplePicklistRoleStates extends AbstractPicklistRoleStates
+    static class SimplePicklistRoleStateCollection extends AbstractPicklistRoleStateCollection
     {
-        public SimplePicklistRoleStates(AbstractPicklistState outerState)
+        public SimplePicklistRoleStateCollection(AbstractPicklistState outerState)
         {
             super(outerState);
         }

@@ -152,9 +152,9 @@ public abstract class AbstractPicklistCommand extends AbstractCommand implements
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreatePicklistRoleCommands picklistRoles = new SimpleCreatePicklistRoleCommands();
+        private CreatePicklistRoleCommandCollection picklistRoles = new SimpleCreatePicklistRoleCommandCollection();
 
-        public CreatePicklistRoleCommands getPicklistRoles()
+        public CreatePicklistRoleCommandCollection getPicklistRoles()
         {
             return this.picklistRoles;
         }
@@ -252,9 +252,9 @@ public abstract class AbstractPicklistCommand extends AbstractCommand implements
             this.isPropertyActiveRemoved = removed;
         }
 
-        private PicklistRoleCommands picklistRoleCommands = new SimplePicklistRoleCommands();
+        private PicklistRoleCommandCollection picklistRoleCommands = new SimplePicklistRoleCommandCollection();
 
-        public PicklistRoleCommands getPicklistRoleCommands()
+        public PicklistRoleCommandCollection getPicklistRoleCommands()
         {
             return this.picklistRoleCommands;
         }
@@ -280,54 +280,44 @@ public abstract class AbstractPicklistCommand extends AbstractCommand implements
 	}
 
     
-    public static class SimpleCreatePicklistRoleCommands implements CreatePicklistRoleCommands
-    {
+    public static class SimpleCreatePicklistRoleCommandCollection implements CreatePicklistRoleCommandCollection {
         private List<PicklistRoleCommand.CreatePicklistRole> innerCommands = new ArrayList<PicklistRoleCommand.CreatePicklistRole>();
 
-        public void add(PicklistRoleCommand.CreatePicklistRole c)
-        {
+        public void add(PicklistRoleCommand.CreatePicklistRole c) {
             innerCommands.add(c);
         }
 
-        public void remove(PicklistRoleCommand.CreatePicklistRole c)
-        {
+        public void remove(PicklistRoleCommand.CreatePicklistRole c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<PicklistRoleCommand.CreatePicklistRole> iterator()
-        {
+        public Iterator<PicklistRoleCommand.CreatePicklistRole> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimplePicklistRoleCommands implements PicklistRoleCommands
-    {
+    public static class SimplePicklistRoleCommandCollection implements PicklistRoleCommandCollection {
         private List<PicklistRoleCommand> innerCommands = new ArrayList<PicklistRoleCommand>();
 
-        public void add(PicklistRoleCommand c)
-        {
+        public void add(PicklistRoleCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(PicklistRoleCommand c)
-        {
+        public void remove(PicklistRoleCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<PicklistRoleCommand> iterator()
-        {
+        public Iterator<PicklistRoleCommand> iterator() {
             return innerCommands.iterator();
         }
     }

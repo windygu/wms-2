@@ -82,7 +82,7 @@ public interface MovementConfirmationState
 
     boolean getForReapplying();
 
-    MovementConfirmationLineStates getMovementConfirmationLines();
+    EntityStateCollection<String, MovementConfirmationLineState> getMovementConfirmationLines();
 
 
     void mutate(Event e);

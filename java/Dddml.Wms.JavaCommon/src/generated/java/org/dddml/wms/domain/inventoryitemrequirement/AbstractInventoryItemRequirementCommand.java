@@ -66,9 +66,9 @@ public abstract class AbstractInventoryItemRequirementCommand extends AbstractCo
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateInventoryItemRequirementEntryCommands entries = new SimpleCreateInventoryItemRequirementEntryCommands();
+        private CreateInventoryItemRequirementEntryCommandCollection entries = new SimpleCreateInventoryItemRequirementEntryCommandCollection();
 
-        public CreateInventoryItemRequirementEntryCommands getEntries()
+        public CreateInventoryItemRequirementEntryCommandCollection getEntries()
         {
             return this.entries;
         }
@@ -94,9 +94,9 @@ public abstract class AbstractInventoryItemRequirementCommand extends AbstractCo
             this.isPropertyActiveRemoved = removed;
         }
 
-        private InventoryItemRequirementEntryCommands inventoryItemRequirementEntryCommands = new SimpleInventoryItemRequirementEntryCommands();
+        private InventoryItemRequirementEntryCommandCollection inventoryItemRequirementEntryCommands = new SimpleInventoryItemRequirementEntryCommandCollection();
 
-        public InventoryItemRequirementEntryCommands getInventoryItemRequirementEntryCommands()
+        public InventoryItemRequirementEntryCommandCollection getInventoryItemRequirementEntryCommands()
         {
             return this.inventoryItemRequirementEntryCommands;
         }
@@ -122,54 +122,44 @@ public abstract class AbstractInventoryItemRequirementCommand extends AbstractCo
 	}
 
     
-    public static class SimpleCreateInventoryItemRequirementEntryCommands implements CreateInventoryItemRequirementEntryCommands
-    {
+    public static class SimpleCreateInventoryItemRequirementEntryCommandCollection implements CreateInventoryItemRequirementEntryCommandCollection {
         private List<InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry> innerCommands = new ArrayList<InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry>();
 
-        public void add(InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry c)
-        {
+        public void add(InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry c) {
             innerCommands.add(c);
         }
 
-        public void remove(InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry c)
-        {
+        public void remove(InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry> iterator()
-        {
+        public Iterator<InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleInventoryItemRequirementEntryCommands implements InventoryItemRequirementEntryCommands
-    {
+    public static class SimpleInventoryItemRequirementEntryCommandCollection implements InventoryItemRequirementEntryCommandCollection {
         private List<InventoryItemRequirementEntryCommand> innerCommands = new ArrayList<InventoryItemRequirementEntryCommand>();
 
-        public void add(InventoryItemRequirementEntryCommand c)
-        {
+        public void add(InventoryItemRequirementEntryCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(InventoryItemRequirementEntryCommand c)
-        {
+        public void remove(InventoryItemRequirementEntryCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<InventoryItemRequirementEntryCommand> iterator()
-        {
+        public Iterator<InventoryItemRequirementEntryCommand> iterator() {
             return innerCommands.iterator();
         }
     }

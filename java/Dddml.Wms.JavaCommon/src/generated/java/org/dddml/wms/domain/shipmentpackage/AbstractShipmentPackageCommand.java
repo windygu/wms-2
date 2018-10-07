@@ -187,9 +187,9 @@ public abstract class AbstractShipmentPackageCommand extends AbstractCommand imp
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateShipmentPackageContentCommands shipmentPackageContents = new SimpleCreateShipmentPackageContentCommands();
+        private CreateShipmentPackageContentCommandCollection shipmentPackageContents = new SimpleCreateShipmentPackageContentCommandCollection();
 
-        public CreateShipmentPackageContentCommands getShipmentPackageContents()
+        public CreateShipmentPackageContentCommandCollection getShipmentPackageContents()
         {
             return this.shipmentPackageContents;
         }
@@ -323,9 +323,9 @@ public abstract class AbstractShipmentPackageCommand extends AbstractCommand imp
             this.isPropertyActiveRemoved = removed;
         }
 
-        private ShipmentPackageContentCommands shipmentPackageContentCommands = new SimpleShipmentPackageContentCommands();
+        private ShipmentPackageContentCommandCollection shipmentPackageContentCommands = new SimpleShipmentPackageContentCommandCollection();
 
-        public ShipmentPackageContentCommands getShipmentPackageContentCommands()
+        public ShipmentPackageContentCommandCollection getShipmentPackageContentCommands()
         {
             return this.shipmentPackageContentCommands;
         }
@@ -351,54 +351,44 @@ public abstract class AbstractShipmentPackageCommand extends AbstractCommand imp
 	}
 
     
-    public static class SimpleCreateShipmentPackageContentCommands implements CreateShipmentPackageContentCommands
-    {
+    public static class SimpleCreateShipmentPackageContentCommandCollection implements CreateShipmentPackageContentCommandCollection {
         private List<ShipmentPackageContentCommand.CreateShipmentPackageContent> innerCommands = new ArrayList<ShipmentPackageContentCommand.CreateShipmentPackageContent>();
 
-        public void add(ShipmentPackageContentCommand.CreateShipmentPackageContent c)
-        {
+        public void add(ShipmentPackageContentCommand.CreateShipmentPackageContent c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentPackageContentCommand.CreateShipmentPackageContent c)
-        {
+        public void remove(ShipmentPackageContentCommand.CreateShipmentPackageContent c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentPackageContentCommand.CreateShipmentPackageContent> iterator()
-        {
+        public Iterator<ShipmentPackageContentCommand.CreateShipmentPackageContent> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleShipmentPackageContentCommands implements ShipmentPackageContentCommands
-    {
+    public static class SimpleShipmentPackageContentCommandCollection implements ShipmentPackageContentCommandCollection {
         private List<ShipmentPackageContentCommand> innerCommands = new ArrayList<ShipmentPackageContentCommand>();
 
-        public void add(ShipmentPackageContentCommand c)
-        {
+        public void add(ShipmentPackageContentCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentPackageContentCommand c)
-        {
+        public void remove(ShipmentPackageContentCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentPackageContentCommand> iterator()
-        {
+        public Iterator<ShipmentPackageContentCommand> iterator() {
             return innerCommands.iterator();
         }
     }

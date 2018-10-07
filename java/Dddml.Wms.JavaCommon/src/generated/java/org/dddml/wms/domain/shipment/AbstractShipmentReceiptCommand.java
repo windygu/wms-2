@@ -299,9 +299,9 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateShipmentReceiptImageCommands shipmentReceiptImages = new SimpleCreateShipmentReceiptImageCommands();
+        private CreateShipmentReceiptImageCommandCollection shipmentReceiptImages = new SimpleCreateShipmentReceiptImageCommandCollection();
 
-        public CreateShipmentReceiptImageCommands getShipmentReceiptImages()
+        public CreateShipmentReceiptImageCommandCollection getShipmentReceiptImages()
         {
             return this.shipmentReceiptImages;
         }
@@ -543,9 +543,9 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
             this.isPropertyActiveRemoved = removed;
         }
 
-        private ShipmentReceiptImageCommands shipmentReceiptImageCommands = new SimpleShipmentReceiptImageCommands();
+        private ShipmentReceiptImageCommandCollection shipmentReceiptImageCommands = new SimpleShipmentReceiptImageCommandCollection();
 
-        public ShipmentReceiptImageCommands getShipmentReceiptImageCommands()
+        public ShipmentReceiptImageCommandCollection getShipmentReceiptImageCommands()
         {
             return this.shipmentReceiptImageCommands;
         }
@@ -571,54 +571,44 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
 	}
 
     
-    public static class SimpleCreateShipmentReceiptImageCommands implements CreateShipmentReceiptImageCommands
-    {
+    public static class SimpleCreateShipmentReceiptImageCommandCollection implements CreateShipmentReceiptImageCommandCollection {
         private List<ShipmentReceiptImageCommand.CreateShipmentReceiptImage> innerCommands = new ArrayList<ShipmentReceiptImageCommand.CreateShipmentReceiptImage>();
 
-        public void add(ShipmentReceiptImageCommand.CreateShipmentReceiptImage c)
-        {
+        public void add(ShipmentReceiptImageCommand.CreateShipmentReceiptImage c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentReceiptImageCommand.CreateShipmentReceiptImage c)
-        {
+        public void remove(ShipmentReceiptImageCommand.CreateShipmentReceiptImage c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentReceiptImageCommand.CreateShipmentReceiptImage> iterator()
-        {
+        public Iterator<ShipmentReceiptImageCommand.CreateShipmentReceiptImage> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleShipmentReceiptImageCommands implements ShipmentReceiptImageCommands
-    {
+    public static class SimpleShipmentReceiptImageCommandCollection implements ShipmentReceiptImageCommandCollection {
         private List<ShipmentReceiptImageCommand> innerCommands = new ArrayList<ShipmentReceiptImageCommand>();
 
-        public void add(ShipmentReceiptImageCommand c)
-        {
+        public void add(ShipmentReceiptImageCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(ShipmentReceiptImageCommand c)
-        {
+        public void remove(ShipmentReceiptImageCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<ShipmentReceiptImageCommand> iterator()
-        {
+        public Iterator<ShipmentReceiptImageCommand> iterator() {
             return innerCommands.iterator();
         }
     }

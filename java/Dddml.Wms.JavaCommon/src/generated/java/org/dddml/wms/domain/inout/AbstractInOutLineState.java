@@ -269,14 +269,14 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         return this.getVersion() == null;
     }
 
-    private InOutLineImageStates inOutLineImages;
+    private EntityStateCollection<String, InOutLineImageState> inOutLineImages;
 
-    public InOutLineImageStates getInOutLineImages()
+    public EntityStateCollection<String, InOutLineImageState> getInOutLineImages()
     {
         return this.inOutLineImages;
     }
 
-    public void setInOutLineImages(InOutLineImageStates inOutLineImages)
+    public void setInOutLineImages(EntityStateCollection<String, InOutLineImageState> inOutLineImages)
     {
         this.inOutLineImages = inOutLineImages;
     }
@@ -309,7 +309,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
     }
     
     protected void initializeProperties() {
-        inOutLineImages = new SimpleInOutLineImageStates(this);
+        inOutLineImages = new SimpleInOutLineImageStateCollection(this);
     }
 
 
@@ -539,7 +539,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
 
     public void save()
     {
-        inOutLineImages.save();
+        ((Saveable)inOutLineImages).save();
 
     }
 
@@ -589,9 +589,9 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
 
     }
 
-    static class SimpleInOutLineImageStates extends AbstractInOutLineImageStates
+    static class SimpleInOutLineImageStateCollection extends AbstractInOutLineImageStateCollection
     {
-        public SimpleInOutLineImageStates(AbstractInOutLineState outerState)
+        public SimpleInOutLineImageStateCollection(AbstractInOutLineState outerState)
         {
             super(outerState);
         }

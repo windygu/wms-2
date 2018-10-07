@@ -158,14 +158,14 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
         return this.getVersion() == null;
     }
 
-    private PicklistItemStates picklistItems;
+    private EntityStateCollection<PicklistItemOrderShipGrpInvId, PicklistItemState> picklistItems;
 
-    public PicklistItemStates getPicklistItems()
+    public EntityStateCollection<PicklistItemOrderShipGrpInvId, PicklistItemState> getPicklistItems()
     {
         return this.picklistItems;
     }
 
-    public void setPicklistItems(PicklistItemStates picklistItems)
+    public void setPicklistItems(EntityStateCollection<PicklistItemOrderShipGrpInvId, PicklistItemState> picklistItems)
     {
         this.picklistItems = picklistItems;
     }
@@ -209,7 +209,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
     }
     
     protected void initializeProperties() {
-        picklistItems = new SimplePicklistItemStates(this);
+        picklistItems = new SimplePicklistItemStateCollection(this);
     }
 
 
@@ -343,7 +343,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
 
     public void save()
     {
-        picklistItems.save();
+        ((Saveable)picklistItems).save();
 
     }
 
@@ -384,9 +384,9 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
 
     }
 
-    static class SimplePicklistItemStates extends AbstractPicklistItemStates
+    static class SimplePicklistItemStateCollection extends AbstractPicklistItemStateCollection
     {
-        public SimplePicklistItemStates(AbstractPicklistBinState outerState)
+        public SimplePicklistItemStateCollection(AbstractPicklistBinState outerState)
         {
             super(outerState);
         }

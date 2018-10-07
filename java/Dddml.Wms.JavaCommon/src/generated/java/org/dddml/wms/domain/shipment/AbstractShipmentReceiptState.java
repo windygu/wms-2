@@ -328,14 +328,14 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         return this.getVersion() == null;
     }
 
-    private ShipmentReceiptImageStates shipmentReceiptImages;
+    private EntityStateCollection<String, ShipmentReceiptImageState> shipmentReceiptImages;
 
-    public ShipmentReceiptImageStates getShipmentReceiptImages()
+    public EntityStateCollection<String, ShipmentReceiptImageState> getShipmentReceiptImages()
     {
         return this.shipmentReceiptImages;
     }
 
-    public void setShipmentReceiptImages(ShipmentReceiptImageStates shipmentReceiptImages)
+    public void setShipmentReceiptImages(EntityStateCollection<String, ShipmentReceiptImageState> shipmentReceiptImages)
     {
         this.shipmentReceiptImages = shipmentReceiptImages;
     }
@@ -368,7 +368,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
     }
     
     protected void initializeProperties() {
-        shipmentReceiptImages = new SimpleShipmentReceiptImageStates(this);
+        shipmentReceiptImages = new SimpleShipmentReceiptImageStateCollection(this);
     }
 
 
@@ -646,7 +646,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
 
     public void save()
     {
-        shipmentReceiptImages.save();
+        ((Saveable)shipmentReceiptImages).save();
 
     }
 
@@ -696,9 +696,9 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
 
     }
 
-    static class SimpleShipmentReceiptImageStates extends AbstractShipmentReceiptImageStates
+    static class SimpleShipmentReceiptImageStateCollection extends AbstractShipmentReceiptImageStateCollection
     {
-        public SimpleShipmentReceiptImageStates(AbstractShipmentReceiptState outerState)
+        public SimpleShipmentReceiptImageStateCollection(AbstractShipmentReceiptState outerState)
         {
             super(outerState);
         }

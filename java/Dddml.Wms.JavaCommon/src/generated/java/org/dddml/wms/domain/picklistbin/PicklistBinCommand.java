@@ -64,7 +64,7 @@ public interface PicklistBinCommand extends Command
 
     interface CreatePicklistBin extends CreateOrMergePatchPicklistBin
     {
-        CreatePicklistItemCommands getPicklistItems();
+        CreatePicklistItemCommandCollection getPicklistItems();
 
         PicklistItemCommand.CreatePicklistItem newCreatePicklistItem();
 
@@ -92,7 +92,7 @@ public interface PicklistBinCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        PicklistItemCommands getPicklistItemCommands();
+        PicklistItemCommandCollection getPicklistItemCommands();
 
         PicklistItemCommand.CreatePicklistItem newCreatePicklistItem();
 
@@ -106,7 +106,7 @@ public interface PicklistBinCommand extends Command
 	{
 	}
 
-    interface CreatePicklistItemCommands extends Iterable<PicklistItemCommand.CreatePicklistItem>
+    interface CreatePicklistItemCommandCollection extends Iterable<PicklistItemCommand.CreatePicklistItem>
     {
         void add(PicklistItemCommand.CreatePicklistItem c);
 
@@ -115,7 +115,7 @@ public interface PicklistBinCommand extends Command
         void clear();
     }
 
-    interface PicklistItemCommands extends Iterable<PicklistItemCommand>
+    interface PicklistItemCommandCollection extends Iterable<PicklistItemCommand>
     {
         void add(PicklistItemCommand c);
 

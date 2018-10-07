@@ -211,16 +211,16 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateAttributeValueCommands attributeValues = new SimpleCreateAttributeValueCommands();
+        private CreateAttributeValueCommandCollection attributeValues = new SimpleCreateAttributeValueCommandCollection();
 
-        public CreateAttributeValueCommands getAttributeValues()
+        public CreateAttributeValueCommandCollection getAttributeValues()
         {
             return this.attributeValues;
         }
 
-        private CreateAttributeAliasCommands aliases = new SimpleCreateAttributeAliasCommands();
+        private CreateAttributeAliasCommandCollection aliases = new SimpleCreateAttributeAliasCommandCollection();
 
-        public CreateAttributeAliasCommands getAliases()
+        public CreateAttributeAliasCommandCollection getAliases()
         {
             return this.aliases;
         }
@@ -354,16 +354,16 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
             this.isPropertyActiveRemoved = removed;
         }
 
-        private AttributeValueCommands attributeValueCommands = new SimpleAttributeValueCommands();
+        private AttributeValueCommandCollection attributeValueCommands = new SimpleAttributeValueCommandCollection();
 
-        public AttributeValueCommands getAttributeValueCommands()
+        public AttributeValueCommandCollection getAttributeValueCommands()
         {
             return this.attributeValueCommands;
         }
 
-        private AttributeAliasCommands attributeAliasCommands = new SimpleAttributeAliasCommands();
+        private AttributeAliasCommandCollection attributeAliasCommands = new SimpleAttributeAliasCommandCollection();
 
-        public AttributeAliasCommands getAttributeAliasCommands()
+        public AttributeAliasCommandCollection getAttributeAliasCommands()
         {
             return this.attributeAliasCommands;
         }
@@ -389,106 +389,86 @@ public abstract class AbstractAttributeCommand extends AbstractCommand implement
 	}
 
     
-    public static class SimpleCreateAttributeValueCommands implements CreateAttributeValueCommands
-    {
+    public static class SimpleCreateAttributeValueCommandCollection implements CreateAttributeValueCommandCollection {
         private List<AttributeValueCommand.CreateAttributeValue> innerCommands = new ArrayList<AttributeValueCommand.CreateAttributeValue>();
 
-        public void add(AttributeValueCommand.CreateAttributeValue c)
-        {
+        public void add(AttributeValueCommand.CreateAttributeValue c) {
             innerCommands.add(c);
         }
 
-        public void remove(AttributeValueCommand.CreateAttributeValue c)
-        {
+        public void remove(AttributeValueCommand.CreateAttributeValue c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<AttributeValueCommand.CreateAttributeValue> iterator()
-        {
+        public Iterator<AttributeValueCommand.CreateAttributeValue> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleAttributeValueCommands implements AttributeValueCommands
-    {
+    public static class SimpleAttributeValueCommandCollection implements AttributeValueCommandCollection {
         private List<AttributeValueCommand> innerCommands = new ArrayList<AttributeValueCommand>();
 
-        public void add(AttributeValueCommand c)
-        {
+        public void add(AttributeValueCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(AttributeValueCommand c)
-        {
+        public void remove(AttributeValueCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<AttributeValueCommand> iterator()
-        {
+        public Iterator<AttributeValueCommand> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleCreateAttributeAliasCommands implements CreateAttributeAliasCommands
-    {
+    public static class SimpleCreateAttributeAliasCommandCollection implements CreateAttributeAliasCommandCollection {
         private List<AttributeAliasCommand.CreateAttributeAlias> innerCommands = new ArrayList<AttributeAliasCommand.CreateAttributeAlias>();
 
-        public void add(AttributeAliasCommand.CreateAttributeAlias c)
-        {
+        public void add(AttributeAliasCommand.CreateAttributeAlias c) {
             innerCommands.add(c);
         }
 
-        public void remove(AttributeAliasCommand.CreateAttributeAlias c)
-        {
+        public void remove(AttributeAliasCommand.CreateAttributeAlias c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<AttributeAliasCommand.CreateAttributeAlias> iterator()
-        {
+        public Iterator<AttributeAliasCommand.CreateAttributeAlias> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleAttributeAliasCommands implements AttributeAliasCommands
-    {
+    public static class SimpleAttributeAliasCommandCollection implements AttributeAliasCommandCollection {
         private List<AttributeAliasCommand> innerCommands = new ArrayList<AttributeAliasCommand>();
 
-        public void add(AttributeAliasCommand c)
-        {
+        public void add(AttributeAliasCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(AttributeAliasCommand c)
-        {
+        public void remove(AttributeAliasCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<AttributeAliasCommand> iterator()
-        {
+        public Iterator<AttributeAliasCommand> iterator() {
             return innerCommands.iterator();
         }
     }

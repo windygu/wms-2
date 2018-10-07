@@ -147,14 +147,14 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
         return this.getVersion() == null;
     }
 
-    private InventoryItemEntryStates entries;
+    private EntityStateCollection<Long, InventoryItemEntryState> entries;
 
-    public InventoryItemEntryStates getEntries()
+    public EntityStateCollection<Long, InventoryItemEntryState> getEntries()
     {
         return this.entries;
     }
 
-    public void setEntries(InventoryItemEntryStates entries)
+    public void setEntries(EntityStateCollection<Long, InventoryItemEntryState> entries)
     {
         this.entries = entries;
     }
@@ -198,7 +198,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
     }
     
     protected void initializeProperties() {
-        entries = new SimpleInventoryItemEntryStates(this);
+        entries = new SimpleInventoryItemEntryStateCollection(this);
     }
 
 
@@ -303,7 +303,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
 
     public void save()
     {
-        entries.save();
+        ((Saveable)entries).save();
 
     }
 
@@ -344,9 +344,9 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
 
     }
 
-    static class SimpleInventoryItemEntryStates extends AbstractInventoryItemEntryStates
+    static class SimpleInventoryItemEntryStateCollection extends AbstractInventoryItemEntryStateCollection
     {
-        public SimpleInventoryItemEntryStates(AbstractInventoryItemState outerState)
+        public SimpleInventoryItemEntryStateCollection(AbstractInventoryItemState outerState)
         {
             super(outerState);
         }

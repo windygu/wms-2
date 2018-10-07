@@ -164,9 +164,9 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateMovementConfirmationLineCommands movementConfirmationLines = new SimpleCreateMovementConfirmationLineCommands();
+        private CreateMovementConfirmationLineCommandCollection movementConfirmationLines = new SimpleCreateMovementConfirmationLineCommandCollection();
 
-        public CreateMovementConfirmationLineCommands getMovementConfirmationLines()
+        public CreateMovementConfirmationLineCommandCollection getMovementConfirmationLines()
         {
             return this.movementConfirmationLines;
         }
@@ -286,9 +286,9 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
             this.isPropertyActiveRemoved = removed;
         }
 
-        private MovementConfirmationLineCommands movementConfirmationLineCommands = new SimpleMovementConfirmationLineCommands();
+        private MovementConfirmationLineCommandCollection movementConfirmationLineCommands = new SimpleMovementConfirmationLineCommandCollection();
 
-        public MovementConfirmationLineCommands getMovementConfirmationLineCommands()
+        public MovementConfirmationLineCommandCollection getMovementConfirmationLineCommands()
         {
             return this.movementConfirmationLineCommands;
         }
@@ -314,54 +314,44 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
 	}
 
     
-    public static class SimpleCreateMovementConfirmationLineCommands implements CreateMovementConfirmationLineCommands
-    {
+    public static class SimpleCreateMovementConfirmationLineCommandCollection implements CreateMovementConfirmationLineCommandCollection {
         private List<MovementConfirmationLineCommand.CreateMovementConfirmationLine> innerCommands = new ArrayList<MovementConfirmationLineCommand.CreateMovementConfirmationLine>();
 
-        public void add(MovementConfirmationLineCommand.CreateMovementConfirmationLine c)
-        {
+        public void add(MovementConfirmationLineCommand.CreateMovementConfirmationLine c) {
             innerCommands.add(c);
         }
 
-        public void remove(MovementConfirmationLineCommand.CreateMovementConfirmationLine c)
-        {
+        public void remove(MovementConfirmationLineCommand.CreateMovementConfirmationLine c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<MovementConfirmationLineCommand.CreateMovementConfirmationLine> iterator()
-        {
+        public Iterator<MovementConfirmationLineCommand.CreateMovementConfirmationLine> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleMovementConfirmationLineCommands implements MovementConfirmationLineCommands
-    {
+    public static class SimpleMovementConfirmationLineCommandCollection implements MovementConfirmationLineCommandCollection {
         private List<MovementConfirmationLineCommand> innerCommands = new ArrayList<MovementConfirmationLineCommand>();
 
-        public void add(MovementConfirmationLineCommand c)
-        {
+        public void add(MovementConfirmationLineCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(MovementConfirmationLineCommand c)
-        {
+        public void remove(MovementConfirmationLineCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<MovementConfirmationLineCommand> iterator()
-        {
+        public Iterator<MovementConfirmationLineCommand> iterator() {
             return innerCommands.iterator();
         }
     }

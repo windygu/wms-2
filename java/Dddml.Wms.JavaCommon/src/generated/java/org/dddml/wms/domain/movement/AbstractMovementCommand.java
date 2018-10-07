@@ -308,9 +308,9 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateMovementLineCommands movementLines = new SimpleCreateMovementLineCommands();
+        private CreateMovementLineCommandCollection movementLines = new SimpleCreateMovementLineCommandCollection();
 
-        public CreateMovementLineCommands getMovementLines()
+        public CreateMovementLineCommandCollection getMovementLines()
         {
             return this.movementLines;
         }
@@ -574,9 +574,9 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
             this.isPropertyActiveRemoved = removed;
         }
 
-        private MovementLineCommands movementLineCommands = new SimpleMovementLineCommands();
+        private MovementLineCommandCollection movementLineCommands = new SimpleMovementLineCommandCollection();
 
-        public MovementLineCommands getMovementLineCommands()
+        public MovementLineCommandCollection getMovementLineCommands()
         {
             return this.movementLineCommands;
         }
@@ -602,54 +602,44 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
 	}
 
     
-    public static class SimpleCreateMovementLineCommands implements CreateMovementLineCommands
-    {
+    public static class SimpleCreateMovementLineCommandCollection implements CreateMovementLineCommandCollection {
         private List<MovementLineCommand.CreateMovementLine> innerCommands = new ArrayList<MovementLineCommand.CreateMovementLine>();
 
-        public void add(MovementLineCommand.CreateMovementLine c)
-        {
+        public void add(MovementLineCommand.CreateMovementLine c) {
             innerCommands.add(c);
         }
 
-        public void remove(MovementLineCommand.CreateMovementLine c)
-        {
+        public void remove(MovementLineCommand.CreateMovementLine c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<MovementLineCommand.CreateMovementLine> iterator()
-        {
+        public Iterator<MovementLineCommand.CreateMovementLine> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleMovementLineCommands implements MovementLineCommands
-    {
+    public static class SimpleMovementLineCommandCollection implements MovementLineCommandCollection {
         private List<MovementLineCommand> innerCommands = new ArrayList<MovementLineCommand>();
 
-        public void add(MovementLineCommand c)
-        {
+        public void add(MovementLineCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(MovementLineCommand c)
-        {
+        public void remove(MovementLineCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<MovementLineCommand> iterator()
-        {
+        public Iterator<MovementLineCommand> iterator() {
             return innerCommands.iterator();
         }
     }

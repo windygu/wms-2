@@ -292,14 +292,14 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         return this.getVersion() == null;
     }
 
-    private OrderItemShipGroupAssociationStates orderItemShipGroupAssociations;
+    private EntityStateCollection<String, OrderItemShipGroupAssociationState> orderItemShipGroupAssociations;
 
-    public OrderItemShipGroupAssociationStates getOrderItemShipGroupAssociations()
+    public EntityStateCollection<String, OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations()
     {
         return this.orderItemShipGroupAssociations;
     }
 
-    public void setOrderItemShipGroupAssociations(OrderItemShipGroupAssociationStates orderItemShipGroupAssociations)
+    public void setOrderItemShipGroupAssociations(EntityStateCollection<String, OrderItemShipGroupAssociationState> orderItemShipGroupAssociations)
     {
         this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
     }
@@ -332,7 +332,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
     }
     
     protected void initializeProperties() {
-        orderItemShipGroupAssociations = new SimpleOrderItemShipGroupAssociationStates(this);
+        orderItemShipGroupAssociations = new SimpleOrderItemShipGroupAssociationStateCollection(this);
     }
 
 
@@ -586,7 +586,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
 
     public void save()
     {
-        orderItemShipGroupAssociations.save();
+        ((Saveable)orderItemShipGroupAssociations).save();
 
     }
 
@@ -636,9 +636,9 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
 
     }
 
-    static class SimpleOrderItemShipGroupAssociationStates extends AbstractOrderItemShipGroupAssociationStates
+    static class SimpleOrderItemShipGroupAssociationStateCollection extends AbstractOrderItemShipGroupAssociationStateCollection
     {
-        public SimpleOrderItemShipGroupAssociationStates(AbstractOrderShipGroupState outerState)
+        public SimpleOrderItemShipGroupAssociationStateCollection(AbstractOrderShipGroupState outerState)
         {
             super(outerState);
         }

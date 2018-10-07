@@ -207,14 +207,14 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         return this.getVersion() == null;
     }
 
-    private MovementConfirmationLineStates movementConfirmationLines;
+    private EntityStateCollection<String, MovementConfirmationLineState> movementConfirmationLines;
 
-    public MovementConfirmationLineStates getMovementConfirmationLines()
+    public EntityStateCollection<String, MovementConfirmationLineState> getMovementConfirmationLines()
     {
         return this.movementConfirmationLines;
     }
 
-    public void setMovementConfirmationLines(MovementConfirmationLineStates movementConfirmationLines)
+    public void setMovementConfirmationLines(EntityStateCollection<String, MovementConfirmationLineState> movementConfirmationLines)
     {
         this.movementConfirmationLines = movementConfirmationLines;
     }
@@ -258,7 +258,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
     }
     
     protected void initializeProperties() {
-        movementConfirmationLines = new SimpleMovementConfirmationLineStates(this);
+        movementConfirmationLines = new SimpleMovementConfirmationLineStateCollection(this);
     }
 
 
@@ -440,7 +440,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
 
     public void save()
     {
-        movementConfirmationLines.save();
+        ((Saveable)movementConfirmationLines).save();
 
     }
 
@@ -481,9 +481,9 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
 
     }
 
-    static class SimpleMovementConfirmationLineStates extends AbstractMovementConfirmationLineStates
+    static class SimpleMovementConfirmationLineStateCollection extends AbstractMovementConfirmationLineStateCollection
     {
-        public SimpleMovementConfirmationLineStates(AbstractMovementConfirmationState outerState)
+        public SimpleMovementConfirmationLineStateCollection(AbstractMovementConfirmationState outerState)
         {
             super(outerState);
         }

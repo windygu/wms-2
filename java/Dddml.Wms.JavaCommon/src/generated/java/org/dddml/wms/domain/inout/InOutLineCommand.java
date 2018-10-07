@@ -75,7 +75,7 @@ public interface InOutLineCommand extends Command
 
     interface CreateInOutLine extends CreateOrMergePatchInOutLine
     {
-        CreateInOutLineImageCommands getInOutLineImages();
+        CreateInOutLineImageCommandCollection getInOutLineImages();
 
         InOutLineImageCommand.CreateInOutLineImage newCreateInOutLineImage();
 
@@ -135,7 +135,7 @@ public interface InOutLineCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        InOutLineImageCommands getInOutLineImageCommands();
+        InOutLineImageCommandCollection getInOutLineImageCommands();
 
         InOutLineImageCommand.CreateInOutLineImage newCreateInOutLineImage();
 
@@ -149,7 +149,7 @@ public interface InOutLineCommand extends Command
 	{
 	}
 
-    interface CreateInOutLineImageCommands extends Iterable<InOutLineImageCommand.CreateInOutLineImage>
+    interface CreateInOutLineImageCommandCollection extends Iterable<InOutLineImageCommand.CreateInOutLineImage>
     {
         void add(InOutLineImageCommand.CreateInOutLineImage c);
 
@@ -158,7 +158,7 @@ public interface InOutLineCommand extends Command
         void clear();
     }
 
-    interface InOutLineImageCommands extends Iterable<InOutLineImageCommand>
+    interface InOutLineImageCommandCollection extends Iterable<InOutLineImageCommand>
     {
         void add(InOutLineImageCommand c);
 

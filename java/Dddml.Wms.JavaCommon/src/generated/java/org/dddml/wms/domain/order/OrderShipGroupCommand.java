@@ -78,7 +78,7 @@ public interface OrderShipGroupCommand extends Command
 
     interface CreateOrderShipGroup extends CreateOrMergePatchOrderShipGroup
     {
-        CreateOrderItemShipGroupAssociationCommands getOrderItemShipGroupAssociations();
+        CreateOrderItemShipGroupAssociationCommandCollection getOrderItemShipGroupAssociations();
 
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation newCreateOrderItemShipGroupAssociation();
 
@@ -146,7 +146,7 @@ public interface OrderShipGroupCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        OrderItemShipGroupAssociationCommands getOrderItemShipGroupAssociationCommands();
+        OrderItemShipGroupAssociationCommandCollection getOrderItemShipGroupAssociationCommands();
 
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation newCreateOrderItemShipGroupAssociation();
 
@@ -160,7 +160,7 @@ public interface OrderShipGroupCommand extends Command
 	{
 	}
 
-    interface CreateOrderItemShipGroupAssociationCommands extends Iterable<OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation>
+    interface CreateOrderItemShipGroupAssociationCommandCollection extends Iterable<OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation>
     {
         void add(OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c);
 
@@ -169,7 +169,7 @@ public interface OrderShipGroupCommand extends Command
         void clear();
     }
 
-    interface OrderItemShipGroupAssociationCommands extends Iterable<OrderItemShipGroupAssociationCommand>
+    interface OrderItemShipGroupAssociationCommandCollection extends Iterable<OrderItemShipGroupAssociationCommand>
     {
         void add(OrderItemShipGroupAssociationCommand c);
 

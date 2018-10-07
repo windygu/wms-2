@@ -85,7 +85,7 @@ public interface ShipmentPackageState
 
     boolean getForReapplying();
 
-    ShipmentPackageContentStates getShipmentPackageContents();
+    EntityStateCollection<String, ShipmentPackageContentState> getShipmentPackageContents();
 
 
     void mutate(Event e);

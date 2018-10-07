@@ -84,7 +84,7 @@ public interface ShipmentPackageCommand extends Command
 
     interface CreateShipmentPackage extends CreateOrMergePatchShipmentPackage
     {
-        CreateShipmentPackageContentCommands getShipmentPackageContents();
+        CreateShipmentPackageContentCommandCollection getShipmentPackageContents();
 
         ShipmentPackageContentCommand.CreateShipmentPackageContent newCreateShipmentPackageContent();
 
@@ -132,7 +132,7 @@ public interface ShipmentPackageCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        ShipmentPackageContentCommands getShipmentPackageContentCommands();
+        ShipmentPackageContentCommandCollection getShipmentPackageContentCommands();
 
         ShipmentPackageContentCommand.CreateShipmentPackageContent newCreateShipmentPackageContent();
 
@@ -146,7 +146,7 @@ public interface ShipmentPackageCommand extends Command
 	{
 	}
 
-    interface CreateShipmentPackageContentCommands extends Iterable<ShipmentPackageContentCommand.CreateShipmentPackageContent>
+    interface CreateShipmentPackageContentCommandCollection extends Iterable<ShipmentPackageContentCommand.CreateShipmentPackageContent>
     {
         void add(ShipmentPackageContentCommand.CreateShipmentPackageContent c);
 
@@ -155,7 +155,7 @@ public interface ShipmentPackageCommand extends Command
         void clear();
     }
 
-    interface ShipmentPackageContentCommands extends Iterable<ShipmentPackageContentCommand>
+    interface ShipmentPackageContentCommandCollection extends Iterable<ShipmentPackageContentCommand>
     {
         void add(ShipmentPackageContentCommand c);
 

@@ -166,9 +166,9 @@ public interface InOutState
 
     boolean getForReapplying();
 
-    InOutImageStates getInOutImages();
+    EntityStateCollection<String, InOutImageState> getInOutImages();
 
-    InOutLineStates getInOutLines();
+    EntityStateCollection<String, InOutLineState> getInOutLines();
 
 
     void mutate(Event e);

@@ -72,7 +72,7 @@ public interface AttributeSetCommand extends Command
 
     interface CreateAttributeSet extends CreateOrMergePatchAttributeSet
     {
-        CreateAttributeUseCommands getAttributeUses();
+        CreateAttributeUseCommandCollection getAttributeUses();
 
         AttributeUseCommand.CreateAttributeUse newCreateAttributeUse();
 
@@ -108,7 +108,7 @@ public interface AttributeSetCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        AttributeUseCommands getAttributeUseCommands();
+        AttributeUseCommandCollection getAttributeUseCommands();
 
         AttributeUseCommand.CreateAttributeUse newCreateAttributeUse();
 
@@ -122,7 +122,7 @@ public interface AttributeSetCommand extends Command
 	{
 	}
 
-    interface CreateAttributeUseCommands extends Iterable<AttributeUseCommand.CreateAttributeUse>
+    interface CreateAttributeUseCommandCollection extends Iterable<AttributeUseCommand.CreateAttributeUse>
     {
         void add(AttributeUseCommand.CreateAttributeUse c);
 
@@ -131,7 +131,7 @@ public interface AttributeSetCommand extends Command
         void clear();
     }
 
-    interface AttributeUseCommands extends Iterable<AttributeUseCommand>
+    interface AttributeUseCommandCollection extends Iterable<AttributeUseCommand>
     {
         void add(AttributeUseCommand c);
 

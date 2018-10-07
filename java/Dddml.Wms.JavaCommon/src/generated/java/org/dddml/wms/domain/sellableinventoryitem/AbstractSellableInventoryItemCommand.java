@@ -66,9 +66,9 @@ public abstract class AbstractSellableInventoryItemCommand extends AbstractComma
             return COMMAND_TYPE_CREATE;
         }
 
-        private CreateSellableInventoryItemEntryCommands entries = new SimpleCreateSellableInventoryItemEntryCommands();
+        private CreateSellableInventoryItemEntryCommandCollection entries = new SimpleCreateSellableInventoryItemEntryCommandCollection();
 
-        public CreateSellableInventoryItemEntryCommands getEntries()
+        public CreateSellableInventoryItemEntryCommandCollection getEntries()
         {
             return this.entries;
         }
@@ -94,9 +94,9 @@ public abstract class AbstractSellableInventoryItemCommand extends AbstractComma
             this.isPropertyActiveRemoved = removed;
         }
 
-        private SellableInventoryItemEntryCommands sellableInventoryItemEntryCommands = new SimpleSellableInventoryItemEntryCommands();
+        private SellableInventoryItemEntryCommandCollection sellableInventoryItemEntryCommands = new SimpleSellableInventoryItemEntryCommandCollection();
 
-        public SellableInventoryItemEntryCommands getSellableInventoryItemEntryCommands()
+        public SellableInventoryItemEntryCommandCollection getSellableInventoryItemEntryCommands()
         {
             return this.sellableInventoryItemEntryCommands;
         }
@@ -122,54 +122,44 @@ public abstract class AbstractSellableInventoryItemCommand extends AbstractComma
 	}
 
     
-    public static class SimpleCreateSellableInventoryItemEntryCommands implements CreateSellableInventoryItemEntryCommands
-    {
+    public static class SimpleCreateSellableInventoryItemEntryCommandCollection implements CreateSellableInventoryItemEntryCommandCollection {
         private List<SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry> innerCommands = new ArrayList<SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry>();
 
-        public void add(SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry c)
-        {
+        public void add(SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry c) {
             innerCommands.add(c);
         }
 
-        public void remove(SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry c)
-        {
+        public void remove(SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry> iterator()
-        {
+        public Iterator<SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry> iterator() {
             return innerCommands.iterator();
         }
     }
 
-    public static class SimpleSellableInventoryItemEntryCommands implements SellableInventoryItemEntryCommands
-    {
+    public static class SimpleSellableInventoryItemEntryCommandCollection implements SellableInventoryItemEntryCommandCollection {
         private List<SellableInventoryItemEntryCommand> innerCommands = new ArrayList<SellableInventoryItemEntryCommand>();
 
-        public void add(SellableInventoryItemEntryCommand c)
-        {
+        public void add(SellableInventoryItemEntryCommand c) {
             innerCommands.add(c);
         }
 
-        public void remove(SellableInventoryItemEntryCommand c)
-        {
+        public void remove(SellableInventoryItemEntryCommand c) {
             innerCommands.remove(c);
         }
 
-        public void clear()
-        {
+        public void clear() {
             innerCommands.clear();
         }
 
         @Override
-        public Iterator<SellableInventoryItemEntryCommand> iterator()
-        {
+        public Iterator<SellableInventoryItemEntryCommand> iterator() {
             return innerCommands.iterator();
         }
     }

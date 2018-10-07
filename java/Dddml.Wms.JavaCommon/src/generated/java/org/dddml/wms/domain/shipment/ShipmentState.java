@@ -185,13 +185,13 @@ public interface ShipmentState
 
     boolean getForReapplying();
 
-    ShipmentImageStates getShipmentImages();
+    EntityStateCollection<String, ShipmentImageState> getShipmentImages();
 
-    ShipmentItemStates getShipmentItems();
+    EntityStateCollection<String, ShipmentItemState> getShipmentItems();
 
-    ShipmentReceiptStates getShipmentReceipts();
+    EntityStateCollection<String, ShipmentReceiptState> getShipmentReceipts();
 
-    ItemIssuanceStates getItemIssuances();
+    EntityStateCollection<String, ItemIssuanceState> getItemIssuances();
 
 
     void mutate(Event e);
