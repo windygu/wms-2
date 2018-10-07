@@ -60,16 +60,17 @@ public abstract class AbstractAttributeUseStates implements AttributeUseStates
         return get(attributeId, false, false);
     }
 
-    public AttributeUseState get(String attributeId, boolean forCreation) {
+    AttributeUseState get(String attributeId, boolean forCreation) {
         return get(attributeId, forCreation, false);
     }
 
-    public AttributeUseState get(String attributeId, boolean forCreation, boolean nullAllowed) {
+    AttributeUseState get(String attributeId, boolean forCreation, boolean nullAllowed) {
         AttributeSetAttributeUseId globalId = new AttributeSetAttributeUseId(attributeSetState.getAttributeSetId(), attributeId);
         if (loadedAttributeUseStates.containsKey(globalId)) {
             return loadedAttributeUseStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             AttributeUseState state = new AbstractAttributeUseState.SimpleAttributeUseState(getForReapplying());
             state.setAttributeSetAttributeUseId(globalId);
             loadedAttributeUseStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractAttributeUseStates implements AttributeUseStates
         this.removedAttributeUseStates.put(state.getAttributeSetAttributeUseId(), state);
     }
 
-    public void addToSave(AttributeUseState state)
+    public void add(AttributeUseState state)
     {
         this.loadedAttributeUseStates.put(state.getAttributeSetAttributeUseId(), state);
     }

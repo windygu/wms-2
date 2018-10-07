@@ -9,13 +9,13 @@ public interface InOutLineStates extends Iterable<InOutLineState>, Saveable
 {
     InOutLineState get(String lineNumber);
 
-    InOutLineState get(String lineNumber, boolean forCreation);
+    //InOutLineState get(String lineNumber, boolean forCreation);
 
-    InOutLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
+    //InOutLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
 
     void remove(InOutLineState state);
 
-    void addToSave(InOutLineState state);
+    void add(InOutLineState state);
 
 }
 

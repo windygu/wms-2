@@ -61,16 +61,17 @@ public abstract class AbstractSellableInventoryItemEntryStates implements Sellab
         return get(entrySeqId, false, false);
     }
 
-    public SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation) {
+    SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation) {
         return get(entrySeqId, forCreation, false);
     }
 
-    public SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
+    SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
         SellableInventoryItemEntryId globalId = new SellableInventoryItemEntryId(sellableInventoryItemState.getSellableInventoryItemId(), entrySeqId);
         if (loadedSellableInventoryItemEntryStates.containsKey(globalId)) {
             return loadedSellableInventoryItemEntryStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             SellableInventoryItemEntryState state = new AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState(getForReapplying());
             state.setSellableInventoryItemEntryId(globalId);
             loadedSellableInventoryItemEntryStates.put(globalId, state);
@@ -90,7 +91,7 @@ public abstract class AbstractSellableInventoryItemEntryStates implements Sellab
         this.removedSellableInventoryItemEntryStates.put(state.getSellableInventoryItemEntryId(), state);
     }
 
-    public void addToSave(SellableInventoryItemEntryState state)
+    public void add(SellableInventoryItemEntryState state)
     {
         this.loadedSellableInventoryItemEntryStates.put(state.getSellableInventoryItemEntryId(), state);
     }

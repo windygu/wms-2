@@ -8,13 +8,13 @@ public interface ShipmentReceiptStates extends Iterable<ShipmentReceiptState>, S
 {
     ShipmentReceiptState get(String receiptSeqId);
 
-    ShipmentReceiptState get(String receiptSeqId, boolean forCreation);
+    //ShipmentReceiptState get(String receiptSeqId, boolean forCreation);
 
-    ShipmentReceiptState get(String receiptSeqId, boolean forCreation, boolean nullAllowed);
+    //ShipmentReceiptState get(String receiptSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(ShipmentReceiptState state);
 
-    void addToSave(ShipmentReceiptState state);
+    void add(ShipmentReceiptState state);
 
 }
 

@@ -60,16 +60,17 @@ public abstract class AbstractShipmentReceiptStates implements ShipmentReceiptSt
         return get(receiptSeqId, false, false);
     }
 
-    public ShipmentReceiptState get(String receiptSeqId, boolean forCreation) {
+    ShipmentReceiptState get(String receiptSeqId, boolean forCreation) {
         return get(receiptSeqId, forCreation, false);
     }
 
-    public ShipmentReceiptState get(String receiptSeqId, boolean forCreation, boolean nullAllowed) {
+    ShipmentReceiptState get(String receiptSeqId, boolean forCreation, boolean nullAllowed) {
         ShipmentReceiptId globalId = new ShipmentReceiptId(shipmentState.getShipmentId(), receiptSeqId);
         if (loadedShipmentReceiptStates.containsKey(globalId)) {
             return loadedShipmentReceiptStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             ShipmentReceiptState state = new AbstractShipmentReceiptState.SimpleShipmentReceiptState(getForReapplying());
             state.setShipmentReceiptId(globalId);
             loadedShipmentReceiptStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractShipmentReceiptStates implements ShipmentReceiptSt
         this.removedShipmentReceiptStates.put(state.getShipmentReceiptId(), state);
     }
 
-    public void addToSave(ShipmentReceiptState state)
+    public void add(ShipmentReceiptState state)
     {
         this.loadedShipmentReceiptStates.put(state.getShipmentReceiptId(), state);
     }

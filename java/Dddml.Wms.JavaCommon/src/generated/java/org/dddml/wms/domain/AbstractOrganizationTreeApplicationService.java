@@ -77,6 +77,7 @@ public abstract class AbstractOrganizationTreeApplicationService implements Orga
 
     public static class SimpleOrganizationTreeNode implements OrganizationTreeNode
     {
+
         private OrganizationState state;
 
         private OrganizationTreeRepository repository;
@@ -86,11 +87,6 @@ public abstract class AbstractOrganizationTreeApplicationService implements Orga
             this.state = state;
             this.repository = repository;
         }
-
-        //@Override
-        //public Iterable<OrganizationTreeNode> getOrganizationTreeChildren()
-        //{
-        //}
 
         @Override
         public Iterable<TreeNode<OrganizationState>> getChildren()

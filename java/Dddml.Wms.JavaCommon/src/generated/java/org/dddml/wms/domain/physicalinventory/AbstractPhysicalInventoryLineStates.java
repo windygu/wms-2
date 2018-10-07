@@ -62,16 +62,17 @@ public abstract class AbstractPhysicalInventoryLineStates implements PhysicalInv
         return get(inventoryItemId, false, false);
     }
 
-    public PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation) {
+    PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation) {
         return get(inventoryItemId, forCreation, false);
     }
 
-    public PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation, boolean nullAllowed) {
+    PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation, boolean nullAllowed) {
         PhysicalInventoryLineId globalId = new PhysicalInventoryLineId(physicalInventoryState.getDocumentNumber(), inventoryItemId);
         if (loadedPhysicalInventoryLineStates.containsKey(globalId)) {
             return loadedPhysicalInventoryLineStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             PhysicalInventoryLineState state = new AbstractPhysicalInventoryLineState.SimplePhysicalInventoryLineState(getForReapplying());
             state.setPhysicalInventoryLineId(globalId);
             loadedPhysicalInventoryLineStates.put(globalId, state);
@@ -91,7 +92,7 @@ public abstract class AbstractPhysicalInventoryLineStates implements PhysicalInv
         this.removedPhysicalInventoryLineStates.put(state.getPhysicalInventoryLineId(), state);
     }
 
-    public void addToSave(PhysicalInventoryLineState state)
+    public void add(PhysicalInventoryLineState state)
     {
         this.loadedPhysicalInventoryLineStates.put(state.getPhysicalInventoryLineId(), state);
     }

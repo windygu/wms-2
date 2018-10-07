@@ -61,16 +61,17 @@ public abstract class AbstractMovementConfirmationLineStates implements Movement
         return get(lineNumber, false, false);
     }
 
-    public MovementConfirmationLineState get(String lineNumber, boolean forCreation) {
+    MovementConfirmationLineState get(String lineNumber, boolean forCreation) {
         return get(lineNumber, forCreation, false);
     }
 
-    public MovementConfirmationLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
+    MovementConfirmationLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
         MovementConfirmationLineId globalId = new MovementConfirmationLineId(movementConfirmationState.getDocumentNumber(), lineNumber);
         if (loadedMovementConfirmationLineStates.containsKey(globalId)) {
             return loadedMovementConfirmationLineStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             MovementConfirmationLineState state = new AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState(getForReapplying());
             state.setMovementConfirmationLineId(globalId);
             loadedMovementConfirmationLineStates.put(globalId, state);
@@ -90,7 +91,7 @@ public abstract class AbstractMovementConfirmationLineStates implements Movement
         this.removedMovementConfirmationLineStates.put(state.getMovementConfirmationLineId(), state);
     }
 
-    public void addToSave(MovementConfirmationLineState state)
+    public void add(MovementConfirmationLineState state)
     {
         this.loadedMovementConfirmationLineStates.put(state.getMovementConfirmationLineId(), state);
     }

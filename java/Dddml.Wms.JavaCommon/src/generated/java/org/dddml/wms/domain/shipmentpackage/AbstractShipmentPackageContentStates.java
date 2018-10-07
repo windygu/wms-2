@@ -60,16 +60,17 @@ public abstract class AbstractShipmentPackageContentStates implements ShipmentPa
         return get(shipmentItemSeqId, false, false);
     }
 
-    public ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation) {
+    ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation) {
         return get(shipmentItemSeqId, forCreation, false);
     }
 
-    public ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed) {
+    ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed) {
         ShipmentPackageContentId globalId = new ShipmentPackageContentId(shipmentPackageState.getShipmentPackageId(), shipmentItemSeqId);
         if (loadedShipmentPackageContentStates.containsKey(globalId)) {
             return loadedShipmentPackageContentStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             ShipmentPackageContentState state = new AbstractShipmentPackageContentState.SimpleShipmentPackageContentState(getForReapplying());
             state.setShipmentPackageContentId(globalId);
             loadedShipmentPackageContentStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractShipmentPackageContentStates implements ShipmentPa
         this.removedShipmentPackageContentStates.put(state.getShipmentPackageContentId(), state);
     }
 
-    public void addToSave(ShipmentPackageContentState state)
+    public void add(ShipmentPackageContentState state)
     {
         this.loadedShipmentPackageContentStates.put(state.getShipmentPackageContentId(), state);
     }

@@ -8,13 +8,13 @@ public interface AttributeValueStates extends Iterable<AttributeValueState>, Sav
 {
     AttributeValueState get(String value);
 
-    AttributeValueState get(String value, boolean forCreation);
+    //AttributeValueState get(String value, boolean forCreation);
 
-    AttributeValueState get(String value, boolean forCreation, boolean nullAllowed);
+    //AttributeValueState get(String value, boolean forCreation, boolean nullAllowed);
 
     void remove(AttributeValueState state);
 
-    void addToSave(AttributeValueState state);
+    void add(AttributeValueState state);
 
 }
 

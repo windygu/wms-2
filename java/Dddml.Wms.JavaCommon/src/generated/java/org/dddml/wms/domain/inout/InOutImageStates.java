@@ -8,13 +8,13 @@ public interface InOutImageStates extends Iterable<InOutImageState>, Saveable
 {
     InOutImageState get(String sequenceId);
 
-    InOutImageState get(String sequenceId, boolean forCreation);
+    //InOutImageState get(String sequenceId, boolean forCreation);
 
-    InOutImageState get(String sequenceId, boolean forCreation, boolean nullAllowed);
+    //InOutImageState get(String sequenceId, boolean forCreation, boolean nullAllowed);
 
     void remove(InOutImageState state);
 
-    void addToSave(InOutImageState state);
+    void add(InOutImageState state);
 
 }
 

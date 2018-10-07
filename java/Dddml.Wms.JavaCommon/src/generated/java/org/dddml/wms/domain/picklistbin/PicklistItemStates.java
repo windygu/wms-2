@@ -8,13 +8,13 @@ public interface PicklistItemStates extends Iterable<PicklistItemState>, Saveabl
 {
     PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
 
-    PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation);
+    //PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation);
 
-    PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation, boolean nullAllowed);
+    //PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation, boolean nullAllowed);
 
     void remove(PicklistItemState state);
 
-    void addToSave(PicklistItemState state);
+    void add(PicklistItemState state);
 
 }
 

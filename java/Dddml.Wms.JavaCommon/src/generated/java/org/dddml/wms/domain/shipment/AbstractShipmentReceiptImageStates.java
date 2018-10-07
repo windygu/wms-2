@@ -60,16 +60,17 @@ public abstract class AbstractShipmentReceiptImageStates implements ShipmentRece
         return get(sequenceId, false, false);
     }
 
-    public ShipmentReceiptImageState get(String sequenceId, boolean forCreation) {
+    ShipmentReceiptImageState get(String sequenceId, boolean forCreation) {
         return get(sequenceId, forCreation, false);
     }
 
-    public ShipmentReceiptImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
+    ShipmentReceiptImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
         ShipmentReceiptImageId globalId = new ShipmentReceiptImageId(shipmentReceiptState.getShipmentReceiptId().getShipmentId(), shipmentReceiptState.getShipmentReceiptId().getReceiptSeqId(), sequenceId);
         if (loadedShipmentReceiptImageStates.containsKey(globalId)) {
             return loadedShipmentReceiptImageStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             ShipmentReceiptImageState state = new AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState(getForReapplying());
             state.setShipmentReceiptImageId(globalId);
             loadedShipmentReceiptImageStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractShipmentReceiptImageStates implements ShipmentRece
         this.removedShipmentReceiptImageStates.put(state.getShipmentReceiptImageId(), state);
     }
 
-    public void addToSave(ShipmentReceiptImageState state)
+    public void add(ShipmentReceiptImageState state)
     {
         this.loadedShipmentReceiptImageStates.put(state.getShipmentReceiptImageId(), state);
     }

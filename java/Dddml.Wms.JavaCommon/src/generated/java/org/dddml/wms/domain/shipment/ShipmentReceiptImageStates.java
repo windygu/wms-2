@@ -8,13 +8,13 @@ public interface ShipmentReceiptImageStates extends Iterable<ShipmentReceiptImag
 {
     ShipmentReceiptImageState get(String sequenceId);
 
-    ShipmentReceiptImageState get(String sequenceId, boolean forCreation);
+    //ShipmentReceiptImageState get(String sequenceId, boolean forCreation);
 
-    ShipmentReceiptImageState get(String sequenceId, boolean forCreation, boolean nullAllowed);
+    //ShipmentReceiptImageState get(String sequenceId, boolean forCreation, boolean nullAllowed);
 
     void remove(ShipmentReceiptImageState state);
 
-    void addToSave(ShipmentReceiptImageState state);
+    void add(ShipmentReceiptImageState state);
 
 }
 

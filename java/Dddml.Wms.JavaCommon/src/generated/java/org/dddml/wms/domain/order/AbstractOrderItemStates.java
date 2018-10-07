@@ -60,16 +60,17 @@ public abstract class AbstractOrderItemStates implements OrderItemStates
         return get(orderItemSeqId, false, false);
     }
 
-    public OrderItemState get(String orderItemSeqId, boolean forCreation) {
+    OrderItemState get(String orderItemSeqId, boolean forCreation) {
         return get(orderItemSeqId, forCreation, false);
     }
 
-    public OrderItemState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed) {
+    OrderItemState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed) {
         OrderItemId globalId = new OrderItemId(orderState.getOrderId(), orderItemSeqId);
         if (loadedOrderItemStates.containsKey(globalId)) {
             return loadedOrderItemStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             OrderItemState state = new AbstractOrderItemState.SimpleOrderItemState(getForReapplying());
             state.setOrderItemId(globalId);
             loadedOrderItemStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractOrderItemStates implements OrderItemStates
         this.removedOrderItemStates.put(state.getOrderItemId(), state);
     }
 
-    public void addToSave(OrderItemState state)
+    public void add(OrderItemState state)
     {
         this.loadedOrderItemStates.put(state.getOrderItemId(), state);
     }

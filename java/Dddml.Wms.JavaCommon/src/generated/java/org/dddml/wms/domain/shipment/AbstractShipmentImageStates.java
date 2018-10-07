@@ -60,16 +60,17 @@ public abstract class AbstractShipmentImageStates implements ShipmentImageStates
         return get(sequenceId, false, false);
     }
 
-    public ShipmentImageState get(String sequenceId, boolean forCreation) {
+    ShipmentImageState get(String sequenceId, boolean forCreation) {
         return get(sequenceId, forCreation, false);
     }
 
-    public ShipmentImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
+    ShipmentImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
         ShipmentImageId globalId = new ShipmentImageId(shipmentState.getShipmentId(), sequenceId);
         if (loadedShipmentImageStates.containsKey(globalId)) {
             return loadedShipmentImageStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             ShipmentImageState state = new AbstractShipmentImageState.SimpleShipmentImageState(getForReapplying());
             state.setShipmentImageId(globalId);
             loadedShipmentImageStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractShipmentImageStates implements ShipmentImageStates
         this.removedShipmentImageStates.put(state.getShipmentImageId(), state);
     }
 
-    public void addToSave(ShipmentImageState state)
+    public void add(ShipmentImageState state)
     {
         this.loadedShipmentImageStates.put(state.getShipmentImageId(), state);
     }

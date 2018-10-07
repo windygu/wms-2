@@ -9,13 +9,13 @@ public interface OrderRoleStates extends Iterable<OrderRoleState>, Saveable
 {
     OrderRoleState get(PartyRoleId partyRoleId);
 
-    OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation);
+    //OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation);
 
-    OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed);
+    //OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed);
 
     void remove(OrderRoleState state);
 
-    void addToSave(OrderRoleState state);
+    void add(OrderRoleState state);
 
 }
 

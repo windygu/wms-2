@@ -60,16 +60,17 @@ public abstract class AbstractOrderItemShipGroupAssociationStates implements Ord
         return get(orderItemSeqId, false, false);
     }
 
-    public OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation) {
+    OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation) {
         return get(orderItemSeqId, forCreation, false);
     }
 
-    public OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed) {
+    OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed) {
         OrderItemShipGroupAssociationId globalId = new OrderItemShipGroupAssociationId(orderShipGroupState.getOrderShipGroupId().getOrderId(), orderShipGroupState.getOrderShipGroupId().getShipGroupSeqId(), orderItemSeqId);
         if (loadedOrderItemShipGroupAssociationStates.containsKey(globalId)) {
             return loadedOrderItemShipGroupAssociationStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             OrderItemShipGroupAssociationState state = new AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState(getForReapplying());
             state.setOrderItemShipGroupAssociationId(globalId);
             loadedOrderItemShipGroupAssociationStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractOrderItemShipGroupAssociationStates implements Ord
         this.removedOrderItemShipGroupAssociationStates.put(state.getOrderItemShipGroupAssociationId(), state);
     }
 
-    public void addToSave(OrderItemShipGroupAssociationState state)
+    public void add(OrderItemShipGroupAssociationState state)
     {
         this.loadedOrderItemShipGroupAssociationStates.put(state.getOrderItemShipGroupAssociationId(), state);
     }

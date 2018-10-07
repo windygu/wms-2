@@ -11,13 +11,13 @@ public interface SellableInventoryItemEntryStates extends Iterable<SellableInven
 {
     SellableInventoryItemEntryState get(Long entrySeqId);
 
-    SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation);
+    //SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation);
 
-    SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed);
+    //SellableInventoryItemEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(SellableInventoryItemEntryState state);
 
-    void addToSave(SellableInventoryItemEntryState state);
+    void add(SellableInventoryItemEntryState state);
 
 }
 

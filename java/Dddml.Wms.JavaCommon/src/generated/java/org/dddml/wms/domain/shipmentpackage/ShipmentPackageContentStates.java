@@ -8,13 +8,13 @@ public interface ShipmentPackageContentStates extends Iterable<ShipmentPackageCo
 {
     ShipmentPackageContentState get(String shipmentItemSeqId);
 
-    ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation);
+    //ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation);
 
-    ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed);
+    //ShipmentPackageContentState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(ShipmentPackageContentState state);
 
-    void addToSave(ShipmentPackageContentState state);
+    void add(ShipmentPackageContentState state);
 
 }
 

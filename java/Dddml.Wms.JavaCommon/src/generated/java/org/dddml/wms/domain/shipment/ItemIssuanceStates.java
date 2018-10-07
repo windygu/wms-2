@@ -8,13 +8,13 @@ public interface ItemIssuanceStates extends Iterable<ItemIssuanceState>, Saveabl
 {
     ItemIssuanceState get(String itemIssuanceSeqId);
 
-    ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation);
+    //ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation);
 
-    ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation, boolean nullAllowed);
+    //ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(ItemIssuanceState state);
 
-    void addToSave(ItemIssuanceState state);
+    void add(ItemIssuanceState state);
 
 }
 

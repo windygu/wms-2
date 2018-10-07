@@ -76,6 +76,7 @@ public abstract class AbstractLocatorTreeApplicationService implements LocatorTr
 
     public static class SimpleLocatorTreeNode implements LocatorTreeNode
     {
+
         private LocatorState state;
 
         private LocatorTreeRepository repository;
@@ -85,11 +86,6 @@ public abstract class AbstractLocatorTreeApplicationService implements LocatorTr
             this.state = state;
             this.repository = repository;
         }
-
-        //@Override
-        //public Iterable<LocatorTreeNode> getLocatorTreeChildren()
-        //{
-        //}
 
         @Override
         public Iterable<TreeNode<LocatorState>> getChildren()

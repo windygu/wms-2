@@ -9,13 +9,13 @@ public interface PicklistRoleStates extends Iterable<PicklistRoleState>, Saveabl
 {
     PicklistRoleState get(PartyRoleId partyRoleId);
 
-    PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation);
+    //PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation);
 
-    PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed);
+    //PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed);
 
     void remove(PicklistRoleState state);
 
-    void addToSave(PicklistRoleState state);
+    void add(PicklistRoleState state);
 
 }
 

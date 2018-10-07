@@ -61,16 +61,17 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
         return get(lineNumber, false, false);
     }
 
-    public InOutLineState get(String lineNumber, boolean forCreation) {
+    InOutLineState get(String lineNumber, boolean forCreation) {
         return get(lineNumber, forCreation, false);
     }
 
-    public InOutLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
+    InOutLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
         InOutLineId globalId = new InOutLineId(inOutState.getDocumentNumber(), lineNumber);
         if (loadedInOutLineStates.containsKey(globalId)) {
             return loadedInOutLineStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             InOutLineState state = new AbstractInOutLineState.SimpleInOutLineState(getForReapplying());
             state.setInOutLineId(globalId);
             loadedInOutLineStates.put(globalId, state);
@@ -90,7 +91,7 @@ public abstract class AbstractInOutLineStates implements InOutLineStates
         this.removedInOutLineStates.put(state.getInOutLineId(), state);
     }
 
-    public void addToSave(InOutLineState state)
+    public void add(InOutLineState state)
     {
         this.loadedInOutLineStates.put(state.getInOutLineId(), state);
     }

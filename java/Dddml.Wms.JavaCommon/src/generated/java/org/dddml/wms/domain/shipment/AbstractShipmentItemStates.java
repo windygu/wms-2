@@ -60,16 +60,17 @@ public abstract class AbstractShipmentItemStates implements ShipmentItemStates
         return get(shipmentItemSeqId, false, false);
     }
 
-    public ShipmentItemState get(String shipmentItemSeqId, boolean forCreation) {
+    ShipmentItemState get(String shipmentItemSeqId, boolean forCreation) {
         return get(shipmentItemSeqId, forCreation, false);
     }
 
-    public ShipmentItemState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed) {
+    ShipmentItemState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed) {
         ShipmentItemId globalId = new ShipmentItemId(shipmentState.getShipmentId(), shipmentItemSeqId);
         if (loadedShipmentItemStates.containsKey(globalId)) {
             return loadedShipmentItemStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             ShipmentItemState state = new AbstractShipmentItemState.SimpleShipmentItemState(getForReapplying());
             state.setShipmentItemId(globalId);
             loadedShipmentItemStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractShipmentItemStates implements ShipmentItemStates
         this.removedShipmentItemStates.put(state.getShipmentItemId(), state);
     }
 
-    public void addToSave(ShipmentItemState state)
+    public void add(ShipmentItemState state)
     {
         this.loadedShipmentItemStates.put(state.getShipmentItemId(), state);
     }

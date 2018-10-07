@@ -8,13 +8,13 @@ public interface AttributeUseStates extends Iterable<AttributeUseState>, Saveabl
 {
     AttributeUseState get(String attributeId);
 
-    AttributeUseState get(String attributeId, boolean forCreation);
+    //AttributeUseState get(String attributeId, boolean forCreation);
 
-    AttributeUseState get(String attributeId, boolean forCreation, boolean nullAllowed);
+    //AttributeUseState get(String attributeId, boolean forCreation, boolean nullAllowed);
 
     void remove(AttributeUseState state);
 
-    void addToSave(AttributeUseState state);
+    void add(AttributeUseState state);
 
 }
 

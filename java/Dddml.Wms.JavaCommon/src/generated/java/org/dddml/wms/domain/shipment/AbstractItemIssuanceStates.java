@@ -60,16 +60,17 @@ public abstract class AbstractItemIssuanceStates implements ItemIssuanceStates
         return get(itemIssuanceSeqId, false, false);
     }
 
-    public ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation) {
+    ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation) {
         return get(itemIssuanceSeqId, forCreation, false);
     }
 
-    public ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation, boolean nullAllowed) {
+    ItemIssuanceState get(String itemIssuanceSeqId, boolean forCreation, boolean nullAllowed) {
         ShipmentItemIssuanceId globalId = new ShipmentItemIssuanceId(shipmentState.getShipmentId(), itemIssuanceSeqId);
         if (loadedItemIssuanceStates.containsKey(globalId)) {
             return loadedItemIssuanceStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             ItemIssuanceState state = new AbstractItemIssuanceState.SimpleItemIssuanceState(getForReapplying());
             state.setShipmentItemIssuanceId(globalId);
             loadedItemIssuanceStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractItemIssuanceStates implements ItemIssuanceStates
         this.removedItemIssuanceStates.put(state.getShipmentItemIssuanceId(), state);
     }
 
-    public void addToSave(ItemIssuanceState state)
+    public void add(ItemIssuanceState state)
     {
         this.loadedItemIssuanceStates.put(state.getShipmentItemIssuanceId(), state);
     }

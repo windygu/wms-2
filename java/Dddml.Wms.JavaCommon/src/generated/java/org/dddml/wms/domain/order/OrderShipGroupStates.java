@@ -8,13 +8,13 @@ public interface OrderShipGroupStates extends Iterable<OrderShipGroupState>, Sav
 {
     OrderShipGroupState get(String shipGroupSeqId);
 
-    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation);
+    //OrderShipGroupState get(String shipGroupSeqId, boolean forCreation);
 
-    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation, boolean nullAllowed);
+    //OrderShipGroupState get(String shipGroupSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(OrderShipGroupState state);
 
-    void addToSave(OrderShipGroupState state);
+    void add(OrderShipGroupState state);
 
 }
 

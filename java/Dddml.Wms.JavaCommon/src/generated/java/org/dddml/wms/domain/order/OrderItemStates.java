@@ -8,13 +8,13 @@ public interface OrderItemStates extends Iterable<OrderItemState>, Saveable
 {
     OrderItemState get(String orderItemSeqId);
 
-    OrderItemState get(String orderItemSeqId, boolean forCreation);
+    //OrderItemState get(String orderItemSeqId, boolean forCreation);
 
-    OrderItemState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed);
+    //OrderItemState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(OrderItemState state);
 
-    void addToSave(OrderItemState state);
+    void add(OrderItemState state);
 
 }
 

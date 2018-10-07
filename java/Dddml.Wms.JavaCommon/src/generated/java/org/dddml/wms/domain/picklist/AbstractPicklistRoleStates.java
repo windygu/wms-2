@@ -61,16 +61,17 @@ public abstract class AbstractPicklistRoleStates implements PicklistRoleStates
         return get(partyRoleId, false, false);
     }
 
-    public PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation) {
+    PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation) {
         return get(partyRoleId, forCreation, false);
     }
 
-    public PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed) {
+    PicklistRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed) {
         PicklistRoleId globalId = new PicklistRoleId(picklistState.getPicklistId(), partyRoleId);
         if (loadedPicklistRoleStates.containsKey(globalId)) {
             return loadedPicklistRoleStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             PicklistRoleState state = new AbstractPicklistRoleState.SimplePicklistRoleState(getForReapplying());
             state.setPicklistRoleId(globalId);
             loadedPicklistRoleStates.put(globalId, state);
@@ -90,7 +91,7 @@ public abstract class AbstractPicklistRoleStates implements PicklistRoleStates
         this.removedPicklistRoleStates.put(state.getPicklistRoleId(), state);
     }
 
-    public void addToSave(PicklistRoleState state)
+    public void add(PicklistRoleState state)
     {
         this.loadedPicklistRoleStates.put(state.getPicklistRoleId(), state);
     }

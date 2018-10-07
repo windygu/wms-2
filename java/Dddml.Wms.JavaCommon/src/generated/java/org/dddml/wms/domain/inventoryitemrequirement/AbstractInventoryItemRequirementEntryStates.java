@@ -61,16 +61,17 @@ public abstract class AbstractInventoryItemRequirementEntryStates implements Inv
         return get(entrySeqId, false, false);
     }
 
-    public InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation) {
+    InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation) {
         return get(entrySeqId, forCreation, false);
     }
 
-    public InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
+    InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
         InventoryItemRequirementEntryId globalId = new InventoryItemRequirementEntryId(inventoryItemRequirementState.getInventoryItemRequirementId(), entrySeqId);
         if (loadedInventoryItemRequirementEntryStates.containsKey(globalId)) {
             return loadedInventoryItemRequirementEntryStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             InventoryItemRequirementEntryState state = new AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState(getForReapplying());
             state.setInventoryItemRequirementEntryId(globalId);
             loadedInventoryItemRequirementEntryStates.put(globalId, state);
@@ -90,7 +91,7 @@ public abstract class AbstractInventoryItemRequirementEntryStates implements Inv
         this.removedInventoryItemRequirementEntryStates.put(state.getInventoryItemRequirementEntryId(), state);
     }
 
-    public void addToSave(InventoryItemRequirementEntryState state)
+    public void add(InventoryItemRequirementEntryState state)
     {
         this.loadedInventoryItemRequirementEntryStates.put(state.getInventoryItemRequirementEntryId(), state);
     }

@@ -8,13 +8,13 @@ public interface AttributeAliasStates extends Iterable<AttributeAliasState>, Sav
 {
     AttributeAliasState get(String code);
 
-    AttributeAliasState get(String code, boolean forCreation);
+    //AttributeAliasState get(String code, boolean forCreation);
 
-    AttributeAliasState get(String code, boolean forCreation, boolean nullAllowed);
+    //AttributeAliasState get(String code, boolean forCreation, boolean nullAllowed);
 
     void remove(AttributeAliasState state);
 
-    void addToSave(AttributeAliasState state);
+    void add(AttributeAliasState state);
 
 }
 

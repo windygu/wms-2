@@ -8,13 +8,13 @@ public interface ShipmentItemStates extends Iterable<ShipmentItemState>, Saveabl
 {
     ShipmentItemState get(String shipmentItemSeqId);
 
-    ShipmentItemState get(String shipmentItemSeqId, boolean forCreation);
+    //ShipmentItemState get(String shipmentItemSeqId, boolean forCreation);
 
-    ShipmentItemState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed);
+    //ShipmentItemState get(String shipmentItemSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(ShipmentItemState state);
 
-    void addToSave(ShipmentItemState state);
+    void add(ShipmentItemState state);
 
 }
 

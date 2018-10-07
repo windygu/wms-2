@@ -60,16 +60,17 @@ public abstract class AbstractAttributeAliasStates implements AttributeAliasStat
         return get(code, false, false);
     }
 
-    public AttributeAliasState get(String code, boolean forCreation) {
+    AttributeAliasState get(String code, boolean forCreation) {
         return get(code, forCreation, false);
     }
 
-    public AttributeAliasState get(String code, boolean forCreation, boolean nullAllowed) {
+    AttributeAliasState get(String code, boolean forCreation, boolean nullAllowed) {
         AttributeAliasId globalId = new AttributeAliasId(attributeState.getAttributeId(), code);
         if (loadedAttributeAliasStates.containsKey(globalId)) {
             return loadedAttributeAliasStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             AttributeAliasState state = new AbstractAttributeAliasState.SimpleAttributeAliasState(getForReapplying());
             state.setAttributeAliasId(globalId);
             loadedAttributeAliasStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractAttributeAliasStates implements AttributeAliasStat
         this.removedAttributeAliasStates.put(state.getAttributeAliasId(), state);
     }
 
-    public void addToSave(AttributeAliasState state)
+    public void add(AttributeAliasState state)
     {
         this.loadedAttributeAliasStates.put(state.getAttributeAliasId(), state);
     }

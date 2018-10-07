@@ -8,13 +8,13 @@ public interface GoodIdentificationStates extends Iterable<GoodIdentificationSta
 {
     GoodIdentificationState get(String goodIdentificationTypeId);
 
-    GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation);
+    //GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation);
 
-    GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation, boolean nullAllowed);
+    //GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation, boolean nullAllowed);
 
     void remove(GoodIdentificationState state);
 
-    void addToSave(GoodIdentificationState state);
+    void add(GoodIdentificationState state);
 
 }
 

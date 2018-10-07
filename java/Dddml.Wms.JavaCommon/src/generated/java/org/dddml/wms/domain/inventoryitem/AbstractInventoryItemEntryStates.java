@@ -59,16 +59,17 @@ public abstract class AbstractInventoryItemEntryStates implements InventoryItemE
         return get(entrySeqId, false, false);
     }
 
-    public InventoryItemEntryState get(Long entrySeqId, boolean forCreation) {
+    InventoryItemEntryState get(Long entrySeqId, boolean forCreation) {
         return get(entrySeqId, forCreation, false);
     }
 
-    public InventoryItemEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
+    InventoryItemEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed) {
         InventoryItemEntryId globalId = new InventoryItemEntryId(inventoryItemState.getInventoryItemId(), entrySeqId);
         if (loadedInventoryItemEntryStates.containsKey(globalId)) {
             return loadedInventoryItemEntryStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             InventoryItemEntryState state = new AbstractInventoryItemEntryState.SimpleInventoryItemEntryState(getForReapplying());
             state.setInventoryItemEntryId(globalId);
             loadedInventoryItemEntryStates.put(globalId, state);
@@ -88,7 +89,7 @@ public abstract class AbstractInventoryItemEntryStates implements InventoryItemE
         this.removedInventoryItemEntryStates.put(state.getInventoryItemEntryId(), state);
     }
 
-    public void addToSave(InventoryItemEntryState state)
+    public void add(InventoryItemEntryState state)
     {
         this.loadedInventoryItemEntryStates.put(state.getInventoryItemEntryId(), state);
     }

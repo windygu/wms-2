@@ -10,13 +10,13 @@ public interface PhysicalInventoryLineStates extends Iterable<PhysicalInventoryL
 {
     PhysicalInventoryLineState get(InventoryItemId inventoryItemId);
 
-    PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation);
+    //PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation);
 
-    PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation, boolean nullAllowed);
+    //PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation, boolean nullAllowed);
 
     void remove(PhysicalInventoryLineState state);
 
-    void addToSave(PhysicalInventoryLineState state);
+    void add(PhysicalInventoryLineState state);
 
 }
 

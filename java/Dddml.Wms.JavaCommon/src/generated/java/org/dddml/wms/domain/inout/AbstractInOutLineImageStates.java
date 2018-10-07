@@ -60,16 +60,17 @@ public abstract class AbstractInOutLineImageStates implements InOutLineImageStat
         return get(sequenceId, false, false);
     }
 
-    public InOutLineImageState get(String sequenceId, boolean forCreation) {
+    InOutLineImageState get(String sequenceId, boolean forCreation) {
         return get(sequenceId, forCreation, false);
     }
 
-    public InOutLineImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
+    InOutLineImageState get(String sequenceId, boolean forCreation, boolean nullAllowed) {
         InOutLineImageId globalId = new InOutLineImageId(inOutLineState.getInOutLineId().getInOutDocumentNumber(), inOutLineState.getInOutLineId().getLineNumber(), sequenceId);
         if (loadedInOutLineImageStates.containsKey(globalId)) {
             return loadedInOutLineImageStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             InOutLineImageState state = new AbstractInOutLineImageState.SimpleInOutLineImageState(getForReapplying());
             state.setInOutLineImageId(globalId);
             loadedInOutLineImageStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractInOutLineImageStates implements InOutLineImageStat
         this.removedInOutLineImageStates.put(state.getInOutLineImageId(), state);
     }
 
-    public void addToSave(InOutLineImageState state)
+    public void add(InOutLineImageState state)
     {
         this.loadedInOutLineImageStates.put(state.getInOutLineImageId(), state);
     }

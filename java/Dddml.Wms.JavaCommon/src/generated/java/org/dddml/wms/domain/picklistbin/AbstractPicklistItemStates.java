@@ -60,16 +60,17 @@ public abstract class AbstractPicklistItemStates implements PicklistItemStates
         return get(picklistItemOrderShipGrpInvId, false, false);
     }
 
-    public PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation) {
+    PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation) {
         return get(picklistItemOrderShipGrpInvId, forCreation, false);
     }
 
-    public PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation, boolean nullAllowed) {
+    PicklistItemState get(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId, boolean forCreation, boolean nullAllowed) {
         PicklistBinPicklistItemId globalId = new PicklistBinPicklistItemId(picklistBinState.getPicklistBinId(), picklistItemOrderShipGrpInvId);
         if (loadedPicklistItemStates.containsKey(globalId)) {
             return loadedPicklistItemStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             PicklistItemState state = new AbstractPicklistItemState.SimplePicklistItemState(getForReapplying());
             state.setPicklistBinPicklistItemId(globalId);
             loadedPicklistItemStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractPicklistItemStates implements PicklistItemStates
         this.removedPicklistItemStates.put(state.getPicklistBinPicklistItemId(), state);
     }
 
-    public void addToSave(PicklistItemState state)
+    public void add(PicklistItemState state)
     {
         this.loadedPicklistItemStates.put(state.getPicklistBinPicklistItemId(), state);
     }

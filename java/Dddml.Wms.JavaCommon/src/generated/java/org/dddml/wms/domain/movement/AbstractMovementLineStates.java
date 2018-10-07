@@ -61,16 +61,17 @@ public abstract class AbstractMovementLineStates implements MovementLineStates
         return get(lineNumber, false, false);
     }
 
-    public MovementLineState get(String lineNumber, boolean forCreation) {
+    MovementLineState get(String lineNumber, boolean forCreation) {
         return get(lineNumber, forCreation, false);
     }
 
-    public MovementLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
+    MovementLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
         MovementLineId globalId = new MovementLineId(movementState.getDocumentNumber(), lineNumber);
         if (loadedMovementLineStates.containsKey(globalId)) {
             return loadedMovementLineStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             MovementLineState state = new AbstractMovementLineState.SimpleMovementLineState(getForReapplying());
             state.setMovementLineId(globalId);
             loadedMovementLineStates.put(globalId, state);
@@ -90,7 +91,7 @@ public abstract class AbstractMovementLineStates implements MovementLineStates
         this.removedMovementLineStates.put(state.getMovementLineId(), state);
     }
 
-    public void addToSave(MovementLineState state)
+    public void add(MovementLineState state)
     {
         this.loadedMovementLineStates.put(state.getMovementLineId(), state);
     }

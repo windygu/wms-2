@@ -60,16 +60,17 @@ public abstract class AbstractOrderShipGroupStates implements OrderShipGroupStat
         return get(shipGroupSeqId, false, false);
     }
 
-    public OrderShipGroupState get(String shipGroupSeqId, boolean forCreation) {
+    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation) {
         return get(shipGroupSeqId, forCreation, false);
     }
 
-    public OrderShipGroupState get(String shipGroupSeqId, boolean forCreation, boolean nullAllowed) {
+    OrderShipGroupState get(String shipGroupSeqId, boolean forCreation, boolean nullAllowed) {
         OrderShipGroupId globalId = new OrderShipGroupId(orderState.getOrderId(), shipGroupSeqId);
         if (loadedOrderShipGroupStates.containsKey(globalId)) {
             return loadedOrderShipGroupStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             OrderShipGroupState state = new AbstractOrderShipGroupState.SimpleOrderShipGroupState(getForReapplying());
             state.setOrderShipGroupId(globalId);
             loadedOrderShipGroupStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractOrderShipGroupStates implements OrderShipGroupStat
         this.removedOrderShipGroupStates.put(state.getOrderShipGroupId(), state);
     }
 
-    public void addToSave(OrderShipGroupState state)
+    public void add(OrderShipGroupState state)
     {
         this.loadedOrderShipGroupStates.put(state.getOrderShipGroupId(), state);
     }

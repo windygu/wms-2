@@ -61,16 +61,17 @@ public abstract class AbstractOrderRoleStates implements OrderRoleStates
         return get(partyRoleId, false, false);
     }
 
-    public OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation) {
+    OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation) {
         return get(partyRoleId, forCreation, false);
     }
 
-    public OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed) {
+    OrderRoleState get(PartyRoleId partyRoleId, boolean forCreation, boolean nullAllowed) {
         OrderRoleId globalId = new OrderRoleId(orderState.getOrderId(), partyRoleId);
         if (loadedOrderRoleStates.containsKey(globalId)) {
             return loadedOrderRoleStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             OrderRoleState state = new AbstractOrderRoleState.SimpleOrderRoleState(getForReapplying());
             state.setOrderRoleId(globalId);
             loadedOrderRoleStates.put(globalId, state);
@@ -90,7 +91,7 @@ public abstract class AbstractOrderRoleStates implements OrderRoleStates
         this.removedOrderRoleStates.put(state.getOrderRoleId(), state);
     }
 
-    public void addToSave(OrderRoleState state)
+    public void add(OrderRoleState state)
     {
         this.loadedOrderRoleStates.put(state.getOrderRoleId(), state);
     }

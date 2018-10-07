@@ -9,13 +9,13 @@ public interface MovementConfirmationLineStates extends Iterable<MovementConfirm
 {
     MovementConfirmationLineState get(String lineNumber);
 
-    MovementConfirmationLineState get(String lineNumber, boolean forCreation);
+    //MovementConfirmationLineState get(String lineNumber, boolean forCreation);
 
-    MovementConfirmationLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
+    //MovementConfirmationLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
 
     void remove(MovementConfirmationLineState state);
 
-    void addToSave(MovementConfirmationLineState state);
+    void add(MovementConfirmationLineState state);
 
 }
 

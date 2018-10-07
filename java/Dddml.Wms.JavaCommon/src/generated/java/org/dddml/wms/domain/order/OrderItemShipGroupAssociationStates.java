@@ -8,13 +8,13 @@ public interface OrderItemShipGroupAssociationStates extends Iterable<OrderItemS
 {
     OrderItemShipGroupAssociationState get(String orderItemSeqId);
 
-    OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation);
+    //OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation);
 
-    OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed);
+    //OrderItemShipGroupAssociationState get(String orderItemSeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(OrderItemShipGroupAssociationState state);
 
-    void addToSave(OrderItemShipGroupAssociationState state);
+    void add(OrderItemShipGroupAssociationState state);
 
 }
 

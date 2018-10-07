@@ -60,16 +60,17 @@ public abstract class AbstractGoodIdentificationStates implements GoodIdentifica
         return get(goodIdentificationTypeId, false, false);
     }
 
-    public GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation) {
+    GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation) {
         return get(goodIdentificationTypeId, forCreation, false);
     }
 
-    public GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation, boolean nullAllowed) {
+    GoodIdentificationState get(String goodIdentificationTypeId, boolean forCreation, boolean nullAllowed) {
         ProductGoodIdentificationId globalId = new ProductGoodIdentificationId(productState.getProductId(), goodIdentificationTypeId);
         if (loadedGoodIdentificationStates.containsKey(globalId)) {
             return loadedGoodIdentificationStates.get(globalId);
         }
-        if (forCreation || getForReapplying()) {
+        boolean justNewIfNotLoaded = forCreation || getForReapplying();
+        if (justNewIfNotLoaded) {
             GoodIdentificationState state = new AbstractGoodIdentificationState.SimpleGoodIdentificationState(getForReapplying());
             state.setProductGoodIdentificationId(globalId);
             loadedGoodIdentificationStates.put(globalId, state);
@@ -89,7 +90,7 @@ public abstract class AbstractGoodIdentificationStates implements GoodIdentifica
         this.removedGoodIdentificationStates.put(state.getProductGoodIdentificationId(), state);
     }
 
-    public void addToSave(GoodIdentificationState state)
+    public void add(GoodIdentificationState state)
     {
         this.loadedGoodIdentificationStates.put(state.getProductGoodIdentificationId(), state);
     }

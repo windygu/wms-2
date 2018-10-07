@@ -11,13 +11,13 @@ public interface InventoryItemRequirementEntryStates extends Iterable<InventoryI
 {
     InventoryItemRequirementEntryState get(Long entrySeqId);
 
-    InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation);
+    //InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation);
 
-    InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed);
+    //InventoryItemRequirementEntryState get(Long entrySeqId, boolean forCreation, boolean nullAllowed);
 
     void remove(InventoryItemRequirementEntryState state);
 
-    void addToSave(InventoryItemRequirementEntryState state);
+    void add(InventoryItemRequirementEntryState state);
 
 }
 

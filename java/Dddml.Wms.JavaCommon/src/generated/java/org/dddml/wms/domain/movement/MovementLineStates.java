@@ -9,13 +9,13 @@ public interface MovementLineStates extends Iterable<MovementLineState>, Saveabl
 {
     MovementLineState get(String lineNumber);
 
-    MovementLineState get(String lineNumber, boolean forCreation);
+    //MovementLineState get(String lineNumber, boolean forCreation);
 
-    MovementLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
+    //MovementLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
 
     void remove(MovementLineState state);
 
-    void addToSave(MovementLineState state);
+    void add(MovementLineState state);
 
 }
 
