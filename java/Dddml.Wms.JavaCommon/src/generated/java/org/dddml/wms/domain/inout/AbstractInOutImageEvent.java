@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInOutImageEvent extends AbstractEvent implements InOutImageEvent 
+public abstract class AbstractInOutImageEvent extends AbstractEvent implements InOutImageEvent.SqlInOutImageEvent 
 {
     private InOutImageEventId inOutImageEventId;
 

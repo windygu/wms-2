@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements LocatorTypeEvent 
+public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements LocatorTypeEvent.SqlLocatorTypeEvent 
 {
     private LocatorTypeEventId locatorTypeEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
     public void setLocatorTypeId(String locatorTypeId) {
         getLocatorTypeEventId().setLocatorTypeId(locatorTypeId);
     }
+
+    public Long getVersion() {
+        return getLocatorTypeEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getLocatorTypeEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

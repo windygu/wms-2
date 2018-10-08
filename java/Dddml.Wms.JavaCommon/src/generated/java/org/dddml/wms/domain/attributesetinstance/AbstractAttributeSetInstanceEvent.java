@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent implements AttributeSetInstanceEvent 
+public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent implements AttributeSetInstanceEvent.SqlAttributeSetInstanceEvent 
 {
     private AttributeSetInstanceState state;
 
@@ -31,6 +31,14 @@ public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent im
     public void setAttributeSetInstanceId(String attributeSetInstanceId) {
         getAttributeSetInstanceEventId().setAttributeSetInstanceId(attributeSetInstanceId);
     }
+
+    public Long getVersion() {
+        return getAttributeSetInstanceEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getAttributeSetInstanceEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

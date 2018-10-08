@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractGoodIdentificationTypeEvent extends AbstractEvent implements GoodIdentificationTypeEvent 
+public abstract class AbstractGoodIdentificationTypeEvent extends AbstractEvent implements GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent 
 {
     private GoodIdentificationTypeEventId goodIdentificationTypeEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractGoodIdentificationTypeEvent extends AbstractEvent 
     public void setGoodIdentificationTypeId(String goodIdentificationTypeId) {
         getGoodIdentificationTypeEventId().setGoodIdentificationTypeId(goodIdentificationTypeId);
     }
+
+    public Long getVersion() {
+        return getGoodIdentificationTypeEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getGoodIdentificationTypeEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

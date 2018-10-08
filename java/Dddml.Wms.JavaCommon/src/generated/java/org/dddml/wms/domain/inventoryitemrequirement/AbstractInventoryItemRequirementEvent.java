@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInventoryItemRequirementEvent extends AbstractEvent implements InventoryItemRequirementEvent 
+public abstract class AbstractInventoryItemRequirementEvent extends AbstractEvent implements InventoryItemRequirementEvent.SqlInventoryItemRequirementEvent 
 {
     private InventoryItemRequirementEventId inventoryItemRequirementEventId;
 
@@ -28,6 +28,14 @@ public abstract class AbstractInventoryItemRequirementEvent extends AbstractEven
     public void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId) {
         getInventoryItemRequirementEventId().setInventoryItemRequirementId(inventoryItemRequirementId);
     }
+
+    public Long getVersion() {
+        return getInventoryItemRequirementEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getInventoryItemRequirementEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -85,12 +93,12 @@ public abstract class AbstractInventoryItemRequirementEvent extends AbstractEven
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(InventoryItemRequirementEntryEvent e)
+    protected void throwOnInconsistentEventIds(InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(InventoryItemRequirementEvent oe, InventoryItemRequirementEntryEvent e)
+    public static void throwOnInconsistentEventIds(InventoryItemRequirementEvent.SqlInventoryItemRequirementEvent oe, InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent e)
     {
         if (!oe.getInventoryItemRequirementEventId().getInventoryItemRequirementId().equals(e.getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId()))
         { 
@@ -162,8 +170,8 @@ public abstract class AbstractInventoryItemRequirementEvent extends AbstractEven
         
         public void addInventoryItemRequirementEntryEvent(InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inventoryItemRequirementEntryEvents.put(e.getInventoryItemRequirementEntryEventId(), e);
+            throwOnInconsistentEventIds((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)e);
+            this.inventoryItemRequirementEntryEvents.put(((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)e).getInventoryItemRequirementEntryEventId(), e);
         }
 
     }
@@ -216,8 +224,8 @@ public abstract class AbstractInventoryItemRequirementEvent extends AbstractEven
         
         public void addInventoryItemRequirementEntryEvent(InventoryItemRequirementEntryEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inventoryItemRequirementEntryEvents.put(e.getInventoryItemRequirementEntryEventId(), e);
+            throwOnInconsistentEventIds((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)e);
+            this.inventoryItemRequirementEntryEvents.put(((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)e).getInventoryItemRequirementEntryEventId(), e);
         }
 
     }

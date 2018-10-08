@@ -138,7 +138,7 @@ public abstract class AbstractRejectionReasonApplicationService implements Rejec
     }
 
     public void initialize(RejectionReasonEvent.RejectionReasonStateCreated stateCreated) {
-        String aggregateId = stateCreated.getRejectionReasonEventId().getRejectionReasonId();
+        String aggregateId = ((RejectionReasonEvent.SqlRejectionReasonEvent)stateCreated).getRejectionReasonEventId().getRejectionReasonId();
         RejectionReasonState state = new AbstractRejectionReasonState.SimpleRejectionReasonState();
         state.setRejectionReasonId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractRejectionReasonApplicationService implements Rejec
         ((AbstractRejectionReasonAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getRejectionReasonEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((RejectionReasonEvent.SqlRejectionReasonEvent)stateCreated).getRejectionReasonEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(RejectionReasonCommand command, EventStoreAggregateId eventStoreAggregateId, RejectionReasonState state)

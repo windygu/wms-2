@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface UomEvent extends Event
-{
-    UomEventId getUomEventId();
+public interface UomEvent extends Event {
+
+    interface SqlUomEvent extends UomEvent {
+        UomEventId getUomEventId();
+    }
+
+    String getUomId();
+
+    //void setUomId(String uomId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

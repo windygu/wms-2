@@ -142,7 +142,7 @@ public abstract class AbstractInventoryItemRequirementState implements Inventory
     public AbstractInventoryItemRequirementState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryItemRequirementId(((InventoryItemRequirementEvent) events.get(0)).getInventoryItemRequirementEventId().getInventoryItemRequirementId());
+            this.setInventoryItemRequirementId(((InventoryItemRequirementEvent.SqlInventoryItemRequirementEvent) events.get(0)).getInventoryItemRequirementEventId().getInventoryItemRequirementId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -187,7 +187,7 @@ public abstract class AbstractInventoryItemRequirementState implements Inventory
         this.setCreatedAt(e.getCreatedAt());
 
         for (InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated innerEvent : e.getInventoryItemRequirementEntryEvents()) {
-            InventoryItemRequirementEntryState innerState = this.getEntries().get(innerEvent.getInventoryItemRequirementEntryEventId().getEntrySeqId());
+            InventoryItemRequirementEntryState innerState = this.getEntries().get(((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)innerEvent).getInventoryItemRequirementEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -212,7 +212,7 @@ public abstract class AbstractInventoryItemRequirementState implements Inventory
         this.setUpdatedAt(e.getCreatedAt());
 
         for (InventoryItemRequirementEntryEvent innerEvent : e.getInventoryItemRequirementEntryEvents()) {
-            InventoryItemRequirementEntryState innerState = this.getEntries().get(innerEvent.getInventoryItemRequirementEntryEventId().getEntrySeqId());
+            InventoryItemRequirementEntryState innerState = this.getEntries().get(((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)innerEvent).getInventoryItemRequirementEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -226,14 +226,14 @@ public abstract class AbstractInventoryItemRequirementState implements Inventory
     protected void throwOnWrongEvent(InventoryItemRequirementEvent event)
     {
         InventoryItemId stateEntityId = this.getInventoryItemRequirementId(); // Aggregate Id
-        InventoryItemId eventEntityId = event.getInventoryItemRequirementEventId().getInventoryItemRequirementId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        InventoryItemId eventEntityId = ((InventoryItemRequirementEvent.SqlInventoryItemRequirementEvent)event).getInventoryItemRequirementEventId().getInventoryItemRequirementId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getInventoryItemRequirementEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((InventoryItemRequirementEvent.SqlInventoryItemRequirementEvent)event).getInventoryItemRequirementEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getInventoryItemRequirementEventId().getVersion() == null");
         }

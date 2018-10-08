@@ -108,7 +108,7 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
     }
 
     public void initialize(StatusItemEvent.StatusItemStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStatusItemEventId().getStatusId();
+        String aggregateId = ((StatusItemEvent.SqlStatusItemEvent)stateCreated).getStatusItemEventId().getStatusId();
         StatusItemState state = new AbstractStatusItemState.SimpleStatusItemState();
         state.setStatusId(aggregateId);
 
@@ -116,7 +116,7 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
         ((AbstractStatusItemAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStatusItemEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((StatusItemEvent.SqlStatusItemEvent)stateCreated).getStatusItemEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(StatusItemCommand command, EventStoreAggregateId eventStoreAggregateId, StatusItemState state)

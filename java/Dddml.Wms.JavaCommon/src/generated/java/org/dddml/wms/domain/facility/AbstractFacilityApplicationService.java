@@ -138,7 +138,7 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
     }
 
     public void initialize(FacilityEvent.FacilityStateCreated stateCreated) {
-        String aggregateId = stateCreated.getFacilityEventId().getFacilityId();
+        String aggregateId = ((FacilityEvent.SqlFacilityEvent)stateCreated).getFacilityEventId().getFacilityId();
         FacilityState state = new AbstractFacilityState.SimpleFacilityState();
         state.setFacilityId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
         ((AbstractFacilityAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getFacilityEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((FacilityEvent.SqlFacilityEvent)stateCreated).getFacilityEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(FacilityCommand command, EventStoreAggregateId eventStoreAggregateId, FacilityState state)

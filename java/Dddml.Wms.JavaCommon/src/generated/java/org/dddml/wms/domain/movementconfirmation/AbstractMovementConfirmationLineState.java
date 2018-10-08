@@ -394,14 +394,14 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
     protected void throwOnWrongEvent(MovementConfirmationLineEvent event)
     {
         String stateEntityIdMovementConfirmationDocumentNumber = this.getMovementConfirmationLineId().getMovementConfirmationDocumentNumber();
-        String eventEntityIdMovementConfirmationDocumentNumber = event.getMovementConfirmationLineEventId().getMovementConfirmationDocumentNumber();
+        String eventEntityIdMovementConfirmationDocumentNumber = ((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)event).getMovementConfirmationLineEventId().getMovementConfirmationDocumentNumber();
         if (!stateEntityIdMovementConfirmationDocumentNumber.equals(eventEntityIdMovementConfirmationDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id MovementConfirmationDocumentNumber %1$s in state but entity id MovementConfirmationDocumentNumber %2$s in event", stateEntityIdMovementConfirmationDocumentNumber, eventEntityIdMovementConfirmationDocumentNumber);
         }
 
         String stateEntityIdLineNumber = this.getMovementConfirmationLineId().getLineNumber();
-        String eventEntityIdLineNumber = event.getMovementConfirmationLineEventId().getLineNumber();
+        String eventEntityIdLineNumber = ((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)event).getMovementConfirmationLineEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

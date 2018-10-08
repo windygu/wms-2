@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface OrderShipGroupEvent extends Event
-{
-    OrderShipGroupEventId getOrderShipGroupEventId();
+public interface OrderShipGroupEvent extends Event {
+
+    interface SqlOrderShipGroupEvent extends OrderShipGroupEvent {
+        OrderShipGroupEventId getOrderShipGroupEventId();
+    }
+
+    String getShipGroupSeqId();
+
+    //void setShipGroupSeqId(String shipGroupSeqId);
 
     boolean getEventReadOnly();
 

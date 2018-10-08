@@ -138,7 +138,7 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
     }
 
     public void initialize(LocatorTypeEvent.LocatorTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getLocatorTypeEventId().getLocatorTypeId();
+        String aggregateId = ((LocatorTypeEvent.SqlLocatorTypeEvent)stateCreated).getLocatorTypeEventId().getLocatorTypeId();
         LocatorTypeState state = new AbstractLocatorTypeState.SimpleLocatorTypeState();
         state.setLocatorTypeId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
         ((AbstractLocatorTypeAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getLocatorTypeEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((LocatorTypeEvent.SqlLocatorTypeEvent)stateCreated).getLocatorTypeEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(LocatorTypeCommand command, EventStoreAggregateId eventStoreAggregateId, LocatorTypeState state)

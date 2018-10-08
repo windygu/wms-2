@@ -921,7 +921,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
     public AbstractProductState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setProductId(((ProductEvent) events.get(0)).getProductEventId().getProductId());
+            this.setProductId(((ProductEvent.SqlProductEvent) events.get(0)).getProductEventId().getProductId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -1032,7 +1032,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (GoodIdentificationEvent.GoodIdentificationStateCreated innerEvent : e.getGoodIdentificationEvents()) {
-            GoodIdentificationState innerState = this.getGoodIdentifications().get(innerEvent.getGoodIdentificationEventId().getGoodIdentificationTypeId());
+            GoodIdentificationState innerState = this.getGoodIdentifications().get(((GoodIdentificationEvent.SqlGoodIdentificationEvent)innerEvent).getGoodIdentificationEventId().getGoodIdentificationTypeId());
             innerState.mutate(innerEvent);
         }
     }
@@ -1783,7 +1783,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (GoodIdentificationEvent innerEvent : e.getGoodIdentificationEvents()) {
-            GoodIdentificationState innerState = this.getGoodIdentifications().get(innerEvent.getGoodIdentificationEventId().getGoodIdentificationTypeId());
+            GoodIdentificationState innerState = this.getGoodIdentifications().get(((GoodIdentificationEvent.SqlGoodIdentificationEvent)innerEvent).getGoodIdentificationEventId().getGoodIdentificationTypeId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof GoodIdentificationEvent.GoodIdentificationStateRemoved)
             {
@@ -1802,14 +1802,14 @@ public abstract class AbstractProductState implements ProductState, Saveable
     protected void throwOnWrongEvent(ProductEvent event)
     {
         String stateEntityId = this.getProductId(); // Aggregate Id
-        String eventEntityId = event.getProductEventId().getProductId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((ProductEvent.SqlProductEvent)event).getProductEventId().getProductId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getProductEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((ProductEvent.SqlProductEvent)event).getProductEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getProductEventId().getVersion() == null");
         }

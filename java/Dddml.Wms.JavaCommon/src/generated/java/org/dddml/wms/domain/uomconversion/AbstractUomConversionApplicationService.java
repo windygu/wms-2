@@ -138,7 +138,7 @@ public abstract class AbstractUomConversionApplicationService implements UomConv
     }
 
     public void initialize(UomConversionEvent.UomConversionStateCreated stateCreated) {
-        UomConversionId aggregateId = stateCreated.getUomConversionEventId().getUomConversionId();
+        UomConversionId aggregateId = ((UomConversionEvent.SqlUomConversionEvent)stateCreated).getUomConversionEventId().getUomConversionId();
         UomConversionState state = new AbstractUomConversionState.SimpleUomConversionState();
         state.setUomConversionId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractUomConversionApplicationService implements UomConv
         ((AbstractUomConversionAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getUomConversionEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((UomConversionEvent.SqlUomConversionEvent)stateCreated).getUomConversionEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(UomConversionCommand command, EventStoreAggregateId eventStoreAggregateId, UomConversionState state)

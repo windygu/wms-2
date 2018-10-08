@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface WarehouseEvent extends Event
-{
-    WarehouseEventId getWarehouseEventId();
+public interface WarehouseEvent extends Event {
+
+    interface SqlWarehouseEvent extends WarehouseEvent {
+        WarehouseEventId getWarehouseEventId();
+    }
+
+    String getWarehouseId();
+
+    //void setWarehouseId(String warehouseId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

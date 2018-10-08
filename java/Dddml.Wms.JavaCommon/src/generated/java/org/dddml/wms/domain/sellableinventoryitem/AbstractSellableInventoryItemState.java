@@ -142,7 +142,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
     public AbstractSellableInventoryItemState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setSellableInventoryItemId(((SellableInventoryItemEvent) events.get(0)).getSellableInventoryItemEventId().getSellableInventoryItemId());
+            this.setSellableInventoryItemId(((SellableInventoryItemEvent.SqlSellableInventoryItemEvent) events.get(0)).getSellableInventoryItemEventId().getSellableInventoryItemId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -187,7 +187,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         this.setCreatedAt(e.getCreatedAt());
 
         for (SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated innerEvent : e.getSellableInventoryItemEntryEvents()) {
-            SellableInventoryItemEntryState innerState = this.getEntries().get(innerEvent.getSellableInventoryItemEntryEventId().getEntrySeqId());
+            SellableInventoryItemEntryState innerState = this.getEntries().get(((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)innerEvent).getSellableInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -212,7 +212,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         this.setUpdatedAt(e.getCreatedAt());
 
         for (SellableInventoryItemEntryEvent innerEvent : e.getSellableInventoryItemEntryEvents()) {
-            SellableInventoryItemEntryState innerState = this.getEntries().get(innerEvent.getSellableInventoryItemEntryEventId().getEntrySeqId());
+            SellableInventoryItemEntryState innerState = this.getEntries().get(((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)innerEvent).getSellableInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -226,14 +226,14 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
     protected void throwOnWrongEvent(SellableInventoryItemEvent event)
     {
         InventoryItemId stateEntityId = this.getSellableInventoryItemId(); // Aggregate Id
-        InventoryItemId eventEntityId = event.getSellableInventoryItemEventId().getSellableInventoryItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        InventoryItemId eventEntityId = ((SellableInventoryItemEvent.SqlSellableInventoryItemEvent)event).getSellableInventoryItemEventId().getSellableInventoryItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getSellableInventoryItemEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((SellableInventoryItemEvent.SqlSellableInventoryItemEvent)event).getSellableInventoryItemEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getSellableInventoryItemEventId().getVersion() == null");
         }

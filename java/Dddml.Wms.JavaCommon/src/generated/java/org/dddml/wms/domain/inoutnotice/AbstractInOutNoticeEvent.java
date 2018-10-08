@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInOutNoticeEvent extends AbstractEvent implements InOutNoticeEvent 
+public abstract class AbstractInOutNoticeEvent extends AbstractEvent implements InOutNoticeEvent.SqlInOutNoticeEvent 
 {
     private InOutNoticeEventId inOutNoticeEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractInOutNoticeEvent extends AbstractEvent implements 
     public void setInOutNoticeId(String inOutNoticeId) {
         getInOutNoticeEventId().setInOutNoticeId(inOutNoticeId);
     }
+
+    public Long getVersion() {
+        return getInOutNoticeEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getInOutNoticeEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

@@ -6,9 +6,19 @@ import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PicklistEvent extends Event
-{
-    PicklistEventId getPicklistEventId();
+public interface PicklistEvent extends Event {
+
+    interface SqlPicklistEvent extends PicklistEvent {
+        PicklistEventId getPicklistEventId();
+    }
+
+    String getPicklistId();
+
+    //void setPicklistId(String picklistId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

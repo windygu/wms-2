@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractDamageReasonEvent extends AbstractEvent implements DamageReasonEvent 
+public abstract class AbstractDamageReasonEvent extends AbstractEvent implements DamageReasonEvent.SqlDamageReasonEvent 
 {
     private DamageReasonEventId damageReasonEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractDamageReasonEvent extends AbstractEvent implements
     public void setDamageReasonId(String damageReasonId) {
         getDamageReasonEventId().setDamageReasonId(damageReasonId);
     }
+
+    public Long getVersion() {
+        return getDamageReasonEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getDamageReasonEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

@@ -138,7 +138,7 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
     }
 
     public void initialize(PartyRoleEvent.PartyRoleStateCreated stateCreated) {
-        PartyRoleId aggregateId = stateCreated.getPartyRoleEventId().getPartyRoleId();
+        PartyRoleId aggregateId = ((PartyRoleEvent.SqlPartyRoleEvent)stateCreated).getPartyRoleEventId().getPartyRoleId();
         PartyRoleState state = new AbstractPartyRoleState.SimplePartyRoleState();
         state.setPartyRoleId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
         ((AbstractPartyRoleAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getPartyRoleEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((PartyRoleEvent.SqlPartyRoleEvent)stateCreated).getPartyRoleEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(PartyRoleCommand command, EventStoreAggregateId eventStoreAggregateId, PartyRoleState state)

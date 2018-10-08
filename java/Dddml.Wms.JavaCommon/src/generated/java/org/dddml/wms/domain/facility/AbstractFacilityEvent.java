@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractFacilityEvent extends AbstractEvent implements FacilityEvent 
+public abstract class AbstractFacilityEvent extends AbstractEvent implements FacilityEvent.SqlFacilityEvent 
 {
     private FacilityEventId facilityEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
     public void setFacilityId(String facilityId) {
         getFacilityEventId().setFacilityId(facilityId);
     }
+
+    public Long getVersion() {
+        return getFacilityEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getFacilityEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

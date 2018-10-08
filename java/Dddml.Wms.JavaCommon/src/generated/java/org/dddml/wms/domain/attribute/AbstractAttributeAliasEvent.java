@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractAttributeAliasEvent extends AbstractEvent implements AttributeAliasEvent 
+public abstract class AbstractAttributeAliasEvent extends AbstractEvent implements AttributeAliasEvent.SqlAttributeAliasEvent 
 {
     private AttributeAliasEventId attributeAliasEventId;
 

@@ -165,7 +165,7 @@ public abstract class AbstractRoleTypeState implements RoleTypeState
     public AbstractRoleTypeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setRoleTypeId(((RoleTypeEvent) events.get(0)).getRoleTypeEventId().getRoleTypeId());
+            this.setRoleTypeId(((RoleTypeEvent.SqlRoleTypeEvent) events.get(0)).getRoleTypeEventId().getRoleTypeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -288,14 +288,14 @@ public abstract class AbstractRoleTypeState implements RoleTypeState
     protected void throwOnWrongEvent(RoleTypeEvent event)
     {
         String stateEntityId = this.getRoleTypeId(); // Aggregate Id
-        String eventEntityId = event.getRoleTypeEventId().getRoleTypeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((RoleTypeEvent.SqlRoleTypeEvent)event).getRoleTypeEventId().getRoleTypeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getRoleTypeEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((RoleTypeEvent.SqlRoleTypeEvent)event).getRoleTypeEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getRoleTypeEventId().getVersion() == null");
         }

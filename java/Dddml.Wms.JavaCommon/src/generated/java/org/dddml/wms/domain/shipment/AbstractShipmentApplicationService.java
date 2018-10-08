@@ -202,7 +202,7 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
     }
 
     public void initialize(ShipmentEvent.ShipmentStateCreated stateCreated) {
-        String aggregateId = stateCreated.getShipmentEventId().getShipmentId();
+        String aggregateId = ((ShipmentEvent.SqlShipmentEvent)stateCreated).getShipmentEventId().getShipmentId();
         ShipmentState state = new AbstractShipmentState.SimpleShipmentState();
         state.setShipmentId(aggregateId);
 
@@ -210,7 +210,7 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         ((AbstractShipmentAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getShipmentEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((ShipmentEvent.SqlShipmentEvent)stateCreated).getShipmentEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ShipmentCommand command, EventStoreAggregateId eventStoreAggregateId, ShipmentState state)

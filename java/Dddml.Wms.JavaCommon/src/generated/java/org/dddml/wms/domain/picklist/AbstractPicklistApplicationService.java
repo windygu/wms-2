@@ -147,7 +147,7 @@ public abstract class AbstractPicklistApplicationService implements PicklistAppl
     }
 
     public void initialize(PicklistEvent.PicklistStateCreated stateCreated) {
-        String aggregateId = stateCreated.getPicklistEventId().getPicklistId();
+        String aggregateId = ((PicklistEvent.SqlPicklistEvent)stateCreated).getPicklistEventId().getPicklistId();
         PicklistState state = new AbstractPicklistState.SimplePicklistState();
         state.setPicklistId(aggregateId);
 
@@ -155,7 +155,7 @@ public abstract class AbstractPicklistApplicationService implements PicklistAppl
         ((AbstractPicklistAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getPicklistEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((PicklistEvent.SqlPicklistEvent)stateCreated).getPicklistEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(PicklistCommand command, EventStoreAggregateId eventStoreAggregateId, PicklistState state)

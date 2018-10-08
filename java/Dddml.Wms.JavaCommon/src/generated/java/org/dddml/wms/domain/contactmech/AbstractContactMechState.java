@@ -357,7 +357,7 @@ public abstract class AbstractContactMechState implements ContactMechState
     public AbstractContactMechState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setContactMechId(((ContactMechEvent) events.get(0)).getContactMechEventId().getContactMechId());
+            this.setContactMechId(((ContactMechEvent.SqlContactMechEvent) events.get(0)).getContactMechEventId().getContactMechId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -672,14 +672,14 @@ public abstract class AbstractContactMechState implements ContactMechState
     protected void throwOnWrongEvent(ContactMechEvent event)
     {
         String stateEntityId = this.getContactMechId(); // Aggregate Id
-        String eventEntityId = event.getContactMechEventId().getContactMechId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((ContactMechEvent.SqlContactMechEvent)event).getContactMechEventId().getContactMechId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getContactMechEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((ContactMechEvent.SqlContactMechEvent)event).getContactMechEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getContactMechEventId().getVersion() == null");
         }

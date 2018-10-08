@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface ContactMechEvent extends Event
-{
-    ContactMechEventId getContactMechEventId();
+public interface ContactMechEvent extends Event {
+
+    interface SqlContactMechEvent extends ContactMechEvent {
+        ContactMechEventId getContactMechEventId();
+    }
+
+    String getContactMechId();
+
+    //void setContactMechId(String contactMechId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

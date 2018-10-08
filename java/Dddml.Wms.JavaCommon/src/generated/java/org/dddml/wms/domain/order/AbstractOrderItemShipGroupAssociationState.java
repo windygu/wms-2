@@ -371,21 +371,21 @@ public abstract class AbstractOrderItemShipGroupAssociationState implements Orde
     protected void throwOnWrongEvent(OrderItemShipGroupAssociationEvent event)
     {
         String stateEntityIdOrderId = this.getOrderItemShipGroupAssociationId().getOrderId();
-        String eventEntityIdOrderId = event.getOrderItemShipGroupAssociationEventId().getOrderId();
+        String eventEntityIdOrderId = ((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)event).getOrderItemShipGroupAssociationEventId().getOrderId();
         if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
         String stateEntityIdOrderShipGroupShipGroupSeqId = this.getOrderItemShipGroupAssociationId().getOrderShipGroupShipGroupSeqId();
-        String eventEntityIdOrderShipGroupShipGroupSeqId = event.getOrderItemShipGroupAssociationEventId().getOrderShipGroupShipGroupSeqId();
+        String eventEntityIdOrderShipGroupShipGroupSeqId = ((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)event).getOrderItemShipGroupAssociationEventId().getOrderShipGroupShipGroupSeqId();
         if (!stateEntityIdOrderShipGroupShipGroupSeqId.equals(eventEntityIdOrderShipGroupShipGroupSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderShipGroupShipGroupSeqId %1$s in state but entity id OrderShipGroupShipGroupSeqId %2$s in event", stateEntityIdOrderShipGroupShipGroupSeqId, eventEntityIdOrderShipGroupShipGroupSeqId);
         }
 
         String stateEntityIdOrderItemSeqId = this.getOrderItemShipGroupAssociationId().getOrderItemSeqId();
-        String eventEntityIdOrderItemSeqId = event.getOrderItemShipGroupAssociationEventId().getOrderItemSeqId();
+        String eventEntityIdOrderItemSeqId = ((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)event).getOrderItemShipGroupAssociationEventId().getOrderItemSeqId();
         if (!stateEntityIdOrderItemSeqId.equals(eventEntityIdOrderItemSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderItemSeqId %1$s in state but entity id OrderItemSeqId %2$s in event", stateEntityIdOrderItemSeqId, eventEntityIdOrderItemSeqId);

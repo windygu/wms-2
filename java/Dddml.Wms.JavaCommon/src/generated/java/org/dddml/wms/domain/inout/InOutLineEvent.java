@@ -6,9 +6,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InOutLineEvent extends Event
-{
-    InOutLineEventId getInOutLineEventId();
+public interface InOutLineEvent extends Event {
+
+    interface SqlInOutLineEvent extends InOutLineEvent {
+        InOutLineEventId getInOutLineEventId();
+    }
+
+    String getLineNumber();
+
+    //void setLineNumber(String lineNumber);
 
     boolean getEventReadOnly();
 
@@ -79,9 +85,9 @@ public interface InOutLineEvent extends Event
 
         void setActive(Boolean active);
 
-    Set<String> getDamageStatusIds();
+        Set<String> getDamageStatusIds();
 
-    void setDamageStatusIds(Set<String> damageStatusIds);
+        void setDamageStatusIds(Set<String> damageStatusIds);
 
     }
 

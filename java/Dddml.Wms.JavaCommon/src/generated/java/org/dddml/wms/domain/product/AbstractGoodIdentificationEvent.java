@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractGoodIdentificationEvent extends AbstractEvent implements GoodIdentificationEvent 
+public abstract class AbstractGoodIdentificationEvent extends AbstractEvent implements GoodIdentificationEvent.SqlGoodIdentificationEvent 
 {
     private GoodIdentificationEventId goodIdentificationEventId;
 

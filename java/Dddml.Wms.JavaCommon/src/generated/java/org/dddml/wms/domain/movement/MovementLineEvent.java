@@ -6,9 +6,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface MovementLineEvent extends Event
-{
-    MovementLineEventId getMovementLineEventId();
+public interface MovementLineEvent extends Event {
+
+    interface SqlMovementLineEvent extends MovementLineEvent {
+        MovementLineEventId getMovementLineEventId();
+    }
+
+    String getLineNumber();
+
+    //void setLineNumber(String lineNumber);
 
     boolean getEventReadOnly();
 

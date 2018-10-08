@@ -375,7 +375,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setCreatedAt(e.getCreatedAt());
 
         for (OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
-            OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(innerEvent.getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
+            OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)innerEvent).getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -554,7 +554,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setUpdatedAt(e.getCreatedAt());
 
         for (OrderItemShipGroupAssociationEvent innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
-            OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(innerEvent.getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
+            OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)innerEvent).getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved)
             {
@@ -593,14 +593,14 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
     protected void throwOnWrongEvent(OrderShipGroupEvent event)
     {
         String stateEntityIdOrderId = this.getOrderShipGroupId().getOrderId();
-        String eventEntityIdOrderId = event.getOrderShipGroupEventId().getOrderId();
+        String eventEntityIdOrderId = ((OrderShipGroupEvent.SqlOrderShipGroupEvent)event).getOrderShipGroupEventId().getOrderId();
         if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
         String stateEntityIdShipGroupSeqId = this.getOrderShipGroupId().getShipGroupSeqId();
-        String eventEntityIdShipGroupSeqId = event.getOrderShipGroupEventId().getShipGroupSeqId();
+        String eventEntityIdShipGroupSeqId = ((OrderShipGroupEvent.SqlOrderShipGroupEvent)event).getOrderShipGroupEventId().getShipGroupSeqId();
         if (!stateEntityIdShipGroupSeqId.equals(eventEntityIdShipGroupSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipGroupSeqId %1$s in state but entity id ShipGroupSeqId %2$s in event", stateEntityIdShipGroupSeqId, eventEntityIdShipGroupSeqId);

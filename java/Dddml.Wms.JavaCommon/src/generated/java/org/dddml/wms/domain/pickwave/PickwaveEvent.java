@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PickwaveEvent extends Event
-{
-    PickwaveEventId getPickwaveEventId();
+public interface PickwaveEvent extends Event {
+
+    interface SqlPickwaveEvent extends PickwaveEvent {
+        PickwaveEventId getPickwaveEventId();
+    }
+
+    Long getPickwaveId();
+
+    //void setPickwaveId(Long pickwaveId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

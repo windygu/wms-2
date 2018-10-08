@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InventoryPRTriggeredEvent extends Event
-{
-    InventoryPRTriggeredEventId getInventoryPRTriggeredEventId();
+public interface InventoryPRTriggeredEvent extends Event {
+
+    interface SqlInventoryPRTriggeredEvent extends InventoryPRTriggeredEvent {
+        InventoryPRTriggeredEventId getInventoryPRTriggeredEventId();
+    }
+
+    InventoryPRTriggeredId getInventoryPRTriggeredId();
+
+    //void setInventoryPRTriggeredId(InventoryPRTriggeredId inventoryPRTriggeredId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

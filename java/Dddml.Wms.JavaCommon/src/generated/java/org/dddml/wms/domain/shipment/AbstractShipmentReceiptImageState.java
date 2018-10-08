@@ -251,21 +251,21 @@ public abstract class AbstractShipmentReceiptImageState implements ShipmentRecei
     protected void throwOnWrongEvent(ShipmentReceiptImageEvent event)
     {
         String stateEntityIdShipmentId = this.getShipmentReceiptImageId().getShipmentId();
-        String eventEntityIdShipmentId = event.getShipmentReceiptImageEventId().getShipmentId();
+        String eventEntityIdShipmentId = ((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)event).getShipmentReceiptImageEventId().getShipmentId();
         if (!stateEntityIdShipmentId.equals(eventEntityIdShipmentId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentId %1$s in state but entity id ShipmentId %2$s in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
         }
 
         String stateEntityIdShipmentReceiptReceiptSeqId = this.getShipmentReceiptImageId().getShipmentReceiptReceiptSeqId();
-        String eventEntityIdShipmentReceiptReceiptSeqId = event.getShipmentReceiptImageEventId().getShipmentReceiptReceiptSeqId();
+        String eventEntityIdShipmentReceiptReceiptSeqId = ((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)event).getShipmentReceiptImageEventId().getShipmentReceiptReceiptSeqId();
         if (!stateEntityIdShipmentReceiptReceiptSeqId.equals(eventEntityIdShipmentReceiptReceiptSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentReceiptReceiptSeqId %1$s in state but entity id ShipmentReceiptReceiptSeqId %2$s in event", stateEntityIdShipmentReceiptReceiptSeqId, eventEntityIdShipmentReceiptReceiptSeqId);
         }
 
         String stateEntityIdSequenceId = this.getShipmentReceiptImageId().getSequenceId();
-        String eventEntityIdSequenceId = event.getShipmentReceiptImageEventId().getSequenceId();
+        String eventEntityIdSequenceId = ((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)event).getShipmentReceiptImageEventId().getSequenceId();
         if (!stateEntityIdSequenceId.equals(eventEntityIdSequenceId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id SequenceId %1$s in state but entity id SequenceId %2$s in event", stateEntityIdSequenceId, eventEntityIdSequenceId);

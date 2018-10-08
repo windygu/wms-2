@@ -138,7 +138,7 @@ public abstract class AbstractOrderItemShipGrpInvReservationApplicationService i
     }
 
     public void initialize(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated stateCreated) {
-        OrderItemShipGrpInvResId aggregateId = stateCreated.getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId();
+        OrderItemShipGrpInvResId aggregateId = ((OrderItemShipGrpInvReservationEvent.SqlOrderItemShipGrpInvReservationEvent)stateCreated).getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId();
         OrderItemShipGrpInvReservationState state = new AbstractOrderItemShipGrpInvReservationState.SimpleOrderItemShipGrpInvReservationState();
         state.setOrderItemShipGrpInvResId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractOrderItemShipGrpInvReservationApplicationService i
         ((AbstractOrderItemShipGrpInvReservationAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getOrderItemShipGrpInvReservationEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((OrderItemShipGrpInvReservationEvent.SqlOrderItemShipGrpInvReservationEvent)stateCreated).getOrderItemShipGrpInvReservationEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(OrderItemShipGrpInvReservationCommand command, EventStoreAggregateId eventStoreAggregateId, OrderItemShipGrpInvReservationState state)

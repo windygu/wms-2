@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent implements SellableInventoryItemEvent 
+public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent implements SellableInventoryItemEvent.SqlSellableInventoryItemEvent 
 {
     private SellableInventoryItemEventId sellableInventoryItemEventId;
 
@@ -28,6 +28,14 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
     public void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId) {
         getSellableInventoryItemEventId().setSellableInventoryItemId(sellableInventoryItemId);
     }
+
+    public Long getVersion() {
+        return getSellableInventoryItemEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getSellableInventoryItemEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -85,12 +93,12 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(SellableInventoryItemEntryEvent e)
+    protected void throwOnInconsistentEventIds(SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(SellableInventoryItemEvent oe, SellableInventoryItemEntryEvent e)
+    public static void throwOnInconsistentEventIds(SellableInventoryItemEvent.SqlSellableInventoryItemEvent oe, SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent e)
     {
         if (!oe.getSellableInventoryItemEventId().getSellableInventoryItemId().equals(e.getSellableInventoryItemEntryEventId().getSellableInventoryItemId()))
         { 
@@ -162,8 +170,8 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
         
         public void addSellableInventoryItemEntryEvent(SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.sellableInventoryItemEntryEvents.put(e.getSellableInventoryItemEntryEventId(), e);
+            throwOnInconsistentEventIds((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)e);
+            this.sellableInventoryItemEntryEvents.put(((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)e).getSellableInventoryItemEntryEventId(), e);
         }
 
     }
@@ -216,8 +224,8 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
         
         public void addSellableInventoryItemEntryEvent(SellableInventoryItemEntryEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.sellableInventoryItemEntryEvents.put(e.getSellableInventoryItemEntryEventId(), e);
+            throwOnInconsistentEventIds((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)e);
+            this.sellableInventoryItemEntryEvents.put(((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)e).getSellableInventoryItemEntryEventId(), e);
         }
 
     }

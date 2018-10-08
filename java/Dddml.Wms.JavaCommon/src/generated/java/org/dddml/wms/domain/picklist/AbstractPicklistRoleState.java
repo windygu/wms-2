@@ -220,14 +220,14 @@ public abstract class AbstractPicklistRoleState implements PicklistRoleState
     protected void throwOnWrongEvent(PicklistRoleEvent event)
     {
         String stateEntityIdPicklistId = this.getPicklistRoleId().getPicklistId();
-        String eventEntityIdPicklistId = event.getPicklistRoleEventId().getPicklistId();
+        String eventEntityIdPicklistId = ((PicklistRoleEvent.SqlPicklistRoleEvent)event).getPicklistRoleEventId().getPicklistId();
         if (!stateEntityIdPicklistId.equals(eventEntityIdPicklistId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PicklistId %1$s in state but entity id PicklistId %2$s in event", stateEntityIdPicklistId, eventEntityIdPicklistId);
         }
 
         PartyRoleId stateEntityIdPartyRoleId = this.getPicklistRoleId().getPartyRoleId();
-        PartyRoleId eventEntityIdPartyRoleId = event.getPicklistRoleEventId().getPartyRoleId();
+        PartyRoleId eventEntityIdPartyRoleId = ((PicklistRoleEvent.SqlPicklistRoleEvent)event).getPicklistRoleEventId().getPartyRoleId();
         if (!stateEntityIdPartyRoleId.equals(eventEntityIdPartyRoleId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PartyRoleId %1$s in state but entity id PartyRoleId %2$s in event", stateEntityIdPartyRoleId, eventEntityIdPartyRoleId);

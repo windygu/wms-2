@@ -531,14 +531,14 @@ public abstract class AbstractItemIssuanceState implements ItemIssuanceState
     protected void throwOnWrongEvent(ItemIssuanceEvent event)
     {
         String stateEntityIdShipmentId = this.getShipmentItemIssuanceId().getShipmentId();
-        String eventEntityIdShipmentId = event.getItemIssuanceEventId().getShipmentId();
+        String eventEntityIdShipmentId = ((ItemIssuanceEvent.SqlItemIssuanceEvent)event).getItemIssuanceEventId().getShipmentId();
         if (!stateEntityIdShipmentId.equals(eventEntityIdShipmentId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentId %1$s in state but entity id ShipmentId %2$s in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
         }
 
         String stateEntityIdItemIssuanceSeqId = this.getShipmentItemIssuanceId().getItemIssuanceSeqId();
-        String eventEntityIdItemIssuanceSeqId = event.getItemIssuanceEventId().getItemIssuanceSeqId();
+        String eventEntityIdItemIssuanceSeqId = ((ItemIssuanceEvent.SqlItemIssuanceEvent)event).getItemIssuanceEventId().getItemIssuanceSeqId();
         if (!stateEntityIdItemIssuanceSeqId.equals(eventEntityIdItemIssuanceSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ItemIssuanceSeqId %1$s in state but entity id ItemIssuanceSeqId %2$s in event", stateEntityIdItemIssuanceSeqId, eventEntityIdItemIssuanceSeqId);

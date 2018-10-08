@@ -165,7 +165,7 @@ public abstract class AbstractGoodIdentificationTypeState implements GoodIdentif
     public AbstractGoodIdentificationTypeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setGoodIdentificationTypeId(((GoodIdentificationTypeEvent) events.get(0)).getGoodIdentificationTypeEventId().getGoodIdentificationTypeId());
+            this.setGoodIdentificationTypeId(((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent) events.get(0)).getGoodIdentificationTypeEventId().getGoodIdentificationTypeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -288,14 +288,14 @@ public abstract class AbstractGoodIdentificationTypeState implements GoodIdentif
     protected void throwOnWrongEvent(GoodIdentificationTypeEvent event)
     {
         String stateEntityId = this.getGoodIdentificationTypeId(); // Aggregate Id
-        String eventEntityId = event.getGoodIdentificationTypeEventId().getGoodIdentificationTypeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)event).getGoodIdentificationTypeEventId().getGoodIdentificationTypeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getGoodIdentificationTypeEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)event).getGoodIdentificationTypeEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getGoodIdentificationTypeEventId().getVersion() == null");
         }

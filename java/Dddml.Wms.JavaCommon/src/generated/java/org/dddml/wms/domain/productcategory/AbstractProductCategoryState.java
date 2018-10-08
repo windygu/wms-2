@@ -225,7 +225,7 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
     public AbstractProductCategoryState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setProductCategoryId(((ProductCategoryEvent) events.get(0)).getProductCategoryEventId().getProductCategoryId());
+            this.setProductCategoryId(((ProductCategoryEvent.SqlProductCategoryEvent) events.get(0)).getProductCategoryEventId().getProductCategoryId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -408,14 +408,14 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
     protected void throwOnWrongEvent(ProductCategoryEvent event)
     {
         String stateEntityId = this.getProductCategoryId(); // Aggregate Id
-        String eventEntityId = event.getProductCategoryEventId().getProductCategoryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((ProductCategoryEvent.SqlProductCategoryEvent)event).getProductCategoryEventId().getProductCategoryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getProductCategoryEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((ProductCategoryEvent.SqlProductCategoryEvent)event).getProductCategoryEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getProductCategoryEventId().getVersion() == null");
         }

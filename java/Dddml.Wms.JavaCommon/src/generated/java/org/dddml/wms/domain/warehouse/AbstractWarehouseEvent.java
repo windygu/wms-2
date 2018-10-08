@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractWarehouseEvent extends AbstractEvent implements WarehouseEvent 
+public abstract class AbstractWarehouseEvent extends AbstractEvent implements WarehouseEvent.SqlWarehouseEvent 
 {
     private WarehouseEventId warehouseEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractWarehouseEvent extends AbstractEvent implements Wa
     public void setWarehouseId(String warehouseId) {
         getWarehouseEventId().setWarehouseId(warehouseId);
     }
+
+    public Long getVersion() {
+        return getWarehouseEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getWarehouseEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

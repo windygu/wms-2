@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface ItemIssuanceEvent extends Event
-{
-    ItemIssuanceEventId getItemIssuanceEventId();
+public interface ItemIssuanceEvent extends Event {
+
+    interface SqlItemIssuanceEvent extends ItemIssuanceEvent {
+        ItemIssuanceEventId getItemIssuanceEventId();
+    }
+
+    String getItemIssuanceSeqId();
+
+    //void setItemIssuanceSeqId(String itemIssuanceSeqId);
 
     boolean getEventReadOnly();
 

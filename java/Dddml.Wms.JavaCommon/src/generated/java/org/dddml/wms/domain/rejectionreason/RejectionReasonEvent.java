@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface RejectionReasonEvent extends Event
-{
-    RejectionReasonEventId getRejectionReasonEventId();
+public interface RejectionReasonEvent extends Event {
+
+    interface SqlRejectionReasonEvent extends RejectionReasonEvent {
+        RejectionReasonEventId getRejectionReasonEventId();
+    }
+
+    String getRejectionReasonId();
+
+    //void setRejectionReasonId(String rejectionReasonId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractPicklistBinEvent extends AbstractEvent implements PicklistBinEvent 
+public abstract class AbstractPicklistBinEvent extends AbstractEvent implements PicklistBinEvent.SqlPicklistBinEvent 
 {
     private PicklistBinEventId picklistBinEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
     public void setPicklistBinId(String picklistBinId) {
         getPicklistBinEventId().setPicklistBinId(picklistBinId);
     }
+
+    public Long getVersion() {
+        return getPicklistBinEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getPicklistBinEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -86,12 +94,12 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(PicklistItemEvent e)
+    protected void throwOnInconsistentEventIds(PicklistItemEvent.SqlPicklistItemEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(PicklistBinEvent oe, PicklistItemEvent e)
+    public static void throwOnInconsistentEventIds(PicklistBinEvent.SqlPicklistBinEvent oe, PicklistItemEvent.SqlPicklistItemEvent e)
     {
         if (!oe.getPicklistBinEventId().getPicklistBinId().equals(e.getPicklistItemEventId().getPicklistBinId()))
         { 
@@ -234,8 +242,8 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
         
         public void addPicklistItemEvent(PicklistItemEvent.PicklistItemStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.picklistItemEvents.put(e.getPicklistItemEventId(), e);
+            throwOnInconsistentEventIds((PicklistItemEvent.SqlPicklistItemEvent)e);
+            this.picklistItemEvents.put(((PicklistItemEvent.SqlPicklistItemEvent)e).getPicklistItemEventId(), e);
         }
 
         public void save()
@@ -349,8 +357,8 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
         
         public void addPicklistItemEvent(PicklistItemEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.picklistItemEvents.put(e.getPicklistItemEventId(), e);
+            throwOnInconsistentEventIds((PicklistItemEvent.SqlPicklistItemEvent)e);
+            this.picklistItemEvents.put(((PicklistItemEvent.SqlPicklistItemEvent)e).getPicklistItemEventId(), e);
         }
 
         public void save()
@@ -415,8 +423,8 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
         
         public void addPicklistItemEvent(PicklistItemEvent.PicklistItemStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.picklistItemEvents.put(e.getPicklistItemEventId(), e);
+            throwOnInconsistentEventIds((PicklistItemEvent.SqlPicklistItemEvent)e);
+            this.picklistItemEvents.put(((PicklistItemEvent.SqlPicklistItemEvent)e).getPicklistItemEventId(), e);
         }
 
         public void save()

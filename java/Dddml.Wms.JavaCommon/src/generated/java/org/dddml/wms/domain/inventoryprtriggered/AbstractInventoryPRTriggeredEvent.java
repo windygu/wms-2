@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent implements InventoryPRTriggeredEvent 
+public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent implements InventoryPRTriggeredEvent.SqlInventoryPRTriggeredEvent 
 {
     private InventoryPRTriggeredEventId inventoryPRTriggeredEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent im
     public void setInventoryPRTriggeredId(InventoryPRTriggeredId inventoryPRTriggeredId) {
         getInventoryPRTriggeredEventId().setInventoryPRTriggeredId(inventoryPRTriggeredId);
     }
+
+    public Long getVersion() {
+        return getInventoryPRTriggeredEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getInventoryPRTriggeredEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

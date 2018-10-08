@@ -138,7 +138,7 @@ public abstract class AbstractGoodIdentificationTypeApplicationService implement
     }
 
     public void initialize(GoodIdentificationTypeEvent.GoodIdentificationTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getGoodIdentificationTypeEventId().getGoodIdentificationTypeId();
+        String aggregateId = ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)stateCreated).getGoodIdentificationTypeEventId().getGoodIdentificationTypeId();
         GoodIdentificationTypeState state = new AbstractGoodIdentificationTypeState.SimpleGoodIdentificationTypeState();
         state.setGoodIdentificationTypeId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractGoodIdentificationTypeApplicationService implement
         ((AbstractGoodIdentificationTypeAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getGoodIdentificationTypeEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)stateCreated).getGoodIdentificationTypeEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(GoodIdentificationTypeCommand command, EventStoreAggregateId eventStoreAggregateId, GoodIdentificationTypeState state)

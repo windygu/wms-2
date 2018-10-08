@@ -502,7 +502,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public AbstractInOutState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((InOutEvent) events.get(0)).getInOutEventId().getDocumentNumber());
+            this.setDocumentNumber(((InOutEvent.SqlInOutEvent) events.get(0)).getInOutEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -578,11 +578,11 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (InOutImageEvent.InOutImageStateCreated innerEvent : e.getInOutImageEvents()) {
-            InOutImageState innerState = this.getInOutImages().get(innerEvent.getInOutImageEventId().getSequenceId());
+            InOutImageState innerState = this.getInOutImages().get(((InOutImageEvent.SqlInOutImageEvent)innerEvent).getInOutImageEventId().getSequenceId());
             innerState.mutate(innerEvent);
         }
         for (InOutLineEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
-            InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
+            InOutLineState innerState = this.getInOutLines().get(((InOutLineEvent.SqlInOutLineEvent)innerEvent).getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
     }
@@ -937,7 +937,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (InOutImageEvent innerEvent : e.getInOutImageEvents()) {
-            InOutImageState innerState = this.getInOutImages().get(innerEvent.getInOutImageEventId().getSequenceId());
+            InOutImageState innerState = this.getInOutImages().get(((InOutImageEvent.SqlInOutImageEvent)innerEvent).getInOutImageEventId().getSequenceId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof InOutImageEvent.InOutImageStateRemoved)
             {
@@ -946,7 +946,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
             }
         }
         for (InOutLineEvent innerEvent : e.getInOutLineEvents()) {
-            InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
+            InOutLineState innerState = this.getInOutLines().get(((InOutLineEvent.SqlInOutLineEvent)innerEvent).getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof InOutLineEvent.InOutLineStateRemoved)
             {
@@ -967,14 +967,14 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     protected void throwOnWrongEvent(InOutEvent event)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = event.getInOutEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((InOutEvent.SqlInOutEvent)event).getInOutEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getInOutEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((InOutEvent.SqlInOutEvent)event).getInOutEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getInOutEventId().getVersion() == null");
         }

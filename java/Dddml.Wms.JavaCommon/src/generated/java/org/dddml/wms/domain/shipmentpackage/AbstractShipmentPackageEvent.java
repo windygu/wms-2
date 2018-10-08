@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractShipmentPackageEvent extends AbstractEvent implements ShipmentPackageEvent 
+public abstract class AbstractShipmentPackageEvent extends AbstractEvent implements ShipmentPackageEvent.SqlShipmentPackageEvent 
 {
     private ShipmentPackageEventId shipmentPackageEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
     public void setShipmentPackageId(ShipmentPackageId shipmentPackageId) {
         getShipmentPackageEventId().setShipmentPackageId(shipmentPackageId);
     }
+
+    public Long getVersion() {
+        return getShipmentPackageEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getShipmentPackageEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -86,12 +94,12 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(ShipmentPackageContentEvent e)
+    protected void throwOnInconsistentEventIds(ShipmentPackageContentEvent.SqlShipmentPackageContentEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(ShipmentPackageEvent oe, ShipmentPackageContentEvent e)
+    public static void throwOnInconsistentEventIds(ShipmentPackageEvent.SqlShipmentPackageEvent oe, ShipmentPackageContentEvent.SqlShipmentPackageContentEvent e)
     {
         if (!oe.getShipmentPackageEventId().getShipmentPackageId().equals(e.getShipmentPackageContentEventId().getShipmentPackageId()))
         { 
@@ -294,8 +302,8 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
         
         public void addShipmentPackageContentEvent(ShipmentPackageContentEvent.ShipmentPackageContentStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentPackageContentEvents.put(e.getShipmentPackageContentEventId(), e);
+            throwOnInconsistentEventIds((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e);
+            this.shipmentPackageContentEvents.put(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e).getShipmentPackageContentEventId(), e);
         }
 
         public void save()
@@ -459,8 +467,8 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
         
         public void addShipmentPackageContentEvent(ShipmentPackageContentEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentPackageContentEvents.put(e.getShipmentPackageContentEventId(), e);
+            throwOnInconsistentEventIds((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e);
+            this.shipmentPackageContentEvents.put(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e).getShipmentPackageContentEventId(), e);
         }
 
         public void save()
@@ -525,8 +533,8 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
         
         public void addShipmentPackageContentEvent(ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentPackageContentEvents.put(e.getShipmentPackageContentEventId(), e);
+            throwOnInconsistentEventIds((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e);
+            this.shipmentPackageContentEvents.put(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e).getShipmentPackageContentEventId(), e);
         }
 
         public void save()

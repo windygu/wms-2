@@ -7,9 +7,19 @@ import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PhysicalInventoryEvent extends Event
-{
-    PhysicalInventoryEventId getPhysicalInventoryEventId();
+public interface PhysicalInventoryEvent extends Event {
+
+    interface SqlPhysicalInventoryEvent extends PhysicalInventoryEvent {
+        PhysicalInventoryEventId getPhysicalInventoryEventId();
+    }
+
+    String getDocumentNumber();
+
+    //void setDocumentNumber(String documentNumber);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

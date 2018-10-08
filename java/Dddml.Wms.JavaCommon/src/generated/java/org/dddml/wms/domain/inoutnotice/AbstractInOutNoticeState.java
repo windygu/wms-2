@@ -261,7 +261,7 @@ public abstract class AbstractInOutNoticeState implements InOutNoticeState
     public AbstractInOutNoticeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInOutNoticeId(((InOutNoticeEvent) events.get(0)).getInOutNoticeEventId().getInOutNoticeId());
+            this.setInOutNoticeId(((InOutNoticeEvent.SqlInOutNoticeEvent) events.get(0)).getInOutNoticeEventId().getInOutNoticeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -480,14 +480,14 @@ public abstract class AbstractInOutNoticeState implements InOutNoticeState
     protected void throwOnWrongEvent(InOutNoticeEvent event)
     {
         String stateEntityId = this.getInOutNoticeId(); // Aggregate Id
-        String eventEntityId = event.getInOutNoticeEventId().getInOutNoticeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((InOutNoticeEvent.SqlInOutNoticeEvent)event).getInOutNoticeEventId().getInOutNoticeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getInOutNoticeEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((InOutNoticeEvent.SqlInOutNoticeEvent)event).getInOutNoticeEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getInOutNoticeEventId().getVersion() == null");
         }

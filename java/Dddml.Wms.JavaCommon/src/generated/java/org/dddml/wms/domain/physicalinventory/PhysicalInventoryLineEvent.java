@@ -7,9 +7,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PhysicalInventoryLineEvent extends Event
-{
-    PhysicalInventoryLineEventId getPhysicalInventoryLineEventId();
+public interface PhysicalInventoryLineEvent extends Event {
+
+    interface SqlPhysicalInventoryLineEvent extends PhysicalInventoryLineEvent {
+        PhysicalInventoryLineEventId getPhysicalInventoryLineEventId();
+    }
+
+    InventoryItemId getInventoryItemId();
+
+    //void setInventoryItemId(InventoryItemId inventoryItemId);
 
     boolean getEventReadOnly();
 

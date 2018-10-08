@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implements OrderShipGroupEvent 
+public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implements OrderShipGroupEvent.SqlOrderShipGroupEvent 
 {
     private OrderShipGroupEventId orderShipGroupEventId;
 
@@ -86,12 +86,12 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(OrderItemShipGroupAssociationEvent e)
+    protected void throwOnInconsistentEventIds(OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(OrderShipGroupEvent oe, OrderItemShipGroupAssociationEvent e)
+    public static void throwOnInconsistentEventIds(OrderShipGroupEvent.SqlOrderShipGroupEvent oe, OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent e)
     {
         if (!oe.getOrderShipGroupEventId().getOrderId().equals(e.getOrderItemShipGroupAssociationEventId().getOrderId()))
         { 
@@ -371,8 +371,8 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
         
         public void addOrderItemShipGroupAssociationEvent(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderItemShipGroupAssociationEvents.put(e.getOrderItemShipGroupAssociationEventId(), e);
+            throwOnInconsistentEventIds((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e);
+            this.orderItemShipGroupAssociationEvents.put(((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e).getOrderItemShipGroupAssociationEventId(), e);
         }
 
         public void save()
@@ -586,8 +586,8 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
         
         public void addOrderItemShipGroupAssociationEvent(OrderItemShipGroupAssociationEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderItemShipGroupAssociationEvents.put(e.getOrderItemShipGroupAssociationEventId(), e);
+            throwOnInconsistentEventIds((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e);
+            this.orderItemShipGroupAssociationEvents.put(((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e).getOrderItemShipGroupAssociationEventId(), e);
         }
 
         public void save()
@@ -652,8 +652,8 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
         
         public void addOrderItemShipGroupAssociationEvent(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderItemShipGroupAssociationEvents.put(e.getOrderItemShipGroupAssociationEventId(), e);
+            throwOnInconsistentEventIds((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e);
+            this.orderItemShipGroupAssociationEvents.put(((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e).getOrderItemShipGroupAssociationEventId(), e);
         }
 
         public void save()

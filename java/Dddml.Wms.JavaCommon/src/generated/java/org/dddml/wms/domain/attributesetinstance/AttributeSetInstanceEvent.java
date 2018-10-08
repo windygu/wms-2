@@ -6,9 +6,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface AttributeSetInstanceEvent extends Event
-{
-    AttributeSetInstanceEventId getAttributeSetInstanceEventId();
+public interface AttributeSetInstanceEvent extends Event {
+
+    interface SqlAttributeSetInstanceEvent extends AttributeSetInstanceEvent {
+        AttributeSetInstanceEventId getAttributeSetInstanceEventId();
+    }
+
+    String getAttributeSetInstanceId();
+
+    //void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 
@@ -303,9 +313,9 @@ public interface AttributeSetInstanceEvent extends Event
 
         void setActive(Boolean active);
 
-    Set<String> getStatusIds();
+        Set<String> getStatusIds();
 
-    void setStatusIds(Set<String> statusIds);
+        void setStatusIds(Set<String> statusIds);
 
     }
 

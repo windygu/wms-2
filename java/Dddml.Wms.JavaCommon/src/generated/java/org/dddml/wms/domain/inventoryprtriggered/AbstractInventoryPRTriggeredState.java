@@ -127,7 +127,7 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
     public AbstractInventoryPRTriggeredState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryPRTriggeredId(((InventoryPRTriggeredEvent) events.get(0)).getInventoryPRTriggeredEventId().getInventoryPRTriggeredId());
+            this.setInventoryPRTriggeredId(((InventoryPRTriggeredEvent.SqlInventoryPRTriggeredEvent) events.get(0)).getInventoryPRTriggeredEventId().getInventoryPRTriggeredId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -200,14 +200,14 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
     protected void throwOnWrongEvent(InventoryPRTriggeredEvent event)
     {
         InventoryPRTriggeredId stateEntityId = this.getInventoryPRTriggeredId(); // Aggregate Id
-        InventoryPRTriggeredId eventEntityId = event.getInventoryPRTriggeredEventId().getInventoryPRTriggeredId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        InventoryPRTriggeredId eventEntityId = ((InventoryPRTriggeredEvent.SqlInventoryPRTriggeredEvent)event).getInventoryPRTriggeredEventId().getInventoryPRTriggeredId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getInventoryPRTriggeredEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((InventoryPRTriggeredEvent.SqlInventoryPRTriggeredEvent)event).getInventoryPRTriggeredEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getInventoryPRTriggeredEventId().getVersion() == null");
         }

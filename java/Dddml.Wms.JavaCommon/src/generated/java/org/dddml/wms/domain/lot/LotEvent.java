@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface LotEvent extends Event
-{
-    LotEventId getLotEventId();
+public interface LotEvent extends Event {
+
+    interface SqlLotEvent extends LotEvent {
+        LotEventId getLotEventId();
+    }
+
+    String getLotId();
+
+    //void setLotId(String lotId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

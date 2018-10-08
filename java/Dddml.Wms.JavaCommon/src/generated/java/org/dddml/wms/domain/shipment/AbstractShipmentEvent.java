@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractShipmentEvent extends AbstractEvent implements ShipmentEvent 
+public abstract class AbstractShipmentEvent extends AbstractEvent implements ShipmentEvent.SqlShipmentEvent 
 {
     private ShipmentEventId shipmentEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
     public void setShipmentId(String shipmentId) {
         getShipmentEventId().setShipmentId(shipmentId);
     }
+
+    public Long getVersion() {
+        return getShipmentEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getShipmentEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -86,12 +94,12 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(ShipmentImageEvent e)
+    protected void throwOnInconsistentEventIds(ShipmentImageEvent.SqlShipmentImageEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(ShipmentEvent oe, ShipmentImageEvent e)
+    public static void throwOnInconsistentEventIds(ShipmentEvent.SqlShipmentEvent oe, ShipmentImageEvent.SqlShipmentImageEvent e)
     {
         if (!oe.getShipmentEventId().getShipmentId().equals(e.getShipmentImageEventId().getShipmentId()))
         { 
@@ -112,12 +120,12 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(ShipmentItemEvent e)
+    protected void throwOnInconsistentEventIds(ShipmentItemEvent.SqlShipmentItemEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(ShipmentEvent oe, ShipmentItemEvent e)
+    public static void throwOnInconsistentEventIds(ShipmentEvent.SqlShipmentEvent oe, ShipmentItemEvent.SqlShipmentItemEvent e)
     {
         if (!oe.getShipmentEventId().getShipmentId().equals(e.getShipmentItemEventId().getShipmentId()))
         { 
@@ -138,12 +146,12 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(ShipmentReceiptEvent e)
+    protected void throwOnInconsistentEventIds(ShipmentReceiptEvent.SqlShipmentReceiptEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(ShipmentEvent oe, ShipmentReceiptEvent e)
+    public static void throwOnInconsistentEventIds(ShipmentEvent.SqlShipmentEvent oe, ShipmentReceiptEvent.SqlShipmentReceiptEvent e)
     {
         if (!oe.getShipmentEventId().getShipmentId().equals(e.getShipmentReceiptEventId().getShipmentId()))
         { 
@@ -164,12 +172,12 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(ItemIssuanceEvent e)
+    protected void throwOnInconsistentEventIds(ItemIssuanceEvent.SqlItemIssuanceEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(ShipmentEvent oe, ItemIssuanceEvent e)
+    public static void throwOnInconsistentEventIds(ShipmentEvent.SqlShipmentEvent oe, ItemIssuanceEvent.SqlItemIssuanceEvent e)
     {
         if (!oe.getShipmentEventId().getShipmentId().equals(e.getItemIssuanceEventId().getShipmentId()))
         { 
@@ -712,8 +720,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addShipmentImageEvent(ShipmentImageEvent.ShipmentImageStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentImageEvents.put(e.getShipmentImageEventId(), e);
+            throwOnInconsistentEventIds((ShipmentImageEvent.SqlShipmentImageEvent)e);
+            this.shipmentImageEvents.put(((ShipmentImageEvent.SqlShipmentImageEvent)e).getShipmentImageEventId(), e);
         }
 
         private Map<ShipmentItemEventId, ShipmentItemEvent.ShipmentItemStateCreated> shipmentItemEvents = new HashMap<ShipmentItemEventId, ShipmentItemEvent.ShipmentItemStateCreated>();
@@ -754,8 +762,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addShipmentItemEvent(ShipmentItemEvent.ShipmentItemStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentItemEvents.put(e.getShipmentItemEventId(), e);
+            throwOnInconsistentEventIds((ShipmentItemEvent.SqlShipmentItemEvent)e);
+            this.shipmentItemEvents.put(((ShipmentItemEvent.SqlShipmentItemEvent)e).getShipmentItemEventId(), e);
         }
 
         private Map<ShipmentReceiptEventId, ShipmentReceiptEvent.ShipmentReceiptStateCreated> shipmentReceiptEvents = new HashMap<ShipmentReceiptEventId, ShipmentReceiptEvent.ShipmentReceiptStateCreated>();
@@ -796,8 +804,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addShipmentReceiptEvent(ShipmentReceiptEvent.ShipmentReceiptStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentReceiptEvents.put(e.getShipmentReceiptEventId(), e);
+            throwOnInconsistentEventIds((ShipmentReceiptEvent.SqlShipmentReceiptEvent)e);
+            this.shipmentReceiptEvents.put(((ShipmentReceiptEvent.SqlShipmentReceiptEvent)e).getShipmentReceiptEventId(), e);
         }
 
         private Map<ItemIssuanceEventId, ItemIssuanceEvent.ItemIssuanceStateCreated> itemIssuanceEvents = new HashMap<ItemIssuanceEventId, ItemIssuanceEvent.ItemIssuanceStateCreated>();
@@ -838,8 +846,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addItemIssuanceEvent(ItemIssuanceEvent.ItemIssuanceStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.itemIssuanceEvents.put(e.getItemIssuanceEventId(), e);
+            throwOnInconsistentEventIds((ItemIssuanceEvent.SqlItemIssuanceEvent)e);
+            this.itemIssuanceEvents.put(((ItemIssuanceEvent.SqlItemIssuanceEvent)e).getItemIssuanceEventId(), e);
         }
 
         public void save()
@@ -1272,8 +1280,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addShipmentImageEvent(ShipmentImageEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentImageEvents.put(e.getShipmentImageEventId(), e);
+            throwOnInconsistentEventIds((ShipmentImageEvent.SqlShipmentImageEvent)e);
+            this.shipmentImageEvents.put(((ShipmentImageEvent.SqlShipmentImageEvent)e).getShipmentImageEventId(), e);
         }
 
         private Map<ShipmentItemEventId, ShipmentItemEvent> shipmentItemEvents = new HashMap<ShipmentItemEventId, ShipmentItemEvent>();
@@ -1314,8 +1322,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addShipmentItemEvent(ShipmentItemEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentItemEvents.put(e.getShipmentItemEventId(), e);
+            throwOnInconsistentEventIds((ShipmentItemEvent.SqlShipmentItemEvent)e);
+            this.shipmentItemEvents.put(((ShipmentItemEvent.SqlShipmentItemEvent)e).getShipmentItemEventId(), e);
         }
 
         private Map<ShipmentReceiptEventId, ShipmentReceiptEvent> shipmentReceiptEvents = new HashMap<ShipmentReceiptEventId, ShipmentReceiptEvent>();
@@ -1356,8 +1364,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addShipmentReceiptEvent(ShipmentReceiptEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentReceiptEvents.put(e.getShipmentReceiptEventId(), e);
+            throwOnInconsistentEventIds((ShipmentReceiptEvent.SqlShipmentReceiptEvent)e);
+            this.shipmentReceiptEvents.put(((ShipmentReceiptEvent.SqlShipmentReceiptEvent)e).getShipmentReceiptEventId(), e);
         }
 
         private Map<ItemIssuanceEventId, ItemIssuanceEvent> itemIssuanceEvents = new HashMap<ItemIssuanceEventId, ItemIssuanceEvent>();
@@ -1398,8 +1406,8 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         
         public void addItemIssuanceEvent(ItemIssuanceEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.itemIssuanceEvents.put(e.getItemIssuanceEventId(), e);
+            throwOnInconsistentEventIds((ItemIssuanceEvent.SqlItemIssuanceEvent)e);
+            this.itemIssuanceEvents.put(((ItemIssuanceEvent.SqlItemIssuanceEvent)e).getItemIssuanceEventId(), e);
         }
 
         public void save()

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractProductCategoryEvent extends AbstractEvent implements ProductCategoryEvent 
+public abstract class AbstractProductCategoryEvent extends AbstractEvent implements ProductCategoryEvent.SqlProductCategoryEvent 
 {
     private ProductCategoryEventId productCategoryEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractProductCategoryEvent extends AbstractEvent impleme
     public void setProductCategoryId(String productCategoryId) {
         getProductCategoryEventId().setProductCategoryId(productCategoryId);
     }
+
+    public Long getVersion() {
+        return getProductCategoryEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getProductCategoryEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

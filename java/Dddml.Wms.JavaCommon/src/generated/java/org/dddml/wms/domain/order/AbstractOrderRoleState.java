@@ -220,14 +220,14 @@ public abstract class AbstractOrderRoleState implements OrderRoleState
     protected void throwOnWrongEvent(OrderRoleEvent event)
     {
         String stateEntityIdOrderId = this.getOrderRoleId().getOrderId();
-        String eventEntityIdOrderId = event.getOrderRoleEventId().getOrderId();
+        String eventEntityIdOrderId = ((OrderRoleEvent.SqlOrderRoleEvent)event).getOrderRoleEventId().getOrderId();
         if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
         PartyRoleId stateEntityIdPartyRoleId = this.getOrderRoleId().getPartyRoleId();
-        PartyRoleId eventEntityIdPartyRoleId = event.getOrderRoleEventId().getPartyRoleId();
+        PartyRoleId eventEntityIdPartyRoleId = ((OrderRoleEvent.SqlOrderRoleEvent)event).getOrderRoleEventId().getPartyRoleId();
         if (!stateEntityIdPartyRoleId.equals(eventEntityIdPartyRoleId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PartyRoleId %1$s in state but entity id PartyRoleId %2$s in event", stateEntityIdPartyRoleId, eventEntityIdPartyRoleId);

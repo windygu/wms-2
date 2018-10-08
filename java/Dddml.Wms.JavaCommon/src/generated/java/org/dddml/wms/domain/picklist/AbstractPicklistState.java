@@ -214,7 +214,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
     public AbstractPicklistState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPicklistId(((PicklistEvent) events.get(0)).getPicklistEventId().getPicklistId());
+            this.setPicklistId(((PicklistEvent.SqlPicklistEvent) events.get(0)).getPicklistEventId().getPicklistId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -269,7 +269,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (PicklistRoleEvent.PicklistRoleStateCreated innerEvent : e.getPicklistRoleEvents()) {
-            PicklistRoleState innerState = this.getPicklistRoles().get(innerEvent.getPicklistRoleEventId().getPartyRoleId());
+            PicklistRoleState innerState = this.getPicklistRoles().get(((PicklistRoleEvent.SqlPicklistRoleEvent)innerEvent).getPicklistRoleEventId().getPartyRoleId());
             innerState.mutate(innerEvent);
         }
     }
@@ -360,7 +360,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (PicklistRoleEvent innerEvent : e.getPicklistRoleEvents()) {
-            PicklistRoleState innerState = this.getPicklistRoles().get(innerEvent.getPicklistRoleEventId().getPartyRoleId());
+            PicklistRoleState innerState = this.getPicklistRoles().get(((PicklistRoleEvent.SqlPicklistRoleEvent)innerEvent).getPicklistRoleEventId().getPartyRoleId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof PicklistRoleEvent.PicklistRoleStateRemoved)
             {
@@ -399,14 +399,14 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
     protected void throwOnWrongEvent(PicklistEvent event)
     {
         String stateEntityId = this.getPicklistId(); // Aggregate Id
-        String eventEntityId = event.getPicklistEventId().getPicklistId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((PicklistEvent.SqlPicklistEvent)event).getPicklistEventId().getPicklistId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getPicklistEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((PicklistEvent.SqlPicklistEvent)event).getPicklistEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getPicklistEventId().getVersion() == null");
         }

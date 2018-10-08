@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractPicklistItemEvent extends AbstractEvent implements PicklistItemEvent 
+public abstract class AbstractPicklistItemEvent extends AbstractEvent implements PicklistItemEvent.SqlPicklistItemEvent 
 {
     private PicklistItemEventId picklistItemEventId;
 

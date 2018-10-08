@@ -243,14 +243,14 @@ public abstract class AbstractGoodIdentificationState implements GoodIdentificat
     protected void throwOnWrongEvent(GoodIdentificationEvent event)
     {
         String stateEntityIdProductId = this.getProductGoodIdentificationId().getProductId();
-        String eventEntityIdProductId = event.getGoodIdentificationEventId().getProductId();
+        String eventEntityIdProductId = ((GoodIdentificationEvent.SqlGoodIdentificationEvent)event).getGoodIdentificationEventId().getProductId();
         if (!stateEntityIdProductId.equals(eventEntityIdProductId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ProductId %1$s in state but entity id ProductId %2$s in event", stateEntityIdProductId, eventEntityIdProductId);
         }
 
         String stateEntityIdGoodIdentificationTypeId = this.getProductGoodIdentificationId().getGoodIdentificationTypeId();
-        String eventEntityIdGoodIdentificationTypeId = event.getGoodIdentificationEventId().getGoodIdentificationTypeId();
+        String eventEntityIdGoodIdentificationTypeId = ((GoodIdentificationEvent.SqlGoodIdentificationEvent)event).getGoodIdentificationEventId().getGoodIdentificationTypeId();
         if (!stateEntityIdGoodIdentificationTypeId.equals(eventEntityIdGoodIdentificationTypeId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id GoodIdentificationTypeId %1$s in state but entity id GoodIdentificationTypeId %2$s in event", stateEntityIdGoodIdentificationTypeId, eventEntityIdGoodIdentificationTypeId);

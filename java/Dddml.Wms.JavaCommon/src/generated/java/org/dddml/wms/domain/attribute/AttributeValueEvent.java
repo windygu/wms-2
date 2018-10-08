@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface AttributeValueEvent extends Event
-{
-    AttributeValueEventId getAttributeValueEventId();
+public interface AttributeValueEvent extends Event {
+
+    interface SqlAttributeValueEvent extends AttributeValueEvent {
+        AttributeValueEventId getAttributeValueEventId();
+    }
+
+    String getValue();
+
+    //void setValue(String value);
 
     boolean getEventReadOnly();
 

@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractOrderEvent extends AbstractEvent implements OrderEvent 
+public abstract class AbstractOrderEvent extends AbstractEvent implements OrderEvent.SqlOrderEvent 
 {
     private OrderEventId orderEventId;
 
@@ -26,6 +26,14 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
     public void setOrderId(String orderId) {
         getOrderEventId().setOrderId(orderId);
     }
+
+    public Long getVersion() {
+        return getOrderEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getOrderEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -87,12 +95,12 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(OrderRoleEvent e)
+    protected void throwOnInconsistentEventIds(OrderRoleEvent.SqlOrderRoleEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(OrderEvent oe, OrderRoleEvent e)
+    public static void throwOnInconsistentEventIds(OrderEvent.SqlOrderEvent oe, OrderRoleEvent.SqlOrderRoleEvent e)
     {
         if (!oe.getOrderEventId().getOrderId().equals(e.getOrderRoleEventId().getOrderId()))
         { 
@@ -113,12 +121,12 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(OrderItemEvent e)
+    protected void throwOnInconsistentEventIds(OrderItemEvent.SqlOrderItemEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(OrderEvent oe, OrderItemEvent e)
+    public static void throwOnInconsistentEventIds(OrderEvent.SqlOrderEvent oe, OrderItemEvent.SqlOrderItemEvent e)
     {
         if (!oe.getOrderEventId().getOrderId().equals(e.getOrderItemEventId().getOrderId()))
         { 
@@ -139,12 +147,12 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(OrderShipGroupEvent e)
+    protected void throwOnInconsistentEventIds(OrderShipGroupEvent.SqlOrderShipGroupEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(OrderEvent oe, OrderShipGroupEvent e)
+    public static void throwOnInconsistentEventIds(OrderEvent.SqlOrderEvent oe, OrderShipGroupEvent.SqlOrderShipGroupEvent e)
     {
         if (!oe.getOrderEventId().getOrderId().equals(e.getOrderShipGroupEventId().getOrderId()))
         { 
@@ -547,8 +555,8 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         
         public void addOrderRoleEvent(OrderRoleEvent.OrderRoleStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderRoleEvents.put(e.getOrderRoleEventId(), e);
+            throwOnInconsistentEventIds((OrderRoleEvent.SqlOrderRoleEvent)e);
+            this.orderRoleEvents.put(((OrderRoleEvent.SqlOrderRoleEvent)e).getOrderRoleEventId(), e);
         }
 
         private Map<OrderItemEventId, OrderItemEvent.OrderItemStateCreated> orderItemEvents = new HashMap<OrderItemEventId, OrderItemEvent.OrderItemStateCreated>();
@@ -589,8 +597,8 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         
         public void addOrderItemEvent(OrderItemEvent.OrderItemStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderItemEvents.put(e.getOrderItemEventId(), e);
+            throwOnInconsistentEventIds((OrderItemEvent.SqlOrderItemEvent)e);
+            this.orderItemEvents.put(((OrderItemEvent.SqlOrderItemEvent)e).getOrderItemEventId(), e);
         }
 
         private Map<OrderShipGroupEventId, OrderShipGroupEvent.OrderShipGroupStateCreated> orderShipGroupEvents = new HashMap<OrderShipGroupEventId, OrderShipGroupEvent.OrderShipGroupStateCreated>();
@@ -631,8 +639,8 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         
         public void addOrderShipGroupEvent(OrderShipGroupEvent.OrderShipGroupStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderShipGroupEvents.put(e.getOrderShipGroupEventId(), e);
+            throwOnInconsistentEventIds((OrderShipGroupEvent.SqlOrderShipGroupEvent)e);
+            this.orderShipGroupEvents.put(((OrderShipGroupEvent.SqlOrderShipGroupEvent)e).getOrderShipGroupEventId(), e);
         }
 
         public void save()
@@ -952,8 +960,8 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         
         public void addOrderRoleEvent(OrderRoleEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderRoleEvents.put(e.getOrderRoleEventId(), e);
+            throwOnInconsistentEventIds((OrderRoleEvent.SqlOrderRoleEvent)e);
+            this.orderRoleEvents.put(((OrderRoleEvent.SqlOrderRoleEvent)e).getOrderRoleEventId(), e);
         }
 
         private Map<OrderItemEventId, OrderItemEvent> orderItemEvents = new HashMap<OrderItemEventId, OrderItemEvent>();
@@ -994,8 +1002,8 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         
         public void addOrderItemEvent(OrderItemEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderItemEvents.put(e.getOrderItemEventId(), e);
+            throwOnInconsistentEventIds((OrderItemEvent.SqlOrderItemEvent)e);
+            this.orderItemEvents.put(((OrderItemEvent.SqlOrderItemEvent)e).getOrderItemEventId(), e);
         }
 
         private Map<OrderShipGroupEventId, OrderShipGroupEvent> orderShipGroupEvents = new HashMap<OrderShipGroupEventId, OrderShipGroupEvent>();
@@ -1036,8 +1044,8 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         
         public void addOrderShipGroupEvent(OrderShipGroupEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.orderShipGroupEvents.put(e.getOrderShipGroupEventId(), e);
+            throwOnInconsistentEventIds((OrderShipGroupEvent.SqlOrderShipGroupEvent)e);
+            this.orderShipGroupEvents.put(((OrderShipGroupEvent.SqlOrderShipGroupEvent)e).getOrderShipGroupEventId(), e);
         }
 
         public void save()

@@ -6,9 +6,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface MovementConfirmationEvent extends Event
-{
-    MovementConfirmationEventId getMovementConfirmationEventId();
+public interface MovementConfirmationEvent extends Event {
+
+    interface SqlMovementConfirmationEvent extends MovementConfirmationEvent {
+        MovementConfirmationEventId getMovementConfirmationEventId();
+    }
+
+    String getDocumentNumber();
+
+    //void setDocumentNumber(String documentNumber);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

@@ -96,7 +96,7 @@ public abstract class AbstractPersonState extends AbstractPartyState implements 
     public AbstractPersonState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPartyId(((PersonEvent) events.get(0)).getPartyEventId().getPartyId());
+            this.setPartyId(((PartyEvent.SqlPartyEvent) events.get(0)).getPartyEventId().getPartyId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);

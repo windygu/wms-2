@@ -6,9 +6,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InventoryItemEvent extends Event
-{
-    InventoryItemEventId getInventoryItemEventId();
+public interface InventoryItemEvent extends Event {
+
+    interface SqlInventoryItemEvent extends InventoryItemEvent {
+        InventoryItemEventId getInventoryItemEventId();
+    }
+
+    InventoryItemId getInventoryItemId();
+
+    //void setInventoryItemId(InventoryItemId inventoryItemId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

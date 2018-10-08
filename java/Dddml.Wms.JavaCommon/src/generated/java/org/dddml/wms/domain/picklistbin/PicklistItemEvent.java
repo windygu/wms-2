@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PicklistItemEvent extends Event
-{
-    PicklistItemEventId getPicklistItemEventId();
+public interface PicklistItemEvent extends Event {
+
+    interface SqlPicklistItemEvent extends PicklistItemEvent {
+        PicklistItemEventId getPicklistItemEventId();
+    }
+
+    PicklistItemOrderShipGrpInvId getPicklistItemOrderShipGrpInvId();
+
+    //void setPicklistItemOrderShipGrpInvId(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
 
     boolean getEventReadOnly();
 

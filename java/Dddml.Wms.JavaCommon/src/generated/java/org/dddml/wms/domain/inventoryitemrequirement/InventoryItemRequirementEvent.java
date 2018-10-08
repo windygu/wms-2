@@ -8,9 +8,19 @@ import org.dddml.wms.domain.inventoryprtriggered.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InventoryItemRequirementEvent extends Event
-{
-    InventoryItemRequirementEventId getInventoryItemRequirementEventId();
+public interface InventoryItemRequirementEvent extends Event {
+
+    interface SqlInventoryItemRequirementEvent extends InventoryItemRequirementEvent {
+        InventoryItemRequirementEventId getInventoryItemRequirementEventId();
+    }
+
+    InventoryItemId getInventoryItemRequirementId();
+
+    //void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

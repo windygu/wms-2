@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface OrderItemEvent extends Event
-{
-    OrderItemEventId getOrderItemEventId();
+public interface OrderItemEvent extends Event {
+
+    interface SqlOrderItemEvent extends OrderItemEvent {
+        OrderItemEventId getOrderItemEventId();
+    }
+
+    String getOrderItemSeqId();
+
+    //void setOrderItemSeqId(String orderItemSeqId);
 
     boolean getEventReadOnly();
 

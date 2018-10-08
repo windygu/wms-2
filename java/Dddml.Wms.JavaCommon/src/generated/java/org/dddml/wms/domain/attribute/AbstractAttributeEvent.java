@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractAttributeEvent extends AbstractEvent implements AttributeEvent 
+public abstract class AbstractAttributeEvent extends AbstractEvent implements AttributeEvent.SqlAttributeEvent 
 {
     private AttributeEventId attributeEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
     public void setAttributeId(String attributeId) {
         getAttributeEventId().setAttributeId(attributeId);
     }
+
+    public Long getVersion() {
+        return getAttributeEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getAttributeEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -86,12 +94,12 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(AttributeValueEvent e)
+    protected void throwOnInconsistentEventIds(AttributeValueEvent.SqlAttributeValueEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(AttributeEvent oe, AttributeValueEvent e)
+    public static void throwOnInconsistentEventIds(AttributeEvent.SqlAttributeEvent oe, AttributeValueEvent.SqlAttributeValueEvent e)
     {
         if (!oe.getAttributeEventId().getAttributeId().equals(e.getAttributeValueEventId().getAttributeId()))
         { 
@@ -112,12 +120,12 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(AttributeAliasEvent e)
+    protected void throwOnInconsistentEventIds(AttributeAliasEvent.SqlAttributeAliasEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(AttributeEvent oe, AttributeAliasEvent e)
+    public static void throwOnInconsistentEventIds(AttributeEvent.SqlAttributeEvent oe, AttributeAliasEvent.SqlAttributeAliasEvent e)
     {
         if (!oe.getAttributeEventId().getAttributeId().equals(e.getAttributeAliasEventId().getAttributeId()))
         { 
@@ -332,8 +340,8 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         
         public void addAttributeValueEvent(AttributeValueEvent.AttributeValueStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeValueEvents.put(e.getAttributeValueEventId(), e);
+            throwOnInconsistentEventIds((AttributeValueEvent.SqlAttributeValueEvent)e);
+            this.attributeValueEvents.put(((AttributeValueEvent.SqlAttributeValueEvent)e).getAttributeValueEventId(), e);
         }
 
         private Map<AttributeAliasEventId, AttributeAliasEvent.AttributeAliasStateCreated> attributeAliasEvents = new HashMap<AttributeAliasEventId, AttributeAliasEvent.AttributeAliasStateCreated>();
@@ -374,8 +382,8 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         
         public void addAttributeAliasEvent(AttributeAliasEvent.AttributeAliasStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeAliasEvents.put(e.getAttributeAliasEventId(), e);
+            throwOnInconsistentEventIds((AttributeAliasEvent.SqlAttributeAliasEvent)e);
+            this.attributeAliasEvents.put(((AttributeAliasEvent.SqlAttributeAliasEvent)e).getAttributeAliasEventId(), e);
         }
 
         public void save()
@@ -542,8 +550,8 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         
         public void addAttributeValueEvent(AttributeValueEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeValueEvents.put(e.getAttributeValueEventId(), e);
+            throwOnInconsistentEventIds((AttributeValueEvent.SqlAttributeValueEvent)e);
+            this.attributeValueEvents.put(((AttributeValueEvent.SqlAttributeValueEvent)e).getAttributeValueEventId(), e);
         }
 
         private Map<AttributeAliasEventId, AttributeAliasEvent> attributeAliasEvents = new HashMap<AttributeAliasEventId, AttributeAliasEvent>();
@@ -584,8 +592,8 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         
         public void addAttributeAliasEvent(AttributeAliasEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeAliasEvents.put(e.getAttributeAliasEventId(), e);
+            throwOnInconsistentEventIds((AttributeAliasEvent.SqlAttributeAliasEvent)e);
+            this.attributeAliasEvents.put(((AttributeAliasEvent.SqlAttributeAliasEvent)e).getAttributeAliasEventId(), e);
         }
 
         public void save()
@@ -653,8 +661,8 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         
         public void addAttributeValueEvent(AttributeValueEvent.AttributeValueStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeValueEvents.put(e.getAttributeValueEventId(), e);
+            throwOnInconsistentEventIds((AttributeValueEvent.SqlAttributeValueEvent)e);
+            this.attributeValueEvents.put(((AttributeValueEvent.SqlAttributeValueEvent)e).getAttributeValueEventId(), e);
         }
 
 		
@@ -696,8 +704,8 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         
         public void addAttributeAliasEvent(AttributeAliasEvent.AttributeAliasStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeAliasEvents.put(e.getAttributeAliasEventId(), e);
+            throwOnInconsistentEventIds((AttributeAliasEvent.SqlAttributeAliasEvent)e);
+            this.attributeAliasEvents.put(((AttributeAliasEvent.SqlAttributeAliasEvent)e).getAttributeAliasEventId(), e);
         }
 
         public void save()

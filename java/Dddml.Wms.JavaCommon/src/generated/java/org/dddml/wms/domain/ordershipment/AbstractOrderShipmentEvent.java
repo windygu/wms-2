@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractOrderShipmentEvent extends AbstractEvent implements OrderShipmentEvent 
+public abstract class AbstractOrderShipmentEvent extends AbstractEvent implements OrderShipmentEvent.SqlOrderShipmentEvent 
 {
     private OrderShipmentEventId orderShipmentEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractOrderShipmentEvent extends AbstractEvent implement
     public void setOrderShipmentId(OrderShipmentId orderShipmentId) {
         getOrderShipmentEventId().setOrderShipmentId(orderShipmentId);
     }
+
+    public Long getVersion() {
+        return getOrderShipmentEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getOrderShipmentEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

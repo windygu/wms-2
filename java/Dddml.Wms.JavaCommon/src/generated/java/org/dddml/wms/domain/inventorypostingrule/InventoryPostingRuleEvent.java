@@ -6,9 +6,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InventoryPostingRuleEvent extends Event
-{
-    InventoryPostingRuleEventId getInventoryPostingRuleEventId();
+public interface InventoryPostingRuleEvent extends Event {
+
+    interface SqlInventoryPostingRuleEvent extends InventoryPostingRuleEvent {
+        InventoryPostingRuleEventId getInventoryPostingRuleEventId();
+    }
+
+    String getInventoryPostingRuleId();
+
+    //void setInventoryPostingRuleId(String inventoryPostingRuleId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

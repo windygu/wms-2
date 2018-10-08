@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface ShipmentItemEvent extends Event
-{
-    ShipmentItemEventId getShipmentItemEventId();
+public interface ShipmentItemEvent extends Event {
+
+    interface SqlShipmentItemEvent extends ShipmentItemEvent {
+        ShipmentItemEventId getShipmentItemEventId();
+    }
+
+    String getShipmentItemSeqId();
+
+    //void setShipmentItemSeqId(String shipmentItemSeqId);
 
     boolean getEventReadOnly();
 

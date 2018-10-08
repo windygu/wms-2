@@ -243,14 +243,14 @@ public abstract class AbstractAttributeAliasState implements AttributeAliasState
     protected void throwOnWrongEvent(AttributeAliasEvent event)
     {
         String stateEntityIdAttributeId = this.getAttributeAliasId().getAttributeId();
-        String eventEntityIdAttributeId = event.getAttributeAliasEventId().getAttributeId();
+        String eventEntityIdAttributeId = ((AttributeAliasEvent.SqlAttributeAliasEvent)event).getAttributeAliasEventId().getAttributeId();
         if (!stateEntityIdAttributeId.equals(eventEntityIdAttributeId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id AttributeId %1$s in state but entity id AttributeId %2$s in event", stateEntityIdAttributeId, eventEntityIdAttributeId);
         }
 
         String stateEntityIdCode = this.getAttributeAliasId().getCode();
-        String eventEntityIdCode = event.getAttributeAliasEventId().getCode();
+        String eventEntityIdCode = ((AttributeAliasEvent.SqlAttributeAliasEvent)event).getAttributeAliasEventId().getCode();
         if (!stateEntityIdCode.equals(eventEntityIdCode))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id Code %1$s in state but entity id Code %2$s in event", stateEntityIdCode, eventEntityIdCode);

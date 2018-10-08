@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractRoleTypeEvent extends AbstractEvent implements RoleTypeEvent 
+public abstract class AbstractRoleTypeEvent extends AbstractEvent implements RoleTypeEvent.SqlRoleTypeEvent 
 {
     private RoleTypeEventId roleTypeEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
     public void setRoleTypeId(String roleTypeId) {
         getRoleTypeEventId().setRoleTypeId(roleTypeId);
     }
+
+    public Long getVersion() {
+        return getRoleTypeEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getRoleTypeEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

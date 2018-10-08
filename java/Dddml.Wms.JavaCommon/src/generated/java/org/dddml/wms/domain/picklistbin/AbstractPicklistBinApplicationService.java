@@ -146,7 +146,7 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
     }
 
     public void initialize(PicklistBinEvent.PicklistBinStateCreated stateCreated) {
-        String aggregateId = stateCreated.getPicklistBinEventId().getPicklistBinId();
+        String aggregateId = ((PicklistBinEvent.SqlPicklistBinEvent)stateCreated).getPicklistBinEventId().getPicklistBinId();
         PicklistBinState state = new AbstractPicklistBinState.SimplePicklistBinState();
         state.setPicklistBinId(aggregateId);
 
@@ -154,7 +154,7 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
         ((AbstractPicklistBinAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getPicklistBinEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((PicklistBinEvent.SqlPicklistBinEvent)stateCreated).getPicklistBinEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(PicklistBinCommand command, EventStoreAggregateId eventStoreAggregateId, PicklistBinState state)

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractStatusItemEvent extends AbstractEvent implements StatusItemEvent 
+public abstract class AbstractStatusItemEvent extends AbstractEvent implements StatusItemEvent.SqlStatusItemEvent 
 {
     private StatusItemEventId statusItemEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractStatusItemEvent extends AbstractEvent implements S
     public void setStatusId(String statusId) {
         getStatusItemEventId().setStatusId(statusId);
     }
+
+    public Long getVersion() {
+        return getStatusItemEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getStatusItemEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

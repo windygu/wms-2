@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface StatusItemEvent extends Event
-{
-    StatusItemEventId getStatusItemEventId();
+public interface StatusItemEvent extends Event {
+
+    interface SqlStatusItemEvent extends StatusItemEvent {
+        StatusItemEventId getStatusItemEventId();
+    }
+
+    String getStatusId();
+
+    //void setStatusId(String statusId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

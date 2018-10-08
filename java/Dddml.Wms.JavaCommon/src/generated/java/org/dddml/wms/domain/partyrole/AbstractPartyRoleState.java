@@ -129,7 +129,7 @@ public abstract class AbstractPartyRoleState implements PartyRoleState
     public AbstractPartyRoleState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPartyRoleId(((PartyRoleEvent) events.get(0)).getPartyRoleEventId().getPartyRoleId());
+            this.setPartyRoleId(((PartyRoleEvent.SqlPartyRoleEvent) events.get(0)).getPartyRoleEventId().getPartyRoleId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -216,14 +216,14 @@ public abstract class AbstractPartyRoleState implements PartyRoleState
     protected void throwOnWrongEvent(PartyRoleEvent event)
     {
         PartyRoleId stateEntityId = this.getPartyRoleId(); // Aggregate Id
-        PartyRoleId eventEntityId = event.getPartyRoleEventId().getPartyRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        PartyRoleId eventEntityId = ((PartyRoleEvent.SqlPartyRoleEvent)event).getPartyRoleEventId().getPartyRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getPartyRoleEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((PartyRoleEvent.SqlPartyRoleEvent)event).getPartyRoleEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getPartyRoleEventId().getVersion() == null");
         }

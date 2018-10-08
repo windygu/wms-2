@@ -138,7 +138,7 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
     }
 
     public void initialize(LotEvent.LotStateCreated stateCreated) {
-        String aggregateId = stateCreated.getLotEventId().getLotId();
+        String aggregateId = ((LotEvent.SqlLotEvent)stateCreated).getLotEventId().getLotId();
         LotState state = new AbstractLotState.SimpleLotState();
         state.setLotId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
         ((AbstractLotAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getLotEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((LotEvent.SqlLotEvent)stateCreated).getLotEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(LotCommand command, EventStoreAggregateId eventStoreAggregateId, LotState state)

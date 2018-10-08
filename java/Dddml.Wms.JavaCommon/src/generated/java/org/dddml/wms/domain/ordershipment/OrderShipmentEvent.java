@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface OrderShipmentEvent extends Event
-{
-    OrderShipmentEventId getOrderShipmentEventId();
+public interface OrderShipmentEvent extends Event {
+
+    interface SqlOrderShipmentEvent extends OrderShipmentEvent {
+        OrderShipmentEventId getOrderShipmentEventId();
+    }
+
+    OrderShipmentId getOrderShipmentId();
+
+    //void setOrderShipmentId(OrderShipmentId orderShipmentId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

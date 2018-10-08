@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractOrderRoleEvent extends AbstractEvent implements OrderRoleEvent 
+public abstract class AbstractOrderRoleEvent extends AbstractEvent implements OrderRoleEvent.SqlOrderRoleEvent 
 {
     private OrderRoleEventId orderRoleEventId;
 

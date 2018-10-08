@@ -243,14 +243,14 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
     protected void throwOnWrongEvent(AttributeUseEvent event)
     {
         String stateEntityIdAttributeSetId = this.getAttributeSetAttributeUseId().getAttributeSetId();
-        String eventEntityIdAttributeSetId = event.getAttributeUseEventId().getAttributeSetId();
+        String eventEntityIdAttributeSetId = ((AttributeUseEvent.SqlAttributeUseEvent)event).getAttributeUseEventId().getAttributeSetId();
         if (!stateEntityIdAttributeSetId.equals(eventEntityIdAttributeSetId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id AttributeSetId %1$s in state but entity id AttributeSetId %2$s in event", stateEntityIdAttributeSetId, eventEntityIdAttributeSetId);
         }
 
         String stateEntityIdAttributeId = this.getAttributeSetAttributeUseId().getAttributeId();
-        String eventEntityIdAttributeId = event.getAttributeUseEventId().getAttributeId();
+        String eventEntityIdAttributeId = ((AttributeUseEvent.SqlAttributeUseEvent)event).getAttributeUseEventId().getAttributeId();
         if (!stateEntityIdAttributeId.equals(eventEntityIdAttributeId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id AttributeId %1$s in state but entity id AttributeId %2$s in event", stateEntityIdAttributeId, eventEntityIdAttributeId);

@@ -138,7 +138,7 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
     }
 
     public void initialize(ContactMechEvent.ContactMechStateCreated stateCreated) {
-        String aggregateId = stateCreated.getContactMechEventId().getContactMechId();
+        String aggregateId = ((ContactMechEvent.SqlContactMechEvent)stateCreated).getContactMechEventId().getContactMechId();
         ContactMechState state = new AbstractContactMechState.SimpleContactMechState();
         state.setContactMechId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
         ((AbstractContactMechAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getContactMechEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((ContactMechEvent.SqlContactMechEvent)stateCreated).getContactMechEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ContactMechCommand command, EventStoreAggregateId eventStoreAggregateId, ContactMechState state)

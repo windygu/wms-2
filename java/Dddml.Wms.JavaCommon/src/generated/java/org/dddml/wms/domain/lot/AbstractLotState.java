@@ -153,7 +153,7 @@ public abstract class AbstractLotState implements LotState
     public AbstractLotState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setLotId(((LotEvent) events.get(0)).getLotEventId().getLotId());
+            this.setLotId(((LotEvent.SqlLotEvent) events.get(0)).getLotEventId().getLotId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -264,14 +264,14 @@ public abstract class AbstractLotState implements LotState
     protected void throwOnWrongEvent(LotEvent event)
     {
         String stateEntityId = this.getLotId(); // Aggregate Id
-        String eventEntityId = event.getLotEventId().getLotId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((LotEvent.SqlLotEvent)event).getLotEventId().getLotId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getLotEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((LotEvent.SqlLotEvent)event).getLotEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getLotEventId().getVersion() == null");
         }

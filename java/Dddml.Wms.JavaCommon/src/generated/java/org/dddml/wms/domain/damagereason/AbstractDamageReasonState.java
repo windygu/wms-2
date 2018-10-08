@@ -153,7 +153,7 @@ public abstract class AbstractDamageReasonState implements DamageReasonState
     public AbstractDamageReasonState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDamageReasonId(((DamageReasonEvent) events.get(0)).getDamageReasonEventId().getDamageReasonId());
+            this.setDamageReasonId(((DamageReasonEvent.SqlDamageReasonEvent) events.get(0)).getDamageReasonEventId().getDamageReasonId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -264,14 +264,14 @@ public abstract class AbstractDamageReasonState implements DamageReasonState
     protected void throwOnWrongEvent(DamageReasonEvent event)
     {
         String stateEntityId = this.getDamageReasonId(); // Aggregate Id
-        String eventEntityId = event.getDamageReasonEventId().getDamageReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((DamageReasonEvent.SqlDamageReasonEvent)event).getDamageReasonEventId().getDamageReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getDamageReasonEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((DamageReasonEvent.SqlDamageReasonEvent)event).getDamageReasonEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getDamageReasonEventId().getVersion() == null");
         }

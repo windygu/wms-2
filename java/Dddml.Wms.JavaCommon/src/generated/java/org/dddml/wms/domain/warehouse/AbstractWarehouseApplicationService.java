@@ -138,7 +138,7 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
     }
 
     public void initialize(WarehouseEvent.WarehouseStateCreated stateCreated) {
-        String aggregateId = stateCreated.getWarehouseEventId().getWarehouseId();
+        String aggregateId = ((WarehouseEvent.SqlWarehouseEvent)stateCreated).getWarehouseEventId().getWarehouseId();
         WarehouseState state = new AbstractWarehouseState.SimpleWarehouseState();
         state.setWarehouseId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         ((AbstractWarehouseAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getWarehouseEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((WarehouseEvent.SqlWarehouseEvent)stateCreated).getWarehouseEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(WarehouseCommand command, EventStoreAggregateId eventStoreAggregateId, WarehouseState state)

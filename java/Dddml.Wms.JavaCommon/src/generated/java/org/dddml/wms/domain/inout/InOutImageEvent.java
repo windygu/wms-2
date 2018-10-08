@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InOutImageEvent extends Event
-{
-    InOutImageEventId getInOutImageEventId();
+public interface InOutImageEvent extends Event {
+
+    interface SqlInOutImageEvent extends InOutImageEvent {
+        InOutImageEventId getInOutImageEventId();
+    }
+
+    String getSequenceId();
+
+    //void setSequenceId(String sequenceId);
 
     boolean getEventReadOnly();
 

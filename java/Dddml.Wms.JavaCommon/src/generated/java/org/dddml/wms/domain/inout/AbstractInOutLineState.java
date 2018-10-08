@@ -350,7 +350,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (InOutLineImageEvent.InOutLineImageStateCreated innerEvent : e.getInOutLineImageEvents()) {
-            InOutLineImageState innerState = this.getInOutLineImages().get(innerEvent.getInOutLineImageEventId().getSequenceId());
+            InOutLineImageState innerState = this.getInOutLineImages().get(((InOutLineImageEvent.SqlInOutLineImageEvent)innerEvent).getInOutLineImageEventId().getSequenceId());
             innerState.mutate(innerEvent);
         }
     }
@@ -507,7 +507,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (InOutLineImageEvent innerEvent : e.getInOutLineImageEvents()) {
-            InOutLineImageState innerState = this.getInOutLineImages().get(innerEvent.getInOutLineImageEventId().getSequenceId());
+            InOutLineImageState innerState = this.getInOutLineImages().get(((InOutLineImageEvent.SqlInOutLineImageEvent)innerEvent).getInOutLineImageEventId().getSequenceId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof InOutLineImageEvent.InOutLineImageStateRemoved)
             {
@@ -546,14 +546,14 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
     protected void throwOnWrongEvent(InOutLineEvent event)
     {
         String stateEntityIdInOutDocumentNumber = this.getInOutLineId().getInOutDocumentNumber();
-        String eventEntityIdInOutDocumentNumber = event.getInOutLineEventId().getInOutDocumentNumber();
+        String eventEntityIdInOutDocumentNumber = ((InOutLineEvent.SqlInOutLineEvent)event).getInOutLineEventId().getInOutDocumentNumber();
         if (!stateEntityIdInOutDocumentNumber.equals(eventEntityIdInOutDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutDocumentNumber %1$s in state but entity id InOutDocumentNumber %2$s in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
         }
 
         String stateEntityIdLineNumber = this.getInOutLineId().getLineNumber();
-        String eventEntityIdLineNumber = event.getInOutLineEventId().getLineNumber();
+        String eventEntityIdLineNumber = ((InOutLineEvent.SqlInOutLineEvent)event).getInOutLineEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

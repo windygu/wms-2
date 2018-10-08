@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInOutEvent extends AbstractEvent implements InOutEvent 
+public abstract class AbstractInOutEvent extends AbstractEvent implements InOutEvent.SqlInOutEvent 
 {
     private InOutEventId inOutEventId;
 
@@ -26,6 +26,14 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
     public void setDocumentNumber(String documentNumber) {
         getInOutEventId().setDocumentNumber(documentNumber);
     }
+
+    public Long getVersion() {
+        return getInOutEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getInOutEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -87,12 +95,12 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(InOutImageEvent e)
+    protected void throwOnInconsistentEventIds(InOutImageEvent.SqlInOutImageEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(InOutEvent oe, InOutImageEvent e)
+    public static void throwOnInconsistentEventIds(InOutEvent.SqlInOutEvent oe, InOutImageEvent.SqlInOutImageEvent e)
     {
         if (!oe.getInOutEventId().getDocumentNumber().equals(e.getInOutImageEventId().getInOutDocumentNumber()))
         { 
@@ -113,12 +121,12 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(InOutLineEvent e)
+    protected void throwOnInconsistentEventIds(InOutLineEvent.SqlInOutLineEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(InOutEvent oe, InOutLineEvent e)
+    public static void throwOnInconsistentEventIds(InOutEvent.SqlInOutEvent oe, InOutLineEvent.SqlInOutLineEvent e)
     {
         if (!oe.getInOutEventId().getDocumentNumber().equals(e.getInOutLineEventId().getInOutDocumentNumber()))
         { 
@@ -585,8 +593,8 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         
         public void addInOutImageEvent(InOutImageEvent.InOutImageStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inOutImageEvents.put(e.getInOutImageEventId(), e);
+            throwOnInconsistentEventIds((InOutImageEvent.SqlInOutImageEvent)e);
+            this.inOutImageEvents.put(((InOutImageEvent.SqlInOutImageEvent)e).getInOutImageEventId(), e);
         }
 
         private Map<InOutLineEventId, InOutLineEvent.InOutLineStateCreated> inOutLineEvents = new HashMap<InOutLineEventId, InOutLineEvent.InOutLineStateCreated>();
@@ -627,8 +635,8 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         
         public void addInOutLineEvent(InOutLineEvent.InOutLineStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inOutLineEvents.put(e.getInOutLineEventId(), e);
+            throwOnInconsistentEventIds((InOutLineEvent.SqlInOutLineEvent)e);
+            this.inOutLineEvents.put(((InOutLineEvent.SqlInOutLineEvent)e).getInOutLineEventId(), e);
         }
 
         public void save()
@@ -1005,8 +1013,8 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         
         public void addInOutImageEvent(InOutImageEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inOutImageEvents.put(e.getInOutImageEventId(), e);
+            throwOnInconsistentEventIds((InOutImageEvent.SqlInOutImageEvent)e);
+            this.inOutImageEvents.put(((InOutImageEvent.SqlInOutImageEvent)e).getInOutImageEventId(), e);
         }
 
         private Map<InOutLineEventId, InOutLineEvent> inOutLineEvents = new HashMap<InOutLineEventId, InOutLineEvent>();
@@ -1047,8 +1055,8 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         
         public void addInOutLineEvent(InOutLineEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inOutLineEvents.put(e.getInOutLineEventId(), e);
+            throwOnInconsistentEventIds((InOutLineEvent.SqlInOutLineEvent)e);
+            this.inOutLineEvents.put(((InOutLineEvent.SqlInOutLineEvent)e).getInOutLineEventId(), e);
         }
 
         public void save()

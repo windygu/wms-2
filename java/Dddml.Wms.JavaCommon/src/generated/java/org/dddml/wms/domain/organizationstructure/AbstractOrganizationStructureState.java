@@ -129,7 +129,7 @@ public abstract class AbstractOrganizationStructureState implements Organization
     public AbstractOrganizationStructureState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setId(((OrganizationStructureEvent) events.get(0)).getOrganizationStructureEventId().getId());
+            this.setId(((OrganizationStructureEvent.SqlOrganizationStructureEvent) events.get(0)).getOrganizationStructureEventId().getId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -216,14 +216,14 @@ public abstract class AbstractOrganizationStructureState implements Organization
     protected void throwOnWrongEvent(OrganizationStructureEvent event)
     {
         OrganizationStructureId stateEntityId = this.getId(); // Aggregate Id
-        OrganizationStructureId eventEntityId = event.getOrganizationStructureEventId().getId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        OrganizationStructureId eventEntityId = ((OrganizationStructureEvent.SqlOrganizationStructureEvent)event).getOrganizationStructureEventId().getId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getOrganizationStructureEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((OrganizationStructureEvent.SqlOrganizationStructureEvent)event).getOrganizationStructureEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getOrganizationStructureEventId().getVersion() == null");
         }

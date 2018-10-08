@@ -249,7 +249,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
     public AbstractShipmentPackageState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentPackageId(((ShipmentPackageEvent) events.get(0)).getShipmentPackageEventId().getShipmentPackageId());
+            this.setShipmentPackageId(((ShipmentPackageEvent.SqlShipmentPackageEvent) events.get(0)).getShipmentPackageEventId().getShipmentPackageId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -307,7 +307,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         this.setCreatedAt(e.getCreatedAt());
 
         for (ShipmentPackageContentEvent.ShipmentPackageContentStateCreated innerEvent : e.getShipmentPackageContentEvents()) {
-            ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(innerEvent.getShipmentPackageContentEventId().getShipmentItemSeqId());
+            ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)innerEvent).getShipmentPackageContentEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -431,7 +431,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         this.setUpdatedAt(e.getCreatedAt());
 
         for (ShipmentPackageContentEvent innerEvent : e.getShipmentPackageContentEvents()) {
-            ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(innerEvent.getShipmentPackageContentEventId().getShipmentItemSeqId());
+            ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)innerEvent).getShipmentPackageContentEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved)
             {
@@ -470,14 +470,14 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
     protected void throwOnWrongEvent(ShipmentPackageEvent event)
     {
         ShipmentPackageId stateEntityId = this.getShipmentPackageId(); // Aggregate Id
-        ShipmentPackageId eventEntityId = event.getShipmentPackageEventId().getShipmentPackageId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        ShipmentPackageId eventEntityId = ((ShipmentPackageEvent.SqlShipmentPackageEvent)event).getShipmentPackageEventId().getShipmentPackageId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getShipmentPackageEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((ShipmentPackageEvent.SqlShipmentPackageEvent)event).getShipmentPackageEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getShipmentPackageEventId().getVersion() == null");
         }

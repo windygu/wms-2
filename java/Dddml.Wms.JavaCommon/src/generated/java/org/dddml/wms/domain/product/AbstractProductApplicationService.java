@@ -142,7 +142,7 @@ public abstract class AbstractProductApplicationService implements ProductApplic
     }
 
     public void initialize(ProductEvent.ProductStateCreated stateCreated) {
-        String aggregateId = stateCreated.getProductEventId().getProductId();
+        String aggregateId = ((ProductEvent.SqlProductEvent)stateCreated).getProductEventId().getProductId();
         ProductState state = new AbstractProductState.SimpleProductState();
         state.setProductId(aggregateId);
 
@@ -150,7 +150,7 @@ public abstract class AbstractProductApplicationService implements ProductApplic
         ((AbstractProductAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getProductEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((ProductEvent.SqlProductEvent)stateCreated).getProductEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ProductCommand command, EventStoreAggregateId eventStoreAggregateId, ProductState state)

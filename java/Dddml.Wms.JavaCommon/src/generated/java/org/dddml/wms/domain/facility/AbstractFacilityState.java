@@ -333,7 +333,7 @@ public abstract class AbstractFacilityState implements FacilityState
     public AbstractFacilityState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setFacilityId(((FacilityEvent) events.get(0)).getFacilityEventId().getFacilityId());
+            this.setFacilityId(((FacilityEvent.SqlFacilityEvent) events.get(0)).getFacilityEventId().getFacilityId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -624,14 +624,14 @@ public abstract class AbstractFacilityState implements FacilityState
     protected void throwOnWrongEvent(FacilityEvent event)
     {
         String stateEntityId = this.getFacilityId(); // Aggregate Id
-        String eventEntityId = event.getFacilityEventId().getFacilityId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((FacilityEvent.SqlFacilityEvent)event).getFacilityEventId().getFacilityId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getFacilityEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((FacilityEvent.SqlFacilityEvent)event).getFacilityEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getFacilityEventId().getVersion() == null");
         }

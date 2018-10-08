@@ -267,14 +267,14 @@ public abstract class AbstractPicklistItemState implements PicklistItemState
     protected void throwOnWrongEvent(PicklistItemEvent event)
     {
         String stateEntityIdPicklistBinId = this.getPicklistBinPicklistItemId().getPicklistBinId();
-        String eventEntityIdPicklistBinId = event.getPicklistItemEventId().getPicklistBinId();
+        String eventEntityIdPicklistBinId = ((PicklistItemEvent.SqlPicklistItemEvent)event).getPicklistItemEventId().getPicklistBinId();
         if (!stateEntityIdPicklistBinId.equals(eventEntityIdPicklistBinId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PicklistBinId %1$s in state but entity id PicklistBinId %2$s in event", stateEntityIdPicklistBinId, eventEntityIdPicklistBinId);
         }
 
         PicklistItemOrderShipGrpInvId stateEntityIdPicklistItemOrderShipGrpInvId = this.getPicklistBinPicklistItemId().getPicklistItemOrderShipGrpInvId();
-        PicklistItemOrderShipGrpInvId eventEntityIdPicklistItemOrderShipGrpInvId = event.getPicklistItemEventId().getPicklistItemOrderShipGrpInvId();
+        PicklistItemOrderShipGrpInvId eventEntityIdPicklistItemOrderShipGrpInvId = ((PicklistItemEvent.SqlPicklistItemEvent)event).getPicklistItemEventId().getPicklistItemOrderShipGrpInvId();
         if (!stateEntityIdPicklistItemOrderShipGrpInvId.equals(eventEntityIdPicklistItemOrderShipGrpInvId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PicklistItemOrderShipGrpInvId %1$s in state but entity id PicklistItemOrderShipGrpInvId %2$s in event", stateEntityIdPicklistItemOrderShipGrpInvId, eventEntityIdPicklistItemOrderShipGrpInvId);

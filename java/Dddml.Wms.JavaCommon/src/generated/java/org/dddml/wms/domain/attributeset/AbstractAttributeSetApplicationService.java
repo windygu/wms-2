@@ -146,7 +146,7 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
     }
 
     public void initialize(AttributeSetEvent.AttributeSetStateCreated stateCreated) {
-        String aggregateId = stateCreated.getAttributeSetEventId().getAttributeSetId();
+        String aggregateId = ((AttributeSetEvent.SqlAttributeSetEvent)stateCreated).getAttributeSetEventId().getAttributeSetId();
         AttributeSetState state = new AbstractAttributeSetState.SimpleAttributeSetState();
         state.setAttributeSetId(aggregateId);
 
@@ -154,7 +154,7 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
         ((AbstractAttributeSetAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getAttributeSetEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((AttributeSetEvent.SqlAttributeSetEvent)stateCreated).getAttributeSetEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeSetCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeSetState state)

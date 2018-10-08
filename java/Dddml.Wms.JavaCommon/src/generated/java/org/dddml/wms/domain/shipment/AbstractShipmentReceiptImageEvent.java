@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractShipmentReceiptImageEvent extends AbstractEvent implements ShipmentReceiptImageEvent 
+public abstract class AbstractShipmentReceiptImageEvent extends AbstractEvent implements ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent 
 {
     private ShipmentReceiptImageEventId shipmentReceiptImageEventId;
 

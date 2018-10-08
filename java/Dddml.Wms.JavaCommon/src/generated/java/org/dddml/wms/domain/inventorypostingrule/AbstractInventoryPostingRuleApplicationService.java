@@ -139,7 +139,7 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
     }
 
     public void initialize(InventoryPostingRuleEvent.InventoryPostingRuleStateCreated stateCreated) {
-        String aggregateId = stateCreated.getInventoryPostingRuleEventId().getInventoryPostingRuleId();
+        String aggregateId = ((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent)stateCreated).getInventoryPostingRuleEventId().getInventoryPostingRuleId();
         InventoryPostingRuleState state = new AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState();
         state.setInventoryPostingRuleId(aggregateId);
 
@@ -147,7 +147,7 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
         ((AbstractInventoryPostingRuleAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getInventoryPostingRuleEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent)stateCreated).getInventoryPostingRuleEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InventoryPostingRuleCommand command, EventStoreAggregateId eventStoreAggregateId, InventoryPostingRuleState state)

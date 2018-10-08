@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent implements InventoryPostingRuleEvent 
+public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent implements InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent 
 {
     private InventoryPostingRuleEventId inventoryPostingRuleEventId;
 
@@ -26,6 +26,14 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
     public void setInventoryPostingRuleId(String inventoryPostingRuleId) {
         getInventoryPostingRuleEventId().setInventoryPostingRuleId(inventoryPostingRuleId);
     }
+
+    public Long getVersion() {
+        return getInventoryPostingRuleEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getInventoryPostingRuleEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

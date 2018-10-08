@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface OrganizationStructureEvent extends Event
-{
-    OrganizationStructureEventId getOrganizationStructureEventId();
+public interface OrganizationStructureEvent extends Event {
+
+    interface SqlOrganizationStructureEvent extends OrganizationStructureEvent {
+        OrganizationStructureEventId getOrganizationStructureEventId();
+    }
+
+    OrganizationStructureId getId();
+
+    //void setId(OrganizationStructureId id);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

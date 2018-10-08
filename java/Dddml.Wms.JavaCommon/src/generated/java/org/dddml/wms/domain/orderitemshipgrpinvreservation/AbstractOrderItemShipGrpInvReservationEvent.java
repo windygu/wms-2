@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractOrderItemShipGrpInvReservationEvent extends AbstractEvent implements OrderItemShipGrpInvReservationEvent 
+public abstract class AbstractOrderItemShipGrpInvReservationEvent extends AbstractEvent implements OrderItemShipGrpInvReservationEvent.SqlOrderItemShipGrpInvReservationEvent 
 {
     private OrderItemShipGrpInvReservationEventId orderItemShipGrpInvReservationEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractOrderItemShipGrpInvReservationEvent extends Abstra
     public void setOrderItemShipGrpInvResId(OrderItemShipGrpInvResId orderItemShipGrpInvResId) {
         getOrderItemShipGrpInvReservationEventId().setOrderItemShipGrpInvResId(orderItemShipGrpInvResId);
     }
+
+    public Long getVersion() {
+        return getOrderItemShipGrpInvReservationEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getOrderItemShipGrpInvReservationEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

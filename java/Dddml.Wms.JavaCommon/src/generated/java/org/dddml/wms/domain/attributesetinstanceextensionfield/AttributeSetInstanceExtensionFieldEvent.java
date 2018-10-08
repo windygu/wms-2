@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface AttributeSetInstanceExtensionFieldEvent extends Event
-{
-    AttributeSetInstanceExtensionFieldEventId getAttributeSetInstanceExtensionFieldEventId();
+public interface AttributeSetInstanceExtensionFieldEvent extends Event {
+
+    interface SqlAttributeSetInstanceExtensionFieldEvent extends AttributeSetInstanceExtensionFieldEvent {
+        AttributeSetInstanceExtensionFieldEventId getAttributeSetInstanceExtensionFieldEventId();
+    }
+
+    String getName();
+
+    //void setName(String name);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

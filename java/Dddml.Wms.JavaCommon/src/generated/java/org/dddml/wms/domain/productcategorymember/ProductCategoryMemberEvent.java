@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface ProductCategoryMemberEvent extends Event
-{
-    ProductCategoryMemberEventId getProductCategoryMemberEventId();
+public interface ProductCategoryMemberEvent extends Event {
+
+    interface SqlProductCategoryMemberEvent extends ProductCategoryMemberEvent {
+        ProductCategoryMemberEventId getProductCategoryMemberEventId();
+    }
+
+    ProductCategoryMemberId getProductCategoryMemberId();
+
+    //void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

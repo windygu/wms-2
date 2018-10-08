@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PartyRoleEvent extends Event
-{
-    PartyRoleEventId getPartyRoleEventId();
+public interface PartyRoleEvent extends Event {
+
+    interface SqlPartyRoleEvent extends PartyRoleEvent {
+        PartyRoleEventId getPartyRoleEventId();
+    }
+
+    PartyRoleId getPartyRoleId();
+
+    //void setPartyRoleId(PartyRoleId partyRoleId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

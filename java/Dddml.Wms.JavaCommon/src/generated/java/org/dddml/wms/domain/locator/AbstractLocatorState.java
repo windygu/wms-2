@@ -249,7 +249,7 @@ public abstract class AbstractLocatorState implements LocatorState
     public AbstractLocatorState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setLocatorId(((LocatorEvent) events.get(0)).getLocatorEventId().getLocatorId());
+            this.setLocatorId(((LocatorEvent.SqlLocatorEvent) events.get(0)).getLocatorEventId().getLocatorId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -459,14 +459,14 @@ public abstract class AbstractLocatorState implements LocatorState
     protected void throwOnWrongEvent(LocatorEvent event)
     {
         String stateEntityId = this.getLocatorId(); // Aggregate Id
-        String eventEntityId = event.getLocatorEventId().getLocatorId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((LocatorEvent.SqlLocatorEvent)event).getLocatorEventId().getLocatorId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getLocatorEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((LocatorEvent.SqlLocatorEvent)event).getLocatorEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getLocatorEventId().getVersion() == null");
         }

@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface GoodIdentificationEvent extends Event
-{
-    GoodIdentificationEventId getGoodIdentificationEventId();
+public interface GoodIdentificationEvent extends Event {
+
+    interface SqlGoodIdentificationEvent extends GoodIdentificationEvent {
+        GoodIdentificationEventId getGoodIdentificationEventId();
+    }
+
+    String getGoodIdentificationTypeId();
+
+    //void setGoodIdentificationTypeId(String goodIdentificationTypeId);
 
     boolean getEventReadOnly();
 

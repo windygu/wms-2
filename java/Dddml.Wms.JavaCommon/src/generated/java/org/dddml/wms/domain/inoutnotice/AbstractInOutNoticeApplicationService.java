@@ -142,7 +142,7 @@ public abstract class AbstractInOutNoticeApplicationService implements InOutNoti
     }
 
     public void initialize(InOutNoticeEvent.InOutNoticeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getInOutNoticeEventId().getInOutNoticeId();
+        String aggregateId = ((InOutNoticeEvent.SqlInOutNoticeEvent)stateCreated).getInOutNoticeEventId().getInOutNoticeId();
         InOutNoticeState state = new AbstractInOutNoticeState.SimpleInOutNoticeState();
         state.setInOutNoticeId(aggregateId);
 
@@ -150,7 +150,7 @@ public abstract class AbstractInOutNoticeApplicationService implements InOutNoti
         ((AbstractInOutNoticeAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getInOutNoticeEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((InOutNoticeEvent.SqlInOutNoticeEvent)stateCreated).getInOutNoticeEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InOutNoticeCommand command, EventStoreAggregateId eventStoreAggregateId, InOutNoticeState state)

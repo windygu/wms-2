@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractProductEvent extends AbstractEvent implements ProductEvent 
+public abstract class AbstractProductEvent extends AbstractEvent implements ProductEvent.SqlProductEvent 
 {
     private ProductEventId productEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
     public void setProductId(String productId) {
         getProductEventId().setProductId(productId);
     }
+
+    public Long getVersion() {
+        return getProductEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getProductEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -86,12 +94,12 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(GoodIdentificationEvent e)
+    protected void throwOnInconsistentEventIds(GoodIdentificationEvent.SqlGoodIdentificationEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(ProductEvent oe, GoodIdentificationEvent e)
+    public static void throwOnInconsistentEventIds(ProductEvent.SqlProductEvent oe, GoodIdentificationEvent.SqlGoodIdentificationEvent e)
     {
         if (!oe.getProductEventId().getProductId().equals(e.getGoodIdentificationEventId().getProductId()))
         { 
@@ -978,8 +986,8 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
         
         public void addGoodIdentificationEvent(GoodIdentificationEvent.GoodIdentificationStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.goodIdentificationEvents.put(e.getGoodIdentificationEventId(), e);
+            throwOnInconsistentEventIds((GoodIdentificationEvent.SqlGoodIdentificationEvent)e);
+            this.goodIdentificationEvents.put(((GoodIdentificationEvent.SqlGoodIdentificationEvent)e).getGoodIdentificationEventId(), e);
         }
 
         public void save()
@@ -1713,8 +1721,8 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
         
         public void addGoodIdentificationEvent(GoodIdentificationEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.goodIdentificationEvents.put(e.getGoodIdentificationEventId(), e);
+            throwOnInconsistentEventIds((GoodIdentificationEvent.SqlGoodIdentificationEvent)e);
+            this.goodIdentificationEvents.put(((GoodIdentificationEvent.SqlGoodIdentificationEvent)e).getGoodIdentificationEventId(), e);
         }
 
         public void save()

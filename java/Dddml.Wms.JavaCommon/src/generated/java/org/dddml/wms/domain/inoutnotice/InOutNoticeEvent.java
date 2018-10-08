@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InOutNoticeEvent extends Event
-{
-    InOutNoticeEventId getInOutNoticeEventId();
+public interface InOutNoticeEvent extends Event {
+
+    interface SqlInOutNoticeEvent extends InOutNoticeEvent {
+        InOutNoticeEventId getInOutNoticeEventId();
+    }
+
+    String getInOutNoticeId();
+
+    //void setInOutNoticeId(String inOutNoticeId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

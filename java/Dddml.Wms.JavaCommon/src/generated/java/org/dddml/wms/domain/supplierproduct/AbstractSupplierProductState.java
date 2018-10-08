@@ -273,7 +273,7 @@ public abstract class AbstractSupplierProductState implements SupplierProductSta
     public AbstractSupplierProductState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setSupplierProductId(((SupplierProductEvent) events.get(0)).getSupplierProductEventId().getSupplierProductId());
+            this.setSupplierProductId(((SupplierProductEvent.SqlSupplierProductEvent) events.get(0)).getSupplierProductEventId().getSupplierProductId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -502,14 +502,14 @@ public abstract class AbstractSupplierProductState implements SupplierProductSta
     protected void throwOnWrongEvent(SupplierProductEvent event)
     {
         SupplierProductId stateEntityId = this.getSupplierProductId(); // Aggregate Id
-        SupplierProductId eventEntityId = event.getSupplierProductEventId().getSupplierProductId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        SupplierProductId eventEntityId = ((SupplierProductEvent.SqlSupplierProductEvent)event).getSupplierProductEventId().getSupplierProductId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getSupplierProductEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((SupplierProductEvent.SqlSupplierProductEvent)event).getSupplierProductEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getSupplierProductEventId().getVersion() == null");
         }

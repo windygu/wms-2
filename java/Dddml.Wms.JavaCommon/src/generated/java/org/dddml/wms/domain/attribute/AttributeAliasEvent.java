@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface AttributeAliasEvent extends Event
-{
-    AttributeAliasEventId getAttributeAliasEventId();
+public interface AttributeAliasEvent extends Event {
+
+    interface SqlAttributeAliasEvent extends AttributeAliasEvent {
+        AttributeAliasEventId getAttributeAliasEventId();
+    }
+
+    String getCode();
+
+    //void setCode(String code);
 
     boolean getEventReadOnly();
 

@@ -155,7 +155,7 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
     }
 
     public void initialize(MovementEvent.MovementStateCreated stateCreated) {
-        String aggregateId = stateCreated.getMovementEventId().getDocumentNumber();
+        String aggregateId = ((MovementEvent.SqlMovementEvent)stateCreated).getMovementEventId().getDocumentNumber();
         MovementState state = new AbstractMovementState.SimpleMovementState();
         state.setDocumentNumber(aggregateId);
 
@@ -163,7 +163,7 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
         ((AbstractMovementAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getMovementEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((MovementEvent.SqlMovementEvent)stateCreated).getMovementEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(MovementCommand command, EventStoreAggregateId eventStoreAggregateId, MovementState state)

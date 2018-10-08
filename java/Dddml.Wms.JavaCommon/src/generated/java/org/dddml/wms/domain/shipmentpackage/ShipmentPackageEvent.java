@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface ShipmentPackageEvent extends Event
-{
-    ShipmentPackageEventId getShipmentPackageEventId();
+public interface ShipmentPackageEvent extends Event {
+
+    interface SqlShipmentPackageEvent extends ShipmentPackageEvent {
+        ShipmentPackageEventId getShipmentPackageEventId();
+    }
+
+    ShipmentPackageId getShipmentPackageId();
+
+    //void setShipmentPackageId(ShipmentPackageId shipmentPackageId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

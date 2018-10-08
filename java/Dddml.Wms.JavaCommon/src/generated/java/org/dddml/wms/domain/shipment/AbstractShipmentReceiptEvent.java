@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractShipmentReceiptEvent extends AbstractEvent implements ShipmentReceiptEvent 
+public abstract class AbstractShipmentReceiptEvent extends AbstractEvent implements ShipmentReceiptEvent.SqlShipmentReceiptEvent 
 {
     private ShipmentReceiptEventId shipmentReceiptEventId;
 
@@ -86,12 +86,12 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(ShipmentReceiptImageEvent e)
+    protected void throwOnInconsistentEventIds(ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(ShipmentReceiptEvent oe, ShipmentReceiptImageEvent e)
+    public static void throwOnInconsistentEventIds(ShipmentReceiptEvent.SqlShipmentReceiptEvent oe, ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent e)
     {
         if (!oe.getShipmentReceiptEventId().getShipmentId().equals(e.getShipmentReceiptImageEventId().getShipmentId()))
         { 
@@ -419,8 +419,8 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
         
         public void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentReceiptImageEvents.put(e.getShipmentReceiptImageEventId(), e);
+            throwOnInconsistentEventIds((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e);
+            this.shipmentReceiptImageEvents.put(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e).getShipmentReceiptImageEventId(), e);
         }
 
         public void save()
@@ -674,8 +674,8 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
         
         public void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.shipmentReceiptImageEvents.put(e.getShipmentReceiptImageEventId(), e);
+            throwOnInconsistentEventIds((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e);
+            this.shipmentReceiptImageEvents.put(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e).getShipmentReceiptImageEventId(), e);
         }
 
         public void save()

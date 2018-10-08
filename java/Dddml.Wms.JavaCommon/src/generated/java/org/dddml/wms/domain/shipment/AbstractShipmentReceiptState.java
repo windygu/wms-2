@@ -411,7 +411,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.setCreatedAt(e.getCreatedAt());
 
         for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated innerEvent : e.getShipmentReceiptImageEvents()) {
-            ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(innerEvent.getShipmentReceiptImageEventId().getSequenceId());
+            ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)innerEvent).getShipmentReceiptImageEventId().getSequenceId());
             innerState.mutate(innerEvent);
         }
     }
@@ -634,7 +634,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.setUpdatedAt(e.getCreatedAt());
 
         for (ShipmentReceiptImageEvent innerEvent : e.getShipmentReceiptImageEvents()) {
-            ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(innerEvent.getShipmentReceiptImageEventId().getSequenceId());
+            ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)innerEvent).getShipmentReceiptImageEventId().getSequenceId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved)
             {
@@ -653,14 +653,14 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
     protected void throwOnWrongEvent(ShipmentReceiptEvent event)
     {
         String stateEntityIdShipmentId = this.getShipmentReceiptId().getShipmentId();
-        String eventEntityIdShipmentId = event.getShipmentReceiptEventId().getShipmentId();
+        String eventEntityIdShipmentId = ((ShipmentReceiptEvent.SqlShipmentReceiptEvent)event).getShipmentReceiptEventId().getShipmentId();
         if (!stateEntityIdShipmentId.equals(eventEntityIdShipmentId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentId %1$s in state but entity id ShipmentId %2$s in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
         }
 
         String stateEntityIdReceiptSeqId = this.getShipmentReceiptId().getReceiptSeqId();
-        String eventEntityIdReceiptSeqId = event.getShipmentReceiptEventId().getReceiptSeqId();
+        String eventEntityIdReceiptSeqId = ((ShipmentReceiptEvent.SqlShipmentReceiptEvent)event).getShipmentReceiptEventId().getReceiptSeqId();
         if (!stateEntityIdReceiptSeqId.equals(eventEntityIdReceiptSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ReceiptSeqId %1$s in state but entity id ReceiptSeqId %2$s in event", stateEntityIdReceiptSeqId, eventEntityIdReceiptSeqId);

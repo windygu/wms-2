@@ -8,9 +8,15 @@ import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InventoryItemRequirementEntryEvent extends Event
-{
-    InventoryItemRequirementEntryEventId getInventoryItemRequirementEntryEventId();
+public interface InventoryItemRequirementEntryEvent extends Event {
+
+    interface SqlInventoryItemRequirementEntryEvent extends InventoryItemRequirementEntryEvent {
+        InventoryItemRequirementEntryEventId getInventoryItemRequirementEntryEventId();
+    }
+
+    Long getEntrySeqId();
+
+    //void setEntrySeqId(Long entrySeqId);
 
     boolean getEventReadOnly();
 

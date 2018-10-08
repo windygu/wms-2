@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractPartyRoleEvent extends AbstractEvent implements PartyRoleEvent 
+public abstract class AbstractPartyRoleEvent extends AbstractEvent implements PartyRoleEvent.SqlPartyRoleEvent 
 {
     private PartyRoleEventId partyRoleEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractPartyRoleEvent extends AbstractEvent implements Pa
     public void setPartyRoleId(PartyRoleId partyRoleId) {
         getPartyRoleEventId().setPartyRoleId(partyRoleId);
     }
+
+    public Long getVersion() {
+        return getPartyRoleEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getPartyRoleEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

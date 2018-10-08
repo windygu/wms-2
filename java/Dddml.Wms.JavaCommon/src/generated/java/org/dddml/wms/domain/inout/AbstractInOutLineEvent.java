@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInOutLineEvent extends AbstractEvent implements InOutLineEvent 
+public abstract class AbstractInOutLineEvent extends AbstractEvent implements InOutLineEvent.SqlInOutLineEvent 
 {
     private InOutLineEventId inOutLineEventId;
 
@@ -87,12 +87,12 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(InOutLineImageEvent e)
+    protected void throwOnInconsistentEventIds(InOutLineImageEvent.SqlInOutLineImageEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(InOutLineEvent oe, InOutLineImageEvent e)
+    public static void throwOnInconsistentEventIds(InOutLineEvent.SqlInOutLineEvent oe, InOutLineImageEvent.SqlInOutLineImageEvent e)
     {
         if (!oe.getInOutLineEventId().getInOutDocumentNumber().equals(e.getInOutLineImageEventId().getInOutDocumentNumber()))
         { 
@@ -348,8 +348,8 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         
         public void addInOutLineImageEvent(InOutLineImageEvent.InOutLineImageStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inOutLineImageEvents.put(e.getInOutLineImageEventId(), e);
+            throwOnInconsistentEventIds((InOutLineImageEvent.SqlInOutLineImageEvent)e);
+            this.inOutLineImageEvents.put(((InOutLineImageEvent.SqlInOutLineImageEvent)e).getInOutLineImageEventId(), e);
         }
 
         public void save()
@@ -543,8 +543,8 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         
         public void addInOutLineImageEvent(InOutLineImageEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inOutLineImageEvents.put(e.getInOutLineImageEventId(), e);
+            throwOnInconsistentEventIds((InOutLineImageEvent.SqlInOutLineImageEvent)e);
+            this.inOutLineImageEvents.put(((InOutLineImageEvent.SqlInOutLineImageEvent)e).getInOutLineImageEventId(), e);
         }
 
         public void save()
@@ -609,8 +609,8 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         
         public void addInOutLineImageEvent(InOutLineImageEvent.InOutLineImageStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inOutLineImageEvents.put(e.getInOutLineImageEventId(), e);
+            throwOnInconsistentEventIds((InOutLineImageEvent.SqlInOutLineImageEvent)e);
+            this.inOutLineImageEvents.put(((InOutLineImageEvent.SqlInOutLineImageEvent)e).getInOutLineImageEventId(), e);
         }
 
         public void save()

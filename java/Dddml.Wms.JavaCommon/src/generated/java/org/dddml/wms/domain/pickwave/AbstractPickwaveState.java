@@ -153,7 +153,7 @@ public abstract class AbstractPickwaveState implements PickwaveState
     public AbstractPickwaveState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPickwaveId(((PickwaveEvent) events.get(0)).getPickwaveEventId().getPickwaveId());
+            this.setPickwaveId(((PickwaveEvent.SqlPickwaveEvent) events.get(0)).getPickwaveEventId().getPickwaveId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -264,14 +264,14 @@ public abstract class AbstractPickwaveState implements PickwaveState
     protected void throwOnWrongEvent(PickwaveEvent event)
     {
         Long stateEntityId = this.getPickwaveId(); // Aggregate Id
-        Long eventEntityId = event.getPickwaveEventId().getPickwaveId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        Long eventEntityId = ((PickwaveEvent.SqlPickwaveEvent)event).getPickwaveEventId().getPickwaveId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getPickwaveEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((PickwaveEvent.SqlPickwaveEvent)event).getPickwaveEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getPickwaveEventId().getVersion() == null");
         }

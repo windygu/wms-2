@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface ShipmentImageEvent extends Event
-{
-    ShipmentImageEventId getShipmentImageEventId();
+public interface ShipmentImageEvent extends Event {
+
+    interface SqlShipmentImageEvent extends ShipmentImageEvent {
+        ShipmentImageEventId getShipmentImageEventId();
+    }
+
+    String getSequenceId();
+
+    //void setSequenceId(String sequenceId);
 
     boolean getEventReadOnly();
 

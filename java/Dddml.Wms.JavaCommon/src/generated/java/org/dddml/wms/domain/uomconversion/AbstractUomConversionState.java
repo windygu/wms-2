@@ -177,7 +177,7 @@ public abstract class AbstractUomConversionState implements UomConversionState
     public AbstractUomConversionState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setUomConversionId(((UomConversionEvent) events.get(0)).getUomConversionEventId().getUomConversionId());
+            this.setUomConversionId(((UomConversionEvent.SqlUomConversionEvent) events.get(0)).getUomConversionEventId().getUomConversionId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -312,14 +312,14 @@ public abstract class AbstractUomConversionState implements UomConversionState
     protected void throwOnWrongEvent(UomConversionEvent event)
     {
         UomConversionId stateEntityId = this.getUomConversionId(); // Aggregate Id
-        UomConversionId eventEntityId = event.getUomConversionEventId().getUomConversionId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        UomConversionId eventEntityId = ((UomConversionEvent.SqlUomConversionEvent)event).getUomConversionEventId().getUomConversionId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getUomConversionEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((UomConversionEvent.SqlUomConversionEvent)event).getUomConversionEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getUomConversionEventId().getVersion() == null");
         }

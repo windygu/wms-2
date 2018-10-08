@@ -8,7 +8,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent implements PhysicalInventoryEvent 
+public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent implements PhysicalInventoryEvent.SqlPhysicalInventoryEvent 
 {
     private PhysicalInventoryEventId physicalInventoryEventId;
 
@@ -27,6 +27,14 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
     public void setDocumentNumber(String documentNumber) {
         getPhysicalInventoryEventId().setDocumentNumber(documentNumber);
     }
+
+    public Long getVersion() {
+        return getPhysicalInventoryEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getPhysicalInventoryEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -88,12 +96,12 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(PhysicalInventoryLineEvent e)
+    protected void throwOnInconsistentEventIds(PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(PhysicalInventoryEvent oe, PhysicalInventoryLineEvent e)
+    public static void throwOnInconsistentEventIds(PhysicalInventoryEvent.SqlPhysicalInventoryEvent oe, PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent e)
     {
         if (!oe.getPhysicalInventoryEventId().getDocumentNumber().equals(e.getPhysicalInventoryLineEventId().getPhysicalInventoryDocumentNumber()))
         { 
@@ -356,8 +364,8 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
         
         public void addPhysicalInventoryLineEvent(PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.physicalInventoryLineEvents.put(e.getPhysicalInventoryLineEventId(), e);
+            throwOnInconsistentEventIds((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)e);
+            this.physicalInventoryLineEvents.put(((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)e).getPhysicalInventoryLineEventId(), e);
         }
 
         public void save()
@@ -571,8 +579,8 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
         
         public void addPhysicalInventoryLineEvent(PhysicalInventoryLineEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.physicalInventoryLineEvents.put(e.getPhysicalInventoryLineEventId(), e);
+            throwOnInconsistentEventIds((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)e);
+            this.physicalInventoryLineEvents.put(((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)e).getPhysicalInventoryLineEventId(), e);
         }
 
         public void save()

@@ -189,7 +189,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
     public AbstractAttributeSetInstanceExtensionFieldState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setName(((AttributeSetInstanceExtensionFieldEvent) events.get(0)).getAttributeSetInstanceExtensionFieldEventId().getName());
+            this.setName(((AttributeSetInstanceExtensionFieldEvent.SqlAttributeSetInstanceExtensionFieldEvent) events.get(0)).getAttributeSetInstanceExtensionFieldEventId().getName());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -336,14 +336,14 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
     protected void throwOnWrongEvent(AttributeSetInstanceExtensionFieldEvent event)
     {
         String stateEntityId = this.getName(); // Aggregate Id
-        String eventEntityId = event.getAttributeSetInstanceExtensionFieldEventId().getName(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((AttributeSetInstanceExtensionFieldEvent.SqlAttributeSetInstanceExtensionFieldEvent)event).getAttributeSetInstanceExtensionFieldEventId().getName(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getAttributeSetInstanceExtensionFieldEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((AttributeSetInstanceExtensionFieldEvent.SqlAttributeSetInstanceExtensionFieldEvent)event).getAttributeSetInstanceExtensionFieldEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getAttributeSetInstanceExtensionFieldEventId().getVersion() == null");
         }

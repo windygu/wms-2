@@ -165,7 +165,7 @@ public abstract class AbstractProductCategoryMemberState implements ProductCateg
     public AbstractProductCategoryMemberState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setProductCategoryMemberId(((ProductCategoryMemberEvent) events.get(0)).getProductCategoryMemberEventId().getProductCategoryMemberId());
+            this.setProductCategoryMemberId(((ProductCategoryMemberEvent.SqlProductCategoryMemberEvent) events.get(0)).getProductCategoryMemberEventId().getProductCategoryMemberId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -286,14 +286,14 @@ public abstract class AbstractProductCategoryMemberState implements ProductCateg
     protected void throwOnWrongEvent(ProductCategoryMemberEvent event)
     {
         ProductCategoryMemberId stateEntityId = this.getProductCategoryMemberId(); // Aggregate Id
-        ProductCategoryMemberId eventEntityId = event.getProductCategoryMemberEventId().getProductCategoryMemberId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        ProductCategoryMemberId eventEntityId = ((ProductCategoryMemberEvent.SqlProductCategoryMemberEvent)event).getProductCategoryMemberEventId().getProductCategoryMemberId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getProductCategoryMemberEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((ProductCategoryMemberEvent.SqlProductCategoryMemberEvent)event).getProductCategoryMemberEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getProductCategoryMemberEventId().getVersion() == null");
         }

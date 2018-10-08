@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent 
+public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent.SqlLotEvent 
 {
     private LotEventId lotEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
     public void setLotId(String lotId) {
         getLotEventId().setLotId(lotId);
     }
+
+    public Long getVersion() {
+        return getLotEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getLotEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

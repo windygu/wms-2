@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface OrderItemShipGrpInvReservationEvent extends Event
-{
-    OrderItemShipGrpInvReservationEventId getOrderItemShipGrpInvReservationEventId();
+public interface OrderItemShipGrpInvReservationEvent extends Event {
+
+    interface SqlOrderItemShipGrpInvReservationEvent extends OrderItemShipGrpInvReservationEvent {
+        OrderItemShipGrpInvReservationEventId getOrderItemShipGrpInvReservationEventId();
+    }
+
+    OrderItemShipGrpInvResId getOrderItemShipGrpInvResId();
+
+    //void setOrderItemShipGrpInvResId(OrderItemShipGrpInvResId orderItemShipGrpInvResId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

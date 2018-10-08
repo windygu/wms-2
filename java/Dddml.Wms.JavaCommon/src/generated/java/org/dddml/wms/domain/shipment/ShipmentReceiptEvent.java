@@ -5,9 +5,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface ShipmentReceiptEvent extends Event
-{
-    ShipmentReceiptEventId getShipmentReceiptEventId();
+public interface ShipmentReceiptEvent extends Event {
+
+    interface SqlShipmentReceiptEvent extends ShipmentReceiptEvent {
+        ShipmentReceiptEventId getShipmentReceiptEventId();
+    }
+
+    String getReceiptSeqId();
+
+    //void setReceiptSeqId(String receiptSeqId);
 
     boolean getEventReadOnly();
 
@@ -102,9 +108,9 @@ public interface ShipmentReceiptEvent extends Event
 
         void setActive(Boolean active);
 
-    Set<String> getDamageStatusIds();
+        Set<String> getDamageStatusIds();
 
-    void setDamageStatusIds(Set<String> damageStatusIds);
+        void setDamageStatusIds(Set<String> damageStatusIds);
 
     }
 

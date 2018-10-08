@@ -6,9 +6,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PicklistRoleEvent extends Event
-{
-    PicklistRoleEventId getPicklistRoleEventId();
+public interface PicklistRoleEvent extends Event {
+
+    interface SqlPicklistRoleEvent extends PicklistRoleEvent {
+        PicklistRoleEventId getPicklistRoleEventId();
+    }
+
+    PartyRoleId getPartyRoleId();
+
+    //void setPartyRoleId(PartyRoleId partyRoleId);
 
     boolean getEventReadOnly();
 

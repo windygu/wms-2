@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractContactMechEvent extends AbstractEvent implements ContactMechEvent 
+public abstract class AbstractContactMechEvent extends AbstractEvent implements ContactMechEvent.SqlContactMechEvent 
 {
     private ContactMechEventId contactMechEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
     public void setContactMechId(String contactMechId) {
         getContactMechEventId().setContactMechId(contactMechId);
     }
+
+    public Long getVersion() {
+        return getContactMechEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getContactMechEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

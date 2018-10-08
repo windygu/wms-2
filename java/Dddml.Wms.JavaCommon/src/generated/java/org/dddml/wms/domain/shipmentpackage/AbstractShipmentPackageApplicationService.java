@@ -146,7 +146,7 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
     }
 
     public void initialize(ShipmentPackageEvent.ShipmentPackageStateCreated stateCreated) {
-        ShipmentPackageId aggregateId = stateCreated.getShipmentPackageEventId().getShipmentPackageId();
+        ShipmentPackageId aggregateId = ((ShipmentPackageEvent.SqlShipmentPackageEvent)stateCreated).getShipmentPackageEventId().getShipmentPackageId();
         ShipmentPackageState state = new AbstractShipmentPackageState.SimpleShipmentPackageState();
         state.setShipmentPackageId(aggregateId);
 
@@ -154,7 +154,7 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
         ((AbstractShipmentPackageAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getShipmentPackageEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((ShipmentPackageEvent.SqlShipmentPackageEvent)stateCreated).getShipmentPackageEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ShipmentPackageCommand command, EventStoreAggregateId eventStoreAggregateId, ShipmentPackageState state)

@@ -5,8 +5,11 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PersonEvent extends PartyEvent
-{
+public interface PersonEvent extends PartyEvent {
+
+    interface SqlPersonEvent extends PersonEvent {
+    }
+
     interface PersonStateEvent extends PartyStateEvent, PersonEvent {
         String getSalutation();
 

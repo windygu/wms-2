@@ -251,21 +251,21 @@ public abstract class AbstractInOutLineImageState implements InOutLineImageState
     protected void throwOnWrongEvent(InOutLineImageEvent event)
     {
         String stateEntityIdInOutDocumentNumber = this.getInOutLineImageId().getInOutDocumentNumber();
-        String eventEntityIdInOutDocumentNumber = event.getInOutLineImageEventId().getInOutDocumentNumber();
+        String eventEntityIdInOutDocumentNumber = ((InOutLineImageEvent.SqlInOutLineImageEvent)event).getInOutLineImageEventId().getInOutDocumentNumber();
         if (!stateEntityIdInOutDocumentNumber.equals(eventEntityIdInOutDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutDocumentNumber %1$s in state but entity id InOutDocumentNumber %2$s in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
         }
 
         String stateEntityIdInOutLineLineNumber = this.getInOutLineImageId().getInOutLineLineNumber();
-        String eventEntityIdInOutLineLineNumber = event.getInOutLineImageEventId().getInOutLineLineNumber();
+        String eventEntityIdInOutLineLineNumber = ((InOutLineImageEvent.SqlInOutLineImageEvent)event).getInOutLineImageEventId().getInOutLineLineNumber();
         if (!stateEntityIdInOutLineLineNumber.equals(eventEntityIdInOutLineLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutLineLineNumber %1$s in state but entity id InOutLineLineNumber %2$s in event", stateEntityIdInOutLineLineNumber, eventEntityIdInOutLineLineNumber);
         }
 
         String stateEntityIdSequenceId = this.getInOutLineImageId().getSequenceId();
-        String eventEntityIdSequenceId = event.getInOutLineImageEventId().getSequenceId();
+        String eventEntityIdSequenceId = ((InOutLineImageEvent.SqlInOutLineImageEvent)event).getInOutLineImageEventId().getSequenceId();
         if (!stateEntityIdSequenceId.equals(eventEntityIdSequenceId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id SequenceId %1$s in state but entity id SequenceId %2$s in event", stateEntityIdSequenceId, eventEntityIdSequenceId);

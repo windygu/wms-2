@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractPicklistEvent extends AbstractEvent implements PicklistEvent 
+public abstract class AbstractPicklistEvent extends AbstractEvent implements PicklistEvent.SqlPicklistEvent 
 {
     private PicklistEventId picklistEventId;
 
@@ -26,6 +26,14 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
     public void setPicklistId(String picklistId) {
         getPicklistEventId().setPicklistId(picklistId);
     }
+
+    public Long getVersion() {
+        return getPicklistEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getPicklistEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -87,12 +95,12 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(PicklistRoleEvent e)
+    protected void throwOnInconsistentEventIds(PicklistRoleEvent.SqlPicklistRoleEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(PicklistEvent oe, PicklistRoleEvent e)
+    public static void throwOnInconsistentEventIds(PicklistEvent.SqlPicklistEvent oe, PicklistRoleEvent.SqlPicklistRoleEvent e)
     {
         if (!oe.getPicklistEventId().getPicklistId().equals(e.getPicklistRoleEventId().getPicklistId()))
         { 
@@ -259,8 +267,8 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
         
         public void addPicklistRoleEvent(PicklistRoleEvent.PicklistRoleStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.picklistRoleEvents.put(e.getPicklistRoleEventId(), e);
+            throwOnInconsistentEventIds((PicklistRoleEvent.SqlPicklistRoleEvent)e);
+            this.picklistRoleEvents.put(((PicklistRoleEvent.SqlPicklistRoleEvent)e).getPicklistRoleEventId(), e);
         }
 
         public void save()
@@ -394,8 +402,8 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
         
         public void addPicklistRoleEvent(PicklistRoleEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.picklistRoleEvents.put(e.getPicklistRoleEventId(), e);
+            throwOnInconsistentEventIds((PicklistRoleEvent.SqlPicklistRoleEvent)e);
+            this.picklistRoleEvents.put(((PicklistRoleEvent.SqlPicklistRoleEvent)e).getPicklistRoleEventId(), e);
         }
 
         public void save()
@@ -460,8 +468,8 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
         
         public void addPicklistRoleEvent(PicklistRoleEvent.PicklistRoleStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.picklistRoleEvents.put(e.getPicklistRoleEventId(), e);
+            throwOnInconsistentEventIds((PicklistRoleEvent.SqlPicklistRoleEvent)e);
+            this.picklistRoleEvents.put(((PicklistRoleEvent.SqlPicklistRoleEvent)e).getPicklistRoleEventId(), e);
         }
 
         public void save()

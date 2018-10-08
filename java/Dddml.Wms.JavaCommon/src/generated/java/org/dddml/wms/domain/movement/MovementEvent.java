@@ -6,9 +6,19 @@ import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface MovementEvent extends Event
-{
-    MovementEventId getMovementEventId();
+public interface MovementEvent extends Event {
+
+    interface SqlMovementEvent extends MovementEvent {
+        MovementEventId getMovementEventId();
+    }
+
+    String getDocumentNumber();
+
+    //void setDocumentNumber(String documentNumber);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

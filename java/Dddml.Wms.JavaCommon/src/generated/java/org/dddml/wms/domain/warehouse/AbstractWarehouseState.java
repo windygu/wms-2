@@ -165,7 +165,7 @@ public abstract class AbstractWarehouseState implements WarehouseState
     public AbstractWarehouseState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setWarehouseId(((WarehouseEvent) events.get(0)).getWarehouseEventId().getWarehouseId());
+            this.setWarehouseId(((WarehouseEvent.SqlWarehouseEvent) events.get(0)).getWarehouseEventId().getWarehouseId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -288,14 +288,14 @@ public abstract class AbstractWarehouseState implements WarehouseState
     protected void throwOnWrongEvent(WarehouseEvent event)
     {
         String stateEntityId = this.getWarehouseId(); // Aggregate Id
-        String eventEntityId = event.getWarehouseEventId().getWarehouseId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((WarehouseEvent.SqlWarehouseEvent)event).getWarehouseEventId().getWarehouseId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getWarehouseEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((WarehouseEvent.SqlWarehouseEvent)event).getWarehouseEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getWarehouseEventId().getVersion() == null");
         }

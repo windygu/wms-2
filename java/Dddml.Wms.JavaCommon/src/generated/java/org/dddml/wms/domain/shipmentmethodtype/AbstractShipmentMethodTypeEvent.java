@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent implements ShipmentMethodTypeEvent 
+public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent implements ShipmentMethodTypeEvent.SqlShipmentMethodTypeEvent 
 {
     private ShipmentMethodTypeEventId shipmentMethodTypeEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
     public void setShipmentMethodTypeId(String shipmentMethodTypeId) {
         getShipmentMethodTypeEventId().setShipmentMethodTypeId(shipmentMethodTypeId);
     }
+
+    public Long getVersion() {
+        return getShipmentMethodTypeEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getShipmentMethodTypeEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

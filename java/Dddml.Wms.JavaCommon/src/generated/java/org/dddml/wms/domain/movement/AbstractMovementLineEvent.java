@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractMovementLineEvent extends AbstractEvent implements MovementLineEvent 
+public abstract class AbstractMovementLineEvent extends AbstractEvent implements MovementLineEvent.SqlMovementLineEvent 
 {
     private MovementLineEventId movementLineEventId;
 

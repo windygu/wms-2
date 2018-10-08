@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractPickwaveEvent extends AbstractEvent implements PickwaveEvent 
+public abstract class AbstractPickwaveEvent extends AbstractEvent implements PickwaveEvent.SqlPickwaveEvent 
 {
     private PickwaveEventId pickwaveEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
     public void setPickwaveId(Long pickwaveId) {
         getPickwaveEventId().setPickwaveId(pickwaveId);
     }
+
+    public Long getVersion() {
+        return getPickwaveEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getPickwaveEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

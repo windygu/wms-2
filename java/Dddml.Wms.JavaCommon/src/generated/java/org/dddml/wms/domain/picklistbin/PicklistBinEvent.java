@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface PicklistBinEvent extends Event
-{
-    PicklistBinEventId getPicklistBinEventId();
+public interface PicklistBinEvent extends Event {
+
+    interface SqlPicklistBinEvent extends PicklistBinEvent {
+        PicklistBinEventId getPicklistBinEventId();
+    }
+
+    String getPicklistBinId();
+
+    //void setPicklistBinId(String picklistBinId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

@@ -143,7 +143,7 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
     }
 
     public void initialize(ProductCategoryEvent.ProductCategoryStateCreated stateCreated) {
-        String aggregateId = stateCreated.getProductCategoryEventId().getProductCategoryId();
+        String aggregateId = ((ProductCategoryEvent.SqlProductCategoryEvent)stateCreated).getProductCategoryEventId().getProductCategoryId();
         ProductCategoryState state = new AbstractProductCategoryState.SimpleProductCategoryState();
         state.setProductCategoryId(aggregateId);
 
@@ -151,7 +151,7 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
         ((AbstractProductCategoryAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getProductCategoryEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((ProductCategoryEvent.SqlProductCategoryEvent)stateCreated).getProductCategoryEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ProductCategoryCommand command, EventStoreAggregateId eventStoreAggregateId, ProductCategoryState state)

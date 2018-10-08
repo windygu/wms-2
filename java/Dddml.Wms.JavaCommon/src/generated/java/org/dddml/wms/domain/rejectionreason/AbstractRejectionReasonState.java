@@ -141,7 +141,7 @@ public abstract class AbstractRejectionReasonState implements RejectionReasonSta
     public AbstractRejectionReasonState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setRejectionReasonId(((RejectionReasonEvent) events.get(0)).getRejectionReasonEventId().getRejectionReasonId());
+            this.setRejectionReasonId(((RejectionReasonEvent.SqlRejectionReasonEvent) events.get(0)).getRejectionReasonEventId().getRejectionReasonId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -240,14 +240,14 @@ public abstract class AbstractRejectionReasonState implements RejectionReasonSta
     protected void throwOnWrongEvent(RejectionReasonEvent event)
     {
         String stateEntityId = this.getRejectionReasonId(); // Aggregate Id
-        String eventEntityId = event.getRejectionReasonEventId().getRejectionReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((RejectionReasonEvent.SqlRejectionReasonEvent)event).getRejectionReasonEventId().getRejectionReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getRejectionReasonEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((RejectionReasonEvent.SqlRejectionReasonEvent)event).getRejectionReasonEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getRejectionReasonEventId().getVersion() == null");
         }

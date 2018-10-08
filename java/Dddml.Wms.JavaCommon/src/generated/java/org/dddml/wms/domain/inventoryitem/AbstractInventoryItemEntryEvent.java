@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInventoryItemEntryEvent extends AbstractEvent implements InventoryItemEntryEvent 
+public abstract class AbstractInventoryItemEntryEvent extends AbstractEvent implements InventoryItemEntryEvent.SqlInventoryItemEntryEvent 
 {
     private InventoryItemEntryState state;
 

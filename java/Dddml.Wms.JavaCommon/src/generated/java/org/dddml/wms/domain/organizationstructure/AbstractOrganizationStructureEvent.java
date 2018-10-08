@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractOrganizationStructureEvent extends AbstractEvent implements OrganizationStructureEvent 
+public abstract class AbstractOrganizationStructureEvent extends AbstractEvent implements OrganizationStructureEvent.SqlOrganizationStructureEvent 
 {
     private OrganizationStructureEventId organizationStructureEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractOrganizationStructureEvent extends AbstractEvent i
     public void setId(OrganizationStructureId id) {
         getOrganizationStructureEventId().setId(id);
     }
+
+    public Long getVersion() {
+        return getOrganizationStructureEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getOrganizationStructureEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

@@ -8,7 +8,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractPhysicalInventoryLineEvent extends AbstractEvent implements PhysicalInventoryLineEvent 
+public abstract class AbstractPhysicalInventoryLineEvent extends AbstractEvent implements PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent 
 {
     private PhysicalInventoryLineEventId physicalInventoryLineEventId;
 

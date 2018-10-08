@@ -196,14 +196,14 @@ public abstract class AbstractInventoryItemRequirementEntryState implements Inve
     protected void throwOnWrongEvent(InventoryItemRequirementEntryEvent event)
     {
         InventoryItemId stateEntityIdInventoryItemRequirementId = this.getInventoryItemRequirementEntryId().getInventoryItemRequirementId();
-        InventoryItemId eventEntityIdInventoryItemRequirementId = event.getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId();
+        InventoryItemId eventEntityIdInventoryItemRequirementId = ((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)event).getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId();
         if (!stateEntityIdInventoryItemRequirementId.equals(eventEntityIdInventoryItemRequirementId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InventoryItemRequirementId %1$s in state but entity id InventoryItemRequirementId %2$s in event", stateEntityIdInventoryItemRequirementId, eventEntityIdInventoryItemRequirementId);
         }
 
         Long stateEntityIdEntrySeqId = this.getInventoryItemRequirementEntryId().getEntrySeqId();
-        Long eventEntityIdEntrySeqId = event.getInventoryItemRequirementEntryEventId().getEntrySeqId();
+        Long eventEntityIdEntrySeqId = ((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)event).getInventoryItemRequirementEntryEventId().getEntrySeqId();
         if (!stateEntityIdEntrySeqId.equals(eventEntityIdEntrySeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id EntrySeqId %1$s in state but entity id EntrySeqId %2$s in event", stateEntityIdEntrySeqId, eventEntityIdEntrySeqId);

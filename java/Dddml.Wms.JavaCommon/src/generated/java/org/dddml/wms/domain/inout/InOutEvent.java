@@ -6,9 +6,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface InOutEvent extends Event
-{
-    InOutEventId getInOutEventId();
+public interface InOutEvent extends Event {
+
+    interface SqlInOutEvent extends InOutEvent {
+        InOutEventId getInOutEventId();
+    }
+
+    String getDocumentNumber();
+
+    //void setDocumentNumber(String documentNumber);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

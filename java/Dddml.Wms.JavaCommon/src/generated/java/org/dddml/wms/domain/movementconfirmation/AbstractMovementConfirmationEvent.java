@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractMovementConfirmationEvent extends AbstractEvent implements MovementConfirmationEvent 
+public abstract class AbstractMovementConfirmationEvent extends AbstractEvent implements MovementConfirmationEvent.SqlMovementConfirmationEvent 
 {
     private MovementConfirmationEventId movementConfirmationEventId;
 
@@ -26,6 +26,14 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
     public void setDocumentNumber(String documentNumber) {
         getMovementConfirmationEventId().setDocumentNumber(documentNumber);
     }
+
+    public Long getVersion() {
+        return getMovementConfirmationEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getMovementConfirmationEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -87,12 +95,12 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(MovementConfirmationLineEvent e)
+    protected void throwOnInconsistentEventIds(MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(MovementConfirmationEvent oe, MovementConfirmationLineEvent e)
+    public static void throwOnInconsistentEventIds(MovementConfirmationEvent.SqlMovementConfirmationEvent oe, MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent e)
     {
         if (!oe.getMovementConfirmationEventId().getDocumentNumber().equals(e.getMovementConfirmationLineEventId().getMovementConfirmationDocumentNumber()))
         { 
@@ -283,8 +291,8 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
         
         public void addMovementConfirmationLineEvent(MovementConfirmationLineEvent.MovementConfirmationLineStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.movementConfirmationLineEvents.put(e.getMovementConfirmationLineEventId(), e);
+            throwOnInconsistentEventIds((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e);
+            this.movementConfirmationLineEvents.put(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e).getMovementConfirmationLineEventId(), e);
         }
 
         public void save()
@@ -438,8 +446,8 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
         
         public void addMovementConfirmationLineEvent(MovementConfirmationLineEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.movementConfirmationLineEvents.put(e.getMovementConfirmationLineEventId(), e);
+            throwOnInconsistentEventIds((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e);
+            this.movementConfirmationLineEvents.put(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e).getMovementConfirmationLineEventId(), e);
         }
 
         public void save()
@@ -504,8 +512,8 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
         
         public void addMovementConfirmationLineEvent(MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.movementConfirmationLineEvents.put(e.getMovementConfirmationLineEventId(), e);
+            throwOnInconsistentEventIds((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e);
+            this.movementConfirmationLineEvents.put(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e).getMovementConfirmationLineEventId(), e);
         }
 
         public void save()

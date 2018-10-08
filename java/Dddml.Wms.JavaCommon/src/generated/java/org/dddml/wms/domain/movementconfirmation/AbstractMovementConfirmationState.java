@@ -238,7 +238,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
     public AbstractMovementConfirmationState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((MovementConfirmationEvent) events.get(0)).getMovementConfirmationEventId().getDocumentNumber());
+            this.setDocumentNumber(((MovementConfirmationEvent.SqlMovementConfirmationEvent) events.get(0)).getMovementConfirmationEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -295,7 +295,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         this.setCreatedAt(e.getCreatedAt());
 
         for (MovementConfirmationLineEvent.MovementConfirmationLineStateCreated innerEvent : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(innerEvent.getMovementConfirmationLineEventId().getLineNumber());
+            MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)innerEvent).getMovementConfirmationLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
     }
@@ -408,7 +408,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         this.setUpdatedAt(e.getCreatedAt());
 
         for (MovementConfirmationLineEvent innerEvent : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(innerEvent.getMovementConfirmationLineEventId().getLineNumber());
+            MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)innerEvent).getMovementConfirmationLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved)
             {
@@ -447,14 +447,14 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
     protected void throwOnWrongEvent(MovementConfirmationEvent event)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = event.getMovementConfirmationEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((MovementConfirmationEvent.SqlMovementConfirmationEvent)event).getMovementConfirmationEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getMovementConfirmationEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((MovementConfirmationEvent.SqlMovementConfirmationEvent)event).getMovementConfirmationEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getMovementConfirmationEventId().getVersion() == null");
         }

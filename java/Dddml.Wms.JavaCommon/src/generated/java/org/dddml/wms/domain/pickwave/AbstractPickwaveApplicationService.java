@@ -138,7 +138,7 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
     }
 
     public void initialize(PickwaveEvent.PickwaveStateCreated stateCreated) {
-        Long aggregateId = stateCreated.getPickwaveEventId().getPickwaveId();
+        Long aggregateId = ((PickwaveEvent.SqlPickwaveEvent)stateCreated).getPickwaveEventId().getPickwaveId();
         PickwaveState state = new AbstractPickwaveState.SimplePickwaveState();
         state.setPickwaveId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
         ((AbstractPickwaveAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getPickwaveEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((PickwaveEvent.SqlPickwaveEvent)stateCreated).getPickwaveEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(PickwaveCommand command, EventStoreAggregateId eventStoreAggregateId, PickwaveState state)

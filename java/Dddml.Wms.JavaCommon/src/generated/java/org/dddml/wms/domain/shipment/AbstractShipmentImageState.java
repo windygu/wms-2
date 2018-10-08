@@ -243,14 +243,14 @@ public abstract class AbstractShipmentImageState implements ShipmentImageState
     protected void throwOnWrongEvent(ShipmentImageEvent event)
     {
         String stateEntityIdShipmentId = this.getShipmentImageId().getShipmentId();
-        String eventEntityIdShipmentId = event.getShipmentImageEventId().getShipmentId();
+        String eventEntityIdShipmentId = ((ShipmentImageEvent.SqlShipmentImageEvent)event).getShipmentImageEventId().getShipmentId();
         if (!stateEntityIdShipmentId.equals(eventEntityIdShipmentId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentId %1$s in state but entity id ShipmentId %2$s in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
         }
 
         String stateEntityIdSequenceId = this.getShipmentImageId().getSequenceId();
-        String eventEntityIdSequenceId = event.getShipmentImageEventId().getSequenceId();
+        String eventEntityIdSequenceId = ((ShipmentImageEvent.SqlShipmentImageEvent)event).getShipmentImageEventId().getSequenceId();
         if (!stateEntityIdSequenceId.equals(eventEntityIdSequenceId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id SequenceId %1$s in state but entity id SequenceId %2$s in event", stateEntityIdSequenceId, eventEntityIdSequenceId);

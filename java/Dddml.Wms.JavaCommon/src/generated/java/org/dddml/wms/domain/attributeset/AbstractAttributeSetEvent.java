@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractAttributeSetEvent extends AbstractEvent implements AttributeSetEvent 
+public abstract class AbstractAttributeSetEvent extends AbstractEvent implements AttributeSetEvent.SqlAttributeSetEvent 
 {
     private AttributeSetEventId attributeSetEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
     public void setAttributeSetId(String attributeSetId) {
         getAttributeSetEventId().setAttributeSetId(attributeSetId);
     }
+
+    public Long getVersion() {
+        return getAttributeSetEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getAttributeSetEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -86,12 +94,12 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(AttributeUseEvent e)
+    protected void throwOnInconsistentEventIds(AttributeUseEvent.SqlAttributeUseEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(AttributeSetEvent oe, AttributeUseEvent e)
+    public static void throwOnInconsistentEventIds(AttributeSetEvent.SqlAttributeSetEvent oe, AttributeUseEvent.SqlAttributeUseEvent e)
     {
         if (!oe.getAttributeSetEventId().getAttributeSetId().equals(e.getAttributeUseEventId().getAttributeSetId()))
         { 
@@ -258,8 +266,8 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
         
         public void addAttributeUseEvent(AttributeUseEvent.AttributeUseStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeUseEvents.put(e.getAttributeUseEventId(), e);
+            throwOnInconsistentEventIds((AttributeUseEvent.SqlAttributeUseEvent)e);
+            this.attributeUseEvents.put(((AttributeUseEvent.SqlAttributeUseEvent)e).getAttributeUseEventId(), e);
         }
 
         public void save()
@@ -393,8 +401,8 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
         
         public void addAttributeUseEvent(AttributeUseEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeUseEvents.put(e.getAttributeUseEventId(), e);
+            throwOnInconsistentEventIds((AttributeUseEvent.SqlAttributeUseEvent)e);
+            this.attributeUseEvents.put(((AttributeUseEvent.SqlAttributeUseEvent)e).getAttributeUseEventId(), e);
         }
 
         public void save()
@@ -459,8 +467,8 @@ public abstract class AbstractAttributeSetEvent extends AbstractEvent implements
         
         public void addAttributeUseEvent(AttributeUseEvent.AttributeUseStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.attributeUseEvents.put(e.getAttributeUseEventId(), e);
+            throwOnInconsistentEventIds((AttributeUseEvent.SqlAttributeUseEvent)e);
+            this.attributeUseEvents.put(((AttributeUseEvent.SqlAttributeUseEvent)e).getAttributeUseEventId(), e);
         }
 
         public void save()

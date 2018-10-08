@@ -138,7 +138,7 @@ public abstract class AbstractShipmentMethodTypeApplicationService implements Sh
     }
 
     public void initialize(ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getShipmentMethodTypeEventId().getShipmentMethodTypeId();
+        String aggregateId = ((ShipmentMethodTypeEvent.SqlShipmentMethodTypeEvent)stateCreated).getShipmentMethodTypeEventId().getShipmentMethodTypeId();
         ShipmentMethodTypeState state = new AbstractShipmentMethodTypeState.SimpleShipmentMethodTypeState();
         state.setShipmentMethodTypeId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractShipmentMethodTypeApplicationService implements Sh
         ((AbstractShipmentMethodTypeAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getShipmentMethodTypeEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((ShipmentMethodTypeEvent.SqlShipmentMethodTypeEvent)stateCreated).getShipmentMethodTypeEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ShipmentMethodTypeCommand command, EventStoreAggregateId eventStoreAggregateId, ShipmentMethodTypeState state)

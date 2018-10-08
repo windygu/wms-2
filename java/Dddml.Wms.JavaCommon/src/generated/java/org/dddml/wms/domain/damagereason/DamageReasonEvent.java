@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface DamageReasonEvent extends Event
-{
-    DamageReasonEventId getDamageReasonEventId();
+public interface DamageReasonEvent extends Event {
+
+    interface SqlDamageReasonEvent extends DamageReasonEvent {
+        DamageReasonEventId getDamageReasonEventId();
+    }
+
+    String getDamageReasonId();
+
+    //void setDamageReasonId(String damageReasonId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

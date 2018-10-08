@@ -138,7 +138,7 @@ public abstract class AbstractRoleTypeApplicationService implements RoleTypeAppl
     }
 
     public void initialize(RoleTypeEvent.RoleTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getRoleTypeEventId().getRoleTypeId();
+        String aggregateId = ((RoleTypeEvent.SqlRoleTypeEvent)stateCreated).getRoleTypeEventId().getRoleTypeId();
         RoleTypeState state = new AbstractRoleTypeState.SimpleRoleTypeState();
         state.setRoleTypeId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractRoleTypeApplicationService implements RoleTypeAppl
         ((AbstractRoleTypeAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getRoleTypeEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((RoleTypeEvent.SqlRoleTypeEvent)stateCreated).getRoleTypeEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(RoleTypeCommand command, EventStoreAggregateId eventStoreAggregateId, RoleTypeState state)

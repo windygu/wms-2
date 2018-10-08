@@ -8,9 +8,15 @@ import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface SellableInventoryItemEntryEvent extends Event
-{
-    SellableInventoryItemEntryEventId getSellableInventoryItemEntryEventId();
+public interface SellableInventoryItemEntryEvent extends Event {
+
+    interface SqlSellableInventoryItemEntryEvent extends SellableInventoryItemEntryEvent {
+        SellableInventoryItemEntryEventId getSellableInventoryItemEntryEventId();
+    }
+
+    Long getEntrySeqId();
+
+    //void setEntrySeqId(Long entrySeqId);
 
     boolean getEventReadOnly();
 

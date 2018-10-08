@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractUomConversionEvent extends AbstractEvent implements UomConversionEvent 
+public abstract class AbstractUomConversionEvent extends AbstractEvent implements UomConversionEvent.SqlUomConversionEvent 
 {
     private UomConversionEventId uomConversionEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractUomConversionEvent extends AbstractEvent implement
     public void setUomConversionId(UomConversionId uomConversionId) {
         getUomConversionEventId().setUomConversionId(uomConversionId);
     }
+
+    public Long getVersion() {
+        return getUomConversionEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getUomConversionEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

@@ -382,7 +382,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     public AbstractMovementState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((MovementEvent) events.get(0)).getMovementEventId().getDocumentNumber());
+            this.setDocumentNumber(((MovementEvent.SqlMovementEvent) events.get(0)).getMovementEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -451,7 +451,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (MovementLineEvent.MovementLineStateCreated innerEvent : e.getMovementLineEvents()) {
-            MovementLineState innerState = this.getMovementLines().get(innerEvent.getMovementLineEventId().getLineNumber());
+            MovementLineState innerState = this.getMovementLines().get(((MovementLineEvent.SqlMovementLineEvent)innerEvent).getMovementLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
     }
@@ -696,7 +696,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (MovementLineEvent innerEvent : e.getMovementLineEvents()) {
-            MovementLineState innerState = this.getMovementLines().get(innerEvent.getMovementLineEventId().getLineNumber());
+            MovementLineState innerState = this.getMovementLines().get(((MovementLineEvent.SqlMovementLineEvent)innerEvent).getMovementLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof MovementLineEvent.MovementLineStateRemoved)
             {
@@ -735,14 +735,14 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     protected void throwOnWrongEvent(MovementEvent event)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = event.getMovementEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((MovementEvent.SqlMovementEvent)event).getMovementEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getMovementEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((MovementEvent.SqlMovementEvent)event).getMovementEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getMovementEventId().getVersion() == null");
         }

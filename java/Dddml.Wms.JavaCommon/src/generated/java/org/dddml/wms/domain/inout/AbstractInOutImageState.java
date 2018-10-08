@@ -243,14 +243,14 @@ public abstract class AbstractInOutImageState implements InOutImageState
     protected void throwOnWrongEvent(InOutImageEvent event)
     {
         String stateEntityIdInOutDocumentNumber = this.getInOutImageId().getInOutDocumentNumber();
-        String eventEntityIdInOutDocumentNumber = event.getInOutImageEventId().getInOutDocumentNumber();
+        String eventEntityIdInOutDocumentNumber = ((InOutImageEvent.SqlInOutImageEvent)event).getInOutImageEventId().getInOutDocumentNumber();
         if (!stateEntityIdInOutDocumentNumber.equals(eventEntityIdInOutDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutDocumentNumber %1$s in state but entity id InOutDocumentNumber %2$s in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
         }
 
         String stateEntityIdSequenceId = this.getInOutImageId().getSequenceId();
-        String eventEntityIdSequenceId = event.getInOutImageEventId().getSequenceId();
+        String eventEntityIdSequenceId = ((InOutImageEvent.SqlInOutImageEvent)event).getInOutImageEventId().getSequenceId();
         if (!stateEntityIdSequenceId.equals(eventEntityIdSequenceId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id SequenceId %1$s in state but entity id SequenceId %2$s in event", stateEntityIdSequenceId, eventEntityIdSequenceId);

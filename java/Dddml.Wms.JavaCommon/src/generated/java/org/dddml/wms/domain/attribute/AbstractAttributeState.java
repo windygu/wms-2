@@ -261,7 +261,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     public AbstractAttributeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeId(((AttributeEvent) events.get(0)).getAttributeEventId().getAttributeId());
+            this.setAttributeId(((AttributeEvent.SqlAttributeEvent) events.get(0)).getAttributeEventId().getAttributeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -320,11 +320,11 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (AttributeValueEvent.AttributeValueStateCreated innerEvent : e.getAttributeValueEvents()) {
-            AttributeValueState innerState = this.getAttributeValues().get(innerEvent.getAttributeValueEventId().getValue());
+            AttributeValueState innerState = this.getAttributeValues().get(((AttributeValueEvent.SqlAttributeValueEvent)innerEvent).getAttributeValueEventId().getValue());
             innerState.mutate(innerEvent);
         }
         for (AttributeAliasEvent.AttributeAliasStateCreated innerEvent : e.getAttributeAliasEvents()) {
-            AttributeAliasState innerState = this.getAliases().get(innerEvent.getAttributeAliasEventId().getCode());
+            AttributeAliasState innerState = this.getAliases().get(((AttributeAliasEvent.SqlAttributeAliasEvent)innerEvent).getAttributeAliasEventId().getCode());
             innerState.mutate(innerEvent);
         }
     }
@@ -448,7 +448,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (AttributeValueEvent innerEvent : e.getAttributeValueEvents()) {
-            AttributeValueState innerState = this.getAttributeValues().get(innerEvent.getAttributeValueEventId().getValue());
+            AttributeValueState innerState = this.getAttributeValues().get(((AttributeValueEvent.SqlAttributeValueEvent)innerEvent).getAttributeValueEventId().getValue());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof AttributeValueEvent.AttributeValueStateRemoved)
             {
@@ -457,7 +457,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
             }
         }
         for (AttributeAliasEvent innerEvent : e.getAttributeAliasEvents()) {
-            AttributeAliasState innerState = this.getAliases().get(innerEvent.getAttributeAliasEventId().getCode());
+            AttributeAliasState innerState = this.getAliases().get(((AttributeAliasEvent.SqlAttributeAliasEvent)innerEvent).getAttributeAliasEventId().getCode());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof AttributeAliasEvent.AttributeAliasStateRemoved)
             {
@@ -508,14 +508,14 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     protected void throwOnWrongEvent(AttributeEvent event)
     {
         String stateEntityId = this.getAttributeId(); // Aggregate Id
-        String eventEntityId = event.getAttributeEventId().getAttributeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((AttributeEvent.SqlAttributeEvent)event).getAttributeEventId().getAttributeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getAttributeEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((AttributeEvent.SqlAttributeEvent)event).getAttributeEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getAttributeEventId().getVersion() == null");
         }

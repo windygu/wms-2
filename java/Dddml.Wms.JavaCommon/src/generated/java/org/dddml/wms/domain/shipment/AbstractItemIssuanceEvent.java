@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements ItemIssuanceEvent 
+public abstract class AbstractItemIssuanceEvent extends AbstractEvent implements ItemIssuanceEvent.SqlItemIssuanceEvent 
 {
     private ItemIssuanceEventId itemIssuanceEventId;
 

@@ -6,9 +6,15 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface MovementConfirmationLineEvent extends Event
-{
-    MovementConfirmationLineEventId getMovementConfirmationLineEventId();
+public interface MovementConfirmationLineEvent extends Event {
+
+    interface SqlMovementConfirmationLineEvent extends MovementConfirmationLineEvent {
+        MovementConfirmationLineEventId getMovementConfirmationLineEventId();
+    }
+
+    String getLineNumber();
+
+    //void setLineNumber(String lineNumber);
 
     boolean getEventReadOnly();
 

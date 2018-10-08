@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractRejectionReasonEvent extends AbstractEvent implements RejectionReasonEvent 
+public abstract class AbstractRejectionReasonEvent extends AbstractEvent implements RejectionReasonEvent.SqlRejectionReasonEvent 
 {
     private RejectionReasonEventId rejectionReasonEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractRejectionReasonEvent extends AbstractEvent impleme
     public void setRejectionReasonId(String rejectionReasonId) {
         getRejectionReasonEventId().setRejectionReasonId(rejectionReasonId);
     }
+
+    public Long getVersion() {
+        return getRejectionReasonEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getRejectionReasonEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

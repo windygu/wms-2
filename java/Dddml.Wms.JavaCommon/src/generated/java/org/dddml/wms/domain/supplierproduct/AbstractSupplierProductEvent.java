@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractSupplierProductEvent extends AbstractEvent implements SupplierProductEvent 
+public abstract class AbstractSupplierProductEvent extends AbstractEvent implements SupplierProductEvent.SqlSupplierProductEvent 
 {
     private SupplierProductEventId supplierProductEventId;
 
@@ -25,6 +25,14 @@ public abstract class AbstractSupplierProductEvent extends AbstractEvent impleme
     public void setSupplierProductId(SupplierProductId supplierProductId) {
         getSupplierProductEventId().setSupplierProductId(supplierProductId);
     }
+
+    public Long getVersion() {
+        return getSupplierProductEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getSupplierProductEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 

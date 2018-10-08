@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractInventoryItemEvent extends AbstractEvent implements InventoryItemEvent 
+public abstract class AbstractInventoryItemEvent extends AbstractEvent implements InventoryItemEvent.SqlInventoryItemEvent 
 {
     private InventoryItemEventId inventoryItemEventId;
 
@@ -26,6 +26,14 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
     public void setInventoryItemId(InventoryItemId inventoryItemId) {
         getInventoryItemEventId().setInventoryItemId(inventoryItemId);
     }
+
+    public Long getVersion() {
+        return getInventoryItemEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getInventoryItemEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -87,12 +95,12 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(InventoryItemEntryEvent e)
+    protected void throwOnInconsistentEventIds(InventoryItemEntryEvent.SqlInventoryItemEntryEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(InventoryItemEvent oe, InventoryItemEntryEvent e)
+    public static void throwOnInconsistentEventIds(InventoryItemEvent.SqlInventoryItemEvent oe, InventoryItemEntryEvent.SqlInventoryItemEntryEvent e)
     {
         if (!oe.getInventoryItemEventId().getInventoryItemId().equals(e.getInventoryItemEntryEventId().getInventoryItemId()))
         { 
@@ -227,8 +235,8 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
         
         public void addInventoryItemEntryEvent(InventoryItemEntryEvent.InventoryItemEntryStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inventoryItemEntryEvents.put(e.getInventoryItemEntryEventId(), e);
+            throwOnInconsistentEventIds((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)e);
+            this.inventoryItemEntryEvents.put(((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)e).getInventoryItemEntryEventId(), e);
         }
 
         public void save()
@@ -342,8 +350,8 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
         
         public void addInventoryItemEntryEvent(InventoryItemEntryEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.inventoryItemEntryEvents.put(e.getInventoryItemEntryEventId(), e);
+            throwOnInconsistentEventIds((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)e);
+            this.inventoryItemEntryEvents.put(((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)e).getInventoryItemEntryEventId(), e);
         }
 
         public void save()

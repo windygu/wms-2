@@ -129,7 +129,7 @@ public abstract class AbstractOrderShipmentState implements OrderShipmentState
     public AbstractOrderShipmentState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrderShipmentId(((OrderShipmentEvent) events.get(0)).getOrderShipmentEventId().getOrderShipmentId());
+            this.setOrderShipmentId(((OrderShipmentEvent.SqlOrderShipmentEvent) events.get(0)).getOrderShipmentEventId().getOrderShipmentId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -214,14 +214,14 @@ public abstract class AbstractOrderShipmentState implements OrderShipmentState
     protected void throwOnWrongEvent(OrderShipmentEvent event)
     {
         OrderShipmentId stateEntityId = this.getOrderShipmentId(); // Aggregate Id
-        OrderShipmentId eventEntityId = event.getOrderShipmentEventId().getOrderShipmentId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        OrderShipmentId eventEntityId = ((OrderShipmentEvent.SqlOrderShipmentEvent)event).getOrderShipmentEventId().getOrderShipmentId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getOrderShipmentEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((OrderShipmentEvent.SqlOrderShipmentEvent)event).getOrderShipmentEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getOrderShipmentEventId().getVersion() == null");
         }

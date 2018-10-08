@@ -5,8 +5,11 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface OrganizationEvent extends PartyEvent
-{
+public interface OrganizationEvent extends PartyEvent {
+
+    interface SqlOrganizationEvent extends OrganizationEvent {
+    }
+
     interface OrganizationStateEvent extends PartyStateEvent, OrganizationEvent {
         String getOrganizationName();
 

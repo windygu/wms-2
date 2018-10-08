@@ -143,7 +143,7 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
     }
 
     public void initialize(InventoryItemEvent.InventoryItemStateCreated stateCreated) {
-        InventoryItemId aggregateId = stateCreated.getInventoryItemEventId().getInventoryItemId();
+        InventoryItemId aggregateId = ((InventoryItemEvent.SqlInventoryItemEvent)stateCreated).getInventoryItemEventId().getInventoryItemId();
         InventoryItemState state = new AbstractInventoryItemState.SimpleInventoryItemState();
         state.setInventoryItemId(aggregateId);
 
@@ -151,7 +151,7 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
         ((AbstractInventoryItemAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getInventoryItemEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((InventoryItemEvent.SqlInventoryItemEvent)stateCreated).getInventoryItemEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InventoryItemCommand command, EventStoreAggregateId eventStoreAggregateId, InventoryItemState state)

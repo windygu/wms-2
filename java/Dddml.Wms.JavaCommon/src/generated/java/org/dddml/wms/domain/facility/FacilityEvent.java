@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface FacilityEvent extends Event
-{
-    FacilityEventId getFacilityEventId();
+public interface FacilityEvent extends Event {
+
+    interface SqlFacilityEvent extends FacilityEvent {
+        FacilityEventId getFacilityEventId();
+    }
+
+    String getFacilityId();
+
+    //void setFacilityId(String facilityId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

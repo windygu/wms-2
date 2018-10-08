@@ -442,7 +442,7 @@ public abstract class AbstractOrderState implements OrderState, Saveable
     public AbstractOrderState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrderId(((OrderEvent) events.get(0)).getOrderEventId().getOrderId());
+            this.setOrderId(((OrderEvent.SqlOrderEvent) events.get(0)).getOrderEventId().getOrderId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -513,15 +513,15 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (OrderRoleEvent.OrderRoleStateCreated innerEvent : e.getOrderRoleEvents()) {
-            OrderRoleState innerState = this.getOrderRoles().get(innerEvent.getOrderRoleEventId().getPartyRoleId());
+            OrderRoleState innerState = this.getOrderRoles().get(((OrderRoleEvent.SqlOrderRoleEvent)innerEvent).getOrderRoleEventId().getPartyRoleId());
             innerState.mutate(innerEvent);
         }
         for (OrderItemEvent.OrderItemStateCreated innerEvent : e.getOrderItemEvents()) {
-            OrderItemState innerState = this.getOrderItems().get(innerEvent.getOrderItemEventId().getOrderItemSeqId());
+            OrderItemState innerState = this.getOrderItems().get(((OrderItemEvent.SqlOrderItemEvent)innerEvent).getOrderItemEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
         }
         for (OrderShipGroupEvent.OrderShipGroupStateCreated innerEvent : e.getOrderShipGroupEvents()) {
-            OrderShipGroupState innerState = this.getOrderShipGroups().get(innerEvent.getOrderShipGroupEventId().getShipGroupSeqId());
+            OrderShipGroupState innerState = this.getOrderShipGroups().get(((OrderShipGroupEvent.SqlOrderShipGroupEvent)innerEvent).getOrderShipGroupEventId().getShipGroupSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -810,7 +810,7 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (OrderRoleEvent innerEvent : e.getOrderRoleEvents()) {
-            OrderRoleState innerState = this.getOrderRoles().get(innerEvent.getOrderRoleEventId().getPartyRoleId());
+            OrderRoleState innerState = this.getOrderRoles().get(((OrderRoleEvent.SqlOrderRoleEvent)innerEvent).getOrderRoleEventId().getPartyRoleId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof OrderRoleEvent.OrderRoleStateRemoved)
             {
@@ -819,11 +819,11 @@ public abstract class AbstractOrderState implements OrderState, Saveable
             }
         }
         for (OrderItemEvent innerEvent : e.getOrderItemEvents()) {
-            OrderItemState innerState = this.getOrderItems().get(innerEvent.getOrderItemEventId().getOrderItemSeqId());
+            OrderItemState innerState = this.getOrderItems().get(((OrderItemEvent.SqlOrderItemEvent)innerEvent).getOrderItemEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
         }
         for (OrderShipGroupEvent innerEvent : e.getOrderShipGroupEvents()) {
-            OrderShipGroupState innerState = this.getOrderShipGroups().get(innerEvent.getOrderShipGroupEventId().getShipGroupSeqId());
+            OrderShipGroupState innerState = this.getOrderShipGroups().get(((OrderShipGroupEvent.SqlOrderShipGroupEvent)innerEvent).getOrderShipGroupEventId().getShipGroupSeqId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof OrderShipGroupEvent.OrderShipGroupStateRemoved)
             {
@@ -846,14 +846,14 @@ public abstract class AbstractOrderState implements OrderState, Saveable
     protected void throwOnWrongEvent(OrderEvent event)
     {
         String stateEntityId = this.getOrderId(); // Aggregate Id
-        String eventEntityId = event.getOrderEventId().getOrderId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((OrderEvent.SqlOrderEvent)event).getOrderEventId().getOrderId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getOrderEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((OrderEvent.SqlOrderEvent)event).getOrderEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getOrderEventId().getVersion() == null");
         }

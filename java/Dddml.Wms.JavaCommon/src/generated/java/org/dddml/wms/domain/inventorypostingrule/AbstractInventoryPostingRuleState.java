@@ -190,7 +190,7 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
     public AbstractInventoryPostingRuleState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryPostingRuleId(((InventoryPostingRuleEvent) events.get(0)).getInventoryPostingRuleEventId().getInventoryPostingRuleId());
+            this.setInventoryPostingRuleId(((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent) events.get(0)).getInventoryPostingRuleEventId().getInventoryPostingRuleId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -337,14 +337,14 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
     protected void throwOnWrongEvent(InventoryPostingRuleEvent event)
     {
         String stateEntityId = this.getInventoryPostingRuleId(); // Aggregate Id
-        String eventEntityId = event.getInventoryPostingRuleEventId().getInventoryPostingRuleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
+        String eventEntityId = ((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent)event).getInventoryPostingRuleEventId().getInventoryPostingRuleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = event.getInventoryPostingRuleEventId().getVersion();// Aggregate Version
+        Long eventVersion = ((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent)event).getInventoryPostingRuleEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
             throw new NullPointerException("event.getInventoryPostingRuleEventId().getVersion() == null");
         }

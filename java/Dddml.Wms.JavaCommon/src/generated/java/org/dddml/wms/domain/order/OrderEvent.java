@@ -6,9 +6,19 @@ import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface OrderEvent extends Event
-{
-    OrderEventId getOrderEventId();
+public interface OrderEvent extends Event {
+
+    interface SqlOrderEvent extends OrderEvent {
+        OrderEventId getOrderEventId();
+    }
+
+    String getOrderId();
+
+    //void setOrderId(String orderId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

@@ -5,9 +5,19 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface LocatorEvent extends Event
-{
-    LocatorEventId getLocatorEventId();
+public interface LocatorEvent extends Event {
+
+    interface SqlLocatorEvent extends LocatorEvent {
+        LocatorEventId getLocatorEventId();
+    }
+
+    String getLocatorId();
+
+    //void setLocatorId(String locatorId);
+
+    Long getVersion();
+    
+    //void getVersion(Long version);
 
     boolean getEventReadOnly();
 

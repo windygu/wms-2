@@ -171,7 +171,7 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
     }
 
     public void initialize(OrderEvent.OrderStateCreated stateCreated) {
-        String aggregateId = stateCreated.getOrderEventId().getOrderId();
+        String aggregateId = ((OrderEvent.SqlOrderEvent)stateCreated).getOrderEventId().getOrderId();
         OrderState state = new AbstractOrderState.SimpleOrderState();
         state.setOrderId(aggregateId);
 
@@ -179,7 +179,7 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         ((AbstractOrderAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getOrderEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, ((OrderEvent.SqlOrderEvent)stateCreated).getOrderEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(OrderCommand command, EventStoreAggregateId eventStoreAggregateId, OrderState state)

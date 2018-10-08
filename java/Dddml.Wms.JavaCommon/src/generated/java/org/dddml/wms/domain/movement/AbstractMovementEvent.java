@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractEvent;
 
-public abstract class AbstractMovementEvent extends AbstractEvent implements MovementEvent 
+public abstract class AbstractMovementEvent extends AbstractEvent implements MovementEvent.SqlMovementEvent 
 {
     private MovementEventId movementEventId;
 
@@ -26,6 +26,14 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
     public void setDocumentNumber(String documentNumber) {
         getMovementEventId().setDocumentNumber(documentNumber);
     }
+
+    public Long getVersion() {
+        return getMovementEventId().getVersion();
+    }
+    
+    //public void getVersion(Long version) {
+    //    getMovementEventId().setVersion(version);
+    //}
 
     private boolean stateEventReadOnly;
 
@@ -87,12 +95,12 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
         return eventId;
     }
 
-    protected void throwOnInconsistentEventIds(MovementLineEvent e)
+    protected void throwOnInconsistentEventIds(MovementLineEvent.SqlMovementLineEvent e)
     {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(MovementEvent oe, MovementLineEvent e)
+    public static void throwOnInconsistentEventIds(MovementEvent.SqlMovementEvent oe, MovementLineEvent.SqlMovementLineEvent e)
     {
         if (!oe.getMovementEventId().getDocumentNumber().equals(e.getMovementLineEventId().getMovementDocumentNumber()))
         { 
@@ -427,8 +435,8 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
         
         public void addMovementLineEvent(MovementLineEvent.MovementLineStateCreated e)
         {
-            throwOnInconsistentEventIds(e);
-            this.movementLineEvents.put(e.getMovementLineEventId(), e);
+            throwOnInconsistentEventIds((MovementLineEvent.SqlMovementLineEvent)e);
+            this.movementLineEvents.put(((MovementLineEvent.SqlMovementLineEvent)e).getMovementLineEventId(), e);
         }
 
         public void save()
@@ -702,8 +710,8 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
         
         public void addMovementLineEvent(MovementLineEvent e)
         {
-            throwOnInconsistentEventIds(e);
-            this.movementLineEvents.put(e.getMovementLineEventId(), e);
+            throwOnInconsistentEventIds((MovementLineEvent.SqlMovementLineEvent)e);
+            this.movementLineEvents.put(((MovementLineEvent.SqlMovementLineEvent)e).getMovementLineEventId(), e);
         }
 
         public void save()
@@ -768,8 +776,8 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
         
         public void addMovementLineEvent(MovementLineEvent.MovementLineStateRemoved e)
         {
-            throwOnInconsistentEventIds(e);
-            this.movementLineEvents.put(e.getMovementLineEventId(), e);
+            throwOnInconsistentEventIds((MovementLineEvent.SqlMovementLineEvent)e);
+            this.movementLineEvents.put(((MovementLineEvent.SqlMovementLineEvent)e).getMovementLineEventId(), e);
         }
 
         public void save()
