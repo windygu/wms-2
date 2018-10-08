@@ -8,7 +8,7 @@
   
   <class name="org.dddml.wms.domain.lot.AbstractLotState$SimpleLotState" table="Lots">
 
-	<id name="lotId" length="20" column="LotId"><generator class="assigned"/></id>
+	<id name="lotId" length="60" column="LotId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>

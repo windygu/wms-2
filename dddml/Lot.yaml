@@ -10,7 +10,7 @@ aggregates:
   Lot:
     id:
       name: LotId
-      type: id-ne
+      type: id-long-ne
       
     properties:
       # 数量
