@@ -88,10 +88,9 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
 
     public WarehouseEvent getEvent(String warehouseId, long version) {
         WarehouseEvent e = (WarehouseEvent)getEventStore().getEvent(toEventStoreAggregateId(warehouseId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((WarehouseEvent.SqlWarehouseEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(warehouseId, 0);
         }
         return e;

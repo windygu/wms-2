@@ -27,6 +27,12 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
         getMovementEventId().setDocumentNumber(documentNumber);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getMovementEventId().getVersion();
     }
@@ -34,12 +40,6 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
     //public void getVersion(Long version) {
     //    getMovementEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -414,7 +414,7 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
                 List<MovementLineEvent.MovementLineStateCreated> eL = new ArrayList<MovementLineEvent.MovementLineStateCreated>();
                 for (MovementLineEvent e : eventDao.findByMovementEventId(this.getMovementEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((MovementLineEvent.SqlMovementLineEvent)e).setEventReadOnly(true);
                     eL.add((MovementLineEvent.MovementLineStateCreated)e);
                 }
                 return (readOnlyMovementLineEvents = eL);
@@ -689,7 +689,7 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
                 List<MovementLineEvent> eL = new ArrayList<MovementLineEvent>();
                 for (MovementLineEvent e : eventDao.findByMovementEventId(this.getMovementEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((MovementLineEvent.SqlMovementLineEvent)e).setEventReadOnly(true);
                     eL.add((MovementLineEvent)e);
                 }
                 return (readOnlyMovementLineEvents = eL);
@@ -755,7 +755,7 @@ public abstract class AbstractMovementEvent extends AbstractEvent implements Mov
                 List<MovementLineEvent.MovementLineStateRemoved> eL = new ArrayList<MovementLineEvent.MovementLineStateRemoved>();
                 for (MovementLineEvent e : eventDao.findByMovementEventId(this.getMovementEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((MovementLineEvent.SqlMovementLineEvent)e).setEventReadOnly(true);
                     eL.add((MovementLineEvent.MovementLineStateRemoved)e);
                 }
                 return (readOnlyMovementLineEvents = eL);

@@ -26,11 +26,11 @@ public abstract class AbstractShipmentItemEvent extends AbstractEvent implements
         getShipmentItemEventId().setShipmentItemSeqId(shipmentItemSeqId);
     }
 
-    private boolean stateEventReadOnly;
+    private boolean eventReadOnly;
 
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
 
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
 
     private String createdBy;
 

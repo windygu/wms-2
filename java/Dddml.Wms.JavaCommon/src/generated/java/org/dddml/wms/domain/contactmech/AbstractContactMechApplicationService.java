@@ -89,7 +89,7 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
     public ContactMechEvent getEvent(String contactMechId, long version) {
         ContactMechEvent e = (ContactMechEvent)getEventStore().getEvent(toEventStoreAggregateId(contactMechId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((ContactMechEvent.SqlContactMechEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(contactMechId, 0);

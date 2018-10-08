@@ -9,15 +9,15 @@ public interface AttributeAliasEvent extends Event {
 
     interface SqlAttributeAliasEvent extends AttributeAliasEvent {
         AttributeAliasEventId getAttributeAliasEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getCode();
 
     //void setCode(String code);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

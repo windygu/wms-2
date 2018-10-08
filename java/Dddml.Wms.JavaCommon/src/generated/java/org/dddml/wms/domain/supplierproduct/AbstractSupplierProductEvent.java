@@ -26,6 +26,12 @@ public abstract class AbstractSupplierProductEvent extends AbstractEvent impleme
         getSupplierProductEventId().setSupplierProductId(supplierProductId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getSupplierProductEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractSupplierProductEvent extends AbstractEvent impleme
     //public void getVersion(Long version) {
     //    getSupplierProductEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

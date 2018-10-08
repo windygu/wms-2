@@ -9,6 +9,10 @@ public interface PartyEvent extends Event {
 
     interface SqlPartyEvent extends PartyEvent {
         PartyEventId getPartyEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getPartyId();
@@ -18,10 +22,6 @@ public interface PartyEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

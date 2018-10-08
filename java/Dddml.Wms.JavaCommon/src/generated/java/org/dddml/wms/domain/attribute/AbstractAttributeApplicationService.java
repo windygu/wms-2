@@ -89,7 +89,7 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
     public AttributeEvent getEvent(String attributeId, long version) {
         AttributeEvent e = (AttributeEvent)getEventStore().getEvent(toEventStoreAggregateId(attributeId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((AttributeEvent.SqlAttributeEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(attributeId, 0);

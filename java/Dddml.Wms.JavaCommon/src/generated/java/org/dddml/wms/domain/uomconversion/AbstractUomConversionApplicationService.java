@@ -88,10 +88,9 @@ public abstract class AbstractUomConversionApplicationService implements UomConv
 
     public UomConversionEvent getEvent(UomConversionId uomConversionId, long version) {
         UomConversionEvent e = (UomConversionEvent)getEventStore().getEvent(toEventStoreAggregateId(uomConversionId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((UomConversionEvent.SqlUomConversionEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(uomConversionId, 0);
         }
         return e;

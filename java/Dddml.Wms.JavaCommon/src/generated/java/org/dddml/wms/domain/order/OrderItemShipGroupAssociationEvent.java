@@ -9,15 +9,15 @@ public interface OrderItemShipGroupAssociationEvent extends Event {
 
     interface SqlOrderItemShipGroupAssociationEvent extends OrderItemShipGroupAssociationEvent {
         OrderItemShipGroupAssociationEventId getOrderItemShipGroupAssociationEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getOrderItemSeqId();
 
     //void setOrderItemSeqId(String orderItemSeqId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

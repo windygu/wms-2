@@ -26,6 +26,12 @@ public abstract class AbstractOrganizationStructureEvent extends AbstractEvent i
         getOrganizationStructureEventId().setId(id);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getOrganizationStructureEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractOrganizationStructureEvent extends AbstractEvent i
     //public void getVersion(Long version) {
     //    getOrganizationStructureEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

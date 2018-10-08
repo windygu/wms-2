@@ -89,7 +89,7 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
     public PicklistBinEvent getEvent(String picklistBinId, long version) {
         PicklistBinEvent e = (PicklistBinEvent)getEventStore().getEvent(toEventStoreAggregateId(picklistBinId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((PicklistBinEvent.SqlPicklistBinEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(picklistBinId, 0);

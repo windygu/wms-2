@@ -9,6 +9,10 @@ public interface ProductCategoryEvent extends Event {
 
     interface SqlProductCategoryEvent extends ProductCategoryEvent {
         ProductCategoryEventId getProductCategoryEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getProductCategoryId();
@@ -18,10 +22,6 @@ public interface ProductCategoryEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

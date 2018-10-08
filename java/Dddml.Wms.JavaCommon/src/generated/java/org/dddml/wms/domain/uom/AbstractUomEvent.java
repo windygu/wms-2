@@ -26,6 +26,12 @@ public abstract class AbstractUomEvent extends AbstractEvent implements UomEvent
         getUomEventId().setUomId(uomId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getUomEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractUomEvent extends AbstractEvent implements UomEvent
     //public void getVersion(Long version) {
     //    getUomEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

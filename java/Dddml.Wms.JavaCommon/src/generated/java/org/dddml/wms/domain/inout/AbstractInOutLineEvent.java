@@ -27,11 +27,11 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
         getInOutLineEventId().setLineNumber(lineNumber);
     }
 
-    private boolean stateEventReadOnly;
+    private boolean eventReadOnly;
 
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
 
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -327,7 +327,7 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
                 List<InOutLineImageEvent.InOutLineImageStateCreated> eL = new ArrayList<InOutLineImageEvent.InOutLineImageStateCreated>();
                 for (InOutLineImageEvent e : eventDao.findByInOutLineEventId(this.getInOutLineEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InOutLineImageEvent.SqlInOutLineImageEvent)e).setEventReadOnly(true);
                     eL.add((InOutLineImageEvent.InOutLineImageStateCreated)e);
                 }
                 return (readOnlyInOutLineImageEvents = eL);
@@ -522,7 +522,7 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
                 List<InOutLineImageEvent> eL = new ArrayList<InOutLineImageEvent>();
                 for (InOutLineImageEvent e : eventDao.findByInOutLineEventId(this.getInOutLineEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InOutLineImageEvent.SqlInOutLineImageEvent)e).setEventReadOnly(true);
                     eL.add((InOutLineImageEvent)e);
                 }
                 return (readOnlyInOutLineImageEvents = eL);
@@ -588,7 +588,7 @@ public abstract class AbstractInOutLineEvent extends AbstractEvent implements In
                 List<InOutLineImageEvent.InOutLineImageStateRemoved> eL = new ArrayList<InOutLineImageEvent.InOutLineImageStateRemoved>();
                 for (InOutLineImageEvent e : eventDao.findByInOutLineEventId(this.getInOutLineEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InOutLineImageEvent.SqlInOutLineImageEvent)e).setEventReadOnly(true);
                     eL.add((InOutLineImageEvent.InOutLineImageStateRemoved)e);
                 }
                 return (readOnlyInOutLineImageEvents = eL);

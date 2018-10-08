@@ -26,6 +26,12 @@ public abstract class AbstractInOutNoticeEvent extends AbstractEvent implements 
         getInOutNoticeEventId().setInOutNoticeId(inOutNoticeId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getInOutNoticeEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractInOutNoticeEvent extends AbstractEvent implements 
     //public void getVersion(Long version) {
     //    getInOutNoticeEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

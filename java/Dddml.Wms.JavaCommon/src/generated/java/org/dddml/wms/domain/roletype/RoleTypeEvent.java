@@ -9,6 +9,10 @@ public interface RoleTypeEvent extends Event {
 
     interface SqlRoleTypeEvent extends RoleTypeEvent {
         RoleTypeEventId getRoleTypeEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getRoleTypeId();
@@ -18,10 +22,6 @@ public interface RoleTypeEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

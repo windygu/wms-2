@@ -10,6 +10,10 @@ public interface InventoryItemEvent extends Event {
 
     interface SqlInventoryItemEvent extends InventoryItemEvent {
         InventoryItemEventId getInventoryItemEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     InventoryItemId getInventoryItemId();
@@ -19,10 +23,6 @@ public interface InventoryItemEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

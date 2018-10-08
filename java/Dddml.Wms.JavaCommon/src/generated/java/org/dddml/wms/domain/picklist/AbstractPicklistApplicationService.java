@@ -90,7 +90,7 @@ public abstract class AbstractPicklistApplicationService implements PicklistAppl
     public PicklistEvent getEvent(String picklistId, long version) {
         PicklistEvent e = (PicklistEvent)getEventStore().getEvent(toEventStoreAggregateId(picklistId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((PicklistEvent.SqlPicklistEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(picklistId, 0);

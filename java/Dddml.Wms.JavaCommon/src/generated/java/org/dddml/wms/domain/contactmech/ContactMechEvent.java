@@ -9,6 +9,10 @@ public interface ContactMechEvent extends Event {
 
     interface SqlContactMechEvent extends ContactMechEvent {
         ContactMechEventId getContactMechEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getContactMechId();
@@ -18,10 +22,6 @@ public interface ContactMechEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

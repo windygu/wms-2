@@ -10,15 +10,15 @@ public interface InventoryItemEntryEvent extends Event {
 
     interface SqlInventoryItemEntryEvent extends InventoryItemEntryEvent {
         InventoryItemEntryEventId getInventoryItemEntryEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     Long getEntrySeqId();
 
     //void setEntrySeqId(Long entrySeqId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

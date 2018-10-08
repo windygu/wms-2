@@ -10,6 +10,10 @@ public interface MovementConfirmationEvent extends Event {
 
     interface SqlMovementConfirmationEvent extends MovementConfirmationEvent {
         MovementConfirmationEventId getMovementConfirmationEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getDocumentNumber();
@@ -19,10 +23,6 @@ public interface MovementConfirmationEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

@@ -12,6 +12,10 @@ public interface SellableInventoryItemEvent extends Event {
 
     interface SqlSellableInventoryItemEvent extends SellableInventoryItemEvent {
         SellableInventoryItemEventId getSellableInventoryItemEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     InventoryItemId getSellableInventoryItemId();
@@ -21,10 +25,6 @@ public interface SellableInventoryItemEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

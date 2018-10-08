@@ -9,15 +9,15 @@ public interface ShipmentReceiptImageEvent extends Event {
 
     interface SqlShipmentReceiptImageEvent extends ShipmentReceiptImageEvent {
         ShipmentReceiptImageEventId getShipmentReceiptImageEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getSequenceId();
 
     //void setSequenceId(String sequenceId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

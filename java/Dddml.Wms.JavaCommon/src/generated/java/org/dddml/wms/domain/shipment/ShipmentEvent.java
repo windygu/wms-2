@@ -9,6 +9,10 @@ public interface ShipmentEvent extends Event {
 
     interface SqlShipmentEvent extends ShipmentEvent {
         ShipmentEventId getShipmentEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getShipmentId();
@@ -18,10 +22,6 @@ public interface ShipmentEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

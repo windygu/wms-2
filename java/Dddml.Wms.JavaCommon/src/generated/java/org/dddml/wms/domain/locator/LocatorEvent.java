@@ -9,6 +9,10 @@ public interface LocatorEvent extends Event {
 
     interface SqlLocatorEvent extends LocatorEvent {
         LocatorEventId getLocatorEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getLocatorId();
@@ -18,10 +22,6 @@ public interface LocatorEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

@@ -9,6 +9,10 @@ public interface WarehouseEvent extends Event {
 
     interface SqlWarehouseEvent extends WarehouseEvent {
         WarehouseEventId getWarehouseEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getWarehouseId();
@@ -18,10 +22,6 @@ public interface WarehouseEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

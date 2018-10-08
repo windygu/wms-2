@@ -35,11 +35,11 @@ public abstract class AbstractInventoryItemRequirementEntryEvent extends Abstrac
         getInventoryItemRequirementEntryEventId().setEntrySeqId(entrySeqId);
     }
 
-    private boolean stateEventReadOnly;
+    private boolean eventReadOnly;
 
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
 
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
 
     public String getCreatedBy()
     {

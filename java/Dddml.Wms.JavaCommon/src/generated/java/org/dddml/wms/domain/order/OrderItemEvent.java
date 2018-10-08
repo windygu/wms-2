@@ -9,15 +9,15 @@ public interface OrderItemEvent extends Event {
 
     interface SqlOrderItemEvent extends OrderItemEvent {
         OrderItemEventId getOrderItemEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getOrderItemSeqId();
 
     //void setOrderItemSeqId(String orderItemSeqId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

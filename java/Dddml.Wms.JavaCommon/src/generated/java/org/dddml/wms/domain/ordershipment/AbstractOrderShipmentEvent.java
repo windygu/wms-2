@@ -26,6 +26,12 @@ public abstract class AbstractOrderShipmentEvent extends AbstractEvent implement
         getOrderShipmentEventId().setOrderShipmentId(orderShipmentId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getOrderShipmentEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractOrderShipmentEvent extends AbstractEvent implement
     //public void getVersion(Long version) {
     //    getOrderShipmentEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

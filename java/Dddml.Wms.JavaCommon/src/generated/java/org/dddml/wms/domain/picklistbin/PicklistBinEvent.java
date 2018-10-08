@@ -9,6 +9,10 @@ public interface PicklistBinEvent extends Event {
 
     interface SqlPicklistBinEvent extends PicklistBinEvent {
         PicklistBinEventId getPicklistBinEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getPicklistBinId();
@@ -18,10 +22,6 @@ public interface PicklistBinEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

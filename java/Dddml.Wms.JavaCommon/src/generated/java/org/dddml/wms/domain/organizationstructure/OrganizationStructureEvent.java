@@ -9,6 +9,10 @@ public interface OrganizationStructureEvent extends Event {
 
     interface SqlOrganizationStructureEvent extends OrganizationStructureEvent {
         OrganizationStructureEventId getOrganizationStructureEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     OrganizationStructureId getId();
@@ -18,10 +22,6 @@ public interface OrganizationStructureEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

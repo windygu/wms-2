@@ -89,7 +89,7 @@ public abstract class AbstractGoodIdentificationTypeApplicationService implement
     public GoodIdentificationTypeEvent getEvent(String goodIdentificationTypeId, long version) {
         GoodIdentificationTypeEvent e = (GoodIdentificationTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(goodIdentificationTypeId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(goodIdentificationTypeId, 0);

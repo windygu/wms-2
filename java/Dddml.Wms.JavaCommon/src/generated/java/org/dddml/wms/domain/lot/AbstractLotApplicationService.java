@@ -89,7 +89,7 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
     public LotEvent getEvent(String lotId, long version) {
         LotEvent e = (LotEvent)getEventStore().getEvent(toEventStoreAggregateId(lotId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((LotEvent.SqlLotEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(lotId, 0);

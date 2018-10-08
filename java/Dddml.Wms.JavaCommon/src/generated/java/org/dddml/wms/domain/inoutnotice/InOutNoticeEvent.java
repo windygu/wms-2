@@ -9,6 +9,10 @@ public interface InOutNoticeEvent extends Event {
 
     interface SqlInOutNoticeEvent extends InOutNoticeEvent {
         InOutNoticeEventId getInOutNoticeEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getInOutNoticeId();
@@ -18,10 +22,6 @@ public interface InOutNoticeEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

@@ -90,7 +90,7 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
     public OrderEvent getEvent(String orderId, long version) {
         OrderEvent e = (OrderEvent)getEventStore().getEvent(toEventStoreAggregateId(orderId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((OrderEvent.SqlOrderEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(orderId, 0);

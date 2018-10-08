@@ -89,7 +89,7 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
     public ProductCategoryEvent getEvent(String productCategoryId, long version) {
         ProductCategoryEvent e = (ProductCategoryEvent)getEventStore().getEvent(toEventStoreAggregateId(productCategoryId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((ProductCategoryEvent.SqlProductCategoryEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(productCategoryId, 0);

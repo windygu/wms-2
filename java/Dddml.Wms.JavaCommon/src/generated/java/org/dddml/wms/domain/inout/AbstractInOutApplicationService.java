@@ -114,7 +114,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     public InOutEvent getEvent(String documentNumber, long version) {
         InOutEvent e = (InOutEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((InOutEvent.SqlInOutEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(documentNumber, 0);

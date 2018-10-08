@@ -89,7 +89,7 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
     public FacilityEvent getEvent(String facilityId, long version) {
         FacilityEvent e = (FacilityEvent)getEventStore().getEvent(toEventStoreAggregateId(facilityId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((FacilityEvent.SqlFacilityEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(facilityId, 0);

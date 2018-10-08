@@ -10,6 +10,10 @@ public interface InventoryPostingRuleEvent extends Event {
 
     interface SqlInventoryPostingRuleEvent extends InventoryPostingRuleEvent {
         InventoryPostingRuleEventId getInventoryPostingRuleEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getInventoryPostingRuleId();
@@ -19,10 +23,6 @@ public interface InventoryPostingRuleEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

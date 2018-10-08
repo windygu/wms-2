@@ -26,6 +26,12 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
         getPickwaveEventId().setPickwaveId(pickwaveId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getPickwaveEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractPickwaveEvent extends AbstractEvent implements Pic
     //public void getVersion(Long version) {
     //    getPickwaveEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

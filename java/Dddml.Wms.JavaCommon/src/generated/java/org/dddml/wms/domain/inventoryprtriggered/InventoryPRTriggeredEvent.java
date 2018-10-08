@@ -9,6 +9,10 @@ public interface InventoryPRTriggeredEvent extends Event {
 
     interface SqlInventoryPRTriggeredEvent extends InventoryPRTriggeredEvent {
         InventoryPRTriggeredEventId getInventoryPRTriggeredEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     InventoryPRTriggeredId getInventoryPRTriggeredId();
@@ -18,10 +22,6 @@ public interface InventoryPRTriggeredEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

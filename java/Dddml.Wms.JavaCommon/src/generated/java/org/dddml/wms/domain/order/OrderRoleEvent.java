@@ -10,15 +10,15 @@ public interface OrderRoleEvent extends Event {
 
     interface SqlOrderRoleEvent extends OrderRoleEvent {
         OrderRoleEventId getOrderRoleEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     PartyRoleId getPartyRoleId();
 
     //void setPartyRoleId(PartyRoleId partyRoleId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

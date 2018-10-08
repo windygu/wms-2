@@ -26,11 +26,11 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
         getShipmentReceiptEventId().setReceiptSeqId(receiptSeqId);
     }
 
-    private boolean stateEventReadOnly;
+    private boolean eventReadOnly;
 
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
 
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -398,7 +398,7 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
                 List<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated> eL = new ArrayList<ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated>();
                 for (ShipmentReceiptImageEvent e : eventDao.findByShipmentReceiptEventId(this.getShipmentReceiptEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated)e);
                 }
                 return (readOnlyShipmentReceiptImageEvents = eL);
@@ -653,7 +653,7 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
                 List<ShipmentReceiptImageEvent> eL = new ArrayList<ShipmentReceiptImageEvent>();
                 for (ShipmentReceiptImageEvent e : eventDao.findByShipmentReceiptEventId(this.getShipmentReceiptEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentReceiptImageEvent)e);
                 }
                 return (readOnlyShipmentReceiptImageEvents = eL);

@@ -26,6 +26,12 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
         getContactMechEventId().setContactMechId(contactMechId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getContactMechEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractContactMechEvent extends AbstractEvent implements 
     //public void getVersion(Long version) {
     //    getContactMechEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

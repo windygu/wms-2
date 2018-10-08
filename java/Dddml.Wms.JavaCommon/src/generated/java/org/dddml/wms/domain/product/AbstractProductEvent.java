@@ -26,6 +26,12 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
         getProductEventId().setProductId(productId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getProductEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
     //public void getVersion(Long version) {
     //    getProductEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -965,7 +965,7 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
                 List<GoodIdentificationEvent.GoodIdentificationStateCreated> eL = new ArrayList<GoodIdentificationEvent.GoodIdentificationStateCreated>();
                 for (GoodIdentificationEvent e : eventDao.findByProductEventId(this.getProductEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((GoodIdentificationEvent.SqlGoodIdentificationEvent)e).setEventReadOnly(true);
                     eL.add((GoodIdentificationEvent.GoodIdentificationStateCreated)e);
                 }
                 return (readOnlyGoodIdentificationEvents = eL);
@@ -1700,7 +1700,7 @@ public abstract class AbstractProductEvent extends AbstractEvent implements Prod
                 List<GoodIdentificationEvent> eL = new ArrayList<GoodIdentificationEvent>();
                 for (GoodIdentificationEvent e : eventDao.findByProductEventId(this.getProductEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((GoodIdentificationEvent.SqlGoodIdentificationEvent)e).setEventReadOnly(true);
                     eL.add((GoodIdentificationEvent)e);
                 }
                 return (readOnlyGoodIdentificationEvents = eL);

@@ -32,6 +32,12 @@ public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent im
         getAttributeSetInstanceEventId().setAttributeSetInstanceId(attributeSetInstanceId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getAttributeSetInstanceEventId().getVersion();
     }
@@ -39,12 +45,6 @@ public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent im
     //public void getVersion(Long version) {
     //    getAttributeSetInstanceEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     public String getCreatedBy()
     {

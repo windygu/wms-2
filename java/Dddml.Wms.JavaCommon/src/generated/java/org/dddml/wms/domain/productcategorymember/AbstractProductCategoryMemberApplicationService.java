@@ -84,10 +84,9 @@ public abstract class AbstractProductCategoryMemberApplicationService implements
 
     public ProductCategoryMemberEvent getEvent(ProductCategoryMemberId productCategoryMemberId, long version) {
         ProductCategoryMemberEvent e = (ProductCategoryMemberEvent)getEventStore().getEvent(toEventStoreAggregateId(productCategoryMemberId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((ProductCategoryMemberEvent.SqlProductCategoryMemberEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(productCategoryMemberId, 0);
         }
         return e;

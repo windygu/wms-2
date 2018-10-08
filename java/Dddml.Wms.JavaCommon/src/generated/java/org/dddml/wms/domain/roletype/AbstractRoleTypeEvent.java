@@ -26,6 +26,12 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
         getRoleTypeEventId().setRoleTypeId(roleTypeId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getRoleTypeEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractRoleTypeEvent extends AbstractEvent implements Rol
     //public void getVersion(Long version) {
     //    getRoleTypeEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

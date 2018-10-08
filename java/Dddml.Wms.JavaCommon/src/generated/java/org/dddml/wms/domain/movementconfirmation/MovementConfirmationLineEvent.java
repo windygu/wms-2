@@ -10,15 +10,15 @@ public interface MovementConfirmationLineEvent extends Event {
 
     interface SqlMovementConfirmationLineEvent extends MovementConfirmationLineEvent {
         MovementConfirmationLineEventId getMovementConfirmationLineEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getLineNumber();
 
     //void setLineNumber(String lineNumber);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

@@ -26,6 +26,12 @@ public abstract class AbstractStatusItemEvent extends AbstractEvent implements S
         getStatusItemEventId().setStatusId(statusId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getStatusItemEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractStatusItemEvent extends AbstractEvent implements S
     //public void getVersion(Long version) {
     //    getStatusItemEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

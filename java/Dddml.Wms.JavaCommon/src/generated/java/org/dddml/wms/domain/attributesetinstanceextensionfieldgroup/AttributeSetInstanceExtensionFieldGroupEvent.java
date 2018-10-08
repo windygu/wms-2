@@ -9,6 +9,10 @@ public interface AttributeSetInstanceExtensionFieldGroupEvent extends Event {
 
     interface SqlAttributeSetInstanceExtensionFieldGroupEvent extends AttributeSetInstanceExtensionFieldGroupEvent {
         AttributeSetInstanceExtensionFieldGroupEventId getAttributeSetInstanceExtensionFieldGroupEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getId();
@@ -18,10 +22,6 @@ public interface AttributeSetInstanceExtensionFieldGroupEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

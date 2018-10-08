@@ -88,10 +88,9 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
 
     public UomEvent getEvent(String uomId, long version) {
         UomEvent e = (UomEvent)getEventStore().getEvent(toEventStoreAggregateId(uomId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((UomEvent.SqlUomEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(uomId, 0);
         }
         return e;

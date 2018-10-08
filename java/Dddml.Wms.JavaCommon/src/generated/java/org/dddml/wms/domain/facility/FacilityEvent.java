@@ -9,6 +9,10 @@ public interface FacilityEvent extends Event {
 
     interface SqlFacilityEvent extends FacilityEvent {
         FacilityEventId getFacilityEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getFacilityId();
@@ -18,10 +22,6 @@ public interface FacilityEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

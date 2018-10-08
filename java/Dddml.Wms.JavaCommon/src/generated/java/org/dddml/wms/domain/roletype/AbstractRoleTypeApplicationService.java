@@ -88,10 +88,9 @@ public abstract class AbstractRoleTypeApplicationService implements RoleTypeAppl
 
     public RoleTypeEvent getEvent(String roleTypeId, long version) {
         RoleTypeEvent e = (RoleTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(roleTypeId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((RoleTypeEvent.SqlRoleTypeEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(roleTypeId, 0);
         }
         return e;

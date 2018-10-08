@@ -88,10 +88,9 @@ public abstract class AbstractRejectionReasonApplicationService implements Rejec
 
     public RejectionReasonEvent getEvent(String rejectionReasonId, long version) {
         RejectionReasonEvent e = (RejectionReasonEvent)getEventStore().getEvent(toEventStoreAggregateId(rejectionReasonId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((RejectionReasonEvent.SqlRejectionReasonEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(rejectionReasonId, 0);
         }
         return e;

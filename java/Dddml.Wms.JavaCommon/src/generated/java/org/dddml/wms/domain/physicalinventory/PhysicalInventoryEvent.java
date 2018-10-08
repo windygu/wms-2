@@ -11,6 +11,10 @@ public interface PhysicalInventoryEvent extends Event {
 
     interface SqlPhysicalInventoryEvent extends PhysicalInventoryEvent {
         PhysicalInventoryEventId getPhysicalInventoryEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getDocumentNumber();
@@ -20,10 +24,6 @@ public interface PhysicalInventoryEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

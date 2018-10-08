@@ -12,6 +12,10 @@ public interface InventoryItemRequirementEvent extends Event {
 
     interface SqlInventoryItemRequirementEvent extends InventoryItemRequirementEvent {
         InventoryItemRequirementEventId getInventoryItemRequirementEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     InventoryItemId getInventoryItemRequirementId();
@@ -21,10 +25,6 @@ public interface InventoryItemRequirementEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

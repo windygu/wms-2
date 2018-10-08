@@ -10,6 +10,10 @@ public interface PicklistEvent extends Event {
 
     interface SqlPicklistEvent extends PicklistEvent {
         PicklistEventId getPicklistEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getPicklistId();
@@ -19,10 +23,6 @@ public interface PicklistEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

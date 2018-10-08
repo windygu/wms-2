@@ -85,7 +85,7 @@ public abstract class AbstractProductApplicationService implements ProductApplic
     public ProductEvent getEvent(String productId, long version) {
         ProductEvent e = (ProductEvent)getEventStore().getEvent(toEventStoreAggregateId(productId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((ProductEvent.SqlProductEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(productId, 0);

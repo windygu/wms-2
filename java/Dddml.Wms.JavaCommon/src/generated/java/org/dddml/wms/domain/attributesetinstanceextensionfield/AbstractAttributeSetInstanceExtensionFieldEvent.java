@@ -26,6 +26,12 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldEvent extends Ab
         getAttributeSetInstanceExtensionFieldEventId().setName(name);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getAttributeSetInstanceExtensionFieldEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldEvent extends Ab
     //public void getVersion(Long version) {
     //    getAttributeSetInstanceExtensionFieldEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

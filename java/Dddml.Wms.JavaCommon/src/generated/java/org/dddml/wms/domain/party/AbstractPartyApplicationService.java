@@ -113,7 +113,7 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
     public PartyEvent getEvent(String partyId, long version) {
         PartyEvent e = (PartyEvent)getEventStore().getEvent(toEventStoreAggregateId(partyId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((PartyEvent.SqlPartyEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(partyId, 0);

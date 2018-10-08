@@ -89,7 +89,7 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
     public DamageReasonEvent getEvent(String damageReasonId, long version) {
         DamageReasonEvent e = (DamageReasonEvent)getEventStore().getEvent(toEventStoreAggregateId(damageReasonId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((DamageReasonEvent.SqlDamageReasonEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(damageReasonId, 0);

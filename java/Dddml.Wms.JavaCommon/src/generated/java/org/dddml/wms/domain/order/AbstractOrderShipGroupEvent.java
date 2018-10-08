@@ -26,11 +26,11 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
         getOrderShipGroupEventId().setShipGroupSeqId(shipGroupSeqId);
     }
 
-    private boolean stateEventReadOnly;
+    private boolean eventReadOnly;
 
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
 
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -350,7 +350,7 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
                 List<OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated> eL = new ArrayList<OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated>();
                 for (OrderItemShipGroupAssociationEvent e : eventDao.findByOrderShipGroupEventId(this.getOrderShipGroupEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e).setEventReadOnly(true);
                     eL.add((OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated)e);
                 }
                 return (readOnlyOrderItemShipGroupAssociationEvents = eL);
@@ -565,7 +565,7 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
                 List<OrderItemShipGroupAssociationEvent> eL = new ArrayList<OrderItemShipGroupAssociationEvent>();
                 for (OrderItemShipGroupAssociationEvent e : eventDao.findByOrderShipGroupEventId(this.getOrderShipGroupEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e).setEventReadOnly(true);
                     eL.add((OrderItemShipGroupAssociationEvent)e);
                 }
                 return (readOnlyOrderItemShipGroupAssociationEvents = eL);
@@ -631,7 +631,7 @@ public abstract class AbstractOrderShipGroupEvent extends AbstractEvent implemen
                 List<OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved> eL = new ArrayList<OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved>();
                 for (OrderItemShipGroupAssociationEvent e : eventDao.findByOrderShipGroupEventId(this.getOrderShipGroupEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)e).setEventReadOnly(true);
                     eL.add((OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved)e);
                 }
                 return (readOnlyOrderItemShipGroupAssociationEvents = eL);

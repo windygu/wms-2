@@ -27,6 +27,12 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
         getInventoryItemEventId().setInventoryItemId(inventoryItemId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getInventoryItemEventId().getVersion();
     }
@@ -34,12 +40,6 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
     //public void getVersion(Long version) {
     //    getInventoryItemEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -214,7 +214,7 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
                 List<InventoryItemEntryEvent.InventoryItemEntryStateCreated> eL = new ArrayList<InventoryItemEntryEvent.InventoryItemEntryStateCreated>();
                 for (InventoryItemEntryEvent e : eventDao.findByInventoryItemEventId(this.getInventoryItemEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)e).setEventReadOnly(true);
                     eL.add((InventoryItemEntryEvent.InventoryItemEntryStateCreated)e);
                 }
                 return (readOnlyInventoryItemEntryEvents = eL);
@@ -329,7 +329,7 @@ public abstract class AbstractInventoryItemEvent extends AbstractEvent implement
                 List<InventoryItemEntryEvent> eL = new ArrayList<InventoryItemEntryEvent>();
                 for (InventoryItemEntryEvent e : eventDao.findByInventoryItemEventId(this.getInventoryItemEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)e).setEventReadOnly(true);
                     eL.add((InventoryItemEntryEvent)e);
                 }
                 return (readOnlyInventoryItemEntryEvents = eL);

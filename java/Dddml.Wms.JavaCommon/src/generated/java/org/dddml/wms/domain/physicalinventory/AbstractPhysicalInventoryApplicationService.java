@@ -95,7 +95,7 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
     public PhysicalInventoryEvent getEvent(String documentNumber, long version) {
         PhysicalInventoryEvent e = (PhysicalInventoryEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((PhysicalInventoryEvent.SqlPhysicalInventoryEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(documentNumber, 0);

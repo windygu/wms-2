@@ -10,15 +10,15 @@ public interface PicklistRoleEvent extends Event {
 
     interface SqlPicklistRoleEvent extends PicklistRoleEvent {
         PicklistRoleEventId getPicklistRoleEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     PartyRoleId getPartyRoleId();
 
     //void setPartyRoleId(PartyRoleId partyRoleId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedByUserLogin();
 

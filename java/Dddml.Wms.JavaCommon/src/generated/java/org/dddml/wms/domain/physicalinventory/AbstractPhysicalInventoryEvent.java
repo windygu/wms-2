@@ -28,6 +28,12 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
         getPhysicalInventoryEventId().setDocumentNumber(documentNumber);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getPhysicalInventoryEventId().getVersion();
     }
@@ -35,12 +41,6 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
     //public void getVersion(Long version) {
     //    getPhysicalInventoryEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -343,7 +343,7 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
                 List<PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated> eL = new ArrayList<PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated>();
                 for (PhysicalInventoryLineEvent e : eventDao.findByPhysicalInventoryEventId(this.getPhysicalInventoryEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)e).setEventReadOnly(true);
                     eL.add((PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated)e);
                 }
                 return (readOnlyPhysicalInventoryLineEvents = eL);
@@ -558,7 +558,7 @@ public abstract class AbstractPhysicalInventoryEvent extends AbstractEvent imple
                 List<PhysicalInventoryLineEvent> eL = new ArrayList<PhysicalInventoryLineEvent>();
                 for (PhysicalInventoryLineEvent e : eventDao.findByPhysicalInventoryEventId(this.getPhysicalInventoryEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)e).setEventReadOnly(true);
                     eL.add((PhysicalInventoryLineEvent)e);
                 }
                 return (readOnlyPhysicalInventoryLineEvents = eL);

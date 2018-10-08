@@ -9,15 +9,15 @@ public interface ShipmentItemEvent extends Event {
 
     interface SqlShipmentItemEvent extends ShipmentItemEvent {
         ShipmentItemEventId getShipmentItemEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getShipmentItemSeqId();
 
     //void setShipmentItemSeqId(String shipmentItemSeqId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

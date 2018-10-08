@@ -88,10 +88,9 @@ public abstract class AbstractShipmentMethodTypeApplicationService implements Sh
 
     public ShipmentMethodTypeEvent getEvent(String shipmentMethodTypeId, long version) {
         ShipmentMethodTypeEvent e = (ShipmentMethodTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentMethodTypeId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((ShipmentMethodTypeEvent.SqlShipmentMethodTypeEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(shipmentMethodTypeId, 0);
         }
         return e;

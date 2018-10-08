@@ -89,7 +89,7 @@ public abstract class AbstractOrderItemShipGrpInvReservationApplicationService i
     public OrderItemShipGrpInvReservationEvent getEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version) {
         OrderItemShipGrpInvReservationEvent e = (OrderItemShipGrpInvReservationEvent)getEventStore().getEvent(toEventStoreAggregateId(orderItemShipGrpInvResId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((OrderItemShipGrpInvReservationEvent.SqlOrderItemShipGrpInvReservationEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(orderItemShipGrpInvResId, 0);

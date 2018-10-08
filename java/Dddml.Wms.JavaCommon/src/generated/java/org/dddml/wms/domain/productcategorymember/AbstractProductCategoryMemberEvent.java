@@ -26,6 +26,12 @@ public abstract class AbstractProductCategoryMemberEvent extends AbstractEvent i
         getProductCategoryMemberEventId().setProductCategoryMemberId(productCategoryMemberId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getProductCategoryMemberEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractProductCategoryMemberEvent extends AbstractEvent i
     //public void getVersion(Long version) {
     //    getProductCategoryMemberEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

@@ -26,6 +26,12 @@ public abstract class AbstractPartyRoleEvent extends AbstractEvent implements Pa
         getPartyRoleEventId().setPartyRoleId(partyRoleId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getPartyRoleEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractPartyRoleEvent extends AbstractEvent implements Pa
     //public void getVersion(Long version) {
     //    getPartyRoleEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

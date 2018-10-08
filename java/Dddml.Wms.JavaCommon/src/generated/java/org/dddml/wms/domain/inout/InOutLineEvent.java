@@ -10,15 +10,15 @@ public interface InOutLineEvent extends Event {
 
     interface SqlInOutLineEvent extends InOutLineEvent {
         InOutLineEventId getInOutLineEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getLineNumber();
 
     //void setLineNumber(String lineNumber);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

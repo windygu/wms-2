@@ -12,15 +12,15 @@ public interface SellableInventoryItemEntryEvent extends Event {
 
     interface SqlSellableInventoryItemEntryEvent extends SellableInventoryItemEntryEvent {
         SellableInventoryItemEntryEventId getSellableInventoryItemEntryEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     Long getEntrySeqId();
 
     //void setEntrySeqId(Long entrySeqId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

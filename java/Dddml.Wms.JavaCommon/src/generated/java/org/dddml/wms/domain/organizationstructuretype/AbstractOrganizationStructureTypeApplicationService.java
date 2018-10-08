@@ -89,7 +89,7 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
     public OrganizationStructureTypeEvent getEvent(String id, long version) {
         OrganizationStructureTypeEvent e = (OrganizationStructureTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(id), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((OrganizationStructureTypeEvent.SqlOrganizationStructureTypeEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(id, 0);

@@ -26,6 +26,12 @@ public abstract class AbstractOrderItemShipGrpInvReservationEvent extends Abstra
         getOrderItemShipGrpInvReservationEventId().setOrderItemShipGrpInvResId(orderItemShipGrpInvResId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getOrderItemShipGrpInvReservationEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractOrderItemShipGrpInvReservationEvent extends Abstra
     //public void getVersion(Long version) {
     //    getOrderItemShipGrpInvReservationEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

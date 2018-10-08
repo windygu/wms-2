@@ -89,7 +89,7 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
     public LocatorTypeEvent getEvent(String locatorTypeId, long version) {
         LocatorTypeEvent e = (LocatorTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(locatorTypeId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((LocatorTypeEvent.SqlLocatorTypeEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(locatorTypeId, 0);

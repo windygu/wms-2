@@ -26,6 +26,12 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
         getShipmentMethodTypeEventId().setShipmentMethodTypeId(shipmentMethodTypeId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getShipmentMethodTypeEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractShipmentMethodTypeEvent extends AbstractEvent impl
     //public void getVersion(Long version) {
     //    getShipmentMethodTypeEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

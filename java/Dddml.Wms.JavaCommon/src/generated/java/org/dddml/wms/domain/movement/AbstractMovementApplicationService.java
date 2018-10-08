@@ -98,7 +98,7 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
     public MovementEvent getEvent(String documentNumber, long version) {
         MovementEvent e = (MovementEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((MovementEvent.SqlMovementEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(documentNumber, 0);

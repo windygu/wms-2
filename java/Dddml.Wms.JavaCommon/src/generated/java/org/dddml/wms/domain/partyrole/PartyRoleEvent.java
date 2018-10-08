@@ -9,6 +9,10 @@ public interface PartyRoleEvent extends Event {
 
     interface SqlPartyRoleEvent extends PartyRoleEvent {
         PartyRoleEventId getPartyRoleEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     PartyRoleId getPartyRoleId();
@@ -18,10 +22,6 @@ public interface PartyRoleEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

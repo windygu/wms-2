@@ -27,6 +27,12 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
         getPicklistEventId().setPicklistId(picklistId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getPicklistEventId().getVersion();
     }
@@ -34,12 +40,6 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
     //public void getVersion(Long version) {
     //    getPicklistEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -246,7 +246,7 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
                 List<PicklistRoleEvent.PicklistRoleStateCreated> eL = new ArrayList<PicklistRoleEvent.PicklistRoleStateCreated>();
                 for (PicklistRoleEvent e : eventDao.findByPicklistEventId(this.getPicklistEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PicklistRoleEvent.SqlPicklistRoleEvent)e).setEventReadOnly(true);
                     eL.add((PicklistRoleEvent.PicklistRoleStateCreated)e);
                 }
                 return (readOnlyPicklistRoleEvents = eL);
@@ -381,7 +381,7 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
                 List<PicklistRoleEvent> eL = new ArrayList<PicklistRoleEvent>();
                 for (PicklistRoleEvent e : eventDao.findByPicklistEventId(this.getPicklistEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PicklistRoleEvent.SqlPicklistRoleEvent)e).setEventReadOnly(true);
                     eL.add((PicklistRoleEvent)e);
                 }
                 return (readOnlyPicklistRoleEvents = eL);
@@ -447,7 +447,7 @@ public abstract class AbstractPicklistEvent extends AbstractEvent implements Pic
                 List<PicklistRoleEvent.PicklistRoleStateRemoved> eL = new ArrayList<PicklistRoleEvent.PicklistRoleStateRemoved>();
                 for (PicklistRoleEvent e : eventDao.findByPicklistEventId(this.getPicklistEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PicklistRoleEvent.SqlPicklistRoleEvent)e).setEventReadOnly(true);
                     eL.add((PicklistRoleEvent.PicklistRoleStateRemoved)e);
                 }
                 return (readOnlyPicklistRoleEvents = eL);

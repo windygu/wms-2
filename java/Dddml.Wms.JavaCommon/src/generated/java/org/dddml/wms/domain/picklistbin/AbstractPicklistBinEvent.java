@@ -26,6 +26,12 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
         getPicklistBinEventId().setPicklistBinId(picklistBinId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getPicklistBinEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
     //public void getVersion(Long version) {
     //    getPicklistBinEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -221,7 +221,7 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
                 List<PicklistItemEvent.PicklistItemStateCreated> eL = new ArrayList<PicklistItemEvent.PicklistItemStateCreated>();
                 for (PicklistItemEvent e : eventDao.findByPicklistBinEventId(this.getPicklistBinEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PicklistItemEvent.SqlPicklistItemEvent)e).setEventReadOnly(true);
                     eL.add((PicklistItemEvent.PicklistItemStateCreated)e);
                 }
                 return (readOnlyPicklistItemEvents = eL);
@@ -336,7 +336,7 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
                 List<PicklistItemEvent> eL = new ArrayList<PicklistItemEvent>();
                 for (PicklistItemEvent e : eventDao.findByPicklistBinEventId(this.getPicklistBinEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PicklistItemEvent.SqlPicklistItemEvent)e).setEventReadOnly(true);
                     eL.add((PicklistItemEvent)e);
                 }
                 return (readOnlyPicklistItemEvents = eL);
@@ -402,7 +402,7 @@ public abstract class AbstractPicklistBinEvent extends AbstractEvent implements 
                 List<PicklistItemEvent.PicklistItemStateRemoved> eL = new ArrayList<PicklistItemEvent.PicklistItemStateRemoved>();
                 for (PicklistItemEvent e : eventDao.findByPicklistBinEventId(this.getPicklistBinEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((PicklistItemEvent.SqlPicklistItemEvent)e).setEventReadOnly(true);
                     eL.add((PicklistItemEvent.PicklistItemStateRemoved)e);
                 }
                 return (readOnlyPicklistItemEvents = eL);

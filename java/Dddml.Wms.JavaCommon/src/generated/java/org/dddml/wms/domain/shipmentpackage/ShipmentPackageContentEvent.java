@@ -9,15 +9,15 @@ public interface ShipmentPackageContentEvent extends Event {
 
     interface SqlShipmentPackageContentEvent extends ShipmentPackageContentEvent {
         ShipmentPackageContentEventId getShipmentPackageContentEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getShipmentItemSeqId();
 
     //void setShipmentItemSeqId(String shipmentItemSeqId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

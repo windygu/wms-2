@@ -9,15 +9,15 @@ public interface AttributeValueEvent extends Event {
 
     interface SqlAttributeValueEvent extends AttributeValueEvent {
         AttributeValueEventId getAttributeValueEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getValue();
 
     //void setValue(String value);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

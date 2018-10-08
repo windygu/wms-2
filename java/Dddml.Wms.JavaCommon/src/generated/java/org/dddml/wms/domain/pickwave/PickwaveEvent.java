@@ -9,6 +9,10 @@ public interface PickwaveEvent extends Event {
 
     interface SqlPickwaveEvent extends PickwaveEvent {
         PickwaveEventId getPickwaveEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     Long getPickwaveId();
@@ -18,10 +22,6 @@ public interface PickwaveEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

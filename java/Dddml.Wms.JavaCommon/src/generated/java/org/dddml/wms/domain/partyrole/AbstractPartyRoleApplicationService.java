@@ -89,7 +89,7 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
     public PartyRoleEvent getEvent(PartyRoleId partyRoleId, long version) {
         PartyRoleEvent e = (PartyRoleEvent)getEventStore().getEvent(toEventStoreAggregateId(partyRoleId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((PartyRoleEvent.SqlPartyRoleEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(partyRoleId, 0);

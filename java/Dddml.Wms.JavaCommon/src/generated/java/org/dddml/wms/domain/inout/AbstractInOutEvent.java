@@ -27,6 +27,12 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
         getInOutEventId().setDocumentNumber(documentNumber);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getInOutEventId().getVersion();
     }
@@ -34,12 +40,6 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
     //public void getVersion(Long version) {
     //    getInOutEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -572,7 +572,7 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
                 List<InOutImageEvent.InOutImageStateCreated> eL = new ArrayList<InOutImageEvent.InOutImageStateCreated>();
                 for (InOutImageEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InOutImageEvent.SqlInOutImageEvent)e).setEventReadOnly(true);
                     eL.add((InOutImageEvent.InOutImageStateCreated)e);
                 }
                 return (readOnlyInOutImageEvents = eL);
@@ -614,7 +614,7 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
                 List<InOutLineEvent.InOutLineStateCreated> eL = new ArrayList<InOutLineEvent.InOutLineStateCreated>();
                 for (InOutLineEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InOutLineEvent.SqlInOutLineEvent)e).setEventReadOnly(true);
                     eL.add((InOutLineEvent.InOutLineStateCreated)e);
                 }
                 return (readOnlyInOutLineEvents = eL);
@@ -992,7 +992,7 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
                 List<InOutImageEvent> eL = new ArrayList<InOutImageEvent>();
                 for (InOutImageEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InOutImageEvent.SqlInOutImageEvent)e).setEventReadOnly(true);
                     eL.add((InOutImageEvent)e);
                 }
                 return (readOnlyInOutImageEvents = eL);
@@ -1034,7 +1034,7 @@ public abstract class AbstractInOutEvent extends AbstractEvent implements InOutE
                 List<InOutLineEvent> eL = new ArrayList<InOutLineEvent>();
                 for (InOutLineEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((InOutLineEvent.SqlInOutLineEvent)e).setEventReadOnly(true);
                     eL.add((InOutLineEvent)e);
                 }
                 return (readOnlyInOutLineEvents = eL);

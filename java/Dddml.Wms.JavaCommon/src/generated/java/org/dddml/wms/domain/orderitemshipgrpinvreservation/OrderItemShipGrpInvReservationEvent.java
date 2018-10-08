@@ -9,6 +9,10 @@ public interface OrderItemShipGrpInvReservationEvent extends Event {
 
     interface SqlOrderItemShipGrpInvReservationEvent extends OrderItemShipGrpInvReservationEvent {
         OrderItemShipGrpInvReservationEventId getOrderItemShipGrpInvReservationEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     OrderItemShipGrpInvResId getOrderItemShipGrpInvResId();
@@ -18,10 +22,6 @@ public interface OrderItemShipGrpInvReservationEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

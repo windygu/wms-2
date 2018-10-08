@@ -9,6 +9,10 @@ public interface LotEvent extends Event {
 
     interface SqlLotEvent extends LotEvent {
         LotEventId getLotEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getLotId();
@@ -18,10 +22,6 @@ public interface LotEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

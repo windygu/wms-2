@@ -9,6 +9,10 @@ public interface AttributeSetEvent extends Event {
 
     interface SqlAttributeSetEvent extends AttributeSetEvent {
         AttributeSetEventId getAttributeSetEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getAttributeSetId();
@@ -18,10 +22,6 @@ public interface AttributeSetEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

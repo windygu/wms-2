@@ -9,6 +9,10 @@ public interface GoodIdentificationTypeEvent extends Event {
 
     interface SqlGoodIdentificationTypeEvent extends GoodIdentificationTypeEvent {
         GoodIdentificationTypeEventId getGoodIdentificationTypeEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getGoodIdentificationTypeId();
@@ -18,10 +22,6 @@ public interface GoodIdentificationTypeEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

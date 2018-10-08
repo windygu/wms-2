@@ -112,10 +112,9 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
 
     public ShipmentEvent getEvent(String shipmentId, long version) {
         ShipmentEvent e = (ShipmentEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((ShipmentEvent.SqlShipmentEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(shipmentId, 0);
         }
         return e;

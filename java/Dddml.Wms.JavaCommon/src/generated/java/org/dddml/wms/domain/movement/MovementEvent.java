@@ -10,6 +10,10 @@ public interface MovementEvent extends Event {
 
     interface SqlMovementEvent extends MovementEvent {
         MovementEventId getMovementEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getDocumentNumber();
@@ -19,10 +23,6 @@ public interface MovementEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

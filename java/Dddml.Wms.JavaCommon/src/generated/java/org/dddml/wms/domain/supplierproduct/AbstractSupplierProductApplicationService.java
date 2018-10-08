@@ -84,10 +84,9 @@ public abstract class AbstractSupplierProductApplicationService implements Suppl
 
     public SupplierProductEvent getEvent(SupplierProductId supplierProductId, long version) {
         SupplierProductEvent e = (SupplierProductEvent)getEventStore().getEvent(toEventStoreAggregateId(supplierProductId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((SupplierProductEvent.SqlSupplierProductEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(supplierProductId, 0);
         }
         return e;

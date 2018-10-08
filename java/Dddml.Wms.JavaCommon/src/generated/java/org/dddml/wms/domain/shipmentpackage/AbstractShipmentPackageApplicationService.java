@@ -88,10 +88,9 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
 
     public ShipmentPackageEvent getEvent(ShipmentPackageId shipmentPackageId, long version) {
         ShipmentPackageEvent e = (ShipmentPackageEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentPackageId), version);
-        if (e != null)
-        { e.setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((ShipmentPackageEvent.SqlShipmentPackageEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(shipmentPackageId, 0);
         }
         return e;

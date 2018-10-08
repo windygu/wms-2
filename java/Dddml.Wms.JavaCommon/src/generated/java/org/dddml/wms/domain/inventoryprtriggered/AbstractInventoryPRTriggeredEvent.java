@@ -26,6 +26,12 @@ public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent im
         getInventoryPRTriggeredEventId().setInventoryPRTriggeredId(inventoryPRTriggeredId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getInventoryPRTriggeredEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractInventoryPRTriggeredEvent extends AbstractEvent im
     //public void getVersion(Long version) {
     //    getInventoryPRTriggeredEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

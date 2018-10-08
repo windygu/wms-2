@@ -27,6 +27,12 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
         getMovementConfirmationEventId().setDocumentNumber(documentNumber);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getMovementConfirmationEventId().getVersion();
     }
@@ -34,12 +40,6 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
     //public void getVersion(Long version) {
     //    getMovementConfirmationEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -270,7 +270,7 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
                 List<MovementConfirmationLineEvent.MovementConfirmationLineStateCreated> eL = new ArrayList<MovementConfirmationLineEvent.MovementConfirmationLineStateCreated>();
                 for (MovementConfirmationLineEvent e : eventDao.findByMovementConfirmationEventId(this.getMovementConfirmationEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e).setEventReadOnly(true);
                     eL.add((MovementConfirmationLineEvent.MovementConfirmationLineStateCreated)e);
                 }
                 return (readOnlyMovementConfirmationLineEvents = eL);
@@ -425,7 +425,7 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
                 List<MovementConfirmationLineEvent> eL = new ArrayList<MovementConfirmationLineEvent>();
                 for (MovementConfirmationLineEvent e : eventDao.findByMovementConfirmationEventId(this.getMovementConfirmationEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e).setEventReadOnly(true);
                     eL.add((MovementConfirmationLineEvent)e);
                 }
                 return (readOnlyMovementConfirmationLineEvents = eL);
@@ -491,7 +491,7 @@ public abstract class AbstractMovementConfirmationEvent extends AbstractEvent im
                 List<MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved> eL = new ArrayList<MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved>();
                 for (MovementConfirmationLineEvent e : eventDao.findByMovementConfirmationEventId(this.getMovementConfirmationEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)e).setEventReadOnly(true);
                     eL.add((MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved)e);
                 }
                 return (readOnlyMovementConfirmationLineEvents = eL);

@@ -85,7 +85,7 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
     public OrderShipmentEvent getEvent(OrderShipmentId orderShipmentId, long version) {
         OrderShipmentEvent e = (OrderShipmentEvent)getEventStore().getEvent(toEventStoreAggregateId(orderShipmentId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((OrderShipmentEvent.SqlOrderShipmentEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(orderShipmentId, 0);

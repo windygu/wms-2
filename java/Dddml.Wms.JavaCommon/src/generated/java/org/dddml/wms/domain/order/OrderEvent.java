@@ -10,6 +10,10 @@ public interface OrderEvent extends Event {
 
     interface SqlOrderEvent extends OrderEvent {
         OrderEventId getOrderEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getOrderId();
@@ -19,10 +23,6 @@ public interface OrderEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

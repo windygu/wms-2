@@ -9,6 +9,10 @@ public interface StatusItemEvent extends Event {
 
     interface SqlStatusItemEvent extends StatusItemEvent {
         StatusItemEventId getStatusItemEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getStatusId();
@@ -18,10 +22,6 @@ public interface StatusItemEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

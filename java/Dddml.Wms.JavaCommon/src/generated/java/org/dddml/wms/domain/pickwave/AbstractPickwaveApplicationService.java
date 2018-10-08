@@ -89,7 +89,7 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
     public PickwaveEvent getEvent(Long pickwaveId, long version) {
         PickwaveEvent e = (PickwaveEvent)getEventStore().getEvent(toEventStoreAggregateId(pickwaveId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((PickwaveEvent.SqlPickwaveEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(pickwaveId, 0);

@@ -10,15 +10,15 @@ public interface MovementLineEvent extends Event {
 
     interface SqlMovementLineEvent extends MovementLineEvent {
         MovementLineEventId getMovementLineEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getLineNumber();
 
     //void setLineNumber(String lineNumber);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

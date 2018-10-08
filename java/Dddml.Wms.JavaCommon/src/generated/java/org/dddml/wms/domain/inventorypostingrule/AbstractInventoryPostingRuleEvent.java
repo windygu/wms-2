@@ -27,6 +27,12 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
         getInventoryPostingRuleEventId().setInventoryPostingRuleId(inventoryPostingRuleId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getInventoryPostingRuleEventId().getVersion();
     }
@@ -34,12 +40,6 @@ public abstract class AbstractInventoryPostingRuleEvent extends AbstractEvent im
     //public void getVersion(Long version) {
     //    getInventoryPostingRuleEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

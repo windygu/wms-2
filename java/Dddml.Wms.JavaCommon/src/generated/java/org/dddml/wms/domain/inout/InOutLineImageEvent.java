@@ -9,15 +9,15 @@ public interface InOutLineImageEvent extends Event {
 
     interface SqlInOutLineImageEvent extends InOutLineImageEvent {
         InOutLineImageEventId getInOutLineImageEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getSequenceId();
 
     //void setSequenceId(String sequenceId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

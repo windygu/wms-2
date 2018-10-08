@@ -26,6 +26,12 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
         getPartyEventId().setPartyId(partyId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getPartyEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractPartyEvent extends AbstractEvent implements PartyE
     //public void getVersion(Long version) {
     //    getPartyEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

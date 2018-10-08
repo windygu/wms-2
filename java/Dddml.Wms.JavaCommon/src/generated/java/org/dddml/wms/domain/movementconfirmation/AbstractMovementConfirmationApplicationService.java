@@ -94,7 +94,7 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
     public MovementConfirmationEvent getEvent(String documentNumber, long version) {
         MovementConfirmationEvent e = (MovementConfirmationEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((MovementConfirmationEvent.SqlMovementConfirmationEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(documentNumber, 0);

@@ -9,15 +9,15 @@ public interface AttributeUseEvent extends Event {
 
     interface SqlAttributeUseEvent extends AttributeUseEvent {
         AttributeUseEventId getAttributeUseEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getAttributeId();
 
     //void setAttributeId(String attributeId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

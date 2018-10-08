@@ -86,7 +86,7 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
     public InventoryItemEvent getEvent(InventoryItemId inventoryItemId, long version) {
         InventoryItemEvent e = (InventoryItemEvent)getEventStore().getEvent(toEventStoreAggregateId(inventoryItemId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((InventoryItemEvent.SqlInventoryItemEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(inventoryItemId, 0);

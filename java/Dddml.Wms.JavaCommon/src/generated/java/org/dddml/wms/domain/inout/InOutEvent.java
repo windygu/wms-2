@@ -10,6 +10,10 @@ public interface InOutEvent extends Event {
 
     interface SqlInOutEvent extends InOutEvent {
         InOutEventId getInOutEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getDocumentNumber();
@@ -19,10 +23,6 @@ public interface InOutEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

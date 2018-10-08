@@ -26,6 +26,12 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
         getLotEventId().setLotId(lotId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getLotEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractLotEvent extends AbstractEvent implements LotEvent
     //public void getVersion(Long version) {
     //    getLotEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

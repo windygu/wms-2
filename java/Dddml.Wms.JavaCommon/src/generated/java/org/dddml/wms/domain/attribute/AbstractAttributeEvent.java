@@ -26,6 +26,12 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
         getAttributeEventId().setAttributeId(attributeId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getAttributeEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
     //public void getVersion(Long version) {
     //    getAttributeEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -319,7 +319,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
                 List<AttributeValueEvent.AttributeValueStateCreated> eL = new ArrayList<AttributeValueEvent.AttributeValueStateCreated>();
                 for (AttributeValueEvent e : eventDao.findByAttributeEventId(this.getAttributeEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((AttributeValueEvent.SqlAttributeValueEvent)e).setEventReadOnly(true);
                     eL.add((AttributeValueEvent.AttributeValueStateCreated)e);
                 }
                 return (readOnlyAttributeValueEvents = eL);
@@ -361,7 +361,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
                 List<AttributeAliasEvent.AttributeAliasStateCreated> eL = new ArrayList<AttributeAliasEvent.AttributeAliasStateCreated>();
                 for (AttributeAliasEvent e : eventDao.findByAttributeEventId(this.getAttributeEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((AttributeAliasEvent.SqlAttributeAliasEvent)e).setEventReadOnly(true);
                     eL.add((AttributeAliasEvent.AttributeAliasStateCreated)e);
                 }
                 return (readOnlyAttributeAliasEvents = eL);
@@ -529,7 +529,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
                 List<AttributeValueEvent> eL = new ArrayList<AttributeValueEvent>();
                 for (AttributeValueEvent e : eventDao.findByAttributeEventId(this.getAttributeEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((AttributeValueEvent.SqlAttributeValueEvent)e).setEventReadOnly(true);
                     eL.add((AttributeValueEvent)e);
                 }
                 return (readOnlyAttributeValueEvents = eL);
@@ -571,7 +571,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
                 List<AttributeAliasEvent> eL = new ArrayList<AttributeAliasEvent>();
                 for (AttributeAliasEvent e : eventDao.findByAttributeEventId(this.getAttributeEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((AttributeAliasEvent.SqlAttributeAliasEvent)e).setEventReadOnly(true);
                     eL.add((AttributeAliasEvent)e);
                 }
                 return (readOnlyAttributeAliasEvents = eL);
@@ -640,7 +640,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
                 List<AttributeValueEvent.AttributeValueStateRemoved> eL = new ArrayList<AttributeValueEvent.AttributeValueStateRemoved>();
                 for (AttributeValueEvent e : eventDao.findByAttributeEventId(this.getAttributeEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((AttributeValueEvent.SqlAttributeValueEvent)e).setEventReadOnly(true);
                     eL.add((AttributeValueEvent.AttributeValueStateRemoved)e);
                 }
                 return (readOnlyAttributeValueEvents = eL);
@@ -683,7 +683,7 @@ public abstract class AbstractAttributeEvent extends AbstractEvent implements At
                 List<AttributeAliasEvent.AttributeAliasStateRemoved> eL = new ArrayList<AttributeAliasEvent.AttributeAliasStateRemoved>();
                 for (AttributeAliasEvent e : eventDao.findByAttributeEventId(this.getAttributeEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((AttributeAliasEvent.SqlAttributeAliasEvent)e).setEventReadOnly(true);
                     eL.add((AttributeAliasEvent.AttributeAliasStateRemoved)e);
                 }
                 return (readOnlyAttributeAliasEvents = eL);

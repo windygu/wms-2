@@ -26,6 +26,12 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
         getLocatorTypeEventId().setLocatorTypeId(locatorTypeId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getLocatorTypeEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractLocatorTypeEvent extends AbstractEvent implements 
     //public void getVersion(Long version) {
     //    getLocatorTypeEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

@@ -89,7 +89,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
     public AttributeSetInstanceExtensionFieldGroupEvent getEvent(String id, long version) {
         AttributeSetInstanceExtensionFieldGroupEvent e = (AttributeSetInstanceExtensionFieldGroupEvent)getEventStore().getEvent(toEventStoreAggregateId(id), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((AttributeSetInstanceExtensionFieldGroupEvent.SqlAttributeSetInstanceExtensionFieldGroupEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(id, 0);

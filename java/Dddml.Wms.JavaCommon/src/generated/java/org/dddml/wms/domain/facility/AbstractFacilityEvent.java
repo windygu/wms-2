@@ -26,6 +26,12 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
         getFacilityEventId().setFacilityId(facilityId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getFacilityEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractFacilityEvent extends AbstractEvent implements Fac
     //public void getVersion(Long version) {
     //    getFacilityEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 

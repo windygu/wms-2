@@ -11,15 +11,15 @@ public interface PhysicalInventoryLineEvent extends Event {
 
     interface SqlPhysicalInventoryLineEvent extends PhysicalInventoryLineEvent {
         PhysicalInventoryLineEventId getPhysicalInventoryLineEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     InventoryItemId getInventoryItemId();
 
     //void setInventoryItemId(InventoryItemId inventoryItemId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

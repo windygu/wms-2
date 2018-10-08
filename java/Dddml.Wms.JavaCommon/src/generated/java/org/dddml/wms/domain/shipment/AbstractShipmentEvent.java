@@ -26,6 +26,12 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         getShipmentEventId().setShipmentId(shipmentId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getShipmentEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
     //public void getVersion(Long version) {
     //    getShipmentEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -699,7 +699,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ShipmentImageEvent.ShipmentImageStateCreated> eL = new ArrayList<ShipmentImageEvent.ShipmentImageStateCreated>();
                 for (ShipmentImageEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentImageEvent.SqlShipmentImageEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentImageEvent.ShipmentImageStateCreated)e);
                 }
                 return (readOnlyShipmentImageEvents = eL);
@@ -741,7 +741,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ShipmentItemEvent.ShipmentItemStateCreated> eL = new ArrayList<ShipmentItemEvent.ShipmentItemStateCreated>();
                 for (ShipmentItemEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentItemEvent.SqlShipmentItemEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentItemEvent.ShipmentItemStateCreated)e);
                 }
                 return (readOnlyShipmentItemEvents = eL);
@@ -783,7 +783,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ShipmentReceiptEvent.ShipmentReceiptStateCreated> eL = new ArrayList<ShipmentReceiptEvent.ShipmentReceiptStateCreated>();
                 for (ShipmentReceiptEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentReceiptEvent.SqlShipmentReceiptEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentReceiptEvent.ShipmentReceiptStateCreated)e);
                 }
                 return (readOnlyShipmentReceiptEvents = eL);
@@ -825,7 +825,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ItemIssuanceEvent.ItemIssuanceStateCreated> eL = new ArrayList<ItemIssuanceEvent.ItemIssuanceStateCreated>();
                 for (ItemIssuanceEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ItemIssuanceEvent.SqlItemIssuanceEvent)e).setEventReadOnly(true);
                     eL.add((ItemIssuanceEvent.ItemIssuanceStateCreated)e);
                 }
                 return (readOnlyItemIssuanceEvents = eL);
@@ -1259,7 +1259,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ShipmentImageEvent> eL = new ArrayList<ShipmentImageEvent>();
                 for (ShipmentImageEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentImageEvent.SqlShipmentImageEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentImageEvent)e);
                 }
                 return (readOnlyShipmentImageEvents = eL);
@@ -1301,7 +1301,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ShipmentItemEvent> eL = new ArrayList<ShipmentItemEvent>();
                 for (ShipmentItemEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentItemEvent.SqlShipmentItemEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentItemEvent)e);
                 }
                 return (readOnlyShipmentItemEvents = eL);
@@ -1343,7 +1343,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ShipmentReceiptEvent> eL = new ArrayList<ShipmentReceiptEvent>();
                 for (ShipmentReceiptEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentReceiptEvent.SqlShipmentReceiptEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentReceiptEvent)e);
                 }
                 return (readOnlyShipmentReceiptEvents = eL);
@@ -1385,7 +1385,7 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
                 List<ItemIssuanceEvent> eL = new ArrayList<ItemIssuanceEvent>();
                 for (ItemIssuanceEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ItemIssuanceEvent.SqlItemIssuanceEvent)e).setEventReadOnly(true);
                     eL.add((ItemIssuanceEvent)e);
                 }
                 return (readOnlyItemIssuanceEvents = eL);

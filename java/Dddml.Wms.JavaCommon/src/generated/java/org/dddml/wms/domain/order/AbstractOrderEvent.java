@@ -27,6 +27,12 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
         getOrderEventId().setOrderId(orderId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getOrderEventId().getVersion();
     }
@@ -34,12 +40,6 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
     //public void getVersion(Long version) {
     //    getOrderEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -534,7 +534,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
                 List<OrderRoleEvent.OrderRoleStateCreated> eL = new ArrayList<OrderRoleEvent.OrderRoleStateCreated>();
                 for (OrderRoleEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderRoleEvent.SqlOrderRoleEvent)e).setEventReadOnly(true);
                     eL.add((OrderRoleEvent.OrderRoleStateCreated)e);
                 }
                 return (readOnlyOrderRoleEvents = eL);
@@ -576,7 +576,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
                 List<OrderItemEvent.OrderItemStateCreated> eL = new ArrayList<OrderItemEvent.OrderItemStateCreated>();
                 for (OrderItemEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderItemEvent.SqlOrderItemEvent)e).setEventReadOnly(true);
                     eL.add((OrderItemEvent.OrderItemStateCreated)e);
                 }
                 return (readOnlyOrderItemEvents = eL);
@@ -618,7 +618,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
                 List<OrderShipGroupEvent.OrderShipGroupStateCreated> eL = new ArrayList<OrderShipGroupEvent.OrderShipGroupStateCreated>();
                 for (OrderShipGroupEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderShipGroupEvent.SqlOrderShipGroupEvent)e).setEventReadOnly(true);
                     eL.add((OrderShipGroupEvent.OrderShipGroupStateCreated)e);
                 }
                 return (readOnlyOrderShipGroupEvents = eL);
@@ -939,7 +939,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
                 List<OrderRoleEvent> eL = new ArrayList<OrderRoleEvent>();
                 for (OrderRoleEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderRoleEvent.SqlOrderRoleEvent)e).setEventReadOnly(true);
                     eL.add((OrderRoleEvent)e);
                 }
                 return (readOnlyOrderRoleEvents = eL);
@@ -981,7 +981,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
                 List<OrderItemEvent> eL = new ArrayList<OrderItemEvent>();
                 for (OrderItemEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderItemEvent.SqlOrderItemEvent)e).setEventReadOnly(true);
                     eL.add((OrderItemEvent)e);
                 }
                 return (readOnlyOrderItemEvents = eL);
@@ -1023,7 +1023,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent implements OrderE
                 List<OrderShipGroupEvent> eL = new ArrayList<OrderShipGroupEvent>();
                 for (OrderShipGroupEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((OrderShipGroupEvent.SqlOrderShipGroupEvent)e).setEventReadOnly(true);
                     eL.add((OrderShipGroupEvent)e);
                 }
                 return (readOnlyOrderShipGroupEvents = eL);

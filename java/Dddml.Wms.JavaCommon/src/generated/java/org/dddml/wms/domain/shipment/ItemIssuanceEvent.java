@@ -9,15 +9,15 @@ public interface ItemIssuanceEvent extends Event {
 
     interface SqlItemIssuanceEvent extends ItemIssuanceEvent {
         ItemIssuanceEventId getItemIssuanceEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     String getItemIssuanceSeqId();
 
     //void setItemIssuanceSeqId(String itemIssuanceSeqId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

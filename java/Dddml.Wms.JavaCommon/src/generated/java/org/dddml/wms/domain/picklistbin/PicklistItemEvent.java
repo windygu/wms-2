@@ -9,15 +9,15 @@ public interface PicklistItemEvent extends Event {
 
     interface SqlPicklistItemEvent extends PicklistItemEvent {
         PicklistItemEventId getPicklistItemEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     PicklistItemOrderShipGrpInvId getPicklistItemOrderShipGrpInvId();
 
     //void setPicklistItemOrderShipGrpInvId(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

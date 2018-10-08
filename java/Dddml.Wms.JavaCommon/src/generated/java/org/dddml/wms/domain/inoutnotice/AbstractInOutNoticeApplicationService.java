@@ -93,7 +93,7 @@ public abstract class AbstractInOutNoticeApplicationService implements InOutNoti
     public InOutNoticeEvent getEvent(String inOutNoticeId, long version) {
         InOutNoticeEvent e = (InOutNoticeEvent)getEventStore().getEvent(toEventStoreAggregateId(inOutNoticeId), version);
         if (e != null)
-        { e.setEventReadOnly(true); }
+        { ((InOutNoticeEvent.SqlInOutNoticeEvent)e).setEventReadOnly(true); }
         else if (version == -1)
         {
             return getEvent(inOutNoticeId, 0);

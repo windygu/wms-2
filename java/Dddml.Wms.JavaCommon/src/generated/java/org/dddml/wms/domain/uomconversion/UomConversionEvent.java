@@ -9,6 +9,10 @@ public interface UomConversionEvent extends Event {
 
     interface SqlUomConversionEvent extends UomConversionEvent {
         UomConversionEventId getUomConversionEventId();
+
+        boolean getEventReadOnly();
+
+        void setEventReadOnly(boolean readOnly);
     }
 
     UomConversionId getUomConversionId();
@@ -18,10 +22,6 @@ public interface UomConversionEvent extends Event {
     Long getVersion();
     
     //void getVersion(Long version);
-
-    boolean getEventReadOnly();
-
-    void setEventReadOnly(boolean readOnly);
 
     String getCreatedBy();
 

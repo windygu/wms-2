@@ -26,6 +26,12 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
         getShipmentPackageEventId().setShipmentPackageId(shipmentPackageId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getShipmentPackageEventId().getVersion();
     }
@@ -33,12 +39,6 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
     //public void getVersion(Long version) {
     //    getShipmentPackageEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
@@ -281,7 +281,7 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
                 List<ShipmentPackageContentEvent.ShipmentPackageContentStateCreated> eL = new ArrayList<ShipmentPackageContentEvent.ShipmentPackageContentStateCreated>();
                 for (ShipmentPackageContentEvent e : eventDao.findByShipmentPackageEventId(this.getShipmentPackageEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentPackageContentEvent.ShipmentPackageContentStateCreated)e);
                 }
                 return (readOnlyShipmentPackageContentEvents = eL);
@@ -446,7 +446,7 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
                 List<ShipmentPackageContentEvent> eL = new ArrayList<ShipmentPackageContentEvent>();
                 for (ShipmentPackageContentEvent e : eventDao.findByShipmentPackageEventId(this.getShipmentPackageEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentPackageContentEvent)e);
                 }
                 return (readOnlyShipmentPackageContentEvents = eL);
@@ -512,7 +512,7 @@ public abstract class AbstractShipmentPackageEvent extends AbstractEvent impleme
                 List<ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved> eL = new ArrayList<ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved>();
                 for (ShipmentPackageContentEvent e : eventDao.findByShipmentPackageEventId(this.getShipmentPackageEventId()))
                 {
-                    e.setEventReadOnly(true);
+                    ((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)e).setEventReadOnly(true);
                     eL.add((ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved)e);
                 }
                 return (readOnlyShipmentPackageContentEvents = eL);

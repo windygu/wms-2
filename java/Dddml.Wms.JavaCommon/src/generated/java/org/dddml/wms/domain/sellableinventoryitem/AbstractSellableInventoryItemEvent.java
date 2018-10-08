@@ -29,6 +29,12 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
         getSellableInventoryItemEventId().setSellableInventoryItemId(sellableInventoryItemId);
     }
 
+    private boolean eventReadOnly;
+
+    public boolean getEventReadOnly() { return this.eventReadOnly; }
+
+    public void setEventReadOnly(boolean readOnly) { this.eventReadOnly = readOnly; }
+
     public Long getVersion() {
         return getSellableInventoryItemEventId().getVersion();
     }
@@ -36,12 +42,6 @@ public abstract class AbstractSellableInventoryItemEvent extends AbstractEvent i
     //public void getVersion(Long version) {
     //    getSellableInventoryItemEventId().setVersion(version);
     //}
-
-    private boolean stateEventReadOnly;
-
-    public boolean getEventReadOnly() { return this.stateEventReadOnly; }
-
-    public void setEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String createdBy;
 
