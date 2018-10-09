@@ -21,19 +21,6 @@ public class OrderCommands
         }
 
         /**
-         * Value
-         */
-        private String value;
-
-        public String getValue() {
-            return this.value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        /**
          * Order Ship Group Id
          */
         private OrderShipGroupId orderShipGroupId;
@@ -44,6 +31,19 @@ public class OrderCommands
 
         public void setOrderShipGroupId(OrderShipGroupId orderShipGroupId) {
             this.orderShipGroupId = orderShipGroupId;
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
 
         /**

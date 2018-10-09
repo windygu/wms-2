@@ -21,19 +21,6 @@ public class MovementConfirmationCommands
         }
 
         /**
-         * Value
-         */
-        private String value;
-
-        public String getValue() {
-            return this.value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        /**
          * Document Number
          */
         private String documentNumber;
@@ -44,6 +31,19 @@ public class MovementConfirmationCommands
 
         public void setDocumentNumber(String documentNumber) {
             this.documentNumber = documentNumber;
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
 
         /**

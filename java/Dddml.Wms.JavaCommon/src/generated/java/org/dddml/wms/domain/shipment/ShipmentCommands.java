@@ -20,6 +20,19 @@ public class ShipmentCommands
         }
 
         /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        /**
          * Shipment Type Id
          */
         private String shipmentTypeId;
@@ -345,19 +358,6 @@ public class ShipmentCommands
         }
 
         /**
-         * Shipment Id
-         */
-        private String shipmentId;
-
-        public String getShipmentId() {
-            return this.shipmentId;
-        }
-
-        public void setShipmentId(String shipmentId) {
-            this.shipmentId = shipmentId;
-        }
-
-        /**
          * Version
          */
         private Long version;
@@ -380,6 +380,19 @@ public class ShipmentCommands
 
         public void setCommandType(String commandType) {
             //do nothing
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
         }
 
         /**
@@ -552,19 +565,6 @@ public class ShipmentCommands
         }
 
         /**
-         * Shipment Id
-         */
-        private String shipmentId;
-
-        public String getShipmentId() {
-            return this.shipmentId;
-        }
-
-        public void setShipmentId(String shipmentId) {
-            this.shipmentId = shipmentId;
-        }
-
-        /**
          * Version
          */
         private Long version;
@@ -587,6 +587,19 @@ public class ShipmentCommands
 
         public void setCommandType(String commandType) {
             //do nothing
+        }
+
+        /**
+         * Shipment Id
+         */
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
         }
 
         /**
@@ -733,19 +746,6 @@ public class ShipmentCommands
         }
 
         /**
-         * Shipment Id
-         */
-        private String shipmentId;
-
-        public String getShipmentId() {
-            return this.shipmentId;
-        }
-
-        public void setShipmentId(String shipmentId) {
-            this.shipmentId = shipmentId;
-        }
-
-        /**
          * Version
          */
         private Long version;
@@ -771,19 +771,6 @@ public class ShipmentCommands
         }
 
         /**
-         * Destination Locator Id
-         */
-        private String destinationLocatorId;
-
-        public String getDestinationLocatorId() {
-            return this.destinationLocatorId;
-        }
-
-        public void setDestinationLocatorId(String destinationLocatorId) {
-            this.destinationLocatorId = destinationLocatorId;
-        }
-
-        /**
          * Shipment Id
          */
         private String shipmentId;
@@ -794,6 +781,19 @@ public class ShipmentCommands
 
         public void setShipmentId(String shipmentId) {
             this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Destination Locator Id
+         */
+        private String destinationLocatorId;
+
+        public String getDestinationLocatorId() {
+            return this.destinationLocatorId;
+        }
+
+        public void setDestinationLocatorId(String destinationLocatorId) {
+            this.destinationLocatorId = destinationLocatorId;
         }
 
         /**
@@ -860,19 +860,6 @@ public class ShipmentCommands
         }
 
         /**
-         * Value
-         */
-        private String value;
-
-        public String getValue() {
-            return this.value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        /**
          * Shipment Id
          */
         private String shipmentId;
@@ -883,6 +870,19 @@ public class ShipmentCommands
 
         public void setShipmentId(String shipmentId) {
             this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
 
         /**
@@ -911,19 +911,6 @@ public class ShipmentCommands
         }
 
         /**
-         * Value
-         */
-        private String value;
-
-        public String getValue() {
-            return this.value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        /**
          * Shipment Id
          */
         private String shipmentId;
@@ -934,6 +921,19 @@ public class ShipmentCommands
 
         public void setShipmentId(String shipmentId) {
             this.shipmentId = shipmentId;
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
 
         /**

@@ -173,6 +173,19 @@ public class InOutCommands
         }
 
         /**
+         * Document Number
+         */
+        private String documentNumber;
+
+        public String getDocumentNumber() {
+            return this.documentNumber;
+        }
+
+        public void setDocumentNumber(String documentNumber) {
+            this.documentNumber = documentNumber;
+        }
+
+        /**
          * Line Number
          */
         private String lineNumber;
@@ -277,19 +290,6 @@ public class InOutCommands
         }
 
         /**
-         * Document Number
-         */
-        private String documentNumber;
-
-        public String getDocumentNumber() {
-            return this.documentNumber;
-        }
-
-        public void setDocumentNumber(String documentNumber) {
-            this.documentNumber = documentNumber;
-        }
-
-        /**
          * Version
          */
         private Long version;
@@ -312,6 +312,19 @@ public class InOutCommands
 
         public void setCommandType(String commandType) {
             //do nothing
+        }
+
+        /**
+         * Document Number
+         */
+        private String documentNumber;
+
+        public String getDocumentNumber() {
+            return this.documentNumber;
+        }
+
+        public void setDocumentNumber(String documentNumber) {
+            this.documentNumber = documentNumber;
         }
 
         /**
@@ -445,19 +458,6 @@ public class InOutCommands
         }
 
         /**
-         * Document Number
-         */
-        private String documentNumber;
-
-        public String getDocumentNumber() {
-            return this.documentNumber;
-        }
-
-        public void setDocumentNumber(String documentNumber) {
-            this.documentNumber = documentNumber;
-        }
-
-        /**
          * Version
          */
         private Long version;
@@ -483,19 +483,6 @@ public class InOutCommands
         }
 
         /**
-         * Value
-         */
-        private String value;
-
-        public String getValue() {
-            return this.value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        /**
          * Document Number
          */
         private String documentNumber;
@@ -506,6 +493,19 @@ public class InOutCommands
 
         public void setDocumentNumber(String documentNumber) {
             this.documentNumber = documentNumber;
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
 
         /**
