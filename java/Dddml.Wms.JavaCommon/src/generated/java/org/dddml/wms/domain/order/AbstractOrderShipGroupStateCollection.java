@@ -36,10 +36,10 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.orderState instanceof AbstractOrderState) {
-        //    if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.orderState instanceof AbstractOrderState) {
+            if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -106,11 +106,11 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
         } else {
             OrderShipGroupState state = getOrderShipGroupStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((OrderShipGroupState.SqlOrderShipGroupState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractOrderShipGroupState) {
                     ((AbstractOrderShipGroupState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((OrderShipGroupState.SqlOrderShipGroupState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedOrderShipGroupStates.put(globalId, state);
             }

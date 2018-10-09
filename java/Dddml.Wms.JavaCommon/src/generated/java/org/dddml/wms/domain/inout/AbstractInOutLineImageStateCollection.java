@@ -36,10 +36,10 @@ public abstract class AbstractInOutLineImageStateCollection implements EntitySta
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.inOutLineState instanceof AbstractInOutLineState) {
-        //    if (((AbstractInOutLineState)this.inOutLineState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.inOutLineState instanceof AbstractInOutLineState) {
+            if (((AbstractInOutLineState)this.inOutLineState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -106,11 +106,11 @@ public abstract class AbstractInOutLineImageStateCollection implements EntitySta
         } else {
             InOutLineImageState state = getInOutLineImageStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((InOutLineImageState.SqlInOutLineImageState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractInOutLineImageState) {
                     ((AbstractInOutLineImageState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((InOutLineImageState.SqlInOutLineImageState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedInOutLineImageStates.put(globalId, state);
             }

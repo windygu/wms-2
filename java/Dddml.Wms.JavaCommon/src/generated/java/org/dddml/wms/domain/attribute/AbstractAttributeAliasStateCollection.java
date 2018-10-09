@@ -36,10 +36,10 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.attributeState instanceof AbstractAttributeState) {
-        //    if (((AbstractAttributeState)this.attributeState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.attributeState instanceof AbstractAttributeState) {
+            if (((AbstractAttributeState)this.attributeState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -106,11 +106,11 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
         } else {
             AttributeAliasState state = getAttributeAliasStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((AttributeAliasState.SqlAttributeAliasState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractAttributeAliasState) {
                     ((AbstractAttributeAliasState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((AttributeAliasState.SqlAttributeAliasState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedAttributeAliasStates.put(globalId, state);
             }

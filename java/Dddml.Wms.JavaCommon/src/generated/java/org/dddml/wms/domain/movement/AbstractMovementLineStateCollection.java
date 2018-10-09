@@ -37,10 +37,10 @@ public abstract class AbstractMovementLineStateCollection implements EntityState
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.movementState instanceof AbstractMovementState) {
-        //    if (((AbstractMovementState)this.movementState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.movementState instanceof AbstractMovementState) {
+            if (((AbstractMovementState)this.movementState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -107,11 +107,11 @@ public abstract class AbstractMovementLineStateCollection implements EntityState
         } else {
             MovementLineState state = getMovementLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((MovementLineState.SqlMovementLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractMovementLineState) {
                     ((AbstractMovementLineState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((MovementLineState.SqlMovementLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedMovementLineStates.put(globalId, state);
             }

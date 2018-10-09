@@ -37,10 +37,10 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.movementConfirmationState instanceof AbstractMovementConfirmationState) {
-        //    if (((AbstractMovementConfirmationState)this.movementConfirmationState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.movementConfirmationState instanceof AbstractMovementConfirmationState) {
+            if (((AbstractMovementConfirmationState)this.movementConfirmationState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -107,11 +107,11 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
         } else {
             MovementConfirmationLineState state = getMovementConfirmationLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((MovementConfirmationLineState.SqlMovementConfirmationLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractMovementConfirmationLineState) {
                     ((AbstractMovementConfirmationLineState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((MovementConfirmationLineState.SqlMovementConfirmationLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedMovementConfirmationLineStates.put(globalId, state);
             }

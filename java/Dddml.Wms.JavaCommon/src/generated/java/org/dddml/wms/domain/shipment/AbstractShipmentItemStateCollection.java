@@ -36,10 +36,10 @@ public abstract class AbstractShipmentItemStateCollection implements EntityState
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.shipmentState instanceof AbstractShipmentState) {
-        //    if (((AbstractShipmentState)this.shipmentState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.shipmentState instanceof AbstractShipmentState) {
+            if (((AbstractShipmentState)this.shipmentState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -106,11 +106,11 @@ public abstract class AbstractShipmentItemStateCollection implements EntityState
         } else {
             ShipmentItemState state = getShipmentItemStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((ShipmentItemState.SqlShipmentItemState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractShipmentItemState) {
                     ((AbstractShipmentItemState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((ShipmentItemState.SqlShipmentItemState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedShipmentItemStates.put(globalId, state);
             }

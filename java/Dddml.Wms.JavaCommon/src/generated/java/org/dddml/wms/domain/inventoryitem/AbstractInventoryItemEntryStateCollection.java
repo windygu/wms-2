@@ -37,10 +37,10 @@ public abstract class AbstractInventoryItemEntryStateCollection implements Entit
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.inventoryItemState instanceof AbstractInventoryItemState) {
-        //    if (((AbstractInventoryItemState)this.inventoryItemState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.inventoryItemState instanceof AbstractInventoryItemState) {
+            if (((AbstractInventoryItemState)this.inventoryItemState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -105,11 +105,11 @@ public abstract class AbstractInventoryItemEntryStateCollection implements Entit
         } else {
             InventoryItemEntryState state = getInventoryItemEntryStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((InventoryItemEntryState.SqlInventoryItemEntryState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractInventoryItemEntryState) {
                     ((AbstractInventoryItemEntryState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((InventoryItemEntryState.SqlInventoryItemEntryState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedInventoryItemEntryStates.put(globalId, state);
             }

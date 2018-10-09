@@ -39,10 +39,10 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.inventoryItemRequirementState instanceof AbstractInventoryItemRequirementState) {
-        //    if (((AbstractInventoryItemRequirementState)this.inventoryItemRequirementState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.inventoryItemRequirementState instanceof AbstractInventoryItemRequirementState) {
+            if (((AbstractInventoryItemRequirementState)this.inventoryItemRequirementState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -107,11 +107,11 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
         } else {
             InventoryItemRequirementEntryState state = getInventoryItemRequirementEntryStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractInventoryItemRequirementEntryState) {
                     ((AbstractInventoryItemRequirementEntryState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedInventoryItemRequirementEntryStates.put(globalId, state);
             }

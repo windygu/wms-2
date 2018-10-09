@@ -36,10 +36,10 @@ public abstract class AbstractOrderItemStateCollection implements EntityStateCol
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.orderState instanceof AbstractOrderState) {
-        //    if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.orderState instanceof AbstractOrderState) {
+            if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -106,11 +106,11 @@ public abstract class AbstractOrderItemStateCollection implements EntityStateCol
         } else {
             OrderItemState state = getOrderItemStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((OrderItemState.SqlOrderItemState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractOrderItemState) {
                     ((AbstractOrderItemState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((OrderItemState.SqlOrderItemState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedOrderItemStates.put(globalId, state);
             }

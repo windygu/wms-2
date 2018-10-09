@@ -36,10 +36,10 @@ public abstract class AbstractOrderItemShipGroupAssociationStateCollection imple
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.orderShipGroupState instanceof AbstractOrderShipGroupState) {
-        //    if (((AbstractOrderShipGroupState)this.orderShipGroupState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.orderShipGroupState instanceof AbstractOrderShipGroupState) {
+            if (((AbstractOrderShipGroupState)this.orderShipGroupState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -106,11 +106,11 @@ public abstract class AbstractOrderItemShipGroupAssociationStateCollection imple
         } else {
             OrderItemShipGroupAssociationState state = getOrderItemShipGroupAssociationStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractOrderItemShipGroupAssociationState) {
                     ((AbstractOrderItemShipGroupAssociationState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedOrderItemShipGroupAssociationStates.put(globalId, state);
             }

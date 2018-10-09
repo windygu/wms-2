@@ -37,10 +37,10 @@ public abstract class AbstractInOutLineStateCollection implements EntityStateCol
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.inOutState instanceof AbstractInOutState) {
-        //    if (((AbstractInOutState)this.inOutState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.inOutState instanceof AbstractInOutState) {
+            if (((AbstractInOutState)this.inOutState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -107,11 +107,11 @@ public abstract class AbstractInOutLineStateCollection implements EntityStateCol
         } else {
             InOutLineState state = getInOutLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((InOutLineState.SqlInOutLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractInOutLineState) {
                     ((AbstractInOutLineState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((InOutLineState.SqlInOutLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedInOutLineStates.put(globalId, state);
             }

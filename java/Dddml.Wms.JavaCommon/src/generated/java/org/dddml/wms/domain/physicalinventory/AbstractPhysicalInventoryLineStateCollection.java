@@ -38,10 +38,10 @@ public abstract class AbstractPhysicalInventoryLineStateCollection implements En
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.physicalInventoryState instanceof AbstractPhysicalInventoryState) {
-        //    if (((AbstractPhysicalInventoryState)this.physicalInventoryState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.physicalInventoryState instanceof AbstractPhysicalInventoryState) {
+            if (((AbstractPhysicalInventoryState)this.physicalInventoryState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -108,11 +108,11 @@ public abstract class AbstractPhysicalInventoryLineStateCollection implements En
         } else {
             PhysicalInventoryLineState state = getPhysicalInventoryLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractPhysicalInventoryLineState) {
                     ((AbstractPhysicalInventoryLineState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedPhysicalInventoryLineStates.put(globalId, state);
             }

@@ -37,10 +37,10 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
     private Boolean stateCollectionReadOnly;
 
     public Boolean getStateCollectionReadOnly() {
-        //if (this.orderState instanceof AbstractOrderState) {
-        //    if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
-        //    { return true; }
-        //}
+        if (this.orderState instanceof AbstractOrderState) {
+            if (((AbstractOrderState)this.orderState).getStateReadOnly()) 
+            { return true; }
+        }
         if (this.stateCollectionReadOnly == null) {
             return false;
         }
@@ -107,11 +107,11 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
         } else {
             OrderRoleState state = getOrderRoleStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (((OrderRoleState.SqlOrderRoleState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
-                    throw new UnsupportedOperationException("State collection is ReadOnly.");
-                }
                 if (state instanceof AbstractOrderRoleState) {
                     ((AbstractOrderRoleState)state).setStateReadOnly(getStateCollectionReadOnly());
+                }
+                if (((OrderRoleState.SqlOrderRoleState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
+                    return state;//throw new UnsupportedOperationException("State collection is ReadOnly.");
                 }
                 loadedOrderRoleStates.put(globalId, state);
             }
